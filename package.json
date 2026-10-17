@@ -10,7 +10,8 @@
     "test": "tsx --test tests/*.test.ts",
     "test:e2e": "playwright test",
     "test:webkit": "node scripts/qa-webkit.mjs",
-    "test:visual": "node scripts/visual-audit.mjs"
+    "test:visual": "node scripts/visual-audit.mjs",
+    "test:public": "node scripts/qa-public.mjs"
   },
   "dependencies": {
     "@babylonjs/core": "^9.30.0"

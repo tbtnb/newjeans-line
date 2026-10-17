@@ -1,5 +1,7 @@
 # 跳舞的线 · NewJeans
 
+[Play the game](https://tbtnb.github.io/newjeans-line/) · [Source repository](https://github.com/tbtnb/newjeans-line)
+
 A browser recreation of Dancing Line’s one-touch rhythm gameplay, built with TypeScript and Babylon.js. Sixteen full-length vocal tracks from the supplied NewJeans collection, each with a rhythm chart and a themed 3D world. Only the user’s requested sixteen songs are included; instrumental versions and the three other supplied songs are excluded. Six missing vocal files were downloaded from the user’s Quark shared collection and verified locally.
 
 ## Play
@@ -46,6 +48,10 @@ The final local checks cover 20 unit/model/asset/storage tests, including determ
 
 The separate [WebKit production smoke](reports/webkit-production.json) passed real MP3 playback, full Get Up practice completion with pause/resume, two native touch turns, failure handling, persisted progress, three phone layouts and the night-level HUD. This ran on macOS WebKit with iPhone emulation.
 
+[Public GitHub Pages verification](reports/public-deployment.json) also passed: the live entry JavaScript matches the tested production bytes; all 16 MP3 sizes match; Get Up completes in normal mode at real 1× speed with 16 timed turns and a refresh-persistent 3-crown/10-diamond record; mobile portrait/landscape and all album covers load. The public run has zero browser or HTTP errors. Run `npm run test:public` to repeat it.
+
 ## Deploy
 
 The Vite build uses relative URLs for a GitHub Pages project path. Publish the contents of `dist/` on the `gh-pages` branch and configure GitHub Pages to serve that branch’s root. No secrets or backend configuration are needed in the browser build.
+
+After building and committing the corresponding source, `node scripts/publish-pages.mjs tbtnb/newjeans-line` publishes that build and records the source commit in the site's `build.json`. The first verified gameplay deployment is `d071415`; later verification/documentation-only commits do not change its runtime assets.
