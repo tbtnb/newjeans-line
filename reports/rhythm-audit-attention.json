@@ -1,0 +1,181 @@
+{
+  "method": "Independent final-MP3 PCM audit: HPSS percussion separation, 1024-sample STFT / 128-sample hop (5.8ms), low/mid/high log-spectral flux, peak backtracking to bounded 20%-rise attack threshold. Meaningful attacks exclude the weakest quartile. Residual = chart timestamp minus nearest detected percussion attack. Nearest-attack proximity does not prove perceptual beat correctness; offbeat percussion and sustained notes require interpretation. Segment autocorrelation is evidence of repeating pulses, not an authoritative BPM label.",
+  "chartsMutated": false,
+  "overall": {
+    "signedAttackResidualMs": {
+      "p10": 39.44,
+      "p25": 40.65,
+      "median": 46.46,
+      "p75": 52.26,
+      "p90": 58.02,
+      "p95": 58.09
+    },
+    "absoluteAttackResidualMs": {
+      "p10": 40.6,
+      "p25": 43.54,
+      "median": 46.46,
+      "p75": 52.27,
+      "p90": 58.06,
+      "p95": 63.84
+    },
+    "within50msPercent": 60.43
+  },
+  "tracks": [
+    {
+      "id": "attention",
+      "title": "Attention",
+      "chartBpm": 105.469,
+      "turnCount": 139,
+      "detectedPercussiveAttacks": 1282,
+      "meaningfulAttacks": 961,
+      "signedAttackResidualMs": {
+        "p10": 39.44,
+        "p25": 40.65,
+        "median": 46.46,
+        "p75": 52.26,
+        "p90": 58.02,
+        "p95": 58.09
+      },
+      "absoluteAttackResidualMs": {
+        "p10": 40.6,
+        "p25": 43.54,
+        "median": 46.46,
+        "p75": 52.27,
+        "p90": 58.06,
+        "p95": 63.84
+      },
+      "within50msPercent": 60.43,
+      "within100msPercent": 97.84,
+      "segments": [
+        {
+          "region": "early",
+          "signedAttackResidualMs": {
+            "p10": 40.6,
+            "p25": 40.66,
+            "median": 46.41,
+            "p75": 46.46,
+            "p90": 46.48,
+            "p95": 52.27
+          },
+          "absoluteAttackResidualMs": {
+            "p10": 40.61,
+            "p25": 40.67,
+            "median": 46.42,
+            "p75": 46.46,
+            "p90": 50.53,
+            "p95": 54.31
+          },
+          "within50msPercent": 88.24,
+          "tempoCandidates": [
+            {
+              "bpm": 105.47,
+              "normalizedAutocorrelation": 0.5013
+            },
+            {
+              "bpm": 69.84,
+              "normalizedAutocorrelation": 0.4929
+            },
+            {
+              "bpm": 126.05,
+              "normalizedAutocorrelation": 0.1603
+            },
+            {
+              "bpm": 156.61,
+              "normalizedAutocorrelation": 0.1232
+            },
+            {
+              "bpm": 63.02,
+              "normalizedAutocorrelation": 0.1059
+            }
+          ]
+        },
+        {
+          "region": "middle",
+          "signedAttackResidualMs": {
+            "p10": 34.82,
+            "p25": 40.61,
+            "median": 46.46,
+            "p75": 52.24,
+            "p90": 52.28,
+            "p95": 58.06
+          },
+          "absoluteAttackResidualMs": {
+            "p10": 40.59,
+            "p25": 40.63,
+            "median": 46.47,
+            "p75": 52.25,
+            "p90": 54.59,
+            "p95": 58.08
+          },
+          "within50msPercent": 59.57,
+          "tempoCandidates": [
+            {
+              "bpm": 105.47,
+              "normalizedAutocorrelation": 0.4526
+            },
+            {
+              "bpm": 69.84,
+              "normalizedAutocorrelation": 0.4428
+            },
+            {
+              "bpm": 126.05,
+              "normalizedAutocorrelation": 0.1198
+            },
+            {
+              "bpm": 156.61,
+              "normalizedAutocorrelation": 0.0861
+            },
+            {
+              "bpm": 78.9,
+              "normalizedAutocorrelation": 0.0763
+            }
+          ]
+        },
+        {
+          "region": "late",
+          "signedAttackResidualMs": {
+            "p10": 40.64,
+            "p25": 46.44,
+            "median": 46.49,
+            "p75": 52.29,
+            "p90": 58.04,
+            "p95": 59.24
+          },
+          "absoluteAttackResidualMs": {
+            "p10": 44.11,
+            "p25": 46.44,
+            "median": 52.2,
+            "p75": 58.0,
+            "p90": 58.04,
+            "p95": 59.24
+          },
+          "within50msPercent": 48.65,
+          "tempoCandidates": [
+            {
+              "bpm": 105.47,
+              "normalizedAutocorrelation": 0.6024
+            },
+            {
+              "bpm": 69.84,
+              "normalizedAutocorrelation": 0.5668
+            },
+            {
+              "bpm": 156.61,
+              "normalizedAutocorrelation": 0.1417
+            },
+            {
+              "bpm": 78.9,
+              "normalizedAutocorrelation": 0.1395
+            },
+            {
+              "bpm": 63.02,
+              "normalizedAutocorrelation": 0.1293
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "status": "Historical spectral-only audit; attack-start detector had an uncalibrated STFT leading-window bias. Superseded by rhythm-audit-final.json. Do not use these residuals as physical audio offsets.",
+  "supersededBy": "rhythm-audit-final.json"
+}

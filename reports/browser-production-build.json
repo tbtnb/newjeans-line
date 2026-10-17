@@ -1,0 +1,9 @@
+{
+  "base": "http://127.0.0.1:4175/",
+  "entry": "./assets/index-BCYvXIRq.js",
+  "entrySHA256": "c7d67ddef619016d8974b6fd3dfa34a9af3e2fcd8e0f004585270b2a17ca55f1",
+  "indexSHA256": "9e1b18d599660bfa90a1f1ab0633bbb7007eb22a455f6d6f67da6d4ab7437042",
+  "chartSHA256": "c74248e047a7e0240f2e0260c0ccae975191d484572d79647c78b3a4aec7d7ec",
+  "chrome": "155.0.8059.82",
+  "macOS": "26.5.1 25F80"
+}

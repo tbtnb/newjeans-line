@@ -1,0 +1,29 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Development Babylon scene inspection</title><link rel="icon" type="image/svg+xml" href="/icon.svg"><style>html,body{margin:0;width:100%;height:100%;overflow:hidden}canvas{display:block;width:100%;height:100%;touch-action:none}aside{position:fixed;left:16px;bottom:16px;max-width:calc(100vw - 64px);padding:10px 14px;background:#fff9edeb;color:#182735;border-radius:7px;font:12px/1.5 system-ui;pointer-events:none}</style></head><body><canvas id="scene"></canvas><aside id="label"></aside><script type="module">
+// Development-only inspector. This page is not a production Vite input and does
+// not change the game's clock, controls or production runtime.
+import { WorldRenderer } from '/src/world.ts';
+import { GameEngine } from '/src/engine.ts';
+import { getLevelArt } from '/src/level-design.ts';
+import levels from '/src/levels.json';
+const canvas=document.querySelector('canvas'),label=document.querySelector('#label');
+const world=new WorldRenderer(canvas);
+let snapshot,options,focus=null,selected,playEngine,perfStart=null,perfBase=0;
+const stats=()=>{const scene=world.scene;return {id:selected.id,meshes:scene.meshes.length,geometries:scene.geometries.length,materials:scene.materials.length,textures:scene.textures.length,nodes:scene.transformNodes.length,vertices:scene.getTotalVertices(),activeMeshes:scene.getActiveMeshes().length,webGL:world.engine.webGLVersion,renderer:world.engine.getGlInfo(),egg:{name:world.egg?.name,children:world.egg?.getChildMeshes().length,activeChildren:world.egg?.getChildMeshes().filter(mesh=>scene.getActiveMeshes().data.includes(mesh)).length,geometryNames:world.egg?.getChildMeshes().map(mesh=>mesh.name),enabled:world.egg?.isEnabled()},landmarks:world.landmarks.map(({node,time})=>({name:node.name,time,children:node.getChildMeshes().length}))};};
+function load(id,point='egg',mode='game'){
+ selected=levels.find(l=>l.id===id);if(!selected)throw Error(`Unknown level ${id}`);
+ const art=getLevelArt(id);const at=point==='egg'?selected.duration*art.egg.at:typeof point==='number'?point:0;
+ world.load(selected);playEngine=new GameEngine(selected,{practice:true});playEngine.reset(at);snapshot=playEngine.start();
+ options={mode,elapsed:at,quality:'high',guide:true};focus=null;
+ label.textContent=`DETERMINISTIC ${mode.toUpperCase()} STATE · ${selected.title} · ${art.family} · ${at.toFixed(2)}s / ${selected.duration.toFixed(2)}s · ${point==='egg'?art.egg.name:'scene inspection'} · no audio/playthrough claim`;
+ world.render(snapshot,options);return stats();
+}
+function focusEgg(){
+ const egg=world.egg;if(!egg)throw Error('No egg');egg.setEnabled(true);
+ const p=egg.position.clone();p.y=1.2;focus=p;
+ label.textContent+=` · egg inspection camera`;
+}
+function draw(){if(perfStart!==null){snapshot=playEngine.update(perfBase+(performance.now()-perfStart)/1000);options.elapsed=snapshot.time;}world.render(snapshot,options);if(focus){world.camera.position.copyFrom(focus.add(world.camera.position.subtract(world.cameraTarget).normalize().scale(17)));world.camera.setTarget(focus);const aspect=innerWidth/innerHeight;world.camera.orthoLeft=-6*aspect;world.camera.orthoRight=6*aspect;world.camera.orthoTop=6;world.camera.orthoBottom=-6;world.scene.render();}requestAnimationFrame(draw);}
+const frames=async(count=120)=>{perfBase=snapshot.time;perfStart=performance.now();let previous=performance.now(),durations=[];for(let i=0;i<count;i++)await new Promise(resolve=>requestAnimationFrame(now=>{durations.push(now-previous);previous=now;resolve();}));perfStart=null;const ordered=[...durations].sort((a,b)=>a-b);return {kind:'1x real-wall-clock practice renderer workload; no audio, no physical phone claim',frames:count,durationMs:durations.reduce((a,b)=>a+b),fps:1000*count/durations.reduce((a,b)=>a+b),p50FrameMs:ordered[Math.floor(count*.5)],p95FrameMs:ordered[Math.floor(count*.95)]};};
+window.audit={load,stats,focusEgg,frames,waitReady:()=>world.scene.whenReadyAsync(),dispose:()=>world.dispose(),profiles:levels.map(level=>({id:level.id,title:level.title,duration:level.duration,sections:level.sections,art:getLevelArt(level.id)}))};
+const query=new URLSearchParams(location.search);load(query.get('id')||'new-jeans',query.get('point')==='menu'?'menu':'egg',query.get('point')==='menu'?'menu':'game');draw();window.addEventListener('resize',()=>world.resize());window.audit.ready=true;
+</script></body></html>

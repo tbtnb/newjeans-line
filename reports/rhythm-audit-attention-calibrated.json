@@ -1,0 +1,439 @@
+{
+  "method": "Final decoded MP3; independent HPSS multiband spectral candidate detection (1024/128), then causal ~1ms PCM energy attack-start refinement. Strong events require upper 75% spectral strength and >=0.72 local energy-rise confidence. Calibration uses known PCM starts and applies no fitted global correction. Signed residual = chart minus nearest strong attack. Snap bounded to 65ms and minimum 315ms spacing. Unmatched weak passages retain their beat-derived timing.",
+  "limitations": "Nearest percussion proximity is not perceptual beat correctness. Dense syncopation can make event identity ambiguous. Slow vocal ramps and weak/sustained music do not provide precise physical attack ground truth; unmatched turns remain estimates. Same detector guides refinement and after measurement, so improved proximity is a consistency metric, not independent proof. No human listening/playtest claim. Chapter cues estimate PCM/timbre changes within broad story windows, not manual bar/verse annotations. Tempo autocorrelation can contain half/double and syncopated pulses.",
+  "chartsMutated": false,
+  "calibration": {
+    "fixture": "31 known PCM burst starts; bass/mid/high tone + seeded noise; 1/4/8ms attack ramps, three levels, sustained background. No global compensation fitted.",
+    "events": 31,
+    "signedDetectorResidualMs": {
+      "p10": 0.59,
+      "p25": 0.84,
+      "median": 1.27,
+      "p75": 2.24,
+      "p90": 2.72,
+      "p95": 2.83
+    },
+    "absoluteDetectorResidualMs": {
+      "p10": 0.59,
+      "p25": 0.84,
+      "median": 1.27,
+      "p75": 2.24,
+      "p90": 2.72,
+      "p95": 2.83
+    },
+    "maximumAbsoluteErrorMs": 3.129,
+    "matchedConfidenceMinimum": 0.9998,
+    "passed": true
+  },
+  "before": {
+    "signedAttackResidualMs": {
+      "p10": 21.1,
+      "p25": 26.01,
+      "median": 33.77,
+      "p75": 42.9,
+      "p90": 52.96,
+      "p95": 83.28
+    },
+    "absoluteAttackResidualMs": {
+      "p10": 21.95,
+      "p25": 27.22,
+      "median": 34.77,
+      "p75": 43.64,
+      "p90": 63.58,
+      "p95": 87.98
+    },
+    "within50msPercent": 86.33,
+    "within100msPercent": 97.84
+  },
+  "after": {
+    "signedAttackResidualMs": {
+      "p10": 21.1,
+      "p25": 26.01,
+      "median": 33.77,
+      "p75": 42.9,
+      "p90": 52.96,
+      "p95": 83.28
+    },
+    "absoluteAttackResidualMs": {
+      "p10": 21.95,
+      "p25": 27.22,
+      "median": 34.77,
+      "p75": 43.64,
+      "p90": 63.58,
+      "p95": 87.98
+    },
+    "within50msPercent": 86.33,
+    "within100msPercent": 97.84
+  },
+  "tracks": [
+    {
+      "before": {
+        "id": "attention",
+        "title": "Attention",
+        "chartBpm": 105.469,
+        "turnCount": 139,
+        "detectedPercussiveCandidates": 1282,
+        "confidentAttacks": 952,
+        "signedAttackResidualMs": {
+          "p10": 21.1,
+          "p25": 26.01,
+          "median": 33.77,
+          "p75": 42.9,
+          "p90": 52.96,
+          "p95": 83.28
+        },
+        "absoluteAttackResidualMs": {
+          "p10": 21.95,
+          "p25": 27.22,
+          "median": 34.77,
+          "p75": 43.64,
+          "p90": 63.58,
+          "p95": 87.98
+        },
+        "within50msPercent": 86.33,
+        "within100msPercent": 97.84,
+        "unmatchedOver100msTurns": 3,
+        "regionalMatchedMedianRangeMs": 11.37,
+        "segments": [
+          {
+            "region": "early",
+            "turnCount": 34,
+            "signedAttackResidualMs": {
+              "p10": 21.59,
+              "p25": 24.46,
+              "median": 30.52,
+              "p75": 34.46,
+              "p90": 38.71,
+              "p95": 43.91
+            },
+            "matchedWithin100msSignedResidualMs": {
+              "p10": 21.53,
+              "p25": 24.37,
+              "median": 30.31,
+              "p75": 33.51,
+              "p90": 36.87,
+              "p95": 41.15
+            },
+            "absoluteAttackResidualMs": {
+              "p10": 21.59,
+              "p25": 24.46,
+              "median": 30.52,
+              "p75": 34.46,
+              "p90": 38.71,
+              "p95": 43.91
+            },
+            "within50msPercent": 97.06,
+            "tempoCandidates": [
+              {
+                "bpm": 105.47,
+                "normalizedAutocorrelation": 0.5013
+              },
+              {
+                "bpm": 69.84,
+                "normalizedAutocorrelation": 0.4929
+              },
+              {
+                "bpm": 126.05,
+                "normalizedAutocorrelation": 0.1603
+              },
+              {
+                "bpm": 156.61,
+                "normalizedAutocorrelation": 0.1232
+              },
+              {
+                "bpm": 63.02,
+                "normalizedAutocorrelation": 0.1059
+              }
+            ]
+          },
+          {
+            "region": "middle",
+            "turnCount": 47,
+            "signedAttackResidualMs": {
+              "p10": 20.91,
+              "p25": 24.17,
+              "median": 30.62,
+              "p75": 42.19,
+              "p90": 50.41,
+              "p95": 60.26
+            },
+            "matchedWithin100msSignedResidualMs": {
+              "p10": 21.23,
+              "p25": 24.96,
+              "median": 30.98,
+              "p75": 42.51,
+              "p90": 50.68,
+              "p95": 60.63
+            },
+            "absoluteAttackResidualMs": {
+              "p10": 21.47,
+              "p25": 25.32,
+              "median": 33.51,
+              "p75": 43.15,
+              "p90": 53.23,
+              "p95": 76.81
+            },
+            "within50msPercent": 87.23,
+            "tempoCandidates": [
+              {
+                "bpm": 105.47,
+                "normalizedAutocorrelation": 0.4526
+              },
+              {
+                "bpm": 69.84,
+                "normalizedAutocorrelation": 0.4428
+              },
+              {
+                "bpm": 126.05,
+                "normalizedAutocorrelation": 0.1198
+              },
+              {
+                "bpm": 156.61,
+                "normalizedAutocorrelation": 0.0861
+              },
+              {
+                "bpm": 78.9,
+                "normalizedAutocorrelation": 0.0763
+              }
+            ]
+          },
+          {
+            "region": "late",
+            "turnCount": 37,
+            "signedAttackResidualMs": {
+              "p10": 32.62,
+              "p25": 36.85,
+              "median": 41.68,
+              "p75": 47.13,
+              "p90": 72.99,
+              "p95": 79.18
+            },
+            "matchedWithin100msSignedResidualMs": {
+              "p10": 32.62,
+              "p25": 36.85,
+              "median": 41.68,
+              "p75": 47.13,
+              "p90": 72.99,
+              "p95": 79.18
+            },
+            "absoluteAttackResidualMs": {
+              "p10": 34.1,
+              "p25": 37.28,
+              "median": 42.28,
+              "p75": 48.59,
+              "p90": 72.99,
+              "p95": 79.18
+            },
+            "within50msPercent": 83.78,
+            "tempoCandidates": [
+              {
+                "bpm": 105.47,
+                "normalizedAutocorrelation": 0.6024
+              },
+              {
+                "bpm": 69.84,
+                "normalizedAutocorrelation": 0.5668
+              },
+              {
+                "bpm": 156.61,
+                "normalizedAutocorrelation": 0.1417
+              },
+              {
+                "bpm": 78.9,
+                "normalizedAutocorrelation": 0.1395
+              },
+              {
+                "bpm": 63.02,
+                "normalizedAutocorrelation": 0.1293
+              }
+            ]
+          }
+        ]
+      },
+      "after": {
+        "id": "attention",
+        "title": "Attention",
+        "chartBpm": 105.469,
+        "turnCount": 139,
+        "detectedPercussiveCandidates": 1282,
+        "confidentAttacks": 952,
+        "signedAttackResidualMs": {
+          "p10": 21.1,
+          "p25": 26.01,
+          "median": 33.77,
+          "p75": 42.9,
+          "p90": 52.96,
+          "p95": 83.28
+        },
+        "absoluteAttackResidualMs": {
+          "p10": 21.95,
+          "p25": 27.22,
+          "median": 34.77,
+          "p75": 43.64,
+          "p90": 63.58,
+          "p95": 87.98
+        },
+        "within50msPercent": 86.33,
+        "within100msPercent": 97.84,
+        "unmatchedOver100msTurns": 3,
+        "regionalMatchedMedianRangeMs": 11.37,
+        "segments": [
+          {
+            "region": "early",
+            "turnCount": 34,
+            "signedAttackResidualMs": {
+              "p10": 21.59,
+              "p25": 24.46,
+              "median": 30.52,
+              "p75": 34.46,
+              "p90": 38.71,
+              "p95": 43.91
+            },
+            "matchedWithin100msSignedResidualMs": {
+              "p10": 21.53,
+              "p25": 24.37,
+              "median": 30.31,
+              "p75": 33.51,
+              "p90": 36.87,
+              "p95": 41.15
+            },
+            "absoluteAttackResidualMs": {
+              "p10": 21.59,
+              "p25": 24.46,
+              "median": 30.52,
+              "p75": 34.46,
+              "p90": 38.71,
+              "p95": 43.91
+            },
+            "within50msPercent": 97.06,
+            "tempoCandidates": [
+              {
+                "bpm": 105.47,
+                "normalizedAutocorrelation": 0.5013
+              },
+              {
+                "bpm": 69.84,
+                "normalizedAutocorrelation": 0.4929
+              },
+              {
+                "bpm": 126.05,
+                "normalizedAutocorrelation": 0.1603
+              },
+              {
+                "bpm": 156.61,
+                "normalizedAutocorrelation": 0.1232
+              },
+              {
+                "bpm": 63.02,
+                "normalizedAutocorrelation": 0.1059
+              }
+            ]
+          },
+          {
+            "region": "middle",
+            "turnCount": 47,
+            "signedAttackResidualMs": {
+              "p10": 20.91,
+              "p25": 24.17,
+              "median": 30.62,
+              "p75": 42.19,
+              "p90": 50.41,
+              "p95": 60.26
+            },
+            "matchedWithin100msSignedResidualMs": {
+              "p10": 21.23,
+              "p25": 24.96,
+              "median": 30.98,
+              "p75": 42.51,
+              "p90": 50.68,
+              "p95": 60.63
+            },
+            "absoluteAttackResidualMs": {
+              "p10": 21.47,
+              "p25": 25.32,
+              "median": 33.51,
+              "p75": 43.15,
+              "p90": 53.23,
+              "p95": 76.81
+            },
+            "within50msPercent": 87.23,
+            "tempoCandidates": [
+              {
+                "bpm": 105.47,
+                "normalizedAutocorrelation": 0.4526
+              },
+              {
+                "bpm": 69.84,
+                "normalizedAutocorrelation": 0.4428
+              },
+              {
+                "bpm": 126.05,
+                "normalizedAutocorrelation": 0.1198
+              },
+              {
+                "bpm": 156.61,
+                "normalizedAutocorrelation": 0.0861
+              },
+              {
+                "bpm": 78.9,
+                "normalizedAutocorrelation": 0.0763
+              }
+            ]
+          },
+          {
+            "region": "late",
+            "turnCount": 37,
+            "signedAttackResidualMs": {
+              "p10": 32.62,
+              "p25": 36.85,
+              "median": 41.68,
+              "p75": 47.13,
+              "p90": 72.99,
+              "p95": 79.18
+            },
+            "matchedWithin100msSignedResidualMs": {
+              "p10": 32.62,
+              "p25": 36.85,
+              "median": 41.68,
+              "p75": 47.13,
+              "p90": 72.99,
+              "p95": 79.18
+            },
+            "absoluteAttackResidualMs": {
+              "p10": 34.1,
+              "p25": 37.28,
+              "median": 42.28,
+              "p75": 48.59,
+              "p90": 72.99,
+              "p95": 79.18
+            },
+            "within50msPercent": 83.78,
+            "tempoCandidates": [
+              {
+                "bpm": 105.47,
+                "normalizedAutocorrelation": 0.6024
+              },
+              {
+                "bpm": 69.84,
+                "normalizedAutocorrelation": 0.5668
+              },
+              {
+                "bpm": 156.61,
+                "normalizedAutocorrelation": 0.1417
+              },
+              {
+                "bpm": 78.9,
+                "normalizedAutocorrelation": 0.1395
+              },
+              {
+                "bpm": 63.02,
+                "normalizedAutocorrelation": 0.1293
+              }
+            ]
+          }
+        ]
+      },
+      "refinement": null
+    }
+  ]
+}

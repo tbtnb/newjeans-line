@@ -1,0 +1,12 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+.DS_Store
+*.log
+!reports/browser-e2e-final.log
+!reports/browser-e2e-touch-final.log
+!reports/babylon-visual-audit.log
+.venv/
+__pycache__/
+*.pyc
