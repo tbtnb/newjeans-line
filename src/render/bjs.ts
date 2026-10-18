@@ -13,6 +13,7 @@ export { StandardMaterial } from '@babylonjs/core/Materials/standardMaterial';
 export { DynamicTexture } from '@babylonjs/core/Materials/Textures/dynamicTexture';
 export { Texture } from '@babylonjs/core/Materials/Textures/texture';
 export { Mesh } from '@babylonjs/core/Meshes/mesh';
+export { VertexBuffer } from '@babylonjs/core/Buffers/buffer';
 export { TransformNode } from '@babylonjs/core/Meshes/transformNode';
 export { AbstractMesh } from '@babylonjs/core/Meshes/abstractMesh';
 export { CreateBox } from '@babylonjs/core/Meshes/Builders/boxBuilder';

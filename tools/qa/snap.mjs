@@ -1,6 +1,6 @@
 // Screenshot a level at given song times via the ?debug preview hook (static frames; NOT proof of motion).
-// CAUTION: preview frames show the ready prompt ('轻点开始') and NO trail, because the level is paused at a restart point.
-// For frames that look like real play use: node tools/qa/play.mjs --level N --shots 20,45,90 --shotdir DIR (scripted play).
+// The ready prompt ('轻点开始') is hidden for the shot and the trail up to t is drawn (as after real play with perfect taps).
+// Scenery pop-in/bounce are frozen at their settled state. For frames from actual scripted play use: node tools/qa/play.mjs --level N --shots 20,45,90 --shotdir DIR (scripted play).
 // usage: node tools/qa/snap.mjs --url URL --level 5 --times 10,40,80 --w 540 --h 960 --out /tmp/shots/ditto
 import { chromium } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
@@ -16,6 +16,7 @@ await page.waitForTimeout(800);
 if (A.menu) await page.screenshot({ path: `${A.out}/menu.png` });
 for (const t of (A.times ?? '10').split(',').map(Number)) {
   await page.evaluate(t => window.__nj.preview(t), t); await page.waitForTimeout(1600);
+  await page.evaluate(() => { const h = document.getElementById('ready-hint'); if (h) h.style.visibility = 'hidden'; });
   await page.screenshot({ path: `${A.out}/t${String(Math.round(t)).padStart(3, '0')}.png` });
 }
 console.log(JSON.stringify({ stats: await page.evaluate(() => window.__nj.stats?.()), errs }));
