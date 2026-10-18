@@ -89,7 +89,7 @@ export class Dressings {
             const r = sizes[tpl].r * s, h = sizes[tpl].h * sy;
             const off = widthAt(t) / 2 + sec.near[0] + rnd() * (sec.near[1] - sec.near[0]) + r;
             const p = spanPos(sp, t); const x = p.x + rx * off * side, z = p.z + rz * off * side;
-            if (!hits(x, z, r, p.y - 0.6, p.y + h) && free(x, z, r)) {
+            if (!hits(x, z, r + 0.3, p.y - 1.2, p.y + Math.max(h, 1.2)) && free(x, z, r)) { // flat tiles (h=0) are tested with a real height band + margin so floor decals never overlap the road surface
               // art props face the road (front = local -z points at the road: yaw = atan2(-fx,-fz) with f = -side*right) or the oncoming line
               const ym = this.yawMode[tpl];
               const yaw = ym === 'road' ? Math.atan2(rx * side, rz * side) : ym === 'oncoming' ? Math.atan2(rx * side * 0.6 + hx * 0.8, rz * side * 0.6 + hz * 0.8) : [0, Math.PI / 2, Math.PI, -Math.PI / 2][Math.floor(rnd() * 4)];
@@ -167,5 +167,5 @@ function artTemplate(scene: Scene, mats: Materials, pr: DressingProp, i: number)
   }
   mesh.material = mats.textured(pr.src ?? '', { alpha, emissive: pr.glow ?? 0.3 });
   mesh.isPickable = false; mesh.alwaysSelectAsActiveMesh = true;
-  return { mesh, size: { r: Math.max(w, dd) / 2, h } };
+  return { mesh, size: { r: Math.hypot(w, dd) / 2, h } }; // circumscribed radius: rotated square props/decals never poke onto the road
 }

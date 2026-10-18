@@ -74,7 +74,7 @@ export class CameraRig {
 
   flowYaw(t: number): number {
     // mean travel direction over a window — continuous in t, ignores the zig-zag
-    const a = posAt(this.route, t - 1.2), b = posAt(this.route, t + 2.8);
+    const a = posAt(this.route, t - 2.5), b = posAt(this.route, t + 4.5); // ~7 s window: a forward zig-zag reads as one steady direction (no swinging per leg)
     let dx = b.x - a.x, dz = b.z - a.z;
     if (Math.hypot(dx, dz) < 3) { const c = posAt(this.route, t + 0.5); dx = c.x - a.x; dz = c.z - a.z; }
     return Math.atan2(dx, dz);
@@ -103,6 +103,7 @@ export class CameraRig {
     // floor: older layouts authored very close distances (15-24); keep the DL-style overview
     let dist = (Math.max(MIN_DIST, p.dist) * p.zoom + this.extraDist) * this.distScale;
     if (this.aspect < 0.95) dist *= Math.pow(Math.min(2.2, 0.95 / this.aspect), 0.35);
+    dist = Math.min(dist, 56 * this.distScale + this.extraDist); // cap: wide/zoomed shots on portrait screens never shrink the head below readable size
     // beat punch: a quick push-in on strong hits (kicks), decaying in ~120 ms
     if (p.punch > 0 && this.hits.length && !this.menuOrbit) { const h = lastLE(this.hits, t); if (h > -1e8) dist *= 1 - p.punch * Math.exp(-(t - h) * 9); }
     const pitch = Math.min(84, p.pitch + p.tilt + this.extraPitch) * Math.PI / 180;
@@ -133,10 +134,10 @@ export function autoCues(authored: CameraCue[], sections: { t: number; label?: s
     let m: Partial<CameraCue>;
     if (/intro|前奏/.test(l)) m = { zoom: 1.12, tilt: 6, punch: 0.015 };
     else if (/pre|预副|build/.test(l)) { m = { zoom: 0.9, tilt: -6, punch: 0.02 }; extra.push({ t: s.t + len * 0.6, zoom: 0.95, tilt: -4, sway: 14 * sway, blend: len * 0.35, punch: 0.035 }); }
-    else if (/chorus|副歌|hook|drop|dance/.test(l)) m = { zoom: 1.1, tilt: 4, sway: 12 * sway, punch: 0.05 };
+    else if (/chorus|副歌|hook|drop|dance/.test(l)) m = { zoom: 1.05, tilt: 4, sway: 20 * sway, punch: 0.05 };   // angled follow, alternating side per section = slow sweeps
     else if (/bridge|break|间奏|桥/.test(l)) m = { zoom: 1.05, orbit: 4 * sway, punch: 0.01 };
     else if (/outro|尾/.test(l)) m = { zoom: 1.2, tilt: 8, punch: 0.015 };
-    else m = { sway: 10 * sway, punch: 0.025 };           // verse: gentle side sway
+    else m = { sway: 24 * sway, punch: 0.025 };           // verse: three-quarter angled follow, side alternates each section (blended = sweep)
     sway = -sway;
     const at = out.find(c => Math.abs(c.t - s.t) < 1);
     if (at) { if (!MODS.some(k => at[k] !== undefined)) Object.assign(at, m); else continue; }

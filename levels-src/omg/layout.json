@@ -605,7 +605,7 @@
    "near": 2.5,
    "id": "art-bunny_intro",
    "t": 1.694,
-   "side": -1,
+   "side": 1,
    "y": -0.6
   },
   {
@@ -637,7 +637,7 @@
    "near": 2.5,
    "id": "art-bunny_intro",
    "t": 198.226,
-   "side": -1,
+   "side": 1,
    "y": -0.6
   },
   {
@@ -665,8 +665,8 @@
    ],
    "face": "camera",
    "near": 2,
-   "t": 24.63,
-   "side": -1,
+   "t": 27.648,
+   "side": 1,
    "id": "art-5",
    "y": -0.6
   },
@@ -682,7 +682,7 @@
    "color": "#fff4fb",
    "color2": "#c9b8ff",
    "near": 2,
-   "t": 19.477,
+   "t": 19.37,
    "side": 1,
    "id": "art-6",
    "y": -0.6
@@ -699,8 +699,8 @@
    "color": "#fff4fb",
    "color2": "#c9b8ff",
    "near": 2,
-   "t": 28.619,
-   "side": -1,
+   "t": 22.721,
+   "side": 1,
    "id": "art-7",
    "y": -0.6
   },
@@ -714,8 +714,8 @@
    ],
    "face": "camera",
    "near": 2,
-   "t": 64.813,
-   "side": -1,
+   "t": 62.449,
+   "side": 1,
    "id": "art-8",
    "y": -0.6
   },
@@ -731,7 +731,7 @@
    "color": "#fff4fb",
    "color2": "#c9b8ff",
    "near": 2,
-   "t": 61.691,
+   "t": 65.127,
    "side": -1,
    "id": "art-9",
    "y": -0.6
@@ -748,24 +748,26 @@
    "color": "#fff4fb",
    "color2": "#c9b8ff",
    "near": 2,
-   "t": 73.888,
+   "t": 68.138,
    "side": 1,
    "id": "art-10",
    "y": -0.6
   },
   {
    "kind": "standee",
-   "src": "art/v2/flip-phone.png",
+   "src": "art/v2/call-bubble.png",
    "size": [
-    4.2,
-    5.6,
-    0
+    4,
+    3,
+    0.8
    ],
    "face": "camera",
-   "near": 2.5,
+   "color": "#ffd27a",
+   "color2": "#ffd27a",
+   "near": 1.5,
    "glowfx": true,
-   "id": "art-phone",
-   "t": 32.53,
+   "id": "art-call",
+   "t": 73.691,
    "side": -1,
    "y": -0.6
   },
@@ -781,8 +783,24 @@
    "near": 2.5,
    "glowfx": true,
    "id": "art-phone",
-   "t": 43.475,
+   "t": 34.006,
    "side": 1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    4.2,
+    5.6,
+    0
+   ],
+   "face": "camera",
+   "near": 2.5,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 38.75,
+   "side": -1,
    "y": -0.6
   },
   {
@@ -813,7 +831,7 @@
    "near": 2.5,
    "glowfx": true,
    "id": "art-phone",
-   "t": 88.225,
+   "t": 87.699,
    "side": 1,
    "y": -0.6
   },
@@ -829,7 +847,7 @@
    "near": 2.5,
    "glowfx": true,
    "id": "art-phone",
-   "t": 94.599,
+   "t": 94.162,
    "side": 1,
    "y": -0.6
   },
@@ -845,7 +863,40 @@
    "near": 2.5,
    "glowfx": true,
    "id": "art-phone",
-   "t": 99.629,
+   "t": 98.257,
+   "side": -1,
+   "y": -0.6
+  },
+  {
+   "kind": "facade",
+   "src": "art/v2/stage-facade.jpg",
+   "size": [
+    6,
+    6,
+    3
+   ],
+   "face": "road",
+   "color": "#2a2460",
+   "color2": "#ffd27a",
+   "near": 3,
+   "t": 104.12,
+   "side": -1,
+   "id": "art-18",
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    4.2,
+    5.6,
+    0
+   ],
+   "face": "camera",
+   "near": 2.5,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 152.278,
    "side": -1,
    "y": -0.6
   },
@@ -861,24 +912,25 @@
    "near": 2.5,
    "glowfx": true,
    "id": "art-phone",
-   "t": 157.71,
-   "side": 1,
+   "t": 165.024,
+   "side": -1,
    "y": -0.6
   },
   {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
+   "kind": "facade",
+   "src": "art/v2/stage-facade.jpg",
    "size": [
-    4.2,
-    5.6,
-    0
+    6,
+    6,
+    3
    ],
-   "face": "camera",
-   "near": 2.5,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 162.352,
+   "face": "road",
+   "color": "#2a2460",
+   "color2": "#ffd27a",
+   "near": 3,
+   "t": 157.71,
    "side": 1,
+   "id": "art-21",
    "y": -0.6
   },
   {
@@ -894,8 +946,8 @@
    "glowfx": true,
    "near": 2,
    "id": "art-arch",
-   "t": 46.86,
-   "side": -1,
+   "t": 47.017,
+   "side": 1,
    "y": -0.6
   },
   {
@@ -915,7 +967,7 @@
     "mode": "rise",
     "dur": 2.2
    },
-   "t": 50.988,
+   "t": 51.257,
    "side": -1,
    "y": -0.6
   },
@@ -931,7 +983,7 @@
    "near": 2.5,
    "glowfx": true,
    "id": "art-phone",
-   "t": 54.498,
+   "t": 55.331,
    "side": 1,
    "y": -0.6
   },
@@ -964,8 +1016,8 @@
    "glowfx": true,
    "near": 2,
    "id": "art-arch",
-   "t": 106.662,
-   "side": 1,
+   "t": 107.489,
+   "side": -1,
    "y": -0.6
   },
   {
@@ -986,71 +1038,39 @@
     "dur": 2.2
    },
    "t": 111.459,
+   "side": -1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    4.2,
+    5.6,
+    0
+   ],
+   "face": "camera",
+   "near": 2.5,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 114.491,
+   "side": -1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    4.2,
+    5.6,
+    0
+   ],
+   "face": "camera",
+   "near": 2.5,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 118.814,
    "side": 1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    4.2,
-    5.6,
-    0
-   ],
-   "face": "camera",
-   "near": 2.5,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 114.732,
-   "side": 1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    4.2,
-    5.6,
-    0
-   ],
-   "face": "camera",
-   "near": 2.5,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 119.484,
-   "side": -1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    4.2,
-    5.6,
-    0
-   ],
-   "face": "camera",
-   "near": 2.5,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 126.978,
-   "side": -1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    4.2,
-    5.6,
-    0
-   ],
-   "face": "camera",
-   "near": 2.5,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 129.083,
-   "side": -1,
    "y": -0.6
   },
   {
@@ -1066,7 +1086,56 @@
    "glowfx": true,
    "near": 2,
    "id": "art-arch",
-   "t": 168.118,
+   "t": 121.977,
+   "side": -1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    4.2,
+    5.6,
+    0
+   ],
+   "face": "camera",
+   "near": 2.5,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 126.504,
+   "side": -1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    4.2,
+    5.6,
+    0
+   ],
+   "face": "camera",
+   "near": 2.5,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 130.205,
+   "side": 1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/star-arch.png",
+   "size": [
+    7,
+    5.25,
+    0
+   ],
+   "face": "camera",
+   "landmark": true,
+   "glowfx": true,
+   "near": 2,
+   "id": "art-arch",
+   "t": 167.962,
    "side": 1,
    "y": -0.6
   },
@@ -1087,7 +1156,7 @@
     "mode": "rise",
     "dur": 2.2
    },
-   "t": 170.622,
+   "t": 172.199,
    "side": -1,
    "y": -0.6
   },
@@ -1103,8 +1172,8 @@
    "near": 2.5,
    "glowfx": true,
    "id": "art-phone",
-   "t": 176.464,
-   "side": 1,
+   "t": 174.881,
+   "side": -1,
    "y": -0.6
   },
   {
@@ -1119,8 +1188,8 @@
    "near": 2.5,
    "glowfx": true,
    "id": "art-phone",
-   "t": 179.377,
-   "side": 1,
+   "t": 179.814,
+   "side": -1,
    "y": -0.6
   },
   {
@@ -1136,7 +1205,7 @@
    "glowfx": true,
    "near": 2,
    "id": "art-arch",
-   "t": 182.428,
+   "t": 182.546,
    "side": 1,
    "y": -0.6
   },
@@ -1157,7 +1226,7 @@
     "mode": "rise",
     "dur": 2.2
    },
-   "t": 185.44,
+   "t": 186.043,
    "side": -1,
    "y": -0.6
   },
@@ -1173,7 +1242,7 @@
    "near": 2.5,
    "glowfx": true,
    "id": "art-phone",
-   "t": 187.889,
+   "t": 190.637,
    "side": 1,
    "y": -0.6
   },
@@ -1189,8 +1258,8 @@
    "near": 2.5,
    "glowfx": true,
    "id": "art-phone",
-   "t": 195.112,
-   "side": -1,
+   "t": 193.334,
+   "side": 1,
    "y": -0.6
   },
   {
@@ -1204,9 +1273,9 @@
    "face": "camera",
    "landmark": true,
    "near": 3,
-   "t": 138.019,
+   "t": 138.433,
    "side": 1,
-   "id": "art-37",
+   "id": "art-41",
    "y": -0.6
   },
   {
@@ -1219,26 +1288,10 @@
    ],
    "face": "road",
    "glow": 0.7,
-   "t": 143.637,
-   "side": 1,
-   "id": "art-38",
+   "t": 144.279,
+   "side": -1,
+   "id": "art-42",
    "near": 0.8,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/bunny-giant.png",
-   "size": [
-    6,
-    6,
-    0
-   ],
-   "face": "camera",
-   "landmark": true,
-   "near": 3,
-   "t": 153.256,
-   "side": 1,
-   "id": "art-39",
    "y": -0.6
   }
  ],
@@ -1642,7 +1695,7 @@
      5,
      10
     ],
-    "density": 1.0
+    "density": 1.5
    },
    {
     "t": 15.129,
@@ -1652,7 +1705,7 @@
      5,
      10
     ],
-    "density": 1.2
+    "density": 1.8
    },
    {
     "t": 30.247,
@@ -1661,7 +1714,7 @@
      6,
      10
     ],
-    "density": 1.1
+    "density": 1.7
    },
    {
     "t": 45.364,
@@ -1670,7 +1723,7 @@
      6,
      10
     ],
-    "density": 1.2
+    "density": 1.8
    },
    {
     "t": 60.482,
@@ -1680,7 +1733,7 @@
      5,
      10
     ],
-    "density": 1.2
+    "density": 1.8
    },
    {
     "t": 75.6,
@@ -1689,7 +1742,7 @@
      6,
      10
     ],
-    "density": 1.1
+    "density": 1.7
    },
    {
     "t": 90.718,
@@ -1698,7 +1751,7 @@
      6,
      10
     ],
-    "density": 1.1
+    "density": 1.7
    },
    {
     "t": 105.835,
@@ -1707,7 +1760,7 @@
      6,
      10
     ],
-    "density": 1.2
+    "density": 1.8
    },
    {
     "t": 120.953,
@@ -1716,7 +1769,7 @@
      6,
      10
     ],
-    "density": 1.2
+    "density": 1.8
    },
    {
     "t": 134.181,
@@ -1724,7 +1777,7 @@
      2,
      10
     ],
-    "density": 1.0
+    "density": 1.5
    },
    {
     "t": 149.299,
@@ -1732,7 +1785,7 @@
      2,
      10
     ],
-    "density": 1.0
+    "density": 1.5
    },
    {
     "t": 151.189,
@@ -1741,7 +1794,7 @@
      6,
      10
     ],
-    "density": 1.1
+    "density": 1.7
    },
    {
     "t": 166.307,
@@ -1749,7 +1802,7 @@
      6,
      10
     ],
-    "density": 1.3
+    "density": 2.0
    },
    {
     "t": 181.424,
@@ -1757,7 +1810,7 @@
      6,
      10
     ],
-    "density": 1.3
+    "density": 2.0
    },
    {
     "t": 196.542,
@@ -1766,7 +1819,7 @@
      5,
      10
     ],
-    "density": 0.8
+    "density": 1.2
    }
   ]
  },
