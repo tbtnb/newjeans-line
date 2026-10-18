@@ -1,0 +1,249 @@
+t,bar16,tag,section,attack_offset_ms,clear_attack
+2.779,1:6,kick,"Intro · empty gallery",15.7,1
+3.223,1:10,bass,"Intro · empty gallery",30.1,1
+3.890,2:0,kick,"Intro · empty gallery",-14.4,1
+5.668,3:0,kick,"Intro · empty gallery",9.0,0
+6.779,3:10,bass,"Intro · empty gallery",21.8,1
+7.446,4:0,kick,"Intro · empty gallery",-27.8,1
+9.890,5:6,kick,"Intro · empty gallery",-37.5,1
+10.335,5:10,bass,"Intro · empty gallery",-22.5,0
+11.002,6:0,kick,"Intro · empty gallery",-15.0,1
+12.779,7:0,kick,"Intro · empty gallery",-36.1,1
+14.557,8:0,snare,"Verse 1 · reflections wake",-29.2,0
+15.668,8:10,kick,"Verse 1 · reflections wake",-18.2,1
+16.335,9:0,vocal,"Verse 1 · reflections wake",-4.6,0
+17.224,9:8,vocal,"Verse 1 · reflections wake",6.1,1
+17.891,9:14,vocal,"Verse 1 · reflections wake",-15.9,0
+18.113,10:0,kick,"Verse 1 · reflections wake",27.3,0
+19.224,10:10,snare,"Verse 1 · reflections wake",-24.6,1
+19.891,11:0,snare,"Verse 1 · reflections wake",-12.6,1
+20.224,11:3,bass,"Verse 1 · reflections wake",-22.2,0
+20.557,11:6,kick,"Verse 1 · reflections wake",-16.6,0
+21.002,11:10,snare,"Verse 1 · reflections wake",24.0,0
+21.669,12:0,kick,"Verse 1 · reflections wake",13.5,0
+22.780,12:10,kick,"Verse 1 · reflections wake",-4.5,1
+23.446,13:0,kick,"Verse 1 · reflections wake",-23.0,0
+24.113,13:6,kick,"Verse 1 · reflections wake",-19.6,0
+24.558,13:10,kick,"Verse 1 · reflections wake",27.6,0
+25.224,14:0,kick,"Verse 1 · reflections wake",-30.4,0
+26.335,14:10,kick,"Verse 1 · reflections wake",7.6,0
+27.002,15:0,kick,"Verse 1 · reflections wake",-28.3,1
+27.335,15:3,kick,"Verse 1 · reflections wake",16.2,0
+27.669,15:6,hat,"Verse 1 · reflections wake",16.9,0
+28.113,15:10,snare,"Verse 1 · reflections wake",-33.1,0
+28.780,16:0,kick,"Verse 1b · rain curtain",13.7,0
+29.891,16:10,kick,"Verse 1b · rain curtain",-25.7,0
+30.558,17:0,kick,"Verse 1b · rain curtain",-0.7,0
+31.224,17:6,kick,"Verse 1b · rain curtain",19.5,0
+31.669,17:10,kick,"Verse 1b · rain curtain",16.2,0
+32.336,18:0,kick,"Verse 1b · rain curtain",25.2,0
+33.447,18:10,vocal,"Verse 1b · rain curtain",-32.7,0
+34.113,19:0,snare,"Verse 1b · rain curtain",-4.7,1
+34.447,19:3,bass,"Verse 1b · rain curtain",-2.3,0
+34.780,19:6,kick,"Verse 1b · rain curtain",-1.3,0
+35.225,19:10,vocal,"Verse 1b · rain curtain",26.8,0
+35.447,19:12,snare,"Verse 1b · rain curtain",-0.4,0
+35.669,19:14,kick,"Verse 1b · rain curtain",20.5,0
+35.891,20:0,kick,"Verse 1b · rain curtain",23.3,1
+37.002,20:10,kick,"Verse 1b · rain curtain",-25.3,1
+37.669,21:0,snare,"Verse 1b · rain curtain",-9.3,0
+38.336,21:6,kick,"Verse 1b · rain curtain",14.5,0
+38.780,21:10,kick,"Verse 1b · rain curtain",20.0,0
+39.447,22:0,kick,"Verse 1b · rain curtain",-22.1,0
+40.558,22:10,kick,"Verse 1b · rain curtain",-0.8,1
+41.225,23:0,bass,"Verse 1b · rain curtain",9.6,0
+41.558,23:3,kick,"Verse 1b · rain curtain",23.1,0
+41.892,23:6,bass,"Verse 1b · rain curtain",-26.9,0
+42.336,23:10,vocal,"Verse 1b · rain curtain",27.0,0
+42.558,23:12,snare,"Verse 1b · rain curtain",-14.9,1
+42.780,23:14,kick,"Verse 1b · rain curtain",20.7,0
+43.003,24:0,kick,"Hook · moonlit pool (stripped)",15.7,0
+43.892,24:8,kick,"Hook · moonlit pool (stripped)",15.5,1
+44.781,25:0,kick,"Hook · moonlit pool (stripped)",-2.7,1
+45.669,25:8,kick,"Hook · moonlit pool (stripped)",10.0,0
+46.558,26:0,kick,"Hook · moonlit pool (stripped)",22.9,0
+47.447,26:8,kick,"Hook · moonlit pool (stripped)",22.6,0
+48.336,27:0,bass,"Hook · moonlit pool (stripped)",16.8,0
+49.225,27:8,kick,"Hook · moonlit pool (stripped)",15.5,0
+49.670,27:12,kick,"Hook · moonlit pool (stripped)",9.0,0
+50.114,28:0,kick,"Hook · moonlit pool (stripped)",16.4,1
+51.003,28:8,kick,"Hook · moonlit pool (stripped)",22.5,0
+51.892,29:0,kick,"Hook · moonlit pool (stripped)",29.4,0
+52.781,29:8,kick,"Hook · moonlit pool (stripped)",9.1,0
+53.670,30:0,kick,"Hook · moonlit pool (stripped)",21.6,1
+54.559,30:8,kick,"Hook · moonlit pool (stripped)",21.5,0
+55.448,31:0,vocal,"Hook · moonlit pool (stripped)",-37.3,0
+56.337,31:8,bass,"Hook · moonlit pool (stripped)",20.7,1
+56.781,31:12,bass,"Hook · moonlit pool (stripped)",28.2,0
+57.225,32:0,kick,"Drop 1 · open courtyard",21.8,0
+57.892,32:6,snare,"Drop 1 · open courtyard",17.1,0
+58.337,32:10,snare,"Drop 1 · open courtyard",14.7,0
+58.559,32:12,snare,"Drop 1 · open courtyard",22.2,0
+59.003,33:0,kick,"Drop 1 · open courtyard",11.1,0
+59.670,33:6,kick,"Drop 1 · open courtyard",-16.2,0
+60.114,33:10,hat,"Drop 1 · open courtyard",24.7,0
+60.781,34:0,kick,"Drop 1 · open courtyard",7.3,0
+61.448,34:6,snare,"Drop 1 · open courtyard",25.5,0
+61.892,34:10,snare,"Drop 1 · open courtyard",-36.7,0
+62.115,34:12,kick,"Drop 1 · open courtyard",-0.7,0
+62.559,35:0,bass,"Drop 1 · open courtyard",-32.5,0
+62.892,35:3,bass,"Drop 1 · open courtyard",-6.9,1
+63.226,35:6,snare,"Drop 1 · open courtyard",-36.0,1
+63.448,35:8,kick,"Drop 1 · open courtyard",-13.7,0
+63.670,35:10,vocal,"Drop 1 · open courtyard",-18.3,1
+63.892,35:12,snare,"Drop 1 · open courtyard",-1.3,0
+64.115,35:14,hat,"Drop 1 · open courtyard",-22.4,0
+64.337,36:0,vocal,"Drop 1 · open courtyard",25.8,0
+65.004,36:6,snare,"Drop 1 · open courtyard",27.8,0
+65.448,36:10,snare,"Drop 1 · open courtyard",28.1,0
+65.670,36:12,snare,"Drop 1 · open courtyard",-1.2,0
+66.115,37:0,kick,"Drop 1 · open courtyard",17.7,1
+66.781,37:6,hat,"Drop 1 · open courtyard",-37.5,0
+67.226,37:10,hat,"Drop 1 · open courtyard",-15.9,0
+67.893,38:0,kick,"Drop 1 · open courtyard",6.5,0
+68.559,38:6,snare,"Drop 1 · open courtyard",19.0,0
+69.004,38:10,snare,"Drop 1 · open courtyard",14.7,0
+69.226,38:12,snare,"Drop 1 · open courtyard",12.1,0
+69.670,39:0,bass,"Drop 1 · open courtyard",29.8,0
+70.004,39:3,bass,"Drop 1 · open courtyard",25.1,0
+70.337,39:6,hat,"Drop 1 · open courtyard",-26.8,0
+70.559,39:8,bass,"Drop 1 · open courtyard",27.8,1
+70.781,39:10,hat,"Drop 1 · open courtyard",-34.7,0
+71.004,39:12,vocal,"Drop 1 · open courtyard",-1.8,0
+71.226,39:14,hat,"Drop 1 · open courtyard",-25.5,0
+71.448,40:0,kick,"Verse 2 · two lights approach",31.4,1
+72.559,40:10,kick,"Verse 2 · two lights approach",32.1,0
+73.226,41:0,kick,"Verse 2 · two lights approach",23.7,0
+73.893,41:6,kick,"Verse 2 · two lights approach",18.3,0
+74.337,41:10,snare,"Verse 2 · two lights approach",17.2,0
+75.004,42:0,kick,"Verse 2 · two lights approach",-31.4,0
+76.115,42:10,kick,"Verse 2 · two lights approach",-10.1,0
+76.782,43:0,snare,"Verse 2 · two lights approach",-22.7,1
+77.115,43:3,bass,"Verse 2 · two lights approach",-37.5,0
+77.448,43:6,kick,"Verse 2 · two lights approach",4.2,0
+77.893,43:10,vocal,"Verse 2 · two lights approach",0.5,0
+78.115,43:12,snare,"Verse 2 · two lights approach",-17.2,1
+78.560,44:0,snare,"Verse 2 · two lights approach",-21.9,1
+79.671,44:10,kick,"Verse 2 · two lights approach",30.7,0
+80.337,45:0,snare,"Verse 2 · two lights approach",-0.2,0
+81.004,45:6,kick,"Verse 2 · two lights approach",-18.6,1
+81.449,45:10,hat,"Verse 2 · two lights approach",-2.9,1
+82.115,46:0,snare,"Verse 2 · two lights approach",-16.4,1
+83.226,46:10,kick,"Verse 2 · two lights approach",-1.6,0
+83.893,47:0,bass,"Verse 2 · two lights approach",-15.0,1
+84.226,47:3,bass,"Verse 2 · two lights approach",24.1,0
+84.560,47:6,kick,"Verse 2 · two lights approach",2.5,1
+85.004,47:10,vocal,"Verse 2 · two lights approach",13.2,0
+85.226,47:12,snare,"Verse 2 · two lights approach",-9.8,1
+85.671,48:0,kick,"Break · one light leaves",-22.6,0
+87.449,49:0,kick,"Break · one light leaves",-6.3,1
+88.560,49:10,kick,"Break · one light leaves",-2.0,1
+89.227,50:0,kick,"Break · one light leaves",-11.8,0
+91.004,51:0,kick,"Break · one light leaves",-1.4,0
+91.671,51:6,bass,"Break · one light leaves",26.3,0
+92.116,51:10,hat,"Break · one light leaves",-1.9,1
+92.782,52:0,vocal,"Build · wings unfold",25.0,0
+93.671,52:8,kick,"Build · wings unfold",-32.8,0
+94.560,53:0,snare,"Build · wings unfold",-2.6,1
+95.227,53:6,kick,"Build · wings unfold",18.2,0
+95.671,53:10,hat,"Build · wings unfold",-2.7,1
+96.338,54:0,vocal,"Build · wings unfold",-26.8,1
+96.782,54:4,vocal,"Build · wings unfold",-4.0,0
+97.005,54:6,kick,"Build · wings unfold",24.2,1
+97.449,54:10,kick,"Build · wings unfold",-18.8,1
+97.671,54:12,vocal,"Build · wings unfold",-8.0,0
+98.116,55:0,vocal,"Build · wings unfold",25.9,0
+98.338,55:2,vocal,"Build · wings unfold",-3.3,0
+98.560,55:4,snare,"Build · wings unfold",-7.1,1
+98.783,55:6,bass,"Build · wings unfold",31.4,0
+99.005,55:8,kick,"Build · wings unfold",2.9,0
+99.227,55:10,hat,"Build · wings unfold",-3.0,0
+99.449,55:12,vocal,"Build · wings unfold",32.0,0
+99.671,55:14,vocal,"Build · wings unfold",13.4,0
+99.894,56:0,vocal,"Final drop A · feather storm",-34.1,0
+100.560,56:6,snare,"Final drop A · feather storm",28.3,0
+101.005,56:10,snare,"Final drop A · feather storm",22.7,0
+101.227,56:12,snare,"Final drop A · feather storm",-22.2,0
+101.672,57:0,kick,"Final drop A · feather storm",16.3,1
+102.338,57:6,snare,"Final drop A · feather storm",-28.6,0
+102.783,57:10,hat,"Final drop A · feather storm",-5.6,0
+103.449,58:0,kick,"Final drop A · feather storm",31.6,0
+104.116,58:6,snare,"Final drop A · feather storm",15.6,0
+104.561,58:10,snare,"Final drop A · feather storm",24.1,0
+104.783,58:12,snare,"Final drop A · feather storm",-1.6,0
+105.227,59:0,bass,"Final drop A · feather storm",29.0,0
+105.561,59:3,vocal,"Final drop A · feather storm",-8.5,0
+105.894,59:6,hat,"Final drop A · feather storm",-37.5,1
+106.116,59:8,kick,"Final drop A · feather storm",6.6,0
+106.338,59:10,vocal,"Final drop A · feather storm",-19.6,1
+106.561,59:12,snare,"Final drop A · feather storm",-2.4,0
+106.783,59:14,hat,"Final drop A · feather storm",-28.8,0
+107.005,60:0,kick,"Final drop A · feather storm",24.3,0
+107.672,60:6,snare,"Final drop A · feather storm",-37.0,0
+108.116,60:10,snare,"Final drop A · feather storm",19.1,0
+108.338,60:12,snare,"Final drop A · feather storm",20.7,0
+108.783,61:0,kick,"Final drop A · feather storm",13.7,0
+109.450,61:6,kick,"Final drop A · feather storm",-18.6,1
+109.894,61:10,hat,"Final drop A · feather storm",-27.7,0
+110.561,62:0,snare,"Final drop A · feather storm",5.2,0
+111.227,62:6,snare,"Final drop A · feather storm",16.8,0
+111.672,62:10,snare,"Final drop A · feather storm",-27.5,0
+111.894,62:12,snare,"Final drop A · feather storm",-1.7,0
+112.339,63:0,kick,"Final drop A · feather storm",6.8,1
+112.672,63:3,kick,"Final drop A · feather storm",-25.1,0
+113.005,63:6,hat,"Final drop A · feather storm",-27.8,0
+113.228,63:8,bass,"Final drop A · feather storm",19.0,1
+113.450,63:10,vocal,"Final drop A · feather storm",-36.9,0
+113.672,63:12,kick,"Final drop A · feather storm",-19.4,0
+113.894,63:14,kick,"Final drop A · feather storm",-26.8,0
+114.116,64:0,kick,"Final drop B · choosing to stay",15.4,0
+114.450,64:3,kick,"Final drop B · choosing to stay",12.3,0
+114.783,64:6,snare,"Final drop B · choosing to stay",26.1,0
+115.228,64:10,hat,"Final drop B · choosing to stay",21.9,0
+115.450,64:12,snare,"Final drop B · choosing to stay",-2.2,0
+115.894,65:0,kick,"Final drop B · choosing to stay",11.0,0
+116.561,65:6,kick,"Final drop B · choosing to stay",16.3,0
+117.005,65:10,hat,"Final drop B · choosing to stay",-29.7,0
+117.228,65:12,snare,"Final drop B · choosing to stay",-37.2,0
+117.672,66:0,kick,"Final drop B · choosing to stay",13.1,0
+118.005,66:3,kick,"Final drop B · choosing to stay",28.2,0
+118.339,66:6,snare,"Final drop B · choosing to stay",24.8,0
+118.783,66:10,snare,"Final drop B · choosing to stay",-36.5,0
+119.006,66:12,snare,"Final drop B · choosing to stay",-3.6,0
+119.450,67:0,kick,"Final drop B · choosing to stay",-17.6,1
+119.672,67:2,snare,"Final drop B · choosing to stay",-7.0,0
+119.894,67:4,vocal,"Final drop B · choosing to stay",-6.6,0
+120.117,67:6,snare,"Final drop B · choosing to stay",-37.5,1
+120.339,67:8,kick,"Final drop B · choosing to stay",-15.6,0
+120.561,67:10,vocal,"Final drop B · choosing to stay",-37.3,1
+120.783,67:12,vocal,"Final drop B · choosing to stay",-2.1,0
+121.006,67:14,hat,"Final drop B · choosing to stay",-23.2,0
+121.228,68:0,kick,"Final drop B · choosing to stay",13.8,0
+121.561,68:3,bass,"Final drop B · choosing to stay",-1.7,0
+121.895,68:6,snare,"Final drop B · choosing to stay",-15.8,0
+122.339,68:10,snare,"Final drop B · choosing to stay",25.7,0
+122.561,68:12,snare,"Final drop B · choosing to stay",-19.7,1
+123.006,69:0,bass,"Final drop B · choosing to stay",31.0,0
+123.672,69:6,kick,"Final drop B · choosing to stay",-30.5,0
+124.117,69:10,kick,"Final drop B · choosing to stay",21.9,0
+124.339,69:12,vocal,"Final drop B · choosing to stay",-2.5,0
+124.783,70:0,kick,"Final drop B · choosing to stay",24.4,0
+125.006,70:2,snare,"Final drop B · choosing to stay",25.8,0
+125.228,70:4,snare,"Final drop B · choosing to stay",19.7,0
+125.450,70:6,snare,"Final drop B · choosing to stay",16.1,0
+125.672,70:8,kick,"Final drop B · choosing to stay",30.8,0
+125.895,70:10,snare,"Final drop B · choosing to stay",-28.4,0
+126.117,70:12,snare,"Final drop B · choosing to stay",-7.8,0
+126.339,70:14,kick,"Final drop B · choosing to stay",20.0,0
+126.561,71:0,bass,"Final drop B · choosing to stay",17.5,0
+126.784,71:2,snare,"Final drop B · choosing to stay",-35.3,0
+127.006,71:4,snare,"Final drop B · choosing to stay",-22.7,0
+127.228,71:6,hat,"Final drop B · choosing to stay",-29.1,1
+127.450,71:8,bass,"Final drop B · choosing to stay",18.5,0
+127.672,71:10,hat,"Final drop B · choosing to stay",-20.4,1
+127.895,71:12,vocal,"Final drop B · choosing to stay",-3.7,1
+128.339,72:0,bass,"Outro · open exit",5.2,0
+131.895,74:0,kick,"Outro · open exit",20.9,0
+133.228,74:12,kick,"Outro · open exit",-25.7,0
+135.451,76:0,kick,"Outro · open exit",5.0,1
+139.006,78:0,kick,"Outro · open exit",3.9,0
