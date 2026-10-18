@@ -142,6 +142,24 @@ Objects with `side ≠ 0` are anchored to the **mean corridor** (flow frame), so
 
 **Forbidden (user requirement): any tap hint.** That means no corner markers, no next-tap flashes, pulses or countdowns synced to upcoming taps, no "tap now" text and no guide lines. Events may follow the music (beats, sections) but must never mark where or when the next turn is.
 
+## Roadside dressing (v2.6, engine)
+
+The engine fills both sides of every ground segment with small set-dressing props (DL-style buildings/trees/blocks 0.4–4 units off the road edge). It is **on by default** for every level; tune it in `layout.json`:
+
+```json
+"dressing": {
+  "density": 3.6,              // props per 10 road units per side
+  "near": [0.4, 4],            // gap from road edge (units)
+  "lead": 2.6,                 // s ahead of the line when props pop in (rise with overshoot)
+  "bounce": 0.12,              // beat bounce (uses layout.beats) for props within 2.5 s of the line
+  "seed": 7,
+  "props": [ { "kind": "box", "size": [1.8,2.6,1.8], "color": "#F3F0E8", "weight": 3, "scale": [0.7,1.3], "scaleY": [0.6,2.2] },
+             { "kind": "group", "parts": [ ... ], "weight": 1 } ],
+  "sections": [ { "t": 41.2, "density": 6, "props": [0, 2] }, { "t": 90, "off": true } ]
+}
+```
+or `"dressing": false` to disable. Without `props`, a palette is derived from `palette.road / roadSide / ambient / ground / line`. Props use flat part colours (no textures). Placement is deterministic, never on any road footprint (incl. upper/lower decks), never overlapping each other or authored objects; anything that would cover the head or the road just ahead shrinks away.
+
 ## Art assets (v2.4)
 Put images in `levels-design/<slug>/art/` and reference them by the relative path `art/<file>`. The build copies them to `public/levels/<slug>/art/`.
 - `layout.art.backdrop`: `"art/sky.jpg"`. A full-screen image behind the 3D scene, replacing the CSS gradient. It should be soft and low-contrast so the road reads. A section can switch it: `sections[].backdrop`.
@@ -152,6 +170,8 @@ Put images in `levels-design/<slug>/art/` and reference them by the relative pat
 - Use GenerateImage for these (soft low-poly / flat-illustration style matching the palette). No text inside images unless the text is part of the scene (signs). Never draw arrows or anything that could read as a tap hint.
 
 ## Changelog
+
+- v2.6: `layout.dressing` roadside dressing (engine-placed props, on by default).
 - v2.0: base schema. v2.0a: shared analysis. v2.1: relative `yaw`/`worldYaw`, kinds `pyramid`/`text`, auto % markers, rows auto-skip.
 - v2.2: overlap rule (error only if ≥ 1.5 s apart and height difference < 3).
 - v2.3 (2026-10-18): `worldPos`, `onroad`, `radius`, `collectibleColors`, finish `gate`/`custom` + `color`, `particles` event, targeted `light` (every/level/color), persistent raise/lower + `converge`. **Air-time rule:** the engine shortens flights to land 0.05 s before the next tap, and the validator requires ≥ 0.35 s. Judging is grace-based on event timestamps.
