@@ -10,6 +10,8 @@ import type { Scene } from '@babylonjs/core/scene';
 import { Mesh } from '@babylonjs/core/Meshes/mesh';
 import { VertexData } from '@babylonjs/core/Meshes/mesh.vertexData';
 import { VertexBuffer } from '@babylonjs/core/Buffers/buffer';
+import type { Camera } from '@babylonjs/core/Cameras/camera';
+import { CreatePlane } from '@babylonjs/core/Meshes/Builders/planeBuilder';
 import { TransformNode } from '@babylonjs/core/Meshes/transformNode';
 import { StandardMaterial } from '@babylonjs/core/Materials/standardMaterial';
 import { Color3 } from '@babylonjs/core/Maths/math.color';
@@ -142,6 +144,24 @@ export class SceneC {
     const m = new Mesh('cglow', this.scene); const vd = new VertexData(); vd.positions = pos; vd.colors = col; vd.uvs = uv; vd.indices = idx; vd.applyToMesh(m, false);
     m.material = this.matGlow; m.isPickable = false; m.parent = this.root; this.glowAll = m;
   }
+  // ---- v7 night sky strip: a camera-parented band over the top ~30% of the screen (moon, stars, silhouette skyline; tools/omgc/sky_strip.py),
+  // drawn after the scene (rendering group 1), faded in and out with the night zones. The key camera's pitch shows almost no real sky.
+  private sky: Mesh | null = null; private skyMat: StandardMaterial | null = null; private skyV = 0;
+  updateSky(cam: Camera, aspect: number, dt: number) {
+    const want = this.night[this.curZone] ? 1 : 0; this.skyV += (want - this.skyV) * (dt > 0 ? 1 - Math.exp(-dt * 1.6) : 1);
+    if (!this.sky) {
+      if (this.skyV < 0.01) return;
+      const m = CreatePlane('csky', { size: 1 }, this.scene); const mat = new StandardMaterial('cskyMat', this.scene); const tx = new Texture(this.base + 'models/omg-c/paint/sky-night.webp', this.scene, true, true);
+      tx.hasAlpha = true; mat.diffuseTexture = tx; mat.useAlphaFromDiffuseTexture = true; mat.disableLighting = true; mat.emissiveColor = new Color3(1, 1, 1); mat.diffuseColor = new Color3(0, 0, 0);
+      mat.backFaceCulling = false; mat.fogEnabled = false; mat.disableDepthWrite = true; mat.transparencyMode = Material.MATERIAL_ALPHABLEND;
+      m.material = mat; m.isPickable = false; m.renderingGroupId = 1; m.parent = cam; this.sky = m; this.skyMat = mat;
+    }
+    const on = this.skyV > 0.01; this.sky.setEnabled(on); if (!on) return;
+    const d = 2, hh = d * Math.tan((cam.fov || 0.8) / 2), hw = hh * aspect, bh = hh * 2 * 0.3;   // band = top 30% of the view
+    this.sky.scaling.set(hw * 2, bh, 1); this.sky.position.set(0, hh - bh / 2, d);
+    const tx = this.skyMat!.diffuseTexture as Texture, us = Math.min(1, (hw * 2 / bh) / (1024 / 384)); tx.uScale = us; tx.uOffset = 1 - us;   // keep proportions, crop toward the moon side
+    this.skyMat!.alpha = this.skyV;
+  }
   private dropChunks() { for (const c of this.chunkMesh.values()) this.dropChunk(c); this.chunkMesh.clear(); this.range = [-1, -1]; }
   setTier(t: Tier) { if (t === this.tier) return; this.tier = t; this.dropChunks(); this.applyLook(); this.glowSig = ''; this.imp?.setDensity(t === 'low' ? 0.18 : 1); }
   /** high tier: warm key tint + soft vignette (in-shader image processing, no pass); bloom = soft outer halo copies in the glow mesh (rebuildGlow) */
@@ -270,7 +290,7 @@ export class SceneC {
     const night = this.night[c.zone], lift = night ? 0.32 : 0, lc = hexRGB(this.spec.zones[c.zone].palette.light ?? '#FFE8B0');   // lift toward the zone's warm light
     const G = { pos: [] as number[], col: [] as number[], idx: [] as number[] }, M = { pos: [] as number[], col: [] as number[], idx: [] as number[] };
     const L = { pos: [] as number[], col: [] as number[], uv: [] as number[], idx: [] as number[] };
-    const quad = (p: number[][], k: number) => { const i0 = L.pos.length / 3; for (const q of p) L.pos.push(q[0], q[1], q[2]); L.uv.push(0, 0, 1, 0, 1, 1, 0, 1); for (let n = 0; n < 4; n++) L.col.push(k, k, k, 1); L.idx.push(i0, i0 + 1, i0 + 2, i0, i0 + 2, i0 + 3); };
+    const quad = (p: number[][], k: number) => { const i0 = L.pos.length / 3; for (const q of p) L.pos.push(q[0], q[1], q[2]); L.uv.push(0, 0, 1, 0, 1, 1, 0, 1); for (let n = 0; n < 4; n++) L.col.push(k, k * 0.86, k * 0.6, 1);   /* v7: warm halos */ L.idx.push(i0, i0 + 1, i0 + 2, i0, i0 + 2, i0 + 3); };
     for (const it of c.items) {
       if ((it.layer !== 'ground' && it.layer !== 'mid') || !this.keep(it)) continue;
       const t = this.tm.get(it.a); if (!t) continue; const ic = this.colOf(it, t.model);
@@ -288,7 +308,7 @@ export class SceneC {
       if (lp) {   // halo: a pool of light on the page + two crossed quads at the lamp head
         const h = (this.spec.assets[it.a]?.h ?? 1) * s, r = lp[1] * s * 1.4, hy = it.y - c.y + h * lp[0], gy = it.y - c.y + 0.03;   // relative to the chunk pivot (c.y)
         const tree = /pine|tree|mushroom-group|flower-heart/.test(it.a), R = r * 2.0;
-        if (!tree) quad([[it.x - R, gy, it.z - R], [it.x + R, gy, it.z - R], [it.x + R, gy, it.z + R], [it.x - R, gy, it.z + R]], 0.16);
+        if (!tree) quad([[it.x - R, gy, it.z - R], [it.x + R, gy, it.z - R], [it.x + R, gy, it.z + R], [it.x - R, gy, it.z + R]], 0.11);   // v7: dimmer light pools
         const fl = it.a === 'flower-heart', kq = fl ? 0.13 : tree ? 0.24 : 0.42, rq = fl ? r * 0.7 : r;   // glowing flowers: small, soft
         quad([[it.x - rq, hy - rq, it.z], [it.x + rq, hy - rq, it.z], [it.x + rq, hy + rq, it.z], [it.x - rq, hy + rq, it.z]], kq);
         quad([[it.x, hy - rq, it.z - rq], [it.x, hy - rq, it.z + rq], [it.x, hy + rq, it.z + rq], [it.x, hy + rq, it.z - rq]], kq);

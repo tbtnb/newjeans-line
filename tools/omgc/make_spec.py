@@ -229,7 +229,7 @@ HERO = {   # zone: [(asset, t, side, scale, entourage [(asset, n)])]
  'z01': [('book-cover', 4.5, 1, 1.6, [('bunny-statue', 5), ('tulip-bed', 4), ('fence', 6), ('hedge', 2)]), ('bunny-statue', 9.5, -1, 2.2, [('tulip-bed', 3), ('heart-bed', 3), ('fence', 4)])],
  'z03': [('clock-tower', 38.5, 1, 1.55, [('tulip-bed', 4), ('firefly-lamp', 6), ('gift', 5), ('heart-bed', 3)])],
  'z04': [('castle', 52.0, -1, 1.6, [('firefly-lamp', 10), ('lily-lamp', 6), ('star-chime', 4), ('heart-bed', 4)]), ('bunny-heart', 55.5, 1, 1.0, [('firefly-lamp', 6), ('lily-lamp', 4)])],
- 'z08': [('carousel', 110.0, 1, 1.45, [('balloons', 6), ('firefly-lamp', 8), ('bunting', 6), ('stall', 2)]), ('ferris-wheel', 115.0, -1, 1.3, [('balloons', 5), ('firefly-lamp', 8), ('lantern-string', 3), ('heart-bed', 3)])],
+ 'z08': [('carousel', 110.0, 1, 1.45, [('balloons', 6), ('firefly-lamp', 8), ('bunting', 6), ('stall', 2)]), ('ferris-wheel', 113.5, 1, 1.45, [('balloons', 5), ('firefly-lamp', 8), ('lantern-string', 3), ('heart-bed', 3)])],
  'z10': [('bunny-family', 155.5, -1, 1.9, [('balloons', 6), ('heart-bed', 4), ('bunny-statue', 6), ('tulip-bed', 4)]), ('heart-gate', 160.4, 1, 1.3, [('balloons', 6), ('bunny-statue', 4), ('heart-bed', 3)])],
 }
 for z in zones:   # v5: tree-bush / paper-hill set pieces read as big mint blobs near the camera: dropped (masses come from clusters)
@@ -331,6 +331,37 @@ for z in zones:   # v6 budget: z08 (carousel + wheel + village) over 150k -> lan
     for ly in z['layers']:
         if ly['asset'] == 'lantern-tower': ly['count'] = max(1, round(ly['count'] * 0.4))
         elif ly['asset'] in ('balloons', 'bunting', 'hedge') and ly.get('hi'): ly['count'] = max(1, round(ly['count'] * 0.5))
+# ---- v7 ----
+def addl(z, aid, layer, n, near, sc, hi, cl=None):
+    if aid not in assets or n < 1: return
+    d = dict(asset=aid, layer=layer, count=n, near=near, y=[0, 0], scale=sc, colors=(z['layers'][0]['colors'] if z['layers'] else [0, 1, 2, 3, 4]), hi=hi)
+    if cl: d['cluster'] = cl
+    z['layers'].append(d)
+for z in zones:
+    zid = z['id']; zk = (z['t1'] - z['t0']) / 15.12
+    if zid == 'z06':   # v4 richness back, colourful and mid-sized (houses in rows, beds, fences, bunnies)
+        addl(z, 'bunny-house', 'mid', round(2 * zk), [6.0, 12.0], [0.9, 1.2], True, dict(n=[2, 3], r=4.2, row=True))
+        addl(z, 'mushroom-house', 'mid', round(2 * zk), [6.0, 12.0], [0.9, 1.2], True, dict(n=[2, 3], r=3.8, row=True))
+        for aid, n in (('tulip-bed', 10), ('heart-bed', 8), ('fence', 10), ('bunny-statue', 5), ('flower-heart', 30)): addl(z, aid, 'mid' if aid != 'flower-heart' else 'ground', round(n * zk), [3.0, 12.0], [1.2, 1.6], True)
+        z['impostors']['sprites'] = [[k, w * (1.6 if k in ('bunny-house', 'tulip-bed', 'heart-bed') else 1)] for k, w in z['impostors']['sprites']] + [['mushroom-house', 1.0]]
+    if zid == 'z05':   # lake: lit lily lamps, reeds, rocks, pine masses beyond the near band (depth), a few beds / mushrooms
+        addl(z, 'pine-lo', 'mid', round(4 * zk), [16.0, 34.0], [0.9, 1.1], True, dict(n=[5, 8], r=3.2))
+        for aid, n in (('lily-lamp', 10), ('reed', 30), ('rock', 8), ('tulip-bed', 6), ('mushroom-group', 10), ('bunny-statue', 3)): addl(z, aid, 'mid' if aid not in ('reed',) else 'ground', round(n * zk), [2.5, 12.0], [1.2, 1.6], True)
+        z['impostors']['sprites'] = [[k, w * (2.0 if k == 'pine' else 1)] for k, w in z['impostors']['sprites']]
+    if zid == 'z04':   # glare: fewer, smaller glows (flowers x0.35, lamp lines x0.5)
+        for ly in z['layers']:
+            if ly['asset'] == 'flower-heart' and ly.get('layer') == 'ground': ly['count'] = max(1, round(ly['count'] * 0.35))
+            if ly['asset'] == 'firefly-lamp': ly['count'] = max(1, round(ly['count'] * 0.5))
+    if zid in ('z07', 'z09'):   # bigger lit house rows hugging the road (merged into the chunk mid mesh); towers cut to pay
+        for ly in z['layers']:
+            if ly['asset'] == 'lantern-tower': ly['count'] = max(1, round(ly['count'] * 0.4))
+        addl(z, 'mushroom-house', 'mid', round(3 * zk), [3.5, 8.0], [1.35, 1.7], True, dict(n=[3, 4], r=4.6, row=True))
+        addl(z, 'mushroom-house', 'mid', round(1 * zk), [3.5, 8.0], [1.35, 1.7], False, dict(n=[2, 3], r=4.6, row=True))
+    if zid == 'z01':   # top-right mint mass: tree / hill / forest masses beyond the near band mostly gone, colourful houses instead
+        for ly in z['layers']:
+            if ly.get('layer') == 'mid' and ly['asset'] in TREEY + ('forest-clump', 'paper-hill-lo', 'paper-hill', 'hedge'): ly['count'] = max(1, round(ly['count'] * 0.3))
+        z['impostors']['sprites'] = [[k, round(w * 0.3, 2) if k in ('tree', 'tree-lo', 'forest-clump', 'paper-hill', 'hedge') else w] for k, w in z['impostors']['sprites']] + [['bunny-house', 1.0], ['tulip-bed', 1.0]]
+        addl(z, 'bunny-house', 'mid', round(1.5 * zk), [8.0, 16.0], [0.9, 1.2], True, dict(n=[2, 3], r=4.2, row=True))
 out = os.path.join(here, '..', '..', 'levels-src', 'omg', 'scene-c.json')
 json.dump(spec, open(out, 'w'), ensure_ascii=False, indent=1)
 n = sum(l['count'] for z in zones for l in z['layers']); print(out, 'zones', len(zones), 'assets', len(assets), 'modelled', sum(bool(a['model']) for a in assets.values()), 'scatter instances', n, 'set pieces', sum(len(z['setpieces']) for z in zones))

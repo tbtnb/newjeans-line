@@ -547,6 +547,7 @@ export class World {
     // camera
     this.rig.menuOrbit = this.mode === 'menu'; this.rig.distScale = (this as any).__camScale ?? 1;
     this.rig.update(this.mode === 'menu' ? 0 : lt, failed ? this.head.position : lp, dt || 1 / 60);
+    if (this.sc && this.mode !== 'menu') this.sc.updateSky(this.rig.cam, this.engine.getRenderWidth() / Math.max(1, this.engine.getRenderHeight()), dt);   // v7 night sky strip
     // shadow frustum follows the camera, snapped to whole shadow-map texels in light space (no shimmering edges)
     { const tg = this.rig.cam.getTarget(); const d = this.sun.direction.normalizeToNew(); const r = Vector3.Cross(Vector3.Up(), d).normalize(); const u = Vector3.Cross(d, r);
       const tex = 52 / 1024; const a = Math.round(Vector3.Dot(tg, r) / tex) * tex, b = Math.round(Vector3.Dot(tg, u) / tex) * tex, c = Vector3.Dot(tg, d);
