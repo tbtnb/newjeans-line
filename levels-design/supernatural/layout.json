@@ -5218,7 +5218,7 @@
    "face": "camera",
    "color": "#1a1d3a",
    "color2": "#3b3f6e",
-   "t": 6.573,
+   "t": 6.406,
    "side": -1,
    "near": 0.8,
    "y": -0.6
@@ -5235,7 +5235,7 @@
    "face": "camera",
    "color": "#1a1d3a",
    "color2": "#ff5fa2",
-   "t": 31.891,
+   "t": 30.351,
    "side": 1,
    "near": 0.8,
    "y": -0.6
@@ -5268,7 +5268,7 @@
    "face": "road",
    "color": "#3b3f6e",
    "color2": "#ff5fa2",
-   "t": 63.681,
+   "t": 63.679,
    "side": -1,
    "near": 0.8,
    "y": -0.6

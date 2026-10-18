@@ -17,7 +17,9 @@ const LINE_W = 1.0, LINE_H = 0.9;
 interface Run { a: Vector3; b: Vector3; h: number; slope: number; }
 const smooth = (x: number) => (x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x));
 
-interface Obj { node: TransformNode; def: SceneObject; t: number; base: Vector3; baseScale: Vector3; baseRotY: number; hidden: boolean; id?: string; lit?: { mat: StandardMaterial; base: Color3 }[]; glow?: number; glowColor?: Color3; bc?: Vector3; br?: number; fade?: number; }
+interface Obj { node: TransformNode; def: SceneObject; t: number; base: Vector3; baseScale: Vector3; baseRotY: number; hidden: boolean; id?: string; lit?: { mat: StandardMaterial; base: Color3 }[]; glow?: number; glowColor?: Color3; bc?: Vector3; br?: number; fade?: number; box?: number[]; }
+const ART_KINDS = new Set(['standee', 'facade']);
+const _cv = new Vector3();
 interface Fx { mesh: Mesh; t0: number; dur: number; kind: string; vel?: Vector3; spin?: Vector3; from?: Vector3; }
 
 function radialTexture(scene: Scene, name: string, inner = 'rgba(255,255,255,1)', outer = 'rgba(255,255,255,0)', square = false) {
@@ -298,6 +300,12 @@ export class World {
     holder.computeWorldMatrix(true); const bv = holder.getHierarchyBoundingVectors(true);
     const bc = bv.min.add(bv.max).scale(0.5).subtract(holder.position), br = bv.max.subtract(bv.min).length() / 2;
     const obj: Obj = { node: holder, def: o, t, base: holder.position.clone(), baseScale: new Vector3(1, 1, 1), baseRotY: rotY, hidden: false, id: o.id, bc, br: Number.isFinite(br) ? br : 0, fade: 1 };
+    if (ART_KINDS.has(o.kind) && Number.isFinite(br)) {
+      // art props test occlusion against their projected box (a bounding sphere would fade a tall thin card far too eagerly)
+      const P0 = holder.position; let x0 = bv.min.x - P0.x, x1 = bv.max.x - P0.x, z0 = bv.min.z - P0.z, z1 = bv.max.z - P0.z;
+      if (o.face === 'camera') { const r = Math.max(-x0, x1, -z0, z1); x0 = z0 = -r; x1 = z1 = r; }
+      obj.box = [x0, bv.min.y - P0.y, z0, x1, bv.max.y - P0.y, z1];
+    }
     this.objects.push(obj); if (o.face === 'camera') this.faceCam.push(obj);
     if (o.id) { const l = this.byId.get(o.id) ?? []; l.push(obj); this.byId.set(o.id, l); }
   }
@@ -575,9 +583,27 @@ export class World {
     }
     const k = Math.min(1, dt * 10);
     for (const o of this.objects) {
-      if (o.hidden || !o.br || o.def.kind === 'text' || o.def.onroad) { if (o.fade !== 1 && !o.hidden) this.setFade(o, 1); continue; }
-      const c = o.node.position.add(o.bc!); const v = Vector3.TransformCoordinates(c, view);
+      if (o.hidden || !o.br || o.def.kind === 'text' || o.def.kind === 'decal' || o.def.onroad) { if (o.fade !== 1 && !o.hidden) this.setFade(o, 1); continue; }
       let occ = false;
+      if (o.box) {
+        // projected screen rectangle of the art prop's box; fades when it covers the head (and, unless a landmark, the road just ahead)
+        const b = o.box, n = o.node.position; let x0 = 9, x1 = -9, y0 = 9, y1 = -9, zmin = 1e9, behind = false;
+        for (let i = 0; i < 8; i++) {
+          Vector3.TransformCoordinatesFromFloatsToRef(n.x + b[i & 1 ? 3 : 0], n.y + b[i & 2 ? 4 : 1], n.z + b[i & 4 ? 5 : 2], view, _cv);
+          if (_cv.z < 0.5) { behind = true; break; }
+          const sx = _cv.x / (_cv.z * th * aspect), sy = _cv.y / (_cv.z * th);
+          if (sx < x0) x0 = sx; if (sx > x1) x1 = sx; if (sy < y0) y0 = sy; if (sy > y1) y1 = sy; if (_cv.z < zmin) zmin = _cv.z;
+        }
+        if (behind) occ = true;
+        else for (let qi = 0; qi < (o.def.landmark ? 1 : P.length); qi++) {
+          const q = P[qi]; if (zmin >= q.z) continue; const m = q.r * 0.5;
+          if (q.x > x0 - m / aspect && q.x < x1 + m / aspect && q.y > y0 - m && q.y < y1 + m) { occ = true; break; }
+        }
+        const want = occ ? 0.12 : 1; const f = o.fade! + (want - o.fade!) * k;
+        if (Math.abs(f - o.fade!) > 0.003 || (want === 1 && o.fade !== 1 && Math.abs(f - 1) < 0.01)) this.setFade(o, Math.abs(f - 1) < 0.01 ? 1 : f);
+        continue;
+      }
+      const c = o.node.position.add(o.bc!); const v = Vector3.TransformCoordinates(c, view);
       if (v.z > 0.5) {
         const sx = v.x / (v.z * th * aspect), sy = v.y / (v.z * th), sr = o.br! / (v.z * th);
         const lm = !!o.def.landmark;
