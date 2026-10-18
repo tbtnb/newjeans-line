@@ -31,7 +31,7 @@ interface TI { id: string; mesh: Mesh; mats: Float32Array; cols: Float32Array; c
 interface Piv { node: TransformNode; kind: string; i: number; base: Quaternion | null; baseS: Vector3; baseP: Vector3 }
 interface SetE { def: CSet; node: TransformNode; hinge: TransformNode; far: Mesh | null; near: TransformNode | null; nearMeshes: Mesh[]; piv: Piv[]; tris: number; on: boolean; lodFar: boolean }
 
-export interface CStats { chunks: [number, number]; chunkMeshes: number; types: number; instances: number; sets: number; tris: number; zone: number; models: number }
+export interface CStats { chunks: [number, number]; chunkMeshes: number; types: number; instances: number; sets: number; tris: number; zone: number; models: number; /** visible tris if every asset were modelled at its full spec budget */ trisAtBudget: number }
 
 export class SceneC {
   readonly plc: CPlacement; readonly spec: SceneCSpec;
@@ -188,12 +188,12 @@ export class SceneC {
       this.range = [a, b]; this.refill(a, b);
     }
     this.writeTypes(t, beatK);
-    let tris = 0, inst = 0, sets = 0;
-    for (const e of this.sets) { this.animSet(e, t, beatK, cam); if (e.on) { sets++; tris += e.tris; } }
-    for (const m of this.chunkMesh.values()) tris += (m as any).__tris;
-    let types = 0; for (const ti of this.types.values()) if (ti.items.length) { types++; inst += ti.items.length; tris += ti.items.length * ti.tris; }
+    let tris = 0, inst = 0, sets = 0, tb = 0; const A = this.spec.assets;
+    for (const e of this.sets) { this.animSet(e, t, beatK, cam); if (e.on) { sets++; tris += e.tris; tb += Math.max(e.tris, A[e.def.a]?.tris ?? 0); } }
+    for (const [i, m] of this.chunkMesh) { tris += (m as any).__tris; tb += 2; for (const it of this.plc.chunks[i].items) if (it.layer === 'ground' && this.keep(it)) tb += Math.max(this.tm.get(it.a)?.tris ?? 0, A[it.a]?.tris ?? 0); }
+    let types = 0; for (const ti of this.types.values()) if (ti.items.length) { types++; inst += ti.items.length; tris += ti.items.length * ti.tris; tb += ti.items.length * Math.max(ti.tris, A[ti.id]?.tris ?? 0); }
     let zone = 0; for (let i = 0; i < this.spec.zones.length; i++) if (this.spec.zones[i].t0 <= t) zone = i;
-    this.last = { chunks: [a, b], chunkMeshes: this.chunkMesh.size, types, instances: inst, sets, tris, zone, models: this.models };
+    this.last = { chunks: [a, b], chunkMeshes: this.chunkMesh.size, types, instances: inst, sets, tris, zone, models: this.models, trisAtBudget: tb };
   }
 
   dispose() {
