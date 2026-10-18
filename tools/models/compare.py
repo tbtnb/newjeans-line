@@ -23,7 +23,10 @@ def fg_design(im):
     im = im.convert('RGB'); w, h = im.size
     bg = [im.getpixel(p) for p in ((2, 2), (w - 3, 2), (2, h - 3), (w - 3, h - 3), (w // 2, 2))]; bg = tuple(sorted(c[k] for c in bg)[2] for k in range(3))
     diff = ImageChops.difference(im, Image.new('RGB', im.size, bg)).convert('L')
-    m = diff.point(lambda v: 255 if v > 14 else 0).filter(ImageFilter.MedianFilter(5))
+    # v3: threshold 8 + morphological close (cream/white paper is within ~10 levels of the grey studio; v2's 14 dropped whole
+    # ears/cheeks/feet and leaked the flood fill inside the silhouette)
+    m = diff.point(lambda v: 255 if v > 8 else 0).filter(ImageFilter.MedianFilter(5))
+    k = max(5, (min(w, h) // 50) | 1); m = m.filter(ImageFilter.MaxFilter(k)).filter(ImageFilter.MinFilter(k))
     # fill holes (cream paper close to the grey studio): background = what a flood fill from the border reaches
     pm = Image.new('L', (w + 4, h + 4), 0); pm.paste(m, (2, 2)); ImageDraw.floodfill(pm, (0, 0), 128)
     return pm.crop((2, 2, w + 2, h + 2)).point(lambda v: 0 if v == 128 else 255)
