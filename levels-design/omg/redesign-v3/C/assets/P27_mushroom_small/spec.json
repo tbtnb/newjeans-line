@@ -1,0 +1,71 @@
+{
+ "id": "P27_mushroom_small",
+ "cn": "纸蘑菇组",
+ "en": "Paper Mushroom Cluster",
+ "cls": "prop",
+ "zones": [
+  "z02",
+  "z09",
+  "z01"
+ ],
+ "size_m": {
+  "w": 0.7,
+  "d": 0.7,
+  "h": 0.8
+ },
+ "size_target_m": {
+  "w": 1,
+  "d": 1,
+  "h": 0.8
+ },
+ "tris_budget": 300,
+ "lod1_tris": 90,
+ "parts": [
+  {
+   "en": "cap",
+   "cn": "伞盖"
+  },
+  {
+   "en": "stem",
+   "cn": "菌柄"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "伞盖",
+   "pivot": "菌柄顶",
+   "motion": "每拍轻跳"
+  }
+ ],
+ "colors": {
+  "coral": "#FF7A6B",
+  "teal": "#173A4A",
+  "cream": "#FFF3DE"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.0,
+   "width": 0.032,
+   "depth": 0.15
+  },
+  "drawing_vs_target": {
+   "front": 0.73,
+   "side": 0.65
+  },
+  "ok": true,
+  "size": [
+   0.7,
+   0.7,
+   0.8
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

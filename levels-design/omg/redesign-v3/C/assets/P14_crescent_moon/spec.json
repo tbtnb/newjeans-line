@@ -1,0 +1,71 @@
+{
+ "id": "P14_crescent_moon",
+ "cn": "吊线弯月",
+ "en": "Hanging Crescent Moon",
+ "cls": "prop",
+ "zones": [
+  "z05",
+  "z03",
+  "z07"
+ ],
+ "size_m": {
+  "w": 2.9,
+  "d": 0.7,
+  "h": 4
+ },
+ "size_target_m": {
+  "w": 3,
+  "d": 0.4,
+  "h": 4
+ },
+ "tris_budget": 600,
+ "lod1_tris": 180,
+ "parts": [
+  {
+   "en": "layered crescent",
+   "cn": "多层弯月"
+  },
+  {
+   "en": "string and stars",
+   "cn": "吊线+小星"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "整体",
+   "pivot": "吊线顶",
+   "motion": "慢摆 ±6°"
+  }
+ ],
+ "colors": {
+  "gold": "#F7D98B",
+  "moon": "#BFD4F5",
+  "cream": "#FFF3DE"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.083,
+   "width": 0.085,
+   "depth": 0.538
+  },
+  "drawing_vs_target": {
+   "front": 0.98,
+   "side": 1.0
+  },
+  "ok": false,
+  "size": [
+   2.9,
+   0.7,
+   4
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

@@ -1,0 +1,69 @@
+{
+ "id": "P22_firefly_lantern",
+ "cn": "萤火纸灯",
+ "en": "Firefly Paper Lantern",
+ "cls": "prop",
+ "zones": [
+  "z09"
+ ],
+ "size_m": {
+  "w": 0.7,
+  "d": 0.5,
+  "h": 1.4
+ },
+ "size_target_m": {
+  "w": 0.6,
+  "d": 0.6,
+  "h": 1.4
+ },
+ "tris_budget": 200,
+ "lod1_tris": 60,
+ "parts": [
+  {
+   "en": "round paper light",
+   "cn": "圆纸灯"
+  },
+  {
+   "en": "bent stem",
+   "cn": "弯茎"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "灯",
+   "pivot": "茎顶",
+   "motion": "随拍明灭"
+  }
+ ],
+ "colors": {
+  "lamp": "#FFC968",
+  "gold": "#F7D98B",
+  "teal": "#173A4A"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.004,
+   "width": 0.121,
+   "depth": 0.122
+  },
+  "drawing_vs_target": {
+   "front": 1.13,
+   "side": 1.02
+  },
+  "ok": true,
+  "size": [
+   0.7,
+   0.5,
+   1.4
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

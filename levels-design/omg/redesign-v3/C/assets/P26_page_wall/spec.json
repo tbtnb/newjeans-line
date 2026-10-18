@@ -1,0 +1,70 @@
+{
+ "id": "P26_page_wall",
+ "cn": "书页墙",
+ "en": "Standing Page Wall",
+ "cls": "prop",
+ "zones": [
+  "z09",
+  "z10"
+ ],
+ "size_m": {
+  "w": 8.5,
+  "d": 1.2,
+  "h": 5
+ },
+ "size_target_m": {
+  "w": 8,
+  "d": 1,
+  "h": 5
+ },
+ "tris_budget": 800,
+ "lod1_tris": 240,
+ "parts": [
+  {
+   "en": "curved page",
+   "cn": "弯曲书页"
+  },
+  {
+   "en": "gold edge",
+   "cn": "金色书口"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "书页",
+   "pivot": "底边",
+   "motion": "149.3s 两侧合拢"
+  }
+ ],
+ "colors": {
+  "cream": "#FFF3DE",
+  "gold": "#F7D98B",
+  "navy": "#1F2350"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.012,
+   "width": 0.157,
+   "depth": 0.196
+  },
+  "drawing_vs_target": {
+   "front": 1.06,
+   "side": 0.97
+  },
+  "ok": true,
+  "size": [
+   8.5,
+   1.2,
+   5
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

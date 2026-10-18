@@ -1,0 +1,72 @@
+{
+ "id": "P24_paper_cloud",
+ "cn": "纸云",
+ "en": "Paper Cloud",
+ "cls": "prop",
+ "zones": [
+  "z01",
+  "z02",
+  "z06",
+  "z10"
+ ],
+ "size_m": {
+  "w": 3.5,
+  "d": 1.2,
+  "h": 2
+ },
+ "size_target_m": {
+  "w": 4,
+  "d": 1.5,
+  "h": 2
+ },
+ "tris_budget": 300,
+ "lod1_tris": 90,
+ "parts": [
+  {
+   "en": "layered puffs",
+   "cn": "叠层云团"
+  },
+  {
+   "en": "back plate",
+   "cn": "背板"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "整体",
+   "pivot": "中心",
+   "motion": "缓慢漂移"
+  }
+ ],
+ "colors": {
+  "white": "#FFFFFF",
+  "pearl": "#F3F1EA",
+  "fog": "#CFE3E6"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.044,
+   "width": 0.092,
+   "depth": 0.276
+  },
+  "drawing_vs_target": {
+   "front": 0.87,
+   "side": 0.6
+  },
+  "ok": false,
+  "size": [
+   3.5,
+   1.2,
+   2
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

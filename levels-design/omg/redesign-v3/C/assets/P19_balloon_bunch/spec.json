@@ -1,0 +1,75 @@
+{
+ "id": "P19_balloon_bunch",
+ "cn": "气球束",
+ "en": "Balloon Bunch",
+ "cls": "prop",
+ "zones": [
+  "z08",
+  "z10"
+ ],
+ "size_m": {
+  "w": 2.0,
+  "d": 1.2,
+  "h": 3.5
+ },
+ "size_target_m": {
+  "w": 1.2,
+  "d": 1.2,
+  "h": 3.5
+ },
+ "tris_budget": 500,
+ "lod1_tris": 150,
+ "parts": [
+  {
+   "en": "heart balloon",
+   "cn": "心形气球"
+  },
+  {
+   "en": "bunny balloon",
+   "cn": "兔头气球"
+  },
+  {
+   "en": "weight",
+   "cn": "配重"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "气球",
+   "pivot": "绳端",
+   "motion": "摇摆；部分上升离场"
+  }
+ ],
+ "colors": {
+  "magenta": "#FF4FA0",
+  "cyan": "#7FE0E8",
+  "gold": "#F7D98B",
+  "pink": "#FF6FAE"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.005,
+   "width": 0.066,
+   "depth": 0.041
+  },
+  "drawing_vs_target": {
+   "front": 1.66,
+   "side": 0.96
+  },
+  "ok": true,
+  "size": [
+   2.0,
+   1.2,
+   3.5
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

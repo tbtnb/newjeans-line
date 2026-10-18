@@ -1,0 +1,69 @@
+{
+ "id": "P18_paper_stairs",
+ "cn": "纸楼梯段",
+ "en": "Paper Stair Segment",
+ "cls": "prop",
+ "zones": [
+  "z07"
+ ],
+ "size_m": {
+  "w": 2.2,
+  "d": 1.5,
+  "h": 2
+ },
+ "size_target_m": {
+  "w": 3,
+  "d": 1.2,
+  "h": 2
+ },
+ "tris_budget": 400,
+ "lod1_tris": 120,
+ "parts": [
+  {
+   "en": "steps",
+   "cn": "台阶"
+  },
+  {
+   "en": "rail",
+   "cn": "扶手"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "整体",
+   "pivot": "—",
+   "motion": "静态"
+  }
+ ],
+ "colors": {
+  "lilac": "#E3D7FA",
+  "white": "#FFFFFF",
+  "gold": "#F7D98B"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.028,
+   "width": 0.143,
+   "depth": 0.389
+  },
+  "drawing_vs_target": {
+   "front": 0.75,
+   "side": 0.85
+  },
+  "ok": false,
+  "size": [
+   2.2,
+   1.5,
+   2
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

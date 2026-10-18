@@ -1,0 +1,74 @@
+{
+ "id": "P16_heart_flower_bed",
+ "cn": "爱心花圃",
+ "en": "Heart Flower Patch",
+ "cls": "prop",
+ "zones": [
+  "z06"
+ ],
+ "size_m": {
+  "w": 1.8,
+  "d": 1.0,
+  "h": 0.9
+ },
+ "size_target_m": {
+  "w": 2.5,
+  "d": 1.5,
+  "h": 0.9
+ },
+ "tris_budget": 800,
+ "lod1_tris": 240,
+ "parts": [
+  {
+   "en": "heart flower",
+   "cn": "爱心花"
+  },
+  {
+   "en": "stem and leaves",
+   "cn": "茎叶"
+  },
+  {
+   "en": "planter",
+   "cn": "花槽"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "花头",
+   "pivot": "茎顶",
+   "motion": "依次开放"
+  }
+ ],
+ "colors": {
+  "coral": "#FF7A6B",
+  "pink": "#FF6FAE",
+  "lavender": "#B9A6F0",
+  "mint": "#BDEBD8"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.022,
+   "width": 0.187,
+   "depth": 0.22
+  },
+  "drawing_vs_target": {
+   "front": 0.73,
+   "side": 0.52
+  },
+  "ok": true,
+  "size": [
+   1.8,
+   1.0,
+   0.9
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

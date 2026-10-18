@@ -1,0 +1,74 @@
+{
+ "id": "P23_stump_books",
+ "cn": "树桩书堆",
+ "en": "Stump with Books",
+ "cls": "prop",
+ "zones": [
+  "z09"
+ ],
+ "size_m": {
+  "w": 1.0,
+  "d": 1.0,
+  "h": 1
+ },
+ "size_target_m": {
+  "w": 1.2,
+  "d": 1.2,
+  "h": 1
+ },
+ "tris_budget": 500,
+ "lod1_tris": 150,
+ "parts": [
+  {
+   "en": "stump",
+   "cn": "树桩"
+  },
+  {
+   "en": "book stack",
+   "cn": "书堆"
+  },
+  {
+   "en": "candle",
+   "cn": "小蜡烛"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "烛光",
+   "pivot": "—",
+   "motion": "闪烁"
+  }
+ ],
+ "colors": {
+  "wood": "#C99A6B",
+  "teal": "#173A4A",
+  "cream": "#FFF3DE",
+  "lamp": "#FFC968"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.037,
+   "width": 0.038,
+   "depth": 0.014
+  },
+  "drawing_vs_target": {
+   "front": 0.86,
+   "side": 0.85
+  },
+  "ok": true,
+  "size": [
+   1.0,
+   1.0,
+   1
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

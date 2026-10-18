@@ -1,0 +1,70 @@
+{
+ "id": "P13_lily_lantern",
+ "cn": "纸睡莲灯",
+ "en": "Paper Lily Lantern",
+ "cls": "prop",
+ "zones": [
+  "z05"
+ ],
+ "size_m": {
+  "w": 1.1,
+  "d": 1.1,
+  "h": 0.8
+ },
+ "size_target_m": {
+  "w": 1.2,
+  "d": 1.2,
+  "h": 0.8
+ },
+ "tris_budget": 500,
+ "lod1_tris": 150,
+ "parts": [
+  {
+   "en": "lotus flower lantern",
+   "cn": "莲花灯"
+  },
+  {
+   "en": "lily pad",
+   "cn": "睡莲叶"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "莲花",
+   "pivot": "中心",
+   "motion": "hook 处同时亮起"
+  }
+ ],
+ "colors": {
+  "blush": "#FFC7DA",
+  "pearl": "#F3F1EA",
+  "mint": "#BDEBD8",
+  "lamp": "#FFC968"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.061,
+   "width": 0.094,
+   "depth": 0.042
+  },
+  "drawing_vs_target": {
+   "front": 0.94,
+   "side": 0.89
+  },
+  "ok": true,
+  "size": [
+   1.1,
+   1.1,
+   0.8
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

@@ -58,8 +58,15 @@ def nice(m):
     for v in (0.1, 0.2, 0.5, 1, 2, 5, 10):
         if m / v <= 6: return v
     return 10
+def measure(path):
+    vim = Image.open(path).convert('RGB'); bs = [bbox(m) for _, m in comps3(vim)]
+    if None in bs or len(bs) < 3: return 9
+    (fx0, fy0, fx1, fy1), (sx0, sy0, sx1, sy1), (tx0, ty0, tx1, ty1) = bs; hf, hs, wf, wt, ws, ht = fy1 - fy0, sy1 - sy0, fx1 - fx0, tx1 - tx0, sx1 - sx0, ty1 - ty0
+    return max(abs(hf - hs) / max(hf, hs), abs(wf - wt) / max(wf, wt), abs(ws - ht) / max(ws, ht))
 def views(a, d, img, X, Y, W, Hh, fs=20):
-    vim = Image.open(d / 'views.jpg').convert('RGB'); tw = vim.width // 3
+    cand = [p for p in (d / 'views.jpg', d / 'views2.jpg') if p.exists()]; best = min(cand, key=measure)
+    if best.name == 'views2.jpg': Image.open(best).save(d / 'views-final.jpg', quality=90)
+    vim = Image.open(best).convert('RGB'); tw = vim.width // 3
     crops, boxes = [], []
     for c, m in comps3(vim):
         b = bbox(m); crops.append((c, m)); boxes.append(b)

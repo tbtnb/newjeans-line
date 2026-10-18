@@ -1,0 +1,64 @@
+{
+ "id": "G2_ground_stones",
+ "cn": "地被·石头与碎片",
+ "tris_range": [
+  8,
+  120
+ ],
+ "items": [
+  {
+   "en": "round pebble",
+   "cn": "卵石",
+   "size_m": 0.3,
+   "tris": 40
+  },
+  {
+   "en": "flat stepping stone",
+   "cn": "踏石",
+   "size_m": 0.6,
+   "tris": 30
+  },
+  {
+   "en": "mossy stone",
+   "cn": "苔石",
+   "size_m": 0.5,
+   "tris": 80
+  },
+  {
+   "en": "shore rock",
+   "cn": "岸石",
+   "size_m": 1.0,
+   "tris": 120
+  },
+  {
+   "en": "paper scrap",
+   "cn": "纸屑",
+   "size_m": 0.2,
+   "tris": 8
+  },
+  {
+   "en": "star floor decal",
+   "cn": "星点地贴",
+   "size_m": 0.4,
+   "tris": 8
+  },
+  {
+   "en": "gold foil flake",
+   "cn": "金箔片",
+   "size_m": 0.15,
+   "tris": 8
+  },
+  {
+   "en": "paper wave ripple",
+   "cn": "纸波纹片",
+   "size_m": 1.0,
+   "tris": 24
+  }
+ ],
+ "files": [
+  "sheet.jpg",
+  "kit.jpg",
+  "front.jpg",
+  "top.jpg"
+ ]
+}

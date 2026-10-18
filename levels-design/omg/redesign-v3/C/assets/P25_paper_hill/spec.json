@@ -1,0 +1,70 @@
+{
+ "id": "P25_paper_hill",
+ "cn": "纸山片",
+ "en": "Paper Hill Piece",
+ "cls": "prop",
+ "zones": [
+  "z01",
+  "z10"
+ ],
+ "size_m": {
+  "w": 5.2,
+  "d": 2.8,
+  "h": 2.5
+ },
+ "size_target_m": {
+  "w": 6,
+  "d": 3,
+  "h": 2.5
+ },
+ "tris_budget": 400,
+ "lod1_tris": 120,
+ "parts": [
+  {
+   "en": "faceted hill",
+   "cn": "多面山体"
+  },
+  {
+   "en": "fold line",
+   "cn": "折线"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "整体",
+   "pivot": "底边",
+   "motion": "翻页时立起"
+  }
+ ],
+ "colors": {
+  "mint": "#BDEBD8",
+  "green": "#6CCB5F",
+  "pearl": "#F3F1EA"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.062,
+   "width": 0.135,
+   "depth": 0.189
+  },
+  "drawing_vs_target": {
+   "front": 0.86,
+   "side": 0.8
+  },
+  "ok": true,
+  "size": [
+   5.2,
+   2.8,
+   2.5
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

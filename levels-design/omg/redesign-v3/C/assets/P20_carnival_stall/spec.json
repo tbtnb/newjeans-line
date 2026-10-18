@@ -1,0 +1,79 @@
+{
+ "id": "P20_carnival_stall",
+ "cn": "嘉年华小摊",
+ "en": "Carnival Stall",
+ "cls": "prop",
+ "zones": [
+  "z08"
+ ],
+ "size_m": {
+  "w": 2.6,
+  "d": 1.5,
+  "h": 3.2
+ },
+ "size_target_m": {
+  "w": 3,
+  "d": 2,
+  "h": 3.2
+ },
+ "tris_budget": 1500,
+ "lod1_tris": 450,
+ "parts": [
+  {
+   "en": "striped awning",
+   "cn": "条纹遮棚"
+  },
+  {
+   "en": "counter with jars",
+   "cn": "柜台+糖罐"
+  },
+  {
+   "en": "heart sign",
+   "cn": "爱心招牌"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "灯串",
+   "pivot": "—",
+   "motion": "随拍闪"
+  },
+  {
+   "part": "招牌",
+   "pivot": "—",
+   "motion": "脉冲"
+  }
+ ],
+ "colors": {
+  "magenta": "#FF4FA0",
+  "gold": "#F7D98B",
+  "cream": "#FFF3DE",
+  "cyan": "#7FE0E8"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.006,
+   "width": 0.041,
+   "depth": 0.127
+  },
+  "drawing_vs_target": {
+   "front": 0.87,
+   "side": 0.7
+  },
+  "ok": true,
+  "size": [
+   2.6,
+   1.5,
+   3.2
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

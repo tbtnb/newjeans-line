@@ -1,0 +1,58 @@
+{
+ "id": "G4_road_kit",
+ "cn": "路面套件",
+ "tris_range": [
+  12,
+  200
+ ],
+ "items": [
+  {
+   "en": "cream paper road straight tile",
+   "cn": "纸带直路块",
+   "size_m": 2.2,
+   "tris": 12
+  },
+  {
+   "en": "road corner tile",
+   "cn": "纸带转角块",
+   "size_m": 2.2,
+   "tris": 20
+  },
+  {
+   "en": "gold-foil edge trim",
+   "cn": "金箔包边",
+   "size_m": 2.2,
+   "tris": 16
+  },
+  {
+   "en": "plank bridge tile",
+   "cn": "纸木板桥块",
+   "size_m": 2.2,
+   "tris": 120
+  },
+  {
+   "en": "floating cardboard bridge tile",
+   "cn": "浮桥块",
+   "size_m": 2.2,
+   "tris": 80
+  },
+  {
+   "en": "page-strip road tile",
+   "cn": "书页条路块",
+   "size_m": 2.2,
+   "tris": 40
+  },
+  {
+   "en": "carnival glowing edge",
+   "cn": "嘉年华亮边",
+   "size_m": 2.2,
+   "tris": 24
+  }
+ ],
+ "files": [
+  "sheet.jpg",
+  "kit.jpg",
+  "front.jpg",
+  "top.jpg"
+ ]
+}

@@ -1,0 +1,73 @@
+{
+ "id": "P17_star_mobile",
+ "cn": "星星风铃",
+ "en": "Star Mobile",
+ "cls": "prop",
+ "zones": [
+  "z07"
+ ],
+ "size_m": {
+  "w": 1.7,
+  "d": 1.2,
+  "h": 2.5
+ },
+ "size_target_m": {
+  "w": 1.5,
+  "d": 1.5,
+  "h": 2.5
+ },
+ "tris_budget": 600,
+ "lod1_tris": 180,
+ "parts": [
+  {
+   "en": "bunny-ear hanger",
+   "cn": "兔耳挂架"
+  },
+  {
+   "en": "paper star",
+   "cn": "纸星"
+  },
+  {
+   "en": "small crescent",
+   "cn": "小弯月"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "星星",
+   "pivot": "各吊线",
+   "motion": "随拍闪+轻转"
+  }
+ ],
+ "colors": {
+  "gold": "#F7D98B",
+  "lilac": "#E3D7FA",
+  "cream": "#FFF3DE"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.034,
+   "width": 0.072,
+   "depth": 0.347
+  },
+  "drawing_vs_target": {
+   "front": 1.1,
+   "side": 0.58
+  },
+  "ok": false,
+  "size": [
+   1.7,
+   1.2,
+   2.5
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

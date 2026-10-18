@@ -1,0 +1,79 @@
+{
+ "id": "P15_phone_cord_arch",
+ "cn": "电话线藤蔓拱门",
+ "en": "Phone-Cord Vine Arch",
+ "cls": "prop",
+ "zones": [
+  "z06"
+ ],
+ "size_m": {
+  "w": 3.6,
+  "d": 0.6,
+  "h": 3.5
+ },
+ "size_target_m": {
+  "w": 4,
+  "d": 0.6,
+  "h": 3.5
+ },
+ "tris_budget": 1200,
+ "lod1_tris": 360,
+ "parts": [
+  {
+   "en": "coiled cord",
+   "cn": "螺旋电话线"
+  },
+  {
+   "en": "heart flower",
+   "cn": "爱心花"
+  },
+  {
+   "en": "leaf",
+   "cn": "叶片"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "藤蔓",
+   "pivot": "两脚",
+   "motion": "长音时摇摆"
+  },
+  {
+   "part": "花",
+   "pivot": "—",
+   "motion": "依次开放"
+  }
+ ],
+ "colors": {
+  "pink": "#FF6FAE",
+  "mint": "#BDEBD8",
+  "coral": "#FF7A6B",
+  "cream": "#FFF3DE"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.003,
+   "width": 0.245,
+   "depth": 0.111
+  },
+  "drawing_vs_target": {
+   "front": 0.89,
+   "side": 0.96
+  },
+  "ok": true,
+  "size": [
+   3.6,
+   0.6,
+   3.5
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

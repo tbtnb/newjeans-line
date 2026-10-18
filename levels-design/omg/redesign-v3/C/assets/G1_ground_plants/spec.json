@@ -1,0 +1,64 @@
+{
+ "id": "G1_ground_plants",
+ "cn": "地被·植物",
+ "tris_range": [
+  50,
+  200
+ ],
+ "items": [
+  {
+   "en": "paper grass tuft",
+   "cn": "纸草丛",
+   "size_m": 0.4,
+   "tris": 60
+  },
+  {
+   "en": "5-petal paper flower",
+   "cn": "五瓣小纸花",
+   "size_m": 0.3,
+   "tris": 80
+  },
+  {
+   "en": "single tulip",
+   "cn": "单支郁金香",
+   "size_m": 0.4,
+   "tris": 90
+  },
+  {
+   "en": "heart flower",
+   "cn": "爱心小花",
+   "size_m": 0.35,
+   "tris": 90
+  },
+  {
+   "en": "tiny mushroom",
+   "cn": "小蘑菇",
+   "size_m": 0.3,
+   "tris": 70
+  },
+  {
+   "en": "clover patch",
+   "cn": "三叶草片",
+   "size_m": 0.4,
+   "tris": 60
+  },
+  {
+   "en": "reed tuft",
+   "cn": "芦苇丛",
+   "size_m": 0.8,
+   "tris": 120
+  },
+  {
+   "en": "fern",
+   "cn": "折纸蕨",
+   "size_m": 0.6,
+   "tris": 120
+  }
+ ],
+ "files": [
+  "sheet.jpg",
+  "kit.jpg",
+  "front.jpg",
+  "top.jpg"
+ ]
+}

@@ -1,0 +1,64 @@
+{
+ "id": "G3_sky_small_anim",
+ "cn": "天空与小动画",
+ "tris_range": [
+  2,
+  120
+ ],
+ "items": [
+  {
+   "en": "hanging paper star",
+   "cn": "吊线星星",
+   "size_m": 0.8,
+   "tris": 40
+  },
+  {
+   "en": "big paper star",
+   "cn": "大纸星",
+   "size_m": 1.2,
+   "tris": 60
+  },
+  {
+   "en": "small cloud puff",
+   "cn": "小云朵",
+   "size_m": 1.5,
+   "tris": 80
+  },
+  {
+   "en": "petal",
+   "cn": "花瓣",
+   "size_m": 0.1,
+   "tris": 2
+  },
+  {
+   "en": "paper butterfly",
+   "cn": "纸蝴蝶",
+   "size_m": 0.2,
+   "tris": 8
+  },
+  {
+   "en": "firefly",
+   "cn": "萤火虫",
+   "size_m": 0.05,
+   "tris": 2
+  },
+  {
+   "en": "page bird",
+   "cn": "书页飞鸟",
+   "size_m": 0.4,
+   "tris": 16
+  },
+  {
+   "en": "confetti (heart/star/strip)",
+   "cn": "彩纸(心/星/条)",
+   "size_m": 0.08,
+   "tris": 2
+  }
+ ],
+ "files": [
+  "sheet.jpg",
+  "kit.jpg",
+  "front.jpg",
+  "top.jpg"
+ ]
+}

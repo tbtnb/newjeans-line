@@ -49,21 +49,21 @@
 | P10 | 纸灯笼串 | z04,z10 | 6×0.5×2 | 900 | 灯笼@挂点:轻摆；随拍明暗 | pink gold lavender lamp | ⚠ 29% | [sheet](P10_lantern_string/sheet.jpg) |
 | P11 | 爱心纸雕 | z04,z08 | 1.5×0.6×1.6 | 500 | 爱心@中心:'Oh my god' 时弹出放大 | pink gold cream | ✓ 18% | [sheet](P11_heart_sculpture/sheet.jpg) |
 | P12 | 纸礼盒 | z04,z08 | 0.8×0.8×0.8 | 300 | 盒盖@后边铰接:drop 时弹开 | lavender pink gold | ✓ 7% | [sheet](P12_gift_box/sheet.jpg) |
-| P13 | 纸睡莲灯 | z05 | 1.2×1.2×0.8 | 500 | 莲花@中心:hook 处同时亮起 | blush pearl mint lamp | — | [sheet](P13_lily_lantern/sheet.jpg) |
-| P14 | 吊线弯月 | z05,z03,z07 | 3×0.4×4 | 600 | 整体@吊线顶:慢摆 ±6° | gold moon cream | — | [sheet](P14_crescent_moon/sheet.jpg) |
-| P15 | 电话线藤蔓拱门 | z06 | 4×0.6×3.5 | 1,200 | 藤蔓@两脚:长音时摇摆；花@—:依次开放 | pink mint coral cream | — | [sheet](P15_phone_cord_arch/sheet.jpg) |
-| P16 | 爱心花圃 | z06 | 2.5×1.5×0.9 | 800 | 花头@茎顶:依次开放 | coral pink lavender mint | — | [sheet](P16_heart_flower_bed/sheet.jpg) |
-| P17 | 星星风铃 | z07 | 1.5×1.5×2.5 | 600 | 星星@各吊线:随拍闪+轻转 | gold lilac cream | — | [sheet](P17_star_mobile/sheet.jpg) |
-| P18 | 纸楼梯段 | z07 | 3×1.2×2 | 400 | 整体@—:静态 | lilac white gold | — | [sheet](P18_paper_stairs/sheet.jpg) |
-| P19 | 气球束 | z08,z10 | 1.2×1.2×3.5 | 500 | 气球@绳端:摇摆；部分上升离场 | magenta cyan gold pink | — | [sheet](P19_balloon_bunch/sheet.jpg) |
-| P20 | 嘉年华小摊 | z08 | 3×2×3.2 | 1,500 | 灯串@—:随拍闪；招牌@—:脉冲 | magenta gold cream cyan | — | [sheet](P20_carnival_stall/sheet.jpg) |
-| P21 | 三角旗串 | z08,z02 | 5×0.2×1 | 300 | 旗@挂绳:随拍摆动 | magenta gold cyan | — | [sheet](P21_flag_string/sheet.jpg) |
-| P22 | 萤火纸灯 | z09 | 0.6×0.6×1.4 | 200 | 灯@茎顶:随拍明灭 | lamp gold teal | — | [sheet](P22_firefly_lantern/sheet.jpg) |
-| P23 | 树桩书堆 | z09 | 1.2×1.2×1 | 500 | 烛光@—:闪烁 | wood teal cream lamp | — | [sheet](P23_stump_books/sheet.jpg) |
-| P24 | 纸云 | z01,z02,z06,z10 | 4×1.5×2 | 300 | 整体@中心:缓慢漂移 | white pearl fog | — | [sheet](P24_paper_cloud/sheet.jpg) |
-| P25 | 纸山片 | z01,z10 | 6×3×2.5 | 400 | 整体@底边:翻页时立起 | mint green pearl | — | [sheet](P25_paper_hill/sheet.jpg) |
-| P26 | 书页墙 | z09,z10 | 8×1×5 | 800 | 书页@底边:149.3s 两侧合拢 | cream gold navy | — | [sheet](P26_page_wall/sheet.jpg) |
-| P27 | 纸蘑菇组 | z02,z09,z01 | 1×1×0.8 | 300 | 伞盖@菌柄顶:每拍轻跳 | coral teal cream | — | [sheet](P27_mushroom_small/sheet.jpg) |
+| P13 | 纸睡莲灯 | z05 | 1.2×1.2×0.8 | 500 | 莲花@中心:hook 处同时亮起 | blush pearl mint lamp | ✓ 9% | [sheet](P13_lily_lantern/sheet.jpg) |
+| P14 | 吊线弯月 | z05,z03,z07 | 3×0.4×4 | 600 | 整体@吊线顶:慢摆 ±6° | gold moon cream | ⚠ 54% | [sheet](P14_crescent_moon/sheet.jpg) |
+| P15 | 电话线藤蔓拱门 | z06 | 4×0.6×3.5 | 1,200 | 藤蔓@两脚:长音时摇摆；花@—:依次开放 | pink mint coral cream | ✓ 24% | [sheet](P15_phone_cord_arch/sheet.jpg) |
+| P16 | 爱心花圃 | z06 | 2.5×1.5×0.9 | 800 | 花头@茎顶:依次开放 | coral pink lavender mint | ✓ 22% | [sheet](P16_heart_flower_bed/sheet.jpg) |
+| P17 | 星星风铃 | z07 | 1.5×1.5×2.5 | 600 | 星星@各吊线:随拍闪+轻转 | gold lilac cream | ⚠ 35% | [sheet](P17_star_mobile/sheet.jpg) |
+| P18 | 纸楼梯段 | z07 | 3×1.2×2 | 400 | 整体@—:静态 | lilac white gold | ⚠ 39% | [sheet](P18_paper_stairs/sheet.jpg) |
+| P19 | 气球束 | z08,z10 | 1.2×1.2×3.5 | 500 | 气球@绳端:摇摆；部分上升离场 | magenta cyan gold pink | ✓ 7% | [sheet](P19_balloon_bunch/sheet.jpg) |
+| P20 | 嘉年华小摊 | z08 | 3×2×3.2 | 1,500 | 灯串@—:随拍闪；招牌@—:脉冲 | magenta gold cream cyan | ✓ 13% | [sheet](P20_carnival_stall/sheet.jpg) |
+| P21 | 三角旗串 | z08,z02 | 5×0.2×1 | 300 | 旗@挂绳:随拍摆动 | magenta gold cyan | ⚠ 92% | [sheet](P21_flag_string/sheet.jpg) |
+| P22 | 萤火纸灯 | z09 | 0.6×0.6×1.4 | 200 | 灯@茎顶:随拍明灭 | lamp gold teal | ✓ 12% | [sheet](P22_firefly_lantern/sheet.jpg) |
+| P23 | 树桩书堆 | z09 | 1.2×1.2×1 | 500 | 烛光@—:闪烁 | wood teal cream lamp | ✓ 4% | [sheet](P23_stump_books/sheet.jpg) |
+| P24 | 纸云 | z01,z02,z06,z10 | 4×1.5×2 | 300 | 整体@中心:缓慢漂移 | white pearl fog | ⚠ 28% | [sheet](P24_paper_cloud/sheet.jpg) |
+| P25 | 纸山片 | z01,z10 | 6×3×2.5 | 400 | 整体@底边:翻页时立起 | mint green pearl | ✓ 19% | [sheet](P25_paper_hill/sheet.jpg) |
+| P26 | 书页墙 | z09,z10 | 8×1×5 | 800 | 书页@底边:149.3s 两侧合拢 | cream gold navy | ✓ 20% | [sheet](P26_page_wall/sheet.jpg) |
+| P27 | 纸蘑菇组 | z02,z09,z01 | 1×1×0.8 | 300 | 伞盖@菌柄顶:每拍轻跳 | coral teal cream | ✓ 15% | [sheet](P27_mushroom_small/sheet.jpg) |
 
 ## 地被 / 小件 / 路面套件（共享设计稿）
 
