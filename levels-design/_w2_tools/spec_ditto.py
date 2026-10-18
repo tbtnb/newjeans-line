@@ -213,3 +213,48 @@ def layout(c):
                 collectibleColors=dict(diamond='#87CBCD',crown='#D9B56B'))
 
 CROWN_T=lambda bar: [bar(33),bar(70)]
+
+# ---- v3 route choreography (2026-10-18 "routes too simple"). Overrides MOTIFS/PIVOTS/ELEV above.
+_b=lambda n: 0.311+n*1.791045
+ELEV=[dict(t0=_b(24.1),t1=_b(30.8),type='ramp',dy=3),        # Post 1: staggered folds climb to the roof (+3)
+      dict(t=_b(31),type='fall',dy=-7),                      # Break: drop into the fog gap, snow island (-4)
+      dict(t0=_b(40),t1=_b(47.8),type='ramp',dy=6),          # Verse 2: long-U window walls climb to the rooftop (+2)
+      dict(t0=_b(56.2),t1=_b(60),type='ramp',dy=4),          # Post 2: bridge B1 climbs (+6) over Chorus 1
+      dict(t=_b(64),type='fall',dy=-4),                      # Bridge (+2)
+      dict(t0=_b(66),t1=_b(68.5),type='ramp',dy=-8),         # Bridge: spiral DOWN around the deer island (-6)
+      dict(t0=_b(72.1),t1=_b(78.8),type='ramp',dy=4),        # Pre: climb back (-2)
+      dict(t=_b(79),type='jump',dy=4),                       # Final chorus: jump onto the memory courtyard (+2)
+      dict(t=_b(88),type='jump',dy=3),                       # Final post: courtyard rim (+5)
+      dict(t=_b(96),type='fall',dy=-5)]                      # Fade: back to 0
+A=lambda w=0.6,**k: dict(w_aim=w,**k)
+ROUTE=[(0,'free',0,A(1.0)),(_b(4),'free',270,A(1.0)),                                   # Intro: long legs out of the cassette box
+       (_b(8),'switch',90,A(0.25,thr=0.5)),(_b(12),'meander',180,A(0.35)),              # Verse 1: corridor U around the classrooms
+       (_b(16),'stair',45,A()),(_b(18),'stair',315,A()),(_b(20),'stair',45,A()),(_b(22),'stair',315,A()),   # Chorus 1: Baltimore zigzag of stairs
+       (_b(24),'switch',270,A(0.3,thr=0.4)),                                             # Post 1: staggered short folds up the roof ramp
+       (_b(31),'free',180,A(1.0)),                                                       # Break: long legs on the snow island
+       (_b(36),'meander',90,A(0.4)),
+       (_b(40),'switch',0,A(0.3,thr=0.45)),                                              # Verse 2: long switchbacks along the window wall
+       (_b(48),'stair',90,A()),(_b(50),'stair',180,A()),(_b(52),'stair',270,A()),(_b(54),'stair',0,A()),     # Chorus 2: staircase ring round the empty chairs
+       (_b(56),'free',225,A(1.2,cross=1.5)),(_b(60),'stair',225,A(0.6,cross=1.5)),      # Post 2: bridge B1 sweeps over Chorus 1
+       (_b(64),'switch',135,A(0.3,thr=0.45)),(_b(66),'spiral',None,A(0,hand='L',w_motif=2.5)),(_b(68.5),'stair',90,A()),   # Bridge: spiral down round the deer
+       (_b(72),'free',270,A(1.0)),                                                       # Pre: long viewfinder legs (E1 screen)
+       (_b(79),'switch',0,A(0.3,thr=0.3,cross=1.0)),(_b(83),'stair',300,A(0.6,cross=1.5)),   # Final chorus: unequal return folds, over the break
+       (_b(88),'meander',60,A(0.4,cross=1.0)),(_b(92),'stair',150,A(0.6,cross=1.5)),
+       (_b(96),'free',270,A(1.0))]                                                       # Fade/outro: long straight-ish west to the end box
+FORKS=[_b(10.5),_b(26.3),_b(42.5),_b(61.2),_b(74.6),_b(90.4),_b(97.5)]
+BUILDINGS=[dict(id='classrooms',t0=_b(8.2),t1=_b(11.8),color='#E4E8E3',h=3.0),     # Verse 1 switchbacks wind through the cut-away classroom block
+           dict(id='rooftop_hut',t0=_b(48.3),t1=_b(49.9),color='#F2F0E7',h=2.6)]
+ART={'backdrop':'art/sky.jpg','ground':{'src':'art/ground-snow.jpg','scale':30},
+     'files':{'art/sky.jpg':'misty grey-green winter sky, falling snow specks, far pine silhouettes, warm window glow (backdrop)',
+              'art/ground-snow.jpg':'chalk-white snow grain tile (ground)',
+              'art/cassette-label.jpg':'cassette label: coral/green stripes, reels, no text (texture on the cassette start/end boxes)',
+              'art/camcorder-screen.jpg':'flip-screen image: rooftop with SIX chairs, scanlines, REC dot (egg E1 screen)',
+              'art/deer-decal.png':'grey-green deer silhouette sticker, transparent (snow island)',
+              'art/halftone-bunny-relief.jpg':'halftone bunny relief (OMG cover motif) for the final-chorus wall'}}
+def more_objects(c):
+    bar=c['bar']
+    return [dict(id='cassette_label_start',t=1.0,side=-6,y=0.1,kind='image',src='art/cassette-label.jpg',size=[6,0,3.75],mode='flat'),
+            dict(id='cam_screen_e1',t=bar(75),side=-8,y=2.5,kind='image',src='art/camcorder-screen.jpg',size=[6.4,0,4],mode='upright',egg=True,
+                 name='E1 camcorder screen: the rooftop with a sixth chair',appear=dict(t=bar(74),mode='unfold',dur=0.6)),
+            dict(id='deer_sticker',t=bar(33),side=9,y=0,kind='image',src='art/deer-decal.png',size=[5,0,5],mode='billboard',alpha=True,appear=dict(t=bar(31)+0.5,mode='fade',dur=1.0)),
+            dict(id='bunny_relief',t=bar(82),side=-11,y=0,kind='image',src='art/halftone-bunny-relief.jpg',size=[7,0,7],mode='upright',appear=dict(t=bar(79),mode='rise',dur=1.0))]

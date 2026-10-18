@@ -5,7 +5,7 @@
 - Min gap 222 ms (design floor = one 8th note = 224 ms; snapped taps never closer than road-geometry floor). Median gap 339 ms.
 - **Fastest run: 7 consecutive taps at 8th-note spacing (224 ms ≈ 4.5 taps/s) from 41.266 s to 42.624 s.**
 - 8th-note runs ≥6 taps: 6; ≥8 taps: 0. Longest 5: 7@41.3s, 6@35.9s, 6@98.6s, 6@141.3s, 6@146.9s
-- Recommended judgment window: perfect ±60 ms, accept ±110 ms. ±110 ms accept around the geometric corner; 8th runs are 224 ms apart so neighbouring windows never overlap (gap ≥ 2×110 ms is respected). Suggest the engine accept early taps only after the previous corner has been passed.
+- Judgment window (engine rule v2.4: clamp(0.45 x min neighbour gap, 65, 110) ms each side, PERFECT ±40 ms): min ±100 ms, median ±106 ms, 211 of 406 taps below the ±110 ms cap. My recommendation stays perfect ±60 / accept ±110 ms where the music allows; the engine rule is what ships.
 - Snapping: 360/406 taps sit on a detected onset of their tagged stem (±45 ms search, attack refined on 2 ms RMS); the rest sit on the fitted grid (where the onset was ambiguous or snapping would have broken the geometry floor).
 
 ## Per-section density
