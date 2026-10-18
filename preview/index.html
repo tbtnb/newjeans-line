@@ -8,8 +8,8 @@
 <meta name="description" content="让音乐带路。16 首 NewJeans 歌曲的一触转向节奏旅程。"/>
 <title>跳舞的线 · NewJeans</title>
 <link rel="icon" type="image/svg+xml" href="./icon.svg"/>
-  <script type="module" crossorigin src="./assets/index-CSHHnqPe.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-7G0fyBju.css">
+  <script type="module" crossorigin src="./assets/index-BKAGDvVG.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DxRXSPvh.css">
 </head>
 <body>
 <div id="sky"></div>
@@ -24,6 +24,7 @@
     <header class="topbar">
       <div class="brand"><span class="brand-line"></span>跳舞的线<span class="brand-sub">NewJeans</span></div>
       <div class="top-actions">
+        <button class="icon-btn" id="btn-skins" aria-label="线条皮肤"><svg viewBox="0 0 24 24"><path d="M4 18h6v-6h6V6h4"/><rect x="17.5" y="3.5" width="5" height="5" rx="1" fill="currentColor" stroke="none"/></svg></button>
         <button class="icon-btn" id="btn-library" aria-label="曲库"><svg viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h10"/></svg></button>
         <button class="icon-btn" id="btn-settings" aria-label="设置"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v3M12 18.2v3M2.8 12h3M18.2 12h3M5.5 5.5l2.1 2.1M16.4 16.4l2.1 2.1M5.5 18.5l2.1-2.1M16.4 7.6l2.1-2.1"/></svg></button>
       </div>
@@ -111,9 +112,19 @@
       <label class="set-row"><span>音画延迟 <small id="set-offset-val">0 ms</small></span><input type="range" id="set-offset" min="-200" max="200" step="5"/></label>
       <div class="set-row"><span>延迟校准<small>跟着节拍轻点 8 次</small></span><button class="pill-btn small" id="btn-calibrate">开始</button></div>
       <div class="set-row"><span>画质</span><div class="seg" id="set-quality"><button data-v="high">高</button><button data-v="low">流畅</button></div></div>
+      <div class="set-row"><span>线条皮肤<small id="set-skin-name">经典</small></span><button class="pill-btn small" id="btn-open-skins">更换</button></div>
       <label class="set-row"><span>震动反馈<small>仅支持的设备</small></span><input type="checkbox" id="set-vibration"/></label>
       <div class="set-row"><span>存档</span><div class="row-btns"><button class="pill-btn small" id="btn-export">导出</button><label class="pill-btn small">导入<input type="file" id="file-import" accept="application/json,.json" hidden/></label></div></div>
       <p class="set-note" id="set-note">进度保存在本浏览器中。</p>
+    </div>
+  </section>
+
+  <!-- line skins -->
+  <section id="skins" class="screen sheet">
+    <div class="sheet-head"><h2>线条皮肤</h2><button class="icon-btn" id="btn-close-skins" aria-label="关闭"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+    <div class="skin-body">
+      <div class="skin-preview"><canvas id="skin-canvas" aria-label="皮肤预览"></canvas><div class="skin-info"><b id="skin-name">经典</b><span id="skin-desc"></span></div></div>
+      <ul class="skin-grid" id="skin-grid"></ul>
     </div>
   </section>
 
