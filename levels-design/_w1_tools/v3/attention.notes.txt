@@ -1,0 +1,1 @@
+Attention 104.99 BPM (beat 0.5715 s). 285 taps (legacy 139). Each section follows one audible layer (see chart-report.md); repeated phrases share one tap pattern; 3 16th burst tap(s) only on fills clearly audible in the full mix; min gap 0.142 s, honest peak 423 CPM, avg 96 CPM (total) / 202 (wiki-style). Engine judgment window ±64..±110 ms.

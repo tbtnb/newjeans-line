@@ -1486,7 +1486,7 @@
    "kind": "outro"
   }
  ],
- "notes": "Attention 105 BPM (beat 0.5714 s, downbeat 0.464 s). 285 taps (legacy 139, 2.05x). Taps on measured accents: vocal syllables (demucs stem, -25.03 ms corrected), kick/snare/bass in hook and choruses; dotted vocal pickups are the motif. 8 two-tap 16th bursts (gap 0.151 s, i.e. 397 CPM) on real hi-hat/snare 16ths in fills and the final chorus (16th = 0.143 s at 105 BPM is below the 0.15 s schema floor, so these taps are nudged <= 9 ms). Engine judgment window \u00b168 ms in bursts, \u00b1110 ms elsewhere.",
+ "notes": "Attention 104.99 BPM (beat 0.5715 s). 285 taps (legacy 139). Each section follows one audible layer (see chart-report.md); repeated phrases share one tap pattern; 3 16th burst tap(s) only on fills clearly audible in the full mix; min gap 0.142 s, honest peak 423 CPM, avg 96 CPM (total) / 202 (wiki-style). Engine judgment window \u00b164..\u00b1110 ms.",
  "meta": {
   "bpm": 104.99,
   "bursts16": [

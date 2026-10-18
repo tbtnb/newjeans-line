@@ -22,7 +22,7 @@ sections = [
  {'t': 115.452, 'label': 'Pre-chorus 2', 'note': 'Fall -5 into the phone patio: a tight 2-tap zigzag corridor between phone screens (road 1.7); E1 flip phone.', 'palette': {'fogEnd': 85, 'skyTop': '#A9CBE8'}},
  {'t': 125.052, 'label': 'Build 2', 'note': 'Jump +3 onto the bridge deck B2, sparse build taps.'},
  {'t': 129.852, 'label': 'Chorus 2', 'note': 'One long sweeping NE staircase over the whole map (ramp +3) - the longest diagonal of the level.', 'palette': {'skyTop': '#B9B8EE', 'ground': P['lilac']}, 'backdrop': 'art/sky-lilac.jpg'},
- {'t': 149.052, 'label': 'Final chorus', 'note': 'Spiral staircase: five diagonal legs rotating around the five-colour pillar ring while climbing +6, crossing over its own start; 16th pairs on the hat fills.', 'palette': {'skyTop': '#C8C3F0', 'skyBottom': '#F5F2FB'}},
+ {'t': 149.052, 'label': 'Final chorus', 'note': 'Spiral staircase: five diagonal legs rotating around the five-colour pillar ring while climbing +6, crossing over its own start.', 'palette': {'skyTop': '#C8C3F0', 'skyBottom': '#F5F2FB'}},
  {'t': 170.652, 'label': 'Outro', 'note': 'Calm straight to the finish deck, little white bunny echo.', 'palette': {'skyTop': '#AFC9EE'}},
 ]
 camera = [{'t': 0, 'preset': 'iso', 'dist': 18, 'blend': 0}, {'t': 19.452, 'preset': 'high', 'dist': 18, 'blend': 1.5},
@@ -77,6 +77,4 @@ def features(ctx):
     return objs, evs, cams
 def events(old):
     return [e for e in old if e.get('target') not in ('b2-deck-piers', 'dance-pillar-0', 'sports-court')] + [{'t': 91.452, 'type': 'raise', 'target': 'sports-court', 'dur': 1.0}]
-chart_notes = ('Hype Boy 100 BPM (beat 0.600 s, downbeat 0.252 s). 308 taps (legacy 140, 2.2x). Moombah/dembow kick-snare (3+3+2) syncopation drives verse and chorus taps; '
-               'vocal call-and-response in pre-choruses; 13 short 16th bursts (gap 0.151 s = 397 CPM) on real hi-hat/snare 16ths at fills, builds and the final chorus. '
-               'Engine judgment window ±68 ms in bursts, ±110 ms elsewhere.')
+chart_notes = open('/workspace/nj-w1-work/v3/hype-boy.notes.txt').read()

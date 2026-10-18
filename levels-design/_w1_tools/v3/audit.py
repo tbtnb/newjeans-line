@@ -21,7 +21,7 @@ GROUPS = {
  'cookie': [['Verse 1', 'Verse 2'], ['Pre-chorus 1', 'Pre-chorus 2'], ['Chorus 1', 'Chorus 2', 'Final chorus']],
  'hurt': [['Verse 1', 'Verse 2'], ['Pre-chorus 1', 'Pre-chorus 2'], ['Chorus 1', 'Chorus 2', 'Final chorus']],
 }[s]
-c = json.load(open(f'/workspace/newjeans-line-designs/{s}/chart.json'))
+c = json.load(open(f'/workspace/nj-w1-work/v3/{s}.preaudit.chart.json'))  # frozen pre-audit chart (designs-w1 @1af78ad)
 taps = [dict(t=x['t'], tag=x['tag']) for x in c['taps']]
 a, E = load(s); P = a['beat_period']; ph = a['grid_phase']; dur = a['duration']
 env = np.load(f'{s}.env.npz'); n = len(E['mix'])

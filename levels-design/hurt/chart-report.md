@@ -1,68 +1,54 @@
-# Hurt — chart report
+# Hurt - chart report (designs-w1, v3, rhythm-logic audit)
 
-- Audio: `public/audio/hurt.mp3` (full track, 175.01 s, untouched). Times = seconds from first decoded sample.
-- Tempo grid measured from the audio: **90.00 BPM**, beat 0.6667 s, downbeat phase 0.260 s (constant-tempo fit maximising onset strength).
-- **Old taps: 64** (shipped `src/levels.json`; `reports/rhythm-chart-baseline.json` had 80). **New taps: 144** = **2.25x**.
-- Speed 7.5 u/s, road width 2.2 → narrowest 2.0.
-- Min gap **0.316 s**, median gap 1.000 s, mean density 0.82 taps/s.
-- Fastest consecutive run (8th notes, every gap ≤ 0.367 s): **4 taps**, 88.259–89.269 s (mean interval 0.337 s).
-- Validator definition (gaps ≤ 0.30 s): longest run 1 taps from 1.927 s.
-- Longest unbroken run at ≤ 1 beat spacing (≤ 0.733 s): 5 taps from 108.261 s.
-- Peak 2-second density: **2.5 taps/s** at 139.25 s.
-- Recommended judgment window: **±100 ms** (perfect ±35 ms). Must stay < half the min gap (158 ms) so a tap never resolves to the neighbouring turn; ±100 ms ≈ the old engine's ±100 ms but tighter for the dense songs. Needs confirmation with real touch latency (not yet tested on devices).
-- Hard floor respected: no gap < 0.15 s. Humanly-playable minimum used here: 0.316 s.
+- Audio: `public/audio/hurt.mp3`, full track 175.01 s, untouched. Tempo grid measured from audio: **90.00 BPM**, beat 0.6667 s, downbeat phase 0.260 s. htdemucs stem envelopes shifted -25.03 ms before use.
+- **Taps: legacy 64 -> previous designs-w1 chart 144 -> now 118** (1.84x legacy). Difficulty tier: moderate (ballad).
+- Audit vs the override rules: 15 off-layer / faint taps removed, 13 one-off taps dropped and 2 taps added so repeated phrases share one pattern (each added slot had clear evidence in every repeat). 16th bursts: 0 inserted tap(s) at none.
+- Gaps: min **0.316 s**, median 1.324 s (floor 0.105 s).
+- Fastest run (validator definition, gaps <= 0.30 s): **1 taps**, 168.26-168.26 s.
+- Judgment window (engine rule min(0.5g, clamp(0.45g, 45, 110 ms)), g = local min gap): **min ±110 ms, median ±110 ms** - always <= half the local gap.
 
-## Per-section density
+## Difficulty vs original Dancing Line
 
-| Section | Kind | Start | End | Taps | Taps/s | Min gap | Main tap sources |
+| Level | Taps / length | avg CPM (total taps / duration) | avg CPM (wiki-style) | peak CPM |
+|---|---|---|---|---|
+| **Hurt (this chart)** | 118 / 2:55 | **40** | **45** (60/median gap; mean of 60/gap = 64) | **190** (60/min gap); 180 as taps-in-1 s x60 |
+| The Racing (hardest) | 357 / 2:24 | 149 | 220 | 440 |
+| The Chaos | - | - | 136 | 408 |
+| Chinese Garden | - | - | 148 | 296 |
+| Winter | - | - | 140 | 280 |
+| Piano | - | - | 125 | 250 |
+| Autumn | - | - | 96 | - |
+
+Wiki-style avg CPM is approximated as 60 / median tap gap (the wiki does not publish its formula; for The Racing total/duration gives 149 while the wiki says 220, so it is clearly a playing-tempo measure rather than taps per minute of audio). Peak CPM = 60 / shortest gap, which reproduces the wiki numbers (Racing 16ths at 110 BPM = 0.136 s = 440).
+
+Honest peak 190 CPM is below the 400-460 "title track" reference. That is deliberate (user override: rhythmic logic beats density): there are no 16th figures prominent enough in the full mix to justify bursts.
+
+## Per-section density and what the taps follow
+
+| Section | Start | End | Taps (before audit -> now) | Taps/s | Min gap | Layer | What the taps follow |
 |---|---|---|---|---|---|---|---|
-| Intro | intro | 0.00 | 10.93 | 5 | 0.46 | 0.992 | bass 3, kick 1, vocal 1 |
-| Verse 1 | verse | 10.93 | 32.26 | 15 | 0.70 | 0.348 | vocal 15 |
-| Pre-chorus 1 | pre | 32.26 | 42.93 | 9 | 0.84 | 0.661 | vocal 8, kick 1 |
-| Chorus 1 | chorus | 42.93 | 64.26 | 21 | 0.98 | 0.322 | vocal 17, snare 4 |
-| Verse 2 | verse | 64.26 | 80.26 | 14 | 0.88 | 0.321 | vocal 9, kick 4, snare 1 |
-| Breath | break | 80.26 | 85.59 | 2 | 0.37 | 1.000 | vocal 1, snare 1 |
-| Pre-chorus 2 | pre | 85.59 | 96.26 | 9 | 0.84 | 0.333 | vocal 8, snare 1 |
-| Chorus 2 | chorus | 96.26 | 117.59 | 22 | 1.03 | 0.341 | vocal 17, snare 4, kick 1 |
-| Bridge | bridge | 117.59 | 128.26 | 9 | 0.84 | 0.666 | vocal 9 |
-| Final chorus | chorus | 128.26 | 143.59 | 18 | 1.17 | 0.316 | vocal 12, snare 4, kick 2 |
-| Outro | outro | 143.59 | 175.01 | 20 | 0.64 | 0.316 | vocal 16, bass 2, snare 1 |
+| Intro | 0.00 | 10.93 | 5 -> 5 | 0.46 | 0.992 | drums | the bass/chord hits that open each bar (about one per bar) |
+| Verse 1 | 10.93 | 32.26 | 15 -> 17 | 0.80 | 0.336 | vocal | vocal phrase onsets and held-note releases (sung syllables only, no drum fills) |
+| Pre-chorus 1 | 32.26 | 42.93 | 9 -> 8 | 0.75 | 0.661 | vocal | vocal phrase onsets and held-note releases (sung syllables only, no drum fills) |
+| Chorus 1 | 42.93 | 64.26 | 21 -> 17 | 0.80 | 0.322 | vocal | vocal phrase onsets and held-note releases (sung syllables only, no drum fills) |
+| Verse 2 | 64.26 | 80.26 | 14 -> 7 | 0.44 | 0.662 | vocal | vocal phrase onsets and held-note releases (sung syllables only, no drum fills) |
+| Breath | 80.26 | 85.59 | 2 -> 1 | 0.19 | nan | vocal | vocal phrase onsets and held-note releases (sung syllables only, no drum fills); deliberately near-empty (break / held notes - breathing room) |
+| Pre-chorus 2 | 85.59 | 96.26 | 9 -> 7 | 0.66 | 0.335 | vocal | vocal phrase onsets and held-note releases (sung syllables only, no drum fills) |
+| Chorus 2 | 96.26 | 117.59 | 22 -> 18 | 0.84 | 0.341 | vocal | vocal phrase onsets and held-note releases (sung syllables only, no drum fills) |
+| Bridge | 117.59 | 128.26 | 9 -> 9 | 0.84 | 0.666 | vocal | vocal phrase onsets and held-note releases (sung syllables only, no drum fills) |
+| Final chorus | 128.26 | 143.59 | 18 -> 12 | 0.78 | 0.316 | vocal | vocal phrase onsets and held-note releases (sung syllables only, no drum fills) |
+| Outro | 143.59 | 175.01 | 20 -> 17 | 0.54 | 0.316 | vocal | vocal phrase onsets and held-note releases (sung syllables only, no drum fills) |
 
-## How taps were chosen (rationale)
+## Rules applied (user override, 11:55)
 
+1. One layer per section (table above). Taps whose own-layer envelope was weak at the tap (another layer drove it) were removed, even when the full mix was loud there.
+2. Repeated sections (Verse 1 / Verse 2; Pre-chorus 1 / Pre-chorus 2; Chorus 1 / Chorus 2 / Final chorus) were aligned bar-by-bar on the 16th-slot grid: a slot is kept/added if most repeats have it and every repeat shows evidence; one-off slots were dropped unless very strong.
+3. 16th bursts only where the onset of the FULL MIX (not a stem) is in the top percentile at the 16th off-position, with both neighbours on 8th positions and at least one on a beat - so a burst starts and ends on strong grid points (3-tap figures).
+4. Held notes, breaks and outros keep their long gaps; no fills were added to reach CPM targets.
+5. Faint onsets (layer < 0.22 or mix < 0.10 at the tap) removed unless they anchor a section start.
 
-Hurt 90 BPM (beat 0.667 s, downbeat 0.260 s). 144 taps (old 64, 2.25x; still only 0.82 taps/s - the calmest level). Mostly vocal-phrase taps (demucs vocal stem, -25 ms corrected) with snare backbeat anchors; final chorus allows short 16th-note vocal pairs. Min gap 0.316 s. Recommended judgment window +-100 ms.
+## Route (summary)
 
-Method (honest description): candidates = every 8th (or 16th where the groove is syncopated) on the measured beat grid. Each candidate is scored by the onset strength of the separated stems at that instant (vocal syllable onsets from the htdemucs vocal stem, kick 30–140 Hz / snare-clap 1.2–8 kHz from the percussive part of the accompaniment stem, bass and harmonic accents), with per-section weights and a metric bonus for strong beats. **Per section I set by hand**: the density target (follows energy: intro < verse < pre < chorus/climax), which sources lead (vocal phrasing in verses/pre-choruses, drums+hook in choruses), the grid resolution, the minimum gap and the maximum run length, plus forced taps on section downbeats/impacts. The selected slot is then snapped to the actual onset peak if within ±18 ms, otherwise kept on the grid. Repeated musical material therefore gets repeated tap patterns (DL-style), and long gaps stay where the music breathes. All demucs-derived times are corrected by −25.03 ms (stem latency vs ffmpeg/browser decode).
+Route textures per section are listed in design.md; moves: intro-sweep (alt), verse1-frame-switchbacks (lserp), pre1-paper-stair (stair), chorus1-court-horseshoe (zig), verse2-reed-switchbacks (lserp), breath-straight (alt), pre2-paper-corridor (zig), chorus2-trestle-U (zig), bridge-quiet-switchbacks (lserp), final-fan-terraces (zig), outro-long-steps (stair).
 
-## Alignment spot checks (start / section changes / middle / end)
-
-Offset = (audio event time − tap time). 'Nearest onset' = nearest peak of the full-mix onset-strength envelope (height>0.12, ≥46 ms apart); 'band peak' = peak of the tagged source envelope within ±60 ms; 'grid' = distance to nearest 16th of the beat grid.
-
-| Where | Tap t (s) | Tag | Nearest full-mix onset (ms) | Tagged-band peak (ms) | Grid dev (ms) |
-|---|---|---|---|---|---|
-| start | 1.927 | bass | +0 | -23 | +0 |
-| start | 4.593 | bass | +5 | -53 | -0 |
-| start | 7.260 | bass | +8 | -27 | -0 |
-| → Verse 1 | 11.262 | vocal | +23 | -0 | +2 |
-| → Pre-chorus 1 | 32.260 | kick | +4 | -19 | -0 |
-| → Chorus 1 | 43.259 | vocal | +11 | -0 | -1 |
-| → Verse 2 | 64.260 | kick | +1 | -34 | -0 |
-| → Breath | 79.594 | vocal | +4 | +27 | +0 |
-| → Pre-chorus 2 | 84.927 | snare | -0 | -35 | -0 |
-| → Chorus 2 | 96.270 | vocal | -0 | -0 | +10 |
-| → Bridge | 117.934 | vocal | +23 | +0 | +7 |
-| → Final chorus | 128.261 | kick | +6 | -29 | +0 |
-| → Outro | 143.594 | snare | -2 | -37 | -0 |
-| middle | 90.604 | vocal | +0 | +0 | +10 |
-| middle | 91.928 | vocal | +35 | -0 | +1 |
-| middle | 92.927 | vocal | -12 | +22 | -0 |
-| end | 166.580 | vocal | -12 | -0 | -14 |
-| end | 167.602 | vocal | -0 | -0 | +8 |
-| end | 168.263 | vocal | -46 | +0 | +2 |
-
-Whole chart: |offset to nearest full-mix onset| median 10 ms, 90th pct 23 ms; |offset to tagged-band peak| median 18 ms, 90th pct 35 ms.
-
-Per-section median |offset to tagged-band peak| (ms): Intro 23, Verse 1 0, Pre-chorus 1 19, Chorus 1 0, Verse 2 0, Breath 28, Pre-chorus 2 0, Chorus 2 10, Bridge 21, Final chorus 20, Outro 11
-
-Caveats: alignment is measured against analysis envelopes, not by listening on a device; the integrator must verify in-engine with the audio clock (output latency handled by the engine). Section boundaries come from bass/drum/vocal energy changes and 4-bar novelty and are approximate labels where noted.
+Not tested in the engine on a device; touch latency still needs confirming.

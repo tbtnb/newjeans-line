@@ -1,0 +1,1 @@
+Hype Boy 99.99 BPM (beat 0.6000 s). 327 taps (legacy 140). Each section follows one audible layer (see chart-report.md); repeated phrases share one tap pattern; 2 16th burst tap(s) only on fills clearly audible in the full mix; min gap 0.148 s, honest peak 405 CPM, avg 111 CPM (total) / 139 (wiki-style). Engine judgment window ±67..±110 ms.

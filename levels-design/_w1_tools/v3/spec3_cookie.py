@@ -69,4 +69,4 @@ def features(ctx):
     return objs, evs, cams
 def events(old):
     return [e for e in old if e.get('target') not in ('cd-set-piece',)]
-chart_notes = ''
+chart_notes = open('/workspace/nj-w1-work/v3/cookie.notes.txt').read()

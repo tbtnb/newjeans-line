@@ -53,4 +53,4 @@ def features(ctx):
     return objs, evs, cams
 def events(old):
     return [e for e in old if e.get('target') not in ('quiet-court', 'bunny-wall')]
-chart_notes = ''
+chart_notes = open('/workspace/nj-w1-work/v3/hurt.notes.txt').read()

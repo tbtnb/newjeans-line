@@ -22,7 +22,7 @@ sections = [
  {'t': 83.32, 'label': 'Verse 2', 'note': 'Drop -4 at the end of chorus 1, then a square spiral that climbs +18 around the window clock tower (laps pass over each other), then switchbacks down the tower wall and through the window arcade.', 'palette': {'fogEnd': 100}},
  {'t': 101.6, 'label': 'Pre-chorus 2', 'note': 'Tight sawtooth corridor (legs of 3-4 taps), narrow road 1.7, ramping down -6; five amber windows easter egg.', 'palette': {'skyTop': '#A9C8EC', 'fogEnd': 140}},
  {'t': 117.03, 'label': 'Chorus 2', 'note': 'Drop -4, then a wide zigzag that passes OVER the hook and verse-1 roofs (multi-level crossings), terraces fan open.', 'palette': {'skyTop': '#78ACE6'}},
- {'t': 137.6, 'label': 'Final chorus', 'note': 'Staircase loop around the bunny relief (four diagonal legs) while climbing +6, crossing above the verse-1 switchbacks; 16th pairs on the snare fills.', 'palette': {'skyTop': '#5E8FD9', 'skyBottom': '#DCEBF7'}},
+ {'t': 137.6, 'label': 'Final chorus', 'note': 'Staircase loop around the bunny relief (four diagonal legs) while climbing +6, crossing above the verse-1 switchbacks; one 3-tap 16th figure on the audible snare fill.', 'palette': {'skyTop': '#5E8FD9', 'skyBottom': '#DCEBF7'}},
  {'t': 156.1, 'label': 'Outro', 'note': 'Drop -5 onto the cover square level, long release sweeps and a last pair of switchbacks into the deep-blue finish.', 'palette': {'skyTop': '#F2C9A8', 'skyBottom': '#FBEEDC', 'light': '#FFE3C4'}, 'backdrop': 'art/sky-dusk.jpg'},
 ]
 camera = [{'t': 0, 'preset': 'iso', 'blend': 0, 'dist': 18},
@@ -97,7 +97,5 @@ def events(old):
     out = [e for e in old if e.get('target') not in ('cover-bunny-relief', 'stadium-pitch')]
     out.append({'t': 156.26, 'type': 'burst', 'at': 'player', 'color': '#F4F0DB', 'amount': 30})
     return out
-chart_notes = ('Attention 105 BPM (beat 0.5714 s, downbeat 0.464 s). 285 taps (legacy 139, 2.05x). Taps on measured accents: vocal syllables (demucs stem, -25.03 ms corrected), '
-               'kick/snare/bass in hook and choruses; dotted vocal pickups are the motif. 8 two-tap 16th bursts (gap 0.151 s, i.e. 397 CPM) on real hi-hat/snare 16ths in fills '
-               'and the final chorus (16th = 0.143 s at 105 BPM is below the 0.15 s schema floor, so these taps are nudged <= 9 ms). Engine judgment window ±68 ms in bursts, ±110 ms elsewhere.')
+chart_notes = open('/workspace/nj-w1-work/v3/attention.notes.txt').read()
 arcade_texture = 'art/window-wall.jpg'

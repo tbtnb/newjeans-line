@@ -1706,7 +1706,7 @@
    "kind": "outro"
   }
  ],
- "notes": "Hype Boy 100 BPM (beat 0.600 s, downbeat 0.252 s). 308 taps (legacy 140, 2.2x). Moombah/dembow kick-snare (3+3+2) syncopation drives verse and chorus taps; vocal call-and-response in pre-choruses; 13 short 16th bursts (gap 0.151 s = 397 CPM) on real hi-hat/snare 16ths at fills, builds and the final chorus. Engine judgment window \u00b168 ms in bursts, \u00b1110 ms elsewhere.",
+ "notes": "Hype Boy 99.99 BPM (beat 0.6000 s). 327 taps (legacy 140). Each section follows one audible layer (see chart-report.md); repeated phrases share one tap pattern; 2 16th burst tap(s) only on fills clearly audible in the full mix; min gap 0.148 s, honest peak 405 CPM, avg 111 CPM (total) / 139 (wiki-style). Engine judgment window \u00b167..\u00b1110 ms.",
  "meta": {
   "bpm": 100.0,
   "bursts16": [

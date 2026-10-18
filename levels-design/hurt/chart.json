@@ -656,7 +656,7 @@
    "kind": "outro"
   }
  ],
- "notes": "",
+ "notes": "Hurt 90.00 BPM (beat 0.6667 s). 118 taps (legacy 64). Each section follows one audible layer (see chart-report.md); repeated phrases share one tap pattern; 0 16th burst tap(s) only on fills clearly audible in the full mix; min gap 0.316 s, honest peak 190 CPM, avg 40 CPM (total) / 45 (wiki-style). Engine judgment window \u00b1110..\u00b1110 ms.",
  "meta": {
   "bpm": 90.0,
   "bursts16": [],
