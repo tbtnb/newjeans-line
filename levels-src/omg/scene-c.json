@@ -14,7 +14,7 @@
  "density": {
   "ground": 2.0,
   "mid": 1.6,
-  "anim": 1.5
+  "anim": 0.55
  },
  "assets": {
   "grass": {
@@ -6461,7 +6461,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 9,
+     "count": 14,
      "near": [
       3.0,
       16.0
@@ -6492,7 +6492,7 @@
     {
      "asset": "forest-clump",
      "layer": "mid",
-     "count": 4,
+     "count": 6,
      "near": [
       4.0,
       16.0
@@ -6523,7 +6523,7 @@
     {
      "asset": "paper-hill-lo",
      "layer": "mid",
-     "count": 4,
+     "count": 5,
      "near": [
       14.0,
       32.0
@@ -6554,7 +6554,7 @@
     {
      "asset": "mushroom-house",
      "layer": "mid",
-     "count": 2,
+     "count": 3,
      "near": [
       6.0,
       10.0
@@ -6580,6 +6580,38 @@
        4
       ],
       "r": 3.8,
+      "row": true
+     }
+    },
+    {
+     "asset": "hedge",
+     "layer": "mid",
+     "count": 3,
+     "near": [
+      2.0,
+      5.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.0,
+      1.35
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       3,
+       5
+      ],
+      "r": 6.2,
       "row": true
      }
     }
@@ -8016,7 +8048,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 16,
+     "count": 24,
      "near": [
       3.0,
       16.0
@@ -8046,7 +8078,7 @@
     {
      "asset": "forest-clump",
      "layer": "mid",
-     "count": 8,
+     "count": 12,
      "near": [
       4.0,
       16.0
@@ -8076,7 +8108,7 @@
     {
      "asset": "paper-hill-lo",
      "layer": "mid",
-     "count": 8,
+     "count": 10,
      "near": [
       14.0,
       32.0
@@ -8106,7 +8138,7 @@
     {
      "asset": "mushroom-house",
      "layer": "mid",
-     "count": 4,
+     "count": 6,
      "near": [
       6.0,
       10.0

@@ -31,6 +31,10 @@ const hash = (x: number, z: number) => { const s = Math.sin(x * 12.9898 + z * 78
 const LAMP: Record<string, [number, number]> = { 'firefly-lamp': [0.85, 0.7], 'lily-lamp': [0.55, 0.9], 'lantern-string': [0.75, 0.8], 'lantern-tower': [0.75, 2.2],
   'star-chime': [0.8, 0.7], 'iv-heart': [0.8, 0.5], 'spiral-tower': [0.85, 2.0], 'stall': [0.6, 1.4], 'mushroom-house': [0.4, 1.2], 'bunny-house': [0.4, 1.2], 'book-stack': [0.9, 0.5], 'heart-sculpt': [0.6, 0.8],
   'pine': [0.55, 0.9], 'pine-lo': [0.55, 0.9], 'tree': [0.6, 0.9], 'tree-lo': [0.6, 0.9], 'tree-bush-lo': [0.6, 0.8], 'mushroom-group': [0.6, 0.5] };   // night trees: fairy-light glow
+/** hero window glow: lit windows on the road-facing (+z) side, count per set piece; castle / wheel / carousel glow in every zone, the rest at night */
+const WIN: Record<string, number> = { castle: 9, 'ferris-wheel': 8, carousel: 6, 'clock-tower': 4, windmill: 3, 'lantern-tower': 4, 'phone-tower': 5, 'spiral-tower': 5, 'tall-tower': 5,
+  pavilion: 4, stall: 2, 'bunny-house': 3, 'mushroom-house': 2, 'heart-gate': 4, 'page-wall': 3, 'reading-bunny': 2, 'book-cover': 3 };
+const WIN_ALWAYS = new Set(['castle', 'ferris-wheel', 'carousel']);
 type ChunkM = { g: Mesh; m: Mesh | null; glow: Mesh | null; t0: number; tris: number; y: number; L: { pos: number[]; col: number[]; uv: number[]; idx: number[] } | null };
 const spring = (x: number) => x <= 0 ? 0 : 1 - Math.exp(-x * 7) * Math.cos(x * 13);
 const hexRGB = (h: string) => { const n = parseInt(h.replace('#', ''), 16); return [(n >> 16 & 255) / 255, (n >> 8 & 255) / 255, (n & 255) / 255]; };
@@ -78,12 +82,25 @@ export class SceneC {
 
   private dropChunk(c: ChunkM) { c.g.dispose(); c.m?.dispose(); c.glow?.dispose(); }
   private rebuildGlow(t: number) {
-    const on = [...this.chunkMesh.entries()].filter(([, c]) => c.L && t > c.t0 - 4.8).map(([i]) => i); const sig = on.join(',');
-    if (sig === this.glowSig) return; this.glowSig = sig; this.glowAll?.dispose(); this.glowAll = null; if (!on.length) return;
+    const on = [...this.chunkMesh.entries()].filter(([, c]) => c.L && t > c.t0 - 4.8).map(([i]) => i);
+    const sOn = this.sets.filter(e => e.on && t > e.def.popAt + 0.5 && WIN[e.def.a] && (this.night[e.def.zone] || WIN_ALWAYS.has(e.def.a)));
+    const sig = on.join(',') + '|' + sOn.map(e => this.sets.indexOf(e)).join(',');
+    if (sig === this.glowSig) return; this.glowSig = sig; this.glowAll?.dispose(); this.glowAll = null; if (!on.length && !sOn.length) return;
     const pos: number[] = [], col: number[] = [], uv: number[] = [], idx: number[] = [];
     for (const i of on) { const c = this.chunkMesh.get(i)!, L = c.L!, i0 = pos.length / 3;
       for (let k = 0; k < L.pos.length; k += 3) pos.push(L.pos[k], L.pos[k + 1] + c.y, L.pos[k + 2]);
       col.push(...L.col); uv.push(...L.uv); for (const x of L.idx) idx.push(x + i0); }
+    for (const e of sOn) {   // windows: small warm quads on a grid over the front face + one soft halo; quads in the piece's local xy plane
+      const d = e.def, A = this.spec.assets[d.a], H = A?.h ?? 6, W = (A?.w ?? H * 0.6), D = (A?.d ?? W * 0.8), n = WIN[d.a], cs = Math.cos(d.yaw), sn = Math.sin(d.yaw), sc = d.s;
+      const P = (lx: number, ly: number, lz: number) => [d.x + (lx * cs + lz * sn) * sc, d.y + ly * sc, d.z + (-lx * sn + lz * cs) * sc];
+      const q = (cx: number, cy: number, cz: number, r: number, k: number) => { const i0 = pos.length / 3;
+        for (const [dx, dy] of [[-r, -r], [r, -r], [r, r], [-r, r]]) pos.push(...P(cx + dx, cy + dy, cz));
+        uv.push(0, 0, 1, 0, 1, 1, 0, 1); for (let m = 0; m < 4; m++) col.push(k, k * 0.9, k * 0.7, 1); idx.push(i0, i0 + 1, i0 + 2, i0, i0 + 2, i0 + 3); };
+      const cols = Math.ceil(Math.sqrt(n)), rows = Math.ceil(n / cols), z = D * 0.52 + 0.05;
+      for (let k = 0; k < n; k++) { const cx = cols > 1 ? (-0.3 + 0.6 * (k % cols) / (cols - 1)) * W : 0, cy = (0.28 + 0.45 * (rows > 1 ? Math.floor(k / cols) / (rows - 1) : 0.5)) * H;
+        q(cx, cy, z, Math.max(0.35, H * 0.05), 0.75); }
+      q(0, H * 0.5, z + 0.2, H * 0.42, this.night[d.zone] ? 0.22 : 0.12);
+    }
     const m = new Mesh('cglow', this.scene); const vd = new VertexData(); vd.positions = pos; vd.colors = col; vd.uvs = uv; vd.indices = idx; vd.applyToMesh(m, false);
     m.material = this.matGlow; m.isPickable = false; m.parent = this.root; this.glowAll = m;
   }

@@ -198,7 +198,7 @@ CL = {   # zone: [(asset, centres per 15 s, cluster)]
 }
 CLUMPS = {'z01': dict(forest=8, hedge=6, hills=4), 'z02': dict(forest=8, hedge=6, hills=4), 'z03': dict(forest=6, hedge=7, hills=3),
           'z04': dict(pines=6, hedge=4, hills=3, forest=3), 'z05': dict(pines=8, forest=4, hills=5), 'z06': dict(forest=6, hedge=6, hills=3, houses=3),
-          'z07': dict(pines=9, forest=4, hills=4, mhouses=2), 'z08': dict(forest=5, hedge=6, hills=3, mhouses=2), 'z09': dict(pines=8, forest=4, hills=4, mhouses=2),
+          'z07': dict(pines=14, forest=6, hills=5, mhouses=3, hedge=3), 'z08': dict(forest=5, hedge=6, hills=3, mhouses=2), 'z09': dict(pines=12, forest=6, hills=5, mhouses=3),
           'z10': dict(forest=7, hedge=7, hills=4, houses=2)}
 for aid in ('hedge', 'forest-clump'): assets.setdefault(aid, dict(layer='mid', shape='tree', h={'hedge': 1.3, 'forest-clump': 5.7}[aid], w={'hedge': 6.1, 'forest-clump': 8.6}[aid], tris=300, model=model_of(aid), names=[]))
 for z in zones:
@@ -211,7 +211,7 @@ for z in zones:
         aid, cl, near = CL[kind]
         z['layers'].append(dict(asset=aid, layer='mid', count=max(1, round(n * zk)), near=near, y=[0, 0], scale=[1.0, 1.35] if aid in ('forest-clump', 'hedge') else [1.3, 1.9] if aid != 'paper-hill-lo' else [1.3, 2.0], colors=bright, hi=True, cluster=cl))
 spec = dict(version=1, source='levels-design/omg/redesign-v3/C/zones_c.py (omg-design-v3)', chunk=20, window=dict(behind=3, ahead=8),
-            clear=dict(ground=0.3, groundMaxH=1.2, near=1.0), density=dict(ground=2.0, mid=1.6, anim=1.5), assets=assets, zones=zones)
+            clear=dict(ground=0.3, groundMaxH=1.2, near=1.0), density=dict(ground=2.0, mid=1.6, anim=0.55), assets=assets, zones=zones)
 # design asset sheets (levels-design/omg/redesign-v3/C/assets/<design id>/spec.json): their size / tri budget win over the table
 CAT = json.load(open(os.path.join(here, '..', 'models', 'catalog.json')))
 DESIGN_IDS = {c['id']: c['design'] for c in CAT if 'item' not in c}
