@@ -60,7 +60,7 @@ art = [
 dsec = []
 PROPS = {'dream': [0, 1, 5, 10], 'ward': [0, 1, 5, 10], 'rise': [3, 6, 10], 'stage': [3, 6, 10],
          'finale': [6, 10], 'garden': [2, 10], 'calm': [0, 5, 10]}
-DENS = {'dream': 1.6, 'ward': 2.0, 'rise': 1.8, 'stage': 2.0, 'finale': 2.2, 'garden': 1.6, 'calm': 1.2}
+DENS = {'dream': 1.0, 'ward': 1.2, 'rise': 1.1, 'stage': 1.2, 'finale': 1.3, 'garden': 1.0, 'calm': 0.8}
 for a, b, th in rng: dsec.append(dict(t=a, props=PROPS[th], density=DENS[th]))
 dressing = dict(colors=['#fff4fb', '#c9b8ff', '#ff8fc0', '#3a2f7a', '#8fd0ff'], art=art, artShare=0.6, near=[1.4, 6], sections=dsec)
 
@@ -129,8 +129,8 @@ for a, b, th in rng:
     sp = {'dream': 0.5, 'ward': 0.3, 'rise': 1.0, 'stage': 1.6, 'finale': 2.0, 'garden': 1.2, 'calm': 0.6}[th]
     sparkles.append(dict(t0=round(a, 3), t1=round(b, 3), density=sp, colors=['#fff3c4', '#ffc4e8', '#c4e4ff'], size=0.9 if th in ('stage', 'finale') else 0.6, spread=12, height=9))
 flashes = [dict(t=round(d, 3), dur=0.7, amount=0.55) for d in drops]
-fx = dict(exposure=1.0, contrast=1.05, glow=dict(intensity=0.6, kernel=24), keys=keys, pulse=pulse,
-          flashes=flashes, beams=beams, sparkles=sparkles, road=dict(gloss=0.2, trim='#ffe08a', trimGlow=1.2, trimWidth=0.11, topGlow=0.05), maxBeams=40, maxSparkles=220, sprite=A('sparkle.png'))
+fx = dict(exposure=1.0, contrast=1.05, keys=keys, pulse=pulse,
+          flashes=flashes, beams=beams, sparkles=sparkles, road=dict(gloss=0.2, trim='#ffe08a', trimGlow=1.2, trimWidth=0.11, topGlow=0.05), maxBeams=28, maxSparkles=120, sprite=A('sparkle.png'))
 
 sections = [dict(t=s['t'], palette=T[th]['palette'], backdrop=T[th]['backdrop'], ground=T[th]['ground']) for s, th in zip(secs, themes)]
 spec = dict(keep=['fakefork'], minclear=3.0, objects=O, dressing=dressing, fx=fx, events=ev,

@@ -168,7 +168,7 @@ export class World {
       this.ground = CreateGround('ground', { width: 1600, height: 1600, subdivisions: 1 }, this.scene);
       this.groundMat = new StandardMaterial('groundM', this.scene); this.groundMat.specularColor = Color3.Black();
       // themed ground (v2.7: sections[].ground switches the tile at section starts; tint multiplies it)
-      const mk = (g: { src: string; scale?: number }) => { const gt = new Texture(this.mats!.artBase + g.src, this.scene); const rep = 1600 / (g.scale ?? 40); gt.uScale = rep; gt.vScale = rep; return gt; };
+      const mk = (g: { src: string; scale?: number }) => { const gt = new Texture(this.mats!.artBase + g.src, this.scene); const rep = 1600 / (g.scale ?? 40); gt.uScale = rep; gt.vScale = rep; gt.anisotropicFilteringLevel = 1; return gt; }; // aniso off: a calm backdrop tile, and far cheaper on weak GPUs
       if (L.art?.ground?.src) this.groundTex.push({ t: -1, tex: mk(L.art.ground) });
       for (const sc of L.sections ?? []) if (sc.ground?.src) this.groundTex.push({ t: sc.t, tex: mk(sc.ground) });
       this.groundTex.sort((a, b) => a.t - b.t);
@@ -209,7 +209,7 @@ export class World {
       // v2.8 show visuals (src/render/showfx.ts)
       const road = this.road;
       this.show = new ShowFx(this.scene, this.root, route, L, this.quality, widthAt, (x, z, r, y0, y1) => grid.hits(x, z, r, y0, y1),
-        road ? { mesh: road.top, buffer: road.topBuffer, setFlush: f => { road.onFlush = f; } } : null, L.fx.sprite ? new Texture(this.mats.artBase + L.fx.sprite, this.scene) : this.sparkTex ? this.sparkTex.clone() as Texture : null);
+        road ? { mesh: road.top, buffer: road.topBuffer, centers: Float32Array.from(road.tiles.flatMap(tl => [tl.cx, tl.cz])), setFlush: f => { road.onFlush = f; } } : null, L.fx.sprite ? new Texture(this.mats.artBase + L.fx.sprite, this.scene) : this.sparkTex ? this.sparkTex.clone() as Texture : null);
       this.show.addGlow(this.objects.filter(o => o.def.glowfx).flatMap(o => o.node.getChildMeshes() as Mesh[]));
     }
     // objects targeted by 'light' events get their own materials so they can glow independently

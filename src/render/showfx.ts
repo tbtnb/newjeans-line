@@ -2,7 +2,7 @@
 // exposure pulses, drop sparkle flashes, stage searchlight beams, twinkling glow sprites, glossy road + glowing edge trims.
 // Everything is data-driven and off unless a level sets layout.fx. Camera-agnostic: it only reads scene.activeCamera.
 // Per frame: no allocations (scratch vectors/matrices), instanced meshes, one material per colour.
-import { Color3, Color4, CreateBox, CreateCylinder, GlowLayer, Matrix, Mesh, ParticleSystem, Quaternion, Scene, StandardMaterial, Texture, TransformNode, Vector3 } from './bjs';
+import { Color3, Color4, CreateBox, CreateCylinder, GlowLayer, Matrix, Mesh, ParticleSystem, Quaternion, Scene, StandardMaterial, Texture, TransformNode, Vector3, VertexData } from './bjs';
 import { anchor, type Route } from '../core/path';
 import type { FxSpec, Layout } from '../core/types';
 import { hex } from './prefabs';
@@ -16,14 +16,16 @@ export class ShowFx {
   private glow: GlowLayer | null = null;
   private beams: Beam[] = []; private beamMeshes: Mesh[] = []; private beamBufs: Float32Array[] = []; private beamMats: StandardMaterial[] = [];
   private sparks: Spark[] = []; private ps: ParticleSystem | null = null;
-  private trim: Mesh | null = null; private own: (Mesh | StandardMaterial | Texture)[] = [];
+  private trim: Mesh | null = null; private trimBuf = new Float32Array(0); private trimSrc: Float32Array<ArrayBufferLike> = new Float32Array(0); private trimC: Float32Array<ArrayBufferLike> = new Float32Array(0);
+  private trimCap = 0; private trimDirty = true; private trimX = 1e9; private trimZ = 1e9; private static TRIM_R2 = 30 * 30;
+  private own: (Mesh | StandardMaterial | Texture)[] = [];
   private keys: NonNullable<FxSpec['keys']>; private dirty = new Set<number>(); private lastFlash = -1;
   private static readonly sc = new Vector3(); private static readonly tr = new Vector3(); private static readonly q = new Quaternion(); private static readonly m = new Matrix();
   readonly fx: FxSpec;
 
   constructor(private scene: Scene, root: TransformNode, private route: Route, L: Layout, private quality: 'high' | 'low',
     widthAt: (t: number) => number, hits: (x: number, z: number, r: number, y0: number, y1: number) => boolean,
-    roadTop: { mesh: Mesh; buffer: Float32Array; setFlush: (f: () => void) => void } | null, private sparkTex: Texture | null) {
+    roadTop: { mesh: Mesh; buffer: Float32Array; centers: Float32Array; setFlush: (f: () => void) => void } | null, private sparkTex: Texture | null) {
     this.fx = L.fx ?? {}; const fx = this.fx;
     this.keys = [...(fx.keys ?? [])].sort((a, b) => a.t - b.t);
     // scene image processing (applied inside the material shaders: no post-process pass, keeps the transparent canvas)
@@ -41,14 +43,23 @@ export class ShowFx {
       if (tm && fx.road.gloss) { const g = fx.road.gloss; tm.specularColor = new Color3(g, g, g); tm.specularPower = 48; }
       if (tm && fx.road.topGlow) tm.emissiveColor = new Color3(fx.road.topGlow, fx.road.topGlow, fx.road.topGlow);
       if (fx.road.trim) {
-        const tw = fx.road.trimWidth ?? 0.07; const a = CreateBox('fxTrimA', { width: tw, height: 3.0, depth: 1.0 }, scene); a.position.set(0.5, 0.5, 0);
-        const b = CreateBox('fxTrimB', { width: tw, height: 3.0, depth: 1.0 }, scene); b.position.set(-0.5, 0.5, 0);
-        const m = Mesh.MergeMeshes([a, b], true)!; m.name = 'fxTrim';
+        // cheap trims: per edge only a top strip + outer face (4 quads/instance instead of two boxes), unlit emissive
+        const tw = fx.road.trimWidth ?? 0.07; const y0 = -1, y1 = 2; // local units of the 0.04-tall road-top cap
+        const pos: number[] = [], ind: number[] = [];
+        const quad = (a: number[], b: number[], c: number[], d: number[]) => { const o = pos.length / 3; pos.push(...a, ...b, ...c, ...d); ind.push(o, o + 1, o + 2, o, o + 2, o + 3); };
+        for (const sd of [1, -1]) {
+          const xo = 0.5 * sd, xi = (0.5 - tw) * sd;
+          quad([xi, y1, -0.5], [xi, y1, 0.5], [xo, y1, 0.5], [xo, y1, -0.5]); // top strip
+          quad([xo, y1, -0.5], [xo, y1, 0.5], [xo, y0, 0.5], [xo, y0, -0.5]); // outer face
+        }
+        const m = new Mesh('fxTrim', scene); const vd = new VertexData(); vd.positions = pos; vd.indices = ind; vd.applyToMesh(m);
         const mat = new StandardMaterial('fxTrimM', scene); const c = hex(fx.road.trim);
-        mat.diffuseColor = c; mat.emissiveColor = c.scale(fx.road.trimGlow ?? 0.8); mat.specularColor = new Color3(0.3, 0.3, 0.3);
+        mat.diffuseColor = c; mat.emissiveColor = c.scale(Math.min(1, fx.road.trimGlow ?? 0.8)); mat.disableLighting = true; mat.backFaceCulling = false;
         m.material = mat; m.isPickable = false; m.alwaysSelectAsActiveMesh = true;
-        m.thinInstanceSetBuffer('matrix', roadTop.buffer, 16, false); m.freezeWorldMatrix(); m.doNotSyncBoundingInfo = true;
-        roadTop.setFlush(() => m.thinInstanceBufferUpdated('matrix'));
+        // only tiles near the head carry trims (per-instance cost dominates on weak GPUs); rebuilt when the head moves or tiles reveal
+        this.trimCap = quality === 'high' ? 420 : 260; this.trimBuf = new Float32Array(this.trimCap * 16); this.trimSrc = roadTop.buffer; this.trimC = roadTop.centers;
+        m.thinInstanceSetBuffer('matrix', this.trimBuf, 16, false); m.thinInstanceCount = 0; m.freezeWorldMatrix(); m.doNotSyncBoundingInfo = true;
+        roadTop.setFlush(() => { this.trimDirty = true; });
         this.trim = m; this.own.push(m, mat); this.glow?.addIncludedOnlyMesh(m);
       }
     }
@@ -109,7 +120,21 @@ export class ShowFx {
   /** Attach objects that should glow (layout objects with glowfx: true). */
   addGlow(meshes: Mesh[]) { if (this.glow) for (const m of meshes) this.glow.addIncludedOnlyMesh(m); }
 
+  private updateTrims(hx: number, hz: number) {
+    const m = this.trim; if (!m) return;
+    if (!this.trimDirty && Math.abs(hx - this.trimX) + Math.abs(hz - this.trimZ) < 1.5) return;
+    this.trimDirty = false; this.trimX = hx; this.trimZ = hz;
+    const c = this.trimC, src = this.trimSrc, dst = this.trimBuf, R2 = ShowFx.TRIM_R2; let n = 0;
+    for (let i = 0, N = c.length / 2; i < N && n < this.trimCap; i++) {
+      const dx = c[i * 2] - hx, dz = c[i * 2 + 1] - hz; if (dx * dx + dz * dz > R2 || src[i * 16] === 0 && src[i * 16 + 1] === 0 && src[i * 16 + 2] === 0) continue;
+      for (let k = 0, a = i * 16, b = n * 16; k < 16; k++) dst[b + k] = src[a + k];
+      n++;
+    }
+    m.thinInstanceCount = n; m.thinInstanceBufferUpdated('matrix');
+  }
+
   update(t: number, beatK: number, flashAt: (p: Vector3) => void, headPos: Vector3) {
+    this.updateTrims(headPos.x, headPos.z);
     const fx = this.fx; const ip = this.scene.imageProcessingConfiguration;
     // keyed exposure / contrast / glow (1 s smooth blend between keys) + beat pulses
     const cur = stepVal(this.keys, t); let prevK: typeof cur; for (const k of this.keys) { if (cur && k.t >= cur.t) break; prevK = k; }

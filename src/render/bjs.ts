@@ -16,6 +16,7 @@ export { Mesh } from '@babylonjs/core/Meshes/mesh';
 export { VertexBuffer } from '@babylonjs/core/Buffers/buffer';
 export { TransformNode } from '@babylonjs/core/Meshes/transformNode';
 export { AbstractMesh } from '@babylonjs/core/Meshes/abstractMesh';
+export { VertexData } from '@babylonjs/core/Meshes/mesh.vertexData';
 export { CreateBox } from '@babylonjs/core/Meshes/Builders/boxBuilder';
 export { CreateCylinder } from '@babylonjs/core/Meshes/Builders/cylinderBuilder';
 export { CreateSphere } from '@babylonjs/core/Meshes/Builders/sphereBuilder';
