@@ -7,13 +7,13 @@ sys.path.insert(0, '/workspace/nj-w1-work')
 from chartgen import load, fps
 import os; os.chdir('/workspace/nj-w1-work'); s = sys.argv[1]
 CFG = {
- 'attention': dict(pct=76, budget=22, zones=[(42.0, 46.75), (56.0, 62.2), (74.0, 83.3), (110.0, 117.1), (128.0, 137.6), (137.6, 156.1)]),
- 'hype-boy': dict(pct=84, budget=22, zones=[(34.0, 38.7), (48.2, 53.1), (66.0, 72.3), (88.0, 91.5), (125.0, 129.9), (143.0, 149.1), (149.05, 170.6)]),
+ 'attention': dict(pct=90, budget=10, zones=[(42.0, 46.75), (56.0, 62.2), (74.0, 83.3), (110.0, 117.1), (128.0, 137.6), (137.6, 156.1)]),
+ 'hype-boy': dict(pct=90, budget=10, zones=[(34.0, 38.7), (48.2, 53.1), (66.0, 72.3), (88.0, 91.5), (125.0, 129.9), (143.0, 149.1), (149.05, 170.6)]),
  'cookie': dict(pct=90, budget=0, zones=[]),
- 'hurt': dict(pct=88, budget=6, zones=[(125.0, 128.3), (128.26, 143.6)]),
+ 'hurt': dict(pct=93, budget=3, zones=[(125.0, 128.3), (128.26, 143.6)]),
 }[s]
-FLOOR, NUDGE = 0.151, 0.010
-c = json.load(open(f'/workspace/newjeans-line-designs/{s}/chart.json'))
+FLOOR, NUDGE = 0.11, 0.006
+c = json.load(open(f'/workspace/nj-w1-work/v3/{s}.audited.json'))
 taps = [dict(t=x['t'], tag=x['tag'], src='chart') for x in c['taps']]
 a, E = load(s); P = a['beat_period']; ph = a['grid_phase']
 env = np.load(f'/workspace/nj-w1-work/{s}.env.npz')
@@ -21,7 +21,7 @@ n = len(E['mix'])
 def nrm(x): x = x[:n]; return x / (np.percentile(x, 99.5) + 1e-9)
 hat, sn, mix = nrm(env['hat']), nrm(env['snare']), nrm(env['oenv'])
 voc = E['vocal_on'][:n]
-SC = np.maximum.reduce([mix, 0.85 * hat, 0.9 * sn, 0.9 * voc])
+SC = mix   # rule (3): the 16th must be prominent in the FULL MIX, not only in a stem
 def sal(t, w=0.02):
     i0 = max(0, int((t - w) * fps)); i1 = min(n - 1, int((t + w) * fps) + 1); seg = SC[i0:i1 + 1]; j = int(np.argmax(seg))
     return float(seg[j]), (i0 + j) / fps
@@ -39,7 +39,11 @@ for i in range(len(T) - 1):
     for k in range(k0, k1 + 1):
         tg = ph + k * P / 4
         if not inzone(tg): continue
-        if (k % 2) == 0 and B - A < P * 0.8: continue  # only true 16th positions inside 8th-or-shorter gaps
+        if (k % 2) == 0: continue  # true 16th off-positions only
+        on8 = lambda x: abs(((x - ph) / (P / 2)) - round((x - ph) / (P / 2))) * (P / 2) < 0.03
+        onb = lambda x: abs(((x - ph) / P) - round((x - ph) / P)) * P < 0.03
+        if not (on8(A) and on8(B) and (onb(A) or onb(B))): continue   # burst starts/ends on strong grid positions
+        if B - A > P / 2 + 0.03: continue                               # fill an 8th pair -> a 3-tap 16th figure
         v, tp = sal(tg)
         if v < thr: continue
         if v < 0.6 * min(sal(A)[0], sal(B)[0]): continue

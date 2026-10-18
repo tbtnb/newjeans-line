@@ -1,0 +1,592 @@
+[
+{
+"t": 1.927,
+"tag": "bass",
+"src": "chart"
+},
+{
+"t": 4.593,
+"tag": "bass",
+"src": "chart"
+},
+{
+"t": 7.26,
+"tag": "bass",
+"src": "chart"
+},
+{
+"t": 9.26,
+"tag": "kick",
+"src": "chart"
+},
+{
+"t": 10.252,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 11.262,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 11.598,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 12.272,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 12.927,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 13.584,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 15.593,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 16.927,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 18.262,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 20.927,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 22.593,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 22.941,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 24.927,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 26.26,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 27.26,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 29.594,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 30.26,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 31.602,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 33.599,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 34.26,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 34.927,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 36.27,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 38.26,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 38.94,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 41.262,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 42.26,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 43.259,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 44.269,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 45.604,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 46.916,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 48.26,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 49.609,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 50.26,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 50.933,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 51.594,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 52.605,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 52.927,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 55.26,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 56.924,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 58.259,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 59.594,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 60.592,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 62.26,
+"tag": "snare",
+"src": "chart"
+},
+{
+"t": 64.911,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 67.582,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 68.94,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 72.911,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 77.589,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 78.251,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 79.594,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 83.927,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 86.599,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 88.259,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 88.594,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 90.604,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 91.928,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 92.927,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 95.608,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 96.27,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 97.245,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 97.593,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 98.267,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 98.917,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 101.251,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 101.924,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 104.261,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 104.927,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 105.268,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 108.261,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 108.927,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 109.594,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 110.261,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 112.93,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 113.604,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 114.277,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 115.927,
+"tag": "kick",
+"src": "chart"
+},
+{
+"t": 117.934,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 118.927,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 120.261,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 121.594,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 122.915,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 124.261,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 124.927,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 126.27,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 127.594,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 128.929,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 129.927,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 130.926,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 131.587,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 134.261,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 135.256,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 136.255,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 136.916,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 140.594,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 140.91,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 141.247,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 142.261,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 143.594,
+"tag": "snare",
+"src": "chart"
+},
+{
+"t": 145.927,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 146.261,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 146.594,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 149.594,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 150.268,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 152.261,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 155.594,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 155.91,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 156.932,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 158.256,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 160.253,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 162.911,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 163.594,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 166.58,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 167.602,
+"tag": "vocal",
+"src": "chart"
+},
+{
+"t": 168.263,
+"tag": "vocal",
+"src": "chart"
+}
+]
