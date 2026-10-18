@@ -1919,7 +1919,7 @@
    "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
   },
   {
-   "t": 84.275,
+   "t": 89.787,
    "side": 0,
    "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
   },
@@ -1929,13 +1929,14 @@
    "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
   },
   {
-   "t": 117.419,
+   "t": 118.841,
    "side": 0,
-   "moved": "kept off corners after the OMG re-chart (chart-research)"
+   "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
   },
   {
-   "t": 142.986,
-   "side": 0
+   "t": 136.293,
+   "side": 0,
+   "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
   },
   {
    "t": 150.466,
@@ -1943,9 +1944,9 @@
    "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
   },
   {
-   "t": 185.447,
+   "t": 185.69,
    "side": 0,
-   "moved": "kept off corners after the OMG re-chart (chart-research)"
+   "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
   },
   {
    "t": 199.853,
@@ -1958,7 +1959,7 @@
    "t": 95.102
   },
   {
-   "t": 132.882
+   "t": 129.05
   }
  ],
  "finish": {

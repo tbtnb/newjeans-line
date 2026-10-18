@@ -1,0 +1,46 @@
+{
+ "vocal_tap_grid": {
+  "quarter": 165,
+  "8th_off": 163,
+  "16th_weak(e/a)": 8,
+  "triplet": 0,
+  "off_grid": 0
+ },
+ "vocal_taps": 336,
+ "vocal_tap_abs_dev_from_16th_ms_nonsnapped": {
+  "n": 0,
+  "median": 0
+ },
+ "vocal_tap_abs_dev_from_8th_ms": {
+  "median": 0.3,
+  "share_within_15ms": 0.976
+ },
+ "pcentre_minus_onset_ms": {
+  "median": 27.5,
+  "p25": -4.3,
+  "p75": 72.6
+ },
+ "syllable_onset_signed_dev_from_16th_ms": {
+  "median": 3.7,
+  "abs_median": 16.8
+ },
+ "pcentre_signed_dev_from_16th_ms": {
+  "median": 11.9,
+  "abs_median": 19.9
+ },
+ "pcentre_minus_vocal_tap_ms": {
+  "median": 20.0,
+  "share_tap_earlier_than_pcentre_by_>25ms": 0.414
+ },
+ "strong_drum_beats": 267,
+ "strong_drum_beats_untapped": 0,
+ "strong_drum_beats_with_vocal_tap_30_160ms_off": 0,
+ "weak16_isolated": 0,
+ "taps_per_bar": {
+  "min": 1,
+  "median": 5.0,
+  "max": 10,
+  "std": 1.73
+ },
+ "adjacent_bar_density_jumps_ge4": 9
+}
