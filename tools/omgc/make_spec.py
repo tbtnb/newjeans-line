@@ -211,7 +211,7 @@ for z in zones:
         aid, cl, near = CL[kind]
         z['layers'].append(dict(asset=aid, layer='mid', count=max(1, round(n * zk)), near=near, y=[0, 0], scale=[1.0, 1.35] if aid in ('forest-clump', 'hedge') else [1.3, 1.9] if aid != 'paper-hill-lo' else [1.3, 2.0], colors=bright, hi=True, cluster=cl))
 spec = dict(version=1, source='levels-design/omg/redesign-v3/C/zones_c.py (omg-design-v3)', chunk=20, window=dict(behind=3, ahead=8),
-            clear=dict(ground=0.3, groundMaxH=1.2, near=1.0), density=dict(ground=2.0, mid=1.6, anim=0.55), assets=assets, zones=zones)
+            clear=dict(ground=0.3, groundMaxH=1.6, near=1.0), density=dict(ground=2.0, mid=1.6, anim=0.55), assets=assets, zones=zones)
 # design asset sheets (levels-design/omg/redesign-v3/C/assets/<design id>/spec.json): their size / tri budget win over the table
 CAT = json.load(open(os.path.join(here, '..', 'models', 'catalog.json')))
 DESIGN_IDS = {c['id']: c['design'] for c in CAT if 'item' not in c}
