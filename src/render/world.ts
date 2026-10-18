@@ -2,8 +2,8 @@ import {
   Color3, Color4, CreateBox, CreateCylinder, CreateGround, CreatePlane, CreatePolyhedron, DirectionalLight, DynamicTexture, Engine, HemisphericLight,
   Matrix, Mesh, ParticleSystem, Quaternion, Scene, ShadowGenerator, StandardMaterial, Texture, TransformNode, Vector3,
 } from './bjs';
-import { anchor, flowAnchor, HEAD_VEC, posAt, spanPos, type Route } from '../core/path';
-import { lineHeading, linePos } from '../core/linepath';
+import { anchor, flowAnchor, HEAD_VEC, posAt, spanIndexAt, spanPos, type Route } from '../core/path';
+import { lineHeading, linePos, pendingCorner } from '../core/linepath';
 import type { Game } from '../core/game';
 import type { LevelData, Palette, SceneObject, SceneEvent, Heading } from '../core/types';
 import { buildKind, hex, Materials, textPlane } from './prefabs';
@@ -12,6 +12,8 @@ import { EnvTimeline } from './env';
 import { CameraRig } from './camera';
 
 const LINE_W = 1.0, LINE_H = 0.9;
+/** one straight trail run: axis-aligned box from a to b (heading h), extended by LINE_W/2 at both ends */
+interface Run { a: Vector3; b: Vector3; h: number; slope: number; }
 const smooth = (x: number) => (x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x));
 
 interface Obj { node: TransformNode; def: SceneObject; t: number; base: Vector3; baseScale: Vector3; baseRotY: number; hidden: boolean; id?: string; lit?: { mat: StandardMaterial; base: Color3 }[]; glow?: number; glowColor?: Color3; bc?: Vector3; br?: number; fade?: number; }
@@ -58,7 +60,7 @@ export class World {
   private road: Road | null = null; private env: EnvTimeline | null = null; rig: CameraRig | null = null;
   private ground: Mesh | null = null; private groundMat: StandardMaterial | null = null;
   private head: Mesh | null = null; private trail: Mesh | null = null; private trailMat: StandardMaterial | null = null; private headMat: StandardMaterial | null = null;
-  private trailBuf = new Float32Array(16 * 64); private trailCount = 0; private trailPts: { t: number; p: Vector3 }[] = [];
+  private trailBuf = new Float32Array(16 * 64); private trailCount = 0; private runs: Run[] = []; private failRun: Run | null = null;
   private objects: Obj[] = []; private byId = new Map<string, Obj[]>();
   private diamonds: { mesh: Mesh; t: number; taken: boolean; base: Vector3 }[] = [];
   private crowns: { node: TransformNode; t: number; taken: boolean; base: Vector3 }[] = [];
@@ -230,7 +232,7 @@ export class World {
     // camera
     this.rig = new CameraRig(this.scene, route, L.camera ?? []);
     this.scene.activeCamera = this.rig.cam;
-    this.trailPts = []; this.trailCount = 0; this.completeAt = -1;
+    this.runs = []; this.failRun = null; this.trailCount = 0; this.completeAt = -1;
     this.setupShadows();
     this.seek(game.time);
   }
@@ -274,9 +276,7 @@ export class World {
   seek(t: number) {
     if (!this.game || !this.route) return;
     this.road?.seek(t);
-    this.trailPts = this.trailPts.filter(p => p.t <= t);
-    if (!this.trailPts.length) this.trailPts.push({ t, p: this.v3(linePos(this.route, this.game.turns, t, this.game.cursor)) });
-    this.rebuildTrail();
+    this.failRun = null; this.runs = []; this.trailCount = 0; this.updateTrail(t, true);
     for (const d of this.diamonds) { d.taken = this.game.diamondsTaken.has(this.diamonds.indexOf(d)); d.mesh.setEnabled(!d.taken); d.mesh.scaling.set(1, 1.5, 1); d.mesh.position.copyFrom(d.base); }
     for (const c of this.crowns) { c.taken = c.t <= t + 1e-6; c.node.setEnabled(true); c.node.position.copyFrom(c.base); this.ghostCrown(c.node, c.taken); }
     for (const f of this.fx) f.mesh.dispose(); this.fx = [];
@@ -293,37 +293,47 @@ export class World {
 
   private v3(p: { x: number; y: number; z: number }) { return new Vector3(p.x, p.y + LINE_H / 2, p.z); }
 
-  private rebuildTrail() { this.trailCount = 0; for (let i = 1; i < this.trailPts.length; i++) this.writeTrail(i); this.flushTrail(); }
-
-  private writeTrail(i: number) {
-    const a = this.trailPts[i - 1].p, b = this.trailPts[i].p;
-    const d = b.subtract(a); const len = d.length();
-    if (len < 1e-4) return;
-    const idx = i - 1;
-    if ((idx + 1) * 16 > this.trailBuf.length) {
-      const nb = new Float32Array(this.trailBuf.length * 2); nb.set(this.trailBuf); this.trailBuf = nb;
-      this.trail!.thinInstanceSetBuffer('matrix', this.trailBuf, 16, false);
+  /** Trail = the centreline actually travelled, as straight axis-aligned runs (one box per run, grown in place).
+   *  Runs come from the route spans up to min(t, pending corner); past a pending corner the last run extends to the
+   *  head. Airborne spans draw nothing, so a jump/fall starts a new run on landing. */
+  private updateTrail(t: number, full = false) {
+    const g = this.game!, route = this.route!;
+    const tc = Math.min(t, pendingCorner(route, g.turns, t, g.cursor));
+    const runs: Run[] = [];
+    for (const sp of route.spans) {
+      if (sp.t0 >= tc) break;
+      if (sp.air) continue;
+      const a = this.v3(spanPos(sp, sp.t0)), b = this.v3(spanPos(sp, Math.min(sp.t1, tc)));
+      const len = (Math.min(sp.t1, tc) - sp.t0) * sp.v; const slope = len > 1e-6 ? (b.y - a.y) / len : 0;
+      const last = runs[runs.length - 1];
+      if (last && last.h === sp.heading && Math.abs(last.slope - slope) < 1e-6 && Vector3.DistanceSquared(last.b, a) < 1e-6) last.b = b;
+      else runs.push({ a, b, h: sp.heading, slope });
     }
-    const yaw = Math.atan2(d.x, d.z); const pitch = -Math.asin(Math.max(-1, Math.min(1, d.y / len)));
-    const q = Quaternion.RotationYawPitchRoll(yaw, pitch, 0);
-    const m = Matrix.Compose(new Vector3(LINE_W, LINE_H, len + LINE_W * 0.999), q, a.add(b).scale(0.5));
-    m.copyToArray(this.trailBuf, idx * 16);
-    this.trailCount = Math.max(this.trailCount, idx + 1);
+    if (t > tc && runs.length) { const last = runs[runs.length - 1]; const [dx, dz] = HEAD_VEC[last.h as Heading]; const v = route.spans[spanIndexAt(route, tc - 1e-6)].v; last.b = last.b.add(new Vector3(dx * v * (t - tc), 0, dz * v * (t - tc))); }
+    if (this.failRun) runs.push(this.failRun);
+    // rewrite only runs that changed (normally just the last one)
+    let first = full ? 0 : Math.min(this.runs.length, runs.length);
+    for (let i = Math.min(this.runs.length, runs.length) - 1; i >= 0 && !full; i--) {
+      const o = this.runs[i], n = runs[i];
+      if (o.h === n.h && Vector3.DistanceSquared(o.a, n.a) < 1e-10 && Vector3.DistanceSquared(o.b, n.b) < 1e-10) break;
+      first = i;
+    }
+    if (runs.length * 16 > this.trailBuf.length) {
+      let n = this.trailBuf.length; while (runs.length * 16 > n) n *= 2;
+      const nb = new Float32Array(n); nb.set(this.trailBuf); this.trailBuf = nb; this.trail!.thinInstanceSetBuffer('matrix', this.trailBuf, 16, false);
+    }
+    for (let i = first; i < runs.length; i++) this.writeRun(i, runs[i]);
+    const changed = first < runs.length || runs.length !== this.trailCount;
+    this.runs = runs; this.trailCount = runs.length;
+    if (changed && this.trail) { this.trail.thinInstanceCount = this.trailCount; this.trail.thinInstanceBufferUpdated('matrix'); this.trail.thinInstanceRefreshBoundingInfo(false); }
   }
-  private flushTrail() { if (!this.trail) return; this.trail.thinInstanceCount = this.trailCount; this.trail.thinInstanceBufferUpdated('matrix'); this.trail.thinInstanceRefreshBoundingInfo(false); }
 
-  private pushTrail(t: number, p: Vector3, force = false) {
-    const pts = this.trailPts;
-    const last = pts[pts.length - 1];
-    if (pts.length >= 2 && !force) {
-      const prev = pts[pts.length - 2];
-      const d1 = last.p.subtract(prev.p), d2 = p.subtract(last.p);
-      const l1 = d1.length(), l2 = d2.length();
-      if (l2 < 1e-4) return;
-      if (l1 > 1e-4 && Vector3.Dot(d1, d2) / (l1 * l2) > 0.99995) { last.p = p; last.t = t; this.writeTrail(pts.length - 1); return; }
-    }
-    if (last && Vector3.Distance(last.p, p) < 0.02 && !force) return;
-    pts.push({ t, p }); this.writeTrail(pts.length - 1);
+  private writeRun(i: number, r: Run) {
+    const d = r.b.subtract(r.a); const len = d.length();
+    const yaw = [0, Math.PI / 2, Math.PI, -Math.PI / 2][r.h];          // exact multiples of 90 degrees
+    const pitch = len > 1e-6 ? -Math.asin(Math.max(-1, Math.min(1, d.y / len))) : 0;
+    const m = Matrix.Compose(new Vector3(LINE_W, LINE_H, len + LINE_W), Quaternion.RotationYawPitchRoll(yaw, pitch, 0), r.a.add(r.b).scale(0.5));
+    m.copyToArray(this.trailBuf, i * 16);
   }
 
   // ---- events from the game ----
@@ -404,17 +414,17 @@ export class World {
     if (!failed) {
       this.head.position.copyFrom(lp);
       if (!seeking && (g.status === 'playing' || g.status === 'complete')) {
-        const turnedNow = g.turns.length && g.turns[g.turns.length - 1].tapT > this.lastTime - 1e-9 && g.turns[g.turns.length - 1].tapT <= t + 1e-9;
-        if (turnedNow) { const r = g.turns[g.turns.length - 1]; this.pushTrail(r.tapT, this.v3(linePos(route, g.turns, r.tapT, g.cursor)), true); }
-        // dense sampling while a turn settles or in the air, sparse otherwise (collinear points merge)
-        this.pushTrail(t, lp);
-        this.flushTrail();
+        this.updateTrail(t);
       }
     } else if (this.failAnim) {
       const k = performance.now() / 1000 - this.failAnim.t0;
       const slide = Math.min(k, 0.22);
       const p = this.failAnim.pos.add(this.failAnim.dir.scale(9 * (slide - slide * slide / 0.44 * 0.5)));
-      if (k < 0.22) { this.head.position.copyFrom(p); this.pushTrail(t, p); this.flushTrail(); }
+      if (k < 0.22) {
+        this.head.position.copyFrom(p);
+        const hd = [[0, 1], [1, 0], [0, -1], [-1, 0]].findIndex(([x, z]) => Math.abs(x - this.failAnim!.dir.x) < 1e-6 && Math.abs(z - this.failAnim!.dir.z) < 1e-6);
+        this.failRun = { a: this.failAnim.pos.clone(), b: p.clone(), h: Math.max(0, hd), slope: 0 }; this.updateTrail(g.failTime);
+      }
       else if (this.head.isEnabled()) this.shatter(this.head.position.clone());
       for (const s of this.failAnim.pieces) {
         const e = performance.now() / 1000 - s.t0; s.vel!.y -= 22 * dt; s.mesh.position.addInPlace(s.vel!.scale(dt));
@@ -426,7 +436,7 @@ export class World {
     // complete: line enters finish, camera rises
     if (g.status === 'complete') { if (this.completeAt < 0) this.completeAt = performance.now() / 1000; const k = smooth((performance.now() / 1000 - this.completeAt) / 2.2); this.rig.extraPitch = 18 * k; this.rig.extraDist = 14 * k; }
     // camera
-    this.rig.menuOrbit = this.mode === 'menu';
+    this.rig.menuOrbit = this.mode === 'menu'; this.rig.distScale = (this as any).__camScale ?? 1;
     this.rig.update(this.mode === 'menu' ? 0 : lt, failed ? this.head.position : lp, dt || 1 / 60);
     this.sun.position = this.rig.cam.getTarget().add(new Vector3(30, 60, -20));
     // collectibles
@@ -520,10 +530,11 @@ export class World {
       let occ = false;
       if (v.z > 0.5) {
         const sx = v.x / (v.z * th * aspect), sy = v.y / (v.z * th), sr = o.br! / (v.z * th);
-        for (const q of P) {
+        const lm = !!o.def.landmark;
+        for (const q of lm ? P.slice(0, 1) : P) {                   // landmarks only give way when they cover the head itself
           if (v.z - o.br! * 0.5 >= q.z) continue;                 // object is behind the protected point
           const dx = (sx - q.x) * aspect, dy = sy - q.y;           // compare in height-normalised units
-          if (Math.hypot(dx, dy) < sr * 0.85 + q.r) { occ = true; break; }
+          if (Math.hypot(dx, dy) < (lm ? sr * 0.6 + 0.04 : sr * 0.85 + q.r)) { occ = true; break; }
         }
       } else if (Vector3.Distance(c, cam) < o.br! + 1) occ = true; // camera inside/next to the object
       const want = occ ? 0.12 : 1; const f = o.fade! + (want - o.fade!) * k;

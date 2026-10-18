@@ -42,6 +42,8 @@ export class CameraRig {
   menuOrbit = false;
   freezeAt: Vector3 | null = null;
   extraPitch = 0; extraDist = 0;
+  /** QA close-ups only (play.mjs --camScale); 1 in the game */
+  distScale = 1;
 
   constructor(scene: Scene, private route: Route, cues: CameraCue[]) {
     this.cam = new FreeCamera('cam', new Vector3(0, 20, -20), scene);
@@ -87,7 +89,7 @@ export class CameraRig {
     this.ty += (want.y - this.ty) * kY; this.target.y = this.ty;
 
     this.yaw = angLerp(this.yaw, desiredYaw, kYaw);
-    let dist = p.dist + this.extraDist;
+    let dist = (p.dist + this.extraDist) * this.distScale;
     if (this.aspect < 0.95) dist *= Math.pow(Math.min(2.2, 0.95 / this.aspect), 0.35);
     const pitch = (p.pitch + this.extraPitch) * Math.PI / 180;
     const sh = p.shake + this.shakeBoost;

@@ -1,4 +1,6 @@
 // Screenshot a level at given song times via the ?debug preview hook (static frames; NOT proof of motion).
+// CAUTION: preview frames show the ready prompt ('轻点开始') and NO trail, because the level is paused at a restart point.
+// For frames that look like real play use: node tools/qa/play.mjs --level N --shots 20,45,90 --shotdir DIR (scripted play).
 // usage: node tools/qa/snap.mjs --url URL --level 5 --times 10,40,80 --w 540 --h 960 --out /tmp/shots/ditto
 import { chromium } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
