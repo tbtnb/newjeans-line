@@ -278,7 +278,9 @@ export class World {
     const fin = new TransformNode('finish', this.scene); fin.parent = this.root; fin.position.set(end.x + ex * 3.2, end.y, end.z + ez * 3.2);
     fin.rotation.y = Math.atan2(ex, ez);
     const fk = L.finish?.kind ?? 'pyramid';
-    if (fk === 'custom' && L.finish?.parts) buildKind(this.scene, this.mats, { kind: 'group', parts: L.finish.parts }, fin);
+    // concept C: the heart gate is the finish; the legacy halftone plinth becomes a cream page with a gold rim
+    const fparts = this.cmode && L.finish?.parts ? [{ kind: 'box', pos: [0, -0.1, 4], size: [6.4, 0.8, 6.4], color: '#F7D98B' }, { kind: 'box', pos: [0, 0, 4], size: [6, 1, 6], color: '#FFF8EC' }] : L.finish?.parts;
+    if (fk === 'custom' && fparts) buildKind(this.scene, this.mats, { kind: 'group', parts: fparts as any }, fin);
     else if (fk === 'gate') {
       const gc = L.finish?.color ?? pal.road, w = Math.max(3.2, widthAt(level.duration) + 1.6);
       buildKind(this.scene, this.mats, { kind: 'group', parts: [
