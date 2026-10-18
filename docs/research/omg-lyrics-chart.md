@@ -53,7 +53,7 @@ Piano taps (rule 4) appear only in the outro, the only bars with neither vocal n
 
 ## Verification
 * `levels-design/validate.py`: 0 errors, 0 warnings; 668 multi-level crossings; min judgment window ±53 ms; 16 gaps under 0.15 s (all fast sung syllables).
-* Scripted playthrough (headless Chrome, CDP touch simulation; not a real device): pending.
+* Scripted playthrough (headless Chrome, CDP touch simulation; not a real device): ready, 0/553 perfect, 0 good, diamonds 0/10.
 * Layout and route: route re-searched (route.py, seed 16 of 24 tried; 4 legal); elevation falls unchanged from v2 (on the '예' taps, >= 0.35 s air); diamonds 26.498 -> 27.662 and 83.775 -> 84.275 moved off new drum taps; no other layout changes.
 * Click track `deliverables/omg-clicks-v3.mp3`: the song plus two click sounds.
   * Vocal taps: a high 2.5 kHz tick.
