@@ -10,6 +10,7 @@ import { buildKind, hex, Materials, textPlane } from './prefabs';
 import { Road, stepAt } from './road';
 import { EnvTimeline } from './env';
 import { CameraRig } from './camera';
+import { LineSkin } from './lineskin';
 
 const LINE_W = 1.0, LINE_H = 0.9;
 /** one straight trail run: axis-aligned box from a to b (heading h), extended by LINE_W/2 at both ends */
@@ -78,6 +79,8 @@ export class World {
   onBackdrop: ((url: string | null) => void) | null = null;
   private backdrops: { t: number; src: string }[] = []; private backdropShown: string | null | undefined;
   completeAt = -1;
+  /** player-line skin (head/trail look, decor, turn + death particles) */
+  skin: LineSkin;
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
@@ -92,7 +95,11 @@ export class World {
     this.sun.position = new Vector3(30, 60, -20);
     this.glowTex = radialTexture(this.scene, 'glow');
     this.sparkTex = radialTexture(this.scene, 'spark', 'rgba(255,255,255,1)', 'rgba(255,255,255,0)');
+    this.skin = new LineSkin(this.scene, this.sparkTex);
   }
+
+  /** switch the line skin (live, also between levels) */
+  setSkin(id: string) { this.skin.apply(id); }
 
   setQuality(q: 'high' | 'low') {
     this.quality = q;
@@ -116,6 +123,7 @@ export class World {
   }
 
   unload() {
+    this.skin.detach();
     this.particles?.dispose(); this.particles = null; this.particleKind = null;
     this.shadows?.dispose(); this.shadows = null;
     for (const f of this.fx) f.mesh.dispose(); this.fx = [];
@@ -161,6 +169,7 @@ export class World {
     this.head = CreateBox('head', { size: 1 }, this.scene); this.head.scaling.set(LINE_W, LINE_H, LINE_W); this.head.material = this.headMat; this.head.parent = this.root;
     this.trail = CreateBox('trail', { size: 1 }, this.scene); this.trail.material = this.trailMat; this.trail.parent = this.root; this.trail.alwaysSelectAsActiveMesh = true;
     this.trailBuf = new Float32Array(16 * 256); this.trail.thinInstanceSetBuffer('matrix', this.trailBuf, 16, false); this.trail.thinInstanceCount = 0;
+    this.skin.attach(this.head, this.headMat, this.trailMat, this.root);
     // scenery
     const grid = new RoadGrid(route, widthAt);
     const expanded: SceneObject[] = [];
@@ -281,7 +290,7 @@ export class World {
     for (const c of this.crowns) { c.taken = c.t <= t + 1e-6; c.node.setEnabled(true); c.node.position.copyFrom(c.base); this.ghostCrown(c.node, c.taken); }
     for (const f of this.fx) f.mesh.dispose(); this.fx = [];
     this.failAnim?.pieces.forEach(p => p.mesh.dispose()); this.failAnim = null;
-    this.head?.setEnabled(true);
+    this.head?.setEnabled(true); this.skin.reset();
     if (this.rig) { this.rig.freezeAt = null; this.rig.extraPitch = 0; this.rig.extraDist = 0; this.rig.snap(); }
     this.lastTime = t; this.completeAt = -1;
     this.applyTime(t, 0, true);
@@ -341,9 +350,10 @@ export class World {
     this.lastTap = t;
     if (!this.head || !this.glowTex) return;
     const m = CreatePlane('glow', { size: 1 }, this.scene);
-    const mat = new StandardMaterial('glowM', this.scene); mat.diffuseTexture = this.glowTex; mat.opacityTexture = this.glowTex; mat.emissiveColor = new Color3(1, 1, 1); mat.disableLighting = true; mat.alphaMode = Engine.ALPHA_ADD;
+    const mat = new StandardMaterial('glowM', this.scene); mat.diffuseTexture = this.glowTex; mat.opacityTexture = this.glowTex; mat.emissiveColor = this.skin.glowColor.clone(); mat.disableLighting = true; mat.alphaMode = Engine.ALPHA_ADD;
     m.material = mat; m.billboardMode = Mesh.BILLBOARDMODE_ALL; m.position.copyFrom(this.head.position); m.parent = this.root;
     this.fx.push({ mesh: m, t0: t, dur: 0.32, kind: 'glow' });
+    this.skin.onTurn(this.head.position, t);
   }
   onDiamond(i: number, t: number) {
     const d = this.diamonds[i]; if (!d || d.taken) return; d.taken = true;
@@ -384,7 +394,8 @@ export class World {
     if (!this.failAnim || !this.head) return;
     this.head.setEnabled(false);
     const now = performance.now() / 1000;
-    for (let i = 0; i < 14; i++) {
+    this.skin.onShatter(at);
+    for (let i = 0, n = this.skin.shardCount; i < n; i++) {
       const m = CreateBox('shard', { size: 0.32 + Math.random() * 0.2 }, this.scene); m.material = this.headMat; m.parent = this.root; m.position.copyFrom(at);
       this.failAnim.pieces.push({ mesh: m, t0: now, dur: 1.6, kind: 'shard', vel: new Vector3((Math.random() - 0.5) * 7, 3 + Math.random() * 5, (Math.random() - 0.5) * 7), spin: new Vector3(Math.random() * 8, Math.random() * 8, Math.random() * 8) });
     }
@@ -432,7 +443,7 @@ export class World {
       }
     }
     // line colour
-    const lc = hex(pal.line); this.headMat!.diffuseColor = lc; this.trailMat!.diffuseColor = lc; this.headMat!.emissiveColor = lc.scale(0.25); this.trailMat!.emissiveColor = lc.scale(0.18);
+    this.skin.update(lt, pal.line, lineHeading(route, g.turns, lt), true);
     // complete: line enters finish, camera rises
     if (g.status === 'complete') { if (this.completeAt < 0) this.completeAt = performance.now() / 1000; const k = smooth((performance.now() / 1000 - this.completeAt) / 2.2); this.rig.extraPitch = 18 * k; this.rig.extraDist = 14 * k; }
     // camera
@@ -633,6 +644,6 @@ export class World {
   }
 
   resize() { this.engine.resize(); }
-  dispose() { this.unload(); this.scene.dispose(); this.engine.dispose(); }
+  dispose() { this.unload(); this.skin.dispose(); this.scene.dispose(); this.engine.dispose(); }
   stats() { return { meshes: this.scene.meshes.length, active: this.scene.getActiveMeshes().length, fps: this.fps, trail: this.trailCount, tiles: this.road?.tiles.length ?? 0, objects: this.objects.length, drawCalls: (this.engine as any)._drawCalls?.current ?? null }; }
 }

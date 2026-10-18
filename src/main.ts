@@ -6,6 +6,7 @@ import type { LevelData } from './core/types';
 import { World } from './render/world';
 import { loadSave, persistSave, parseSave, mergeRecord, type SaveData } from './storage';
 import { hex } from './render/prefabs';
+import { initSkinUI } from './skinui';
 
 type State = 'menu' | 'loading' | 'ready' | 'playing' | 'paused' | 'failed' | 'complete';
 const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
@@ -277,7 +278,7 @@ $('btn-export').onclick = () => {
 };
 $<HTMLInputElement>('file-import').onchange = async e => {
   const f = (e.target as HTMLInputElement).files?.[0]; if (!f) return;
-  try { const data = parseSave(JSON.parse(await f.text()), ids, SONGS[index].id); Object.assign(save, data); persist(); audio.setVolume(save.settings.volume); openSettings(); renderCard(); toast('存档已导入'); }
+  try { const data = parseSave(JSON.parse(await f.text()), ids, SONGS[index].id); Object.assign(save, data); persist(); audio.setVolume(save.settings.volume); world.setSkin(save.settings.skin); skinUI.refresh(); openSettings(); renderCard(); toast('存档已导入'); }
   catch (err) { toast((err as Error).message || '无法读取存档'); }
   (e.target as HTMLInputElement).value = '';
 };
@@ -340,6 +341,8 @@ function loop() {
 window.addEventListener('resize', () => world.resize());
 audio.setVolume(save.settings.volume);
 world.setQuality(save.settings.quality);
+world.setSkin(save.settings.skin);
+const skinUI = initSkinUI({ getSkin: () => save.settings.skin, setSkin: id => { save.settings.skin = id; world.setSkin(id); persist(); }, lineColor: () => level?.layout.palette.line ?? '#6f8fb0' });
 setState('menu');
 renderCard();
 void selectLevel(index);

@@ -27,3 +27,24 @@ test('mergeRecord keeps bests', () => {
   const r = mergeRecord({ best: 0.8, diamonds: 7, crowns: 0, attempts: 2, completed: false }, { progress: 0.4, diamonds: 3, crowns: 0, completed: false });
   assert.equal(r.best, 0.8); assert.equal(r.attempts, 3); assert.equal(r.diamonds, 7);
 });
+
+test('skin setting: old saves default to classic, skin round-trips, bad values fall back', () => {
+  // v1 and v2 saves written before skins existed have no settings.skin
+  assert.equal(parseSave(v1, ids, 'attention').settings.skin, 'classic');
+  const oldV2 = { version: 2, selected: 'ditto', records: { ditto: { best: 1, diamonds: 10, crowns: 3, attempts: 9, completed: true } }, settings: { volume: 0.3, offsetMs: -15, quality: 'high', vibration: true } };
+  const s = parseSave(oldV2, ids, 'attention');
+  assert.equal(s.settings.skin, 'classic');
+  // everything else in the old save is unchanged
+  assert.deepEqual({ ...s.settings, skin: undefined }, { ...oldV2.settings, skin: undefined });
+  assert.deepEqual(s.records.ditto, oldV2.records.ditto);
+  // a chosen skin survives export -> import and persist -> load
+  const withSkin = { ...s, settings: { ...s.settings, skin: 'bubble-gum' } };
+  assert.equal(parseSave(JSON.parse(JSON.stringify(withSkin)), ids, 'attention').settings.skin, 'bubble-gum');
+  const mem: Record<string, string> = { [KEY_V2]: JSON.stringify(withSkin) };
+  assert.equal(loadSave(ids, 'attention', { getItem: (k: string) => mem[k] ?? null }).settings.skin, 'bubble-gum');
+  // unknown future skin ids are kept (rendered as classic by the game); junk falls back
+  assert.equal(parseSave({ ...oldV2, settings: { ...oldV2.settings, skin: 'future-skin' } }, ids, 'a').settings.skin, 'future-skin');
+  for (const bad of [42, null, '', '<script>', 'x'.repeat(40), { id: 'denim' }]) assert.equal(parseSave({ ...oldV2, settings: { ...oldV2.settings, skin: bad } }, ids, 'a').settings.skin, 'classic');
+  // a fresh profile defaults to classic
+  assert.equal(loadSave(ids, 'attention', { getItem: () => null }).settings.skin, 'classic');
+});
