@@ -5,7 +5,7 @@
 - Min gap 222 ms (design floor = one 8th note = 224 ms; snapped taps never closer than road-geometry floor). Median gap 670 ms.
 - **Fastest run: 6 consecutive taps at 8th-note spacing (224 ms ≈ 4.5 taps/s) from 63.251 s to 64.377 s.**
 - 8th-note runs ≥6 taps: 1; ≥8 taps: 0. Longest 5: 6@63.3s, 5@99.7s, 4@49.6s, 3@13.3s, 3@85.4s
-- Recommended judgment window: perfect ±60 ms, accept ±115 ms. ±115 ms accept; the tightest pair is an 8th (224 ms) so windows stay disjoint. Short level with sparse old chart: keep the window generous so the jump in density reads as rhythm, not punishment.
+- Judgment window (engine rule v2.4: clamp(0.45 x min neighbour gap, 65, 110) ms each side, PERFECT ±40 ms): min ±100 ms, median ±110 ms, 40 of 167 taps below the ±110 ms cap. My recommendation stays perfect ±60 / accept ±115 ms where the music allows; the engine rule is what ships.
 - Snapping: 141/167 taps sit on a detected onset of their tagged stem (±45 ms search, attack refined on 2 ms RMS); the rest sit on the fitted grid (where the onset was ambiguous or snapping would have broken the geometry floor).
 
 ## Per-section density

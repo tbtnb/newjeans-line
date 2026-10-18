@@ -356,6 +356,7 @@ def build(slug):
         if g<0.2: print('  !! diamond near tap',dm['t'],g)
     L['path']=dict(note='computed centerline nodes [t,x,z,y,heading_after] (world units, y = road elevation offset)',
                    nodes=[[round(n[0],3),round(n[1],2),round(n[2],2),round(elev_at(spec,n[0]),2),ORDER[n[3]]] for n in nodes])
+    L['diamonds']=sorted(L['diamonds'],key=lambda d:d['t'])
     L['elevation']=[{k:(round(v,3) if isinstance(v,float) else v) for k,v in e.items()} for e in spec.ELEV]
     L['road']['width']=[dict(t=t,w=w) for t,w in spec.WIDTH]
     (d/'chart.json').write_text(json.dumps(chart,indent=1,ensure_ascii=False))

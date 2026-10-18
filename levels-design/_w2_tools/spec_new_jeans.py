@@ -87,3 +87,91 @@ WHY={
 }
 
 CROWN_T=lambda bar: [bar(28)+0.4,bar(47)]
+
+# ---- v3 (2026-10-18): codex-ref alignment (City Unfolded: pink line through an unfolding light-blue city) + rich route choreography.
+_b=lambda n: 0.347+n*1.791045
+ELEV=[dict(t0=_b(17.5),t1=_b(19.8),type='ramp',dy=4),        # end of Verse 1: alley ramp L0 -> L1 (+4)
+      dict(t=_b(28),type='fall',dy=-4),                      # Break: drop under the chorus deck (L0)
+      dict(t0=_b(44),t1=_b(46),type='ramp',dy=4),            # Verse 2: spiral up the courtyard tower (L1)
+      dict(t0=_b(48),t1=_b(51),type='ramp',dy=4)]            # Chorus 2: climb to L2 (+8); outro stays on top
+A=lambda w=0.6,**k: dict(w_aim=w,**k)
+ROUTE=[(0,'free',0,A(1.0)),(_b(2),'free',90,A(1.0)),                                     # Intro: long straight + one big L
+       (_b(4),'switch',90,A(0.3,thr=0.45)),                                              # Beat in: switchbacks on the 2-step snares
+       (_b(8),'spiral',None,A(0,hand='R',w_motif=1.0)),(_b(12),'switch',0,A(0.3,thr=0.6)),   # Verse 1: wrap round the Bunny Gate, open U
+       (_b(15),'meander',0,A(0.4)),(_b(18),'stair',45,A()),                              # four-fold alley, staircase up the ramp
+       (_b(20),'stair',90,A()),(_b(22.5),'stair',180,A()),(_b(25),'stair',270,A()),      # Chorus 1: horseshoe of staircases round the sunken courtyard
+       (_b(28),'free',None,A(0,cross=2.5)),                                              # Break: short S under the chorus deck (E1)
+       (_b(32),'stair',0,A()),(_b(33),'stair',90,A()),(_b(34),'stair',0,A()),(_b(35),'stair',90,A()),   # Rebuild: city rises, zigzag of stairs
+       (_b(36),'meander',270,A(0.4)),(_b(42),'switch',0,A(0.3,thr=0.6)),(_b(44),'spiral',None,A(0,hand='L',w_motif=2.5)),(_b(46),'stair',0,A()),
+       (_b(48),'stair',90,A(0.6,cross=1.5)),(_b(50),'stair',0,A(0.6,cross=1.5)),(_b(52),'stair',90,A(0.6,cross=1.5)),(_b(54),'stair',180,A(0.6,cross=1.5)),
+       (_b(56),'free',90,A(1.0))]                                                        # Outro: elbow + long finish straight on L2
+FORKS=[_b(6.5),_b(13.5),_b(30.5),_b(39.6),_b(57)]
+BUILDINGS=[dict(id='alley_block',t0=_b(15.2),t1=_b(17.4),color='#73D5EB',h=3.4)]
+ART={'backdrop':'art/sky.jpg','ground':{'src':'art/ground-graph-paper.jpg','scale':32},
+     'files':{'art/sky.jpg':'pale sky blue with white pixel clouds (backdrop)',
+              'art/ground-graph-paper.jpg':'light-blue graph-paper tile: the city plan that unfolds (ground)',
+              'art/pixel-billboard.jpg':'pixel sky billboard: five abstract pixel flyers with colour trails + small pixel bunny, no faces, no text',
+              'art/bunny-gate-face.jpg':'pixel bunny icon framed in denim blue (Bunny Gate faces)',
+              'art/five-trails-decal.png':'five colour trails (pink, blue, mint, yellow, lavender) as a flat transparent ground decal'}}
+TRAIL=['#F36BA5','#397FC0','#8FDFB7','#F5CA63','#B7A0EA']
+def layout(c):
+    bar=c['bar']; g=c['gap_mid']; T=c['T']
+    P=dict(skyTop='#BFE9FA',skyBottom='#DDF5FF',fog='#DDF5FF',fogStart=30,fogEnd=100,ground='#E9F7FD',groundY=-10,
+           road='#FFF9ED',roadSide='#164A63',line='#F36BA5',light='#FFFFFF',lightIntensity=1.1,ambient='#CDE9F4',particles=None)
+    secs=[dict(t=0,label='Intro · 方格纸',palette=dict(skyTop='#E7F7FD'),camera='iso',note='open blank plan; long straight + one big L; side slabs flip up on the first percussion'),
+          dict(t=bar(4),label='Beat in · 蓝图线',camera='iso',note='switchbacks on the 2-step snares; first buildings unfold from the plan'),
+          dict(t=bar(8),label='Verse 1 · 纸片房屋',camera='iso',note='the line wraps round the Bunny Gate, then an open U through the courtyard; two rows of blocks rise between vocal phrases'),
+          dict(t=bar(20),label='Chorus 1 · 五色尾迹',palette=dict(skyTop='#AEE3F7',particles='pixels'),camera='wide',note='L1 (+4): horseshoe of staircases round the sunken city courtyard; five flight fins rise one by one on the hook accents'),
+          dict(t=bar(28),label='Break · 像素平面',palette=dict(skyTop='#D3EEF9',particles=None),camera='high',note='drop to L0 and run UNDER the chorus deck; tall blocks retract, the fins cast the bunny shadow (E1)'),
+          dict(t=bar(32),label='Rebuild · 重新立起',camera='iso',note='the city re-rises block by block on the kicks'),
+          dict(t=bar(36),label='Verse 2 · 立体城市',camera='side',note='four-fold offset alley, then a square spiral up the courtyard tower to L1'),
+          dict(t=bar(48),label='Chorus 2 · 飞行',palette=dict(skyTop='#9FDDF5',particles='pixels'),camera='wide',note='climb to L2 (+8): big offset staircases above the whole city; fins open outward like pages; pixel billboard far away'),
+          dict(t=bar(56),label='Outro · 牛仔徽章',palette=dict(skyTop='#CFEFFB',lightIntensity=1.0),camera='high',note='one elbow, long finish straight on L2; the five trails freeze into the cover tableau')]
+    cam=[dict(t=0,preset='iso',blend=0),dict(t=bar(8),preset='iso',yaw=20,blend=2.0),dict(t=bar(18),preset='iso',blend=1.5),dict(t=bar(20),preset='wide',blend=1.0),
+         dict(t=bar(24),preset='iso',blend=2.0),dict(t=bar(28),preset='high',blend=1.0),dict(t=bar(32),preset='iso',blend=2.0),dict(t=bar(36),preset='side',blend=1.5),
+         dict(t=bar(44),preset='high',blend=1.0),dict(t=bar(48),preset='wide',blend=0.9),dict(t=bar(52),preset='iso',blend=2.0),dict(t=bar(56),preset='high',dist=36,blend=5.0)]
+    O=[]
+    for i in range(6):   # Intro: side slabs flip up on the first percussion
+        O.append(dict(id=f'slab{i}',t=1.0+i*1.1,side=(3.4 if i%2==0 else -3.4),kind='box',size=[1.6,0.3,1.6],color='#73D5EB',appear=dict(t=bar(4)+i*T*0.5,mode='unfold',dur=0.4)))
+    O.append(dict(id='bunny_gate',t=bar(10),kind='group',radius=4,landmark=True,name='兔耳门 Bunny Gate (white voxel gate with square eyes)',react='beat',
+                  parts=[dict(kind='box',pos=[-2.2,2.0,0],size=[1.2,4,1.2],color='#FFFFFF'),dict(kind='box',pos=[2.2,2.0,0],size=[1.2,4,1.2],color='#FFFFFF'),
+                         dict(kind='box',pos=[0,4.6,0],size=[5.6,1.4,1.2],color='#FFFFFF'),dict(kind='box',pos=[-1.4,6.6,0],size=[0.9,2.8,0.9],color='#FFFFFF'),
+                         dict(kind='box',pos=[1.4,6.6,0],size=[0.9,2.8,0.9],color='#FFFFFF'),dict(kind='box',pos=[-0.9,4.7,-0.62],size=[0.5,0.5,0.05],color='#164A63'),
+                         dict(kind='box',pos=[0.9,4.7,-0.62],size=[0.5,0.5,0.05],color='#164A63'),dict(kind='plane',pos=[0,4.6,-0.61],size=[2.2,0,1.0],color='#FFF9ED',texture='art/bunny-gate-face.jpg')],
+                  appear=dict(t=bar(8),mode='rise',dur=1.0)))
+    for i in range(8):   # courtyard building rows rise between vocal phrases
+        t=bar(9)+i*1.6
+        O.append(dict(id=f'cblock{i}',t=t,side=(9 if i%2==0 else -9),kind='building',size=[3,3+(i%3),3],color=('#73D5EB' if i%2 else '#397FC0'),color2='#FFF9ED',appear=dict(t=t-1.8,mode='rise',dur=0.7),react='kick'))
+    O.append(dict(id='sunken_court',t=bar(23),kind='group',radius=6,landmark=True,name='下沉城市庭院 (low buildings rise block by block inside the horseshoe)',y=-4,
+                  parts=[dict(kind='box',pos=[x,h/2,z],size=[2.4,h,2.4],color=('#73D5EB' if (x+z)%2 else '#397FC0')) for x,z,h in [(-3,-3,2),(0,-3,3),(3,-3,2),(-3,0,3),(0,0,4),(3,0,2.5),(-3,3,2),(0,3,3),(3,3,2)]],
+                  appear=dict(t=bar(20)+0.2,mode='rise',dur=2.0)))
+    for i,col in enumerate(TRAIL):   # flight fins: five stepped tall plates beside the road, rising one by one on hook accents
+        O.append(dict(id=f'fin{i}',t=bar(21)+i*1.2,side=-8-i*1.4,kind='box',size=[0.4,4+i*1.2,3.2],color=col,landmark=(i==2),name='五色飞行鳍片 Flight Fins' if i==2 else None,
+                      appear=dict(t=bar(20)+i*2*T,mode='rise',dur=0.6),react='beat'))
+    O.append(dict(id='egg_bunny_shadow',t=bar(30),side=-5,y=0.05,kind='group',radius=2,egg=True,name='E1 兔影: the fins\' shadows form a bunny for one beat under the deck',
+                  parts=[dict(kind='box',pos=[0,0,0],size=[2.4,0.04,2.0],color='#164A63'),dict(kind='box',pos=[-0.6,0,-1.8],size=[0.5,0.04,1.8],color='#164A63'),dict(kind='box',pos=[0.6,0,-1.8],size=[0.5,0.04,1.8],color='#164A63')],
+                  appear=dict(t=bar(30),mode='fade',dur=0.3),exit=dict(t=bar(30)+2*T,mode='fade',dur=0.3)))
+    for i in range(10):   # rebuild: towers re-rise on the kicks
+        t=bar(32)+i*0.75
+        O.append(dict(id=f'rtower{i}',t=t,side=(8 if i%2==0 else -8),kind='building',size=[3,5+2*(i%3),3],color='#FFFFFF',color2=TRAIL[i%5],appear=dict(t=t-1.5,mode='rise',dur=0.5)))
+    O.append(dict(id='court_tower',t=bar(45),kind='group',radius=3,landmark=True,name='庭院塔 (the Verse-2 spiral winds round it)',
+                  parts=[dict(kind='box',pos=[0,4,0],size=[3,8,3],color='#397FC0'),dict(kind='box',pos=[0,8.6,0],size=[3.4,1.2,3.4],color='#FFF9ED')],appear=dict(t=bar(42),mode='rise',dur=1.4)))
+    O.append(dict(id='pixel_billboard',t=bar(50),side=-26,y=6,kind='image',src='art/pixel-billboard.jpg',size=[16,0,9],mode='billboard',landmark=True,nopocket=True,name='像素天空广告牌',appear=dict(t=bar(48),mode='fade',dur=1.5)))
+    O.append(dict(id='trails_decal',t=bar(53),pocket=True,radius=6,y=-7.9,kind='image',src='art/five-trails-decal.png',size=[24,0,6],mode='flat',alpha=True,appear=dict(t=bar(52),mode='fade',dur=1.5)))
+    O.append(dict(id='cover_tableau',t=bar(59),kind='group',radius=6,landmark=True,name='封面定格台 Cover Tableau: five pixel silhouettes + five colour bands',
+                  parts=[dict(kind='box',pos=[-4+2*i,1.2,0],size=[1.2,2.4,0.6],color=col) for i,col in enumerate(TRAIL)]+
+                        [dict(kind='box',pos=[-4+2*i,2.6+0.0*i,4],size=[0.6,0.6,8],color=col) for i,col in enumerate(TRAIL)]+[dict(kind='box',pos=[0,-0.2,1],size=[12,0.4,10],color='#73D5EB')],
+                  appear=dict(t=bar(57),mode='rise',dur=1.6)))
+    O.append(dict(id='egg_plant',t=bar(17)+0.5,side=-4.5,kind='group',radius=1,egg=True,name='E2 点头的小植物 (nods on the player\'s taps)',
+                  parts=[dict(kind='cylinder',pos=[0,0.4,0],size=[0.8,0.8,0.8],color='#FFBB7C'),dict(kind='sphere',pos=[0,1.2,0],size=[1,1,1],color='#8FDFB7')],react='tap'))
+    ev=[dict(t=bar(20),type='burst',at='player',color='#F36BA5',amount=50),dict(t=bar(20),type='light',target='fin*',every=2*T,level=0.6,color='#FFFFFF',dur=0.4,until=bar(28)),
+        dict(t=bar(28),type='lower',target='cblock*',dy=3,dur=1.0),dict(t=bar(28),type='flash',amount=0.25),
+        dict(t=bar(32),type='raise',target='cblock*',dy=3,dur=2.0),dict(t=bar(48),type='burst',at='player',color='#F5CA63',amount=60),
+        dict(t=bar(52),type='spin',target='fin*',speed=0.6,until=bar(56)),dict(t=bar(56),type='particles',particles='pixels',until=bar(60))]
+    cr=[g(x,0.9) for x in CROWN_T(bar)]
+    dia=[g(t,0.5) for t in [bar(10),bar(15),bar(23),bar(26),bar(27.5),bar(40),bar(52),bar(54),bar(55),bar(30.5)]]
+    return dict(id='new-jeans',title='New Jeans',palette=P,road=dict(height=0.6,reveal=[dict(t=0,mode='rise',lead=2.0),dict(t=bar(8),mode='unfold',lead=1.6),
+                dict(t=bar(28),mode='static',lead=2.0),dict(t=bar(32),mode='rise',lead=1.5),dict(t=bar(48),mode='unfold',lead=1.6)]),
+                sections=secs,camera=cam,objects=O,events=ev,diamonds=[dict(t=t,side=0) for t in dia],
+                crowns=[dict(t=x) for x in cr],finish=dict(kind='gate',color='#F5CA63'),collectibleColors=dict(diamond='#F36BA5',crown='#F5CA63'))
+CROWN_T=lambda bar: [bar(19.9)-0.4,bar(47.6)]

@@ -2,19 +2,19 @@
  "id": "new-jeans",
  "title": "New Jeans",
  "palette": {
-  "skyTop": "#cfe6ff",
-  "skyBottom": "#fdfcf7",
-  "fog": "#eef4fb",
-  "fogStart": 28,
-  "fogEnd": 90,
-  "ground": "#f7f6f0",
+  "skyTop": "#BFE9FA",
+  "skyBottom": "#DDF5FF",
+  "fog": "#DDF5FF",
+  "fogStart": 30,
+  "fogEnd": 100,
+  "ground": "#E9F7FD",
   "groundY": -10,
-  "road": "#ffffff",
-  "roadSide": "#9ec3e6",
-  "line": "#1f6fd1",
-  "light": "#ffffff",
+  "road": "#FFF9ED",
+  "roadSide": "#164A63",
+  "line": "#F36BA5",
+  "light": "#FFFFFF",
   "lightIntensity": 1.1,
-  "ambient": "#cfdcea",
+  "ambient": "#CDE9F4",
   "particles": null
  },
  "road": {
@@ -22,7 +22,7 @@
   "reveal": [
    {
     "t": 0,
-    "mode": "fade",
+    "mode": "rise",
     "lead": 2.0
    },
    {
@@ -36,9 +36,14 @@
     "lead": 2.0
    },
    {
-    "t": 64.825,
+    "t": 57.66,
     "mode": "rise",
     "lead": 1.5
+   },
+   {
+    "t": 86.317,
+    "mode": "unfold",
+    "lead": 1.6
    }
   ],
   "width": [
@@ -65,120 +70,106 @@
    "t": 0,
    "label": "Intro · 方格纸",
    "palette": {
-    "skyTop": "#f4f6f8",
-    "skyBottom": "#ffffff",
-    "ground": "#f8f9fb",
-    "road": "#e8eef6",
-    "roadSide": "#b7c6d8",
-    "line": "#5a6b80"
+    "skyTop": "#E7F7FD"
    },
-   "camera": "top",
-   "note": "graph paper; road = pencil blueprint line, grid lines on ground"
+   "camera": "iso",
+   "note": "open blank plan; long straight + one big L; side slabs flip up on the first percussion"
   },
   {
    "t": 7.511,
    "label": "Beat in · 蓝图线",
-   "palette": {
-    "road": "#ffffff",
-    "roadSide": "#9ec3e6",
-    "line": "#1f6fd1"
-   },
-   "camera": "iso"
+   "camera": "iso",
+   "note": "switchbacks on the 2-step snares; first buildings unfold from the plan"
   },
   {
    "t": 14.675,
    "label": "Verse 1 · 纸片房屋",
-   "palette": {
-    "skyTop": "#cfe6ff"
-   },
    "camera": "iso",
-   "note": "paper houses pop up from the page (unfold)"
+   "note": "the line wraps round the Bunny Gate, then an open U through the courtyard; two rows of blocks rise between vocal phrases"
   },
   {
    "t": 36.168,
    "label": "Chorus 1 · 五色尾迹",
    "palette": {
-    "skyTop": "#ffd1e8",
-    "skyBottom": "#fff7fb",
+    "skyTop": "#AEE3F7",
     "particles": "pixels"
    },
-   "camera": "high",
-   "note": "jump: five colour trails (pink, blue, green, yellow, purple) launch into the sky"
+   "camera": "wide",
+   "note": "L1 (+4): horseshoe of staircases round the sunken city courtyard; five flight fins rise one by one on the hook accents"
   },
   {
    "t": 50.496,
    "label": "Break · 像素平面",
    "palette": {
-    "skyTop": "#e9f1fb",
-    "road": "#f2f6fb",
+    "skyTop": "#D3EEF9",
     "particles": null
    },
-   "camera": "top",
-   "note": "fall back onto the flat pixel plane"
+   "camera": "high",
+   "note": "drop to L0 and run UNDER the chorus deck; tall blocks retract, the fins cast the bunny shadow (E1)"
   },
   {
    "t": 57.66,
    "label": "Rebuild · 重新立起",
-   "camera": "iso"
+   "camera": "iso",
+   "note": "the city re-rises block by block on the kicks"
   },
   {
    "t": 64.825,
    "label": "Verse 2 · 立体城市",
-   "palette": {
-    "skyTop": "#bfe0ff",
-    "ground": "#e9f0f7"
-   },
-   "camera": "side"
+   "camera": "side",
+   "note": "four-fold offset alley, then a square spiral up the courtyard tower to L1"
   },
   {
    "t": 86.317,
    "label": "Chorus 2 · 飞行",
    "palette": {
-    "skyTop": "#ffc7e1",
-    "skyBottom": "#e8f6ff",
+    "skyTop": "#9FDDF5",
     "particles": "pixels"
    },
-   "camera": "wide"
+   "camera": "wide",
+   "note": "climb to L2 (+8): big offset staircases above the whole city; fins open outward like pages; pixel billboard far away"
   },
   {
    "t": 100.645,
    "label": "Outro · 牛仔徽章",
    "palette": {
-    "skyTop": "#3d5f8f",
-    "skyBottom": "#7f9fc7",
-    "ground": "#3f5f88",
-    "roadSide": "#2e4a70",
-    "light": "#ffffff"
+    "skyTop": "#CFEFFB",
+    "lightIntensity": 1.0
    },
    "camera": "high",
-   "note": "camera pulls back: the city was a badge on a denim jacket"
+   "note": "one elbow, long finish straight on L2; the five trails freeze into the cover tableau"
   }
  ],
  "camera": [
   {
    "t": 0,
-   "preset": "top",
+   "preset": "iso",
    "blend": 0
   },
   {
-   "t": 7.511,
+   "t": 14.675,
    "preset": "iso",
-   "blend": 2.5
+   "yaw": 20,
+   "blend": 2.0
+  },
+  {
+   "t": 32.586,
+   "preset": "iso",
+   "blend": 1.5
   },
   {
    "t": 36.168,
-   "preset": "high",
+   "preset": "wide",
    "blend": 1.0
   },
   {
    "t": 43.332,
    "preset": "iso",
-   "yaw": 60,
    "blend": 2.0
   },
   {
    "t": 50.496,
-   "preset": "top",
+   "preset": "high",
    "blend": 1.0
   },
   {
@@ -192,9 +183,9 @@
    "blend": 1.5
   },
   {
-   "t": 75.571,
-   "preset": "iso",
-   "blend": 2.0
+   "t": 79.153,
+   "preset": "high",
+   "blend": 1.0
   },
   {
    "t": 86.317,
@@ -203,849 +194,1169 @@
   },
   {
    "t": 93.481,
-   "preset": "low",
+   "preset": "iso",
    "blend": 2.0
   },
   {
    "t": 100.645,
    "preset": "high",
-   "dist": 34,
+   "dist": 36,
    "blend": 5.0
   }
  ],
  "objects": [
   {
-   "id": "grid_lines",
-   "kind": "row",
-   "t0": 0.5,
-   "t1": 14.675,
-   "side": 3.5,
-   "spacing": 2.0,
-   "bothSides": true,
-   "item": {
-    "kind": "box",
-    "size": [
-     0.06,
-     0.02,
-     6
-    ],
-    "color": "#b7c6d8"
+   "id": "slab0",
+   "t": 1.0,
+   "side": 14.65,
+   "kind": "box",
+   "size": [
+    1.6,
+    0.3,
+    1.6
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 7.511,
+    "mode": "unfold",
+    "dur": 0.4
    }
   },
   {
-   "id": "pencil",
-   "t": 2.0,
-   "side": 6,
-   "along": 3,
+   "id": "slab1",
+   "t": 2.1,
+   "side": -10.15,
+   "kind": "box",
+   "size": [
+    1.6,
+    0.3,
+    1.6
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 7.7348805,
+    "mode": "unfold",
+    "dur": 0.4
+   }
+  },
+  {
+   "id": "slab2",
+   "t": 3.2,
+   "side": 3.4,
+   "kind": "box",
+   "size": [
+    1.6,
+    0.3,
+    1.6
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 7.958761,
+    "mode": "unfold",
+    "dur": 0.4
+   }
+  },
+  {
+   "id": "slab3",
+   "t": 4.300000000000001,
+   "side": -11.65,
+   "kind": "box",
+   "size": [
+    1.6,
+    0.3,
+    1.6
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 8.1826415,
+    "mode": "unfold",
+    "dur": 0.4
+   }
+  },
+  {
+   "id": "slab4",
+   "t": 5.4,
+   "side": 3.4,
+   "kind": "box",
+   "size": [
+    1.6,
+    0.3,
+    1.6
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 8.406522,
+    "mode": "unfold",
+    "dur": 0.4
+   }
+  },
+  {
+   "id": "slab5",
+   "t": 6.5,
+   "side": -10.15,
+   "kind": "box",
+   "size": [
+    1.6,
+    0.3,
+    1.6
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 8.6304025,
+    "mode": "unfold",
+    "dur": 0.4
+   }
+  },
+  {
+   "id": "bunny_gate",
+   "t": 18.257,
    "kind": "group",
-   "radius": 3,
+   "radius": 4,
    "landmark": true,
-   "name": "铅笔",
+   "name": "兔耳门 Bunny Gate (white voxel gate with square eyes)",
+   "react": "beat",
    "parts": [
     {
-     "kind": "cylinder",
+     "kind": "box",
      "pos": [
-      0,
-      0.4,
+      -2.2,
+      2.0,
       0
      ],
      "size": [
-      0.6,
-      7,
-      0.6
+      1.2,
+      4,
+      1.2
      ],
-     "rot": [
-      90,
-      30,
-      0
-     ],
-     "color": "#f2c94c"
+     "color": "#FFFFFF"
     },
     {
-     "kind": "cone",
+     "kind": "box",
      "pos": [
-      0,
-      0.4,
-      3.9
-     ],
-     "size": [
-      0.6,
-      0.9,
-      0.6
-     ],
-     "rot": [
-      90,
-      30,
+      2.2,
+      2.0,
       0
      ],
-     "color": "#e8c39e"
+     "size": [
+      1.2,
+      4,
+      1.2
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.6,
+      0
+     ],
+     "size": [
+      5.6,
+      1.4,
+      1.2
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.4,
+      6.6,
+      0
+     ],
+     "size": [
+      0.9,
+      2.8,
+      0.9
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.4,
+      6.6,
+      0
+     ],
+     "size": [
+      0.9,
+      2.8,
+      0.9
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -0.9,
+      4.7,
+      -0.62
+     ],
+     "size": [
+      0.5,
+      0.5,
+      0.05
+     ],
+     "color": "#164A63"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.9,
+      4.7,
+      -0.62
+     ],
+     "size": [
+      0.5,
+      0.5,
+      0.05
+     ],
+     "color": "#164A63"
+    },
+    {
+     "kind": "plane",
+     "pos": [
+      0,
+      4.6,
+      -0.61
+     ],
+     "size": [
+      2.2,
+      0,
+      1.0
+     ],
+     "color": "#FFF9ED",
+     "texture": "art/bunny-gate-face.jpg"
     }
+   ],
+   "appear": {
+    "t": 14.675,
+    "mode": "rise",
+    "dur": 1.0
+   },
+   "worldPos": [
+    59.77,
+    0.0,
+    63.57
    ]
   },
   {
-   "id": "paperhouse0",
+   "id": "cblock0",
    "t": 16.466,
-   "side": 11,
-   "kind": "group",
-   "radius": 2.5,
-   "parts": [
-    {
-     "kind": "box",
-     "pos": [
-      0,
-      1.2,
-      0
-     ],
-     "size": [
-      3,
-      2.4,
-      3
-     ],
-     "color": "#ffffff"
-    },
-    {
-     "kind": "cone",
-     "pos": [
-      0,
-      3.1,
-      0
-     ],
-     "size": [
-      3.6,
-      1.4,
-      3.6
-     ],
-     "rot": [
-      0,
-      45,
-      0
-     ],
-     "color": "#ff8fc3"
-    }
+   "side": 27.0,
+   "kind": "building",
+   "size": [
+    3,
+    3,
+    3
    ],
+   "color": "#397FC0",
+   "color2": "#FFF9ED",
    "appear": {
-    "t": 14.966000000000001,
-    "mode": "unfold",
-    "dur": 0.6
+    "t": 14.666,
+    "mode": "rise",
+    "dur": 0.7
    },
    "react": "kick"
   },
   {
-   "id": "paperhouse2",
-   "t": 23.631,
-   "side": 15.5,
-   "kind": "group",
-   "radius": 2.5,
-   "parts": [
-    {
-     "kind": "box",
-     "pos": [
-      0,
-      1.2,
-      0
-     ],
-     "size": [
-      3,
-      2.4,
-      3
-     ],
-     "color": "#ffffff"
-    },
-    {
-     "kind": "cone",
-     "pos": [
-      0,
-      3.1,
-      0
-     ],
-     "size": [
-      3.6,
-      1.4,
-      3.6
-     ],
-     "rot": [
-      0,
-      45,
-      0
-     ],
-     "color": "#7fe0a8"
-    }
+   "id": "cblock1",
+   "t": 18.066000000000003,
+   "side": -9,
+   "kind": "building",
+   "size": [
+    3,
+    4,
+    3
    ],
+   "color": "#73D5EB",
+   "color2": "#FFF9ED",
    "appear": {
-    "t": 22.131,
-    "mode": "unfold",
-    "dur": 0.6
+    "t": 16.266000000000002,
+    "mode": "rise",
+    "dur": 0.7
    },
    "react": "kick"
   },
   {
-   "id": "paperhouse3",
-   "t": 27.213,
-   "side": -18.5,
-   "kind": "group",
-   "radius": 2.5,
-   "parts": [
-    {
-     "kind": "box",
-     "pos": [
-      0,
-      1.2,
-      0
-     ],
-     "size": [
-      3,
-      2.4,
-      3
-     ],
-     "color": "#ffffff"
-    },
-    {
-     "kind": "cone",
-     "pos": [
-      0,
-      3.1,
-      0
-     ],
-     "size": [
-      3.6,
-      1.4,
-      3.6
-     ],
-     "rot": [
-      0,
-      45,
-      0
-     ],
-     "color": "#ffd86b"
-    }
+   "id": "cblock2",
+   "t": 19.666,
+   "side": 12.75,
+   "kind": "building",
+   "size": [
+    3,
+    5,
+    3
    ],
+   "color": "#397FC0",
+   "color2": "#FFF9ED",
    "appear": {
-    "t": 25.713,
-    "mode": "unfold",
-    "dur": 0.6
+    "t": 17.866,
+    "mode": "rise",
+    "dur": 0.7
    },
    "react": "kick"
   },
   {
-   "id": "paperhouse5",
-   "t": 34.377,
-   "side": -11.75,
-   "kind": "group",
-   "radius": 2.5,
-   "parts": [
-    {
-     "kind": "box",
-     "pos": [
-      0,
-      1.2,
-      0
-     ],
-     "size": [
-      3,
-      2.4,
-      3
-     ],
-     "color": "#ffffff"
-    },
-    {
-     "kind": "cone",
-     "pos": [
-      0,
-      3.1,
-      0
-     ],
-     "size": [
-      3.6,
-      1.4,
-      3.6
-     ],
-     "rot": [
-      0,
-      45,
-      0
-     ],
-     "color": "#ff8fc3"
-    }
+   "id": "cblock3",
+   "t": 21.266000000000002,
+   "side": -15.75,
+   "kind": "building",
+   "size": [
+    3,
+    3,
+    3
    ],
+   "color": "#73D5EB",
+   "color2": "#FFF9ED",
    "appear": {
-    "t": 32.877,
-    "mode": "unfold",
-    "dur": 0.6
+    "t": 19.466,
+    "mode": "rise",
+    "dur": 0.7
    },
    "react": "kick"
   },
   {
-   "id": "trail0",
+   "id": "cblock4",
+   "t": 22.866,
+   "side": 9,
+   "kind": "building",
+   "size": [
+    3,
+    4,
+    3
+   ],
+   "color": "#397FC0",
+   "color2": "#FFF9ED",
+   "appear": {
+    "t": 21.066,
+    "mode": "rise",
+    "dur": 0.7
+   },
+   "react": "kick"
+  },
+  {
+   "id": "cblock5",
+   "t": 24.466,
+   "side": -17.25,
+   "kind": "building",
+   "size": [
+    3,
+    5,
+    3
+   ],
+   "color": "#73D5EB",
+   "color2": "#FFF9ED",
+   "appear": {
+    "t": 22.666,
+    "mode": "rise",
+    "dur": 0.7
+   },
+   "react": "kick"
+  },
+  {
+   "id": "cblock6",
+   "t": 26.066000000000003,
+   "side": 38.25,
+   "kind": "building",
+   "size": [
+    3,
+    3,
+    3
+   ],
+   "color": "#397FC0",
+   "color2": "#FFF9ED",
+   "appear": {
+    "t": 24.266000000000002,
+    "mode": "rise",
+    "dur": 0.7
+   },
+   "react": "kick"
+  },
+  {
+   "id": "cblock7",
+   "t": 27.666000000000004,
+   "side": -31.5,
+   "kind": "building",
+   "size": [
+    3,
+    4,
+    3
+   ],
+   "color": "#73D5EB",
+   "color2": "#FFF9ED",
+   "appear": {
+    "t": 25.866000000000003,
+    "mode": "rise",
+    "dur": 0.7
+   },
+   "react": "kick"
+  },
+  {
+   "id": "sunken_court",
+   "t": 41.541,
+   "kind": "group",
+   "radius": 6,
+   "landmark": true,
+   "name": "下沉城市庭院 (low buildings rise block by block inside the horseshoe)",
+   "y": -4,
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      -3,
+      1.0,
+      -3
+     ],
+     "size": [
+      2.4,
+      2,
+      2.4
+     ],
+     "color": "#397FC0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.5,
+      -3
+     ],
+     "size": [
+      2.4,
+      3,
+      2.4
+     ],
+     "color": "#73D5EB"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      3,
+      1.0,
+      -3
+     ],
+     "size": [
+      2.4,
+      2,
+      2.4
+     ],
+     "color": "#397FC0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -3,
+      1.5,
+      0
+     ],
+     "size": [
+      2.4,
+      3,
+      2.4
+     ],
+     "color": "#73D5EB"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.0,
+      0
+     ],
+     "size": [
+      2.4,
+      4,
+      2.4
+     ],
+     "color": "#397FC0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      3,
+      1.25,
+      0
+     ],
+     "size": [
+      2.4,
+      2.5,
+      2.4
+     ],
+     "color": "#73D5EB"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -3,
+      1.0,
+      3
+     ],
+     "size": [
+      2.4,
+      2,
+      2.4
+     ],
+     "color": "#397FC0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.5,
+      3
+     ],
+     "size": [
+      2.4,
+      3,
+      2.4
+     ],
+     "color": "#73D5EB"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      3,
+      1.0,
+      3
+     ],
+     "size": [
+      2.4,
+      2,
+      2.4
+     ],
+     "color": "#397FC0"
+    }
+   ],
+   "appear": {
+    "t": 36.368,
+    "mode": "rise",
+    "dur": 2.0
+   },
+   "worldPos": [
+    154.58,
+    0.0,
+    131.07
+   ]
+  },
+  {
+   "id": "fin0",
    "t": 37.959,
-   "side": -12.0,
-   "y": 7.0,
+   "side": -10.25,
    "kind": "box",
    "size": [
-    1.2,
-    1.2,
-    40
+    0.4,
+    4.0,
+    3.2
    ],
-   "color": "#ff7eb6",
+   "color": "#F36BA5",
    "landmark": false,
    "name": null,
    "appear": {
     "t": 36.168,
-    "mode": "grow",
-    "dur": 1.2
-   },
-   "exit": {
-    "t": 50.496,
-    "mode": "fade",
-    "dur": 1.0
-   }
-  },
-  {
-   "id": "trail1",
-   "t": 38.409000000000006,
-   "side": -14.5,
-   "y": 8.5,
-   "kind": "box",
-   "size": [
-    1.2,
-    1.2,
-    40
-   ],
-   "color": "#5aa8ff",
-   "landmark": false,
-   "name": null,
-   "appear": {
-    "t": 36.615761,
-    "mode": "grow",
-    "dur": 1.2
-   },
-   "exit": {
-    "t": 50.496,
-    "mode": "fade",
-    "dur": 1.0
-   }
-  },
-  {
-   "id": "trail2",
-   "t": 38.859,
-   "side": -17.0,
-   "y": 10.0,
-   "kind": "box",
-   "size": [
-    1.2,
-    1.2,
-    40
-   ],
-   "color": "#5ad69a",
-   "landmark": true,
-   "name": "五色超能力尾迹",
-   "appear": {
-    "t": 37.063522,
-    "mode": "grow",
-    "dur": 1.2
-   },
-   "exit": {
-    "t": 50.496,
-    "mode": "fade",
-    "dur": 1.0
-   }
-  },
-  {
-   "id": "trail3",
-   "t": 39.309000000000005,
-   "side": -19.5,
-   "y": 11.5,
-   "kind": "box",
-   "size": [
-    1.2,
-    1.2,
-    40
-   ],
-   "color": "#ffd23f",
-   "landmark": false,
-   "name": null,
-   "appear": {
-    "t": 37.511283,
-    "mode": "grow",
-    "dur": 1.2
-   },
-   "exit": {
-    "t": 50.496,
-    "mode": "fade",
-    "dur": 1.0
-   }
-  },
-  {
-   "id": "trail4",
-   "t": 39.759,
-   "side": -22.0,
-   "y": 13.0,
-   "kind": "box",
-   "size": [
-    1.2,
-    1.2,
-    40
-   ],
-   "color": "#a98bff",
-   "landmark": false,
-   "name": null,
-   "appear": {
-    "t": 37.959044,
-    "mode": "grow",
-    "dur": 1.2
-   },
-   "exit": {
-    "t": 50.496,
-    "mode": "fade",
-    "dur": 1.0
-   }
-  },
-  {
-   "id": "pixel_heart",
-   "t": 54.078,
-   "side": -10,
-   "y": 0,
-   "kind": "group",
-   "radius": 3,
-   "landmark": true,
-   "name": "像素爱心",
-   "parts": [
-    {
-     "kind": "box",
-     "pos": [
-      -0.8,
-      2.6,
-      0
-     ],
-     "size": [
-      0.8,
-      0.8,
-      0.8
-     ],
-     "color": "#ff5fa2"
-    },
-    {
-     "kind": "box",
-     "pos": [
-      0.8,
-      2.6,
-      0
-     ],
-     "size": [
-      0.8,
-      0.8,
-      0.8
-     ],
-     "color": "#ff5fa2"
-    },
-    {
-     "kind": "box",
-     "pos": [
-      -1.6,
-      1.8,
-      0
-     ],
-     "size": [
-      0.8,
-      0.8,
-      0.8
-     ],
-     "color": "#ff5fa2"
-    },
-    {
-     "kind": "box",
-     "pos": [
-      0.0,
-      1.8,
-      0
-     ],
-     "size": [
-      0.8,
-      0.8,
-      0.8
-     ],
-     "color": "#ff5fa2"
-    },
-    {
-     "kind": "box",
-     "pos": [
-      1.6,
-      1.8,
-      0
-     ],
-     "size": [
-      0.8,
-      0.8,
-      0.8
-     ],
-     "color": "#ff5fa2"
-    },
-    {
-     "kind": "box",
-     "pos": [
-      -1.6,
-      1.0,
-      0
-     ],
-     "size": [
-      0.8,
-      0.8,
-      0.8
-     ],
-     "color": "#ff5fa2"
-    },
-    {
-     "kind": "box",
-     "pos": [
-      -0.8,
-      1.0,
-      0
-     ],
-     "size": [
-      0.8,
-      0.8,
-      0.8
-     ],
-     "color": "#ff5fa2"
-    },
-    {
-     "kind": "box",
-     "pos": [
-      0.0,
-      1.0,
-      0
-     ],
-     "size": [
-      0.8,
-      0.8,
-      0.8
-     ],
-     "color": "#ff5fa2"
-    },
-    {
-     "kind": "box",
-     "pos": [
-      0.8,
-      1.0,
-      0
-     ],
-     "size": [
-      0.8,
-      0.8,
-      0.8
-     ],
-     "color": "#ff5fa2"
-    },
-    {
-     "kind": "box",
-     "pos": [
-      1.6,
-      1.0,
-      0
-     ],
-     "size": [
-      0.8,
-      0.8,
-      0.8
-     ],
-     "color": "#ff5fa2"
-    },
-    {
-     "kind": "box",
-     "pos": [
-      -0.8,
-      0.19999999999999996,
-      0
-     ],
-     "size": [
-      0.8,
-      0.8,
-      0.8
-     ],
-     "color": "#ff5fa2"
-    },
-    {
-     "kind": "box",
-     "pos": [
-      0.0,
-      0.19999999999999996,
-      0
-     ],
-     "size": [
-      0.8,
-      0.8,
-      0.8
-     ],
-     "color": "#ff5fa2"
-    },
-    {
-     "kind": "box",
-     "pos": [
-      0.8,
-      0.19999999999999996,
-      0
-     ],
-     "size": [
-      0.8,
-      0.8,
-      0.8
-     ],
-     "color": "#ff5fa2"
-    },
-    {
-     "kind": "box",
-     "pos": [
-      0.0,
-      -0.6000000000000001,
-      0
-     ],
-     "size": [
-      0.8,
-      0.8,
-      0.8
-     ],
-     "color": "#ff5fa2"
-    },
-    {
-     "kind": "box",
-     "pos": [
-      -1.6,
-      2.4000000000000004,
-      0
-     ],
-     "size": [
-      0.01,
-      0.01,
-      0.01
-     ],
-     "color": "#ff5fa2"
-    }
-   ],
-   "appear": {
-    "t": 50.496,
-    "mode": "pop",
-    "dur": 0.4
+    "mode": "rise",
+    "dur": 0.6
    },
    "react": "beat"
   },
   {
-   "id": "tower0",
-   "t": 66.616,
-   "side": 12.25,
-   "kind": "building",
+   "id": "fin1",
+   "t": 39.159000000000006,
+   "side": -10.9,
+   "kind": "box",
    "size": [
-    4,
-    8,
-    4
+    0.4,
+    5.2,
+    3.2
    ],
-   "color": "#ffffff",
-   "color2": "#ff7eb6",
+   "color": "#397FC0",
+   "landmark": false,
+   "name": null,
    "appear": {
-    "t": 64.816,
+    "t": 37.063522,
     "mode": "rise",
-    "dur": 0.9
-   }
+    "dur": 0.6
+   },
+   "react": "beat"
   },
   {
-   "id": "tower1",
-   "t": 70.196,
-   "side": -10,
-   "kind": "building",
+   "id": "fin2",
+   "t": 40.359,
+   "kind": "box",
    "size": [
-    4,
-    10,
-    4
+    0.4,
+    6.4,
+    3.2
    ],
-   "color": "#ffffff",
-   "color2": "#5aa8ff",
-   "appear": {
-    "t": 68.396,
-    "mode": "rise",
-    "dur": 0.9
-   }
-  },
-  {
-   "id": "tower2",
-   "t": 73.776,
-   "side": 10,
-   "kind": "building",
-   "size": [
-    4,
-    12,
-    4
-   ],
-   "color": "#ffffff",
-   "color2": "#5ad69a",
-   "appear": {
-    "t": 71.976,
-    "mode": "rise",
-    "dur": 0.9
-   }
-  },
-  {
-   "id": "tower3",
-   "t": 77.356,
-   "side": -28.0,
-   "kind": "building",
-   "size": [
-    4,
-    8,
-    4
-   ],
-   "color": "#ffffff",
-   "color2": "#ffd23f",
-   "appear": {
-    "t": 75.556,
-    "mode": "rise",
-    "dur": 0.9
-   }
-  },
-  {
-   "id": "tower4",
-   "t": 80.936,
-   "side": 12.25,
-   "kind": "building",
-   "size": [
-    4,
-    10,
-    4
-   ],
-   "color": "#ffffff",
-   "color2": "#a98bff",
-   "appear": {
-    "t": 79.13600000000001,
-    "mode": "rise",
-    "dur": 0.9
-   }
-  },
-  {
-   "id": "tower5",
-   "t": 84.51599999999999,
-   "side": -10,
-   "kind": "building",
-   "size": [
-    4,
-    12,
-    4
-   ],
-   "color": "#ffffff",
-   "color2": "#ff7eb6",
-   "appear": {
-    "t": 82.716,
-    "mode": "rise",
-    "dur": 0.9
-   }
-  },
-  {
-   "id": "city_core",
-   "t": 79.153,
-   "side": -47.5,
-   "kind": "group",
-   "radius": 6,
+   "color": "#8FDFB7",
    "landmark": true,
-   "name": "立体玩具城",
+   "name": "五色飞行鳍片 Flight Fins",
+   "appear": {
+    "t": 37.959044,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "react": "beat",
+   "worldPos": [
+    145.45,
+    4.0,
+    112.71
+   ]
+  },
+  {
+   "id": "fin3",
+   "t": 41.559000000000005,
+   "side": -12.2,
+   "kind": "box",
+   "size": [
+    0.4,
+    7.6,
+    3.2
+   ],
+   "color": "#F5CA63",
+   "landmark": false,
+   "name": null,
+   "appear": {
+    "t": 38.854566,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "react": "beat"
+  },
+  {
+   "id": "fin4",
+   "t": 42.759,
+   "side": -13.6,
+   "kind": "box",
+   "size": [
+    0.4,
+    8.8,
+    3.2
+   ],
+   "color": "#B7A0EA",
+   "landmark": false,
+   "name": null,
+   "appear": {
+    "t": 39.750088,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "react": "beat"
+  },
+  {
+   "id": "egg_bunny_shadow",
+   "t": 54.078,
+   "side": -5,
+   "y": 0.05,
+   "kind": "group",
+   "radius": 2,
+   "egg": true,
+   "name": "E1 兔影: the fins' shadows form a bunny for one beat under the deck",
    "parts": [
     {
      "kind": "box",
      "pos": [
       0,
-      5,
+      0,
       0
      ],
      "size": [
-      5,
-      10,
-      5
+      2.4,
+      0.04,
+      2.0
      ],
-     "color": "#ffffff"
+     "color": "#164A63"
     },
     {
      "kind": "box",
      "pos": [
-      4,
-      3,
-      2
+      -0.6,
+      0,
+      -1.8
      ],
      "size": [
-      3,
-      6,
-      3
+      0.5,
+      0.04,
+      1.8
      ],
-     "color": "#7fb8ff"
+     "color": "#164A63"
     },
     {
      "kind": "box",
      "pos": [
-      -4,
+      0.6,
+      0,
+      -1.8
+     ],
+     "size": [
+      0.5,
+      0.04,
+      1.8
+     ],
+     "color": "#164A63"
+    }
+   ],
+   "appear": {
+    "t": 54.078,
+    "mode": "fade",
+    "dur": 0.3
+   },
+   "exit": {
+    "t": 54.973522,
+    "mode": "fade",
+    "dur": 0.3
+   }
+  },
+  {
+   "id": "rtower0",
+   "t": 57.66,
+   "side": 16.25,
+   "kind": "building",
+   "size": [
+    3,
+    5,
+    3
+   ],
+   "color": "#FFFFFF",
+   "color2": "#F36BA5",
+   "appear": {
+    "t": 56.16,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "rtower1",
+   "t": 58.41,
+   "side": -8,
+   "kind": "building",
+   "size": [
+    3,
+    7,
+    3
+   ],
+   "color": "#FFFFFF",
+   "color2": "#397FC0",
+   "appear": {
+    "t": 56.91,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "rtower2",
+   "t": 59.16,
+   "side": 13.25,
+   "kind": "building",
+   "size": [
+    3,
+    9,
+    3
+   ],
+   "color": "#FFFFFF",
+   "color2": "#8FDFB7",
+   "appear": {
+    "t": 57.66,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "rtower3",
+   "t": 59.91,
+   "side": -8,
+   "kind": "building",
+   "size": [
+    3,
+    5,
+    3
+   ],
+   "color": "#FFFFFF",
+   "color2": "#F5CA63",
+   "appear": {
+    "t": 58.41,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "rtower4",
+   "t": 60.66,
+   "side": 18.5,
+   "kind": "building",
+   "size": [
+    3,
+    7,
+    3
+   ],
+   "color": "#FFFFFF",
+   "color2": "#B7A0EA",
+   "appear": {
+    "t": 59.16,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "rtower5",
+   "t": 61.41,
+   "side": -8,
+   "kind": "building",
+   "size": [
+    3,
+    9,
+    3
+   ],
+   "color": "#FFFFFF",
+   "color2": "#F36BA5",
+   "appear": {
+    "t": 59.91,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "rtower6",
+   "t": 62.16,
+   "side": 8,
+   "kind": "building",
+   "size": [
+    3,
+    5,
+    3
+   ],
+   "color": "#FFFFFF",
+   "color2": "#397FC0",
+   "appear": {
+    "t": 60.66,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "rtower7",
+   "t": 62.91,
+   "side": -11.75,
+   "kind": "building",
+   "size": [
+    3,
+    7,
+    3
+   ],
+   "color": "#FFFFFF",
+   "color2": "#8FDFB7",
+   "appear": {
+    "t": 61.41,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "rtower8",
+   "t": 63.66,
+   "side": 9.5,
+   "kind": "building",
+   "size": [
+    3,
+    9,
+    3
+   ],
+   "color": "#FFFFFF",
+   "color2": "#F5CA63",
+   "appear": {
+    "t": 62.16,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "rtower9",
+   "t": 64.41,
+   "side": -8,
+   "kind": "building",
+   "size": [
+    3,
+    5,
+    3
+   ],
+   "color": "#FFFFFF",
+   "color2": "#B7A0EA",
+   "appear": {
+    "t": 62.91,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "court_tower",
+   "t": 80.944,
+   "kind": "group",
+   "radius": 3,
+   "landmark": true,
+   "name": "庭院塔 (the Verse-2 spiral winds round it)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
       4,
-      -1
+      0
      ],
      "size": [
       3,
       8,
       3
      ],
-     "color": "#ff8fc3"
+     "color": "#397FC0"
     },
     {
-     "kind": "sphere",
+     "kind": "box",
      "pos": [
       0,
-      11,
+      8.6,
       0
      ],
      "size": [
-      2.4,
-      2.4,
-      2.4
+      3.4,
+      1.2,
+      3.4
      ],
-     "color": "#ffd86b"
+     "color": "#FFF9ED"
     }
    ],
    "appear": {
     "t": 75.571,
     "mode": "rise",
-    "dur": 1.6
-   }
+    "dur": 1.4
+   },
+   "worldPos": [
+    126.37,
+    1.16,
+    185.0
+   ]
   },
   {
-   "id": "badge",
-   "t": 104.228,
-   "side": 0,
-   "y": -6,
-   "kind": "disc",
+   "id": "pixel_billboard",
+   "t": 89.899,
+   "side": -26,
+   "y": 6,
+   "kind": "image",
+   "src": "art/pixel-billboard.jpg",
    "size": [
-    40,
-    1,
-    40
+    16,
+    0,
+    9
    ],
-   "color": "#5677a8",
-   "color2": "#ffffff",
-   "onroad": true,
+   "mode": "billboard",
    "landmark": true,
-   "name": "牛仔外套徽章 (huge disc under the whole outro area)",
+   "nopocket": true,
+   "name": "像素天空广告牌",
    "appear": {
-    "t": 100.645,
+    "t": 86.317,
     "mode": "fade",
-    "dur": 2.0
+    "dur": 1.5
    }
   },
   {
-   "id": "denim_stitch",
-   "kind": "row",
-   "t0": 100.645,
-   "t1": 107.31,
-   "side": 3.2,
-   "spacing": 0.8,
-   "bothSides": true,
-   "item": {
-    "kind": "box",
-    "size": [
-     0.12,
-     0.05,
-     0.5
-    ],
-    "color": "#f2c94c"
-   }
+   "id": "trails_decal",
+   "t": 95.272,
+   "pocket": true,
+   "radius": 6,
+   "y": -7.9,
+   "kind": "image",
+   "src": "art/five-trails-decal.png",
+   "size": [
+    24,
+    0,
+    6
+   ],
+   "mode": "flat",
+   "alpha": true,
+   "appear": {
+    "t": 93.481,
+    "mode": "fade",
+    "dur": 1.5
+   },
+   "worldPos": [
+    171.28,
+    0.1,
+    136.38
+   ]
+  },
+  {
+   "id": "cover_tableau",
+   "t": 106.019,
+   "kind": "group",
+   "radius": 6,
+   "landmark": true,
+   "name": "封面定格台 Cover Tableau: five pixel silhouettes + five colour bands",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      -4,
+      1.2,
+      0
+     ],
+     "size": [
+      1.2,
+      2.4,
+      0.6
+     ],
+     "color": "#F36BA5"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -2,
+      1.2,
+      0
+     ],
+     "size": [
+      1.2,
+      2.4,
+      0.6
+     ],
+     "color": "#397FC0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.2,
+      0
+     ],
+     "size": [
+      1.2,
+      2.4,
+      0.6
+     ],
+     "color": "#8FDFB7"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2,
+      1.2,
+      0
+     ],
+     "size": [
+      1.2,
+      2.4,
+      0.6
+     ],
+     "color": "#F5CA63"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      4,
+      1.2,
+      0
+     ],
+     "size": [
+      1.2,
+      2.4,
+      0.6
+     ],
+     "color": "#B7A0EA"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -4,
+      2.6,
+      4
+     ],
+     "size": [
+      0.6,
+      0.6,
+      8
+     ],
+     "color": "#F36BA5"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -2,
+      2.6,
+      4
+     ],
+     "size": [
+      0.6,
+      0.6,
+      8
+     ],
+     "color": "#397FC0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.6,
+      4
+     ],
+     "size": [
+      0.6,
+      0.6,
+      8
+     ],
+     "color": "#8FDFB7"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2,
+      2.6,
+      4
+     ],
+     "size": [
+      0.6,
+      0.6,
+      8
+     ],
+     "color": "#F5CA63"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      4,
+      2.6,
+      4
+     ],
+     "size": [
+      0.6,
+      0.6,
+      8
+     ],
+     "color": "#B7A0EA"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -0.2,
+      1
+     ],
+     "size": [
+      12,
+      0.4,
+      10
+     ],
+     "color": "#73D5EB"
+    }
+   ],
+   "appear": {
+    "t": 102.437,
+    "mode": "rise",
+    "dur": 1.6
+   },
+   "worldPos": [
+    203.28,
+    8.0,
+    83.22
+   ]
   },
   {
    "id": "egg_plant",
@@ -1054,7 +1365,7 @@
    "kind": "group",
    "radius": 1,
    "egg": true,
-   "name": "点头的小植物",
+   "name": "E2 点头的小植物 (nods on the player's taps)",
    "parts": [
     {
      "kind": "cylinder",
@@ -1068,7 +1379,7 @@
       0.8,
       0.8
      ],
-     "color": "#c97b4a"
+     "color": "#FFBB7C"
     },
     {
      "kind": "sphere",
@@ -1082,127 +1393,665 @@
       1,
       1
      ],
-     "color": "#5ad69a"
+     "color": "#8FDFB7"
     }
    ],
    "react": "tap"
   },
   {
-   "id": "egg_bunny_glint",
-   "t": 106.019,
-   "side": -6,
-   "y": 0.2,
-   "kind": "group",
-   "radius": 1.5,
-   "egg": true,
-   "name": "徽章反光里的兔耳",
-   "parts": [
-    {
-     "kind": "box",
-     "pos": [
-      -0.3,
-      1,
-      0
-     ],
-     "size": [
-      0.3,
-      1.4,
-      0.05
-     ],
-     "color": "#ffffff"
-    },
-    {
-     "kind": "box",
-     "pos": [
-      0.3,
-      1,
-      0
-     ],
-     "size": [
-      0.3,
-      1.4,
-      0.05
-     ],
-     "color": "#ffffff"
-    }
+   "id": "fakefork2",
+   "t": 55.185,
+   "worldPos": [
+    182.13,
+    -0.35,
+    97.07
    ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    2.0,
+    0.7,
+    6.0
+   ],
+   "color": "#FFF9ED",
+   "name": "fake-out fork (visual only, crumbles away)",
    "appear": {
-    "t": 106.019,
-    "mode": "fade",
+    "t": 53.19,
+    "mode": "rise",
     "dur": 0.6
+   },
+   "exit": {
+    "t": 55.79,
+    "mode": "fall",
+    "dur": 0.8
+   }
+  },
+  {
+   "id": "fakefork3",
+   "t": 71.306,
+   "worldPos": [
+    175.99,
+    -0.35,
+    162.77
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    2.0,
+    0.7,
+    6.0
+   ],
+   "color": "#FFF9ED",
+   "name": "fake-out fork (visual only, crumbles away)",
+   "appear": {
+    "t": 69.31,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "exit": {
+    "t": 71.91,
+    "mode": "fall",
+    "dur": 0.8
+   }
+  },
+  {
+   "id": "fakefork4",
+   "t": 102.46,
+   "worldPos": [
+    194.29,
+    7.65,
+    123.5
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    2.2,
+    0.7,
+    6.0
+   ],
+   "color": "#FFF9ED",
+   "name": "fake-out fork (visual only, crumbles away)",
+   "appear": {
+    "t": 100.46,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "exit": {
+    "t": 103.06,
+    "mode": "fall",
+    "dur": 0.8
+   }
+  },
+  {
+   "id": "alley_block_0",
+   "t": 29.54,
+   "worldPos": [
+    90.68,
+    0.0,
+    63.8
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.07,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_1",
+   "t": 29.54,
+   "worldPos": [
+    90.68,
+    0.0,
+    65.52
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.1,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_2",
+   "t": 29.54,
+   "worldPos": [
+    90.68,
+    0.0,
+    67.24
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.13,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_3",
+   "t": 29.54,
+   "worldPos": [
+    90.68,
+    0.0,
+    68.95
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.16,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_4",
+   "t": 29.54,
+   "worldPos": [
+    90.68,
+    0.0,
+    70.67
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.19,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_5",
+   "t": 29.54,
+   "worldPos": [
+    90.68,
+    0.0,
+    72.38
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.22,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_6",
+   "t": 29.54,
+   "worldPos": [
+    90.68,
+    0.0,
+    79.25
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.25,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_7",
+   "t": 29.54,
+   "worldPos": [
+    90.68,
+    0.0,
+    80.97
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.28,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_8",
+   "t": 29.54,
+   "worldPos": [
+    107.3,
+    0.0,
+    63.8
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.31,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_9",
+   "t": 29.54,
+   "worldPos": [
+    107.3,
+    0.0,
+    65.52
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.34,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_10",
+   "t": 29.54,
+   "worldPos": [
+    107.3,
+    0.0,
+    74.1
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.37,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_11",
+   "t": 29.54,
+   "worldPos": [
+    107.3,
+    0.0,
+    75.82
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.4,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_12",
+   "t": 29.54,
+   "worldPos": [
+    107.3,
+    0.0,
+    77.53
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.43,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_13",
+   "t": 29.54,
+   "worldPos": [
+    96.5,
+    0.0,
+    62.95
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.66
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.46,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_14",
+   "t": 29.54,
+   "worldPos": [
+    98.16,
+    0.0,
+    62.95
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.66
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.49,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_15",
+   "t": 29.54,
+   "worldPos": [
+    99.82,
+    0.0,
+    62.95
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.66
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.52,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_16",
+   "t": 29.54,
+   "worldPos": [
+    101.48,
+    0.0,
+    62.95
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.66
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.55,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_17",
+   "t": 29.54,
+   "worldPos": [
+    103.15,
+    0.0,
+    62.95
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.66
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.58,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_18",
+   "t": 29.54,
+   "worldPos": [
+    104.81,
+    0.0,
+    62.95
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.66
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.61,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_19",
+   "t": 29.54,
+   "worldPos": [
+    106.47,
+    0.0,
+    62.95
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.66
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.64,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_20",
+   "t": 29.54,
+   "worldPos": [
+    91.51,
+    0.0,
+    81.82
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.66
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.67,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_21",
+   "t": 29.54,
+   "worldPos": [
+    93.17,
+    0.0,
+    81.82
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.66
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.7,
+    "mode": "rise",
+    "dur": 0.5
    }
   }
  ],
  "events": [
   {
-   "t": 7.511,
-   "type": "color",
-   "palette": {
-    "road": "#ffffff",
-    "line": "#1f6fd1"
-   },
-   "dur": 1.0
-  },
-  {
    "t": 36.168,
    "type": "burst",
    "at": "player",
-   "particles": "pixels"
+   "color": "#F36BA5",
+   "amount": 50
+  },
+  {
+   "t": 36.168,
+   "type": "light",
+   "target": "fin*",
+   "every": 0.895522,
+   "level": 0.6,
+   "color": "#FFFFFF",
+   "dur": 0.4,
+   "until": 50.496
   },
   {
    "t": 50.496,
-   "type": "color",
-   "palette": {
-    "skyTop": "#e9f1fb"
-   },
-   "dur": 0.5
+   "type": "lower",
+   "target": "cblock*",
+   "dy": 3,
+   "dur": 1.0
+  },
+  {
+   "t": 50.496,
+   "type": "flash",
+   "amount": 0.25
+  },
+  {
+   "t": 57.66,
+   "type": "raise",
+   "target": "cblock*",
+   "dy": 3,
+   "dur": 2.0
   },
   {
    "t": 86.317,
    "type": "burst",
    "at": "player",
-   "particles": "confetti"
+   "color": "#F5CA63",
+   "amount": 60
+  },
+  {
+   "t": 93.481,
+   "type": "spin",
+   "target": "fin*",
+   "speed": 0.6,
+   "until": 100.645
   },
   {
    "t": 100.645,
-   "type": "color",
-   "palette": {
-    "skyTop": "#3d5f8f"
-   },
-   "dur": 4.0
+   "type": "particles",
+   "particles": "pixels",
+   "until": 107.81
   }
  ],
  "diamonds": [
-  {
-   "t": 4.271,
-   "side": 0
-  },
-  {
-   "t": 10.968,
-   "side": 0
-  },
   {
    "t": 17.909,
    "side": 0
   },
   {
-   "t": 28.657,
+   "t": 26.873,
    "side": 0
   },
   {
-   "t": 45.565,
+   "t": 41.983,
    "side": 0
   },
   {
-   "t": 53.843,
+   "t": 47.021,
    "side": 0
   },
   {
-   "t": 70.748,
+   "t": 48.809,
    "side": 0
   },
   {
-   "t": 80.597,
+   "t": 54.739,
+   "side": 0
+  },
+  {
+   "t": 71.642,
    "side": 0
   },
   {
@@ -1210,7 +2059,11 @@
    "side": 0
   },
   {
-   "t": 101.909,
+   "t": 97.166,
+   "side": 0
+  },
+  {
+   "t": 98.959,
    "side": 0
   }
  ],
@@ -1223,7 +2076,26 @@
   }
  ],
  "finish": {
-  "kind": "gate"
+  "kind": "gate",
+  "color": "#F5CA63"
+ },
+ "collectibleColors": {
+  "diamond": "#F36BA5",
+  "crown": "#F5CA63"
+ },
+ "art": {
+  "backdrop": "art/sky.jpg",
+  "ground": {
+   "src": "art/ground-graph-paper.jpg",
+   "scale": 32
+  },
+  "files": {
+   "art/sky.jpg": "pale sky blue with white pixel clouds (backdrop)",
+   "art/ground-graph-paper.jpg": "light-blue graph-paper tile: the city plan that unfolds (ground)",
+   "art/pixel-billboard.jpg": "pixel sky billboard: five abstract pixel flyers with colour trails + small pixel bunny, no faces, no text",
+   "art/bunny-gate-face.jpg": "pixel bunny icon framed in denim blue (Bunny Gate faces)",
+   "art/five-trails-decal.png": "five colour trails (pink, blue, mint, yellow, lavender) as a flat transparent ground decal"
+  }
  },
  "path": {
   "note": "computed centerline nodes [t,x,z,y,heading_after] (world units, y = road elevation offset)",
@@ -1254,1191 +2126,1188 @@
     11.53,
     17.54,
     0.0,
-    "W"
+    "E"
    ],
    [
     3.945,
-    0.36,
+    22.69,
     17.54,
     0.0,
-    "N"
+    "S"
    ],
    [
     4.597,
-    0.36,
-    24.19,
+    22.69,
+    10.89,
     0.0,
     "E"
    ],
    [
     5.719,
-    11.8,
-    24.19,
+    34.14,
+    10.89,
     0.0,
-    "N"
+    "S"
    ],
    [
     6.402,
-    11.8,
-    31.16,
+    34.14,
+    3.93,
     0.0,
-    "W"
+    "E"
    ],
    [
     7.063,
-    5.06,
-    31.16,
+    40.88,
+    3.93,
     0.0,
     "N"
    ],
    [
     7.725,
-    5.06,
-    37.91,
+    40.88,
+    10.68,
     0.0,
     "E"
    ],
    [
     8.617,
-    14.16,
-    37.91,
+    49.98,
+    10.68,
     0.0,
     "N"
    ],
    [
     9.513,
-    14.16,
-    47.05,
+    49.98,
+    19.82,
     0.0,
     "E"
    ],
    [
     9.736,
-    16.43,
-    47.05,
+    52.25,
+    19.82,
     0.0,
     "N"
    ],
    [
     10.632,
-    16.43,
-    56.19,
+    52.25,
+    28.96,
     0.0,
     "E"
    ],
    [
     11.305,
-    23.3,
-    56.19,
+    59.12,
+    28.96,
     0.0,
     "N"
    ],
    [
     12.2,
-    23.3,
-    65.32,
+    59.12,
+    38.09,
     0.0,
     "E"
    ],
    [
     12.879,
-    30.22,
-    65.32,
+    66.05,
+    38.09,
     0.0,
     "N"
    ],
    [
     13.318,
-    30.22,
-    69.8,
+    66.05,
+    42.56,
     0.0,
-    "E"
+    "W"
    ],
    [
     13.543,
-    32.52,
-    69.8,
+    63.75,
+    42.56,
     0.0,
-    "N"
+    "S"
    ],
    [
     13.769,
-    32.52,
-    72.1,
+    63.75,
+    40.26,
     0.0,
     "E"
    ],
    [
     14.214,
-    37.06,
-    72.1,
+    68.29,
+    40.26,
     0.0,
     "N"
    ],
    [
     14.664,
-    37.06,
-    76.69,
+    68.29,
+    44.85,
     0.0,
-    "E"
+    "W"
    ],
    [
     15.781,
-    48.45,
-    76.69,
+    56.9,
+    44.85,
     0.0,
-    "S"
+    "N"
    ],
    [
     16.454,
-    48.45,
-    69.83,
+    56.9,
+    51.71,
     0.0,
     "E"
    ],
    [
     17.573,
-    59.86,
-    69.83,
+    68.31,
+    51.71,
     0.0,
     "N"
    ],
    [
     18.245,
-    59.86,
-    76.68,
+    68.31,
+    58.57,
     0.0,
     "E"
    ],
    [
     18.692,
-    64.42,
-    76.68,
+    72.87,
+    58.57,
     0.0,
-    "S"
+    "N"
    ],
    [
     19.363,
-    64.42,
-    69.84,
+    72.87,
+    65.41,
     0.0,
     "E"
    ],
    [
     20.041,
-    71.34,
-    69.84,
+    79.78,
+    65.41,
     0.0,
-    "N"
+    "S"
    ],
    [
     21.156,
-    71.34,
-    81.21,
+    79.78,
+    54.04,
     0.0,
     "E"
    ],
    [
     21.829,
-    78.2,
-    81.21,
+    86.65,
+    54.04,
     0.0,
-    "N"
+    "S"
    ],
    [
     22.951,
-    78.2,
-    92.66,
+    86.65,
+    42.6,
     0.0,
-    "W"
+    "E"
    ],
    [
     23.619,
-    71.39,
-    92.66,
+    93.46,
+    42.6,
     0.0,
     "N"
    ],
    [
     24.74,
-    71.39,
-    104.09,
+    93.46,
+    54.03,
     0.0,
     "E"
    ],
    [
     25.412,
-    78.24,
-    104.09,
+    100.32,
+    54.03,
     0.0,
     "N"
    ],
    [
     25.856,
-    78.24,
-    108.62,
+    100.32,
+    58.56,
     0.0,
     "W"
    ],
    [
     26.531,
-    71.36,
-    108.62,
+    93.43,
+    58.56,
     0.0,
     "N"
    ],
    [
     27.216,
-    71.36,
-    115.61,
+    93.43,
+    65.55,
     0.0,
     "E"
    ],
    [
     28.321,
-    82.63,
-    115.61,
+    104.7,
+    65.55,
     0.0,
     "N"
    ],
    [
     28.992,
-    82.63,
-    122.45,
+    104.7,
+    72.39,
     0.0,
     "W"
    ],
    [
     30.112,
-    71.21,
-    122.45,
+    93.28,
+    72.39,
     0.0,
     "N"
    ],
    [
     30.782,
-    71.21,
-    129.29,
+    93.28,
+    79.22,
     0.0,
     "E"
    ],
    [
     31.904,
-    82.65,
-    129.29,
-    0.0,
+    104.72,
+    79.22,
+    0.21,
     "N"
    ],
    [
     32.574,
-    82.65,
-    136.12,
-    0.0,
+    104.72,
+    86.06,
+    0.86,
     "W"
    ],
    [
     33.02,
-    78.1,
-    136.12,
-    0.0,
+    100.17,
+    86.06,
+    1.29,
     "N"
    ],
    [
     33.694,
-    78.1,
-    142.99,
-    0.0,
+    100.17,
+    92.93,
+    1.95,
     "E"
    ],
    [
     34.367,
-    84.97,
-    142.99,
-    0.0,
+    107.04,
+    92.93,
+    2.6,
     "N"
    ],
    [
     35.483,
-    84.97,
-    154.38,
-    0.0,
-    "W"
+    107.04,
+    104.32,
+    3.68,
+    "E"
    ],
    [
     36.623,
-    73.34,
-    154.38,
-    3.0,
-    "S"
+    118.67,
+    104.32,
+    4.0,
+    "N"
    ],
    [
     37.055,
-    73.34,
-    149.97,
-    3.0,
-    "W"
+    118.67,
+    108.72,
+    4.0,
+    "E"
    ],
    [
     37.735,
-    66.4,
-    149.97,
-    3.0,
-    "S"
+    125.6,
+    108.72,
+    4.0,
+    "N"
    ],
    [
     37.959,
-    66.4,
-    147.69,
-    3.0,
-    "W"
+    125.6,
+    111.01,
+    4.0,
+    "E"
    ],
    [
     38.845,
-    57.36,
-    147.69,
-    3.0,
-    "S"
+    134.64,
+    111.01,
+    4.0,
+    "N"
    ],
    [
     39.524,
-    57.36,
-    140.76,
-    3.0,
-    "W"
+    134.64,
+    117.93,
+    4.0,
+    "E"
    ],
    [
     40.192,
-    50.55,
-    140.76,
-    3.0,
-    "S"
+    141.45,
+    117.93,
+    4.0,
+    "N"
    ],
    [
     40.643,
-    50.55,
-    136.16,
-    3.0,
-    "W"
+    141.45,
+    122.53,
+    4.0,
+    "E"
    ],
    [
     41.317,
-    43.68,
-    136.16,
-    3.0,
+    148.33,
+    122.53,
+    4.0,
     "S"
    ],
    [
     41.541,
-    43.68,
-    133.87,
-    3.0,
-    "W"
+    148.33,
+    120.25,
+    4.0,
+    "E"
    ],
    [
     42.425,
-    34.66,
-    133.87,
-    3.0,
+    157.35,
+    120.25,
+    4.0,
     "S"
    ],
    [
     43.098,
-    34.66,
-    127.01,
-    3.0,
+    157.35,
+    113.38,
+    4.0,
     "E"
    ],
    [
     43.766,
-    41.47,
-    127.01,
-    3.0,
+    164.16,
+    113.38,
+    4.0,
     "S"
    ],
    [
     44.216,
-    41.47,
-    122.42,
-    3.0,
+    164.16,
+    108.79,
+    4.0,
     "E"
    ],
    [
     44.897,
-    48.42,
-    122.42,
-    3.0,
+    171.1,
+    108.79,
+    4.0,
     "S"
    ],
    [
     45.121,
-    48.42,
-    120.14,
-    3.0,
+    171.1,
+    106.51,
+    4.0,
     "E"
    ],
    [
     46.008,
-    57.47,
-    120.14,
-    3.0,
+    180.15,
+    106.51,
+    4.0,
     "S"
    ],
    [
     46.694,
-    57.47,
-    113.14,
-    3.0,
-    "E"
+    180.15,
+    99.51,
+    4.0,
+    "W"
    ],
    [
     47.348,
-    64.14,
-    113.14,
-    3.0,
+    173.48,
+    99.51,
+    4.0,
     "S"
    ],
    [
     47.807,
-    64.14,
-    108.46,
-    3.0,
-    "E"
+    173.48,
+    94.83,
+    4.0,
+    "W"
    ],
    [
     48.479,
-    70.99,
-    108.46,
-    3.0,
+    166.63,
+    94.83,
+    4.0,
     "S"
    ],
    [
     49.14,
-    70.99,
-    101.71,
-    3.0,
-    "E"
+    166.63,
+    88.09,
+    4.0,
+    "W"
    ],
    [
     49.591,
-    75.59,
-    101.71,
-    3.0,
+    162.03,
+    88.09,
+    4.0,
     "S"
    ],
    [
     49.825,
-    75.59,
-    99.33,
-    3.0,
-    "E"
+    162.03,
+    85.7,
+    4.0,
+    "W"
    ],
    [
     50.048,
-    77.87,
-    99.33,
-    3.0,
+    159.75,
+    85.7,
+    4.0,
     "S"
    ],
    [
     50.276,
-    77.87,
-    97.0,
-    3.0,
-    "E"
-   ],
-   [
-    50.71,
-    82.29,
-    97.0,
-    -3.0,
-    "S"
-   ],
-   [
-    51.603,
-    82.29,
-    87.89,
-    -3.0,
+    159.75,
+    83.37,
+    4.0,
     "W"
    ],
    [
+    50.71,
+    155.33,
+    83.37,
+    4.0,
+    "N"
+   ],
+   [
+    51.603,
+    155.33,
+    92.48,
+    0.0,
+    "E"
+   ],
+   [
     52.05,
-    77.73,
-    87.89,
-    -3.0,
+    159.88,
+    92.48,
+    0.0,
     "S"
    ],
    [
     52.498,
-    77.73,
-    83.32,
-    -3.0,
+    159.88,
+    87.91,
+    0.0,
     "E"
    ],
    [
     53.394,
-    86.87,
-    83.32,
-    -3.0,
-    "S"
+    169.02,
+    87.91,
+    0.0,
+    "N"
    ],
    [
     54.292,
-    86.87,
-    74.16,
-    -3.0,
-    "W"
-   ],
-   [
-    55.185,
-    77.76,
-    74.16,
-    -3.0,
-    "S"
-   ],
-   [
-    55.632,
-    77.76,
-    69.6,
-    -3.0,
+    169.02,
+    97.07,
+    0.0,
     "E"
    ],
    [
+    55.185,
+    178.13,
+    97.07,
+    0.0,
+    "N"
+   ],
+   [
+    55.632,
+    178.13,
+    101.63,
+    0.0,
+    "W"
+   ],
+   [
     56.08,
-    82.33,
-    69.6,
-    -3.0,
-    "S"
+    173.56,
+    101.63,
+    0.0,
+    "N"
    ],
    [
     56.976,
-    82.33,
-    60.47,
-    -3.0,
+    173.56,
+    110.77,
+    0.0,
     "W"
    ],
    [
     57.874,
-    73.17,
-    60.47,
-    -3.0,
+    164.4,
+    110.77,
+    0.0,
     "N"
    ],
    [
     58.108,
-    73.17,
-    62.85,
-    -3.0,
+    164.4,
+    113.16,
+    0.0,
     "W"
    ],
    [
     58.99,
-    64.18,
-    62.85,
-    -3.0,
+    155.41,
+    113.16,
+    0.0,
     "N"
    ],
    [
     59.662,
-    64.18,
-    69.71,
-    -3.0,
-    "W"
-   ],
-   [
-    60.558,
-    55.04,
-    69.71,
-    -3.0,
-    "N"
-   ],
-   [
-    60.781,
-    55.04,
-    71.98,
-    -3.0,
-    "W"
-   ],
-   [
-    61.453,
-    48.18,
-    71.98,
-    -3.0,
-    "N"
-   ],
-   [
-    61.677,
-    48.18,
-    74.27,
-    -3.0,
-    "W"
-   ],
-   [
-    62.572,
-    39.06,
-    74.27,
-    -3.0,
-    "N"
-   ],
-   [
-    63.251,
-    39.06,
-    81.19,
-    -3.0,
-    "W"
-   ],
-   [
-    63.481,
-    36.71,
-    81.19,
-    -3.0,
-    "N"
-   ],
-   [
-    63.705,
-    36.71,
-    83.48,
-    -3.0,
-    "W"
-   ],
-   [
-    63.929,
-    34.42,
-    83.48,
-    -3.0,
-    "N"
-   ],
-   [
-    64.153,
-    34.42,
-    85.76,
-    -3.0,
-    "W"
-   ],
-   [
-    64.377,
-    32.14,
-    85.76,
-    -3.0,
-    "N"
-   ],
-   [
-    64.813,
-    32.14,
-    90.21,
-    -3.0,
-    "W"
-   ],
-   [
-    65.931,
-    20.74,
-    90.21,
-    -2.56,
-    "S"
-   ],
-   [
-    66.604,
-    20.74,
-    83.34,
-    -2.27,
-    "W"
-   ],
-   [
-    67.722,
-    9.33,
-    83.34,
-    -1.79,
-    "N"
-   ],
-   [
-    68.395,
-    9.33,
-    90.21,
-    -1.5,
-    "W"
-   ],
-   [
-    68.841,
-    4.78,
-    90.21,
-    -1.31,
-    "S"
-   ],
-   [
-    69.513,
-    4.78,
-    83.35,
-    -1.02,
-    "W"
-   ],
-   [
-    70.19,
-    -2.12,
-    83.35,
-    -0.73,
-    "N"
-   ],
-   [
-    71.306,
-    -2.12,
-    94.74,
-    -0.25,
-    "W"
-   ],
-   [
-    71.977,
-    -8.97,
-    94.74,
-    0.0,
-    "N"
-   ],
-   [
-    73.095,
-    -8.97,
-    106.14,
+    155.41,
+    120.01,
     0.0,
     "E"
    ],
    [
+    60.558,
+    164.55,
+    120.01,
+    0.0,
+    "N"
+   ],
+   [
+    60.781,
+    164.55,
+    122.29,
+    0.0,
+    "E"
+   ],
+   [
+    61.453,
+    171.4,
+    122.29,
+    0.0,
+    "N"
+   ],
+   [
+    61.677,
+    171.4,
+    124.57,
+    0.0,
+    "E"
+   ],
+   [
+    62.572,
+    180.53,
+    124.57,
+    0.0,
+    "N"
+   ],
+   [
+    63.251,
+    180.53,
+    131.5,
+    0.0,
+    "E"
+   ],
+   [
+    63.481,
+    182.88,
+    131.5,
+    0.0,
+    "N"
+   ],
+   [
+    63.705,
+    182.88,
+    133.78,
+    0.0,
+    "E"
+   ],
+   [
+    63.929,
+    185.16,
+    133.78,
+    0.0,
+    "N"
+   ],
+   [
+    64.153,
+    185.16,
+    136.07,
+    0.0,
+    "E"
+   ],
+   [
+    64.377,
+    187.45,
+    136.07,
+    0.0,
+    "N"
+   ],
+   [
+    64.813,
+    187.45,
+    140.52,
+    0.0,
+    "E"
+   ],
+   [
+    65.931,
+    198.85,
+    140.52,
+    0.0,
+    "N"
+   ],
+   [
+    66.604,
+    198.85,
+    147.38,
+    0.0,
+    "W"
+   ],
+   [
+    67.722,
+    187.45,
+    147.38,
+    0.0,
+    "N"
+   ],
+   [
+    68.395,
+    187.45,
+    154.24,
+    0.0,
+    "W"
+   ],
+   [
+    68.841,
+    182.9,
+    154.24,
+    0.0,
+    "S"
+   ],
+   [
+    69.513,
+    182.9,
+    147.39,
+    0.0,
+    "W"
+   ],
+   [
+    70.19,
+    175.99,
+    147.39,
+    0.0,
+    "N"
+   ],
+   [
+    71.306,
+    175.99,
+    158.77,
+    0.0,
+    "W"
+   ],
+   [
+    71.977,
+    169.15,
+    158.77,
+    0.0,
+    "S"
+   ],
+   [
+    73.095,
+    169.15,
+    147.37,
+    0.0,
+    "W"
+   ],
+   [
     73.768,
-    -2.1,
-    106.14,
+    162.28,
+    147.37,
     0.0,
     "N"
    ],
    [
     74.889,
-    -2.1,
-    117.58,
+    162.28,
+    158.8,
     0.0,
     "W"
    ],
    [
     75.564,
-    -8.99,
-    117.58,
+    155.4,
+    158.8,
     0.0,
     "N"
    ],
    [
     76.005,
-    -8.99,
-    122.07,
+    155.4,
+    163.3,
     0.0,
-    "E"
+    "W"
    ],
    [
     76.68,
-    -2.1,
-    122.07,
+    148.51,
+    163.3,
     0.0,
     "N"
    ],
    [
     77.35,
-    -2.1,
-    128.91,
+    148.51,
+    170.14,
     0.0,
     "W"
    ],
    [
     78.47,
-    -13.53,
-    128.91,
+    137.09,
+    170.14,
     0.0,
     "N"
    ],
    [
     79.143,
-    -13.53,
-    135.77,
+    137.09,
+    177.0,
     0.0,
     "W"
    ],
    [
     80.262,
-    -24.94,
-    135.77,
-    0.0,
+    125.67,
+    177.0,
+    1.24,
     "S"
    ],
    [
     80.932,
-    -24.94,
-    128.94,
-    0.0,
+    125.67,
+    170.17,
+    1.99,
     "W"
    ],
    [
     82.053,
-    -36.37,
-    128.94,
-    0.0,
-    "N"
+    114.24,
+    170.17,
+    3.24,
+    "S"
    ],
    [
     82.723,
-    -36.37,
-    135.77,
-    0.0,
-    "W"
+    114.24,
+    163.33,
+    3.99,
+    "E"
    ],
    [
     83.169,
-    -40.92,
-    135.77,
-    0.0,
+    118.79,
+    163.33,
+    4.0,
     "S"
    ],
    [
     83.843,
-    -40.92,
-    128.9,
-    0.0,
-    "W"
+    118.79,
+    156.46,
+    4.0,
+    "E"
    ],
    [
     84.516,
-    -47.79,
-    128.9,
-    0.0,
+    125.65,
+    156.46,
+    4.0,
     "N"
    ],
    [
     84.96,
-    -47.79,
-    133.43,
-    0.0,
-    "W"
+    125.65,
+    160.99,
+    4.0,
+    "E"
    ],
    [
     85.422,
-    -52.5,
-    133.43,
-    0.0,
-    "S"
+    130.37,
+    160.99,
+    4.0,
+    "N"
    ],
    [
     85.645,
-    -52.5,
-    131.15,
-    0.0,
-    "W"
+    130.37,
+    163.26,
+    4.0,
+    "E"
    ],
    [
     85.869,
-    -54.78,
-    131.15,
-    0.0,
+    132.65,
+    163.26,
+    4.0,
     "N"
    ],
    [
     86.762,
-    -54.78,
-    140.26,
-    4.0,
+    132.65,
+    172.37,
+    4.33,
     "E"
    ],
    [
     87.21,
-    -50.21,
-    140.26,
-    4.0,
-    "N"
+    137.22,
+    172.37,
+    4.66,
+    "S"
    ],
    [
     87.555,
-    -50.21,
-    143.78,
-    4.0,
+    137.22,
+    168.85,
+    4.92,
     "E"
    ],
    [
     87.884,
-    -46.86,
-    143.78,
-    4.0,
-    "N"
+    140.58,
+    168.85,
+    5.17,
+    "S"
    ],
    [
     88.108,
-    -46.86,
-    146.06,
-    4.0,
+    140.58,
+    166.57,
+    5.33,
     "E"
    ],
    [
     88.994,
-    -37.82,
-    146.06,
-    4.0,
+    149.61,
+    166.57,
+    5.99,
     "N"
    ],
    [
     89.331,
-    -37.82,
-    149.5,
-    4.0,
+    149.61,
+    170.0,
+    6.24,
     "E"
    ],
    [
     89.67,
-    -34.36,
-    149.5,
-    4.0,
-    "N"
+    153.07,
+    170.0,
+    6.5,
+    "S"
    ],
    [
     90.339,
-    -34.36,
-    156.33,
-    4.0,
+    153.07,
+    163.18,
+    6.99,
     "E"
    ],
    [
     90.792,
-    -29.74,
-    156.33,
-    4.0,
-    "N"
+    157.69,
+    163.18,
+    7.33,
+    "S"
    ],
    [
     91.128,
-    -29.74,
+    157.69,
     159.75,
-    4.0,
+    7.58,
     "E"
    ],
    [
     91.466,
-    -26.3,
+    161.14,
     159.75,
-    4.0,
-    "N"
+    7.83,
+    "S"
    ],
    [
     91.69,
-    -26.3,
-    162.04,
-    4.0,
+    161.14,
+    157.47,
+    8.0,
     "E"
    ],
    [
     92.575,
-    -17.27,
-    162.04,
-    4.0,
-    "N"
+    170.17,
+    157.47,
+    8.0,
+    "S"
    ],
    [
     92.919,
-    -17.27,
-    165.55,
-    4.0,
-    "E"
+    170.17,
+    153.96,
+    8.0,
+    "W"
    ],
    [
     93.261,
-    -13.78,
-    165.55,
-    4.0,
+    166.68,
+    153.96,
+    8.0,
     "S"
    ],
    [
     93.915,
-    -13.78,
-    158.88,
-    4.0,
+    166.68,
+    147.29,
+    8.0,
     "E"
    ],
    [
     94.366,
-    -9.18,
-    158.88,
-    4.0,
-    "S"
+    171.28,
+    147.29,
+    8.0,
+    "N"
    ],
    [
     94.713,
-    -9.18,
-    155.34,
-    4.0,
+    171.28,
+    150.83,
+    8.0,
     "E"
    ],
    [
     95.048,
-    -5.76,
-    155.34,
-    4.0,
+    174.7,
+    150.83,
+    8.0,
     "S"
    ],
    [
     95.27,
-    -5.76,
-    153.07,
-    4.0,
+    174.7,
+    148.56,
+    8.0,
     "E"
    ],
    [
     96.165,
-    3.37,
-    153.07,
-    4.0,
-    "S"
+    183.82,
+    148.56,
+    8.0,
+    "N"
    ],
    [
     96.501,
-    3.37,
-    149.64,
-    4.0,
+    183.82,
+    151.99,
+    8.0,
     "E"
    ],
    [
     96.834,
-    6.76,
-    149.64,
-    4.0,
+    187.22,
+    151.99,
+    8.0,
     "S"
    ],
    [
     97.498,
-    6.76,
-    142.87,
-    4.0,
+    187.22,
+    145.22,
+    8.0,
     "E"
    ],
    [
     97.957,
-    11.44,
-    142.87,
-    4.0,
+    191.9,
+    145.22,
+    8.0,
     "S"
    ],
    [
     98.285,
-    11.44,
-    139.53,
-    4.0,
-    "E"
+    191.9,
+    141.87,
+    8.0,
+    "W"
    ],
    [
     98.628,
-    14.94,
-    139.53,
-    4.0,
+    188.4,
+    141.87,
+    8.0,
     "S"
    ],
    [
     99.289,
-    14.94,
-    132.78,
-    4.0,
-    "E"
+    188.4,
+    135.13,
+    8.0,
+    "W"
    ],
    [
     99.747,
-    19.61,
-    132.78,
-    4.0,
+    183.73,
+    135.13,
+    8.0,
     "S"
    ],
    [
     99.974,
-    19.61,
-    130.47,
-    4.0,
-    "E"
+    183.73,
+    132.81,
+    8.0,
+    "W"
    ],
    [
     100.198,
-    21.9,
-    130.47,
-    4.0,
+    181.45,
+    132.81,
+    8.0,
     "S"
    ],
    [
     100.422,
-    21.9,
-    128.18,
-    4.0,
-    "E"
+    181.45,
+    130.53,
+    8.0,
+    "W"
    ],
    [
     100.668,
-    24.41,
-    128.18,
-    0.0,
-    "N"
+    178.94,
+    130.53,
+    8.0,
+    "S"
    ],
    [
     101.357,
-    24.41,
-    135.21,
-    0.0,
+    178.94,
+    123.5,
+    8.0,
     "E"
    ],
    [
     102.46,
-    35.66,
-    135.21,
-    0.0,
-    "N"
+    190.19,
+    123.5,
+    8.0,
+    "S"
    ],
    [
     104.228,
-    35.66,
-    153.24,
-    0.0,
+    190.19,
+    105.47,
+    8.0,
     "E"
    ],
    [
     104.899,
-    42.5,
-    153.24,
-    0.0,
-    "N"
+    197.03,
+    105.47,
+    8.0,
+    "S"
    ],
    [
     106.039,
-    42.5,
-    164.87,
-    0.0,
+    197.03,
+    93.84,
+    8.0,
     "E"
    ],
    [
     108.987,
-    72.57,
-    164.87,
-    0.0,
+    227.1,
+    93.84,
+    8.0,
     "E"
    ]
   ]
  },
  "elevation": [
   {
-   "t": 36.16,
-   "type": "jump",
-   "dy": 3
-  },
-  {
-   "t": 50.49,
-   "type": "fall",
-   "dy": -6
-  },
-  {
-   "t0": 64.9,
-   "t1": 71.9,
+   "t0": 31.69,
+   "t1": 35.81,
    "type": "ramp",
-   "dy": 3
-  },
-  {
-   "t": 86.31,
-   "type": "jump",
    "dy": 4
   },
   {
-   "t": 100.64,
+   "t": 50.77,
    "type": "fall",
    "dy": -4
+  },
+  {
+   "t0": 79.153,
+   "t1": 82.735,
+   "type": "ramp",
+   "dy": 4
+  },
+  {
+   "t0": 86.317,
+   "t1": 91.69,
+   "type": "ramp",
+   "dy": 4
   }
  ]
 }
