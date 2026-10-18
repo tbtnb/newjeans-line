@@ -1,0 +1,56 @@
+## Chart logic: cookie (500 taps; 16th grid from chart meta grid: 157.000 BPM, beat0 0.102 s)
+
+| section | follows | taps | /s | layer strength (median) | off-layer taps | faint taps | weak bursts | off-grid >25ms | phrase patterns (unique/total) |
+|---|---|---|---|---|---|---|---|---|---|
+| Intro | drums | 9 | 0.73 | 0.80 | 0 | 0 | 0 | 0 | 3/4 |
+| Verse 1 | drums | 55 | 2.25 | 0.45 | 0 | 1 ⚠ | 0 | 0 | 8/8 |
+| Pre-chorus 1 | vocal | 22 | 1.80 | 0.35 | 1 | 1 ⚠ | 0 | 0 | 4/4 |
+| Chorus 1 | drums | 67 | 2.74 | 0.45 | 1 | 5 ⚠ | 0 | 0 | 8/8 |
+| Verse 2 | drums | 53 | 2.17 | 0.45 | 0 | 1 ⚠ | 0 | 0 | 8/8 |
+| Pre-chorus 2 | vocal | 21 | 1.72 | 0.32 | 1 | 3 ⚠ | 0 | 0 | 4/4 |
+| Chorus 2 | drums | 65 | 2.66 | 0.43 | 0 | 6 ⚠ | 0 | 0 | 8/8 |
+| Jersey-club bridge | drums | 76 | 3.11 | 0.45 | 0 | 2 ⚠ | 0 | 0 | 8/8 |
+| Final chorus | drums | 68 | 2.78 | 0.42 | 0 | 5 ⚠ | 0 | 0 | 8/8 |
+| Dance break | drums | 34 | 1.39 | 0.43 | 1 | 0 | 0 | 0 | 8/8 |
+| Outro | vocal | 30 | 1.17 | 0.32 | 4 ⚠ | 1 ⚠ | 0 | 0 | 7/7 |
+
+Totals: off-layer (hop) 8, faint 25, weak bursts 0, off-grid 0
+
+<details><summary>flagged taps</summary>
+
+```
+   FAINT 32.589s bar 21 step 4: drums 0.32, full 0.33
+   FAINT 43.480s bar 28 step 6: vocal 0.27, full 0.25
+   HOP 45.582s bar 29 step 12: vocal 0.29 but hat 0.61 (section follows vocal)
+   FAINT 50.359s bar 32 step 14: drums 0.32, full 0.25
+   FAINT 51.888s bar 33 step 14: drums 0.32, full 0.31
+   FAINT 58.194s bar 38 step 0: drums 0.34, full 0.21
+   HOP 62.971s bar 41 step 2: drums 0.32 but hat 0.60 (section follows drums)
+   FAINT 63.936s bar 41 step 12: drums 0.18, full 0.27
+   FAINT 69.474s bar 45 step 6: drums 0.26, full 0.20
+   FAINT 76.347s bar 49 step 14: drums 0.33, full 0.31
+   FAINT 97.942s bar 64 step 0: vocal 0.32, full 0.33
+   FAINT 99.468s bar 65 step 0: vocal 0.31, full 0.24
+   HOP 103.851s bar 67 step 14: vocal 0.34 but hat 0.68 (section follows vocal)
+   FAINT 104.627s bar 68 step 6: vocal 0.27, full 0.25
+   FAINT 111.507s bar 72 step 14: drums 0.30, full 0.24
+   FAINT 119.341s bar 78 step 0: drums 0.31, full 0.22
+   FAINT 121.823s bar 79 step 10: drums 0.30, full 0.29
+   FAINT 125.074s bar 81 step 12: drums 0.25, full 0.27
+   FAINT 130.624s bar 85 step 6: drums 0.31, full 0.21
+   FAINT 131.007s bar 85 step 10: drums 0.31, full 0.29
+   FAINT 137.112s bar 89 step 10: drums 0.24, full 0.22
+   FAINT 149.341s bar 97 step 10: drums 0.29, full 0.25
+   FAINT 160.424s bar 104 step 14: drums 0.32, full 0.30
+   FAINT 161.953s bar 105 step 14: drums 0.32, full 0.29
+   FAINT 168.259s bar 110 step 0: drums 0.34, full 0.22
+   FAINT 173.991s bar 113 step 12: drums 0.24, full 0.26
+   FAINT 174.182s bar 113 step 14: drums 0.32, full 0.27
+   HOP 197.495s bar 129 step 2: drums 0.26 but hat 0.88 (section follows drums)
+   FAINT 210.500s bar 137 step 10: vocal 0.19, full 0.20
+   HOP 211.244s bar 138 step 2: vocal 0.11 but hat 0.83 (section follows vocal)
+   HOP 214.309s bar 140 step 2: vocal 0.30 but hat 0.91 (section follows vocal)
+   HOP 220.425s bar 144 step 2: vocal 0.17 but hat 0.68 (section follows vocal)
+   HOP 223.482s bar 146 step 2: vocal 0.15 but hat 0.92 (section follows vocal)
+```
+</details>
