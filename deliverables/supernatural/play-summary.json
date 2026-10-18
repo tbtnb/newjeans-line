@@ -7,11 +7,11 @@
  "time": 191,
  "cursor": 314,
  "taps": 314,
- "perfect": 309,
- "good": 5,
+ "perfect": 312,
+ "good": 2,
  "diamonds": 10,
  "ignoredDuplicates": 0,
- "fps": 14.31383073894197,
+ "fps": 11.750881316064415,
  "save": {
   "version": 2,
   "selected": "supernatural",
@@ -22,7 +22,7 @@
     "crowns": 3,
     "attempts": 1,
     "completed": true,
-    "perfect": 309,
+    "perfect": 312,
     "taps": 314
    }
   },
@@ -34,9 +34,9 @@
   }
  },
  "judged": 314,
- "errorMeanMs": 0.4,
- "errorSdMs": 5.8,
- "errorMaxAbsMs": 43,
+ "errorMeanMs": 1.2,
+ "errorSdMs": 3.6,
+ "errorMaxAbsMs": 42,
  "sent": 314,
  "logs": []
 }
