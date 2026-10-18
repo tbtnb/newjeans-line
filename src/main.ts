@@ -102,6 +102,7 @@ async function enterLevel() {
   audio.unlock();
   if (!audio.ready) {
     setState('loading'); $('loading-msg').textContent = '载入音乐';
+    audio.onProgress = (f, n) => { if (state === 'loading') $('loading-msg').textContent = f >= 0 ? `载入音乐 ${Math.round(f * 100)}%` : `载入音乐 ${(n / 1048576).toFixed(1)} MB`; };
     try { await audio.load(level.audio); } catch (e) { setState('menu'); toast(String((e as Error).message)); return; }
   }
   game.checkpointsUsed.clear(); game.diamondsTaken.clear(); game.crownsReached.clear();

@@ -6,7 +6,7 @@
 const IS_IOS = typeof navigator !== 'undefined' && (/iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1));
 const HAS_AUDIO_SESSION = typeof navigator !== 'undefined' && typeof (navigator as any).audioSession === 'object' && (navigator as any).audioSession !== null;
 function setPlaybackSession() { try { if (HAS_AUDIO_SESSION && (navigator as any).audioSession.type !== 'playback') (navigator as any).audioSession.type = 'playback'; } catch { /* */ } }
-setPlaybackSession();
+// (set on the first gesture in unlock(), not at module load: no session side effects before the page is interactive)
 const SILENT_WAV = 'data:audio/wav;base64,UklGRiwAAABXQVZFZm10IBAAAAABAAEARKwAAESsAAABAAgAZGF0YQgAAACAgICAgICAgA==';
 
 export class AudioTransport {
@@ -49,21 +49,52 @@ export class AudioTransport {
   private silentEl: HTMLAudioElement | null = null;
   get state(): string { return this.ctx ? (this.ctx.state as string) : 'none'; }
 
+  /** Download progress 0..1 (or -1 when the size is unknown) while load() runs. */
+  onProgress: ((f: number, bytes: number) => void) | null = null;
+
   load(url: string): Promise<void> {
     if (this.url === url && this.buffer) return Promise.resolve();
     if (this.url === url && this.loading) return this.loading;
     this.stop(); this.buffer = null; this.url = url;
-    const ctx = this.context();
     this.loading = (async () => {
-      const res = await fetch(url);
-      if (!res.ok) throw new Error(`音频下载失败（HTTP ${res.status}）`);
-      const bytes = await res.arrayBuffer();
-      const buf = await ctx.decodeAudioData(bytes);
+      const bytes = await this.download(url);
+      // Decode on an OfflineAudioContext, never on the live context: on iOS the live context can sit 'suspended' /
+      // 'interrupted' (no gesture yet, 'playback' audio session, call/Siri) and decodeAudioData on it may never settle.
+      // AudioBuffers are context-independent; decoding at the live rate avoids a resample at play time.
+      const rate = this.ctx?.sampleRate ?? 48000;
+      let dc: BaseAudioContext;
+      try { dc = new OfflineAudioContext(2, 1, rate); } catch { dc = this.context(); }
+      const buf = await withTimeout(dc.decodeAudioData(bytes), 30000, '音频解码超时，请刷新重试');
       if (this.url === url) this.buffer = buf;
     })();
     const p = this.loading;
     p.finally(() => { if (this.loading === p) this.loading = null; }).catch(() => {});
     return p;
+  }
+
+  /** fetch with progress and a stall timeout (no bytes for 25 s = fail with a message instead of hanging forever). */
+  private async download(url: string): Promise<ArrayBuffer> {
+    const ac = typeof AbortController !== 'undefined' ? new AbortController() : null;
+    let stall: ReturnType<typeof setTimeout> | undefined;
+    const arm = () => { clearTimeout(stall); stall = setTimeout(() => ac?.abort(), 25000); };
+    arm();
+    try {
+      const res = await fetch(url, ac ? { signal: ac.signal } : undefined);
+      if (!res.ok) throw new Error(`音频下载失败（HTTP ${res.status}）`);
+      const total = Number(res.headers.get('content-length')) || 0;
+      if (!res.body || typeof res.body.getReader !== 'function') { arm(); return await res.arrayBuffer(); }
+      const rd = res.body.getReader(); const parts: Uint8Array[] = []; let n = 0;
+      for (;;) {
+        const { done, value } = await rd.read(); if (done) break;
+        parts.push(value); n += value.byteLength; arm();
+        try { this.onProgress?.(total ? Math.min(1, n / total) : -1, n); } catch { /* */ }
+      }
+      const out = new Uint8Array(n); let o = 0; for (const c of parts) { out.set(c, o); o += c.byteLength; }
+      return out.buffer;
+    } catch (e) {
+      if ((e as Error)?.name === 'AbortError') throw new Error('音频下载超时（网络太慢），请刷新重试');
+      throw e;
+    } finally { clearTimeout(stall); }
   }
 
   /** Song position where playback ends: the buffer end, or an earlier level end set with setEnd(). */
@@ -169,4 +200,8 @@ export class AudioTransport {
 
   /** Short UI click synthesized (not used during gameplay). */
   latencyInfo() { const c = this.ctx; return c ? { base: c.baseLatency || 0, output: c.outputLatency || 0, sampleRate: c.sampleRate } : null; }
+}
+
+function withTimeout<T>(p: Promise<T>, ms: number, msg: string): Promise<T> {
+  return new Promise<T>((res, rej) => { const t = setTimeout(() => rej(new Error(msg)), ms); p.then(v => { clearTimeout(t); res(v); }, e => { clearTimeout(t); rej(e); }); });
 }
