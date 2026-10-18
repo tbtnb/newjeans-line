@@ -618,8 +618,8 @@
    ],
    "face": "camera",
    "near": 2,
-   "t": 10.739,
-   "side": -1,
+   "t": 8.771,
+   "side": 1,
    "id": "art-2",
    "y": -0.6
   },
@@ -636,7 +636,7 @@
    "glow": 0.45,
    "near": 2.5,
    "id": "art-bunny_intro",
-   "t": 200.678,
+   "t": 198.226,
    "side": -1,
    "y": -0.6
   },
@@ -665,8 +665,8 @@
    ],
    "face": "camera",
    "near": 2,
-   "t": 16.861,
-   "side": 1,
+   "t": 24.63,
+   "side": -1,
    "id": "art-5",
    "y": -0.6
   },
@@ -683,7 +683,7 @@
    "color2": "#c9b8ff",
    "landmark": true,
    "near": 2,
-   "t": 19.584,
+   "t": 19.477,
    "side": 1,
    "id": "art-6",
    "y": -0.6
@@ -701,8 +701,8 @@
    "color2": "#c9b8ff",
    "landmark": true,
    "near": 2,
-   "t": 26.12,
-   "side": 1,
+   "t": 28.619,
+   "side": -1,
    "id": "art-7",
    "y": -0.6
   },
@@ -716,8 +716,8 @@
    ],
    "face": "camera",
    "near": 2,
-   "t": 63.159,
-   "side": 1,
+   "t": 64.813,
+   "side": -1,
    "id": "art-8",
    "y": -0.6
   },
@@ -734,8 +734,8 @@
    "color2": "#c9b8ff",
    "landmark": true,
    "near": 2,
-   "t": 65.974,
-   "side": 1,
+   "t": 61.691,
+   "side": -1,
    "id": "art-9",
    "y": -0.6
   },
@@ -752,7 +752,7 @@
    "color2": "#c9b8ff",
    "landmark": true,
    "near": 2,
-   "t": 73.691,
+   "t": 73.888,
    "side": 1,
    "id": "art-10",
    "y": -0.6
@@ -770,92 +770,7 @@
    "landmark": true,
    "glowfx": true,
    "id": "art-phone",
-   "t": 31.605,
-   "side": 1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    4.2,
-    5.6,
-    0
-   ],
-   "face": "camera",
-   "near": 2.5,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 43.79,
-   "side": 1,
-   "y": -0.6
-  },
-  {
-   "kind": "facade",
-   "src": "art/v2/stage-facade.jpg",
-   "size": [
-    6,
-    6,
-    3
-   ],
-   "face": "road",
-   "color": "#2a2460",
-   "color2": "#ffd27a",
-   "near": 3,
-   "t": 38.012,
-   "side": -1,
-   "id": "art-13",
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    4.2,
-    5.6,
-    0
-   ],
-   "face": "camera",
-   "near": 2.5,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 81.053,
-   "side": 1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    4.2,
-    5.6,
-    0
-   ],
-   "face": "camera",
-   "near": 2.5,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 89.005,
-   "side": 1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    4.2,
-    5.6,
-    0
-   ],
-   "face": "camera",
-   "near": 2.5,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 94.786,
+   "t": 32.53,
    "side": -1,
    "y": -0.6
   },
@@ -872,7 +787,7 @@
    "landmark": true,
    "glowfx": true,
    "id": "art-phone",
-   "t": 104.162,
+   "t": 43.475,
    "side": 1,
    "y": -0.6
   },
@@ -889,7 +804,58 @@
    "landmark": true,
    "glowfx": true,
    "id": "art-phone",
-   "t": 153.315,
+   "t": 79.589,
+   "side": 1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    4.2,
+    5.6,
+    0
+   ],
+   "face": "camera",
+   "near": 2.5,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 88.225,
+   "side": 1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    4.2,
+    5.6,
+    0
+   ],
+   "face": "camera",
+   "near": 2.5,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 94.599,
+   "side": 1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    4.2,
+    5.6,
+    0
+   ],
+   "face": "camera",
+   "near": 2.5,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 99.629,
    "side": -1,
    "y": -0.6
   },
@@ -906,25 +872,25 @@
    "landmark": true,
    "glowfx": true,
    "id": "art-phone",
-   "t": 156.984,
+   "t": 157.71,
    "side": 1,
    "y": -0.6
   },
   {
-   "kind": "facade",
-   "src": "art/v2/stage-facade.jpg",
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
    "size": [
-    6,
-    6,
-    3
+    4.2,
+    5.6,
+    0
    ],
-   "face": "road",
-   "color": "#2a2460",
-   "color2": "#ffd27a",
-   "near": 3,
-   "t": 164.128,
+   "face": "camera",
+   "near": 2.5,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 162.352,
    "side": 1,
-   "id": "art-20",
    "y": -0.6
   },
   {
@@ -940,8 +906,8 @@
    "glowfx": true,
    "near": 2,
    "id": "art-arch",
-   "t": 46.368,
-   "side": 1,
+   "t": 46.86,
+   "side": -1,
    "y": -0.6
   },
   {
@@ -973,74 +939,7 @@
    "landmark": true,
    "glowfx": true,
    "id": "art-phone",
-   "t": 55.869,
-   "side": -1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    4.2,
-    5.6,
-    0
-   ],
-   "face": "camera",
-   "near": 2.5,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 58.79,
-   "side": -1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/star-arch.png",
-   "size": [
-    7,
-    5.25,
-    0
-   ],
-   "face": "camera",
-   "landmark": true,
-   "glowfx": true,
-   "near": 2,
-   "id": "art-arch",
-   "t": 107.036,
-   "side": 1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/bunny-giant.png",
-   "size": [
-    8,
-    8,
-    0
-   ],
-   "face": "camera",
-   "landmark": true,
-   "near": 3,
-   "y": -9.6,
-   "id": "art-bunny_rise",
-   "t": 110.586,
-   "side": -1
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    4.2,
-    5.6,
-    0
-   ],
-   "face": "camera",
-   "near": 2.5,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 116.111,
+   "t": 54.498,
    "side": 1,
    "y": -0.6
   },
@@ -1057,41 +956,7 @@
    "landmark": true,
    "glowfx": true,
    "id": "art-phone",
-   "t": 119.261,
-   "side": 1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    4.2,
-    5.6,
-    0
-   ],
-   "face": "camera",
-   "near": 2.5,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 129.509,
-   "side": 1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    4.2,
-    5.6,
-    0
-   ],
-   "face": "camera",
-   "near": 2.5,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 132.228,
+   "t": 58.343,
    "side": 1,
    "y": -0.6
   },
@@ -1108,8 +973,8 @@
    "glowfx": true,
    "near": 2,
    "id": "art-arch",
-   "t": 168.058,
-   "side": -1,
+   "t": 106.662,
+   "side": 1,
    "y": -0.6
   },
   {
@@ -1125,8 +990,8 @@
    "near": 3,
    "y": -9.6,
    "id": "art-bunny_rise",
-   "t": 171.93,
-   "side": -1
+   "t": 111.459,
+   "side": 1
   },
   {
    "kind": "standee",
@@ -1141,7 +1006,24 @@
    "landmark": true,
    "glowfx": true,
    "id": "art-phone",
-   "t": 175.362,
+   "t": 114.732,
+   "side": 1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    4.2,
+    5.6,
+    0
+   ],
+   "face": "camera",
+   "near": 2.5,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 119.484,
    "side": -1,
    "y": -0.6
   },
@@ -1158,7 +1040,91 @@
    "landmark": true,
    "glowfx": true,
    "id": "art-phone",
-   "t": 180.302,
+   "t": 126.978,
+   "side": -1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    4.2,
+    5.6,
+    0
+   ],
+   "face": "camera",
+   "near": 2.5,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 129.083,
+   "side": -1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/star-arch.png",
+   "size": [
+    7,
+    5.25,
+    0
+   ],
+   "face": "camera",
+   "landmark": true,
+   "glowfx": true,
+   "near": 2,
+   "id": "art-arch",
+   "t": 168.118,
+   "side": 1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/bunny-giant.png",
+   "size": [
+    8,
+    8,
+    0
+   ],
+   "face": "camera",
+   "landmark": true,
+   "near": 3,
+   "y": -9.6,
+   "id": "art-bunny_rise",
+   "t": 170.622,
+   "side": -1
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    4.2,
+    5.6,
+    0
+   ],
+   "face": "camera",
+   "near": 2.5,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 176.464,
+   "side": 1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    4.2,
+    5.6,
+    0
+   ],
+   "face": "camera",
+   "near": 2.5,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 179.377,
    "side": 1,
    "y": -0.6
   },
@@ -1175,7 +1141,7 @@
    "glowfx": true,
    "near": 2,
    "id": "art-arch",
-   "t": 182.31,
+   "t": 182.428,
    "side": 1,
    "y": -0.6
   },
@@ -1192,7 +1158,7 @@
    "near": 3,
    "y": -9.6,
    "id": "art-bunny_rise",
-   "t": 189.2,
+   "t": 185.44,
    "side": -1
   },
   {
@@ -1208,7 +1174,7 @@
    "landmark": true,
    "glowfx": true,
    "id": "art-phone",
-   "t": 185.026,
+   "t": 187.889,
    "side": 1,
    "y": -0.6
   },
@@ -1225,7 +1191,7 @@
    "landmark": true,
    "glowfx": true,
    "id": "art-phone",
-   "t": 195.486,
+   "t": 195.112,
    "side": -1,
    "y": -0.6
   },
@@ -1240,9 +1206,9 @@
    "face": "camera",
    "landmark": true,
    "near": 3,
-   "t": 137.134,
+   "t": 138.019,
    "side": 1,
-   "id": "art-39",
+   "id": "art-37",
    "y": -0.6
   },
   {
@@ -1255,9 +1221,9 @@
    ],
    "face": "road",
    "glow": 0.7,
-   "t": 146.761,
+   "t": 143.637,
    "side": 1,
-   "id": "art-40",
+   "id": "art-38",
    "near": 0.8,
    "y": -0.6
   },
@@ -1272,9 +1238,9 @@
    "face": "camera",
    "landmark": true,
    "near": 3,
-   "t": 150.369,
+   "t": 153.256,
    "side": 1,
-   "id": "art-41",
+   "id": "art-39",
    "y": -0.6
   }
  ],
@@ -1402,7 +1368,7 @@
    "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
   },
   {
-   "t": 26.498,
+   "t": 27.662,
    "side": 0,
    "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
   },
@@ -1412,7 +1378,7 @@
    "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
   },
   {
-   "t": 83.775,
+   "t": 84.275,
    "side": 0,
    "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
   },
