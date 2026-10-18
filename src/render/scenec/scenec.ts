@@ -35,7 +35,7 @@ export interface CStats { chunks: [number, number]; chunkMeshes: number; types: 
 
 export class SceneC {
   readonly plc: CPlacement; readonly spec: SceneCSpec;
-  private tm: Map<string, Template>; private mat: StandardMaterial; private root: TransformNode;
+  private tm: Map<string, Template>; private mat: StandardMaterial; private matSet: StandardMaterial; private root: TransformNode;
   private types = new Map<string, TI>(); private chunkMesh = new Map<number, Mesh>(); private sets: SetE[] = [];
   private range: [number, number] = [-1, -1]; private tier: Tier; private zoneCols: number[][][];
   private disposed = false; private time = 0; models = 0; last: CStats | null = null;
@@ -47,8 +47,11 @@ export class SceneC {
     this.zoneCols = spec.zones.map(z => z.colors.map(hexRGB));
     this.tm = placeholders(spec);
     const m = new StandardMaterial('paperC', scene);
-    m.disableLighting = true; m.diffuseColor = Color3.Black(); m.emissiveColor = Color3.White(); // unlit: emissive x vertex colour x instance colour m.specularColor = Color3.Black(); m.backFaceCulling = false;
+    // unlit: emissive x vertex colour x instance colour; double-sided (paper cards)
+    m.disableLighting = true; m.diffuseColor = Color3.Black(); m.emissiveColor = Color3.White(); m.specularColor = Color3.Black(); m.backFaceCulling = false;
     this.mat = m;
+    // set pieces / landmarks skip fog so hero creams and pinks stay clean in the dark zones (like the key renders)
+    this.matSet = m.clone('paperCSet'); this.matSet.fogEnabled = false;
     for (const s of this.plc.sets) this.sets.push(this.makeSet(s));
     // swap in built models as they load (placeholders until then; a missing model simply keeps its placeholder)
     for (const [id, a] of Object.entries(spec.assets)) if (a.model) loadModel(scene, o.base, id, a.h, typeof a.model === 'string' ? a.model : id).then(t => { if (this.disposed) { t.container?.dispose(); return; } this.tm.set(id, t); this.models++; this.refreshAsset(id); }).catch(e => console.warn('omg-c model', id, e));
@@ -69,7 +72,7 @@ export class SceneC {
   private buildChunk(c: CChunk) {
     const pos: number[] = [], col: number[] = [], idx: number[] = []; const pg = 28;
     const gc = hexRGB(this.spec.zones[c.zone].palette.ground ?? '#eeeeee');
-    const y = c.y - 0.004 * (c.i % 3);
+    const y = c.y - 0.03 * (c.i % 3);   // neighbouring pages overlap: 3 cm steps (0.4 cm z-fought on Metal/SwiftShader)
     // paper page under the chunk (terraces with the route's falls), slightly darker rim band reads as the page edge
     const x0 = c.minX - pg, x1 = c.maxX + pg, z0 = c.minZ - pg, z1 = c.maxZ + pg;
     pos.push(x0, y, z0, x1, y, z0, x1, y, z1, x0, y, z1); for (let k = 0; k < 4; k++) col.push(gc[0], gc[1], gc[2], 1); idx.push(0, 1, 2, 0, 2, 3);
@@ -140,12 +143,12 @@ export class SceneC {
   private buildSetVisual(e: SetE) {
     e.far?.dispose(); e.near?.dispose(false, false); e.far = null; e.near = null; e.nearMeshes = []; e.piv = [];
     const t = this.tm.get(e.def.a)!; e.tris = t.tris;
-    e.far = this.meshFrom(`cfar_${e.def.a}`, t); e.far.parent = e.hinge;
+    e.far = this.meshFrom(`cfar_${e.def.a}`, t); e.far.parent = e.hinge; e.far.material = this.matSet;
     if (t.container) {
       const inst = t.container.instantiateModelsToScene(n => `${n}_${e.def.t}`, false);
       const r = new TransformNode(`cnear_${e.def.a}`, this.scene); r.parent = e.hinge; r.scaling.setAll(t.scale);
       for (const n of inst.rootNodes) n.parent = r;
-      for (const m of r.getChildMeshes()) { m.material = this.mat; m.isPickable = false; e.nearMeshes.push(m as Mesh); }
+      for (const m of r.getChildMeshes()) { m.material = this.matSet; m.isPickable = false; e.nearMeshes.push(m as Mesh); }
       for (const n of r.getDescendants(false) as TransformNode[]) {
         const mm = /pivot_([a-z]+)(\d*)/i.exec(n.name); if (!mm || mm[1] === 'root') continue;
         e.piv.push({ node: n, kind: mm[1].toLowerCase(), i: +(mm[2] || 0), base: n.rotationQuaternion?.clone() ?? null, baseS: n.scaling.clone(), baseP: n.position.clone() });
@@ -207,6 +210,6 @@ export class SceneC {
   dispose() {
     this.disposed = true;
     for (const [id, t] of this.tm) if (t.container) { t.container.dispose(); this.tm.delete(id); }
-    this.root.dispose(false, false); this.mat.dispose();
+    this.root.dispose(false, false); this.mat.dispose(); this.matSet.dispose();
   }
 }
