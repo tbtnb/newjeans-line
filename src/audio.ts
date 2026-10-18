@@ -101,11 +101,11 @@ export class AudioTransport {
     // heardContextTime() already subtracts output latency when using getOutputTimestamp; when using the fallback it subtracts it too.
     this.startedAt = startAt;
     void outLat;
+    this.restoreGain();   // a previous level end / fail fade may have left the gain ramped down
     if (this.endAt !== null && this.endAt < this.buffer.duration) {
       // scheduled on the context clock, so the fade and the stop are sample-exact relative to the song
       const endCtx = startAt + (this.endAt - this.offset), g = this.gain!.gain;
       const fadeFrom = Math.max(startAt, endCtx - this.endFade);
-      g.cancelScheduledValues(c.currentTime); g.setValueAtTime(this.volume, c.currentTime);
       if (endCtx > startAt) { g.setValueAtTime(this.offset >= this.endAt - this.endFade ? this.volume * Math.max(0.0001, (this.endAt - this.offset) / this.endFade) : this.volume, fadeFrom); g.linearRampToValueAtTime(0.0001, endCtx); }
       src.stop(Math.max(startAt, endCtx));
     }
