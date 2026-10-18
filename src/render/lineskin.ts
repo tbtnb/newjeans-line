@@ -155,10 +155,10 @@ export class LineSkin {
     const [c1, c2] = d.decorColors; const s = this.scene;
     switch (d.decor) {
       case 'ears': {
-        const outer = this.mat('#fbfdff', 0.35, 1, 0.2), inner = this.mat(c1, 0.35), nose = this.mat(c2, 0.4);
+        const outer = this.mat('#eef7ff', 0.3, 1, 0.35), inner = this.mat(c1, 0.35), nose = this.mat(c2, 0.4);
         for (const sg of [-1, 1]) {
-          const e = this.part(CreateSphere('ear', { diameter: 1, segments: 10 }, s), outer, 'ear', sg * 0.24, 0.78, -0.12, sg); e.scaling.set(0.24, 0.72, 0.13); e.rotation.z = -sg * 0.16;
-          const i = this.part(CreateSphere('earIn', { diameter: 1, segments: 8 }, s), inner, 'ear', sg * 0.245, 0.76, -0.05, sg); i.scaling.set(0.13, 0.5, 0.05); i.rotation.z = -sg * 0.16;
+          const e = this.part(CreateSphere('ear', { diameter: 1, segments: 10 }, s), outer, 'ear', sg * 0.24, 0.78, -0.12, sg); e.scaling.set(0.26, 0.78, 0.16); e.rotation.z = -sg * 0.16;
+          const i = this.part(CreateSphere('earIn', { diameter: 1, segments: 8 }, s), inner, 'ear', sg * 0.245, 0.77, -0.04, sg); i.scaling.set(0.14, 0.54, 0.06); i.rotation.z = -sg * 0.16;
         }
         this.part(CreateSphere('nose', { diameter: 0.13, segments: 8 }, s), nose, 'static', 0, 0.06, 0.5);
         this.part(CreateSphere('tail', { diameter: 0.3, segments: 8 }, s), outer, 'static', 0, -0.05, -0.55);
