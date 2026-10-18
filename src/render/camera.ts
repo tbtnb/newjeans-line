@@ -15,6 +15,7 @@ const PRESETS: Record<string, Partial<CamParams>> = {
   close: { pitch: 46, dist: 30, fov: 40, yawOff: 0 },
 };
 const BASE: CamParams = { pitch: 50, dist: 41, fov: 36, yawOff: 0, worldYaw: null, roll: 0, shake: 0, lead: 0.85, orbit: 0, punch: 0.025, zoom: 1, tilt: 0, sway: 0 };
+const MIN_DIST = 30;
 const smooth = (x: number) => (x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x));
 const angLerp = (a: number, b: number, k: number) => { let d = ((b - a + Math.PI * 3) % (Math.PI * 2)) - Math.PI; return a + d * k; };
 
@@ -91,7 +92,7 @@ export class CameraRig {
     if (p.worldYaw !== null) desiredYaw = wy !== undefined ? angLerp(desiredYaw, p.worldYaw * Math.PI / 180, wy) : p.worldYaw * Math.PI / 180;
     if (this.menuOrbit) desiredYaw = flow + performance.now() / 9000;
     const fx = Math.sin(flow), fz = Math.cos(flow);
-    const leadDist = p.lead * 9;
+    const leadDist = Math.min(p.lead * 9, Math.max(MIN_DIST, p.dist) * 0.2);
     const want = this.freezeAt ?? new Vector3(head.x + fx * leadDist, head.y, head.z + fz * leadDist);
     if (!this.initialized) { this.target.copyFrom(want); this.yaw = desiredYaw; this.ty = want.y; this.initialized = true; }
     const kPos = 1 - Math.exp(-dt * 4.5), kYaw = 1 - Math.exp(-dt * 1.6), kY = 1 - Math.exp(-dt * 2.5);
@@ -99,7 +100,8 @@ export class CameraRig {
     this.ty += (want.y - this.ty) * kY; this.target.y = this.ty;
 
     this.yaw = angLerp(this.yaw, desiredYaw, kYaw);
-    let dist = (p.dist * p.zoom + this.extraDist) * this.distScale;
+    // floor: older layouts authored very close distances (15-24); keep the DL-style overview
+    let dist = (Math.max(MIN_DIST, p.dist) * p.zoom + this.extraDist) * this.distScale;
     if (this.aspect < 0.95) dist *= Math.pow(Math.min(2.2, 0.95 / this.aspect), 0.35);
     // beat punch: a quick push-in on strong hits (kicks), decaying in ~120 ms
     if (p.punch > 0 && this.hits.length && !this.menuOrbit) { const h = lastLE(this.hits, t); if (h > -1e8) dist *= 1 - p.punch * Math.exp(-(t - h) * 9); }
