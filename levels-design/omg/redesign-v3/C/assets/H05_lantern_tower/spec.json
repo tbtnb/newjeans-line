@@ -1,0 +1,91 @@
+{
+ "id": "H05_lantern_tower",
+ "cn": "纸灯笼塔",
+ "en": "Paper Lantern Tower",
+ "cls": "hero",
+ "zones": [
+  "z04",
+  "z08"
+ ],
+ "size_m": {
+  "w": 3.3,
+  "d": 3.2,
+  "h": 9
+ },
+ "size_target_m": {
+  "w": 3,
+  "d": 3,
+  "h": 9
+ },
+ "tris_budget": 2500,
+ "lod1_tris": 750,
+ "parts": [
+  {
+   "en": "round lantern",
+   "cn": "圆灯笼"
+  },
+  {
+   "en": "heart lantern",
+   "cn": "心形灯笼"
+  },
+  {
+   "en": "star lantern",
+   "cn": "星形灯笼"
+  },
+  {
+   "en": "tiered frame with star top",
+   "cn": "分层塔架+顶星"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "灯笼×12",
+   "pivot": "各挂绳顶",
+   "motion": "随拍摆动 ±8°"
+  },
+  {
+   "part": "灯笼发光",
+   "pivot": "—",
+   "motion": "每拍换色(粉→金→青)"
+  },
+  {
+   "part": "塔架",
+   "pivot": "底",
+   "motion": "静态"
+  }
+ ],
+ "colors": {
+  "pink": "#FF6FAE",
+  "gold": "#F7D98B",
+  "lavender": "#B9A6F0",
+  "cream": "#FFF3DE",
+  "lamp": "#FFC968",
+  "magenta": "#FF4FA0"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.001,
+   "width": 0.095,
+   "depth": 0.031
+  },
+  "drawing_vs_target": {
+   "front": 1.11,
+   "side": 1.03
+  },
+  "ok": true,
+  "size": [
+   3.3,
+   3.2,
+   9
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

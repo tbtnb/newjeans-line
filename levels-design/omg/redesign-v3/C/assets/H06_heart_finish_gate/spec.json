@@ -1,0 +1,90 @@
+{
+ "id": "H06_heart_finish_gate",
+ "cn": "书页爱心终点门",
+ "en": "Heart Finish Gate",
+ "cls": "hero",
+ "zones": [
+  "z10"
+ ],
+ "size_m": {
+  "w": 12.0,
+  "d": 3.0,
+  "h": 11
+ },
+ "size_target_m": {
+  "w": 12,
+  "d": 3,
+  "h": 11
+ },
+ "tris_budget": 5000,
+ "lod1_tris": 1500,
+ "parts": [
+  {
+   "en": "curled page segment",
+   "cn": "卷曲书页片"
+  },
+  {
+   "en": "bulb row on heart outline",
+   "cn": "爱心轮廓灯泡"
+  },
+  {
+   "en": "bunny statue at foot",
+   "cn": "门脚小兔"
+  },
+  {
+   "en": "page ribbon crown",
+   "cn": "顶部书页丝带"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "左右书页",
+   "pivot": "底部铰接",
+   "motion": "入场时由平放卷起成心形"
+  },
+  {
+   "part": "灯泡",
+   "pivot": "—",
+   "motion": "依次点亮，最后一击全亮"
+  },
+  {
+   "part": "小兔×2",
+   "pivot": "底",
+   "motion": "最后一击跳起"
+  }
+ ],
+ "colors": {
+  "cream": "#FFF3DE",
+  "gold": "#F7D98B",
+  "pink": "#FF6FAE",
+  "blush": "#FFC7DA",
+  "lamp": "#FFC968",
+  "white": "#FFFFFF"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.01,
+   "width": 0.235,
+   "depth": 0.163
+  },
+  "drawing_vs_target": {
+   "front": 1.0,
+   "side": 0.77
+  },
+  "ok": true,
+  "size": [
+   12.0,
+   3.0,
+   11
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

@@ -1,0 +1,90 @@
+{
+ "id": "H04_heart_ferris_wheel",
+ "cn": "爱心摩天轮",
+ "en": "Heart Ferris Wheel",
+ "cls": "hero",
+ "zones": [
+  "z08"
+ ],
+ "size_m": {
+  "w": 11.0,
+  "d": 5.7,
+  "h": 13
+ },
+ "size_target_m": {
+  "w": 10,
+  "d": 4,
+  "h": 13
+ },
+ "tris_budget": 6000,
+ "lod1_tris": 1800,
+ "parts": [
+  {
+   "en": "heart-shaped rim with bulbs",
+   "cn": "爱心轮框+灯泡"
+  },
+  {
+   "en": "gondola cabin",
+   "cn": "吊舱"
+  },
+  {
+   "en": "hub and spokes",
+   "cn": "轮毂与辐条"
+  },
+  {
+   "en": "A-frame legs and base",
+   "cn": "A 形支架+底座"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "轮框+辐条",
+   "pivot": "轮毂(水平轴)",
+   "motion": "慢速旋转"
+  },
+  {
+   "part": "吊舱×8",
+   "pivot": "各挂点",
+   "motion": "反向旋转保持竖直，随拍轻晃"
+  },
+  {
+   "part": "灯泡",
+   "pivot": "—",
+   "motion": "沿轮框追光随拍"
+  }
+ ],
+ "colors": {
+  "magenta": "#FF4FA0",
+  "gold": "#F7D98B",
+  "cream": "#FFF3DE",
+  "cyan": "#7FE0E8",
+  "plum": "#2A1640",
+  "lamp": "#FFC968"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.01,
+   "width": 0.263,
+   "depth": 0.151
+  },
+  "drawing_vs_target": {
+   "front": 1.1,
+   "side": 1.32
+  },
+  "ok": false,
+  "size": [
+   11.0,
+   5.7,
+   13
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

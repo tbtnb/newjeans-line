@@ -1,0 +1,91 @@
+{
+ "id": "H08_confetti_cannon",
+ "cn": "纸彩带礼炮",
+ "en": "Confetti Cannon",
+ "cls": "hero",
+ "zones": [
+  "z04",
+  "z08",
+  "z10"
+ ],
+ "size_m": {
+  "w": 2.1,
+  "d": 2.7,
+  "h": 2.5
+ },
+ "size_target_m": {
+  "w": 3,
+  "d": 2,
+  "h": 2.5
+ },
+ "tris_budget": 1800,
+ "lod1_tris": 540,
+ "parts": [
+  {
+   "en": "rolled-page barrel",
+   "cn": "卷页炮管"
+  },
+  {
+   "en": "wheeled base with bow",
+   "cn": "带轮底座+蝴蝶结"
+  },
+  {
+   "en": "heart confetti",
+   "cn": "爱心彩纸"
+  },
+  {
+   "en": "star confetti",
+   "cn": "星星彩纸"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "炮管",
+   "pivot": "炮耳轴",
+   "motion": "发射时后坐 0.2 m + 抬头"
+  },
+  {
+   "part": "彩纸",
+   "pivot": "炮口",
+   "motion": "粒子爆发(实例化)"
+  },
+  {
+   "part": "底座",
+   "pivot": "—",
+   "motion": "静态"
+  }
+ ],
+ "colors": {
+  "cream": "#FFF3DE",
+  "pink": "#FF6FAE",
+  "gold": "#F7D98B",
+  "lavender": "#B9A6F0",
+  "magenta": "#FF4FA0"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.039,
+   "width": 0.301,
+   "depth": 0.109
+  },
+  "drawing_vs_target": {
+   "front": 0.7,
+   "side": 1.06
+  },
+  "ok": false,
+  "size": [
+   2.1,
+   2.7,
+   2.5
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

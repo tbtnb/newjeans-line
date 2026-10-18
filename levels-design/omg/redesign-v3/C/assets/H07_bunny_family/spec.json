@@ -1,0 +1,90 @@
+{
+ "id": "H07_bunny_family",
+ "cn": "五只兔子一家",
+ "en": "Bunny Family of Five",
+ "cls": "hero",
+ "zones": [
+  "z10"
+ ],
+ "size_m": {
+  "w": 4.5,
+  "d": 1.8,
+  "h": 3
+ },
+ "size_target_m": {
+  "w": 8,
+  "d": 2,
+  "h": 3
+ },
+ "tris_budget": 4000,
+ "lod1_tris": 1200,
+ "parts": [
+  {
+   "en": "bunny body (faceted)",
+   "cn": "兔身(多面体)"
+  },
+  {
+   "en": "waving arm",
+   "cn": "挥手手臂"
+  },
+  {
+   "en": "folded ears",
+   "cn": "折纸耳朵"
+  },
+  {
+   "en": "paper hill base",
+   "cn": "纸山底座"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "每只兔",
+   "pivot": "脚底",
+   "motion": "底鼓依次跳起 0.3 m"
+  },
+  {
+   "part": "手臂",
+   "pivot": "肩部",
+   "motion": "挥手 ±30°/拍"
+  },
+  {
+   "part": "耳朵",
+   "pivot": "耳根",
+   "motion": "落地时抖动"
+  }
+ ],
+ "colors": {
+  "mint": "#BDEBD8",
+  "blush": "#FFC7DA",
+  "lavender": "#B9A6F0",
+  "sun": "#FFD23F",
+  "sky": "#5FB8F0",
+  "cream": "#FFF3DE"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.021,
+   "width": 0.132,
+   "depth": 0.293
+  },
+  "drawing_vs_target": {
+   "front": 0.56,
+   "side": 0.68
+  },
+  "ok": false,
+  "size": [
+   4.5,
+   1.8,
+   3
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

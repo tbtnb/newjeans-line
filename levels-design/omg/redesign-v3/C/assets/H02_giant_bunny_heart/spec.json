@@ -1,0 +1,89 @@
+{
+ "id": "H02_giant_bunny_heart",
+ "cn": "抱心巨兔",
+ "en": "Giant Pop-up Bunny with Heart",
+ "cls": "hero",
+ "zones": [
+  "z04"
+ ],
+ "size_m": {
+  "w": 6.5,
+  "d": 6.0,
+  "h": 10
+ },
+ "size_target_m": {
+  "w": 6,
+  "d": 5,
+  "h": 10
+ },
+ "tris_budget": 4000,
+ "lod1_tris": 1200,
+ "parts": [
+  {
+   "en": "folded ear with pink inner",
+   "cn": "折纸耳朵(粉内耳)"
+  },
+  {
+   "en": "big paper heart",
+   "cn": "大纸爱心"
+  },
+  {
+   "en": "face with simple eyes",
+   "cn": "脸部(简笔眼)"
+  },
+  {
+   "en": "page base with hinge",
+   "cn": "书页底座+铰接"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "整体",
+   "pivot": "底座铰接",
+   "motion": "DROP 弹起"
+  },
+  {
+   "part": "耳朵×2",
+   "pivot": "头顶耳根",
+   "motion": "每句 'Oh my god' 弹立 + 回弹"
+  },
+  {
+   "part": "爱心",
+   "pivot": "爱心中心",
+   "motion": "每拍 scale 1→1.12"
+  }
+ ],
+ "colors": {
+  "cream": "#FFF3DE",
+  "blush": "#FFC7DA",
+  "pink": "#FF6FAE",
+  "white": "#FFFFFF",
+  "gold": "#F7D98B"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.009,
+   "width": 0.06,
+   "depth": 0.1
+  },
+  "drawing_vs_target": {
+   "front": 1.08,
+   "side": 1.1
+  },
+  "ok": true,
+  "size": [
+   6.5,
+   6.0,
+   10
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

@@ -1,0 +1,91 @@
+{
+ "id": "H03_bunny_carousel",
+ "cn": "兔子旋转木马",
+ "en": "Bunny Carousel",
+ "cls": "hero",
+ "zones": [
+  "z08",
+  "z10"
+ ],
+ "size_m": {
+  "w": 7.5,
+  "d": 7.4,
+  "h": 9
+ },
+ "size_target_m": {
+  "w": 9,
+  "d": 9,
+  "h": 9
+ },
+ "tris_budget": 6000,
+ "lod1_tris": 1800,
+ "parts": [
+  {
+   "en": "striped canopy with heart finial",
+   "cn": "条纹顶棚+爱心顶饰"
+  },
+  {
+   "en": "bunny seat on pole",
+   "cn": "兔子座椅+立杆"
+  },
+  {
+   "en": "round platform with bulbs",
+   "cn": "圆台+灯泡"
+  },
+  {
+   "en": "central pole",
+   "cn": "中心柱"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "平台+顶棚",
+   "pivot": "中心柱 Y 轴",
+   "motion": "匀速旋转，副歌加速"
+  },
+  {
+   "part": "兔子座椅×6",
+   "pivot": "各立杆",
+   "motion": "交替上下浮动(每拍)"
+  },
+  {
+   "part": "灯泡",
+   "pivot": "—",
+   "motion": "跑马灯随拍"
+  }
+ ],
+ "colors": {
+  "magenta": "#FF4FA0",
+  "gold": "#F7D98B",
+  "cream": "#FFF3DE",
+  "pink": "#FF6FAE",
+  "cyan": "#7FE0E8",
+  "lamp": "#FFC968"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.002,
+   "width": 0.031,
+   "depth": 0.011
+  },
+  "drawing_vs_target": {
+   "front": 0.83,
+   "side": 0.81
+  },
+  "ok": true,
+  "size": [
+   7.5,
+   7.4,
+   9
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}
