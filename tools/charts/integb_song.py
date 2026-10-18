@@ -70,6 +70,8 @@ def run(sid, audit=False, pins=None, keep=(), follows=None, notes='', meta=None,
         else: evs.append(e)
     layout['events'] = sorted(evs, key=lambda e: e['t'])
     if meta: chart.setdefault('meta', {}).update(meta)
+    from integb_dressing import DRESSING
+    if sid in DRESSING: layout['dressing'] = DRESSING[sid]
     if beat_grid:   # (period, beat0): the music grid for beat/kick-reactive scenery when analysis/<slug>.grid.json is off
         P, b0 = beat_grid; layout['beats'] = [round(b0 + k * P, 3) for k in range(int((dur - b0) / P) + 1) if b0 + k * P >= 0]
     if notes: chart['notes'] = (chart.get('notes', '') + ' | ' + notes).strip(' |')
