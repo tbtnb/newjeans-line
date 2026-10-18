@@ -56,7 +56,7 @@ The new chart has 28 bars with no tap on a quarter beat. In every one of them th
 * chartlogic flags many taps as "faint" or "hop". Its band/vocal envelopes do not tell sung syllables apart:
   whisper word starts, which are independent of my alignment, score the same as random times inside sung lines (median 0.28 vs 0.26).
   So these flags are expected for a legato vocal layer and are not timing errors.
-* scripted playthrough: pending.
+* scripted playthrough (headless Chrome, CDP touch simulation; not a real device): complete, 478/478 perfect, 0 good, diamonds 10/10.
 * Layout changes, all on OMG only (no art-props dependency):
   * the chorus falls moved onto the tap at "예" (45.382→46.427, 105.853→106.898, 166.323→167.369), because a fall needs ≥0.35 s before the next tap;
   * 6 diamonds moved off taps: 8.238→8.529, 26.71→26.498, 53.162→52.673, 83.885→83.775, 99.941→98.499, 150.717→150.466.
