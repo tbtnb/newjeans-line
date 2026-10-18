@@ -1,5 +1,5 @@
 """P19 Balloon bunch. Size spec.size_m 2 x 1.2 x 3.5 m; 500 tris; root, swing.
-SIMPLIFICATIONS: three balloons share one swing pivot; strings are four-sided rods; inflation uses bevelled facets; the official mask fills string-enclosed air."""
+SIMPLIFICATIONS: three balloons share one swing pivot; strings are triangular rods; inflation uses triangulated facets; fine gold seams omitted; inner ears use spec gold rather than unlisted white; the official mask fills string-enclosed air."""
 BUDGET = 500
 
 import math
@@ -37,23 +37,24 @@ def finish(P,spec,animated=()):
 
 def build(P, spec):
     c=spec['colors']; gold=c['gold']; moving=[]
-    # Inflated heart: a bevelled silhouette, raised central facets, no flat card.
-    outline=[(-.92,2.67),(-.98,2.91),(-.88,3.12),(-.66,3.24),(-.43,3.20),(-.30,3.04),(-.12,3.20),(.08,3.18),(.20,3.00),(.15,2.79),(-.33,2.36)]
-    n=len(outline); verts=[(x,-.32,z) for x,z in outline]+[(x,.05,z) for x,z in outline]
-    verts += [(-.36+(x+.36)*.72,-.56,2.87+(z-2.87)*.72) for x,z in outline]
-    verts += [(-.36,-.64,2.87),(-.36,.28,2.87)]
+    # The inflated bodies now occupy the upper 55% of the entire bunch.
+    outline=[(-.99,2.68),(-.96,2.86),(-.79,3.00),(-.57,3.03),(-.39,2.94),(-.25,3.04),(-.05,3.07),(.12,2.94),(.17,2.75),(.09,2.51),(-.13,2.30),(-.40,2.10),(-.68,2.29),(-.88,2.48)]
+    n=len(outline); cx=-.41;cz=2.65
+    verts=[(x,-.28,z) for x,z in outline]+[(x,.08,z) for x,z in outline]
+    verts += [(cx+(x-cx)*.72,-.48,cz+(z-cz)*.72) for x,z in outline]
+    verts += [(cx,-.57,cz),(cx,.28,cz)]
     faces=[]
     for i in range(n):
         j=(i+1)%n
-        faces.extend([(i,j,2*n+j,2*n+i),(2*n+i,2*n+j,3*n),(n+j,n+i,3*n+1),(i,n+i,n+j,j)])
-    moving.append(mesh(P,'inflated heart',verts,faces,c['magenta']))
-    moving.append(P.lathe('round pink balloon',[(0,0),(.27,.10),(.37,.36),(.31,.63),(0,.82)],10,loc=(.03,.29,1.85),color=c['pink']))
-    moving.append(P.ico('bunny head',.42,loc=(.58,-.01,2.79),scale=(1,.94,.95),subdiv=2,color=c['cyan']))
-    for i,(x,ang) in enumerate([(.39,-12),(.81,18)]):
-        ear=P.lathe('thick bunny ear'+str(i),[(0,0),(.09,.08),(.13,.34),(.08,.56),(0,.69)],4,loc=(x,.04,3.03),rot=(0,ang,0),color=c['cyan']);moving.append(ear)
-        moving.append(P.prism('inner ear fold'+str(i),[(-.035,.09),(.035,.12),(.035,.45),(0,.56),(-.025,.40)],.018,loc=(x,-.075,3.03),rot=(0,ang,0),color=gold))
-    for i,p in enumerate([(-.33,0,2.36),(.03,.27,1.87),(.58,0,2.42)]):
-        moving.append(P.cyl('balloon knot'+str(i),.055,.10,5,loc=(p[0],p[1],p[2]-.08),r2=.025,color=[c['magenta'],c['pink'],c['cyan']][i]))
-        moving.append(rod(P,'taut golden string'+str(i),(0,0,.35),p,.009,gold,4))
-    P.lathe('gold paper weight',[(.18,0),(.22,.08),(.21,.24),(.09,.32),(.045,.36),(0,.38)],6,color=gold)
-    finish(P,spec,[('swing',(0,0,.35),moving)])
+        faces.extend([(i,j,2*n+j),(i,2*n+j,2*n+i),(2*n+i,2*n+j,3*n),(n+j,n+i,3*n+1),(i,n+i,n+j,j)])
+    moving.append(mesh(P,'large faceted inflated heart',verts,faces,lambda p,n:c['pink'] if n.z>.23 and n.x<0 else c['magenta']))
+    moving.append(P.ico('large round pink balloon',1,loc=(.05,.28,2.01),scale=(.39,.39,.43),subdiv=2,color=c['pink']))
+    moving.append(P.ico('large blue bunny head',1,loc=(.59,-.025,2.48),scale=(.43,.44,.41),subdiv=2,color=c['cyan']))
+    for i,(x,ang) in enumerate([(.36,-12),(.80,18)]):
+        moving.append(P.lathe('inflated bunny ear'+str(i),[(0,0),(.09,.10),(.15,.38),(.105,.60),(0,.75)],4,loc=(x,.01,2.79),rot=(-25,ang,0),color=c['cyan']))
+        moving.append(P.prism('gold inner ear crease'+str(i),[(-.045,.13),(.045,.14),(.052,.45),(0,.64),(-.040,.46)],.018,loc=(x,-.095,2.79),rot=(-25,ang,0),color=gold))
+    for i,p in enumerate([(-.40,-.06,2.10),(.05,.28,1.60),(.59,-.025,2.07)]):
+        moving.append(P.cyl('inflation knot'+str(i),.060,.095,4,loc=(p[0],p[1],p[2]-.085),r2=.025,color=[c['magenta'],c['pink'],c['cyan']][i]))
+        moving.append(rod(P,'converging golden string'+str(i),(0,0,.40),(p[0],p[1],p[2]-.075),.011,gold,3))
+    P.lathe('gold faceted weight',[(.18,0),(.22,.08),(.21,.24),(.09,.34),(.055,.40),(0,.42)],6,color=gold)
+    finish(P,spec,[('swing',(0,0,.40),moving)])

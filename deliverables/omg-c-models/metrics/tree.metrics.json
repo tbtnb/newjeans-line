@@ -1,0 +1,63 @@
+{
+ "front": {
+  "iou": 0.861,
+  "aspect_design": 0.657,
+  "aspect_model": 0.658,
+  "aspect_delta": 0.002,
+  "col_design": [
+   174,
+   199,
+   168
+  ],
+  "col_model": [
+   180,
+   211,
+   190
+  ]
+ },
+ "side": {
+  "iou": 0.869,
+  "aspect_design": 0.641,
+  "aspect_model": 0.658,
+  "aspect_delta": 0.027,
+  "col_design": [
+   172,
+   197,
+   165
+  ],
+  "col_model": [
+   171,
+   200,
+   180
+  ]
+ },
+ "top": {
+  "iou": 0.912,
+  "aspect_design": 0.988,
+  "aspect_model": 1.0,
+  "aspect_delta": 0.012,
+  "col_design": [
+   172,
+   212,
+   186
+  ],
+  "col_model": [
+   180,
+   224,
+   206
+  ]
+ },
+ "size_delta": [
+  0.0,
+  0.0,
+  0.0
+ ],
+ "tris": 414,
+ "budget": 600,
+ "ok": true,
+ "size": [
+  2.3,
+  2.3,
+  3.5
+ ]
+}

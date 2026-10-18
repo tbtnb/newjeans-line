@@ -1,5 +1,5 @@
 """P24 Layered paper cloud. Size 3.5 x 1.2 x 2 m from spec; 300 tris; root, bob.
-SIMPLIFICATIONS: top drawing is flatter than front/side, so top IoU is advisory per spec; central puff is subdivision-2 ico, five peripheral puffs subdivision-1 to fit 300 tris; bright paper causes holes in the automatic design mask."""
+SIMPLIFICATIONS: top drawing is flatter than front/side, so top IoU is advisory per spec; eight overlapping puffs (one subdivision-2, seven subdivision-1) fit the 300-triangle budget; thin polygonal back plate; no paper texture."""
 BUDGET = 300
 
 import math
@@ -37,9 +37,27 @@ def finish(P,spec,animated=()):
 
 def build(P, spec):
     c=spec['colors']; pieces=[]
-    outline=[(-1.75,.18),(-1.73,.58),(-1.56,.82),(-1.31,.83),(-1.11,1.36),(-.78,1.39),(-.62,1.70),(-.34,1.93),(.07,2),(.44,1.88),(.69,1.54),(1.01,1.50),(1.26,1.26),(1.55,.87),(1.74,.56),(1.72,.18),(1.44,.26),(.80,.28),(.25,.20),(-.43,.20),(-1.05,.28),(-1.51,.25)]
-    pieces.append(P.prism('scalloped pale backing',outline,.20,loc=(0,.16,0),color=c['fog']))
-    puffs=[(-1.42,-.06,.55,.35,.46),(-.94,-.06,.95,.38,.49),(-.12,-.08,1.30,.64,.70),(-.32,-.08,.48,.57,.51),(.79,-.08,.81,.53,.58),(1.39,-.04,.39,.31,.38)]
-    for k,(x,y,z,rx,rz) in enumerate(puffs):
-        pieces.append(P.ico('layered geodesic puff'+str(k),1,loc=(x,y,z),scale=(rx,.33,rz),subdiv=2 if k==2 else 1,color=c['white'] if k in [0,2,4] else c['pearl']))
+    # A thin paper back plate joins eight overlapping faceted puffs.
+    outline=[(-1.75,.15),(-1.75,.65),(-1.30,.85),(-1.05,1.40),
+             (-.70,1.35),(-.40,1.94),(.10,2),(.50,1.84),
+             (.70,1.40),(1.20,1.35),(1.72,.62),(1.70,.15)]
+    pieces.append(P.prism('thin scalloped paper back plate',outline,.12,
+                          loc=(0,.25,0),color=c['pearl'],side_color=c['fog']))
+    puffs=[
+        (-1.43,-.07,.53,.36,.29,.38,'white'),
+        (-.94,-.10,.98,.41,.33,.46,'pearl'),
+        (-1.01,-.11,.29,.35,.29,.27,'pearl'),
+        (-.10,-.09,1.30,.60,.40,.66,'white'),
+        (-.38,-.18,.50,.56,.43,.50,'white'),
+        (.77,-.11,.84,.61,.36,.57,'pearl'),
+        (1.36,-.05,.43,.34,.28,.35,'white'),
+        (.66,-.05,.30,.45,.29,.29,'pearl'),
+    ]
+    for k,(x,y,z,rx,ry,rz,col) in enumerate(puffs):
+        ob=P.ico('overlapping geodesic puff'+str(k),1,loc=(x,y,z),
+                 scale=(rx,ry,rz),subdiv=2 if k==3 else 1,
+                 rot=(0,0,0),color=c[col])
+        for v in ob.data.vertices:
+            if v.co.z+z < .12: v.co.z=.12-z
+        pieces.append(ob)
     finish(P,spec,[('bob',(0,0,1),pieces)])

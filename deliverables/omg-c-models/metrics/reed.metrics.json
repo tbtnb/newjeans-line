@@ -1,0 +1,42 @@
+{
+ "front": {
+  "iou": 0.532,
+  "aspect_design": 0.618,
+  "aspect_model": 0.595,
+  "aspect_delta": -0.037,
+  "col_design": [
+   134,
+   172,
+   143
+  ],
+  "col_model": [
+   183,
+   218,
+   201
+  ]
+ },
+ "top": {
+  "iou": 0.44,
+  "aspect_design": 0.96,
+  "aspect_model": 1.019,
+  "aspect_delta": 0.061,
+  "col_design": [
+   137,
+   158,
+   126
+  ],
+  "col_model": [
+   179,
+   217,
+   199
+  ]
+ },
+ "tris": 108,
+ "budget": 120,
+ "ok": true,
+ "size": [
+  0.473,
+  0.466,
+  0.8
+ ]
+}

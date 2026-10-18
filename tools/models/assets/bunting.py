@@ -1,5 +1,5 @@
 """P21 Pennant string. Size 2.5 x 0.2 x 1 m from spec; 300 tris; root, flag.
-SIMPLIFICATIONS: pennants share a rope pivot; side/top IoU unreliable per spec; front reference is cropped before the second post; side drawing contains another front projection; hero layout retained."""
+SIMPLIFICATIONS: nine pennants share one flag pivot; both end posts retained from hero; cropped front and composite side drawing cannot give complete-model IoU; side/top are thin per spec."""
 BUDGET = 300
 
 import math
@@ -39,15 +39,17 @@ def build(P, spec):
     c=spec['colors']; gold=c['gold']; flags=[]
     for i,x in enumerate([-1.2,1.2]):
         P.box('square plinth'+str(i),(.16,.20,.045),loc=(x,0,0),color=gold)
-        P.box('stepped foot'+str(i),(.11,.14,.04),loc=(x,0,.045),color=gold)
-        P.cyl('post'+str(i),.025,.84,4,loc=(x,0,.08),color=gold)
-        P.cyl('collar'+str(i),.04,.025,4,loc=(x,0,.91),color=gold)
-        P.ico('faceted finial'+str(i),.06,loc=(x,0,.965),scale=(1,1,1.18),subdiv=1,color=gold)
-    def sag(x):return .93-.15*(1-(x/1.2)**2)
-    for i in range(7):
-        x=-1.2+i*(2.4/7);rod(P,'sagging cord'+str(i),(x,0,sag(x)),(x+2.4/7,0,sag(x+2.4/7)),.006,gold,3)
-    for i in range(8):
-        x=-1.10+i*.285; z=sag(x)
+        P.cyl('tapered plinth step'+str(i),.078,.045,4,loc=(x,0,.045),r2=.052,rot=(0,0,45),color=gold)
+        P.box('square gold post'+str(i),(.049,.049,.83),loc=(x,0,.09),color=gold)
+        P.box('finial collar'+str(i),(.075,.075,.025),loc=(x,0,.91),color=gold)
+        mesh(P,'faceted gold finial'+str(i),[(x-.06,0,.965),(x,.06,.965),(x+.06,0,.965),(x,-.06,.965),(x,0,1.035),(x,0,.93)],[(j,(j+1)%4,4) for j in range(4)]+[((j+1)%4,j,5) for j in range(4)],gold)
+    # Broad flags follow a shallow catenary; attachment points use each flag edge.
+    def sag(x):return .92-.22*(1-(x/1.2)**2)
+    for i in range(9):
+        x=-1.2+i*(2.4/9);rod(P,'sagging golden cord'+str(i),(x,0,sag(x)),(x+2.4/9,0,sag(x+2.4/9)),.007,gold,3)
+    for i in range(9):
+        x=-1.07+i*.267; left=x-.119;right=x+.119
+        zl=sag(left);zr=sag(right);bottom=(zl+zr)/2-.43
         co=[c['magenta'],gold,c['cyan']][i%3]
-        flags.append(mesh(P,'creased thick pennant'+str(i),[(x-.125,0,z),(x+.125,0,sag(x+.25)),(x-.01,-.018,z-.34),(x, -.018,z-.10),(x-.125,.008,z),(x+.125,.008,sag(x+.25)),(x-.01,-.010,z-.34)],[(0,3,2),(3,1,2),(4,6,5),(0,4,5,1),(0,2,6,4),(1,5,6,2)],co))
-    finish(P,spec,[('flag',(0,0,.81),flags)])
+        flags.append(mesh(P,'creased solid pennant'+str(i),[(left,0,zl),(right,0,zr),(x-.015,-.018,bottom),(x,-.025,(zl+zr)/2-.105),(left,.009,zl),(right,.009,zr),(x-.015,-.009,bottom)],[(0,3,2),(3,1,2),(4,6,5),(0,4,5,1),(0,2,6,4),(1,5,6,2)],co))
+    finish(P,spec,[('flag',(0,0,.92),flags)])

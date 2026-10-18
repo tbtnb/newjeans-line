@@ -1,5 +1,5 @@
 """P17 Star mobile. 1.7 x 1.4 x 2.5 m; 600 tris; root, swing0/1 pendant groups.
-SIMPLIFICATIONS: stars and crescent grouped into two swinging banks; ears have real extruded cream rims and lilac insets."""
+SIMPLIFICATIONS: five pendants share two swinging banks; open hoop and suspension triangle remain open despite filled design masks; tiny beads simplified to octahedra."""
 
 import math
 import bpy
@@ -66,32 +66,45 @@ def finish(P,s,static,groups=()):
 def build(P,s):
     c=s['colors']; st=[];g=[[],[]];R=.72;z=1.54
     # Flat polygonal annulus, open in its centre.
-    n=16;vv=[]
-    for h,r in [(z-.055,R-.01),(z+.025,R),(z-.055,R-.075),(z+.025,R-.065)]:vv += [(r*math.cos(2*math.pi*i/n),r*math.sin(2*math.pi*i/n),h) for i in range(n)]
+    n=14;vv=[]
+    for h,r in [(z-.095,R-.01),(z+.045,R),(z-.095,R-.075),(z+.045,R-.065)]:vv += [(r*math.cos(2*math.pi*i/n),r*math.sin(2*math.pi*i/n),h) for i in range(n)]
     ff=[]
     for i in range(n):
         j=(i+1)%n;ff += [(i,j,n+j,n+i),(2*n+i,3*n+i,3*n+j,2*n+j),(n+i,n+j,3*n+j,3*n+i),(i,2*n+i,2*n+j,j)]
     st.append(mesh(P,'open lilac hoop',vv,ff,c['lilac']))
-    rim=[(R*math.cos(2*math.pi*i/n),R*math.sin(2*math.pi*i/n),z+.027) for i in range(n)]+[((R-.010)*math.cos(2*math.pi*i/n),(R-.010)*math.sin(2*math.pi*i/n),z+.027) for i in range(n)]
+    rim=[(R*math.cos(2*math.pi*i/n),R*math.sin(2*math.pi*i/n),z+.047) for i in range(n)]+[((R-.010)*math.cos(2*math.pi*i/n),(R-.010)*math.sin(2*math.pi*i/n),z+.047) for i in range(n)]
     st.append(mesh(P,'gold rim line',rim,[(i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n)],c['gold']))
     for a in [math.pi/6,5*math.pi/6,3*math.pi/2]:
-        st.append(beam(P,'suspension cord',(R*math.cos(a),R*math.sin(a),z+.04),(0,0,2.32),.009,c['gold'],3))
-    st.append(beam(P,'ceiling thread',(0,0,2.32),(0,0,2.55),.009,c['gold'],3));st.append(P.ico('gold hanger bead',.065,loc=(0,0,2.32),color=c['gold']))
+        st.append(beam(P,'suspension cord',(R*math.cos(a),R*math.sin(a),z+.04),(0,0,2.32),.012,c['gold'],3))
+    st.append(beam(P,'ceiling thread',(0,0,2.32),(0,0,2.55),.012,c['gold'],3));st.append(P.ico('gold hanger bead',.065,loc=(0,0,2.32),color=c['gold']))
     for sign in [-1,1]:
-        ol=[(-.09,0),(-.16,.18),(-.16,.40),(-.08,.57),(.07,.48),(.15,.28),(.10,.09)]
-        ear=P.prism('thick cream ear',ol,.07,loc=(sign*.50,.38,z+.04),color=c['cream'],side_color=c['gold'],rot=(-12,sign*28,sign*-10));st.append(ear)
-        st.append(P.prism('lilac ear inset',[(x*.67,z*.82+.035) for x,z in ol],.012,loc=(sign*.50,.337,z+.04),color=c['lilac'],rot=(-12,sign*28,sign*-10)))
-    for i,(a,h,r) in enumerate([(-math.pi/2,.45,.28),(-2.9,.73,.20),(-.25,.73,.20),(-2.1,.09,.15),(.7,.15,.19)]):
+        ol=[(-.08,0),(-.17,.20),(-.17,.46),(-.09,.72),(.075,.60),(.16,.33),(.10,.10)]
+        # Real bevelled cream border and a recessed lilac face, bounded by gold foil.
+        vv=[]
+        for k,yy in [(1,0),(.70,-.085),(.66,-.082),(1,.09)]:
+            vv += [(x*k,yy,.34+(zz-.34)*k) for x,zz in ol]
+        ff=[]
+        for i in range(7):
+            j=(i+1)%7;ff.append((i,j,7+j,7+i))
+        for i in range(7):
+            j=(i+1)%7;ff.append((7+i,7+j,14+j,14+i))
+        ff.append(tuple(range(14,21)))
+        for i in range(7):
+            j=(i+1)%7;ff.append((j,i,21+i,21+j))
+        ff.append(tuple(reversed(range(21,28))))
+        ear=mesh(P,'bevelled cream bunny ear',vv,ff,c['cream'])
+        P.paint(ear,c['gold'],faces=set(range(7,14)));P.paint(ear,c['lilac'],faces={14})
+        ear.location=(sign*.50,.38,z+.04);ear.rotation_euler=tuple(math.radians(v) for v in (-14,sign*24,sign*-10));st.append(ear)
+    for i,(a,h,r) in enumerate([(-math.pi/2,.48,.38),(-math.pi,.75,.25),(0,.75,.25),(-2.16,.13,.18),(-.98,.11,.23)]):
         x,y=R*math.cos(a),R*math.sin(a)
-        q=.026;zz=h+r+.07;vv=[(x+q,y,zz),(x,y+q,zz),(x-q,y,zz),(x,y-q,zz),(x,y,zz+.05),(x,y,zz-.05)]
+        q=.042;zz=h+r+.07;vv=[(x+q,y,zz),(x,y+q,zz),(x-q,y,zz),(x,y-q,zz),(x,y,zz+.065),(x,y,zz-.065)]
         g[i%2].append(mesh(P,'pendant diamond bead',vv,[(j,(j+1)%4,4) for j in range(4)]+[((j+1)%4,j,5) for j in range(4)],c['gold']))
-        g[i%2].append(beam(P,'pendant thread',(x,y,z-.04),(x,y,h+r),.008,c['gold'],3))
+        g[i%2].append(beam(P,'pendant thread',(x,y,z-.04),(x,y,h+r),.011,c['gold'],3))
         if i==4:
-            ol=[(.18,.20),(.03,.22),(-.12,.13),(-.18,-.04),(-.09,-.19),(.08,-.19),(.20,-.08),(.07,-.11),(-.01,-.03),(-.01,.09)]
-            g[i%2].append(P.prism('little crescent',ol,.12,loc=(x,y,h),color=c['gold'],rot=(0,0,22)))
-        else:g[i%2].append(puffstar(P,'dimensional paper star',r,.23,(x,y,h),c['gold']))
-    for i,a in enumerate([-math.pi/2,-2.9,-.25,-2.1,.7]):
+            ol=[(.015,.26),(.13,.18),(.19,.04),(.18,-.12),(.08,-.24),(-.07,-.26),(-.20,-.19),(-.25,-.10),(-.12,-.13),(.01,-.08),(.06,.04),(.055,.16)]
+            g[i%2].append(P.prism('little crescent',ol,.14,loc=(x,y,h),color=c['gold'],rot=(0,0,22)))
+        else:g[i%2].append(puffstar(P,'dimensional paper star',r,.30 if i==0 else .21,(x,y,h),c['gold']))
+    for i,a in enumerate([-math.pi/2,-math.pi,0,-2.16,-.98]):
         x,y=R*math.cos(a),R*math.sin(a)
-        if i<3:
-            q=.035;h=z-.04;vv=[(x+q,y,h),(x,y+q,h),(x-q,y,h),(x,y-q,h),(x,y,h+.07),(x,y,h-.07)];st.append(mesh(P,'diamond hoop fitting',vv,[(j,(j+1)%4,4) for j in range(4)]+[((j+1)%4,j,5) for j in range(4)],c['gold']))
+        q=.035;h=z-.04;vv=[(x+q,y,h),(x,y+q,h),(x-q,y,h),(x,y-q,h),(x,y,h+.07),(x,y,h-.07)];st.append(mesh(P,'diamond hoop fitting',vv,[(j,(j+1)%4,4) for j in range(4)]+[((j+1)%4,j,5) for j in range(4)],c['gold']))
     finish(P,s,st,[('swing0',(0,0,z),g[0]),('swing1',(0,0,z),g[1])])

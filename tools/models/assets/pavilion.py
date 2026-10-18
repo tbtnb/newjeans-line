@@ -1,5 +1,5 @@
 """H16 Lake Paper Pavilion; size 4.8 x 5.1 x 6 m; budget 3000.
-Pivots root, swing0..7 lanterns at eaves. SIMPLIFICATIONS: side sheet shows steps on opposite side; front/hero govern. Open column gaps are filled by design-mask extraction. Warm light is flat palette; tiny lamp chains are slim rods; dome is faceted paper."""
+Pivots root, swing0..7 lanterns at eaves. SIMPLIFICATIONS: side sheet reverses the stairs relative to front/top; front/hero govern. Open column gaps remain open (design-mask extraction fills them). Warm light is flat palette; tiny lamp chains are slim rods; dome is faceted paper."""
 BUDGET=3000
 
 import math
@@ -71,12 +71,14 @@ def build(P,spec):
  def island(name,r,r2,z,h,col,fold=False):
   def ring(rr,zz):
    pts=[]
-   for i in range(16):
-    t=math.tau*i/16
-    if i==12:
+   for i in range(8):
+    t=math.tau*i/8
+    if i==6:
      yy=-math.sqrt(rr*rr-.77*.77)
      pts += [(-.77,yy,zz),(-.77,-1.4,zz),(.77,-1.4,zz),(.77,yy,zz)]
-    else:pts.append((rr*math.cos(t),rr*math.sin(t),zz))
+    else:
+     radius=rr
+     pts.append((radius*math.cos(t),radius*math.sin(t),zz))
    return pts
   lo=ring(r,z);hi=ring(r2,z+h);n=len(lo);vv=lo+hi;ff=[tuple(range(n-1,-1,-1)),tuple(range(n,2*n))]
   for i in range(n):
@@ -87,13 +89,13 @@ def build(P,spec):
   ob=mesh(P,name,vv,ff,col)
   if fold:P.paint(ob,M,faces={i for i in range(2,len(ff)) if i%4 in (0,1)})
   return ob
- for r,h,z,col,r2 in [(2.37,.12,0,L,2.4),(2.4,.57,.12,L,2.28),(2.28,.09,.69,G,2.28),(2.28,.12,.78,W,2.18)]:
+ for r,h,z,col,r2 in [(2.40,.09,0,L,2.40),(2.40,.50,.09,L,2.38),(2.38,.055,.59,G,2.38),(2.38,.15,.645,L,2.25),(2.25,.055,.795,G,2.25),(2.25,.10,.85,W,2.19)]:
   a.append(island('notched island foundation',r,r2,z,h,col,col==L and h>.3))
- a.append(island('notched pearl floor',1.92,1.92,.90,.055,W))
+ a.append(island('notched pearl floor',2.10,2.10,.95,.055,W))
  # Starburst floor inlays remain visible in the open pavilion.
  for i in range(8):
   t=math.tau*i/8;u=t+math.pi/8;v=t+math.pi/4
-  a.append(mesh(P,'floor paper star',[(0,0,.962),(.96*math.cos(t),.96*math.sin(t),.962),(.45*math.cos(u),.45*math.sin(u),.962),(.96*math.cos(v),.96*math.sin(v),.962)],[(0,1,2),(0,2,3)],L))
+  a.append(mesh(P,'floor paper star',[(0,0,1.012),(.96*math.cos(t),.96*math.sin(t),1.012),(.45*math.cos(u),.45*math.sin(u),1.012),(.96*math.cos(v),.96*math.sin(v),1.012)],[(0,1,2),(0,2,3)],L))
  for i in range(5):
   z=i*.175;y=-2.68+i*.23
   a.append(P.box('pearl stair',(1.35,.55,z+.18),loc=(0,y,0),color=W));a.append(P.box('stair paper fold line',(1.32,.022,.012),loc=(0,y-.273,z+.165),color=L))
@@ -108,21 +110,21 @@ def build(P,spec):
   for z in (1.17,3.59):a.append(P.cyl('column gilded collar',.185,.055,6,loc=(x,y,z),color=G))
   t+=math.pi/8;x=1.98*math.cos(t);y=1.98*math.sin(t);hang=3.74
   lamp=[rod(P,'lantern short chain',(x,y,hang),(x,y,3.43),.018,G,6)]
-  lamp.append(P.lathe('warm faceted eave lantern',[(0,2.86),(.07,2.99),(.19,3.15),(.14,3.30),(.04,3.40),(0,3.44)],6,loc=(x,y,0),color=A))
-  lamp.append(P.ico('gold lamp tassel',.032,loc=(x,y,2.87),color=G,subdiv=1,scale=(1,1,1.6)))
+  lamp.append(P.lathe('warm faceted eave lantern',[(0,2.60),(.07,2.72),(.22,2.93),(.17,3.15),(.04,3.32),(0,3.44)],6,loc=(x,y,0),color=A))
+  lamp.append(P.ico('gold lamp tassel',.032,loc=(x,y,2.61),color=G,subdiv=1,scale=(1,1,1.6)))
   lamps.append(P.pivot('swing'+str(i),(x,y,hang),lamp))
  # Scalloped canopy: eight lobes, two facets across each lobe, three radial bands.
- N=32;rings=[]
- for r,z in [(.12,5.12),(.85,4.94),(1.56,4.49),(2.19,3.72)]:
+ N=40;rings=[]
+ for r,z in [(.12,5.12),(.91,4.94),(1.72,4.49),(2.28,3.72)]:
   ring=[]
   for i in range(N):
-   t=math.tau*i/N;wave=.35*(.5+.5*math.cos(8*t))*(r/2.19)**3
+   t=math.tau*i/N;wave=.35*(.5+.5*math.cos(8*t))*(r/2.28)**3
    ring.append((r*math.cos(t),r*math.sin(t),z+wave))
   rings.append(ring)
  for k in range(3):
   for i in range(N):
    j=(i+1)%N;v=[rings[k][i],rings[k][j],rings[k+1][j],rings[k+1][i]]
-   ob=mesh(P,'canopy folded facet',v,[(0,1,2),(0,2,3)],M if (i//4)%2 else L);P.paint(ob,L if (i//4)%2 else M,faces={1});a.append(ob)
+   ob=mesh(P,'canopy folded facet',v,[(0,1,2),(0,2,3)],M if (i//5)%2 else L);a.append(ob)
  for i in range(N):
   j=(i+1)%N;p=rings[-1][i];q=rings[-1][j]
   a.append(mesh(P,'scalloped gold trim',[p,q,(q[0],q[1],q[2]-.085),(p[0],p[1],p[2]-.085)],[(0,1,2,3)],G))
@@ -134,13 +136,13 @@ def build(P,spec):
   t=math.radians(65)+(math.radians(300)-math.radians(65))*i/14;out.append((.43*math.cos(t),.43*math.sin(t)))
  for i in range(11):
   t=math.radians(290)-(math.radians(290)-math.radians(78))*i/10;out.append((.13+.28*math.cos(t),.06+.31*math.sin(t)))
- a.append(P.prism('crescent moon',out,.19,loc=(0,0,5.67),color=G))
+ a.append(P.prism('crescent moon',out,.19,loc=(.16,0,5.67),color=G))
  bpy.context.view_layer.update()
  for ob in bpy.context.scene.objects:
   if ob.type=='MESH':
    mw=ob.matrix_world.copy();iv=mw.inverted()
    for v in ob.data.vertices:
     p=mw@v.co;z=p.z
-    p.z=z*1.2 if z<=.9 else (1.08+(z-.9)*.87 if z<3.8 else z-.197)
+    p.z=z*1.16 if z<=1.01 else (1.1716+(z-1.01)*.78 if z<3.8 else 3.3478+(z-3.8)*1.06)
     v.co=iv@p
  finish(P,spec,a+lamps)

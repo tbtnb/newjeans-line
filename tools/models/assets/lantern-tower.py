@@ -1,6 +1,6 @@
 """H05 Paper Lantern Tower; spec size 3.3×3.2×9 m; 2500 tris.
-Pivots: root and swing0..11 at twelve string tops.
-SIMPLIFICATIONS: baked warm light; top-view star depth follows front/hero; no dynamic colour cycling; twelve swings plus static root require 13 groups.
+Pivots: root and swing0..5, one paired swing per tier per side.
+SIMPLIFICATIONS: baked warm light; top-view star depth follows front/hero; no dynamic colour cycling; paired lanterns swing together; open frame is retained (design mask fills its openings).
 """
 import math
 BUDGET=2500
@@ -25,27 +25,29 @@ def build(P,spec):
    outline=P.heart(.57,12) if kind==1 else P.star(.60,.27)
    children.append(_fold(P,n,outline,(x,y,z),.26 if kind==1 else .31,C['pink' if kind==1 else 'gold']))
   children.extend([P.cyl(n+'cap',.105,.07,4,loc=(x,y,z+.52),color=C['gold']),P.cyl(n+'foot',.085,.06,3,loc=(x,y,z-.57),color=C['gold'])])
-  swings.append(P.pivot('swing'+str(len(swings)),(x,y,z+1.10),children))
- box('plinth',(3.3,3.2,.44),(0,0,0),'gold');box('front_cream_inlay',(2.94,.018,.27),(0,-1.607,.10),'cream')
+  return children
+ box('plinth',(3.3,3.2,.55),(0,0,0),'gold');box('front_cream_inlay',(2.94,.018,.27),(0,-1.607,.10),'cream')
  box('back_cream_inlay',(2.94,.018,.27),(0,1.607,.10),'cream')
  for sign in [-1,1]:box('side_cream_inlay',(.018,2.84,.27),(sign*1.657,0,.10),'cream')
  for x in [-1.32,1.32]:
   for y in [-1.27,1.27]:
-   col=box('column',(.20,.20,6.77),(x*.91,y*.91,.44),'cream')
-   col.location.x=x;col.location.y=y;col.rotation_euler.x=math.radians(y*1.25);col.rotation_euler.y=math.radians(-x*1.25)
+   col=box('column',(.20,.20,6.80),(x*.91,y*.91,.44),'cream')
+   col.location.x=x;col.location.y=y;col.rotation_euler.x=math.radians(y*.46);col.rotation_euler.y=math.radians(-x*.46)
    for z in [.44,2.83,5.03,7.14]:
-    f=1-.15*z/7.14
+    f=1-.06*z/7.14
     xx=x*f;yy=y*f
     box('gold_collar',(.27,.27,.15),(xx,yy,z),'gold')
     static.append(P.cyl('finial',.19,.23,4,loc=(xx,yy,z+.15),r2=0,color=C['gold'],rot=(0,0,45)))
  for tier,z in enumerate([2.63,4.83,6.99]):
-  f=1-.15*z/7.14
+  f=1-.06*z/7.14
   for y in [-1.27,1.27]:box('tier_beam',(2.74*f,.18,.25),(0,y*f,z),'lavender')
   for x in [-1.32,1.32]:box('tier_side',(.18,2.62*f,.25),(x*f,0,z),'lavender')
-  for x in [-.61,.61]:
-   for y in [-.60,.60]:lantern('lantern',x,y,z-1.10,tier)
+  for y in [-.60,.60]:
+   pair=[]
+   for x in [-.61,.61]:pair.extend(lantern('lantern',x,y,z-1.10,tier))
+   swings.append(P.pivot('swing'+str(len(swings)),(0,y,z),pair))
  box('central_standard',(.17,.17,7.8),(0,0,.44),'cream')
- static.append(_fold(P,'top_star',P.star(.77,.35),(0,0,8.21),.29,C['gold']))
+ static.append(_fold(P,'top_star',P.star(.81,.38),(0,0,8.19),.33,C['gold']))
  _fit(P,spec,static+swings)
 
 def _fold(P,name,outline,loc,depth,color):

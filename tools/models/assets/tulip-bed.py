@@ -1,5 +1,5 @@
 """P03 Tulip Bed with Fence. spec size 2.1 x .9 x .8 m; budget 800; pivots root,bob0,bob1.
-SIMPLIFICATIONS: two staggered animation groups; tray and rails use exact white palette instead of unspec cream/soil."""
+SIMPLIFICATIONS: two staggered animation groups; four-point open paper cups; rear pickets are paper cards; tray stays spec white/green (no unlisted soil colour)."""
 
 import math
 import bpy
@@ -36,36 +36,46 @@ def finish(P, spec):
 
 def mesh(P,name,verts,faces,color):
     me=bpy.data.meshes.new(name); me.from_pydata(verts,[],faces);me.update()
+    import bmesh
+    bm=bmesh.new();bm.from_mesh(me);bmesh.ops.recalc_face_normals(bm,faces=bm.faces);bm.to_mesh(me);bm.free();me.update()
     ob=bpy.data.objects.new(name,me);bpy.context.collection.objects.link(ob);P.paint(ob,color);return ob
 
 
 def build(P, spec):
     c=spec['colors'];groups=[[],[]]
-    P.box('white rectangular planting tray',(2.1,.9,.13),color=lambda p,n:c['green'] if n.z>.5 else c['white'])
-    # White pickets and two horizontal rails around the bed.
-    for y in [-.43,.43]:
-        for x in [-.99,-.66,-.33,0,.33,.66,.99]:
-            P.prism('pointed white picket',[(-.06,0),(-.06,.27),(0,.34),(.06,.27),(.06,0)],.035,loc=(x,y,.09),color=c['white'])
-        for z in ([.19,.29] if y<0 else [.29]):P.box('fence rail',(2.06,.025,.025),loc=(0,y+.015,z),color=c['white'])
-    for x in [-1.01,1.01]:
-        for y in [-.42,.42]:
-            P.box('corner post',(.085,.085,.35),loc=(x,y,.08),color=c['white'])
-            P.cyl('gold pyramid post top',.071,.08,3,loc=(x,y,.43),r2=0,color=c['sun'],rot=(0,0,45))
+    P.box('white planting tray',(2.1,.9,.13),color=lambda p,n:c['green'] if n.z>.5 else c['white'])
+    # Full-height pointed pickets: corner posts replace the four duplicate end pickets.
+    for y in [-.425,.425]:
+        for x in [-.66,-.33,0,.33,.66]:
+            outline=[(-.055,0),(-.055,.27),(0,.35),(.055,.27),(.055,0)]
+            if y<0:P.prism('pointed white picket',outline,.035,loc=(x,y,.13),color=c['white'])
+            else:P.card('rear paper picket',outline,loc=(x,y,.13),color=c['white'])
+        for z in [.24,.35]:
+            P.box('white fence rail',(2.02,.025,.035),loc=(0,y+.015,z),color=c['white'])
+    for x in [-1.005,1.005]:
+        # The side-view central picket remains a real solid board.
+        P.prism('side pointed picket',[(-.055,0),(-.055,.27),(0,.35),(.055,.27),(.055,0)],.035,loc=(x,0,.13),rot=(0,0,90),color=c['white'])
+        for y in [-.405,.405]:
+            P.box('corner post',(.09,.09,.35),loc=(x,y,.13),color=c['white'])
+            P.cyl('sun pyramid post cap',.064,.07,4,loc=(x,y,.48),r2=0,color=c['sun'],rot=(0,0,45))
     for row in range(2):
         for i in range(6):
-            x=-.83+i*.33+(row*.08);y=-.22+row*.44
-            z=.44+(.055 if row else 0)+(.025 if i%2 else 0)
+            x=-.825+i*.33+row*.075;y=-.22+row*.44
+            bottom=.44+row*.06; tip=.74+row*.06
             g=groups[i%2];co=[c['sun'],c['coral'],c['white']][(i+row*2)%3]
-            g.append(P.cyl('green tulip stem',.009,z-.13,3,loc=(x,y,.13),color=c['green'],cap=False))
-            vv=[(x,y,z-.035)]
-            for r,zz in [(.145,z+.045),(.13,z+.16)]:
-                for k in range(6):
-                    a=math.pi*2*k/6;vv.append((x+r*math.cos(a),y+r*math.sin(a),zz+(.055 if k%2==0 and r>.10 else 0)))
-            ff=[(0,1+k,1+(k+1)%6) for k in range(6)]+[(1+k,1+(k+1)%6,7+(k+1)%6,7+k) for k in range(6)]
-            # An inner ring closes each distinct pointed paper cup without a flat disc.
-            vv.append((x,y,z+.12));ff +=[]
-            g.append(mesh(P,'six petal folded tulip cup',vv,ff,co))
-            for sign in [-1,1]:g.append(P.blade('pointed green leaf',.29,.43,loc=(x,y,.15),rot=(0,sign*35,90 if row else 0),color=c['green'],bend=.25))
+            g.append(P.cyl('taller green tulip stem',.012,bottom-.13,3,loc=(x,y,.13),color=c['green'],cap=False))
+            # Bulbous eight-facet cup; four petal tips surround a real open centre.
+            vv=[(x,y,bottom)]
+            for k in range(8):
+                a=math.pi*2*k/8;vv.append((x+.16*math.cos(a),y+.16*math.sin(a),bottom+.12))
+            for k in range(8):
+                a=math.pi*2*k/8;vv.append((x+.143*math.cos(a),y+.143*math.sin(a),tip-(.07 if k%2 else 0)))
+            ff=[(0,1+k,1+(k+1)%8) for k in range(8)]
+            ff += [(1+k,1+(k+1)%8,9+(k+1)%8,9+k) for k in range(8)]
+            g.append(mesh(P,'large cupped four petal tulip',vv,ff,co))
+            for sign in [-1,1]:
+                dx=sign*.19;dy=sign*.17
+                vv=[(x,y,.15),(x+dx*.12,y+dy*.12,.38),(x+dx*.70,y+dy*.32,.39),(x+dx,y+dy,.59),(x+dx*.82,y+dy*.82,.31)]
+                g.append(mesh(P,'broad three dimensional creased leaf',vv,[(0,1,2),(1,3,2),(3,4,2),(4,0,2)],c['green']))
     for i,g in enumerate(groups):P.pivot('bob'+str(i),(0,0,.13),g)
-
     finish(P,spec)

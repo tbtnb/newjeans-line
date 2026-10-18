@@ -1,6 +1,6 @@
 """H06 Heart Finish Gate; spec 12×3×11 m; budget 5000.
 Pivots: root, gate0/1 at page feet, bob0/1 at bunny feet.
-SIMPLIFICATIONS: layered folded pages replace individual curled sheets; warm bulbs are baked; no lettering.
+SIMPLIFICATIONS: layered folded pages replace individual curled sheets; warm bulbs are baked; no lettering. Real heart opening remains open. Top sheet has a lower width/depth ratio than the exact size_m; front/hero govern.
 """
 import math
 BUDGET=5000
@@ -8,33 +8,40 @@ BUDGET=5000
 def build(P,spec):
  import bpy
  C=spec['colors'];stat=[];gates=[]
- def strip(n,path,width,depth,y,col):
+ def strip(n,path,width,depth,y,col,reference=None):
   # A closed ribbon surface with bevel-like front/back ridges.
   verts=[];ybase=y
   for i,(x,z) in enumerate(path):
    a=path[max(0,i-1)];b=path[min(len(path)-1,i+1)];dx=b[0]-a[0];dz=b[1]-a[1];l=math.hypot(dx,dz);nx=-dz/l;nz=dx/l
    if i==len(path)-1:nx=0;nz=1
-   depth*=.58+.42*math.sin(math.pi*min(1,z/9))
-   y=ybase+.17*math.sin(z*.65)
-   for w,dy in [(-width/2,depth/2),(-width/2,-depth*.20),(-width*.37,-depth/2),(width*.37,-depth/2),(width/2,-depth*.20),(width/2,depth/2)]:verts.append((x+nx*w,y+dy,z+nz*w))
+   section_depth=depth*(.92+.08*math.sin(math.pi*min(1,z/9)))
+   curve_x=reference[i][0] if reference else x
+   y=ybase+.06*math.sin(z*.65)-.60*(min(1,abs(curve_x)/5.1))**6
+   for w,dy in [(-width/2,section_depth/2),(-width/2,-section_depth*.20),(-width*.37,-section_depth/2),(width*.37,-section_depth/2),(width/2,-section_depth*.20),(width/2,section_depth/2)]:verts.append((x+nx*w,y+dy,z+nz*w))
   faces=[]
   for i in range(len(path)-1):
    for k in range(6):faces.append((i*6+k,i*6+(k+1)%6,(i+1)*6+(k+1)%6,(i+1)*6+k))
-  faces.extend([tuple(range(5,-1,-1)),tuple((len(path)-1)*6+k for k in range(6))]);me=bpy.data.meshes.new(n);me.from_pydata(verts,[],faces);me.update();ob=bpy.data.objects.new(n,me);bpy.context.collection.objects.link(ob);P.paint(ob,C[col]);return ob
+  faces.extend([tuple(range(5,-1,-1)),tuple((len(path)-1)*6+k for k in range(6))]);me=bpy.data.meshes.new(n);me.from_pydata(verts,[],faces);me.update();ob=bpy.data.objects.new(n,me);bpy.context.collection.objects.link(ob);P.paint(ob,C[col]);
+  if col=='gold' and n=='curled_page':
+   P.paint(ob,C['cream'],faces={f.index for f in me.polygons if f.normal.z>.25 and f.index%6 in (1,3)})
+  return ob
  path=[(-3.52,.52),(-3.50,1.35),(-3.62,2.36),(-3.93,3.42),(-4.42,4.50),(-4.92,5.52),(-5.10,6.55),(-4.97,7.48),(-4.50,8.25),(-3.80,8.76),(-2.90,8.99),(-2.07,8.91),(-1.27,8.48),(-.58,7.87),(0,7.65)]
  for side in [-1,1]:
   p=[(-side*x,z) for x,z in path];parts=[]
-  for w,depth,y,col in [(2.55,.65,.33,'gold'),(2.35,.72,.16,'cream'),(1.90,.80,-.04,'cream'),(.17,.12,-.75,'pink')]:
+  for w,depth,y,col in [(2.55,.80,.55,'gold'),(2.35,.80,.49,'cream'),(1.90,.78,.40,'cream'),(.17,.12,-.22,'pink')]:
    q=p
    if col=='pink':q=[(x+side*.84,z) for x,z in p]
-   parts.append(strip('curled_page',q,w,depth,y,col))
+   parts.append(strip('curled_page',q,w,depth,y,col,reference=p))
   # lamp rail follows the inner folded edge of each page.
   rail=[(x-side*.88,z) for x,z in p]
-  parts.append(strip('gold_bulb_rail',rail,.19,.12,-.77,'gold'))
-  for x,z in rail[1:-1]:parts.append(P.ico('warm_bulb',.145,loc=(x,-.91,z),subdiv=1,color=C['lamp']))
+  parts.append(strip('gold_bulb_rail',rail,.19,.12,-.25,'gold',reference=p))
+  for j,(x,z) in enumerate(rail[1:-1],1):parts.append(P.ico('warm_bulb',.145,loc=(x,-.37+.06*math.sin(z*.65)-.60*(min(1,abs(p[j][0])/5.1))**6,z),subdiv=1,color=C['lamp']))
   gates.append(P.pivot('gate'+str(len(gates)),(side*3.52,.25,.47),parts))
   for z,h,col in [(0,.13,'gold'),(.13,.51,'cream')]:
-   stat.append(P.prism('foot_plinth',[(-2.02,0),(2.02,0),(1.78,h),(-1.78,h)],1.62,loc=(side*3.62,-.10,z),color=C[col]))
+   foot=P.prism('foot_plinth',[(-2.02,0),(2.02,0),(1.78,h),(-1.78,h)],2.60,loc=(side*3.62,-.10,z),color=C[col])
+   for v in foot.data.vertices:
+    if v.co.y<0:v.co.x*=.72
+   foot.data.update();stat.append(foot)
   bunny=[];x=side*3.65;y=-.63
   for k in [-1,1]:
    stat.append(P.prism('folded_page_fan',[(-.48,0),(.45,0),(.83,1.60),(-.24,1.20)],.15,loc=(x+k*.60,-.04,.63),rot=(0,k*20,0),color=C['gold']))
@@ -51,10 +58,16 @@ def build(P,spec):
   stat.append(P.pivot('bob'+str(0 if side<0 else 1),(x,y,.64),bunny))
  # Large paper bow and two tails at the heart crown.
  for side in [-1,1]:
-  stat.append(P.prism('bow_gold',[ (side*.15,9.00),(side*1.80,10.68),(side*2.15,10.42),(side*2.32,8.67),(side*1.72,8.38)],.8,loc=(0,-.15,0),color=C['gold']))
-  stat.append(P.prism('bow_cream',[(side*.2,9.02),(side*1.79,10.50),(side*1.97,10.22),(side*2.10,8.81),(side*1.72,8.61)],.86,loc=(0,-.20,0),color=C['cream']))
+  stat.append(P.prism('bow_gold',[ (side*.15,9.00),(side*1.80,10.68),(side*2.15,10.42),(side*2.32,8.67),(side*1.72,8.38)],1.30,loc=(0,.18,0),color=C['gold']))
+  stat.append(P.prism('bow_cream',[(side*.2,9.02),(side*1.79,10.50),(side*1.97,10.22),(side*2.10,8.81),(side*1.72,8.61)],1.34,loc=(0,.12,0),color=C['cream']))
   stat.append(P.prism('bow_tail',[(side*.25,8.80),(side*.72,8.88),(side*1.36,7.62),(side*.88,7.82),(side*.56,7.55)],.14,loc=(0,-.65,0),color=C['blush']))
- stat.append(P.box('bow_knot',(.72,.98,.96),loc=(0,-.22,8.49),color=C['gold']))
+ stat.append(P.box('bow_knot',(.72,1.48,.96),loc=(0,.10,8.49),color=C['gold']))
+ for ob in stat:
+  if ob.type=='MESH' and ob.name.startswith('bow_gold'):
+   P.paint(ob,C['cream'],faces={f.index for f in ob.data.polygons if f.normal.z>.25})
+  if ob.type=='MESH' and ob.name.startswith(('bow_gold','bow_cream')):
+   for v in ob.data.vertices:
+    v.co.y*=.56+.44*max(0,min(1,(10.7-v.co.z)/1.3))
  # Fold the ribbon fronts into raised facets rather than flat cards.
  import bmesh
  for ob in stat:
