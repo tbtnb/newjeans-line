@@ -72,7 +72,7 @@ export class ShowFx {
         const m = CreateCylinder('fxBeam' + i, { diameterTop: 5, diameterBottom: 0.5, height: 1, tessellation: 18, cap: Mesh.NO_CAP }, scene);
         m.bakeTransformIntoVertices(Matrix.Translation(0, 0.5, 0)); // pivot at the lamp
         const mat = new StandardMaterial('fxBeamM' + i, scene); const cc = hex(c);
-        mat.emissiveColor = cc; mat.diffuseColor = Color3.Black(); mat.disableLighting = true; mat.alpha = 0.16; mat.backFaceCulling = false;
+        mat.emissiveColor = cc; mat.diffuseColor = Color3.Black(); mat.disableLighting = true; mat.alpha = 0.1; mat.backFaceCulling = false;
         mat.alphaMode = 1; // ALPHA_ADD
         m.material = mat; m.isPickable = false; m.alwaysSelectAsActiveMesh = true; m.parent = root;
         const buf = new Float32Array(Math.max(1, counts[i]) * 16); m.thinInstanceSetBuffer('matrix', buf, 16, false); m.thinInstanceCount = counts[i];
@@ -128,7 +128,7 @@ export class ShowFx {
         D.sc.set(k * (1 + beatK * 0.25), b.h * k, k * (1 + beatK * 0.25)); D.tr.set(b.x, b.y, b.z); Quaternion.RotationYawPitchRollToRef(0, sw, sw2, D.q);
         Matrix.ComposeToRef(D.sc, D.q, D.tr, D.m); D.m.copyToArray(this.beamBufs[b.tpl], b.idx * 16); dirty.add(b.tpl);
       }
-      for (const i of dirty) { this.beamMeshes[i].thinInstanceBufferUpdated('matrix'); this.beamMats[i].alpha = 0.12 + beatK * 0.1; }
+      for (const i of dirty) { this.beamMeshes[i].thinInstanceBufferUpdated('matrix'); this.beamMats[i].alpha = 0.07 + beatK * 0.08; }
     }
     // sparkles: appear with the road lead, twinkle, gone 20 s after
     if (this.ps) {

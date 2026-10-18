@@ -118,7 +118,7 @@ ev.sort(key=lambda e: e['t'])
 
 # ---- fx: show visuals
 keys, pulse, flashes, beams, sparkles = [], [], [], [], []
-GR = {'dream': (1.05, 1.05, 0.5), 'ward': (1.0, 1.05, 0.5), 'rise': (1.0, 1.15, 0.9), 'stage': (1.08, 1.2, 1.1), 'finale': (1.12, 1.25, 1.3), 'garden': (0.95, 1.1, 0.8), 'calm': (1.0, 1.0, 0.5)}
+GR = {'dream': (0.97, 1.05, 0.5), 'ward': (0.97, 1.05, 0.5), 'rise': (1.0, 1.15, 0.9), 'stage': (1.0, 1.15, 0.9), 'finale': (1.04, 1.2, 1.1), 'garden': (0.95, 1.1, 0.8), 'calm': (1.0, 1.0, 0.5)}
 for a, b, th in rng:
     e, c, g = GR[th]; keys.append(dict(t=round(a, 3), exposure=e, contrast=c, glow=g, blend=1.2))
     if th in ('stage', 'finale', 'rise'): pulse.append(dict(t=round(a, 3), t1=round(b, 3), amount=0.12 if th == 'rise' else 0.18))
@@ -128,7 +128,7 @@ for a, b, th in rng:
     sparkles.append(dict(t0=round(a, 3), t1=round(b, 3), density=sp, colors=['#fff3c4', '#ffc4e8', '#c4e4ff'], size=0.9 if th in ('stage', 'finale') else 0.6, spread=12, height=9))
 flashes = [dict(t=round(d, 3), dur=0.7, amount=0.55) for d in drops]
 fx = dict(exposure=1.0, contrast=1.05, vignette=dict(weight=1.2, color='#1c1440'), glow=dict(intensity=0.9, kernel=48), keys=keys, pulse=pulse,
-          flashes=flashes, beams=beams, sparkles=sparkles, road=dict(gloss=0.5, trim='#ffd27a', trimGlow=0.9), sprite=A('sparkle.png'))
+          flashes=flashes, beams=beams, sparkles=sparkles, road=dict(gloss=0.25, trim='#ffd27a', trimGlow=0.9), sprite=A('sparkle.png'))
 
 sections = [dict(t=s['t'], palette=T[th]['palette'], backdrop=T[th]['backdrop'], ground=T[th]['ground']) for s, th in zip(secs, themes)]
 spec = dict(keep=['fakefork'], objects=O, dressing=dressing, fx=fx, events=ev,

@@ -1410,14 +1410,14 @@
   "keys": [
    {
     "t": 0.011,
-    "exposure": 1.05,
+    "exposure": 0.97,
     "contrast": 1.05,
     "glow": 0.5,
     "blend": 1.2
    },
    {
     "t": 15.129,
-    "exposure": 1.0,
+    "exposure": 0.97,
     "contrast": 1.05,
     "glow": 0.5,
     "blend": 1.2
@@ -1431,14 +1431,14 @@
    },
    {
     "t": 45.364,
-    "exposure": 1.08,
-    "contrast": 1.2,
-    "glow": 1.1,
+    "exposure": 1.0,
+    "contrast": 1.15,
+    "glow": 0.9,
     "blend": 1.2
    },
    {
     "t": 60.482,
-    "exposure": 1.0,
+    "exposure": 0.97,
     "contrast": 1.05,
     "glow": 0.5,
     "blend": 1.2
@@ -1459,16 +1459,16 @@
    },
    {
     "t": 105.835,
-    "exposure": 1.08,
-    "contrast": 1.2,
-    "glow": 1.1,
+    "exposure": 1.0,
+    "contrast": 1.15,
+    "glow": 0.9,
     "blend": 1.2
    },
    {
     "t": 120.953,
-    "exposure": 1.08,
-    "contrast": 1.2,
-    "glow": 1.1,
+    "exposure": 1.0,
+    "contrast": 1.15,
+    "glow": 0.9,
     "blend": 1.2
    },
    {
@@ -1494,16 +1494,16 @@
    },
    {
     "t": 166.307,
-    "exposure": 1.12,
-    "contrast": 1.25,
-    "glow": 1.3,
+    "exposure": 1.04,
+    "contrast": 1.2,
+    "glow": 1.1,
     "blend": 1.2
    },
    {
     "t": 181.424,
-    "exposure": 1.12,
-    "contrast": 1.25,
-    "glow": 1.3,
+    "exposure": 1.04,
+    "contrast": 1.2,
+    "glow": 1.1,
     "blend": 1.2
    },
    {
@@ -1895,7 +1895,7 @@
    }
   ],
   "road": {
-   "gloss": 0.5,
+   "gloss": 0.25,
    "trim": "#ffd27a",
    "trimGlow": 0.9
   },
