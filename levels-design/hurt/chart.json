@@ -1,0 +1,790 @@
+{
+ "id": "hurt",
+ "startHeading": "N",
+ "speed": [
+  {
+   "t": 0,
+   "v": 7.5
+  }
+ ],
+ "taps": [
+  {
+   "t": 1.927,
+   "dir": "R",
+   "tag": "bass"
+  },
+  {
+   "t": 4.593,
+   "dir": "L",
+   "tag": "bass"
+  },
+  {
+   "t": 7.26,
+   "dir": "R",
+   "tag": "bass"
+  },
+  {
+   "t": 9.26,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 10.252,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 11.262,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 12.272,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 12.927,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 13.584,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 15.593,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 16.927,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 18.262,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 20.927,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 22.593,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 22.941,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 24.927,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 27.26,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 29.594,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 30.26,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 31.602,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 32.26,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 33.599,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 34.26,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 34.927,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 36.27,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 38.26,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 38.94,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 41.262,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 42.26,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 43.259,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 44.269,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 44.594,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 44.927,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 45.604,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 46.916,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 48.26,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 49.609,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 50.26,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 50.933,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 51.594,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 52.605,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 52.927,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 55.26,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 56.26,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 56.924,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 58.259,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 59.594,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 60.592,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 62.26,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 63.594,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 64.26,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 64.911,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 67.582,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 68.594,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 68.94,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 70.927,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 72.911,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 73.26,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 74.26,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 76.243,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 77.589,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 78.251,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 79.273,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 79.594,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 83.927,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 84.927,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 86.599,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 88.259,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 88.594,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 88.927,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 89.269,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 90.604,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 91.928,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 92.927,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 95.608,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 96.27,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 97.245,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 97.593,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 98.267,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 98.917,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 101.251,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 101.924,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 103.594,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 104.261,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 104.927,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 105.268,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 106.261,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 108.261,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 108.927,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 109.594,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 110.261,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 110.927,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 112.93,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 113.604,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 114.277,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 115.927,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 116.927,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 117.934,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 118.927,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 120.261,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 121.594,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 122.915,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 124.261,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 124.927,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 126.27,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 127.594,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 128.261,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 128.929,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 129.927,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 130.926,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 131.587,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 132.927,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 134.261,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 135.256,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 136.255,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 136.916,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 138.261,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 139.594,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 140.261,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 140.594,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 140.91,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 141.247,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 142.261,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 142.927,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 143.594,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 145.927,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 146.261,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 146.594,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 148.91,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 149.594,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 150.268,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 152.261,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 153.927,
+   "dir": "R",
+   "tag": "bass"
+  },
+  {
+   "t": 155.594,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 155.91,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 156.932,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 158.256,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 160.253,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 162.911,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 163.594,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 164.583,
+   "dir": "R",
+   "tag": "bass"
+  },
+  {
+   "t": 166.58,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 167.602,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 168.263,
+   "dir": "L",
+   "tag": "vocal"
+  }
+ ],
+ "sections": [
+  {
+   "t": 0.0,
+   "label": "Intro",
+   "kind": "intro"
+  },
+  {
+   "t": 10.927,
+   "label": "Verse 1",
+   "kind": "verse"
+  },
+  {
+   "t": 32.26,
+   "label": "Pre-chorus 1",
+   "kind": "pre"
+  },
+  {
+   "t": 42.927,
+   "label": "Chorus 1",
+   "kind": "chorus"
+  },
+  {
+   "t": 64.26,
+   "label": "Verse 2",
+   "kind": "verse"
+  },
+  {
+   "t": 80.26,
+   "label": "Breath",
+   "kind": "break"
+  },
+  {
+   "t": 85.594,
+   "label": "Pre-chorus 2",
+   "kind": "pre"
+  },
+  {
+   "t": 96.26,
+   "label": "Chorus 2",
+   "kind": "chorus"
+  },
+  {
+   "t": 117.594,
+   "label": "Bridge",
+   "kind": "bridge"
+  },
+  {
+   "t": 128.26,
+   "label": "Final chorus",
+   "kind": "chorus"
+  },
+  {
+   "t": 143.594,
+   "label": "Outro",
+   "kind": "outro"
+  }
+ ],
+ "notes": "Hurt 90 BPM (beat 0.667 s, downbeat 0.260 s). 144 taps (old 64, 2.25x; still only 0.82 taps/s - the calmest level). Mostly vocal-phrase taps (demucs vocal stem, -25 ms corrected) with snare backbeat anchors; final chorus allows short 16th-note vocal pairs. Min gap 0.316 s. Recommended judgment window +-100 ms."
+}
