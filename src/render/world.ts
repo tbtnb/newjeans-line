@@ -503,7 +503,7 @@ export class World {
     if (this.corridor && this.scene.activeCamera) { const lb = this.lastBefore(this.beats, t); const cam = this.scene.activeCamera; this.corridor.update(t, Math.exp(-(t - lb) * 9), cam.position, cam.getViewMatrix(), seeking ? 1 : dt, Math.tan(cam.fov / 2), this.engine.getRenderWidth() / Math.max(1, this.engine.getRenderHeight())); }
     if (this.groundTex.length > 1 && this.groundMat) { let g = this.groundTex[0].tex; for (const x of this.groundTex) if (x.t <= t) g = x.tex; if (g !== this.groundShown) { this.groundShown = g; this.groundMat.diffuseTexture = g; } }
     if (this.backdrops.length) { let b: string | null = null; for (const x of this.backdrops) if (x.t <= t) b = x.src; if (b !== this.backdropShown) { this.backdropShown = b; this.onBackdrop?.(b ? this.mats!.artBase + b : null); } }
-    if (this.sc) { const lb = this.lastBefore(this.beats, t); this.sc.update(t, seeking ? 0 : dt, Math.exp(-(t - lb) * 9), this.rig.cam.position); this.pt?.update(t); }
+    if (this.sc) { const lb = this.lastBefore(this.beats, t); const hp = anchor(this.route!, t + 0.6).pos; this.sc.update(t, seeking ? 0 : dt, Math.exp(-(t - lb) * 9), this.rig.cam.position, new Vector3(hp.x, hp.y + 0.6, hp.z)); /* cutaway target: just ahead of the head */ this.pt?.update(t); }
     // road reveal
     this.road?.update(t);
     // line

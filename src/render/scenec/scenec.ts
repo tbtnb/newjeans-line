@@ -19,6 +19,7 @@ import type { Route } from '../../core/path';
 import type { SceneCSpec } from '../../core/types';
 import { activeRange, place, type CChunk, type CInst, type CPlacement, type CSet } from './place';
 import { loadModel, placeholders, type Template } from './assets';
+import { CUT, Cutaway } from './cutaway';
 
 export type Tier = 'high' | 'low';
 export const TIERS: Record<Tier, { density: Record<string, number>; ahead: number; behind: number; lod: number }> = {
@@ -69,6 +70,7 @@ export class SceneC {
     const gm = new StandardMaterial('paperCGlow', scene); gm.disableLighting = true; gm.diffuseTexture = tex; gm.useAlphaFromDiffuseTexture = true; gm.diffuseColor = Color3.Black();
     gm.emissiveColor = Color3.White(); gm.specularColor = Color3.Black(); gm.alphaMode = Constants.ALPHA_ADD; gm.disableDepthWrite = true; gm.backFaceCulling = false; gm.fogEnabled = false;
     this.matGlow = gm;
+    for (const mm of [this.mat, this.matSet, this.matNight, this.matGlow]) new Cutaway(mm);   // after the page clones: pages / road are never cut
     for (const s of this.plc.sets) this.sets.push(this.makeSet(s));
     // swap in built models as they load (placeholders until then; a missing model simply keeps its placeholder)
     for (const [id, a] of Object.entries(spec.assets)) if (a.model) loadModel(scene, o.base, id, a.h, typeof a.model === 'string' ? a.model : id).then(t => { if (this.disposed) { t.container?.dispose(); return; } this.tm.set(id, t); this.models++; this.refreshAsset(id); }).catch(e => console.warn('omg-c model', id, e));
@@ -256,7 +258,8 @@ export class SceneC {
     for (const e of this.sets) if (e.def.a === id) { this.buildSetVisual(e); const on = e.on; e.on = !on; this.setOn(e, on); }
   }
 
-  update(t: number, dt: number, beatK: number, cam: Vector3 | null) {
+  update(t: number, dt: number, beatK: number, cam: Vector3 | null, head?: Vector3 | null) {
+    if (cam && head) { CUT.cam.copyFrom(cam); CUT.head.copyFrom(head); }
     this.time += dt; const T = TIERS[this.tier];
     if (this.dirtyAt >= 0 && this.time - this.dirtyAt > 0.4) { this.dirtyAt = -1; this.dropChunks(); }
     const key = typeof location !== 'undefined' && /[?&]cam=key\b/.test(location.search);   // key camera sees further ahead, nothing behind
