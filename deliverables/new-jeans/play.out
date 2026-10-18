@@ -1,0 +1,42 @@
+{
+ "fails": [],
+ "state": "complete",
+ "status": "complete",
+ "failKind": null,
+ "failTime": 0,
+ "time": 108.9867,
+ "cursor": 154,
+ "taps": 154,
+ "perfect": 154,
+ "good": 0,
+ "diamonds": 10,
+ "ignoredDuplicates": 0,
+ "fps": 14.537524986400593,
+ "save": {
+  "version": 2,
+  "selected": "new-jeans",
+  "records": {
+   "new-jeans": {
+    "best": 1,
+    "diamonds": 10,
+    "crowns": 3,
+    "attempts": 1,
+    "completed": true,
+    "perfect": 154,
+    "taps": 154
+   }
+  },
+  "settings": {
+   "volume": 0.8,
+   "offsetMs": 0,
+   "quality": "high",
+   "vibration": true
+  }
+ },
+ "judged": 154,
+ "errorMeanMs": 1.5,
+ "errorSdMs": 1.5,
+ "errorMaxAbsMs": 10,
+ "sent": 154,
+ "logs": []
+}
