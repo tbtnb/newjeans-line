@@ -418,6 +418,10 @@ export class World {
   frame(t: number) {
     const now = performance.now(); const dt = Math.min(0.1, (now - this.lastFrame) / 1000); this.lastFrame = now;
     this.fpsAcc += dt; this.fpsN++; if (this.fpsAcc > 0.5) { this.fps = this.fpsN / this.fpsAcc; this.fpsAcc = 0; this.fpsN = 0; }
+    // Babylon ages particles by updateSpeed per frame; tie it to real frame time so lifetimes are in seconds
+    // on any frame rate (the line skin does the same for its own systems)
+    const us = Math.min(0.1, Math.max(0.001, dt));
+    for (const ps of this.scene.particleSystems) if (ps.name === 'burst' || ps.name === 'amb') (ps as ParticleSystem).updateSpeed = us;
     this.applyTime(t, dt, false);
     this.scene.render();
   }
