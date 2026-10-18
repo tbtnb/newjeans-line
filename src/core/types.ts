@@ -90,6 +90,8 @@ export interface Dressing {
   colors?: string[];
   /** v2.7 art props mixed into the default palette (ignored when props is given; list them in props instead) */
   art?: DressingProp[];
+  /** v2.7 fraction (0..0.95) of dressing placements drawn from `art` (default 0.5) */
+  artShare?: number;
 }
 export interface LevelData {
   id: string; title: string; album: string; duration: number; bpm: number; audio: string; cover: string;

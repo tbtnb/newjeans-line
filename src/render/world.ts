@@ -303,7 +303,7 @@ export class World {
     if (ART_KINDS.has(o.kind) && Number.isFinite(br)) {
       // art props test occlusion against their projected box (a bounding sphere would fade a tall thin card far too eagerly)
       const P0 = holder.position; let x0 = bv.min.x - P0.x, x1 = bv.max.x - P0.x, z0 = bv.min.z - P0.z, z1 = bv.max.z - P0.z;
-      if (o.face === 'camera') { const r = Math.max(-x0, x1, -z0, z1); x0 = z0 = -r; x1 = z1 = r; }
+      if (o.face === 'camera') { const r = Math.max(-x0, x1, -z0, z1, bv.max.y - P0.y); x0 = z0 = -r; x1 = z1 = r; }
       obj.box = [x0, bv.min.y - P0.y, z0, x1, bv.max.y - P0.y, z1];
     }
     this.objects.push(obj); if (o.face === 'camera') this.faceCam.push(obj);
@@ -622,7 +622,11 @@ export class World {
   private animateObjects(t: number) {
     if (this.faceCam.length && this.rig) {
       const c = this.rig.cam.position;
-      for (const o of this.faceCam) if (!o.hidden) o.node.rotation.y = Math.atan2(-(c.x - o.base.x), -(c.z - o.base.z));
+      // yaw toward the camera and lean back toward it (pivot at the base, max ~63 deg) so the art reads from the high follow camera
+      for (const o of this.faceCam) if (!o.hidden) {
+        const dx = c.x - o.base.x, dz = c.z - o.base.z, dy = c.y - (o.base.y + o.bc!.y);
+        o.node.rotation.y = Math.atan2(-dx, -dz); o.node.rotation.x = Math.min(1.1, Math.max(0, Math.atan2(dy, Math.hypot(dx, dz))));
+      }
     }
     const lb = this.lastBefore(this.beats, t), lk = this.lastBefore(this.kicks, t);
     const beatK = Math.exp(-(t - lb) * 9), kickK = Math.exp(-(t - lk) * 10), tapK = Math.exp(-(t - this.lastTap) * 10);

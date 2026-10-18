@@ -59,6 +59,12 @@ export class Dressings {
     const rnd = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
     const secAt = (t: number) => { let s = { t: 0, density: d.density ?? 3.6, near: d.near ?? [0.4, 4] as [number, number], props: undefined as number[] | undefined, off: false }; for (const x of d.sections ?? []) if (x.t <= t + 1e-9) s = { t: x.t, density: x.density ?? d.density ?? 3.6, near: x.near ?? d.near ?? [0.4, 4], props: x.props, off: !!x.off }; return s; };
     const weights = props.map(p => p.weight ?? 1);
+    if (!d.props?.length && d.art?.length) {
+      // dressing.artShare: fraction of placements drawn from the art props (default 0.5); weights inside each group stay relative
+      const nDef = props.length - d.art.length; const share = Math.min(0.95, Math.max(0, d.artShare ?? 0.5));
+      let sd = 0, sa = 0; weights.forEach((w, i) => { if (i < nDef) sd += w; else sa += w; });
+      if (sa > 0 && share > 0) { const f = (share / (1 - share)) * sd / sa; for (let i = nDef; i < weights.length; i++) weights[i] *= f; }
+    }
     const pick = (allowed?: number[]) => { const ids = allowed?.length ? allowed.filter(i => i < props.length) : props.map((_, i) => i); let tot = 0; for (const i of ids) tot += weights[i]; let r = rnd() * tot; for (const i of ids) { r -= weights[i]; if (r <= 0) return i; } return ids[ids.length - 1]; };
     const placed: { x: number; z: number; r: number }[] = [...extraBlock];
     const cell = new Map<string, number[]>(); const key = (x: number, z: number) => `${Math.floor(x / 6)},${Math.floor(z / 6)}`;

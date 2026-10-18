@@ -27,7 +27,7 @@ Extra fields for all of these kinds:
 | `t`, `side` | Route-anchored as before. The sign of `side` picks the side (+ = right of travel). |
 | `near` | Near-road placement: `\|side\|` becomes road half-width(t) + `near` + the object's radius. It implies `hug`. |
 | `hug` | Anchor to the actual road at `t` rather than the smoothed corridor. When `near` or `hug` is set, the off-road push-out also walks along the actual road in 0.75-unit steps. |
-| `face` | Points the front (local −z) at something. `road`: toward the road point at `t`. `oncoming`: toward the line approaching from behind (mostly against travel, turned 30° toward the road), which suits the follow camera. `travel`: along travel. `camera`: yaw-billboard toward the camera every frame, with no per-frame allocation. `rot` is added on top. |
+| `face` | Points the front (local −z) at something. `road`: toward the road point at `t`. `oncoming`: toward the line approaching from behind (mostly against travel, turned 30° toward the road), which suits the follow camera. `travel`: along travel. `camera`: every frame, turns toward the camera and leans back toward it (pivot at the base, up to about 63°), so the art reads from the high follow camera; no per-frame allocation. `rot` is added on top. |
 | `y` | Base offset relative to the road top. Art props normally use `-0.6`, the level the roadside dressing stands on. |
 
 Prefer `t` / `side` / `near` over `worldPos` for art. The engine resolves the position against the real road, so the prop sits beside the stretch the camera follows when the line passes `t`. To get a prop on screen at time T, use t ≈ T + 0.3…1.4 s. Objects with `worldPos` are not pushed off the road.
@@ -47,6 +47,7 @@ Occlusion: standees and facades are tested with their projected screen box, not 
 ```
 
 - **`colors`** are the theme colours for the five default untextured props, in the order [light block, mid block, accent cube, dark block, foliage]. Sample them from the level's art. Missing entries fall back to the palette.
+- **`artShare`** is the fraction of placements drawn from `art`. The default is 0.5; use about 0.6 to let the art dominate. Weights within each group stay relative.
 - **`art`** lists textured props that are appended to the default palette. If you write your own `props`, put textured entries straight into `props` instead (any entry with `src` is an art prop).
 - Art prop fields:
   - `src` and `uv`.
