@@ -11,7 +11,7 @@
  "good": 0,
  "diamonds": 10,
  "ignoredDuplicates": 0,
- "fps": 60.019361084220705,
+ "fps": 59.83246907517735,
  "save": {
   "version": 2,
   "selected": "omg",
@@ -35,9 +35,9 @@
   }
  },
  "judged": 553,
- "errorMeanMs": 0.3,
+ "errorMeanMs": 0.4,
  "errorSdMs": 0.5,
- "errorMaxAbsMs": 2,
+ "errorMaxAbsMs": 5,
  "sent": 553,
  "logs": []
 }
