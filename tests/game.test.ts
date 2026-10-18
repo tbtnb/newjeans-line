@@ -82,3 +82,14 @@ test('linePos is continuous across an early and a late turn and returns to the c
   const e = linePos(r, [], 2.06 - 1e-6, 0), f = linePos(r, late, 2.06, 1);
   assert.ok(Math.hypot(e.x - f.x, e.z - f.z) < 1e-3);
 });
+
+test('falls/jumps land before the next tap (no turning in mid-air)', async () => {
+  const { buildRoute } = await import('../src/core/path');
+  const chart = { id: 'x', taps: [{ t: 2 }, { t: 5.3 }, { t: 9 }], sections: [] } as any;
+  const r = buildRoute(chart, [{ type: 'fall', t: 5.0, dy: -4 }, { type: 'jump', t: 8.7, dy: 3 }], 12);
+  for (const s of r.spans) if (s.air) assert.ok(s.turnIndex < 0, 'no tap ends an airborne span');
+  const airEnd = Math.max(...r.spans.filter(s => s.air && s.t0 >= 5 && s.t0 < 6).map(s => s.t1));
+  assert.ok(airEnd <= 5.3 - 0.04, 'fall shortened to land before tap at 5.3, got ' + airEnd);
+  const landY = r.spans.find(s => s.t0 >= airEnd - 1e-6 && !s.air)!.y0;
+  assert.ok(Math.abs(landY + 4) < 1e-6, 'lands at -4, got ' + landY);
+});

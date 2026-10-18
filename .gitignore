@@ -14,4 +14,3 @@ deliverables/*.mp4
 deliverables/raw/
 *.tmp.mjs
 levels-src/*/preview.png
-*.tmp.ts

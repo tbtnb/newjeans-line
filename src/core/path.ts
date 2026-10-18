@@ -23,9 +23,14 @@ export interface Route {
   headingAfter: Heading[]; // heading after tap i
 }
 
-function airTime(dy: number): { dur: number; vy: number } {
-  if (dy < 0) { const vy = 2; const dur = (vy + Math.sqrt(vy * vy - 2 * GRAVITY * dy)) / GRAVITY; return { dur, vy }; }
-  const dur = 0.6; return { dur, vy: (dy + GRAVITY * dur * dur / 2) / dur };
+/** Airtime for a fall/jump. The line must be back on the road before the next tap, so the flight is shortened
+ * (steeper parabola, same gravity) when the next tap comes sooner than the natural flight time. */
+export const AIR_MIN = 0.15, AIR_LAND_BEFORE_TAP = 0.05;
+export function airTime(dy: number, maxDur = Infinity): { dur: number; vy: number } {
+  let dur: number, vy: number;
+  if (dy < 0) { vy = 2; dur = (vy + Math.sqrt(vy * vy - 2 * GRAVITY * dy)) / GRAVITY; } else { dur = 0.6; vy = (dy + GRAVITY * dur * dur / 2) / dur; }
+  if (dur > maxDur) { dur = Math.max(AIR_MIN, maxDur); vy = (dy + GRAVITY * dur * dur / 2) / dur; }
+  return { dur, vy };
 }
 
 export function buildRoute(chart: Chart, elevation: Elevation[] = [], duration: number): Route {
@@ -40,7 +45,7 @@ export function buildRoute(chart: Chart, elevation: Elevation[] = [], duration: 
   const ramps: { t0: number; t1: number; dy: number }[] = [];
   for (const e of elevation) {
     if (e.type === 'ramp') ramps.push({ t0: e.t0!, t1: e.t1!, dy: e.dy });
-    else { const a = airTime(e.dy); air.push({ t0: e.t!, t1: e.t! + a.dur, dy: e.dy, vy: a.vy }); }
+    else { const next = taps.find(t => t > e.t! + 1e-6) ?? duration; const a = airTime(e.dy, next - e.t! - AIR_LAND_BEFORE_TAP); air.push({ t0: e.t!, t1: Math.min(e.t! + a.dur, duration), dy: e.dy, vy: a.vy }); }
   }
   const bp = new Set<number>([0, duration, ...taps, ...speeds.map(s => s.t), ...air.flatMap(a => [a.t0, a.t1]), ...ramps.flatMap(r => [r.t0, r.t1])]);
   const points = [...bp].filter(t => t >= 0 && t <= duration).sort((a, b) => a - b);
