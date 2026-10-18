@@ -1846,26 +1846,29 @@
  ],
  "diamonds": [
   {
-   "t": 8.238,
-   "side": 0
-  },
-  {
-   "t": 26.71,
+   "t": 8.529,
    "side": 0,
-   "moved": "kept off corners after the OMG re-chart (chart-research)"
+   "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
   },
   {
-   "t": 53.162,
+   "t": 26.498,
    "side": 0,
-   "moved": "kept off corners after the OMG re-chart (chart-research)"
+   "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
   },
   {
-   "t": 83.885,
-   "side": 0
+   "t": 52.673,
+   "side": 0,
+   "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
   },
   {
-   "t": 99.941,
-   "side": 0
+   "t": 83.775,
+   "side": 0,
+   "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
+  },
+  {
+   "t": 98.499,
+   "side": 0,
+   "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
   },
   {
    "t": 117.419,
@@ -1877,8 +1880,9 @@
    "side": 0
   },
   {
-   "t": 150.717,
-   "side": 0
+   "t": 150.466,
+   "side": 0,
+   "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
   },
   {
    "t": 185.447,
@@ -1939,7 +1943,7 @@
  },
  "elevation": [
   {
-   "t": 45.382,
+   "t": 46.427,
    "type": "fall",
    "dy": -4
   },
@@ -1956,7 +1960,7 @@
    "dy": 6
   },
   {
-   "t": 105.853,
+   "t": 106.898,
    "type": "fall",
    "dy": -6
   },
@@ -1967,7 +1971,7 @@
    "dy": 4
   },
   {
-   "t": 166.323,
+   "t": 167.369,
    "type": "fall",
    "dy": -8
   },
