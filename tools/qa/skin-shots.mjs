@@ -49,16 +49,16 @@ for (let si = 0, tries = 0; si < skins.length; si++) {
   const plan = taps.filter(t => t > FROM + 0.05 && t <= SHOT_AFTER + 1e-3);
   for (const t of plan) { await until(t); touch(); }
   await until(SHOT_AFTER + 0.16);
-  const turnShot = `${OUT}/play-${skin}.png`; const tclip = await headClip(page, W, H); await page.screenshot({ path: turnShot }); const turnCrop = `${OUT}/play-${skin}-head.png`; await page.screenshot({ path: turnCrop, clip: tclip });
+  const turnShot = `${OUT}/play-${skin}.png`; const tclip = await headClip(page, W, H); await page.screenshot({ path: turnShot }); 
   // stop tapping: the next corner is missed -> fail -> shatter
   await page.waitForFunction(() => window.__nj.game.status === 'failed', null, { timeout: 5000 }).catch(() => {});
   const failInfo = await page.evaluate(() => ({ status: window.__nj.game.status, kind: window.__nj.game.failKind, t: window.__nj.game.failTime, turns: window.__nj.game.turns.length, perfect: window.__nj.game.perfect, good: window.__nj.game.good }));
   await page.waitForTimeout(430);
-  const deathShot = `${OUT}/death-${skin}.png`; await page.screenshot({ path: deathShot }); const deathCrop = `${OUT}/death-${skin}-head.png`; await page.screenshot({ path: deathCrop, clip: tclip });
+  const deathShot = `${OUT}/death-${skin}.png`; await page.screenshot({ path: deathShot }); const dclip = await headClip(page, W, H);
   const stats = await page.evaluate(() => window.__nj.stats());
   if (failInfo.t < FROM && tries < 2) { tries++; console.log('retry', skin, 'run did not start from the preview point'); await ctx.close(); si--; continue; }
   tries = 0;
-  report.play.push({ skin, saved, turnShot, deathShot, turnCrop, deathCrop, plannedTaps: plan.length, ...failInfo, stats });
+  report.play.push({ skin, saved, turnShot, deathShot, turnClip: tclip, deathClip: dclip, plannedTaps: plan.length, ...failInfo, stats });
   console.log(skin, JSON.stringify(report.play.at(-1)));
   await ctx.close();
 }

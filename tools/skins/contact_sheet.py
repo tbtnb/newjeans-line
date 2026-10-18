@@ -13,9 +13,10 @@ top = Image.new('RGB', (cw * len(play) + 8, 40 + 2 * (cs + 30) + (h + 30) + 10),
 for i, r in enumerate(play):
     x = 8 + i * cw
     d.text((x, 8), names.get(r['skin'], r['skin']), fill='#2c2a28', font=F)
-    for j, (k, lab) in enumerate([('turnCrop', '转弯 turn +0.16s (head crop)'), ('deathCrop', '死亡 shatter (head crop)')]):
-        y = 40 + j * (cs + 30)
-        top.paste(Image.open(r[k]).convert('RGB').resize((cs, cs)), (x, y + 22)); d.text((x, y), lab, fill='#77706a', font=Fs)
+    for j, (k, c, lab) in enumerate([('turnShot', 'turnClip', '转弯 turn +0.16s (head crop)'), ('deathShot', 'deathClip', '死亡 shatter (head crop)')]):
+        y = 40 + j * (cs + 30); b = r[c]; im = Image.open(r[k]).convert('RGB').crop((b['x'], b['y'], b['x'] + b['width'], b['y'] + b['height']))
+        im.save(r[k].replace('.png', '-head.png'))
+        top.paste(im.resize((cs, cs)), (x, y + 22)); d.text((x, y), lab, fill='#77706a', font=Fs)
     y = 40 + 2 * (cs + 30)
     top.paste(Image.open(r['turnShot']).convert('RGB').resize((w, h)), (x, y + 22)); d.text((x, y), '全屏 full frame (turn)', fill='#77706a', font=Fs)
 pk = rep['picker']; ph = 360
