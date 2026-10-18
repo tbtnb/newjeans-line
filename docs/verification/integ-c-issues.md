@@ -28,3 +28,22 @@ Chrome + SwiftShader, `--quality low --scale 1.5`), not physical-device play and
   -> vocal; "sample hits ... no drums yet" -> drums). Corrected per song via manual follows (see chart.json `follows_src`).
 - Menu shows a toast `关卡数据缺失：attention` in my partial build (only ditto + my 4 levels are built in this tree). Expected; not a bug in the final 16-level build.
 - Snapshots are static `?debug` preview frames (NOT motion), software-rendered (~14 fps in play).
+
+## Results (scripted simulation, 540x960 portrait, headless SwiftShader, quality low, scale 1.5)
+| song | taps (legacy) | validate | playthrough | judged err mean/sd/max ms | chartlogic flags (hop/faint/weak-burst/off-grid) | crossings |
+|---|---|---|---|---|---|---|
+| supernatural | 320 (162) | 0 errors, 0 warns | complete, 320 PERFECT, 10/10 diamonds, 3 crowns | 1.3 / 2.9 / 30 | 2 / 4 / 0 / 0 | 37 |
+| how-sweet | 307 (133) | 0 errors, 0 warns | complete, 307 PERFECT, 10/10 | 1.2 / 3.5 / 28 | 0 / 1 / 7 / 0 | 73 |
+| bubble-gum | 257 (132) | 0 errors, 0 warns | complete, 256 PERFECT + 1 GOOD, 10/10 | 1.0 / 4.7 / 74 | 0 / 6 / 0 / 0 | 20 |
+| right-now | 411 (216) | 0 errors, 0 warns | complete, 411 PERFECT, 10/10 | 1.3 / 0.9 / 9 | 1 / 0 / 0 / 0 (with 172 BPM meta grid) | 11 |
+
+Flags were reported, not fixed (task: taps unchanged). Candidates for a later trim by the chart owner:
+- supernatural: FAINT 38.589, 91.433, 153.084, 172.075 s; HOP 59.506 (hat), 114.277 (hat in kick-led bridge).
+- how-sweet: WEAK-BURST 16th fills at 38.378/38.498/38.618, 46.178/46.298, 153.576, 161.256 s (full 0.30-0.52: fills are audible but below the 0.6 'clear' bar); FAINT 134.736 s.
+- bubble-gum: FAINT 2.627, 57.194, 183.186 s; breakdown vocal taps 83.193, 88.907, 89.478 s (vocal 0.25-0.33).
+- right-now: HOP 10.800 s (intro tap on a kick, section follows the melody).
+
+## Visual observations from the static frames
+- The `?debug` preview camera frames the road tightly; most side landmarks (e.g. How Sweet cat / sticker / water tower, Supernatural billboard / stage) are outside these frames, so landmark *visibility in motion* is unverified. Layout objects are the designers' unchanged ones, so they match design.md by construction.
+- Right Now's flower-ground texture (scale 30) is busy; the road still reads but it is the noisiest of the four.
+- Bubble Gum's single GOOD (tap 24 at 36.910 s, 74 ms early) is a scripted-dispatch timing outlier (other agents' browser jobs were running on the box at the time), not a chart problem.
