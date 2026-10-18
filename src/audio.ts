@@ -56,14 +56,15 @@ export class AudioTransport {
     if (this.url === url && this.buffer) return Promise.resolve();
     if (this.url === url && this.loading) return this.loading;
     this.stop(); this.buffer = null; this.url = url;
+    const ctx = this.context();   // created early (as before): the song clock relies on a context that has been ticking
     this.loading = (async () => {
       const bytes = await this.download(url);
       // Decode on an OfflineAudioContext, never on the live context: on iOS the live context can sit 'suspended' /
       // 'interrupted' (no gesture yet, 'playback' audio session, call/Siri) and decodeAudioData on it may never settle.
       // AudioBuffers are context-independent; decoding at the live rate avoids a resample at play time.
-      const rate = this.ctx?.sampleRate ?? 48000;
+      const rate = ctx.sampleRate;
       let dc: BaseAudioContext;
-      try { dc = new OfflineAudioContext(2, 1, rate); } catch { dc = this.context(); }
+      try { dc = new OfflineAudioContext(2, 1, rate); } catch { dc = ctx; }
       const buf = await withTimeout(dc.decodeAudioData(bytes), 30000, '音频解码超时，请刷新重试');
       if (this.url === url) this.buffer = buf;
     })();
