@@ -53,6 +53,9 @@ export class CameraRig {
    *  third, authored side/top presets ignored (always along the flow); distance stays at or beyond the default's floor */
   keyMode = typeof location !== 'undefined' && /[?&]cam=key\b/.test(location.search);   // world.ts turns it on for the concept-C scene unless ?cam=old
 
+  /** v6 key camera: hero focus (world.ts), eased weight w 0..1; the camera yaws toward it (capped) and zooms out a little */
+  focus: ((t: number, head: { x: number; z: number }) => { x: number; z: number; w: number } | null) | null = null;
+  private fw = 0; private fyaw = 0; private fsx = 0; private fsz = 0;
   private hits: number[] = []; private orbitAng = 0;
 
   constructor(scene: Scene, private route: Route, authored: CameraCue[], sections: { t: number; label?: string }[] = [], hits: number[] = [], auto = true) {
@@ -95,9 +98,22 @@ export class CameraRig {
     const wy = (p as any).worldYawBlend;
     if (p.worldYaw !== null) desiredYaw = wy !== undefined ? angLerp(desiredYaw, p.worldYaw * Math.PI / 180, wy) : p.worldYaw * Math.PI / 180;
     if (this.menuOrbit) desiredYaw = flow + performance.now() / 9000;
-    const fx = Math.sin(flow), fz = Math.cos(flow);
+    let fx = Math.sin(flow), fz = Math.cos(flow), fzoom = 0;
+    if (this.keyMode && !this.menuOrbit && this.focus && !(typeof location !== 'undefined' && /[?&]focus=0\b/.test(location.search))) {   // hero framing: eased (weight + its own slow filter), never more than 40 deg off the flow
+      const f = this.focus(t, head); const w = f ? f.w : 0;
+      let goal = 0; if (f) { let d = Math.atan2(f.x - head.x, f.z - head.z) - flow; d = Math.atan2(Math.sin(d), Math.cos(d)); goal = Math.max(-0.6, Math.min(0.6, d * 0.7)) * w; }
+      if (!this.initialized) { this.fyaw = goal; this.fw = w; }
+      else {   // eased and rate-limited: at most ~14 deg/s of extra turn, zoom eases over ~1 s
+        const step = (goal - this.fyaw) * (1 - Math.exp(-dt * 1.5)), lim = 0.25 * dt; this.fyaw += Math.max(-lim, Math.min(lim, step));
+        this.fw += (w - this.fw) * (1 - Math.exp(-dt * 1.2)); }
+      if (f) {   // and slide the look point up to 7 m toward the hero (weighted, eased) so it sits inside the frame, not on its edge
+        let sx = (f.x - head.x) * 0.3 * w, sz = (f.z - head.z) * 0.3 * w; const sl = Math.hypot(sx, sz); if (sl > 7) { sx *= 7 / sl; sz *= 7 / sl; }
+        const k = this.initialized ? 1 - Math.exp(-dt * 1.2) : 1; this.fsx += (sx - this.fsx) * k; this.fsz += (sz - this.fsz) * k;
+      } else { const k = 1 - Math.exp(-dt * 1.2); this.fsx -= this.fsx * k; this.fsz -= this.fsz * k; }
+      const off = this.fyaw; desiredYaw += off; fx = Math.sin(flow + off); fz = Math.cos(flow + off); fzoom = 12 * this.fw;
+    }
     const leadDist = this.keyMode ? Math.max(MIN_DIST, p.dist) * 0.42 : Math.min(p.lead * 9, Math.max(MIN_DIST, p.dist) * 0.2);   // key: look well ahead, head sits low
-    const want = this.freezeAt ?? new Vector3(head.x + fx * leadDist, head.y, head.z + fz * leadDist);
+    const want = this.freezeAt ?? new Vector3(head.x + fx * leadDist + this.fsx, head.y, head.z + fz * leadDist + this.fsz);
     if (!this.initialized) { this.target.copyFrom(want); this.yaw = desiredYaw; this.ty = want.y; this.initialized = true; }
     const kPos = 1 - Math.exp(-dt * 4.5), kYaw = 1 - Math.exp(-dt * 1.6), kY = 1 - Math.exp(-dt * 2.5);
     this.target.x += (want.x - this.target.x) * kPos; this.target.z += (want.z - this.target.z) * kPos;
@@ -105,9 +121,9 @@ export class CameraRig {
 
     this.yaw = angLerp(this.yaw, desiredYaw, kYaw);
     // floor: older layouts authored very close distances (15-24); keep the DL-style overview
-    let dist = (Math.max(MIN_DIST, p.dist) * p.zoom + this.extraDist) * this.distScale;
+    let dist = (Math.max(MIN_DIST, p.dist) * p.zoom + this.extraDist + fzoom) * this.distScale;
     if (this.aspect < 0.95) dist *= Math.pow(Math.min(2.2, 0.95 / this.aspect), 0.35);
-    dist = Math.min(dist, 56 * this.distScale + this.extraDist); // cap: wide/zoomed shots on portrait screens never shrink the head below readable size
+    dist = Math.min(dist, (56 + fzoom) * this.distScale + this.extraDist); // cap: wide/zoomed shots on portrait screens never shrink the head below readable size
     // beat punch: a quick push-in on strong hits (kicks), decaying in ~120 ms
     if (p.punch > 0 && this.hits.length && !this.menuOrbit) { const h = lastLE(this.hits, t); if (h > -1e8) dist *= 1 - p.punch * Math.exp(-(t - h) * 9); }
     const pitch = Math.min(84, p.pitch + p.tilt + this.extraPitch) * Math.PI / 180;

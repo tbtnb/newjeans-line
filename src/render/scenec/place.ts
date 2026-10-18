@@ -6,7 +6,7 @@ import { anchor, flowAnchor, type Route } from '../../core/path';
 import type { SceneCSpec, SceneCZone } from '../../core/types';
 
 export interface CInst { a: string; layer: string; x: number; y: number; z: number; yaw: number; s: number; c: number; zone: number; t: number; chunk: number; hi?: boolean }
-export interface CSet extends CInst { popAt: number; label?: string }
+export interface CSet extends CInst { popAt: number; label?: string; /** v6: zone hero (key camera nudges toward it) */ hero?: boolean }
 export interface CImp { k: string; x: number; y: number; z: number; yaw: number; s: number; zone: number }
 export interface CChunk { imp?: CImp[]; i: number; t0: number; t1: number; zone: number; minX: number; maxX: number; minZ: number; maxZ: number; y: number; items: CInst[];
   /** raised page at the chunk's own road level (climbs): pad shrunk so it never covers a lower road; decor inside it sits on it */
@@ -150,7 +150,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
           ec.items.push({ a: ea, layer: 'mid', x, y: groundY(ec, x, zz), z: zz, yaw: Math.atan2(rp.x - x, rp.z - zz), s: es, c: (z.layers[0]?.colors ?? [0])[Math.floor(R() * (z.layers[0]?.colors ?? [0]).length)], zone: zi, t: sp.t, chunk: ci }); placed++; break;
         }
       }
-      sets.push({ a: sp.asset, layer: 'land', x: a.pos.x, y: groundY(sc0, a.pos.x, a.pos.z), z: a.pos.z, yaw: Math.atan2(rp.x - a.pos.x, rp.z - a.pos.z), s: sc, c: 0, zone: zi, t: sp.t, chunk: chunkAt(sp.t), popAt, label: sp.label, ...(sp.hi ? { hi: true } : {}) });
+      sets.push({ a: sp.asset, layer: 'land', x: a.pos.x, y: groundY(sc0, a.pos.x, a.pos.z), z: a.pos.z, yaw: Math.atan2(rp.x - a.pos.x, rp.z - a.pos.z), s: sc, c: 0, zone: zi, t: sp.t, chunk: chunkAt(sp.t), popAt, label: sp.label, ...(sp.hi ? { hi: true } : {}), ...(sp.hero ? { hero: true } : {}) });
     }
   });
   return { chunks, sets, stats: { placed, rejected } };

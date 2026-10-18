@@ -293,6 +293,13 @@ export class World {
     // camera
     this.rig = new CameraRig(this.scene, route, L.camera ?? [], L.sections ?? [], (L.kicks?.length ? L.kicks : L.beats) ?? [], L.autoCamera !== false);
     if (this.cmode && !(typeof location !== 'undefined' && /[?&]cam=old\b/.test(location.search))) this.rig.keyMode = true;   /* C scene: key-render framing is the default, old camera behind ?cam=old */
+    if (this.rig.keyMode && this.sc) {   // v6: key camera leans toward the current zone's hero while it is ahead (ramps in 7..4.5 s before, out as the head passes)
+      const H = this.sc.plc.sets.filter(e => e.hero); const sm = (x: number) => (x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x)); const route = this.route!;
+      this.rig.focus = (t, head) => { let W = 0, X = 0, Z = 0; const fp = posAt(route, t + 3), fx = fp.x - head.x, fz = fp.z - head.z, fl = Math.hypot(fx, fz) || 1;
+        for (const e of H) { const d = e.t - t; if (d < -1.5 || d > 7.5) continue; const ahead = ((e.x - head.x) * fx + (e.z - head.z) * fz) / fl;
+          const w = sm((7.5 - d) / 3) * sm((d + 1.5) / 2) * sm((ahead - 2) / 10); if (w <= 0) continue; W += w; X += e.x * w; Z += e.z * w; }
+        return W > 0 ? { x: X / W, z: Z / W, w: Math.min(1, W) } : null; };
+    }
     this.scene.activeCamera = this.rig.cam;
     this.runs = []; this.failRun = null; this.trailCount = 0; this.completeAt = -1;
     this.setupShadows();
