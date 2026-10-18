@@ -74,6 +74,7 @@ export class Road {
     this.top.thinInstanceSetBuffer('matrix', this.mTop, 16, false);
     this.body.thinInstanceSetBuffer('color', new Float32Array(colorsBody), 4, true);
     this.top.thinInstanceSetBuffer('color', new Float32Array(colorsTop), 4, true);
+    this.body.freezeWorldMatrix(); this.top.freezeWorldMatrix(); this.body.doNotSyncBoundingInfo = true; this.top.doNotSyncBoundingInfo = true;
     this.order = this.tiles.map((_, i) => i).sort((a, b) => this.tiles[a].reveal - this.tiles[b].reveal);
     this.seek(0);
   }

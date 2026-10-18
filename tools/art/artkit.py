@@ -80,6 +80,7 @@ def main():
     for o in spec.get('objects', []):
         o = dict(o); w = o.pop('window'); cnt = o.pop('count', 1); want_side = o.pop('prefer', 0)
         reach = o.pop('reach', 4.0)  # how far from the road edge the prop needs room
+        minclear = o.pop('minclear', spec.get('minclear', -99))  # reject spots this close to other road segments (crossings)
         cands = []
         for sp in S:
             a, b = max(sp['t0'], w[0]), min(sp['t1'], w[1])
@@ -91,6 +92,7 @@ def main():
                 for side in (1, -1):
                     if want_side and side != want_side: continue
                     c = clearance(S, t, x + rx * side * reach, z + rz * side * reach, sp['y'])
+                    if c < minclear: continue
                     score = min(c, 8) + min(dur, 3) * 1.5 - (0 if sp['y'] < 1 else 6)
                     cands.append((score, t, side, sp))
         cands.sort(key=lambda c: -c[0]); picked = []

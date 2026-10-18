@@ -7,7 +7,7 @@ import { anchor, type Route } from '../core/path';
 import type { FxSpec, Layout } from '../core/types';
 import { hex } from './prefabs';
 
-interface Beam { t: number; x: number; y: number; z: number; ph: number; tpl: number; idx: number; h: number; }
+interface Beam { off?: boolean; t: number; x: number; y: number; z: number; ph: number; tpl: number; idx: number; h: number; }
 interface Spark { t: number; x: number; y: number; z: number; s: number; ph: number; c: Color4; }
 const smooth = (x: number) => (x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x));
 const stepVal = <T extends { t: number }>(l: T[] | undefined, t: number) => { let r: T | undefined; for (const x of l ?? []) if (x.t <= t + 1e-9) r = x; return r; };
@@ -39,14 +39,15 @@ export class ShowFx {
     if (fx.road && roadTop) {
       const tm = roadTop.mesh.material as StandardMaterial | null;
       if (tm && fx.road.gloss) { const g = fx.road.gloss; tm.specularColor = new Color3(g, g, g); tm.specularPower = 48; }
+      if (tm && fx.road.topGlow) tm.emissiveColor = new Color3(fx.road.topGlow, fx.road.topGlow, fx.road.topGlow);
       if (fx.road.trim) {
-        const a = CreateBox('fxTrimA', { width: 0.07, height: 3.0, depth: 1.0 }, scene); a.position.set(0.5, 0.5, 0);
-        const b = CreateBox('fxTrimB', { width: 0.07, height: 3.0, depth: 1.0 }, scene); b.position.set(-0.5, 0.5, 0);
+        const tw = fx.road.trimWidth ?? 0.07; const a = CreateBox('fxTrimA', { width: tw, height: 3.0, depth: 1.0 }, scene); a.position.set(0.5, 0.5, 0);
+        const b = CreateBox('fxTrimB', { width: tw, height: 3.0, depth: 1.0 }, scene); b.position.set(-0.5, 0.5, 0);
         const m = Mesh.MergeMeshes([a, b], true)!; m.name = 'fxTrim';
         const mat = new StandardMaterial('fxTrimM', scene); const c = hex(fx.road.trim);
         mat.diffuseColor = c; mat.emissiveColor = c.scale(fx.road.trimGlow ?? 0.8); mat.specularColor = new Color3(0.3, 0.3, 0.3);
         m.material = mat; m.isPickable = false; m.alwaysSelectAsActiveMesh = true;
-        m.thinInstanceSetBuffer('matrix', roadTop.buffer, 16, false);
+        m.thinInstanceSetBuffer('matrix', roadTop.buffer, 16, false); m.freezeWorldMatrix(); m.doNotSyncBoundingInfo = true;
         roadTop.setFlush(() => m.thinInstanceBufferUpdated('matrix'));
         this.trim = m; this.own.push(m, mat); this.glow?.addIncludedOnlyMesh(m);
       }
@@ -66,6 +67,8 @@ export class ShowFx {
         this.beams.push({ t, x: a.x, y: a.y - 0.6, z: a.z, ph: k * 1.7, tpl, idx: 0, h: b.height ?? 40 });
       }
     }
+    const maxBeams = quality === 'high' ? (fx.maxBeams ?? 48) : Math.round((fx.maxBeams ?? 48) / 2);
+    if (this.beams.length > maxBeams) { const k = this.beams.length / maxBeams; this.beams = this.beams.filter((_, i) => Math.floor(i / k) !== Math.floor((i - 1) / k) || i === 0).slice(0, maxBeams); }
     if (this.beams.length) {
       const counts = cols.map(() => 0); for (const b of this.beams) b.idx = counts[b.tpl]++;
       cols.forEach((c, i) => {
@@ -90,6 +93,8 @@ export class ShowFx {
         this.sparks.push({ t, x: a.x, y: a.y + 0.5 + rnd() * (sp.height ?? 8), z: a.z, s: (sp.size ?? 0.6) * (0.5 + rnd()), ph: rnd() * 6.28, c: cs[i % cs.length] });
       }
     }
+    const maxSp = Math.round((fx.maxSparkles ?? 260) * nMul);
+    if (this.sparks.length > maxSp) { const k = this.sparks.length / maxSp; this.sparks = this.sparks.filter((_, i) => Math.floor(i / k) !== Math.floor((i - 1) / k) || i === 0).slice(0, maxSp); }
     if (this.sparks.length && sparkTex) {
       const ps = new ParticleSystem('fxSparks', this.sparks.length, scene);
       ps.particleTexture = sparkTex; ps.blendMode = ParticleSystem.BLENDMODE_ADD; ps.emitRate = 0; ps.manualEmitCount = this.sparks.length;
@@ -122,6 +127,12 @@ export class ShowFx {
     if (this.beams.length) {
       const D = ShowFx; const dirty = this.dirty; dirty.clear();
       for (const b of this.beams) {
+        if (t < b.t - 2.4 || t > b.t + 16) {
+          // outside its window: collapse once, then skip (only active beams cost per-frame work)
+          if (!b.off) { b.off = true; D.sc.set(0, 0, 0); D.tr.set(b.x, b.y, b.z); D.q.set(0, 0, 0, 1); Matrix.ComposeToRef(D.sc, D.q, D.tr, D.m); D.m.copyToArray(this.beamBufs[b.tpl], b.idx * 16); dirty.add(b.tpl); }
+          continue;
+        }
+        b.off = false;
         const dt = t - (b.t - 2.2);
         let k = dt < 0 ? 0 : dt > 0.6 ? 1 : smooth(dt / 0.6); if (t > b.t + 14) k = Math.max(0, 1 - (t - b.t - 14) / 1.5);
         const sw = Math.sin(t * 1.3 + b.ph) * 0.45, sw2 = Math.cos(t * 0.9 + b.ph) * 0.3;

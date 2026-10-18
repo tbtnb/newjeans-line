@@ -2,6 +2,7 @@
  "keep": [
   "fakefork"
  ],
+ "minclear": 3.0,
  "objects": [
   {
    "kind": "standee",
@@ -26,50 +27,31 @@
    "kind": "standee",
    "src": "art/v2/ward-bed.png",
    "size": [
-    4.4,
-    3.3,
+    5.5,
+    4.1,
     0
    ],
    "window": [
     4.011,
     14.129
    ],
-   "count": 3,
+   "count": 1,
    "face": "camera",
-   "near": 1.5
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/heart-pill.png",
-   "size": [
-    2.2,
-    2.2,
-    0.5
-   ],
-   "window": [
-    2.011,
-    14.129
-   ],
-   "count": 3,
-   "face": "camera",
-   "color": "#ffd27a",
-   "color2": "#ffd27a",
-   "near": 1.2,
-   "react": "beat"
+   "near": 2
   },
   {
    "kind": "decal",
    "src": "art/v2/mural-stars.png",
    "size": [
-    5,
+    6,
     0,
-    5
+    6
    ],
    "window": [
     1.011,
     14.129
    ],
-   "count": 2,
+   "count": 1,
    "face": "road",
    "glow": 0.6
   },
@@ -96,50 +78,31 @@
    "kind": "standee",
    "src": "art/v2/ward-bed.png",
    "size": [
-    4.4,
-    3.3,
+    5.5,
+    4.1,
     0
    ],
    "window": [
     200.542,
     215.484
    ],
-   "count": 3,
+   "count": 1,
    "face": "camera",
-   "near": 1.5
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/heart-pill.png",
-   "size": [
-    2.2,
-    2.2,
-    0.5
-   ],
-   "window": [
-    198.542,
-    215.484
-   ],
-   "count": 3,
-   "face": "camera",
-   "color": "#ffd27a",
-   "color2": "#ffd27a",
-   "near": 1.2,
-   "react": "beat"
+   "near": 2
   },
   {
    "kind": "decal",
    "src": "art/v2/mural-stars.png",
    "size": [
-    5,
+    6,
     0,
-    5
+    6
    ],
    "window": [
     197.542,
     215.484
    ],
-   "count": 2,
+   "count": 1,
    "face": "road",
    "glow": 0.6
   },
@@ -147,17 +110,17 @@
    "kind": "standee",
    "src": "art/v2/ward-bed.png",
    "size": [
-    4.4,
-    3.3,
+    5.5,
+    4.1,
     0
    ],
    "window": [
     16.128999999999998,
     29.247
    ],
-   "count": 2,
+   "count": 1,
    "face": "camera",
-   "near": 1.5
+   "near": 2
   },
   {
    "kind": "facade",
@@ -182,15 +145,15 @@
    "kind": "standee",
    "src": "art/v2/call-bubble.png",
    "size": [
-    3.2,
-    2.4,
+    4,
+    3,
     0.8
    ],
    "window": [
     17.128999999999998,
     29.247
    ],
-   "count": 2,
+   "count": 1,
    "face": "camera",
    "color": "#ffd27a",
    "color2": "#ffd27a",
@@ -199,36 +162,20 @@
    "id": "call"
   },
   {
-   "kind": "decal",
-   "src": "art/v2/mural-stars.png",
-   "size": [
-    4.5,
-    0,
-    4.5
-   ],
-   "window": [
-    16.128999999999998,
-    29.247
-   ],
-   "count": 2,
-   "face": "road",
-   "glow": 0.6
-  },
-  {
    "kind": "standee",
    "src": "art/v2/ward-bed.png",
    "size": [
-    4.4,
-    3.3,
+    5.5,
+    4.1,
     0
    ],
    "window": [
     61.482,
     74.6
    ],
-   "count": 2,
+   "count": 1,
    "face": "camera",
-   "near": 1.5
+   "near": 2
   },
   {
    "kind": "facade",
@@ -253,15 +200,15 @@
    "kind": "standee",
    "src": "art/v2/call-bubble.png",
    "size": [
-    3.2,
-    2.4,
+    4,
+    3,
     0.8
    ],
    "window": [
     62.482,
     74.6
    ],
-   "count": 2,
+   "count": 1,
    "face": "camera",
    "color": "#ffd27a",
    "color2": "#ffd27a",
@@ -270,36 +217,20 @@
    "id": "call"
   },
   {
-   "kind": "decal",
-   "src": "art/v2/mural-stars.png",
-   "size": [
-    4.5,
-    0,
-    4.5
-   ],
-   "window": [
-    61.482,
-    74.6
-   ],
-   "count": 2,
-   "face": "road",
-   "glow": 0.6
-  },
-  {
    "kind": "standee",
    "src": "art/v2/flip-phone.png",
    "size": [
-    3.4,
-    4.5,
+    4.2,
+    5.6,
     0
    ],
    "window": [
     31.247,
     44.364
    ],
-   "count": 3,
+   "count": 2,
    "face": "camera",
-   "near": 2,
+   "near": 2.5,
    "landmark": true,
    "glowfx": true,
    "id": "phone"
@@ -308,35 +239,35 @@
    "kind": "facade",
    "src": "art/v2/stage-facade.jpg",
    "size": [
-    5,
-    5,
+    6,
+    6,
     3
    ],
    "window": [
     31.247,
     44.364
    ],
-   "count": 2,
+   "count": 1,
    "face": "road",
    "color": "#2a2460",
    "color2": "#ffd27a",
-   "near": 2.5
+   "near": 3
   },
   {
    "kind": "standee",
    "src": "art/v2/flip-phone.png",
    "size": [
-    3.4,
-    4.5,
+    4.2,
+    5.6,
     0
    ],
    "window": [
     76.6,
     89.718
    ],
-   "count": 3,
+   "count": 2,
    "face": "camera",
-   "near": 2,
+   "near": 2.5,
    "landmark": true,
    "glowfx": true,
    "id": "phone"
@@ -345,35 +276,35 @@
    "kind": "facade",
    "src": "art/v2/stage-facade.jpg",
    "size": [
-    5,
-    5,
+    6,
+    6,
     3
    ],
    "window": [
     76.6,
     89.718
    ],
-   "count": 2,
+   "count": 1,
    "face": "road",
    "color": "#2a2460",
    "color2": "#ffd27a",
-   "near": 2.5
+   "near": 3
   },
   {
    "kind": "standee",
    "src": "art/v2/flip-phone.png",
    "size": [
-    3.4,
-    4.5,
+    4.2,
+    5.6,
     0
    ],
    "window": [
     91.718,
     104.835
    ],
-   "count": 3,
+   "count": 2,
    "face": "camera",
-   "near": 2,
+   "near": 2.5,
    "landmark": true,
    "glowfx": true,
    "id": "phone"
@@ -382,35 +313,35 @@
    "kind": "facade",
    "src": "art/v2/stage-facade.jpg",
    "size": [
-    5,
-    5,
+    6,
+    6,
     3
    ],
    "window": [
     91.718,
     104.835
    ],
-   "count": 2,
+   "count": 1,
    "face": "road",
    "color": "#2a2460",
    "color2": "#ffd27a",
-   "near": 2.5
+   "near": 3
   },
   {
    "kind": "standee",
    "src": "art/v2/flip-phone.png",
    "size": [
-    3.4,
-    4.5,
+    4.2,
+    5.6,
     0
    ],
    "window": [
     152.189,
     165.307
    ],
-   "count": 3,
+   "count": 2,
    "face": "camera",
-   "near": 2,
+   "near": 2.5,
    "landmark": true,
    "glowfx": true,
    "id": "phone"
@@ -419,19 +350,19 @@
    "kind": "facade",
    "src": "art/v2/stage-facade.jpg",
    "size": [
-    5,
-    5,
+    6,
+    6,
     3
    ],
    "window": [
     152.189,
     165.307
    ],
-   "count": 2,
+   "count": 1,
    "face": "road",
    "color": "#2a2460",
    "color2": "#ffd27a",
-   "near": 2.5
+   "near": 3
   },
   {
    "kind": "standee",
@@ -475,17 +406,17 @@
    "kind": "standee",
    "src": "art/v2/flip-phone.png",
    "size": [
-    3.4,
-    4.5,
+    4.2,
+    5.6,
     0
    ],
    "window": [
     47.364,
     59.482
    ],
-   "count": 3,
+   "count": 2,
    "face": "camera",
-   "near": 2,
+   "near": 2.5,
    "landmark": true,
    "glowfx": true,
    "id": "phone"
@@ -494,55 +425,36 @@
    "kind": "facade",
    "src": "art/v2/stage-facade.jpg",
    "size": [
-    5,
-    5,
+    6,
+    6,
     3
    ],
    "window": [
     46.364,
     59.482
    ],
-   "count": 2,
+   "count": 1,
    "face": "road",
    "color": "#2a2460",
    "color2": "#ffd27a",
-   "near": 2.5,
+   "near": 3,
    "landmark": true
   },
   {
    "kind": "decal",
    "src": "art/v2/mural-stars.png",
    "size": [
-    6,
+    7,
     0,
-    6
+    7
    ],
    "window": [
     46.364,
     59.482
    ],
-   "count": 3,
+   "count": 1,
    "face": "road",
    "glow": 0.7
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/heart-pill.png",
-   "size": [
-    2.2,
-    2.2,
-    0.5
-   ],
-   "window": [
-    46.364,
-    59.482
-   ],
-   "count": 3,
-   "face": "camera",
-   "color": "#ffd27a",
-   "color2": "#ffd27a",
-   "near": 1.2,
-   "react": "beat"
   },
   {
    "kind": "standee",
@@ -586,17 +498,17 @@
    "kind": "standee",
    "src": "art/v2/flip-phone.png",
    "size": [
-    3.4,
-    4.5,
+    4.2,
+    5.6,
     0
    ],
    "window": [
     107.835,
     119.953
    ],
-   "count": 3,
+   "count": 2,
    "face": "camera",
-   "near": 2,
+   "near": 2.5,
    "landmark": true,
    "glowfx": true,
    "id": "phone"
@@ -605,55 +517,36 @@
    "kind": "facade",
    "src": "art/v2/stage-facade.jpg",
    "size": [
-    5,
-    5,
+    6,
+    6,
     3
    ],
    "window": [
     106.835,
     119.953
    ],
-   "count": 2,
+   "count": 1,
    "face": "road",
    "color": "#2a2460",
    "color2": "#ffd27a",
-   "near": 2.5,
+   "near": 3,
    "landmark": true
   },
   {
    "kind": "decal",
    "src": "art/v2/mural-stars.png",
    "size": [
-    6,
+    7,
     0,
-    6
+    7
    ],
    "window": [
     106.835,
     119.953
    ],
-   "count": 3,
+   "count": 1,
    "face": "road",
    "glow": 0.7
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/heart-pill.png",
-   "size": [
-    2.2,
-    2.2,
-    0.5
-   ],
-   "window": [
-    106.835,
-    119.953
-   ],
-   "count": 3,
-   "face": "camera",
-   "color": "#ffd27a",
-   "color2": "#ffd27a",
-   "near": 1.2,
-   "react": "beat"
   },
   {
    "kind": "standee",
@@ -678,17 +571,17 @@
    "kind": "standee",
    "src": "art/v2/flip-phone.png",
    "size": [
-    3.4,
-    4.5,
+    4.2,
+    5.6,
     0
    ],
    "window": [
     122.953,
     133.181
    ],
-   "count": 3,
+   "count": 2,
    "face": "camera",
-   "near": 2,
+   "near": 2.5,
    "landmark": true,
    "glowfx": true,
    "id": "phone"
@@ -697,55 +590,36 @@
    "kind": "facade",
    "src": "art/v2/stage-facade.jpg",
    "size": [
-    5,
-    5,
+    6,
+    6,
     3
    ],
    "window": [
     121.953,
     133.181
    ],
-   "count": 2,
+   "count": 1,
    "face": "road",
    "color": "#2a2460",
    "color2": "#ffd27a",
-   "near": 2.5,
+   "near": 3,
    "landmark": true
   },
   {
    "kind": "decal",
    "src": "art/v2/mural-stars.png",
    "size": [
-    6,
+    7,
     0,
-    6
+    7
    ],
    "window": [
     121.953,
     133.181
    ],
-   "count": 3,
+   "count": 1,
    "face": "road",
    "glow": 0.7
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/heart-pill.png",
-   "size": [
-    2.2,
-    2.2,
-    0.5
-   ],
-   "window": [
-    121.953,
-    133.181
-   ],
-   "count": 3,
-   "face": "camera",
-   "color": "#ffd27a",
-   "color2": "#ffd27a",
-   "near": 1.2,
-   "react": "beat"
   },
   {
    "kind": "standee",
@@ -789,17 +663,17 @@
    "kind": "standee",
    "src": "art/v2/flip-phone.png",
    "size": [
-    3.4,
-    4.5,
+    4.2,
+    5.6,
     0
    ],
    "window": [
     168.307,
     180.424
    ],
-   "count": 3,
+   "count": 2,
    "face": "camera",
-   "near": 2,
+   "near": 2.5,
    "landmark": true,
    "glowfx": true,
    "id": "phone"
@@ -808,55 +682,36 @@
    "kind": "facade",
    "src": "art/v2/stage-facade.jpg",
    "size": [
-    5,
-    5,
+    6,
+    6,
     3
    ],
    "window": [
     167.307,
     180.424
    ],
-   "count": 2,
+   "count": 1,
    "face": "road",
    "color": "#2a2460",
    "color2": "#ffd27a",
-   "near": 2.5,
+   "near": 3,
    "landmark": true
   },
   {
    "kind": "decal",
    "src": "art/v2/mural-stars.png",
    "size": [
-    6,
+    7,
     0,
-    6
+    7
    ],
    "window": [
     167.307,
     180.424
    ],
-   "count": 3,
+   "count": 1,
    "face": "road",
    "glow": 0.7
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/heart-pill.png",
-   "size": [
-    2.2,
-    2.2,
-    0.5
-   ],
-   "window": [
-    167.307,
-    180.424
-   ],
-   "count": 3,
-   "face": "camera",
-   "color": "#ffd27a",
-   "color2": "#ffd27a",
-   "near": 1.2,
-   "react": "beat"
   },
   {
    "kind": "standee",
@@ -900,17 +755,17 @@
    "kind": "standee",
    "src": "art/v2/flip-phone.png",
    "size": [
-    3.4,
-    4.5,
+    4.2,
+    5.6,
     0
    ],
    "window": [
     183.424,
     195.542
    ],
-   "count": 3,
+   "count": 2,
    "face": "camera",
-   "near": 2,
+   "near": 2.5,
    "landmark": true,
    "glowfx": true,
    "id": "phone"
@@ -919,55 +774,36 @@
    "kind": "facade",
    "src": "art/v2/stage-facade.jpg",
    "size": [
-    5,
-    5,
+    6,
+    6,
     3
    ],
    "window": [
     182.424,
     195.542
    ],
-   "count": 2,
+   "count": 1,
    "face": "road",
    "color": "#2a2460",
    "color2": "#ffd27a",
-   "near": 2.5,
+   "near": 3,
    "landmark": true
   },
   {
    "kind": "decal",
    "src": "art/v2/mural-stars.png",
    "size": [
-    6,
+    7,
     0,
-    6
+    7
    ],
    "window": [
     182.424,
     195.542
    ],
-   "count": 3,
+   "count": 1,
    "face": "road",
    "glow": 0.7
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/heart-pill.png",
-   "size": [
-    2.2,
-    2.2,
-    0.5
-   ],
-   "window": [
-    182.424,
-    195.542
-   ],
-   "count": 3,
-   "face": "camera",
-   "color": "#ffd27a",
-   "color2": "#ffd27a",
-   "near": 1.2,
-   "react": "beat"
   },
   {
    "kind": "standee",
@@ -990,15 +826,15 @@
    "kind": "decal",
    "src": "art/v2/mural-stars.png",
    "size": [
-    5,
+    7,
     0,
-    5
+    7
    ],
    "window": [
     135.181,
     148.299
    ],
-   "count": 3,
+   "count": 1,
    "face": "road",
    "glow": 0.7
   },
@@ -1006,19 +842,19 @@
    "kind": "standee",
    "src": "art/v2/heart-pill.png",
    "size": [
-    2,
-    2,
+    3,
+    3,
     0.5
    ],
    "window": [
     135.181,
     148.299
    ],
-   "count": 3,
+   "count": 1,
    "face": "camera",
    "color": "#c9b37a",
    "color2": "#c9b37a",
-   "near": 1.2,
+   "near": 2,
    "react": "beat"
   },
   {
@@ -1042,15 +878,15 @@
    "kind": "decal",
    "src": "art/v2/mural-stars.png",
    "size": [
-    5,
+    7,
     0,
-    5
+    7
    ],
    "window": [
     150.299,
     150.189
    ],
-   "count": 3,
+   "count": 1,
    "face": "road",
    "glow": 0.7
   },
@@ -1058,19 +894,19 @@
    "kind": "standee",
    "src": "art/v2/heart-pill.png",
    "size": [
-    2,
-    2,
+    3,
+    3,
     0.5
    ],
    "window": [
     150.299,
     150.189
    ],
-   "count": 3,
+   "count": 1,
    "face": "camera",
    "color": "#c9b37a",
    "color2": "#c9b37a",
-   "near": 1.2,
+   "near": 2,
    "react": "beat"
   }
  ],
@@ -1214,10 +1050,10 @@
     "glow": 0.5
    }
   ],
-  "artShare": 0.65,
+  "artShare": 0.6,
   "near": [
-   0.5,
-   5
+   1.4,
+   6
   ],
   "sections": [
    {
@@ -1226,173 +1062,133 @@
      0,
      1,
      5,
-     7,
-     9,
      10
     ],
-    "density": 3.2
+    "density": 1.6
    },
    {
     "t": 15.129,
     "props": [
      0,
      1,
-     3,
      5,
-     7,
-     8,
-     9
+     10
     ],
-    "density": 4.2
+    "density": 2.0
    },
    {
     "t": 30.247,
     "props": [
      3,
-     4,
      6,
-     8,
-     10,
-     11
+     10
     ],
-    "density": 4.2
+    "density": 1.8
    },
    {
     "t": 45.364,
     "props": [
      3,
-     4,
      6,
-     7,
-     10,
-     11
+     10
     ],
-    "density": 4.8
+    "density": 2.0
    },
    {
     "t": 60.482,
     "props": [
      0,
      1,
-     3,
      5,
-     7,
-     8,
-     9
+     10
     ],
-    "density": 4.2
+    "density": 2.0
    },
    {
     "t": 75.6,
     "props": [
      3,
-     4,
      6,
-     8,
-     10,
-     11
+     10
     ],
-    "density": 4.2
+    "density": 1.8
    },
    {
     "t": 90.718,
     "props": [
      3,
-     4,
      6,
-     8,
-     10,
-     11
+     10
     ],
-    "density": 4.2
+    "density": 1.8
    },
    {
     "t": 105.835,
     "props": [
      3,
-     4,
      6,
-     7,
-     10,
-     11
+     10
     ],
-    "density": 4.8
+    "density": 2.0
    },
    {
     "t": 120.953,
     "props": [
      3,
-     4,
      6,
-     7,
-     10,
-     11
+     10
     ],
-    "density": 4.8
+    "density": 2.0
    },
    {
     "t": 134.181,
     "props": [
      2,
-     4,
-     7,
      10
     ],
-    "density": 3.6
+    "density": 1.6
    },
    {
     "t": 149.299,
     "props": [
      2,
-     4,
-     7,
      10
     ],
-    "density": 3.6
+    "density": 1.6
    },
    {
     "t": 151.189,
     "props": [
      3,
-     4,
      6,
-     8,
-     10,
-     11
+     10
     ],
-    "density": 4.2
+    "density": 1.8
    },
    {
     "t": 166.307,
     "props": [
      6,
-     7,
-     8,
-     10,
-     11
+     10
     ],
-    "density": 5.2
+    "density": 2.2
    },
    {
     "t": 181.424,
     "props": [
      6,
-     7,
-     8,
-     10,
-     11
+     10
     ],
-    "density": 5.2
+    "density": 2.2
    },
    {
     "t": 196.542,
     "props": [
      0,
-     2,
      5,
      10
     ],
-    "density": 2.6
+    "density": 1.2
    }
   ]
  },
@@ -1582,7 +1378,7 @@
    {
     "t0": 30.747,
     "t1": 44.864,
-    "every": 1.6,
+    "every": 3.0,
     "colors": [
      "#ff9ad5",
      "#9fd8ff",
@@ -1595,7 +1391,7 @@
    {
     "t0": 45.864,
     "t1": 59.982,
-    "every": 1.1,
+    "every": 2.2,
     "colors": [
      "#ff9ad5",
      "#9fd8ff",
@@ -1608,7 +1404,7 @@
    {
     "t0": 76.1,
     "t1": 90.218,
-    "every": 1.6,
+    "every": 3.0,
     "colors": [
      "#ff9ad5",
      "#9fd8ff",
@@ -1621,7 +1417,7 @@
    {
     "t0": 91.218,
     "t1": 105.335,
-    "every": 1.6,
+    "every": 3.0,
     "colors": [
      "#ff9ad5",
      "#9fd8ff",
@@ -1634,7 +1430,7 @@
    {
     "t0": 106.335,
     "t1": 120.453,
-    "every": 1.1,
+    "every": 2.2,
     "colors": [
      "#ff9ad5",
      "#9fd8ff",
@@ -1647,7 +1443,7 @@
    {
     "t0": 121.453,
     "t1": 133.681,
-    "every": 1.1,
+    "every": 2.2,
     "colors": [
      "#ff9ad5",
      "#9fd8ff",
@@ -1660,7 +1456,7 @@
    {
     "t0": 151.689,
     "t1": 165.807,
-    "every": 1.6,
+    "every": 3.0,
     "colors": [
      "#ff9ad5",
      "#9fd8ff",
@@ -1673,7 +1469,7 @@
    {
     "t0": 166.807,
     "t1": 180.924,
-    "every": 1.1,
+    "every": 2.2,
     "colors": [
      "#ff9ad5",
      "#9fd8ff",
@@ -1686,7 +1482,7 @@
    {
     "t0": 181.924,
     "t1": 196.042,
-    "every": 1.1,
+    "every": 2.2,
     "colors": [
      "#ff9ad5",
      "#9fd8ff",
@@ -1701,7 +1497,7 @@
    {
     "t0": 0.011,
     "t1": 15.129,
-    "density": 1.2,
+    "density": 0.5,
     "colors": [
      "#fff3c4",
      "#ffc4e8",
@@ -1714,7 +1510,7 @@
    {
     "t0": 15.129,
     "t1": 30.247,
-    "density": 0.8,
+    "density": 0.3,
     "colors": [
      "#fff3c4",
      "#ffc4e8",
@@ -1727,7 +1523,7 @@
    {
     "t0": 30.247,
     "t1": 45.364,
-    "density": 2.5,
+    "density": 1.0,
     "colors": [
      "#fff3c4",
      "#ffc4e8",
@@ -1740,7 +1536,7 @@
    {
     "t0": 45.364,
     "t1": 60.482,
-    "density": 4,
+    "density": 1.6,
     "colors": [
      "#fff3c4",
      "#ffc4e8",
@@ -1753,7 +1549,7 @@
    {
     "t0": 60.482,
     "t1": 75.6,
-    "density": 0.8,
+    "density": 0.3,
     "colors": [
      "#fff3c4",
      "#ffc4e8",
@@ -1766,7 +1562,7 @@
    {
     "t0": 75.6,
     "t1": 90.718,
-    "density": 2.5,
+    "density": 1.0,
     "colors": [
      "#fff3c4",
      "#ffc4e8",
@@ -1779,7 +1575,7 @@
    {
     "t0": 90.718,
     "t1": 105.835,
-    "density": 2.5,
+    "density": 1.0,
     "colors": [
      "#fff3c4",
      "#ffc4e8",
@@ -1792,7 +1588,7 @@
    {
     "t0": 105.835,
     "t1": 120.953,
-    "density": 4,
+    "density": 1.6,
     "colors": [
      "#fff3c4",
      "#ffc4e8",
@@ -1805,7 +1601,7 @@
    {
     "t0": 120.953,
     "t1": 134.181,
-    "density": 4,
+    "density": 1.6,
     "colors": [
      "#fff3c4",
      "#ffc4e8",
@@ -1818,7 +1614,7 @@
    {
     "t0": 134.181,
     "t1": 149.299,
-    "density": 3,
+    "density": 1.2,
     "colors": [
      "#fff3c4",
      "#ffc4e8",
@@ -1831,7 +1627,7 @@
    {
     "t0": 149.299,
     "t1": 151.189,
-    "density": 3,
+    "density": 1.2,
     "colors": [
      "#fff3c4",
      "#ffc4e8",
@@ -1844,7 +1640,7 @@
    {
     "t0": 151.189,
     "t1": 166.307,
-    "density": 2.5,
+    "density": 1.0,
     "colors": [
      "#fff3c4",
      "#ffc4e8",
@@ -1857,7 +1653,7 @@
    {
     "t0": 166.307,
     "t1": 181.424,
-    "density": 5,
+    "density": 2.0,
     "colors": [
      "#fff3c4",
      "#ffc4e8",
@@ -1870,7 +1666,7 @@
    {
     "t0": 181.424,
     "t1": 196.542,
-    "density": 5,
+    "density": 2.0,
     "colors": [
      "#fff3c4",
      "#ffc4e8",
@@ -1883,7 +1679,7 @@
    {
     "t0": 196.542,
     "t1": 216.484,
-    "density": 1.5,
+    "density": 0.6,
     "colors": [
      "#fff3c4",
      "#ffc4e8",
@@ -1895,10 +1691,14 @@
    }
   ],
   "road": {
-   "gloss": 0.25,
-   "trim": "#ffd27a",
-   "trimGlow": 0.9
+   "gloss": 0.2,
+   "trim": "#ffe08a",
+   "trimGlow": 1.4,
+   "trimWidth": 0.11,
+   "topGlow": 0.16
   },
+  "maxBeams": 40,
+  "maxSparkles": 220,
   "sprite": "art/v2/sparkle.png"
  },
  "events": [
@@ -2022,7 +1822,7 @@
   "backdrop": "art/v2/sky-dream.jpg",
   "ground": {
    "src": "art/v2/ground-ward.jpg",
-   "scale": 14
+   "scale": 24
   }
  },
  "palette": {
@@ -2032,7 +1832,7 @@
   "fogStart": 40,
   "fogEnd": 135,
   "ground": "#ffffff",
-  "road": "#fffaf3",
+  "road": "#ffffff",
   "roadSide": "#e9c98a",
   "line": "#ff8fc0",
   "light": "#fff3ff",
@@ -2050,7 +1850,7 @@
     "fogStart": 40,
     "fogEnd": 135,
     "ground": "#ffffff",
-    "road": "#fffaf3",
+    "road": "#ffffff",
     "roadSide": "#e9c98a",
     "line": "#ff8fc0",
     "light": "#fff3ff",
@@ -2061,7 +1861,7 @@
    "backdrop": "art/v2/sky-dream.jpg",
    "ground": {
     "src": "art/v2/ground-ward.jpg",
-    "scale": 14
+    "scale": 24
    }
   },
   {
@@ -2073,7 +1873,7 @@
     "fogStart": 38,
     "fogEnd": 125,
     "ground": "#f4f0ff",
-    "road": "#fffaf3",
+    "road": "#ffffff",
     "roadSide": "#e2bf7a",
     "line": "#ff8fc0",
     "light": "#fff6f0",
@@ -2084,7 +1884,7 @@
    "backdrop": "art/v2/sky-dream.jpg",
    "ground": {
     "src": "art/v2/ground-ward.jpg",
-    "scale": 14
+    "scale": 24
    }
   },
   {
@@ -2095,8 +1895,8 @@
     "fog": "#5a4a9a",
     "fogStart": 36,
     "fogEnd": 120,
-    "ground": "#c9c0ff",
-    "road": "#fff4fb",
+    "ground": "#8a80c0",
+    "road": "#ffffff",
     "roadSide": "#e6c37c",
     "line": "#ff7ab6",
     "light": "#ffd9f2",
@@ -2107,7 +1907,7 @@
    "backdrop": "art/v2/sky-stage.jpg",
    "ground": {
     "src": "art/v2/ground-stage.jpg",
-    "scale": 16
+    "scale": 30
    }
   },
   {
@@ -2118,8 +1918,8 @@
     "fog": "#2c2668",
     "fogStart": 34,
     "fogEnd": 118,
-    "ground": "#d8ccff",
-    "road": "#fff2fa",
+    "ground": "#8a80c0",
+    "road": "#ffffff",
     "roadSide": "#f0c56a",
     "line": "#ff6fb1",
     "light": "#ffe6fa",
@@ -2130,7 +1930,7 @@
    "backdrop": "art/v2/sky-stage.jpg",
    "ground": {
     "src": "art/v2/ground-stage.jpg",
-    "scale": 16
+    "scale": 30
    }
   },
   {
@@ -2142,7 +1942,7 @@
     "fogStart": 38,
     "fogEnd": 125,
     "ground": "#f4f0ff",
-    "road": "#fffaf3",
+    "road": "#ffffff",
     "roadSide": "#e2bf7a",
     "line": "#ff8fc0",
     "light": "#fff6f0",
@@ -2153,7 +1953,7 @@
    "backdrop": "art/v2/sky-dream.jpg",
    "ground": {
     "src": "art/v2/ground-ward.jpg",
-    "scale": 14
+    "scale": 24
    }
   },
   {
@@ -2164,8 +1964,8 @@
     "fog": "#5a4a9a",
     "fogStart": 36,
     "fogEnd": 120,
-    "ground": "#c9c0ff",
-    "road": "#fff4fb",
+    "ground": "#8a80c0",
+    "road": "#ffffff",
     "roadSide": "#e6c37c",
     "line": "#ff7ab6",
     "light": "#ffd9f2",
@@ -2176,7 +1976,7 @@
    "backdrop": "art/v2/sky-stage.jpg",
    "ground": {
     "src": "art/v2/ground-stage.jpg",
-    "scale": 16
+    "scale": 30
    }
   },
   {
@@ -2187,8 +1987,8 @@
     "fog": "#5a4a9a",
     "fogStart": 36,
     "fogEnd": 120,
-    "ground": "#c9c0ff",
-    "road": "#fff4fb",
+    "ground": "#8a80c0",
+    "road": "#ffffff",
     "roadSide": "#e6c37c",
     "line": "#ff7ab6",
     "light": "#ffd9f2",
@@ -2199,7 +1999,7 @@
    "backdrop": "art/v2/sky-stage.jpg",
    "ground": {
     "src": "art/v2/ground-stage.jpg",
-    "scale": 16
+    "scale": 30
    }
   },
   {
@@ -2210,8 +2010,8 @@
     "fog": "#2c2668",
     "fogStart": 34,
     "fogEnd": 118,
-    "ground": "#d8ccff",
-    "road": "#fff2fa",
+    "ground": "#8a80c0",
+    "road": "#ffffff",
     "roadSide": "#f0c56a",
     "line": "#ff6fb1",
     "light": "#ffe6fa",
@@ -2222,7 +2022,7 @@
    "backdrop": "art/v2/sky-stage.jpg",
    "ground": {
     "src": "art/v2/ground-stage.jpg",
-    "scale": 16
+    "scale": 30
    }
   },
   {
@@ -2233,8 +2033,8 @@
     "fog": "#2c2668",
     "fogStart": 34,
     "fogEnd": 118,
-    "ground": "#d8ccff",
-    "road": "#fff2fa",
+    "ground": "#8a80c0",
+    "road": "#ffffff",
     "roadSide": "#f0c56a",
     "line": "#ff6fb1",
     "light": "#ffe6fa",
@@ -2245,7 +2045,7 @@
    "backdrop": "art/v2/sky-stage.jpg",
    "ground": {
     "src": "art/v2/ground-stage.jpg",
-    "scale": 16
+    "scale": 30
    }
   },
   {
@@ -2256,8 +2056,8 @@
     "fog": "#6a64b0",
     "fogStart": 34,
     "fogEnd": 115,
-    "ground": "#d6d0ff",
-    "road": "#f6f2ff",
+    "ground": "#9a94c8",
+    "road": "#ffffff",
     "roadSide": "#c9b37a",
     "line": "#ff9ccf",
     "light": "#dfe6ff",
@@ -2268,7 +2068,7 @@
    "backdrop": "art/v2/sky-moon.jpg",
    "ground": {
     "src": "art/v2/ground-garden.jpg",
-    "scale": 14
+    "scale": 26
    }
   },
   {
@@ -2279,8 +2079,8 @@
     "fog": "#6a64b0",
     "fogStart": 34,
     "fogEnd": 115,
-    "ground": "#d6d0ff",
-    "road": "#f6f2ff",
+    "ground": "#9a94c8",
+    "road": "#ffffff",
     "roadSide": "#c9b37a",
     "line": "#ff9ccf",
     "light": "#dfe6ff",
@@ -2291,7 +2091,7 @@
    "backdrop": "art/v2/sky-moon.jpg",
    "ground": {
     "src": "art/v2/ground-garden.jpg",
-    "scale": 14
+    "scale": 26
    }
   },
   {
@@ -2302,8 +2102,8 @@
     "fog": "#5a4a9a",
     "fogStart": 36,
     "fogEnd": 120,
-    "ground": "#c9c0ff",
-    "road": "#fff4fb",
+    "ground": "#8a80c0",
+    "road": "#ffffff",
     "roadSide": "#e6c37c",
     "line": "#ff7ab6",
     "light": "#ffd9f2",
@@ -2314,7 +2114,7 @@
    "backdrop": "art/v2/sky-stage.jpg",
    "ground": {
     "src": "art/v2/ground-stage.jpg",
-    "scale": 16
+    "scale": 30
    }
   },
   {
@@ -2325,8 +2125,8 @@
     "fog": "#3b2a78",
     "fogStart": 34,
     "fogEnd": 120,
-    "ground": "#e6d8ff",
-    "road": "#fff6fb",
+    "ground": "#8a80c0",
+    "road": "#ffffff",
     "roadSide": "#ffd27a",
     "line": "#ff5fa8",
     "light": "#fff0fb",
@@ -2337,7 +2137,7 @@
    "backdrop": "art/v2/sky-stage.jpg",
    "ground": {
     "src": "art/v2/ground-stage.jpg",
-    "scale": 16
+    "scale": 30
    }
   },
   {
@@ -2348,8 +2148,8 @@
     "fog": "#3b2a78",
     "fogStart": 34,
     "fogEnd": 120,
-    "ground": "#e6d8ff",
-    "road": "#fff6fb",
+    "ground": "#8a80c0",
+    "road": "#ffffff",
     "roadSide": "#ffd27a",
     "line": "#ff5fa8",
     "light": "#fff0fb",
@@ -2360,7 +2160,7 @@
    "backdrop": "art/v2/sky-stage.jpg",
    "ground": {
     "src": "art/v2/ground-stage.jpg",
-    "scale": 16
+    "scale": 30
    }
   },
   {
@@ -2372,7 +2172,7 @@
     "fogStart": 40,
     "fogEnd": 140,
     "ground": "#f6f0ff",
-    "road": "#fffaf3",
+    "road": "#ffffff",
     "roadSide": "#e2bf7a",
     "line": "#ff9cc8",
     "light": "#fff6f6",
@@ -2383,7 +2183,7 @@
    "backdrop": "art/v2/sky-moon.jpg",
    "ground": {
     "src": "art/v2/ground-garden.jpg",
-    "scale": 14
+    "scale": 26
    }
   }
  ]

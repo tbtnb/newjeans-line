@@ -105,7 +105,8 @@ export class Dressings {
     const counts = this.meshes.map(() => 0);
     for (const it of this.insts) it.idx = counts[it.tpl]++;
     this.bufs = counts.map(n => new Float32Array(Math.max(1, n) * 16));
-    this.meshes.forEach((m, i) => { m.thinInstanceSetBuffer('matrix', this.bufs[i], 16, false); m.thinInstanceCount = counts[i]; });
+    this.meshes.forEach((m, i) => { m.thinInstanceSetBuffer('matrix', this.bufs[i], 16, false); m.thinInstanceCount = counts[i]; m.freezeWorldMatrix(); m.doNotSyncBoundingInfo = true; });
+    for (const mt of this.ownMats) mt.freeze();
   }
 
   private write(it: Inst, beatK: number) {
@@ -139,7 +140,7 @@ export class Dressings {
     this.flush();
   }
 
-  private flush() { for (const i of this.dirty) { this.meshes[i].thinInstanceBufferUpdated('matrix'); } if (this.dirty.size) this.meshes.forEach(m => m.thinInstanceRefreshBoundingInfo(false)); this.dirty.clear(); }
+  private flush() { for (const i of this.dirty) { this.meshes[i].thinInstanceBufferUpdated('matrix'); } this.dirty.clear(); } // meshes are alwaysSelectAsActiveMesh: no per-frame bounding refresh
 
   dispose() { for (const m of this.ownMats) m.dispose(); for (const m of this.meshes) m.dispose(); this.ownMats = []; this.meshes = []; this.insts = []; }
 }
