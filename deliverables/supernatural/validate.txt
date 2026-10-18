@@ -1,0 +1,18 @@
+== supernatural  duration 191.03s  taps 320  dirs R/L 162/158  multi-level crossings 37
+   min gap 0.275s  median gap 0.550s
+   peak density 240 CPM (taps in any 1 s window x60), average 101 CPM; gaps < 0.15 s: 0
+   fastest run: 9 taps (gaps<=0.30s) from 58.96s to 61.16s
+   judgment window: min ±110 ms, median ±110 ms (engine rule)
+   longest same-direction run 2 (>=2 = U-turn, >=4 = spiral)  elevation events 6
+      0.33-   9.14 intro   Intro                           6 taps  0.68/s
+      9.14-  26.75 verse   Groove                         30 taps  1.70/s
+     26.75-  44.37 verse   Verse 1                        29 taps  1.65/s
+     44.37-  61.98 pre     Pre-chorus 1                   38 taps  2.16/s
+     61.98-  79.60 chorus  Chorus 1                       36 taps  2.04/s
+     79.60-  97.21 verse   Verse 2                        31 taps  1.76/s
+     97.21- 114.83 bridge  Bridge                         23 taps  1.31/s
+    114.83- 132.44 chorus  Chorus 2                       42 taps  2.38/s
+    132.44- 150.06 break   Interlude                      26 taps  1.48/s
+    150.06- 167.67 chorus  Final chorus                   41 taps  2.33/s
+    167.67- 191.03 outro   Outro                          18 taps  0.77/s
+   extent x[-300,72] z[-151,72]
