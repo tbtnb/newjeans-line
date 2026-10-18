@@ -1,0 +1,1325 @@
+[
+{
+"t": 1.264,
+"grid": 1.264,
+"pos": "0:8",
+"tag": "snare",
+"sec": "Intro \u00b7 snaps in the grass"
+},
+{
+"t": 2.187,
+"grid": 2.187,
+"pos": "1:0",
+"tag": "snare",
+"sec": "Intro \u00b7 snaps in the grass"
+},
+{
+"t": 3.11,
+"grid": 3.11,
+"pos": "1:8",
+"tag": "snare",
+"sec": "Intro \u00b7 snaps in the grass"
+},
+{
+"t": 4.033,
+"grid": 4.033,
+"pos": "2:0",
+"tag": "bass",
+"sec": "Verse 1 \u00b7 moon-green meadow"
+},
+{
+"t": 4.725,
+"grid": 4.725,
+"pos": "2:6",
+"tag": "hat",
+"sec": "Verse 1 \u00b7 moon-green meadow"
+},
+{
+"t": 5.187,
+"grid": 5.187,
+"pos": "2:10",
+"tag": "kick",
+"sec": "Verse 1 \u00b7 moon-green meadow"
+},
+{
+"t": 5.879,
+"grid": 5.879,
+"pos": "3:0",
+"tag": "snare",
+"sec": "Verse 1 \u00b7 moon-green meadow"
+},
+{
+"t": 7.033,
+"grid": 7.033,
+"pos": "3:10",
+"tag": "hat",
+"sec": "Verse 1 \u00b7 moon-green meadow"
+},
+{
+"t": 7.725,
+"grid": 7.725,
+"pos": "4:0",
+"tag": "kick",
+"sec": "Verse 1 \u00b7 moon-green meadow"
+},
+{
+"t": 8.648,
+"grid": 8.648,
+"pos": "4:8",
+"tag": "snare",
+"sec": "Verse 1 \u00b7 moon-green meadow"
+},
+{
+"t": 9.571,
+"grid": 9.571,
+"pos": "5:0",
+"tag": "hat",
+"sec": "Verse 1 \u00b7 moon-green meadow"
+},
+{
+"t": 11.417,
+"grid": 11.417,
+"pos": "6:0",
+"tag": "vocal",
+"sec": "Verse 1b \u00b7 clock in the sky"
+},
+{
+"t": 13.263,
+"grid": 13.263,
+"pos": "7:0",
+"tag": "kick",
+"sec": "Verse 1b \u00b7 clock in the sky"
+},
+{
+"t": 14.186,
+"grid": 14.186,
+"pos": "7:8",
+"tag": "kick",
+"sec": "Verse 1b \u00b7 clock in the sky"
+},
+{
+"t": 15.109,
+"grid": 15.109,
+"pos": "8:0",
+"tag": "kick",
+"sec": "Verse 1b \u00b7 clock in the sky"
+},
+{
+"t": 16.955,
+"grid": 16.955,
+"pos": "9:0",
+"tag": "kick",
+"sec": "Verse 1b \u00b7 clock in the sky"
+},
+{
+"t": 17.647,
+"grid": 17.647,
+"pos": "9:6",
+"tag": "kick",
+"sec": "Verse 1b \u00b7 clock in the sky"
+},
+{
+"t": 18.801,
+"grid": 18.801,
+"pos": "10:0",
+"tag": "bass",
+"sec": "Verse 1b \u00b7 clock in the sky"
+},
+{
+"t": 20.647,
+"grid": 20.647,
+"pos": "11:0",
+"tag": "kick",
+"sec": "Verse 1b \u00b7 clock in the sky"
+},
+{
+"t": 21.57,
+"grid": 21.57,
+"pos": "11:8",
+"tag": "kick",
+"sec": "Verse 1b \u00b7 clock in the sky"
+},
+{
+"t": 22.493,
+"grid": 22.493,
+"pos": "12:0",
+"tag": "vocal",
+"sec": "Verse 1b \u00b7 clock in the sky"
+},
+{
+"t": 24.339,
+"grid": 24.339,
+"pos": "13:0",
+"tag": "bass",
+"sec": "Verse 1b \u00b7 clock in the sky"
+},
+{
+"t": 25.031,
+"grid": 25.031,
+"pos": "13:6",
+"tag": "kick",
+"sec": "Verse 1b \u00b7 clock in the sky"
+},
+{
+"t": 25.493,
+"grid": 25.493,
+"pos": "13:10",
+"tag": "vocal",
+"sec": "Verse 1b \u00b7 clock in the sky"
+},
+{
+"t": 26.185,
+"grid": 26.185,
+"pos": "14:0",
+"tag": "bass",
+"sec": "Pre \u00b7 letters behind trees"
+},
+{
+"t": 27.339,
+"grid": 27.339,
+"pos": "14:10",
+"tag": "hat",
+"sec": "Pre \u00b7 letters behind trees"
+},
+{
+"t": 28.031,
+"grid": 28.031,
+"pos": "15:0",
+"tag": "vocal",
+"sec": "Pre \u00b7 letters behind trees"
+},
+{
+"t": 28.723,
+"grid": 28.723,
+"pos": "15:6",
+"tag": "vocal",
+"sec": "Pre \u00b7 letters behind trees"
+},
+{
+"t": 29.877,
+"grid": 29.877,
+"pos": "16:0",
+"tag": "vocal",
+"sec": "Pre \u00b7 letters behind trees"
+},
+{
+"t": 30.8,
+"grid": 30.8,
+"pos": "16:8",
+"tag": "vocal",
+"sec": "Pre \u00b7 letters behind trees"
+},
+{
+"t": 31.723,
+"grid": 31.723,
+"pos": "17:0",
+"tag": "vocal",
+"sec": "Pre \u00b7 letters behind trees"
+},
+{
+"t": 33.569,
+"grid": 33.569,
+"pos": "18:0",
+"tag": "vocal",
+"sec": "Pre \u00b7 letters behind trees"
+},
+{
+"t": 34.723,
+"grid": 34.723,
+"pos": "18:10",
+"tag": "bass",
+"sec": "Pre \u00b7 letters behind trees"
+},
+{
+"t": 35.415,
+"grid": 35.415,
+"pos": "19:0",
+"tag": "vocal",
+"sec": "Pre \u00b7 letters behind trees"
+},
+{
+"t": 36.107,
+"grid": 36.107,
+"pos": "19:6",
+"tag": "vocal",
+"sec": "Pre \u00b7 letters behind trees"
+},
+{
+"t": 37.261,
+"grid": 37.261,
+"pos": "20:0",
+"tag": "bass",
+"sec": "Pre \u00b7 letters behind trees"
+},
+{
+"t": 38.184,
+"grid": 38.184,
+"pos": "20:8",
+"tag": "kick",
+"sec": "Pre \u00b7 letters behind trees"
+},
+{
+"t": 39.107,
+"grid": 39.107,
+"pos": "21:0",
+"tag": "bass",
+"sec": "Pre \u00b7 letters behind trees"
+},
+{
+"t": 40.953,
+"grid": 40.953,
+"pos": "22:0",
+"tag": "bass",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 41.645,
+"grid": 41.645,
+"pos": "22:6",
+"tag": "vocal",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 42.107,
+"grid": 42.107,
+"pos": "22:10",
+"tag": "vocal",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 42.799,
+"grid": 42.799,
+"pos": "23:0",
+"tag": "bass",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 43.953,
+"grid": 43.953,
+"pos": "23:10",
+"tag": "snare",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 44.645,
+"grid": 44.645,
+"pos": "24:0",
+"tag": "snare",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 45.568,
+"grid": 45.568,
+"pos": "24:8",
+"tag": "hat",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 46.491,
+"grid": 46.491,
+"pos": "25:0",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 47.183,
+"grid": 47.183,
+"pos": "25:6",
+"tag": "vocal",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 47.414,
+"grid": 47.414,
+"pos": "25:8",
+"tag": "vocal",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 47.645,
+"grid": 47.645,
+"pos": "25:10",
+"tag": "vocal",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 47.875,
+"grid": 47.875,
+"pos": "25:12",
+"tag": "bass",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 48.106,
+"grid": 48.106,
+"pos": "25:14",
+"tag": "vocal",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 48.337,
+"grid": 48.337,
+"pos": "26:0",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 49.029,
+"grid": 49.029,
+"pos": "26:6",
+"tag": "vocal",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 49.491,
+"grid": 49.491,
+"pos": "26:10",
+"tag": "vocal",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 50.183,
+"grid": 50.183,
+"pos": "27:0",
+"tag": "bass",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 51.337,
+"grid": 51.337,
+"pos": "27:10",
+"tag": "snare",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 52.029,
+"grid": 52.029,
+"pos": "28:0",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 52.952,
+"grid": 52.952,
+"pos": "28:8",
+"tag": "vocal",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 53.875,
+"grid": 53.875,
+"pos": "29:0",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 54.567,
+"grid": 54.567,
+"pos": "29:6",
+"tag": "vocal",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 54.798,
+"grid": 54.798,
+"pos": "29:8",
+"tag": "vocal",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 55.028,
+"grid": 55.028,
+"pos": "29:10",
+"tag": "bass",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 55.259,
+"grid": 55.259,
+"pos": "29:12",
+"tag": "bass",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 55.49,
+"grid": 55.49,
+"pos": "29:14",
+"tag": "bass",
+"sec": "Chorus 1 \u00b7 swing of pendulums"
+},
+{
+"t": 56.182,
+"grid": 56.182,
+"pos": "30:4",
+"tag": "snare",
+"sec": "Stop \u00b7 held breath"
+},
+{
+"t": 56.644,
+"grid": 56.644,
+"pos": "30:8",
+"tag": "snare",
+"sec": "Stop \u00b7 held breath"
+},
+{
+"t": 57.567,
+"grid": 57.567,
+"pos": "31:0",
+"tag": "kick",
+"sec": "Verse 2 \u00b7 water garden"
+},
+{
+"t": 58.49,
+"grid": 58.49,
+"pos": "31:8",
+"tag": "kick",
+"sec": "Verse 2 \u00b7 water garden"
+},
+{
+"t": 59.413,
+"grid": 59.413,
+"pos": "32:0",
+"tag": "kick",
+"sec": "Verse 2 \u00b7 water garden"
+},
+{
+"t": 60.336,
+"grid": 60.336,
+"pos": "32:8",
+"tag": "vocal",
+"sec": "Verse 2 \u00b7 water garden"
+},
+{
+"t": 61.259,
+"grid": 61.259,
+"pos": "33:0",
+"tag": "vocal",
+"sec": "Verse 2 \u00b7 water garden"
+},
+{
+"t": 62.182,
+"grid": 62.182,
+"pos": "33:8",
+"tag": "hat",
+"sec": "Verse 2 \u00b7 water garden"
+},
+{
+"t": 63.105,
+"grid": 63.105,
+"pos": "34:0",
+"tag": "kick",
+"sec": "Verse 2 \u00b7 water garden"
+},
+{
+"t": 63.566,
+"grid": 63.566,
+"pos": "34:4",
+"tag": "kick",
+"sec": "Verse 2 \u00b7 water garden"
+},
+{
+"t": 63.797,
+"grid": 63.797,
+"pos": "34:6",
+"tag": "bass",
+"sec": "Verse 2 \u00b7 water garden"
+},
+{
+"t": 64.028,
+"grid": 64.028,
+"pos": "34:8",
+"tag": "vocal",
+"sec": "Verse 2 \u00b7 water garden"
+},
+{
+"t": 64.489,
+"grid": 64.489,
+"pos": "34:12",
+"tag": "vocal",
+"sec": "Verse 2 \u00b7 water garden"
+},
+{
+"t": 64.951,
+"grid": 64.951,
+"pos": "35:0",
+"tag": "kick",
+"sec": "Verse 2 \u00b7 water garden"
+},
+{
+"t": 65.874,
+"grid": 65.874,
+"pos": "35:8",
+"tag": "vocal",
+"sec": "Verse 2 \u00b7 water garden"
+},
+{
+"t": 66.797,
+"grid": 66.797,
+"pos": "36:0",
+"tag": "kick",
+"sec": "Verse 2 \u00b7 water garden"
+},
+{
+"t": 67.72,
+"grid": 67.72,
+"pos": "36:8",
+"tag": "vocal",
+"sec": "Verse 2 \u00b7 water garden"
+},
+{
+"t": 68.643,
+"grid": 68.643,
+"pos": "37:0",
+"tag": "snare",
+"sec": "Verse 2 \u00b7 water garden"
+},
+{
+"t": 69.566,
+"grid": 69.566,
+"pos": "37:8",
+"tag": "hat",
+"sec": "Verse 2 \u00b7 water garden"
+},
+{
+"t": 70.489,
+"grid": 70.489,
+"pos": "38:0",
+"tag": "bass",
+"sec": "Verse 2 \u00b7 water garden"
+},
+{
+"t": 70.95,
+"grid": 70.95,
+"pos": "38:4",
+"tag": "hat",
+"sec": "Verse 2 \u00b7 water garden"
+},
+{
+"t": 71.181,
+"grid": 71.181,
+"pos": "38:6",
+"tag": "bass",
+"sec": "Verse 2 \u00b7 water garden"
+},
+{
+"t": 71.412,
+"grid": 71.412,
+"pos": "38:8",
+"tag": "bass",
+"sec": "Verse 2 \u00b7 water garden"
+},
+{
+"t": 71.873,
+"grid": 71.873,
+"pos": "38:12",
+"tag": "bass",
+"sec": "Verse 2 \u00b7 water garden"
+},
+{
+"t": 72.335,
+"grid": 72.335,
+"pos": "39:0",
+"tag": "kick",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 73.258,
+"grid": 73.258,
+"pos": "39:8",
+"tag": "kick",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 73.719,
+"grid": 73.719,
+"pos": "39:12",
+"tag": "vocal",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 74.181,
+"grid": 74.181,
+"pos": "40:0",
+"tag": "snare",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 74.873,
+"grid": 74.873,
+"pos": "40:6",
+"tag": "hat",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 75.565,
+"grid": 75.565,
+"pos": "40:12",
+"tag": "hat",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 76.027,
+"grid": 76.027,
+"pos": "41:0",
+"tag": "snare",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 76.95,
+"grid": 76.95,
+"pos": "41:8",
+"tag": "snare",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 77.411,
+"grid": 77.411,
+"pos": "41:12",
+"tag": "snare",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 77.873,
+"grid": 77.873,
+"pos": "42:0",
+"tag": "snare",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 78.103,
+"grid": 78.103,
+"pos": "42:2",
+"tag": "hat",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 78.334,
+"grid": 78.334,
+"pos": "42:4",
+"tag": "kick",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 78.565,
+"grid": 78.565,
+"pos": "42:6",
+"tag": "snare",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 78.796,
+"grid": 78.796,
+"pos": "42:8",
+"tag": "snare",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 79.026,
+"grid": 79.026,
+"pos": "42:10",
+"tag": "hat",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 79.257,
+"grid": 79.257,
+"pos": "42:12",
+"tag": "snare",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 79.488,
+"grid": 79.488,
+"pos": "42:14",
+"tag": "snare",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 79.719,
+"grid": 79.719,
+"pos": "43:0",
+"tag": "snare",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 80.642,
+"grid": 80.642,
+"pos": "43:8",
+"tag": "snare",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 81.103,
+"grid": 81.103,
+"pos": "43:12",
+"tag": "vocal",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 81.564,
+"grid": 81.564,
+"pos": "44:0",
+"tag": "kick",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 82.257,
+"grid": 82.257,
+"pos": "44:6",
+"tag": "snare",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 82.949,
+"grid": 82.949,
+"pos": "44:12",
+"tag": "hat",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 83.41,
+"grid": 83.41,
+"pos": "45:0",
+"tag": "snare",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 84.333,
+"grid": 84.333,
+"pos": "45:8",
+"tag": "hat",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 84.795,
+"grid": 84.795,
+"pos": "45:12",
+"tag": "kick",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 85.256,
+"grid": 85.256,
+"pos": "46:0",
+"tag": "snare",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 85.487,
+"grid": 85.487,
+"pos": "46:2",
+"tag": "hat",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 85.718,
+"grid": 85.718,
+"pos": "46:4",
+"tag": "hat",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 85.949,
+"grid": 85.949,
+"pos": "46:6",
+"tag": "snare",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 86.179,
+"grid": 86.179,
+"pos": "46:8",
+"tag": "snare",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 86.41,
+"grid": 86.41,
+"pos": "46:10",
+"tag": "hat",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 86.641,
+"grid": 86.641,
+"pos": "46:12",
+"tag": "snare",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 86.872,
+"grid": 86.872,
+"pos": "46:14",
+"tag": "snare",
+"sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 87.102,
+"grid": 87.102,
+"pos": "47:0",
+"tag": "kick",
+"sec": "Turnaround"
+},
+{
+"t": 88.025,
+"grid": 88.025,
+"pos": "47:8",
+"tag": "vocal",
+"sec": "Turnaround"
+},
+{
+"t": 88.948,
+"grid": 88.948,
+"pos": "48:0",
+"tag": "kick",
+"sec": "Turnaround"
+},
+{
+"t": 89.871,
+"grid": 89.871,
+"pos": "48:8",
+"tag": "kick",
+"sec": "Turnaround"
+},
+{
+"t": 90.333,
+"grid": 90.333,
+"pos": "48:12",
+"tag": "vocal",
+"sec": "Turnaround"
+},
+{
+"t": 90.794,
+"grid": 90.794,
+"pos": "49:0",
+"tag": "kick",
+"sec": "Turnaround"
+},
+{
+"t": 91.256,
+"grid": 91.256,
+"pos": "49:4",
+"tag": "kick",
+"sec": "Turnaround"
+},
+{
+"t": 91.717,
+"grid": 91.717,
+"pos": "49:8",
+"tag": "snare",
+"sec": "Turnaround"
+},
+{
+"t": 92.179,
+"grid": 92.179,
+"pos": "49:12",
+"tag": "vocal",
+"sec": "Turnaround"
+},
+{
+"t": 92.64,
+"grid": 92.64,
+"pos": "50:0",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 93.563,
+"grid": 93.563,
+"pos": "50:8",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 94.486,
+"grid": 94.486,
+"pos": "51:0",
+"tag": "vocal",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 95.409,
+"grid": 95.409,
+"pos": "51:8",
+"tag": "vocal",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 96.332,
+"grid": 96.332,
+"pos": "52:0",
+"tag": "snare",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 97.255,
+"grid": 97.255,
+"pos": "52:8",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 98.178,
+"grid": 98.178,
+"pos": "53:0",
+"tag": "snare",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 98.871,
+"grid": 98.871,
+"pos": "53:6",
+"tag": "bass",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 99.101,
+"grid": 99.101,
+"pos": "53:8",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 99.332,
+"grid": 99.332,
+"pos": "53:10",
+"tag": "bass",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 99.563,
+"grid": 99.563,
+"pos": "53:12",
+"tag": "snare",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 99.794,
+"grid": 99.794,
+"pos": "53:14",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 100.024,
+"grid": 100.024,
+"pos": "54:0",
+"tag": "snare",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 100.947,
+"grid": 100.947,
+"pos": "54:8",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 101.87,
+"grid": 101.87,
+"pos": "55:0",
+"tag": "vocal",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 102.793,
+"grid": 102.793,
+"pos": "55:8",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 103.716,
+"grid": 103.716,
+"pos": "56:0",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 104.639,
+"grid": 104.639,
+"pos": "56:8",
+"tag": "vocal",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 105.562,
+"grid": 105.562,
+"pos": "57:0",
+"tag": "vocal",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 106.255,
+"grid": 106.255,
+"pos": "57:6",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 106.485,
+"grid": 106.485,
+"pos": "57:8",
+"tag": "hat",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 106.716,
+"grid": 106.716,
+"pos": "57:10",
+"tag": "vocal",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 106.947,
+"grid": 106.947,
+"pos": "57:12",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 107.178,
+"grid": 107.178,
+"pos": "57:14",
+"tag": "bass",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 107.408,
+"grid": 107.408,
+"pos": "58:0",
+"tag": "snare",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 108.331,
+"grid": 108.331,
+"pos": "58:8",
+"tag": "vocal",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 109.254,
+"grid": 109.254,
+"pos": "59:0",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 110.177,
+"grid": 110.177,
+"pos": "59:8",
+"tag": "vocal",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 111.1,
+"grid": 111.1,
+"pos": "60:0",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 112.023,
+"grid": 112.023,
+"pos": "60:8",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 112.946,
+"grid": 112.946,
+"pos": "61:0",
+"tag": "bass",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 113.638,
+"grid": 113.638,
+"pos": "61:6",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 113.869,
+"grid": 113.869,
+"pos": "61:8",
+"tag": "hat",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 114.1,
+"grid": 114.1,
+"pos": "61:10",
+"tag": "vocal",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 114.331,
+"grid": 114.331,
+"pos": "61:12",
+"tag": "vocal",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 114.561,
+"grid": 114.561,
+"pos": "61:14",
+"tag": "bass",
+"sec": "Chorus 2 \u00b7 the small house"
+},
+{
+"t": 114.792,
+"grid": 114.792,
+"pos": "62:0",
+"tag": "bass",
+"sec": "Hush \u00b7 lamp flickers"
+},
+{
+"t": 116.638,
+"grid": 116.638,
+"pos": "63:0",
+"tag": "snare",
+"sec": "Hush \u00b7 lamp flickers"
+},
+{
+"t": 117.561,
+"grid": 117.561,
+"pos": "63:8",
+"tag": "snare",
+"sec": "Hush \u00b7 lamp flickers"
+},
+{
+"t": 118.484,
+"grid": 118.484,
+"pos": "64:0",
+"tag": "bass",
+"sec": "Hush \u00b7 lamp flickers"
+},
+{
+"t": 120.792,
+"grid": 120.792,
+"pos": "65:4",
+"tag": "hat",
+"sec": "Final hook \u00b7 lamp lights"
+},
+{
+"t": 121.253,
+"grid": 121.253,
+"pos": "65:8",
+"tag": "hat",
+"sec": "Final hook \u00b7 lamp lights"
+},
+{
+"t": 121.715,
+"grid": 121.715,
+"pos": "65:12",
+"tag": "vocal",
+"sec": "Final hook \u00b7 lamp lights"
+},
+{
+"t": 122.176,
+"grid": 122.176,
+"pos": "66:0",
+"tag": "kick",
+"sec": "Final hook \u00b7 lamp lights"
+},
+{
+"t": 122.868,
+"grid": 122.868,
+"pos": "66:6",
+"tag": "snare",
+"sec": "Final hook \u00b7 lamp lights"
+},
+{
+"t": 123.33,
+"grid": 123.33,
+"pos": "66:10",
+"tag": "snare",
+"sec": "Final hook \u00b7 lamp lights"
+},
+{
+"t": 124.022,
+"grid": 124.022,
+"pos": "67:0",
+"tag": "kick",
+"sec": "Final hook \u00b7 lamp lights"
+},
+{
+"t": 124.945,
+"grid": 124.945,
+"pos": "67:8",
+"tag": "snare",
+"sec": "Final hook \u00b7 lamp lights"
+},
+{
+"t": 125.868,
+"grid": 125.868,
+"pos": "68:0",
+"tag": "bass",
+"sec": "Final hook \u00b7 lamp lights"
+},
+{
+"t": 126.56,
+"grid": 126.56,
+"pos": "68:6",
+"tag": "vocal",
+"sec": "Final hook \u00b7 lamp lights"
+},
+{
+"t": 126.791,
+"grid": 126.791,
+"pos": "68:8",
+"tag": "vocal",
+"sec": "Final hook \u00b7 lamp lights"
+},
+{
+"t": 127.022,
+"grid": 127.022,
+"pos": "68:10",
+"tag": "vocal",
+"sec": "Final hook \u00b7 lamp lights"
+},
+{
+"t": 127.253,
+"grid": 127.253,
+"pos": "68:12",
+"tag": "kick",
+"sec": "Final hook \u00b7 lamp lights"
+},
+{
+"t": 127.483,
+"grid": 127.483,
+"pos": "68:14",
+"tag": "vocal",
+"sec": "Final hook \u00b7 lamp lights"
+},
+{
+"t": 127.714,
+"grid": 127.714,
+"pos": "69:0",
+"tag": "kick",
+"sec": "Final hook \u00b7 lamp lights"
+},
+{
+"t": 128.637,
+"grid": 128.637,
+"pos": "69:8",
+"tag": "vocal",
+"sec": "Final hook \u00b7 lamp lights"
+},
+{
+"t": 129.56,
+"grid": 129.56,
+"pos": "70:0",
+"tag": "kick",
+"sec": "Outro \u00b7 pollen bunny"
+},
+{
+"t": 131.406,
+"grid": 131.406,
+"pos": "71:0",
+"tag": "kick",
+"sec": "Outro \u00b7 pollen bunny"
+}
+]

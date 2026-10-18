@@ -1,0 +1,275 @@
+[
+{
+"t": 1.335,
+"grid": 1.335,
+"pos": "0:8",
+"tag": "kick",
+"sec": "After the rain \u00b7 shallow water"
+},
+{
+"t": 2.335,
+"grid": 2.335,
+"pos": "1:0",
+"tag": "snare",
+"sec": "After the rain \u00b7 shallow water"
+},
+{
+"t": 3.335,
+"grid": 3.335,
+"pos": "1:8",
+"tag": "snare",
+"sec": "After the rain \u00b7 shallow water"
+},
+{
+"t": 4.335,
+"grid": 4.335,
+"pos": "2:0",
+"tag": "kick",
+"sec": "After the rain \u00b7 shallow water"
+},
+{
+"t": 5.334,
+"grid": 5.334,
+"pos": "2:8",
+"tag": "snare",
+"sec": "After the rain \u00b7 shallow water"
+},
+{
+"t": 6.334,
+"grid": 6.334,
+"pos": "3:0",
+"tag": "bass",
+"sec": "After the rain \u00b7 shallow water"
+},
+{
+"t": 7.334,
+"grid": 7.334,
+"pos": "3:8",
+"tag": "snare",
+"sec": "After the rain \u00b7 shallow water"
+},
+{
+"t": 8.334,
+"grid": 8.334,
+"pos": "4:0",
+"tag": "kick",
+"sec": "One warm light"
+},
+{
+"t": 9.334,
+"grid": 9.334,
+"pos": "4:8",
+"tag": "snare",
+"sec": "One warm light"
+},
+{
+"t": 10.084,
+"grid": 10.084,
+"pos": "4:14",
+"tag": "vocal",
+"sec": "One warm light"
+},
+{
+"t": 10.334,
+"grid": 10.334,
+"pos": "5:0",
+"tag": "kick",
+"sec": "One warm light"
+},
+{
+"t": 11.333,
+"grid": 11.333,
+"pos": "5:8",
+"tag": "snare",
+"sec": "One warm light"
+},
+{
+"t": 12.333,
+"grid": 12.333,
+"pos": "6:0",
+"tag": "kick",
+"sec": "One warm light"
+},
+{
+"t": 13.333,
+"grid": 13.333,
+"pos": "6:8",
+"tag": "snare",
+"sec": "One warm light"
+},
+{
+"t": 14.333,
+"grid": 14.333,
+"pos": "7:0",
+"tag": "bass",
+"sec": "One warm light"
+},
+{
+"t": 15.333,
+"grid": 15.333,
+"pos": "7:8",
+"tag": "snare",
+"sec": "One warm light"
+},
+{
+"t": 16.082,
+"grid": 16.082,
+"pos": "7:14",
+"tag": "kick",
+"sec": "One warm light"
+},
+{
+"t": 16.332,
+"grid": 16.332,
+"pos": "8:0",
+"tag": "kick",
+"sec": "Horizon gathers"
+},
+{
+"t": 17.332,
+"grid": 17.332,
+"pos": "8:8",
+"tag": "kick",
+"sec": "Horizon gathers"
+},
+{
+"t": 17.832,
+"grid": 17.832,
+"pos": "8:12",
+"tag": "kick",
+"sec": "Horizon gathers"
+},
+{
+"t": 18.332,
+"grid": 18.332,
+"pos": "9:0",
+"tag": "vocal",
+"sec": "Horizon gathers"
+},
+{
+"t": 19.332,
+"grid": 19.332,
+"pos": "9:8",
+"tag": "snare",
+"sec": "Horizon gathers"
+},
+{
+"t": 20.082,
+"grid": 20.082,
+"pos": "9:14",
+"tag": "bass",
+"sec": "Horizon gathers"
+},
+{
+"t": 20.332,
+"grid": 20.332,
+"pos": "10:0",
+"tag": "kick",
+"sec": "Horizon gathers"
+},
+{
+"t": 21.332,
+"grid": 21.332,
+"pos": "10:8",
+"tag": "hat",
+"sec": "Horizon gathers"
+},
+{
+"t": 21.831,
+"grid": 21.831,
+"pos": "10:12",
+"tag": "kick",
+"sec": "Horizon gathers"
+},
+{
+"t": 22.331,
+"grid": 22.331,
+"pos": "11:0",
+"tag": "bass",
+"sec": "Horizon gathers"
+},
+{
+"t": 23.331,
+"grid": 23.331,
+"pos": "11:8",
+"tag": "snare",
+"sec": "Horizon gathers"
+},
+{
+"t": 24.081,
+"grid": 24.081,
+"pos": "11:14",
+"tag": "vocal",
+"sec": "Horizon gathers"
+},
+{
+"t": 24.331,
+"grid": 24.331,
+"pos": "12:0",
+"tag": "kick",
+"sec": "Five lights \u00b7 moon-green grass"
+},
+{
+"t": 25.331,
+"grid": 25.331,
+"pos": "12:8",
+"tag": "snare",
+"sec": "Five lights \u00b7 moon-green grass"
+},
+{
+"t": 26.081,
+"grid": 26.081,
+"pos": "12:14",
+"tag": "vocal",
+"sec": "Five lights \u00b7 moon-green grass"
+},
+{
+"t": 26.331,
+"grid": 26.331,
+"pos": "13:0",
+"tag": "kick",
+"sec": "Five lights \u00b7 moon-green grass"
+},
+{
+"t": 27.33,
+"grid": 27.33,
+"pos": "13:8",
+"tag": "snare",
+"sec": "Five lights \u00b7 moon-green grass"
+},
+{
+"t": 28.33,
+"grid": 28.33,
+"pos": "14:0",
+"tag": "kick",
+"sec": "Five lights \u00b7 moon-green grass"
+},
+{
+"t": 29.33,
+"grid": 29.33,
+"pos": "14:8",
+"tag": "snare",
+"sec": "Five lights \u00b7 moon-green grass"
+},
+{
+"t": 30.33,
+"grid": 30.33,
+"pos": "15:0",
+"tag": "bass",
+"sec": "Five lights \u00b7 moon-green grass"
+},
+{
+"t": 31.33,
+"grid": 31.33,
+"pos": "15:8",
+"tag": "snare",
+"sec": "Five lights \u00b7 moon-green grass"
+},
+{
+"t": 33.329,
+"grid": 33.329,
+"pos": "16:8",
+"tag": "bass",
+"sec": "Last step"
+}
+]

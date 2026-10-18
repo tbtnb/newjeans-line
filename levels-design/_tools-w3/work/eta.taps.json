@@ -1,0 +1,2872 @@
+[
+{
+"t": 1.67,
+"grid": 1.67,
+"pos": "0:0",
+"tag": "snare",
+"sec": "Intro \u00b7 phone desk"
+},
+{
+"t": 2.337,
+"grid": 2.337,
+"pos": "0:6",
+"tag": "vocal",
+"sec": "Intro \u00b7 phone desk"
+},
+{
+"t": 2.781,
+"grid": 2.781,
+"pos": "0:10",
+"tag": "vocal",
+"sec": "Intro \u00b7 phone desk"
+},
+{
+"t": 3.448,
+"grid": 3.448,
+"pos": "1:0",
+"tag": "snare",
+"sec": "Intro \u00b7 phone desk"
+},
+{
+"t": 4.114,
+"grid": 4.114,
+"pos": "1:6",
+"tag": "vocal",
+"sec": "Intro \u00b7 phone desk"
+},
+{
+"t": 4.559,
+"grid": 4.559,
+"pos": "1:10",
+"tag": "vocal",
+"sec": "Intro \u00b7 phone desk"
+},
+{
+"t": 4.892,
+"grid": 4.892,
+"pos": "1:13",
+"tag": "vocal",
+"sec": "Intro \u00b7 phone desk"
+},
+{
+"t": 5.225,
+"grid": 5.225,
+"pos": "2:0",
+"tag": "snare",
+"sec": "Intro \u00b7 phone desk"
+},
+{
+"t": 5.67,
+"grid": 5.67,
+"pos": "2:4",
+"tag": "snare",
+"sec": "Intro \u00b7 phone desk"
+},
+{
+"t": 5.892,
+"grid": 5.892,
+"pos": "2:6",
+"tag": "snare",
+"sec": "Intro \u00b7 phone desk"
+},
+{
+"t": 6.337,
+"grid": 6.337,
+"pos": "2:10",
+"tag": "vocal",
+"sec": "Intro \u00b7 phone desk"
+},
+{
+"t": 6.67,
+"grid": 6.67,
+"pos": "2:13",
+"tag": "vocal",
+"sec": "Intro \u00b7 phone desk"
+},
+{
+"t": 7.003,
+"grid": 7.003,
+"pos": "3:0",
+"tag": "snare",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 7.448,
+"grid": 7.448,
+"pos": "3:4",
+"tag": "kick",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 7.892,
+"grid": 7.892,
+"pos": "3:8",
+"tag": "snare",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 8.337,
+"grid": 8.337,
+"pos": "3:12",
+"tag": "kick",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 8.781,
+"grid": 8.781,
+"pos": "4:0",
+"tag": "snare",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 9.67,
+"grid": 9.67,
+"pos": "4:8",
+"tag": "snare",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 10.114,
+"grid": 10.114,
+"pos": "4:12",
+"tag": "kick",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 10.559,
+"grid": 10.559,
+"pos": "5:0",
+"tag": "kick",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 11.003,
+"grid": 11.003,
+"pos": "5:4",
+"tag": "kick",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 11.448,
+"grid": 11.448,
+"pos": "5:8",
+"tag": "snare",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 11.892,
+"grid": 11.892,
+"pos": "5:12",
+"tag": "kick",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 12.337,
+"grid": 12.337,
+"pos": "6:0",
+"tag": "snare",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 12.781,
+"grid": 12.781,
+"pos": "6:4",
+"tag": "kick",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 13.226,
+"grid": 13.226,
+"pos": "6:8",
+"tag": "kick",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 13.448,
+"grid": 13.448,
+"pos": "6:10",
+"tag": "snare",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 13.67,
+"grid": 13.67,
+"pos": "6:12",
+"tag": "kick",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 13.892,
+"grid": 13.892,
+"pos": "6:14",
+"tag": "vocal",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 14.115,
+"grid": 14.115,
+"pos": "7:0",
+"tag": "snare",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 14.559,
+"grid": 14.559,
+"pos": "7:4",
+"tag": "kick",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 15.003,
+"grid": 15.003,
+"pos": "7:8",
+"tag": "snare",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 15.448,
+"grid": 15.448,
+"pos": "7:12",
+"tag": "kick",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 15.892,
+"grid": 15.892,
+"pos": "8:0",
+"tag": "snare",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 16.781,
+"grid": 16.781,
+"pos": "8:8",
+"tag": "snare",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 17.226,
+"grid": 17.226,
+"pos": "8:12",
+"tag": "kick",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 17.67,
+"grid": 17.67,
+"pos": "9:0",
+"tag": "snare",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 18.115,
+"grid": 18.115,
+"pos": "9:4",
+"tag": "kick",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 18.559,
+"grid": 18.559,
+"pos": "9:8",
+"tag": "snare",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 19.003,
+"grid": 19.003,
+"pos": "9:12",
+"tag": "kick",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 19.448,
+"grid": 19.448,
+"pos": "10:0",
+"tag": "snare",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 19.892,
+"grid": 19.892,
+"pos": "10:4",
+"tag": "kick",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 20.337,
+"grid": 20.337,
+"pos": "10:8",
+"tag": "snare",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 20.559,
+"grid": 20.559,
+"pos": "10:10",
+"tag": "vocal",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 20.781,
+"grid": 20.781,
+"pos": "10:12",
+"tag": "hat",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 21.004,
+"grid": 21.004,
+"pos": "10:14",
+"tag": "vocal",
+"sec": "Verse 1 \u00b7 first message"
+},
+{
+"t": 21.226,
+"grid": 21.226,
+"pos": "11:0",
+"tag": "snare",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 22.115,
+"grid": 22.115,
+"pos": "11:8",
+"tag": "kick",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 22.559,
+"grid": 22.559,
+"pos": "11:12",
+"tag": "kick",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 23.004,
+"grid": 23.004,
+"pos": "12:0",
+"tag": "snare",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 23.448,
+"grid": 23.448,
+"pos": "12:4",
+"tag": "snare",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 23.892,
+"grid": 23.892,
+"pos": "12:8",
+"tag": "snare",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 24.337,
+"grid": 24.337,
+"pos": "12:12",
+"tag": "kick",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 24.781,
+"grid": 24.781,
+"pos": "13:0",
+"tag": "snare",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 25.67,
+"grid": 25.67,
+"pos": "13:8",
+"tag": "snare",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 26.115,
+"grid": 26.115,
+"pos": "13:12",
+"tag": "bass",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 26.559,
+"grid": 26.559,
+"pos": "14:0",
+"tag": "snare",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 27.004,
+"grid": 27.004,
+"pos": "14:4",
+"tag": "snare",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 27.448,
+"grid": 27.448,
+"pos": "14:8",
+"tag": "kick",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 27.893,
+"grid": 27.893,
+"pos": "14:12",
+"tag": "kick",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 28.115,
+"grid": 28.115,
+"pos": "14:14",
+"tag": "vocal",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 28.337,
+"grid": 28.337,
+"pos": "15:0",
+"tag": "snare",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 28.781,
+"grid": 28.781,
+"pos": "15:4",
+"tag": "kick",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 29.226,
+"grid": 29.226,
+"pos": "15:8",
+"tag": "snare",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 29.67,
+"grid": 29.67,
+"pos": "15:12",
+"tag": "kick",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 30.115,
+"grid": 30.115,
+"pos": "16:0",
+"tag": "snare",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 30.559,
+"grid": 30.559,
+"pos": "16:4",
+"tag": "kick",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 30.781,
+"grid": 30.781,
+"pos": "16:6",
+"tag": "snare",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 31.004,
+"grid": 31.004,
+"pos": "16:8",
+"tag": "kick",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 31.448,
+"grid": 31.448,
+"pos": "16:12",
+"tag": "bass",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 31.67,
+"grid": 31.67,
+"pos": "16:14",
+"tag": "kick",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 31.893,
+"grid": 31.893,
+"pos": "17:0",
+"tag": "snare",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 32.115,
+"grid": 32.115,
+"pos": "17:2",
+"tag": "hat",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 32.337,
+"grid": 32.337,
+"pos": "17:4",
+"tag": "kick",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 32.559,
+"grid": 32.559,
+"pos": "17:6",
+"tag": "snare",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 32.781,
+"grid": 32.781,
+"pos": "17:8",
+"tag": "snare",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 33.226,
+"grid": 33.226,
+"pos": "17:12",
+"tag": "kick",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 33.448,
+"grid": 33.448,
+"pos": "17:14",
+"tag": "kick",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 33.67,
+"grid": 33.67,
+"pos": "18:0",
+"tag": "snare",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 33.893,
+"grid": 33.893,
+"pos": "18:2",
+"tag": "hat",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 34.115,
+"grid": 34.115,
+"pos": "18:4",
+"tag": "kick",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 34.337,
+"grid": 34.337,
+"pos": "18:6",
+"tag": "hat",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 34.559,
+"grid": 34.559,
+"pos": "18:8",
+"tag": "kick",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 34.781,
+"grid": 34.781,
+"pos": "18:10",
+"tag": "hat",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 35.004,
+"grid": 35.004,
+"pos": "18:12",
+"tag": "bass",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 35.226,
+"grid": 35.226,
+"pos": "18:14",
+"tag": "hat",
+"sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 35.67,
+"grid": 35.67,
+"pos": "19:2",
+"tag": "hat",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 35.893,
+"grid": 35.893,
+"pos": "19:4",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 36.115,
+"grid": 36.115,
+"pos": "19:6",
+"tag": "snare",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 36.337,
+"grid": 36.337,
+"pos": "19:8",
+"tag": "snare",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 36.782,
+"grid": 36.782,
+"pos": "19:12",
+"tag": "bass",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 37.115,
+"grid": 37.115,
+"pos": "19:15",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 37.448,
+"grid": 37.448,
+"pos": "20:2",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 37.67,
+"grid": 37.67,
+"pos": "20:4",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 38.115,
+"grid": 38.115,
+"pos": "20:8",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 38.337,
+"grid": 38.337,
+"pos": "20:10",
+"tag": "snare",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 38.559,
+"grid": 38.559,
+"pos": "20:12",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 38.893,
+"grid": 38.893,
+"pos": "20:15",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 39.226,
+"grid": 39.226,
+"pos": "21:2",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 39.448,
+"grid": 39.448,
+"pos": "21:4",
+"tag": "bass",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 39.67,
+"grid": 39.67,
+"pos": "21:6",
+"tag": "snare",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 39.893,
+"grid": 39.893,
+"pos": "21:8",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 40.337,
+"grid": 40.337,
+"pos": "21:12",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 40.67,
+"grid": 40.67,
+"pos": "21:15",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 41.004,
+"grid": 41.004,
+"pos": "22:2",
+"tag": "bass",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 41.226,
+"grid": 41.226,
+"pos": "22:4",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 41.448,
+"grid": 41.448,
+"pos": "22:6",
+"tag": "snare",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 41.67,
+"grid": 41.67,
+"pos": "22:8",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 41.893,
+"grid": 41.893,
+"pos": "22:10",
+"tag": "hat",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 42.115,
+"grid": 42.115,
+"pos": "22:12",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 42.448,
+"grid": 42.448,
+"pos": "22:15",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 42.782,
+"grid": 42.782,
+"pos": "23:2",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 43.004,
+"grid": 43.004,
+"pos": "23:4",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 43.226,
+"grid": 43.226,
+"pos": "23:6",
+"tag": "snare",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 43.448,
+"grid": 43.448,
+"pos": "23:8",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 43.893,
+"grid": 43.893,
+"pos": "23:12",
+"tag": "bass",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 44.226,
+"grid": 44.226,
+"pos": "23:15",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 44.559,
+"grid": 44.559,
+"pos": "24:2",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 44.782,
+"grid": 44.782,
+"pos": "24:4",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 45.226,
+"grid": 45.226,
+"pos": "24:8",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 45.448,
+"grid": 45.448,
+"pos": "24:10",
+"tag": "snare",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 45.671,
+"grid": 45.671,
+"pos": "24:12",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 46.004,
+"grid": 46.004,
+"pos": "24:15",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 46.337,
+"grid": 46.337,
+"pos": "25:2",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 46.559,
+"grid": 46.559,
+"pos": "25:4",
+"tag": "bass",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 47.004,
+"grid": 47.004,
+"pos": "25:8",
+"tag": "kick",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 47.448,
+"grid": 47.448,
+"pos": "25:12",
+"tag": "bass",
+"sec": "Chorus 1 \u00b7 signal city hook"
+},
+{
+"t": 48.115,
+"grid": 48.115,
+"pos": "26:2",
+"tag": "kick",
+"sec": "Stop 1 \u00b7 E-T-A voice chops"
+},
+{
+"t": 48.337,
+"grid": 48.337,
+"pos": "26:4",
+"tag": "kick",
+"sec": "Stop 1 \u00b7 E-T-A voice chops"
+},
+{
+"t": 48.671,
+"grid": 48.671,
+"pos": "26:7",
+"tag": "snare",
+"sec": "Stop 1 \u00b7 E-T-A voice chops"
+},
+{
+"t": 48.893,
+"grid": 48.893,
+"pos": "26:9",
+"tag": "vocal",
+"sec": "Stop 1 \u00b7 E-T-A voice chops"
+},
+{
+"t": 49.115,
+"grid": 49.115,
+"pos": "26:11",
+"tag": "vocal",
+"sec": "Stop 1 \u00b7 E-T-A voice chops"
+},
+{
+"t": 49.337,
+"grid": 49.337,
+"pos": "26:13",
+"tag": "vocal",
+"sec": "Stop 1 \u00b7 E-T-A voice chops"
+},
+{
+"t": 49.671,
+"grid": 49.671,
+"pos": "27:0",
+"tag": "snare",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 50.115,
+"grid": 50.115,
+"pos": "27:4",
+"tag": "kick",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 50.56,
+"grid": 50.56,
+"pos": "27:8",
+"tag": "kick",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 51.004,
+"grid": 51.004,
+"pos": "27:12",
+"tag": "kick",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 51.448,
+"grid": 51.448,
+"pos": "28:0",
+"tag": "vocal",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 51.893,
+"grid": 51.893,
+"pos": "28:4",
+"tag": "snare",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 52.337,
+"grid": 52.337,
+"pos": "28:8",
+"tag": "kick",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 53.004,
+"grid": 53.004,
+"pos": "28:14",
+"tag": "kick",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 53.226,
+"grid": 53.226,
+"pos": "29:0",
+"tag": "snare",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 53.671,
+"grid": 53.671,
+"pos": "29:4",
+"tag": "kick",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 54.115,
+"grid": 54.115,
+"pos": "29:8",
+"tag": "kick",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 54.56,
+"grid": 54.56,
+"pos": "29:12",
+"tag": "bass",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 55.004,
+"grid": 55.004,
+"pos": "30:0",
+"tag": "snare",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 55.448,
+"grid": 55.448,
+"pos": "30:4",
+"tag": "snare",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 55.671,
+"grid": 55.671,
+"pos": "30:6",
+"tag": "hat",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 55.893,
+"grid": 55.893,
+"pos": "30:8",
+"tag": "snare",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 56.115,
+"grid": 56.115,
+"pos": "30:10",
+"tag": "hat",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 56.337,
+"grid": 56.337,
+"pos": "30:12",
+"tag": "kick",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 56.56,
+"grid": 56.56,
+"pos": "30:14",
+"tag": "hat",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 56.782,
+"grid": 56.782,
+"pos": "31:0",
+"tag": "snare",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 57.226,
+"grid": 57.226,
+"pos": "31:4",
+"tag": "kick",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 57.671,
+"grid": 57.671,
+"pos": "31:8",
+"tag": "bass",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 58.115,
+"grid": 58.115,
+"pos": "31:12",
+"tag": "bass",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 58.56,
+"grid": 58.56,
+"pos": "32:0",
+"tag": "snare",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 59.004,
+"grid": 59.004,
+"pos": "32:4",
+"tag": "snare",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 59.449,
+"grid": 59.449,
+"pos": "32:8",
+"tag": "kick",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 60.115,
+"grid": 60.115,
+"pos": "32:14",
+"tag": "snare",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 60.337,
+"grid": 60.337,
+"pos": "33:0",
+"tag": "snare",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 60.782,
+"grid": 60.782,
+"pos": "33:4",
+"tag": "kick",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 61.226,
+"grid": 61.226,
+"pos": "33:8",
+"tag": "kick",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 61.671,
+"grid": 61.671,
+"pos": "33:12",
+"tag": "kick",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 62.115,
+"grid": 62.115,
+"pos": "34:0",
+"tag": "snare",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 62.56,
+"grid": 62.56,
+"pos": "34:4",
+"tag": "snare",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 62.782,
+"grid": 62.782,
+"pos": "34:6",
+"tag": "snare",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 63.004,
+"grid": 63.004,
+"pos": "34:8",
+"tag": "kick",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 63.226,
+"grid": 63.226,
+"pos": "34:10",
+"tag": "snare",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 63.449,
+"grid": 63.449,
+"pos": "34:12",
+"tag": "kick",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 63.671,
+"grid": 63.671,
+"pos": "34:14",
+"tag": "bass",
+"sec": "Verse 2 \u00b7 rumor mill"
+},
+{
+"t": 63.893,
+"grid": 63.893,
+"pos": "35:0",
+"tag": "snare",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 64.782,
+"grid": 64.782,
+"pos": "35:8",
+"tag": "kick",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 65.226,
+"grid": 65.226,
+"pos": "35:12",
+"tag": "kick",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 65.671,
+"grid": 65.671,
+"pos": "36:0",
+"tag": "snare",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 66.115,
+"grid": 66.115,
+"pos": "36:4",
+"tag": "snare",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 66.56,
+"grid": 66.56,
+"pos": "36:8",
+"tag": "kick",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 67.004,
+"grid": 67.004,
+"pos": "36:12",
+"tag": "kick",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 67.449,
+"grid": 67.449,
+"pos": "37:0",
+"tag": "snare",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 68.338,
+"grid": 68.338,
+"pos": "37:8",
+"tag": "kick",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 68.782,
+"grid": 68.782,
+"pos": "37:12",
+"tag": "bass",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 69.226,
+"grid": 69.226,
+"pos": "38:0",
+"tag": "snare",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 69.671,
+"grid": 69.671,
+"pos": "38:4",
+"tag": "snare",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 69.893,
+"grid": 69.893,
+"pos": "38:6",
+"tag": "vocal",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 70.115,
+"grid": 70.115,
+"pos": "38:8",
+"tag": "kick",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 70.338,
+"grid": 70.338,
+"pos": "38:10",
+"tag": "vocal",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 70.56,
+"grid": 70.56,
+"pos": "38:12",
+"tag": "kick",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 70.782,
+"grid": 70.782,
+"pos": "38:14",
+"tag": "vocal",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 71.004,
+"grid": 71.004,
+"pos": "39:0",
+"tag": "snare",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 71.893,
+"grid": 71.893,
+"pos": "39:8",
+"tag": "kick",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 72.338,
+"grid": 72.338,
+"pos": "39:12",
+"tag": "bass",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 72.782,
+"grid": 72.782,
+"pos": "40:0",
+"tag": "vocal",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 73.227,
+"grid": 73.227,
+"pos": "40:4",
+"tag": "snare",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 73.671,
+"grid": 73.671,
+"pos": "40:8",
+"tag": "kick",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 74.115,
+"grid": 74.115,
+"pos": "40:12",
+"tag": "kick",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 74.56,
+"grid": 74.56,
+"pos": "41:0",
+"tag": "bass",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 75.449,
+"grid": 75.449,
+"pos": "41:8",
+"tag": "kick",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 75.893,
+"grid": 75.893,
+"pos": "41:12",
+"tag": "kick",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 76.338,
+"grid": 76.338,
+"pos": "42:0",
+"tag": "snare",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 76.782,
+"grid": 76.782,
+"pos": "42:4",
+"tag": "snare",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 77.004,
+"grid": 77.004,
+"pos": "42:6",
+"tag": "hat",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 77.227,
+"grid": 77.227,
+"pos": "42:8",
+"tag": "bass",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 77.449,
+"grid": 77.449,
+"pos": "42:10",
+"tag": "hat",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 77.671,
+"grid": 77.671,
+"pos": "42:12",
+"tag": "kick",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 77.893,
+"grid": 77.893,
+"pos": "42:14",
+"tag": "vocal",
+"sec": "Pre 2 \u00b7 fragments rising"
+},
+{
+"t": 78.115,
+"grid": 78.115,
+"pos": "43:0",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 78.56,
+"grid": 78.56,
+"pos": "43:4",
+"tag": "kick",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 79.004,
+"grid": 79.004,
+"pos": "43:8",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 79.449,
+"grid": 79.449,
+"pos": "43:12",
+"tag": "kick",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 79.893,
+"grid": 79.893,
+"pos": "44:0",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 80.338,
+"grid": 80.338,
+"pos": "44:4",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 80.782,
+"grid": 80.782,
+"pos": "44:8",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 81.227,
+"grid": 81.227,
+"pos": "44:12",
+"tag": "kick",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 81.449,
+"grid": 81.449,
+"pos": "44:14",
+"tag": "kick",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 81.671,
+"grid": 81.671,
+"pos": "45:0",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 82.116,
+"grid": 82.116,
+"pos": "45:4",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 82.56,
+"grid": 82.56,
+"pos": "45:8",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 83.004,
+"grid": 83.004,
+"pos": "45:12",
+"tag": "kick",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 83.449,
+"grid": 83.449,
+"pos": "46:0",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 83.893,
+"grid": 83.893,
+"pos": "46:4",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 84.116,
+"grid": 84.116,
+"pos": "46:6",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 84.338,
+"grid": 84.338,
+"pos": "46:8",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 84.56,
+"grid": 84.56,
+"pos": "46:10",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 84.782,
+"grid": 84.782,
+"pos": "46:12",
+"tag": "kick",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 85.004,
+"grid": 85.004,
+"pos": "46:14",
+"tag": "bass",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 85.227,
+"grid": 85.227,
+"pos": "47:0",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 85.671,
+"grid": 85.671,
+"pos": "47:4",
+"tag": "kick",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 86.116,
+"grid": 86.116,
+"pos": "47:8",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 86.56,
+"grid": 86.56,
+"pos": "47:12",
+"tag": "bass",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 87.004,
+"grid": 87.004,
+"pos": "48:0",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 87.449,
+"grid": 87.449,
+"pos": "48:4",
+"tag": "kick",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 87.893,
+"grid": 87.893,
+"pos": "48:8",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 88.338,
+"grid": 88.338,
+"pos": "48:12",
+"tag": "kick",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 88.56,
+"grid": 88.56,
+"pos": "48:14",
+"tag": "kick",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 88.782,
+"grid": 88.782,
+"pos": "49:0",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 89.227,
+"grid": 89.227,
+"pos": "49:4",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 89.671,
+"grid": 89.671,
+"pos": "49:8",
+"tag": "kick",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 90.116,
+"grid": 90.116,
+"pos": "49:12",
+"tag": "kick",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 90.56,
+"grid": 90.56,
+"pos": "50:0",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 90.782,
+"grid": 90.782,
+"pos": "50:2",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 91.005,
+"grid": 91.005,
+"pos": "50:4",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 91.227,
+"grid": 91.227,
+"pos": "50:6",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 91.449,
+"grid": 91.449,
+"pos": "50:8",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 91.671,
+"grid": 91.671,
+"pos": "50:10",
+"tag": "vocal",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 91.893,
+"grid": 91.893,
+"pos": "50:12",
+"tag": "bass",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 92.116,
+"grid": 92.116,
+"pos": "50:14",
+"tag": "hat",
+"sec": "Pre 3 \u00b7 tower lift"
+},
+{
+"t": 92.56,
+"grid": 92.56,
+"pos": "51:2",
+"tag": "hat",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 92.782,
+"grid": 92.782,
+"pos": "51:4",
+"tag": "bass",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 93.005,
+"grid": 93.005,
+"pos": "51:6",
+"tag": "snare",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 93.227,
+"grid": 93.227,
+"pos": "51:8",
+"tag": "snare",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 93.671,
+"grid": 93.671,
+"pos": "51:12",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 94.005,
+"grid": 94.005,
+"pos": "51:15",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 94.338,
+"grid": 94.338,
+"pos": "52:2",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 94.56,
+"grid": 94.56,
+"pos": "52:4",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 95.005,
+"grid": 95.005,
+"pos": "52:8",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 95.227,
+"grid": 95.227,
+"pos": "52:10",
+"tag": "snare",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 95.449,
+"grid": 95.449,
+"pos": "52:12",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 95.782,
+"grid": 95.782,
+"pos": "52:15",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 96.116,
+"grid": 96.116,
+"pos": "53:2",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 96.338,
+"grid": 96.338,
+"pos": "53:4",
+"tag": "bass",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 96.56,
+"grid": 96.56,
+"pos": "53:6",
+"tag": "snare",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 96.782,
+"grid": 96.782,
+"pos": "53:8",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 97.227,
+"grid": 97.227,
+"pos": "53:12",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 97.56,
+"grid": 97.56,
+"pos": "53:15",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 97.894,
+"grid": 97.894,
+"pos": "54:2",
+"tag": "bass",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 98.116,
+"grid": 98.116,
+"pos": "54:4",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 98.338,
+"grid": 98.338,
+"pos": "54:6",
+"tag": "snare",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 98.56,
+"grid": 98.56,
+"pos": "54:8",
+"tag": "bass",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 98.782,
+"grid": 98.782,
+"pos": "54:10",
+"tag": "hat",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 99.005,
+"grid": 99.005,
+"pos": "54:12",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 99.338,
+"grid": 99.338,
+"pos": "54:15",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 99.671,
+"grid": 99.671,
+"pos": "55:2",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 99.894,
+"grid": 99.894,
+"pos": "55:4",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 100.116,
+"grid": 100.116,
+"pos": "55:6",
+"tag": "snare",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 100.338,
+"grid": 100.338,
+"pos": "55:8",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 100.782,
+"grid": 100.782,
+"pos": "55:12",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 101.116,
+"grid": 101.116,
+"pos": "55:15",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 101.449,
+"grid": 101.449,
+"pos": "56:2",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 101.671,
+"grid": 101.671,
+"pos": "56:4",
+"tag": "bass",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 102.116,
+"grid": 102.116,
+"pos": "56:8",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 102.338,
+"grid": 102.338,
+"pos": "56:10",
+"tag": "snare",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 102.56,
+"grid": 102.56,
+"pos": "56:12",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 102.894,
+"grid": 102.894,
+"pos": "56:15",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 103.227,
+"grid": 103.227,
+"pos": "57:2",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 103.449,
+"grid": 103.449,
+"pos": "57:4",
+"tag": "bass",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 103.894,
+"grid": 103.894,
+"pos": "57:8",
+"tag": "kick",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 104.338,
+"grid": 104.338,
+"pos": "57:12",
+"tag": "bass",
+"sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 105.005,
+"grid": 105.005,
+"pos": "58:2",
+"tag": "kick",
+"sec": "Stop 2 \u00b7 E-T-A voice chops"
+},
+{
+"t": 105.227,
+"grid": 105.227,
+"pos": "58:4",
+"tag": "kick",
+"sec": "Stop 2 \u00b7 E-T-A voice chops"
+},
+{
+"t": 105.56,
+"grid": 105.56,
+"pos": "58:7",
+"tag": "snare",
+"sec": "Stop 2 \u00b7 E-T-A voice chops"
+},
+{
+"t": 105.783,
+"grid": 105.783,
+"pos": "58:9",
+"tag": "vocal",
+"sec": "Stop 2 \u00b7 E-T-A voice chops"
+},
+{
+"t": 106.005,
+"grid": 106.005,
+"pos": "58:11",
+"tag": "vocal",
+"sec": "Stop 2 \u00b7 E-T-A voice chops"
+},
+{
+"t": 106.227,
+"grid": 106.227,
+"pos": "58:13",
+"tag": "vocal",
+"sec": "Stop 2 \u00b7 E-T-A voice chops"
+},
+{
+"t": 106.56,
+"grid": 106.56,
+"pos": "59:0",
+"tag": "snare",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 107.005,
+"grid": 107.005,
+"pos": "59:4",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 107.449,
+"grid": 107.449,
+"pos": "59:8",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 107.894,
+"grid": 107.894,
+"pos": "59:12",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 108.116,
+"grid": 108.116,
+"pos": "59:14",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 108.338,
+"grid": 108.338,
+"pos": "60:0",
+"tag": "vocal",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 108.56,
+"grid": 108.56,
+"pos": "60:2",
+"tag": "hat",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 108.783,
+"grid": 108.783,
+"pos": "60:4",
+"tag": "snare",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 109.227,
+"grid": 109.227,
+"pos": "60:8",
+"tag": "snare",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 109.671,
+"grid": 109.671,
+"pos": "60:12",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 109.894,
+"grid": 109.894,
+"pos": "60:14",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 110.116,
+"grid": 110.116,
+"pos": "61:0",
+"tag": "snare",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 110.56,
+"grid": 110.56,
+"pos": "61:4",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 111.005,
+"grid": 111.005,
+"pos": "61:8",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 111.449,
+"grid": 111.449,
+"pos": "61:12",
+"tag": "bass",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 111.672,
+"grid": 111.672,
+"pos": "61:14",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 111.894,
+"grid": 111.894,
+"pos": "62:0",
+"tag": "snare",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 112.116,
+"grid": 112.116,
+"pos": "62:2",
+"tag": "hat",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 112.338,
+"grid": 112.338,
+"pos": "62:4",
+"tag": "snare",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 112.56,
+"grid": 112.56,
+"pos": "62:6",
+"tag": "hat",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 112.783,
+"grid": 112.783,
+"pos": "62:8",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 113.005,
+"grid": 113.005,
+"pos": "62:10",
+"tag": "hat",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 113.227,
+"grid": 113.227,
+"pos": "62:12",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 113.449,
+"grid": 113.449,
+"pos": "62:14",
+"tag": "vocal",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 113.672,
+"grid": 113.672,
+"pos": "63:0",
+"tag": "snare",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 114.116,
+"grid": 114.116,
+"pos": "63:4",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 114.56,
+"grid": 114.56,
+"pos": "63:8",
+"tag": "bass",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 115.005,
+"grid": 115.005,
+"pos": "63:12",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 115.227,
+"grid": 115.227,
+"pos": "63:14",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 115.449,
+"grid": 115.449,
+"pos": "64:0",
+"tag": "snare",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 115.672,
+"grid": 115.672,
+"pos": "64:2",
+"tag": "hat",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 115.894,
+"grid": 115.894,
+"pos": "64:4",
+"tag": "snare",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 116.338,
+"grid": 116.338,
+"pos": "64:8",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 116.783,
+"grid": 116.783,
+"pos": "64:12",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 117.005,
+"grid": 117.005,
+"pos": "64:14",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 117.227,
+"grid": 117.227,
+"pos": "65:0",
+"tag": "snare",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 117.672,
+"grid": 117.672,
+"pos": "65:4",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 118.116,
+"grid": 118.116,
+"pos": "65:8",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 118.561,
+"grid": 118.561,
+"pos": "65:12",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 118.783,
+"grid": 118.783,
+"pos": "65:14",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 119.005,
+"grid": 119.005,
+"pos": "66:0",
+"tag": "snare",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 119.227,
+"grid": 119.227,
+"pos": "66:2",
+"tag": "hat",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 119.449,
+"grid": 119.449,
+"pos": "66:4",
+"tag": "snare",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 119.672,
+"grid": 119.672,
+"pos": "66:6",
+"tag": "snare",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 119.894,
+"grid": 119.894,
+"pos": "66:8",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 120.116,
+"grid": 120.116,
+"pos": "66:10",
+"tag": "vocal",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 120.338,
+"grid": 120.338,
+"pos": "66:12",
+"tag": "kick",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 120.561,
+"grid": 120.561,
+"pos": "66:14",
+"tag": "bass",
+"sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 120.783,
+"grid": 120.783,
+"pos": "67:0",
+"tag": "snare",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 121.005,
+"grid": 121.005,
+"pos": "67:2",
+"tag": "snare",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 121.227,
+"grid": 121.227,
+"pos": "67:4",
+"tag": "bass",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 121.672,
+"grid": 121.672,
+"pos": "67:8",
+"tag": "kick",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 121.894,
+"grid": 121.894,
+"pos": "67:10",
+"tag": "vocal",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 122.116,
+"grid": 122.116,
+"pos": "67:12",
+"tag": "kick",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 122.338,
+"grid": 122.338,
+"pos": "67:14",
+"tag": "kick",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 122.561,
+"grid": 122.561,
+"pos": "68:0",
+"tag": "snare",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 123.005,
+"grid": 123.005,
+"pos": "68:4",
+"tag": "snare",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 123.227,
+"grid": 123.227,
+"pos": "68:6",
+"tag": "vocal",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 123.449,
+"grid": 123.449,
+"pos": "68:8",
+"tag": "kick",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 123.894,
+"grid": 123.894,
+"pos": "68:12",
+"tag": "kick",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 124.116,
+"grid": 124.116,
+"pos": "68:14",
+"tag": "kick",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 124.338,
+"grid": 124.338,
+"pos": "69:0",
+"tag": "hat",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 124.561,
+"grid": 124.561,
+"pos": "69:2",
+"tag": "hat",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 124.783,
+"grid": 124.783,
+"pos": "69:4",
+"tag": "kick",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 125.227,
+"grid": 125.227,
+"pos": "69:8",
+"tag": "kick",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 125.45,
+"grid": 125.45,
+"pos": "69:10",
+"tag": "vocal",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 125.672,
+"grid": 125.672,
+"pos": "69:12",
+"tag": "kick",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 125.894,
+"grid": 125.894,
+"pos": "69:14",
+"tag": "bass",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 126.116,
+"grid": 126.116,
+"pos": "70:0",
+"tag": "snare",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 126.338,
+"grid": 126.338,
+"pos": "70:2",
+"tag": "hat",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 126.561,
+"grid": 126.561,
+"pos": "70:4",
+"tag": "snare",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 126.783,
+"grid": 126.783,
+"pos": "70:6",
+"tag": "vocal",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 127.005,
+"grid": 127.005,
+"pos": "70:8",
+"tag": "kick",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 127.227,
+"grid": 127.227,
+"pos": "70:10",
+"tag": "vocal",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 127.45,
+"grid": 127.45,
+"pos": "70:12",
+"tag": "bass",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 127.672,
+"grid": 127.672,
+"pos": "70:14",
+"tag": "hat",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 127.894,
+"grid": 127.894,
+"pos": "71:0",
+"tag": "snare",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 128.116,
+"grid": 128.116,
+"pos": "71:2",
+"tag": "hat",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 128.338,
+"grid": 128.338,
+"pos": "71:4",
+"tag": "kick",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 128.783,
+"grid": 128.783,
+"pos": "71:8",
+"tag": "kick",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 129.005,
+"grid": 129.005,
+"pos": "71:10",
+"tag": "vocal",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 129.227,
+"grid": 129.227,
+"pos": "71:12",
+"tag": "bass",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 129.45,
+"grid": 129.45,
+"pos": "71:14",
+"tag": "bass",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 129.672,
+"grid": 129.672,
+"pos": "72:0",
+"tag": "snare",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 130.116,
+"grid": 130.116,
+"pos": "72:4",
+"tag": "snare",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 130.338,
+"grid": 130.338,
+"pos": "72:6",
+"tag": "vocal",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 130.561,
+"grid": 130.561,
+"pos": "72:8",
+"tag": "bass",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 131.005,
+"grid": 131.005,
+"pos": "72:12",
+"tag": "kick",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 131.227,
+"grid": 131.227,
+"pos": "72:14",
+"tag": "kick",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 131.45,
+"grid": 131.45,
+"pos": "73:0",
+"tag": "bass",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 131.672,
+"grid": 131.672,
+"pos": "73:2",
+"tag": "hat",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 131.894,
+"grid": 131.894,
+"pos": "73:4",
+"tag": "kick",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 132.116,
+"grid": 132.116,
+"pos": "73:6",
+"tag": "hat",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 132.338,
+"grid": 132.338,
+"pos": "73:8",
+"tag": "kick",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 132.561,
+"grid": 132.561,
+"pos": "73:10",
+"tag": "hat",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 132.783,
+"grid": 132.783,
+"pos": "73:12",
+"tag": "kick",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 133.005,
+"grid": 133.005,
+"pos": "73:14",
+"tag": "bass",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 133.227,
+"grid": 133.227,
+"pos": "74:0",
+"tag": "snare",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 133.45,
+"grid": 133.45,
+"pos": "74:2",
+"tag": "vocal",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 133.672,
+"grid": 133.672,
+"pos": "74:4",
+"tag": "snare",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 133.894,
+"grid": 133.894,
+"pos": "74:6",
+"tag": "hat",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 134.116,
+"grid": 134.116,
+"pos": "74:8",
+"tag": "kick",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 134.339,
+"grid": 134.339,
+"pos": "74:10",
+"tag": "hat",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 134.561,
+"grid": 134.561,
+"pos": "74:12",
+"tag": "kick",
+"sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 135.672,
+"grid": 135.672,
+"pos": "75:6",
+"tag": "vocal",
+"sec": "Outro \u00b7 two bench lamps"
+},
+{
+"t": 136.116,
+"grid": 136.116,
+"pos": "75:10",
+"tag": "vocal",
+"sec": "Outro \u00b7 two bench lamps"
+},
+{
+"t": 136.561,
+"grid": 136.561,
+"pos": "75:14",
+"tag": "hat",
+"sec": "Outro \u00b7 two bench lamps"
+},
+{
+"t": 136.783,
+"grid": 136.783,
+"pos": "76:0",
+"tag": "snare",
+"sec": "Outro \u00b7 two bench lamps"
+},
+{
+"t": 137.672,
+"grid": 137.672,
+"pos": "76:8",
+"tag": "kick",
+"sec": "Outro \u00b7 two bench lamps"
+},
+{
+"t": 138.561,
+"grid": 138.561,
+"pos": "77:0",
+"tag": "snare",
+"sec": "Outro \u00b7 two bench lamps"
+},
+{
+"t": 139.45,
+"grid": 139.45,
+"pos": "77:8",
+"tag": "kick",
+"sec": "Outro \u00b7 two bench lamps"
+},
+{
+"t": 140.339,
+"grid": 140.339,
+"pos": "78:0",
+"tag": "snare",
+"sec": "Outro \u00b7 two bench lamps"
+},
+{
+"t": 141.228,
+"grid": 141.228,
+"pos": "78:8",
+"tag": "kick",
+"sec": "Outro \u00b7 two bench lamps"
+},
+{
+"t": 142.116,
+"grid": 142.116,
+"pos": "79:0",
+"tag": "snare",
+"sec": "Outro \u00b7 two bench lamps"
+},
+{
+"t": 143.894,
+"grid": 143.894,
+"pos": "80:0",
+"tag": "snare",
+"sec": "Outro \u00b7 two bench lamps"
+},
+{
+"t": 145.672,
+"grid": 145.672,
+"pos": "81:0",
+"tag": "snare",
+"sec": "Outro \u00b7 two bench lamps"
+},
+{
+"t": 147.45,
+"grid": 147.45,
+"pos": "82:0",
+"tag": "snare",
+"sec": "Outro \u00b7 two bench lamps"
+}
+]
