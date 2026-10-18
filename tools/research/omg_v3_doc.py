@@ -89,7 +89,7 @@ Piano taps (rule 4) appear only in the outro, the only bars with neither vocal n
 
 ## Verification
 * `levels-design/validate.py`: {extra.get('validate', '?')}.
-* Scripted playthrough (headless Chrome, CDP touch simulation; not a real device): {pls}.
+* Scripted playthrough (headless Chrome, CDP touch simulation; not a real device): {pls}. {extra.get('play_note', '')}.
 * Layout and route: {extra.get('layout', '?')}.
 * Click track `deliverables/omg-clicks-v3.mp3`: the song plus two click sounds.
   * Vocal taps: a high 2.5 kHz tick.
