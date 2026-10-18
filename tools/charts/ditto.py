@@ -11,7 +11,9 @@ g = Grid('ditto'); c = Chart('ditto', g)
 import json as _json
 from common import ROOT as _ROOT
 _w2 = _json.loads((_ROOT / 'levels-design/ditto/chart.json').read_text())
-_FOLLOWS = {'synth / melody hook': 'mid', 'kick + snare drum groove': 'full', 'snare / clap backbeat': 'snare', 'vocal syllables': 'mid', 'kick drum': 'kick'}
+_FOLLOWS = {'synth / melody hook': 'mid', 'kick + snare drum groove': 'drums', 'snare / clap backbeat': 'snare', 'vocal syllables': 'mid', 'kick drum': 'drums'}
+# W2's 'kick drum' sections: several of their taps land on the snare/clap of the same groove (chartlogic: kick-band 0.25-0.33,
+# snare 0.6-0.96), so those sections are declared as the kick+snare drum groove ('drums').
 _W2_LAYER = ['synth / melody hook', 'kick + snare drum groove', 'kick + snare drum groove', 'snare / clap backbeat', 'vocal syllables',
              'snare / clap backbeat', 'kick drum', 'kick drum', 'kick drum', 'vocal syllables', 'snare / clap backbeat', 'kick + snare drum groove',
              'kick drum', 'kick + snare drum groove', 'snare / clap backbeat']
@@ -19,6 +21,35 @@ assert len(_W2_LAYER) == len(_w2['sections'])
 for sx, lay in zip(_w2['sections'], _W2_LAYER):
     c.sections.append({'t': sx['t'], 'label': sx['label'], 'kind': sx['kind'], 'follows': _FOLLOWS[lay], 'note': f'W2: {lay}'})
 c.taps = [{'t': x['t'], 'tag': x.get('tag', 'beat')} for x in _w2['taps']]
+# Intro override (parent decision 2026-10-18): W2's intro followed the synth/choir melody, but its onsets are faint in
+# the full mix (mid-band onset 0.14-0.30, full 0.08-0.24 at all 14 taps). The only clearly audible intro onsets are four
+# low kicks (kick-band onset >= 0.44 on the 8th grid: 3.889 s 0.53, 7.471 s 0.72, 12.844 s 0.44, 13.740 s 0.64), so the
+# intro follows the kick: 4 taps, long straights.
+INTRO_END = 14.6
+c.taps = [x for x in c.taps if x['t'] >= INTRO_END] + [{'t': t, 'tag': 'kick'} for t in (3.889, 7.471, 12.844, 13.74)]
+c.sections[0]['follows'] = 'kick';
+# Trim taps that fail the rhythm-logic rule (same thresholds as chartlogic.py): faint taps, off-layer taps (followed layer < 0.35
+# while another layer >= 0.6) and burst taps (gap < 0.15 s) that are not clear (< 0.6) in the full mix or the layer.
+import numpy as _np2
+_E = _np2.load(_ROOT / 'analysis/ditto.env.npz'); _H = float(_E['hop_s'])
+_ENV = {k: _E[k] / 100 for k in ['kick', 'snare', 'hat', 'mid', 'full']}; _ENV['drums'] = _np2.maximum(_ENV['kick'], _ENV['snare'])
+def _st(t, L):
+    f = int(round(t / _H)); w = int(round(0.03 / _H)); return float(_ENV[L][max(0, f - w):f + w + 1].max())
+def _sec(t): return [sx for sx in c.sections if sx['t'] <= t + 1e-6][-1]
+TRIMMED = []
+for _ in range(3):
+    c.taps.sort(key=lambda x: x['t']); T_ = [x['t'] for x in c.taps]; keep = []
+    for i, x in enumerate(c.taps):
+        L = _sec(x['t'])['follows']; sl = _st(x['t'], L); sf = _st(x['t'], 'full')
+        oth = max(_st(x['t'], k) for k in ['kick', 'snare', 'hat', 'mid'] if k != L and not (L == 'drums' and k in ('kick', 'snare')))
+        gap = min(T_[i] - T_[i - 1] if i else 9, T_[i + 1] - T_[i] if i + 1 < len(T_) else 9)
+        why = 'faint' if (sl < 0.35 and sf < 0.35 and oth < 0.5) else 'off-layer' if (sl < 0.35 and oth >= 0.6) else 'weak-burst' if (gap < 0.15 and sf < 0.6 and sl < 0.6) else None
+        if why: TRIMMED.append((x['t'], why, L, round(sl, 2), round(sf, 2)))
+        else: keep.append(x)
+    if len(keep) == len(c.taps): break
+    c.taps = keep
+print('trimmed', len(TRIMMED)); [print('  ', tr) for tr in TRIMMED]
+c.sections[0]['note'] = 'sparse intro on the 4 clearly audible low kicks (melody onsets are faint in the full mix)'
 # ---------------- route choreography (v2: replaces the old per-section rotations) ----------------
 # Elevation plan (shared with ditto_layout.py via levels-src/ditto/elevation.json):
 #   intro spirals UP around the camcorder (+5) so its 4th leg passes over the 1st; fall into the gym at the pre-chorus;
@@ -86,4 +117,4 @@ print('chosen seed', seed, st['patterns'])
 for tap, d in zip(c.taps, dirs): tap['dir'] = d
 (ROOT / 'levels-src/ditto').mkdir(parents=True, exist_ok=True)
 (ROOT / 'levels-src/ditto/elevation.json').write_text(json.dumps({'elevation': elev, 'width': [[round(T(b), 3) if b else 0, w] for b, w in WID]}, indent=1))
-c.save(notes='Rhythm: W2 audited chart (designs-w2 d14bb6a); route directions chosen by tools/charts/route.py (phrase patterns per section, legal multi-level crossings). See docs/design/levels/ditto.md')
+c.save(notes='Rhythm: W2 audited chart (designs-w2 d14bb6a); route directions chosen by tools/charts/route.py (phrase patterns per section, legal multi-level crossings). See docs/design/levels/ditto.md', meta={'bpm': g.p and 60 / g.p, 'beat0': g.b0, 'beat_period': g.p, 'old_tap_count': 181, 'source': 'designs-w2 d14bb6a', 'bursts': _w2['meta'].get('bursts')})

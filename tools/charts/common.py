@@ -45,12 +45,13 @@ class Chart:
             if 'dir' in tap and want is None: d = tap['dir']
             else: d = want or ('R' if prev == 'L' else 'L')
             tap['dir'] = d; prev = d
-    def save(self, startHeading='N', speed=None, notes=''):
+    def save(self, startHeading='N', speed=None, notes='', meta=None):
         self.taps.sort(key=lambda x: x['t'])
         self._apply_dirs()
         for a, b in zip(self.taps, self.taps[1:]):
             assert b['t'] - a['t'] >= 0.105, (a, b)
         out = {'id': self.sid, 'startHeading': startHeading, 'speed': speed or [{'t': 0, 'v': 9.0}], 'taps': self.taps, 'sections': self.sections, 'notes': notes}
+        if meta: out['meta'] = meta
         p = ROOT / f'levels-src/{self.sid}/chart.json'; p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(json.dumps(out, indent=1))
         print(f'{self.sid}: {len(self.taps)} taps; weak-onset taps: {len(self.weak)}')

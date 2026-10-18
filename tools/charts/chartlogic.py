@@ -14,21 +14,36 @@ sid = args[0]
 chart = json.load(open(opt('--chart', ROOT / f'levels-src/{sid}/chart.json')))
 g = json.load(open(ROOT / f'analysis/{sid}.grid.json'))
 P, B0, BARS = g['period'], g['beat0'], g['bars']
+# Align the 16th grid to the chart author's grid when the chart declares one (avoids false off-grid flags)
+_m = chart.get('meta', {})
+if _m.get('beat_period') or _m.get('bpm'):
+    P = _m.get('beat_period') or 60 / _m['bpm']
+    if 'beat0' in _m: B0 = _m['beat0']
+    BARS = None
+# Strengths are sampled at the tap's actual time from the per-band onset envelopes (analysis/<slug>.env.npz),
+# so they do not depend on the grid at all.
+import numpy as _np
+_E = _np.load(ROOT / f'analysis/{sid}.env.npz'); _HOP = float(_E['hop_s'])
+ENV = {k: _E[k].astype(float) / 100 for k in ['kick', 'snare', 'hat', 'mid', 'full']}
+ENV['drums'] = _np.maximum(ENV['kick'], ENV['snare'])
+NBARS = int((len(ENV['full']) * _HOP - B0) / (4 * P)) + 1
 LAYERS = ['kick', 'snare', 'hat', 'mid', 'full']
 TAGMAP = {'kick': 'kick', 'snare': 'snare', 'clap': 'snare', 'hat': 'hat', 'vocal': 'mid', 'melody': 'mid', 'bass': 'kick', 'burst': 'full', 'run': 'full', 'fill': 'full', 'accent': 'full', 'fx': 'full'}
 FAINT, CLEAR = 0.35, 0.6
 
+TAPT = {}
 def cell(t):
     q = (t - B0) / (P / 4); k = round(q); off = (q - k) * P / 4
     bar, step = divmod(k, 16)
-    if bar < 0 or bar >= len(BARS): return None
+    if bar < 0 or bar >= NBARS: return None
+    TAPT[(bar, step)] = t
     return bar, step, off
 
 def strength(bar, step, layer):
-    s = BARS[bar][layer][step]
-    # allow +-1 16th of smear for onset detection, but only half weight
-    nb = [BARS[b][layer][s2] for b, s2 in ((bar, step - 1), (bar, step + 1)) if 0 <= s2 < 16]
-    return max(s, *(0.6 * x for x in nb)) if nb else s
+    # onset strength within +-30 ms of the tap time (the tap's own time if known, else the grid cell)
+    t = TAPT.get((bar, step), B0 + (bar * 16 + step) * P / 4)
+    e = ENV[layer]; f = int(round(t / _HOP)); w = int(round(0.03 / _HOP))
+    return float(e[max(0, f - w):f + w + 1].max()) if f < len(e) else 0.0
 
 taps = chart['taps']; T = [x['t'] for x in taps]
 secs = sorted(chart.get('sections', []), key=lambda s: s['t']) or [{'t': 0, 'label': 'all', 'kind': ''}]

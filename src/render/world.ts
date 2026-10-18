@@ -499,19 +499,34 @@ export class World {
   private lastBefore(list: number[], t: number) { let lo = 0, hi = list.length - 1, r = -1e9; while (lo <= hi) { const m = (lo + hi) >> 1; if (list[m] <= t) { r = list[m]; lo = m + 1; } else hi = m - 1; } return r; }
 
   /** Scenery between the camera and the line (or the next ~1.2 s of road) fades out so the road always reads. */
+  /** Keep the line head and the road just ahead readable: any scenery whose projected bounding sphere overlaps a
+   *  protected screen region around those points, and that is nearer to the camera than the point, fades out
+   *  (cutaway). Screen-space so it also catches objects that are not exactly on the camera->head ray. */
   private fadeOccluders(t: number, dt: number) {
     if (!this.rig || !this.head || !this.route) return;
-    const cam = this.rig.cam.position; const targets = [this.head.position, this.v3(posAt(this.route, Math.min(this.level!.duration, t + 0.7))), this.v3(posAt(this.route, Math.min(this.level!.duration, t + 1.4)))];
-    const k = Math.min(1, dt * 8);
+    const camN = this.rig.cam; const cam = camN.position;
+    const view = camN.getViewMatrix(); const eng = this.scene.getEngine();
+    const aspect = eng.getRenderWidth() / Math.max(1, eng.getRenderHeight());
+    const th = Math.tan(camN.fov / 2);
+    const dur = this.level!.duration;
+    // protected points: head (bigger radius), road ahead at 0.5/1.0/1.6 s (smaller)
+    const pts: [Vector3, number][] = [[this.head.position, 0.2]];
+    for (const dtA of [0.5, 1.0, 1.6]) pts.push([this.v3(posAt(this.route, Math.min(dur, t + dtA))), 0.12]);
+    const P = pts.map(([p, r]) => { const v = Vector3.TransformCoordinates(p, view); return { x: v.x / (v.z * th * aspect), y: v.y / (v.z * th), z: v.z, r }; });
+    const k = Math.min(1, dt * 10);
     for (const o of this.objects) {
       if (o.hidden || !o.br || o.def.kind === 'text' || o.def.onroad) { if (o.fade !== 1 && !o.hidden) this.setFade(o, 1); continue; }
-      const c = o.node.position.add(o.bc!); let occ = false;
-      for (const p of targets) {
-        const d = p.subtract(cam); const L2 = d.lengthSquared(); const u = Math.max(0, Math.min(1, Vector3.Dot(c.subtract(cam), d) / L2));
-        if (u > 0.97) continue; // behind the target
-        const q = cam.add(d.scale(u)); if (Vector3.Distance(q, c) < o.br! * 0.8 + 0.6) { occ = true; break; }
-      }
-      const want = occ ? 0.16 : 1; const f = o.fade! + (want - o.fade!) * k;
+      const c = o.node.position.add(o.bc!); const v = Vector3.TransformCoordinates(c, view);
+      let occ = false;
+      if (v.z > 0.5) {
+        const sx = v.x / (v.z * th * aspect), sy = v.y / (v.z * th), sr = o.br! / (v.z * th);
+        for (const q of P) {
+          if (v.z - o.br! * 0.5 >= q.z) continue;                 // object is behind the protected point
+          const dx = (sx - q.x) * aspect, dy = sy - q.y;           // compare in height-normalised units
+          if (Math.hypot(dx, dy) < sr * 0.85 + q.r) { occ = true; break; }
+        }
+      } else if (Vector3.Distance(c, cam) < o.br! + 1) occ = true; // camera inside/next to the object
+      const want = occ ? 0.12 : 1; const f = o.fade! + (want - o.fade!) * k;
       if (Math.abs(f - o.fade!) > 0.003 || (want === 1 && o.fade !== 1 && Math.abs(f - 1) < 0.01)) this.setFade(o, Math.abs(f - 1) < 0.01 ? 1 : f);
     }
   }

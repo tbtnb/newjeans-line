@@ -57,6 +57,7 @@ for i in range(nbars):
             vals.append(round(float(e[max(0, f - w):f + w + 1].max()) if f < len(e) else 0, 2))
         row[k] = vals
     bars.append(row)
+np.savez_compressed(ROOT/f'analysis/{sid}.env.npz', hop_s=hop / sr, **{k: (np.clip(v, 0, 1.5) * 100).astype(np.uint8) for k, v in env.items()})
 json.dump({'period': period, 'bpm': 60 / period, 'beat0': beat0, 'bars': bars}, open(ROOT/f'analysis/{sid}.grid.json', 'w'))
 sym = lambda v: ' ' if v < 0.15 else '.' if v < 0.3 else 'o' if v < 0.5 else 'O' if v < 0.75 else '#'
 lo, hi = (int(args[1]), int(args[2])) if len(args) >= 3 else (0, nbars)
