@@ -20,7 +20,7 @@ export interface Palette {
 }
 
 export interface ObjectAnim { t: number; mode: string; dur?: number; }
-export interface Part { kind: string; pos?: number[]; size?: number[]; rot?: number[]; color?: string; color2?: string; }
+export interface Part { kind: string; pos?: number[]; size?: number[]; rot?: number[]; color?: string; color2?: string; texture?: string; src?: string; mode?: string; alpha?: boolean; }
 export interface SceneObject {
   id?: string; t?: number; side?: number; along?: number; y?: number; kind: string;
   size?: number[]; rot?: number | number[]; color?: string; color2?: string; parts?: Part[];
@@ -30,7 +30,11 @@ export interface SceneObject {
   worldPos?: number[];
   /** part of / under the road (bridges, decks): never pushed off the road */
   onroad?: boolean;
+  /** internal: row item anchored to the actual road edge rather than the mean corridor */
+  hug?: boolean;
   radius?: number;
+  /** kind 'image': texture path relative to the level folder (art/x.png); mode upright|flat|billboard */
+  src?: string; mode?: string; alpha?: boolean; texture?: string;
   // row
   t0?: number; t1?: number; spacing?: number; bothSides?: boolean; item?: SceneObject;
 }
@@ -42,7 +46,8 @@ export interface Layout {
   palette: Palette;
   road: { width: { t: number; w: number }[]; height?: number; reveal: { t: number; mode: string; lead: number }[] };
   elevation?: Elevation[];
-  sections?: { t: number; label?: string; palette?: Partial<Palette>; camera?: string; note?: string }[];
+  sections?: { t: number; label?: string; palette?: Partial<Palette>; camera?: string; note?: string; backdrop?: string }[];
+  art?: { backdrop?: string; ground?: { src: string; scale?: number }; road?: { src: string } };
   camera?: CameraCue[];
   objects?: SceneObject[];
   events?: SceneEvent[];

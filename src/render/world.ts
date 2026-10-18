@@ -14,7 +14,7 @@ import { CameraRig } from './camera';
 const LINE_W = 1.0, LINE_H = 0.9;
 const smooth = (x: number) => (x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x));
 
-interface Obj { node: TransformNode; def: SceneObject; t: number; base: Vector3; baseScale: Vector3; baseRotY: number; hidden: boolean; id?: string; lit?: { mat: StandardMaterial; base: Color3 }[]; glow?: number; glowColor?: Color3; }
+interface Obj { node: TransformNode; def: SceneObject; t: number; base: Vector3; baseScale: Vector3; baseRotY: number; hidden: boolean; id?: string; lit?: { mat: StandardMaterial; base: Color3 }[]; glow?: number; glowColor?: Color3; bc?: Vector3; br?: number; fade?: number; }
 interface Fx { mesh: Mesh; t0: number; dur: number; kind: string; vel?: Vector3; spin?: Vector3; from?: Vector3; }
 
 function radialTexture(scene: Scene, name: string, inner = 'rgba(255,255,255,1)', outer = 'rgba(255,255,255,0)', square = false) {
@@ -72,6 +72,9 @@ export class World {
   mode: 'menu' | 'play' = 'menu';
   fps = 60; private fpsAcc = 0; private fpsN = 0;
   onSky: ((top: string, bottom: string) => void) | null = null;
+  /** full-screen backdrop image URL (or null) behind the transparent canvas */
+  onBackdrop: ((url: string | null) => void) | null = null;
+  private backdrops: { t: number; src: string }[] = []; private backdropShown: string | null | undefined;
   completeAt = -1;
 
   constructor(canvas: HTMLCanvasElement) {
@@ -132,7 +135,8 @@ export class World {
     this.level = level; this.game = game; this.route = game.route;
     const L = level.layout; const route = game.route;
     this.root = new TransformNode('level', this.scene);
-    this.mats = new Materials(this.scene);
+    this.mats = new Materials(this.scene); this.mats.artBase = `./levels/${level.id}/`;
+    this.backdrops = [...(L.art?.backdrop ? [{ t: -1, src: L.art.backdrop }] : []), ...(L.sections ?? []).filter(s => s.backdrop).map(s => ({ t: s.t, src: s.backdrop! }))].sort((a, b) => a.t - b.t); this.backdropShown = undefined;
     this.env = new EnvTimeline(L);
     this.beats = L.beats ?? []; this.kicks = L.kicks ?? [];
     this.events = [...(L.events ?? [])].sort((a, b) => a.t - b.t);
@@ -140,11 +144,13 @@ export class World {
     // road
     this.road = new Road(this.scene, route, L, t => this.env!.settled(t));
     this.road.body.parent = this.root; this.road.top.parent = this.root;
+    if (L.art?.road?.src) { const rm = this.road.top.material as StandardMaterial; rm.diffuseTexture = new Texture(this.mats.artBase + L.art.road.src, this.scene); }
     // ground
     const pal = this.env.base;
     if (pal.groundY !== null && pal.groundY !== undefined) {
       this.ground = CreateGround('ground', { width: 1600, height: 1600, subdivisions: 1 }, this.scene);
       this.groundMat = new StandardMaterial('groundM', this.scene); this.groundMat.specularColor = Color3.Black();
+      if (L.art?.ground?.src) { const gt = new Texture(this.mats.artBase + L.art.ground.src, this.scene); const rep = 1600 / (L.art.ground.scale ?? 40); gt.uScale = rep; gt.vScale = rep; this.groundMat.diffuseTexture = gt; }
       this.ground.material = this.groundMat; this.ground.position.y = pal.groundY; this.ground.isPickable = false; this.ground.parent = this.root;
     }
     // player line
@@ -161,9 +167,11 @@ export class World {
         const v = route.spans[0].v; const step = (o.spacing ?? 1.5) / v;
         for (let t = o.t0; t <= o.t1 + 1e-6; t += step) for (const s of o.bothSides ? [1, -1] : [1]) {
           const side = (o.side ?? 2.5) * s;
-          const a = flowAnchor(route, t, side, 0, o.y ?? 0); const sz = o.item.size ?? [1, 1, 1];
-          if (grid.hits(a.pos.x, a.pos.z, Math.max(sz[0], sz[2]) / 2, a.pos.y, a.pos.y + sz[1])) continue;
-          expanded.push({ ...o.item, t, side, y: o.y ?? 0, react: o.item.react ?? o.react, appear: o.item.appear ? { ...o.item.appear, t: t + (o.item.appear.t ?? 0) } : o.appear ? { ...o.appear, t: o.appear.t + (t - o.t0) * ((o as any).cascade ?? 0) } : undefined, id: o.id });
+          // rows close to the road line the actual road (DL edge rows); far rows follow the mean corridor
+          const hug = Math.abs(side) < 5;
+          const a = hug ? anchor(route, t, side, 0, o.y ?? 0) : flowAnchor(route, t, side, 0, o.y ?? 0); const sz = o.item.size ?? [1, 1, 1];
+          if (grid.hits(a.pos.x, a.pos.z, Math.max(sz[0], sz[2]) / 2 + 0.6, a.pos.y - 3, a.pos.y + sz[1] + 3)) continue;
+          expanded.push({ ...o.item, t, side, hug, y: o.y ?? 0, react: o.item.react ?? o.react, appear: o.item.appear ? { ...o.item.appear, t: t + (o.item.appear.t ?? 0) } : o.appear ? { ...o.appear, t: o.appear.t + (t - o.t0) * ((o as any).cascade ?? 0) } : undefined, id: o.id });
         }
       } else expanded.push(o);
     }
@@ -239,6 +247,7 @@ export class World {
     }
     let pos, baseYaw;
     if (side === 0) { const a = anchor(this.route, t, 0, o.along ?? 0, o.y ?? 0); pos = a.pos; baseYaw = Math.atan2(HEAD_VEC[a.heading][0], HEAD_VEC[a.heading][1]); }
+    else if (o.hug) { const a = anchor(this.route, t, side, o.along ?? 0, o.y ?? 0); pos = a.pos; baseYaw = Math.atan2(HEAD_VEC[a.heading][0], HEAD_VEC[a.heading][1]); }
     else { const a = flowAnchor(this.route, t, side, o.along ?? 0, o.y ?? 0); pos = a.pos; baseYaw = a.yaw; }
     if (o.worldPos) { pos = { x: o.worldPos[0], y: o.worldPos[1] ?? 0, z: o.worldPos[2] ?? 0 }; baseYaw = 0; }
     const holder = new TransformNode(o.id ?? 'obj', this.scene); holder.parent = this.root;
@@ -248,7 +257,9 @@ export class World {
     if (Array.isArray(o.rot)) { holder.rotation.x = (o.rot[0] ?? 0) * Math.PI / 180; holder.rotation.z = (o.rot[2] ?? 0) * Math.PI / 180; }
     buildKind(this.scene, this.mats, o, holder);
     for (const m of holder.getChildMeshes()) { m.isPickable = false; m.doNotSyncBoundingInfo = true; }
-    const obj: Obj = { node: holder, def: o, t, base: holder.position.clone(), baseScale: new Vector3(1, 1, 1), baseRotY: rotY, hidden: false, id: o.id };
+    holder.computeWorldMatrix(true); const bv = holder.getHierarchyBoundingVectors(true);
+    const bc = bv.min.add(bv.max).scale(0.5).subtract(holder.position), br = bv.max.subtract(bv.min).length() / 2;
+    const obj: Obj = { node: holder, def: o, t, base: holder.position.clone(), baseScale: new Vector3(1, 1, 1), baseRotY: rotY, hidden: false, id: o.id, bc, br: Number.isFinite(br) ? br : 0, fade: 1 };
     this.objects.push(obj);
     if (o.id) { const l = this.byId.get(o.id) ?? []; l.push(obj); this.byId.set(o.id, l); }
   }
@@ -383,6 +394,7 @@ export class World {
     // environment
     const pal: Palette = this.env.at(t);
     this.applyPalette(pal);
+    if (this.backdrops.length) { let b: string | null = null; for (const x of this.backdrops) if (x.t <= t) b = x.src; if (b !== this.backdropShown) { this.backdropShown = b; this.onBackdrop?.(b ? this.mats!.artBase + b : null); } }
     // road reveal
     this.road?.update(t);
     // line
@@ -423,6 +435,7 @@ export class World {
     for (const c of this.crowns) if (!c.taken) { c.node.rotation.y = tt * 1.5; c.node.position.y = c.base.y + Math.sin(tt * 2) * 0.15; }
     // scenery animation
     this.animateObjects(t);
+    this.fadeOccluders(t, dt);
     this.runEvents(t);
     // fx
     for (let i = this.fx.length - 1; i >= 0; i--) {
@@ -484,6 +497,25 @@ export class World {
   private minRoadY(t: number) { let m = 0; for (const s of this.route!.spans) { if (s.t0 > t) break; if (!s.air) m = Math.min(m, s.y0, s.t1 <= t ? s.y1 : s.y0); } return m; }
 
   private lastBefore(list: number[], t: number) { let lo = 0, hi = list.length - 1, r = -1e9; while (lo <= hi) { const m = (lo + hi) >> 1; if (list[m] <= t) { r = list[m]; lo = m + 1; } else hi = m - 1; } return r; }
+
+  /** Scenery between the camera and the line (or the next ~1.2 s of road) fades out so the road always reads. */
+  private fadeOccluders(t: number, dt: number) {
+    if (!this.rig || !this.head || !this.route) return;
+    const cam = this.rig.cam.position; const targets = [this.head.position, this.v3(posAt(this.route, Math.min(this.level!.duration, t + 0.7))), this.v3(posAt(this.route, Math.min(this.level!.duration, t + 1.4)))];
+    const k = Math.min(1, dt * 8);
+    for (const o of this.objects) {
+      if (o.hidden || !o.br || o.def.kind === 'text' || o.def.onroad) { if (o.fade !== 1 && !o.hidden) this.setFade(o, 1); continue; }
+      const c = o.node.position.add(o.bc!); let occ = false;
+      for (const p of targets) {
+        const d = p.subtract(cam); const L2 = d.lengthSquared(); const u = Math.max(0, Math.min(1, Vector3.Dot(c.subtract(cam), d) / L2));
+        if (u > 0.97) continue; // behind the target
+        const q = cam.add(d.scale(u)); if (Vector3.Distance(q, c) < o.br! * 0.8 + 0.6) { occ = true; break; }
+      }
+      const want = occ ? 0.16 : 1; const f = o.fade! + (want - o.fade!) * k;
+      if (Math.abs(f - o.fade!) > 0.003 || (want === 1 && o.fade !== 1 && Math.abs(f - 1) < 0.01)) this.setFade(o, Math.abs(f - 1) < 0.01 ? 1 : f);
+    }
+  }
+  private setFade(o: Obj, f: number) { o.fade = f; for (const m of o.node.getChildMeshes()) m.visibility = f; }
 
   private animateObjects(t: number) {
     const lb = this.lastBefore(this.beats, t), lk = this.lastBefore(this.kicks, t);

@@ -1,4 +1,4 @@
-# NewJeans Line v2: level data schema (v2.4)
+# NewJeans Line v2: level data schema (v2.5)
 
 Owner: the integrator (the assistant that maintains the `rebuild` branch). This file is the contract between design workers and the engine.
 Canonical copy: `levels-design/SCHEMA.md` on branch `rebuild` of tbtnb/newjeans-line. A mirror lives at `/workspace/newjeans-line-designs/SCHEMA.md`.
@@ -52,12 +52,13 @@ Recreated on 2026-10-18 after the box reset. The content matches v2.2 plus the a
 }
 ```
 - `taps[].t`: seconds of song time, 3 decimals, strictly increasing.
-  - Minimum gap 0.15 s (ERROR below that). Dense runs at 8ths (≈ 0.22 s at 134 BPM) are normal; 16ths only for short, clearly audible runs.
+  - Minimum gap **0.105 s** (ERROR below that; v2.5). Dense runs at 8ths (≈ 0.22 s at 134 BPM) are normal. **Short 16th-note bursts (gaps ≈ 0.11–0.13 s, 3–8 taps, peak ≈ 400–460 CPM)** are wanted where the audio clearly has them: drum fills, hi-hat/snare rolls, rapid vocal syllables. They must never be used on silence or as filler.
+  - Calibration from the original game (dlfm-wiki.top): The Racing has 357 taps in 2:24 (2.48 taps/s, average 220 CPM, peak 440). Chaos peaks at 408 CPM, Amusement Park at 512 CPM, and Chinese Garden's narrowest window is ±45.8 ms. Our overall densities already match; the peaks should reach about 400–460 CPM in the hardest sections.
   - First tap ≥ 1.0 s. Last tap ≤ duration − 1 s.
 - `tag`: kick | snare | clap | hat | vocal | melody | bass | fx | accent (informational; used in reports).
 - `kind` of a section: intro | verse | pre | chorus | post | drop | bridge | break | outro.
 - Extra keys (`bpm`, `grid`, `meta`, `judgment`, ...) are allowed and ignored by the engine.
-- **Judging (engine):** window = clamp(0.45 × min(gap to previous tap, gap to next tap), 0.065, 0.11) s each side. PERFECT is ±0.04 s. Duplicate events within 0.045 s are ignored.
+- **Judging (engine, v2.5 per-tap):** window = min(0.5·g, clamp(0.45·g, 0.045, 0.11)) s each side, where g = min(gap to previous tap, gap to next tap). A 0.11 s burst gets ±49.5 ms, 8ths at 0.22 s get ±99 ms, and sparse taps get ±110 ms. Neighbouring windows never touch, so one tap can never count twice. PERFECT is ±0.04 s. Duplicate events within 0.045 s are ignored.
   - An early tap outside the window, a tap with nothing to hit, or no tap by the deadline = fail.
   - A late failure is shown 0.15 s after the deadline. That is input-latency grace, not a bigger window.
   - Road width does **not** change the window. Road width is purely visual and difficulty-feel.
@@ -154,4 +155,5 @@ Put images in `levels-design/<slug>/art/` and reference them by the relative pat
 - v2.0: base schema. v2.0a: shared analysis. v2.1: relative `yaw`/`worldYaw`, kinds `pyramid`/`text`, auto % markers, rows auto-skip.
 - v2.2: overlap rule (error only if ≥ 1.5 s apart and height difference < 3).
 - v2.3 (2026-10-18): `worldPos`, `onroad`, `radius`, `collectibleColors`, finish `gate`/`custom` + `color`, `particles` event, targeted `light` (every/level/color), persistent raise/lower + `converge`. **Air-time rule:** the engine shortens flights to land 0.05 s before the next tap, and the validator requires ≥ 0.35 s. Judging is grace-based on event timestamps.
+- v2.5 (2026-10-18): minimum gap 0.105 s (16th bursts allowed), per-tap judgment windows ≤ half the local gap (floor 45 ms), and the validator prints peak and average CPM.
 - v2.4 (2026-10-18): art assets (`art.backdrop`, `art.ground`, `art.road`, kind `image`, `parts[].texture`, `sections[].backdrop`). Workers commit to `designs-wN` under `levels-design/<slug>/`.

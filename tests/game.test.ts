@@ -93,3 +93,18 @@ test('falls/jumps land before the next tap (no turning in mid-air)', async () =>
   const landY = r.spans.find(s => s.t0 >= airEnd - 1e-6 && !s.air)!.y0;
   assert.ok(Math.abs(landY + 4) < 1e-6, 'lands at -4, got ' + landY);
 });
+
+test('16th bursts at 0.11 s: per-tap windows never touch; every real tap lands, duplicates are ignored', () => {
+  const burst = [2, 2.11, 2.22, 2.33, 2.44, 2.55];
+  const g = new Game(mk(burst)); g.prepare(); g.start();
+  const w = g.windows;
+  for (let i = 0; i + 1 < burst.length; i++) assert.ok(burst[i] + w[i] < burst[i + 1] - w[i + 1], 'windows disjoint');
+  assert.ok(Math.abs(w[2] - 0.0495) < 1e-9);
+  for (const [i, t] of burst.entries()) {
+    assert.equal(g.tap(t + (i % 2 ? 0.03 : -0.03)), 'hit', 'tap ' + i);
+    assert.equal(g.tap(t + (i % 2 ? 0.03 : -0.03) + 0.008), 'ignored', 'double-trigger ' + i);
+  }
+  assert.equal(g.cursor, burst.length);
+  const h = new Game(mk(burst)); h.prepare(); h.start();
+  assert.equal(h.tap(2.0), 'hit'); assert.equal(h.tap(2.165), 'fail', 'a tap between two burst windows is a fail, never a double count'); assert.equal(h.failKind, 'late');
+});
