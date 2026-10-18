@@ -43,7 +43,7 @@ export class SceneC {
   constructor(private scene: Scene, parent: TransformNode, route: Route, spec: SceneCSpec, o: { duration: number; widthAt: (t: number) => number; roadH: number; hits: (x: number, z: number, r: number, y0: number, y1: number) => boolean; beats: number[]; base: string; tier: Tier }) {
     this.spec = spec; this.tier = o.tier;
     this.root = new TransformNode('scenec', scene); this.root.parent = parent;
-    this.plc = place(spec, route, { duration: o.duration, widthAt: o.widthAt, roadH: o.roadH, hits: o.hits, beats: o.beats });
+    this.plc = place(spec, route, { duration: o.duration, widthAt: o.widthAt, roadH: o.roadH, hits: o.hits, beats: o.beats, density: spec.density });
     this.zoneCols = spec.zones.map(z => z.colors.map(hexRGB));
     this.tm = placeholders(spec);
     const m = new StandardMaterial('paperC', scene);
@@ -157,7 +157,7 @@ export class SceneC {
   private applyLod(e: SetE) { e.far?.setEnabled(e.on && (e.lodFar || !e.near)); e.near?.setEnabled(e.on && !e.lodFar && !!e.near); }
   private setOn(e: SetE, on: boolean) { if (e.on === on) return; e.on = on; e.node.setEnabled(on); this.applyLod(e); }
   private animSet(e: SetE, t: number, beatK: number, cam: Vector3 | null) {
-    const d = e.def; const on = t >= d.popAt - 1.5 && t <= d.t + 4; this.setOn(e, on); if (!on) return;
+    const d = e.def; const on = t >= d.popAt - 1.5 && t <= d.t + 10; this.setOn(e, on); if (!on) return;
     e.hinge.rotation.x = -Math.PI / 2 * (1 - spring(t - d.popAt));                     // pop-up book: lies flat, springs upright
     if (cam) { const far = Vector3.Distance(cam, e.node.position) > TIERS[this.tier].lod; if (far !== e.lodFar) { e.lodFar = far; this.applyLod(e); } }
     if (e.lodFar) return;

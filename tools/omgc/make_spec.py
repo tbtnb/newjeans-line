@@ -37,12 +37,12 @@ ALIAS = {'巨型弹出兔子+爱心': '弹出巨兔+爱心', '无数字纸时钟
  '螺旋纸塔': '螺旋纸塔(中)', '坐着的兔子雕像': '兔子雕像', '纸山+星星挂饰': '纸山片', '巨书封面翻开(开场)': '巨书封面', 'DROP 巨页翻开·城堡弹起': '巨型立体城堡',
  '书页爱心终点门': '书页爱心终点门', '五只兔子一家': '五只兔子一家'}
 # per layer: lateral distance from the road EDGE [near, far] m, height offset range, and pop-up anim default
-LAYER = {
- 'ground': dict(near=[0.4, 16.0], y=[0, 0]),
- 'mid':    dict(near=[3.0, 10.0], y=[0, 0]),
- 'land':   dict(near=[10.0, 25.0], y=[0, 0]),
- 'sky':    dict(near=[12.0, 45.0], y=[7, 22]),
- 'anim':   dict(near=[1.5, 14.0], y=[1.0, 6.0]),
+LAYER = {   # dressing pass (in-game vs key renders): decor hugs the road and reads at the gameplay camera's scale
+ 'ground': dict(near=[0.3, 9.0], y=[0, 0], scale=[1.4, 2.2]),
+ 'mid':    dict(near=[1.5, 7.0], y=[0, 0], scale=[1.1, 1.6]),
+ 'land':   dict(near=[8.0, 18.0], y=[0, 0], scale=[1.0, 1.0]),
+ 'sky':    dict(near=[12.0, 45.0], y=[7, 22], scale=[0.8, 1.25]),
+ 'anim':   dict(near=[1.0, 9.0], y=[1.0, 5.0], scale=[1.2, 1.8]),
 }
 PAL = {   # zone environment (sky/fog/page) from DESIGN.md light notes
  'z01': dict(skyTop='#CFE3E6', skyBottom='#FFE2C8', fog='#F3F1EA', ground='#EEF3E6', light='#FFF4E0', ambient='#DDEFE6', fogStart=45, fogEnd=150),
@@ -74,7 +74,7 @@ for z in Z.ZONES:
             if layer == 'land': continue   # landmarks are placed as set pieces below
             L = LAYER[layer]; near = list(L['near'])
             if shape == 'far': near = [55.0, 90.0]
-            layers.append(dict(asset=aid, layer=layer, count=count, near=near, y=L['y'], scale=[0.8, 1.25], colors=[0, 1, 2, 3, 4]))
+            layers.append(dict(asset=aid, layer=layer, count=count, near=near, y=L['y'], scale=L['scale'], colors=[0, 1, 2, 3, 4]))
     # set pieces: blueprint pieces matched to assets by label; landmarks the blueprint doesn't place are spaced through the zone
     sets = []
     land = [A[n][0] for n, c, _ in Z.LAYERS[zid].get('land', []) for _ in range(c)]
@@ -88,20 +88,20 @@ for z in Z.ZONES:
             if not name: continue
             aid = A[name][0]
         is_land = aid in land; used.append(aid)
-        sets.append(dict(t=t, side=side, asset=aid, dist=12.0 if is_land else 5.0, scale=1.0, pop='spring', label=label))
+        sets.append(dict(t=t, side=side, asset=aid, dist=8.0 if is_land else 3.0, scale=1.0, pop='spring', label=label))
     rest = list(land)
     for u in used:
         if u in rest: rest.remove(u)
     for k, aid in enumerate(rest):
         t = z['t0'] + (k + 0.6) / (len(rest) + 0.4) * (z['t1'] - z['t0'])
-        sets.append(dict(t=round(t, 2), side=1 if (len(sets) + k) % 2 == 0 else -1, asset=aid, dist=14.0, scale=1.0, pop='spring', label='landmark'))
+        sets.append(dict(t=round(t, 2), side=1 if (len(sets) + k) % 2 == 0 else -1, asset=aid, dist=9.0, scale=1.0, pop='spring', label='landmark'))
     sets.sort(key=lambda d: d['t'])
     for i in range(len(sets) - 1):   # two big pieces within 3 s never share a side
         if sets[i + 1]['t'] - sets[i]['t'] < 3 and sets[i + 1]['side'] == sets[i]['side']: sets[i]['side'] *= -1
     moments = [dict(t=t, label=label) for t, side, label in z['pieces'] if side == 0]
     zones.append(dict(id=zid, key=z['key'], t0=z['t0'], t1=z['t1'], name=z['cn'], colors=z['pal'], palette=PAL[zid], layers=layers, setpieces=sets, moments=moments))
 spec = dict(version=1, source='levels-design/omg/redesign-v3/C/zones_c.py (omg-design-v3)', chunk=20, window=dict(behind=3, ahead=8),
-            clear=dict(ground=0.3, groundMaxH=0.3, near=1.0), assets=assets, zones=zones)
+            clear=dict(ground=0.3, groundMaxH=1.2, near=1.0), density=dict(ground=2.0, mid=1.6, anim=1.5), assets=assets, zones=zones)
 # design asset sheets (levels-design/omg/redesign-v3/C/assets/<design id>/spec.json): their size / tri budget win over the table
 CAT = json.load(open(os.path.join(here, '..', 'models', 'catalog.json')))
 DESIGN_IDS = {c['id']: c['design'] for c in CAT if 'item' not in c}
