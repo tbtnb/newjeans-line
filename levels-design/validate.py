@@ -3,7 +3,8 @@
 Usage:  python3 validate.py <slug> [<slug> ...] [--dir DIR] [--repo REPO] [--no-preview]
   --dir  folder that contains <slug>/chart.json + layout.json (default: folder of this script, or $LEVEL_DIR)
   --repo repo root (for public/audio/<slug>.mp3 durations; default: parent of this script's folder, else /workspace/newjeans-line-rebuild)
-Exit code 1 if any ERROR."""
+Exit code 1 if any ERROR.
+FORWARD rule (hard): progress along the map's overall axis never decreases and every 16 s window moves mostly forward."""
 import json, sys, os, math, subprocess
 from pathlib import Path
 SCRIPT = Path(__file__).resolve().parent
@@ -41,6 +42,38 @@ def speed_at(speeds, t):
     for s in speeds:
         if s['t'] <= t + 1e-9: v = s['v']
     return v
+
+FWD_WINDOW, FWD_RATIO = 16.0, 1.5
+def forward_check(nodes):
+    """errors if progress along the map's overall axis ever decreases, or if any 16 s window's net movement is not mostly forward
+    (forward component < 1.5 x lateral component, i.e. > 33.7 deg off the axis)."""
+    out = []
+    X, Z = nodes[-1][1] - nodes[0][1], nodes[-1][2] - nodes[0][2]
+    if math.hypot(X, Z) < 1e-6: return ['map has no net forward movement']
+    ang = math.degrees(math.atan2(Z, X)); snap = round(ang / 45.0) * 45.0
+    g = (math.cos(math.radians(snap)), math.sin(math.radians(snap)))
+    prog = [n[1] * g[0] + n[2] * g[1] for n in nodes]; best = prog[0]; bad = 0
+    for n, p in zip(nodes, prog):
+        if p < best - 1e-6:
+            bad += 1
+            if bad <= 5: out.append(f'FORWARD: backward progress {best - p:.1f} m along the map axis ({snap:.0f} deg) at {n[0]:.2f}s')
+        best = max(best, p)
+    if bad > 5: out.append(f'FORWARD: ... {bad} backward segments total')
+    def pos(t):
+        for (ta, xa, za, _), (tb, xb, zb, _) in zip(nodes, nodes[1:]):
+            if ta <= t <= tb:
+                f = (t - ta) / max(tb - ta, 1e-9); return xa + f * (xb - xa), za + f * (zb - za)
+        return nodes[-1][1], nodes[-1][2]
+    T1 = nodes[-1][0]; t = 0.0; wbad = 0
+    while t + FWD_WINDOW <= T1 + 1e-9:
+        (xa, za), (xb, zb) = pos(t), pos(t + FWD_WINDOW); dx, dz = xb - xa, zb - za
+        f = dx * g[0] + dz * g[1]; l = abs(-dx * g[1] + dz * g[0])
+        if f < FWD_RATIO * l:
+            wbad += 1
+            if wbad <= 5: out.append(f'FORWARD: {t:.0f}-{t + FWD_WINDOW:.0f}s moves {math.degrees(math.atan2(l, f)):.0f} deg off the map direction (max {math.degrees(math.atan(1 / FWD_RATIO)):.0f})')
+        t += 2.0
+    if wbad > 5: out.append(f'FORWARD: ... {wbad} off-direction windows total')
+    return out
 
 def build(chart, dur):
     speeds = sorted(chart.get('speed', []) or [{'t': 0, 'v': 9.0}], key=lambda s: s['t'])
@@ -136,6 +169,11 @@ def main(slug):
                 if hits <= 8: errs.append(f'road overlaps itself on the same level: seg@{segs[i][0][0]:.2f}s and seg@{segs[j][0][0]:.2f}s (dy {dyv:.1f} < 3)')
             else: crossings += 1
     if hits > 8: errs.append(f'... {hits} overlaps total')
+    # FORWARD rule (hard, user 2026-10-18 "地图还是往前走的"): the whole map moves forward in ONE overall direction, like the
+    # original Dancing Line: zig-zags/staircases are fine, backward progress never, and no section may swing the general direction.
+    # axis g = net start->end direction, snapped to the nearest cardinal (zig-zag maps) or diagonal (staircase maps).
+    fwd_err = forward_check(nodes)
+    errs += fwd_err
     secs = sorted(chart.get('sections', []), key=lambda s: s['t'])
     print(f'== {slug}  duration {dur:.2f}s  taps {len(taps)}  dirs R/L {dirs.count("R")}/{dirs.count("L")}  multi-level crossings {crossings}')
     gaps = [b - a for a, b in zip(taps, taps[1:])]
