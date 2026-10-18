@@ -133,9 +133,10 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
     const drop = (z.moments ?? []).find(m => /DROP/i.test(m.label));
     for (const sp of z.setpieces) {
       const A = spec.assets[sp.asset]; if (!A || sp.t > o.duration) continue;
-      const sc = sp.scale ?? 1, w = o.widthAt(sp.t), r = A.h * sc * 0.45; const side = sp.side || 1;
+      // heroes: footprint from the model width and hugging the road (the portrait key camera is only ~20 m wide at its look point)
+      const hero = !!sp.hero, sc = sp.scale ?? 1, w = o.widthAt(sp.t), r = hero ? (A.w ?? A.h) * sc * 0.42 : A.h * sc * 0.45; const side = sp.side || 1;
       let off = side * (w / 2 + sp.dist + r); let a = flowAnchor(route, sp.t, off, 0, 0);
-      for (let k = 0; k < 24 && o.hits(a.pos.x, a.pos.z, r + 1.5, a.pos.y - 1, a.pos.y + A.h * sc); k++) { off += side * 1.5; a = flowAnchor(route, sp.t, off, 0, 0); }
+      for (let k = 0; k < 24 && o.hits(a.pos.x, a.pos.z, hero ? r * 0.8 + 0.8 : r + 1.5, a.pos.y - 1, a.pos.y + A.h * sc); k++) { off += side * (hero ? 1.0 : 1.5); a = flowAnchor(route, sp.t, off, 0, 0); }
       const rp = anchor(route, sp.t).pos;
       const popAt = drop && sp.t - drop.t < 8 && sp.t >= drop.t - 0.5 ? drop.t : snap(sp.t - 4);
       const sc0 = chunks[chunkAt(sp.t)];

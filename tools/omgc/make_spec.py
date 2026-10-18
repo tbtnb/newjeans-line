@@ -238,7 +238,7 @@ for z in zones:
     for aid, t, side, sc, ent in HERO.get(z['id'], []):
         base = next((sp for sp in z['setpieces'] if sp['asset'] == aid and not sp.get('hi')), None)
         z['setpieces'] = [sp for sp in z['setpieces'] if sp['asset'] != aid]   # drop duplicates and twins of the hero
-        d = dict(base or dict(asset=aid, pop='spring', label='hero'), t=t, side=side, scale=sc, dist=4.0, hero=True, entourage=[list(e) for e in ent if e[0] in assets])
+        d = dict(base or dict(asset=aid, pop='spring', label='hero'), t=t, side=side, scale=sc, dist=1.5, hero=True, entourage=[list(e) for e in ent if e[0] in assets])
         z['setpieces'] = sorted(z['setpieces'] + [d], key=lambda x: x['t'])
 paint = os.path.join(glbdir, 'paint')
 for z in zones:
