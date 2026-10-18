@@ -7681,7 +7681,7 @@
     {
      "asset": "lantern-tower",
      "layer": "mid",
-     "count": 7,
+     "count": 3,
      "near": [
       1.5,
       7.0
@@ -7961,7 +7961,7 @@
     {
      "asset": "balloons",
      "layer": "mid",
-     "count": 25,
+     "count": 12,
      "near": [
       1.5,
       7.0
@@ -7985,7 +7985,7 @@
     {
      "asset": "bunting",
      "layer": "mid",
-     "count": 25,
+     "count": 12,
      "near": [
       1.5,
       7.0
@@ -8154,7 +8154,7 @@
     {
      "asset": "lantern-tower",
      "layer": "mid",
-     "count": 5,
+     "count": 2,
      "near": [
       40.0,
       85.0
@@ -8209,7 +8209,7 @@
     {
      "asset": "hedge",
      "layer": "mid",
-     "count": 6,
+     "count": 3,
      "near": [
       2.0,
       5.0

@@ -324,6 +324,11 @@ for z in zones:
     for k, w in (('mushroom-house', 1.6), ('bunny-house', 1.2), ('lantern-tower', 0.6), ('firefly-lamp', 1.4), ('lily-lamp', 0.8)): W[k] = max(W.get(k, 0), w)
     z['impostors']['sprites'] = [[k, w] for k, w in W.items()]
     z['nightLevel'] = 1.45   # night carpet texture brightened
+for z in zones:   # v6 budget: z08 (carousel + wheel + village) over 150k -> lantern towers x0.4, high-tier balloons / bunting / hedges x0.5
+    if z['id'] != 'z08': continue
+    for ly in z['layers']:
+        if ly['asset'] == 'lantern-tower': ly['count'] = max(1, round(ly['count'] * 0.4))
+        elif ly['asset'] in ('balloons', 'bunting', 'hedge') and ly.get('hi'): ly['count'] = max(1, round(ly['count'] * 0.5))
 out = os.path.join(here, '..', '..', 'levels-src', 'omg', 'scene-c.json')
 json.dump(spec, open(out, 'w'), ensure_ascii=False, indent=1)
 n = sum(l['count'] for z in zones for l in z['layers']); print(out, 'zones', len(zones), 'assets', len(assets), 'modelled', sum(bool(a['model']) for a in assets.values()), 'scatter instances', n, 'set pieces', sum(len(z['setpieces']) for z in zones))
