@@ -8,7 +8,8 @@ export const PERFECT = 0.04;
 export const DEBOUNCE = 0.045;
 /** Input events are delivered to JS after a frame or two; their timestamps are what we judge. The clock-driven
  * "late" failure therefore waits this long past the deadline so a queued (but in-time) event can still land. */
-export const LATE_GRACE = 0.15;      // duplicate hardware events closer than this to an accepted tap are ignored
+export const LATE_GRACE = 0.15;
+export const LATE_GRACE_MAX = 0.4;
 
 export type Status = 'ready' | 'playing' | 'paused' | 'failed' | 'complete';
 export type FailKind = 'late' | 'early' | 'extra';
@@ -27,6 +28,8 @@ export function judgmentWindows(taps: number[]): number[] {
 
 /** Pure rhythm/route state machine. Time is ALWAYS the song time from the audio clock. */
 export class Game {
+  /** grace before a missing tap is declared late; the app widens it on slow frames (input is delivered once per frame) */
+  lateGrace = LATE_GRACE;
   readonly level: LevelData;
   readonly route: Route;
   readonly taps: number[];
@@ -88,7 +91,7 @@ export class Game {
     t = Math.max(this.time, t);
     if (this.cursor < this.taps.length) {
       const deadline = this.taps[this.cursor] + this.windows[this.cursor];
-      if (t > deadline + LATE_GRACE) { this.collect(deadline); this.fail('late', deadline); return; }
+      if (t > deadline + this.lateGrace) { this.collect(deadline); this.fail('late', deadline); return; }
     }
     this.collect(t);
     this.time = t;
