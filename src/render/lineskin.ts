@@ -20,7 +20,7 @@ const hex3 = (h: string) => Color3.FromHexString(h.length === 7 ? h : '#ffffff')
  *  run never makes the pattern swim), optional iridescent sheen and animated film grain. */
 class LineSkinPlugin extends MaterialPluginBase {
   tex: Texture | null = null;
-  sheen = 0; grain = 0; texLen = 2; time = 0;
+  sheen = 0; grain = 0; texLen = 2; time = 0; gloss = 0;
   private on = false; private hasMap = false;
   constructor(material: Material) {
     super(material, 'LineSkin', 200, { SKINTEX: false, SKINMAP: false });
@@ -33,11 +33,11 @@ class LineSkinPlugin extends MaterialPluginBase {
   prepareDefines(defines: MaterialDefines) { (defines as any).SKINTEX = this.on; (defines as any).SKINMAP = this.on && this.hasMap; }
   getSamplers(samplers: string[]) { samplers.push('skinSampler'); }
   getUniforms() {
-    return { ubo: [{ name: 'skinFx', size: 4, type: 'vec4' }], fragment: '#ifdef SKINTEX\nuniform vec4 skinFx;\n#endif\n' };
+    return { ubo: [{ name: 'skinFx', size: 4, type: 'vec4' }, { name: 'skinFx2', size: 4, type: 'vec4' }], fragment: '#ifdef SKINTEX\nuniform vec4 skinFx;\nuniform vec4 skinFx2;\n#endif\n' };
   }
   bindForSubMesh(ubo: UniformBuffer, _s: Scene, _e: AbstractEngine, _sm: SubMesh) {
     if (!this.on) return;
-    ubo.updateFloat4('skinFx', this.sheen, this.grain, this.time, this.texLen);
+    ubo.updateFloat4('skinFx', this.sheen, this.grain, this.time, this.texLen); ubo.updateFloat4('skinFx2', this.gloss, 0, 0, 0);
     if (this.hasMap && this.tex) ubo.setTexture('skinSampler', this.tex);
   }
   getCustomCode(shaderType: string): { [pointName: string]: string } | null {
@@ -60,6 +60,8 @@ float skF=pow(1.0-clamp(dot(normalW,viewDirectionW),0.0,1.0),1.4);
 color.rgb+=skinFx.x*(0.5+0.5*cos(6.2832*(skF*1.3+vSkinZ*0.11+skinFx.z*0.05+vec3(0.0,0.33,0.67))))*(0.3+0.9*skF);
 float skG=fract(sin(dot(floor(gl_FragCoord.xy*0.5)+floor(skinFx.z*24.0)*vec2(17.0,31.0),vec2(12.9898,78.233)))*43758.5453);
 color.rgb+=skinFx.y*(skG-0.5);
+float skR=pow(1.0-clamp(dot(normalW,viewDirectionW),0.0,1.0),3.0);
+color.rgb+=skinFx2.x*(skR*0.8+0.25*pow(max(dot(reflect(-viewDirectionW,normalW),normalize(vec3(-0.4,0.9,0.3))),0.0),24.0));
 #endif
 `,
     };
@@ -81,7 +83,7 @@ export class LineSkin {
   private decor: TransformNode | null = null; private parts: DecorPart[] = []; private decorMats: StandardMaterial[] = [];
   private burstPS: ParticleSystem | null = null; private deathPS: ParticleSystem | null = null;
   private burstAt = new Vector3(); private deathAt = new Vector3();
-  private lastLine = ''; private lastTap = -10;
+  private lastLine = ''; private lastTap = -10; private lastWall = 0;
 
   constructor(scene: Scene, spark: Texture | null) { this.scene = scene; this.spark = spark; }
 
@@ -124,7 +126,7 @@ export class LineSkin {
     const hp = def.headTex === undefined ? def.tex : def.headTex; const hmap = hp ? this.tex(hp, def.pixel) : null;
     for (const [mat, plug, col, m] of [[this.headMat, this.headPlug, def.head, hmap], [this.trailMat, this.trailPlug, def.trail, map]] as const) {
       plug.set(skinned, m);
-      plug.sheen = def.sheen ?? 0; plug.grain = def.grain ?? 0; plug.texLen = def.texLen ?? 2;
+      plug.sheen = def.sheen ?? 0; plug.gloss = def.gloss ?? 0; plug.grain = def.grain ?? 0; plug.texLen = def.texLen ?? 2;
       if (skinned) {
         const c = hex3(col); mat.diffuseColor.copyFrom(c); mat.emissiveColor.copyFrom(c).scaleInPlace(def.emissive);
         mat.specularColor.set(def.specular, def.specular, def.specular); mat.specularPower = def.specPower;
@@ -157,8 +159,8 @@ export class LineSkin {
       case 'ears': {
         const outer = this.mat('#eef7ff', 0.3, 1, 0.35), inner = this.mat(c1, 0.35), nose = this.mat(c2, 0.4);
         for (const sg of [-1, 1]) {
-          const e = this.part(CreateSphere('ear', { diameter: 1, segments: 10 }, s), outer, 'ear', sg * 0.24, 0.78, -0.12, sg); e.scaling.set(0.26, 0.78, 0.16); e.rotation.z = -sg * 0.16;
-          const i = this.part(CreateSphere('earIn', { diameter: 1, segments: 8 }, s), inner, 'ear', sg * 0.245, 0.77, -0.04, sg); i.scaling.set(0.14, 0.54, 0.06); i.rotation.z = -sg * 0.16;
+          const e = this.part(CreateSphere('ear', { diameter: 1, segments: 10 }, s), outer, 'ear', sg * 0.24, 0.86, -0.12, sg); e.scaling.set(0.27, 0.95, 0.16); e.rotation.z = -sg * 0.16;
+          const i = this.part(CreateSphere('earIn', { diameter: 1, segments: 8 }, s), inner, 'ear', sg * 0.245, 0.85, -0.04, sg); i.scaling.set(0.15, 0.68, 0.06); i.rotation.z = -sg * 0.16;
         }
         this.part(CreateSphere('nose', { diameter: 0.13, segments: 8 }, s), nose, 'static', 0, 0.06, 0.5);
         this.part(CreateSphere('tail', { diameter: 0.3, segments: 8 }, s), outer, 'static', 0, -0.05, -0.55);
@@ -219,7 +221,7 @@ export class LineSkin {
   private buildParticles() {
     this.burstPS?.dispose(false); this.deathPS?.dispose(false); this.burstPS = this.deathPS = null;
     const d = this.def;
-    if (d.burst.count > 0) this.burstPS = this.makePS(d.burst, d.burst.count * 6, this.burstAt);
+    if (d.burst.count > 0) this.burstPS = this.makePS(d.burst, d.burst.count * 10, this.burstAt);
     if (d.shatter.count > 0) this.deathPS = this.makePS(d.shatter, d.shatter.count + 4, this.deathAt);
   }
 
@@ -244,6 +246,10 @@ export class LineSkin {
       this.headMat.emissiveColor.copyFrom(lc).scaleInPlace(0.25); this.trailMat.emissiveColor.copyFrom(lc).scaleInPlace(0.18);
     }
     const wall = performance.now() / 1000;
+    // particle ageing in real seconds: World renders without engine.runRenderLoop, so the animation ratio is fixed at 1
+    // and a fixed updateSpeed would make bursts live 2-3x longer on slow devices (and fill the pool)
+    const dt = this.lastWall ? Math.min(0.1, Math.max(0, wall - this.lastWall)) : 1 / 60; this.lastWall = wall;
+    if (this.burstPS) this.burstPS.updateSpeed = dt; if (this.deathPS) this.deathPS.updateSpeed = dt;
     if (this.headPlug) this.headPlug.time = wall; if (this.trailPlug) this.trailPlug.time = wall;
     if (!this.decor || !this.head) return;
     this.decor.setEnabled(headVisible && this.head.isEnabled());

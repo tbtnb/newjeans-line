@@ -20,7 +20,7 @@ async function open(w, h, skin) {
   return { ctx, page };
 }
 
-const skins = await (async () => { const { ctx, page } = await open(400, 400); const ids = await page.evaluate(() => import('/src/skins.ts').then(m => m.SKINS.map(s => s.id)).catch(() => null)); await ctx.close(); return ids; })()
+const skins = A.skins ? A.skins.split(',') : await (async () => { const { ctx, page } = await open(400, 400); const ids = await page.evaluate(() => import('/src/skins.ts').then(m => m.SKINS.map(s => s.id)).catch(() => null)); await ctx.close(); return ids; })()
   ?? (A.skins ?? 'classic,bunny,denim,bubble-gum,phoning,film,supernatural').split(',');
 
 const W = +(A.w ?? 540), H = +(A.h ?? 960);
@@ -29,6 +29,8 @@ for (const skin of skins) {
   await page.evaluate(i => window.__nj.selectLevel(i), LEVEL);
   await page.waitForFunction(() => window.__nj.level && window.__nj.audio.ready, null, { timeout: 60000 });
   const saved = await page.evaluate(() => window.__nj.save.settings.skin);
+  // --camScale 0.6: closer camera framing on the head (same knob as play.mjs)
+  await page.evaluate(([cs, q]) => { const w = window.__nj.world; w.__camScale = cs; if (q) w.setQuality(q); }, [+(A.camScale ?? 0.6), A.quality ?? null]);
   await page.waitForTimeout(800);
   await page.evaluate(t => window.__nj.preview(t), FROM);
   await page.waitForFunction(() => window.__nj.state === 'ready');
