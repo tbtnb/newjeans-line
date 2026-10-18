@@ -7,8 +7,8 @@
   "z10"
  ],
  "size_m": {
-  "w": 4.5,
-  "d": 1.8,
+  "w": 4.6,
+  "d": 1.6,
   "h": 3
  },
  "size_target_m": {
@@ -63,18 +63,20 @@
  },
  "views_check": {
   "consistency": {
-   "height": 0.021,
-   "width": 0.132,
-   "depth": 0.293
+   "height": 0.005,
+   "width": 0.139,
+   "depth": 0.165
   },
   "drawing_vs_target": {
-   "front": 0.56,
+   "front": 0.57,
    "side": 0.68
   },
-  "ok": false,
+  "ok": true,
+  "note": "",
+  "views_file": "views3.jpg",
   "size": [
-   4.5,
-   1.8,
+   4.6,
+   1.6,
    3
   ]
  },

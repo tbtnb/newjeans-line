@@ -7,8 +7,8 @@
   "z08"
  ],
  "size_m": {
-  "w": 11.0,
-  "d": 5.7,
+  "w": 10.7,
+  "d": 4.9,
   "h": 13
  },
  "size_target_m": {
@@ -63,18 +63,20 @@
  },
  "views_check": {
   "consistency": {
-   "height": 0.01,
-   "width": 0.263,
-   "depth": 0.151
+   "height": 0.005,
+   "width": 0.199,
+   "depth": 0.049
   },
   "drawing_vs_target": {
-   "front": 1.1,
-   "side": 1.32
+   "front": 1.07,
+   "side": 1.11
   },
-  "ok": false,
+  "ok": true,
+  "note": "",
+  "views_file": "views2.jpg",
   "size": [
-   11.0,
-   5.7,
+   10.7,
+   4.9,
    13
   ]
  },

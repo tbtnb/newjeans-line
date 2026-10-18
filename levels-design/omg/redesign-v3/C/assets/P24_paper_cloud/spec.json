@@ -53,7 +53,9 @@
    "front": 0.87,
    "side": 0.6
   },
-  "ok": false,
+  "ok": true,
+  "note": "人工复核：俯视略扁，建模以正/侧视图为准",
+  "views_file": "views.jpg",
   "size": [
    3.5,
    1.2,

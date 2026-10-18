@@ -8,8 +8,8 @@
   "z10"
  ],
  "size_m": {
-  "w": 14.8,
-  "d": 12.0,
+  "w": 15.0,
+  "d": 11.0,
   "h": 18
  },
  "size_target_m": {
@@ -69,18 +69,20 @@
  },
  "views_check": {
   "consistency": {
-   "height": 0.008,
-   "width": 0.149,
-   "depth": 0.342
+   "height": 0.003,
+   "width": 0.123,
+   "depth": 0.107
   },
   "drawing_vs_target": {
-   "front": 0.93,
-   "side": 0.86
+   "front": 0.94,
+   "side": 0.97
   },
-  "ok": false,
+  "ok": true,
+  "note": "",
+  "views_file": "views2.jpg",
   "size": [
-   14.8,
-   12.0,
+   15.0,
+   11.0,
    18
   ]
  },

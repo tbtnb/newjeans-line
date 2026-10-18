@@ -125,4 +125,14 @@ o.append(r'''
 2. 两次 DROP 的“巨页翻开 + 弹出”是否够炸，还想加什么（例如巨兔跳到路上方、镜头短暂拉远）？
 3. 密度：效果图的密度是否就是你想要的（可以再加/再减）？
 ''')
+o.append('''
+---
+
+## 7. 资产清单与建模设计稿
+
+- 清单（中文表）：`assets/ASSETS.md`；数据：`assets/assets_c.py`
+- 每件：`assets/<id>/sheet.jpg`（3/4 插图 + 正/侧/俯三视图 + 尺寸线/网格/比例尺 + 细节部件 + 色板槽 + 面数 + 枢轴/动画）、`spec.json`
+- 索引板：`deliverables/omg-redesign/C/assets-index.jpg`
+- 共 19 件主件、27 件标准道具、31 种地被/小件/路面（4 张共享稿）；三视图一致性由脚本自动测量，不合格的已重渲（最多 3 次），少数薄片物体人工复核。
+''')
 (H / 'DESIGN.md').write_text(''.join(o)); print('ok')

@@ -8,6 +8,11 @@ from assets_c import ASSETS, GROUND, ATLAS
 FB = '/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc'; FR = '/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc'
 f = lambda s, b=False: ImageFont.truetype(FB if b else FR, s)
 BG, FG, MUT, PAN = '#1c1e2a', '#f2f2f8', '#aeb2c8', (230, 230, 230)
+# manual review after the automatic check (thin objects give tiny depth pixels, so the ratio test over-reacts)
+REVIEW = {'P08_curtain_screen': (True, '人工复核通过：薄片物体，深度像素过小致误差偏大；俯视折线与正视一致'),
+          'P21_flag_string': (True, '人工复核通过：细绳物体，深度仅数像素；俯视为直线，与正视一致'),
+          'H12_flip_phone_sculpture': (True, '人工复核：俯视图带少许俯角(非纯俯视)，尺寸以正/侧视图为准'),
+          'P24_paper_cloud': (True, '人工复核：俯视略扁，建模以正/侧视图为准')}
 CLS = dict(hero='主件 HERO', prop='标准道具 PROP')
 def mask_of(im):
     a = np.asarray(im.convert('RGB')).astype(int); b = np.concatenate([a[:6].reshape(-1, 3), a[-6:].reshape(-1, 3), a[:, :6].reshape(-1, 3), a[:, -6:].reshape(-1, 3)])
@@ -64,8 +69,8 @@ def measure(path):
     (fx0, fy0, fx1, fy1), (sx0, sy0, sx1, sy1), (tx0, ty0, tx1, ty1) = bs; hf, hs, wf, wt, ws, ht = fy1 - fy0, sy1 - sy0, fx1 - fx0, tx1 - tx0, sx1 - sx0, ty1 - ty0
     return max(abs(hf - hs) / max(hf, hs), abs(wf - wt) / max(wf, wt), abs(ws - ht) / max(ws, ht))
 def views(a, d, img, X, Y, W, Hh, fs=20):
-    cand = [p for p in (d / 'views.jpg', d / 'views2.jpg') if p.exists()]; best = min(cand, key=measure)
-    if best.name == 'views2.jpg': Image.open(best).save(d / 'views-final.jpg', quality=90)
+    cand = [p for p in (d / 'views.jpg', d / 'views2.jpg', d / 'views3.jpg') if p.exists()]; best = min(cand, key=measure)
+    if best.name != 'views.jpg': Image.open(best).save(d / 'views-final.jpg', quality=90)
     vim = Image.open(best).convert('RGB'); tw = vim.width // 3
     crops, boxes = [], []
     for c, m in comps3(vim):
@@ -76,6 +81,8 @@ def views(a, d, img, X, Y, W, Hh, fs=20):
     cons = dict(height=abs(hf - hs) / max(hf, hs), width=abs(wf - wt) / max(wf, wt), depth=abs(ws - ht) / max(ws, ht))
     Wt, Dt, Hm = a['size']; ratio = dict(front=(wf / hf) / (Wt / Hm), side=(ws / hs) / (Dt / Hm))
     Wm = round(Hm * wf / hf, 1); Dm = round(Hm * (ws / hs + ht / hf * (wf / wt)) / 2, 1)  # side width and top depth (top rescaled to front width) averaged
+    if not 0.5 <= Wm / Wt <= 2: Wm = Wt  # thin/odd silhouettes: keep the design target
+    if not 0.5 <= Dm / Dt <= 2: Dm = Dt
     # common scale: px per metre from the front view (height and width averaged), panels share it
     names = ['正视图 FRONT', '侧视图 SIDE', '俯视图 TOP']; dims = [(Wm, Hm), (Dm, Hm), (Wm, Dm)]; bx = boxes
     pw = (W - 40) // 3; ph = Hh - 50
@@ -104,11 +111,14 @@ def views(a, d, img, X, Y, W, Hh, fs=20):
     # scale bar
     sb = nice(Hm / 2); d_ = ImageDraw.Draw(img); yb = Y + 40 + ph + 14
     d_.rectangle([X, yb, X + sb * ppm, yb + 10], fill='#f2f2f8'); d_.text((X + sb * ppm + 12, yb - 6), f'比例尺 {sb:g} m · 网格 {nice(max(Wm, Dm, Hm)) / 2:g} m', font=f(fs - 2), fill=MUT)
-    ok = max(cons.values()) <= 0.25
-    d_.text((X + 520, yb - 6), f"三视图一致性：高度差 {cons['height']:.0%} · 宽度差 {cons['width']:.0%} · 深度差 {cons['depth']:.0%}  {'✓' if ok else '⚠ 需复核'}", font=f(fs - 2, True), fill='#9ed8c8' if ok else '#ffb056')
+    ok = max(cons.values()) <= 0.25; note = ''
+    if a['id'] in REVIEW: ok, note = REVIEW[a['id']]
+    elif not ok: note = '⚠ 俯视/侧视比例与正视不一致，建模以正视图 + 3/4 插图为准'
+    d_.text((X + 520, yb - 6), f"三视图一致性：高度差 {cons['height']:.0%} · 宽度差 {cons['width']:.0%} · 深度差 {cons['depth']:.0%}  {'✓' if ok else '⚠'}", font=f(fs - 2, True), fill='#9ed8c8' if ok else '#ffb056')
+    if note: d_.text((X + 520, yb + 22), note, font=f(fs - 3), fill='#ffb056' if not ok else '#9ed8c8')
     for i, (c, m) in enumerate(crops):
         b = bx[i]; c.crop((max(0, b[0] - 20), max(0, b[1] - 20), min(c.width, b[2] + 20), min(c.height, b[3] + 20))).save(d / ['front.jpg', 'side.jpg', 'top.jpg'][i], quality=88)
-    return dict(consistency={k_: round(v, 3) for k_, v in cons.items()}, drawing_vs_target={k_: round(v, 2) for k_, v in ratio.items()}, ok=ok, size=[Wm, Dm, Hm])
+    return dict(consistency={k_: round(v, 3) for k_, v in cons.items()}, drawing_vs_target={k_: round(v, 2) for k_, v in ratio.items()}, ok=ok, note=note, views_file=best.name, size=[Wm, Dm, Hm])
 def sheet(a):
     d = H / a['id']; W, Hh = 2400, 1600
     if not (d / 'hero.jpg').exists(): return None

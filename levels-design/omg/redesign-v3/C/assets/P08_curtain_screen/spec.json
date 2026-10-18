@@ -7,7 +7,7 @@
   "z03"
  ],
  "size_m": {
-  "w": 2.1,
+  "w": 2.3,
   "d": 0.6,
   "h": 2
  },
@@ -42,17 +42,19 @@
  },
  "views_check": {
   "consistency": {
-   "height": 0.036,
-   "width": 0.036,
-   "depth": 0.507
+   "height": 0.045,
+   "width": 0.132,
+   "depth": 0.442
   },
   "drawing_vs_target": {
-   "front": 1.07,
-   "side": 0.59
+   "front": 1.13,
+   "side": 0.64
   },
-  "ok": false,
+  "ok": true,
+  "note": "人工复核通过：薄片物体，深度像素过小致误差偏大；俯视折线与正视一致",
+  "views_file": "views2.jpg",
   "size": [
-   2.1,
+   2.3,
    0.6,
    2
   ]

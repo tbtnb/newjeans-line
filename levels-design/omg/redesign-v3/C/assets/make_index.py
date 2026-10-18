@@ -9,17 +9,19 @@ f = lambda s, b=False: ImageFont.truetype(FB if b else FR, s)
 def chk(id):
     p = H / id / 'spec.json'
     if not p.exists(): return None
-    return json.loads(p.read_text()).get('views_check')
+    j = json.loads(p.read_text()); c = j.get('views_check')
+    if c: c['size'] = [j['size_m'][k] for k in 'wdh']
+    return c
 L = ['# OMG 方案 C · 资产清单与建模设计稿\n\n', '> 设计阶段（不改游戏代码）。每件主件/标准道具一张建模设计稿：3/4 插图 + 正/侧/俯三视图（同一比例、网格、尺寸线、比例尺）+ 细节部件 + 色板槽 + 面数预算 + 枢轴/动画；地被与小件按 7–8 件一张共享设计稿。\n',
      '> 渲染：Codex（Mac mini，gpt-6.1-sol，high）；合成脚本 `build_sheets.py`；数据 `assets_c.py`；每件目录 `assets/<id>/`（sheet.jpg、hero/views/front/side/top/parts.jpg、spec.json、prompts.md）。\n',
      '> 单位：游戏单位 m（路宽 ≈2.2，线头 1）。面数：主件 2–8k，道具 200–1.5k，地被 2–200。三视图一致性由脚本自动测量（正/侧高度、正/俯宽度、侧/俯深度的像素差，≤25% 记 ✓）。\n\n',
      '## 共享色板图集\n\n', ' '.join(f'`{k} {v}`' for k, v in ATLAS.items()), '\n\n']
 for cls, title in (('hero', '## 主件 Hero'), ('prop', '## 标准道具 Props')):
-    L.append(f'\n{title}\n\n| 编号 | 名称 | 区域 | 尺寸 W×D×H (m) | 面数 | 动画/枢轴 | 色板槽 | 三视图 | 设计稿 |\n|---|---|---|---|---|---|---|---|---|\n')
+    L.append(f'\n{title}\n\n| 编号 | 名称 | 区域 | 尺寸 W×D×H (m，按三视图) | 面数 | 动画/枢轴 | 色板槽 | 三视图 | 设计稿 |\n|---|---|---|---|---|---|---|---|---|\n')
     for a in [x for x in ASSETS if x['cls'] == cls]:
-        c = chk(a['id']); cs = '—' if not c else ('✓' if c['ok'] else '⚠') + f" {max(c['consistency'].values()):.0%}"
+        c = chk(a['id']); cs = '—' if not c else ('✓' if c['ok'] else '⚠') + f" {max(c['consistency'].values()):.0%}" + (f"（{c['note']}）" if c.get('note') else '')
         an = '；'.join(f'{p}@{q}:{m}' for p, q, m in a['pivots'])
-        L.append(f"| {a['id'].split('_')[0]} | {a['cn']} | {','.join(a['zones'])} | {'×'.join(f'{v:g}' for v in a['size'])} | {a['tris']:,} | {an} | {' '.join(a['colors'])} | {cs} | [sheet]({a['id']}/sheet.jpg) |\n")
+        L.append(f"| {a['id'].split('_')[0]} | {a['cn']} | {','.join(a['zones'])} | {'×'.join(f'{v:g}' for v in (c['size'] if c else a['size']))} | {a['tris']:,} | {an} | {' '.join(a['colors'])} | {cs} | [sheet]({a['id']}/sheet.jpg) |\n")
 L.append('\n## 地被 / 小件 / 路面套件（共享设计稿）\n\n| 设计稿 | 内容（≈尺寸 m / 面数） |\n|---|---|\n')
 for g in GROUND: L.append(f"| [{g['id']}]({g['id']}/sheet.jpg) {g['cn']} | {'、'.join(f'{c}({s:g}/{t})' for e, c, s, t in g['items'])} |\n")
 nh = sum(1 for a in ASSETS if a['cls'] == 'hero'); npr = len(ASSETS) - nh; ng = sum(len(g['items']) for g in GROUND)
