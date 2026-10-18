@@ -1,81 +1,90 @@
-"""H01 弹出立体城堡 Pop-up Castle (z04 drop landmark, z10 reprise) - built to the three-view sheet
-levels-design/omg/redesign-v3/C/assets/H01_popup_castle (size 14.8 x 12 x 18 m incl. book base + flags, budget 6000 tris).
-Front faces -Y. Pivots (spec.json): root = page fold (whole pops up on the DROP), tower0..4 = tower bases (staggered scale-y pop,
-1/8 beat apart), flag0..4 = pole tops (swing +-15 deg on the beat). Windows are lamp-coloured cut-outs (glow pulse = engine side)."""
-BUDGET = 6000
-CREAM, CREAM2, BLUSH, BLUSH2, LAV, LAV2, GOLD, LAMP, PINK, COVER = '#FFF3DE', '#F6E6CF', '#FFC7DA', '#F9B6CB', '#B9A6F0', '#CFC0FA', '#F7D98B', '#FFC968', '#FF6FAE', '#F08CA8'
-PAGE = 0.8   # page top (castle stands on the open book)
+"""H01 Pop-up Castle; size 15 x 11 x 18 m, budget 6000 triangles.
+Pivots: root at book fold; tower0..4 at bases; flag0..4 nested at pole tops.
+SIMPLIFICATIONS: luminous windows use lamp-coloured inset meshes, page engraving is
+layered geometry, tiny masonry joints omitted; pennants have fixed sculpted waves.
+"""
+import bpy,math
+BUDGET=6000
 
-def book(P):
-    parts = [P.box('cover', (14.8, 12.0, 0.22), loc=(0, 0, 0), color=COVER)]
-    for s in (-1, 1):   # two page blocks, gently sloped into the spine (V), gold fore-edge
-        parts.append(P.prism(f'pages{s}', [(0, 0.22), (s * 7.1, 0.22), (s * 7.1, 0.62), (s * 3.0, 0.85), (0, 0.6)][::s], 11.4, loc=(0, 0, 0), color=lambda c, n: CREAM if n.z > 0.5 else CREAM2, side_color=None))
-        parts.append(P.box(f'edge{s}', (0.12, 11.4, 0.4), loc=(s * 7.1, 0, 0.22), color=GOLD))
-        for y in (-5.75, 5.75): parts.append(P.box(f'corner{s}{y}', (0.7, 0.5, 0.28), loc=(s * 7.05, y, 0), color=GOLD))
-    return parts
-
-def windows(P, name, x, y, z0, r, n=1, w=0.42, h=1.1):
-    out = []
-    for k in range(n):
-        out.append(P.prism(f'{name}win{k}', [(-w / 2, 0), (w / 2, 0), (w / 2, h * 0.7), (0, h), (-w / 2, h * 0.7)], 0.06, loc=(x, y - r - 0.02, z0 + k * (h + 0.9)), color=LAMP))
-    return out
-
-def tower(P, i, x, y, r, top, roof, banner=False):
-    """octagonal tower: body (blush/cream facets), gold crenellated rim, lavender cone, gold finial + pole, heart flag"""
-    two = lambda a, b: (lambda c, n: a if n.x < -0.2 or n.y < -0.6 else b)
-    body = [P.cyl(f't{i}body', r, top - PAGE, 8, loc=(x, y, PAGE), color=two(CREAM, BLUSH))]
-    body.append(P.cyl(f't{i}base', r * 1.12, 0.7, 8, loc=(x, y, PAGE), color=GOLD))
-    body.append(P.cyl(f't{i}rim', r * 1.2, 0.55, 8, loc=(x, y, top), color=two(BLUSH, BLUSH2)))
-    body.append(P.cyl(f't{i}rimg', r * 1.24, 0.12, 8, loc=(x, y, top + 0.55), color=GOLD))
-    body.append(P.cyl(f't{i}roof', r * 1.18, roof, 8, loc=(x, y, top + 0.67), r2=0, color=two(LAV, LAV2)))
-    body += windows(P, f't{i}', x, y, PAGE + (top - PAGE) * 0.42, r * 0.93, n=1 if top < 9 else 2)
-    if banner: body.append(P.prism(f't{i}ban', [(-0.38, 0), (0.38, 0), (0.38, 1.7), (0, 1.45), (-0.38, 1.7)][::-1], 0.04, loc=(x + r * 0.35, y - r * 0.95, PAGE + 1.4), color=PINK))
-    apex = top + 0.67 + roof
-    body.append(P.ico(f't{i}fin', 0.16, loc=(x, y, apex), color=GOLD, subdiv=1))
-    body.append(P.cyl(f't{i}pole', 0.06, 1.25, 4, loc=(x, y, apex), color=GOLD))
-    fl = P.prism(f't{i}flag', [(0, 0)] + [(0.9 + px * 0.85, pz * 0.85 - 0.75) for px, pz in P.heart(1.0, 10)], 0.05, loc=(x + 0.05, y, apex + 1.2), color=PINK)
-    flag = P.pivot(f'flag{i}', (x, y, apex + 1.2), [fl])
-    return P.pivot(f'tower{i}', (x, y, PAGE), body + [flag])
-
-def crenels(P, name, x0, x1, y, z, n, color=BLUSH2, depth=0.5):
-    step = (x1 - x0) / n
-    return [P.box(f'{name}{k}', (step * 0.55, depth, 0.5), loc=(x0 + step * (k + 0.5), y, z), color=color) for k in range(n)]
-
-def build(P, spec):
-    parts = book(P)
-    # back wall + inner hall (blush), side walls, front wall
-    parts.append(P.box('backwall', (8.8, 0.9, 7.8), loc=(0, 2.8, PAGE), color=BLUSH)); parts += crenels(P, 'bcr', -4.4, 4.4, 2.8, PAGE + 7.8, 9)
-    parts.append(P.box('hall', (6.0, 3.6, 6.4), loc=(0, 0.9, PAGE), color=lambda c, n: BLUSH if n.y < -0.5 else BLUSH2))
-    for s in (-1, 1):
-        parts.append(P.box(f'sidewall{s}', (0.8, 4.2, 5.6), loc=(s * 4.35, 0.7, PAGE), color=BLUSH2)); parts += crenels(P, f'scr{s}', -0.5, 0.5, 0.7, PAGE + 5.6, 1, depth=3.6)
-        parts.append(P.box(f'frontwall{s}', (2.6, 0.7, 4.6), loc=(s * 2.75, -1.5, PAGE), color=CREAM)); parts += crenels(P, f'fcr{s}', s * 1.45, s * 4.05, -1.5, PAGE + 4.6, 3, color=CREAM2)
-        parts.append(P.prism(f'gem{s}', [(0, 0), (0.25, 0.4), (0, 0.8), (-0.25, 0.4)], 0.05, loc=(s * 2.6, -1.88, PAGE + 2.6), color=GOLD))
-    # gatehouse: cream block with gable, gold-rimmed glowing arched door, heart medallion
-    parts.append(P.box('gate', (3.4, 1.8, 5.2), loc=(0, -1.9, PAGE), color=CREAM))
-    parts.append(P.prism('gable', [(-1.9, 0), (1.9, 0), (0, 1.35)], 1.9, loc=(0, -1.9, PAGE + 5.2), color=CREAM2, side_color=GOLD))
-    parts.append(P.prism('doorRim', [(-1.25, 0), (1.25, 0), (1.25, 2.4), (0.85, 3.25), (0, 3.55), (-0.85, 3.25), (-1.25, 2.4)], 0.08, loc=(0, -2.83, PAGE), color=GOLD))
-    parts.append(P.prism('door', [(-1.05, 0), (1.05, 0), (1.05, 2.3), (0.7, 3.05), (0, 3.3), (-0.7, 3.05), (-1.05, 2.3)], 0.08, loc=(0, -2.9, PAGE), color=LAMP))
-    parts.append(P.prism('medal', P.heart(0.6, 10), 0.06, loc=(0, -2.86, PAGE + 4.05), color=PINK))
-    # stairs down to the page + two finial pillars
-    for k in range(5): parts.append(P.box(f'step{k}', (2.6, 0.5, (5 - k) * 0.32), loc=(0, -3.05 - k * 0.5, PAGE), color=CREAM if k % 2 else CREAM2))
-    for s in (-1, 1):
-        parts.append(P.box(f'pil{s}', (0.75, 0.75, 1.5), loc=(s * 1.75, -4.4, PAGE), color=BLUSH))
-        parts.append(P.cyl(f'pilg{s}', 0.42, 0.18, 4, loc=(s * 1.75, -4.4, PAGE + 1.5), color=GOLD, rot=(0, 0, 45)))
-        parts.append(P.cyl(f'pilf{s}', 0.3, 0.75, 4, loc=(s * 1.75, -4.4, PAGE + 1.68), r2=0, color=GOLD, rot=(0, 0, 45)))
-    # pop-up fold tabs (triangular paper braces at the tower feet)
-    for k, (x, y, ry) in enumerate(((-5.9, -1.4, 90), (5.9, -1.4, 90), (-6.0, 2.8, 90), (6.0, 2.8, 90), (-3.3, -3.0, 0), (3.3, -3.0, 0))):
-        parts.append(P.card(f'tab{k}', [(-0.7, 0), (0.7, 0), (0, 1.6)], loc=(x, y, PAGE), color=CREAM2, rot=(0, 0, ry)))
-    # keep (square, tallest) with banner, then the 4 octagonal towers
-    keep = [P.box('keep', (3.2, 3.2, 12.1), loc=(0, 4.2, PAGE), color=lambda c, n: CREAM if n.y < -0.5 else BLUSH)]
-    keep.append(P.box('keepRim', (3.8, 3.8, 0.6), loc=(0, 4.2, PAGE + 12.1), color=BLUSH2)); keep += crenels(P, 'kcr', -1.9, 1.9, 2.4, PAGE + 12.7, 4)
-    keep.append(P.box('keepRimG', (3.9, 3.9, 0.12), loc=(0, 4.2, PAGE + 12.0), color=GOLD))
-    keep.append(P.cyl('keepRoof', 2.05, 3.1, 8, loc=(0, 4.2, PAGE + 12.7), r2=0, color=lambda c, n: LAV if n.x < -0.2 or n.y < -0.6 else LAV2))
-    keep += windows(P, 'keep', 0, 4.2, PAGE + 9.2, 1.6, n=1, w=0.55, h=1.4); keep.append(P.prism('keepWin2', [(-0.25, 0), (0.25, 0), (0.25, 0.8), (0, 1.1), (-0.25, 0.8)], 0.06, loc=(0.75, 2.58, PAGE + 9.4), color=LAMP))
-    keep.append(P.prism('keepBan', [(-0.7, 0), (0.7, 0), (0.7, 2.6), (0, 2.2), (-0.7, 2.6)][::-1], 0.05, loc=(0, 2.56, PAGE + 6.0), color=PINK))
-    keep.append(P.prism('keepBanH', P.heart(0.8, 10), 0.03, loc=(0, 2.52, PAGE + 7.1), color=BLUSH))
-    ka = PAGE + 15.8; keep += [P.ico('kfin', 0.2, loc=(0, 4.2, ka), color=GOLD, subdiv=1), P.cyl('kpole', 0.07, 1.4, 4, loc=(0, 4.2, ka), color=GOLD)]
-    kflag = P.pivot('flag0', (0, 4.2, ka + 1.35), [P.prism('kflag', [(0, 0)] + [(1.1 + px * 1.05, pz * 1.05 - 0.9) for px, pz in P.heart(1.0, 10)], 0.05, loc=(0.06, 4.2, ka + 1.35), color=PINK)])
-    t0 = P.pivot('tower0', (0, 4.2, PAGE), keep + [kflag])
-    towers = [t0, tower(P, 1, -4.4, 2.8, 1.35, PAGE + 9.9, 2.9), tower(P, 2, 4.4, 2.8, 1.35, PAGE + 9.9, 2.9),
-              tower(P, 3, -4.3, -1.4, 1.25, PAGE + 5.4, 2.6, banner=True), tower(P, 4, 4.3, -1.4, 1.25, PAGE + 5.4, 2.6, banner=True)]
-    P.pivot('root', (0, 0, 0), parts + towers)
+def build(P,spec):
+    c=spec['colors'];K=c['cream'];B=c['blush'];L=c['lavender'];G=c['gold'];Y=c['lamp'];R=c['pink'];static=[]
+    static.append(P.box('book_cover',(15,11,.13),color=R))
+    # Layered paper edges with a folded centre and a shallow cambered page surface.
+    for s in (-1,1):
+        for k in range(7):
+            z=.16+k*.09
+            pts=[(s*.02,z-.04),(s*3.5,z+.13),(s*7.23,z+.01),(s*7.23,z+.075),(s*3.5,z+.205),(s*.02,z+.035)]
+            static.append(P.prism('paper_leaf',pts[::s],10.65,color=K))
+        for y in (-5.28,5.28):static.append(P.box('gold_book_corner',(.63,.42,.16),loc=(s*7.15,y,.03),color=G))
+        static.append(P.prism('gold_foreedge',[(s*7.17,.18),(s*7.36,.18),(s*7.36,.75),(s*7.17,.75)][::s],10.6,color=G))
+    page=.82
+    def arch(w,h):
+        return [(-w/2,0),(w/2,0),(w/2,h*.64),(w*.43,h*.82),(w*.25,h*.95),(0,h),(-w*.25,h*.95),(-w*.43,h*.82),(-w/2,h*.64)]
+    def window(x,y,z,w,h,rot=0):
+        return [P.prism('window_gold_arch',arch(w,h),.065,loc=(x,y,z),rot=(0,0,rot),color=G),P.prism('warm_window',arch(w*.67,h*.83),.075,loc=(x,y-.032,z+.07),rot=(0,0,rot),color=Y)]
+    def diamond(x,y,z,w=.22,h=.45):return P.prism('gold_lozenge',[(0,0),(w/2,h/2),(0,h),(-w/2,h/2)],.06,loc=(x,y,z),color=G)
+    def waving_flag(i,x,y,z,sz):
+        # The flag is a solid waving pennant fixed along the pole, its free edge is a heart point.
+        outline=[(0,0),(0,.61),(.27,.78),(.63,.58),(.99,.84),(1.30,.78),(1.42,.60),(1.35,.37),(.71,-.04),(.30,.17)]
+        verts=[]
+        for dy in (-.025,.025):
+            verts += [(x+a*sz,y+math.sin(a*5.2)*.14*sz+dy,z+b*sz) for a,b in outline]
+        n=len(outline);faces=[tuple(range(n-1,-1,-1)),tuple(range(n,2*n))]+[(j,(j+1)%n,(j+1)%n+n,j+n) for j in range(n)]
+        me=bpy.data.meshes.new('waving_pennant');me.from_pydata(verts,[],faces);me.update();ob=bpy.data.objects.new('heart_pennant',me);bpy.context.collection.objects.link(ob);P.paint(ob,R)
+        return P.pivot('flag'+str(i),(x,y,z+.61*sz),[ob])
+    def tower(i,x,y,r,top,roof):
+        parts=[];n=12
+        profile=[(r*1.17,page),(r*1.17,page+.25),(r*1.02,page+1.0),(r,top-.24),(r*1.18,top-.10),(r*1.18,top+.25),(r*1.23,top+.29),(r*1.23,top+.40)]
+        parts.append(P.lathe('tower_paper_shaft',profile,n,loc=(x,y,0),color=K))
+        for z,h,rr in [(page,.16,r*1.19),(top+.08,.12,r*1.25),(top+.39,.11,r*1.25)]:parts.append(P.cyl('gold_tower_moulding',rr,h,8,loc=(x,y,z),color=G))
+        # Broad blush vertical panels alternate with cream structural ribs.
+        for a in range(8):
+            ang=2*math.pi*a/8
+            parts.append(P.box('pink_vertical_panel',(.40,.055,top-page-1.12),loc=(x+math.sin(ang)*r*.987,y-math.cos(ang)*r*.987,page+.9),rot=(0,0,math.degrees(ang)),color=B))
+            parts.append(P.box('crenellation',(.30,.27,.30),loc=(x+math.sin(ang)*r*1.14,y-math.cos(ang)*r*1.14,top+.42),rot=(0,0,math.degrees(ang)),color=K))
+            parts.append(P.prism('folded_buttress',[(0,0),(.37,0),(.12,.90)],.40,loc=(x+math.sin(ang)*r*.96,y-math.cos(ang)*r*.96,page),rot=(0,0,math.degrees(ang)+90),color=K))
+        parts.append(P.cyl('lavender_roof',r*1.16,roof,12,loc=(x,y,top+.50),r2=.10,color=L))
+        # Seam folds give the cone a deliberate papercraft construction.
+        parts.append(P.cyl('roof_gold_cap',.23,.44,8,loc=(x,y,top+.50+roof-.04),r2=.07,color=G))
+        apex=top+.50+roof+.35
+        parts.append(P.cyl('flagpole',.055,1.03,8,loc=(x,y,apex),color=G));parts.append(P.ico('pole_ball',.12,loc=(x,y,apex+1.04),subdiv=1,color=G))
+        for ang in [0,math.pi/2]:
+            wx=x+math.sin(ang)*r*.99;wy=y-math.cos(ang)*r*.99
+            for ob in window(wx,wy,top-(2.45 if top>8 else 2.80),.56,1.85 if top>8 else 1.60,math.degrees(ang)):parts.append(ob)
+        if i in (0,3,4):
+            z=top-3.65 if i==0 else page+(top-page)*.13
+            parts.append(P.prism('heart_banner',[(-.37,0),(0,-.22),(.37,0),(.37,2.30),(-.37,2.30)],.06,loc=(x+r*.40,y-r*.97,z),color=R))
+            parts.append(P.prism('banner_heart',P.heart(.26,12),.04,loc=(x+r*.40,y-r-.03,z+1.30),color=K))
+        flag=waving_flag(i,x+.04,y,apex+.35,.93 if i==0 else .79)
+        return P.pivot('tower'+str(i),(x,y,page),parts+[flag])
+    # Connecting walls remain visible between the five distinct towers.
+    for s in (-1,1):
+        static.append(P.box('curtain_wall',(3.6,.70,8.7),loc=(s*2.75,1.1,page),color=B))
+        static.append(P.box('side_wall',(.66,3.1,4.8),loc=(s*4.40,-.10,page),color=B))
+        static.append(P.box('gate_pillar',(.64,1.24,5.50),loc=(s*1.72,-2.0,page),color=K))
+        static.append(P.box('gold_pillar_foot',(.78,1.37,.20),loc=(s*1.72,-2.0,page),color=G))
+        static.append(P.box('gate_cap',(.83,1.40,.20),loc=(s*1.72,-2.0,page+5.35),color=G))
+        static.append(diamond(s*1.72,-2.64,page+4.42,.24,.58))
+        for k in range(4):static.append(P.box('wall_merlon',(.34,.75,.49),loc=(s*(1.3+k*.85),1.1,page+8.7),color=K))
+    for x in (-2.75,2.75):static.append(diamond(x,.70,page+6.65,.33,.65))
+    for x in (-.85,0,.85):static.append(P.box('gate_merlon',(.38,1.15,.35),loc=(x,-1.90,page+5.1),color=K))
+    static.append(P.box('inner_hall',(6.3,3.8,5.65),loc=(0,.25,page),color=B))
+    # The arched entry is outlined by gold and cream paper laminations.
+    static.append(P.prism('gable_wall',[(-1.58,0),(1.58,0),(1.58,4.1),(0,5.50),(-1.58,4.1)],1.1,loc=(0,-1.90,page),color=K))
+    static.append(P.prism('gable_gold',[(-1.96,4.06),(0,5.66),(1.96,4.06),(1.91,3.93),(0,5.48),(-1.91,3.93)],.10,loc=(0,-2.54,page),color=G))
+    static.append(P.prism('arched_door_frame',arch(2.50,3.66),.10,loc=(0,-2.49,page+.30),color=G))
+    static.append(P.prism('lamp_door',arch(2.12,3.37),.08,loc=(0,-2.57,page+.33),color=Y))
+    static.append(P.box('door_central_stile',(.07,.08,2.95),loc=(0,-2.64,page+.33),color=G))
+    static.append(P.prism('gate_heart',P.heart(.27,12),.08,loc=(0,-2.65,page+4.52),color=R))
+    for k in range(6):static.append(P.box('stair',(3.30,2.10-k*.27,.13),loc=(0,-3.38+k*.135,.77+k*.13),color=K))
+    for s in (-1,1):
+        for y in (-4.37,-2.47):
+            static.extend([P.box('stair_post',(.46,.48,1.42),loc=(s*1.88,y,.75),color=K),P.box('stair_post_trim',(.53,.55,.13),loc=(s*1.88,y,2.10),color=G),P.cyl('post_gold_finial',.27,.38,4,loc=(s*1.88,y,2.23),r2=0,color=G)])
+            static.append(P.prism('post_pink_panel',[(-.15,0),(.15,0),(.15,.53),(-.15,.53)],.04,loc=(s*1.88,y-.26,.93),color=R))
+    for side in (-1,1):
+        static.append(P.prism('outer_fold_tab',[(side*5.90,page),(side*7.10,.28),(side*5.90,3.25)][::side],1.3,loc=(0,.6,0),color=K))
+        for y,sg in [(-3.25,-1),(3.30,1)]:
+            static.append(P.prism('depth_fold_tab',[(0,page),(sg*1.45,page),(0,2.65)],.45,loc=(side*4.7,y,0),rot=(0,0,90),color=K))
+    towers=[tower(0,0,1.80,1.47,12.45,3.02),tower(1,-4.16,1.72,1.35,10.12,2.52),tower(2,4.16,1.72,1.35,10.12,2.52),tower(3,-4.70,-2.05,1.27,6.32,2.12),tower(4,4.70,-2.05,1.27,6.32,2.12)]
+    root=P.pivot('root',(0,0,0),static+towers)
+    bpy.context.view_layer.update();v=[o.matrix_world@v.co for o in bpy.context.scene.objects if o.type=='MESH' for v in o.data.vertices];ext=[max(p[i] for p in v)-min(p[i] for p in v) for i in range(3)];s=spec['size_m'];root.scale=(s['w']/ext[0],s['d']*.9546/ext[1],s['h']/ext[2]);bpy.context.view_layer.update()

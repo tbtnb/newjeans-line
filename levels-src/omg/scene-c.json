@@ -60,7 +60,7 @@
    "shape": "bunny",
    "h": 2.4,
    "tris": 1200,
-   "model": false,
+   "model": true,
    "names": [
     "兔子雕像"
    ],
@@ -73,7 +73,7 @@
    "shape": "card",
    "h": 2.5,
    "tris": 400,
-   "model": false,
+   "model": true,
    "names": [
     "纸山片"
    ],
@@ -86,7 +86,7 @@
    "shape": "book",
    "h": 1.5,
    "tris": 3000,
-   "model": false,
+   "model": true,
    "names": [
     "巨书封面"
    ],
@@ -99,7 +99,7 @@
    "shape": "star",
    "h": 1.0,
    "tris": 24,
-   "model": false,
+   "model": true,
    "names": [
     "吊线星星"
    ]
@@ -119,7 +119,7 @@
    "shape": "card",
    "h": 0.1,
    "tris": 2,
-   "model": false,
+   "model": true,
    "names": [
     "飘落花瓣",
     "花瓣"
@@ -130,7 +130,7 @@
    "shape": "bird",
    "h": 0.5,
    "tris": 60,
-   "model": false,
+   "model": "page-bird",
    "names": [
     "小鸟"
    ]
@@ -151,7 +151,7 @@
    "shape": "box",
    "h": 0.08,
    "tris": 20,
-   "model": false,
+   "model": true,
    "names": [
     "石板"
    ]
@@ -161,7 +161,7 @@
    "shape": "house",
    "h": 4,
    "tris": 1500,
-   "model": false,
+   "model": true,
    "names": [
     "兔耳小屋",
     "各章回归道具(实例复用)"
@@ -175,7 +175,7 @@
    "shape": "mushroom",
    "h": 3,
    "tris": 1000,
-   "model": false,
+   "model": true,
    "names": [
     "纸蘑菇屋"
    ],
@@ -198,7 +198,7 @@
    "shape": "bed",
    "h": 0.8,
    "tris": 800,
-   "model": false,
+   "model": true,
    "names": [
     "郁金香花圃"
    ],
@@ -225,7 +225,7 @@
    "shape": "tower",
    "h": 9,
    "tris": 3000,
-   "model": false,
+   "model": true,
    "names": [
     "村口风车/钟塔"
    ],
@@ -238,7 +238,7 @@
    "shape": "cloud",
    "h": 2,
    "tris": 300,
-   "model": false,
+   "model": true,
    "names": [
     "纸云"
    ],
@@ -251,7 +251,7 @@
    "shape": "cloud",
    "h": 0.8,
    "tris": 40,
-   "model": false,
+   "model": true,
    "names": [
     "烟囱纸云"
    ]
@@ -261,7 +261,7 @@
    "shape": "bird",
    "h": 0.3,
    "tris": 8,
-   "model": false,
+   "model": true,
    "names": [
     "蝴蝶"
    ]
@@ -281,7 +281,7 @@
    "shape": "card",
    "h": 0.02,
    "tris": 4,
-   "model": false,
+   "model": true,
    "names": [
     "纸屑"
    ]
@@ -291,7 +291,7 @@
    "shape": "box",
    "h": 2.4,
    "tris": 2000,
-   "model": false,
+   "model": true,
    "names": [
     "立体纸病床"
    ],
@@ -304,7 +304,7 @@
    "shape": "card",
    "h": 2,
    "tris": 400,
-   "model": false,
+   "model": true,
    "names": [
     "纸帘屏风"
    ],
@@ -317,7 +317,7 @@
    "shape": "pole",
    "h": 2.2,
    "tris": 500,
-   "model": false,
+   "model": true,
    "names": [
     "心形点滴架"
    ],
@@ -330,7 +330,7 @@
    "shape": "card",
    "h": 1.2,
    "tris": 300,
-   "model": false,
+   "model": true,
    "names": [
     "拉片机关",
     "拉片翘起"
@@ -344,7 +344,7 @@
    "shape": "tower",
    "h": 9,
    "tris": 2500,
-   "model": false,
+   "model": true,
    "names": [
     "纸时钟塔"
    ],
@@ -357,7 +357,7 @@
    "shape": "moon",
    "h": 4,
    "tris": 600,
-   "model": false,
+   "model": true,
    "names": [
     "纸月亮",
     "吊线弯月"
@@ -371,7 +371,7 @@
    "shape": "card",
    "h": 0.5,
    "tris": 12,
-   "model": false,
+   "model": "flower-heart",
    "names": [
     "漂浮纸心"
    ]
@@ -381,7 +381,7 @@
    "shape": "card",
    "h": 0.02,
    "tris": 8,
-   "model": false,
+   "model": true,
    "names": [
     "星点纸地贴"
    ]
@@ -391,7 +391,7 @@
    "shape": "box",
    "h": 0.8,
    "tris": 300,
-   "model": false,
+   "model": true,
    "names": [
     "纸礼盒",
     "纸礼盒/糖果"
@@ -405,7 +405,7 @@
    "shape": "pole",
    "h": 2,
    "tris": 900,
-   "model": false,
+   "model": true,
    "names": [
     "纸灯笼串段"
    ],
@@ -418,7 +418,7 @@
    "shape": "card",
    "h": 1.6,
    "tris": 500,
-   "model": false,
+   "model": true,
    "names": [
     "音符/爱心纸雕"
    ],
@@ -431,7 +431,7 @@
    "shape": "cyl",
    "h": 2.5,
    "tris": 1800,
-   "model": false,
+   "model": true,
    "names": [
     "礼炮"
    ],
@@ -470,7 +470,7 @@
    "shape": "star",
    "h": 1.2,
    "tris": 24,
-   "model": false,
+   "model": true,
    "names": [
     "纸星星"
    ]
@@ -480,7 +480,7 @@
    "shape": "star",
    "h": 4.0,
    "tris": 400,
-   "model": false,
+   "model": "star",
    "names": [
     "纸烟花爆点"
    ]
@@ -490,7 +490,7 @@
    "shape": "card",
    "h": 0.3,
    "tris": 2,
-   "model": false,
+   "model": true,
    "names": [
     "纸彩带"
    ]
@@ -500,7 +500,7 @@
    "shape": "cyl",
    "h": 0.6,
    "tris": 40,
-   "model": false,
+   "model": "firefly-lamp",
    "names": [
     "飘浮灯笼"
    ]
@@ -510,7 +510,7 @@
    "shape": "card",
    "h": 0.02,
    "tris": 8,
-   "model": false,
+   "model": true,
    "names": [
     "纸波纹片"
    ]
@@ -530,7 +530,7 @@
    "shape": "tuft",
    "h": 0.9,
    "tris": 40,
-   "model": false,
+   "model": true,
    "names": [
     "芦苇纸丛"
    ]
@@ -540,7 +540,7 @@
    "shape": "boat",
    "h": 3,
    "tris": 1500,
-   "model": false,
+   "model": true,
    "names": [
     "兔子帆纸船"
    ],
@@ -553,7 +553,7 @@
    "shape": "flower",
    "h": 0.8,
    "tris": 500,
-   "model": false,
+   "model": true,
    "names": [
     "睡莲灯"
    ],
@@ -566,7 +566,7 @@
    "shape": "ico",
    "h": 0.6,
    "tris": 60,
-   "model": false,
+   "model": true,
    "names": [
     "岸边纸石"
    ]
@@ -576,7 +576,7 @@
    "shape": "house",
    "h": 6,
    "tris": 3000,
-   "model": false,
+   "model": true,
    "names": [
     "湖心纸亭"
    ],
@@ -599,7 +599,7 @@
    "shape": "card",
    "h": 0.08,
    "tris": 2,
-   "model": false,
+   "model": true,
    "names": [
     "萤光点",
     "萤火虫",
@@ -621,7 +621,7 @@
    "shape": "flower",
    "h": 0.22,
    "tris": 30,
-   "model": false,
+   "model": true,
    "names": [
     "爱心小花"
    ]
@@ -631,7 +631,7 @@
    "shape": "box",
    "h": 5,
    "tris": 2000,
-   "model": false,
+   "model": true,
    "names": [
     "纸艺翻盖手机"
    ],
@@ -644,7 +644,7 @@
    "shape": "arch",
    "h": 3.5,
    "tris": 1200,
-   "model": false,
+   "model": true,
    "names": [
     "电话线藤蔓拱"
    ],
@@ -657,7 +657,7 @@
    "shape": "bed",
    "h": 0.9,
    "tris": 800,
-   "model": false,
+   "model": true,
    "names": [
     "爱心花圃"
    ],
@@ -670,7 +670,7 @@
    "shape": "tower",
    "h": 12,
    "tris": 4000,
-   "model": false,
+   "model": true,
    "names": [
     "巨型翻盖手机塔"
    ],
@@ -683,7 +683,7 @@
    "shape": "moon",
    "h": 8,
    "tris": 2000,
-   "model": false,
+   "model": true,
    "names": [
     "夕阳纸片",
     "纸太阳"
@@ -697,7 +697,7 @@
    "shape": "tower",
    "h": 14,
    "tris": 3500,
-   "model": false,
+   "model": true,
    "names": [
     "螺旋纸塔(中)"
    ],
@@ -710,7 +710,7 @@
    "shape": "pole",
    "h": 2.5,
    "tris": 600,
-   "model": false,
+   "model": true,
    "names": [
     "星星风铃"
    ],
@@ -723,7 +723,7 @@
    "shape": "box",
    "h": 2,
    "tris": 400,
-   "model": false,
+   "model": true,
    "names": [
     "纸楼梯段"
    ],
@@ -736,7 +736,7 @@
    "shape": "tower",
    "h": 18.0,
    "tris": 4000,
-   "model": false,
+   "model": "spiral-tower",
    "names": [
     "最高纸塔"
    ]
@@ -746,7 +746,7 @@
    "shape": "bird",
    "h": 0.6,
    "tris": 16,
-   "model": false,
+   "model": true,
    "names": [
     "书页飞鸟"
    ]
@@ -766,7 +766,7 @@
    "shape": "tower",
    "h": 9,
    "tris": 2500,
-   "model": false,
+   "model": true,
    "names": [
     "纸灯笼塔"
    ],
@@ -779,7 +779,7 @@
    "shape": "house",
    "h": 3.2,
    "tris": 1500,
-   "model": false,
+   "model": true,
    "names": [
     "小摊位"
    ],
@@ -792,7 +792,7 @@
    "shape": "balloons",
    "h": 3.5,
    "tris": 500,
-   "model": false,
+   "model": true,
    "names": [
     "气球束"
    ],
@@ -805,7 +805,7 @@
    "shape": "pole",
    "h": 1,
    "tris": 300,
-   "model": false,
+   "model": true,
    "names": [
     "旗串段"
    ],
@@ -818,7 +818,7 @@
    "shape": "carousel",
    "h": 9,
    "tris": 6000,
-   "model": false,
+   "model": true,
    "names": [
     "兔子旋转木马"
    ],
@@ -831,7 +831,7 @@
    "shape": "wheel",
    "h": 13,
    "tris": 6000,
-   "model": false,
+   "model": true,
    "names": [
     "爱心摩天轮"
    ],
@@ -854,7 +854,7 @@
    "shape": "ico",
    "h": 0.2,
    "tris": 30,
-   "model": false,
+   "model": true,
    "names": [
     "苔石"
    ]
@@ -864,7 +864,7 @@
    "shape": "tree",
    "h": 4,
    "tris": 400,
-   "model": false,
+   "model": true,
    "names": [
     "折纸松树"
    ],
@@ -877,7 +877,7 @@
    "shape": "pole",
    "h": 1.4,
    "tris": 200,
-   "model": false,
+   "model": true,
    "names": [
     "萤火纸灯"
    ],
@@ -890,7 +890,7 @@
    "shape": "box",
    "h": 1,
    "tris": 500,
-   "model": false,
+   "model": true,
    "names": [
     "树桩/书堆"
    ],
@@ -903,7 +903,7 @@
    "shape": "bunny",
    "h": 3.5,
    "tris": 2500,
-   "model": false,
+   "model": true,
    "names": [
     "蘑菇下读书兔"
    ],
@@ -916,7 +916,7 @@
    "shape": "card",
    "h": 5,
    "tris": 800,
-   "model": false,
+   "model": true,
    "names": [
     "合拢书页墙"
    ],
@@ -939,7 +939,7 @@
    "shape": "card",
    "h": 0.12,
    "tris": 2,
-   "model": false,
+   "model": "petal",
    "names": [
     "飘落叶片"
    ]
@@ -949,7 +949,7 @@
    "shape": "card",
    "h": 0.02,
    "tris": 4,
-   "model": false,
+   "model": true,
    "names": [
     "金箔碎片"
    ]
@@ -959,7 +959,7 @@
    "shape": "arch",
    "h": 11,
    "tris": 5000,
-   "model": false,
+   "model": true,
    "names": [
     "书页爱心终点门"
    ],
@@ -972,7 +972,7 @@
    "shape": "bunny",
    "h": 3,
    "tris": 4000,
-   "model": false,
+   "model": true,
    "names": [
     "五只兔子一家"
    ],
