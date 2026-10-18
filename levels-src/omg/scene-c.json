@@ -1,5 +1,6 @@
 {
  "version": 1,
+ "pagePad": 60,
  "source": "levels-design/omg/redesign-v3/C/zones_c.py (omg-design-v3)",
  "chunk": 20,
  "window": {
@@ -1843,7 +1844,59 @@
      "t": 0.5,
      "label": "巨书封面翻开(开场)"
     }
-   ]
+   ],
+   "impostors": {
+    "count": 2602,
+    "near": [
+     13.0,
+     95.0
+    ],
+    "scale": [
+     1.5,
+     2.6
+    ],
+    "sprites": [
+     [
+      "tree",
+      3
+     ],
+     [
+      "tree-lo",
+      2
+     ],
+     [
+      "forest-clump",
+      2
+     ],
+     [
+      "hedge",
+      1
+     ],
+     [
+      "tulip-bed",
+      1
+     ],
+     [
+      "bunny-house",
+      0.4
+     ],
+     [
+      "fence",
+      0.5
+     ],
+     [
+      "paper-hill",
+      0.8
+     ],
+     [
+      "fern",
+      1
+     ]
+    ]
+   },
+   "ground": "models/omg-c/paint/z01-ground.webp",
+   "backdrop": "models/omg-c/paint/z01-backdrop.webp",
+   "tile": 25
   },
   {
    "id": "z02",
@@ -2661,7 +2714,55 @@
      "label": "兔耳小屋②"
     }
    ],
-   "moments": []
+   "moments": [],
+   "impostors": {
+    "count": 2600,
+    "near": [
+     13.0,
+     95.0
+    ],
+    "scale": [
+     1.5,
+     2.6
+    ],
+    "sprites": [
+     [
+      "tree",
+      2.5
+     ],
+     [
+      "forest-clump",
+      2
+     ],
+     [
+      "bunny-house",
+      1.2
+     ],
+     [
+      "mushroom-house",
+      1.2
+     ],
+     [
+      "tulip-bed",
+      1.5
+     ],
+     [
+      "windmill",
+      0.12
+     ],
+     [
+      "hedge",
+      1
+     ],
+     [
+      "fence",
+      0.6
+     ]
+    ]
+   },
+   "ground": "models/omg-c/paint/z02-ground.webp",
+   "backdrop": "models/omg-c/paint/z02-backdrop.webp",
+   "tile": 25
   },
   {
    "id": "z03",
@@ -3430,7 +3531,55 @@
      "t": 43.0,
      "label": "拉片蓄力·书页抬起"
     }
-   ]
+   ],
+   "impostors": {
+    "count": 2598,
+    "near": [
+     13.0,
+     95.0
+    ],
+    "scale": [
+     1.5,
+     2.6
+    ],
+    "sprites": [
+     [
+      "tree",
+      2
+     ],
+     [
+      "forest-clump",
+      1.5
+     ],
+     [
+      "heart-bed",
+      1.2
+     ],
+     [
+      "tulip-bed",
+      1.2
+     ],
+     [
+      "clock-tower",
+      0.1
+     ],
+     [
+      "bunny-house",
+      0.6
+     ],
+     [
+      "gift",
+      0.6
+     ],
+     [
+      "hedge",
+      1
+     ]
+    ]
+   },
+   "ground": "models/omg-c/paint/z03-ground.webp",
+   "backdrop": "models/omg-c/paint/z03-backdrop.webp",
+   "tile": 25
   },
   {
    "id": "z04",
@@ -4219,7 +4368,51 @@
      "t": 54.0,
      "label": "纸灯笼串拱"
     }
-   ]
+   ],
+   "impostors": {
+    "count": 2600,
+    "near": [
+     13.0,
+     95.0
+    ],
+    "scale": [
+     1.5,
+     2.6
+    ],
+    "sprites": [
+     [
+      "pine",
+      3
+     ],
+     [
+      "lantern-tower",
+      0.25
+     ],
+     [
+      "mushroom-house",
+      0.6
+     ],
+     [
+      "lily-lamp",
+      0.8
+     ],
+     [
+      "firefly-lamp",
+      1.2
+     ],
+     [
+      "heart-bed",
+      0.6
+     ],
+     [
+      "castle",
+      0.03
+     ]
+    ]
+   },
+   "ground": "models/omg-c/paint/z04-ground.webp",
+   "backdrop": "models/omg-c/paint/z04-backdrop.webp",
+   "tile": 25
   },
   {
    "id": "z05",
@@ -5092,7 +5285,51 @@
      "t": 66.0,
      "label": "纸面湖·浮桥路段"
     }
-   ]
+   ],
+   "impostors": {
+    "count": 2600,
+    "near": [
+     13.0,
+     95.0
+    ],
+    "scale": [
+     1.5,
+     2.6
+    ],
+    "sprites": [
+     [
+      "pine",
+      3
+     ],
+     [
+      "tree",
+      1
+     ],
+     [
+      "reed",
+      1.5
+     ],
+     [
+      "lily-lamp",
+      1
+     ],
+     [
+      "rock",
+      1
+     ],
+     [
+      "paper-hill",
+      0.8
+     ],
+     [
+      "firefly-lamp",
+      0.6
+     ]
+    ]
+   },
+   "ground": "models/omg-c/paint/z05-ground.webp",
+   "backdrop": "models/omg-c/paint/z05-backdrop.webp",
+   "tile": 25
   },
   {
    "id": "z06",
@@ -5841,7 +6078,51 @@
      "label": "翻盖手机②"
     }
    ],
-   "moments": []
+   "moments": [],
+   "impostors": {
+    "count": 2600,
+    "near": [
+     13.0,
+     95.0
+    ],
+    "scale": [
+     1.5,
+     2.6
+    ],
+    "sprites": [
+     [
+      "tulip-bed",
+      2
+     ],
+     [
+      "heart-bed",
+      1.5
+     ],
+     [
+      "tree",
+      1.5
+     ],
+     [
+      "forest-clump",
+      1
+     ],
+     [
+      "bunny-house",
+      0.8
+     ],
+     [
+      "fence",
+      0.5
+     ],
+     [
+      "hedge",
+      1
+     ]
+    ]
+   },
+   "ground": "models/omg-c/paint/z06-ground.webp",
+   "backdrop": "models/omg-c/paint/z06-backdrop.webp",
+   "tile": 25
   },
   {
    "id": "z07",
@@ -6673,7 +6954,51 @@
      "t": 104.0,
      "label": "拉片蓄力·纸塔倾倒"
     }
-   ]
+   ],
+   "impostors": {
+    "count": 2598,
+    "near": [
+     13.0,
+     95.0
+    ],
+    "scale": [
+     1.5,
+     2.6
+    ],
+    "sprites": [
+     [
+      "pine",
+      3
+     ],
+     [
+      "spiral-tower",
+      0.15
+     ],
+     [
+      "star-chime",
+      0.6
+     ],
+     [
+      "mushroom-house",
+      0.8
+     ],
+     [
+      "firefly-lamp",
+      1.2
+     ],
+     [
+      "lantern-tower",
+      0.2
+     ],
+     [
+      "book-stack",
+      0.4
+     ]
+    ]
+   },
+   "ground": "models/omg-c/paint/z07-ground.webp",
+   "backdrop": "models/omg-c/paint/z07-backdrop.webp",
+   "tile": 25
   },
   {
    "id": "z08",
@@ -7430,7 +7755,59 @@
      "t": 116.0,
      "label": "纸烟花齐放"
     }
-   ]
+   ],
+   "impostors": {
+    "count": 2600,
+    "near": [
+     13.0,
+     95.0
+    ],
+    "scale": [
+     1.5,
+     2.6
+    ],
+    "sprites": [
+     [
+      "tree",
+      1.5
+     ],
+     [
+      "forest-clump",
+      1
+     ],
+     [
+      "balloons",
+      1
+     ],
+     [
+      "stall",
+      0.5
+     ],
+     [
+      "carousel",
+      0.06
+     ],
+     [
+      "ferris-wheel",
+      0.04
+     ],
+     [
+      "bunting",
+      0.5
+     ],
+     [
+      "heart-bed",
+      1
+     ],
+     [
+      "lantern-string",
+      0.4
+     ]
+    ]
+   },
+   "ground": "models/omg-c/paint/z08-ground.webp",
+   "backdrop": "models/omg-c/paint/z08-backdrop.webp",
+   "tile": 25
   },
   {
    "id": "z09",
@@ -8292,7 +8669,47 @@
      "t": 149.3,
      "label": "书页合拢→黑场"
     }
-   ]
+   ],
+   "impostors": {
+    "count": 5200,
+    "near": [
+     13.0,
+     95.0
+    ],
+    "scale": [
+     1.5,
+     2.6
+    ],
+    "sprites": [
+     [
+      "pine",
+      4
+     ],
+     [
+      "forest-clump",
+      1
+     ],
+     [
+      "mushroom-house",
+      0.8
+     ],
+     [
+      "mushroom-group",
+      1
+     ],
+     [
+      "firefly-lamp",
+      1.2
+     ],
+     [
+      "lily-lamp",
+      0.5
+     ]
+    ]
+   },
+   "ground": "models/omg-c/paint/z09-ground.webp",
+   "backdrop": "models/omg-c/paint/z09-backdrop.webp",
+   "tile": 25
   },
   {
    "id": "z10",
@@ -9213,7 +9630,51 @@
      "t": 160.4,
      "label": "书页爱心终点门"
     }
-   ]
+   ],
+   "impostors": {
+    "count": 1625,
+    "near": [
+     13.0,
+     95.0
+    ],
+    "scale": [
+     1.5,
+     2.6
+    ],
+    "sprites": [
+     [
+      "tree",
+      1.5
+     ],
+     [
+      "forest-clump",
+      1
+     ],
+     [
+      "tulip-bed",
+      1.5
+     ],
+     [
+      "heart-bed",
+      1.5
+     ],
+     [
+      "bunny-house",
+      0.8
+     ],
+     [
+      "balloons",
+      1
+     ],
+     [
+      "bunny-statue",
+      0.5
+     ]
+    ]
+   },
+   "ground": "models/omg-c/paint/z10-ground.webp",
+   "backdrop": "models/omg-c/paint/z10-backdrop.webp",
+   "tile": 25
   }
  ]
 }

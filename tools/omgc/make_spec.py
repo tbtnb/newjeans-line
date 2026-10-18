@@ -210,7 +210,28 @@ for z in zones:
     for kind, n in CLUMPS[zid].items():
         aid, cl, near = CL[kind]
         z['layers'].append(dict(asset=aid, layer='mid', count=max(1, round(n * zk)), near=near, y=[0, 0], scale=[1.0, 1.35] if aid in ('forest-clump', 'hedge') else [1.3, 1.9] if aid != 'paper-hill-lo' else [1.3, 2.0], colors=bright, hi=True, cluster=cl))
-spec = dict(version=1, source='levels-design/omg/redesign-v3/C/zones_c.py (omg-design-v3)', chunk=20, window=dict(behind=3, ahead=8),
+# ---- v4 painted layer: impostor carpet (sprite cards from tools/impostors), painted ground tiles + horizon backdrops (Codex)
+IMP = {
+ 'z01': [('tree', 3), ('tree-lo', 2), ('forest-clump', 2), ('hedge', 1), ('tulip-bed', 1), ('bunny-house', 0.4), ('fence', 0.5), ('paper-hill', 0.8), ('fern', 1)],
+ 'z02': [('tree', 2.5), ('forest-clump', 2), ('bunny-house', 1.2), ('mushroom-house', 1.2), ('tulip-bed', 1.5), ('windmill', 0.12), ('hedge', 1), ('fence', 0.6)],
+ 'z03': [('tree', 2), ('forest-clump', 1.5), ('heart-bed', 1.2), ('tulip-bed', 1.2), ('clock-tower', 0.1), ('bunny-house', 0.6), ('gift', 0.6), ('hedge', 1)],
+ 'z04': [('pine', 3), ('lantern-tower', 0.25), ('mushroom-house', 0.6), ('lily-lamp', 0.8), ('firefly-lamp', 1.2), ('heart-bed', 0.6), ('castle', 0.03)],
+ 'z05': [('pine', 3), ('tree', 1), ('reed', 1.5), ('lily-lamp', 1), ('rock', 1), ('paper-hill', 0.8), ('firefly-lamp', 0.6)],
+ 'z06': [('tulip-bed', 2), ('heart-bed', 1.5), ('tree', 1.5), ('forest-clump', 1), ('bunny-house', 0.8), ('fence', 0.5), ('hedge', 1)],
+ 'z07': [('pine', 3), ('spiral-tower', 0.15), ('star-chime', 0.6), ('mushroom-house', 0.8), ('firefly-lamp', 1.2), ('lantern-tower', 0.2), ('book-stack', 0.4)],
+ 'z08': [('tree', 1.5), ('forest-clump', 1), ('balloons', 1), ('stall', 0.5), ('carousel', 0.06), ('ferris-wheel', 0.04), ('bunting', 0.5), ('heart-bed', 1), ('lantern-string', 0.4)],
+ 'z09': [('pine', 4), ('forest-clump', 1), ('mushroom-house', 0.8), ('mushroom-group', 1), ('firefly-lamp', 1.2), ('lily-lamp', 0.5)],
+ 'z10': [('tree', 1.5), ('forest-clump', 1), ('tulip-bed', 1.5), ('heart-bed', 1.5), ('bunny-house', 0.8), ('balloons', 1), ('bunny-statue', 0.5)],
+}
+paint = os.path.join(glbdir, 'paint')
+for z in zones:
+    zk = (z['t1'] - z['t0']) / 15.12
+    z['impostors'] = dict(count=round(2600 * zk), near=[13.0, 95.0], scale=[1.5, 2.6], sprites=[list(x) for x in IMP[z['id']]])
+    for kind in ('ground', 'backdrop'):
+        f = next((f'{z["id"]}-{kind}.{e}' for e in ('webp', 'jpg') if os.path.exists(os.path.join(paint, f'{z["id"]}-{kind}.{e}'))), None)
+        if f: z[kind] = 'models/omg-c/paint/' + f
+    z['tile'] = 25
+spec = dict(version=1, pagePad=60, source='levels-design/omg/redesign-v3/C/zones_c.py (omg-design-v3)', chunk=20, window=dict(behind=3, ahead=8),
             clear=dict(ground=0.3, groundMaxH=1.6, near=1.0), density=dict(ground=2.0, mid=1.6, anim=0.55), assets=assets, zones=zones)
 # design asset sheets (levels-design/omg/redesign-v3/C/assets/<design id>/spec.json): their size / tri budget win over the table
 CAT = json.load(open(os.path.join(here, '..', 'models', 'catalog.json')))
