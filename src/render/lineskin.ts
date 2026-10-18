@@ -206,7 +206,8 @@ export class LineSkin {
     ps.minSize = spec.size[0]; ps.maxSize = spec.size[1]; ps.minLifeTime = spec.life[0]; ps.maxLifeTime = spec.life[1];
     ps.minEmitPower = spec.power[0]; ps.maxEmitPower = spec.power[1];
     ps.direction1 = new Vector3(-1, 0.5, -1); ps.direction2 = new Vector3(1, 1.6, 1);
-    ps.minEmitBox = new Vector3(-0.3, -0.2, -0.3); ps.maxEmitBox = new Vector3(0.3, 0.3, 0.3);
+    ps.minEmitBox = new Vector3(-0.35, 0.2, -0.35); ps.maxEmitBox = new Vector3(0.35, 0.7, 0.35);
+    ps.renderingGroupId = 1;   // drawn over the line/road so bursts read even where the trail would hide them
     ps.gravity = new Vector3(0, spec.gravity, 0);
     ps.minAngularSpeed = -(spec.spin ?? 0); ps.maxAngularSpeed = spec.spin ?? 0; ps.minInitialRotation = 0; ps.maxInitialRotation = spec.spin ? Math.PI * 2 : 0;
     ps.blendMode = spec.add ? ParticleSystem.BLENDMODE_ADD : ParticleSystem.BLENDMODE_STANDARD;
@@ -252,8 +253,8 @@ export class LineSkin {
     for (const p of this.parts) {
       switch (p.role) {
         case 'ear': p.mesh.rotation.x = -0.15 - tap * 0.55; p.mesh.rotation.z = -p.sign * (0.16 + tap * 0.25); break;
-        case 'bubble': { const k = Math.min(1, Math.max(0, t - this.lastTap) / 0.45); const s = (0.15 + 0.85 * k * k) * (1 + 0.06 * Math.sin(wall * 5)); p.mesh.scaling.setAll(s); p.mesh.position.z = p.base.z + 0.2 * (s - 1); break; }
-        case 'bubbleHl': { const k = Math.min(1, Math.max(0, t - this.lastTap) / 0.45); p.mesh.scaling.setAll(k); break; }
+        case 'bubble': { const k = Math.min(1, Math.max(0, t - this.lastTap) / 0.45); const s = (0.5 + 0.5 * k * k) * (1 + 0.06 * Math.sin(wall * 5)); p.mesh.scaling.setAll(s); p.mesh.position.z = p.base.z + 0.2 * (s - 1); break; }
+        case 'bubbleHl': { const k = Math.min(1, Math.max(0, t - this.lastTap) / 0.45); p.mesh.scaling.setAll(0.5 + 0.5 * k); break; }
         case 'blink': p.mesh.setEnabled(Math.sin(wall * 6.2832) > -0.3 || tap > 0.3); break;
         case 'star': p.mesh.rotation.y = wall * 2.2; p.mesh.position.y = p.base.y + Math.sin(wall * 3) * 0.08 + tap * 0.25; break;
       }

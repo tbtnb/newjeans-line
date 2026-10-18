@@ -43,7 +43,7 @@ for (const skin of skins) {
   const until = async t => { for (;;) { const d = (t - now()) * 1000; if (d < 6) break; await new Promise(r => setTimeout(r, Math.min(d - 4, 40))); } while (now() < t) {} };
   const plan = taps.filter(t => t > FROM + 0.05 && t <= SHOT_AFTER + 1e-3);
   for (const t of plan) { await until(t); touch(); }
-  await until(SHOT_AFTER + 0.11);
+  await until(SHOT_AFTER + 0.16);
   const turnShot = `${OUT}/play-${skin}.png`; await page.screenshot({ path: turnShot });
   // stop tapping: the next corner is missed -> fail -> shatter
   await page.waitForFunction(() => window.__nj.game.status === 'failed', null, { timeout: 5000 }).catch(() => {});
