@@ -1,6 +1,6 @@
 # New Jeans — 城市换新 City Unfolded · level design (worker w2, v3)
 
-Files: `chart.json` (167 taps) · `layout.json` (v2.4 + `path.nodes`) · `route.png` · `route-sections.png` · `chart-report.md` · `analysis.json` / `analysis-notes.md` · `art/` (5 images).
+Files: `chart.json` (168 taps) · `layout.json` (v2.4 + `path.nodes`) · `route.png` · `route-sections.png` · `chart-report.md` · `analysis.json` / `analysis-notes.md` · `art/` (5 images).
 **Aligned with codex-ref** (`/workspace/nj-refs/new-jeans/`): a pink solid line through a light-blue city that keeps unfolding; streets → rooftops → the five flight trails become the skyline. Cover = **Get Up EP digital cover** (pale-blue pixel city, five Powerpuff-style members, five colour trails, small bunny icon top-left). The blueprint shapes are mood only; the route choreography is ours.
 
 ## Concept
@@ -32,9 +32,10 @@ Files: `chart.json` (167 taps) · `layout.json` (v2.4 + `path.nodes`) · `route.
 
 ## Core numbers
 - **Speed and width:** 10.2 u/s. Width 2.2 → 2.0 (Chorus 1) → 1.8 (Chorus 2) → 2.2 (outro).
-- **Taps: old 68 → new 167 (×2.46)**, averaging 1.53/s. This is above 2× because the old chart was anomalously sparse (0.62/s, first tap at 8 s). A trim to about 150 is possible: drop the snare on beat 2 in Verse 2 for every other bar.
-- **Fastest run:** 6 × 8th (224 ms) at 63.3 s (Rebuild). Minimum gap 222 ms.
-- **Judgment:** the engine rule (v2.4) gives min ±100 ms and median ±110 ms. My target is perfect ±60 / accept ±115 ms.
+- **Taps: old 68 → new 168 (×2.47)**, averaging 1.54/s. This is above 2× because the old chart was anomalously sparse (0.62/s, first tap at 8 s). A trim to about 150 is possible: drop the snare on beat 2 in Verse 2 for every other bar.
+- **Fastest run:** 6 × 8th (224 ms) at 63.3 s (Rebuild). Minimum 8th gap 222 ms.
+- **Difficulty (moderate tier, EP opener):** avg CPM 92 (taps ÷ length) / 126 wiki-style; **peak CPM 364**, from one 3-tap burst on the rapid vocal syllables in Chorus 2 (89.3 s). Other bursts were capped (no gaps under 162 ms) to keep it moderate. Comparison with the original levels is in `chart-report.md`.
+- **Judgment:** the engine rule (v2.4) gives min ±74 ms (at the burst) and median ±110 ms. My target is perfect ±60 / accept ±115 ms.
 - **Levels** (codex L0/L1/L2 = 0/+4/+8): 0 → **alley ramp +4** (31.7–35.8 s, L1) → **fall −4** at the break (50.8 s, L0, under the chorus deck) → **spiral ramp +4** round the courtyard tower (79–83 s, L1) → **ramp +4** into Chorus 2 (86–92 s, L2), and it stays on top to the finish.
 - **Checks:** the validator reports 0 same-level overlaps.
 
@@ -47,10 +48,10 @@ Planner: beam search over per-section motifs plus a drift bearing, using the exa
 | Verse 1 · 纸片房屋 (14.7s) | spiral / wrap R, switchbacks → 0°, zigzag corridor (RRLL) → 0°, staircase → 45° | 26 | 2 | 9 | +0..+4 | 0 |
 | Chorus 1 · 五色尾迹 (36.2s) | staircase → 90°, staircase → 180°, staircase → 270° | 26 | 2 | 2 | +4..+4 | 13 |
 | Break · 像素平面 (50.5s) | long sweeping legs | 10 | 3 | 4 | +0..+4 | 6 |
-| Rebuild · 重新立起 (57.7s) | staircase → 0°, staircase → 90°, staircase → 0°, staircase → 90° | 16 | 2 | 1 | +0..+0 | 13 |
-| Verse 2 · 立体城市 (64.8s) | zigzag corridor (RRLL) → 270°, switchbacks → 0°, spiral / wrap L, staircase → 0° | 29 | 2 | 8 | +0..+4 | 15 |
-| Chorus 2 · 飞行 (86.3s) | staircase → 90°, staircase → 0°, staircase → 90°, staircase → 180° | 33 | 3 | 10 | +4..+8 | 31 |
-| Outro · 牛仔徽章 (100.6s) | long sweeping legs → 90° | 6 | 2 | 1 | +8..+8 | 2 |
+| Rebuild · 重新立起 (57.7s) | staircase → 0°, staircase → 90°, staircase → 0°, staircase → 90° | 16 | 2 | 1 | +0..+0 | 12 |
+| Verse 2 · 立体城市 (64.8s) | zigzag corridor (RRLL) → 270°, switchbacks → 0°, spiral / wrap L, staircase → 0° | 29 | 2 | 10 | +0..+4 | 13 |
+| Chorus 2 · 飞行 (86.3s) | staircase → 90°, staircase → 0°, staircase → 90°, staircase → 180° | 34 | 2 | 8 | +4..+8 | 33 |
+| Outro · 牛仔徽章 (100.6s) | long sweeping legs → 90° | 6 | 1 | 0 | +8..+8 | 1 |
 
 How each section reads (see `route-sections.png`):
 - **Intro (0–7.5 s):** one long straight and one big L on the synth stabs. Six side slabs flip up when the percussion enters (codex P1).
@@ -135,7 +136,7 @@ The art is procedural PIL (`_w2_tools/artgen.py`) in the codex palette. There ar
 | 50.50 | Break · 像素平面 | break | 10 | 1.40 | 2.0/s |
 | 57.66 | Rebuild · 重新立起 | break | 16 | 2.23 | 3.5/s |
 | 64.83 | Verse 2 · 立体城市 | verse | 29 | 1.35 | 2.5/s |
-| 86.32 | Chorus 2 · 飞行 | chorus | 33 | 2.30 | 3.0/s |
+| 86.32 | Chorus 2 · 飞行 | chorus | 34 | 2.37 | 3.0/s |
 | 100.64 | Outro · 牛仔徽章 | outro | 6 | 0.72 | 1.5/s |
 
 

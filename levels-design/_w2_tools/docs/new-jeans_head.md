@@ -1,6 +1,6 @@
 # New Jeans — 城市换新 City Unfolded · level design (worker w2, v3)
 
-Files: `chart.json` (167 taps) · `layout.json` (v2.4 + `path.nodes`) · `route.png` · `route-sections.png` · `chart-report.md` · `analysis.json` / `analysis-notes.md` · `art/` (5 images).
+Files: `chart.json` (168 taps) · `layout.json` (v2.4 + `path.nodes`) · `route.png` · `route-sections.png` · `chart-report.md` · `analysis.json` / `analysis-notes.md` · `art/` (5 images).
 **Aligned with codex-ref** (`/workspace/nj-refs/new-jeans/`): a pink solid line through a light-blue city that keeps unfolding; streets → rooftops → the five flight trails become the skyline. Cover = **Get Up EP digital cover** (pale-blue pixel city, five Powerpuff-style members, five colour trails, small bunny icon top-left). The blueprint shapes are mood only; the route choreography is ours.
 
 ## Concept
@@ -32,9 +32,10 @@ Files: `chart.json` (167 taps) · `layout.json` (v2.4 + `path.nodes`) · `route.
 
 ## Core numbers
 - **Speed and width:** 10.2 u/s. Width 2.2 → 2.0 (Chorus 1) → 1.8 (Chorus 2) → 2.2 (outro).
-- **Taps: old 68 → new 167 (×2.46)**, averaging 1.53/s. This is above 2× because the old chart was anomalously sparse (0.62/s, first tap at 8 s). A trim to about 150 is possible: drop the snare on beat 2 in Verse 2 for every other bar.
-- **Fastest run:** 6 × 8th (224 ms) at 63.3 s (Rebuild). Minimum gap 222 ms.
-- **Judgment:** the engine rule (v2.4) gives min ±100 ms and median ±110 ms. My target is perfect ±60 / accept ±115 ms.
+- **Taps: old 68 → new 168 (×2.47)**, averaging 1.54/s. This is above 2× because the old chart was anomalously sparse (0.62/s, first tap at 8 s). A trim to about 150 is possible: drop the snare on beat 2 in Verse 2 for every other bar.
+- **Fastest run:** 6 × 8th (224 ms) at 63.3 s (Rebuild). Minimum 8th gap 222 ms.
+- **Difficulty (moderate tier, EP opener):** avg CPM 92 (taps ÷ length) / 126 wiki-style; **peak CPM 364**, from one 3-tap burst on the rapid vocal syllables in Chorus 2 (89.3 s). Other bursts were capped (no gaps under 162 ms) to keep it moderate. Comparison with the original levels is in `chart-report.md`.
+- **Judgment:** the engine rule (v2.4) gives min ±74 ms (at the burst) and median ±110 ms. My target is perfect ±60 / accept ±115 ms.
 - **Levels** (codex L0/L1/L2 = 0/+4/+8): 0 → **alley ramp +4** (31.7–35.8 s, L1) → **fall −4** at the break (50.8 s, L0, under the chorus deck) → **spiral ramp +4** round the courtyard tower (79–83 s, L1) → **ramp +4** into Chorus 2 (86–92 s, L2), and it stays on top to the finish.
 - **Checks:** the validator reports 0 same-level overlaps.
 

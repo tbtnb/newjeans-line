@@ -179,3 +179,4 @@ CROWN_T=lambda bar: [bar(19.9)-0.4,bar(47.6)]
 # ---- v4 difficulty calibration (moderate tier: few bursts)
 BURST_WINDOWS=[(34.5,36.4,1),(72.4,74.0,1),(84.5,86.5,1),(88.8,90.4,1)]
 TIER='moderate (EP opener, not a title track: only a few bursts)'
+BURST_MIN=0.162; BURST_MAX=0.205   # moderate tier: bursts no faster than ~370 CPM
