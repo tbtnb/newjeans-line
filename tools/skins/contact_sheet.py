@@ -7,15 +7,17 @@ rep = json.load(open(f'{D}/report.json'))
 fp = [p for p in ['/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc', '/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc'] if os.path.exists(p)]
 F = ImageFont.truetype(fp[0], 22) if fp else ImageFont.load_default(); Fs = ImageFont.truetype(fp[0], 16) if fp else F
 names = {'classic': '经典 Classic', 'bunny': '兔兔 Bunny', 'denim': 'Y2K 牛仔 Denim', 'bubble-gum': '泡泡糖 Bubble Gum', 'phoning': '翻盖机 Phoning', 'film': 'Ditto 胶片 Film', 'supernatural': '超自然铬 Supernatural'}
-w, h = 270, 480; cw = w + 8
+w, h = 270, 480; cw = w + 8; cs = w
 play = rep['play']
-top = Image.new('RGB', (cw * len(play) + 8, 40 + 2 * (h + 30) + 10), '#f4f1ea'); d = ImageDraw.Draw(top)
+top = Image.new('RGB', (cw * len(play) + 8, 40 + 2 * (cs + 30) + (h + 30) + 10), '#f4f1ea'); d = ImageDraw.Draw(top)
 for i, r in enumerate(play):
     x = 8 + i * cw
     d.text((x, 8), names.get(r['skin'], r['skin']), fill='#2c2a28', font=F)
-    for j, (k, lab) in enumerate([('turnShot', '转弯 turn +0.16s'), ('deathShot', '死亡 shatter')]):
-        y = 40 + j * (h + 30)
-        top.paste(Image.open(r[k]).convert('RGB').resize((w, h)), (x, y + 22)); d.text((x, y), lab, fill='#77706a', font=Fs)
+    for j, (k, lab) in enumerate([('turnCrop', '转弯 turn +0.16s (head crop)'), ('deathCrop', '死亡 shatter (head crop)')]):
+        y = 40 + j * (cs + 30)
+        top.paste(Image.open(r[k]).convert('RGB').resize((cs, cs)), (x, y + 22)); d.text((x, y), lab, fill='#77706a', font=Fs)
+    y = 40 + 2 * (cs + 30)
+    top.paste(Image.open(r['turnShot']).convert('RGB').resize((w, h)), (x, y + 22)); d.text((x, y), '全屏 full frame (turn)', fill='#77706a', font=Fs)
 pk = rep['picker']; ph = 360
 ims = [Image.open(p['path']).convert('RGB') for p in pk]; ims = [im.resize((int(im.width * ph / im.height), ph)) for im in ims]
 bw = sum(im.width + 12 for im in ims) + 8
