@@ -11,13 +11,17 @@ import json, math
 from pathlib import Path
 
 C = json.loads(Path('levels-src/omg/chart.json').read_text())
-secs = C['sections']; end = C['taps'][-1]['t'] + 6
+L = json.loads(Path('levels-src/omg/layout.json').read_text())
+secs = C['sections']
+# level end: layout.endTime when the level stops before the song (the last section then becomes the finale)
+EARLY = bool(L.get('endTime')); end = L['endTime'] if EARLY else C['taps'][-1]['t'] + 6
 A = lambda n: f'art/v2/{n}'
 
 # ---- section themes (by musical role, so a re-chart with the same song structure keeps working)
 def theme(i):
     s = secs[i]; k = s['kind']; nxt = secs[i + 1]['kind'] if i + 1 < len(secs) else None
     nch = sum(1 for x in secs[:i] if x['kind'] == 'chorus')
+    if EARLY and i == len(secs) - 1: return 'finale'   # the level ends here: fireworks + curtains at the end
     if k == 'intro': return 'dream'
     if k == 'outro': return 'calm'
     if k == 'bridge' or (k == 'break' and secs[i - 1]['kind'] == 'bridge'): return 'garden'
@@ -70,6 +74,8 @@ dressing = dict(colors=['#fff4fb', '#c9b8ff', '#ff8fc0', '#3a2f7a', '#8fd0ff'], 
 
 import re as _re
 _g = [tp['t'] for tp in C['taps'] if _re.search(r'\bgod\b', str(tp.get('lyric', '')), _re.I)]
+if Path('analysis/omg.lyrics.json').exists():
+    _g = [x['t'] for x in json.loads(Path('analysis/omg.lyrics.json').read_text())['syllables'] if x['word'].lower().strip(',.?!') == 'god' and x['t'] < end - 1]
 def drop_near(a):
     # giant bunny rises (appear mode 'rise') at the first 'God' hit of the chorus starting at a, else 2 s in
     g = [x for x in _g if a - 0.5 <= x <= a + 12]
@@ -107,6 +113,9 @@ import re
 ev = []
 taps = C['taps']
 gods = [tp['t'] for tp in taps if re.search(r'\bgod\b', str(tp.get('lyric', '')), re.I)]   # "Oh my god" hits
+_lf = Path('analysis/omg.lyrics.json')   # sung 'god' times from the lyric alignment (the chart may be hand-tapped without lyrics)
+if _lf.exists():
+    gods = [x['t'] for x in json.loads(_lf.read_text())['syllables'] if x['word'].lower().strip(',.?!') == 'god' and x['t'] < end - 1]
 drops = []
 for g in gods:
     if not drops or g - drops[-1][0] > 20:
@@ -191,8 +200,12 @@ for a, b, th in rng:
             band(a, b, 8, ['curtain'], [9, 13], phase=0)
             band(a, b, 4, ['bunny'], [7, 11], phase=2, sides=1)
             t = on_bar(a + 0.2)
-            while t < b - 0.5:
-                fireworks.append(dict(t=round(t, 3), near=14, height=13, colors=['#ffd27a', '#ff9ad5', '#9fd8ff', '#c9a8ff'], amount=90)); t += BAR
+            while t < b - 0.5:   # low and close (6 m up, 8 m out) so they are inside the gameplay framing
+                fireworks.append(dict(t=round(t, 3), near=8, height=6, colors=['#ffd27a', '#ff9ad5', '#9fd8ff', '#c9a8ff'], amount=90)); t += BAR
+            if EARLY and b >= end - 0.01:   # finish: curtains flank the last two bars, a double salvo on the last downbeats
+                band(b - 2 * BAR - 0.2, b + 0.3, 1, ['curtain'], [5, 8], mirror=True)
+                for tt in (b - 2 * BAR, b - BAR, b - BAR / 2):
+                    for nr in (7, 10): fireworks.append(dict(t=round(tt, 3), near=nr, height=6, colors=['#ffd27a', '#ff9ad5', '#9fd8ff', '#c9a8ff'], amount=110))
     elif th == 'garden':
         band(a, b, 0.5, ['flower', 'lantern'], [3, 6.5], mirror=True)
         band(a, b, 2, ['bunny'], [6, 9], phase=1, sides=1)
