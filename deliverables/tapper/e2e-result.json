@@ -1,0 +1,90 @@
+{
+ "steps": [
+  {
+   "name": "song list has the 16 game songs and OMG grid",
+   "pass": true,
+   "nSongs": 16,
+   "info": "127.003 BPM · 第一拍 0.011 s · 来自关卡谱面"
+  },
+  {
+   "name": "calibration ≈ simulated 40 ms lateness",
+   "pass": true,
+   "calibration_ms": 37
+  },
+  {
+   "name": "recorded every synthetic tap; calibrated times centred on the truth",
+   "pass": true,
+   "taps": 27,
+   "expected": 27,
+   "meanErrMs": 6.6,
+   "sdMs": 14.1
+  },
+  {
+   "name": "click on empty timeline adds a tap",
+   "pass": true
+  },
+  {
+   "name": "drag moves the selected tap",
+   "pass": true,
+   "from": 13.0645,
+   "to": 13.2645
+  },
+  {
+   "name": "Delete removes the selected tap",
+   "pass": true
+  },
+  {
+   "name": "range select (Shift+drag) + Delete removes the range",
+   "pass": true,
+   "selected": 1
+  },
+  {
+   "name": "undo / redo",
+   "pass": true,
+   "afterUndo": 27,
+   "afterRedo": 26
+  },
+  {
+   "name": "A–B from selection",
+   "pass": true,
+   "A": 16.191,
+   "B": 17.838
+  },
+  {
+   "name": "export JSON (download + clipboard)",
+   "pass": true,
+   "file": "deliverables/tapper/sample-export.json",
+   "taps": 27,
+   "keys": [
+    "format",
+    "version",
+    "song",
+    "title",
+    "audio_duration",
+    "bpm",
+    "beat_period",
+    "beat0",
+    "bar_beat",
+    "grid_source",
+    "calibration_ms",
+    "exported",
+    "tool",
+    "taps"
+   ]
+  },
+  {
+   "name": "autosave per song (survives reload)",
+   "pass": true,
+   "taps": 27
+  },
+  {
+   "name": "no page errors",
+   "pass": true,
+   "errs": []
+  }
+ ],
+ "summary": {
+  "pass": 12,
+  "total": 12
+ }
+}
