@@ -14,6 +14,8 @@ import { Dressings } from './dressing';
 import { EnvTimeline } from './env';
 import { CameraRig } from './camera';
 import { LineSkin } from './lineskin';
+import { SceneC } from './scenec/scenec';
+import { PageTurn } from './scenec/pageturn';
 
 const LINE_W = 1.0, LINE_H = 0.9;
 /** one straight trail run: axis-aligned box from a to b (heading h), extended by LINE_W/2 at both ends */
@@ -68,6 +70,8 @@ export class World {
   private head: Mesh | null = null; private trail: Mesh | null = null; private trailMat: StandardMaterial | null = null; private headMat: StandardMaterial | null = null;
   private trailBuf = new Float32Array(16 * 64); private trailCount = 0; private runs: Run[] = []; private failRun: Run | null = null;
   private show: ShowFx | null = null; private corridor: Corridor | null = null;
+  /** concept C scenery (layout.scenec; ?scene=old keeps the legacy scenery) */
+  private sc: SceneC | null = null; private pt: PageTurn | null = null; private cmode = false;
   private objects: Obj[] = []; private faceCam: Obj[] = []; private groundTex: { t: number; tex: Texture }[] = []; private groundShown: Texture | null = null; private groundTint: Color3 | null = null; private byId = new Map<string, Obj[]>();
   private diamonds: { mesh: Mesh; t: number; taken: boolean; base: Vector3 }[] = [];
   private crowns: { node: TransformNode; t: number; taken: boolean; base: Vector3 }[] = [];
@@ -110,12 +114,13 @@ export class World {
   setQuality(q: 'high' | 'low') {
     this.quality = q;
     this.engine.setHardwareScalingLevel(1 / Math.min(window.devicePixelRatio || 1, q === 'high' ? 2 : 1));
+    this.sc?.setTier(q);
     if (this.level && this.game) this.setupShadows();
   }
 
   private setupShadows() {
     this.shadows?.dispose(); this.shadows = null;
-    if (this.quality !== 'high' || !this.head || !this.trail) return;
+    if (this.quality !== 'high' || !this.head || !this.trail || this.cmode) return; // concept C: baked vertex light, no realtime shadows
     const sg = new ShadowGenerator(1024, this.sun);
     sg.usePercentageCloserFiltering = true; sg.filteringQuality = ShadowGenerator.QUALITY_LOW;
     sg.bias = 0.004; sg.normalBias = 0.02; sg.darkness = 0.55;
@@ -141,6 +146,7 @@ export class World {
     this.trailMat?.dispose(); this.headMat?.dispose(); this.groundMat?.dispose();
     this.rig?.cam.dispose(); this.rig = null;
     this.objects = []; this.byId.clear(); this.diamonds = []; this.crowns = [];
+    this.sc?.dispose(); this.sc = null; this.pt?.dispose(); this.pt = null; this.cmode = false;
     this.dress?.dispose(); this.dress = null; this.show?.dispose(); this.show = null; this.corridor?.dispose(); this.corridor = null;
     this.head = this.trail = this.ground = null;
     this.level = null; this.game = null; this.route = null;
@@ -155,7 +161,13 @@ export class World {
     this.root = new TransformNode('level', this.scene);
     this.mats = new Materials(this.scene); this.mats.artBase = `./levels/${level.id}/`;
     this.backdrops = [...(L.art?.backdrop ? [{ t: -1, src: L.art.backdrop }] : []), ...(L.sections ?? []).filter(s => s.backdrop).map(s => ({ t: s.t, src: s.backdrop! }))].sort((a, b) => a.t - b.t); this.backdropShown = undefined;
-    this.env = new EnvTimeline(L);
+    this.cmode = !!L.scenec && !(typeof location !== 'undefined' && /[?&]scene=old\b/.test(location.search));
+    if (this.cmode) {
+      // concept C: the zone palettes drive sky / fog / ground (blended over 1.6 s at each zone start, under the page turn)
+      const z = L.scenec!.zones;
+      this.env = new EnvTimeline({ ...L, palette: { ...L.palette, ...z[0].palette } as typeof L.palette, sections: z.slice(1).map(q => ({ t: q.t0, palette: q.palette })) as unknown as typeof L.sections, events: (L.events ?? []).filter(e => e.type !== 'color') });
+      this.backdrops = [];
+    } else this.env = new EnvTimeline(L);
     this.beats = L.beats ?? []; this.kicks = L.kicks ?? [];
     this.events = [...(L.events ?? [])].sort((a, b) => a.t - b.t);
     const widthAt = (t: number) => stepAt(L.road.width, t)?.w ?? 2.2;
@@ -170,11 +182,11 @@ export class World {
       this.groundMat = new StandardMaterial('groundM', this.scene); this.groundMat.specularColor = Color3.Black();
       // themed ground (v2.7: sections[].ground switches the tile at section starts; tint multiplies it)
       const mk = (g: { src: string; scale?: number }) => { const gt = new Texture(this.mats!.artBase + g.src, this.scene); const rep = 1600 / (g.scale ?? 40); gt.uScale = rep; gt.vScale = rep; gt.anisotropicFilteringLevel = 1; return gt; }; // aniso off: a calm backdrop tile, and far cheaper on weak GPUs
-      if (L.art?.ground?.src) this.groundTex.push({ t: -1, tex: mk(L.art.ground) });
-      for (const sc of L.sections ?? []) if (sc.ground?.src) this.groundTex.push({ t: sc.t, tex: mk(sc.ground) });
+      if (L.art?.ground?.src && !this.cmode) this.groundTex.push({ t: -1, tex: mk(L.art.ground) });
+      for (const sc of this.cmode ? [] : L.sections ?? []) if (sc.ground?.src) this.groundTex.push({ t: sc.t, tex: mk(sc.ground) });
       this.groundTex.sort((a, b) => a.t - b.t);
       if (this.groundTex.length) { this.groundMat.diffuseTexture = this.groundTex[0].tex; this.groundShown = this.groundTex[0].tex; }
-      this.groundTint = L.art?.ground?.tint ? hex(L.art.ground.tint) : null;
+      this.groundTint = L.art?.ground?.tint && !this.cmode ? hex(L.art.ground.tint) : null;
       this.ground.material = this.groundMat; this.ground.position.y = pal.groundY; this.ground.isPickable = false; this.ground.parent = this.root;
     }
     // player line
@@ -190,7 +202,7 @@ export class World {
     // scenery
     const grid = new RoadGrid(route, widthAt);
     const expanded: SceneObject[] = [];
-    for (const o of L.objects ?? []) {
+    for (const o of (L.objects ?? []).filter(o => !this.cmode || o.onroad)) {
       if (o.kind === 'row' && o.item && o.t0 !== undefined && o.t1 !== undefined) {
         const v = route.spans[0].v; const step = (o.spacing ?? 1.5) / v;
         for (let t = o.t0; t <= o.t1 + 1e-6; t += step) for (const s of o.bothSides ? [1, -1] : [1]) {
@@ -205,18 +217,18 @@ export class World {
     }
     for (const o of expanded) this.addObject(o, o.kind === 'row' ? undefined : grid);
     // roadside dressing (engine-placed props; layout.dressing tunes it, false disables)
-    if (L.dressing !== false) {
+    if (L.dressing !== false && !this.cmode) {
       const block = this.objects.filter(o => o.br).map(o => ({ x: o.node.position.x + o.bc!.x, z: o.node.position.z + o.bc!.z, r: Math.min(8, o.br! * 0.8) }));
       this.dress = new Dressings(this.scene, this.mats, this.root, route, L.dressing ?? {}, this.env.base, widthAt, (x, z, r, y0, y1) => grid.hits(x, z, r, y0, y1), block);
     }
-    if (L.fx) {
+    if (L.fx && !this.cmode) {
       // v2.8 show visuals (src/render/showfx.ts)
       const road = this.road;
       this.show = new ShowFx(this.scene, this.root, route, L, this.quality, widthAt, (x, z, r, y0, y1) => grid.hits(x, z, r, y0, y1),
         road ? { mesh: road.top, buffer: road.topBuffer, centers: Float32Array.from(road.tiles.flatMap(tl => [tl.cx, tl.cz])), setFlush: f => { road.onFlush = f; } } : null, L.fx.sprite ? new Texture(this.mats.artBase + L.fx.sprite, this.scene) : this.sparkTex ? this.sparkTex.clone() as Texture : null);
       this.show.addGlow(this.objects.filter(o => o.def.glowfx).flatMap(o => o.node.getChildMeshes() as Mesh[]));
     }
-    if (L.corridor) {
+    if (L.corridor && !this.cmode) {
       // v2.9 corridor scenery (src/render/corridor.ts)
       const spr = L.fx?.sprite ? new Texture(this.mats.artBase + L.fx.sprite, this.scene) : this.sparkTex ? this.sparkTex.clone() as Texture : null;
       this.corridor = new Corridor(this.scene, this.root, route, L.corridor, this.mats.artBase, this.quality, widthAt, (x, z, r, y0, y1) => grid.hits(x, z, r, y0, y1), spr, this.beats);
@@ -225,6 +237,10 @@ export class World {
     for (const e of this.events) if (e.type === 'light' && e.target) for (const o of this.targets(e.target)) if (!o.lit) {
       o.lit = [];
       for (const m of o.node.getChildMeshes()) { const src = m.material as StandardMaterial | null; if (!src) continue; const c = src.clone(src.name + '_lit') as StandardMaterial; m.material = c; o.lit.push({ mat: c, base: c.emissiveColor.clone() }); }
+    }
+    if (this.cmode) {
+      this.sc = new SceneC(this.scene, this.root, route, L.scenec!, { duration: level.duration, widthAt, roadH: 0.6, hits: (x, z, r, y0, y1) => grid.hits(x, z, r, y0, y1), beats: this.beats, base: './', tier: this.quality });
+      this.pt = new PageTurn(this.canvas.parentElement, L.scenec!.zones.slice(1).map(q => ({ t: q.t0, color: q.palette.skyBottom ?? '#fff6e8' })));
     }
     // percentage markers (DL style)
     for (let k = 1; k <= 9; k++) {
@@ -485,6 +501,7 @@ export class World {
     if (this.corridor && this.scene.activeCamera) { const lb = this.lastBefore(this.beats, t); const cam = this.scene.activeCamera; this.corridor.update(t, Math.exp(-(t - lb) * 9), cam.position, cam.getViewMatrix(), seeking ? 1 : dt, Math.tan(cam.fov / 2), this.engine.getRenderWidth() / Math.max(1, this.engine.getRenderHeight())); }
     if (this.groundTex.length > 1 && this.groundMat) { let g = this.groundTex[0].tex; for (const x of this.groundTex) if (x.t <= t) g = x.tex; if (g !== this.groundShown) { this.groundShown = g; this.groundMat.diffuseTexture = g; } }
     if (this.backdrops.length) { let b: string | null = null; for (const x of this.backdrops) if (x.t <= t) b = x.src; if (b !== this.backdropShown) { this.backdropShown = b; this.onBackdrop?.(b ? this.mats!.artBase + b : null); } }
+    if (this.sc) { const lb = this.lastBefore(this.beats, t); this.sc.update(t, seeking ? 0 : dt, Math.exp(-(t - lb) * 9), this.rig.cam.position); this.pt?.update(t); }
     // road reveal
     this.road?.update(t);
     // line
@@ -760,5 +777,5 @@ export class World {
 
   resize() { this.engine.resize(); }
   dispose() { this.unload(); this.skin.dispose(); this.scene.dispose(); this.engine.dispose(); }
-  stats() { return { meshes: this.scene.meshes.length, active: this.scene.getActiveMeshes().length, fps: this.fps, trail: this.trailCount, tiles: this.road?.tiles.length ?? 0, objects: this.objects.length, drawCalls: (this.engine as any)._drawCalls?.current ?? null }; }
+  stats() { return { meshes: this.scene.meshes.length, active: this.scene.getActiveMeshes().length, fps: this.fps, trail: this.trailCount, tiles: this.road?.tiles.length ?? 0, objects: this.objects.length, drawCalls: (this.engine as any)._drawCalls?.current ?? null, scenec: this.sc?.last ?? null }; }
 }
