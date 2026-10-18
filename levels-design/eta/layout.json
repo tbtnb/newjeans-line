@@ -135,7 +135,7 @@
    "dy": 12
   },
   {
-   "t": 104.388,
+   "t": 104.605,
    "type": "fall",
    "dy": -6
   },
@@ -558,7 +558,8 @@
    "t": 47.782
   },
   {
-   "t": 104.671
+   "t": 75.005,
+   "note": "checkpoint at the foot of the tower helix (last calm straight of Pre 2)"
   }
  ],
  "finish": {

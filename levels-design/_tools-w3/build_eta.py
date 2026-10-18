@@ -94,6 +94,7 @@ L.camera=[dict(t=0,preset='close',blend=0),dict(t=3.0,preset='iso',yaw=-25,blend
  dict(t=C2+7.1,preset='high',blend=2.0),dict(t=S2,preset='top',blend=0.4),dict(t=FA,preset='high',blend=1.0),
  dict(t=FB,preset='iso',blend=1.0,shake=0.08),dict(t=OUT,preset='high',blend=2.0),dict(t=OUT+5,preset='wide',blend=4.0)]
 place_collectibles(L,[3.4,15,27,41,55,70,86,99,113,128],[S1,S2])
+L.layout_crowns[1]=dict(t=slot_near(T,77.0,0.8),note='checkpoint at the foot of the tower helix (last calm straight of Pre 2)')
 L.art=dict(backdrop='art/sky.jpg',ground=dict(src='art/sea.jpg',scale=60),
   catalog=[dict(file='art/sky.jpg',use='backdrop: summer sea sky with voxel clouds'),dict(file='art/sea.jpg',use='ground texture: turquoise sea'),
            dict(file='art/terracotta-tile.jpg',use='texture on the alley walls / roofs'),dict(file='art/heart-poster.png',use='posters, giant flat pixel heart'),

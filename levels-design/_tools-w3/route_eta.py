@@ -14,7 +14,7 @@ def make():
         dict(t=gap_near(T,B(29),0.6),type='jump',dy=2.5),dict(t=gap_near(T,B(32),0.6),type='jump',dy=2.5),
         dict(t0=B(35),t1=B(43),type='ramp',dy=-4),
         dict(t0=B(43),t1=B(51),type='ramp',dy=12),
-        dict(t=gap_near(T,B(58),0.3),type='fall',dy=-6),
+        dict(t=round([b for a,b in zip(T,T[1:]) if b>B(58)][0]-0.4,3),type='fall',dy=-6),
         dict(t0=B(59),t1=B(67),type='ramp',dy=-6),
         dict(t=gap_near(T,B(71),0.44),type='fall',dy=-3)]
     S=[dict(t=0,prog=[dict(t=0,mode='seq',pairs=['NE','SE','NE'],counts=[5,3,99])],fix=(0,0)),
