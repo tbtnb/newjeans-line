@@ -1,10 +1,50 @@
 """H06 Heart Finish Gate; spec 12 x 3 x 11 m; budget 5000 triangles.
 Pivots: root, gate0/1 at the page feet, bob0/1 at rabbit feet.
 SIMPLIFICATIONS: warm bulbs use baked lamp colours; curled pages use broad folded
-planes; no lettering or fine paper grain. Front/hero govern the inconsistent top aspect.
+planes; shared darkest plum #2A1640 printed eyes; no lettering or fine paper grain. Front/hero govern the inconsistent top aspect.
 """
 import math
 BUDGET=5000
+
+def face_patch(P, head, name, outline, color, offset=.012, forward=(0,-1,0)):
+    """Printed low-triangle mark, clipped to the head planes and lifted along their normals."""
+    import bpy
+    from mathutils import Vector
+    import bmesh
+    bm=bmesh.new();bm.from_mesh(head.data);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));bm.to_mesh(head.data);bm.free();head.data.update()
+    bpy.context.view_layer.update()
+    front=Vector(forward);right=Vector((-front.y,front.x,0));up=Vector((0,0,1))
+    def uv(p):return (p.dot(right),p.z)
+    def clip(poly,a,b):
+        result=[]
+        for p,q in zip(poly,poly[1:]+poly[:1]):
+            u,v=uv(p),uv(q)
+            dp=(b[0]-a[0])*(u[1]-a[1])-(b[1]-a[1])*(u[0]-a[0])
+            dq=(b[0]-a[0])*(v[1]-a[1])-(b[1]-a[1])*(v[0]-a[0])
+            if dp>=-1e-9:result.append(p)
+            if (dp>=0)!=(dq>=0):result.append(p+(q-p)*(dp/(dp-dq)))
+        return result
+    if sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(outline,outline[1:]+outline[:1]))<0:outline=outline[::-1]
+    mw=head.matrix_world;nm=mw.to_3x3().inverted().transposed();vs=[];fs=[]
+    head.data.calc_loop_triangles()
+    for tri in head.data.loop_triangles:
+        normal=(nm@tri.normal).normalized()
+        if normal.dot(front)<.05:continue
+        poly=[mw@head.data.vertices[i].co for i in tri.vertices]
+        for a,b in zip(outline,outline[1:]+outline[:1]):
+            poly=clip(poly,a,b)
+            if len(poly)<3:break
+        if len(poly)<3:continue
+        for j in range(1,len(poly)-1):
+            if (poly[j]-poly[0]).cross(poly[j+1]-poly[0]).length<1e-10:continue
+            k=len(vs);vs.extend([tuple(p+normal*offset) for p in (poly[0],poly[j],poly[j+1])]);fs.append((k,k+1,k+2))
+    me=bpy.data.meshes.new(name);me.from_pydata(vs,[],fs);me.update()
+    ob=bpy.data.objects.new(name,me);bpy.context.collection.objects.link(ob);P.paint(ob,color)
+    return ob
+
+def face_oval(x,z,rx,rz):
+    # Six corners keep the little eyes flat and faceted.
+    return [(x+rx*math.cos(i*math.tau/6),z+rz*math.sin(i*math.tau/6)) for i in range(6)]
 
 def build(P,spec):
  import bpy,bmesh
@@ -89,10 +129,13 @@ def build(P,spec):
    fan=P.prism('gold_folded_fan',poly,.16,loc=(x+sign*.64,-.23,.70),rot=(0,sign*18,0),color=C['gold']);static.append(fan)
    static.append(P.prism('pink_fan_inset',[(a*.78,b*.80+.06) for a,b in poly],.18,loc=(x+sign*.64,-.32,.70),rot=(0,sign*18,0),color=C['pink']))
   rabbit=[];yy=-.91
-  rabbit.append(P.lathe('faceted_rabbit_body',[(.42,0),(.65,.20),(.62,.89),(.38,1.26)],8,loc=(x,yy,.78),color=C['white']))
-  rabbit.append(P.ico('carved_rabbit_head',.78,loc=(x,yy,2.80),scale=(1,.70,.82),subdiv=1,color=C['cream']))
+  rabbit.append(P.lathe('faceted_rabbit_body',[(.42,0),(.65,.20),(.62,.89),(.38,1.26)],8,loc=(x,yy,.78),color=C['cream']))
+  head=P.ico('carved_rabbit_head',.78,loc=(x,yy,2.80),scale=(1,.70,.82),subdiv=1,color=C['cream']);rabbit.append(head)
+  for sign in (-1,1):
+   rabbit.append(face_patch(P,head,'printed_eye',face_oval(x+sign*.24,2.86,.032,.047),'#2A1640'))
+  rabbit.append(face_patch(P,head,'printed_pink_nose',[(x-.067,2.72),(x,2.65),(x+.067,2.72)],C['pink']))
   for sign in [-1,1]:
-   rabbit.append(P.ico('faceted_foot',.48,loc=(x+sign*.43,yy-.13,1.02),scale=(1,.85,1),subdiv=1,color=C['white']))
+   rabbit.append(P.ico('faceted_foot',.48,loc=(x+sign*.43,yy-.13,1.02),scale=(1,.85,1),subdiv=1,color=C['cream']))
    rabbit.append(P.ico('front_paw',.26,loc=(x+sign*.62,yy-.43,1.95),scale=(1,.70,1),subdiv=1,color=C['cream']))
    ear=[(-.18,0),(-.29,.80),(-.20,1.48),(.12,1.56),(.29,.90),(.18,.10)]
    ear_ob=gem('creased_ear',ear,(x+sign*.37,yy,3.25),.15,'cream');ear_ob.rotation_euler.y=math.radians(sign*22);rabbit.append(ear_ob)

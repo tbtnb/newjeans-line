@@ -1,5 +1,5 @@
 """H18 Reading Bunny under Mushroom. spec size 2.8 x 2.9 x 3.5 m; budget 2500; pivots root,ears0,ears1,lid,pulse.
-SIMPLIFICATIONS: book print and tiny star wires omitted; pink ears use warm lamp tone because pink is absent from spec palette."""
+SIMPLIFICATIONS: book print and tiny star wires omitted; shared pink #FF6FAE supplies sheet pink inner ears, nose and sole pads; flat navy eye patches replace bead eyes."""
 
 import math
 import bpy
@@ -60,6 +60,42 @@ def ear(P,name,x,y,z,w,h,outer,inner,lean=0):
     b=mesh(P,name+' inset',inset,[(7,i,(i+1)%7) for i in range(7)],inner)
     return [a,b]
 
+def face_patch(P, head, name, outline, color):
+    """Clip a flat mark to actual front facets; lift 12 mm along each face normal.
+
+    Dissolving coplanar subdivision edges keeps the entire face below 40 tris.
+    Coordinates are in world XZ before the asset's final size normalization.
+    """
+    import bmesh
+    bpy.context.view_layer.update()
+    bm = bmesh.new(); bm.from_mesh(head.data); bm.transform(head.matrix_world)
+    bm.normal_update()
+    bmesh.ops.dissolve_limit(bm, angle_limit=1e-5, verts=list(bm.verts), edges=list(bm.edges))
+    bm.normal_update()
+    def clip(poly, a, b):
+        out = []
+        for u, v in zip(poly, poly[1:] + poly[:1]):
+            du = (b[0]-a[0])*(u.z-a[1]) - (b[1]-a[1])*(u.x-a[0])
+            dv = (b[0]-a[0])*(v.z-a[1]) - (b[1]-a[1])*(v.x-a[0])
+            if du >= -1e-8: out.append(u)
+            if (du >= 0) != (dv >= 0): out.append(u + (v-u)*(du/(du-dv)))
+        return out
+    if sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(outline,outline[1:]+outline[:1])) < 0:
+        outline = outline[::-1]
+    verts = []; faces = []
+    for f in bm.faces:
+        if f.normal.y >= -.05: continue
+        poly = [v.co.copy() for v in f.verts]
+        for a,b in zip(outline,outline[1:]+outline[:1]):
+            poly = clip(poly,a,b)
+            if not poly: break
+        if len(poly) >= 3:
+            start = len(verts)
+            verts.extend([tuple(v + f.normal*.012) for v in poly])
+            faces.append(tuple(range(start,len(verts))))
+    bm.free()
+    return mesh(P,name,verts,faces,color)
+
 def build(P, spec):
     c=spec['colors']
     # A shallow many-sided paper plinth with a triangulated top.
@@ -97,15 +133,15 @@ def build(P, spec):
         for q,r in zip(path,path[1:]): rod(P,'gold canopy panel seam',q,r,.009,c['lamp'],3)
     for i in range(N):rod(P,'gold polygon brim',vv[i],vv[(i+1)%N],.010,c['lamp'],3)
     P.ico('seated rabbit body',1,loc=(-.05,-.37,.76),scale=(.43,.33,.43),subdiv=2,color=c['cream'])
-    P.ico('reading bunny head',1,loc=(-.05,-.58,1.35),scale=(.38,.32,.34),subdiv=2,color=c['cream'])
+    head=P.ico('reading bunny head',1,loc=(-.05,-.58,1.35),scale=(.38,.32,.34),subdiv=2,color=c['cream'])
     for sign in [-1,1]:
-        e=ear(P,'reading bunny thick folded ear',-.05+sign*.17,-.42,1.58,.29,.66,c['cream'],c['lamp'],sign*.20)
+        e=ear(P,'reading bunny thick folded ear',-.05+sign*.17,-.42,1.58,.29,.66,c['cream'],'#FF6FAE',sign*.20)
         P.pivot('ears'+str((sign+1)//2),(-.05+sign*.17,-.42,1.58),e)
-        P.ico('navy bead eye',.042,loc=(-.05+sign*.145,-.88,1.37),subdiv=1,color=c['navy'])
+        face_patch(P,head,'face_eye_'+str(sign),P.ellipse(.019,.027,6,cx=-.05+sign*.145,cz=1.37),c['navy'])
         P.ico('bunny foot',1,loc=(-.05+sign*.27,-.78,.51),scale=(.17,.22,.22),subdiv=2,color=c['cream'])
-        P.ico('warm sole',1,loc=(-.05+sign*.27,-.99,.50),scale=(.10,.025,.14),subdiv=1,color=c['lamp'])
+        P.ico('pink sole',1,loc=(-.05+sign*.27,-.99,.50),scale=(.10,.025,.14),subdiv=1,color='#FF6FAE')
         P.ico('book holding paw',1,loc=(-.05+sign*.39,-.72,1.15),scale=(.115,.12,.11),subdiv=1,color=c['cream'])
-    P.prism('tiny bunny nose',[(-.04,0),(.04,0),(0,-.04)],.022,loc=(-.05,-.90,1.29),color=c['lamp'])
+    face_patch(P,head,'face_nose',[(-.09,1.30),(-.05,1.26),(-.01,1.30)],'#FF6FAE')
     # Open V book, cream page stacks riding on a spine hinge.
     pages=[]
     for sign in [-1,1]:

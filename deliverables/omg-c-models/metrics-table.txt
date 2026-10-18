@@ -1,10 +1,11 @@
+# OMG-C models: tris/budget and silhouette IoU (compare v3) — box rebuild, Blender 4.5.14; targets f/s>=0.85 t>=0.80
 H01     castle           5340/6000   89%  f0.91 s0.86 t0.85
-H02     bunny-heart      3515/4000   88%  f0.95 s0.92 t0.93
-H03     carousel         5340/6000   89%  f0.82 s0.83 t0.93
+H02     bunny-heart      3525/4000   88%  f0.95 s0.92 t0.93
+H03     carousel         5214/6000   87%  f0.82 s0.83 t0.93
 H04     ferris-wheel     5146/6000   86%  f0.73 s0.84 t0.93
 H05     lantern-tower    2192/2500   88%  f0.69 s0.61 t0.98
-H06     heart-gate       3668/5000   73%  f0.88 s0.76 t0.72
-H07     bunny-family     3529/4000   88%  f0.89 s0.83 t0.79
+H06     heart-gate       3690/5000   74%  f0.88 s0.76 t0.72
+H07     bunny-family     3294/4000   82%  f0.89 s0.83 t0.79
 H08     cannon           1620/1800   90%  f0.88 s0.76 t0.80
 H09     book-cover       2152/3000   72%  f0.96 s0.95 t0.91
 H10     ward-bed         1210/2000   60%  f0.93 s0.75 t0.72
@@ -12,17 +13,17 @@ H11     clock-tower      2178/2500   87%  f0.92 s0.92 t0.95
 H12     flip-phone       1792/2000   90%  f0.83 s0.77 t0.83
 H13     phone-tower      3146/4000   79%  f0.91 s0.80 t0.81
 H14     spiral-tower     3144/3500   90%  f0.87 s0.85 t0.95
-H15     paper-boat       1008/1500   67%  f0.92 s0.78 t0.86
+H15     paper-boat       1017/1500   68%  f0.92 s0.78 t0.86
 H16     pavilion         2690/3000   90%  f0.71 s0.58 t0.95
 H17     windmill         2670/3000   89%  f0.84 s0.87 t0.83
-H18     reading-bunny    2132/2500   85%  f0.81 s0.79 t0.86
+H18     reading-bunny    2101/2500   84%  f0.81 s0.79 t0.86
 H19     sun              1700/2000   85%  f0.89 s0.90 t0.91
 P01     bunny-house      1024/1500   68%  f0.89 s0.84 t0.87
 P02     mushroom-house    773/1000   77%  f0.93 s0.92 t0.97
 P03     tulip-bed         718/800    90%  f0.90 s0.79 t0.92
 P04     tree              414/600    69%  f0.86 s0.86 t0.91
 P05     pine              316/400    79%  f0.90 s0.91 t0.92
-P06     bunny-statue      928/1200   77%  f0.84 s0.80 t0.90
+P06     bunny-statue      941/1200   78%  f0.84 s0.80 t0.90
 P07     iv-heart          442/500    88%  f0.57 s0.59 t0.53
 P08     screen            324/400    81%  f0.88 s0.44 t0.26
 P09     pull-tab          256/300    85%  f0.86 s0.79 t0.95
@@ -35,7 +36,7 @@ P15     cord-arch        1078/1200   90%  f0.77 s0.83 t0.81
 P16     heart-bed         556/800    70%  f0.84 s0.75 t0.81
 P17     star-chime        540/600    90%  f0.51 s0.24 t0.26
 P18     stairs            336/400    84%  f0.85 s0.75 t0.78
-P19     balloons          416/500    83%  f0.73 s0.73 t0.76
+P19     balloons          437/500    87%  f0.73 s0.73 t0.76
 P20     stall            1250/1500   83%  f0.67 s0.48 t0.86
 P21     bunting           256/300    85%  f0.47 s0.00 t0.66
 P22     firefly-lamp      178/200    89%  f0.87 s0.77 t0.77

@@ -1,7 +1,7 @@
 """H03 Bunny Carousel; 7.5 x 7.4 x 9 m; budget 6000 triangles.
 Pivots: root; spin carries canopy/platform and bob0..5 at each rabbit seat.
 SIMPLIFICATIONS: bulbs are lamp-coloured facets; striped poles use short spiral ribbons;
-rabbit faces use palette magenta eyes and pink noses, saddles omit stitch lines; canopy gores
+rabbit faces use shared darkest plum #2A1640 flat eyes and palette pink noses, saddles omit stitch lines; canopy gores
 are flat creased panels and seat ears are thick paper prisms.
 """
 import math,bpy
@@ -13,6 +13,46 @@ def mesh(P,name,v,f,c):
 
 def beam(P,name,a,b,r,c,n=3):
     a=Vector(a);b=Vector(b);ob=P.cyl(name,r,(b-a).length,n,loc=a,color=c);ob.rotation_euler=(b-a).to_track_quat('Z','Y').to_euler();return ob
+
+def face_patch(P, head, name, outline, color, offset=.012, forward=(0,-1,0)):
+    """Printed low-triangle mark, clipped to the head planes and lifted along their normals."""
+    import bpy
+    from mathutils import Vector
+    import bmesh
+    bm=bmesh.new();bm.from_mesh(head.data);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));bm.to_mesh(head.data);bm.free();head.data.update()
+    bpy.context.view_layer.update()
+    front=Vector(forward);right=Vector((-front.y,front.x,0));up=Vector((0,0,1))
+    def uv(p):return (p.dot(right),p.z)
+    def clip(poly,a,b):
+        result=[]
+        for p,q in zip(poly,poly[1:]+poly[:1]):
+            u,v=uv(p),uv(q)
+            dp=(b[0]-a[0])*(u[1]-a[1])-(b[1]-a[1])*(u[0]-a[0])
+            dq=(b[0]-a[0])*(v[1]-a[1])-(b[1]-a[1])*(v[0]-a[0])
+            if dp>=-1e-9:result.append(p)
+            if (dp>=0)!=(dq>=0):result.append(p+(q-p)*(dp/(dp-dq)))
+        return result
+    if sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(outline,outline[1:]+outline[:1]))<0:outline=outline[::-1]
+    mw=head.matrix_world;nm=mw.to_3x3().inverted().transposed();vs=[];fs=[]
+    head.data.calc_loop_triangles()
+    for tri in head.data.loop_triangles:
+        normal=(nm@tri.normal).normalized()
+        if normal.dot(front)<.05:continue
+        poly=[mw@head.data.vertices[i].co for i in tri.vertices]
+        for a,b in zip(outline,outline[1:]+outline[:1]):
+            poly=clip(poly,a,b)
+            if len(poly)<3:break
+        if len(poly)<3:continue
+        for j in range(1,len(poly)-1):
+            if (poly[j]-poly[0]).cross(poly[j+1]-poly[0]).length<1e-10:continue
+            k=len(vs);vs.extend([tuple(p+normal*offset) for p in (poly[0],poly[j],poly[j+1])]);fs.append((k,k+1,k+2))
+    me=bpy.data.meshes.new(name);me.from_pydata(vs,[],fs);me.update()
+    ob=bpy.data.objects.new(name,me);bpy.context.collection.objects.link(ob);P.paint(ob,color)
+    return ob
+
+def face_oval(x,z,rx,rz):
+    # Six corners keep the little eyes flat and faceted.
+    return [(x+rx*math.cos(i*math.tau/6),z+rz*math.sin(i*math.tau/6)) for i in range(6)]
 
 def build(P,spec):
     c=spec['colors'];M=c['magenta'];G=c['gold'];K=c['cream'];R=c['pink'];C=c['cyan'];Y=c['lamp'];parts=[];bobs=[]
@@ -86,24 +126,26 @@ def build(P,spec):
                 ob=P.lathe(name,profile,6 if name=='rabbit_body' else 8,loc=loc,color=color);ob.scale=scale
             else:ob=P.ico(name,1,loc=loc,scale=scale,subdiv=sub,color=color)
             rabbit.append(ob);return ob
-        ico('rabbit_body',(0,0,2.48),(.70,.38,.43));ico('rabbit_haunch',(-.37,0,2.40),(.38,.36,.37),1);ico('rabbit_head',(.57,0,2.96),(.43,.35,.41));ico('rabbit_muzzle',(.82,-.01,2.88),(.22,.24,.17),1)
+        ico('rabbit_body',(0,0,2.48),(.70,.38,.43));ico('rabbit_haunch',(-.37,0,2.40),(.38,.36,.37),1);head=ico('rabbit_head',(.57,0,2.96),(.43,.35,.41));muzzle=ico('rabbit_muzzle',(.82,-.01,2.88),(.22,.24,.17),1)
         ico('rabbit_tail',(-.75,.03,2.62),(.18,.16,.19),1)
         for side in (-1,1):
             ico('rabbit_rear_leg',(-.39,side*.27,2.10),(.24,.13,.30),1)
             ico('rabbit_fore_leg',(.46,side*.25,2.19),(.27,.12,.16),1)
             er=P.prism('solid_rabbit_ear',[(0,0),(-.11,.34),(-.09,.95),(.13,.75),(.17,.18)],.16,loc=(.43,side*.19,3.21),color=K,rot=(0,-19,0));rabbit.append(er)
-            rabbit.append(P.prism('pink_inner_ear',[(0,.15),(-.055,.39),(-.04,.78),(.075,.64),(.10,.20)],.018,loc=(.43,side*.19-.089,3.21),color=R,rot=(0,-19,0)))
         saddle=[(-.32,.06),(.32,.06),(.29,-.30),(.21,-.43),(-.21,-.43),(-.29,-.30)]
         rabbit.append(P.prism('saddle_gold_border',saddle,.78,loc=(-.07,0,2.83),color=G))
         rabbit.append(P.prism('cyan_saddle',[(x*.76,z*.78) for x,z in saddle],.81,loc=(-.07,0,2.83),color=C))
+        # Riding rabbits keep the sheet's tangential pose; +X is their local muzzle normal.
         for side in (-1,1):
-            centre=Vector((.73,side*.365,3.04));vs=[tuple(centre+Vector(v)*.052) for v in [(1,0,0),(-1,0,0),(0,1,0),(0,-1,0),(0,0,1),(0,0,-1)]]
-            rabbit.append(mesh(P,'tiny_eye',vs,[(0,2,4),(2,1,4),(1,3,4),(3,0,4),(2,0,5),(1,2,5),(3,1,5),(0,3,5)],M))
-        for ob in rabbit:
+            rabbit.append(face_patch(P,head,'printed_eye',face_oval(side*.16,3.055,.022,.029),'#2A1640',forward=(1,0,0)))
+        rabbit.append(face_patch(P,muzzle,'printed_pink_nose',[(-.045,2.94),(0,2.895),(.045,2.94)],R,forward=(1,0,0)))
+        for ob in list(rabbit):
             if ob.name.startswith('solid_rabbit_ear'):
                 import bmesh
                 bm=bmesh.new();bm.from_mesh(ob.data);bm.normal_update();bmesh.ops.poke(bm,faces=[f for f in bm.faces if f.normal.y<-.7],offset=.055);bm.to_mesh(ob.data);bm.free();P.paint(ob,K)
-        rabbit.append(P.prism('pink_nose',[(-.06,.04),(.06,.04),(0,-.06)],.035,loc=(1.02,0,2.91),rot=(0,0,90),color=R))
+                bpy.context.view_layer.update()
+                outline=[ob.matrix_world@Vector((u,0,z)) for u,z in [(0,.15),(-.055,.39),(-.04,.78),(.075,.64),(.10,.20)]]
+                rabbit.append(face_patch(P,ob,'surface_pink_inner_ear',[(v.x,v.z) for v in outline],R))
         bpy.context.view_layer.update();rise=.16 if k%2 else -.06
         mat=Matrix.Translation((x,y,rise))@Matrix.Rotation(a+math.pi/2,4,'Z')
         for ob in rabbit:ob.matrix_world=mat@Matrix.Translation((0,0,2.48))@Matrix.Diagonal((1.40,1.40,1.25,1))@Matrix.Translation((0,0,-2.48))@ob.matrix_world

@@ -1,0 +1,16 @@
+# FA — faces pass
+
+| Asset | What changed | Tris / budget | IoU front / side / top | Size delta W/D/H | Face tris | Simplifications |
+|---|---|---|---|---|---|---|
+| bunny-heart | Replaced tiny pink eye creases with flat navy #1F2350 hexagonal eyes; retained the approved pink nose outline. All non-face geometry, colors and pivots match BH2. | 3525/4000 (88.1%) | 0.950 / 0.922 / 0.927 | 0% / 0% / 0% | 29 | Printed texture omitted; stacked page leaves; principal gem creases; top ears interpreted from front + hero (unchanged BH2). |
+| bunny-statue | Added flat navy #1F2350 eyes and a spec blush #FFC7DA nose; changed bunny pearl to shared cream #FFF3DE; retained thick blush inner ears and sharp facets. | 941/1200 (78.4%) | 0.844 / 0.802 / 0.902 | 0% / 0% / 0% | 13 | Mint base rim retained in place of the drawn gold rim; integrated cheeks; no added blush cheeks (not drawn). |
+| reading-bunny | Replaced projecting bead eyes with flat spec navy #1F2350 facet patches; changed nose, inner ears and sole pads from lamp yellow to shared pink #FF6FAE. | 2101/2500 (84.0%) | 0.813 / 0.793 / 0.865 | 0% / 0% / 0% | 17 | Book print and tiny star wires remain omitted; shared pink supplements the spec palette to match the sheet; no added blush cheeks (not drawn). |
+| balloons | Added flat navy #1F2350 eyes and a spec pink #FF6FAE nose; changed inner-ear panels to shared blush #FFC7DA; retained the sheet cyan bunny balloon. Shared offset across each mark prevents cracks at folds. | 437/500 (87.4%) | 0.730 / 0.731 / 0.762 | 0% / 0% / 0% | 21 | Three balloons share swing pivot; triangular string rods; broad polygon belts; one gold heart seam; pink inner ears follow explicit faces-pass direction rather than sheet ivory; no added blush cheeks. |
+
+Validation: built all four through `tools/models/build.sh` with cached/offline gltfpack. Inspected every compare sheet, iso render and enlarged face crop (`build/FA-<id>-face.jpg`). One build each for bunny-heart, bunny-statue and reading-bunny; two for balloons.
+
+Every face has two flat six-sided eyes and one pink triangular nose, totaling <=40 tris; measured eye height is 6.18–7.41% of head height. Patches follow actual front-facing head facets with approximately 12 mm outward normal offset before final size normalization. The baked lo=0.80 shading was visually checked: cream remains clean and pink stays distinct.
+
+The current comparator was rerun against the saved pre-edit renders, because the historical metrics files used an older mask/comparison result. With the same current comparator, all twelve IoU values are unchanged (delta 0.000). Historical metrics are preserved in `build/FA-baseline/*.historical-metrics.json`. Current bunny-statue front/side, reading-bunny front/side, and balloons front/side/top remain below the global 0.85/0.85/0.80 targets; these are pre-existing silhouette limitations, not regressions introduced by this face pass.
+
+Geometry audit (`build/FA-validation.json`, script `build/FA-audit.py`): all four assets preserve non-face world geometry to 1e-6 m and all pivot transforms; BH2 additionally preserves every non-face color. All triangle budgets and exact spec dimensions pass. Only these four asset scripts and their allowed output/build paths were changed.

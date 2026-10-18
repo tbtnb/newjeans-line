@@ -1,7 +1,7 @@
 """H02 Giant Pop-up Bunny with Heart — 6.5 × 6 × 10 m; 4000 tris.
 Pivots: root (0,0,0), ears0/ears1 at folded ear roots, heart at gem centre.
 SIMPLIFICATIONS: printed paper texture omitted; page edges are stacked folded leaves;
-face marks use palette pink; gem microfacets follow the principal diamond creases;
+face uses shared navy #1F2350 eyes and the spec pink nose; gem microfacets follow the principal diamond creases;
 shared paper #FFF8EC supplements the exact spec palette; top-view ear placement
 is interpreted through front + hero (the drawn top ears extend farther back).
 """
@@ -170,6 +170,42 @@ def gem_heart(P,c):
             v.co.y=-.60+(v.co.y+.60)*1.04-.04
     return P.pivot('heart',(-.13,-1.27,3.465),[front,back,rim])
 
+def face_patch(P, head, name, outline, color):
+    """Clip a flat mark to actual front facets; lift 12 mm along each face normal.
+
+    Dissolving coplanar subdivision edges keeps the entire face below 40 tris.
+    Coordinates are in world XZ before the asset's final size normalization.
+    """
+    import bmesh
+    bpy.context.view_layer.update()
+    bm = bmesh.new(); bm.from_mesh(head.data); bm.transform(head.matrix_world)
+    bm.normal_update()
+    bmesh.ops.dissolve_limit(bm, angle_limit=1e-5, verts=list(bm.verts), edges=list(bm.edges))
+    bm.normal_update()
+    def clip(poly, a, b):
+        out = []
+        for u, v in zip(poly, poly[1:] + poly[:1]):
+            du = (b[0]-a[0])*(u.z-a[1]) - (b[1]-a[1])*(u.x-a[0])
+            dv = (b[0]-a[0])*(v.z-a[1]) - (b[1]-a[1])*(v.x-a[0])
+            if du >= -1e-8: out.append(u)
+            if (du >= 0) != (dv >= 0): out.append(u + (v-u)*(du/(du-dv)))
+        return out
+    if sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(outline,outline[1:]+outline[:1])) < 0:
+        outline = outline[::-1]
+    verts = []; faces = []
+    for f in bm.faces:
+        if f.normal.y >= -.05: continue
+        poly = [v.co.copy() for v in f.verts]
+        for a,b in zip(outline,outline[1:]+outline[:1]):
+            poly = clip(poly,a,b)
+            if not poly: break
+        if len(poly) >= 3:
+            start = len(verts)
+            verts.extend([tuple(v + f.normal*.012) for v in poly])
+            faces.append(tuple(range(start,len(verts))))
+    bm.free()
+    return mesh(P,name,verts,faces,color)
+
 def build(P,spec):
     c=spec['colors']; parts=[]
     # Full-height open page block, articulated centre hinge and crisp gold covers.
@@ -206,13 +242,12 @@ def build(P,spec):
         parts.append(folded(P,'folded_forearm',(s*1.63,-.55,3.87),(.65,.85,.95),c['cream']))
         parts.append(folded(P,'hugging_paw',(s*1.76-.10,-1.77,3.44),(.58,.64,.60),c['cream']))
     parts.append(folded(P,'small_paper_tail',(.44,1.87,1.98),(.37,.39,.39),c['cream'],segs=8))
-    # Palette-only face, small creases on the actual forehead planes.
-    head=next(o for o in parts if o.name.startswith('folded_cheek_head'))
-    for name,coords,col in [
-        ('nose',[(-.27,5.65),(0,5.43),(.27,5.65)],c['pink']),
-        ('eye_left',[(-.66,6.02),(-.57,6.00),(-.60,6.055)],c['pink']),
-        ('eye_right',[(.57,6.00),(.66,6.02),(.60,6.055)],c['pink'])]:
-        parts.append(surface_patch(P,head,name,[(x+.12,z) for x,z in coords],col))
+    # FA: simple readable eyes and the approved pink nose, on the head planes.
+    for sign in (-1,1):
+        parts.append(face_patch(P,head,'face_eye_'+str(sign),
+            P.ellipse(.063,.090,6,cx=.12+sign*.62,cz=6.10), '#1F2350'))
+    parts.append(face_patch(P,head,'face_nose',
+        [(-.27+.12,5.65),(.12,5.43),(.27+.12,5.65)], c['pink']))
     # Folded bow tangent to the bunny's right neck: wings spread fore/aft,
     # readable as a bow in side view and as a pink ribbon in plan.
     for sign in (-1,1):

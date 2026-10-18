@@ -1,9 +1,49 @@
 """H07 Bunny Family of Five; spec 4.6 x 1.6 x 3 m; budget 4000.
 Pivots: root, bob0..4, ears0..4 (11 groups).
-SIMPLIFICATIONS: waving arms share each bunny bob to respect the 12-group cap; eyes use the spec lavender/sky rather than an extra dark pigment.
+SIMPLIFICATIONS: waving arms share each bunny bob to respect the 12-group cap; faces use shared darkest plum #2A1640 eyes and spec blush noses; pastel bodies follow the sheet.
 """
 import math
 BUDGET=4000
+
+def face_patch(P, head, name, outline, color, offset=.012, forward=(0,-1,0)):
+    """Printed low-triangle mark, clipped to the head planes and lifted along their normals."""
+    import bpy
+    from mathutils import Vector
+    import bmesh
+    bm=bmesh.new();bm.from_mesh(head.data);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces));bm.to_mesh(head.data);bm.free();head.data.update()
+    bpy.context.view_layer.update()
+    front=Vector(forward);right=Vector((-front.y,front.x,0));up=Vector((0,0,1))
+    def uv(p):return (p.dot(right),p.z)
+    def clip(poly,a,b):
+        result=[]
+        for p,q in zip(poly,poly[1:]+poly[:1]):
+            u,v=uv(p),uv(q)
+            dp=(b[0]-a[0])*(u[1]-a[1])-(b[1]-a[1])*(u[0]-a[0])
+            dq=(b[0]-a[0])*(v[1]-a[1])-(b[1]-a[1])*(v[0]-a[0])
+            if dp>=-1e-9:result.append(p)
+            if (dp>=0)!=(dq>=0):result.append(p+(q-p)*(dp/(dp-dq)))
+        return result
+    if sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(outline,outline[1:]+outline[:1]))<0:outline=outline[::-1]
+    mw=head.matrix_world;nm=mw.to_3x3().inverted().transposed();vs=[];fs=[]
+    head.data.calc_loop_triangles()
+    for tri in head.data.loop_triangles:
+        normal=(nm@tri.normal).normalized()
+        if normal.dot(front)<.05:continue
+        poly=[mw@head.data.vertices[i].co for i in tri.vertices]
+        for a,b in zip(outline,outline[1:]+outline[:1]):
+            poly=clip(poly,a,b)
+            if len(poly)<3:break
+        if len(poly)<3:continue
+        for j in range(1,len(poly)-1):
+            if (poly[j]-poly[0]).cross(poly[j+1]-poly[0]).length<1e-10:continue
+            k=len(vs);vs.extend([tuple(p+normal*offset) for p in (poly[0],poly[j],poly[j+1])]);fs.append((k,k+1,k+2))
+    me=bpy.data.meshes.new(name);me.from_pydata(vs,[],fs);me.update()
+    ob=bpy.data.objects.new(name,me);bpy.context.collection.objects.link(ob);P.paint(ob,color)
+    return ob
+
+def face_oval(x,z,rx,rz):
+    # Six corners keep the little eyes flat and faceted.
+    return [(x+rx*math.cos(i*math.tau/6),z+rz*math.sin(i*math.tau/6)) for i in range(6)]
 
 def build(P,spec):
  import bpy,bmesh
@@ -38,10 +78,10 @@ def build(P,spec):
   head=ico('angular_head',(x,-.005,z+1.51*k),(.51,.46,.46))
   # Colour the head's lower face itself cream; an attached faceted muzzle supplies the folded cheeks.
   P.paint(head,lambda center,normal:C['cream'] if center.z<-.08*k and center.y<-.09*k else C[col])
-  ico('cream_muzzle',(x,-.395*k,z+1.36*k),(.40,.16,.205),'cream')
+  muzzle=ico('cream_muzzle',(x,-.395*k,z+1.36*k),(.40,.16,.205),'cream')
   for sx in [-1,1]:
    ico('paper_foot',(x+sx*.245*k,-.15*k,z+.05*k),(.20,.25,.12),'cream',1)
-   ico('eye',(x+sx*.205*k,-.445*k,z+1.53*k),(.043,.025,.059),'sky' if col=='lavender' else 'lavender',1)
+   parts.append(face_patch(P,head,'printed_eye',face_oval(x+sx*.205*k,z+1.65*k,.024*k,.037*k),'#2A1640'))
    arm=ico('waving_arm' if sx==wave else 'lowered_arm',(x+sx*.50*k,-.04,z+(1.02 if sx==wave else .68)*k),(.16,.18,.29),col,2)
    arm.rotation_euler.y=math.radians(sx*(-24 if sx==wave else 13))
    ico('cream_hand',(x+sx*.59*k,-.13*k,z+(1.23 if sx==wave else .46)*k),(.12,.13,.14),'cream',1)
@@ -56,7 +96,7 @@ def build(P,spec):
    for j in range(7):fs.append((14,j+7,(j+1)%7+7))
    for j in range(7):fs.append((j,15+j,15+(j+1)%7,(j+1)%7))
    fs.append(tuple(range(15,22)));o=mesh('creased_thick_ear',vs,fs,col);P.paint(o,C['cream'],faces=set(range(7)));P.paint(o,C['blush'],faces=set(range(7,14)));es.append(o)
-  ico('gem_nose',(x,-.57*k,z+1.43*k),(.050,.027,.034),'blush',1)
+  parts.append(face_patch(P,muzzle,'printed_blush_nose',[(x-.045*k,z+1.44*k),(x,z+1.395*k),(x+.045*k,z+1.44*k)],C['blush']))
   parts.append(P.pivot('ears'+str(i),(x,0,z+1.83*k),es));bobs.append(P.pivot('bob'+str(i),(x,0,z),parts))
  # The bunnies occupy a compact front-to-back row, with a generous oval page margin.
  for o in list(bpy.context.scene.objects):
