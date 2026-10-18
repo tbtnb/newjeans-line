@@ -1,0 +1,24 @@
+console Failed to load resource: the server responded with a status of 404 (File not found)
+{"url":"http://127.0.0.1:4468/?debug","gpu":true,"q":"low","renderer":"ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)","w":1080,"h":1920}
+{"name":"z01-in","T":0.6,"drawCalls":15,"tris":32067,"active":15,"frameMs":4.5,"frameP90":6.6,"sc":{"chunks":[0,3],"cm":4,"types":4,"inst":22,"sets":2,"models":78,"trisAtBudget":17845}}
+{"name":"z01-mid","T":7.57,"drawCalls":18,"tris":37130,"active":18,"frameMs":3.9,"frameP90":6.5,"sc":{"chunks":[2,6],"cm":5,"types":5,"inst":30,"sets":4,"models":78,"trisAtBudget":25936}}
+{"name":"z02-in","T":15.53,"drawCalls":25,"tris":53861,"active":25,"frameMs":3.5,"frameP90":6.3,"sc":{"chunks":[6,10],"cm":5,"types":9,"inst":53,"sets":4,"models":78,"trisAtBudget":40583}}
+{"name":"z02-mid","T":22.69,"drawCalls":19,"tris":50553,"active":19,"frameMs":3.8,"frameP90":6.6,"sc":{"chunks":[10,14],"cm":5,"types":6,"inst":50,"sets":5,"models":78,"trisAtBudget":43053}}
+{"name":"z03-in","T":30.65,"drawCalls":24,"tris":37025,"active":24,"frameMs":3.6,"frameP90":5.9,"sc":{"chunks":[14,18],"cm":5,"types":9,"inst":40,"sets":6,"models":78,"trisAtBudget":29961}}
+{"name":"z03-mid","T":37.8,"drawCalls":18,"tris":31816,"active":18,"frameMs":3,"frameP90":5.6,"sc":{"chunks":[17,21],"cm":5,"types":6,"inst":37,"sets":5,"models":78,"trisAtBudget":26815}}
+{"name":"z04-in","T":45.76,"drawCalls":25,"tris":42163,"active":25,"frameMs":4.4,"frameP90":7.5,"sc":{"chunks":[21,25],"cm":5,"types":11,"inst":49,"sets":5,"models":78,"trisAtBudget":42088}}
+{"name":"z04-mid","T":52.92,"drawCalls":24,"tris":35443,"active":24,"frameMs":4.4,"frameP90":7.4,"sc":{"chunks":[25,29],"cm":5,"types":6,"inst":45,"sets":4,"models":78,"trisAtBudget":39135}}
+{"name":"z05-in","T":60.88,"drawCalls":18,"tris":31307,"active":18,"frameMs":4.1,"frameP90":7.3,"sc":{"chunks":[29,33],"cm":5,"types":5,"inst":54,"sets":2,"models":78,"trisAtBudget":17976}}
+{"name":"z05-mid","T":68.04,"drawCalls":18,"tris":34736,"active":18,"frameMs":4.2,"frameP90":7.2,"sc":{"chunks":[33,37],"cm":5,"types":5,"inst":66,"sets":4,"models":78,"trisAtBudget":22132}}
+{"name":"z06-in","T":76,"drawCalls":22,"tris":44522,"active":22,"frameMs":4.3,"frameP90":7.5,"sc":{"chunks":[36,41],"cm":6,"types":7,"inst":39,"sets":5,"models":78,"trisAtBudget":38872}}
+{"name":"z06-mid","T":83.16,"drawCalls":16,"tris":49030,"active":16,"frameMs":3.9,"frameP90":7.6,"sc":{"chunks":[40,44],"cm":5,"types":3,"inst":19,"sets":4,"models":78,"trisAtBudget":36542}}
+{"name":"z07-in","T":91.12,"drawCalls":21,"tris":37819,"active":21,"frameMs":4.8,"frameP90":7.3,"sc":{"chunks":[44,48],"cm":5,"types":6,"inst":39,"sets":6,"models":78,"trisAtBudget":29459}}
+{"name":"z07-mid","T":98.28,"drawCalls":26,"tris":26384,"active":26,"frameMs":3.1,"frameP90":5.4,"sc":{"chunks":[48,52],"cm":5,"types":4,"inst":36,"sets":5,"models":78,"trisAtBudget":21644}}
+{"name":"z08-in","T":106.23,"drawCalls":28,"tris":41816,"active":28,"frameMs":3.6,"frameP90":5.7,"sc":{"chunks":[52,56],"cm":5,"types":5,"inst":48,"sets":3,"models":78,"trisAtBudget":37352}}
+{"name":"z08-mid","T":113.39,"drawCalls":17,"tris":40670,"active":17,"frameMs":3.7,"frameP90":5.7,"sc":{"chunks":[55,59],"cm":5,"types":3,"inst":50,"sets":3,"models":78,"trisAtBudget":35304}}
+{"name":"z09-in","T":121.35,"drawCalls":22,"tris":32249,"active":22,"frameMs":4.1,"frameP90":6.6,"sc":{"chunks":[59,63],"cm":5,"types":7,"inst":38,"sets":3,"models":78,"trisAtBudget":22201}}
+{"name":"z09-mid","T":136.07,"drawCalls":15,"tris":31829,"active":15,"frameMs":4,"frameP90":6.5,"sc":{"chunks":[67,71],"cm":5,"types":3,"inst":18,"sets":4,"models":78,"trisAtBudget":14056}}
+{"name":"z10-in","T":151.59,"drawCalls":21,"tris":48745,"active":21,"frameMs":4.2,"frameP90":6.6,"sc":{"chunks":[74,78],"cm":5,"types":8,"inst":29,"sets":3,"models":78,"trisAtBudget":38281}}
+{"name":"z10-mid","T":155.91,"drawCalls":18,"tris":61850,"active":18,"frameMs":3.5,"frameP90":6.6,"sc":{"chunks":[76,80],"cm":5,"types":5,"inst":34,"sets":3,"models":78,"trisAtBudget":54762}}
+{"play":{"state":"ready","frames":361,"p50":16.6,"p95":18.1,"maxDrawCalls":27,"fps":59.97600959044405}}
+{"summary":{"maxDrawCalls":28,"maxTris":61850,"maxTrisAtBudget":70630,"maxFrameMs":4.8,"medianFrameMs":4}}
