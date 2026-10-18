@@ -1,0 +1,20 @@
+== asap  duration 134.43s  taps 158  dirs R/L 83/75  multi-level crossings 39
+   min gap 0.115s  median gap 0.923s
+   peak density 360 CPM (taps in any 1 s window x60), average 71 CPM; gaps < 0.15 s: 5
+   fastest run: 11 taps (gaps<=0.30s) from 77.87s to 79.72s
+   judgment window: min ±52 ms, median ±110 ms (engine rule)
+   longest same-direction run 4 (>=2 = U-turn, >=4 = spiral)  elevation events 6
+      0.00-   4.03 intro   Intro · snaps in the grass      3 taps  0.74/s
+      4.03-  11.42 verse   Verse 1 · moon-green meadow     7 taps  0.95/s
+     11.42-  26.18 verse   Verse 1b · clock in the sky    11 taps  0.74/s
+     26.18-  40.95 pre     Pre · letters behind trees      8 taps  0.54/s
+     40.95-  55.72 chorus  Chorus 1 · swing of pendulums   14 taps  0.95/s
+     55.72-  57.57 break   Stop · held breath              2 taps  1.08/s
+     57.57-  72.33 verse   Verse 2 · water garden         21 taps  1.42/s
+     72.33-  87.10 drop    Dance break · stars in groups   36 taps  2.44/s
+     87.10-  92.64 post    Turnaround                      9 taps  1.63/s
+     92.64- 114.79 chorus  Chorus 2 · the small house     32 taps  1.44/s
+    114.79- 120.33 break   Hush · lamp flickers            3 taps  0.54/s
+    120.33- 129.56 chorus  Final hook · lamp lights       10 taps  1.08/s
+    129.56- 134.43 outro   Outro · pollen bunny            2 taps  0.41/s
+   extent x[-16,162] z[-106,53]

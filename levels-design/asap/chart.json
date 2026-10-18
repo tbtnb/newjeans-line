@@ -10,17 +10,17 @@
  "taps": [
   {
    "t": 1.264,
-   "dir": "R",
-   "tag": "snare"
-  },
-  {
-   "t": 2.187,
    "dir": "L",
    "tag": "snare"
   },
   {
-   "t": 3.11,
+   "t": 2.187,
    "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 3.11,
+   "dir": "L",
    "tag": "snare"
   },
   {
@@ -32,11 +32,6 @@
    "t": 4.725,
    "dir": "R",
    "tag": "hat"
-  },
-  {
-   "t": 5.187,
-   "dir": "L",
-   "tag": "kick"
   },
   {
    "t": 5.879,
@@ -71,11 +66,6 @@
   {
    "t": 13.263,
    "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 14.186,
-   "dir": "L",
    "tag": "kick"
   },
   {
@@ -124,11 +114,6 @@
    "tag": "kick"
   },
   {
-   "t": 25.493,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
    "t": 26.185,
    "dir": "L",
    "tag": "bass"
@@ -145,16 +130,6 @@
   },
   {
    "t": 28.723,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
-   "t": 29.877,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
-   "t": 30.8,
    "dir": "R",
    "tag": "vocal"
   },
@@ -169,24 +144,9 @@
    "tag": "vocal"
   },
   {
-   "t": 34.723,
-   "dir": "R",
-   "tag": "bass"
-  },
-  {
-   "t": 34.838,
-   "dir": "R",
-   "tag": "snare"
-  },
-  {
    "t": 35.3,
-   "dir": "L",
+   "dir": "R",
    "tag": "hat"
-  },
-  {
-   "t": 35.415,
-   "dir": "L",
-   "tag": "vocal"
   },
   {
    "t": 36.107,
@@ -194,73 +154,43 @@
    "tag": "vocal"
   },
   {
-   "t": 37.261,
-   "dir": "R",
-   "tag": "bass"
-  },
-  {
-   "t": 38.184,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 39.107,
-   "dir": "L",
-   "tag": "bass"
-  },
-  {
    "t": 40.953,
-   "dir": "L",
+   "dir": "R",
    "tag": "bass"
   },
   {
    "t": 41.645,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
-   "t": 42.107,
    "dir": "R",
    "tag": "vocal"
-  },
-  {
-   "t": 42.799,
-   "dir": "L",
-   "tag": "bass"
   },
   {
    "t": 43.953,
-   "dir": "R",
+   "dir": "L",
    "tag": "snare"
   },
   {
    "t": 44.645,
-   "dir": "L",
+   "dir": "R",
    "tag": "snare"
   },
   {
    "t": 45.568,
-   "dir": "R",
+   "dir": "L",
    "tag": "hat"
   },
   {
    "t": 46.491,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
-   "t": 47.183,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
    "t": 47.414,
-   "dir": "R",
+   "dir": "L",
    "tag": "vocal"
   },
   {
    "t": 47.645,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
   },
   {
@@ -274,24 +204,9 @@
    "tag": "vocal"
   },
   {
-   "t": 48.337,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
    "t": 49.029,
    "dir": "L",
    "tag": "vocal"
-  },
-  {
-   "t": 49.491,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 50.183,
-   "dir": "L",
-   "tag": "bass"
   },
   {
    "t": 51.337,
@@ -304,39 +219,9 @@
    "tag": "kick"
   },
   {
-   "t": 52.952,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
    "t": 53.875,
    "dir": "R",
    "tag": "kick"
-  },
-  {
-   "t": 54.567,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
-   "t": 54.798,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 55.028,
-   "dir": "L",
-   "tag": "bass"
-  },
-  {
-   "t": 55.259,
-   "dir": "L",
-   "tag": "bass"
-  },
-  {
-   "t": 55.49,
-   "dir": "R",
-   "tag": "bass"
   },
   {
    "t": 56.182,
@@ -449,11 +334,6 @@
    "tag": "bass"
   },
   {
-   "t": 71.412,
-   "dir": "L",
-   "tag": "bass"
-  },
-  {
    "t": 71.873,
    "dir": "R",
    "tag": "bass"
@@ -489,13 +369,8 @@
    "tag": "snare"
   },
   {
-   "t": 75.565,
-   "dir": "L",
-   "tag": "hat"
-  },
-  {
    "t": 75.68,
-   "dir": "R",
+   "dir": "L",
    "tag": "hat"
   },
   {
@@ -579,11 +454,6 @@
    "tag": "snare"
   },
   {
-   "t": 81.103,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
    "t": 81.564,
    "dir": "L",
    "tag": "kick"
@@ -592,11 +462,6 @@
    "t": 82.257,
    "dir": "R",
    "tag": "snare"
-  },
-  {
-   "t": 82.949,
-   "dir": "R",
-   "tag": "hat"
   },
   {
    "t": 83.41,
@@ -679,11 +544,6 @@
    "tag": "kick"
   },
   {
-   "t": 90.333,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
    "t": 90.794,
    "dir": "L",
    "tag": "kick"
@@ -692,11 +552,6 @@
    "t": 91.256,
    "dir": "R",
    "tag": "kick"
-  },
-  {
-   "t": 91.371,
-   "dir": "L",
-   "tag": "hat"
   },
   {
    "t": 91.717,
@@ -754,11 +609,6 @@
    "tag": "kick"
   },
   {
-   "t": 99.332,
-   "dir": "R",
-   "tag": "bass"
-  },
-  {
    "t": 99.563,
    "dir": "L",
    "tag": "snare"
@@ -795,37 +645,27 @@
   },
   {
    "t": 104.639,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
   },
   {
    "t": 105.562,
-   "dir": "R",
+   "dir": "L",
    "tag": "vocal"
   },
   {
    "t": 106.255,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 106.485,
-   "dir": "R",
-   "tag": "hat"
-  },
-  {
-   "t": 106.716,
    "dir": "L",
-   "tag": "vocal"
-  },
-  {
-   "t": 106.831,
-   "dir": "R",
    "tag": "hat"
   },
   {
    "t": 106.947,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -879,28 +719,8 @@
    "tag": "hat"
   },
   {
-   "t": 114.1,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
-   "t": 114.215,
-   "dir": "R",
-   "tag": "hat"
-  },
-  {
-   "t": 114.331,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
    "t": 114.561,
    "dir": "L",
-   "tag": "bass"
-  },
-  {
-   "t": 114.792,
-   "dir": "R",
    "tag": "bass"
   },
   {
@@ -920,7 +740,7 @@
   },
   {
    "t": 120.792,
-   "dir": "R",
+   "dir": "L",
    "tag": "hat"
   },
   {
@@ -929,29 +749,14 @@
    "tag": "hat"
   },
   {
-   "t": 121.715,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
    "t": 122.176,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 122.868,
    "dir": "R",
    "tag": "snare"
-  },
-  {
-   "t": 123.33,
-   "dir": "L",
-   "tag": "snare"
-  },
-  {
-   "t": 123.445,
-   "dir": "R",
-   "tag": "hat"
   },
   {
    "t": 124.022,
@@ -964,34 +769,14 @@
    "tag": "snare"
   },
   {
-   "t": 125.868,
-   "dir": "R",
-   "tag": "bass"
-  },
-  {
    "t": 126.56,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
-   "t": 126.791,
    "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 127.022,
-   "dir": "L",
    "tag": "vocal"
   },
   {
    "t": 127.253,
    "dir": "L",
    "tag": "kick"
-  },
-  {
-   "t": 127.483,
-   "dir": "R",
-   "tag": "vocal"
   },
   {
    "t": 127.714,
@@ -1018,67 +803,80 @@
   {
    "t": 0,
    "label": "Intro · snaps in the grass",
-   "kind": "intro"
+   "kind": "intro",
+   "follows": "drums"
   },
   {
    "t": 4.033,
    "label": "Verse 1 · moon-green meadow",
-   "kind": "verse"
+   "kind": "verse",
+   "follows": "drums"
   },
   {
    "t": 11.417,
    "label": "Verse 1b · clock in the sky",
-   "kind": "verse"
+   "kind": "verse",
+   "follows": "drums"
   },
   {
    "t": 26.185,
    "label": "Pre · letters behind trees",
-   "kind": "pre"
+   "kind": "pre",
+   "follows": "hat"
   },
   {
    "t": 40.953,
    "label": "Chorus 1 · swing of pendulums",
-   "kind": "chorus"
+   "kind": "chorus",
+   "follows": "drums"
   },
   {
    "t": 55.72,
    "label": "Stop · held breath",
-   "kind": "break"
+   "kind": "break",
+   "follows": "drums"
   },
   {
    "t": 57.566,
    "label": "Verse 2 · water garden",
-   "kind": "verse"
+   "kind": "verse",
+   "follows": "drums"
   },
   {
    "t": 72.334,
    "label": "Dance break · stars in groups",
-   "kind": "drop"
+   "kind": "drop",
+   "follows": "drums"
   },
   {
    "t": 87.102,
    "label": "Turnaround",
-   "kind": "post"
+   "kind": "post",
+   "follows": "mid"
   },
   {
    "t": 92.64,
    "label": "Chorus 2 · the small house",
-   "kind": "chorus"
+   "kind": "chorus",
+   "follows": "drums"
   },
   {
    "t": 114.792,
    "label": "Hush · lamp flickers",
-   "kind": "break"
+   "kind": "break",
+   "follows": "drums"
   },
   {
    "t": 120.33,
    "label": "Final hook · lamp lights",
-   "kind": "chorus"
+   "kind": "chorus",
+   "follows": "drums"
   },
   {
    "t": 129.56,
    "label": "Outro · pollen bunny",
-   "kind": "outro"
+   "kind": "outro",
+   "follows": "drums"
   }
  ],
  "bpm": 130.012,
@@ -1093,5 +891,363 @@
   "miss_beyond": 0.095,
   "note": "schema v2.5 per-tap windows; see chart-report.md"
  },
- "notes": "Hand-composed chart, 201 taps (old 83, x2.42), tier hard. 12 16th-burst taps on real snare/hat rolls (dance break, turnaround, chorus fills). Min gap 0.115 s."
+ "notes": "Hand-composed chart, 201 taps (old 83, x2.42), tier hard. 12 16th-burst taps on real snare/hat rolls (dance break, turnaround, chorus fills). Min gap 0.115 s.",
+ "meta": {
+  "audit": {
+   "by": "integrator B (integ-b)",
+   "rule": "one audible layer per section; no faint/off-layer taps; bursts only where clear in the full mix; taps only removed",
+   "taps_before": 201,
+   "taps_after": 158,
+   "removed": [
+    {
+     "t": 5.187,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.31,
+     "full_strength": 0.16,
+     "tag": "kick"
+    },
+    {
+     "t": 14.186,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.1,
+     "full_strength": 0.05,
+     "tag": "kick"
+    },
+    {
+     "t": 25.493,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.28,
+     "full_strength": 0.05,
+     "tag": "vocal"
+    },
+    {
+     "t": 29.877,
+     "why": "faint",
+     "layer": "hat",
+     "layer_strength": 0.27,
+     "full_strength": 0.27,
+     "tag": "vocal"
+    },
+    {
+     "t": 30.8,
+     "why": "faint",
+     "layer": "hat",
+     "layer_strength": 0.22,
+     "full_strength": 0.14,
+     "tag": "vocal"
+    },
+    {
+     "t": 34.723,
+     "why": "faint",
+     "layer": "hat",
+     "layer_strength": 0.3,
+     "full_strength": 0.12,
+     "tag": "bass"
+    },
+    {
+     "t": 34.838,
+     "why": "weak-burst",
+     "layer": "hat",
+     "layer_strength": 0.42,
+     "full_strength": 0.49,
+     "tag": "snare"
+    },
+    {
+     "t": 35.415,
+     "why": "faint",
+     "layer": "hat",
+     "layer_strength": 0.25,
+     "full_strength": 0.23,
+     "tag": "vocal"
+    },
+    {
+     "t": 37.261,
+     "why": "faint",
+     "layer": "hat",
+     "layer_strength": 0.23,
+     "full_strength": 0.26,
+     "tag": "bass"
+    },
+    {
+     "t": 38.184,
+     "why": "faint",
+     "layer": "hat",
+     "layer_strength": 0.28,
+     "full_strength": 0.13,
+     "tag": "kick"
+    },
+    {
+     "t": 39.107,
+     "why": "faint",
+     "layer": "hat",
+     "layer_strength": 0.23,
+     "full_strength": 0.08,
+     "tag": "bass"
+    },
+    {
+     "t": 42.107,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.31,
+     "full_strength": 0.12,
+     "tag": "vocal"
+    },
+    {
+     "t": 42.799,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.32,
+     "full_strength": 0.32,
+     "tag": "bass"
+    },
+    {
+     "t": 47.183,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.23,
+     "full_strength": 0.18,
+     "tag": "vocal"
+    },
+    {
+     "t": 48.337,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.31,
+     "full_strength": 0.3,
+     "tag": "kick"
+    },
+    {
+     "t": 49.491,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.29,
+     "full_strength": 0.13,
+     "tag": "vocal"
+    },
+    {
+     "t": 50.183,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.32,
+     "full_strength": 0.26,
+     "tag": "bass"
+    },
+    {
+     "t": 52.952,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.26,
+     "full_strength": 0.17,
+     "tag": "vocal"
+    },
+    {
+     "t": 54.567,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.22,
+     "full_strength": 0.16,
+     "tag": "vocal"
+    },
+    {
+     "t": 54.798,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.18,
+     "full_strength": 0.11,
+     "tag": "vocal"
+    },
+    {
+     "t": 55.028,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.21,
+     "full_strength": 0.11,
+     "tag": "bass"
+    },
+    {
+     "t": 55.259,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.21,
+     "full_strength": 0.06,
+     "tag": "bass"
+    },
+    {
+     "t": 55.49,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.33,
+     "full_strength": 0.06,
+     "tag": "bass"
+    },
+    {
+     "t": 71.412,
+     "why": "off-layer",
+     "layer": "drums",
+     "layer_strength": 0.3,
+     "full_strength": 0.23,
+     "tag": "bass"
+    },
+    {
+     "t": 75.565,
+     "why": "off-layer",
+     "layer": "drums",
+     "layer_strength": 0.34,
+     "full_strength": 0.52,
+     "tag": "hat"
+    },
+    {
+     "t": 81.103,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.27,
+     "full_strength": 0.04,
+     "tag": "vocal"
+    },
+    {
+     "t": 82.949,
+     "why": "off-layer",
+     "layer": "drums",
+     "layer_strength": 0.33,
+     "full_strength": 0.24,
+     "tag": "hat"
+    },
+    {
+     "t": 90.333,
+     "why": "faint",
+     "layer": "mid",
+     "layer_strength": 0.17,
+     "full_strength": 0.13,
+     "tag": "vocal"
+    },
+    {
+     "t": 91.371,
+     "why": "off-layer",
+     "layer": "mid",
+     "layer_strength": 0.12,
+     "full_strength": 0.54,
+     "tag": "hat"
+    },
+    {
+     "t": 99.332,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.26,
+     "full_strength": 0.21,
+     "tag": "bass"
+    },
+    {
+     "t": 106.716,
+     "why": "weak-burst",
+     "layer": "drums",
+     "layer_strength": 0.59,
+     "full_strength": 0.14,
+     "tag": "vocal"
+    },
+    {
+     "t": 106.831,
+     "why": "weak-burst",
+     "layer": "drums",
+     "layer_strength": 0.44,
+     "full_strength": 0.11,
+     "tag": "hat"
+    },
+    {
+     "t": 114.1,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.24,
+     "full_strength": 0.07,
+     "tag": "vocal"
+    },
+    {
+     "t": 114.215,
+     "why": "off-layer",
+     "layer": "drums",
+     "layer_strength": 0.32,
+     "full_strength": 0.14,
+     "tag": "hat"
+    },
+    {
+     "t": 114.331,
+     "why": "weak-burst",
+     "layer": "drums",
+     "layer_strength": 0.49,
+     "full_strength": 0.06,
+     "tag": "vocal"
+    },
+    {
+     "t": 114.792,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.34,
+     "full_strength": 0.07,
+     "tag": "bass"
+    },
+    {
+     "t": 121.715,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.16,
+     "full_strength": 0.06,
+     "tag": "vocal"
+    },
+    {
+     "t": 123.33,
+     "why": "weak-burst",
+     "layer": "drums",
+     "layer_strength": 0.49,
+     "full_strength": 0.58,
+     "tag": "snare"
+    },
+    {
+     "t": 123.445,
+     "why": "weak-burst",
+     "layer": "drums",
+     "layer_strength": 0.29,
+     "full_strength": 0.12,
+     "tag": "hat"
+    },
+    {
+     "t": 125.868,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.28,
+     "full_strength": 0.22,
+     "tag": "bass"
+    },
+    {
+     "t": 126.791,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.3,
+     "full_strength": 0.24,
+     "tag": "vocal"
+    },
+    {
+     "t": 127.022,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.27,
+     "full_strength": 0.11,
+     "tag": "vocal"
+    },
+    {
+     "t": 127.483,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.33,
+     "full_strength": 0.16,
+     "tag": "vocal"
+    }
+   ]
+  },
+  "bpm": 130.012,
+  "beat_period": 0.4614958619204381,
+  "beat0": 0.341,
+  "old_tap_count": 83
+ }
 }
