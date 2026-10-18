@@ -1,0 +1,17 @@
+== bubble-gum  duration 200.31s  taps 253  dirs R/L 127/126  multi-level crossings 39
+   min gap 0.285s  median gap 0.572s
+   peak density 240 CPM (taps in any 1 s window x60), average 76 CPM; gaps < 0.15 s: 0
+   fastest run: 6 taps (gaps<=0.30s) from 136.05s to 137.47s
+   judgment window: min ±110 ms, median ±110 ms (engine rule)
+   longest same-direction run 4 (>=2 = U-turn, >=4 = spiral)  elevation events 6
+      2.06-  18.05 intro   Intro                           4 taps  0.25/s
+     18.05-  36.34 verse   Verse 1                        19 taps  1.04/s
+     36.34-  56.91 pre     Pre-chorus 1                   32 taps  1.56/s
+     56.91-  79.76 chorus  Chorus 1                       37 taps  1.62/s
+     79.76-  91.19 break   Breakdown                       8 taps  0.70/s
+     91.19- 118.62 verse   Verse 2                        30 taps  1.09/s
+    118.62- 136.90 pre     Pre-chorus 2                   28 taps  1.53/s
+    136.90- 164.33 chorus  Chorus 2                       46 taps  1.68/s
+    164.33- 191.76 chorus  Final chorus                   48 taps  1.75/s
+    191.76- 200.31 outro   Outro                           1 taps  0.12/s
+   extent x[-313,0] z[0,298]

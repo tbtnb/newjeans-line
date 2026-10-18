@@ -70,11 +70,6 @@
    "tag": "melody"
   },
   {
-   "t": 10.8,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
    "t": 11.497,
    "dir": "R",
    "tag": "kick"
@@ -2084,52 +2079,77 @@
   {
    "t": 0.335,
    "label": "Intro",
-   "kind": "intro"
+   "kind": "intro",
+   "follows": "mid",
+   "follows_note": "the melodic synth/vocal hook (melodic layer)",
+   "follows_src": "integ-c manual mapping of chart-report.md row"
   },
   {
    "t": 11.497,
    "label": "Verse 1",
-   "kind": "verse"
+   "kind": "verse",
+   "follows": "drums",
+   "follows_note": "kick + clap pattern on the 8th grid (172 BPM)"
   },
   {
    "t": 33.823,
    "label": "Pre-chorus 1",
-   "kind": "pre"
+   "kind": "pre",
+   "follows": "drums",
+   "follows_note": "kick + clap, 8th pickups"
   },
   {
    "t": 44.986,
    "label": "Chorus 1",
-   "kind": "chorus"
+   "kind": "chorus",
+   "follows": "drums",
+   "follows_note": "kick + clap (the hook drum figure)"
   },
   {
    "t": 67.312,
    "label": "Verse 2",
-   "kind": "verse"
+   "kind": "verse",
+   "follows": "drums",
+   "follows_note": "from chart-report.md: shared pattern of the earlier section",
+   "follows_src": "integ-c manual mapping of chart-report.md row"
   },
   {
    "t": 78.475,
    "label": "Half-time bridge",
-   "kind": "bridge"
+   "kind": "bridge",
+   "follows": "drums",
+   "follows_note": "half-time kick + clap backbeat"
   },
   {
    "t": 100.8,
    "label": "Chorus 2",
-   "kind": "chorus"
+   "kind": "chorus",
+   "follows": "drums",
+   "follows_note": "from chart-report.md: shared pattern of the earlier section",
+   "follows_src": "integ-c manual mapping of chart-report.md row"
   },
   {
    "t": 117.545,
    "label": "Break",
-   "kind": "break"
+   "kind": "break",
+   "follows": "mid",
+   "follows_note": "melodic hits only, sparse",
+   "follows_src": "integ-c manual mapping of chart-report.md row"
   },
   {
    "t": 123.126,
    "label": "Final chorus",
-   "kind": "chorus"
+   "kind": "chorus",
+   "follows": "drums",
+   "follows_note": "from chart-report.md: shared pattern of the earlier section",
+   "follows_src": "integ-c manual mapping of chart-report.md row"
   },
   {
    "t": 145.452,
    "label": "Outro",
-   "kind": "outro"
+   "kind": "outro",
+   "follows": "mid",
+   "follows_note": "melodic stabs, sparse"
   }
  ],
  "bpm": 172.0,
@@ -2143,7 +2163,22 @@
   "good": 0.11,
   "minWindow": 0.078,
   "rule": "schema v2.5 per-tap: min(0.5*g, clamp(0.45*g, 0.045, 0.11)), g = smaller neighbouring gap",
-  "note": "min tap gap 0.174 s -> tightest window \u00b178 ms (always <= half the local gap); sparse taps \u00b1110 ms."
+  "note": "min tap gap 0.174 s -> tightest window ±78 ms (always <= half the local gap); sparse taps ±110 ms."
  },
- "notes": "Curated per section (one audible layer each), audited by _w4_tools/audit.py: repeated phrases share patterns, faint/off-layer taps removed, 16th bursts only where prominent in the full mix. See chart-report.md."
+ "notes": "Curated per section (one audible layer each), audited by _w4_tools/audit.py: repeated phrases share patterns, faint/off-layer taps removed, 16th bursts only where prominent in the full mix. See chart-report.md.",
+ "meta": {
+  "bpm": 172.0,
+  "beat0": 0.335,
+  "grid_note": "W4 chart-report: 172 BPM constant, bar0 0.335 s (analysis grid.json tracks 2/3 tempo)",
+  "integc_removed": [
+   {
+    "t": 10.8,
+    "tag": "vocal",
+    "why": ""
+   }
+  ],
+  "integc_repair": [
+   "group [10.8]: window 9.579-11.497 s (1 re-planned turns), remainder re-attached with rotation 90 deg, translation (7.48, 113.40); crossings 11; objects transformed 42, window-moved 0, new object/road intersections before nudge 0"
+  ]
+ }
 }

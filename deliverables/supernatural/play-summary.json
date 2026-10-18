@@ -1,0 +1,42 @@
+{
+ "fails": [],
+ "state": "complete",
+ "status": "complete",
+ "failKind": null,
+ "failTime": 0,
+ "time": 191,
+ "cursor": 314,
+ "taps": 314,
+ "perfect": 312,
+ "good": 2,
+ "diamonds": 10,
+ "ignoredDuplicates": 0,
+ "fps": 11.750881316064415,
+ "save": {
+  "version": 2,
+  "selected": "supernatural",
+  "records": {
+   "supernatural": {
+    "best": 1,
+    "diamonds": 10,
+    "crowns": 3,
+    "attempts": 1,
+    "completed": true,
+    "perfect": 312,
+    "taps": 314
+   }
+  },
+  "settings": {
+   "volume": 0.8,
+   "offsetMs": 0,
+   "quality": "high",
+   "vibration": true
+  }
+ },
+ "judged": 314,
+ "errorMeanMs": 1.2,
+ "errorSdMs": 3.6,
+ "errorMaxAbsMs": 42,
+ "sent": 314,
+ "logs": []
+}
