@@ -1,0 +1,287 @@
+{
+ "objects": [
+  {
+   "kind": "standee",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    3,
+    3,
+    0.8
+   ],
+   "window": [
+    1.8,
+    2.9
+   ],
+   "count": 1,
+   "face": "camera",
+   "color": "#fff4fa",
+   "color2": "#c2457f"
+  },
+  {
+   "kind": "decal",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    4,
+    0,
+    4
+   ],
+   "window": [
+    20.3,
+    21.4
+   ],
+   "count": 1,
+   "face": "road"
+  },
+  {
+   "kind": "facade",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    5,
+    5,
+    3
+   ],
+   "window": [
+    52.3,
+    53.4
+   ],
+   "count": 1,
+   "face": "road",
+   "color": "#f7c6dc",
+   "color2": "#ff6fb1"
+  },
+  {
+   "kind": "standee",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    3,
+    3,
+    0.8
+   ],
+   "window": [
+    55.3,
+    56.4
+   ],
+   "count": 1,
+   "face": "camera",
+   "color": "#fff4fa",
+   "color2": "#c2457f"
+  },
+  {
+   "kind": "decal",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    4,
+    0,
+    4
+   ],
+   "window": [
+    92.7,
+    93.8
+   ],
+   "count": 1,
+   "face": "road"
+  },
+  {
+   "kind": "standee",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    3,
+    3,
+    0.8
+   ],
+   "window": [
+    110.3,
+    111.4
+   ],
+   "count": 1,
+   "face": "camera",
+   "color": "#fff4fa",
+   "color2": "#c2457f"
+  },
+  {
+   "kind": "facade",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    4,
+    4.5,
+    3
+   ],
+   "window": [
+    11.5,
+    33
+   ],
+   "count": 2,
+   "face": "road",
+   "color": "#f7c6dc",
+   "color2": "#ff6fb1"
+  },
+  {
+   "kind": "standee",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    3,
+    3,
+    0.8
+   ],
+   "window": [
+    33.8,
+    45
+   ],
+   "count": 1,
+   "face": "camera",
+   "color": "#fff4fa",
+   "color2": "#c2457f"
+  },
+  {
+   "kind": "decal",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    4,
+    0,
+    4
+   ],
+   "window": [
+    67,
+    78
+   ],
+   "count": 1,
+   "face": "road"
+  },
+  {
+   "kind": "facade",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    4,
+    4.5,
+    3
+   ],
+   "window": [
+    100.8,
+    117
+   ],
+   "count": 1,
+   "face": "road",
+   "color": "#f7c6dc",
+   "color2": "#ff6fb1"
+  },
+  {
+   "kind": "standee",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    3,
+    3,
+    0.8
+   ],
+   "window": [
+    123,
+    145
+   ],
+   "count": 2,
+   "face": "camera",
+   "color": "#fff4fa",
+   "color2": "#c2457f"
+  },
+  {
+   "kind": "decal",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    4,
+    0,
+    4
+   ],
+   "window": [
+    145,
+    160
+   ],
+   "count": 1,
+   "face": "road"
+  },
+  {
+   "kind": "decal",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    4,
+    0,
+    4
+   ],
+   "window": [
+    78.5,
+    92
+   ],
+   "count": 1,
+   "face": "road"
+  }
+ ],
+ "dressing": {
+  "colors": [
+   "#fff4fa",
+   "#f7c6dc",
+   "#ff6fb1",
+   "#c2457f",
+   "#8bbf7a"
+  ],
+  "art": [
+   {
+    "src": "art/chat-sign.jpg",
+    "as": "facade",
+    "size": [
+     2.6,
+     3.2,
+     2.6
+    ],
+    "weight": 1.0,
+    "scale": [
+     0.8,
+     1.2
+    ],
+    "scaleY": [
+     0.8,
+     1.5
+    ]
+   },
+   {
+    "src": "art/chat-sign.jpg",
+    "uv": [
+     0.08,
+     0.2,
+     0.92,
+     0.82
+    ],
+    "as": "card",
+    "size": [
+     1.8,
+     1.35,
+     0.1
+    ],
+    "weight": 0.8,
+    "scale": [
+     0.8,
+     1.2
+    ],
+    "scaleY": [
+     1,
+     1
+    ]
+   },
+   {
+    "src": "art/chat-sign.jpg",
+    "as": "tile",
+    "size": [
+     2.4,
+     0,
+     2.4
+    ],
+    "weight": 0.5,
+    "scale": [
+     0.8,
+     1.2
+    ],
+    "scaleY": [
+     1,
+     1
+    ]
+   }
+  ],
+  "artShare": 0.6
+ }
+}

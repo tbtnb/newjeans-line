@@ -1,7 +1,7 @@
 // Centralised Babylon imports (deep imports keep the bundle small).
 export { Engine } from '@babylonjs/core/Engines/engine';
 export { Scene } from '@babylonjs/core/scene';
-export { Vector3, Matrix, Quaternion } from '@babylonjs/core/Maths/math.vector';
+export { Vector3, Vector4, Matrix, Quaternion } from '@babylonjs/core/Maths/math.vector';
 export { Color3, Color4 } from '@babylonjs/core/Maths/math.color';
 export { FreeCamera } from '@babylonjs/core/Cameras/freeCamera';
 export { Camera } from '@babylonjs/core/Cameras/camera';
@@ -16,6 +16,7 @@ export { Mesh } from '@babylonjs/core/Meshes/mesh';
 export { VertexBuffer } from '@babylonjs/core/Buffers/buffer';
 export { TransformNode } from '@babylonjs/core/Meshes/transformNode';
 export { AbstractMesh } from '@babylonjs/core/Meshes/abstractMesh';
+export { VertexData } from '@babylonjs/core/Meshes/mesh.vertexData';
 export { CreateBox } from '@babylonjs/core/Meshes/Builders/boxBuilder';
 export { CreateCylinder } from '@babylonjs/core/Meshes/Builders/cylinderBuilder';
 export { CreateSphere } from '@babylonjs/core/Meshes/Builders/sphereBuilder';
@@ -31,3 +32,6 @@ import '@babylonjs/core/Meshes/thinInstanceMesh';
 import '@babylonjs/core/Particles/particleSystemComponent';
 import '@babylonjs/core/Engines/Extensions/engine.dynamicTexture';
 import '@babylonjs/core/Rendering/outlineRenderer';
+export { GlowLayer } from '@babylonjs/core/Layers/glowLayer';
+import '@babylonjs/core/Layers/effectLayerSceneComponent';
+export { ImageProcessingConfiguration } from '@babylonjs/core/Materials/imageProcessingConfiguration';

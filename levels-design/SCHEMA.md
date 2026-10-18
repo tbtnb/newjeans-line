@@ -169,7 +169,12 @@ Put images in `levels-design/<slug>/art/` and reference them by the relative pat
 - `parts[].texture`: `"art/x.png"`. Texture on a primitive part.
 - Use GenerateImage for these (soft low-poly / flat-illustration style matching the palette). No text inside images unless the text is part of the scene (signs). Never draw arrows or anything that could read as a tap hint.
 
+## Art props (v2.7, engine)
+Codex art can be placed in the world with object kinds `standee`, `facade` and `decal`, plus `uv` atlas crops on these and `image`. Object fields `face` (road / oncoming / travel / camera) and `near` (near-road placement) are available, along with textured roadside dressing (`dressing.art`, `dressing.colors`), `art.ground.tint` and `sections[].ground`. The full field reference and authoring helper (`tools/art/artkit.py`) are in **docs/ART_PROPS.md**.
+
 ## Changelog
+
+- v2.7 (2026-10-18): art props (see docs/ART_PROPS.md).
 
 - v2.6: `layout.dressing` roadside dressing (engine-placed props, on by default).
 - v2.0: base schema. v2.0a: shared analysis. v2.1: relative `yaw`/`worldYaw`, kinds `pyramid`/`text`, auto % markers, rows auto-skip.

@@ -17,6 +17,9 @@ export class Road {
   private revealedUpTo = -1; // index into sorted tiles
   private order: number[] = [];
   readonly height: number;
+  /** v2.8 hook: called after tile matrices change (showfx trims share the road-top instance buffer) */
+  onFlush: (() => void) | null = null;
+  get topBuffer() { return this.mTop; }
 
   constructor(scene: Scene, route: Route, layout: Layout, paletteAt: (t: number) => Palette) {
     this.height = layout.road.height ?? 0.6;
@@ -71,6 +74,7 @@ export class Road {
     this.top.thinInstanceSetBuffer('matrix', this.mTop, 16, false);
     this.body.thinInstanceSetBuffer('color', new Float32Array(colorsBody), 4, true);
     this.top.thinInstanceSetBuffer('color', new Float32Array(colorsTop), 4, true);
+    this.body.freezeWorldMatrix(); this.top.freezeWorldMatrix(); this.body.doNotSyncBoundingInfo = true; this.top.doNotSyncBoundingInfo = true;
     this.order = this.tiles.map((_, i) => i).sort((a, b) => this.tiles[a].reveal - this.tiles[b].reveal);
     this.seek(0);
   }
@@ -128,7 +132,7 @@ export class Road {
   }
 
   private flush() {
-    this.body.thinInstanceBufferUpdated('matrix'); this.top.thinInstanceBufferUpdated('matrix');
+    this.body.thinInstanceBufferUpdated('matrix'); this.top.thinInstanceBufferUpdated('matrix'); this.onFlush?.();
   }
 
   dispose() { this.body.material?.dispose(); this.top.material?.dispose(); this.body.dispose(); this.top.dispose(); }

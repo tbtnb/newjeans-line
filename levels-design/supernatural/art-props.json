@@ -1,0 +1,310 @@
+{
+ "objects": [
+  {
+   "kind": "standee",
+   "src": "art/signal-poster.jpg",
+   "size": [
+    6,
+    3.4,
+    0.8
+   ],
+   "window": [
+    6.3,
+    7.4
+   ],
+   "count": 1,
+   "face": "camera",
+   "color": "#1a1d3a",
+   "color2": "#3b3f6e"
+  },
+  {
+   "kind": "standee",
+   "src": "art/flower-billboard.jpg",
+   "size": [
+    3.6,
+    3.6,
+    1.0
+   ],
+   "window": [
+    30.3,
+    31.4
+   ],
+   "count": 1,
+   "face": "camera",
+   "color": "#1a1d3a",
+   "color2": "#ff5fa2"
+  },
+  {
+   "kind": "decal",
+   "src": "art/flower-billboard.jpg",
+   "size": [
+    5,
+    0,
+    5
+   ],
+   "window": [
+    36.3,
+    37.4
+   ],
+   "count": 1,
+   "face": "road",
+   "color": "#1a1d3a"
+  },
+  {
+   "kind": "facade",
+   "src": "art/signal-poster.jpg",
+   "size": [
+    6,
+    5.5,
+    3
+   ],
+   "window": [
+    62.8,
+    63.9
+   ],
+   "count": 1,
+   "face": "road",
+   "color": "#3b3f6e",
+   "color2": "#ff5fa2"
+  },
+  {
+   "kind": "standee",
+   "src": "art/flower-billboard.jpg",
+   "size": [
+    3.6,
+    3.6,
+    1.0
+   ],
+   "window": [
+    70.3,
+    71.4
+   ],
+   "count": 1,
+   "face": "camera",
+   "color": "#1a1d3a",
+   "color2": "#5b3fa0"
+  },
+  {
+   "kind": "decal",
+   "src": "art/signal-poster.jpg",
+   "size": [
+    8,
+    0,
+    4.5
+   ],
+   "window": [
+    133.3,
+    134.4
+   ],
+   "count": 1,
+   "face": "road",
+   "color": "#1a1d3a"
+  },
+  {
+   "kind": "standee",
+   "src": "art/signal-poster.jpg",
+   "size": [
+    6,
+    3.4,
+    0.8
+   ],
+   "window": [
+    80,
+    96
+   ],
+   "count": 1,
+   "face": "camera",
+   "color": "#1a1d3a",
+   "color2": "#3b3f6e"
+  },
+  {
+   "kind": "standee",
+   "src": "art/signal-poster.jpg",
+   "size": [
+    6,
+    3.4,
+    0.8
+   ],
+   "window": [
+    115,
+    130
+   ],
+   "count": 1,
+   "face": "camera",
+   "color": "#1a1d3a",
+   "color2": "#3b3f6e"
+  },
+  {
+   "kind": "standee",
+   "src": "art/signal-poster.jpg",
+   "size": [
+    6,
+    3.4,
+    0.8
+   ],
+   "window": [
+    150,
+    165
+   ],
+   "count": 1,
+   "face": "camera",
+   "color": "#1a1d3a",
+   "color2": "#3b3f6e"
+  },
+  {
+   "kind": "decal",
+   "src": "art/flower-billboard.jpg",
+   "size": [
+    5,
+    0,
+    5
+   ],
+   "window": [
+    97,
+    113
+   ],
+   "count": 1,
+   "face": "road",
+   "color": "#1a1d3a"
+  },
+  {
+   "kind": "decal",
+   "src": "art/flower-billboard.jpg",
+   "size": [
+    5,
+    0,
+    5
+   ],
+   "window": [
+    167,
+    185
+   ],
+   "count": 1,
+   "face": "road",
+   "color": "#1a1d3a"
+  },
+  {
+   "kind": "facade",
+   "src": "art/flower-billboard.jpg",
+   "size": [
+    4,
+    5,
+    3
+   ],
+   "window": [
+    44,
+    60
+   ],
+   "count": 1,
+   "face": "road",
+   "color": "#3b3f6e",
+   "color2": "#5b3fa0"
+  },
+  {
+   "kind": "facade",
+   "src": "art/flower-billboard.jpg",
+   "size": [
+    4,
+    5,
+    3
+   ],
+   "window": [
+    140,
+    150
+   ],
+   "count": 1,
+   "face": "road",
+   "color": "#3b3f6e",
+   "color2": "#5b3fa0"
+  },
+  {
+   "kind": "standee",
+   "src": "art/flower-billboard.jpg",
+   "size": [
+    3,
+    3,
+    0.8
+   ],
+   "window": [
+    9.5,
+    26
+   ],
+   "count": 2,
+   "face": "camera",
+   "color": "#1a1d3a",
+   "color2": "#ff5fa2"
+  }
+ ],
+ "dressing": {
+  "colors": [
+   "#3b3f6e",
+   "#5b3fa0",
+   "#ff5fa2",
+   "#1a1d3a",
+   "#2f6e5a"
+  ],
+  "art": [
+   {
+    "src": "art/signal-poster.jpg",
+    "uv": [
+     0,
+     0.6,
+     1,
+     1
+    ],
+    "as": "facade",
+    "size": [
+     3,
+     4.5,
+     3
+    ],
+    "weight": 1.2,
+    "scale": [
+     0.8,
+     1.2
+    ],
+    "scaleY": [
+     0.8,
+     1.8
+    ]
+   },
+   {
+    "src": "art/flower-billboard.jpg",
+    "as": "card",
+    "size": [
+     2,
+     2,
+     0.15
+    ],
+    "weight": 0.8,
+    "scale": [
+     0.8,
+     1.2
+    ],
+    "scaleY": [
+     1,
+     1
+    ]
+   },
+   {
+    "src": "art/flower-billboard.jpg",
+    "as": "crate",
+    "size": [
+     1.2,
+     1.2,
+     1.2
+    ],
+    "weight": 0.6,
+    "scale": [
+     0.7,
+     1.1
+    ],
+    "scaleY": [
+     1,
+     1
+    ]
+   }
+  ],
+  "artShare": 0.6
+ }
+}

@@ -146,3 +146,33 @@ Cross-check on separated stems (demucs; times corrected −50 ms): 313/320 taps 
 3. **Slot selection**: every 16th (8th for Right Now) is scored from the stems; for each bar the best tap set is chosen subject to the min-gap floor, the burst limit and a phrase-repetition bonus (bar 3 of a 4-bar group echoes bar 1 → call-and-response). Automatic output = candidates.
 4. **Hand plans / edits**: phrase-end runs and fills (listed in the rationale) are written explicitly; first-tap rule edits.
 5. **Verification**: per-tap transient offsets in the full mix + stem-onset coverage (below). I could not *listen* in this environment; tap placement is grounded in measured onsets, stem levels and the song structure, so a human listening pass is still recommended (see "open issues").
+
+
+## integ-c rhythm-logic edit (2026-10-18): flagged taps removed, route repaired locally
+Rule: rhythm logic comes before density. Each section follows one audible layer, and faint or off-layer taps are not used. Taps: 320 → 314.
+
+| removed tap (s) | tag | why |
+|---|---|---|
+| 38.589 | kick |  |
+| 59.506 | kick |  |
+| 91.433 | kick |  |
+| 114.277 | clap |  |
+| 153.084 | kick |  |
+| 172.075 | clap |  |
+
+All six were removed. Hi-hat taps in drum- or kick-led sections are off-layer under the one-audible-layer rule.
+
+**Route repair** (`tools/charts/integc_repair.py`). Every tap is a 90° turn, so removing one flips the heading parity of the rest of the route.
+- Only a short window after each removal is re-planned. The designer's remaining route is then re-attached verbatim as a rigid copy: identical shape, rotated by k·90° and/or translated.
+- Objects placed at absolute world positions that come after the join get the same transform. Objects inside the window move with the route there.
+- The validator's same-level overlap rule and the air-time rule are kept, and the join is chosen to avoid new object/road intersections.
+
+Repair log:
+- group [38.589]: window 38.314-39.415 s (1 re-planned turns), remainder re-attached with rotation 270 deg, translation (-24.27, -58.94); crossings 37; objects transformed 45, window-moved 0, new object/road intersections before nudge 0
+- group [59.506]: window 59.231-60.332 s (3 re-planned turns), remainder re-attached with rotation 270 deg, translation (40.14, -177.84); crossings 40; objects transformed 31, window-moved 0, new object/road intersections before nudge 0
+- group [91.433]: window 91.158-92.259 s (1 re-planned turns), remainder re-attached with rotation 270 deg, translation (15.40, -286.86); crossings 40; objects transformed 24, window-moved 0, new object/road intersections before nudge 0
+- group [114.277]: window 114.002-115.378 s (1 re-planned turns), remainder re-attached with rotation 90 deg, translation (343.85, 111.99); crossings 40; objects transformed 14, window-moved 0, new object/road intersections before nudge 0
+- group [153.084]: window 152.809-153.910 s (1 re-planned turns), remainder re-attached with rotation 270 deg, translation (362.14, -346.30); crossings 40; objects transformed 9, window-moved 0, new object/road intersections before nudge 0
+- group [172.075]: window 170.974-172.626 s (1 re-planned turns), remainder re-attached with rotation 270 deg, translation (429.06, -333.95); crossings 40; objects transformed 3, window-moved 0, new object/road intersections before nudge 0
+
+Chartlogic after the edit: see docs/verification/chartlogic/supernatural.md.
