@@ -1,0 +1,42 @@
+{
+ "fails": [],
+ "state": "complete",
+ "status": "complete",
+ "failKind": null,
+ "failTime": 0,
+ "time": 200.2667,
+ "cursor": 257,
+ "taps": 257,
+ "perfect": 256,
+ "good": 1,
+ "diamonds": 10,
+ "ignoredDuplicates": 0,
+ "fps": 13.448607108549472,
+ "save": {
+  "version": 2,
+  "selected": "bubble-gum",
+  "records": {
+   "bubble-gum": {
+    "best": 1,
+    "diamonds": 10,
+    "crowns": 3,
+    "attempts": 1,
+    "completed": true,
+    "perfect": 256,
+    "taps": 257
+   }
+  },
+  "settings": {
+   "volume": 0.8,
+   "offsetMs": 0,
+   "quality": "high",
+   "vibration": true
+  }
+ },
+ "judged": 257,
+ "errorMeanMs": 1,
+ "errorSdMs": 4.7,
+ "errorMaxAbsMs": 74,
+ "sent": 257,
+ "logs": []
+}
