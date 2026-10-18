@@ -8,6 +8,7 @@ import type { Game } from '../core/game';
 import type { LevelData, Palette, SceneObject, SceneEvent, Heading } from '../core/types';
 import { buildKind, hex, Materials, textPlane } from './prefabs';
 import { Road, stepAt } from './road';
+import { Dressings } from './dressing';
 import { EnvTimeline } from './env';
 import { CameraRig } from './camera';
 
@@ -57,7 +58,7 @@ export class World {
   private hemi: HemisphericLight; private sun: DirectionalLight; private shadows: ShadowGenerator | null = null;
   private level: LevelData | null = null; private game: Game | null = null; private route: Route | null = null;
   private root: TransformNode | null = null; private mats: Materials | null = null;
-  private road: Road | null = null; private env: EnvTimeline | null = null; rig: CameraRig | null = null;
+  private road: Road | null = null; private dress: Dressings | null = null; private occP: { x: number; y: number; z: number; r: number }[] = []; private occView: Matrix | null = null; private occTh = 1; private occAspect = 1; private env: EnvTimeline | null = null; rig: CameraRig | null = null;
   private ground: Mesh | null = null; private groundMat: StandardMaterial | null = null;
   private head: Mesh | null = null; private trail: Mesh | null = null; private trailMat: StandardMaterial | null = null; private headMat: StandardMaterial | null = null;
   private trailBuf = new Float32Array(16 * 64); private trailCount = 0; private runs: Run[] = []; private failRun: Run | null = null;
@@ -126,6 +127,7 @@ export class World {
     this.trailMat?.dispose(); this.headMat?.dispose(); this.groundMat?.dispose();
     this.rig?.cam.dispose(); this.rig = null;
     this.objects = []; this.byId.clear(); this.diamonds = []; this.crowns = [];
+    this.dress?.dispose(); this.dress = null;
     this.head = this.trail = this.ground = null;
     this.level = null; this.game = null; this.route = null;
     // dispose orphan textures/materials created by text planes
@@ -178,6 +180,11 @@ export class World {
       } else expanded.push(o);
     }
     for (const o of expanded) this.addObject(o, o.kind === 'row' ? undefined : grid);
+    // roadside dressing (engine-placed props; layout.dressing tunes it, false disables)
+    if (L.dressing !== false) {
+      const block = this.objects.filter(o => o.br).map(o => ({ x: o.node.position.x + o.bc!.x, z: o.node.position.z + o.bc!.z, r: Math.min(8, o.br! * 0.8) }));
+      this.dress = new Dressings(this.scene, this.mats, this.root, route, L.dressing ?? {}, this.env.base, widthAt, (x, z, r, y0, y1) => grid.hits(x, z, r, y0, y1), block);
+    }
     // objects targeted by 'light' events get their own materials so they can glow independently
     for (const e of this.events) if (e.type === 'light' && e.target) for (const o of this.targets(e.target)) if (!o.lit) {
       o.lit = [];
@@ -275,7 +282,7 @@ export class World {
   /** Restore every time-dependent visual to time t (restart, checkpoint, rewind). */
   seek(t: number) {
     if (!this.game || !this.route) return;
-    this.road?.seek(t);
+    this.road?.seek(t); this.dress?.seek(t);
     this.failRun = null; this.runs = []; this.trailCount = 0; this.updateTrail(t, true);
     for (const d of this.diamonds) { d.taken = this.game.diamondsTaken.has(this.diamonds.indexOf(d)); d.mesh.setEnabled(!d.taken); d.mesh.scaling.set(1, 1.5, 1); d.mesh.position.copyFrom(d.base); }
     for (const c of this.crowns) { c.taken = c.t <= t + 1e-6; c.node.setEnabled(true); c.node.position.copyFrom(c.base); this.ghostCrown(c.node, c.taken); }
@@ -523,6 +530,19 @@ export class World {
     const pts: [Vector3, number][] = [[this.head.position, 0.2]];
     for (const dtA of [0.5, 1.0, 1.6]) pts.push([this.v3(posAt(this.route, Math.min(dur, t + dtA))), 0.12]);
     const P = pts.map(([p, r]) => { const v = Vector3.TransformCoordinates(p, view); return { x: v.x / (v.z * th * aspect), y: v.y / (v.z * th), z: v.z, r }; });
+    this.occP = P; this.occView = view; this.occTh = th; this.occAspect = aspect;
+    if (this.dress) {
+      const lb = this.lastBefore(this.beats, t); const beatK = Math.exp(-(t - lb) * 9);
+      const tmp = new Vector3();
+      this.dress.update(t, dt, beatK, (x, y, z, r, h) => {
+        tmp.set(x, y + h / 2, z); const v = Vector3.TransformCoordinates(tmp, view);
+        const br = Math.hypot(r, h / 2);
+        if (v.z <= 0.5) return Math.hypot(x - cam.x, z - cam.z) < br + 1;
+        const sx = v.x / (v.z * th * aspect), sy = v.y / (v.z * th), sr = br / (v.z * th);
+        for (const q of P) { if (v.z - br * 0.5 >= q.z) continue; if (Math.hypot((sx - q.x) * aspect, sy - q.y) < sr * 0.85 + q.r) return true; }
+        return false;
+      });
+    }
     const k = Math.min(1, dt * 10);
     for (const o of this.objects) {
       if (o.hidden || !o.br || o.def.kind === 'text' || o.def.onroad) { if (o.fade !== 1 && !o.hidden) this.setFade(o, 1); continue; }

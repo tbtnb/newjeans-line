@@ -55,8 +55,24 @@ export interface Layout {
   crowns: { t: number }[];
   finish?: { kind: string; parts?: Part[]; color?: string };
   collectibleColors?: { diamond?: string; crown?: string };
+  /** Roadside set-dressing (engine-placed props along both sides of every road segment). false disables it. */
+  dressing?: Dressing | false;
   beats?: number[]; // optional beat grid for react:'beat' scenery
   kicks?: number[];
+}
+/** Roadside dressing (schema v2.6). Props are placed deterministically along both sides of every ground segment,
+ *  never on the road footprint (any level) and never overlapping each other; they pop in ahead of the line on the beat,
+ *  bounce on beats near the line and shrink away when they would cover the head or the road just ahead. */
+export interface DressingProp { kind: string; size?: number[]; color?: string; color2?: string; parts?: Part[]; weight?: number; scale?: [number, number]; scaleY?: [number, number]; }
+export interface DressingSection { t: number; density?: number; near?: [number, number]; props?: number[]; off?: boolean; }
+export interface Dressing {
+  props?: DressingProp[];          // prop palette (default: blocks/trees/cubes coloured from palette road, roadSide, ambient, ground and line)
+  density?: number;                // props per 10 road units per side (default 3.6)
+  near?: [number, number];         // gap from the road edge, units (default [0.4, 4])
+  sections?: DressingSection[];    // per-section overrides from time t
+  lead?: number;                   // seconds ahead of the line at which props pop in (default 2.6)
+  bounce?: number;                 // beat bounce amplitude near the line (default 0.12)
+  seed?: number;
 }
 export interface LevelData {
   id: string; title: string; album: string; duration: number; bpm: number; audio: string; cover: string;
