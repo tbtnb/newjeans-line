@@ -1,4 +1,7 @@
-<html><body style="margin:0;background:#000"><div id=p style="position:fixed;left:0;top:0;width:60px;height:60px;background:#000"></div><script>
-window.go=()=>{const c=new AudioContext();const t0=c.currentTime+1;for(let i=0;i<10;i++){const o=c.createOscillator();const g=c.createGain();o.frequency.value=1000;o.connect(g);g.connect(c.destination);g.gain.value=0.8;o.start(t0+i*1.5);o.stop(t0+i*1.5+0.05);}
-const p=document.getElementById('p');function f(){const ts=c.getOutputTimestamp();const lat=0;const heard=ts.contextTime+(performance.now()-ts.performanceTime)/1000;let on=false;for(let i=0;i<10;i++){const d=heard-(t0+i*1.5);if(d>=0&&d<0.25)on=true;}p.style.background=on?'#fff':'#000';requestAnimationFrame(f);}f();window.info={base:c.baseLatency,out:c.outputLatency};}
+<html><body style="margin:0;background:#000"><div id=p style="position:fixed;left:0;top:0;width:60px;height:60px;background:#000"></div><div id=q style="position:fixed;left:100px;top:0;width:60px;height:60px;background:#000"></div><script>
+// left square: lit while a beep is *heard* per getOutputTimestamp (game clock model); right: per ctx.currentTime (no latency)
+window.go=()=>{const c=new AudioContext({latencyHint:'interactive'});const t0=c.currentTime+1;const N=12,P=1.25;for(let i=0;i<N;i++){const o=c.createOscillator();const g=c.createGain();o.frequency.value=1000;o.connect(g);g.connect(c.destination);g.gain.value=0.8;o.start(t0+i*P);o.stop(t0+i*P+0.05);}
+const p=document.getElementById('p'),q=document.getElementById('q');const lit=h=>{for(let i=0;i<N;i++){const d=h-(t0+i*P);if(d>=0&&d<0.3)return true;}return false;};
+const samples=[];setInterval(()=>{const ts=c.getOutputTimestamp();const now=performance.now();const heard=ts.contextTime+(now-ts.performanceTime)/1000;p.style.background=lit(heard)?'#fff':'#000';q.style.background=lit(c.currentTime)?'#fff':'#000';if(samples.length<400)samples.push([now,c.currentTime,ts.contextTime,ts.performanceTime]);},4);
+window.info=()=>({base:c.baseLatency,out:c.outputLatency,samples:samples.filter((_,i)=>i%40==0)});}
 </script></body></html>

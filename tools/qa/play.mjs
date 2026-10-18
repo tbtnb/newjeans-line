@@ -35,7 +35,7 @@ if (A.record) {
   const geo = await page.evaluate(() => ({ x: window.screenX, y: window.screenY + (window.outerHeight - window.innerHeight), ow: window.outerWidth, iw: window.innerWidth }));
   const ox = Math.max(0, geo.x + Math.round((geo.ow - geo.iw) / 2)), oy = Math.max(0, geo.y);
   ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-thread_queue_size', '1024', '-f', 'x11grab', '-draw_mouse', '0', '-framerate', '30', '-video_size', `${W}x${H}`, '-i', `${DISPLAY}+${ox},${oy}`,
-    '-thread_queue_size', '1024', '-f', 'pulse', '-i', A.pulse ?? 'rec.monitor', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '22', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k', A.record], { stdio: ['pipe', 'inherit', 'inherit'] });
+    '-thread_queue_size', '1024', ...(A.frag ? ['-fragment_size', A.frag] : []), ...(A.pulsewc ? ['-wallclock', A.pulsewc] : []), '-f', 'pulse', '-i', A.pulse ?? 'rec.monitor', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '22', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k', A.record], { stdio: ['pipe', 'inherit', 'inherit'] });
   await page.waitForTimeout(800);
 }
 await page.waitForTimeout(+(A.menuHold ?? 1200));

@@ -336,8 +336,8 @@ function loop() {
   game.lateGrace = Math.min(LATE_GRACE_MAX, Math.max(LATE_GRACE, 0.05 + 2.5 * frameEma));
   let t = game.time;
   if (state === 'playing') {
-    // predict ~1 frame ahead: what we draw now reaches the screen at the next vsync
-    t = audio.renderTime(Math.min(0.05, frameEma)) - save.settings.offsetMs / 1000;
+    // predict ~1.5 frames ahead: a frame drawn now reaches the screen 1-2 vsyncs later (capped so pending corners never visibly overshoot)
+    t = audio.renderTime(Math.min(0.07, 1.5 * frameEma)) - save.settings.offsetMs / 1000;
     game.update(t);
     if (game.status === 'playing' && !audio.playing && audio.songTime() >= level!.duration - 0.05) game.update(level!.duration);
     t = game.status === 'failed' ? game.failTime : game.time;

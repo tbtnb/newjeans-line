@@ -26,17 +26,20 @@ for t in np.arange(2, len(o) / sr - 6, 5.0):
     win.append((t + 2.5, xc(a, b, int(0.2 * sr)) / sr))
 win = np.array(win)
 taps = np.array([x['t'] for x in json.load(open(CHART))['taps']])
+taps = taps[taps < (rises[-1] if len(rises) else 0) - g + 0.5]   # only taps inside the recorded span
+# best constant shift between probe flashes and chart taps (independent of audio), then compare with audio start
+best = min(((np.median(np.minimum(np.abs(rises[np.clip(np.searchsorted(rises, taps + sft), 1, len(rises) - 1)] - taps - sft), np.abs(rises[np.clip(np.searchsorted(rises, taps + sft), 1, len(rises) - 1) - 1] - taps - sft))), sft) for sft in np.arange(g - 1, g + 1, 0.002)))
+print(f'song starts at {g:.3f}s in the video (audio); probe flashes best fit at {best[1]:.3f}s -> picture minus audio = {(best[1]-g)*1000:.0f} ms (median |residual| {best[0]*1000:.0f} ms)')
+print('audio residual per 5 s window: min %.0f max %.0f ms' % (win[:, 1].min() * 1000, win[:, 1].max() * 1000))
 L = np.interp(taps, win[:, 0], win[:, 1]); exp = g + taps + L
 d = []
 for t, e in zip(taps, exp):
     k = np.argmin(np.abs(rises - e)); dd = rises[k] - e
-    if abs(dd) < 0.15: d.append((t, dd * 1000))
+    if abs(dd) < 0.2: d.append((t, dd * 1000))
 d = np.array(d); x = d[:, 1]
-print(f'song starts at {g:.3f}s in the video; audio-vs-song residual per 5 s window: min {win[:,1].min()*1000:.0f} ms, max {win[:,1].max()*1000:.0f} ms, steps>20ms at',
-      [round(win[i, 0]) for i in range(1, len(win)) if abs(win[i, 1] - win[i - 1, 1]) > 0.02])
-print(f'probe flashes {len(rises)}, matched {len(d)}/{len(taps)} taps')
+print(f'probe flashes {len(rises)}, matched {len(d)}/{len(taps)} taps (nearest flash within 200 ms)')
 for lo, hi in [(0, 70), (70, 140), (140, 999)]:
     y = x[(d[:, 0] >= lo) & (d[:, 0] < hi)]
     if len(y): print(f'{lo}-{hi}s: picture minus audio median {np.median(y):.0f} ms, p10 {np.percentile(y,10):.0f}, p90 {np.percentile(y,90):.0f}, n={len(y)}')
 print(f'all: median {np.median(x):.0f} ms, mean {x.mean():.0f}, p10 {np.percentile(x,10):.0f}, p90 {np.percentile(x,90):.0f}, |max| {np.abs(x).max():.0f}')
-json.dump({'song_start': g, 'window_residual_s': win.tolist(), 'pairs_ms': d.tolist()}, open(V.replace('.mp4', '.sync.json'), 'w'))
+json.dump({'song_start': g, 'flash_fit': best[1], 'window_residual_s': win.tolist(), 'pairs_ms': d.tolist()}, open(V.replace('.mp4', '.sync.json'), 'w'))
