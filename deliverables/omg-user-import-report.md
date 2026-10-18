@@ -98,3 +98,11 @@
 - 点击音轨：`deliverables/omg-user-clicks.mp3`（音乐 + 吸附后的点，到 endTime 淡出）
 - 数据：`analysis/user/omg-user-taps-analysis.json`、`omg-user-snap.json`、`omg-user-repeats.json`、`omg-import-report.json`、`omg-user-taps-snapped.json`
 - 工具：`tools/charts/omg_user_analyze.py`、`omg_user_snap.py`、`omg_user_repeats.py`、`omg_user_level.py`、`omg_user_report.py`，然后是 `tools/charts/import_taps.py --allow-16`
+
+## 7. 脚本试玩（模拟，不是真机手动）
+
+环境：Mac mini M4 GPU（Chrome / Metal），已发布的 /preview/。
+- 截图那一轮：complete，结束于 160.637 s，361 perfect + 0 good / 361，钻石 10/10，fps 60
+- 录屏那一轮（?syncprobe）：complete，结束于 160.637 s，361 perfect + 0 good / 361，钻石 10/10，fps 60
+- 第一次录屏（脚本卡顿）：failed，结束于 38.86 s，60 perfect + 0 good / 361，钻石 3/10，fps 60，失败 [{'t': 38.86, 'kind': 'late', 'cursor': 60, 'next': 38.75}]
+- 视频：`deliverables/omg-user.mp4`。音乐按 sync 方块（probe flash）的拟合位置混入，淡出到 endTime。截图在 `deliverables/omg-user-mac/`，总览图 `deliverables/omg-user-contact.png`。

@@ -1,0 +1,49 @@
+{
+ "fails": [
+  {
+   "t": 38.86,
+   "kind": "late",
+   "cursor": 60,
+   "next": 38.75
+  }
+ ],
+ "state": "failed",
+ "status": "failed",
+ "failKind": "late",
+ "failTime": 38.86,
+ "time": 38.86,
+ "cursor": 60,
+ "taps": 361,
+ "perfect": 60,
+ "good": 0,
+ "diamonds": 3,
+ "ignoredDuplicates": 0,
+ "fps": 59.976009590444065,
+ "save": {
+  "version": 2,
+  "selected": "omg",
+  "records": {
+   "omg": {
+    "best": 0.24191188829472662,
+    "diamonds": 3,
+    "crowns": 0,
+    "attempts": 1,
+    "completed": false,
+    "taps": 361
+   }
+  },
+  "settings": {
+   "volume": 0.8,
+   "offsetMs": 0,
+   "quality": "high",
+   "vibration": true,
+   "skin": "classic"
+  }
+ },
+ "judged": 60,
+ "errorMeanMs": 0.5,
+ "errorSdMs": 0.5,
+ "errorMaxAbsMs": 2,
+ "sent": 63,
+ "logs": []
+}

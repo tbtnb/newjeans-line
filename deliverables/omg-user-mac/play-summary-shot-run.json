@@ -1,0 +1,43 @@
+{
+ "fails": [],
+ "state": "complete",
+ "status": "complete",
+ "failKind": null,
+ "failTime": 0,
+ "time": 160.637,
+ "cursor": 361,
+ "taps": 361,
+ "perfect": 361,
+ "good": 0,
+ "diamonds": 10,
+ "ignoredDuplicates": 0,
+ "fps": 59.98800241095961,
+ "save": {
+  "version": 2,
+  "selected": "omg",
+  "records": {
+   "omg": {
+    "best": 1,
+    "diamonds": 10,
+    "crowns": 3,
+    "attempts": 1,
+    "completed": true,
+    "perfect": 361,
+    "taps": 361
+   }
+  },
+  "settings": {
+   "volume": 0.8,
+   "offsetMs": 0,
+   "quality": "high",
+   "vibration": true,
+   "skin": "classic"
+  }
+ },
+ "judged": 361,
+ "errorMeanMs": 1,
+ "errorSdMs": 0.6,
+ "errorMaxAbsMs": 11,
+ "sent": 361,
+ "logs": []
+}

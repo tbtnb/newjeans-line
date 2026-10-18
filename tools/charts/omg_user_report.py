@@ -63,5 +63,14 @@ w('## 6. 文件\n')
 w('- 点击音轨：`deliverables/omg-user-clicks.mp3`（音乐 + 吸附后的点，到 endTime 淡出）')
 w('- 数据：`analysis/user/omg-user-taps-analysis.json`、`omg-user-snap.json`、`omg-user-repeats.json`、`omg-import-report.json`、`omg-user-taps-snapped.json`')
 w('- 工具：`tools/charts/omg_user_analyze.py`、`omg_user_snap.py`、`omg_user_repeats.py`、`omg_user_level.py`、`omg_user_report.py`，然后是 `tools/charts/import_taps.py --allow-16`')
+mac = ROOT / 'deliverables/omg-user-mac'
+if (mac / 'play-summary-shot-run.json').exists():
+    w('\n## 7. 脚本试玩（模拟，不是真机手动）\n')
+    w('环境：Mac mini M4 GPU（Chrome / Metal），已发布的 /preview/。')
+    for f, name in (('play-summary-shot-run.json', '截图那一轮'), ('play-summary-recording-run.json', '录屏那一轮（?syncprobe）'), ('play-summary-recording-run1-stall.json', '第一次录屏（脚本卡顿）')):
+        if (mac / f).exists():
+            r = json.load(open(mac / f))
+            w(f'- {name}：{r["status"]}，结束于 {r["time"]} s，{r["perfect"]} perfect + {r["good"]} good / {r["taps"]}，钻石 {r["diamonds"]}/10，fps {r["fps"]:.0f}' + (f'，失败 {r["fails"]}' if r['fails'] else ''))
+    w('- 视频：`deliverables/omg-user.mp4`。音乐按 sync 方块（probe flash）的拟合位置混入，淡出到 endTime。截图在 `deliverables/omg-user-mac/`，总览图 `deliverables/omg-user-contact.png`。')
 (ROOT / 'deliverables/omg-user-import-report.md').write_text('\n'.join(L) + '\n')
 print('ok', len(L), 'lines')
