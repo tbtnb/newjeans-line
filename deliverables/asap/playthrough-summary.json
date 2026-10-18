@@ -5,13 +5,13 @@
  "failKind": null,
  "failTime": 0,
  "time": 134.3867,
- "cursor": 158,
- "taps": 158,
- "perfect": 157,
- "good": 1,
+ "cursor": 162,
+ "taps": 162,
+ "perfect": 162,
+ "good": 0,
  "diamonds": 10,
  "ignoredDuplicates": 0,
- "fps": 11.829652996862803,
+ "fps": 10.8932461873491,
  "save": {
   "version": 2,
   "selected": "asap",
@@ -22,8 +22,8 @@
     "crowns": 3,
     "attempts": 1,
     "completed": true,
-    "perfect": 157,
-    "taps": 158
+    "perfect": 162,
+    "taps": 162
    }
   },
   "settings": {
@@ -33,10 +33,10 @@
    "vibration": true
   }
  },
- "judged": 158,
- "errorMeanMs": 2,
- "errorSdMs": 6.3,
- "errorMaxAbsMs": 80,
- "sent": 158,
+ "judged": 162,
+ "errorMeanMs": 1.7,
+ "errorSdMs": 1.9,
+ "errorMaxAbsMs": 17,
+ "sent": 162,
  "logs": []
 }
