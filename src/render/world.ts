@@ -484,7 +484,7 @@ export class World {
     const pal: Palette = this.env.at(t);
     this.applyPalette(pal);
     if (this.show) { const lb = this.lastBefore(this.beats, t); this.show.update(t, Math.exp(-(t - lb) * 9), p => this.burst(p, '#fff4c2', 40), this.head.position); }
-    if (this.corridor && this.scene.activeCamera) { const lb = this.lastBefore(this.beats, t); this.corridor.update(t, Math.exp(-(t - lb) * 9), this.scene.activeCamera.position); }
+    if (this.corridor && this.scene.activeCamera) { const lb = this.lastBefore(this.beats, t); const cam = this.scene.activeCamera; this.corridor.update(t, Math.exp(-(t - lb) * 9), cam.position, cam.getViewMatrix(), seeking ? 1 : dt, Math.tan(cam.fov / 2), this.engine.getRenderWidth() / Math.max(1, this.engine.getRenderHeight())); }
     if (this.groundTex.length > 1 && this.groundMat) { let g = this.groundTex[0].tex; for (const x of this.groundTex) if (x.t <= t) g = x.tex; if (g !== this.groundShown) { this.groundShown = g; this.groundMat.diffuseTexture = g; } }
     if (this.backdrops.length) { let b: string | null = null; for (const x of this.backdrops) if (x.t <= t) b = x.src; if (b !== this.backdropShown) { this.backdropShown = b; this.onBackdrop?.(b ? this.mats!.artBase + b : null); } }
     // road reveal

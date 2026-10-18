@@ -4,11 +4,11 @@
 // corridor = flowAnchor + RoadGrid clearance), so it survives a re-chart. Rendering: one thin-instanced quad per item and
 // light group; only instances inside [t - tail, t + lead] are written each frame (compacted buffers, no allocations).
 import { Color3, Matrix, Mesh, ParticleSystem, Quaternion, Scene, StandardMaterial, Texture, TransformNode, Vector3, VertexData } from './bjs';
-import { anchor, flowAnchor, type Route } from '../core/path';
+import { anchor, flowAnchor, posAt, type Route } from '../core/path';
 import type { CorridorSpec } from '../core/types';
 import { hex } from './prefabs';
 
-interface Inst { t: number; x: number; y: number; z: number; w: number; h: number; ph: number; yaw: number; }
+interface Inst { t: number; x: number; y: number; z: number; w: number; h: number; ph: number; yaw: number; vis: number; }
 interface Layer { mesh: Mesh; mat: StandardMaterial; buf: Float32Array; cap: number; list: Inst[]; lo: number; mode: 'bill' | 'flat'; float: number; tilt: number; rise: boolean;
   base: Color3; tex: Texture | null; lights: 'beat' | 'chase' | 'none' | 'strip'; grp: number; nGrp: number; add: boolean; alpha: number; }
 const smooth = (x: number) => (x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x));
@@ -27,6 +27,10 @@ export class Corridor {
   private layers: Layer[] = []; private own: (Mesh | StandardMaterial | Texture | ParticleSystem)[] = [];
   private fw: { t: number; x: number; y: number; z: number; c: Color3; n: number }[] = []; private fwNext = 0; private ps: ParticleSystem | null = null; private fwAt = new Vector3();
   private lastT = -1e9; private beatI = 0;
+  // road-ahead occlusion guard: route centreline sampled every PSTEP s at load; per frame the next AHEAD s are projected to
+  // the screen and any upright piece standing in front of them ducks into the ground (never hides the road ahead / head)
+  private path: Float32Array; private static readonly PSTEP = 0.1; private static readonly NA = 18; private ap = new Float32Array(Corridor.NA * 3);
+  private static readonly v = new Vector3(); private static readonly v2 = new Vector3();
   private lead: number; private tail: number;
   private static readonly sc = new Vector3(); private static readonly tr = new Vector3(); private static readonly q = new Quaternion(); private static readonly m = new Matrix();
   /** instances placed (for reports / tests) */
@@ -35,6 +39,8 @@ export class Corridor {
   constructor(private scene: Scene, root: TransformNode, route: Route, private spec: CorridorSpec, artBase: string, quality: 'high' | 'low',
     widthAt: (t: number) => number, hits: (x: number, z: number, r: number, y0: number, y1: number) => boolean, sparkTex: Texture | null, private beats: number[]) {
     this.lead = spec.lead ?? 6; this.tail = spec.tail ?? 4;
+    const tEnd = route.spans[route.spans.length - 1].t1 + 1; const NP = Math.ceil(tEnd / Corridor.PSTEP) + 1; this.path = new Float32Array(NP * 3);
+    for (let i = 0; i < NP; i++) { const p = posAt(route, i * Corridor.PSTEP); this.path[i * 3] = p.x; this.path[i * 3 + 1] = p.y; this.path[i * 3 + 2] = p.z; }
     let seed = 7; const rnd = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
     const lists: Inst[][] = spec.items.map(() => []);
     const skip = quality === 'low' ? 2 : 1;
@@ -59,7 +65,7 @@ export class Corridor {
           while (hits(a.x, a.z, clear, a.y - 2 - y, a.y + 3) && tries++ < 12) { off += 1.0; a = at(off); }
           if (tries > 12) continue;
           const yaw = it.flat ? rnd() * Math.PI * 2 : 0;
-          lists[ii].push({ t, x: a.x, y: a.y - 0.6 + (it.flat ? 0.04 : 0), z: a.z, w, h: it.flat ? w : h, ph: rnd() * 6.28, yaw });
+          lists[ii].push({ t, x: a.x, y: a.y - 0.6 + (it.flat ? 0.04 : 0), z: a.z, w, h: it.flat ? w : h, ph: rnd() * 6.28, yaw, vis: 1 });
         }
       }
     }
@@ -91,7 +97,7 @@ export class Corridor {
         const off = widthAt(t) / 2 + o; const r0 = anchor(route, t, 0, 0, 0).pos, f0 = flowAnchor(route, t, 0, 0, 0).pos, f1 = flowAnchor(route, t, 1, 0, 0).pos;
         const a = { x: r0.x + (f1.x - f0.x) * side * off, y: r0.y, z: r0.z + (f1.z - f0.z) * side * off }; const s = f.size ?? 0.9;
         if (hits(a.x, a.z, s / 2 + 0.5, a.y - 1.5, a.y + 1)) continue;
-        groups[k % 4].push({ t, x: a.x, y: a.y - 0.55, z: a.z, w: s, h: s, ph: 0, yaw: 0 });
+        groups[k % 4].push({ t, x: a.x, y: a.y - 0.55, z: a.z, w: s, h: s, ph: 0, yaw: 0, vis: 1 });
       }
       const c = hex(f.color);
       groups.forEach((list, g) => {
@@ -122,7 +128,30 @@ export class Corridor {
     }
   }
 
-  update(t: number, beatK: number, camPos: Vector3) {
+  // screen space as in World.fadeOccluders: view matrix + tan(fov/2) + aspect (sx, sy in [-1, 1], z = view depth)
+  private th = 1; private asp = 1;
+  private projectAhead(t: number, view: Matrix) {
+    const D = Corridor, P = this.path, n = P.length / 3;
+    for (let k = 0; k < D.NA; k++) {
+      const i = Math.min(n - 1, Math.max(0, Math.round((t - 0.3) / D.PSTEP) + k * 2)); // t-0.3 .. t+3.1 s
+      Vector3.TransformCoordinatesFromFloatsToRef(P[i * 3], P[i * 3 + 1] + 0.3, P[i * 3 + 2], view, D.v);
+      const z = Math.max(0.1, D.v.z); this.ap[k * 3] = D.v.x / (z * this.th * this.asp); this.ap[k * 3 + 1] = D.v.y / (z * this.th); this.ap[k * 3 + 2] = D.v.z;
+    }
+  }
+  private occludes(s: Inst, y: number, view: Matrix, pitch: number, nx: number, nz: number) {
+    const D = Corridor, th = this.th, asp = this.asp; const sp = Math.sin(pitch) * s.h, cp = Math.cos(pitch) * s.h; // top of the leaning quad
+    Vector3.TransformCoordinatesFromFloatsToRef(s.x, y, s.z, view, D.v); Vector3.TransformCoordinatesFromFloatsToRef(s.x - nx * sp, y + cp, s.z - nz * sp, view, D.v2); // facing the camera = top leans away from it
+    const z0 = Math.max(0.1, D.v.z), z1 = Math.max(0.1, D.v2.z);
+    const ax = D.v.x / (z0 * th * asp), ay = D.v.y / (z0 * th), bx = D.v2.x / (z1 * th * asp), by = D.v2.y / (z1 * th);
+    const hw = s.w * 0.4 / (Math.min(z0, z1) * th * asp) + 0.03; // art is centred with transparent margins
+    const x0 = Math.min(ax, bx) - hw, x1 = Math.max(ax, bx) + hw, y0 = Math.min(ay, by) - 0.03, y1 = Math.max(ay, by) + 0.02;
+    const z = Math.min(D.v.z, D.v2.z);
+    for (let k = 0; k < D.NA; k++) { const px = this.ap[k * 3], py = this.ap[k * 3 + 1]; if (px > x0 && px < x1 && py > y0 && py < y1 && this.ap[k * 3 + 2] > z) return true; }
+    return false;
+  }
+
+  update(t: number, beatK: number, camPos: Vector3, M: Matrix | null = null, dt = 1 / 60, tanHalfFov = 1, aspect = 1) {
+    this.th = tanHalfFov; this.asp = aspect; if (M) this.projectAhead(t, M);
     // beat index (parity drives the chase groups)
     const B = this.beats;
     if (t < this.lastT - 0.5) { this.beatI = 0; this.fwNext = 0; for (const l of this.layers) l.lo = 0; while (this.fwNext < this.fw.length && this.fw[this.fwNext].t < t) this.fwNext++; }
@@ -135,7 +164,11 @@ export class Corridor {
         const s = list[i]; if (s.t > t + lead) break;
         const age = t - (s.t - lead); const e = L.rise ? smooth(age / 0.9) : 1;
         let y = s.y; if (L.mode === 'bill') y += -(1 - e) * s.h * 0.9 + (L.float ? Math.sin(t * 1.4 + s.ph) * L.float : 0);
-        if (L.mode === 'bill') { const dx = camPos.x - s.x, dz = camPos.z - s.z; const pitch = Math.atan2(camPos.y - y - s.h * 0.5, Math.sqrt(dx * dx + dz * dz)) * L.tilt; Quaternion.RotationYawPitchRollToRef(Math.atan2(-dx, -dz), pitch, 0, D.q); D.sc.set(s.w, s.h, 1); }
+        if (L.mode === 'bill') {
+          const dx = camPos.x - s.x, dz = camPos.z - s.z, dh = Math.sqrt(dx * dx + dz * dz) || 1; const pitch = Math.atan2(camPos.y - y - s.h * 0.5, dh) * L.tilt;
+          if (M) { const want = this.occludes(s, y, M, pitch, dx / dh, dz / dh) ? 0 : 1; s.vis += Math.max(-dt * 6, Math.min(dt * 6, want - s.vis)); y -= (1 - smooth(s.vis)) * s.h * 1.05; }
+          Quaternion.RotationYawPitchRollToRef(Math.atan2(-dx, -dz), pitch, 0, D.q); D.sc.set(s.w, s.h, 1);
+        }
         else { Quaternion.RotationYawPitchRollToRef(s.yaw, 0, 0, D.q); const k = L.lights === 'strip' ? 1 : e; D.sc.set(s.w * k, 1, s.h * k); }
         D.tr.set(s.x, y, s.z); Matrix.ComposeToRef(D.sc, D.q, D.tr, D.m); D.m.copyToArray(L.buf, n * 16); n++;
       }
