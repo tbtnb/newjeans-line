@@ -304,6 +304,19 @@ $('btn-calibrate').onclick = () => {
   setTimeout(() => { if ($('calib').classList.contains('on')) finish(); }, (12 * beat + 2) * 1000);
 };
 
+// ---------------- sync probe (QA only, ?syncprobe) ----------------
+// A small corner square that turns white on the first rendered frame at/after each tap time (the same frame in which
+// the line's turn first becomes visible), so a screen recording can be checked against the recorded audio.
+const PROBE = new URLSearchParams(location.search).has('syncprobe');
+let probeEl: HTMLDivElement | null = null; let probeIdx = -1; let probeOn = 0;
+function syncProbe(t: number) {
+  if (!probeEl) { probeEl = document.createElement('div'); probeEl.style.cssText = 'position:fixed;left:0;bottom:0;width:28px;height:28px;background:#000;z-index:99999;pointer-events:none'; document.body.appendChild(probeEl); }
+  const taps = level!.chart.taps; let i = probeIdx;
+  while (i + 1 < taps.length && taps[i + 1].t <= t) i++;
+  if (i !== probeIdx) { if (i >= 0 && t - taps[i].t < 0.25) probeOn = 2; probeIdx = i; }
+  probeEl.style.background = probeOn > 0 ? '#fff' : '#000'; if (probeOn > 0) probeOn--;
+}
+
 // ---------------- main loop ----------------
 let hudTick = 0; let lastLoop = 0; let frameEma = 1 / 60;
 function loop() {
@@ -320,6 +333,7 @@ function loop() {
     t = game.status === 'failed' ? game.failTime : game.time;
   } else if (state === 'complete' || (state === 'failed')) t = game.time;
   world.frame(t);
+  if (PROBE && level) syncProbe(t);
   if (++hudTick % 3 === 0 && (state === 'playing' || state === 'ready')) updateHud();
 }
 

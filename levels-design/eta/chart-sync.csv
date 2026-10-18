@@ -1,0 +1,423 @@
+t,bar16,tag,section,attack_offset_ms,clear_attack
+1.670,0:0,snare,"Intro · phone desk",1.8,1
+2.337,0:6,vocal,"Intro · phone desk",-9.6,0
+2.781,0:10,vocal,"Intro · phone desk",1.4,1
+3.448,1:0,snare,"Intro · phone desk",-0.5,1
+4.114,1:6,vocal,"Intro · phone desk",6.1,0
+4.559,1:10,vocal,"Intro · phone desk",1.2,1
+4.892,1:13,vocal,"Intro · phone desk",1.0,1
+5.225,2:0,snare,"Intro · phone desk",2.0,1
+5.670,2:4,snare,"Intro · phone desk",0.5,1
+5.892,2:6,snare,"Intro · phone desk",5.9,0
+6.337,2:10,vocal,"Intro · phone desk",1.0,1
+6.670,2:13,vocal,"Intro · phone desk",0.2,1
+7.003,3:0,snare,"Verse 1 · first message",0.0,1
+7.448,3:4,kick,"Verse 1 · first message",0.6,0
+7.892,3:8,snare,"Verse 1 · first message",0.8,0
+8.337,3:12,kick,"Verse 1 · first message",23.8,0
+8.781,4:0,snare,"Verse 1 · first message",-6.9,0
+9.670,4:8,snare,"Verse 1 · first message",1.9,0
+10.114,4:12,kick,"Verse 1 · first message",1.6,1
+10.559,5:0,kick,"Verse 1 · first message",-14.4,0
+11.003,5:4,kick,"Verse 1 · first message",2.6,0
+11.448,5:8,snare,"Verse 1 · first message",-26.3,0
+11.892,5:12,kick,"Verse 1 · first message",24.3,0
+12.337,6:0,snare,"Verse 1 · first message",7.0,0
+12.781,6:4,kick,"Verse 1 · first message",2.3,0
+13.226,6:8,kick,"Verse 1 · first message",1.4,0
+13.448,6:10,snare,"Verse 1 · first message",14.7,0
+13.670,6:12,kick,"Verse 1 · first message",1.7,0
+13.892,6:14,vocal,"Verse 1 · first message",1.6,0
+14.115,7:0,snare,"Verse 1 · first message",0.2,1
+14.559,7:4,kick,"Verse 1 · first message",2.1,0
+15.003,7:8,snare,"Verse 1 · first message",0.9,0
+15.448,7:12,kick,"Verse 1 · first message",5.7,0
+15.892,8:0,snare,"Verse 1 · first message",0.7,0
+16.781,8:8,snare,"Verse 1 · first message",1.9,0
+17.226,8:12,kick,"Verse 1 · first message",24.1,0
+17.670,9:0,snare,"Verse 1 · first message",7.3,0
+18.115,9:4,kick,"Verse 1 · first message",-7.8,0
+18.559,9:8,snare,"Verse 1 · first message",2.0,0
+19.003,9:12,kick,"Verse 1 · first message",23.9,0
+19.448,10:0,snare,"Verse 1 · first message",-17.8,0
+19.892,10:4,kick,"Verse 1 · first message",24.3,0
+20.337,10:8,snare,"Verse 1 · first message",10.7,0
+20.559,10:10,vocal,"Verse 1 · first message",-20.0,0
+20.781,10:12,hat,"Verse 1 · first message",23.6,0
+21.004,10:14,vocal,"Verse 1 · first message",-1.6,0
+21.226,11:0,snare,"Pre 1 · forwarding blocks",-18.0,0
+22.115,11:8,kick,"Pre 1 · forwarding blocks",-21.5,0
+22.559,11:12,kick,"Pre 1 · forwarding blocks",0.9,0
+23.004,12:0,snare,"Pre 1 · forwarding blocks",-32.3,0
+23.448,12:4,snare,"Pre 1 · forwarding blocks",-34.3,0
+23.892,12:8,snare,"Pre 1 · forwarding blocks",-20.8,0
+24.337,12:12,kick,"Pre 1 · forwarding blocks",3.0,0
+24.781,13:0,snare,"Pre 1 · forwarding blocks",-5.6,1
+25.670,13:8,snare,"Pre 1 · forwarding blocks",2.2,0
+26.115,13:12,bass,"Pre 1 · forwarding blocks",32.2,0
+26.559,14:0,snare,"Pre 1 · forwarding blocks",-27.9,0
+27.004,14:4,snare,"Pre 1 · forwarding blocks",-12.8,0
+27.448,14:8,kick,"Pre 1 · forwarding blocks",20.2,0
+27.893,14:12,kick,"Pre 1 · forwarding blocks",1.4,1
+28.115,14:14,vocal,"Pre 1 · forwarding blocks",0.9,0
+28.337,15:0,snare,"Pre 1 · forwarding blocks",-16.7,1
+28.781,15:4,kick,"Pre 1 · forwarding blocks",-1.4,0
+29.226,15:8,snare,"Pre 1 · forwarding blocks",-32.0,0
+29.670,15:12,kick,"Pre 1 · forwarding blocks",2.8,0
+30.115,16:0,snare,"Pre 1 · forwarding blocks",-34.4,0
+30.559,16:4,kick,"Pre 1 · forwarding blocks",-35.4,0
+30.781,16:6,snare,"Pre 1 · forwarding blocks",-16.5,0
+31.004,16:8,kick,"Pre 1 · forwarding blocks",-31.9,0
+31.448,16:12,bass,"Pre 1 · forwarding blocks",2.6,1
+31.670,16:14,kick,"Pre 1 · forwarding blocks",-5.5,0
+31.893,17:0,snare,"Pre 1 · forwarding blocks",-5.6,1
+32.115,17:2,hat,"Pre 1 · forwarding blocks",-33.0,1
+32.337,17:4,kick,"Pre 1 · forwarding blocks",28.3,0
+32.559,17:6,snare,"Pre 1 · forwarding blocks",-6.5,0
+32.781,17:8,snare,"Pre 1 · forwarding blocks",-20.6,1
+33.226,17:12,kick,"Pre 1 · forwarding blocks",20.1,0
+33.448,17:14,kick,"Pre 1 · forwarding blocks",-24.7,1
+33.670,18:0,snare,"Pre 1 · forwarding blocks",-6.6,0
+33.893,18:2,hat,"Pre 1 · forwarding blocks",-36.7,0
+34.115,18:4,kick,"Pre 1 · forwarding blocks",-15.2,0
+34.337,18:6,hat,"Pre 1 · forwarding blocks",-25.3,0
+34.559,18:8,kick,"Pre 1 · forwarding blocks",-21.2,0
+34.781,18:10,hat,"Pre 1 · forwarding blocks",-24.6,0
+35.004,18:12,bass,"Pre 1 · forwarding blocks",-5.0,0
+35.115,18:13,hat,"Pre 1 · forwarding blocks",-26.8,1
+35.226,18:14,hat,"Pre 1 · forwarding blocks",0.9,1
+35.337,18:15,vocal,"Pre 1 · forwarding blocks",-26.2,1
+35.670,19:2,hat,"Chorus 1 · signal city hook",0.6,0
+35.893,19:4,kick,"Chorus 1 · signal city hook",20.6,0
+36.115,19:6,snare,"Chorus 1 · signal city hook",28.2,0
+36.337,19:8,snare,"Chorus 1 · signal city hook",-8.0,0
+36.782,19:12,bass,"Chorus 1 · signal city hook",2.2,0
+37.115,19:15,kick,"Chorus 1 · signal city hook",24.8,1
+37.448,20:2,kick,"Chorus 1 · signal city hook",29.6,1
+37.670,20:4,kick,"Chorus 1 · signal city hook",29.4,1
+38.115,20:8,kick,"Chorus 1 · signal city hook",24.5,1
+38.337,20:10,snare,"Chorus 1 · signal city hook",19.6,0
+38.559,20:12,kick,"Chorus 1 · signal city hook",-8.1,0
+38.893,20:15,kick,"Chorus 1 · signal city hook",29.0,1
+39.226,21:2,kick,"Chorus 1 · signal city hook",-7.9,0
+39.448,21:4,bass,"Chorus 1 · signal city hook",-7.2,1
+39.670,21:6,snare,"Chorus 1 · signal city hook",-34.7,0
+39.893,21:8,kick,"Chorus 1 · signal city hook",27.1,0
+40.337,21:12,kick,"Chorus 1 · signal city hook",-31.3,0
+40.670,21:15,kick,"Chorus 1 · signal city hook",-1.2,1
+41.004,22:2,bass,"Chorus 1 · signal city hook",23.0,0
+41.226,22:4,kick,"Chorus 1 · signal city hook",-28.8,0
+41.448,22:6,snare,"Chorus 1 · signal city hook",-11.2,1
+41.670,22:8,kick,"Chorus 1 · signal city hook",20.0,0
+41.893,22:10,hat,"Chorus 1 · signal city hook",-29.5,1
+42.115,22:12,kick,"Chorus 1 · signal city hook",19.8,0
+42.448,22:15,kick,"Chorus 1 · signal city hook",-24.0,1
+42.782,23:2,kick,"Chorus 1 · signal city hook",31.6,1
+43.004,23:4,kick,"Chorus 1 · signal city hook",-28.8,1
+43.226,23:6,snare,"Chorus 1 · signal city hook",22.5,0
+43.448,23:8,kick,"Chorus 1 · signal city hook",16.9,0
+43.893,23:12,bass,"Chorus 1 · signal city hook",-33.2,0
+44.226,23:15,kick,"Chorus 1 · signal city hook",27.6,0
+44.559,24:2,kick,"Chorus 1 · signal city hook",-24.5,0
+44.782,24:4,kick,"Chorus 1 · signal city hook",-6.5,0
+45.226,24:8,kick,"Chorus 1 · signal city hook",-12.5,1
+45.448,24:10,snare,"Chorus 1 · signal city hook",12.4,1
+45.671,24:12,kick,"Chorus 1 · signal city hook",27.0,1
+46.004,24:15,kick,"Chorus 1 · signal city hook",-1.4,0
+46.337,25:2,kick,"Chorus 1 · signal city hook",-24.1,0
+46.559,25:4,bass,"Chorus 1 · signal city hook",7.8,0
+47.004,25:8,kick,"Chorus 1 · signal city hook",-3.7,1
+47.448,25:12,bass,"Chorus 1 · signal city hook",28.6,0
+48.115,26:2,kick,"Stop 1 · E-T-A voice chops",7.4,0
+48.337,26:4,kick,"Stop 1 · E-T-A voice chops",-6.1,0
+48.671,26:7,snare,"Stop 1 · E-T-A voice chops",-6.9,0
+48.893,26:9,vocal,"Stop 1 · E-T-A voice chops",-29.2,1
+49.115,26:11,vocal,"Stop 1 · E-T-A voice chops",0.1,0
+49.337,26:13,vocal,"Stop 1 · E-T-A voice chops",1.2,1
+49.671,27:0,snare,"Verse 2 · rumor mill",-1.4,0
+50.115,27:4,kick,"Verse 2 · rumor mill",1.5,1
+50.560,27:8,kick,"Verse 2 · rumor mill",20.5,0
+51.004,27:12,kick,"Verse 2 · rumor mill",6.5,0
+51.448,28:0,vocal,"Verse 2 · rumor mill",-19.1,0
+51.893,28:4,snare,"Verse 2 · rumor mill",-1.2,0
+52.337,28:8,kick,"Verse 2 · rumor mill",-21.3,0
+53.004,28:14,kick,"Verse 2 · rumor mill",0.5,0
+53.226,29:0,snare,"Verse 2 · rumor mill",-6.2,0
+53.671,29:4,kick,"Verse 2 · rumor mill",22.6,0
+54.115,29:8,kick,"Verse 2 · rumor mill",-32.8,0
+54.560,29:12,bass,"Verse 2 · rumor mill",5.9,0
+55.004,30:0,snare,"Verse 2 · rumor mill",-17.1,1
+55.448,30:4,snare,"Verse 2 · rumor mill",32.4,0
+55.671,30:6,hat,"Verse 2 · rumor mill",-29.0,0
+55.893,30:8,snare,"Verse 2 · rumor mill",1.4,0
+56.115,30:10,hat,"Verse 2 · rumor mill",-34.7,0
+56.337,30:12,kick,"Verse 2 · rumor mill",-19.3,0
+56.560,30:14,hat,"Verse 2 · rumor mill",-17.2,0
+56.782,31:0,snare,"Verse 2 · rumor mill",-5.7,1
+57.226,31:4,kick,"Verse 2 · rumor mill",32.2,0
+57.671,31:8,bass,"Verse 2 · rumor mill",-13.4,0
+58.115,31:12,bass,"Verse 2 · rumor mill",2.3,0
+58.560,32:0,snare,"Verse 2 · rumor mill",-0.9,1
+59.004,32:4,snare,"Verse 2 · rumor mill",32.1,1
+59.449,32:8,kick,"Verse 2 · rumor mill",0.9,0
+60.115,32:14,snare,"Verse 2 · rumor mill",-5.3,0
+60.337,33:0,snare,"Verse 2 · rumor mill",-11.4,1
+60.782,33:4,kick,"Verse 2 · rumor mill",-18.7,0
+61.226,33:8,kick,"Verse 2 · rumor mill",-13.7,0
+61.671,33:12,kick,"Verse 2 · rumor mill",19.2,0
+62.115,34:0,snare,"Verse 2 · rumor mill",-24.1,0
+62.560,34:4,snare,"Verse 2 · rumor mill",-24.4,1
+62.782,34:6,snare,"Verse 2 · rumor mill",-34.3,0
+63.004,34:8,kick,"Verse 2 · rumor mill",24.2,0
+63.226,34:10,snare,"Verse 2 · rumor mill",27.4,0
+63.449,34:12,kick,"Verse 2 · rumor mill",28.5,0
+63.671,34:14,bass,"Verse 2 · rumor mill",28.3,0
+63.893,35:0,snare,"Pre 2 · fragments rising",22.1,0
+64.782,35:8,kick,"Pre 2 · fragments rising",-21.7,0
+65.226,35:12,kick,"Pre 2 · fragments rising",29.2,0
+65.671,36:0,snare,"Pre 2 · fragments rising",-32.6,0
+66.115,36:4,snare,"Pre 2 · fragments rising",-7.4,1
+66.560,36:8,kick,"Pre 2 · fragments rising",-22.1,0
+67.004,36:12,kick,"Pre 2 · fragments rising",-15.0,0
+67.449,37:0,snare,"Pre 2 · fragments rising",-6.7,0
+68.338,37:8,kick,"Pre 2 · fragments rising",19.1,0
+68.782,37:12,bass,"Pre 2 · fragments rising",2.6,0
+69.226,38:0,snare,"Pre 2 · fragments rising",-22.9,0
+69.671,38:4,snare,"Pre 2 · fragments rising",31.7,0
+69.893,38:6,vocal,"Pre 2 · fragments rising",28.5,0
+70.115,38:8,kick,"Pre 2 · fragments rising",1.5,0
+70.338,38:10,vocal,"Pre 2 · fragments rising",-29.3,0
+70.560,38:12,kick,"Pre 2 · fragments rising",-20.5,0
+70.782,38:14,vocal,"Pre 2 · fragments rising",-6.4,0
+71.004,39:0,snare,"Pre 2 · fragments rising",-17.1,0
+71.893,39:8,kick,"Pre 2 · fragments rising",-32.6,0
+72.338,39:12,bass,"Pre 2 · fragments rising",22.8,0
+72.782,40:0,vocal,"Pre 2 · fragments rising",-23.4,1
+73.227,40:4,snare,"Pre 2 · fragments rising",-13.5,0
+73.671,40:8,kick,"Pre 2 · fragments rising",-0.7,0
+74.115,40:12,kick,"Pre 2 · fragments rising",-19.9,0
+74.560,41:0,bass,"Pre 2 · fragments rising",-17.6,0
+75.449,41:8,kick,"Pre 2 · fragments rising",-22.2,0
+75.893,41:12,kick,"Pre 2 · fragments rising",4.1,0
+76.338,42:0,snare,"Pre 2 · fragments rising",-0.3,0
+76.782,42:4,snare,"Pre 2 · fragments rising",1.3,0
+77.004,42:6,hat,"Pre 2 · fragments rising",-24.5,0
+77.227,42:8,bass,"Pre 2 · fragments rising",-22.3,0
+77.449,42:10,hat,"Pre 2 · fragments rising",-8.0,1
+77.671,42:12,kick,"Pre 2 · fragments rising",1.1,0
+77.893,42:14,vocal,"Pre 2 · fragments rising",0.4,0
+78.115,43:0,snare,"Pre 3 · tower lift",-24.3,0
+78.560,43:4,kick,"Pre 3 · tower lift",1.1,0
+79.004,43:8,snare,"Pre 3 · tower lift",-8.6,1
+79.449,43:12,kick,"Pre 3 · tower lift",1.8,1
+79.893,44:0,snare,"Pre 3 · tower lift",0.1,0
+80.338,44:4,snare,"Pre 3 · tower lift",-27.7,0
+80.782,44:8,snare,"Pre 3 · tower lift",-34.2,1
+81.227,44:12,kick,"Pre 3 · tower lift",28.5,0
+81.449,44:14,kick,"Pre 3 · tower lift",11.8,0
+81.671,45:0,snare,"Pre 3 · tower lift",-7.1,0
+82.116,45:4,snare,"Pre 3 · tower lift",30.7,1
+82.560,45:8,snare,"Pre 3 · tower lift",-3.2,1
+83.004,45:12,kick,"Pre 3 · tower lift",2.0,0
+83.449,46:0,snare,"Pre 3 · tower lift",-23.7,1
+83.893,46:4,snare,"Pre 3 · tower lift",-24.8,0
+84.116,46:6,snare,"Pre 3 · tower lift",-6.3,0
+84.338,46:8,snare,"Pre 3 · tower lift",-27.0,1
+84.560,46:10,snare,"Pre 3 · tower lift",5.0,1
+84.782,46:12,kick,"Pre 3 · tower lift",-20.6,0
+85.004,46:14,bass,"Pre 3 · tower lift",-33.8,0
+85.116,46:15,vocal,"Pre 3 · tower lift",-10.7,1
+85.227,47:0,snare,"Pre 3 · tower lift",-17.9,1
+85.671,47:4,kick,"Pre 3 · tower lift",-3.5,0
+86.116,47:8,snare,"Pre 3 · tower lift",0.5,0
+86.560,47:12,bass,"Pre 3 · tower lift",0.9,0
+87.004,48:0,snare,"Pre 3 · tower lift",-6.6,0
+87.449,48:4,kick,"Pre 3 · tower lift",31.5,0
+87.893,48:8,snare,"Pre 3 · tower lift",-14.6,0
+88.338,48:12,kick,"Pre 3 · tower lift",-20.8,1
+88.560,48:14,kick,"Pre 3 · tower lift",-6.1,0
+88.782,49:0,snare,"Pre 3 · tower lift",-35.2,0
+89.227,49:4,snare,"Pre 3 · tower lift",-19.3,0
+89.671,49:8,kick,"Pre 3 · tower lift",-21.1,0
+90.116,49:12,kick,"Pre 3 · tower lift",3.1,0
+90.560,50:0,snare,"Pre 3 · tower lift",-25.5,0
+90.782,50:2,snare,"Pre 3 · tower lift",-0.8,0
+91.005,50:4,snare,"Pre 3 · tower lift",-0.4,0
+91.227,50:6,snare,"Pre 3 · tower lift",0.8,0
+91.449,50:8,snare,"Pre 3 · tower lift",-22.6,0
+91.671,50:10,vocal,"Pre 3 · tower lift",26.0,0
+91.893,50:12,bass,"Pre 3 · tower lift",28.1,0
+92.005,50:13,snare,"Pre 3 · tower lift",-1.2,1
+92.116,50:14,hat,"Pre 3 · tower lift",0.6,1
+92.227,50:15,vocal,"Pre 3 · tower lift",-35.8,1
+92.560,51:2,hat,"Chorus 2 · assembled scene hook",-0.5,1
+92.671,51:3,vocal,"Chorus 2 · assembled scene hook",-7.6,0
+92.782,51:4,bass,"Chorus 2 · assembled scene hook",20.4,0
+93.005,51:6,snare,"Chorus 2 · assembled scene hook",-37.5,0
+93.227,51:8,snare,"Chorus 2 · assembled scene hook",-28.0,1
+93.671,51:12,kick,"Chorus 2 · assembled scene hook",1.6,0
+94.005,51:15,kick,"Chorus 2 · assembled scene hook",28.2,1
+94.338,52:2,kick,"Chorus 2 · assembled scene hook",28.5,1
+94.449,52:3,vocal,"Chorus 2 · assembled scene hook",0.7,1
+94.560,52:4,kick,"Chorus 2 · assembled scene hook",28.3,1
+95.005,52:8,kick,"Chorus 2 · assembled scene hook",27.8,1
+95.227,52:10,snare,"Chorus 2 · assembled scene hook",-20.1,0
+95.449,52:12,kick,"Chorus 2 · assembled scene hook",-15.8,0
+95.782,52:15,kick,"Chorus 2 · assembled scene hook",-34.9,0
+96.116,53:2,kick,"Chorus 2 · assembled scene hook",28.1,1
+96.338,53:4,bass,"Chorus 2 · assembled scene hook",26.6,1
+96.560,53:6,snare,"Chorus 2 · assembled scene hook",-29.0,1
+96.782,53:8,kick,"Chorus 2 · assembled scene hook",27.0,0
+97.227,53:12,kick,"Chorus 2 · assembled scene hook",-32.4,0
+97.560,53:15,kick,"Chorus 2 · assembled scene hook",-2.5,1
+97.894,54:2,bass,"Chorus 2 · assembled scene hook",21.9,0
+98.116,54:4,kick,"Chorus 2 · assembled scene hook",-29.9,1
+98.338,54:6,snare,"Chorus 2 · assembled scene hook",-12.2,1
+98.560,54:8,bass,"Chorus 2 · assembled scene hook",18.9,0
+98.782,54:10,hat,"Chorus 2 · assembled scene hook",-29.6,0
+99.005,54:12,kick,"Chorus 2 · assembled scene hook",18.7,0
+99.338,54:15,kick,"Chorus 2 · assembled scene hook",-25.1,1
+99.671,55:2,kick,"Chorus 2 · assembled scene hook",31.5,1
+99.894,55:4,kick,"Chorus 2 · assembled scene hook",-30.3,1
+100.116,55:6,snare,"Chorus 2 · assembled scene hook",-34.9,1
+100.338,55:8,kick,"Chorus 2 · assembled scene hook",1.9,0
+100.782,55:12,kick,"Chorus 2 · assembled scene hook",1.5,0
+101.116,55:15,kick,"Chorus 2 · assembled scene hook",-26.2,0
+101.449,56:2,kick,"Chorus 2 · assembled scene hook",31.4,0
+101.671,56:4,bass,"Chorus 2 · assembled scene hook",-35.5,1
+102.116,56:8,kick,"Chorus 2 · assembled scene hook",1.1,1
+102.338,56:10,snare,"Chorus 2 · assembled scene hook",-18.1,1
+102.560,56:12,kick,"Chorus 2 · assembled scene hook",1.4,1
+102.894,56:15,kick,"Chorus 2 · assembled scene hook",-8.6,0
+103.227,57:2,kick,"Chorus 2 · assembled scene hook",-25.4,0
+103.449,57:4,bass,"Chorus 2 · assembled scene hook",-23.7,0
+103.894,57:8,kick,"Chorus 2 · assembled scene hook",-4.7,1
+104.338,57:12,bass,"Chorus 2 · assembled scene hook",27.5,0
+105.005,58:2,kick,"Stop 2 · E-T-A voice chops",2.0,0
+105.227,58:4,kick,"Stop 2 · E-T-A voice chops",-7.1,1
+105.560,58:7,snare,"Stop 2 · E-T-A voice chops",21.8,0
+105.783,58:9,vocal,"Stop 2 · E-T-A voice chops",-30.4,0
+106.005,58:11,vocal,"Stop 2 · E-T-A voice chops",-1.0,0
+106.227,58:13,vocal,"Stop 2 · E-T-A voice chops",-12.2,0
+106.560,59:0,snare,"Final A · rush hour",-1.4,0
+107.005,59:4,kick,"Final A · rush hour",0.4,1
+107.449,59:8,kick,"Final A · rush hour",20.4,0
+107.894,59:12,kick,"Final A · rush hour",5.5,0
+108.116,59:14,kick,"Final A · rush hour",-33.1,0
+108.338,60:0,vocal,"Final A · rush hour",-20.2,0
+108.560,60:2,hat,"Final A · rush hour",0.5,0
+108.783,60:4,snare,"Final A · rush hour",-2.3,0
+109.227,60:8,snare,"Final A · rush hour",-22.4,0
+109.671,60:12,kick,"Final A · rush hour",-22.8,0
+109.894,60:14,kick,"Final A · rush hour",-7.5,0
+110.116,61:0,snare,"Final A · rush hour",-7.2,0
+110.560,61:4,kick,"Final A · rush hour",-0.8,0
+111.005,61:8,kick,"Final A · rush hour",-33.9,0
+111.449,61:12,bass,"Final A · rush hour",31.6,0
+111.672,61:14,kick,"Final A · rush hour",-19.6,0
+111.894,62:0,snare,"Final A · rush hour",-18.2,1
+112.116,62:2,hat,"Final A · rush hour",-34.1,0
+112.338,62:4,snare,"Final A · rush hour",31.5,0
+112.560,62:6,hat,"Final A · rush hour",-28.9,0
+112.783,62:8,kick,"Final A · rush hour",1.1,0
+113.005,62:10,hat,"Final A · rush hour",-6.6,0
+113.227,62:12,kick,"Final A · rush hour",0.8,0
+113.338,62:13,vocal,"Final A · rush hour",-33.7,0
+113.449,62:14,vocal,"Final A · rush hour",-18.3,0
+113.672,63:0,snare,"Final A · rush hour",-7.0,1
+114.116,63:4,kick,"Final A · rush hour",31.1,0
+114.560,63:8,bass,"Final A · rush hour",-30.6,0
+115.005,63:12,kick,"Final A · rush hour",0.5,0
+115.227,63:14,kick,"Final A · rush hour",3.2,0
+115.449,64:0,snare,"Final A · rush hour",-6.2,1
+115.672,64:2,hat,"Final A · rush hour",-28.9,0
+115.894,64:4,snare,"Final A · rush hour",30.9,1
+116.338,64:8,kick,"Final A · rush hour",26.7,0
+116.783,64:12,kick,"Final A · rush hour",-21.6,1
+116.894,64:13,vocal,"Final A · rush hour",6.3,0
+117.005,64:14,kick,"Final A · rush hour",-6.4,0
+117.227,65:0,snare,"Final A · rush hour",-1.2,0
+117.672,65:4,kick,"Final A · rush hour",-20.4,0
+118.116,65:8,kick,"Final A · rush hour",-15.1,0
+118.561,65:12,kick,"Final A · rush hour",2.8,0
+118.783,65:14,kick,"Final A · rush hour",0.3,0
+119.005,66:0,snare,"Final A · rush hour",-17.2,0
+119.227,66:2,hat,"Final A · rush hour",-9.6,0
+119.449,66:4,snare,"Final A · rush hour",-24.6,0
+119.672,66:6,snare,"Final A · rush hour",-8.4,0
+119.894,66:8,kick,"Final A · rush hour",23.2,0
+120.116,66:10,vocal,"Final A · rush hour",-33.8,0
+120.338,66:12,kick,"Final A · rush hour",1.5,0
+120.561,66:14,bass,"Final A · rush hour",-0.8,0
+120.783,67:0,snare,"Final B · arrival sprint",21.2,0
+121.005,67:2,snare,"Final B · arrival sprint",25.7,0
+121.227,67:4,bass,"Final B · arrival sprint",1.3,0
+121.672,67:8,kick,"Final B · arrival sprint",-28.1,0
+121.894,67:10,vocal,"Final B · arrival sprint",-33.3,0
+122.116,67:12,kick,"Final B · arrival sprint",-22.4,0
+122.338,67:14,kick,"Final B · arrival sprint",-32.7,0
+122.561,68:0,snare,"Final B · arrival sprint",-33.7,0
+123.005,68:4,snare,"Final B · arrival sprint",-27.5,0
+123.227,68:6,vocal,"Final B · arrival sprint",-7.0,0
+123.449,68:8,kick,"Final B · arrival sprint",-35.2,0
+123.894,68:12,kick,"Final B · arrival sprint",-35.4,0
+124.116,68:14,kick,"Final B · arrival sprint",-0.2,0
+124.338,69:0,hat,"Final B · arrival sprint",-1.0,1
+124.561,69:2,hat,"Final B · arrival sprint",-33.0,1
+124.783,69:4,kick,"Final B · arrival sprint",31.1,0
+125.227,69:8,kick,"Final B · arrival sprint",-25.4,0
+125.450,69:10,vocal,"Final B · arrival sprint",-18.7,0
+125.672,69:12,kick,"Final B · arrival sprint",1.5,0
+125.894,69:14,bass,"Final B · arrival sprint",30.9,0
+126.116,70:0,snare,"Final B · arrival sprint",-24.0,0
+126.338,70:2,hat,"Final B · arrival sprint",-33.4,0
+126.561,70:4,snare,"Final B · arrival sprint",-26.0,0
+126.783,70:6,vocal,"Final B · arrival sprint",27.5,0
+127.005,70:8,kick,"Final B · arrival sprint",0.5,0
+127.227,70:10,vocal,"Final B · arrival sprint",-29.5,0
+127.450,70:12,bass,"Final B · arrival sprint",-10.3,1
+127.672,70:14,hat,"Final B · arrival sprint",-7.2,0
+127.894,71:0,snare,"Final B · arrival sprint",-1.0,1
+128.116,71:2,hat,"Final B · arrival sprint",29.0,0
+128.338,71:4,kick,"Final B · arrival sprint",31.3,0
+128.783,71:8,kick,"Final B · arrival sprint",-34.1,0
+129.005,71:10,vocal,"Final B · arrival sprint",10.1,0
+129.227,71:12,bass,"Final B · arrival sprint",22.7,0
+129.338,71:13,vocal,"Final B · arrival sprint",12.9,0
+129.450,71:14,bass,"Final B · arrival sprint",-6.9,0
+129.672,72:0,snare,"Final B · arrival sprint",-24.5,1
+130.116,72:4,snare,"Final B · arrival sprint",-13.6,0
+130.338,72:6,vocal,"Final B · arrival sprint",16.5,0
+130.561,72:8,bass,"Final B · arrival sprint",-1.8,0
+131.005,72:12,kick,"Final B · arrival sprint",-21.1,0
+131.227,72:14,kick,"Final B · arrival sprint",-29.6,0
+131.450,73:0,bass,"Final B · arrival sprint",-18.7,0
+131.672,73:2,hat,"Final B · arrival sprint",-11.5,0
+131.894,73:4,kick,"Final B · arrival sprint",-2.6,0
+132.116,73:6,hat,"Final B · arrival sprint",-0.2,0
+132.338,73:8,kick,"Final B · arrival sprint",-22.3,0
+132.561,73:10,hat,"Final B · arrival sprint",-17.7,0
+132.783,73:12,kick,"Final B · arrival sprint",3.1,0
+132.894,73:13,vocal,"Final B · arrival sprint",-27.9,0
+133.005,73:14,bass,"Final B · arrival sprint",-0.3,0
+133.227,74:0,snare,"Final B · arrival sprint",-0.3,1
+133.450,74:2,vocal,"Final B · arrival sprint",-19.0,0
+133.672,74:4,snare,"Final B · arrival sprint",-25.3,1
+133.894,74:6,hat,"Final B · arrival sprint",-25.7,0
+134.116,74:8,kick,"Final B · arrival sprint",-22.4,0
+134.339,74:10,hat,"Final B · arrival sprint",-9.3,0
+134.561,74:12,kick,"Final B · arrival sprint",0.0,0
+134.672,74:13,hat,"Final B · arrival sprint",-35.5,0
+135.672,75:6,vocal,"Outro · two bench lamps",-16.6,0
+136.116,75:10,vocal,"Outro · two bench lamps",1.5,0
+136.561,75:14,hat,"Outro · two bench lamps",-0.8,0
+136.783,76:0,snare,"Outro · two bench lamps",2.2,0
+137.672,76:8,kick,"Outro · two bench lamps",-0.1,0
+138.561,77:0,snare,"Outro · two bench lamps",-2.7,1
+139.450,77:8,kick,"Outro · two bench lamps",-0.2,0
+140.339,78:0,snare,"Outro · two bench lamps",27.3,0
+141.228,78:8,kick,"Outro · two bench lamps",-0.6,0
+142.116,79:0,snare,"Outro · two bench lamps",-0.2,1
+143.894,80:0,snare,"Outro · two bench lamps",14.0,1
+145.672,81:0,snare,"Outro · two bench lamps",3.0,1
+147.450,82:0,snare,"Outro · two bench lamps",3.5,1

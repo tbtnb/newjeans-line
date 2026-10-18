@@ -16,16 +16,31 @@ g = json.load(open(ROOT / f'analysis/{sid}.grid.json'))
 P, B0, BARS = g['period'], g['beat0'], g['bars']
 # Align the 16th grid to the chart author's grid when the chart declares one (avoids false off-grid flags)
 _m = chart.get('meta', {})
+def _offgrid(P_, B0_):
+    n = 0
+    for x in chart['taps']:
+        q = (x['t'] - B0_) / (P_ / 4); n += abs(q - round(q)) * P_ / 4 > 0.025
+    return n
+GRID_SRC = 'analysis grid'
 if _m.get('beat_period') or _m.get('bpm'):
-    P = _m.get('beat_period') or 60 / _m['bpm']
-    if 'beat0' in _m: B0 = _m['beat0']
-    BARS = None
+    P2 = _m.get('beat_period') or 60 / _m['bpm']; B02 = _m.get('beat0', B0)
+    if _offgrid(P2, B02) < _offgrid(P, B0): P, B0, GRID_SRC = P2, B02, 'chart meta grid'
+if _offgrid(P, B0) > 0.1 * len(chart['taps']):
+    # neither grid fits the chart: refit the phase (and a small tempo correction) to the chart's own taps
+    best = (_offgrid(P, B0), P, B0)
+    for dp in (0, -0.0005, 0.0005, -0.001, 0.001):
+        for k in range(40):
+            b = B0 + k * (P / 4) / 40; n = _offgrid(P * (1 + dp), b)
+            if n < best[0]: best = (n, P * (1 + dp), b)
+    _, P, B0 = best; GRID_SRC = 'grid refit to the chart taps'
 # Strengths are sampled at the tap's actual time from the per-band onset envelopes (analysis/<slug>.env.npz),
 # so they do not depend on the grid at all.
 import numpy as _np
 _E = _np.load(ROOT / f'analysis/{sid}.env.npz'); _HOP = float(_E['hop_s'])
 ENV = {k: _E[k].astype(float) / 100 for k in ['kick', 'snare', 'hat', 'mid', 'full']}
 ENV['drums'] = _np.maximum(ENV['kick'], ENV['snare'])
+if 'vocal' in _E.files: ENV['vocal'] = _E['vocal'].astype(float) / 100
+else: ENV['vocal'] = ENV['mid']   # no stem: fall back to the mid band
 NBARS = int((len(ENV['full']) * _HOP - B0) / (4 * P)) + 1
 LAYERS = ['kick', 'snare', 'hat', 'mid', 'full']
 TAGMAP = {'kick': 'kick', 'snare': 'snare', 'clap': 'snare', 'hat': 'hat', 'vocal': 'mid', 'melody': 'mid', 'bass': 'kick', 'burst': 'full', 'run': 'full', 'fill': 'full', 'accent': 'full', 'fx': 'full'}
@@ -48,7 +63,7 @@ def strength(bar, step, layer):
 taps = chart['taps']; T = [x['t'] for x in taps]
 secs = sorted(chart.get('sections', []), key=lambda s: s['t']) or [{'t': 0, 'label': 'all', 'kind': ''}]
 end = T[-1] + 5 if T else 0
-out = [f'## Chart logic: {sid} ({len(T)} taps)', '', '| section | follows | taps | /s | layer strength (median) | off-layer taps | faint taps | weak bursts | off-grid >25ms | phrase patterns (unique/total) |', '|---|---|---|---|---|---|---|---|---|---|']
+out = [f'## Chart logic: {sid} ({len(T)} taps; 16th grid from {GRID_SRC}: {60/P:.3f} BPM, beat0 {B0:.3f} s)', '', '| section | follows | taps | /s | layer strength (median) | off-layer taps | faint taps | weak bursts | off-grid >25ms | phrase patterns (unique/total) |', '|---|---|---|---|---|---|---|---|---|---|']
 flags_total = {'hop': 0, 'faint': 0, 'burst': 0, 'offgrid': 0}
 details = []
 for k, s in enumerate(secs):
@@ -68,7 +83,7 @@ for k, s in enumerate(secs):
         if not c: continue
         bar, step, off = c
         sl = strength(bar, step, follows); sf = strength(bar, step, 'full')
-        others = {L: strength(bar, step, L) for L in LAYERS[:-1] if L != follows}
+        others = {L: strength(bar, step, L) for L in LAYERS[:-1] if L != follows and not (follows == 'drums' and L in ('kick', 'snare'))}
         best_o = max(others, key=others.get)
         gap = min([T[i] - T[i - 1]] if i else [9] + [T[i + 1] - T[i]] if i + 1 < len(T) else [9])
         gap = min(T[i] - T[i - 1] if i else 9, T[i + 1] - T[i] if i + 1 < len(T) else 9)

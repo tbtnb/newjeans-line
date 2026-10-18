@@ -18,6 +18,8 @@ await page.goto(A.url ?? 'http://127.0.0.1:4180/?debug');
 await page.waitForFunction(() => window.__nj);
 await page.evaluate(i => window.__nj.selectLevel(i), level);
 await page.waitForFunction(() => window.__nj.level && window.__nj.audio.ready, null, { timeout: 60000 });
+// optional render-cost knobs for smoother software-rendered captures: --quality low (no shadows), --scale 1.5 (render at 1/1.5 res, upscaled)
+if (A.quality || A.scale) await page.evaluate(([q, sc]) => { const w = window.__nj.world; if (q) w.setQuality(q); if (sc) w.engine.setHardwareScalingLevel(+sc); }, [A.quality, A.scale]);
 await page.waitForTimeout(1500);
 const cdp = await ctx.newCDPSession(page);
 // Fire-and-forget: the browser stamps the event when it receives it (measured 0.4-4 ms after send);

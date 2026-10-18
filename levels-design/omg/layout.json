@@ -1,0 +1,6840 @@
+{
+ "id": "omg",
+ "title": "OMG",
+ "palette": {
+  "skyTop": "#DCE4DA",
+  "skyBottom": "#EEF1EA",
+  "fog": "#DCE4DA",
+  "fogStart": 32,
+  "fogEnd": 105,
+  "ground": "#B8C8BC",
+  "groundY": -14,
+  "road": "#F3F0E8",
+  "roadSide": "#25282B",
+  "line": "#EFA6B1",
+  "light": "#FFF8EE",
+  "lightIntensity": 1.05,
+  "ambient": "#C9D3CB",
+  "particles": null
+ },
+ "road": {
+  "height": 0.6,
+  "reveal": [
+   {
+    "t": 0,
+    "mode": "rise",
+    "lead": 1.8
+   },
+   {
+    "t": 45.382,
+    "mode": "unfold",
+    "lead": 1.6
+   },
+   {
+    "t": 134.199,
+    "mode": "drop",
+    "lead": 1.4
+   },
+   {
+    "t": 151.206,
+    "mode": "rise",
+    "lead": 1.4
+   },
+   {
+    "t": 196.56,
+    "mode": "fade",
+    "lead": 2.0
+   }
+  ],
+  "width": [
+   {
+    "t": 0,
+    "w": 2.2
+   },
+   {
+    "t": 105.88,
+    "w": 2.0
+   },
+   {
+    "t": 134.22,
+    "w": 1.8
+   },
+   {
+    "t": 166.35,
+    "w": 2.0
+   },
+   {
+    "t": 181.47,
+    "w": 1.8
+   }
+  ]
+ },
+ "sections": [
+  {
+   "t": 0,
+   "label": "Intro · 病房走廊",
+   "palette": {
+    "skyTop": "#D3DCD3",
+    "fogEnd": 80
+   },
+   "camera": "iso",
+   "note": "closed ward corridor, door-frame pairs give the beat scale; ceiling lights come on with the synth plucks"
+  },
+  {
+   "t": 15.147,
+   "label": "Verse 1 · 治疗桌与五椅",
+   "camera": "iso",
+   "note": "meander around the treatment table and five chairs; low walls tighten the space"
+  },
+  {
+   "t": 30.264,
+   "label": "Verse 1b · 墙板外折",
+   "camera": "iso",
+   "note": "ward wall panels fold outward one by one (pre-chorus feel), staircase widens"
+  },
+  {
+   "t": 45.382,
+   "label": "Chorus 1 · 黑兔舞台",
+   "palette": {
+    "skyTop": "#E4EAE1",
+    "fogEnd": 120
+   },
+   "camera": "high",
+   "note": "fall 4 units onto the open stage level; the black low-poly bunny on its halftone base + five stage walls rise on the hook"
+  },
+  {
+   "t": 60.5,
+   "label": "Verse 2 · 玻璃鞋",
+   "camera": "side",
+   "note": "glass slipper sculpture on a plinth, camera swings to side view"
+  },
+  {
+   "t": 75.618,
+   "label": "Verse 2b · 双折长短路",
+   "camera": "iso"
+  },
+  {
+   "t": 90.735,
+   "label": "Pre · 手机桥",
+   "palette": {
+    "light": "#F4F6FF",
+    "lightIntensity": 0.95
+   },
+   "camera": "low",
+   "note": "road becomes the long phone bridge B1 (black screen, cream body) climbing L1->L2 (+8)"
+  },
+  {
+   "t": 105.853,
+   "label": "Chorus 2 · 屏幕块",
+   "palette": {
+    "skyTop": "#E8EDE4"
+   },
+   "camera": "wide",
+   "note": "fall onto staggered right-angle road; phone-screen blocks lift off-road on the kicks"
+  },
+  {
+   "t": 120.971,
+   "label": "Post · 错列直角",
+   "camera": "iso"
+  },
+  {
+   "t": 134.199,
+   "label": "Bridge · 书页墙与猫",
+   "palette": {
+    "skyTop": "#9FAEA6",
+    "skyBottom": "#C7D0C8",
+    "fog": "#AAB6AE",
+    "ambient": "#9AA79F",
+    "lightIntensity": 0.85
+   },
+   "camera": "close",
+   "note": "compressed angular S between book-page walls, road narrows to 1.8 and slopes up; black cat on a shelf"
+  },
+  {
+   "t": 149.317,
+   "label": "Break · 书页合拢",
+   "camera": "top",
+   "note": "one-bar subtraction: pages close inward (stop outside clearance)"
+  },
+  {
+   "t": 151.206,
+   "label": "Dance break · 舞台五墙",
+   "palette": {
+    "skyTop": "#E4EAE1",
+    "lightIntensity": 1.15
+   },
+   "camera": "iso",
+   "note": "five stage walls flip open on the four-on-the-floor; line passes over the start corridor on a bridge (+6)"
+  },
+  {
+   "t": 166.324,
+   "label": "Final chorus · 兔耳发夹",
+   "camera": "wide",
+   "note": "two unequal rectangular hairpins = bunny ears; skybridge B2"
+  },
+  {
+   "t": 181.442,
+   "label": "Final chorus b · 天桥",
+   "camera": "iso"
+  },
+  {
+   "t": 196.56,
+   "label": "Outro · 尾奏琴键",
+   "palette": {
+    "skyTop": "#E9ECE6",
+    "skyBottom": "#F6F4EE",
+    "lightIntensity": 0.95
+   },
+   "camera": "high",
+   "note": "long straight-ish meander to the halftone end plinth; three off-road piano keys; distant layers lower with the piano tail"
+  }
+ ],
+ "camera": [
+  {
+   "t": 0,
+   "preset": "iso",
+   "blend": 0
+  },
+  {
+   "t": 15.147,
+   "preset": "iso",
+   "dist": 16,
+   "blend": 2.0
+  },
+  {
+   "t": 30.264,
+   "preset": "iso",
+   "blend": 2.0
+  },
+  {
+   "t": 45.382,
+   "preset": "high",
+   "dist": 21,
+   "blend": 1.2
+  },
+  {
+   "t": 60.5,
+   "preset": "side",
+   "blend": 2.0
+  },
+  {
+   "t": 75.618,
+   "preset": "iso",
+   "blend": 1.5
+  },
+  {
+   "t": 90.735,
+   "preset": "low",
+   "blend": 2.0
+  },
+  {
+   "t": 105.853,
+   "preset": "wide",
+   "blend": 0.9
+  },
+  {
+   "t": 113.412,
+   "preset": "iso",
+   "blend": 2.0
+  },
+  {
+   "t": 134.199,
+   "preset": "high",
+   "pitch": 62,
+   "dist": 15,
+   "blend": 1.5
+  },
+  {
+   "t": 149.317,
+   "preset": "top",
+   "blend": 0.8
+  },
+  {
+   "t": 151.206,
+   "preset": "iso",
+   "blend": 0.6,
+   "shake": 0.12
+  },
+  {
+   "t": 166.324,
+   "preset": "wide",
+   "blend": 1.2
+  },
+  {
+   "t": 173.883,
+   "preset": "iso",
+   "blend": 2.0
+  },
+  {
+   "t": 196.56,
+   "preset": "high",
+   "dist": 24,
+   "blend": 4.0
+  }
+ ],
+ "objects": [
+  {
+   "id": "ward_door0",
+   "t": 1.2,
+   "side": 3.95,
+   "kind": "group",
+   "radius": 1.6,
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.6,
+      0
+     ],
+     "size": [
+      0.4,
+      3.2,
+      2.6
+     ],
+     "color": "#C9D3CB"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.4,
+      0
+     ],
+     "size": [
+      0.45,
+      2.6,
+      1.9
+     ],
+     "color": "#8FA39A"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.4,
+      0
+     ],
+     "size": [
+      0.5,
+      0.25,
+      1.4
+     ],
+     "color": "#FFFFFF"
+    }
+   ],
+   "react": "none",
+   "appear": {
+    "t": 0.2,
+    "mode": "rise",
+    "dur": 0.6
+   }
+  },
+  {
+   "id": "ward_door1",
+   "t": 4.8,
+   "side": -8.45,
+   "kind": "group",
+   "radius": 1.6,
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.6,
+      0
+     ],
+     "size": [
+      0.4,
+      3.2,
+      2.6
+     ],
+     "color": "#C9D3CB"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.4,
+      0
+     ],
+     "size": [
+      0.45,
+      2.6,
+      1.9
+     ],
+     "color": "#8FA39A"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.4,
+      0
+     ],
+     "size": [
+      0.5,
+      0.25,
+      1.4
+     ],
+     "color": "#FFFFFF"
+    }
+   ],
+   "react": "none",
+   "appear": {
+    "t": 3.0,
+    "mode": "rise",
+    "dur": 0.6
+   }
+  },
+  {
+   "id": "ward_door3",
+   "t": 12.0,
+   "side": -3.95,
+   "kind": "group",
+   "radius": 1.6,
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.6,
+      0
+     ],
+     "size": [
+      0.4,
+      3.2,
+      2.6
+     ],
+     "color": "#C9D3CB"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.4,
+      0
+     ],
+     "size": [
+      0.45,
+      2.6,
+      1.9
+     ],
+     "color": "#8FA39A"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.4,
+      0
+     ],
+     "size": [
+      0.5,
+      0.25,
+      1.4
+     ],
+     "color": "#FFFFFF"
+    }
+   ],
+   "react": "none",
+   "appear": {
+    "t": 10.2,
+    "mode": "rise",
+    "dur": 0.6
+   }
+  },
+  {
+   "id": "ward_light_row",
+   "kind": "row",
+   "t0": 0.5,
+   "t1": 15.147,
+   "side": 3.0,
+   "spacing": 3.78,
+   "bothSides": true,
+   "item": {
+    "kind": "box",
+    "size": [
+     0.9,
+     0.12,
+     0.4
+    ],
+    "color": "#FFFFFF",
+    "react": "beat"
+   }
+  },
+  {
+   "id": "ward_bed",
+   "t": 6.0,
+   "side": -6,
+   "kind": "group",
+   "radius": 2,
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.6,
+      0
+     ],
+     "size": [
+      1.8,
+      0.3,
+      3.4
+     ],
+     "color": "#E6E8E2"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.0,
+      -1.6
+     ],
+     "size": [
+      1.8,
+      0.9,
+      0.1
+     ],
+     "color": "#AEB7BA"
+    }
+   ]
+  },
+  {
+   "id": "table_five_chairs",
+   "t": 18.926,
+   "kind": "group",
+   "radius": 4,
+   "landmark": true,
+   "name": "治疗桌与五把椅子",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.9,
+      0
+     ],
+     "size": [
+      3.2,
+      0.2,
+      1.8
+     ],
+     "color": "#F3F0E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.45,
+      0
+     ],
+     "size": [
+      0.3,
+      0.9,
+      0.3
+     ],
+     "color": "#25282B"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -2.2,
+      0.5,
+      0
+     ],
+     "size": [
+      0.6,
+      1.0,
+      0.6
+     ],
+     "color": "#25282B"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2.2,
+      0.5,
+      0
+     ],
+     "size": [
+      0.6,
+      1.0,
+      0.6
+     ],
+     "color": "#25282B"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1,
+      0.5,
+      1.6
+     ],
+     "size": [
+      0.6,
+      1.0,
+      0.6
+     ],
+     "color": "#25282B"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1,
+      0.5,
+      1.6
+     ],
+     "size": [
+      0.6,
+      1.0,
+      0.6
+     ],
+     "color": "#25282B"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.5,
+      -1.6
+     ],
+     "size": [
+      0.6,
+      1.0,
+      0.6
+     ],
+     "color": "#25282B"
+    }
+   ],
+   "appear": {
+    "t": 17.036,
+    "mode": "rise",
+    "dur": 0.8
+   },
+   "worldPos": [
+    90.86,
+    0.0,
+    -15.64
+   ]
+  },
+  {
+   "id": "wallpanel0",
+   "t": 32.154,
+   "side": 7.95,
+   "kind": "box",
+   "size": [
+    0.3,
+    4.5,
+    3.5
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 30.654000000000003,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "exit": {
+    "t": 45.492,
+    "mode": "fall",
+    "dur": 0.7
+   },
+   "react": "none"
+  },
+  {
+   "id": "wallpanel3",
+   "t": 40.554,
+   "side": -4.2,
+   "kind": "box",
+   "size": [
+    0.3,
+    4.5,
+    3.5
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 39.054,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "exit": {
+    "t": 45.492,
+    "mode": "fall",
+    "dur": 0.7
+   },
+   "react": "none"
+  },
+  {
+   "id": "wallpanel4",
+   "t": 43.354,
+   "side": 11.7,
+   "kind": "box",
+   "size": [
+    0.3,
+    4.5,
+    3.5
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 41.854,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "exit": {
+    "t": 45.492,
+    "mode": "fall",
+    "dur": 0.7
+   },
+   "react": "none"
+  },
+  {
+   "id": "bunny",
+   "t": 49.162,
+   "kind": "group",
+   "radius": 5,
+   "landmark": true,
+   "name": "黑兔雕塑 (OMG cover, low-poly black bunny on halftone plinth)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.2,
+      0
+     ],
+     "size": [
+      7,
+      2.4,
+      6
+     ],
+     "color": "#B8C8BC"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.45,
+      0
+     ],
+     "size": [
+      5,
+      0.1,
+      5
+     ],
+     "color": "#F3F0E8"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      4.6,
+      0
+     ],
+     "size": [
+      4.6,
+      4.2,
+      4.2
+     ],
+     "color": "#25282B"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.0,
+      -2.0
+     ],
+     "size": [
+      1.6,
+      1.0,
+      0.3
+     ],
+     "color": "#F3F0E8"
+    },
+    {
+     "kind": "cone",
+     "pos": [
+      -1.0,
+      8.0,
+      0
+     ],
+     "size": [
+      1.2,
+      4.0,
+      1.0
+     ],
+     "rot": [
+      0,
+      0,
+      8
+     ],
+     "color": "#25282B"
+    },
+    {
+     "kind": "cone",
+     "pos": [
+      1.0,
+      8.0,
+      0
+     ],
+     "size": [
+      1.2,
+      4.0,
+      1.0
+     ],
+     "rot": [
+      0,
+      0,
+      -8
+     ],
+     "color": "#25282B"
+    }
+   ],
+   "appear": {
+    "t": 44.782,
+    "mode": "rise",
+    "dur": 1.4
+   },
+   "react": "kick",
+   "worldPos": [
+    161.48,
+    -4.0,
+    26.3
+   ]
+  },
+  {
+   "id": "halftone_tiles",
+   "kind": "row",
+   "t0": 45.382,
+   "t1": 49.162,
+   "side": 2.6,
+   "spacing": 0.9,
+   "bothSides": false,
+   "item": {
+    "kind": "box",
+    "size": [
+     0.5,
+     0.08,
+     0.5
+    ],
+    "color": "#25282B"
+   }
+  },
+  {
+   "id": "stagewall0",
+   "t": 51.051,
+   "side": 20.5,
+   "along": -3.0,
+   "kind": "box",
+   "size": [
+    0.5,
+    7,
+    4
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 45.882,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "react": "none"
+  },
+  {
+   "id": "stagewall1",
+   "t": 51.651,
+   "side": 25.45,
+   "along": -1.5,
+   "kind": "box",
+   "size": [
+    0.5,
+    7,
+    4
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 46.826859999999996,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "react": "none"
+  },
+  {
+   "id": "stagewall2",
+   "t": 52.251000000000005,
+   "side": 18.4,
+   "along": 0.0,
+   "kind": "box",
+   "size": [
+    0.5,
+    7,
+    4
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 47.771719999999995,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "react": "none"
+  },
+  {
+   "id": "stagewall3",
+   "t": 52.851,
+   "side": 42.1,
+   "along": 1.5,
+   "kind": "box",
+   "size": [
+    0.5,
+    7,
+    4
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 48.71658,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "react": "none"
+  },
+  {
+   "id": "stagewall4",
+   "t": 53.451,
+   "side": 20.8,
+   "along": 3.0,
+   "kind": "box",
+   "size": [
+    0.5,
+    7,
+    4
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 49.66144,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "react": "none"
+  },
+  {
+   "id": "glass_slipper",
+   "t": 64.279,
+   "kind": "group",
+   "radius": 2.5,
+   "landmark": true,
+   "name": "玻璃鞋",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.6,
+      0
+     ],
+     "size": [
+      3,
+      1.2,
+      3
+     ],
+     "color": "#B8C8BC"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.5,
+      0.3
+     ],
+     "size": [
+      0.9,
+      0.5,
+      2.0
+     ],
+     "color": "#DDF2F6"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      1.8,
+      -0.7
+     ],
+     "size": [
+      0.15,
+      1.0,
+      0.15
+     ],
+     "color": "#DDF2F6"
+    }
+   ],
+   "appear": {
+    "t": 62.39,
+    "mode": "rise",
+    "dur": 1.0
+   },
+   "worldPos": [
+    159.31,
+    0.0,
+    1.73
+   ]
+  },
+  {
+   "id": "phone_bridge_body",
+   "t": 98.294,
+   "side": 0,
+   "y": -0.7,
+   "kind": "box",
+   "size": [
+    6,
+    0.4,
+    30
+   ],
+   "color": "#F3F0E8",
+   "onroad": true,
+   "name": "手机桥 B1 body (under the road, follows the climb; integrator may stretch along path)",
+   "landmark": true
+  },
+  {
+   "id": "phone_screen",
+   "t": 98.294,
+   "side": 7.5,
+   "y": -0.5,
+   "kind": "phone",
+   "size": [
+    5,
+    0.5,
+    10
+   ],
+   "color": "#F3F0E8",
+   "color2": "#25282B",
+   "name": "手机屏幕 (off-road side)",
+   "appear": {
+    "t": 90.735,
+    "mode": "unfold",
+    "dur": 1.0
+   }
+  },
+  {
+   "id": "signal_bars",
+   "t": 94.515,
+   "side": -17.25,
+   "kind": "group",
+   "radius": 3,
+   "name": "信号格",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      0.75,
+      0
+     ],
+     "size": [
+      0.8,
+      1.5,
+      0.8
+     ],
+     "color": "#25282B"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -0.5,
+      1.5,
+      0
+     ],
+     "size": [
+      0.8,
+      3.0,
+      0.8
+     ],
+     "color": "#25282B"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.5,
+      2.25,
+      0
+     ],
+     "size": [
+      0.8,
+      4.5,
+      0.8
+     ],
+     "color": "#25282B"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.5,
+      3.0,
+      0
+     ],
+     "size": [
+      0.8,
+      6.0,
+      0.8
+     ],
+     "color": "#25282B"
+    }
+   ]
+  },
+  {
+   "id": "screenblock0",
+   "t": 107.743,
+   "side": 9,
+   "kind": "box",
+   "size": [
+    3,
+    0.4,
+    5
+   ],
+   "color": "#25282B",
+   "color2": "#F3F0E8",
+   "appear": {
+    "t": 106.143,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "react": "kick"
+  },
+  {
+   "id": "screenblock1",
+   "t": 110.243,
+   "side": -9,
+   "kind": "box",
+   "size": [
+    3,
+    0.4,
+    5
+   ],
+   "color": "#25282B",
+   "color2": "#F3F0E8",
+   "appear": {
+    "t": 108.643,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "react": "kick"
+  },
+  {
+   "id": "screenblock2",
+   "t": 112.743,
+   "side": 9.75,
+   "kind": "box",
+   "size": [
+    3,
+    0.4,
+    5
+   ],
+   "color": "#25282B",
+   "color2": "#F3F0E8",
+   "appear": {
+    "t": 111.143,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "react": "kick"
+  },
+  {
+   "id": "screenblock3",
+   "t": 115.243,
+   "side": -9,
+   "kind": "box",
+   "size": [
+    3,
+    0.4,
+    5
+   ],
+   "color": "#25282B",
+   "color2": "#F3F0E8",
+   "appear": {
+    "t": 113.643,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "react": "kick"
+  },
+  {
+   "id": "bookpage0",
+   "t": 136.089,
+   "side": 7.35,
+   "kind": "box",
+   "size": [
+    0.15,
+    5,
+    3.2
+   ],
+   "rot": 12,
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.589,
+    "mode": "unfold",
+    "dur": 0.5
+   },
+   "exit": {
+    "t": 149.61700000000002,
+    "mode": "fall",
+    "dur": 0.6
+   }
+  },
+  {
+   "id": "bookpage1",
+   "t": 138.489,
+   "side": -10.35,
+   "kind": "box",
+   "size": [
+    0.15,
+    5,
+    3.2
+   ],
+   "rot": -12,
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 136.989,
+    "mode": "unfold",
+    "dur": 0.5
+   },
+   "exit": {
+    "t": 149.61700000000002,
+    "mode": "fall",
+    "dur": 0.6
+   }
+  },
+  {
+   "id": "bookpage2",
+   "t": 140.889,
+   "side": 5.1,
+   "kind": "box",
+   "size": [
+    0.15,
+    5,
+    3.2
+   ],
+   "rot": 12,
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 139.389,
+    "mode": "unfold",
+    "dur": 0.5
+   },
+   "exit": {
+    "t": 149.61700000000002,
+    "mode": "fall",
+    "dur": 0.6
+   }
+  },
+  {
+   "id": "bookpage3",
+   "t": 143.289,
+   "side": -8.85,
+   "kind": "box",
+   "size": [
+    0.15,
+    5,
+    3.2
+   ],
+   "rot": -12,
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 141.789,
+    "mode": "unfold",
+    "dur": 0.5
+   },
+   "exit": {
+    "t": 149.61700000000002,
+    "mode": "fall",
+    "dur": 0.6
+   }
+  },
+  {
+   "id": "bookpage4",
+   "t": 145.689,
+   "side": 3.6,
+   "kind": "box",
+   "size": [
+    0.15,
+    5,
+    3.2
+   ],
+   "rot": 12,
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 144.189,
+    "mode": "unfold",
+    "dur": 0.5
+   },
+   "exit": {
+    "t": 149.61700000000002,
+    "mode": "fall",
+    "dur": 0.6
+   }
+  },
+  {
+   "id": "bookpage5",
+   "t": 148.089,
+   "side": -6.6,
+   "kind": "box",
+   "size": [
+    0.15,
+    5,
+    3.2
+   ],
+   "rot": -12,
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 146.589,
+    "mode": "unfold",
+    "dur": 0.5
+   },
+   "exit": {
+    "t": 149.61700000000002,
+    "mode": "fall",
+    "dur": 0.6
+   }
+  },
+  {
+   "id": "cat_shelf",
+   "t": 141.758,
+   "kind": "group",
+   "radius": 2.5,
+   "landmark": true,
+   "name": "书架上的黑猫",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.5,
+      0
+     ],
+     "size": [
+      2.6,
+      3,
+      1.2
+     ],
+     "color": "#C9D3CB"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      3.4,
+      0
+     ],
+     "size": [
+      0.9,
+      0.8,
+      0.7
+     ],
+     "color": "#25282B"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      4.0,
+      0
+     ],
+     "size": [
+      0.6,
+      0.6,
+      0.6
+     ],
+     "color": "#25282B"
+    },
+    {
+     "kind": "cone",
+     "pos": [
+      -0.2,
+      4.4,
+      0
+     ],
+     "size": [
+      0.2,
+      0.35,
+      0.2
+     ],
+     "color": "#25282B"
+    },
+    {
+     "kind": "cone",
+     "pos": [
+      0.2,
+      4.4,
+      0
+     ],
+     "size": [
+      0.2,
+      0.35,
+      0.2
+     ],
+     "color": "#25282B"
+    }
+   ],
+   "worldPos": [
+    86.54,
+    6.24,
+    -114.28
+   ]
+  },
+  {
+   "id": "stage5_0",
+   "t": 153.096,
+   "side": 8,
+   "kind": "box",
+   "size": [
+    0.5,
+    6,
+    4
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 151.206,
+    "mode": "unfold",
+    "dur": 0.4
+   },
+   "react": "kick"
+  },
+  {
+   "id": "stage5_1",
+   "t": 154.696,
+   "side": -8,
+   "kind": "box",
+   "size": [
+    0.5,
+    6,
+    4
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 152.15086,
+    "mode": "unfold",
+    "dur": 0.4
+   },
+   "react": "kick"
+  },
+  {
+   "id": "stage5_2",
+   "t": 156.296,
+   "side": 8.75,
+   "kind": "box",
+   "size": [
+    0.5,
+    6,
+    4
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 153.09572,
+    "mode": "unfold",
+    "dur": 0.4
+   },
+   "react": "kick"
+  },
+  {
+   "id": "stage5_3",
+   "t": 157.89600000000002,
+   "side": -8.75,
+   "kind": "box",
+   "size": [
+    0.5,
+    6,
+    4
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 154.04057999999998,
+    "mode": "unfold",
+    "dur": 0.4
+   },
+   "react": "kick"
+  },
+  {
+   "id": "stage5_4",
+   "t": 159.496,
+   "side": 8,
+   "kind": "box",
+   "size": [
+    0.5,
+    6,
+    4
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 154.98543999999998,
+    "mode": "unfold",
+    "dur": 0.4
+   },
+   "react": "kick"
+  },
+  {
+   "id": "ear_sculpture_l",
+   "t": 170.104,
+   "kind": "cone",
+   "size": [
+    2.4,
+    9,
+    1.6
+   ],
+   "color": "#25282B",
+   "landmark": true,
+   "name": "兔耳双雕塑",
+   "appear": {
+    "t": 166.324,
+    "mode": "rise",
+    "dur": 1.2
+   },
+   "worldPos": [
+    108.58,
+    0.0,
+    -62.16
+   ]
+  },
+  {
+   "id": "ear_sculpture_r",
+   "t": 170.104,
+   "side": -26.25,
+   "along": 2,
+   "kind": "cone",
+   "size": [
+    2.4,
+    8,
+    1.6
+   ],
+   "color": "#25282B",
+   "appear": {
+    "t": 166.62400000000002,
+    "mode": "rise",
+    "dur": 1.2
+   }
+  },
+  {
+   "id": "piano_key0",
+   "t": 198.449,
+   "side": 15.0,
+   "kind": "box",
+   "size": [
+    1.2,
+    0.5,
+    4
+   ],
+   "color": "#F3F0E8",
+   "react": "tap",
+   "landmark": false,
+   "name": null,
+   "appear": {
+    "t": 196.56,
+    "mode": "rise",
+    "dur": 0.6
+   }
+  },
+  {
+   "id": "piano_key1",
+   "t": 200.34900000000002,
+   "kind": "box",
+   "size": [
+    1.2,
+    0.5,
+    4
+   ],
+   "color": "#25282B",
+   "react": "tap",
+   "landmark": true,
+   "name": "尾奏琴键",
+   "appear": {
+    "t": 198.46,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "worldPos": [
+    159.09,
+    0.0,
+    -114.02
+   ]
+  },
+  {
+   "id": "piano_key2",
+   "t": 202.24900000000002,
+   "side": 6,
+   "kind": "box",
+   "size": [
+    1.2,
+    0.5,
+    4
+   ],
+   "color": "#F3F0E8",
+   "react": "tap",
+   "landmark": false,
+   "name": null,
+   "appear": {
+    "t": 200.36,
+    "mode": "rise",
+    "dur": 0.6
+   }
+  },
+  {
+   "id": "end_plinth",
+   "t": 200.339,
+   "side": -14,
+   "kind": "group",
+   "radius": 3,
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.5,
+      0
+     ],
+     "size": [
+      5,
+      1,
+      5
+     ],
+     "color": "#B8C8BC"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.05,
+      0
+     ],
+     "size": [
+      3.6,
+      0.1,
+      3.6
+     ],
+     "color": "#25282B"
+    }
+   ]
+  },
+  {
+   "id": "egg_three_dots",
+   "t": 204.119,
+   "side": -10,
+   "y": 6,
+   "kind": "group",
+   "radius": 3,
+   "egg": true,
+   "name": "E2 来电三点 -> 三颗小星",
+   "parts": [
+    {
+     "kind": "star",
+     "pos": [
+      -2,
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1,
+      1
+     ],
+     "color": "#E3BD60"
+    },
+    {
+     "kind": "star",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1,
+      1
+     ],
+     "color": "#E3BD60"
+    },
+    {
+     "kind": "star",
+     "pos": [
+      2,
+      0,
+      0
+     ],
+     "size": [
+      1,
+      1,
+      1
+     ],
+     "color": "#E3BD60"
+    }
+   ],
+   "appear": {
+    "t": 202.229,
+    "mode": "pop",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "poster_bunny_a",
+   "t": 47.272,
+   "side": -10,
+   "kind": "image",
+   "src": "art/bunny-poster.jpg",
+   "size": [
+    5.4,
+    0,
+    7.2
+   ],
+   "mode": "upright",
+   "appear": {
+    "t": 44.982,
+    "mode": "unfold",
+    "dur": 0.6
+   }
+  },
+  {
+   "id": "poster_bunny_b",
+   "t": 153.096,
+   "side": 27.25,
+   "kind": "image",
+   "src": "art/bunny-poster.jpg",
+   "size": [
+    5.4,
+    0,
+    7.2
+   ],
+   "mode": "upright",
+   "appear": {
+    "t": 150.80599999999998,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "react": "kick"
+  },
+  {
+   "id": "phone_face",
+   "t": 94.515,
+   "side": 11.75,
+   "y": 0.5,
+   "kind": "image",
+   "src": "art/phone-screen.jpg",
+   "size": [
+    5,
+    0,
+    9
+   ],
+   "mode": "upright",
+   "appear": {
+    "t": 90.735,
+    "mode": "rise",
+    "dur": 0.8
+   }
+  },
+  {
+   "id": "slipper_sticker",
+   "t": 64.279,
+   "side": -9,
+   "y": 2,
+   "kind": "image",
+   "src": "art/slipper-cat-decal.png",
+   "size": [
+    6,
+    0,
+    4.5
+   ],
+   "mode": "billboard",
+   "alpha": true,
+   "appear": {
+    "t": 62.39,
+    "mode": "pop",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "cat_sticker",
+   "t": 143.648,
+   "side": 9,
+   "y": 3,
+   "kind": "image",
+   "src": "art/slipper-cat-decal.png",
+   "size": [
+    5,
+    0,
+    3.75
+   ],
+   "mode": "billboard",
+   "alpha": true,
+   "appear": {
+    "t": 141.758,
+    "mode": "pop",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "fakefork2",
+   "t": 124.733,
+   "worldPos": [
+    114.17,
+    3.65,
+    -54.36
+   ],
+   "rot": 180,
+   "kind": "box",
+   "size": [
+    2.0,
+    0.7,
+    6.0
+   ],
+   "color": "#F3F0E8",
+   "name": "fake-out fork (visual only, crumbles away)",
+   "appear": {
+    "t": 122.73,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "exit": {
+    "t": 125.33,
+    "mode": "fall",
+    "dur": 0.8
+   }
+  },
+  {
+   "id": "fakefork4",
+   "t": 202.941,
+   "worldPos": [
+    140.75,
+    -0.35,
+    -132.0
+   ],
+   "rot": 180,
+   "kind": "box",
+   "size": [
+    1.8,
+    0.7,
+    6.0
+   ],
+   "color": "#F3F0E8",
+   "name": "fake-out fork (visual only, crumbles away)",
+   "appear": {
+    "t": 200.94,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "exit": {
+    "t": 203.54,
+    "mode": "fall",
+    "dur": 0.8
+   }
+  },
+  {
+   "id": "ward_block_0",
+   "t": 34.04,
+   "worldPos": [
+    124.64,
+    0.0,
+    -32.29
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.14,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_1",
+   "t": 34.04,
+   "worldPos": [
+    124.64,
+    0.0,
+    -30.64
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.17,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_2",
+   "t": 34.04,
+   "worldPos": [
+    124.64,
+    0.0,
+    -29.0
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.2,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_3",
+   "t": 34.04,
+   "worldPos": [
+    124.64,
+    0.0,
+    -27.36
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.23,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_4",
+   "t": 34.04,
+   "worldPos": [
+    124.64,
+    0.0,
+    -25.71
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.26,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_5",
+   "t": 34.04,
+   "worldPos": [
+    124.64,
+    0.0,
+    -24.07
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.29,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_6",
+   "t": 34.04,
+   "worldPos": [
+    124.64,
+    0.0,
+    -22.43
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.32,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_7",
+   "t": 34.04,
+   "worldPos": [
+    124.64,
+    0.0,
+    -20.78
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.35,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_8",
+   "t": 34.04,
+   "worldPos": [
+    124.64,
+    0.0,
+    -19.14
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.38,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_9",
+   "t": 34.04,
+   "worldPos": [
+    124.64,
+    0.0,
+    -12.56
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.41,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_10",
+   "t": 34.04,
+   "worldPos": [
+    124.64,
+    0.0,
+    -10.92
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.44,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_11",
+   "t": 34.04,
+   "worldPos": [
+    124.64,
+    0.0,
+    -9.28
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.47,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_12",
+   "t": 34.04,
+   "worldPos": [
+    124.64,
+    0.0,
+    -7.63
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.5,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_13",
+   "t": 34.04,
+   "worldPos": [
+    124.64,
+    0.0,
+    -5.99
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.53,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_14",
+   "t": 34.04,
+   "worldPos": [
+    124.64,
+    0.0,
+    -4.35
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.56,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_15",
+   "t": 34.04,
+   "worldPos": [
+    124.64,
+    0.0,
+    -2.7
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.59,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_16",
+   "t": 34.04,
+   "worldPos": [
+    143.92,
+    0.0,
+    -32.29
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.62,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_17",
+   "t": 34.04,
+   "worldPos": [
+    143.92,
+    0.0,
+    -30.64
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.65,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_18",
+   "t": 34.04,
+   "worldPos": [
+    143.92,
+    0.0,
+    -29.0
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.68,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_19",
+   "t": 34.04,
+   "worldPos": [
+    143.92,
+    0.0,
+    -27.36
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.71,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_20",
+   "t": 34.04,
+   "worldPos": [
+    143.92,
+    0.0,
+    -25.71
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.74,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_21",
+   "t": 34.04,
+   "worldPos": [
+    143.92,
+    0.0,
+    -24.07
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.77,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_22",
+   "t": 34.04,
+   "worldPos": [
+    143.92,
+    0.0,
+    -22.43
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.8,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_23",
+   "t": 34.04,
+   "worldPos": [
+    143.92,
+    0.0,
+    -20.78
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.83,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_24",
+   "t": 34.04,
+   "worldPos": [
+    143.92,
+    0.0,
+    -19.14
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.86,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_25",
+   "t": 34.04,
+   "worldPos": [
+    143.92,
+    0.0,
+    -17.49
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.89,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_26",
+   "t": 34.04,
+   "worldPos": [
+    143.92,
+    0.0,
+    -15.85
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.92,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_27",
+   "t": 34.04,
+   "worldPos": [
+    143.92,
+    0.0,
+    -7.63
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.95,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_28",
+   "t": 34.04,
+   "worldPos": [
+    143.92,
+    0.0,
+    -4.35
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.64
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 28.98,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_29",
+   "t": 34.04,
+   "worldPos": [
+    125.44,
+    0.0,
+    -33.11
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.61
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 29.01,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_30",
+   "t": 34.04,
+   "worldPos": [
+    127.05,
+    0.0,
+    -33.11
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.61
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 29.04,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_31",
+   "t": 34.04,
+   "worldPos": [
+    128.66,
+    0.0,
+    -33.11
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.61
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 29.07,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_32",
+   "t": 34.04,
+   "worldPos": [
+    135.08,
+    0.0,
+    -33.11
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.61
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 29.1,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_33",
+   "t": 34.04,
+   "worldPos": [
+    136.69,
+    0.0,
+    -33.11
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.61
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 29.13,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_34",
+   "t": 34.04,
+   "worldPos": [
+    138.3,
+    0.0,
+    -33.11
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.61
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 29.16,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_35",
+   "t": 34.04,
+   "worldPos": [
+    139.9,
+    0.0,
+    -33.11
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.61
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 29.19,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_36",
+   "t": 34.04,
+   "worldPos": [
+    141.51,
+    0.0,
+    -33.11
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.61
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 29.22,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_37",
+   "t": 34.04,
+   "worldPos": [
+    143.12,
+    0.0,
+    -33.11
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.61
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 29.25,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_38",
+   "t": 34.04,
+   "worldPos": [
+    125.44,
+    0.0,
+    -1.88
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.61
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 29.28,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_39",
+   "t": 34.04,
+   "worldPos": [
+    127.05,
+    0.0,
+    -1.88
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.61
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 29.31,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_40",
+   "t": 34.04,
+   "worldPos": [
+    128.66,
+    0.0,
+    -1.88
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.61
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 29.34,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_41",
+   "t": 34.04,
+   "worldPos": [
+    130.26,
+    0.0,
+    -1.88
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.61
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 29.37,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_42",
+   "t": 34.04,
+   "worldPos": [
+    131.87,
+    0.0,
+    -1.88
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.61
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 29.4,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "ward_block_43",
+   "t": 34.04,
+   "worldPos": [
+    133.48,
+    0.0,
+    -1.88
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.0,
+    1.61
+   ],
+   "color": "#C9D3CB",
+   "appear": {
+    "t": 29.43,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_0",
+   "t": 139.87,
+   "worldPos": [
+    69.38,
+    4.59,
+    -128.27
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 133.97,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_1",
+   "t": 139.87,
+   "worldPos": [
+    69.38,
+    4.59,
+    -126.57
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.0,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_2",
+   "t": 139.87,
+   "worldPos": [
+    69.38,
+    4.59,
+    -124.87
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.03,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_3",
+   "t": 139.87,
+   "worldPos": [
+    69.38,
+    4.59,
+    -123.17
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.06,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_4",
+   "t": 139.87,
+   "worldPos": [
+    69.38,
+    4.59,
+    -121.47
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.09,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_5",
+   "t": 139.87,
+   "worldPos": [
+    69.38,
+    4.59,
+    -119.77
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.12,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_6",
+   "t": 139.87,
+   "worldPos": [
+    69.38,
+    4.59,
+    -118.07
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.15,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_7",
+   "t": 139.87,
+   "worldPos": [
+    69.38,
+    4.59,
+    -116.37
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.18,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_8",
+   "t": 139.87,
+   "worldPos": [
+    69.38,
+    4.59,
+    -114.68
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.21,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_9",
+   "t": 139.87,
+   "worldPos": [
+    69.38,
+    4.59,
+    -112.98
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.24,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_10",
+   "t": 139.87,
+   "worldPos": [
+    69.38,
+    4.59,
+    -111.28
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.27,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_11",
+   "t": 139.87,
+   "worldPos": [
+    69.38,
+    4.59,
+    -109.58
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.3,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_12",
+   "t": 139.87,
+   "worldPos": [
+    69.38,
+    4.59,
+    -107.88
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.33,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_13",
+   "t": 139.87,
+   "worldPos": [
+    69.38,
+    4.59,
+    -106.18
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.36,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_14",
+   "t": 139.87,
+   "worldPos": [
+    69.38,
+    4.59,
+    -104.48
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.39,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_15",
+   "t": 139.87,
+   "worldPos": [
+    69.38,
+    4.59,
+    -102.78
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.42,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_16",
+   "t": 139.87,
+   "worldPos": [
+    87.48,
+    4.59,
+    -128.27
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.45,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_17",
+   "t": 139.87,
+   "worldPos": [
+    87.48,
+    4.59,
+    -126.57
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.48,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_18",
+   "t": 139.87,
+   "worldPos": [
+    87.48,
+    4.59,
+    -124.87
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.51,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_19",
+   "t": 139.87,
+   "worldPos": [
+    87.48,
+    4.59,
+    -123.17
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.54,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_20",
+   "t": 139.87,
+   "worldPos": [
+    87.48,
+    4.59,
+    -121.47
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.57,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_21",
+   "t": 139.87,
+   "worldPos": [
+    87.48,
+    4.59,
+    -119.77
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.6,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_22",
+   "t": 139.87,
+   "worldPos": [
+    87.48,
+    4.59,
+    -118.07
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.63,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_23",
+   "t": 139.87,
+   "worldPos": [
+    87.48,
+    4.59,
+    -116.37
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.66,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_24",
+   "t": 139.87,
+   "worldPos": [
+    87.48,
+    4.59,
+    -114.68
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.69,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_25",
+   "t": 139.87,
+   "worldPos": [
+    87.48,
+    4.59,
+    -112.98
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.72,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_26",
+   "t": 139.87,
+   "worldPos": [
+    87.48,
+    4.59,
+    -111.28
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.75,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_27",
+   "t": 139.87,
+   "worldPos": [
+    87.48,
+    4.59,
+    -109.58
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.78,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_28",
+   "t": 139.87,
+   "worldPos": [
+    87.48,
+    4.59,
+    -107.88
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.81,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_29",
+   "t": 139.87,
+   "worldPos": [
+    87.48,
+    4.59,
+    -106.18
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.84,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_30",
+   "t": 139.87,
+   "worldPos": [
+    87.48,
+    4.59,
+    -104.48
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.87,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_31",
+   "t": 139.87,
+   "worldPos": [
+    87.48,
+    4.59,
+    -102.78
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.7
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.9,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_32",
+   "t": 139.87,
+   "worldPos": [
+    70.2,
+    4.59,
+    -129.12
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.65
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.93,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_33",
+   "t": 139.87,
+   "worldPos": [
+    71.85,
+    4.59,
+    -129.12
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.65
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.96,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_34",
+   "t": 139.87,
+   "worldPos": [
+    85.01,
+    4.59,
+    -129.12
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.65
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 134.99,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_35",
+   "t": 139.87,
+   "worldPos": [
+    86.66,
+    4.59,
+    -129.12
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.65
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 135.02,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_36",
+   "t": 139.87,
+   "worldPos": [
+    70.2,
+    4.59,
+    -101.93
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.65
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 135.05,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_37",
+   "t": 139.87,
+   "worldPos": [
+    71.85,
+    4.59,
+    -101.93
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.65
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 135.08,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_38",
+   "t": 139.87,
+   "worldPos": [
+    73.49,
+    4.59,
+    -101.93
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.65
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 135.11,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_39",
+   "t": 139.87,
+   "worldPos": [
+    75.14,
+    4.59,
+    -101.93
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.65
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 135.14,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_40",
+   "t": 139.87,
+   "worldPos": [
+    76.78,
+    4.59,
+    -101.93
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.65
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 135.17,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_41",
+   "t": 139.87,
+   "worldPos": [
+    85.01,
+    4.59,
+    -101.93
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.65
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 135.2,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "library_42",
+   "t": 139.87,
+   "worldPos": [
+    86.66,
+    4.59,
+    -101.93
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    4.2,
+    1.65
+   ],
+   "color": "#F3F0E8",
+   "appear": {
+    "t": 135.23,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  }
+ ],
+ "events": [
+  {
+   "t": 15.147,
+   "type": "light",
+   "target": "ward_light_row",
+   "dur": 1.0
+  },
+  {
+   "t": 45.382,
+   "type": "burst",
+   "at": "player",
+   "particles": "dust"
+  },
+  {
+   "t": 45.382,
+   "type": "raise",
+   "target": "bunny",
+   "dur": 1.4
+  },
+  {
+   "t": 105.853,
+   "type": "flash",
+   "dur": 0.2
+  },
+  {
+   "t": 134.199,
+   "type": "color",
+   "palette": {
+    "skyTop": "#9FAEA6"
+   },
+   "dur": 1.5
+  },
+  {
+   "t": 149.317,
+   "type": "lower",
+   "target": "bookpage0",
+   "dur": 0.4
+  },
+  {
+   "t": 151.206,
+   "type": "flash",
+   "dur": 0.25
+  },
+  {
+   "t": 166.324,
+   "type": "raise",
+   "target": "ear_sculpture_l",
+   "dur": 1.2
+  },
+  {
+   "t": 196.56,
+   "type": "color",
+   "palette": {
+    "skyTop": "#E9ECE6"
+   },
+   "dur": 4.0
+  },
+  {
+   "t": 200.339,
+   "type": "lower",
+   "target": "stage5_0",
+   "dur": 3.0
+  }
+ ],
+ "diamonds": [
+  {
+   "t": 8.238,
+   "side": 0
+  },
+  {
+   "t": 26.825,
+   "side": 0
+  },
+  {
+   "t": 53.392,
+   "side": 0
+  },
+  {
+   "t": 83.885,
+   "side": 0
+  },
+  {
+   "t": 99.941,
+   "side": 0
+  },
+  {
+   "t": 117.644,
+   "side": 0
+  },
+  {
+   "t": 142.986,
+   "side": 0
+  },
+  {
+   "t": 150.717,
+   "side": 0
+  },
+  {
+   "t": 185.676,
+   "side": 0
+  },
+  {
+   "t": 200.228,
+   "side": 0
+  }
+ ],
+ "crowns": [
+  {
+   "t": 95.102
+  },
+  {
+   "t": 132.882
+  }
+ ],
+ "finish": {
+  "kind": "custom",
+  "note": "halftone end plinth with the black bunny silhouette",
+  "parts": [
+   {
+    "kind": "box",
+    "pos": [
+     0,
+     0,
+     4
+    ],
+    "size": [
+     6,
+     1,
+     6
+    ],
+    "color": "#25282B"
+   }
+  ]
+ },
+ "collectibleColors": {
+  "diamond": "#88C7D5",
+  "crown": "#E3BD60"
+ },
+ "art": {
+  "backdrop": "art/sky.jpg",
+  "ground": {
+   "src": "art/ground-halftone.jpg",
+   "scale": 36
+  },
+  "files": {
+   "art/sky.jpg": "soft sage->cream sky with halftone clouds and a blush horizon (backdrop)",
+   "art/ground-halftone.jpg": "tileable halftone dots on sage (ground, from the OMG cover print)",
+   "art/bunny-poster.jpg": "halftone black bunny poster, blank white mask, no features (stage wall posters)",
+   "art/phone-screen.jpg": "black phone screen with chat bubbles + typing dots, no text (phone bridge face)",
+   "art/slipper-cat-decal.png": "glass slipper + black cat on a storybook, transparent sticker (fairy-tale identity)"
+  }
+ },
+ "path": {
+  "note": "computed centerline nodes [t,x,z,y,heading_after] (world units, y = road elevation offset)",
+  "nodes": [
+   [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    "N"
+   ],
+   [
+    2.371,
+    0.0,
+    23.71,
+    0.0,
+    "E"
+   ],
+   [
+    2.898,
+    5.27,
+    23.71,
+    0.0,
+    "N"
+   ],
+   [
+    4.371,
+    5.27,
+    38.44,
+    0.0,
+    "E"
+   ],
+   [
+    4.84,
+    9.96,
+    38.44,
+    0.0,
+    "N"
+   ],
+   [
+    5.317,
+    9.96,
+    43.21,
+    0.0,
+    "E"
+   ],
+   [
+    7.62,
+    32.99,
+    43.21,
+    0.0,
+    "S"
+   ],
+   [
+    7.943,
+    32.99,
+    39.98,
+    0.0,
+    "E"
+   ],
+   [
+    8.533,
+    38.89,
+    39.98,
+    0.0,
+    "S"
+   ],
+   [
+    12.665,
+    38.89,
+    -1.34,
+    0.0,
+    "E"
+   ],
+   [
+    14.093,
+    53.17,
+    -1.34,
+    0.0,
+    "S"
+   ],
+   [
+    14.568,
+    53.17,
+    -6.09,
+    0.0,
+    "E"
+   ],
+   [
+    15.834,
+    65.83,
+    -6.09,
+    0.0,
+    "S"
+   ],
+   [
+    16.087,
+    65.83,
+    -8.62,
+    0.0,
+    "E"
+   ],
+   [
+    16.779,
+    72.75,
+    -8.62,
+    0.0,
+    "S"
+   ],
+   [
+    17.027,
+    72.75,
+    -11.1,
+    0.0,
+    "E"
+   ],
+   [
+    17.725,
+    79.73,
+    -11.1,
+    0.0,
+    "S"
+   ],
+   [
+    18.669,
+    79.73,
+    -20.54,
+    0.0,
+    "E"
+   ],
+   [
+    18.916,
+    82.2,
+    -20.54,
+    0.0,
+    "S"
+   ],
+   [
+    19.613,
+    82.2,
+    -27.51,
+    0.0,
+    "E"
+   ],
+   [
+    19.861,
+    84.68,
+    -27.51,
+    0.0,
+    "S"
+   ],
+   [
+    20.558,
+    84.68,
+    -34.48,
+    0.0,
+    "E"
+   ],
+   [
+    20.806,
+    87.16,
+    -34.48,
+    0.0,
+    "S"
+   ],
+   [
+    21.503,
+    87.16,
+    -41.45,
+    0.0,
+    "E"
+   ],
+   [
+    22.448,
+    96.61,
+    -41.45,
+    0.0,
+    "S"
+   ],
+   [
+    22.696,
+    96.61,
+    -43.93,
+    0.0,
+    "E"
+   ],
+   [
+    23.394,
+    103.59,
+    -43.93,
+    0.0,
+    "S"
+   ],
+   [
+    23.641,
+    103.59,
+    -46.4,
+    0.0,
+    "E"
+   ],
+   [
+    24.338,
+    110.56,
+    -46.4,
+    0.0,
+    "S"
+   ],
+   [
+    24.586,
+    110.56,
+    -48.88,
+    0.0,
+    "E"
+   ],
+   [
+    25.284,
+    117.54,
+    -48.88,
+    0.0,
+    "S"
+   ],
+   [
+    26.241,
+    117.54,
+    -58.45,
+    0.0,
+    "E"
+   ],
+   [
+    26.476,
+    119.89,
+    -58.45,
+    0.0,
+    "N"
+   ],
+   [
+    27.173,
+    119.89,
+    -51.48,
+    0.0,
+    "E"
+   ],
+   [
+    27.42,
+    122.36,
+    -51.48,
+    0.0,
+    "N"
+   ],
+   [
+    28.111,
+    122.36,
+    -44.57,
+    0.0,
+    "E"
+   ],
+   [
+    28.365,
+    124.9,
+    -44.57,
+    0.0,
+    "S"
+   ],
+   [
+    28.838,
+    124.9,
+    -49.3,
+    0.0,
+    "E"
+   ],
+   [
+    29.31,
+    129.62,
+    -49.3,
+    0.0,
+    "N"
+   ],
+   [
+    30.007,
+    129.62,
+    -42.33,
+    0.0,
+    "E"
+   ],
+   [
+    30.244,
+    131.99,
+    -42.33,
+    0.0,
+    "N"
+   ],
+   [
+    31.426,
+    131.99,
+    -30.51,
+    0.0,
+    "W"
+   ],
+   [
+    31.898,
+    127.27,
+    -30.51,
+    0.0,
+    "N"
+   ],
+   [
+    32.368,
+    127.27,
+    -25.81,
+    0.0,
+    "E"
+   ],
+   [
+    32.612,
+    129.71,
+    -25.81,
+    0.0,
+    "N"
+   ],
+   [
+    33.315,
+    129.71,
+    -18.78,
+    0.0,
+    "W"
+   ],
+   [
+    33.562,
+    127.24,
+    -18.78,
+    0.0,
+    "N"
+   ],
+   [
+    34.022,
+    127.24,
+    -14.18,
+    0.0,
+    "E"
+   ],
+   [
+    35.205,
+    139.07,
+    -14.18,
+    0.0,
+    "N"
+   ],
+   [
+    35.677,
+    139.07,
+    -9.46,
+    0.0,
+    "W"
+   ],
+   [
+    36.15,
+    134.34,
+    -9.46,
+    0.0,
+    "N"
+   ],
+   [
+    36.396,
+    134.34,
+    -7.0,
+    0.0,
+    "E"
+   ],
+   [
+    37.094,
+    141.32,
+    -7.0,
+    0.0,
+    "N"
+   ],
+   [
+    37.346,
+    141.32,
+    -4.48,
+    0.0,
+    "W"
+   ],
+   [
+    37.803,
+    136.75,
+    -4.48,
+    0.0,
+    "N"
+   ],
+   [
+    38.984,
+    136.75,
+    7.33,
+    0.0,
+    "E"
+   ],
+   [
+    39.459,
+    141.5,
+    7.33,
+    0.0,
+    "N"
+   ],
+   [
+    39.927,
+    141.5,
+    12.01,
+    0.0,
+    "W"
+   ],
+   [
+    40.171,
+    139.06,
+    12.01,
+    0.0,
+    "N"
+   ],
+   [
+    40.874,
+    139.06,
+    19.04,
+    0.0,
+    "E"
+   ],
+   [
+    41.12,
+    141.52,
+    19.04,
+    0.0,
+    "N"
+   ],
+   [
+    41.583,
+    141.52,
+    23.67,
+    0.0,
+    "W"
+   ],
+   [
+    42.764,
+    129.71,
+    23.67,
+    0.0,
+    "N"
+   ],
+   [
+    43.256,
+    129.71,
+    28.59,
+    0.0,
+    "E"
+   ],
+   [
+    43.485,
+    132.0,
+    28.59,
+    0.0,
+    "N"
+   ],
+   [
+    43.729,
+    132.0,
+    31.03,
+    0.0,
+    "W"
+   ],
+   [
+    43.958,
+    129.71,
+    31.03,
+    0.0,
+    "N"
+   ],
+   [
+    44.299,
+    129.71,
+    34.44,
+    0.0,
+    "E"
+   ],
+   [
+    44.653,
+    133.25,
+    34.44,
+    0.0,
+    "N"
+   ],
+   [
+    44.906,
+    133.25,
+    36.97,
+    0.0,
+    "E"
+   ],
+   [
+    45.362,
+    137.81,
+    36.97,
+    0.0,
+    "S"
+   ],
+   [
+    46.304,
+    137.81,
+    27.55,
+    -4.0,
+    "E"
+   ],
+   [
+    46.779,
+    142.56,
+    27.55,
+    -4.0,
+    "S"
+   ],
+   [
+    47.029,
+    142.56,
+    25.05,
+    -4.0,
+    "E"
+   ],
+   [
+    47.486,
+    147.13,
+    25.05,
+    -4.0,
+    "S"
+   ],
+   [
+    47.736,
+    147.13,
+    22.55,
+    -4.0,
+    "E"
+   ],
+   [
+    48.199,
+    151.76,
+    22.55,
+    -4.0,
+    "S"
+   ],
+   [
+    48.669,
+    151.76,
+    17.85,
+    -4.0,
+    "E"
+   ],
+   [
+    49.141,
+    156.48,
+    17.85,
+    -4.0,
+    "S"
+   ],
+   [
+    50.084,
+    156.48,
+    8.42,
+    -4.0,
+    "W"
+   ],
+   [
+    50.559,
+    151.73,
+    8.42,
+    -4.0,
+    "S"
+   ],
+   [
+    50.793,
+    151.73,
+    6.08,
+    -4.0,
+    "W"
+   ],
+   [
+    51.265,
+    147.01,
+    6.08,
+    -4.0,
+    "S"
+   ],
+   [
+    51.518,
+    147.01,
+    3.55,
+    -4.0,
+    "W"
+   ],
+   [
+    51.98,
+    142.39,
+    3.55,
+    -4.0,
+    "S"
+   ],
+   [
+    52.447,
+    142.39,
+    -1.12,
+    -4.0,
+    "W"
+   ],
+   [
+    52.921,
+    137.65,
+    -1.12,
+    -4.0,
+    "S"
+   ],
+   [
+    53.864,
+    137.65,
+    -10.55,
+    -4.0,
+    "E"
+   ],
+   [
+    54.338,
+    142.39,
+    -10.55,
+    -4.0,
+    "S"
+   ],
+   [
+    54.594,
+    142.39,
+    -13.11,
+    -4.0,
+    "E"
+   ],
+   [
+    55.045,
+    146.9,
+    -13.11,
+    -4.0,
+    "S"
+   ],
+   [
+    55.303,
+    146.9,
+    -15.69,
+    -4.0,
+    "E"
+   ],
+   [
+    55.754,
+    151.41,
+    -15.69,
+    -4.0,
+    "S"
+   ],
+   [
+    56.228,
+    151.41,
+    -20.43,
+    -4.0,
+    "E"
+   ],
+   [
+    56.699,
+    156.12,
+    -20.43,
+    -4.0,
+    "S"
+   ],
+   [
+    57.643,
+    156.12,
+    -29.87,
+    -4.0,
+    "E"
+   ],
+   [
+    58.118,
+    160.87,
+    -29.87,
+    -4.0,
+    "N"
+   ],
+   [
+    58.356,
+    160.87,
+    -27.49,
+    -4.0,
+    "E"
+   ],
+   [
+    58.829,
+    165.6,
+    -27.49,
+    -4.0,
+    "N"
+   ],
+   [
+    59.555,
+    165.6,
+    -20.23,
+    -4.0,
+    "E"
+   ],
+   [
+    59.803,
+    168.08,
+    -20.23,
+    -4.0,
+    "N"
+   ],
+   [
+    60.243,
+    168.08,
+    -15.83,
+    -4.0,
+    "E"
+   ],
+   [
+    60.48,
+    170.45,
+    -15.83,
+    -4.0,
+    "N"
+   ],
+   [
+    60.952,
+    170.45,
+    -11.11,
+    -4.0,
+    "W"
+   ],
+   [
+    61.661,
+    163.36,
+    -11.11,
+    -4.0,
+    "N"
+   ],
+   [
+    62.133,
+    163.36,
+    -6.39,
+    -4.0,
+    "W"
+   ],
+   [
+    62.606,
+    158.63,
+    -6.39,
+    -3.54,
+    "S"
+   ],
+   [
+    62.842,
+    158.63,
+    -8.75,
+    -3.04,
+    "W"
+   ],
+   [
+    63.078,
+    156.27,
+    -8.75,
+    -2.54,
+    "N"
+   ],
+   [
+    63.197,
+    156.27,
+    -7.56,
+    -2.29,
+    "E"
+   ],
+   [
+    63.315,
+    157.45,
+    -7.56,
+    -2.04,
+    "S"
+   ],
+   [
+    63.551,
+    157.45,
+    -9.92,
+    -1.54,
+    "W"
+   ],
+   [
+    63.786,
+    155.1,
+    -9.92,
+    -1.04,
+    "N"
+   ],
+   [
+    64.258,
+    155.1,
+    -5.2,
+    -0.04,
+    "E"
+   ],
+   [
+    64.731,
+    159.83,
+    -5.2,
+    0.96,
+    "S"
+   ],
+   [
+    65.44,
+    159.83,
+    -12.29,
+    2.46,
+    "W"
+   ],
+   [
+    65.913,
+    155.1,
+    -12.29,
+    3.46,
+    "N"
+   ],
+   [
+    66.386,
+    155.1,
+    -7.56,
+    4.0,
+    "W"
+   ],
+   [
+    66.621,
+    152.75,
+    -7.56,
+    4.0,
+    "N"
+   ],
+   [
+    67.331,
+    152.75,
+    -0.46,
+    4.0,
+    "W"
+   ],
+   [
+    67.565,
+    150.41,
+    -0.46,
+    4.0,
+    "N"
+   ],
+   [
+    68.038,
+    150.41,
+    4.27,
+    4.0,
+    "W"
+   ],
+   [
+    68.511,
+    145.68,
+    4.27,
+    4.0,
+    "N"
+   ],
+   [
+    69.222,
+    145.68,
+    11.38,
+    4.0,
+    "W"
+   ],
+   [
+    69.69,
+    141.0,
+    11.38,
+    4.0,
+    "N"
+   ],
+   [
+    70.165,
+    141.0,
+    16.13,
+    4.0,
+    "W"
+   ],
+   [
+    70.412,
+    138.53,
+    16.13,
+    4.0,
+    "N"
+   ],
+   [
+    71.11,
+    138.53,
+    23.11,
+    4.0,
+    "W"
+   ],
+   [
+    71.346,
+    136.17,
+    23.11,
+    4.0,
+    "N"
+   ],
+   [
+    71.819,
+    136.17,
+    27.84,
+    4.0,
+    "W"
+   ],
+   [
+    72.29,
+    131.46,
+    27.84,
+    4.0,
+    "S"
+   ],
+   [
+    73.0,
+    131.46,
+    20.74,
+    4.0,
+    "W"
+   ],
+   [
+    73.465,
+    126.81,
+    20.74,
+    4.0,
+    "N"
+   ],
+   [
+    73.945,
+    126.81,
+    25.54,
+    4.0,
+    "W"
+   ],
+   [
+    74.18,
+    124.46,
+    25.54,
+    4.0,
+    "S"
+   ],
+   [
+    74.89,
+    124.46,
+    18.44,
+    4.0,
+    "W"
+   ],
+   [
+    75.125,
+    122.11,
+    18.44,
+    4.0,
+    "N"
+   ],
+   [
+    75.598,
+    122.11,
+    23.17,
+    4.0,
+    "W"
+   ],
+   [
+    76.07,
+    117.39,
+    23.17,
+    4.0,
+    "S"
+   ],
+   [
+    76.54,
+    117.39,
+    18.47,
+    4.0,
+    "W"
+   ],
+   [
+    77.271,
+    110.08,
+    18.47,
+    4.0,
+    "N"
+   ],
+   [
+    77.724,
+    110.08,
+    23.0,
+    4.0,
+    "W"
+   ],
+   [
+    78.669,
+    100.63,
+    23.0,
+    4.0,
+    "S"
+   ],
+   [
+    78.905,
+    100.63,
+    20.64,
+    4.0,
+    "W"
+   ],
+   [
+    79.376,
+    95.92,
+    20.64,
+    4.0,
+    "N"
+   ],
+   [
+    79.85,
+    95.92,
+    25.38,
+    4.0,
+    "W"
+   ],
+   [
+    80.377,
+    90.65,
+    25.38,
+    4.0,
+    "N"
+   ],
+   [
+    81.051,
+    90.65,
+    32.12,
+    4.0,
+    "W"
+   ],
+   [
+    81.504,
+    86.12,
+    32.12,
+    4.0,
+    "N"
+   ],
+   [
+    82.449,
+    86.12,
+    41.57,
+    4.0,
+    "W"
+   ],
+   [
+    82.684,
+    83.77,
+    41.57,
+    4.0,
+    "N"
+   ],
+   [
+    83.156,
+    83.77,
+    46.29,
+    4.0,
+    "W"
+   ],
+   [
+    83.629,
+    79.04,
+    46.29,
+    4.0,
+    "N"
+   ],
+   [
+    84.14,
+    79.04,
+    51.4,
+    4.0,
+    "E"
+   ],
+   [
+    84.83,
+    85.94,
+    51.4,
+    4.0,
+    "N"
+   ],
+   [
+    85.283,
+    85.94,
+    55.93,
+    4.0,
+    "E"
+   ],
+   [
+    86.228,
+    95.39,
+    55.93,
+    4.0,
+    "N"
+   ],
+   [
+    86.464,
+    95.39,
+    58.29,
+    4.0,
+    "E"
+   ],
+   [
+    86.936,
+    100.11,
+    58.29,
+    4.0,
+    "N"
+   ],
+   [
+    87.409,
+    100.11,
+    63.02,
+    4.0,
+    "E"
+   ],
+   [
+    87.939,
+    105.41,
+    63.02,
+    4.0,
+    "N"
+   ],
+   [
+    88.609,
+    105.41,
+    69.72,
+    4.0,
+    "E"
+   ],
+   [
+    88.846,
+    107.78,
+    69.72,
+    4.0,
+    "S"
+   ],
+   [
+    89.082,
+    107.78,
+    67.36,
+    4.0,
+    "W"
+   ],
+   [
+    89.318,
+    105.42,
+    67.36,
+    4.0,
+    "N"
+   ],
+   [
+    89.653,
+    105.42,
+    70.71,
+    4.0,
+    "E"
+   ],
+   [
+    90.027,
+    109.16,
+    70.71,
+    4.0,
+    "S"
+   ],
+   [
+    90.771,
+    109.16,
+    63.27,
+    4.0,
+    "E"
+   ],
+   [
+    91.908,
+    120.53,
+    63.27,
+    4.52,
+    "S"
+   ],
+   [
+    92.857,
+    120.53,
+    53.78,
+    5.33,
+    "E"
+   ],
+   [
+    93.313,
+    125.09,
+    53.78,
+    5.73,
+    "S"
+   ],
+   [
+    93.801,
+    125.09,
+    48.9,
+    6.14,
+    "E"
+   ],
+   [
+    94.274,
+    129.82,
+    48.9,
+    6.55,
+    "S"
+   ],
+   [
+    94.515,
+    129.82,
+    46.49,
+    6.76,
+    "E"
+   ],
+   [
+    95.689,
+    141.56,
+    46.49,
+    7.76,
+    "S"
+   ],
+   [
+    96.62,
+    141.56,
+    37.18,
+    8.56,
+    "W"
+   ],
+   [
+    97.093,
+    136.83,
+    37.18,
+    8.97,
+    "S"
+   ],
+   [
+    97.59,
+    136.83,
+    32.21,
+    9.4,
+    "W"
+   ],
+   [
+    98.049,
+    132.24,
+    32.21,
+    9.79,
+    "S"
+   ],
+   [
+    98.309,
+    132.24,
+    29.61,
+    10.0,
+    "E"
+   ],
+   [
+    99.467,
+    143.82,
+    29.61,
+    10.0,
+    "S"
+   ],
+   [
+    100.416,
+    143.82,
+    20.12,
+    10.0,
+    "E"
+   ],
+   [
+    100.888,
+    148.54,
+    20.12,
+    10.0,
+    "S"
+   ],
+   [
+    101.361,
+    148.54,
+    15.39,
+    10.0,
+    "E"
+   ],
+   [
+    101.817,
+    153.1,
+    15.39,
+    10.0,
+    "S"
+   ],
+   [
+    102.069,
+    153.1,
+    12.87,
+    10.0,
+    "W"
+   ],
+   [
+    103.249,
+    141.3,
+    12.87,
+    10.0,
+    "S"
+   ],
+   [
+    104.2,
+    141.3,
+    3.36,
+    10.0,
+    "W"
+   ],
+   [
+    104.436,
+    138.94,
+    3.36,
+    10.0,
+    "S"
+   ],
+   [
+    104.672,
+    138.94,
+    1.0,
+    10.0,
+    "W"
+   ],
+   [
+    104.908,
+    136.58,
+    1.0,
+    10.0,
+    "S"
+   ],
+   [
+    105.14,
+    136.58,
+    -1.32,
+    10.0,
+    "E"
+   ],
+   [
+    105.381,
+    138.99,
+    -1.32,
+    10.0,
+    "S"
+   ],
+   [
+    105.608,
+    138.99,
+    -3.59,
+    10.0,
+    "E"
+   ],
+   [
+    105.834,
+    141.25,
+    -3.59,
+    10.0,
+    "S"
+   ],
+   [
+    106.777,
+    141.25,
+    -13.02,
+    4.0,
+    "E"
+   ],
+   [
+    107.252,
+    146.0,
+    -13.02,
+    4.0,
+    "S"
+   ],
+   [
+    107.509,
+    146.0,
+    -15.59,
+    4.0,
+    "E"
+   ],
+   [
+    107.958,
+    150.49,
+    -15.59,
+    4.0,
+    "S"
+   ],
+   [
+    108.209,
+    150.49,
+    -18.1,
+    4.0,
+    "E"
+   ],
+   [
+    108.667,
+    155.07,
+    -18.1,
+    4.0,
+    "S"
+   ],
+   [
+    109.143,
+    155.07,
+    -22.86,
+    4.0,
+    "E"
+   ],
+   [
+    109.617,
+    159.81,
+    -22.86,
+    4.0,
+    "S"
+   ],
+   [
+    110.557,
+    159.81,
+    -32.26,
+    4.0,
+    "E"
+   ],
+   [
+    111.031,
+    164.55,
+    -32.26,
+    4.0,
+    "S"
+   ],
+   [
+    111.265,
+    164.55,
+    -34.6,
+    4.0,
+    "E"
+   ],
+   [
+    111.737,
+    169.27,
+    -34.6,
+    4.0,
+    "S"
+   ],
+   [
+    111.995,
+    169.27,
+    -37.18,
+    4.0,
+    "E"
+   ],
+   [
+    112.458,
+    173.9,
+    -37.18,
+    4.0,
+    "S"
+   ],
+   [
+    112.919,
+    173.9,
+    -41.79,
+    4.0,
+    "W"
+   ],
+   [
+    113.394,
+    169.15,
+    -41.79,
+    4.0,
+    "S"
+   ],
+   [
+    114.339,
+    169.15,
+    -51.24,
+    4.0,
+    "W"
+   ],
+   [
+    114.811,
+    164.43,
+    -51.24,
+    4.0,
+    "S"
+   ],
+   [
+    115.071,
+    164.43,
+    -53.84,
+    4.0,
+    "W"
+   ],
+   [
+    115.517,
+    159.97,
+    -53.84,
+    4.0,
+    "S"
+   ],
+   [
+    115.774,
+    159.97,
+    -56.41,
+    4.0,
+    "W"
+   ],
+   [
+    116.226,
+    155.45,
+    -56.41,
+    4.0,
+    "S"
+   ],
+   [
+    116.7,
+    155.45,
+    -61.15,
+    4.0,
+    "W"
+   ],
+   [
+    117.171,
+    150.74,
+    -61.15,
+    4.0,
+    "S"
+   ],
+   [
+    118.116,
+    150.74,
+    -70.6,
+    4.0,
+    "W"
+   ],
+   [
+    118.591,
+    145.99,
+    -70.6,
+    4.0,
+    "N"
+   ],
+   [
+    118.829,
+    145.99,
+    -68.22,
+    4.0,
+    "W"
+   ],
+   [
+    119.301,
+    141.27,
+    -68.22,
+    4.0,
+    "N"
+   ],
+   [
+    119.548,
+    141.27,
+    -65.75,
+    4.0,
+    "W"
+   ],
+   [
+    120.953,
+    127.22,
+    -65.75,
+    4.0,
+    "N"
+   ],
+   [
+    122.134,
+    127.22,
+    -53.94,
+    4.0,
+    "W"
+   ],
+   [
+    122.606,
+    122.5,
+    -53.94,
+    4.0,
+    "N"
+   ],
+   [
+    123.079,
+    122.5,
+    -49.21,
+    4.0,
+    "W"
+   ],
+   [
+    123.669,
+    116.6,
+    -49.21,
+    4.0,
+    "N"
+   ],
+   [
+    124.022,
+    116.6,
+    -45.68,
+    4.0,
+    "W"
+   ],
+   [
+    124.265,
+    114.17,
+    -45.68,
+    4.0,
+    "S"
+   ],
+   [
+    124.733,
+    114.17,
+    -50.36,
+    4.0,
+    "W"
+   ],
+   [
+    125.913,
+    102.37,
+    -50.36,
+    4.0,
+    "S"
+   ],
+   [
+    126.378,
+    102.37,
+    -55.01,
+    4.0,
+    "W"
+   ],
+   [
+    126.859,
+    97.56,
+    -55.01,
+    4.0,
+    "S"
+   ],
+   [
+    127.449,
+    97.56,
+    -60.91,
+    4.0,
+    "W"
+   ],
+   [
+    127.803,
+    94.02,
+    -60.91,
+    4.0,
+    "S"
+   ],
+   [
+    128.047,
+    94.02,
+    -63.35,
+    4.0,
+    "W"
+   ],
+   [
+    128.512,
+    89.37,
+    -63.35,
+    4.0,
+    "S"
+   ],
+   [
+    129.694,
+    89.37,
+    -75.17,
+    4.0,
+    "E"
+   ],
+   [
+    130.174,
+    94.17,
+    -75.17,
+    4.0,
+    "S"
+   ],
+   [
+    130.638,
+    94.17,
+    -79.81,
+    4.0,
+    "W"
+   ],
+   [
+    131.228,
+    88.27,
+    -79.81,
+    4.0,
+    "S"
+   ],
+   [
+    131.584,
+    88.27,
+    -83.37,
+    4.0,
+    "E"
+   ],
+   [
+    131.819,
+    90.62,
+    -83.37,
+    4.0,
+    "S"
+   ],
+   [
+    132.291,
+    90.62,
+    -88.09,
+    4.0,
+    "W"
+   ],
+   [
+    133.472,
+    78.81,
+    -88.09,
+    4.0,
+    "S"
+   ],
+   [
+    133.937,
+    78.81,
+    -92.74,
+    4.0,
+    "E"
+   ],
+   [
+    134.535,
+    84.79,
+    -92.74,
+    4.0,
+    "S"
+   ],
+   [
+    134.89,
+    84.79,
+    -96.29,
+    4.1,
+    "W"
+   ],
+   [
+    135.126,
+    82.43,
+    -96.29,
+    4.17,
+    "S"
+   ],
+   [
+    135.716,
+    82.43,
+    -102.19,
+    4.35,
+    "W"
+   ],
+   [
+    135.952,
+    80.07,
+    -102.19,
+    4.43,
+    "S"
+   ],
+   [
+    136.423,
+    80.07,
+    -106.9,
+    4.57,
+    "W"
+   ],
+   [
+    136.779,
+    76.51,
+    -106.9,
+    4.69,
+    "N"
+   ],
+   [
+    137.016,
+    76.51,
+    -104.53,
+    4.76,
+    "E"
+   ],
+   [
+    137.27,
+    79.05,
+    -104.53,
+    4.84,
+    "S"
+   ],
+   [
+    137.606,
+    79.05,
+    -107.89,
+    4.94,
+    "W"
+   ],
+   [
+    138.313,
+    71.98,
+    -107.89,
+    5.16,
+    "S"
+   ],
+   [
+    138.667,
+    71.98,
+    -111.43,
+    5.27,
+    "E"
+   ],
+   [
+    138.904,
+    74.35,
+    -111.43,
+    5.35,
+    "S"
+   ],
+   [
+    139.496,
+    74.35,
+    -117.35,
+    5.53,
+    "E"
+   ],
+   [
+    139.731,
+    76.7,
+    -117.35,
+    5.6,
+    "S"
+   ],
+   [
+    140.202,
+    76.7,
+    -122.06,
+    5.75,
+    "E"
+   ],
+   [
+    140.557,
+    80.25,
+    -122.06,
+    5.86,
+    "N"
+   ],
+   [
+    140.807,
+    80.25,
+    -119.56,
+    5.94,
+    "W"
+   ],
+   [
+    141.049,
+    77.83,
+    -119.56,
+    6.01,
+    "S"
+   ],
+   [
+    141.387,
+    77.83,
+    -122.94,
+    6.12,
+    "E"
+   ],
+   [
+    142.092,
+    84.88,
+    -122.94,
+    6.34,
+    "S"
+   ],
+   [
+    142.45,
+    84.88,
+    -126.52,
+    6.45,
+    "W"
+   ],
+   [
+    142.697,
+    82.41,
+    -126.52,
+    6.53,
+    "S"
+   ],
+   [
+    143.275,
+    82.41,
+    -132.3,
+    6.71,
+    "W"
+   ],
+   [
+    143.512,
+    80.04,
+    -132.3,
+    6.78,
+    "N"
+   ],
+   [
+    143.987,
+    80.04,
+    -127.55,
+    6.93,
+    "W"
+   ],
+   [
+    144.338,
+    76.53,
+    -127.55,
+    7.04,
+    "S"
+   ],
+   [
+    144.575,
+    76.53,
+    -129.92,
+    7.11,
+    "W"
+   ],
+   [
+    144.786,
+    74.42,
+    -129.92,
+    7.18,
+    "N"
+   ],
+   [
+    144.929,
+    74.42,
+    -128.49,
+    7.22,
+    "E"
+   ],
+   [
+    145.059,
+    75.72,
+    -128.49,
+    7.26,
+    "S"
+   ],
+   [
+    145.872,
+    75.72,
+    -136.62,
+    7.52,
+    "E"
+   ],
+   [
+    146.229,
+    79.29,
+    -136.62,
+    7.63,
+    "S"
+   ],
+   [
+    146.463,
+    79.29,
+    -138.96,
+    7.7,
+    "W"
+   ],
+   [
+    147.054,
+    73.38,
+    -138.96,
+    7.88,
+    "S"
+   ],
+   [
+    147.291,
+    73.38,
+    -141.33,
+    7.96,
+    "W"
+   ],
+   [
+    147.762,
+    68.67,
+    -141.33,
+    8.0,
+    "S"
+   ],
+   [
+    148.12,
+    68.67,
+    -144.91,
+    8.0,
+    "E"
+   ],
+   [
+    148.357,
+    71.04,
+    -144.91,
+    8.0,
+    "N"
+   ],
+   [
+    148.608,
+    71.04,
+    -142.4,
+    8.0,
+    "W"
+   ],
+   [
+    148.947,
+    67.65,
+    -142.4,
+    8.0,
+    "S"
+   ],
+   [
+    149.546,
+    67.65,
+    -148.39,
+    8.0,
+    "W"
+   ],
+   [
+    150.245,
+    60.66,
+    -148.39,
+    8.0,
+    "N"
+   ],
+   [
+    151.189,
+    60.66,
+    -138.95,
+    8.0,
+    "W"
+   ],
+   [
+    151.661,
+    55.94,
+    -138.95,
+    8.0,
+    "N"
+   ],
+   [
+    151.896,
+    55.94,
+    -136.6,
+    8.0,
+    "W"
+   ],
+   [
+    152.132,
+    53.58,
+    -136.6,
+    8.0,
+    "N"
+   ],
+   [
+    152.369,
+    53.58,
+    -134.23,
+    8.0,
+    "W"
+   ],
+   [
+    152.605,
+    51.22,
+    -134.23,
+    8.0,
+    "N"
+   ],
+   [
+    153.078,
+    51.22,
+    -129.5,
+    8.0,
+    "W"
+   ],
+   [
+    153.55,
+    46.5,
+    -129.5,
+    8.0,
+    "N"
+   ],
+   [
+    154.022,
+    46.5,
+    -124.78,
+    8.0,
+    "W"
+   ],
+   [
+    154.494,
+    41.78,
+    -124.78,
+    8.0,
+    "N"
+   ],
+   [
+    154.742,
+    41.78,
+    -122.3,
+    8.0,
+    "E"
+   ],
+   [
+    154.986,
+    44.22,
+    -122.3,
+    8.0,
+    "N"
+   ],
+   [
+    155.451,
+    44.22,
+    -117.65,
+    8.0,
+    "E"
+   ],
+   [
+    155.694,
+    46.65,
+    -117.65,
+    8.0,
+    "N"
+   ],
+   [
+    155.931,
+    46.65,
+    -115.28,
+    8.0,
+    "E"
+   ],
+   [
+    156.167,
+    49.01,
+    -115.28,
+    8.0,
+    "N"
+   ],
+   [
+    156.403,
+    49.01,
+    -112.92,
+    8.0,
+    "E"
+   ],
+   [
+    156.857,
+    53.55,
+    -112.92,
+    8.0,
+    "N"
+   ],
+   [
+    157.33,
+    53.55,
+    -108.19,
+    8.0,
+    "E"
+   ],
+   [
+    157.802,
+    58.27,
+    -108.19,
+    8.0,
+    "N"
+   ],
+   [
+    158.274,
+    58.27,
+    -103.47,
+    8.0,
+    "E"
+   ],
+   [
+    158.765,
+    63.18,
+    -103.47,
+    8.0,
+    "N"
+   ],
+   [
+    159.22,
+    63.18,
+    -98.92,
+    8.0,
+    "E"
+   ],
+   [
+    159.469,
+    65.67,
+    -98.92,
+    8.0,
+    "N"
+   ],
+   [
+    159.71,
+    65.67,
+    -96.51,
+    8.0,
+    "E"
+   ],
+   [
+    159.946,
+    68.03,
+    -96.51,
+    8.0,
+    "N"
+   ],
+   [
+    160.183,
+    68.03,
+    -94.14,
+    8.0,
+    "E"
+   ],
+   [
+    160.636,
+    72.56,
+    -94.14,
+    8.0,
+    "N"
+   ],
+   [
+    161.109,
+    72.56,
+    -89.41,
+    8.0,
+    "E"
+   ],
+   [
+    161.581,
+    77.28,
+    -89.41,
+    8.0,
+    "S"
+   ],
+   [
+    162.054,
+    77.28,
+    -94.14,
+    8.0,
+    "E"
+   ],
+   [
+    162.309,
+    79.83,
+    -94.14,
+    8.0,
+    "S"
+   ],
+   [
+    162.545,
+    79.83,
+    -96.5,
+    8.0,
+    "E"
+   ],
+   [
+    162.781,
+    82.19,
+    -96.5,
+    8.0,
+    "N"
+   ],
+   [
+    163.017,
+    82.19,
+    -94.14,
+    8.0,
+    "E"
+   ],
+   [
+    163.253,
+    84.55,
+    -94.14,
+    8.0,
+    "N"
+   ],
+   [
+    163.49,
+    84.55,
+    -91.77,
+    8.0,
+    "E"
+   ],
+   [
+    163.726,
+    86.91,
+    -91.77,
+    8.0,
+    "N"
+   ],
+   [
+    163.962,
+    86.91,
+    -89.41,
+    8.0,
+    "E"
+   ],
+   [
+    164.198,
+    89.27,
+    -89.41,
+    8.0,
+    "N"
+   ],
+   [
+    164.434,
+    89.27,
+    -87.05,
+    8.0,
+    "W"
+   ],
+   [
+    164.909,
+    84.52,
+    -87.05,
+    8.0,
+    "N"
+   ],
+   [
+    165.145,
+    84.52,
+    -84.69,
+    8.0,
+    "E"
+   ],
+   [
+    165.379,
+    86.86,
+    -84.69,
+    8.0,
+    "N"
+   ],
+   [
+    165.611,
+    86.86,
+    -82.37,
+    8.0,
+    "E"
+   ],
+   [
+    165.852,
+    89.27,
+    -82.37,
+    8.0,
+    "N"
+   ],
+   [
+    166.307,
+    89.27,
+    -77.82,
+    8.0,
+    "E"
+   ],
+   [
+    167.249,
+    98.69,
+    -77.82,
+    0.0,
+    "S"
+   ],
+   [
+    167.724,
+    98.69,
+    -82.57,
+    0.0,
+    "E"
+   ],
+   [
+    167.974,
+    101.19,
+    -82.57,
+    0.0,
+    "N"
+   ],
+   [
+    168.43,
+    101.19,
+    -78.01,
+    0.0,
+    "E"
+   ],
+   [
+    168.681,
+    103.7,
+    -78.01,
+    0.0,
+    "N"
+   ],
+   [
+    169.144,
+    103.7,
+    -73.38,
+    0.0,
+    "E"
+   ],
+   [
+    169.614,
+    108.4,
+    -73.38,
+    0.0,
+    "N"
+   ],
+   [
+    170.086,
+    108.4,
+    -68.66,
+    0.0,
+    "E"
+   ],
+   [
+    171.029,
+    117.83,
+    -68.66,
+    0.0,
+    "S"
+   ],
+   [
+    171.504,
+    117.83,
+    -73.41,
+    0.0,
+    "E"
+   ],
+   [
+    171.738,
+    120.17,
+    -73.41,
+    0.0,
+    "N"
+   ],
+   [
+    172.21,
+    120.17,
+    -68.69,
+    0.0,
+    "E"
+   ],
+   [
+    172.463,
+    122.7,
+    -68.69,
+    0.0,
+    "N"
+   ],
+   [
+    172.931,
+    122.7,
+    -64.01,
+    0.0,
+    "E"
+   ],
+   [
+    173.392,
+    127.31,
+    -64.01,
+    0.0,
+    "N"
+   ],
+   [
+    173.866,
+    127.31,
+    -59.27,
+    0.0,
+    "E"
+   ],
+   [
+    174.809,
+    136.74,
+    -59.27,
+    0.0,
+    "S"
+   ],
+   [
+    175.283,
+    136.74,
+    -64.01,
+    0.0,
+    "E"
+   ],
+   [
+    175.539,
+    139.3,
+    -64.01,
+    0.0,
+    "S"
+   ],
+   [
+    175.989,
+    139.3,
+    -68.51,
+    0.0,
+    "W"
+   ],
+   [
+    176.245,
+    136.74,
+    -68.51,
+    0.0,
+    "S"
+   ],
+   [
+    176.698,
+    136.74,
+    -73.04,
+    0.0,
+    "E"
+   ],
+   [
+    177.172,
+    141.48,
+    -73.04,
+    0.0,
+    "S"
+   ],
+   [
+    177.644,
+    141.48,
+    -77.76,
+    0.0,
+    "W"
+   ],
+   [
+    178.577,
+    132.15,
+    -77.76,
+    0.0,
+    "S"
+   ],
+   [
+    179.063,
+    132.15,
+    -82.62,
+    0.0,
+    "E"
+   ],
+   [
+    179.301,
+    134.53,
+    -82.62,
+    0.0,
+    "S"
+   ],
+   [
+    179.774,
+    134.53,
+    -87.35,
+    0.0,
+    "W"
+   ],
+   [
+    180.025,
+    132.02,
+    -87.35,
+    0.0,
+    "S"
+   ],
+   [
+    180.497,
+    132.02,
+    -92.07,
+    0.0,
+    "E"
+   ],
+   [
+    180.953,
+    136.58,
+    -92.07,
+    0.0,
+    "S"
+   ],
+   [
+    181.426,
+    136.58,
+    -96.8,
+    0.0,
+    "W"
+   ],
+   [
+    182.38,
+    127.04,
+    -96.8,
+    0.45,
+    "N"
+   ],
+   [
+    182.844,
+    127.04,
+    -92.16,
+    0.82,
+    "W"
+   ],
+   [
+    183.098,
+    124.5,
+    -92.16,
+    1.03,
+    "N"
+   ],
+   [
+    183.549,
+    124.5,
+    -87.65,
+    1.39,
+    "W"
+   ],
+   [
+    183.804,
+    121.95,
+    -87.65,
+    1.59,
+    "N"
+   ],
+   [
+    184.256,
+    121.95,
+    -83.13,
+    1.95,
+    "W"
+   ],
+   [
+    184.732,
+    117.19,
+    -83.13,
+    2.34,
+    "N"
+   ],
+   [
+    185.204,
+    117.19,
+    -78.41,
+    2.71,
+    "W"
+   ],
+   [
+    186.148,
+    107.75,
+    -78.41,
+    3.47,
+    "N"
+   ],
+   [
+    186.622,
+    107.75,
+    -73.67,
+    3.85,
+    "W"
+   ],
+   [
+    186.86,
+    105.37,
+    -73.67,
+    4.04,
+    "S"
+   ],
+   [
+    187.333,
+    105.37,
+    -78.4,
+    4.42,
+    "E"
+   ],
+   [
+    187.584,
+    107.88,
+    -78.4,
+    4.62,
+    "S"
+   ],
+   [
+    188.039,
+    107.88,
+    -82.95,
+    4.99,
+    "E"
+   ],
+   [
+    188.512,
+    112.61,
+    -82.95,
+    5.0,
+    "S"
+   ],
+   [
+    188.984,
+    112.61,
+    -87.67,
+    5.0,
+    "E"
+   ],
+   [
+    189.927,
+    122.04,
+    -87.67,
+    5.0,
+    "S"
+   ],
+   [
+    190.403,
+    122.04,
+    -92.43,
+    5.0,
+    "E"
+   ],
+   [
+    190.656,
+    124.57,
+    -92.43,
+    5.0,
+    "N"
+   ],
+   [
+    191.127,
+    124.57,
+    -87.72,
+    5.0,
+    "E"
+   ],
+   [
+    191.363,
+    126.93,
+    -87.72,
+    5.0,
+    "N"
+   ],
+   [
+    191.817,
+    126.93,
+    -83.18,
+    5.0,
+    "E"
+   ],
+   [
+    192.293,
+    131.69,
+    -83.18,
+    5.0,
+    "N"
+   ],
+   [
+    192.763,
+    131.69,
+    -78.48,
+    5.0,
+    "E"
+   ],
+   [
+    193.71,
+    141.16,
+    -78.48,
+    5.0,
+    "N"
+   ],
+   [
+    194.193,
+    141.16,
+    -73.65,
+    5.0,
+    "E"
+   ],
+   [
+    194.419,
+    143.42,
+    -73.65,
+    5.0,
+    "S"
+   ],
+   [
+    194.887,
+    143.42,
+    -78.33,
+    5.0,
+    "E"
+   ],
+   [
+    195.138,
+    145.93,
+    -78.33,
+    5.0,
+    "S"
+   ],
+   [
+    197.058,
+    145.93,
+    -97.53,
+    0.0,
+    "E"
+   ],
+   [
+    198.212,
+    157.47,
+    -97.53,
+    0.0,
+    "S"
+   ],
+   [
+    199.155,
+    157.47,
+    -106.96,
+    0.0,
+    "W"
+   ],
+   [
+    199.643,
+    152.59,
+    -106.96,
+    0.0,
+    "S"
+   ],
+   [
+    200.812,
+    152.59,
+    -118.65,
+    0.0,
+    "W"
+   ],
+   [
+    201.996,
+    140.75,
+    -118.65,
+    0.0,
+    "S"
+   ],
+   [
+    202.941,
+    140.75,
+    -128.1,
+    0.0,
+    "W"
+   ],
+   [
+    203.413,
+    136.03,
+    -128.1,
+    0.0,
+    "S"
+   ],
+   [
+    204.6,
+    136.03,
+    -139.97,
+    0.0,
+    "W"
+   ],
+   [
+    205.769,
+    124.34,
+    -139.97,
+    0.0,
+    "S"
+   ],
+   [
+    206.714,
+    124.34,
+    -149.42,
+    0.0,
+    "W"
+   ],
+   [
+    207.202,
+    119.46,
+    -149.42,
+    0.0,
+    "S"
+   ],
+   [
+    208.37,
+    119.46,
+    -161.1,
+    0.0,
+    "W"
+   ],
+   [
+    209.555,
+    107.61,
+    -161.1,
+    0.0,
+    "S"
+   ],
+   [
+    212.253,
+    107.61,
+    -188.08,
+    0.0,
+    "S"
+   ]
+  ]
+ },
+ "elevation": [
+  {
+   "t": 45.382,
+   "type": "fall",
+   "dy": -4
+  },
+  {
+   "t0": 62.389,
+   "t1": 66.169,
+   "type": "ramp",
+   "dy": 8
+  },
+  {
+   "t0": 91.302,
+   "t1": 98.294,
+   "type": "ramp",
+   "dy": 6
+  },
+  {
+   "t": 105.853,
+   "type": "fall",
+   "dy": -6
+  },
+  {
+   "t0": 134.576,
+   "t1": 147.426,
+   "type": "ramp",
+   "dy": 4
+  },
+  {
+   "t": 166.323,
+   "type": "fall",
+   "dy": -8
+  },
+  {
+   "t0": 181.819,
+   "t1": 188.055,
+   "type": "ramp",
+   "dy": 5
+  },
+  {
+   "t": 196.559,
+   "type": "fall",
+   "dy": -5
+  }
+ ]
+}

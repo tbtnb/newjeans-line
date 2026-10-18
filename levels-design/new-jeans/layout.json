@@ -1,0 +1,3168 @@
+{
+ "id": "new-jeans",
+ "title": "New Jeans",
+ "palette": {
+  "skyTop": "#BFE9FA",
+  "skyBottom": "#DDF5FF",
+  "fog": "#DDF5FF",
+  "fogStart": 30,
+  "fogEnd": 100,
+  "ground": "#E9F7FD",
+  "groundY": -10,
+  "road": "#FFF9ED",
+  "roadSide": "#164A63",
+  "line": "#F36BA5",
+  "light": "#FFFFFF",
+  "lightIntensity": 1.1,
+  "ambient": "#CDE9F4",
+  "particles": null
+ },
+ "road": {
+  "height": 0.6,
+  "reveal": [
+   {
+    "t": 0,
+    "mode": "rise",
+    "lead": 2.0
+   },
+   {
+    "t": 14.675,
+    "mode": "unfold",
+    "lead": 1.6
+   },
+   {
+    "t": 50.496,
+    "mode": "static",
+    "lead": 2.0
+   },
+   {
+    "t": 57.66,
+    "mode": "rise",
+    "lead": 1.5
+   },
+   {
+    "t": 86.317,
+    "mode": "unfold",
+    "lead": 1.6
+   }
+  ],
+  "width": [
+   {
+    "t": 0,
+    "w": 2.2
+   },
+   {
+    "t": 36.19,
+    "w": 2.0
+   },
+   {
+    "t": 86.34,
+    "w": 1.8
+   },
+   {
+    "t": 100.67,
+    "w": 2.2
+   }
+  ]
+ },
+ "sections": [
+  {
+   "t": 0,
+   "label": "Intro · 方格纸",
+   "palette": {
+    "skyTop": "#E7F7FD"
+   },
+   "camera": "iso",
+   "note": "open blank plan; long straight + one big L; side slabs flip up on the first percussion"
+  },
+  {
+   "t": 7.511,
+   "label": "Beat in · 蓝图线",
+   "camera": "iso",
+   "note": "switchbacks on the 2-step snares; first buildings unfold from the plan"
+  },
+  {
+   "t": 14.675,
+   "label": "Verse 1 · 纸片房屋",
+   "camera": "iso",
+   "note": "the line wraps round the Bunny Gate, then an open U through the courtyard; two rows of blocks rise between vocal phrases"
+  },
+  {
+   "t": 36.168,
+   "label": "Chorus 1 · 五色尾迹",
+   "palette": {
+    "skyTop": "#AEE3F7",
+    "particles": "pixels"
+   },
+   "camera": "wide",
+   "note": "L1 (+4): horseshoe of staircases round the sunken city courtyard; five flight fins rise one by one on the hook accents"
+  },
+  {
+   "t": 50.496,
+   "label": "Break · 像素平面",
+   "palette": {
+    "skyTop": "#D3EEF9",
+    "particles": null
+   },
+   "camera": "high",
+   "note": "drop to L0 and run UNDER the chorus deck; tall blocks retract, the fins cast the bunny shadow (E1)"
+  },
+  {
+   "t": 57.66,
+   "label": "Rebuild · 重新立起",
+   "camera": "iso",
+   "note": "the city re-rises block by block on the kicks"
+  },
+  {
+   "t": 64.825,
+   "label": "Verse 2 · 立体城市",
+   "camera": "side",
+   "note": "four-fold offset alley, then a square spiral up the courtyard tower to L1"
+  },
+  {
+   "t": 86.317,
+   "label": "Chorus 2 · 飞行",
+   "palette": {
+    "skyTop": "#9FDDF5",
+    "particles": "pixels"
+   },
+   "camera": "wide",
+   "note": "climb to L2 (+8): big offset staircases above the whole city; fins open outward like pages; pixel billboard far away"
+  },
+  {
+   "t": 100.645,
+   "label": "Outro · 牛仔徽章",
+   "palette": {
+    "skyTop": "#CFEFFB",
+    "lightIntensity": 1.0
+   },
+   "camera": "high",
+   "note": "one elbow, long finish straight on L2; the five trails freeze into the cover tableau"
+  }
+ ],
+ "camera": [
+  {
+   "t": 0,
+   "preset": "iso",
+   "blend": 0
+  },
+  {
+   "t": 14.675,
+   "preset": "iso",
+   "yaw": 20,
+   "blend": 2.0
+  },
+  {
+   "t": 32.586,
+   "preset": "iso",
+   "blend": 1.5
+  },
+  {
+   "t": 36.168,
+   "preset": "wide",
+   "blend": 1.0
+  },
+  {
+   "t": 43.332,
+   "preset": "iso",
+   "blend": 2.0
+  },
+  {
+   "t": 50.496,
+   "preset": "high",
+   "blend": 1.0
+  },
+  {
+   "t": 57.66,
+   "preset": "iso",
+   "blend": 2.0
+  },
+  {
+   "t": 64.825,
+   "preset": "side",
+   "blend": 1.5
+  },
+  {
+   "t": 79.153,
+   "preset": "high",
+   "blend": 1.0
+  },
+  {
+   "t": 86.317,
+   "preset": "wide",
+   "blend": 0.9
+  },
+  {
+   "t": 93.481,
+   "preset": "iso",
+   "blend": 2.0
+  },
+  {
+   "t": 100.645,
+   "preset": "high",
+   "dist": 36,
+   "blend": 5.0
+  }
+ ],
+ "objects": [
+  {
+   "id": "slab0",
+   "t": 1.0,
+   "side": 3.4,
+   "kind": "box",
+   "size": [
+    1.6,
+    0.3,
+    1.6
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 7.511,
+    "mode": "unfold",
+    "dur": 0.4
+   }
+  },
+  {
+   "id": "slab1",
+   "t": 2.1,
+   "side": -3.4,
+   "kind": "box",
+   "size": [
+    1.6,
+    0.3,
+    1.6
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 7.7348805,
+    "mode": "unfold",
+    "dur": 0.4
+   }
+  },
+  {
+   "id": "slab2",
+   "t": 3.2,
+   "side": 3.4,
+   "kind": "box",
+   "size": [
+    1.6,
+    0.3,
+    1.6
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 7.958761,
+    "mode": "unfold",
+    "dur": 0.4
+   }
+  },
+  {
+   "id": "slab3",
+   "t": 4.300000000000001,
+   "side": -3.4,
+   "kind": "box",
+   "size": [
+    1.6,
+    0.3,
+    1.6
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 8.1826415,
+    "mode": "unfold",
+    "dur": 0.4
+   }
+  },
+  {
+   "id": "slab4",
+   "t": 5.4,
+   "side": 3.4,
+   "kind": "box",
+   "size": [
+    1.6,
+    0.3,
+    1.6
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 8.406522,
+    "mode": "unfold",
+    "dur": 0.4
+   }
+  },
+  {
+   "id": "slab5",
+   "t": 6.5,
+   "side": -3.4,
+   "kind": "box",
+   "size": [
+    1.6,
+    0.3,
+    1.6
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 8.6304025,
+    "mode": "unfold",
+    "dur": 0.4
+   }
+  },
+  {
+   "id": "bunny_gate",
+   "t": 18.257,
+   "kind": "group",
+   "radius": 4,
+   "landmark": true,
+   "name": "兔耳门 Bunny Gate (white voxel gate with square eyes)",
+   "react": "beat",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      -2.2,
+      2.0,
+      0
+     ],
+     "size": [
+      1.2,
+      4,
+      1.2
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2.2,
+      2.0,
+      0
+     ],
+     "size": [
+      1.2,
+      4,
+      1.2
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.6,
+      0
+     ],
+     "size": [
+      5.6,
+      1.4,
+      1.2
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.4,
+      6.6,
+      0
+     ],
+     "size": [
+      0.9,
+      2.8,
+      0.9
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.4,
+      6.6,
+      0
+     ],
+     "size": [
+      0.9,
+      2.8,
+      0.9
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -0.9,
+      4.7,
+      -0.62
+     ],
+     "size": [
+      0.5,
+      0.5,
+      0.05
+     ],
+     "color": "#164A63"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.9,
+      4.7,
+      -0.62
+     ],
+     "size": [
+      0.5,
+      0.5,
+      0.05
+     ],
+     "color": "#164A63"
+    },
+    {
+     "kind": "plane",
+     "pos": [
+      0,
+      4.6,
+      -0.61
+     ],
+     "size": [
+      2.2,
+      0,
+      1.0
+     ],
+     "color": "#FFF9ED",
+     "texture": "art/bunny-gate-face.jpg"
+    }
+   ],
+   "appear": {
+    "t": 14.675,
+    "mode": "rise",
+    "dur": 1.0
+   },
+   "worldPos": [
+    50.85,
+    0.0,
+    99.73
+   ]
+  },
+  {
+   "id": "cblock0",
+   "t": 16.466,
+   "side": 27.0,
+   "kind": "building",
+   "size": [
+    3,
+    3,
+    3
+   ],
+   "color": "#397FC0",
+   "color2": "#FFF9ED",
+   "appear": {
+    "t": 14.666,
+    "mode": "rise",
+    "dur": 0.7
+   },
+   "react": "kick"
+  },
+  {
+   "id": "cblock1",
+   "t": 18.066000000000003,
+   "side": -9,
+   "kind": "building",
+   "size": [
+    3,
+    4,
+    3
+   ],
+   "color": "#73D5EB",
+   "color2": "#FFF9ED",
+   "appear": {
+    "t": 16.266000000000002,
+    "mode": "rise",
+    "dur": 0.7
+   },
+   "react": "kick"
+  },
+  {
+   "id": "cblock2",
+   "t": 19.666,
+   "side": 12.75,
+   "kind": "building",
+   "size": [
+    3,
+    5,
+    3
+   ],
+   "color": "#397FC0",
+   "color2": "#FFF9ED",
+   "appear": {
+    "t": 17.866,
+    "mode": "rise",
+    "dur": 0.7
+   },
+   "react": "kick"
+  },
+  {
+   "id": "cblock3",
+   "t": 21.266000000000002,
+   "side": -15.75,
+   "kind": "building",
+   "size": [
+    3,
+    3,
+    3
+   ],
+   "color": "#73D5EB",
+   "color2": "#FFF9ED",
+   "appear": {
+    "t": 19.466,
+    "mode": "rise",
+    "dur": 0.7
+   },
+   "react": "kick"
+  },
+  {
+   "id": "cblock4",
+   "t": 22.866,
+   "side": 9,
+   "kind": "building",
+   "size": [
+    3,
+    4,
+    3
+   ],
+   "color": "#397FC0",
+   "color2": "#FFF9ED",
+   "appear": {
+    "t": 21.066,
+    "mode": "rise",
+    "dur": 0.7
+   },
+   "react": "kick"
+  },
+  {
+   "id": "cblock5",
+   "t": 24.466,
+   "side": -17.25,
+   "kind": "building",
+   "size": [
+    3,
+    5,
+    3
+   ],
+   "color": "#73D5EB",
+   "color2": "#FFF9ED",
+   "appear": {
+    "t": 22.666,
+    "mode": "rise",
+    "dur": 0.7
+   },
+   "react": "kick"
+  },
+  {
+   "id": "cblock6",
+   "t": 26.066000000000003,
+   "side": 38.25,
+   "kind": "building",
+   "size": [
+    3,
+    3,
+    3
+   ],
+   "color": "#397FC0",
+   "color2": "#FFF9ED",
+   "appear": {
+    "t": 24.266000000000002,
+    "mode": "rise",
+    "dur": 0.7
+   },
+   "react": "kick"
+  },
+  {
+   "id": "cblock7",
+   "t": 27.666000000000004,
+   "side": -31.5,
+   "kind": "building",
+   "size": [
+    3,
+    4,
+    3
+   ],
+   "color": "#73D5EB",
+   "color2": "#FFF9ED",
+   "appear": {
+    "t": 25.866000000000003,
+    "mode": "rise",
+    "dur": 0.7
+   },
+   "react": "kick"
+  },
+  {
+   "id": "sunken_court",
+   "t": 41.541,
+   "kind": "group",
+   "radius": 6,
+   "landmark": true,
+   "name": "下沉城市庭院 (low buildings rise block by block inside the horseshoe)",
+   "y": -4,
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      -3,
+      1.0,
+      -3
+     ],
+     "size": [
+      2.4,
+      2,
+      2.4
+     ],
+     "color": "#397FC0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.5,
+      -3
+     ],
+     "size": [
+      2.4,
+      3,
+      2.4
+     ],
+     "color": "#73D5EB"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      3,
+      1.0,
+      -3
+     ],
+     "size": [
+      2.4,
+      2,
+      2.4
+     ],
+     "color": "#397FC0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -3,
+      1.5,
+      0
+     ],
+     "size": [
+      2.4,
+      3,
+      2.4
+     ],
+     "color": "#73D5EB"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.0,
+      0
+     ],
+     "size": [
+      2.4,
+      4,
+      2.4
+     ],
+     "color": "#397FC0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      3,
+      1.25,
+      0
+     ],
+     "size": [
+      2.4,
+      2.5,
+      2.4
+     ],
+     "color": "#73D5EB"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -3,
+      1.0,
+      3
+     ],
+     "size": [
+      2.4,
+      2,
+      2.4
+     ],
+     "color": "#397FC0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.5,
+      3
+     ],
+     "size": [
+      2.4,
+      3,
+      2.4
+     ],
+     "color": "#73D5EB"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      3,
+      1.0,
+      3
+     ],
+     "size": [
+      2.4,
+      2,
+      2.4
+     ],
+     "color": "#397FC0"
+    }
+   ],
+   "appear": {
+    "t": 36.368,
+    "mode": "rise",
+    "dur": 2.0
+   },
+   "worldPos": [
+    139.4,
+    0.0,
+    143.91
+   ]
+  },
+  {
+   "id": "fin0",
+   "t": 37.959,
+   "side": -10.25,
+   "kind": "box",
+   "size": [
+    0.4,
+    4.0,
+    3.2
+   ],
+   "color": "#F36BA5",
+   "landmark": false,
+   "name": null,
+   "appear": {
+    "t": 36.168,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "react": "beat"
+  },
+  {
+   "id": "fin1",
+   "t": 39.159000000000006,
+   "side": -10.9,
+   "kind": "box",
+   "size": [
+    0.4,
+    5.2,
+    3.2
+   ],
+   "color": "#397FC0",
+   "landmark": false,
+   "name": null,
+   "appear": {
+    "t": 37.063522,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "react": "beat"
+  },
+  {
+   "id": "fin2",
+   "t": 40.359,
+   "kind": "box",
+   "size": [
+    0.4,
+    6.4,
+    3.2
+   ],
+   "color": "#8FDFB7",
+   "landmark": true,
+   "name": "五色飞行鳍片 Flight Fins",
+   "appear": {
+    "t": 37.959044,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "react": "beat",
+   "worldPos": [
+    136.53,
+    4.0,
+    148.87
+   ]
+  },
+  {
+   "id": "fin3",
+   "t": 41.559000000000005,
+   "side": -12.2,
+   "kind": "box",
+   "size": [
+    0.4,
+    7.6,
+    3.2
+   ],
+   "color": "#F5CA63",
+   "landmark": false,
+   "name": null,
+   "appear": {
+    "t": 38.854566,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "react": "beat"
+  },
+  {
+   "id": "fin4",
+   "t": 42.759,
+   "side": -13.6,
+   "kind": "box",
+   "size": [
+    0.4,
+    8.8,
+    3.2
+   ],
+   "color": "#B7A0EA",
+   "landmark": false,
+   "name": null,
+   "appear": {
+    "t": 39.750088,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "react": "beat"
+  },
+  {
+   "id": "egg_bunny_shadow",
+   "t": 54.078,
+   "side": -17.0,
+   "y": 0.05,
+   "kind": "group",
+   "radius": 2,
+   "egg": true,
+   "name": "E1 兔影: the fins' shadows form a bunny for one beat under the deck",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      2.4,
+      0.04,
+      2.0
+     ],
+     "color": "#164A63"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -0.6,
+      0,
+      -1.8
+     ],
+     "size": [
+      0.5,
+      0.04,
+      1.8
+     ],
+     "color": "#164A63"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.6,
+      0,
+      -1.8
+     ],
+     "size": [
+      0.5,
+      0.04,
+      1.8
+     ],
+     "color": "#164A63"
+    }
+   ],
+   "appear": {
+    "t": 54.078,
+    "mode": "fade",
+    "dur": 0.3
+   },
+   "exit": {
+    "t": 54.973522,
+    "mode": "fade",
+    "dur": 0.3
+   }
+  },
+  {
+   "id": "rtower0",
+   "t": 57.66,
+   "side": 15.5,
+   "kind": "building",
+   "size": [
+    3,
+    5,
+    3
+   ],
+   "color": "#FFFFFF",
+   "color2": "#F36BA5",
+   "appear": {
+    "t": 56.16,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "rtower1",
+   "t": 58.41,
+   "side": -8,
+   "kind": "building",
+   "size": [
+    3,
+    7,
+    3
+   ],
+   "color": "#FFFFFF",
+   "color2": "#397FC0",
+   "appear": {
+    "t": 56.91,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "rtower2",
+   "t": 59.16,
+   "side": 29.75,
+   "kind": "building",
+   "size": [
+    3,
+    9,
+    3
+   ],
+   "color": "#FFFFFF",
+   "color2": "#8FDFB7",
+   "appear": {
+    "t": 57.66,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "rtower3",
+   "t": 59.91,
+   "side": -29.0,
+   "kind": "building",
+   "size": [
+    3,
+    5,
+    3
+   ],
+   "color": "#FFFFFF",
+   "color2": "#F5CA63",
+   "appear": {
+    "t": 58.41,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "rtower4",
+   "t": 60.66,
+   "side": 17.75,
+   "kind": "building",
+   "size": [
+    3,
+    7,
+    3
+   ],
+   "color": "#FFFFFF",
+   "color2": "#B7A0EA",
+   "appear": {
+    "t": 59.16,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "rtower5",
+   "t": 61.41,
+   "side": -8,
+   "kind": "building",
+   "size": [
+    3,
+    9,
+    3
+   ],
+   "color": "#FFFFFF",
+   "color2": "#F36BA5",
+   "appear": {
+    "t": 59.91,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "rtower6",
+   "t": 62.16,
+   "side": 8,
+   "kind": "building",
+   "size": [
+    3,
+    5,
+    3
+   ],
+   "color": "#FFFFFF",
+   "color2": "#397FC0",
+   "appear": {
+    "t": 60.66,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "rtower7",
+   "t": 62.91,
+   "side": -8,
+   "kind": "building",
+   "size": [
+    3,
+    7,
+    3
+   ],
+   "color": "#FFFFFF",
+   "color2": "#8FDFB7",
+   "appear": {
+    "t": 61.41,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "rtower8",
+   "t": 63.66,
+   "side": 18.5,
+   "kind": "building",
+   "size": [
+    3,
+    9,
+    3
+   ],
+   "color": "#FFFFFF",
+   "color2": "#F5CA63",
+   "appear": {
+    "t": 62.16,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "rtower9",
+   "t": 64.41,
+   "side": -26.0,
+   "kind": "building",
+   "size": [
+    3,
+    5,
+    3
+   ],
+   "color": "#FFFFFF",
+   "color2": "#B7A0EA",
+   "appear": {
+    "t": 62.91,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "court_tower",
+   "t": 80.944,
+   "kind": "group",
+   "radius": 3,
+   "landmark": true,
+   "name": "庭院塔 (the Verse-2 spiral winds round it)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4,
+      0
+     ],
+     "size": [
+      3,
+      8,
+      3
+     ],
+     "color": "#397FC0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      8.6,
+      0
+     ],
+     "size": [
+      3.4,
+      1.2,
+      3.4
+     ],
+     "color": "#FFF9ED"
+    }
+   ],
+   "appear": {
+    "t": 75.571,
+    "mode": "rise",
+    "dur": 1.4
+   },
+   "worldPos": [
+    111.92,
+    2.0,
+    189.55
+   ]
+  },
+  {
+   "id": "pixel_billboard",
+   "t": 89.899,
+   "side": -26,
+   "y": 6,
+   "kind": "image",
+   "src": "art/pixel-billboard.jpg",
+   "size": [
+    16,
+    0,
+    9
+   ],
+   "mode": "billboard",
+   "landmark": true,
+   "nopocket": true,
+   "name": "像素天空广告牌",
+   "appear": {
+    "t": 86.317,
+    "mode": "fade",
+    "dur": 1.5
+   }
+  },
+  {
+   "id": "trails_decal",
+   "t": 95.272,
+   "pocket": true,
+   "radius": 6,
+   "y": -7.9,
+   "kind": "image",
+   "src": "art/five-trails-decal.png",
+   "size": [
+    24,
+    0,
+    6
+   ],
+   "mode": "flat",
+   "alpha": true,
+   "appear": {
+    "t": 93.481,
+    "mode": "fade",
+    "dur": 1.5
+   },
+   "worldPos": [
+    155.45,
+    0.1,
+    189.2
+   ]
+  },
+  {
+   "id": "cover_tableau",
+   "t": 106.019,
+   "kind": "group",
+   "radius": 6,
+   "landmark": true,
+   "name": "封面定格台 Cover Tableau: five pixel silhouettes + five colour bands",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      -4,
+      1.2,
+      0
+     ],
+     "size": [
+      1.2,
+      2.4,
+      0.6
+     ],
+     "color": "#F36BA5"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -2,
+      1.2,
+      0
+     ],
+     "size": [
+      1.2,
+      2.4,
+      0.6
+     ],
+     "color": "#397FC0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.2,
+      0
+     ],
+     "size": [
+      1.2,
+      2.4,
+      0.6
+     ],
+     "color": "#8FDFB7"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2,
+      1.2,
+      0
+     ],
+     "size": [
+      1.2,
+      2.4,
+      0.6
+     ],
+     "color": "#F5CA63"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      4,
+      1.2,
+      0
+     ],
+     "size": [
+      1.2,
+      2.4,
+      0.6
+     ],
+     "color": "#B7A0EA"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -4,
+      2.6,
+      4
+     ],
+     "size": [
+      0.6,
+      0.6,
+      8
+     ],
+     "color": "#F36BA5"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -2,
+      2.6,
+      4
+     ],
+     "size": [
+      0.6,
+      0.6,
+      8
+     ],
+     "color": "#397FC0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.6,
+      4
+     ],
+     "size": [
+      0.6,
+      0.6,
+      8
+     ],
+     "color": "#8FDFB7"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2,
+      2.6,
+      4
+     ],
+     "size": [
+      0.6,
+      0.6,
+      8
+     ],
+     "color": "#F5CA63"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      4,
+      2.6,
+      4
+     ],
+     "size": [
+      0.6,
+      0.6,
+      8
+     ],
+     "color": "#B7A0EA"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -0.2,
+      1
+     ],
+     "size": [
+      12,
+      0.4,
+      10
+     ],
+     "color": "#73D5EB"
+    }
+   ],
+   "appear": {
+    "t": 102.437,
+    "mode": "rise",
+    "dur": 1.6
+   },
+   "worldPos": [
+    197.39,
+    8.0,
+    166.73
+   ]
+  },
+  {
+   "id": "egg_plant",
+   "t": 31.295,
+   "side": -16.5,
+   "kind": "group",
+   "radius": 1,
+   "egg": true,
+   "name": "E2 点头的小植物 (nods on the player's taps)",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      0.4,
+      0
+     ],
+     "size": [
+      0.8,
+      0.8,
+      0.8
+     ],
+     "color": "#FFBB7C"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      1.2,
+      0
+     ],
+     "size": [
+      1,
+      1,
+      1
+     ],
+     "color": "#8FDFB7"
+    }
+   ],
+   "react": "tap"
+  },
+  {
+   "id": "fakefork2",
+   "t": 55.185,
+   "worldPos": [
+    164.47,
+    -0.35,
+    141.7
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    2.0,
+    0.7,
+    6.0
+   ],
+   "color": "#FFF9ED",
+   "name": "fake-out fork (visual only, crumbles away)",
+   "appear": {
+    "t": 53.19,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "exit": {
+    "t": 55.79,
+    "mode": "fall",
+    "dur": 0.8
+   }
+  },
+  {
+   "id": "fakefork3",
+   "t": 71.306,
+   "worldPos": [
+    135.19,
+    -0.35,
+    208.49
+   ],
+   "rot": 270,
+   "kind": "box",
+   "size": [
+    2.0,
+    0.7,
+    6.0
+   ],
+   "color": "#FFF9ED",
+   "name": "fake-out fork (visual only, crumbles away)",
+   "appear": {
+    "t": 69.31,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "exit": {
+    "t": 71.91,
+    "mode": "fall",
+    "dur": 0.8
+   }
+  },
+  {
+   "id": "fakefork4",
+   "t": 102.46,
+   "worldPos": [
+    167.93,
+    7.65,
+    156.98
+   ],
+   "rot": 180,
+   "kind": "box",
+   "size": [
+    2.2,
+    0.7,
+    6.0
+   ],
+   "color": "#FFF9ED",
+   "name": "fake-out fork (visual only, crumbles away)",
+   "appear": {
+    "t": 100.46,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "exit": {
+    "t": 103.06,
+    "mode": "fall",
+    "dur": 0.8
+   }
+  },
+  {
+   "id": "alley_block_0",
+   "t": 29.54,
+   "worldPos": [
+    81.75,
+    0.0,
+    99.96
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.07,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_1",
+   "t": 29.54,
+   "worldPos": [
+    81.75,
+    0.0,
+    101.68
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.1,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_2",
+   "t": 29.54,
+   "worldPos": [
+    81.75,
+    0.0,
+    103.39
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.13,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_3",
+   "t": 29.54,
+   "worldPos": [
+    81.75,
+    0.0,
+    105.11
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.16,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_4",
+   "t": 29.54,
+   "worldPos": [
+    81.75,
+    0.0,
+    106.83
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.19,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_5",
+   "t": 29.54,
+   "worldPos": [
+    81.75,
+    0.0,
+    108.54
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.22,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_6",
+   "t": 29.54,
+   "worldPos": [
+    81.75,
+    0.0,
+    115.41
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.25,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_7",
+   "t": 29.54,
+   "worldPos": [
+    81.75,
+    0.0,
+    117.12
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.28,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_8",
+   "t": 29.54,
+   "worldPos": [
+    98.38,
+    0.0,
+    99.96
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.31,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_9",
+   "t": 29.54,
+   "worldPos": [
+    98.38,
+    0.0,
+    101.68
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.34,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_10",
+   "t": 29.54,
+   "worldPos": [
+    98.38,
+    0.0,
+    110.26
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.37,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_11",
+   "t": 29.54,
+   "worldPos": [
+    98.38,
+    0.0,
+    111.98
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.4,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_12",
+   "t": 29.54,
+   "worldPos": [
+    98.38,
+    0.0,
+    113.69
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.72
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.43,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_13",
+   "t": 29.54,
+   "worldPos": [
+    95.88,
+    0.0,
+    99.1
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.66
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.46,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_14",
+   "t": 29.54,
+   "worldPos": [
+    97.55,
+    0.0,
+    99.1
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.66
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.49,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_15",
+   "t": 29.54,
+   "worldPos": [
+    82.59,
+    0.0,
+    117.98
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.66
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.52,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "alley_block_16",
+   "t": 29.54,
+   "worldPos": [
+    84.25,
+    0.0,
+    117.98
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.66
+   ],
+   "color": "#73D5EB",
+   "appear": {
+    "t": 25.55,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  }
+ ],
+ "events": [
+  {
+   "t": 36.168,
+   "type": "burst",
+   "at": "player",
+   "color": "#F36BA5",
+   "amount": 50
+  },
+  {
+   "t": 36.168,
+   "type": "light",
+   "target": "fin*",
+   "every": 0.895522,
+   "level": 0.6,
+   "color": "#FFFFFF",
+   "dur": 0.4,
+   "until": 50.496
+  },
+  {
+   "t": 50.496,
+   "type": "lower",
+   "target": "cblock*",
+   "dy": 3,
+   "dur": 1.0
+  },
+  {
+   "t": 50.496,
+   "type": "flash",
+   "amount": 0.25
+  },
+  {
+   "t": 57.66,
+   "type": "raise",
+   "target": "cblock*",
+   "dy": 3,
+   "dur": 2.0
+  },
+  {
+   "t": 86.317,
+   "type": "burst",
+   "at": "player",
+   "color": "#F5CA63",
+   "amount": 60
+  },
+  {
+   "t": 93.481,
+   "type": "spin",
+   "target": "fin*",
+   "speed": 0.6,
+   "until": 100.645
+  },
+  {
+   "t": 100.645,
+   "type": "particles",
+   "particles": "pixels",
+   "until": 107.81
+  }
+ ],
+ "diamonds": [
+  {
+   "t": 17.909,
+   "side": 0
+  },
+  {
+   "t": 26.873,
+   "side": 0
+  },
+  {
+   "t": 41.983,
+   "side": 0
+  },
+  {
+   "t": 47.021,
+   "side": 0
+  },
+  {
+   "t": 48.809,
+   "side": 0
+  },
+  {
+   "t": 54.739,
+   "side": 0
+  },
+  {
+   "t": 71.642,
+   "side": 0
+  },
+  {
+   "t": 93.588,
+   "side": 0
+  },
+  {
+   "t": 97.166,
+   "side": 0
+  },
+  {
+   "t": 98.959,
+   "side": 0
+  }
+ ],
+ "crowns": [
+  {
+   "t": 34.925
+  },
+  {
+   "t": 81.493
+  }
+ ],
+ "finish": {
+  "kind": "gate",
+  "color": "#F5CA63"
+ },
+ "collectibleColors": {
+  "diamond": "#F36BA5",
+  "crown": "#F5CA63"
+ },
+ "art": {
+  "backdrop": "art/sky.jpg",
+  "ground": {
+   "src": "art/ground-graph-paper.jpg",
+   "scale": 32
+  },
+  "files": {
+   "art/sky.jpg": "pale sky blue with white pixel clouds (backdrop)",
+   "art/ground-graph-paper.jpg": "light-blue graph-paper tile: the city plan that unfolds (ground)",
+   "art/pixel-billboard.jpg": "pixel sky billboard: five abstract pixel flyers with colour trails + small pixel bunny, no faces, no text",
+   "art/bunny-gate-face.jpg": "pixel bunny icon framed in denim blue (Bunny Gate faces)",
+   "art/five-trails-decal.png": "five colour trails (pink, blue, mint, yellow, lavender) as a flat transparent ground decal"
+  }
+ },
+ "path": {
+  "note": "computed centerline nodes [t,x,z,y,heading_after] (world units, y = road elevation offset)",
+  "nodes": [
+   [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    "N"
+   ],
+   [
+    2.156,
+    0.0,
+    21.99,
+    0.0,
+    "E"
+   ],
+   [
+    3.945,
+    18.25,
+    21.99,
+    0.0,
+    "N"
+   ],
+   [
+    5.719,
+    18.25,
+    40.09,
+    0.0,
+    "E"
+   ],
+   [
+    7.063,
+    31.96,
+    40.09,
+    0.0,
+    "N"
+   ],
+   [
+    7.725,
+    31.96,
+    46.84,
+    0.0,
+    "E"
+   ],
+   [
+    8.617,
+    41.05,
+    46.84,
+    0.0,
+    "N"
+   ],
+   [
+    9.513,
+    41.05,
+    55.98,
+    0.0,
+    "E"
+   ],
+   [
+    9.736,
+    43.33,
+    55.98,
+    0.0,
+    "N"
+   ],
+   [
+    10.632,
+    43.33,
+    65.12,
+    0.0,
+    "E"
+   ],
+   [
+    11.305,
+    50.19,
+    65.12,
+    0.0,
+    "N"
+   ],
+   [
+    12.2,
+    50.19,
+    74.25,
+    0.0,
+    "E"
+   ],
+   [
+    12.879,
+    57.12,
+    74.25,
+    0.0,
+    "N"
+   ],
+   [
+    13.318,
+    57.12,
+    78.72,
+    0.0,
+    "W"
+   ],
+   [
+    13.543,
+    54.83,
+    78.72,
+    0.0,
+    "S"
+   ],
+   [
+    13.769,
+    54.83,
+    76.42,
+    0.0,
+    "E"
+   ],
+   [
+    14.214,
+    59.36,
+    76.42,
+    0.0,
+    "N"
+   ],
+   [
+    14.664,
+    59.36,
+    81.01,
+    0.0,
+    "W"
+   ],
+   [
+    15.781,
+    47.97,
+    81.01,
+    0.0,
+    "N"
+   ],
+   [
+    16.454,
+    47.97,
+    87.87,
+    0.0,
+    "E"
+   ],
+   [
+    17.573,
+    59.38,
+    87.87,
+    0.0,
+    "N"
+   ],
+   [
+    18.245,
+    59.38,
+    94.73,
+    0.0,
+    "E"
+   ],
+   [
+    18.692,
+    63.94,
+    94.73,
+    0.0,
+    "N"
+   ],
+   [
+    19.363,
+    63.94,
+    101.57,
+    0.0,
+    "E"
+   ],
+   [
+    20.041,
+    70.86,
+    101.57,
+    0.0,
+    "S"
+   ],
+   [
+    21.156,
+    70.86,
+    90.2,
+    0.0,
+    "E"
+   ],
+   [
+    21.829,
+    77.72,
+    90.2,
+    0.0,
+    "S"
+   ],
+   [
+    22.951,
+    77.72,
+    78.75,
+    0.0,
+    "E"
+   ],
+   [
+    23.619,
+    84.54,
+    78.75,
+    0.0,
+    "N"
+   ],
+   [
+    24.74,
+    84.54,
+    90.19,
+    0.0,
+    "E"
+   ],
+   [
+    25.412,
+    91.39,
+    90.19,
+    0.0,
+    "N"
+   ],
+   [
+    25.856,
+    91.39,
+    94.72,
+    0.0,
+    "W"
+   ],
+   [
+    26.531,
+    84.51,
+    94.72,
+    0.0,
+    "N"
+   ],
+   [
+    27.216,
+    84.51,
+    101.7,
+    0.0,
+    "E"
+   ],
+   [
+    28.321,
+    95.78,
+    101.7,
+    0.0,
+    "N"
+   ],
+   [
+    28.992,
+    95.78,
+    108.55,
+    0.0,
+    "W"
+   ],
+   [
+    30.112,
+    84.35,
+    108.55,
+    0.0,
+    "N"
+   ],
+   [
+    30.782,
+    84.35,
+    115.38,
+    0.0,
+    "E"
+   ],
+   [
+    31.904,
+    95.8,
+    115.38,
+    0.21,
+    "N"
+   ],
+   [
+    32.574,
+    95.8,
+    122.22,
+    0.86,
+    "W"
+   ],
+   [
+    33.02,
+    91.25,
+    122.22,
+    1.29,
+    "N"
+   ],
+   [
+    33.694,
+    91.25,
+    129.09,
+    1.95,
+    "E"
+   ],
+   [
+    34.367,
+    98.11,
+    129.09,
+    2.6,
+    "N"
+   ],
+   [
+    35.483,
+    98.11,
+    140.47,
+    3.68,
+    "E"
+   ],
+   [
+    36.623,
+    109.74,
+    140.47,
+    4.0,
+    "N"
+   ],
+   [
+    37.055,
+    109.74,
+    144.88,
+    4.0,
+    "E"
+   ],
+   [
+    37.735,
+    116.68,
+    144.88,
+    4.0,
+    "N"
+   ],
+   [
+    37.959,
+    116.68,
+    147.17,
+    4.0,
+    "E"
+   ],
+   [
+    38.845,
+    125.71,
+    147.17,
+    4.0,
+    "N"
+   ],
+   [
+    39.524,
+    125.71,
+    154.09,
+    4.0,
+    "E"
+   ],
+   [
+    40.192,
+    132.53,
+    154.09,
+    4.0,
+    "N"
+   ],
+   [
+    40.643,
+    132.53,
+    158.69,
+    4.0,
+    "E"
+   ],
+   [
+    41.317,
+    139.4,
+    158.69,
+    4.0,
+    "S"
+   ],
+   [
+    41.541,
+    139.4,
+    156.41,
+    4.0,
+    "E"
+   ],
+   [
+    42.425,
+    148.42,
+    156.41,
+    4.0,
+    "S"
+   ],
+   [
+    43.098,
+    148.42,
+    149.54,
+    4.0,
+    "E"
+   ],
+   [
+    43.766,
+    155.23,
+    149.54,
+    4.0,
+    "S"
+   ],
+   [
+    44.216,
+    155.23,
+    144.95,
+    4.0,
+    "E"
+   ],
+   [
+    44.897,
+    162.18,
+    144.95,
+    4.0,
+    "S"
+   ],
+   [
+    45.121,
+    162.18,
+    142.67,
+    4.0,
+    "E"
+   ],
+   [
+    46.008,
+    171.23,
+    142.67,
+    4.0,
+    "S"
+   ],
+   [
+    46.694,
+    171.23,
+    135.67,
+    4.0,
+    "W"
+   ],
+   [
+    47.348,
+    164.56,
+    135.67,
+    4.0,
+    "S"
+   ],
+   [
+    47.807,
+    164.56,
+    130.99,
+    4.0,
+    "W"
+   ],
+   [
+    48.479,
+    157.7,
+    130.99,
+    4.0,
+    "S"
+   ],
+   [
+    49.14,
+    157.7,
+    124.25,
+    4.0,
+    "W"
+   ],
+   [
+    49.591,
+    153.1,
+    124.25,
+    4.0,
+    "S"
+   ],
+   [
+    50.048,
+    153.1,
+    119.58,
+    4.0,
+    "W"
+   ],
+   [
+    50.276,
+    150.78,
+    119.58,
+    4.0,
+    "N"
+   ],
+   [
+    50.71,
+    150.78,
+    124.01,
+    0.0,
+    "E"
+   ],
+   [
+    51.603,
+    159.88,
+    124.01,
+    0.0,
+    "S"
+   ],
+   [
+    52.05,
+    159.88,
+    119.45,
+    0.0,
+    "W"
+   ],
+   [
+    52.498,
+    155.32,
+    119.45,
+    0.0,
+    "N"
+   ],
+   [
+    53.394,
+    155.32,
+    128.59,
+    0.0,
+    "E"
+   ],
+   [
+    54.292,
+    164.47,
+    128.59,
+    0.0,
+    "N"
+   ],
+   [
+    55.185,
+    164.47,
+    137.7,
+    0.0,
+    "E"
+   ],
+   [
+    55.632,
+    169.03,
+    137.7,
+    0.0,
+    "S"
+   ],
+   [
+    56.08,
+    169.03,
+    133.13,
+    0.0,
+    "W"
+   ],
+   [
+    56.976,
+    159.9,
+    133.13,
+    0.0,
+    "N"
+   ],
+   [
+    57.874,
+    159.9,
+    142.29,
+    0.0,
+    "W"
+   ],
+   [
+    58.108,
+    157.51,
+    142.29,
+    0.0,
+    "N"
+   ],
+   [
+    58.99,
+    157.51,
+    151.29,
+    0.0,
+    "W"
+   ],
+   [
+    59.662,
+    150.65,
+    151.29,
+    0.0,
+    "N"
+   ],
+   [
+    60.558,
+    150.65,
+    160.43,
+    0.0,
+    "E"
+   ],
+   [
+    60.781,
+    152.93,
+    160.43,
+    0.0,
+    "N"
+   ],
+   [
+    61.453,
+    152.93,
+    167.28,
+    0.0,
+    "E"
+   ],
+   [
+    61.677,
+    155.21,
+    167.28,
+    0.0,
+    "N"
+   ],
+   [
+    62.572,
+    155.21,
+    176.41,
+    0.0,
+    "E"
+   ],
+   [
+    63.251,
+    162.14,
+    176.41,
+    0.0,
+    "N"
+   ],
+   [
+    63.481,
+    162.14,
+    178.76,
+    0.0,
+    "E"
+   ],
+   [
+    63.705,
+    164.42,
+    178.76,
+    0.0,
+    "N"
+   ],
+   [
+    63.929,
+    164.42,
+    181.04,
+    0.0,
+    "E"
+   ],
+   [
+    64.153,
+    166.71,
+    181.04,
+    0.0,
+    "N"
+   ],
+   [
+    64.377,
+    166.71,
+    183.32,
+    0.0,
+    "E"
+   ],
+   [
+    64.813,
+    171.16,
+    183.32,
+    0.0,
+    "N"
+   ],
+   [
+    65.931,
+    171.16,
+    194.73,
+    0.0,
+    "W"
+   ],
+   [
+    66.604,
+    164.29,
+    194.73,
+    0.0,
+    "N"
+   ],
+   [
+    67.722,
+    164.29,
+    206.13,
+    0.0,
+    "W"
+   ],
+   [
+    68.395,
+    157.43,
+    206.13,
+    0.0,
+    "S"
+   ],
+   [
+    68.841,
+    157.43,
+    201.58,
+    0.0,
+    "W"
+   ],
+   [
+    69.513,
+    150.57,
+    201.58,
+    0.0,
+    "N"
+   ],
+   [
+    70.19,
+    150.57,
+    208.49,
+    0.0,
+    "W"
+   ],
+   [
+    71.306,
+    139.19,
+    208.49,
+    0.0,
+    "S"
+   ],
+   [
+    71.977,
+    139.19,
+    201.64,
+    0.0,
+    "W"
+   ],
+   [
+    73.095,
+    127.79,
+    201.64,
+    0.0,
+    "N"
+   ],
+   [
+    73.768,
+    127.79,
+    208.51,
+    0.0,
+    "W"
+   ],
+   [
+    74.889,
+    116.35,
+    208.51,
+    0.0,
+    "S"
+   ],
+   [
+    75.564,
+    116.35,
+    201.62,
+    0.0,
+    "W"
+   ],
+   [
+    76.005,
+    111.85,
+    201.62,
+    0.0,
+    "N"
+   ],
+   [
+    76.68,
+    111.85,
+    208.51,
+    0.0,
+    "W"
+   ],
+   [
+    77.35,
+    105.02,
+    208.51,
+    0.0,
+    "S"
+   ],
+   [
+    78.47,
+    105.02,
+    197.08,
+    0.0,
+    "W"
+   ],
+   [
+    79.143,
+    98.15,
+    197.08,
+    0.0,
+    "S"
+   ],
+   [
+    80.262,
+    98.15,
+    185.67,
+    1.24,
+    "E"
+   ],
+   [
+    80.932,
+    104.99,
+    185.67,
+    1.99,
+    "S"
+   ],
+   [
+    82.053,
+    104.99,
+    174.24,
+    3.24,
+    "E"
+   ],
+   [
+    82.723,
+    111.82,
+    174.24,
+    3.99,
+    "N"
+   ],
+   [
+    83.169,
+    111.82,
+    178.79,
+    4.0,
+    "E"
+   ],
+   [
+    83.843,
+    118.7,
+    178.79,
+    4.0,
+    "N"
+   ],
+   [
+    84.516,
+    118.7,
+    185.65,
+    4.0,
+    "E"
+   ],
+   [
+    84.96,
+    123.23,
+    185.65,
+    4.0,
+    "N"
+   ],
+   [
+    85.422,
+    123.23,
+    190.36,
+    4.0,
+    "E"
+   ],
+   [
+    85.645,
+    125.5,
+    190.36,
+    4.0,
+    "N"
+   ],
+   [
+    85.869,
+    125.5,
+    192.65,
+    4.0,
+    "E"
+   ],
+   [
+    86.762,
+    134.61,
+    192.65,
+    4.33,
+    "N"
+   ],
+   [
+    87.21,
+    134.61,
+    197.22,
+    4.66,
+    "E"
+   ],
+   [
+    87.555,
+    138.13,
+    197.22,
+    4.92,
+    "N"
+   ],
+   [
+    87.884,
+    138.13,
+    200.57,
+    5.17,
+    "W"
+   ],
+   [
+    88.108,
+    135.84,
+    200.57,
+    5.33,
+    "N"
+   ],
+   [
+    88.994,
+    135.84,
+    209.61,
+    5.99,
+    "E"
+   ],
+   [
+    89.331,
+    139.28,
+    209.61,
+    6.24,
+    "S"
+   ],
+   [
+    89.67,
+    139.28,
+    206.15,
+    6.5,
+    "E"
+   ],
+   [
+    90.339,
+    146.1,
+    206.15,
+    6.99,
+    "S"
+   ],
+   [
+    90.792,
+    146.1,
+    201.53,
+    7.33,
+    "E"
+   ],
+   [
+    91.128,
+    149.53,
+    201.53,
+    7.58,
+    "N"
+   ],
+   [
+    91.466,
+    149.53,
+    204.98,
+    7.83,
+    "W"
+   ],
+   [
+    91.69,
+    147.25,
+    204.98,
+    8.0,
+    "N"
+   ],
+   [
+    92.575,
+    147.25,
+    214.01,
+    8.0,
+    "E"
+   ],
+   [
+    92.919,
+    150.76,
+    214.01,
+    8.0,
+    "S"
+   ],
+   [
+    93.261,
+    150.76,
+    210.52,
+    8.0,
+    "E"
+   ],
+   [
+    93.915,
+    157.43,
+    210.52,
+    8.0,
+    "S"
+   ],
+   [
+    94.366,
+    157.43,
+    205.92,
+    8.0,
+    "E"
+   ],
+   [
+    94.713,
+    160.97,
+    205.92,
+    8.0,
+    "S"
+   ],
+   [
+    95.048,
+    160.97,
+    202.5,
+    8.0,
+    "W"
+   ],
+   [
+    95.27,
+    158.7,
+    202.5,
+    8.0,
+    "S"
+   ],
+   [
+    96.165,
+    158.7,
+    193.37,
+    8.0,
+    "E"
+   ],
+   [
+    96.501,
+    162.13,
+    193.37,
+    8.0,
+    "S"
+   ],
+   [
+    96.834,
+    162.13,
+    189.97,
+    8.0,
+    "E"
+   ],
+   [
+    97.498,
+    168.9,
+    189.97,
+    8.0,
+    "S"
+   ],
+   [
+    97.957,
+    168.9,
+    185.29,
+    8.0,
+    "E"
+   ],
+   [
+    98.285,
+    172.25,
+    185.29,
+    8.0,
+    "S"
+   ],
+   [
+    98.628,
+    172.25,
+    181.79,
+    8.0,
+    "W"
+   ],
+   [
+    99.289,
+    165.51,
+    181.79,
+    8.0,
+    "S"
+   ],
+   [
+    99.747,
+    165.51,
+    177.12,
+    8.0,
+    "W"
+   ],
+   [
+    99.974,
+    163.19,
+    177.12,
+    8.0,
+    "S"
+   ],
+   [
+    100.198,
+    163.19,
+    174.84,
+    8.0,
+    "W"
+   ],
+   [
+    100.422,
+    160.9,
+    174.84,
+    8.0,
+    "S"
+   ],
+   [
+    100.668,
+    160.9,
+    172.33,
+    8.0,
+    "E"
+   ],
+   [
+    101.357,
+    167.93,
+    172.33,
+    8.0,
+    "S"
+   ],
+   [
+    102.46,
+    167.93,
+    161.08,
+    8.0,
+    "E"
+   ],
+   [
+    104.228,
+    185.97,
+    161.08,
+    8.0,
+    "S"
+   ],
+   [
+    104.899,
+    185.97,
+    154.23,
+    8.0,
+    "E"
+   ],
+   [
+    106.039,
+    197.59,
+    154.23,
+    8.0,
+    "S"
+   ],
+   [
+    108.987,
+    197.59,
+    124.17,
+    8.0,
+    "S"
+   ]
+  ]
+ },
+ "elevation": [
+  {
+   "t0": 31.69,
+   "t1": 35.81,
+   "type": "ramp",
+   "dy": 4
+  },
+  {
+   "t": 50.34,
+   "type": "fall",
+   "dy": -4
+  },
+  {
+   "t0": 79.153,
+   "t1": 82.735,
+   "type": "ramp",
+   "dy": 4
+  },
+  {
+   "t0": 86.317,
+   "t1": 91.69,
+   "type": "ramp",
+   "dy": 4
+  }
+ ]
+}
