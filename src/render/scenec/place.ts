@@ -116,8 +116,9 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
     for (let k = 0; k < n; k++) {
       const t = z.t0 + (k + R()) / n * (t1 - z.t0), side = R() < 0.5 ? -1 : 1, w = o.widthAt(t);
       let u = R() * W, id = I.sprites[0][0]; for (const [sid, sw] of I.sprites) { u -= sw; if (u <= 0) { id = sid; break; } }
-      const s = I.scale[0] + R() * (I.scale[1] - I.scale[0]);
+      const s0 = I.scale[0] + R() * (I.scale[1] - I.scale[0]);
       const edge = I.near[0] + Math.pow(R(), 0.8) * (I.near[1] - I.near[0]);
+      const s = s0 * (0.5 + 0.5 * Math.min(1, Math.max(0, (edge - 13) / 42)));   // v5: near cards mid-sized (x0.5 at 13 m -> full at 55 m), no mint blobs at the frame edges
       const a = flowAnchor(route, t, side * (w / 2 + edge), 0, 0);
       if (o.hits(a.pos.x, a.pos.z, 1.5 * s + 2.0, a.pos.y - 30, a.pos.y + 30) || nearCam(a.pos.x, a.pos.z, t)) { rejected++; continue; }
       const cp = camPath[Math.min(camPath.length - 1, Math.round(Math.max(0, t - 1.0) * 4))];   // face where the camera is when this card is in view
