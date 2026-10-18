@@ -1,0 +1,89 @@
+{
+ "id": "H13_phone_tower",
+ "cn": "巨型翻盖手机塔",
+ "en": "Giant Flip Phone Tower",
+ "cls": "hero",
+ "zones": [
+  "z06"
+ ],
+ "size_m": {
+  "w": 5.5,
+  "d": 4.5,
+  "h": 12
+ },
+ "size_target_m": {
+  "w": 5,
+  "d": 3,
+  "h": 12
+ },
+ "tris_budget": 4000,
+ "lod1_tris": 1200,
+ "parts": [
+  {
+   "en": "extendable antenna with star",
+   "cn": "伸缩天线+星尖"
+  },
+  {
+   "en": "heart screen",
+   "cn": "爱心屏"
+  },
+  {
+   "en": "cord spiral base",
+   "cn": "电话线螺旋底座"
+  },
+  {
+   "en": "keypad",
+   "cn": "按键区"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "上盖",
+   "pivot": "铰链",
+   "motion": "乐句开合"
+  },
+  {
+   "part": "天线",
+   "pivot": "顶",
+   "motion": "→07 转场伸长成塔尖"
+  },
+  {
+   "part": "电话线",
+   "pivot": "—",
+   "motion": "长音时摇摆"
+  }
+ ],
+ "colors": {
+  "coral": "#FF7A6B",
+  "cream": "#FFF3DE",
+  "pink": "#FF6FAE",
+  "lavender": "#B9A6F0",
+  "gold": "#F7D98B"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.003,
+   "width": 0.019,
+   "depth": 0.35
+  },
+  "drawing_vs_target": {
+   "front": 1.09,
+   "side": 1.16
+  },
+  "ok": false,
+  "size": [
+   5.5,
+   4.5,
+   12
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

@@ -1,0 +1,89 @@
+{
+ "id": "H18_reading_bunny",
+ "cn": "蘑菇下读书兔",
+ "en": "Reading Bunny under Mushroom",
+ "cls": "hero",
+ "zones": [
+  "z09"
+ ],
+ "size_m": {
+  "w": 2.8,
+  "d": 2.9,
+  "h": 3.5
+ },
+ "size_target_m": {
+  "w": 3,
+  "d": 3,
+  "h": 3.5
+ },
+ "tris_budget": 2500,
+ "lod1_tris": 750,
+ "parts": [
+  {
+   "en": "big mushroom cap",
+   "cn": "大蘑菇伞"
+  },
+  {
+   "en": "bunny with open book",
+   "cn": "读书兔+书"
+  },
+  {
+   "en": "tiny lamp",
+   "cn": "小台灯"
+  },
+  {
+   "en": "mossy base",
+   "cn": "苔藓底座"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "书页",
+   "pivot": "书脊",
+   "motion": "bridge 处翻页"
+  },
+  {
+   "part": "兔耳",
+   "pivot": "耳根",
+   "motion": "乐句抖动"
+  },
+  {
+   "part": "台灯",
+   "pivot": "—",
+   "motion": "暖光呼吸"
+  }
+ ],
+ "colors": {
+  "teal": "#173A4A",
+  "cream": "#FFF3DE",
+  "lamp": "#FFC968",
+  "mint": "#BDEBD8",
+  "navy": "#1F2350"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.0,
+   "width": 0.048,
+   "depth": 0.221
+  },
+  "drawing_vs_target": {
+   "front": 0.92,
+   "side": 0.82
+  },
+  "ok": true,
+  "size": [
+   2.8,
+   2.9,
+   3.5
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

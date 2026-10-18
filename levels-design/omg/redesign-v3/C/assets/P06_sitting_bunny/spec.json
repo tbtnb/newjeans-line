@@ -1,0 +1,75 @@
+{
+ "id": "P06_sitting_bunny",
+ "cn": "坐兔雕像",
+ "en": "Sitting Bunny Statue",
+ "cls": "prop",
+ "zones": [
+  "z01",
+  "z02"
+ ],
+ "size_m": {
+  "w": 1.4,
+  "d": 1.4,
+  "h": 2.4
+ },
+ "size_target_m": {
+  "w": 1.6,
+  "d": 1.4,
+  "h": 2.4
+ },
+ "tris_budget": 1200,
+ "lod1_tris": 360,
+ "parts": [
+  {
+   "en": "folded ears",
+   "cn": "折纸耳"
+  },
+  {
+   "en": "bow",
+   "cn": "蝴蝶结"
+  },
+  {
+   "en": "round base",
+   "cn": "圆底座"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "耳朵",
+   "pivot": "耳根",
+   "motion": "随拍轻抖"
+  }
+ ],
+ "colors": {
+  "pearl": "#F3F1EA",
+  "blush": "#FFC7DA",
+  "mint": "#BDEBD8",
+  "green": "#6CCB5F"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.009,
+   "width": 0.03,
+   "depth": 0.063
+  },
+  "drawing_vs_target": {
+   "front": 0.9,
+   "side": 0.97
+  },
+  "ok": true,
+  "size": [
+   1.4,
+   1.4,
+   2.4
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

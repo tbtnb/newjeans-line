@@ -21,34 +21,34 @@
 | H06 | 书页爱心终点门 | z10 | 12×3×11 | 5,000 | 左右书页@底部铰接:入场时由平放卷起成心形；灯泡@—:依次点亮，最后一击全亮；小兔×2@底:最后一击跳起 | cream gold pink blush lamp white | ✓ 24% | [sheet](H06_heart_finish_gate/sheet.jpg) |
 | H07 | 五只兔子一家 | z10 | 8×2×3 | 4,000 | 每只兔@脚底:底鼓依次跳起 0.3 m；手臂@肩部:挥手 ±30°/拍；耳朵@耳根:落地时抖动 | mint blush lavender sun sky cream | ⚠ 29% | [sheet](H07_bunny_family/sheet.jpg) |
 | H08 | 纸彩带礼炮 | z04,z08,z10 | 3×2×2.5 | 1,800 | 炮管@炮耳轴:发射时后坐 0.2 m + 抬头；彩纸@炮口:粒子爆发(实例化)；底座@—:静态 | cream pink gold lavender magenta | ⚠ 30% | [sheet](H08_confetti_cannon/sheet.jpg) |
-| H09 | 巨书封面 | z01 | 14×10×1.5 | 3,000 | 封面@书脊铰接:开场第一拍 0→180° 翻开；书页@书脊:翻页转场时整页翻过；徽章@—:金光扫过 | mint pearl gold cream foil | — | [sheet](H09_book_cover/sheet.jpg) |
-| H10 | 立体纸病床+纸帘 | z03 | 3×2×2.4 | 2,000 | 纸帘@各折痕:每 4 小节展开/收起；病床@底部折缝:拉片抬起；床头灯@—:黄昏暖光闪烁 | wardgray cream coral lamp white | — | [sheet](H10_ward_bed_set/sheet.jpg) |
-| H11 | 纸时钟塔 | z03 | 3×3×9 | 2,500 | 时针/分针@钟面中心:每拍跳一格；兔耳@耳根:小节首轻摆；窗@—:暖光 | wardgray cream gold coral lamp | — | [sheet](H11_clock_tower/sheet.jpg) |
-| H12 | 纸艺翻盖手机 | z06,z10 | 2.5×1.5×5 | 2,000 | 上盖@铰链:随拍开合 0↔150°；屏幕@—:开盖时亮爱心；天线@顶:转场时伸长 | coral cream pink peach mint | — | [sheet](H12_flip_phone_sculpture/sheet.jpg) |
-| H13 | 巨型翻盖手机塔 | z06 | 5×3×12 | 4,000 | 上盖@铰链:乐句开合；天线@顶:→07 转场伸长成塔尖；电话线@—:长音时摇摆 | coral cream pink lavender gold | — | [sheet](H13_phone_tower/sheet.jpg) |
-| H14 | 螺旋纸塔 | z07,z10 | 4×4×14 | 3,500 | 整体@塔基一侧:pre2 最后一小节向外倒下；窗@—:随拍闪烁；顶星@—:旋转 | lilac white lavender gold indigo | — | [sheet](H14_spiral_paper_tower/sheet.jpg) |
-| H15 | 兔子帆纸船 | z05 | 3×1.4×3 | 1,500 | 整体@船身中心:随拍上下浮动 + 横摇 ±5°；船头灯@—:hook 处亮 | pearl lilac moon lamp gold | — | [sheet](H15_bunny_sail_boat/sheet.jpg) |
-| H16 | 湖心纸亭 | z05 | 5×5×6 | 3,000 | 灯笼@挂点:轻摆 + 柔光；整体@—:静态 | pearl moon lilac gold lamp | — | [sheet](H16_lake_pavilion/sheet.jpg) |
-| H17 | 兔子村风车 | z02 | 4×3×9 | 3,000 | 风帆@轮毂(水平轴):匀速旋转，副歌加速；兔耳@耳根:小节首摆动 | coral cream sun green wood | — | [sheet](H17_bunny_windmill/sheet.jpg) |
-| H18 | 蘑菇下读书兔 | z09 | 3×3×3.5 | 2,500 | 书页@书脊:bridge 处翻页；兔耳@耳根:乐句抖动；台灯@—:暖光呼吸 | teal cream lamp mint navy | — | [sheet](H18_reading_bunny/sheet.jpg) |
-| H19 | 纸太阳 | z10 | 8×1×8 | 2,000 | 光芒@日轮中心:慢速旋转；日轮@中心:每小节 scale 脉冲；整体@底:终章升起 | sun gold pink peach cream | — | [sheet](H19_paper_sun/sheet.jpg) |
+| H09 | 巨书封面 | z01 | 14×10×1.5 | 3,000 | 封面@书脊铰接:开场第一拍 0→180° 翻开；书页@书脊:翻页转场时整页翻过；徽章@—:金光扫过 | mint pearl gold cream foil | ✓ 6% | [sheet](H09_book_cover/sheet.jpg) |
+| H10 | 立体纸病床+纸帘 | z03 | 3×2×2.4 | 2,000 | 纸帘@各折痕:每 4 小节展开/收起；病床@底部折缝:拉片抬起；床头灯@—:黄昏暖光闪烁 | wardgray cream coral lamp white | ✓ 15% | [sheet](H10_ward_bed_set/sheet.jpg) |
+| H11 | 纸时钟塔 | z03 | 3×3×9 | 2,500 | 时针/分针@钟面中心:每拍跳一格；兔耳@耳根:小节首轻摆；窗@—:暖光 | wardgray cream gold coral lamp | ✓ 13% | [sheet](H11_clock_tower/sheet.jpg) |
+| H12 | 纸艺翻盖手机 | z06,z10 | 2.5×1.5×5 | 2,000 | 上盖@铰链:随拍开合 0↔150°；屏幕@—:开盖时亮爱心；天线@顶:转场时伸长 | coral cream pink peach mint | ⚠ 40% | [sheet](H12_flip_phone_sculpture/sheet.jpg) |
+| H13 | 巨型翻盖手机塔 | z06 | 5×3×12 | 4,000 | 上盖@铰链:乐句开合；天线@顶:→07 转场伸长成塔尖；电话线@—:长音时摇摆 | coral cream pink lavender gold | ⚠ 35% | [sheet](H13_phone_tower/sheet.jpg) |
+| H14 | 螺旋纸塔 | z07,z10 | 4×4×14 | 3,500 | 整体@塔基一侧:pre2 最后一小节向外倒下；窗@—:随拍闪烁；顶星@—:旋转 | lilac white lavender gold indigo | ✓ 10% | [sheet](H14_spiral_paper_tower/sheet.jpg) |
+| H15 | 兔子帆纸船 | z05 | 3×1.4×3 | 1,500 | 整体@船身中心:随拍上下浮动 + 横摇 ±5°；船头灯@—:hook 处亮 | pearl lilac moon lamp gold | ✓ 19% | [sheet](H15_bunny_sail_boat/sheet.jpg) |
+| H16 | 湖心纸亭 | z05 | 5×5×6 | 3,000 | 灯笼@挂点:轻摆 + 柔光；整体@—:静态 | pearl moon lilac gold lamp | ✓ 6% | [sheet](H16_lake_pavilion/sheet.jpg) |
+| H17 | 兔子村风车 | z02 | 4×3×9 | 3,000 | 风帆@轮毂(水平轴):匀速旋转，副歌加速；兔耳@耳根:小节首摆动 | coral cream sun green wood | ⚠ 35% | [sheet](H17_bunny_windmill/sheet.jpg) |
+| H18 | 蘑菇下读书兔 | z09 | 3×3×3.5 | 2,500 | 书页@书脊:bridge 处翻页；兔耳@耳根:乐句抖动；台灯@—:暖光呼吸 | teal cream lamp mint navy | ✓ 22% | [sheet](H18_reading_bunny/sheet.jpg) |
+| H19 | 纸太阳 | z10 | 8×1×8 | 2,000 | 光芒@日轮中心:慢速旋转；日轮@中心:每小节 scale 脉冲；整体@底:终章升起 | sun gold pink peach cream | ✓ 14% | [sheet](H19_paper_sun/sheet.jpg) |
 
 ## 标准道具 Props
 
 | 编号 | 名称 | 区域 | 尺寸 W×D×H (m) | 面数 | 动画/枢轴 | 色板槽 | 三视图 | 设计稿 |
 |---|---|---|---|---|---|---|---|---|
-| P01 | 兔耳小屋 | z02,z10 | 3×3×4 | 1,500 | 兔耳@耳根:乐句摆动；烟囱纸云@烟囱口:底鼓冒出 | coral cream sun green | — | [sheet](P01_bunny_cottage/sheet.jpg) |
-| P02 | 纸蘑菇屋 | z02 | 2.5×2.5×3 | 1,000 | 伞盖@菌柄顶:每拍轻压缩回弹 | coral cream sun green | — | [sheet](P02_mushroom_house/sheet.jpg) |
-| P03 | 郁金香花圃 | z02 | 3×1.5×0.8 | 800 | 郁金香@茎底:军鼓依次弹起 | sun coral white green | — | [sheet](P03_tulip_bed/sheet.jpg) |
-| P04 | 圆冠纸树 | z01,z02,z04,z06,z10 | 2×2×3.5 | 600 | 整体@根部:每 4 小节一组“啪”地立起 | mint green blush wood | — | [sheet](P04_paper_tree_round/sheet.jpg) |
-| P05 | 折纸松树 | z07,z09,z03 | 1.6×1.6×4 | 400 | 整体@根部:乐句开头依次立起 | teal mint wood | — | [sheet](P05_paper_pine/sheet.jpg) |
-| P06 | 坐兔雕像 | z01,z02 | 1.6×1.4×2.4 | 1,200 | 耳朵@耳根:随拍轻抖 | pearl blush mint green | — | [sheet](P06_sitting_bunny/sheet.jpg) |
-| P07 | 心形点滴架 | z03 | 0.8×0.8×2.2 | 500 | 点滴袋@挂钩:随拍轻晃+微光 | coral blush wardgray cream | — | [sheet](P07_heart_iv_stand/sheet.jpg) |
-| P08 | 纸帘屏风 | z03 | 2×0.6×2 | 400 | 帘片@折痕:展开/收起 | wardgray cream white | — | [sheet](P08_curtain_screen/sheet.jpg) |
-| P09 | 拉片机关 | z03,z07 | 1.5×0.3×1.2 | 300 | 拉手@滑条:每小节拉出→场景抬起 | cream gold coral | — | [sheet](P09_pull_tab/sheet.jpg) |
-| P10 | 纸灯笼串 | z04,z10 | 6×0.5×2 | 900 | 灯笼@挂点:轻摆；随拍明暗 | pink gold lavender lamp | — | [sheet](P10_lantern_string/sheet.jpg) |
-| P11 | 爱心纸雕 | z04,z08 | 1.5×0.6×1.6 | 500 | 爱心@中心:'Oh my god' 时弹出放大 | pink gold cream | — | [sheet](P11_heart_sculpture/sheet.jpg) |
-| P12 | 纸礼盒 | z04,z08 | 0.8×0.8×0.8 | 300 | 盒盖@后边铰接:drop 时弹开 | lavender pink gold | — | [sheet](P12_gift_box/sheet.jpg) |
+| P01 | 兔耳小屋 | z02,z10 | 3×3×4 | 1,500 | 兔耳@耳根:乐句摆动；烟囱纸云@烟囱口:底鼓冒出 | coral cream sun green | ✓ 11% | [sheet](P01_bunny_cottage/sheet.jpg) |
+| P02 | 纸蘑菇屋 | z02 | 2.5×2.5×3 | 1,000 | 伞盖@菌柄顶:每拍轻压缩回弹 | coral cream sun green | ✓ 1% | [sheet](P02_mushroom_house/sheet.jpg) |
+| P03 | 郁金香花圃 | z02 | 3×1.5×0.8 | 800 | 郁金香@茎底:军鼓依次弹起 | sun coral white green | ⚠ 27% | [sheet](P03_tulip_bed/sheet.jpg) |
+| P04 | 圆冠纸树 | z01,z02,z04,z06,z10 | 2×2×3.5 | 600 | 整体@根部:每 4 小节一组“啪”地立起 | mint green blush wood | ✓ 5% | [sheet](P04_paper_tree_round/sheet.jpg) |
+| P05 | 折纸松树 | z07,z09,z03 | 1.6×1.6×4 | 400 | 整体@根部:乐句开头依次立起 | teal mint wood | ✓ 6% | [sheet](P05_paper_pine/sheet.jpg) |
+| P06 | 坐兔雕像 | z01,z02 | 1.6×1.4×2.4 | 1,200 | 耳朵@耳根:随拍轻抖 | pearl blush mint green | ✓ 6% | [sheet](P06_sitting_bunny/sheet.jpg) |
+| P07 | 心形点滴架 | z03 | 0.8×0.8×2.2 | 500 | 点滴袋@挂钩:随拍轻晃+微光 | coral blush wardgray cream | ✓ 11% | [sheet](P07_heart_iv_stand/sheet.jpg) |
+| P08 | 纸帘屏风 | z03 | 2×0.6×2 | 400 | 帘片@折痕:展开/收起 | wardgray cream white | ⚠ 51% | [sheet](P08_curtain_screen/sheet.jpg) |
+| P09 | 拉片机关 | z03,z07 | 1.5×0.3×1.2 | 300 | 拉手@滑条:每小节拉出→场景抬起 | cream gold coral | ✓ 25% | [sheet](P09_pull_tab/sheet.jpg) |
+| P10 | 纸灯笼串 | z04,z10 | 6×0.5×2 | 900 | 灯笼@挂点:轻摆；随拍明暗 | pink gold lavender lamp | ⚠ 29% | [sheet](P10_lantern_string/sheet.jpg) |
+| P11 | 爱心纸雕 | z04,z08 | 1.5×0.6×1.6 | 500 | 爱心@中心:'Oh my god' 时弹出放大 | pink gold cream | ✓ 18% | [sheet](P11_heart_sculpture/sheet.jpg) |
+| P12 | 纸礼盒 | z04,z08 | 0.8×0.8×0.8 | 300 | 盒盖@后边铰接:drop 时弹开 | lavender pink gold | ✓ 7% | [sheet](P12_gift_box/sheet.jpg) |
 | P13 | 纸睡莲灯 | z05 | 1.2×1.2×0.8 | 500 | 莲花@中心:hook 处同时亮起 | blush pearl mint lamp | — | [sheet](P13_lily_lantern/sheet.jpg) |
 | P14 | 吊线弯月 | z05,z03,z07 | 3×0.4×4 | 600 | 整体@吊线顶:慢摆 ±6° | gold moon cream | — | [sheet](P14_crescent_moon/sheet.jpg) |
 | P15 | 电话线藤蔓拱门 | z06 | 4×0.6×3.5 | 1,200 | 藤蔓@两脚:长音时摇摆；花@—:依次开放 | pink mint coral cream | — | [sheet](P15_phone_cord_arch/sheet.jpg) |

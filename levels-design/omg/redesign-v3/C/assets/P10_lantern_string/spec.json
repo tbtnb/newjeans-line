@@ -1,0 +1,75 @@
+{
+ "id": "P10_lantern_string",
+ "cn": "纸灯笼串",
+ "en": "Paper Lantern String",
+ "cls": "prop",
+ "zones": [
+  "z04",
+  "z10"
+ ],
+ "size_m": {
+  "w": 4.2,
+  "d": 0.4,
+  "h": 2
+ },
+ "size_target_m": {
+  "w": 6,
+  "d": 0.5,
+  "h": 2
+ },
+ "tris_budget": 900,
+ "lod1_tris": 270,
+ "parts": [
+  {
+   "en": "heart lantern",
+   "cn": "心形灯笼"
+  },
+  {
+   "en": "star lantern",
+   "cn": "星形灯笼"
+  },
+  {
+   "en": "pole",
+   "cn": "立杆"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "灯笼",
+   "pivot": "挂点",
+   "motion": "轻摆；随拍明暗"
+  }
+ ],
+ "colors": {
+  "pink": "#FF6FAE",
+  "gold": "#F7D98B",
+  "lavender": "#B9A6F0",
+  "lamp": "#FFC968"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.012,
+   "width": 0.19,
+   "depth": 0.288
+  },
+  "drawing_vs_target": {
+   "front": 0.7,
+   "side": 0.85
+  },
+  "ok": false,
+  "size": [
+   4.2,
+   0.4,
+   2
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

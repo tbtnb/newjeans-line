@@ -1,0 +1,70 @@
+{
+ "id": "P12_gift_box",
+ "cn": "纸礼盒",
+ "en": "Paper Gift Box",
+ "cls": "prop",
+ "zones": [
+  "z04",
+  "z08"
+ ],
+ "size_m": {
+  "w": 0.7,
+  "d": 0.6,
+  "h": 0.8
+ },
+ "size_target_m": {
+  "w": 0.8,
+  "d": 0.8,
+  "h": 0.8
+ },
+ "tris_budget": 300,
+ "lod1_tris": 90,
+ "parts": [
+  {
+   "en": "box",
+   "cn": "盒身"
+  },
+  {
+   "en": "lid with bow",
+   "cn": "盒盖+蝴蝶结"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "盒盖",
+   "pivot": "后边铰接",
+   "motion": "drop 时弹开"
+  }
+ ],
+ "colors": {
+  "lavender": "#B9A6F0",
+  "pink": "#FF6FAE",
+  "gold": "#F7D98B"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.005,
+   "width": 0.044,
+   "depth": 0.072
+  },
+  "drawing_vs_target": {
+   "front": 0.82,
+   "side": 0.73
+  },
+  "ok": true,
+  "size": [
+   0.7,
+   0.6,
+   0.8
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

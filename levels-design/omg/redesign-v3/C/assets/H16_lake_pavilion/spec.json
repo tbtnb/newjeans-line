@@ -1,0 +1,84 @@
+{
+ "id": "H16_lake_pavilion",
+ "cn": "湖心纸亭",
+ "en": "Lake Paper Pavilion",
+ "cls": "hero",
+ "zones": [
+  "z05"
+ ],
+ "size_m": {
+  "w": 4.8,
+  "d": 5.1,
+  "h": 6
+ },
+ "size_target_m": {
+  "w": 5,
+  "d": 5,
+  "h": 6
+ },
+ "tris_budget": 3000,
+ "lod1_tris": 900,
+ "parts": [
+  {
+   "en": "scalloped dome with crescent",
+   "cn": "扇贝穹顶+弯月顶饰"
+  },
+  {
+   "en": "slim column",
+   "cn": "细柱"
+  },
+  {
+   "en": "eave lantern",
+   "cn": "檐下灯笼"
+  },
+  {
+   "en": "island base with steps",
+   "cn": "小岛底座+台阶"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "灯笼",
+   "pivot": "挂点",
+   "motion": "轻摆 + 柔光"
+  },
+  {
+   "part": "整体",
+   "pivot": "—",
+   "motion": "静态"
+  }
+ ],
+ "colors": {
+  "pearl": "#F3F1EA",
+  "moon": "#BFD4F5",
+  "lilac": "#E3D7FA",
+  "gold": "#F7D98B",
+  "lamp": "#FFC968"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.062,
+   "width": 0.038,
+   "depth": 0.048
+  },
+  "drawing_vs_target": {
+   "front": 0.95,
+   "side": 1.01
+  },
+  "ok": true,
+  "size": [
+   4.8,
+   5.1,
+   6
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

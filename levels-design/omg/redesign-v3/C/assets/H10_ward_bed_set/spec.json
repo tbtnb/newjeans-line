@@ -1,0 +1,89 @@
+{
+ "id": "H10_ward_bed_set",
+ "cn": "立体纸病床+纸帘",
+ "en": "Pop-up Paper Ward Bed",
+ "cls": "hero",
+ "zones": [
+  "z03"
+ ],
+ "size_m": {
+  "w": 3.4,
+  "d": 2.1,
+  "h": 2.4
+ },
+ "size_target_m": {
+  "w": 3,
+  "d": 2,
+  "h": 2.4
+ },
+ "tris_budget": 2000,
+ "lod1_tris": 600,
+ "parts": [
+  {
+   "en": "bed with blanket and pillow",
+   "cn": "病床+被子枕头"
+  },
+  {
+   "en": "three-panel curtain",
+   "cn": "三折纸帘"
+  },
+  {
+   "en": "bedside lamp",
+   "cn": "床头灯"
+  },
+  {
+   "en": "fold tab",
+   "cn": "折片"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "纸帘",
+   "pivot": "各折痕",
+   "motion": "每 4 小节展开/收起"
+  },
+  {
+   "part": "病床",
+   "pivot": "底部折缝",
+   "motion": "拉片抬起"
+  },
+  {
+   "part": "床头灯",
+   "pivot": "—",
+   "motion": "黄昏暖光闪烁"
+  }
+ ],
+ "colors": {
+  "wardgray": "#B9CFC8",
+  "cream": "#FFF3DE",
+  "coral": "#FF7A6B",
+  "lamp": "#FFC968",
+  "white": "#FFFFFF"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.007,
+   "width": 0.151,
+   "depth": 0.0
+  },
+  "drawing_vs_target": {
+   "front": 1.13,
+   "side": 0.98
+  },
+  "ok": true,
+  "size": [
+   3.4,
+   2.1,
+   2.4
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

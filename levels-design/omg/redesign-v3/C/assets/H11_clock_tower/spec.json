@@ -1,0 +1,89 @@
+{
+ "id": "H11_clock_tower",
+ "cn": "纸时钟塔",
+ "en": "Paper Clock Tower",
+ "cls": "hero",
+ "zones": [
+  "z03"
+ ],
+ "size_m": {
+  "w": 3.5,
+  "d": 3.4,
+  "h": 9
+ },
+ "size_target_m": {
+  "w": 3,
+  "d": 3,
+  "h": 9
+ },
+ "tris_budget": 2500,
+ "lod1_tris": 750,
+ "parts": [
+  {
+   "en": "clock face (no numerals)",
+   "cn": "无数字钟面"
+  },
+  {
+   "en": "bunny-ear roof",
+   "cn": "兔耳屋顶"
+  },
+  {
+   "en": "glowing arched window",
+   "cn": "发光拱窗"
+  },
+  {
+   "en": "tower base",
+   "cn": "塔基"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "时针/分针",
+   "pivot": "钟面中心",
+   "motion": "每拍跳一格"
+  },
+  {
+   "part": "兔耳",
+   "pivot": "耳根",
+   "motion": "小节首轻摆"
+  },
+  {
+   "part": "窗",
+   "pivot": "—",
+   "motion": "暖光"
+  }
+ ],
+ "colors": {
+  "wardgray": "#B9CFC8",
+  "cream": "#FFF3DE",
+  "gold": "#F7D98B",
+  "coral": "#FF7A6B",
+  "lamp": "#FFC968"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.006,
+   "width": 0.126,
+   "depth": 0.066
+  },
+  "drawing_vs_target": {
+   "front": 1.18,
+   "side": 1.1
+  },
+  "ok": true,
+  "size": [
+   3.5,
+   3.4,
+   9
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

@@ -1,0 +1,90 @@
+{
+ "id": "H14_spiral_paper_tower",
+ "cn": "螺旋纸塔",
+ "en": "Spiral Paper Tower",
+ "cls": "hero",
+ "zones": [
+  "z07",
+  "z10"
+ ],
+ "size_m": {
+  "w": 4.3,
+  "d": 4.2,
+  "h": 14
+ },
+ "size_target_m": {
+  "w": 4,
+  "d": 4,
+  "h": 14
+ },
+ "tris_budget": 3500,
+ "lod1_tris": 1050,
+ "parts": [
+  {
+   "en": "winding staircase",
+   "cn": "盘旋楼梯"
+  },
+  {
+   "en": "glowing window",
+   "cn": "发光小窗"
+  },
+  {
+   "en": "star top",
+   "cn": "顶星"
+  },
+  {
+   "en": "tower base",
+   "cn": "塔基"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "整体",
+   "pivot": "塔基一侧",
+   "motion": "pre2 最后一小节向外倒下"
+  },
+  {
+   "part": "窗",
+   "pivot": "—",
+   "motion": "随拍闪烁"
+  },
+  {
+   "part": "顶星",
+   "pivot": "—",
+   "motion": "旋转"
+  }
+ ],
+ "colors": {
+  "lilac": "#E3D7FA",
+  "white": "#FFFFFF",
+  "lavender": "#B9A6F0",
+  "gold": "#F7D98B",
+  "indigo": "#3A2F6B"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.001,
+   "width": 0.056,
+   "depth": 0.101
+  },
+  "drawing_vs_target": {
+   "front": 1.07,
+   "side": 1.08
+  },
+  "ok": true,
+  "size": [
+   4.3,
+   4.2,
+   14
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

@@ -1,0 +1,74 @@
+{
+ "id": "P09_pull_tab",
+ "cn": "拉片机关",
+ "en": "Pop-up Pull Tab Mechanism",
+ "cls": "prop",
+ "zones": [
+  "z03",
+  "z07"
+ ],
+ "size_m": {
+  "w": 1.9,
+  "d": 0.3,
+  "h": 1.2
+ },
+ "size_target_m": {
+  "w": 1.5,
+  "d": 0.3,
+  "h": 1.2
+ },
+ "tris_budget": 300,
+ "lod1_tris": 90,
+ "parts": [
+  {
+   "en": "round tab handle",
+   "cn": "圆形拉手"
+  },
+  {
+   "en": "slider strip",
+   "cn": "滑条"
+  },
+  {
+   "en": "folded lever",
+   "cn": "折叠杠杆"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "拉手",
+   "pivot": "滑条",
+   "motion": "每小节拉出→场景抬起"
+  }
+ ],
+ "colors": {
+  "cream": "#FFF3DE",
+  "gold": "#F7D98B",
+  "coral": "#FF7A6B"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.009,
+   "width": 0.246,
+   "depth": 0.137
+  },
+  "drawing_vs_target": {
+   "front": 1.28,
+   "side": 0.89
+  },
+  "ok": true,
+  "size": [
+   1.9,
+   0.3,
+   1.2
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

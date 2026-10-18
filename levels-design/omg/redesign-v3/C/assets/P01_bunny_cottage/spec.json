@@ -1,0 +1,84 @@
+{
+ "id": "P01_bunny_cottage",
+ "cn": "兔耳小屋",
+ "en": "Bunny-Ear Cottage",
+ "cls": "prop",
+ "zones": [
+  "z02",
+  "z10"
+ ],
+ "size_m": {
+  "w": 3.0,
+  "d": 3.0,
+  "h": 4
+ },
+ "size_target_m": {
+  "w": 3,
+  "d": 3,
+  "h": 4
+ },
+ "tris_budget": 1500,
+ "lod1_tris": 450,
+ "parts": [
+  {
+   "en": "bunny-ear roof",
+   "cn": "兔耳屋顶"
+  },
+  {
+   "en": "heart window",
+   "cn": "心形窗"
+  },
+  {
+   "en": "round door",
+   "cn": "圆门"
+  },
+  {
+   "en": "chimney",
+   "cn": "烟囱"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "兔耳",
+   "pivot": "耳根",
+   "motion": "乐句摆动"
+  },
+  {
+   "part": "烟囱纸云",
+   "pivot": "烟囱口",
+   "motion": "底鼓冒出"
+  }
+ ],
+ "colors": {
+  "coral": "#FF7A6B",
+  "cream": "#FFF3DE",
+  "sun": "#FFD23F",
+  "green": "#6CCB5F"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.013,
+   "width": 0.106,
+   "depth": 0.095
+  },
+  "drawing_vs_target": {
+   "front": 1.0,
+   "side": 0.91
+  },
+  "ok": true,
+  "size": [
+   3.0,
+   3.0,
+   4
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

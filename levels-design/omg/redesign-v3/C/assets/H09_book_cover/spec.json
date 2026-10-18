@@ -1,0 +1,89 @@
+{
+ "id": "H09_book_cover",
+ "cn": "巨书封面",
+ "en": "Giant Storybook Cover",
+ "cls": "hero",
+ "zones": [
+  "z01"
+ ],
+ "size_m": {
+  "w": 5.8,
+  "d": 4.7,
+  "h": 1.5
+ },
+ "size_target_m": {
+  "w": 14,
+  "d": 10,
+  "h": 1.5
+ },
+ "tris_budget": 3000,
+ "lod1_tris": 900,
+ "parts": [
+  {
+   "en": "embossed bunny-heart emblem",
+   "cn": "浮雕兔头爱心徽"
+  },
+  {
+   "en": "gold corner protector",
+   "cn": "金色包角"
+  },
+  {
+   "en": "page block edge",
+   "cn": "书页侧边"
+  },
+  {
+   "en": "spine with bands",
+   "cn": "书脊"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "封面",
+   "pivot": "书脊铰接",
+   "motion": "开场第一拍 0→180° 翻开"
+  },
+  {
+   "part": "书页",
+   "pivot": "书脊",
+   "motion": "翻页转场时整页翻过"
+  },
+  {
+   "part": "徽章",
+   "pivot": "—",
+   "motion": "金光扫过"
+  }
+ ],
+ "colors": {
+  "mint": "#BDEBD8",
+  "pearl": "#F3F1EA",
+  "gold": "#F7D98B",
+  "cream": "#FFF3DE",
+  "foil": "#E9B949"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.008,
+   "width": 0.018,
+   "depth": 0.055
+  },
+  "drawing_vs_target": {
+   "front": 0.41,
+   "side": 0.48
+  },
+  "ok": true,
+  "size": [
+   5.8,
+   4.7,
+   1.5
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

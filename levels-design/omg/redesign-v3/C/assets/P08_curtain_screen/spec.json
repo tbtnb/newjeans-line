@@ -1,0 +1,69 @@
+{
+ "id": "P08_curtain_screen",
+ "cn": "纸帘屏风",
+ "en": "Paper Curtain Screen",
+ "cls": "prop",
+ "zones": [
+  "z03"
+ ],
+ "size_m": {
+  "w": 2.1,
+  "d": 0.6,
+  "h": 2
+ },
+ "size_target_m": {
+  "w": 2,
+  "d": 0.6,
+  "h": 2
+ },
+ "tris_budget": 400,
+ "lod1_tris": 120,
+ "parts": [
+  {
+   "en": "folding panel",
+   "cn": "折叠帘片"
+  },
+  {
+   "en": "frame with wheels",
+   "cn": "框架+小轮"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "帘片",
+   "pivot": "折痕",
+   "motion": "展开/收起"
+  }
+ ],
+ "colors": {
+  "wardgray": "#B9CFC8",
+  "cream": "#FFF3DE",
+  "white": "#FFFFFF"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.036,
+   "width": 0.036,
+   "depth": 0.507
+  },
+  "drawing_vs_target": {
+   "front": 1.07,
+   "side": 0.59
+  },
+  "ok": false,
+  "size": [
+   2.1,
+   0.6,
+   2
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

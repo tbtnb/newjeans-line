@@ -1,0 +1,84 @@
+{
+ "id": "H17_bunny_windmill",
+ "cn": "兔子村风车",
+ "en": "Bunny Village Windmill",
+ "cls": "hero",
+ "zones": [
+  "z02"
+ ],
+ "size_m": {
+  "w": 5.1,
+  "d": 3.7,
+  "h": 9
+ },
+ "size_target_m": {
+  "w": 4,
+  "d": 3,
+  "h": 9
+ },
+ "tris_budget": 3000,
+ "lod1_tris": 900,
+ "parts": [
+  {
+   "en": "four paper sails",
+   "cn": "四片风帆"
+  },
+  {
+   "en": "bunny-ear roof cap",
+   "cn": "兔耳屋顶"
+  },
+  {
+   "en": "door and flower box",
+   "cn": "门+花箱"
+  },
+  {
+   "en": "hub",
+   "cn": "轮毂"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "风帆",
+   "pivot": "轮毂(水平轴)",
+   "motion": "匀速旋转，副歌加速"
+  },
+  {
+   "part": "兔耳",
+   "pivot": "耳根",
+   "motion": "小节首摆动"
+  }
+ ],
+ "colors": {
+  "coral": "#FF7A6B",
+  "cream": "#FFF3DE",
+  "sun": "#FFD23F",
+  "green": "#6CCB5F",
+  "wood": "#C99A6B"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.002,
+   "width": 0.026,
+   "depth": 0.349
+  },
+  "drawing_vs_target": {
+   "front": 1.27,
+   "side": 0.95
+  },
+  "ok": false,
+  "size": [
+   5.1,
+   3.7,
+   9
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

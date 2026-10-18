@@ -1,0 +1,74 @@
+{
+ "id": "P07_heart_iv_stand",
+ "cn": "心形点滴架",
+ "en": "Heart IV Stand",
+ "cls": "prop",
+ "zones": [
+  "z03"
+ ],
+ "size_m": {
+  "w": 1.0,
+  "d": 1.0,
+  "h": 2.2
+ },
+ "size_target_m": {
+  "w": 0.8,
+  "d": 0.8,
+  "h": 2.2
+ },
+ "tris_budget": 500,
+ "lod1_tris": 150,
+ "parts": [
+  {
+   "en": "heart drip bag",
+   "cn": "心形点滴袋"
+  },
+  {
+   "en": "pole and hook",
+   "cn": "立杆+挂钩"
+  },
+  {
+   "en": "wheeled base",
+   "cn": "五轮底座"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "点滴袋",
+   "pivot": "挂钩",
+   "motion": "随拍轻晃+微光"
+  }
+ ],
+ "colors": {
+  "coral": "#FF7A6B",
+  "blush": "#FFC7DA",
+  "wardgray": "#B9CFC8",
+  "cream": "#FFF3DE"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.004,
+   "width": 0.108,
+   "depth": 0.07
+  },
+  "drawing_vs_target": {
+   "front": 1.27,
+   "side": 1.17
+  },
+  "ok": true,
+  "size": [
+   1.0,
+   1.0,
+   2.2
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

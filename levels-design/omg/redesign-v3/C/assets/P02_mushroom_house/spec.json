@@ -1,0 +1,74 @@
+{
+ "id": "P02_mushroom_house",
+ "cn": "纸蘑菇屋",
+ "en": "Paper Mushroom House",
+ "cls": "prop",
+ "zones": [
+  "z02"
+ ],
+ "size_m": {
+  "w": 2.5,
+  "d": 2.5,
+  "h": 3
+ },
+ "size_target_m": {
+  "w": 2.5,
+  "d": 2.5,
+  "h": 3
+ },
+ "tris_budget": 1000,
+ "lod1_tris": 300,
+ "parts": [
+  {
+   "en": "spotted cap",
+   "cn": "斑点伞盖"
+  },
+  {
+   "en": "stem with door",
+   "cn": "菌柄+门"
+  },
+  {
+   "en": "window",
+   "cn": "小窗"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "伞盖",
+   "pivot": "菌柄顶",
+   "motion": "每拍轻压缩回弹"
+  }
+ ],
+ "colors": {
+  "coral": "#FF7A6B",
+  "cream": "#FFF3DE",
+  "sun": "#FFD23F",
+  "green": "#6CCB5F"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.002,
+   "width": 0.004,
+   "depth": 0.012
+  },
+  "drawing_vs_target": {
+   "front": 1.0,
+   "side": 0.98
+  },
+  "ok": true,
+  "size": [
+   2.5,
+   2.5,
+   3
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

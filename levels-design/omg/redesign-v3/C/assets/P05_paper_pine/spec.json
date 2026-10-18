@@ -1,0 +1,71 @@
+{
+ "id": "P05_paper_pine",
+ "cn": "折纸松树",
+ "en": "Folded Paper Pine",
+ "cls": "prop",
+ "zones": [
+  "z07",
+  "z09",
+  "z03"
+ ],
+ "size_m": {
+  "w": 2.1,
+  "d": 2.1,
+  "h": 4
+ },
+ "size_target_m": {
+  "w": 1.6,
+  "d": 1.6,
+  "h": 4
+ },
+ "tris_budget": 400,
+ "lod1_tris": 120,
+ "parts": [
+  {
+   "en": "stacked cones",
+   "cn": "叠层锥体"
+  },
+  {
+   "en": "trunk",
+   "cn": "树干"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "整体",
+   "pivot": "根部",
+   "motion": "乐句开头依次立起"
+  }
+ ],
+ "colors": {
+  "teal": "#173A4A",
+  "mint": "#BDEBD8",
+  "wood": "#C99A6B"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.001,
+   "width": 0.062,
+   "depth": 0.023
+  },
+  "drawing_vs_target": {
+   "front": 1.31,
+   "side": 1.26
+  },
+  "ok": true,
+  "size": [
+   2.1,
+   2.1,
+   4
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

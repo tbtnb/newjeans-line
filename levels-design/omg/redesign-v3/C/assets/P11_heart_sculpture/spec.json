@@ -1,0 +1,70 @@
+{
+ "id": "P11_heart_sculpture",
+ "cn": "爱心纸雕",
+ "en": "Paper Heart Sculpture",
+ "cls": "prop",
+ "zones": [
+  "z04",
+  "z08"
+ ],
+ "size_m": {
+  "w": 1.2,
+  "d": 0.5,
+  "h": 1.6
+ },
+ "size_target_m": {
+  "w": 1.5,
+  "d": 0.6,
+  "h": 1.6
+ },
+ "tris_budget": 500,
+ "lod1_tris": 150,
+ "parts": [
+  {
+   "en": "faceted heart",
+   "cn": "多面爱心"
+  },
+  {
+   "en": "stand",
+   "cn": "底座"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "爱心",
+   "pivot": "中心",
+   "motion": "'Oh my god' 时弹出放大"
+  }
+ ],
+ "colors": {
+  "pink": "#FF6FAE",
+  "gold": "#F7D98B",
+  "cream": "#FFF3DE"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.001,
+   "width": 0.179,
+   "depth": 0.088
+  },
+  "drawing_vs_target": {
+   "front": 0.83,
+   "side": 0.84
+  },
+  "ok": true,
+  "size": [
+   1.2,
+   0.5,
+   1.6
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

@@ -1,0 +1,78 @@
+{
+ "id": "P04_paper_tree_round",
+ "cn": "圆冠纸树",
+ "en": "Round Paper Tree",
+ "cls": "prop",
+ "zones": [
+  "z01",
+  "z02",
+  "z04",
+  "z06",
+  "z10"
+ ],
+ "size_m": {
+  "w": 2.3,
+  "d": 2.3,
+  "h": 3.5
+ },
+ "size_target_m": {
+  "w": 2,
+  "d": 2,
+  "h": 3.5
+ },
+ "tris_budget": 600,
+ "lod1_tris": 180,
+ "parts": [
+  {
+   "en": "faceted crown",
+   "cn": "多面体树冠"
+  },
+  {
+   "en": "trunk",
+   "cn": "树干"
+  },
+  {
+   "en": "root base",
+   "cn": "根部"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "整体",
+   "pivot": "根部",
+   "motion": "每 4 小节一组“啪”地立起"
+  }
+ ],
+ "colors": {
+  "mint": "#BDEBD8",
+  "green": "#6CCB5F",
+  "blush": "#FFC7DA",
+  "wood": "#C99A6B"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.003,
+   "width": 0.052,
+   "depth": 0.027
+  },
+  "drawing_vs_target": {
+   "front": 1.13,
+   "side": 1.12
+  },
+  "ok": true,
+  "size": [
+   2.3,
+   2.3,
+   3.5
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

@@ -1,0 +1,90 @@
+{
+ "id": "H12_flip_phone_sculpture",
+ "cn": "纸艺翻盖手机",
+ "en": "Paper Flip Phone Sculpture",
+ "cls": "hero",
+ "zones": [
+  "z06",
+  "z10"
+ ],
+ "size_m": {
+  "w": 2.6,
+  "d": 3.0,
+  "h": 5
+ },
+ "size_target_m": {
+  "w": 2.5,
+  "d": 1.5,
+  "h": 5
+ },
+ "tris_budget": 2000,
+ "lod1_tris": 600,
+ "parts": [
+  {
+   "en": "screen with heart",
+   "cn": "屏幕+爱心"
+  },
+  {
+   "en": "blank keypad",
+   "cn": "空白按键"
+  },
+  {
+   "en": "hinge",
+   "cn": "翻盖铰链"
+  },
+  {
+   "en": "flower base",
+   "cn": "花朵底座"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "上盖",
+   "pivot": "铰链",
+   "motion": "随拍开合 0↔150°"
+  },
+  {
+   "part": "屏幕",
+   "pivot": "—",
+   "motion": "开盖时亮爱心"
+  },
+  {
+   "part": "天线",
+   "pivot": "顶",
+   "motion": "转场时伸长"
+  }
+ ],
+ "colors": {
+  "coral": "#FF7A6B",
+  "cream": "#FFF3DE",
+  "pink": "#FF6FAE",
+  "peach": "#FFC2A8",
+  "mint": "#BDEBD8"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.003,
+   "width": 0.112,
+   "depth": 0.403
+  },
+  "drawing_vs_target": {
+   "front": 1.05,
+   "side": 1.38
+  },
+  "ok": false,
+  "size": [
+   2.6,
+   3.0,
+   5
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

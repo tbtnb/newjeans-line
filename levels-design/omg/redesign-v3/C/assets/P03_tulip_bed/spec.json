@@ -1,0 +1,74 @@
+{
+ "id": "P03_tulip_bed",
+ "cn": "郁金香花圃",
+ "en": "Tulip Bed with Fence",
+ "cls": "prop",
+ "zones": [
+  "z02"
+ ],
+ "size_m": {
+  "w": 2.6,
+  "d": 1.0,
+  "h": 0.8
+ },
+ "size_target_m": {
+  "w": 3,
+  "d": 1.5,
+  "h": 0.8
+ },
+ "tris_budget": 800,
+ "lod1_tris": 240,
+ "parts": [
+  {
+   "en": "paper tulip",
+   "cn": "纸郁金香"
+  },
+  {
+   "en": "picket fence",
+   "cn": "白栅栏"
+  },
+  {
+   "en": "soil tray",
+   "cn": "花床"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "郁金香",
+   "pivot": "茎底",
+   "motion": "军鼓依次弹起"
+  }
+ ],
+ "colors": {
+  "sun": "#FFD23F",
+  "coral": "#FF7A6B",
+  "white": "#FFFFFF",
+  "green": "#6CCB5F"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.042,
+   "width": 0.272,
+   "depth": 0.235
+  },
+  "drawing_vs_target": {
+   "front": 0.87,
+   "side": 0.48
+  },
+  "ok": false,
+  "size": [
+   2.6,
+   1.0,
+   0.8
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}

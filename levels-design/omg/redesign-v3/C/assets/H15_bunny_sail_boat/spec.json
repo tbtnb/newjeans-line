@@ -1,0 +1,84 @@
+{
+ "id": "H15_bunny_sail_boat",
+ "cn": "兔子帆纸船",
+ "en": "Bunny-Sail Paper Boat",
+ "cls": "hero",
+ "zones": [
+  "z05"
+ ],
+ "size_m": {
+  "w": 3.0,
+  "d": 1.1,
+  "h": 3
+ },
+ "size_target_m": {
+  "w": 3,
+  "d": 1.4,
+  "h": 3
+ },
+ "tris_budget": 1500,
+ "lod1_tris": 450,
+ "parts": [
+  {
+   "en": "bunny-head sail",
+   "cn": "兔头船帆"
+  },
+  {
+   "en": "folded hull",
+   "cn": "折纸船身"
+  },
+  {
+   "en": "bow lantern",
+   "cn": "船头灯"
+  },
+  {
+   "en": "mast",
+   "cn": "桅杆"
+  }
+ ],
+ "pivots": [
+  {
+   "part": "整体",
+   "pivot": "船身中心",
+   "motion": "随拍上下浮动 + 横摇 ±5°"
+  },
+  {
+   "part": "船头灯",
+   "pivot": "—",
+   "motion": "hook 处亮"
+  }
+ ],
+ "colors": {
+  "pearl": "#F3F1EA",
+  "lilac": "#E3D7FA",
+  "moon": "#BFD4F5",
+  "lamp": "#FFC968",
+  "gold": "#F7D98B"
+ },
+ "views_check": {
+  "consistency": {
+   "height": 0.119,
+   "width": 0.024,
+   "depth": 0.187
+  },
+  "drawing_vs_target": {
+   "front": 1.01,
+   "side": 0.66
+  },
+  "ok": true,
+  "size": [
+   3.0,
+   1.1,
+   3
+  ]
+ },
+ "files": [
+  "sheet.jpg",
+  "hero.jpg",
+  "views.jpg",
+  "front.jpg",
+  "side.jpg",
+  "top.jpg",
+  "parts.jpg"
+ ]
+}
