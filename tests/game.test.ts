@@ -71,16 +71,16 @@ test('checkpoint prepare keeps earlier diamonds and drops later ones', () => {
 });
 
 import { linePos } from '../src/core/linepath';
-test('linePos is continuous across an early and a late turn and returns to the centreline', () => {
+test('linePos keeps square corners: early taps turn exactly at the corner, late taps overshoot then snap back', () => {
   const lv = mk([2, 4]); const r = buildRoute(lv.chart, [], 20);
   const early = [{ index: 0, chartT: 2, tapT: 1.94 }];
-  const a = linePos(r, [], 1.94 - 1e-6, 0), b = linePos(r, early, 1.94, 1);
-  assert.ok(Math.hypot(a.x - b.x, a.z - b.z) < 1e-3);
-  const c = linePos(r, early, 3, 1), d = posAt(r, 3);
-  assert.ok(Math.hypot(c.x - d.x, c.z - d.z) < 1e-6);
+  for (const t of [1.94, 1.99, 2.0, 2.3, 3]) { const p = linePos(r, early, t, 1), q = posAt(r, t); assert.ok(Math.hypot(p.x - q.x, p.z - q.z) < 1e-6, 'on centreline at ' + t); }
+  // late: before the tap is accepted the line goes straight past the corner
+  const c = posAt(r, 2 - 1e-6), e = linePos(r, [], 2.06, 0); const h0 = r.spans[0].heading;
+  assert.ok(Math.abs(Math.hypot(e.x - c.x, e.z - c.z) - 0.06 * r.spans[0].v) < 1e-3);
+  assert.equal(r.spans[0].heading, h0);
   const late = [{ index: 0, chartT: 2, tapT: 2.06 }];
-  const e = linePos(r, [], 2.06 - 1e-6, 0), f = linePos(r, late, 2.06, 1);
-  assert.ok(Math.hypot(e.x - f.x, e.z - f.z) < 1e-3);
+  const f = linePos(r, late, 2.06, 1), g = posAt(r, 2.06); assert.ok(Math.hypot(f.x - g.x, f.z - g.z) < 1e-6, 'snaps back to the centreline');
 });
 
 test('falls/jumps land before the next tap (no turning in mid-air)', async () => {

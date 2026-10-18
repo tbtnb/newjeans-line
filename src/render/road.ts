@@ -28,12 +28,16 @@ export class Road {
       const s = spans[i];
       if (s.air) continue;
       const len = s.v * (s.t1 - s.t0);
-      const startsAfterTurn = i > 0 && spans[i - 1].turnIndex >= 0;
-      const endsWithTurn = s.turnIndex >= 0 || (i === spans.length - 1);
-      const w = widthAt(s.t0);
-      const padStart = startsAfterTurn ? w / 2 : (i === 0 ? 1.5 : 0);
-      const padEnd = endsWithTurn ? (i === spans.length - 1 ? 6 : w / 2) : 0;
+      // Square corners without overlap: the span that ENDS at a turn owns the corner square (extends past the corner
+      // centre by half of the NEXT span's width); the span that starts after a turn begins half of the PREVIOUS span's
+      // width after the corner centre. Footprints tile the L exactly (also with a width change at the corner).
+      const prevS = i > 0 ? spans[i - 1] : null, nextS = i + 1 < spans.length ? spans[i + 1] : null;
+      const startsAfterTurn = !!prevS && prevS.turnIndex >= 0 && !prevS.air;
+      const endsWithTurn = s.turnIndex >= 0 && !!nextS;
+      const padStart = startsAfterTurn ? -widthAt(s.t0 - 1e-3) / 2 : (i === 0 ? 1.5 : 0);
+      const padEnd = endsWithTurn ? widthAt(s.t1 + 1e-3) / 2 : (i === spans.length - 1 ? 6 : 0);
       const total = len + padStart + padEnd;
+      if (total <= 1e-4) continue;
       const n = Math.max(1, Math.ceil(total / TILE));
       const [hx, hz] = HEAD_VEC[s.heading];
       const yaw = Math.atan2(hx, hz);
@@ -42,7 +46,7 @@ export class Road {
       for (let k = 0; k < n; k++) {
         const a = -padStart + total * k / n, b = -padStart + total * (k + 1) / n;
         const mid = (a + b) / 2;
-        const tAt = s.t0 + Math.max(0, Math.min(len, a)) / s.v;
+        const tAt = s.t0 + Math.max(0, Math.min(len - 1e-6, a)) / s.v;
         const rv = revealAt(tAt);
         const tw = widthAt(tAt);
         const cy = p0.y + slope * Math.max(0, Math.min(len, mid));
@@ -89,8 +93,11 @@ export class Road {
     const h = this.height;
     const s = alpha === 0 ? 0 : 1;
     const q = Quaternion.RotationYawPitchRoll(t.yaw, t.pitch + tilt, 0);
-    const mb = Matrix.Compose(new Vector3(t.w * s, h * scaleY * s, (t.len + 0.05) * s), q, new Vector3(t.cx, t.cy - h / 2 * scaleY + dy, t.cz));
-    const mt = Matrix.Compose(new Vector3(t.w * s * 1.001, 0.04 * s, (t.len + 0.08) * s), q, new Vector3(t.cx, t.cy + 0.0 + dy, t.cz));
+    // body [cy-h, cy-0.02] and top cap [cy-0.02, cy+0.02]: identical footprint, stacked (no coplanar overlapping faces);
+    // tiles abut exactly (no overlap), length along the slope for ramp tiles
+    const L = t.len / Math.cos(t.pitch);
+    const mb = Matrix.Compose(new Vector3(t.w * s, (h - 0.02) * scaleY * s, L * s), q, new Vector3(t.cx, t.cy - 0.02 - (h - 0.02) / 2 * scaleY + dy, t.cz));
+    const mt = Matrix.Compose(new Vector3(t.w * s, 0.04 * s, L * s), q, new Vector3(t.cx, t.cy + dy, t.cz));
     mb.copyToArray(this.mBody, i * 16); mt.copyToArray(this.mTop, i * 16);
   }
 
