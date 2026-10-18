@@ -11,7 +11,7 @@
  "good": 1,
  "diamonds": 10,
  "ignoredDuplicates": 0,
- "fps": 13.10615989515986,
+ "fps": 11.829652996862803,
  "save": {
   "version": 2,
   "selected": "asap",
@@ -34,9 +34,9 @@
   }
  },
  "judged": 158,
- "errorMeanMs": 1.3,
- "errorSdMs": 4.2,
- "errorMaxAbsMs": 49,
+ "errorMeanMs": 2,
+ "errorSdMs": 6.3,
+ "errorMaxAbsMs": 80,
  "sent": 158,
  "logs": []
 }
