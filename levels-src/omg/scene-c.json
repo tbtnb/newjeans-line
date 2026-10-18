@@ -9222,7 +9222,7 @@
     {
      "asset": "pine",
      "layer": "mid",
-     "count": 14,
+     "count": 10,
      "near": [
       5.0,
       12.0
@@ -9560,7 +9560,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 13,
+     "count": 9,
      "near": [
       5.0,
       12.0
@@ -9653,7 +9653,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 23,
+     "count": 16,
      "near": [
       5.0,
       12.0
@@ -9722,7 +9722,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 24,
+     "count": 17,
      "near": [
       40.0,
       85.0
@@ -9745,7 +9745,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 5,
+     "count": 4,
      "near": [
       5.0,
       16.0

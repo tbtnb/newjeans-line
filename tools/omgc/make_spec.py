@@ -355,7 +355,7 @@ for z in zones:
             if ly['asset'] == 'firefly-lamp': ly['count'] = max(1, round(ly['count'] * 0.5))
     if zid == 'z09':   # v7: with houses allowed near the road the v6 village rows over-fill z09 (126 houses): x0.35
         for ly in z['layers']:
-            pass
+            if ly['asset'] in ('pine', 'pine-lo') and ly.get('layer') == 'mid': ly['count'] = max(1, round(ly['count'] * 0.7))   # budget for the house rows
     if zid in ('z07', 'z09'):   # bigger lit house rows hugging the road (merged into the chunk mid mesh); towers cut to pay
         for ly in z['layers']:
             if ly['asset'] == 'lantern-tower': ly['count'] = max(1, round(ly['count'] * 0.4))
