@@ -1783,7 +1783,7 @@
       3,
       4
      ],
-     "hi": false
+     "hi": true
     },
     {
      "asset": "heart-bed",
@@ -1808,7 +1808,7 @@
       3,
       4
      ],
-     "hi": false
+     "hi": true
     },
     {
      "asset": "bunny-statue",
@@ -1833,7 +1833,7 @@
       3,
       4
      ],
-     "hi": false
+     "hi": true
     },
     {
      "asset": "balloons",
@@ -1858,7 +1858,7 @@
       3,
       4
      ],
-     "hi": false
+     "hi": true
     },
     {
      "asset": "mushroom-house",
@@ -1883,7 +1883,7 @@
       3,
       4
      ],
-     "hi": false
+     "hi": true
     },
     {
      "asset": "bunny-house",
@@ -1908,7 +1908,7 @@
       3,
       4
      ],
-     "hi": false
+     "hi": true
     },
     {
      "asset": "gift",
@@ -1933,7 +1933,7 @@
       3,
       4
      ],
-     "hi": false
+     "hi": true
     },
     {
      "asset": "flower-heart",
@@ -1958,7 +1958,7 @@
       3,
       4
      ],
-     "hi": false
+     "hi": true
     }
    ],
    "setpieces": [
@@ -9829,7 +9829,7 @@
       3,
       4
      ],
-     "hi": false
+     "hi": true
     },
     {
      "asset": "bunting",
@@ -9854,7 +9854,7 @@
       3,
       4
      ],
-     "hi": false
+     "hi": true
     },
     {
      "asset": "heart-bed",
@@ -9879,7 +9879,7 @@
       3,
       4
      ],
-     "hi": false
+     "hi": true
     },
     {
      "asset": "bunny-statue",
@@ -9904,7 +9904,7 @@
       3,
       4
      ],
-     "hi": false
+     "hi": true
     },
     {
      "asset": "gift",
@@ -9929,7 +9929,7 @@
       3,
       4
      ],
-     "hi": false
+     "hi": true
     },
     {
      "asset": "flower-heart",
@@ -9954,7 +9954,7 @@
       3,
       4
      ],
-     "hi": false
+     "hi": true
     },
     {
      "asset": "tulip-bed",
@@ -9979,7 +9979,7 @@
       3,
       4
      ],
-     "hi": false
+     "hi": true
     },
     {
      "asset": "lantern-string",
@@ -10004,7 +10004,7 @@
       3,
       4
      ],
-     "hi": false
+     "hi": true
     }
    ],
    "setpieces": [

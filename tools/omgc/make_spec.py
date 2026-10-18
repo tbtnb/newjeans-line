@@ -290,7 +290,7 @@ RICH = {'z01': [('tulip-bed', 12), ('heart-bed', 8), ('bunny-statue', 8), ('ball
         'z10': [('balloons', 14), ('bunting', 10), ('heart-bed', 10), ('bunny-statue', 14), ('gift', 10), ('flower-heart', 10), ('tulip-bed', 8), ('lantern-string', 4)]}
 for z in zones:
     for aid, n in RICH.get(z['id'], []):
-        if aid in assets: z['layers'].append(dict(asset=aid, layer='mid', count=n, near=[3.0, 13.0], y=[0, 0], scale=[1.25, 1.7], colors=(z['layers'][0]['colors'] if z['layers'] else [0, 1, 2, 3, 4]), hi=False))
+        if aid in assets: z['layers'].append(dict(asset=aid, layer='mid', count=n, near=[3.0, 13.0], y=[0, 0], scale=[1.25, 1.7], colors=(z['layers'][0]['colors'] if z['layers'] else [0, 1, 2, 3, 4]), hi=True))   # richness is high tier only (low stays ~50k)
 out = os.path.join(here, '..', '..', 'levels-src', 'omg', 'scene-c.json')
 json.dump(spec, open(out, 'w'), ensure_ascii=False, indent=1)
 n = sum(l['count'] for z in zones for l in z['layers']); print(out, 'zones', len(zones), 'assets', len(assets), 'modelled', sum(bool(a['model']) for a in assets.values()), 'scatter instances', n, 'set pieces', sum(len(z['setpieces']) for z in zones))
