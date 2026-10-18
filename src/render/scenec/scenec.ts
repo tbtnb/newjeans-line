@@ -51,7 +51,7 @@ export class SceneC {
     this.mat = m;
     for (const s of this.plc.sets) this.sets.push(this.makeSet(s));
     // swap in built models as they load (placeholders until then; a missing model simply keeps its placeholder)
-    for (const [id, a] of Object.entries(spec.assets)) if (a.model) loadModel(scene, o.base, id, a.h).then(t => { if (this.disposed) { t.container?.dispose(); return; } this.tm.set(id, t); this.models++; this.refreshAsset(id); }).catch(e => console.warn('omg-c model', id, e));
+    for (const [id, a] of Object.entries(spec.assets)) if (a.model) loadModel(scene, o.base, id, a.h, typeof a.model === 'string' ? a.model : id).then(t => { if (this.disposed) { t.container?.dispose(); return; } this.tm.set(id, t); this.models++; this.refreshAsset(id); }).catch(e => console.warn('omg-c model', id, e));
   }
 
   setTier(t: Tier) { if (t === this.tier) return; this.tier = t; for (const m of this.chunkMesh.values()) m.dispose(); this.chunkMesh.clear(); this.range = [-1, -1]; }

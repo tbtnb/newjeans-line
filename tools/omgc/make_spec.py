@@ -5,10 +5,10 @@ import json, sys, importlib.util, os
 src = sys.argv[1] if len(sys.argv) > 1 else '/workspace/nj-design-v3/levels-design/omg/redesign-v3/C/zones_c.py'
 sp = importlib.util.spec_from_file_location('zones_c', src); Z = importlib.util.module_from_spec(sp); sp.loader.exec_module(Z)
 
-# element name (design) -> asset id, placeholder shape, height m. model=True when tools/models/assets/<id>.py exists.
+# element name (design) -> asset id, placeholder shape, height m. model = glb id when public/models/omg-c/<glb>.glb exists (GLB aliases below).
 A = {
  '纸草丛': ('grass', 'tuft', 0.45), '纸草丛(夜)': ('grass', 'tuft', 0.45), '小纸花': ('flower', 'flower', 0.2), '小纸花(夜光)': ('flower', 'flower', 0.2), '小纸花(夜)': ('flower', 'flower', 0.2),
- '爱心小花': ('flower-heart', 'flower', 0.22), '卵石': ('pebble', 'ico', 0.17), '石板': ('slab', 'box', 0.08), '苔石': ('pebble', 'ico', 0.2), '岸边纸石': ('rock', 'ico', 0.6),
+ '爱心小花': ('flower-heart', 'flower', 0.22), '卵石': ('pebble', 'ico', 0.17), '石板': ('slab', 'box', 0.08), '苔石': ('moss-rock', 'ico', 0.2), '岸边纸石': ('rock', 'ico', 0.6),
  '纸蘑菇(小)': ('mushroom', 'mushroom', 0.3), '小纸蘑菇': ('mushroom', 'mushroom', 0.3), '纸格地砖贴片': ('tile-decal', 'card', 0.02), '纸屑': ('confetti-decal', 'card', 0.02),
  '星点纸地贴': ('star-decal', 'card', 0.02), '金箔碎片': ('gold-decal', 'card', 0.02), '纸波纹片': ('ripple-decal', 'card', 0.02), '纸睡莲叶': ('lily-pad', 'card', 0.03),
  '芦苇纸丛': ('reed', 'tuft', 0.9), '纸礼盒': ('gift', 'box', 0.5), '纸礼盒/糖果': ('gift', 'box', 0.5),
@@ -56,14 +56,19 @@ PAL = {   # zone environment (sky/fog/page) from DESIGN.md light notes
  'z09': dict(skyTop='#0F2834', skyBottom='#2C3E6B', fog='#1F3A50', ground='#24495A', light='#F7D98B', ambient='#7FA8B8', fogStart=35, fogEnd=120),
  'z10': dict(skyTop='#A9DCFF', skyBottom='#FFD27A', fog='#FFE6C0', ground='#FFF3DE', light='#FFF1D6', ambient='#FFE8F0', fogStart=60, fogEnd=180),
 }
-here = os.path.dirname(os.path.abspath(__file__)); models = os.path.join(here, '..', 'models', 'assets')
+here = os.path.dirname(os.path.abspath(__file__)); glbdir = os.path.join(here, '..', '..', 'public', 'models', 'omg-c')
+# engine asset ids that reuse another asset's model (no sheet of their own)
+GLB = {'tree-bush': 'tree', 'tall-tower': 'spiral-tower', 'bird': 'page-bird', 'firework': 'star', 'lantern': 'firefly-lamp', 'leaf': 'petal', 'float-heart': 'flower-heart'}
+def model_of(aid):
+    g = GLB.get(aid, aid)
+    return (True if g == aid else g) if os.path.exists(os.path.join(glbdir, g + '.glb')) else False
 assets = {}; zones = []
 for z in Z.ZONES:
     zid = z['id']; layers = []
     for layer, items in Z.LAYERS[zid].items():
         for name, count, tris in items:
             aid, shape, h = A[name]
-            a = assets.setdefault(aid, dict(layer=layer, shape=shape, h=h, tris=tris, model=os.path.exists(os.path.join(models, aid + '.py')), names=[]))
+            a = assets.setdefault(aid, dict(layer=layer, shape=shape, h=h, tris=tris, model=model_of(aid), names=[]))
             if name not in a['names']: a['names'].append(name)
             a['tris'] = max(a['tris'], tris)
             if layer == 'land': continue   # landmarks are placed as set pieces below
@@ -98,13 +103,8 @@ for z in Z.ZONES:
 spec = dict(version=1, source='levels-design/omg/redesign-v3/C/zones_c.py (omg-design-v3)', chunk=20, window=dict(behind=3, ahead=8),
             clear=dict(ground=0.3, groundMaxH=0.3, near=1.0), assets=assets, zones=zones)
 # design asset sheets (levels-design/omg/redesign-v3/C/assets/<design id>/spec.json): their size / tri budget win over the table
-DESIGN_IDS = {'castle': 'H01_popup_castle', 'bunny-heart': 'H02_giant_bunny_heart', 'carousel': 'H03_bunny_carousel', 'ferris-wheel': 'H04_heart_ferris_wheel',
- 'lantern-tower': 'H05_lantern_tower', 'heart-gate': 'H06_heart_finish_gate', 'bunny-family': 'H07_bunny_family', 'cannon': 'H08_confetti_cannon',
- 'book-cover': 'H09_book_cover', 'ward-bed': 'H10_ward_bed_set', 'clock-tower': 'H11_clock_tower', 'flip-phone': 'H12_flip_phone_sculpture',
- 'phone-tower': 'H13_phone_tower', 'spiral-tower': 'H14_spiral_paper_tower', 'paper-boat': 'H15_bunny_sail_boat', 'pavilion': 'H16_lake_pavilion',
- 'windmill': 'H17_bunny_windmill', 'reading-bunny': 'H18_reading_bunny', 'sun': 'H19_paper_sun', 'bunny-house': 'P01_bunny_cottage',
- 'mushroom-house': 'P02_mushroom_house', 'tulip-bed': 'P03_tulip_bed', 'tree': 'P04_paper_tree_round', 'pine': 'P05_paper_pine', 'bunny-statue': 'P06_sitting_bunny',
- 'iv-heart': 'P07_heart_iv_stand', 'screen': 'P08_curtain_screen', 'pull-tab': 'P09_pull_tab', 'lantern-string': 'P10_lantern_string', 'heart-sculpt': 'P11_heart_sculpture', 'gift': 'P12_gift_box'}
+CAT = json.load(open(os.path.join(here, '..', 'models', 'catalog.json')))
+DESIGN_IDS = {c['id']: c['design'] for c in CAT if 'item' not in c}
 DESIGN = os.environ.get('DESIGN', '/workspace/nj-design-v3/levels-design/omg/redesign-v3/C')
 for aid, did in DESIGN_IDS.items():
     f = os.path.join(DESIGN, 'assets', did, 'spec.json')
@@ -122,4 +122,4 @@ for z in spec['zones']:
     z['setpieces'] = keep
 out = os.path.join(here, '..', '..', 'levels-src', 'omg', 'scene-c.json')
 json.dump(spec, open(out, 'w'), ensure_ascii=False, indent=1)
-n = sum(l['count'] for z in zones for l in z['layers']); print(out, 'zones', len(zones), 'assets', len(assets), 'modelled', sum(a['model'] for a in assets.values()), 'scatter instances', n, 'set pieces', sum(len(z['setpieces']) for z in zones))
+n = sum(l['count'] for z in zones for l in z['layers']); print(out, 'zones', len(zones), 'assets', len(assets), 'modelled', sum(bool(a['model']) for a in assets.values()), 'scatter instances', n, 'set pieces', sum(len(z['setpieces']) for z in zones))

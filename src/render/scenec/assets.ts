@@ -41,9 +41,9 @@ function loader(base: string) {
 const lin2srgb = (c: number) => Math.pow(Math.max(0, c), 1 / 2.2);
 
 /** Load one model; returns a merged template (glTF linear vertex colours -> sRGB for the unlit material) + its container. */
-export async function loadModel(scene: Scene, base: string, id: string, h: number): Promise<Template> {
+export async function loadModel(scene: Scene, base: string, id: string, h: number, glb = id): Promise<Template> {
   const sl = await loader(base);
-  const c = await sl.LoadAssetContainerAsync(`${base}models/omg-c/${id}.glb`, scene);
+  const c = await sl.LoadAssetContainerAsync(`${base}models/omg-c/${glb}.glb`, scene);
   const pos: number[] = [], col: number[] = [], idx: number[] = []; const v = new Vector3();
   let ymin = 1e9, ymax = -1e9;
   for (const m of c.meshes) {
