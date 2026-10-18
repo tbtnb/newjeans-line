@@ -62,7 +62,7 @@ export class World {
   private ground: Mesh | null = null; private groundMat: StandardMaterial | null = null;
   private head: Mesh | null = null; private trail: Mesh | null = null; private trailMat: StandardMaterial | null = null; private headMat: StandardMaterial | null = null;
   private trailBuf = new Float32Array(16 * 64); private trailCount = 0; private runs: Run[] = []; private failRun: Run | null = null;
-  private objects: Obj[] = []; private byId = new Map<string, Obj[]>();
+  private objects: Obj[] = []; private faceCam: Obj[] = []; private groundTex: { t: number; tex: Texture }[] = []; private groundShown: Texture | null = null; private groundTint: Color3 | null = null; private byId = new Map<string, Obj[]>();
   private diamonds: { mesh: Mesh; t: number; taken: boolean; base: Vector3 }[] = [];
   private crowns: { node: TransformNode; t: number; taken: boolean; base: Vector3 }[] = [];
   private fx: Fx[] = []; private glowTex: DynamicTexture | null = null; private sparkTex: DynamicTexture | null = null;
@@ -117,6 +117,7 @@ export class World {
   }
 
   unload() {
+    for (const g of this.groundTex) g.tex.dispose(); this.faceCam = []; this.groundTex = []; this.groundShown = null; this.groundTint = null;
     this.particles?.dispose(); this.particles = null; this.particleKind = null;
     this.shadows?.dispose(); this.shadows = null;
     for (const f of this.fx) f.mesh.dispose(); this.fx = [];
@@ -154,7 +155,13 @@ export class World {
     if (pal.groundY !== null && pal.groundY !== undefined) {
       this.ground = CreateGround('ground', { width: 1600, height: 1600, subdivisions: 1 }, this.scene);
       this.groundMat = new StandardMaterial('groundM', this.scene); this.groundMat.specularColor = Color3.Black();
-      if (L.art?.ground?.src) { const gt = new Texture(this.mats.artBase + L.art.ground.src, this.scene); const rep = 1600 / (L.art.ground.scale ?? 40); gt.uScale = rep; gt.vScale = rep; this.groundMat.diffuseTexture = gt; }
+      // themed ground (v2.7: sections[].ground switches the tile at section starts; tint multiplies it)
+      const mk = (g: { src: string; scale?: number }) => { const gt = new Texture(this.mats!.artBase + g.src, this.scene); const rep = 1600 / (g.scale ?? 40); gt.uScale = rep; gt.vScale = rep; return gt; };
+      if (L.art?.ground?.src) this.groundTex.push({ t: -1, tex: mk(L.art.ground) });
+      for (const sc of L.sections ?? []) if (sc.ground?.src) this.groundTex.push({ t: sc.t, tex: mk(sc.ground) });
+      this.groundTex.sort((a, b) => a.t - b.t);
+      if (this.groundTex.length) { this.groundMat.diffuseTexture = this.groundTex[0].tex; this.groundShown = this.groundTex[0].tex; }
+      this.groundTint = L.art?.ground?.tint ? hex(L.art.ground.tint) : null;
       this.ground.material = this.groundMat; this.ground.position.y = pal.groundY; this.ground.isPickable = false; this.ground.parent = this.root;
     }
     // player line
@@ -256,17 +263,33 @@ export class World {
     let side = o.side ?? 0;
     const sz = o.size ?? [2, 2, 2];
     const rad = o.radius ?? (o.kind === 'group' ? 1.5 : Math.max(sz[0] ?? 1, sz[2] ?? 1) / 2);
-    if (grid && side !== 0 && !o.onroad && !o.worldPos && !['water', 'plane', 'disc', 'text', 'cloud', 'moon', 'sun'].includes(o.kind) && (o.y ?? 0) < 4) {
+    // v2.7 near-road placement: |side| = half road width + near + own radius (art props hug the actual road edge)
+    const hug = o.hug ?? (o.near !== undefined);
+    if (o.near !== undefined && !o.worldPos) side = (Math.sign(side) || 1) * ((stepAt(this.level!.layout.road.width, t)?.w ?? 2.2) / 2 + o.near + rad);
+    if (grid && side !== 0 && !o.onroad && !o.worldPos && !['water', 'plane', 'disc', 'text', 'cloud', 'moon', 'sun', 'decal'].includes(o.kind) && (o.y ?? 0) < 4) {
       // keep scenery off the road: push outward until clear (scenery can be authored roughly by time)
-      for (let k = 0; k < 12; k++) { const p = flowAnchor(this.route, t, side, o.along ?? 0, o.y ?? 0).pos; if (!grid.hits(p.x, p.z, rad, p.y, p.y + (sz[1] ?? 2))) break; side += Math.sign(side) * 1.5; }
+      for (let k = 0; k < 16; k++) { const p = (hug ? anchor : flowAnchor)(this.route, t, side, o.along ?? 0, o.y ?? 0).pos; if (!grid.hits(p.x, p.z, rad, p.y - 0.5, p.y + (sz[1] ?? 2))) break; side += Math.sign(side) * (hug ? 0.75 : 1.5); }
+    } else if (grid && o.kind === 'decal' && side !== 0 && !o.worldPos) {
+      // floor decals may touch the road edge but never lie on the road
+      const r2 = Math.max(sz[0] ?? 4, sz[2] ?? 4) / 2;
+      for (let k = 0; k < 16; k++) { const p = (hug ? anchor : flowAnchor)(this.route, t, side, o.along ?? 0, o.y ?? 0).pos; if (!grid.hits(p.x, p.z, r2 * 0.8, p.y - 0.5, p.y + 0.5)) break; side += Math.sign(side) * 0.75; }
     }
     let pos, baseYaw;
     if (side === 0) { const a = anchor(this.route, t, 0, o.along ?? 0, o.y ?? 0); pos = a.pos; baseYaw = Math.atan2(HEAD_VEC[a.heading][0], HEAD_VEC[a.heading][1]); }
-    else if (o.hug) { const a = anchor(this.route, t, side, o.along ?? 0, o.y ?? 0); pos = a.pos; baseYaw = Math.atan2(HEAD_VEC[a.heading][0], HEAD_VEC[a.heading][1]); }
+    else if (hug) { const a = anchor(this.route, t, side, o.along ?? 0, o.y ?? 0); pos = a.pos; baseYaw = Math.atan2(HEAD_VEC[a.heading][0], HEAD_VEC[a.heading][1]); }
     else { const a = flowAnchor(this.route, t, side, o.along ?? 0, o.y ?? 0); pos = a.pos; baseYaw = a.yaw; }
     if (o.worldPos) { pos = { x: o.worldPos[0], y: o.worldPos[1] ?? 0, z: o.worldPos[2] ?? 0 }; baseYaw = 0; }
     const holder = new TransformNode(o.id ?? 'obj', this.scene); holder.parent = this.root;
     holder.position.set(pos.x, pos.y, pos.z);
+    // v2.7 face: point the object's front (local -z) at the road / the oncoming line; 'camera' is updated per frame
+    if (o.face && o.face !== 'camera') {
+      const a = anchor(this.route, t, 0, 0, 0); const [hx, hz] = HEAD_VEC[a.heading];
+      let fx = a.pos.x - pos.x, fz = a.pos.z - pos.z; const d = Math.hypot(fx, fz);
+      if (d < 0.3) { fx = -hz * Math.sign(side || 1); fz = hx * Math.sign(side || 1); } else { fx /= d; fz /= d; }
+      if (o.face === 'oncoming') { fx = fx * 0.5 - hx * 0.866; fz = fz * 0.5 - hz * 0.866; }
+      else if (o.face === 'travel') { fx = hx; fz = hz; }
+      baseYaw = Math.atan2(-fx, -fz);
+    }
     const rotY = baseYaw + (typeof o.rot === 'number' ? o.rot : Array.isArray(o.rot) ? o.rot[1] ?? 0 : 0) * Math.PI / 180;
     holder.rotation.y = rotY;
     if (Array.isArray(o.rot)) { holder.rotation.x = (o.rot[0] ?? 0) * Math.PI / 180; holder.rotation.z = (o.rot[2] ?? 0) * Math.PI / 180; }
@@ -275,7 +298,7 @@ export class World {
     holder.computeWorldMatrix(true); const bv = holder.getHierarchyBoundingVectors(true);
     const bc = bv.min.add(bv.max).scale(0.5).subtract(holder.position), br = bv.max.subtract(bv.min).length() / 2;
     const obj: Obj = { node: holder, def: o, t, base: holder.position.clone(), baseScale: new Vector3(1, 1, 1), baseRotY: rotY, hidden: false, id: o.id, bc, br: Number.isFinite(br) ? br : 0, fade: 1 };
-    this.objects.push(obj);
+    this.objects.push(obj); if (o.face === 'camera') this.faceCam.push(obj);
     if (o.id) { const l = this.byId.get(o.id) ?? []; l.push(obj); this.byId.set(o.id, l); }
   }
 
@@ -417,6 +440,7 @@ export class World {
     // environment
     const pal: Palette = this.env.at(t);
     this.applyPalette(pal);
+    if (this.groundTex.length > 1 && this.groundMat) { let g = this.groundTex[0].tex; for (const x of this.groundTex) if (x.t <= t) g = x.tex; if (g !== this.groundShown) { this.groundShown = g; this.groundMat.diffuseTexture = g; } }
     if (this.backdrops.length) { let b: string | null = null; for (const x of this.backdrops) if (x.t <= t) b = x.src; if (b !== this.backdropShown) { this.backdropShown = b; this.onBackdrop?.(b ? this.mats!.artBase + b : null); } }
     // road reveal
     this.road?.update(t);
@@ -481,7 +505,7 @@ export class World {
     this.scene.fogColor = fog; this.scene.fogStart = p.fogStart * 1.5; this.scene.fogEnd = p.fogEnd * 1.6;
     this.hemi.diffuse = hex(p.light); this.hemi.groundColor = hex(p.ambient).scale(0.6); this.hemi.intensity = 0.62;
     this.sun.diffuse = hex(p.light); this.sun.intensity = 0.5 * p.lightIntensity;
-    if (this.groundMat) { this.groundMat.diffuseColor = hex(p.ground); this.groundMat.emissiveColor = hex(p.ground).scale(0.08); }
+    if (this.groundMat) { const g = this.groundTint ?? hex(p.ground); this.groundMat.diffuseColor = g; this.groundMat.emissiveColor = g.scale(this.groundTint ? 0.18 : 0.08); }
     this.onSky?.(p.skyTop, p.skyBottom);
   }
 
@@ -570,6 +594,10 @@ export class World {
   private setFade(o: Obj, f: number) { o.fade = f; for (const m of o.node.getChildMeshes()) m.visibility = f; }
 
   private animateObjects(t: number) {
+    if (this.faceCam.length && this.rig) {
+      const c = this.rig.cam.position;
+      for (const o of this.faceCam) if (!o.hidden) o.node.rotation.y = Math.atan2(-(c.x - o.base.x), -(c.z - o.base.z));
+    }
     const lb = this.lastBefore(this.beats, t), lk = this.lastBefore(this.kicks, t);
     const beatK = Math.exp(-(t - lb) * 9), kickK = Math.exp(-(t - lk) * 10), tapK = Math.exp(-(t - this.lastTap) * 10);
     for (const o of this.objects) {

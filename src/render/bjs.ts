@@ -1,7 +1,7 @@
 // Centralised Babylon imports (deep imports keep the bundle small).
 export { Engine } from '@babylonjs/core/Engines/engine';
 export { Scene } from '@babylonjs/core/scene';
-export { Vector3, Matrix, Quaternion } from '@babylonjs/core/Maths/math.vector';
+export { Vector3, Vector4, Matrix, Quaternion } from '@babylonjs/core/Maths/math.vector';
 export { Color3, Color4 } from '@babylonjs/core/Maths/math.color';
 export { FreeCamera } from '@babylonjs/core/Cameras/freeCamera';
 export { Camera } from '@babylonjs/core/Cameras/camera';

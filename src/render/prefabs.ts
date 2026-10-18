@@ -1,4 +1,4 @@
-import { Texture, Color3, CreateBox, CreateCylinder, CreateDisc, CreateIcoSphere, CreatePlane, CreatePolyhedron, CreateSphere, CreateTorus, DynamicTexture, ExtrudeShape, Mesh, Scene, StandardMaterial, TransformNode, Vector3 } from './bjs';
+import { Texture, Color3, CreateBox, CreateCylinder, CreateDisc, CreateIcoSphere, CreatePlane, CreatePolyhedron, CreateSphere, CreateTorus, DynamicTexture, ExtrudeShape, Mesh, Scene, StandardMaterial, TransformNode, Vector3, Vector4 } from './bjs';
 import type { Part, SceneObject } from '../core/types';
 
 export const hex = (c: string | undefined, d = '#ffffff') => Color3.FromHexString(/^#[0-9a-fA-F]{6}$/.test(c ?? '') ? c! : d);
@@ -44,6 +44,7 @@ const DEF: Record<string, number[]> = {
   lamp: [0.4, 4, 0.4], flower: [1, 1.6, 1], heart: [2, 2, 0.6], star: [2, 2, 0.5], note: [1.2, 2.4, 0.4], bubble: [2, 2, 2],
   rock: [2, 1.4, 2], bridge: [3, 1, 10], stairs: [3, 3, 4], water: [60, 0, 60], moon: [6, 6, 6], sun: [8, 8, 8], ring: [4, 0.4, 4],
   crystal: [1, 3, 1], cassette: [4, 2.5, 0.6], phone: [2, 4, 0.3], bench: [2.4, 1, 0.8], pyramid: [5, 5, 5], text: [6, 0, 1.6], image: [4, 0, 4],
+  standee: [3, 3, 0.6], facade: [4, 5, 3], decal: [4, 0, 4],
 };
 
 function starShape(points: number, rO: number, rI: number) { const s: Vector3[] = []; for (let i = 0; i < points * 2; i++) { const r = i % 2 ? rI : rO; const a = Math.PI / 2 + i * Math.PI / points; s.push(new Vector3(Math.cos(a) * r, Math.sin(a) * r, 0)); } s.push(s[0].clone()); return s; }
@@ -69,6 +70,10 @@ export function textPlane(scene: Scene, text: string, color: string, size: numbe
   void mats;
   return p;
 }
+
+/** Art sub-rectangle [u0, v0, u1, v1] in image coordinates (0..1, origin top-left) -> Babylon face UVs (textures load with invertY). */
+export function uvRect(uv?: number[]): Vector4 { const [u0, v0, u1, v1] = uv && uv.length === 4 ? uv : [0, 0, 1, 1]; return new Vector4(u0, 1 - v1, u1, 1 - v0); }
+const isPng = (src?: string) => !!src && /\.png$/i.test(src);
 
 /** Build a prefab/primitive. The node's local frame: x right, y up, z forward. Origin at the base centre. */
 export function buildKind(scene: Scene, mats: Materials, o: SceneObject | Part, parent: TransformNode): TransformNode {
@@ -184,11 +189,39 @@ export function buildKind(scene: Scene, mats: Materials, o: SceneObject | Part, 
     }
     case 'image': {
       const im = o as SceneObject; const w = im.size?.[0] ?? 4, h = im.size?.[2] || im.size?.[1] || 4;
-      const p = CreatePlane('img', { width: w, height: h, sideOrientation: Mesh.DOUBLESIDE }, scene);
+      const uvi = uvRect(im.uv); const p = CreatePlane('img', { width: w, height: h, sideOrientation: Mesh.DOUBLESIDE, frontUVs: uvi, backUVs: uvi }, scene);
       p.material = mats.textured(im.src ?? '', { alpha: im.alpha !== false });
       p.parent = node;
       if (im.mode === 'flat') { p.rotation.x = Math.PI / 2; p.position.y = 0.03; }
       else { p.position.y = h / 2; if (im.mode === 'billboard') p.billboardMode = Mesh.BILLBOARDMODE_Y; }
+      break;
+    }
+    case 'standee': {
+      // art card on posts, facing local -z (see SceneObject.face). size [w, h, postHeight]; color = frame, color2 = posts/base
+      const so = o as SceneObject; const w = so.size?.[0] ?? 3, h = so.size?.[1] ?? 3, post = so.size?.[2] ?? 0.6;
+      const alpha = so.alpha ?? isPng(so.src); const uv = uvRect(so.uv);
+      const card = CreatePlane('stc', { width: w, height: h, sideOrientation: Mesh.DOUBLESIDE, frontUVs: uv, backUVs: uv }, scene);
+      add(card, mats.textured(so.src ?? '', { alpha, emissive: so.glow ?? 0.4 }), 0, post + h / 2);
+      if (!alpha) add(CreateBox('stf', { width: w + 0.3, height: h + 0.3, depth: 0.12 }, scene), M(color), 0, post + h / 2, 0.08);
+      if (post > 0.05) for (const s of [-1, 1]) add(CreateBox('stp', { width: 0.16, height: post + h * 0.5, depth: 0.16 }, scene), M(color2), s * w * 0.3, (post + h * 0.5) / 2, 0.16);
+      break;
+    }
+    case 'facade': {
+      // building block whose road-facing front (local -z) carries the art; color = walls, color2 = roof/trim
+      const so = o as SceneObject; const alpha = so.alpha ?? isPng(so.src);
+      add(CreateBox('fb', { width: sx, height: sy, depth: sz }, scene), M(color), 0, sy / 2);
+      add(CreateBox('fr', { width: sx + 0.3, height: Math.min(0.5, sy * 0.08), depth: sz + 0.3 }, scene), M(color2), 0, sy + Math.min(0.25, sy * 0.04));
+      const fw = sx * 0.88, fh = sy * 0.78; const uv = uvRect(so.uv);
+      const f = CreatePlane('ff', { width: fw, height: fh, frontUVs: uv, backUVs: uv, sideOrientation: Mesh.DOUBLESIDE }, scene);
+      add(f, mats.textured(so.src ?? '', { alpha, emissive: so.glow ?? 0.3 }), 0, sy * 0.47, -sz / 2 - 0.03);
+      break;
+    }
+    case 'decal': {
+      // painted floor decal / mural lying beside the road. size [w, 0, d]
+      const so = o as SceneObject; const w = so.size?.[0] ?? 4, d = so.size?.[2] || so.size?.[1] || 4; const uv = uvRect(so.uv);
+      const p = CreatePlane('dc', { width: w, height: d, frontUVs: uv, backUVs: uv, sideOrientation: Mesh.DOUBLESIDE }, scene);
+      add(p, mats.textured(so.src ?? '', { alpha: so.alpha ?? isPng(so.src), emissive: so.glow ?? 0.25 }), 0, 0.04).rotation.x = Math.PI / 2;
+      if (so.color && !(so.alpha ?? isPng(so.src))) { const b = add(CreatePlane('dcb', { width: w + 0.4, height: d + 0.4, sideOrientation: Mesh.DOUBLESIDE }, scene), M(color), 0, 0.03); b.rotation.x = Math.PI / 2; }
       break;
     }
     case 'text': { const p = textPlane(scene, (o as SceneObject).name ?? '', color, size); p.parent = node; p.position.y = 0.02; break; }
@@ -203,7 +236,7 @@ export function buildKind(scene: Scene, mats: Materials, o: SceneObject | Part, 
     default: add(CreateBox('b', { width: sx, height: sy, depth: sz }, scene), M(color), 0, sy / 2);
   }
   const tex = (o as Part).texture;
-  if (tex && kind !== 'image') { const m = mats.textured(tex, { alpha: false, emissive: 0.2 }); for (const c of node.getChildMeshes(true)) c.material = m; }
+  if (tex && !['image', 'standee', 'facade', 'decal'].includes(kind)) { const m = mats.textured(tex, { alpha: false, emissive: 0.2 }); for (const c of node.getChildMeshes(true)) c.material = m; }
   return node;
 }
 
