@@ -4489,11 +4489,11 @@
    ],
    "setpieces": [
     {
-     "t": 49.9,
+     "t": 52.0,
      "side": -1,
      "asset": "castle",
      "dist": 1.5,
-     "scale": 1.9,
+     "scale": 1.6,
      "pop": "spring",
      "label": "DROP 巨页翻开·城堡弹起",
      "hero": true,

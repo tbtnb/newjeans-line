@@ -228,7 +228,7 @@ IMP = {
 HERO = {   # zone: [(asset, t, side, scale, entourage [(asset, n)])]
  'z01': [('book-cover', 4.5, 1, 1.6, [('bunny-statue', 5), ('tulip-bed', 4), ('fence', 6), ('hedge', 2)]), ('bunny-statue', 9.5, -1, 2.2, [('tulip-bed', 3), ('heart-bed', 3), ('fence', 4)])],
  'z03': [('clock-tower', 38.5, 1, 1.55, [('tulip-bed', 4), ('firefly-lamp', 6), ('gift', 5), ('heart-bed', 3)])],
- 'z04': [('castle', 49.9, -1, 1.9, [('firefly-lamp', 10), ('lily-lamp', 6), ('star-chime', 4), ('heart-bed', 4)]), ('bunny-heart', 55.5, 1, 1.0, [('firefly-lamp', 6), ('lily-lamp', 4)])],
+ 'z04': [('castle', 52.0, -1, 1.6, [('firefly-lamp', 10), ('lily-lamp', 6), ('star-chime', 4), ('heart-bed', 4)]), ('bunny-heart', 55.5, 1, 1.0, [('firefly-lamp', 6), ('lily-lamp', 4)])],
  'z08': [('carousel', 110.0, 1, 1.45, [('balloons', 6), ('firefly-lamp', 8), ('bunting', 6), ('stall', 2)]), ('ferris-wheel', 115.0, -1, 1.3, [('balloons', 5), ('firefly-lamp', 8), ('lantern-string', 3), ('heart-bed', 3)])],
  'z10': [('bunny-family', 155.5, -1, 1.9, [('balloons', 6), ('heart-bed', 4), ('bunny-statue', 6), ('tulip-bed', 4)]), ('heart-gate', 160.4, 1, 1.3, [('balloons', 6), ('bunny-statue', 4), ('heart-bed', 3)])],
 }

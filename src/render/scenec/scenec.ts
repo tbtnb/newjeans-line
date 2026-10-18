@@ -338,8 +338,19 @@ export class SceneC {
         e.piv.push({ node: n, kind: mm[1].toLowerCase(), i: +(mm[2] || 0), base: n.rotationQuaternion?.clone() ?? null, baseS: n.scaling.clone(), baseP: n.position.clone() });
       }
       e.near = r;
-      // v5: a near copy only earns its extra draws when it animates (pivots); static models stay on the merged 1-draw mesh
+      // v5: a near copy only earns its extra draws when it animates (pivots); static models stay on the merged 1-draw mesh,
+      // and the static (non-pivot) parts of an animated copy are merged into one mesh (castle: 6 draws -> 2)
       if (!e.piv.length && e.nearMeshes.length > 1) { r.dispose(false, false); e.near = null; e.nearMeshes = []; }
+      else if (e.nearMeshes.length > 2) {
+        const pv = new Set(e.piv.map(p => p.node)); const moving = (m: Mesh) => { for (let n = m.parent; n && n !== r; n = n.parent) if (pv.has(n as TransformNode)) return true; return pv.has(m as any); };
+        const st = e.nearMeshes.filter(m => !moving(m) && m.getTotalVertices() > 0);
+        if (st.length > 1) {
+          r.parent = null; r.computeWorldMatrix(true); for (const m of st) m.computeWorldMatrix(true);
+          const mg = Mesh.MergeMeshes(st, true, true, undefined, false, false);
+          if (mg) { mg.bakeTransformIntoVertices(r.getWorldMatrix().clone().invert()); mg.parent = r; mg.material = this.matSet; mg.isPickable = false; e.nearMeshes = [mg, ...e.nearMeshes.filter(m => !st.includes(m))]; }
+          r.parent = e.hinge;
+        }
+      }
     }
     e.lodFar = !e.near; this.applyLod(e);
   }
