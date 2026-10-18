@@ -223,6 +223,23 @@ IMP = {
  'z09': [('pine', 4), ('forest-clump', 1), ('mushroom-house', 0.8), ('mushroom-group', 1), ('firefly-lamp', 1.2), ('lily-lamp', 0.5)],
  'z10': [('tree', 1.5), ('forest-clump', 1), ('tulip-bed', 1.5), ('heart-bed', 1.5), ('bunny-house', 0.8), ('balloons', 1), ('bunny-statue', 0.5)],
 }
+# ---- v5 heroes: each zone's key hero(es) beside the road ahead (in the key camera's view for several seconds), scaled up, with a
+# lit / dressed entourage around them; duplicates of the same hero in the zone are dropped
+HERO = {   # zone: [(asset, t, side, scale, entourage [(asset, n)])]
+ 'z01': [('book-cover', 4.5, 1, 1.6, [('bunny-statue', 5), ('tulip-bed', 4), ('fence', 6), ('hedge', 2)]), ('bunny-statue', 9.5, -1, 2.2, [('tulip-bed', 3), ('heart-bed', 3), ('fence', 4)])],
+ 'z03': [('clock-tower', 38.5, 1, 1.55, [('tulip-bed', 4), ('firefly-lamp', 6), ('gift', 5), ('heart-bed', 3)])],
+ 'z04': [('castle', 49.9, -1, 1.35, [('firefly-lamp', 10), ('lily-lamp', 6), ('star-chime', 4), ('heart-bed', 4)]), ('bunny-heart', 55.5, 1, 1.0, [('firefly-lamp', 6), ('lily-lamp', 4)])],
+ 'z08': [('carousel', 110.0, 1, 1.45, [('balloons', 6), ('firefly-lamp', 8), ('bunting', 6), ('stall', 2)]), ('ferris-wheel', 115.0, -1, 1.3, [('balloons', 5), ('firefly-lamp', 8), ('lantern-string', 3), ('heart-bed', 3)])],
+ 'z10': [('bunny-family', 155.5, -1, 1.9, [('balloons', 6), ('heart-bed', 4), ('bunny-statue', 6), ('tulip-bed', 4)]), ('heart-gate', 160.4, 1, 1.3, [('balloons', 6), ('bunny-statue', 4), ('heart-bed', 3)])],
+}
+for z in zones:   # v5: tree-bush / paper-hill set pieces read as big mint blobs near the camera: dropped (masses come from clusters)
+    z['setpieces'] = [sp for sp in z['setpieces'] if sp['asset'] not in ('tree-bush', 'paper-hill')]
+for z in zones:
+    for aid, t, side, sc, ent in HERO.get(z['id'], []):
+        base = next((sp for sp in z['setpieces'] if sp['asset'] == aid and not sp.get('hi')), None)
+        z['setpieces'] = [sp for sp in z['setpieces'] if sp['asset'] != aid]   # drop duplicates and twins of the hero
+        d = dict(base or dict(asset=aid, pop='spring', label='hero'), t=t, side=side, scale=sc, dist=4.0, hero=True, entourage=[list(e) for e in ent if e[0] in assets])
+        z['setpieces'] = sorted(z['setpieces'] + [d], key=lambda x: x['t'])
 paint = os.path.join(glbdir, 'paint')
 for z in zones:
     zk = (z['t1'] - z['t0']) / 15.12
@@ -248,7 +265,7 @@ for z in spec['zones']:
     for sp in z['setpieces']:
         if sp['asset'] == 'bunny-family':
             if seen: continue
-            seen = True; sp['t'] = 153.5
+            seen = True; sp['t'] = sp['t'] if sp.get('hero') else 153.5
         keep.append(sp)
     z['setpieces'] = keep
 out = os.path.join(here, '..', '..', 'levels-src', 'omg', 'scene-c.json')

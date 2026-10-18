@@ -138,6 +138,16 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
       const rp = anchor(route, sp.t).pos;
       const popAt = drop && sp.t - drop.t < 8 && sp.t >= drop.t - 0.5 ? drop.t : snap(sp.t - 4);
       const sc0 = chunks[chunkAt(sp.t)];
+      for (const [ea, en] of sp.entourage ?? []) {   // entourage: decor ringed around the hero (front half first), clear of the road
+        const EA = spec.assets[ea]; if (!EA) continue;
+        for (let k = 0; k < en; k++) for (let att = 0; att < 4; att++) {
+          const ang = Math.atan2(rp.x - a.pos.x, rp.z - a.pos.z) + (R() - 0.5) * Math.PI * (att < 2 ? 1.3 : 2), rr = r * 0.75 + 1.5 + R() * 7;
+          const x = a.pos.x + Math.sin(ang) * rr, zz = a.pos.z + Math.cos(ang) * rr, es = 1.3 + R() * 0.5;
+          if (o.hits(x, zz, Math.max(EA.h, EA.w ?? 0) * es * 0.35 + 0.8, a.pos.y - 1, a.pos.y + EA.h * es)) { rejected++; continue; }
+          const ci = chunkAt(sp.t); const ec = chunks[ci];
+          ec.items.push({ a: ea, layer: 'mid', x, y: groundY(ec, x, zz), z: zz, yaw: Math.atan2(rp.x - x, rp.z - zz), s: es, c: (z.layers[0]?.colors ?? [0])[Math.floor(R() * (z.layers[0]?.colors ?? [0]).length)], zone: zi, t: sp.t, chunk: ci }); placed++; break;
+        }
+      }
       sets.push({ a: sp.asset, layer: 'land', x: a.pos.x, y: groundY(sc0, a.pos.x, a.pos.z), z: a.pos.z, yaw: Math.atan2(rp.x - a.pos.x, rp.z - a.pos.z), s: sc, c: 0, zone: zi, t: sp.t, chunk: chunkAt(sp.t), popAt, label: sp.label, ...(sp.hi ? { hi: true } : {}) });
     }
   });
