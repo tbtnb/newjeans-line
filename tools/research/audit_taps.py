@@ -7,7 +7,7 @@ import sys, json, numpy as np, librosa
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent)); import onsets as O
 ROOT = Path(__file__).resolve().parents[2]
-args = [a for a in sys.argv[1:] if not a.startswith('--')]
+args = [a for i, a in enumerate(sys.argv[1:], 1) if not a.startswith('--') and not sys.argv[i - 1].startswith('--')]
 sid = args[0]; chart_p = Path(args[1]) if len(args) > 1 else ROOT / f'levels-src/{sid}/chart.json'
 out_p = Path(sys.argv[sys.argv.index('--out') + 1]) if '--out' in sys.argv else ROOT / f'analysis/research/{sid}-taps.json'
 LAG = np.mean(list(O.calibrate().values()))
