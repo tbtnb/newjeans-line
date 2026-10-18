@@ -9,6 +9,7 @@ import type { LevelData, Palette, SceneObject, SceneEvent, Heading } from '../co
 import { buildKind, hex, Materials, textPlane } from './prefabs';
 import { Road, stepAt } from './road';
 import { ShowFx } from './showfx';
+import { Corridor } from './corridor';
 import { Dressings } from './dressing';
 import { EnvTimeline } from './env';
 import { CameraRig } from './camera';
@@ -66,7 +67,7 @@ export class World {
   private ground: Mesh | null = null; private groundMat: StandardMaterial | null = null;
   private head: Mesh | null = null; private halo: Mesh | null = null; private headEdge = new Color3(0.3, 0.1, 0.15); private haloMat: StandardMaterial | null = null; private trail: Mesh | null = null; private trailMat: StandardMaterial | null = null; private headMat: StandardMaterial | null = null;
   private trailBuf = new Float32Array(16 * 64); private trailCount = 0; private runs: Run[] = []; private failRun: Run | null = null;
-  private show: ShowFx | null = null;
+  private show: ShowFx | null = null; private corridor: Corridor | null = null;
   private objects: Obj[] = []; private faceCam: Obj[] = []; private groundTex: { t: number; tex: Texture }[] = []; private groundShown: Texture | null = null; private groundTint: Color3 | null = null; private byId = new Map<string, Obj[]>();
   private diamonds: { mesh: Mesh; t: number; taken: boolean; base: Vector3 }[] = [];
   private crowns: { node: TransformNode; t: number; taken: boolean; base: Vector3 }[] = [];
@@ -140,7 +141,7 @@ export class World {
     this.trailMat?.dispose(); this.headMat?.dispose(); this.groundMat?.dispose();
     this.rig?.cam.dispose(); this.rig = null;
     this.objects = []; this.byId.clear(); this.diamonds = []; this.crowns = [];
-    this.dress?.dispose(); this.dress = null; this.show?.dispose(); this.show = null;
+    this.dress?.dispose(); this.dress = null; this.show?.dispose(); this.show = null; this.corridor?.dispose(); this.corridor = null;
     this.head = this.trail = this.ground = null;
     this.level = null; this.game = null; this.route = null;
     // dispose orphan textures/materials created by text planes
@@ -216,6 +217,11 @@ export class World {
       this.show = new ShowFx(this.scene, this.root, route, L, this.quality, widthAt, (x, z, r, y0, y1) => grid.hits(x, z, r, y0, y1),
         road ? { mesh: road.top, buffer: road.topBuffer, centers: Float32Array.from(road.tiles.flatMap(tl => [tl.cx, tl.cz])), setFlush: f => { road.onFlush = f; } } : null, L.fx.sprite ? new Texture(this.mats.artBase + L.fx.sprite, this.scene) : this.sparkTex ? this.sparkTex.clone() as Texture : null);
       this.show.addGlow(this.objects.filter(o => o.def.glowfx).flatMap(o => o.node.getChildMeshes() as Mesh[]));
+    }
+    if (L.corridor) {
+      // v2.9 corridor scenery (src/render/corridor.ts)
+      const spr = L.fx?.sprite ? new Texture(this.mats.artBase + L.fx.sprite, this.scene) : this.sparkTex ? this.sparkTex.clone() as Texture : null;
+      this.corridor = new Corridor(this.scene, this.root, route, L.corridor, this.mats.artBase, this.quality, widthAt, (x, z, r, y0, y1) => grid.hits(x, z, r, y0, y1), spr, this.beats);
     }
     // objects targeted by 'light' events get their own materials so they can glow independently
     for (const e of this.events) if (e.type === 'light' && e.target) for (const o of this.targets(e.target)) if (!o.lit) {
@@ -478,6 +484,7 @@ export class World {
     const pal: Palette = this.env.at(t);
     this.applyPalette(pal);
     if (this.show) { const lb = this.lastBefore(this.beats, t); this.show.update(t, Math.exp(-(t - lb) * 9), p => this.burst(p, '#fff4c2', 40), this.head.position); }
+    if (this.corridor && this.scene.activeCamera) { const lb = this.lastBefore(this.beats, t); this.corridor.update(t, Math.exp(-(t - lb) * 9), this.scene.activeCamera.position); }
     if (this.groundTex.length > 1 && this.groundMat) { let g = this.groundTex[0].tex; for (const x of this.groundTex) if (x.t <= t) g = x.tex; if (g !== this.groundShown) { this.groundShown = g; this.groundMat.diffuseTexture = g; } }
     if (this.backdrops.length) { let b: string | null = null; for (const x of this.backdrops) if (x.t <= t) b = x.src; if (b !== this.backdropShown) { this.backdropShown = b; this.onBackdrop?.(b ? this.mats!.artBase + b : null); } }
     // road reveal

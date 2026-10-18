@@ -110,7 +110,9 @@ def main():
     L['objects'] = objs
     if 'dressing' in spec: L['dressing'] = {**(L.get('dressing') or {}), **spec['dressing']}
     if 'art' in spec: L['art'] = {**(L.get('art') or {}), **spec['art']}
-    for k in ('fx', 'events', 'palette'):
+    if 'revealLead' in spec:  # show the road ahead farther: every reveal block gets at least this lead (s)
+        for r in L.get('road', {}).get('reveal', []): r['lead'] = max(r.get('lead', 0), spec['revealLead'])
+    for k in ('fx', 'events', 'palette', 'corridor'):
         if k in spec: L[k] = spec[k]
     for patch in spec.get('sections_by_time', []):
         best = min(L.get('sections', []), key=lambda x: abs(x['t'] - patch['t']), default=None)

@@ -73,6 +73,8 @@ export interface Layout {
   dressing?: Dressing | false;
   /** v2.8 show visuals (glow, image processing, beams, sparkles, road gloss/trims); see docs/SHOW_FX.md. Off when absent. */
   fx?: FxSpec;
+  /** v2.9 corridor scenery (src/render/corridor.ts) */
+  corridor?: CorridorSpec;
   beats?: number[]; // optional beat grid for react:'beat' scenery
   kicks?: number[];
 }
@@ -104,6 +106,28 @@ export interface Dressing {
 export interface LevelData {
   id: string; title: string; album: string; duration: number; bpm: number; audio: string; cover: string;
   difficulty: number; accent: string; chart: Chart; layout: Layout;
+}
+
+/** v2.9 corridor scenery: far-band set pieces, floor light strips, emblems, fireworks (src/render/corridor.ts). Times in s. */
+export interface CorridorItem {
+  /** texture (art/x.png, alpha); size [w, h] in m; glow = brightness (unlit); float = bob amplitude (m) */
+  src: string; size: number[]; glow?: number; float?: number;
+  /** lights: beat = pulse on every beat; chase = alternate instances light on alternate beats */
+  lights?: 'beat' | 'chase' | 'none';
+  /** flat = floor emblem lying on the ground (random yaw); add = additive blend (soft glow art); cut = alpha-test cutoff */
+  flat?: boolean; add?: boolean; cut?: number; alpha?: number; rise?: boolean;
+  /** lean toward the camera (0 = upright yaw billboard, 1 = full billboard) */
+  tilt?: number;
+}
+export interface CorridorSpec {
+  items: CorridorItem[];
+  /** one placement every `every` s from t0 to t1 on both sides (sides 2) or alternating (1); near = [min, max] m beyond the road edge */
+  bands?: { t0: number; t1: number; every: number; phase?: number; near: number[]; items: number[]; sides?: number; mirror?: boolean; y?: number[]; scale?: number[] }[];
+  /** glowing floor dots in strips parallel to the corridor (offsets in m beyond the road edge), chasing forward on the beat */
+  floor?: { t0: number; t1: number; every: number; offsets: number[]; color: string; size?: number; alpha?: number }[];
+  fireworks?: { t: number; near?: number; height?: number; colors?: string[]; amount?: number }[];
+  /** items are up `lead` s before the line reaches them and kept `tail` s after; maxActive caps instances per layer */
+  lead?: number; tail?: number; maxActive?: number; tilt?: number;
 }
 
 /** v2.8 show visuals (src/render/showfx.ts). All times in seconds; all optional. */
