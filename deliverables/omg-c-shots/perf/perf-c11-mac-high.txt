@@ -1,0 +1,56 @@
+console Failed to load resource: the server responded with a status of 404 (File not found)
+console [.WebGL-0x114000ca200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.
+console [.WebGL-0x114000ca200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.
+console [.WebGL-0x114000ca200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.
+console [.WebGL-0x114000ca200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.
+console [.WebGL-0x114000ca200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.
+console [.WebGL-0x114000ca200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.
+console [.WebGL-0x114000ca200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.
+console [.WebGL-0x114000ca200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.
+console [.WebGL-0x114000ca200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.
+console [.WebGL-0x114000ca200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.
+console [.WebGL-0x114000ca200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.
+console [.WebGL-0x114000ca200] GL_INVALID_VALUE: glGetProgramiv: Program object expected.
+{"url":"http://127.0.0.1:4468/?debug","gpu":true,"q":"high","renderer":"ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)","w":1080,"h":1920}
+{"hero":"z01","T":1.3,"asset":"book-cover"}
+{"hero":"z02","T":17.91,"asset":"windmill"}
+{"hero":"z03","T":35.73,"asset":"clock-tower"}
+{"hero":"z04","T":46.66,"asset":"castle"}
+{"hero":"z05","T":65.96,"asset":"pavilion"}
+{"hero":"z06","T":81.08,"asset":"phone-tower"}
+{"hero":"z07","T":93.5,"asset":"tall-tower"}
+{"hero":"z08","T":107.13,"asset":"carousel"}
+{"hero":"z09","T":138,"asset":"reading-bunny"}
+{"hero":"z10","T":159.4,"asset":"heart-gate"}
+{"name":"z01-in","T":0.6,"drawCalls":23,"tris":77417,"active":23,"frameMs":4.5,"frameP90":6.4,"sc":{"chunks":[0,4],"cm":5,"types":4,"inst":81,"sets":4,"models":84,"trisAtBudget":73234,"win":53707}}
+{"name":"z01-mid","T":7.57,"drawCalls":27,"tris":76413,"active":27,"frameMs":3.2,"frameP90":4.6,"sc":{"chunks":[2,7],"cm":6,"types":7,"inst":95,"sets":7,"models":84,"trisAtBudget":81128,"win":58593}}
+{"name":"z02-in","T":15.53,"drawCalls":31,"tris":96021,"active":31,"frameMs":2.6,"frameP90":4.3,"sc":{"chunks":[6,11],"cm":6,"types":7,"inst":62,"sets":8,"models":84,"trisAtBudget":97789,"win":74225}}
+{"name":"z02-mid","T":22.69,"drawCalls":30,"tris":108333,"active":30,"frameMs":2.8,"frameP90":4.6,"sc":{"chunks":[9,15],"cm":7,"types":7,"inst":62,"sets":11,"models":84,"trisAtBudget":127815,"win":98787}}
+{"name":"z03-in","T":30.65,"drawCalls":32,"tris":101117,"active":33,"frameMs":3.6,"frameP90":5.2,"sc":{"chunks":[13,19],"cm":7,"types":7,"inst":73,"sets":11,"models":84,"trisAtBudget":115350,"win":88651}}
+{"name":"z03-mid","T":37.8,"drawCalls":30,"tris":93293,"active":30,"frameMs":4.4,"frameP90":5.3,"sc":{"chunks":[17,22],"cm":6,"types":7,"inst":77,"sets":9,"models":84,"trisAtBudget":96650,"win":73971}}
+{"name":"z04-in","T":45.76,"drawCalls":29,"tris":104224,"active":30,"frameMs":3.6,"frameP90":4.8,"sc":{"chunks":[21,26],"cm":6,"types":8,"inst":208,"sets":8,"models":84,"trisAtBudget":119458,"win":93164}}
+{"name":"z04-mid","T":52.92,"drawCalls":35,"tris":109353,"active":35,"frameMs":2.9,"frameP90":4.7,"sc":{"chunks":[24,30],"cm":7,"types":7,"inst":283,"sets":4,"models":84,"trisAtBudget":131247,"win":101741}}
+{"name":"z05-in","T":60.88,"drawCalls":30,"tris":108875,"active":30,"frameMs":2.8,"frameP90":5.4,"sc":{"chunks":[28,34],"cm":7,"types":7,"inst":173,"sets":3,"models":84,"trisAtBudget":115111,"win":87289}}
+{"name":"z05-mid","T":68.04,"drawCalls":32,"tris":112123,"active":32,"frameMs":3.9,"frameP90":6.7,"sc":{"chunks":[32,38],"cm":7,"types":7,"inst":110,"sets":7,"models":84,"trisAtBudget":119874,"win":90661}}
+{"name":"z06-in","T":76,"drawCalls":32,"tris":120094,"active":32,"frameMs":3.7,"frameP90":5.6,"sc":{"chunks":[36,42],"cm":7,"types":8,"inst":107,"sets":9,"models":84,"trisAtBudget":140894,"win":104114}}
+{"name":"z06-mid","T":83.16,"drawCalls":27,"tris":109241,"active":27,"frameMs":2.3,"frameP90":4.8,"sc":{"chunks":[40,45],"cm":6,"types":5,"inst":92,"sets":8,"models":84,"trisAtBudget":117648,"win":87479}}
+{"name":"z07-in","T":91.12,"drawCalls":30,"tris":125124,"active":30,"frameMs":4.3,"frameP90":5.8,"sc":{"chunks":[44,49],"cm":6,"types":7,"inst":107,"sets":8,"models":84,"trisAtBudget":129554,"win":106472}}
+{"name":"z07-mid","T":98.28,"drawCalls":40,"tris":140080,"active":40,"frameMs":3.1,"frameP90":4.2,"sc":{"chunks":[47,53],"cm":7,"types":7,"inst":166,"sets":6,"models":84,"trisAtBudget":148496,"win":124714}}
+{"name":"z08-in","T":106.23,"drawCalls":39,"tris":133701,"active":39,"frameMs":3.4,"frameP90":5.3,"sc":{"chunks":[51,57],"cm":7,"types":6,"inst":301,"sets":4,"models":84,"trisAtBudget":141789,"win":114675}}
+{"name":"z08-mid","T":113.39,"drawCalls":30,"tris":106965,"active":30,"frameMs":3,"frameP90":4.4,"sc":{"chunks":[55,60],"cm":6,"types":7,"inst":291,"sets":3,"models":84,"trisAtBudget":109982,"win":86515}}
+{"name":"z09-in","T":121.35,"drawCalls":30,"tris":111684,"active":30,"frameMs":4.2,"frameP90":5.8,"sc":{"chunks":[59,64],"cm":6,"types":7,"inst":135,"sets":4,"models":84,"trisAtBudget":119918,"win":91364}}
+{"name":"z09-mid","T":136.07,"drawCalls":25,"tris":131295,"active":25,"frameMs":3,"frameP90":5.4,"sc":{"chunks":[66,72],"cm":7,"types":4,"inst":91,"sets":7,"models":84,"trisAtBudget":147972,"win":111981}}
+{"name":"z10-in","T":151.59,"drawCalls":28,"tris":114030,"active":28,"frameMs":3.6,"frameP90":4.4,"sc":{"chunks":[74,79],"cm":6,"types":7,"inst":175,"sets":5,"models":84,"trisAtBudget":123887,"win":91344}}
+{"name":"z10-mid","T":155.91,"drawCalls":23,"tris":104611,"active":23,"frameMs":2.5,"frameP90":4.5,"sc":{"chunks":[76,80],"cm":5,"types":4,"inst":147,"sets":5,"models":84,"trisAtBudget":108682,"win":80841}}
+{"name":"z01-hero","T":1.3,"drawCalls":23,"tris":77417,"active":23,"frameMs":3.5,"frameP90":5.3,"sc":{"chunks":[0,4],"cm":5,"types":4,"inst":81,"sets":4,"models":84,"trisAtBudget":73234,"win":53707}}
+{"name":"z02-hero","T":17.91,"drawCalls":28,"tris":94920,"active":28,"frameMs":3.6,"frameP90":5.6,"sc":{"chunks":[7,12],"cm":6,"types":7,"inst":55,"sets":9,"models":84,"trisAtBudget":103362,"win":78635}}
+{"name":"z03-hero","T":35.73,"drawCalls":24,"tris":87129,"active":24,"frameMs":3.5,"frameP90":4.6,"sc":{"chunks":[16,21],"cm":6,"types":4,"inst":67,"sets":10,"models":84,"trisAtBudget":95986,"win":73465}}
+{"name":"z04-hero","T":46.66,"drawCalls":33,"tris":120538,"active":33,"frameMs":5,"frameP90":6.7,"sc":{"chunks":[21,27],"cm":7,"types":8,"inst":250,"sets":8,"models":84,"trisAtBudget":140345,"win":109574}}
+{"name":"z05-hero","T":65.96,"drawCalls":24,"tris":98523,"active":24,"frameMs":3.5,"frameP90":5.8,"sc":{"chunks":[31,36],"cm":6,"types":4,"inst":95,"sets":7,"models":84,"trisAtBudget":106434,"win":82182}}
+{"name":"z06-hero","T":81.08,"drawCalls":29,"tris":111946,"active":29,"frameMs":4.7,"frameP90":6.2,"sc":{"chunks":[39,44],"cm":6,"types":4,"inst":90,"sets":8,"models":84,"trisAtBudget":119658,"win":87228}}
+{"name":"z07-hero","T":93.5,"drawCalls":39,"tris":124437,"active":39,"frameMs":4.7,"frameP90":6.7,"sc":{"chunks":[45,50],"cm":6,"types":7,"inst":109,"sets":8,"models":84,"trisAtBudget":123507,"win":103991}}
+{"name":"z08-hero","T":107.13,"drawCalls":38,"tris":118653,"active":38,"frameMs":4,"frameP90":5.3,"sc":{"chunks":[52,57],"cm":6,"types":6,"inst":282,"sets":4,"models":84,"trisAtBudget":117462,"win":94357}}
+{"name":"z09-hero","T":138,"drawCalls":27,"tris":131045,"active":27,"frameMs":4.4,"frameP90":6.9,"sc":{"chunks":[67,73],"cm":7,"types":4,"inst":89,"sets":8,"models":84,"trisAtBudget":144336,"win":109039}}
+{"name":"z10-hero","T":159.4,"drawCalls":22,"tris":78290,"active":22,"frameMs":2.5,"frameP90":4.5,"sc":{"chunks":[78,80],"cm":3,"types":4,"inst":81,"sets":4,"models":84,"trisAtBudget":69307,"win":52408}}
+{"play":{"state":"ready","frames":361,"p50":16.7,"p95":18,"maxDrawCalls":33,"fps":59.96131528046421}}
+{"summary":{"maxDrawCalls":40,"maxTris":140080,"maxTrisAtBudget":177670,"maxFrameMs":5,"medianFrameMs":3.6}}
