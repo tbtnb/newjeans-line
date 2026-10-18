@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Author route-anchored Codex art props into a layout (schema v2.7, see docs/ART_PROPS.md).
 
-usage: artkit.py <slug> <spec.json> [--dry]
+usage: artkit.py <slug> <spec.json> [--dry] [--root levels-src|levels-design]
 
 spec.json = { "objects": [ {<SceneObject fields>, "window": [t0, t1], "count": n}, ... ],
               "dressing": {...}  (merged into layout.dressing),  "art": {...} (merged into layout.art) }
@@ -21,6 +21,31 @@ def spans(nodes):
     for a, b in zip(nodes, nodes[1:]):
         out.append(dict(t0=a[0], t1=b[0], x0=a[1], z0=a[2], x1=b[1], z1=b[2], h=a[3] % 4, y=a[4] if len(a) > 4 else 0))
     return out
+
+def route_from_chart(cp, L):
+    # centreline nodes [t, x, z, heading, y] from the chart (same model as src/core/path.ts, flat; elevation from layout)
+    c = json.loads(Path(cp).read_text()); speeds = sorted(c.get('speed', [{'t': 0, 'v': 9}]), key=lambda s: s['t'])
+    h = 'NESW'.index(c.get('startHeading', 'N')); x = z = 0.0; t = 0.0
+    taps = [tp['t'] for tp in c['taps']] + [c['taps'][-1]['t'] + 8]
+    dirs = [tp.get('dir', 'R') for tp in c['taps']] + ['R']
+    def v_at(tt):
+        v = speeds[0]['v']
+        for s in speeds:
+            if s['t'] <= tt: v = s['v']
+        return v
+    def y_at(tt):
+        y = 0.0
+        for e in L.get('elevation', []):
+            if e.get('type') in ('fall', 'jump') and e['t'] <= tt: y += e['dy']
+            elif e.get('type') == 'ramp':
+                if tt >= e['t1']: y += e['dy']
+                elif tt > e['t0']: y += e['dy'] * (tt - e['t0']) / (e['t1'] - e['t0'])
+        return y
+    nodes = [[0.0, 0.0, 0.0, h, 0.0]]
+    for tt, d in zip(taps, dirs):
+        dx, dz = HV[h]; v = v_at(t); x += dx * v * (tt - t); z += dz * v * (tt - t); t = tt
+        h = (h + (1 if d == 'R' else -1)) % 4; nodes.append([t, x, z, h, y_at(t)])
+    return nodes
 
 def pos(sp, t):
     k = 0 if sp['t1'] == sp['t0'] else (t - sp['t0']) / (sp['t1'] - sp['t0'])
@@ -42,12 +67,15 @@ def clearance(S, t, x, z, y):
 
 def main():
     slug, spec_p = sys.argv[1], sys.argv[2]; dry = '--dry' in sys.argv
-    lp = Path('levels-src') / slug / 'layout.json'
+    root = sys.argv[sys.argv.index('--root') + 1] if '--root' in sys.argv else 'levels-src'
+    lp = Path(root) / slug / 'layout.json'
     L = json.loads(lp.read_text()); spec = json.loads(Path(spec_p).read_text())
-    S = spans(L['route']['nodes']); used = []
+    nodes = L['route']['nodes'] if 'route' in L else route_from_chart(Path(root) / slug / 'chart.json', L)
+    S = spans(nodes); used = []
     gy = (L.get('palette') or {}).get('groundY', -0.6)
     if gy is None: gy = -0.6
-    objs = [o for o in L['objects'] if not str(o.get('id', '')).startswith('art-')]
+    keep = spec.get('keep')
+    objs = [o for o in L['objects'] if not str(o.get('id', '')).startswith('art-') and (keep is None or any(str(o.get('id', '')).startswith(k) for k in keep))]
     n = 0; report = []
     for o in spec.get('objects', []):
         o = dict(o); w = o.pop('window'); cnt = o.pop('count', 1); want_side = o.pop('prefer', 0)
@@ -71,7 +99,8 @@ def main():
             if any(abs(t - u) < max(2.0, (w[1] - w[0]) / (cnt * 2.5)) for u in used + [p[1] for p in picked]): continue
             picked.append((sc, t, side, sp))
         for sc, t, side, sp in sorted(picked, key=lambda p: p[1]):
-            n += 1; ob = {'id': f'art-{n}', **o, 't': round(t, 3), 'side': side}
+            n += 1; ob = {**o, 't': round(t, 3), 'side': side}
+            ob['id'] = ('art-' + o['id']) if o.get('id') else f'art-{n}'  # a shared id groups objects for events
             ob.setdefault('near', 0.8); used.append(t)
             # base 0.6 below the road top, the level the roadside dressing stands on
             if 'y' not in ob and 'worldPos' not in ob: ob['y'] = -0.6
@@ -79,6 +108,11 @@ def main():
     L['objects'] = objs
     if 'dressing' in spec: L['dressing'] = {**(L.get('dressing') or {}), **spec['dressing']}
     if 'art' in spec: L['art'] = {**(L.get('art') or {}), **spec['art']}
+    for k in ('fx', 'events', 'palette'):
+        if k in spec: L[k] = spec[k]
+    for patch in spec.get('sections_by_time', []):
+        best = min(L.get('sections', []), key=lambda x: abs(x['t'] - patch['t']), default=None)
+        if best is not None and abs(best['t'] - patch['t']) < 0.6: best.update({k: v for k, v in patch.items() if k != 't'})
     if 'sections' in spec:
         for patch in spec['sections']:
             for s in L.get('sections', []):

@@ -1,0 +1,2404 @@
+{
+ "keep": [
+  "fakefork"
+ ],
+ "objects": [
+  {
+   "kind": "standee",
+   "src": "art/v2/bunny-giant.png",
+   "size": [
+    6,
+    6,
+    0
+   ],
+   "window": [
+    1.511,
+    6.011
+   ],
+   "count": 1,
+   "face": "camera",
+   "landmark": true,
+   "glow": 0.45,
+   "near": 2.5,
+   "id": "bunny_intro"
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/ward-bed.png",
+   "size": [
+    4.4,
+    3.3,
+    0
+   ],
+   "window": [
+    4.011,
+    14.129
+   ],
+   "count": 3,
+   "face": "camera",
+   "near": 1.5
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/heart-pill.png",
+   "size": [
+    2.2,
+    2.2,
+    0.5
+   ],
+   "window": [
+    2.011,
+    14.129
+   ],
+   "count": 3,
+   "face": "camera",
+   "color": "#ffd27a",
+   "color2": "#ffd27a",
+   "near": 1.2,
+   "react": "beat"
+  },
+  {
+   "kind": "decal",
+   "src": "art/v2/mural-stars.png",
+   "size": [
+    5,
+    0,
+    5
+   ],
+   "window": [
+    1.011,
+    14.129
+   ],
+   "count": 2,
+   "face": "road",
+   "glow": 0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/bunny-giant.png",
+   "size": [
+    6,
+    6,
+    0
+   ],
+   "window": [
+    198.042,
+    202.542
+   ],
+   "count": 1,
+   "face": "camera",
+   "landmark": true,
+   "glow": 0.45,
+   "near": 2.5,
+   "id": "bunny_intro"
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/ward-bed.png",
+   "size": [
+    4.4,
+    3.3,
+    0
+   ],
+   "window": [
+    200.542,
+    215.484
+   ],
+   "count": 3,
+   "face": "camera",
+   "near": 1.5
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/heart-pill.png",
+   "size": [
+    2.2,
+    2.2,
+    0.5
+   ],
+   "window": [
+    198.542,
+    215.484
+   ],
+   "count": 3,
+   "face": "camera",
+   "color": "#ffd27a",
+   "color2": "#ffd27a",
+   "near": 1.2,
+   "react": "beat"
+  },
+  {
+   "kind": "decal",
+   "src": "art/v2/mural-stars.png",
+   "size": [
+    5,
+    0,
+    5
+   ],
+   "window": [
+    197.542,
+    215.484
+   ],
+   "count": 2,
+   "face": "road",
+   "glow": 0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/ward-bed.png",
+   "size": [
+    4.4,
+    3.3,
+    0
+   ],
+   "window": [
+    16.128999999999998,
+    29.247
+   ],
+   "count": 2,
+   "face": "camera",
+   "near": 1.5
+  },
+  {
+   "kind": "facade",
+   "src": "art/v2/ward-facade.jpg",
+   "size": [
+    5,
+    6,
+    3
+   ],
+   "window": [
+    16.128999999999998,
+    29.247
+   ],
+   "count": 2,
+   "face": "road",
+   "color": "#fff4fb",
+   "color2": "#c9b8ff",
+   "landmark": true,
+   "near": 2
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/call-bubble.png",
+   "size": [
+    3.2,
+    2.4,
+    0.8
+   ],
+   "window": [
+    17.128999999999998,
+    29.247
+   ],
+   "count": 2,
+   "face": "camera",
+   "color": "#ffd27a",
+   "color2": "#ffd27a",
+   "near": 1.5,
+   "glowfx": true,
+   "id": "call"
+  },
+  {
+   "kind": "decal",
+   "src": "art/v2/mural-stars.png",
+   "size": [
+    4.5,
+    0,
+    4.5
+   ],
+   "window": [
+    16.128999999999998,
+    29.247
+   ],
+   "count": 2,
+   "face": "road",
+   "glow": 0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/ward-bed.png",
+   "size": [
+    4.4,
+    3.3,
+    0
+   ],
+   "window": [
+    61.482,
+    74.6
+   ],
+   "count": 2,
+   "face": "camera",
+   "near": 1.5
+  },
+  {
+   "kind": "facade",
+   "src": "art/v2/ward-facade.jpg",
+   "size": [
+    5,
+    6,
+    3
+   ],
+   "window": [
+    61.482,
+    74.6
+   ],
+   "count": 2,
+   "face": "road",
+   "color": "#fff4fb",
+   "color2": "#c9b8ff",
+   "landmark": true,
+   "near": 2
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/call-bubble.png",
+   "size": [
+    3.2,
+    2.4,
+    0.8
+   ],
+   "window": [
+    62.482,
+    74.6
+   ],
+   "count": 2,
+   "face": "camera",
+   "color": "#ffd27a",
+   "color2": "#ffd27a",
+   "near": 1.5,
+   "glowfx": true,
+   "id": "call"
+  },
+  {
+   "kind": "decal",
+   "src": "art/v2/mural-stars.png",
+   "size": [
+    4.5,
+    0,
+    4.5
+   ],
+   "window": [
+    61.482,
+    74.6
+   ],
+   "count": 2,
+   "face": "road",
+   "glow": 0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "window": [
+    31.247,
+    44.364
+   ],
+   "count": 3,
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "phone"
+  },
+  {
+   "kind": "facade",
+   "src": "art/v2/stage-facade.jpg",
+   "size": [
+    5,
+    5,
+    3
+   ],
+   "window": [
+    31.247,
+    44.364
+   ],
+   "count": 2,
+   "face": "road",
+   "color": "#2a2460",
+   "color2": "#ffd27a",
+   "near": 2.5
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "window": [
+    76.6,
+    89.718
+   ],
+   "count": 3,
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "phone"
+  },
+  {
+   "kind": "facade",
+   "src": "art/v2/stage-facade.jpg",
+   "size": [
+    5,
+    5,
+    3
+   ],
+   "window": [
+    76.6,
+    89.718
+   ],
+   "count": 2,
+   "face": "road",
+   "color": "#2a2460",
+   "color2": "#ffd27a",
+   "near": 2.5
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "window": [
+    91.718,
+    104.835
+   ],
+   "count": 3,
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "phone"
+  },
+  {
+   "kind": "facade",
+   "src": "art/v2/stage-facade.jpg",
+   "size": [
+    5,
+    5,
+    3
+   ],
+   "window": [
+    91.718,
+    104.835
+   ],
+   "count": 2,
+   "face": "road",
+   "color": "#2a2460",
+   "color2": "#ffd27a",
+   "near": 2.5
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "window": [
+    152.189,
+    165.307
+   ],
+   "count": 3,
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "phone"
+  },
+  {
+   "kind": "facade",
+   "src": "art/v2/stage-facade.jpg",
+   "size": [
+    5,
+    5,
+    3
+   ],
+   "window": [
+    152.189,
+    165.307
+   ],
+   "count": 2,
+   "face": "road",
+   "color": "#2a2460",
+   "color2": "#ffd27a",
+   "near": 2.5
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/star-arch.png",
+   "size": [
+    7,
+    5.25,
+    0
+   ],
+   "window": [
+    45.663999999999994,
+    47.864
+   ],
+   "count": 1,
+   "face": "camera",
+   "landmark": true,
+   "glowfx": true,
+   "near": 2,
+   "id": "arch"
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/bunny-giant.png",
+   "size": [
+    8,
+    8,
+    0
+   ],
+   "window": [
+    48.364,
+    53.364
+   ],
+   "count": 1,
+   "face": "camera",
+   "landmark": true,
+   "near": 3,
+   "y": -9.6,
+   "id": "bunny_rise"
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "window": [
+    47.364,
+    59.482
+   ],
+   "count": 3,
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "phone"
+  },
+  {
+   "kind": "facade",
+   "src": "art/v2/stage-facade.jpg",
+   "size": [
+    5,
+    5,
+    3
+   ],
+   "window": [
+    46.364,
+    59.482
+   ],
+   "count": 2,
+   "face": "road",
+   "color": "#2a2460",
+   "color2": "#ffd27a",
+   "near": 2.5,
+   "landmark": true
+  },
+  {
+   "kind": "decal",
+   "src": "art/v2/mural-stars.png",
+   "size": [
+    6,
+    0,
+    6
+   ],
+   "window": [
+    46.364,
+    59.482
+   ],
+   "count": 3,
+   "face": "road",
+   "glow": 0.7
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/heart-pill.png",
+   "size": [
+    2.2,
+    2.2,
+    0.5
+   ],
+   "window": [
+    46.364,
+    59.482
+   ],
+   "count": 3,
+   "face": "camera",
+   "color": "#ffd27a",
+   "color2": "#ffd27a",
+   "near": 1.2,
+   "react": "beat"
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/star-arch.png",
+   "size": [
+    7,
+    5.25,
+    0
+   ],
+   "window": [
+    106.13499999999999,
+    108.335
+   ],
+   "count": 1,
+   "face": "camera",
+   "landmark": true,
+   "glowfx": true,
+   "near": 2,
+   "id": "arch"
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/bunny-giant.png",
+   "size": [
+    8,
+    8,
+    0
+   ],
+   "window": [
+    108.835,
+    113.835
+   ],
+   "count": 1,
+   "face": "camera",
+   "landmark": true,
+   "near": 3,
+   "y": -9.6,
+   "id": "bunny_rise"
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "window": [
+    107.835,
+    119.953
+   ],
+   "count": 3,
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "phone"
+  },
+  {
+   "kind": "facade",
+   "src": "art/v2/stage-facade.jpg",
+   "size": [
+    5,
+    5,
+    3
+   ],
+   "window": [
+    106.835,
+    119.953
+   ],
+   "count": 2,
+   "face": "road",
+   "color": "#2a2460",
+   "color2": "#ffd27a",
+   "near": 2.5,
+   "landmark": true
+  },
+  {
+   "kind": "decal",
+   "src": "art/v2/mural-stars.png",
+   "size": [
+    6,
+    0,
+    6
+   ],
+   "window": [
+    106.835,
+    119.953
+   ],
+   "count": 3,
+   "face": "road",
+   "glow": 0.7
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/heart-pill.png",
+   "size": [
+    2.2,
+    2.2,
+    0.5
+   ],
+   "window": [
+    106.835,
+    119.953
+   ],
+   "count": 3,
+   "face": "camera",
+   "color": "#ffd27a",
+   "color2": "#ffd27a",
+   "near": 1.2,
+   "react": "beat"
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/star-arch.png",
+   "size": [
+    7,
+    5.25,
+    0
+   ],
+   "window": [
+    121.253,
+    123.453
+   ],
+   "count": 1,
+   "face": "camera",
+   "landmark": true,
+   "glowfx": true,
+   "near": 2,
+   "id": "arch"
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "window": [
+    122.953,
+    133.181
+   ],
+   "count": 3,
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "phone"
+  },
+  {
+   "kind": "facade",
+   "src": "art/v2/stage-facade.jpg",
+   "size": [
+    5,
+    5,
+    3
+   ],
+   "window": [
+    121.953,
+    133.181
+   ],
+   "count": 2,
+   "face": "road",
+   "color": "#2a2460",
+   "color2": "#ffd27a",
+   "near": 2.5,
+   "landmark": true
+  },
+  {
+   "kind": "decal",
+   "src": "art/v2/mural-stars.png",
+   "size": [
+    6,
+    0,
+    6
+   ],
+   "window": [
+    121.953,
+    133.181
+   ],
+   "count": 3,
+   "face": "road",
+   "glow": 0.7
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/heart-pill.png",
+   "size": [
+    2.2,
+    2.2,
+    0.5
+   ],
+   "window": [
+    121.953,
+    133.181
+   ],
+   "count": 3,
+   "face": "camera",
+   "color": "#ffd27a",
+   "color2": "#ffd27a",
+   "near": 1.2,
+   "react": "beat"
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/star-arch.png",
+   "size": [
+    7,
+    5.25,
+    0
+   ],
+   "window": [
+    166.607,
+    168.807
+   ],
+   "count": 1,
+   "face": "camera",
+   "landmark": true,
+   "glowfx": true,
+   "near": 2,
+   "id": "arch"
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/bunny-giant.png",
+   "size": [
+    8,
+    8,
+    0
+   ],
+   "window": [
+    169.307,
+    174.307
+   ],
+   "count": 1,
+   "face": "camera",
+   "landmark": true,
+   "near": 3,
+   "y": -9.6,
+   "id": "bunny_rise"
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "window": [
+    168.307,
+    180.424
+   ],
+   "count": 3,
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "phone"
+  },
+  {
+   "kind": "facade",
+   "src": "art/v2/stage-facade.jpg",
+   "size": [
+    5,
+    5,
+    3
+   ],
+   "window": [
+    167.307,
+    180.424
+   ],
+   "count": 2,
+   "face": "road",
+   "color": "#2a2460",
+   "color2": "#ffd27a",
+   "near": 2.5,
+   "landmark": true
+  },
+  {
+   "kind": "decal",
+   "src": "art/v2/mural-stars.png",
+   "size": [
+    6,
+    0,
+    6
+   ],
+   "window": [
+    167.307,
+    180.424
+   ],
+   "count": 3,
+   "face": "road",
+   "glow": 0.7
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/heart-pill.png",
+   "size": [
+    2.2,
+    2.2,
+    0.5
+   ],
+   "window": [
+    167.307,
+    180.424
+   ],
+   "count": 3,
+   "face": "camera",
+   "color": "#ffd27a",
+   "color2": "#ffd27a",
+   "near": 1.2,
+   "react": "beat"
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/star-arch.png",
+   "size": [
+    7,
+    5.25,
+    0
+   ],
+   "window": [
+    181.72400000000002,
+    183.924
+   ],
+   "count": 1,
+   "face": "camera",
+   "landmark": true,
+   "glowfx": true,
+   "near": 2,
+   "id": "arch"
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/bunny-giant.png",
+   "size": [
+    8,
+    8,
+    0
+   ],
+   "window": [
+    184.424,
+    189.424
+   ],
+   "count": 1,
+   "face": "camera",
+   "landmark": true,
+   "near": 3,
+   "y": -9.6,
+   "id": "bunny_rise"
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "window": [
+    183.424,
+    195.542
+   ],
+   "count": 3,
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "phone"
+  },
+  {
+   "kind": "facade",
+   "src": "art/v2/stage-facade.jpg",
+   "size": [
+    5,
+    5,
+    3
+   ],
+   "window": [
+    182.424,
+    195.542
+   ],
+   "count": 2,
+   "face": "road",
+   "color": "#2a2460",
+   "color2": "#ffd27a",
+   "near": 2.5,
+   "landmark": true
+  },
+  {
+   "kind": "decal",
+   "src": "art/v2/mural-stars.png",
+   "size": [
+    6,
+    0,
+    6
+   ],
+   "window": [
+    182.424,
+    195.542
+   ],
+   "count": 3,
+   "face": "road",
+   "glow": 0.7
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/heart-pill.png",
+   "size": [
+    2.2,
+    2.2,
+    0.5
+   ],
+   "window": [
+    182.424,
+    195.542
+   ],
+   "count": 3,
+   "face": "camera",
+   "color": "#ffd27a",
+   "color2": "#ffd27a",
+   "near": 1.2,
+   "react": "beat"
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/bunny-giant.png",
+   "size": [
+    6,
+    6,
+    0
+   ],
+   "window": [
+    135.181,
+    139.181
+   ],
+   "count": 1,
+   "face": "camera",
+   "landmark": true,
+   "near": 3
+  },
+  {
+   "kind": "decal",
+   "src": "art/v2/mural-stars.png",
+   "size": [
+    5,
+    0,
+    5
+   ],
+   "window": [
+    135.181,
+    148.299
+   ],
+   "count": 3,
+   "face": "road",
+   "glow": 0.7
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/heart-pill.png",
+   "size": [
+    2,
+    2,
+    0.5
+   ],
+   "window": [
+    135.181,
+    148.299
+   ],
+   "count": 3,
+   "face": "camera",
+   "color": "#c9b37a",
+   "color2": "#c9b37a",
+   "near": 1.2,
+   "react": "beat"
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/bunny-giant.png",
+   "size": [
+    6,
+    6,
+    0
+   ],
+   "window": [
+    150.299,
+    154.299
+   ],
+   "count": 1,
+   "face": "camera",
+   "landmark": true,
+   "near": 3
+  },
+  {
+   "kind": "decal",
+   "src": "art/v2/mural-stars.png",
+   "size": [
+    5,
+    0,
+    5
+   ],
+   "window": [
+    150.299,
+    150.189
+   ],
+   "count": 3,
+   "face": "road",
+   "glow": 0.7
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/heart-pill.png",
+   "size": [
+    2,
+    2,
+    0.5
+   ],
+   "window": [
+    150.299,
+    150.189
+   ],
+   "count": 3,
+   "face": "camera",
+   "color": "#c9b37a",
+   "color2": "#c9b37a",
+   "near": 1.2,
+   "react": "beat"
+  }
+ ],
+ "dressing": {
+  "colors": [
+   "#fff4fb",
+   "#c9b8ff",
+   "#ff8fc0",
+   "#3a2f7a",
+   "#8fd0ff"
+  ],
+  "art": [
+   {
+    "src": "art/v2/ward-facade.jpg",
+    "as": "facade",
+    "size": [
+     3.2,
+     4.4,
+     3.0
+    ],
+    "weight": 1,
+    "scale": [
+     0.8,
+     1.2
+    ],
+    "scaleY": [
+     0.8,
+     1.5
+    ]
+   },
+   {
+    "src": "art/v2/stage-facade.jpg",
+    "as": "facade",
+    "size": [
+     3.4,
+     3.4,
+     3.0
+    ],
+    "weight": 1,
+    "scale": [
+     0.8,
+     1.2
+    ],
+    "scaleY": [
+     0.9,
+     1.6
+    ]
+   },
+   {
+    "src": "art/v2/heart-pill.png",
+    "as": "card",
+    "size": [
+     1.6,
+     1.6,
+     0.05
+    ],
+    "weight": 1,
+    "scale": [
+     0.8,
+     1.3
+    ],
+    "scaleY": [
+     1,
+     1
+    ],
+    "glow": 0.5
+   },
+   {
+    "src": "art/v2/call-bubble.png",
+    "as": "card",
+    "size": [
+     2.2,
+     1.65,
+     0.05
+    ],
+    "weight": 1,
+    "scale": [
+     0.8,
+     1.2
+    ],
+    "scaleY": [
+     1,
+     1
+    ],
+    "glow": 0.5
+   },
+   {
+    "src": "art/v2/ward-bed.png",
+    "as": "card",
+    "size": [
+     2.6,
+     1.95,
+     0.05
+    ],
+    "weight": 1,
+    "scale": [
+     0.8,
+     1.1
+    ],
+    "scaleY": [
+     1,
+     1
+    ]
+   },
+   {
+    "src": "art/v2/mural-stars.png",
+    "as": "tile",
+    "size": [
+     3,
+     0,
+     3
+    ],
+    "weight": 1,
+    "scale": [
+     0.8,
+     1.3
+    ],
+    "scaleY": [
+     1,
+     1
+    ],
+    "glow": 0.6
+   },
+   {
+    "src": "art/v2/flip-phone.png",
+    "as": "card",
+    "size": [
+     1.5,
+     2.0,
+     0.05
+    ],
+    "weight": 1,
+    "scale": [
+     0.8,
+     1.2
+    ],
+    "scaleY": [
+     1,
+     1
+    ],
+    "glow": 0.5
+   }
+  ],
+  "artShare": 0.65,
+  "near": [
+   0.5,
+   5
+  ],
+  "sections": [
+   {
+    "t": 0.011,
+    "props": [
+     0,
+     1,
+     5,
+     7,
+     9,
+     10
+    ],
+    "density": 3.2
+   },
+   {
+    "t": 15.129,
+    "props": [
+     0,
+     1,
+     3,
+     5,
+     7,
+     8,
+     9
+    ],
+    "density": 4.2
+   },
+   {
+    "t": 30.247,
+    "props": [
+     3,
+     4,
+     6,
+     8,
+     10,
+     11
+    ],
+    "density": 4.2
+   },
+   {
+    "t": 45.364,
+    "props": [
+     3,
+     4,
+     6,
+     7,
+     10,
+     11
+    ],
+    "density": 4.8
+   },
+   {
+    "t": 60.482,
+    "props": [
+     0,
+     1,
+     3,
+     5,
+     7,
+     8,
+     9
+    ],
+    "density": 4.2
+   },
+   {
+    "t": 75.6,
+    "props": [
+     3,
+     4,
+     6,
+     8,
+     10,
+     11
+    ],
+    "density": 4.2
+   },
+   {
+    "t": 90.718,
+    "props": [
+     3,
+     4,
+     6,
+     8,
+     10,
+     11
+    ],
+    "density": 4.2
+   },
+   {
+    "t": 105.835,
+    "props": [
+     3,
+     4,
+     6,
+     7,
+     10,
+     11
+    ],
+    "density": 4.8
+   },
+   {
+    "t": 120.953,
+    "props": [
+     3,
+     4,
+     6,
+     7,
+     10,
+     11
+    ],
+    "density": 4.8
+   },
+   {
+    "t": 134.181,
+    "props": [
+     2,
+     4,
+     7,
+     10
+    ],
+    "density": 3.6
+   },
+   {
+    "t": 149.299,
+    "props": [
+     2,
+     4,
+     7,
+     10
+    ],
+    "density": 3.6
+   },
+   {
+    "t": 151.189,
+    "props": [
+     3,
+     4,
+     6,
+     8,
+     10,
+     11
+    ],
+    "density": 4.2
+   },
+   {
+    "t": 166.307,
+    "props": [
+     6,
+     7,
+     8,
+     10,
+     11
+    ],
+    "density": 5.2
+   },
+   {
+    "t": 181.424,
+    "props": [
+     6,
+     7,
+     8,
+     10,
+     11
+    ],
+    "density": 5.2
+   },
+   {
+    "t": 196.542,
+    "props": [
+     0,
+     2,
+     5,
+     10
+    ],
+    "density": 2.6
+   }
+  ]
+ },
+ "fx": {
+  "exposure": 1.0,
+  "contrast": 1.05,
+  "vignette": {
+   "weight": 1.2,
+   "color": "#1c1440"
+  },
+  "glow": {
+   "intensity": 0.9,
+   "kernel": 48
+  },
+  "keys": [
+   {
+    "t": 0.011,
+    "exposure": 1.05,
+    "contrast": 1.05,
+    "glow": 0.5,
+    "blend": 1.2
+   },
+   {
+    "t": 15.129,
+    "exposure": 1.0,
+    "contrast": 1.05,
+    "glow": 0.5,
+    "blend": 1.2
+   },
+   {
+    "t": 30.247,
+    "exposure": 1.0,
+    "contrast": 1.15,
+    "glow": 0.9,
+    "blend": 1.2
+   },
+   {
+    "t": 45.364,
+    "exposure": 1.08,
+    "contrast": 1.2,
+    "glow": 1.1,
+    "blend": 1.2
+   },
+   {
+    "t": 60.482,
+    "exposure": 1.0,
+    "contrast": 1.05,
+    "glow": 0.5,
+    "blend": 1.2
+   },
+   {
+    "t": 75.6,
+    "exposure": 1.0,
+    "contrast": 1.15,
+    "glow": 0.9,
+    "blend": 1.2
+   },
+   {
+    "t": 90.718,
+    "exposure": 1.0,
+    "contrast": 1.15,
+    "glow": 0.9,
+    "blend": 1.2
+   },
+   {
+    "t": 105.835,
+    "exposure": 1.08,
+    "contrast": 1.2,
+    "glow": 1.1,
+    "blend": 1.2
+   },
+   {
+    "t": 120.953,
+    "exposure": 1.08,
+    "contrast": 1.2,
+    "glow": 1.1,
+    "blend": 1.2
+   },
+   {
+    "t": 134.181,
+    "exposure": 0.95,
+    "contrast": 1.1,
+    "glow": 0.8,
+    "blend": 1.2
+   },
+   {
+    "t": 149.299,
+    "exposure": 0.95,
+    "contrast": 1.1,
+    "glow": 0.8,
+    "blend": 1.2
+   },
+   {
+    "t": 151.189,
+    "exposure": 1.0,
+    "contrast": 1.15,
+    "glow": 0.9,
+    "blend": 1.2
+   },
+   {
+    "t": 166.307,
+    "exposure": 1.12,
+    "contrast": 1.25,
+    "glow": 1.3,
+    "blend": 1.2
+   },
+   {
+    "t": 181.424,
+    "exposure": 1.12,
+    "contrast": 1.25,
+    "glow": 1.3,
+    "blend": 1.2
+   },
+   {
+    "t": 196.542,
+    "exposure": 1.0,
+    "contrast": 1.0,
+    "glow": 0.5,
+    "blend": 1.2
+   }
+  ],
+  "pulse": [
+   {
+    "t": 30.247,
+    "t1": 45.364,
+    "amount": 0.12
+   },
+   {
+    "t": 45.364,
+    "t1": 60.482,
+    "amount": 0.18
+   },
+   {
+    "t": 75.6,
+    "t1": 90.718,
+    "amount": 0.12
+   },
+   {
+    "t": 90.718,
+    "t1": 105.835,
+    "amount": 0.12
+   },
+   {
+    "t": 105.835,
+    "t1": 120.953,
+    "amount": 0.18
+   },
+   {
+    "t": 120.953,
+    "t1": 134.181,
+    "amount": 0.18
+   },
+   {
+    "t": 151.189,
+    "t1": 166.307,
+    "amount": 0.12
+   },
+   {
+    "t": 166.307,
+    "t1": 181.424,
+    "amount": 0.18
+   },
+   {
+    "t": 181.424,
+    "t1": 196.542,
+    "amount": 0.18
+   }
+  ],
+  "flashes": [
+   {
+    "t": 45.364,
+    "dur": 0.6,
+    "amount": 0.5
+   },
+   {
+    "t": 105.835,
+    "dur": 0.6,
+    "amount": 0.5
+   },
+   {
+    "t": 120.953,
+    "dur": 0.6,
+    "amount": 0.5
+   },
+   {
+    "t": 166.307,
+    "dur": 0.6,
+    "amount": 0.5
+   },
+   {
+    "t": 181.424,
+    "dur": 0.6,
+    "amount": 0.5
+   }
+  ],
+  "beams": [
+   {
+    "t0": 30.747,
+    "t1": 44.864,
+    "every": 1.6,
+    "colors": [
+     "#ff9ad5",
+     "#9fd8ff",
+     "#c9a8ff",
+     "#ffe08a"
+    ],
+    "height": 45,
+    "near": 3.5
+   },
+   {
+    "t0": 45.864,
+    "t1": 59.982,
+    "every": 1.1,
+    "colors": [
+     "#ff9ad5",
+     "#9fd8ff",
+     "#c9a8ff",
+     "#ffe08a"
+    ],
+    "height": 45,
+    "near": 3.5
+   },
+   {
+    "t0": 76.1,
+    "t1": 90.218,
+    "every": 1.6,
+    "colors": [
+     "#ff9ad5",
+     "#9fd8ff",
+     "#c9a8ff",
+     "#ffe08a"
+    ],
+    "height": 45,
+    "near": 3.5
+   },
+   {
+    "t0": 91.218,
+    "t1": 105.335,
+    "every": 1.6,
+    "colors": [
+     "#ff9ad5",
+     "#9fd8ff",
+     "#c9a8ff",
+     "#ffe08a"
+    ],
+    "height": 45,
+    "near": 3.5
+   },
+   {
+    "t0": 106.335,
+    "t1": 120.453,
+    "every": 1.1,
+    "colors": [
+     "#ff9ad5",
+     "#9fd8ff",
+     "#c9a8ff",
+     "#ffe08a"
+    ],
+    "height": 45,
+    "near": 3.5
+   },
+   {
+    "t0": 121.453,
+    "t1": 133.681,
+    "every": 1.1,
+    "colors": [
+     "#ff9ad5",
+     "#9fd8ff",
+     "#c9a8ff",
+     "#ffe08a"
+    ],
+    "height": 45,
+    "near": 3.5
+   },
+   {
+    "t0": 151.689,
+    "t1": 165.807,
+    "every": 1.6,
+    "colors": [
+     "#ff9ad5",
+     "#9fd8ff",
+     "#c9a8ff",
+     "#ffe08a"
+    ],
+    "height": 45,
+    "near": 3.5
+   },
+   {
+    "t0": 166.807,
+    "t1": 180.924,
+    "every": 1.1,
+    "colors": [
+     "#ff9ad5",
+     "#9fd8ff",
+     "#c9a8ff",
+     "#ffe08a"
+    ],
+    "height": 45,
+    "near": 3.5
+   },
+   {
+    "t0": 181.924,
+    "t1": 196.042,
+    "every": 1.1,
+    "colors": [
+     "#ff9ad5",
+     "#9fd8ff",
+     "#c9a8ff",
+     "#ffe08a"
+    ],
+    "height": 45,
+    "near": 3.5
+   }
+  ],
+  "sparkles": [
+   {
+    "t0": 0.011,
+    "t1": 15.129,
+    "density": 1.2,
+    "colors": [
+     "#fff3c4",
+     "#ffc4e8",
+     "#c4e4ff"
+    ],
+    "size": 0.6,
+    "spread": 12,
+    "height": 9
+   },
+   {
+    "t0": 15.129,
+    "t1": 30.247,
+    "density": 0.8,
+    "colors": [
+     "#fff3c4",
+     "#ffc4e8",
+     "#c4e4ff"
+    ],
+    "size": 0.6,
+    "spread": 12,
+    "height": 9
+   },
+   {
+    "t0": 30.247,
+    "t1": 45.364,
+    "density": 2.5,
+    "colors": [
+     "#fff3c4",
+     "#ffc4e8",
+     "#c4e4ff"
+    ],
+    "size": 0.6,
+    "spread": 12,
+    "height": 9
+   },
+   {
+    "t0": 45.364,
+    "t1": 60.482,
+    "density": 4,
+    "colors": [
+     "#fff3c4",
+     "#ffc4e8",
+     "#c4e4ff"
+    ],
+    "size": 0.9,
+    "spread": 12,
+    "height": 9
+   },
+   {
+    "t0": 60.482,
+    "t1": 75.6,
+    "density": 0.8,
+    "colors": [
+     "#fff3c4",
+     "#ffc4e8",
+     "#c4e4ff"
+    ],
+    "size": 0.6,
+    "spread": 12,
+    "height": 9
+   },
+   {
+    "t0": 75.6,
+    "t1": 90.718,
+    "density": 2.5,
+    "colors": [
+     "#fff3c4",
+     "#ffc4e8",
+     "#c4e4ff"
+    ],
+    "size": 0.6,
+    "spread": 12,
+    "height": 9
+   },
+   {
+    "t0": 90.718,
+    "t1": 105.835,
+    "density": 2.5,
+    "colors": [
+     "#fff3c4",
+     "#ffc4e8",
+     "#c4e4ff"
+    ],
+    "size": 0.6,
+    "spread": 12,
+    "height": 9
+   },
+   {
+    "t0": 105.835,
+    "t1": 120.953,
+    "density": 4,
+    "colors": [
+     "#fff3c4",
+     "#ffc4e8",
+     "#c4e4ff"
+    ],
+    "size": 0.9,
+    "spread": 12,
+    "height": 9
+   },
+   {
+    "t0": 120.953,
+    "t1": 134.181,
+    "density": 4,
+    "colors": [
+     "#fff3c4",
+     "#ffc4e8",
+     "#c4e4ff"
+    ],
+    "size": 0.9,
+    "spread": 12,
+    "height": 9
+   },
+   {
+    "t0": 134.181,
+    "t1": 149.299,
+    "density": 3,
+    "colors": [
+     "#fff3c4",
+     "#ffc4e8",
+     "#c4e4ff"
+    ],
+    "size": 0.6,
+    "spread": 12,
+    "height": 9
+   },
+   {
+    "t0": 149.299,
+    "t1": 151.189,
+    "density": 3,
+    "colors": [
+     "#fff3c4",
+     "#ffc4e8",
+     "#c4e4ff"
+    ],
+    "size": 0.6,
+    "spread": 12,
+    "height": 9
+   },
+   {
+    "t0": 151.189,
+    "t1": 166.307,
+    "density": 2.5,
+    "colors": [
+     "#fff3c4",
+     "#ffc4e8",
+     "#c4e4ff"
+    ],
+    "size": 0.6,
+    "spread": 12,
+    "height": 9
+   },
+   {
+    "t0": 166.307,
+    "t1": 181.424,
+    "density": 5,
+    "colors": [
+     "#fff3c4",
+     "#ffc4e8",
+     "#c4e4ff"
+    ],
+    "size": 0.9,
+    "spread": 12,
+    "height": 9
+   },
+   {
+    "t0": 181.424,
+    "t1": 196.542,
+    "density": 5,
+    "colors": [
+     "#fff3c4",
+     "#ffc4e8",
+     "#c4e4ff"
+    ],
+    "size": 0.9,
+    "spread": 12,
+    "height": 9
+   },
+   {
+    "t0": 196.542,
+    "t1": 216.484,
+    "density": 1.5,
+    "colors": [
+     "#fff3c4",
+     "#ffc4e8",
+     "#c4e4ff"
+    ],
+    "size": 0.6,
+    "spread": 12,
+    "height": 9
+   }
+  ],
+  "road": {
+   "gloss": 0.5,
+   "trim": "#ffd27a",
+   "trimGlow": 0.9
+  },
+  "sprite": "art/v2/sparkle.png"
+ },
+ "events": [
+  {
+   "t": 16.129,
+   "type": "light",
+   "target": "art-call",
+   "every": 0.4,
+   "dur": 0.4,
+   "color": "#ffe7a8",
+   "level": 0.8,
+   "until": 24.129
+  },
+  {
+   "t": 45.364,
+   "type": "light",
+   "target": "art-phone",
+   "every": 0.12,
+   "dur": 0.3,
+   "color": "#ffb3e0",
+   "level": 1.2,
+   "until": 57.364
+  },
+  {
+   "t": 45.364,
+   "type": "burst",
+   "at": "player",
+   "color": "#ffe7a8",
+   "amount": 50
+  },
+  {
+   "t": 47.864,
+   "type": "raise",
+   "target": "art-bunny_rise",
+   "dy": 9,
+   "dur": 2.2
+  },
+  {
+   "t": 61.482,
+   "type": "light",
+   "target": "art-call",
+   "every": 0.4,
+   "dur": 0.4,
+   "color": "#ffe7a8",
+   "level": 0.8,
+   "until": 69.482
+  },
+  {
+   "t": 105.835,
+   "type": "light",
+   "target": "art-phone",
+   "every": 0.12,
+   "dur": 0.3,
+   "color": "#ffb3e0",
+   "level": 1.2,
+   "until": 117.835
+  },
+  {
+   "t": 105.835,
+   "type": "burst",
+   "at": "player",
+   "color": "#ffe7a8",
+   "amount": 50
+  },
+  {
+   "t": 108.335,
+   "type": "raise",
+   "target": "art-bunny_rise",
+   "dy": 9,
+   "dur": 2.2
+  },
+  {
+   "t": 120.953,
+   "type": "light",
+   "target": "art-phone",
+   "every": 0.12,
+   "dur": 0.3,
+   "color": "#ffb3e0",
+   "level": 1.2,
+   "until": 132.953
+  },
+  {
+   "t": 120.953,
+   "type": "burst",
+   "at": "player",
+   "color": "#ffe7a8",
+   "amount": 50
+  },
+  {
+   "t": 166.307,
+   "type": "light",
+   "target": "art-phone",
+   "every": 0.12,
+   "dur": 0.3,
+   "color": "#ffb3e0",
+   "level": 1.2,
+   "until": 178.307
+  },
+  {
+   "t": 166.307,
+   "type": "burst",
+   "at": "player",
+   "color": "#ffe7a8",
+   "amount": 50
+  },
+  {
+   "t": 181.424,
+   "type": "light",
+   "target": "art-phone",
+   "every": 0.12,
+   "dur": 0.3,
+   "color": "#ffb3e0",
+   "level": 1.2,
+   "until": 193.424
+  },
+  {
+   "t": 181.424,
+   "type": "burst",
+   "at": "player",
+   "color": "#ffe7a8",
+   "amount": 50
+  }
+ ],
+ "art": {
+  "backdrop": "art/v2/sky-dream.jpg",
+  "ground": {
+   "src": "art/v2/ground-ward.jpg",
+   "scale": 14
+  }
+ },
+ "palette": {
+  "skyTop": "#b9b4f0",
+  "skyBottom": "#ffe1f0",
+  "fog": "#e9dcff",
+  "fogStart": 40,
+  "fogEnd": 135,
+  "ground": "#ffffff",
+  "road": "#fffaf3",
+  "roadSide": "#e9c98a",
+  "line": "#ff8fc0",
+  "light": "#fff3ff",
+  "lightIntensity": 1.1,
+  "ambient": "#e8dcff",
+  "particles": "dust"
+ },
+ "sections_by_time": [
+  {
+   "t": 0.011,
+   "palette": {
+    "skyTop": "#b9b4f0",
+    "skyBottom": "#ffe1f0",
+    "fog": "#e9dcff",
+    "fogStart": 40,
+    "fogEnd": 135,
+    "ground": "#ffffff",
+    "road": "#fffaf3",
+    "roadSide": "#e9c98a",
+    "line": "#ff8fc0",
+    "light": "#fff3ff",
+    "lightIntensity": 1.1,
+    "ambient": "#e8dcff",
+    "particles": "dust"
+   },
+   "backdrop": "art/v2/sky-dream.jpg",
+   "ground": {
+    "src": "art/v2/ground-ward.jpg",
+    "scale": 14
+   }
+  },
+  {
+   "t": 15.129,
+   "palette": {
+    "skyTop": "#a9b6f2",
+    "skyBottom": "#ffd9ec",
+    "fog": "#e3d9ff",
+    "fogStart": 38,
+    "fogEnd": 125,
+    "ground": "#f4f0ff",
+    "road": "#fffaf3",
+    "roadSide": "#e2bf7a",
+    "line": "#ff8fc0",
+    "light": "#fff6f0",
+    "lightIntensity": 1.05,
+    "ambient": "#e0d6ff",
+    "particles": "bubbles"
+   },
+   "backdrop": "art/v2/sky-dream.jpg",
+   "ground": {
+    "src": "art/v2/ground-ward.jpg",
+    "scale": 14
+   }
+  },
+  {
+   "t": 30.247,
+   "palette": {
+    "skyTop": "#3a2f7a",
+    "skyBottom": "#b98ad8",
+    "fog": "#5a4a9a",
+    "fogStart": 36,
+    "fogEnd": 120,
+    "ground": "#c9c0ff",
+    "road": "#fff4fb",
+    "roadSide": "#e6c37c",
+    "line": "#ff7ab6",
+    "light": "#ffd9f2",
+    "lightIntensity": 0.95,
+    "ambient": "#9a8ad8",
+    "particles": "stars"
+   },
+   "backdrop": "art/v2/sky-stage.jpg",
+   "ground": {
+    "src": "art/v2/ground-stage.jpg",
+    "scale": 16
+   }
+  },
+  {
+   "t": 45.364,
+   "palette": {
+    "skyTop": "#1c1a52",
+    "skyBottom": "#6b4fb0",
+    "fog": "#2c2668",
+    "fogStart": 34,
+    "fogEnd": 118,
+    "ground": "#d8ccff",
+    "road": "#fff2fa",
+    "roadSide": "#f0c56a",
+    "line": "#ff6fb1",
+    "light": "#ffe6fa",
+    "lightIntensity": 1.0,
+    "ambient": "#8270cc",
+    "particles": "confetti"
+   },
+   "backdrop": "art/v2/sky-stage.jpg",
+   "ground": {
+    "src": "art/v2/ground-stage.jpg",
+    "scale": 16
+   }
+  },
+  {
+   "t": 60.482,
+   "palette": {
+    "skyTop": "#a9b6f2",
+    "skyBottom": "#ffd9ec",
+    "fog": "#e3d9ff",
+    "fogStart": 38,
+    "fogEnd": 125,
+    "ground": "#f4f0ff",
+    "road": "#fffaf3",
+    "roadSide": "#e2bf7a",
+    "line": "#ff8fc0",
+    "light": "#fff6f0",
+    "lightIntensity": 1.05,
+    "ambient": "#e0d6ff",
+    "particles": "bubbles"
+   },
+   "backdrop": "art/v2/sky-dream.jpg",
+   "ground": {
+    "src": "art/v2/ground-ward.jpg",
+    "scale": 14
+   }
+  },
+  {
+   "t": 75.6,
+   "palette": {
+    "skyTop": "#3a2f7a",
+    "skyBottom": "#b98ad8",
+    "fog": "#5a4a9a",
+    "fogStart": 36,
+    "fogEnd": 120,
+    "ground": "#c9c0ff",
+    "road": "#fff4fb",
+    "roadSide": "#e6c37c",
+    "line": "#ff7ab6",
+    "light": "#ffd9f2",
+    "lightIntensity": 0.95,
+    "ambient": "#9a8ad8",
+    "particles": "stars"
+   },
+   "backdrop": "art/v2/sky-stage.jpg",
+   "ground": {
+    "src": "art/v2/ground-stage.jpg",
+    "scale": 16
+   }
+  },
+  {
+   "t": 90.718,
+   "palette": {
+    "skyTop": "#3a2f7a",
+    "skyBottom": "#b98ad8",
+    "fog": "#5a4a9a",
+    "fogStart": 36,
+    "fogEnd": 120,
+    "ground": "#c9c0ff",
+    "road": "#fff4fb",
+    "roadSide": "#e6c37c",
+    "line": "#ff7ab6",
+    "light": "#ffd9f2",
+    "lightIntensity": 0.95,
+    "ambient": "#9a8ad8",
+    "particles": "stars"
+   },
+   "backdrop": "art/v2/sky-stage.jpg",
+   "ground": {
+    "src": "art/v2/ground-stage.jpg",
+    "scale": 16
+   }
+  },
+  {
+   "t": 105.835,
+   "palette": {
+    "skyTop": "#1c1a52",
+    "skyBottom": "#6b4fb0",
+    "fog": "#2c2668",
+    "fogStart": 34,
+    "fogEnd": 118,
+    "ground": "#d8ccff",
+    "road": "#fff2fa",
+    "roadSide": "#f0c56a",
+    "line": "#ff6fb1",
+    "light": "#ffe6fa",
+    "lightIntensity": 1.0,
+    "ambient": "#8270cc",
+    "particles": "confetti"
+   },
+   "backdrop": "art/v2/sky-stage.jpg",
+   "ground": {
+    "src": "art/v2/ground-stage.jpg",
+    "scale": 16
+   }
+  },
+  {
+   "t": 120.953,
+   "palette": {
+    "skyTop": "#1c1a52",
+    "skyBottom": "#6b4fb0",
+    "fog": "#2c2668",
+    "fogStart": 34,
+    "fogEnd": 118,
+    "ground": "#d8ccff",
+    "road": "#fff2fa",
+    "roadSide": "#f0c56a",
+    "line": "#ff6fb1",
+    "light": "#ffe6fa",
+    "lightIntensity": 1.0,
+    "ambient": "#8270cc",
+    "particles": "confetti"
+   },
+   "backdrop": "art/v2/sky-stage.jpg",
+   "ground": {
+    "src": "art/v2/ground-stage.jpg",
+    "scale": 16
+   }
+  },
+  {
+   "t": 134.181,
+   "palette": {
+    "skyTop": "#4b4a9a",
+    "skyBottom": "#c8b4ec",
+    "fog": "#6a64b0",
+    "fogStart": 34,
+    "fogEnd": 115,
+    "ground": "#d6d0ff",
+    "road": "#f6f2ff",
+    "roadSide": "#c9b37a",
+    "line": "#ff9ccf",
+    "light": "#dfe6ff",
+    "lightIntensity": 0.85,
+    "ambient": "#9a9ae0",
+    "particles": "petals"
+   },
+   "backdrop": "art/v2/sky-moon.jpg",
+   "ground": {
+    "src": "art/v2/ground-garden.jpg",
+    "scale": 14
+   }
+  },
+  {
+   "t": 149.299,
+   "palette": {
+    "skyTop": "#4b4a9a",
+    "skyBottom": "#c8b4ec",
+    "fog": "#6a64b0",
+    "fogStart": 34,
+    "fogEnd": 115,
+    "ground": "#d6d0ff",
+    "road": "#f6f2ff",
+    "roadSide": "#c9b37a",
+    "line": "#ff9ccf",
+    "light": "#dfe6ff",
+    "lightIntensity": 0.85,
+    "ambient": "#9a9ae0",
+    "particles": "petals"
+   },
+   "backdrop": "art/v2/sky-moon.jpg",
+   "ground": {
+    "src": "art/v2/ground-garden.jpg",
+    "scale": 14
+   }
+  },
+  {
+   "t": 151.189,
+   "palette": {
+    "skyTop": "#3a2f7a",
+    "skyBottom": "#b98ad8",
+    "fog": "#5a4a9a",
+    "fogStart": 36,
+    "fogEnd": 120,
+    "ground": "#c9c0ff",
+    "road": "#fff4fb",
+    "roadSide": "#e6c37c",
+    "line": "#ff7ab6",
+    "light": "#ffd9f2",
+    "lightIntensity": 0.95,
+    "ambient": "#9a8ad8",
+    "particles": "stars"
+   },
+   "backdrop": "art/v2/sky-stage.jpg",
+   "ground": {
+    "src": "art/v2/ground-stage.jpg",
+    "scale": 16
+   }
+  },
+  {
+   "t": 166.307,
+   "palette": {
+    "skyTop": "#24185e",
+    "skyBottom": "#d06fb8",
+    "fog": "#3b2a78",
+    "fogStart": 34,
+    "fogEnd": 120,
+    "ground": "#e6d8ff",
+    "road": "#fff6fb",
+    "roadSide": "#ffd27a",
+    "line": "#ff5fa8",
+    "light": "#fff0fb",
+    "lightIntensity": 1.1,
+    "ambient": "#9a7ad8",
+    "particles": "confetti"
+   },
+   "backdrop": "art/v2/sky-stage.jpg",
+   "ground": {
+    "src": "art/v2/ground-stage.jpg",
+    "scale": 16
+   }
+  },
+  {
+   "t": 181.424,
+   "palette": {
+    "skyTop": "#24185e",
+    "skyBottom": "#d06fb8",
+    "fog": "#3b2a78",
+    "fogStart": 34,
+    "fogEnd": 120,
+    "ground": "#e6d8ff",
+    "road": "#fff6fb",
+    "roadSide": "#ffd27a",
+    "line": "#ff5fa8",
+    "light": "#fff0fb",
+    "lightIntensity": 1.1,
+    "ambient": "#9a7ad8",
+    "particles": "confetti"
+   },
+   "backdrop": "art/v2/sky-stage.jpg",
+   "ground": {
+    "src": "art/v2/ground-stage.jpg",
+    "scale": 16
+   }
+  },
+  {
+   "t": 196.542,
+   "palette": {
+    "skyTop": "#9aa4e8",
+    "skyBottom": "#ffe6f2",
+    "fog": "#ddd4ff",
+    "fogStart": 40,
+    "fogEnd": 140,
+    "ground": "#f6f0ff",
+    "road": "#fffaf3",
+    "roadSide": "#e2bf7a",
+    "line": "#ff9cc8",
+    "light": "#fff6f6",
+    "lightIntensity": 1.0,
+    "ambient": "#e0d8ff",
+    "particles": "stars"
+   },
+   "backdrop": "art/v2/sky-moon.jpg",
+   "ground": {
+    "src": "art/v2/ground-garden.jpg",
+    "scale": 14
+   }
+  }
+ ]
+}

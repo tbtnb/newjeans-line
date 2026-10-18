@@ -209,7 +209,7 @@ export class World {
       // v2.8 show visuals (src/render/showfx.ts)
       const road = this.road;
       this.show = new ShowFx(this.scene, this.root, route, L, this.quality, widthAt, (x, z, r, y0, y1) => grid.hits(x, z, r, y0, y1),
-        road ? { mesh: road.top, buffer: road.topBuffer, setFlush: f => { road.onFlush = f; } } : null, this.sparkTex ? this.sparkTex.clone() as Texture : null);
+        road ? { mesh: road.top, buffer: road.topBuffer, setFlush: f => { road.onFlush = f; } } : null, L.fx.sprite ? new Texture(this.mats.artBase + L.fx.sprite, this.scene) : this.sparkTex ? this.sparkTex.clone() as Texture : null);
       this.show.addGlow(this.objects.filter(o => o.def.glowfx).flatMap(o => o.node.getChildMeshes() as Mesh[]));
     }
     // objects targeted by 'light' events get their own materials so they can glow independently

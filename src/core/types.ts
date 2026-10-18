@@ -123,4 +123,6 @@ export interface FxSpec {
   sparkles?: { t0: number; t1: number; density?: number; colors?: string[]; size?: number; spread?: number; height?: number }[];
   /** glossy road top and glowing edge trims (trim colour, emissive strength) */
   road?: { gloss?: number; trim?: string; trimGlow?: number };
+  /** sprite texture for sparkles and drop bursts (art/x.png); default: a soft radial dot */
+  sprite?: string;
 }
