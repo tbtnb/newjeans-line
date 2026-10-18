@@ -242,8 +242,9 @@ export class LineSkin {
     const def = this.def;
     if (def.levelColor && this.headMat && this.trailMat && lineHex !== this.lastLine) {
       this.lastLine = lineHex; const lc = hex3(lineHex);
-      this.headMat.diffuseColor.copyFrom(lc); this.trailMat.diffuseColor.copyFrom(lc);
-      this.headMat.emissiveColor.copyFrom(lc).scaleInPlace(0.2); this.trailMat.emissiveColor.copyFrom(lc).scaleInPlace(0.18); // head ~= trail colour (low specular, no washed-out top); readability comes from the outline
+      const hsv = lc.toHSV(); const hc = new Color3(); Color3.HSVtoRGBToRef(hsv.r, Math.min(1, hsv.g * 1.25 + 0.06), Math.min(1, hsv.b * 1.04), hc); // head: same hue as the trail, a bit more saturated/brighter (never whiter)
+      this.headMat.diffuseColor.copyFrom(hc); this.trailMat.diffuseColor.copyFrom(lc);
+      this.headMat.emissiveColor.copyFrom(hc).scaleInPlace(0.22); this.trailMat.emissiveColor.copyFrom(lc).scaleInPlace(0.18); this.headMat.specularColor.set(0, 0, 0);
     }
     const wall = performance.now() / 1000;
     // particle ageing in real seconds: World renders without engine.runRenderLoop, so the animation ratio is fixed at 1

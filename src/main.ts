@@ -361,3 +361,15 @@ requestAnimationFrame(loop);
 const DEBUG = new URLSearchParams(location.search).has('debug');
 (window as any).__nj = {
   ...(DEBUG ? { preview: (t: number) => { if (!game) return; game.prepare(t); world.seek(t); readyFrom = t; readyKind = 'start'; setReady(); } } : {}), get state() { return state; }, get game() { return game; }, audio, world, get level() { return level; }, save, selectLevel: (i: number) => selectLevel(i), stats: () => world.stats() };
+
+// Stale-build guard: index.html can be cached by the browser/CDN (GitHub Pages max-age 600). If the deployed build.json names a
+// newer build than this bundle, reload once with a cache-busting query so players never sit on an old build.
+declare const __BUILD__: string;
+(async () => {
+  try {
+    const r = await fetch(`build.json?t=${Date.now()}`, { cache: 'no-store' }); if (!r.ok) return;
+    const j = await r.json(); const want = String(j.preview_of ?? j.build ?? '').split('@').pop();
+    if (!want || want === __BUILD__ || sessionStorage.getItem('nj-reloaded') === want) return;
+    sessionStorage.setItem('nj-reloaded', want); const u = new URL(location.href); u.searchParams.set('v', want); location.replace(u.toString());
+  } catch { /* offline or no build.json: keep running */ }
+})();

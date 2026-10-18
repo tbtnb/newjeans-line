@@ -1,5 +1,5 @@
 import {
-  Color3, Color4, CreateBox, CreateCylinder, CreateGround, CreatePlane, CreatePolyhedron, DirectionalLight, DynamicTexture, Engine, HemisphericLight,
+  Color3, Color4, CreateBox, CreateDisc, CreateCylinder, CreateGround, CreatePlane, CreatePolyhedron, DirectionalLight, DynamicTexture, Engine, HemisphericLight,
   Matrix, Mesh, ParticleSystem, Quaternion, Scene, ShadowGenerator, StandardMaterial, Texture, TransformNode, Vector3,
 } from './bjs';
 import { anchor, flowAnchor, HEAD_VEC, posAt, spanIndexAt, spanPos, type Route } from '../core/path';
@@ -64,7 +64,7 @@ export class World {
   private root: TransformNode | null = null; private mats: Materials | null = null;
   private road: Road | null = null; private dress: Dressings | null = null; private occP: { x: number; y: number; z: number; r: number }[] = []; private occView: Matrix | null = null; private occTh = 1; private occAspect = 1; private env: EnvTimeline | null = null; rig: CameraRig | null = null;
   private ground: Mesh | null = null; private groundMat: StandardMaterial | null = null;
-  private head: Mesh | null = null; private halo: Mesh | null = null; private haloMat: StandardMaterial | null = null; private trail: Mesh | null = null; private trailMat: StandardMaterial | null = null; private headMat: StandardMaterial | null = null;
+  private head: Mesh | null = null; private halo: Mesh | null = null; private headEdge = new Color3(0.3, 0.1, 0.15); private haloMat: StandardMaterial | null = null; private trail: Mesh | null = null; private trailMat: StandardMaterial | null = null; private headMat: StandardMaterial | null = null;
   private trailBuf = new Float32Array(16 * 64); private trailCount = 0; private runs: Run[] = []; private failRun: Run | null = null;
   private show: ShowFx | null = null;
   private objects: Obj[] = []; private faceCam: Obj[] = []; private groundTex: { t: number; tex: Texture }[] = []; private groundShown: Texture | null = null; private groundTint: Color3 | null = null; private byId = new Map<string, Obj[]>();
@@ -89,7 +89,7 @@ export class World {
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
-    this.engine = new Engine(canvas, true, { preserveDrawingBuffer: false, stencil: true, alpha: true, antialias: true, powerPreference: 'high-performance' }, true);
+    this.engine = new Engine(canvas, true, { preserveDrawingBuffer: false, stencil: false, alpha: true, antialias: true, powerPreference: 'high-performance' }, true);
     this.engine.setHardwareScalingLevel(1 / Math.min(window.devicePixelRatio || 1, 2));
     this.scene = new Scene(this.engine);
     this.scene.clearColor = new Color4(0, 0, 0, 0);
@@ -179,14 +179,15 @@ export class World {
     // player line
     this.headMat = new StandardMaterial('headM', this.scene); this.headMat.specularColor = new Color3(0.1, 0.1, 0.1);
     this.trailMat = new StandardMaterial('trailM', this.scene); this.trailMat.specularColor = new Color3(0.05, 0.05, 0.05);
-    this.head = CreateBox('head', { size: 1 }, this.scene); this.head.scaling.set(LINE_W * 1.06, LINE_H + 0.05, LINE_W * 1.06); /* slightly larger than the trail cross-section: no coplanar faces with the run it caps (z-fighting flicker) */ this.head.material = this.headMat; this.head.parent = this.root; this.head.renderOutline = true; this.head.outlineWidth = 0.22;
+    this.head = CreateBox('head', { size: 1 }, this.scene); this.head.scaling.set(LINE_W * 1.06, LINE_H + 0.05, LINE_W * 1.06); /* slightly larger than the trail cross-section: no coplanar faces with the run it caps (z-fighting flicker) */ this.head.material = this.headMat; this.head.parent = this.root; this.head.enableEdgesRendering(0.95); this.head.edgesWidth = 5; // same-hue dark edge lines (crisp on GPU, no stencil outline shells)
     this.trail = CreateBox('trail', { size: 1 }, this.scene); this.trail.material = this.trailMat; this.trail.parent = this.root; this.trail.alwaysSelectAsActiveMesh = true;
     this.trailBuf = new Float32Array(16 * 256); this.trail.thinInstanceSetBuffer('matrix', this.trailBuf, 16, false); this.trail.thinInstanceCount = 0;
     this.skin.attach(this.head, this.headMat, this.trailMat, this.root);
     // soft contact halo on the road under the head (outline tint): finds the head in wide/dense frames; steady, never flashes
-    this.halo = CreateGround('halo', { width: 3.6, height: 3.6 }, this.scene); this.halo.parent = this.root; this.halo.isPickable = false;
-    this.haloMat = new StandardMaterial('haloM', this.scene); this.haloMat.opacityTexture = this.glowTex; this.haloMat.diffuseColor.set(0, 0, 0); this.haloMat.specularColor.set(0, 0, 0);
-    this.haloMat.disableLighting = true; this.haloMat.alpha = 0.75; this.haloMat.zOffset = -4; this.haloMat.disableDepthWrite = true; this.halo.material = this.haloMat;
+    this.halo = CreateDisc('halo', { radius: 0.95, tessellation: 40 }, this.scene); this.halo.parent = this.root; this.halo.isPickable = false; this.halo.rotation.x = Math.PI / 2;
+    this.haloMat = new StandardMaterial('haloM', this.scene); this.haloMat.diffuseColor.set(0, 0, 0); this.haloMat.specularColor.set(0, 0, 0); this.haloMat.backFaceCulling = false;
+    this.haloMat.disableLighting = true; this.haloMat.alpha = 0.32; this.haloMat.zOffset = -4; this.haloMat.disableDepthWrite = true; this.halo.material = this.haloMat;
+    const ring = CreateDisc('haloOuter', { radius: 1.45, tessellation: 40 }, this.scene); ring.parent = this.halo; ring.position.z = 0.005; ring.isPickable = false; ring.material = this.haloMat; // two stacked discs = solid core + softer rim
     // scenery
     const grid = new RoadGrid(route, widthAt);
     const expanded: SceneObject[] = [];
@@ -509,9 +510,11 @@ export class World {
     this.skin.update(lt, pal.line, lineHeading(route, g.turns, lt), true);
     // readability outline around the head: dark rim on light heads, light rim on dark heads (works with every skin)
     if (this.head && this.headMat) { const c = this.headMat.diffuseColor; const lum = 0.3 * c.r + 0.59 * c.g + 0.11 * c.b;
-      if (lum > 0.45) this.head.outlineColor.set(c.r * 0.28, c.g * 0.28, c.b * 0.28); else this.head.outlineColor.set(0.97, 0.96, 0.92); }
+      // dark rim of the same hue on light heads (classic pink -> deep rose, never white); light rim only on genuinely dark heads
+      if (lum > 0.3) this.headEdge.set(c.r * 0.35, c.g * 0.35, c.b * 0.35); else this.headEdge.set(Math.min(1, c.r * 0.5 + 0.5), Math.min(1, c.g * 0.5 + 0.5), Math.min(1, c.b * 0.5 + 0.5));
+      this.head.edgesColor.set(this.headEdge.r, this.headEdge.g, this.headEdge.b, 1); }
     if (this.halo && this.head && this.haloMat) { this.halo.position.set(this.head.position.x, this.head.position.y - this.head.scaling.y / 2 + 0.04, this.head.position.z);
-      this.halo.setEnabled(this.head.isEnabled() && g.status !== 'failed'); this.haloMat.emissiveColor.copyFrom(this.head.outlineColor);
+      this.halo.setEnabled(this.head.isEnabled() && g.status !== 'failed'); this.haloMat.emissiveColor.copyFrom(this.headEdge);
       if (this.rig) { const d = this.rig.cam.position.subtract(this.head.getAbsolutePosition()).length(); this.halo.scaling.setAll(Math.min(1.8, Math.max(1, d / 40))); } } // grows a little on wide shots so the head stays findable
     // complete: line enters finish, camera rises
     if (g.status === 'complete') { if (this.completeAt < 0) this.completeAt = performance.now() / 1000; const k = smooth((performance.now() / 1000 - this.completeAt) / 2.2); this.rig.extraPitch = 18 * k; this.rig.extraDist = 14 * k; }

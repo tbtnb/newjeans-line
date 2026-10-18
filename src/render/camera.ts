@@ -11,7 +11,7 @@ const PRESETS: Record<string, Partial<CamParams>> = {
   low: { pitch: 36, dist: 34, fov: 42, yawOff: 0 },
   side: { pitch: 44, dist: 41, fov: 38, yawOff: 60 },
   top: { pitch: 78, dist: 54, fov: 36, yawOff: 0 },
-  wide: { pitch: 48, dist: 60, fov: 40, yawOff: 0 },
+  wide: { pitch: 48, dist: 52, fov: 40, yawOff: 0 },
   close: { pitch: 46, dist: 30, fov: 40, yawOff: 0 },
 };
 const BASE: CamParams = { pitch: 50, dist: 41, fov: 36, yawOff: 0, worldYaw: null, roll: 0, shake: 0, lead: 0.85, orbit: 0, punch: 0.025, zoom: 1, tilt: 0, sway: 0 };
