@@ -22,6 +22,8 @@ export interface Palette {
 export interface ObjectAnim { t: number; mode: string; dur?: number; }
 export interface Part { kind: string; uv?: number[]; glow?: number; pos?: number[]; size?: number[]; rot?: number[]; color?: string; color2?: string; texture?: string; src?: string; mode?: string; alpha?: boolean; }
 export interface SceneObject {
+  /** v2.8: include this object in the fx glow layer (layout.fx.glow) */
+  glowfx?: boolean;
   id?: string; t?: number; side?: number; along?: number; y?: number; kind: string;
   size?: number[]; rot?: number | number[]; color?: string; color2?: string; parts?: Part[];
   appear?: ObjectAnim; exit?: ObjectAnim; react?: 'none' | 'beat' | 'tap' | 'kick';
@@ -69,6 +71,8 @@ export interface Layout {
   collectibleColors?: { diamond?: string; crown?: string };
   /** Roadside set-dressing (engine-placed props along both sides of every road segment). false disables it. */
   dressing?: Dressing | false;
+  /** v2.8 show visuals (glow, image processing, beams, sparkles, road gloss/trims); see docs/SHOW_FX.md. Off when absent. */
+  fx?: FxSpec;
   beats?: number[]; // optional beat grid for react:'beat' scenery
   kicks?: number[];
 }
@@ -100,4 +104,23 @@ export interface Dressing {
 export interface LevelData {
   id: string; title: string; album: string; duration: number; bpm: number; audio: string; cover: string;
   difficulty: number; accent: string; chart: Chart; layout: Layout;
+}
+
+/** v2.8 show visuals (src/render/showfx.ts). All times in seconds; all optional. */
+export interface FxSpec {
+  exposure?: number; contrast?: number;
+  vignette?: { weight?: number; color?: string };
+  glow?: { intensity?: number; kernel?: number };
+  /** keyed grading: exposure / contrast / glow intensity from t on, blended over `blend` s */
+  keys?: { t: number; exposure?: number; contrast?: number; glow?: number; blend?: number }[];
+  /** beat-reactive exposure pulse from t to t1 */
+  pulse?: { t: number; t1: number; amount?: number }[];
+  /** exposure flash (+ star burst at the head unless sparkle:false) on drops */
+  flashes?: { t: number; dur?: number; amount?: number; sparkle?: boolean }[];
+  /** stage searchlight beams beside the road between t0 and t1, one every `every` s, alternating sides */
+  beams?: { t0: number; t1: number; every?: number; colors?: string[]; height?: number; near?: number }[];
+  /** twinkling glow sprites beside/above the road between t0 and t1 (density per second of route) */
+  sparkles?: { t0: number; t1: number; density?: number; colors?: string[]; size?: number; spread?: number; height?: number }[];
+  /** glossy road top and glowing edge trims (trim colour, emissive strength) */
+  road?: { gloss?: number; trim?: string; trimGlow?: number };
 }
