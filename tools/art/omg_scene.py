@@ -60,9 +60,9 @@ art = [
 dsec = []
 PROPS = {'dream': [0, 1, 5, 10], 'ward': [0, 1, 5, 10], 'rise': [3, 6, 10], 'stage': [3, 6, 10],
          'finale': [6, 10], 'garden': [2, 10], 'calm': [0, 5, 10]}
-DENS = {'dream': 1.5, 'ward': 1.8, 'rise': 1.7, 'stage': 1.8, 'finale': 2.0, 'garden': 1.5, 'calm': 1.2}   # x1.5 for the forward route: only one stretch of road is in view at a time
+DENS = {'dream': 3.0, 'ward': 3.4, 'rise': 3.4, 'stage': 3.8, 'finale': 4.2, 'garden': 3.0, 'calm': 2.4}   # forward route: one stretch of road in view at a time, so pack the 2-6 m band densely
 for a, b, th in rng: dsec.append(dict(t=a, props=PROPS[th], density=DENS[th]))
-dressing = dict(colors=['#fff4fb', '#c9b8ff', '#ff8fc0', '#3a2f7a', '#8fd0ff'], art=art, artShare=0.6, near=[2.0, 6], sections=dsec)
+dressing = dict(colors=['#fff4fb', '#c9b8ff', '#ff8fc0', '#3a2f7a', '#8fd0ff'], art=art, artShare=0.6, near=[2.0, 6], lead=4.5, sections=dsec)
 
 import re as _re
 _g = [tp['t'] for tp in C['taps'] if _re.search(r'\bgod\b', str(tp.get('lyric', '')), _re.I)]
