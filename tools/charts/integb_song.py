@@ -11,7 +11,7 @@ from integb_route import Repair, phrases_for, remap_worldpos
 def duration(sid):
     return float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', str(ROOT / f'public/audio/{sid}.mp3')], capture_output=True, text=True).stdout)
 
-def run(sid, audit=False, pins=None, keep=(), follows=None, notes='', meta=None, beat_grid=None):
+def run(sid, audit=False, pins=None, keep=(), follows=None, notes='', meta=None, beat_grid=None, retime=None):
     dd = ROOT / f'levels-design/{sid}'
     src_chart = dd / ('pre-audit/chart.json' if (dd / 'pre-audit/chart.json').exists() else 'chart.json')
     src_layout = dd / ('pre-audit/layout.json' if (dd / 'pre-audit/layout.json').exists() else 'layout.json')
@@ -26,6 +26,11 @@ def run(sid, audit=False, pins=None, keep=(), follows=None, notes='', meta=None,
     removed = []; layers = {}
     if audit:
         kept, removed, layers = run_audit(sid, chart, pins or {}, keep)
+        # re-time: a flagged tap whose intended hit is one 16th away (a clear onset of the SAME section layer) is moved there
+        for o, n in (retime or {}).items():
+            src = next(x for x in orig['taps'] if abs(x['t'] - o) < 1e-3)
+            kept.append({**src, 't': n, 'retimed_from': o}); kept.sort(key=lambda x: x['t'])
+            removed = [r if abs(r[0] - o) > 1e-3 else (r[0], r[1] + f' -> re-timed to {n:.3f}', *r[2:]) for r in removed]
         if removed:
             taps = [x['t'] for x in kept]; odirs = [x['dir'] for x in kept]
             rep = Repair(chart, layout, dur)
@@ -48,7 +53,7 @@ def run(sid, audit=False, pins=None, keep=(), follows=None, notes='', meta=None,
         elif audit or 'follows' not in s: s['follows'] = layers.get(k, 'full')
     if audit:
         chart.setdefault('meta', {})['audit'] = {'by': 'integrator B (integ-b)', 'rule': 'one audible layer per section; no faint/off-layer taps; bursts only where clear in the full mix; taps only removed',
-                                                 'taps_before': len(orig['taps']), 'taps_after': len(chart['taps']), 'removed': [{'t': r[0], 'why': r[1], 'layer': r[2], 'layer_strength': r[3], 'full_strength': r[4], 'tag': r[5]} for r in removed]}
+                                                 'taps_before': len(orig['taps']), 'taps_after': len(chart['taps']), 'retimed': len(retime or {}), 'removed': [{'t': r[0], 'why': r[1], 'layer': r[2], 'layer_strength': r[3], 'full_strength': r[4], 'tag': r[5]} for r in removed]}
         if removed:
             n = remap_worldpos(layout, orig, chart, dur, log)
             from integb_clearance import hits, nudge

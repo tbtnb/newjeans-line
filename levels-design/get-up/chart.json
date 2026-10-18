@@ -245,6 +245,7 @@
    "rule": "one audible layer per section; no faint/off-layer taps; bursts only where clear in the full mix; taps only removed",
    "taps_before": 39,
    "taps_after": 37,
+   "retimed": 0,
    "removed": [
     {
      "t": 20.082,

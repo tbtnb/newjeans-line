@@ -10,52 +10,58 @@
  "taps": [
   {
    "t": 1.264,
-   "dir": "L",
+   "dir": "R",
    "tag": "snare"
   },
   {
    "t": 2.187,
-   "dir": "R",
+   "dir": "L",
    "tag": "snare"
   },
   {
    "t": 3.11,
-   "dir": "L",
+   "dir": "R",
    "tag": "snare"
   },
   {
    "t": 4.033,
-   "dir": "R",
+   "dir": "L",
    "tag": "bass"
   },
   {
    "t": 4.725,
-   "dir": "R",
+   "dir": "L",
    "tag": "hat"
   },
   {
+   "t": 5.302,
+   "dir": "R",
+   "tag": "kick",
+   "retimed_from": 5.187
+  },
+  {
    "t": 5.879,
-   "dir": "L",
+   "dir": "R",
    "tag": "snare"
   },
   {
    "t": 7.033,
-   "dir": "R",
+   "dir": "L",
    "tag": "hat"
   },
   {
    "t": 7.725,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 8.648,
-   "dir": "L",
+   "dir": "R",
    "tag": "snare"
   },
   {
    "t": 9.571,
-   "dir": "R",
+   "dir": "L",
    "tag": "hat"
   },
   {
@@ -130,8 +136,14 @@
   },
   {
    "t": 28.723,
-   "dir": "R",
+   "dir": "L",
    "tag": "vocal"
+  },
+  {
+   "t": 30.684,
+   "dir": "R",
+   "tag": "vocal",
+   "retimed_from": 30.8
   },
   {
    "t": 31.723,
@@ -145,82 +157,82 @@
   },
   {
    "t": 35.3,
-   "dir": "R",
+   "dir": "L",
    "tag": "hat"
   },
   {
    "t": 36.107,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
   },
   {
    "t": 40.953,
-   "dir": "R",
+   "dir": "L",
    "tag": "bass"
   },
   {
    "t": 41.645,
-   "dir": "R",
+   "dir": "L",
    "tag": "vocal"
   },
   {
    "t": 43.953,
-   "dir": "L",
+   "dir": "R",
    "tag": "snare"
   },
   {
    "t": 44.645,
-   "dir": "R",
+   "dir": "L",
    "tag": "snare"
   },
   {
    "t": 45.568,
-   "dir": "L",
+   "dir": "R",
    "tag": "hat"
   },
   {
    "t": 46.491,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 47.414,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
   },
   {
    "t": 47.645,
-   "dir": "R",
+   "dir": "L",
    "tag": "vocal"
   },
   {
    "t": 47.875,
-   "dir": "R",
+   "dir": "L",
    "tag": "bass"
   },
   {
    "t": 48.106,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
   },
   {
    "t": 49.029,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
   },
   {
    "t": 51.337,
-   "dir": "L",
+   "dir": "R",
    "tag": "snare"
   },
   {
    "t": 52.029,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 53.875,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -454,6 +466,12 @@
    "tag": "snare"
   },
   {
+   "t": 80.987,
+   "dir": "R",
+   "tag": "vocal",
+   "retimed_from": 81.103
+  },
+  {
    "t": 81.564,
    "dir": "L",
    "tag": "kick"
@@ -554,6 +572,12 @@
    "tag": "kick"
   },
   {
+   "t": 91.486,
+   "dir": "L",
+   "tag": "hat",
+   "retimed_from": 91.371
+  },
+  {
    "t": 91.717,
    "dir": "R",
    "tag": "snare"
@@ -605,7 +629,7 @@
   },
   {
    "t": 99.101,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -625,7 +649,7 @@
   },
   {
    "t": 100.947,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -645,27 +669,27 @@
   },
   {
    "t": 104.639,
-   "dir": "R",
+   "dir": "L",
    "tag": "vocal"
   },
   {
    "t": 105.562,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
   },
   {
    "t": 106.255,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 106.485,
-   "dir": "L",
+   "dir": "R",
    "tag": "hat"
   },
   {
    "t": 106.947,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -740,27 +764,27 @@
   },
   {
    "t": 120.792,
-   "dir": "L",
+   "dir": "R",
    "tag": "hat"
   },
   {
    "t": 121.253,
-   "dir": "R",
+   "dir": "L",
    "tag": "hat"
   },
   {
    "t": 122.176,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 122.868,
-   "dir": "R",
+   "dir": "L",
    "tag": "snare"
   },
   {
    "t": 124.022,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -897,11 +921,12 @@
    "by": "integrator B (integ-b)",
    "rule": "one audible layer per section; no faint/off-layer taps; bursts only where clear in the full mix; taps only removed",
    "taps_before": 201,
-   "taps_after": 158,
+   "taps_after": 162,
+   "retimed": 4,
    "removed": [
     {
      "t": 5.187,
-     "why": "faint",
+     "why": "faint -> re-timed to 5.302",
      "layer": "drums",
      "layer_strength": 0.31,
      "full_strength": 0.16,
@@ -933,7 +958,7 @@
     },
     {
      "t": 30.8,
-     "why": "faint",
+     "why": "faint -> re-timed to 30.684",
      "layer": "hat",
      "layer_strength": 0.22,
      "full_strength": 0.14,
@@ -1101,7 +1126,7 @@
     },
     {
      "t": 81.103,
-     "why": "faint",
+     "why": "faint -> re-timed to 80.987",
      "layer": "drums",
      "layer_strength": 0.27,
      "full_strength": 0.04,
@@ -1125,7 +1150,7 @@
     },
     {
      "t": 91.371,
-     "why": "off-layer",
+     "why": "off-layer -> re-timed to 91.486",
      "layer": "mid",
      "layer_strength": 0.12,
      "full_strength": 0.54,

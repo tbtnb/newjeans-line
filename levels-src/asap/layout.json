@@ -605,9 +605,9 @@
    "id": "clock_tower",
    "kind": "group",
    "worldPos": [
-    43.155,
+    -31.944,
     -2.0,
-    -18.259
+    7.793
    ],
    "landmark": true,
    "name": "Pendulum clock in the sky (Verse 1b winds around it)",
@@ -664,15 +664,16 @@
    "debugXZ": [
     9.81,
     -43.75
-   ]
+   ],
+   "rot": 90
   },
   {
    "id": "moon",
    "kind": "moon",
    "worldPos": [
-    9.694,
+    7.359,
     30,
-    47.517
+    44.952
    ],
    "size": [
     7,
@@ -690,7 +691,7 @@
     34.81,
     -8.75
    ],
-   "rot": 270
+   "rot": 180
   },
   {
    "id": "leaf_walls",
@@ -862,9 +863,9 @@
    "id": "white_wing_0",
    "kind": "group",
    "worldPos": [
-    131.635,
+    -4.59,
     3.5,
-    -56.129
+    -2.167
    ],
    "name": "white wing slab",
    "landmark": false,
@@ -922,15 +923,15 @@
     33.49,
     -49.75
    ],
-   "rot": 270
+   "rot": 90
   },
   {
    "id": "white_wing_1",
    "kind": "group",
    "worldPos": [
-    130.135,
+    -4.59,
     3.5,
-    -54.727
+    -6.167
    ],
    "name": "white wing slab",
    "landmark": false,
@@ -988,15 +989,15 @@
     37.49,
     -49.75
    ],
-   "rot": 270
+   "rot": 90
   },
   {
    "id": "white_wing_2",
    "kind": "group",
    "worldPos": [
-    120.93,
+    -6.553,
     3.5,
-    -45.451
+    -12.131
    ],
    "name": "five white wing slabs",
    "landmark": true,
@@ -1060,9 +1061,9 @@
    "id": "white_wing_3",
    "kind": "group",
    "worldPos": [
-    120.251,
+    -7.232,
     3.5,
-    -45.442
+    -12.121
    ],
    "name": "white wing slab",
    "landmark": false,
@@ -1126,9 +1127,9 @@
    "id": "white_wing_4",
    "kind": "group",
    "worldPos": [
-    108.171,
+    -19.312,
     3.5,
-    -38.738
+    -19.137
    ],
    "name": "white wing slab",
    "landmark": false,
@@ -1388,9 +1389,9 @@
    "id": "moon_pool",
    "kind": "disc",
    "worldPos": [
-    119.385,
+    -8.098,
     -0.7,
-    -91.512
+    51.645
    ],
    "size": [
     12,
@@ -1617,9 +1618,9 @@
    "id": "small_house",
    "kind": "group",
    "worldPos": [
-    105.096,
+    39.382,
     2.72,
-    -51.484
+    120.106
    ],
    "landmark": true,
    "name": "The small house (Chorus 2 wraps around it)",
@@ -3930,7 +3931,7 @@
   ]
  },
  "dressing": {
-  "density": 4.6,
+  "density": 5.6,
   "near": [
    0.4,
    3.8
@@ -3966,7 +3967,7 @@
        2.3,
        1.5
       ],
-      "color": "#1F5A45"
+      "color": "#2C7356"
      }
     ],
     "weight": 3.5,
@@ -4008,7 +4009,7 @@
        1.5,
        1.5
       ],
-      "color": "#2E7A5A"
+      "color": "#3E9068"
      }
     ],
     "weight": 2,
@@ -4155,31 +4156,31 @@
   "sections": [
    {
     "t": 0,
-    "density": 3.4
+    "density": 4.2
    },
    {
     "t": 4,
-    "density": 4.6
-   },
-   {
-    "t": 41,
-    "density": 5.0
-   },
-   {
-    "t": 55.7,
-    "density": 2.4
-   },
-   {
-    "t": 57.6,
-    "density": 4.6
-   },
-   {
-    "t": 72.3,
     "density": 5.6
    },
    {
+    "t": 41,
+    "density": 6.0
+   },
+   {
+    "t": 55.7,
+    "density": 3.0
+   },
+   {
+    "t": 57.6,
+    "density": 5.6
+   },
+   {
+    "t": 72.3,
+    "density": 6.6
+   },
+   {
     "t": 92.6,
-    "density": 5.2
+    "density": 6.2
    },
    {
     "t": 114.8,

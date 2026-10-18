@@ -32,18 +32,18 @@ DRESSING = {
     'sections': [{'t': 0, 'density': 3.0}, {'t': 14.6, 'density': 4.2}, {'t': 43, 'density': 3.0, 'props': [2, 3, 4]}, {'t': 57.2, 'density': 5.0}, {'t': 71.4, 'density': 4.2},
                  {'t': 85.7, 'density': 2.2, 'props': [2, 3]}, {'t': 92.8, 'density': 4.6}, {'t': 99.9, 'density': 5.4}, {'t': 128.3, 'density': 2.4, 'props': [2, 3]}]},
   # dawn after rain over shallow water: reeds, pale stones, folded white wing slabs, a few warm lamps (quiet interlude)
-  'get-up': {'density': 3.4, 'near': [0.4, 3.2], 'seed': 3, 'props': [
-      w({'kind': 'group', 'parts': [C((0.12, 1.4, 0.12), '#8FA98A', (0, 0.7, 0)), C((0.12, 1.9, 0.12), '#9DB596', (0.3, 0.95, 0.2)), C((0.12, 1.1, 0.12), '#8FA98A', (-0.25, 0.55, -0.2))]}, 3, scaleY=(0.7, 1.4)),
-      w(C((1.2, 0.5, 1.0), '#DCD8E6', kind='sphere'), 2, scaleY=(0.6, 1.0)), w(B((0.3, 1.6, 1.4), '#FFFFFF'), 1.4, scaleY=(0.7, 1.3)),
+  'get-up': {'density': 5.0, 'near': [0.4, 3.4], 'seed': 3, 'props': [
+      w({'kind': 'group', 'parts': [C((0.2, 2.0, 0.2), '#7F9E7A', (0, 1.0, 0)), C((0.2, 2.7, 0.2), '#93B08C', (0.4, 1.35, 0.25)), C((0.2, 1.6, 0.2), '#7F9E7A', (-0.35, 0.8, -0.25)), C((0.9, 0.3, 0.9), '#DCD8E6', (0, 0.15, 0), 'sphere')]}, 3, scale=(0.9, 1.4), scaleY=(0.8, 1.5)),
+      w(C((1.8, 0.8, 1.5), '#DCD8E6', kind='sphere'), 2, scale=(0.9, 1.5), scaleY=(0.6, 1.0)), w(B((0.3, 1.6, 1.4), '#FFFFFF'), 1.4, scaleY=(0.7, 1.3)),
       w(lamp('#7D7A9A', '#FFE3B8', 2.2), 0.8, scaleY=(0.9, 1.1)), w(B((1.0, 0.6, 1.0), '#B8B4D5'), 1, scaleY=(0.6, 1.6))],
-    'sections': [{'t': 0, 'density': 2.6}, {'t': 8.3, 'density': 3.2}, {'t': 16.3, 'density': 3.8}, {'t': 24.3, 'density': 4.2}]},
+    'sections': [{'t': 0, 'density': 4.0}, {'t': 8.3, 'density': 4.6}, {'t': 16.3, 'density': 5.2}, {'t': 24.3, 'density': 6.0}]},
   # emerald night forest meadow: pines, round bushes, flowers, mushrooms, stones; the hush thins out
-  'asap': {'density': 4.6, 'near': [0.4, 3.8], 'seed': 17, 'props': [
-      w(tree('#5B4636', '#1F5A45', cone=True), 3.5, scaleY=(0.8, 1.7)), w(tree('#5B4636', '#2E7A5A'), 2),
+  'asap': {'density': 5.6, 'near': [0.4, 3.8], 'seed': 17, 'props': [
+      w(tree('#5B4636', '#2C7356', cone=True), 3.5, scaleY=(0.8, 1.7)), w(tree('#5B4636', '#3E9068'), 2),
       w(C((1.1, 0.8, 1.1), '#3F8A63', kind='sphere'), 2, scaleY=(0.6, 1.1)),
       w({'kind': 'group', 'parts': [C((0.22, 0.6, 0.22), '#F4F1DF', (0, 0.3, 0)), C((0.8, 0.35, 0.8), '#E35D83', (0, 0.7, 0), 'sphere')]}, 1.2, scaleY=(0.8, 1.3)),
       w({'kind': 'group', 'parts': [C((0.1, 0.5, 0.1), '#4E8A5E', (0, 0.25, 0)), C((0.35, 0.35, 0.35), '#F6E7A8', (0, 0.55, 0), 'sphere')]}, 1.2, scaleY=(0.8, 1.4)),
       w(C((0.9, 0.5, 0.8), '#cfd8b8', kind='sphere'), 1, scaleY=(0.6, 1.0))],
-    'sections': [{'t': 0, 'density': 3.4}, {'t': 4, 'density': 4.6}, {'t': 41, 'density': 5.0}, {'t': 55.7, 'density': 2.4}, {'t': 57.6, 'density': 4.6},
-                 {'t': 72.3, 'density': 5.6}, {'t': 92.6, 'density': 5.2}, {'t': 114.8, 'density': 2.0, 'props': [0, 4]}, {'t': 120.3, 'density': 5.0}, {'t': 129.6, 'density': 2.6}]},
+    'sections': [{'t': 0, 'density': 4.2}, {'t': 4, 'density': 5.6}, {'t': 41, 'density': 6.0}, {'t': 55.7, 'density': 3.0}, {'t': 57.6, 'density': 5.6},
+                 {'t': 72.3, 'density': 6.6}, {'t': 92.6, 'density': 6.2}, {'t': 114.8, 'density': 2.0, 'props': [0, 4]}, {'t': 120.3, 'density': 5.0}, {'t': 129.6, 'density': 2.6}]},
 }

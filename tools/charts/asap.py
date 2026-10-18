@@ -4,4 +4,6 @@ grid - while analysis/asap.grid.json says 129.52 BPM (drifts ~0.4 s by the end).
 (chartlogic.py then uses it) and the layout carries its own beat list for beat-reactive scenery."""
 from integb_song import run
 P = 60 / 130.012; B0 = round(1.264 - 8 * P / 4, 4)   # first tap 1.264 s = bar 0, 16th 8 (worker's grid)
-run('asap', audit=True, meta={'bpm': 130.012, 'beat_period': P, 'beat0': B0, 'old_tap_count': 83}, beat_grid=(P, B0))
+run('asap', audit=True, meta={'bpm': 130.012, 'beat_period': P, 'beat0': B0, 'old_tap_count': 83}, beat_grid=(P, B0),
+    # four flagged taps sit one 16th off a clear hit of their section's own layer -> re-timed instead of dropped
+    retime={5.187: 5.302, 30.8: 30.684, 81.103: 80.987, 91.371: 91.486})
