@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { Game, judgmentWindows, WINDOW_MIN, WINDOW_MAX } from '../src/core/game';
+import { Game, judgmentWindows, geometricWindow, WINDOW_MIN, WINDOW_MAX } from '../src/core/game';
 import { buildRoute, posAt, anchor } from '../src/core/path';
 import type { LevelData } from '../src/core/types';
 
@@ -39,9 +39,14 @@ test('fall lowers the road after air time', () => {
 
 test('windows shrink with dense gaps but stay within bounds', () => {
   const w = judgmentWindows([1, 1.15, 1.3, 3]);
-  assert.ok(Math.abs(w[0] - 0.0675) < 1e-9);
+  assert.ok(Math.abs(w[0] - 0.075) < 1e-9, 'half the 0.15 s gap');
   assert.ok(w[3] <= WINDOW_MAX && w[3] >= WINDOW_MIN);
   for (const x of w) assert.ok(x >= WINDOW_MIN && x <= WINDOW_MAX);
+});
+
+test('window follows the road: late tap survives while the head centre is on the road', () => {
+  const w = judgmentWindows([2, 4, 6], i => geometricWindow([2.6, 1.8, 6][i], 9));
+  assert.ok(Math.abs(w[0] - 1.3 / 9) < 1e-9); assert.ok(Math.abs(w[1] - 0.9 / 9) < 1e-9); assert.equal(w[2], WINDOW_MAX);
 });
 
 test('hit within window, fail early, fail late, extra tap fails', () => {
@@ -94,19 +99,20 @@ test('falls/jumps land before the next tap (no turning in mid-air)', async () =>
   assert.ok(Math.abs(landY + 4) < 1e-6, 'lands at -4, got ' + landY);
 });
 
-test('16th bursts at 0.11 s: per-tap windows never touch; every real tap lands, duplicates are ignored', () => {
+test('16th bursts at 0.11 s: per-tap windows never overlap; every real tap lands, duplicates are ignored', () => {
   const burst = [2, 2.11, 2.22, 2.33, 2.44, 2.55];
   const g = new Game(mk(burst)); g.prepare(); g.start();
   const w = g.windows;
-  for (let i = 0; i + 1 < burst.length; i++) assert.ok(burst[i] + w[i] < burst[i + 1] - w[i + 1], 'windows disjoint');
-  assert.ok(Math.abs(w[2] - 0.0495) < 1e-9);
+  for (let i = 0; i + 1 < burst.length; i++) assert.ok(burst[i] + w[i] <= burst[i + 1] - w[i + 1] + 1e-9, 'windows never overlap');
+  assert.ok(Math.abs(w[2] - 0.055) < 1e-9);
   for (const [i, t] of burst.entries()) {
     assert.equal(g.tap(t + (i % 2 ? 0.03 : -0.03)), 'hit', 'tap ' + i);
     assert.equal(g.tap(t + (i % 2 ? 0.03 : -0.03) + 0.008), 'ignored', 'double-trigger ' + i);
   }
   assert.equal(g.cursor, burst.length);
   const h = new Game(mk(burst)); h.prepare(); h.start();
-  assert.equal(h.tap(2.0), 'hit'); assert.equal(h.tap(2.165), 'fail', 'a tap between two burst windows is a fail, never a double count'); assert.equal(h.failKind, 'late');
+  assert.equal(h.tap(2.0), 'hit'); assert.equal(h.tap(2.164), 'hit', 'a tap at the boundary goes to the pending corner once'); assert.equal(h.cursor, 2);
+  assert.equal(h.tap(2.30), 'fail', 'a tap beyond the window is a fail, never a double count'); assert.equal(h.failKind, 'late');
 });
 
 test('level that ends before the audio (layout.endTime): route, progress and completion use the level length', () => {

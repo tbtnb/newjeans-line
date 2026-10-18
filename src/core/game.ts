@@ -1,9 +1,15 @@
 import type { LevelData } from './types';
 import { buildRoute, type Route } from './path';
 
-export const WINDOW_MAX = 0.11;     // ± seconds, sparse taps
-export const WINDOW_MIN = 0.045;    // ± seconds, absolute floor (16th bursts at 0.11 s gaps get ±49.5 ms)
-export const WINDOW_GAP_RATIO = 0.45; // window may never exceed 45 % of the neighbouring gap (no ambiguity)
+export const WINDOW_MAX = 0.15;     // ± seconds, hard cap (sparse taps on a wide road)
+export const WINDOW_MIN = 0.045;    // ± seconds, absolute floor
+export const WINDOW_GAP_RATIO = 0.5; // window may never exceed half the neighbouring gap (neighbouring windows touch, never overlap)
+/** Road-geometry tolerance (as in Dancing Line): a late tap survives while the head centre is still on the road past the
+ * corner, i.e. (road width / 2) / speed; an early tap inside the same window snaps the turn onto the corner. */
+export function geometricWindow(roadWidth: number, speed: number) { return roadWidth / 2 / Math.max(1e-6, speed); }
+export function roadWidthAt(widths: { t: number; w: number }[] | undefined, t: number) {
+  let w = 2.2; for (const x of [...(widths ?? [])].sort((a, b) => a.t - b.t)) if (x.t <= t + 1e-9) w = x.w; return w;
+}
 export const PERFECT = 0.04;
 export const DEBOUNCE = 0.045;
 /** Input events are delivered to JS after a frame or two; their timestamps are what we judge. The clock-driven
@@ -16,13 +22,15 @@ export type FailKind = 'late' | 'early' | 'extra';
 export interface TurnRecord { index: number; chartT: number; tapT: number; }
 export interface Checkpoint { index: number; t: number; cursor: number; diamonds: number[]; }
 
-export function judgmentWindows(taps: number[]): number[] {
+export function judgmentWindows(taps: number[], geo?: (i: number) => number): number[] {
   return taps.map((t, i) => {
     const prev = i > 0 ? t - taps[i - 1] : Infinity;
     const next = i + 1 < taps.length ? taps[i + 1] - t : Infinity;
     const g = Math.min(prev, next);
-    // per-tap window: ≤ 45 % of the local minimum gap, so neighbouring windows never touch and one tap can never count twice
-    return Math.min(0.5 * g, Math.max(WINDOW_MIN, Math.min(WINDOW_MAX, WINDOW_GAP_RATIO * g)));
+    // per-tap window: the road-geometry tolerance, capped at WINDOW_MAX and at half the local minimum gap (neighbouring
+    // windows never overlap, so one tap can never count twice); never below WINDOW_MIN unless the gap itself forbids it
+    const want = Math.min(WINDOW_MAX, geo ? geo(i) : WINDOW_MAX);
+    return Math.min(0.5 * g, Math.max(WINDOW_MIN, Math.min(want, WINDOW_GAP_RATIO * g)));
   });
 }
 
@@ -55,7 +63,9 @@ export class Game {
     this.level = level;
     this.route = buildRoute(level.chart, level.layout.elevation ?? [], level.duration);
     this.taps = this.route.tapTimes;
-    this.windows = judgmentWindows(this.taps);
+    const spans = this.route.spans;
+    const speedAt = (t: number) => { const s = spans.find(x => t >= x.t0 - 1e-9 && t < x.t1) ?? spans[spans.length - 1]; return s?.v ?? 9; };
+    this.windows = judgmentWindows(this.taps, i => geometricWindow(roadWidthAt(level.layout.road?.width, this.taps[i]), speedAt(this.taps[i] - 1e-4)));
   }
 
   get progress() { return Math.max(0, Math.min(1, this.time / this.level.duration)); }
