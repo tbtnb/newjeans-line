@@ -10,7 +10,7 @@
 },
 {
 "t": 3.699,
-"tag": "melody",
+"tag": "kick",
 "bar": 1,
 "slot8": 12,
 "sec": "Intro",
@@ -34,7 +34,7 @@
 },
 {
 "t": 7.539,
-"tag": "vocal",
+"tag": "clap",
 "bar": 3,
 "slot8": 12,
 "sec": "Intro",
@@ -49,12 +49,28 @@
 "onsetOffsetMs": null
 },
 {
+"t": 8.739,
+"tag": "kick",
+"bar": 4,
+"slot8": 6,
+"sec": "Verse 1",
+"rep": "verse instances bar 0"
+},
+{
 "t": 9.939,
 "tag": "kick",
 "bar": 5,
 "slot8": 0,
 "sec": "Verse 1",
 "onsetOffsetMs": -47
+},
+{
+"t": 11.139,
+"tag": "kick",
+"bar": 5,
+"slot8": 10,
+"sec": "Verse 1",
+"rep": "verse instances bar 1"
 },
 {
 "t": 11.859,
@@ -90,7 +106,7 @@
 },
 {
 "t": 14.019,
-"tag": "vocal",
+"tag": "kick",
 "bar": 7,
 "slot8": 2,
 "sec": "Verse 1",
@@ -121,12 +137,12 @@
 "onsetOffsetMs": -41
 },
 {
-"t": 18.099,
+"t": 18.819,
 "tag": "clap",
 "bar": 9,
-"slot8": 4,
+"slot8": 10,
 "sec": "Verse 1",
-"onsetOffsetMs": -45
+"rep": "Verse 1 bar 1 (+4)"
 },
 {
 "t": 19.539,
@@ -153,14 +169,6 @@
 "onsetOffsetMs": null
 },
 {
-"t": 20.979,
-"tag": "melody",
-"bar": 10,
-"slot8": 12,
-"sec": "Verse 1",
-"onsetOffsetMs": 47
-},
-{
 "t": 21.459,
 "tag": "kick",
 "bar": 11,
@@ -169,12 +177,20 @@
 "onsetOffsetMs": -39
 },
 {
-"t": 21.939,
-"tag": "vocal",
+"t": 21.699,
+"tag": "kick",
 "bar": 11,
-"slot8": 4,
+"slot8": 2,
 "sec": "Verse 1",
-"onsetOffsetMs": 50
+"rep": "Verse 1 bar 3 (+4)"
+},
+{
+"t": 23.379,
+"tag": "kick",
+"bar": 12,
+"slot8": 0,
+"sec": "Verse 1",
+"rep": "verse instances bar 8"
 },
 {
 "t": 25.299,
@@ -182,15 +198,15 @@
 "bar": 13,
 "slot8": 0,
 "sec": "Verse 1",
-"onsetOffsetMs": -47
+"rep": "Verse 1 bar 5 (+4)"
 },
 {
-"t": 26.739,
+"t": 26.499,
 "tag": "clap",
 "bar": 13,
-"slot8": 12,
+"slot8": 10,
 "sec": "Verse 1",
-"onsetOffsetMs": 45
+"rep": "verse instances bar 9"
 },
 {
 "t": 27.219,
@@ -201,20 +217,20 @@
 "onsetOffsetMs": -28
 },
 {
+"t": 27.699,
+"tag": "clap",
+"bar": 14,
+"slot8": 4,
+"sec": "Verse 1",
+"rep": "Verse 1 bar 6 (+4)"
+},
+{
 "t": 27.939,
 "tag": "kick",
 "bar": 14,
 "slot8": 6,
 "sec": "Verse 1",
 "onsetOffsetMs": null
-},
-{
-"t": 28.659,
-"tag": "vocal",
-"bar": 14,
-"slot8": 12,
-"sec": "Verse 1",
-"onsetOffsetMs": 29
 },
 {
 "t": 29.139,
@@ -225,12 +241,12 @@
 "onsetOffsetMs": -56
 },
 {
-"t": 30.339,
+"t": 29.379,
 "tag": "kick",
 "bar": 15,
-"slot8": 10,
+"slot8": 2,
 "sec": "Verse 1",
-"onsetOffsetMs": null
+"rep": "Verse 1 bar 7 (+4)"
 },
 {
 "t": 31.059,
@@ -241,14 +257,6 @@
 "onsetOffsetMs": null
 },
 {
-"t": 32.499,
-"tag": "vocal",
-"bar": 16,
-"slot8": 12,
-"sec": "Verse 1",
-"onsetOffsetMs": 9
-},
-{
 "t": 32.979,
 "tag": "kick",
 "bar": 17,
@@ -257,9 +265,12 @@
 "onsetOffsetMs": null
 },
 {
-"t": 33.818,
-"tag": "synco-16th",
-"src": "vocal"
+"t": 34.178,
+"tag": "clap",
+"bar": 17,
+"slot8": 10,
+"sec": "Verse 1",
+"rep": "Verse 1 bar 9 (+4)"
 },
 {
 "t": 34.898,
@@ -268,6 +279,14 @@
 "slot8": 0,
 "sec": "Verse 1",
 "onsetOffsetMs": -45
+},
+{
+"t": 35.378,
+"tag": "clap",
+"bar": 18,
+"slot8": 4,
+"sec": "Verse 1",
+"rep": "Verse 1 bar 10 (+4)"
 },
 {
 "t": 35.618,
@@ -294,8 +313,36 @@
 "onsetOffsetMs": null
 },
 {
+"t": 38.258,
+"tag": "clap",
+"bar": 19,
+"slot8": 12,
+"sec": "Verse 1"
+},
+{
+"t": 38.378,
+"tag": "fill-16th",
+"bar": 19,
+"slot8": 13,
+"sec": "Verse 1"
+},
+{
+"t": 38.498,
+"tag": "fill-16th",
+"bar": 19,
+"slot8": 14,
+"sec": "Verse 1"
+},
+{
+"t": 38.618,
+"tag": "fill-16th",
+"bar": 19,
+"slot8": 15,
+"sec": "Verse 1"
+},
+{
 "t": 38.738,
-"tag": "vocal",
+"tag": "kick",
 "bar": 20,
 "slot8": 0,
 "sec": "Pre-chorus 1",
@@ -303,7 +350,7 @@
 },
 {
 "t": 39.218,
-"tag": "vocal",
+"tag": "kick",
 "bar": 20,
 "slot8": 4,
 "sec": "Pre-chorus 1",
@@ -311,7 +358,7 @@
 },
 {
 "t": 40.178,
-"tag": "vocal",
+"tag": "kick",
 "bar": 20,
 "slot8": 12,
 "sec": "Pre-chorus 1",
@@ -326,20 +373,20 @@
 "onsetOffsetMs": null
 },
 {
+"t": 41.138,
+"tag": "kick",
+"bar": 21,
+"slot8": 4,
+"sec": "Pre-chorus 1",
+"rep": "pre instances bar 1"
+},
+{
 "t": 41.378,
 "tag": "kick",
 "bar": 21,
 "slot8": 6,
 "sec": "Pre-chorus 1",
 "onsetOffsetMs": null
-},
-{
-"t": 42.098,
-"tag": "kick",
-"bar": 21,
-"slot8": 12,
-"sec": "Pre-chorus 1",
-"onsetOffsetMs": 46
 },
 {
 "t": 42.578,
@@ -366,11 +413,6 @@
 "onsetOffsetMs": null
 },
 {
-"t": 43.658,
-"tag": "synco-16th",
-"src": "vocal"
-},
-{
 "t": 44.018,
 "tag": "kick",
 "bar": 22,
@@ -380,7 +422,7 @@
 },
 {
 "t": 44.738,
-"tag": "vocal",
+"tag": "clap",
 "bar": 23,
 "slot8": 2,
 "sec": "Pre-chorus 1",
@@ -388,7 +430,7 @@
 },
 {
 "t": 45.458,
-"tag": "vocal",
+"tag": "kick",
 "bar": 23,
 "slot8": 8,
 "sec": "Pre-chorus 1",
@@ -411,12 +453,25 @@
 "onsetOffsetMs": 49
 },
 {
+"t": 46.058,
+"tag": "fill-16th",
+"bar": 23,
+"slot8": 13,
+"sec": "Pre-chorus 1"
+},
+{
 "t": 46.178,
-"tag": "clap",
+"tag": "fill-16th",
 "bar": 23,
 "slot8": 14,
-"sec": "Pre-chorus 1",
-"onsetOffsetMs": -52
+"sec": "Pre-chorus 1"
+},
+{
+"t": 46.298,
+"tag": "fill-16th",
+"bar": 23,
+"slot8": 15,
+"sec": "Pre-chorus 1"
 },
 {
 "t": 46.418,
@@ -427,17 +482,20 @@
 "onsetOffsetMs": null
 },
 {
-"t": 46.778,
-"tag": "synco-16th",
-"src": "vocal"
-},
-{
 "t": 47.138,
 "tag": "kick",
 "bar": 24,
 "slot8": 6,
 "sec": "Chorus 1",
 "onsetOffsetMs": null
+},
+{
+"t": 47.858,
+"tag": "kick",
+"bar": 24,
+"slot8": 12,
+"sec": "Chorus 1",
+"rep": "chorus instances bar 0"
 },
 {
 "t": 48.338,
@@ -504,20 +562,20 @@
 "onsetOffsetMs": null
 },
 {
-"t": 54.578,
-"tag": "clap",
+"t": 54.818,
+"tag": "kick",
 "bar": 28,
-"slot8": 4,
+"slot8": 6,
 "sec": "Chorus 1",
-"onsetOffsetMs": 47
+"rep": "chorus instances bar 4"
 },
 {
 "t": 55.538,
-"tag": "clap",
+"tag": "kick",
 "bar": 28,
 "slot8": 12,
 "sec": "Chorus 1",
-"onsetOffsetMs": 51
+"rep": "Chorus 1 bar 0 (+4)"
 },
 {
 "t": 56.018,
@@ -528,9 +586,12 @@
 "onsetOffsetMs": -46
 },
 {
-"t": 57.098,
-"tag": "synco-16th",
-"src": "vocal"
+"t": 56.498,
+"tag": "kick",
+"bar": 29,
+"slot8": 4,
+"sec": "Chorus 1",
+"rep": "chorus instances bar 5"
 },
 {
 "t": 57.458,
@@ -547,14 +608,6 @@
 "slot8": 0,
 "sec": "Chorus 1",
 "onsetOffsetMs": null
-},
-{
-"t": 58.418,
-"tag": "clap",
-"bar": 30,
-"slot8": 4,
-"sec": "Chorus 1",
-"onsetOffsetMs": 50
 },
 {
 "t": 58.658,
@@ -587,14 +640,6 @@
 "slot8": 4,
 "sec": "Chorus 1",
 "onsetOffsetMs": 45
-},
-{
-"t": 60.818,
-"tag": "vocal",
-"bar": 31,
-"slot8": 8,
-"sec": "Chorus 1",
-"onsetOffsetMs": -28
 },
 {
 "t": 61.058,
@@ -637,12 +682,28 @@
 "onsetOffsetMs": null
 },
 {
-"t": 64.898,
+"t": 63.218,
+"tag": "clap",
+"bar": 32,
+"slot8": 12,
+"sec": "Chorus 1",
+"rep": "Chorus 1 bar 4 (+4)"
+},
+{
+"t": 63.698,
 "tag": "kick",
 "bar": 33,
-"slot8": 10,
+"slot8": 0,
 "sec": "Chorus 1",
-"onsetOffsetMs": -56
+"rep": "chorus instances bar 9"
+},
+{
+"t": 64.178,
+"tag": "clap",
+"bar": 33,
+"slot8": 4,
+"sec": "Chorus 1",
+"rep": "Chorus 1 bar 5 (+4)"
 },
 {
 "t": 65.138,
@@ -654,7 +715,7 @@
 },
 {
 "t": 65.618,
-"tag": "vocal",
+"tag": "kick",
 "bar": 34,
 "slot8": 0,
 "sec": "Chorus 1",
@@ -693,11 +754,6 @@
 "onsetOffsetMs": -53
 },
 {
-"t": 69.098,
-"tag": "synco-16th",
-"src": "vocal"
-},
-{
 "t": 69.458,
 "tag": "kick",
 "bar": 36,
@@ -714,9 +770,12 @@
 "onsetOffsetMs": null
 },
 {
-"t": 71.018,
-"tag": "synco-16th",
-"src": "vocal"
+"t": 70.898,
+"tag": "kick",
+"bar": 36,
+"slot8": 12,
+"sec": "Chorus 1",
+"rep": "chorus instances bar 12"
 },
 {
 "t": 71.378,
@@ -728,11 +787,11 @@
 },
 {
 "t": 71.858,
-"tag": "clap",
+"tag": "kick",
 "bar": 37,
 "slot8": 4,
 "sec": "Chorus 1",
-"onsetOffsetMs": 43
+"rep": "Chorus 1 bar 9 (+4)"
 },
 {
 "t": 72.818,
@@ -751,20 +810,20 @@
 "onsetOffsetMs": null
 },
 {
-"t": 73.778,
-"tag": "clap",
-"bar": 38,
-"slot8": 4,
-"sec": "Chorus 1",
-"onsetOffsetMs": 50
-},
-{
 "t": 74.018,
 "tag": "kick",
 "bar": 38,
 "slot8": 6,
 "sec": "Chorus 1",
 "onsetOffsetMs": null
+},
+{
+"t": 74.738,
+"tag": "kick",
+"bar": 38,
+"slot8": 12,
+"sec": "Chorus 1",
+"rep": "chorus instances bar 14"
 },
 {
 "t": 75.218,
@@ -783,14 +842,6 @@
 "onsetOffsetMs": 45
 },
 {
-"t": 76.178,
-"tag": "melody",
-"bar": 39,
-"slot8": 8,
-"sec": "Chorus 1",
-"onsetOffsetMs": 53
-},
-{
 "t": 76.418,
 "tag": "bass",
 "bar": 39,
@@ -807,18 +858,16 @@
 "onsetOffsetMs": 49
 },
 {
-"t": 76.818,
-"tag": "fill-triplet",
-"src": "other"
-},
-{
-"t": 76.978,
-"tag": "fill-triplet",
-"src": "snare"
+"t": 76.898,
+"tag": "bass",
+"bar": 39,
+"slot8": 14,
+"sec": "Chorus 1",
+"onsetOffsetMs": -52
 },
 {
 "t": 77.138,
-"tag": "melody",
+"tag": "kick",
 "bar": 40,
 "slot8": 0,
 "sec": "Verse 2",
@@ -857,20 +906,20 @@
 "onsetOffsetMs": null
 },
 {
+"t": 81.457,
+"tag": "clap",
+"bar": 42,
+"slot8": 4,
+"sec": "Verse 2",
+"rep": "verse instances bar 2"
+},
+{
 "t": 81.697,
 "tag": "kick",
 "bar": 42,
 "slot8": 6,
 "sec": "Verse 2",
 "onsetOffsetMs": null
-},
-{
-"t": 82.417,
-"tag": "clap",
-"bar": 42,
-"slot8": 12,
-"sec": "Verse 2",
-"onsetOffsetMs": -44
 },
 {
 "t": 82.897,
@@ -881,12 +930,12 @@
 "onsetOffsetMs": -48
 },
 {
-"t": 83.377,
-"tag": "vocal",
+"t": 83.137,
+"tag": "kick",
 "bar": 43,
-"slot8": 4,
+"slot8": 2,
 "sec": "Verse 2",
-"onsetOffsetMs": 29
+"rep": "verse instances bar 3"
 },
 {
 "t": 84.817,
@@ -913,12 +962,12 @@
 "onsetOffsetMs": -45
 },
 {
-"t": 87.457,
-"tag": "vocal",
+"t": 87.937,
+"tag": "clap",
 "bar": 45,
-"slot8": 6,
+"slot8": 10,
 "sec": "Verse 2",
-"onsetOffsetMs": 47
+"rep": "Verse 2 bar 1 (+4)"
 },
 {
 "t": 88.657,
@@ -927,6 +976,14 @@
 "slot8": 0,
 "sec": "Verse 2",
 "onsetOffsetMs": null
+},
+{
+"t": 89.137,
+"tag": "clap",
+"bar": 46,
+"slot8": 4,
+"sec": "Verse 2",
+"rep": "verse instances bar 6"
 },
 {
 "t": 89.377,
@@ -945,12 +1002,36 @@
 "onsetOffsetMs": -42
 },
 {
+"t": 90.817,
+"tag": "kick",
+"bar": 47,
+"slot8": 2,
+"sec": "Verse 2",
+"rep": "Verse 2 bar 3 (+4)"
+},
+{
 "t": 92.497,
 "tag": "kick",
 "bar": 48,
 "slot8": 0,
 "sec": "Verse 2",
 "onsetOffsetMs": null
+},
+{
+"t": 93.217,
+"tag": "kick",
+"bar": 48,
+"slot8": 6,
+"sec": "Verse 2",
+"rep": "Verse 2 bar 4 (+4)"
+},
+{
+"t": 94.417,
+"tag": "kick",
+"bar": 49,
+"slot8": 0,
+"sec": "Verse 2",
+"rep": "Verse 2 bar 5 (+4)"
 },
 {
 "t": 95.617,
@@ -961,20 +1042,20 @@
 "onsetOffsetMs": null
 },
 {
-"t": 95.857,
-"tag": "vocal",
-"bar": 49,
-"slot8": 12,
-"sec": "Verse 2",
-"onsetOffsetMs": 41
-},
-{
 "t": 96.337,
 "tag": "kick",
 "bar": 50,
 "slot8": 0,
 "sec": "Verse 2",
 "onsetOffsetMs": null
+},
+{
+"t": 96.817,
+"tag": "clap",
+"bar": 50,
+"slot8": 4,
+"sec": "Verse 2",
+"rep": "Verse 2 bar 6 (+4)"
 },
 {
 "t": 97.057,
@@ -993,12 +1074,12 @@
 "onsetOffsetMs": -48
 },
 {
-"t": 98.977,
-"tag": "vocal",
+"t": 98.497,
+"tag": "clap",
 "bar": 51,
-"slot8": 6,
+"slot8": 2,
 "sec": "Verse 2",
-"onsetOffsetMs": 44
+"rep": "Verse 2 bar 7 (+4)"
 },
 {
 "t": 100.177,
@@ -1017,20 +1098,12 @@
 "onsetOffsetMs": null
 },
 {
-"t": 101.617,
-"tag": "clap",
-"bar": 52,
-"slot8": 12,
-"sec": "Verse 2",
-"onsetOffsetMs": -53
-},
-{
-"t": 102.817,
-"tag": "vocal",
+"t": 102.097,
+"tag": "kick",
 "bar": 53,
-"slot8": 6,
+"slot8": 0,
 "sec": "Verse 2",
-"onsetOffsetMs": 13
+"rep": "Verse 2 bar 9 (+4)"
 },
 {
 "t": 103.297,
@@ -1049,6 +1122,14 @@
 "onsetOffsetMs": null
 },
 {
+"t": 104.737,
+"tag": "kick",
+"bar": 54,
+"slot8": 6,
+"sec": "Verse 2",
+"rep": "verse instances bar 14"
+},
+{
 "t": 107.857,
 "tag": "kick",
 "bar": 56,
@@ -1065,6 +1146,14 @@
 "onsetOffsetMs": null
 },
 {
+"t": 109.297,
+"tag": "clap",
+"bar": 56,
+"slot8": 12,
+"sec": "Chorus 2",
+"rep": "chorus instances bar 0"
+},
+{
 "t": 109.777,
 "tag": "kick",
 "bar": 57,
@@ -1079,14 +1168,6 @@
 "slot8": 10,
 "sec": "Chorus 2",
 "onsetOffsetMs": -55
-},
-{
-"t": 111.217,
-"tag": "clap",
-"bar": 57,
-"slot8": 12,
-"sec": "Chorus 2",
-"onsetOffsetMs": -51
 },
 {
 "t": 111.697,
@@ -1137,25 +1218,12 @@
 "onsetOffsetMs": -52
 },
 {
-"t": 115.177,
-"tag": "synco-16th",
-"src": "vocal"
-},
-{
 "t": 115.537,
 "tag": "kick",
 "bar": 60,
 "slot8": 0,
 "sec": "Chorus 2",
 "onsetOffsetMs": null
-},
-{
-"t": 116.017,
-"tag": "clap",
-"bar": 60,
-"slot8": 4,
-"sec": "Chorus 2",
-"onsetOffsetMs": 48
 },
 {
 "t": 116.257,
@@ -1166,9 +1234,12 @@
 "onsetOffsetMs": null
 },
 {
-"t": 117.097,
-"tag": "synco-16th",
-"src": "vocal"
+"t": 116.977,
+"tag": "kick",
+"bar": 60,
+"slot8": 12,
+"sec": "Chorus 2",
+"rep": "Chorus 2 bar 0 (+4)"
 },
 {
 "t": 117.457,
@@ -1203,20 +1274,20 @@
 "onsetOffsetMs": -50
 },
 {
-"t": 119.857,
-"tag": "clap",
-"bar": 62,
-"slot8": 4,
-"sec": "Chorus 2",
-"onsetOffsetMs": 51
-},
-{
 "t": 120.097,
 "tag": "kick",
 "bar": 62,
 "slot8": 6,
 "sec": "Chorus 2",
 "onsetOffsetMs": null
+},
+{
+"t": 120.817,
+"tag": "clap",
+"bar": 62,
+"slot8": 12,
+"sec": "Chorus 2",
+"rep": "chorus instances bar 6"
 },
 {
 "t": 121.297,
@@ -1233,14 +1304,6 @@
 "slot8": 4,
 "sec": "Chorus 2",
 "onsetOffsetMs": 46
-},
-{
-"t": 122.257,
-"tag": "melody",
-"bar": 63,
-"slot8": 8,
-"sec": "Chorus 2",
-"onsetOffsetMs": 54
 },
 {
 "t": 122.496,
@@ -1283,12 +1346,28 @@
 "onsetOffsetMs": null
 },
 {
-"t": 126.336,
+"t": 124.656,
+"tag": "clap",
+"bar": 64,
+"slot8": 12,
+"sec": "Chorus 2",
+"rep": "Chorus 2 bar 4 (+4)"
+},
+{
+"t": 125.136,
 "tag": "kick",
 "bar": 65,
-"slot8": 10,
+"slot8": 0,
 "sec": "Chorus 2",
-"onsetOffsetMs": -54
+"rep": "chorus instances bar 9"
+},
+{
+"t": 125.616,
+"tag": "clap",
+"bar": 65,
+"slot8": 4,
+"sec": "Chorus 2",
+"rep": "Chorus 2 bar 5 (+4)"
 },
 {
 "t": 126.576,
@@ -1300,7 +1379,7 @@
 },
 {
 "t": 127.056,
-"tag": "vocal",
+"tag": "kick",
 "bar": 66,
 "slot8": 0,
 "sec": "Chorus 2",
@@ -1380,11 +1459,11 @@
 },
 {
 "t": 133.296,
-"tag": "clap",
+"tag": "kick",
 "bar": 69,
 "slot8": 4,
 "sec": "Chorus 2",
-"onsetOffsetMs": 45
+"rep": "Chorus 2 bar 9 (+4)"
 },
 {
 "t": 134.256,
@@ -1396,19 +1475,11 @@
 },
 {
 "t": 134.736,
-"tag": "clap",
+"tag": "kick",
 "bar": 70,
 "slot8": 0,
 "sec": "Chorus 2",
-"onsetOffsetMs": -49
-},
-{
-"t": 135.216,
-"tag": "clap",
-"bar": 70,
-"slot8": 4,
-"sec": "Chorus 2",
-"onsetOffsetMs": 52
+"rep": "chorus instances bar 14"
 },
 {
 "t": 135.456,
@@ -1443,14 +1514,6 @@
 "onsetOffsetMs": -45
 },
 {
-"t": 137.616,
-"tag": "bass",
-"bar": 71,
-"slot8": 8,
-"sec": "Chorus 2",
-"onsetOffsetMs": -49
-},
-{
 "t": 137.856,
 "tag": "bass",
 "bar": 71,
@@ -1467,18 +1530,12 @@
 "onsetOffsetMs": 51
 },
 {
-"t": 138.256,
-"tag": "fill-triplet",
-"src": "vocal"
-},
-{
-"t": 138.416,
-"tag": "fill-triplet",
-"src": "other"
-},
-{
-"t": 138.576,
-"tag": "accent"
+"t": 138.336,
+"tag": "kick",
+"bar": 71,
+"slot8": 14,
+"sec": "Chorus 2",
+"onsetOffsetMs": 55
 },
 {
 "t": 139.056,
@@ -1577,14 +1634,6 @@
 "onsetOffsetMs": 48
 },
 {
-"t": 150.336,
-"tag": "clap",
-"bar": 78,
-"slot8": 2,
-"sec": "Bridge",
-"onsetOffsetMs": null
-},
-{
 "t": 150.576,
 "tag": "clap",
 "bar": 78,
@@ -1617,6 +1666,27 @@
 "onsetOffsetMs": 51
 },
 {
+"t": 153.576,
+"tag": "fill-16th",
+"bar": 79,
+"slot8": 13,
+"sec": "Bridge"
+},
+{
+"t": 153.696,
+"tag": "fill-16th",
+"bar": 79,
+"slot8": 14,
+"sec": "Bridge"
+},
+{
+"t": 153.816,
+"tag": "fill-16th",
+"bar": 79,
+"slot8": 15,
+"sec": "Bridge"
+},
+{
 "t": 153.936,
 "tag": "kick",
 "bar": 80,
@@ -1631,11 +1701,6 @@
 "slot8": 6,
 "sec": "Build",
 "onsetOffsetMs": null
-},
-{
-"t": 155.496,
-"tag": "synco-16th",
-"src": "vocal"
 },
 {
 "t": 155.856,
@@ -1655,29 +1720,15 @@
 },
 {
 "t": 156.576,
-"tag": "melody",
+"tag": "kick",
 "bar": 81,
 "slot8": 6,
 "sec": "Build",
 "onsetOffsetMs": 54
 },
 {
-"t": 157.296,
-"tag": "fill-triplet"
-},
-{
-"t": 157.456,
-"tag": "fill-triplet",
-"src": "other"
-},
-{
-"t": 157.616,
-"tag": "fill-triplet",
-"src": "hat"
-},
-{
 "t": 157.776,
-"tag": "melody",
+"tag": "clap",
 "bar": 82,
 "slot8": 0,
 "sec": "Build",
@@ -1700,11 +1751,6 @@
 "onsetOffsetMs": null
 },
 {
-"t": 158.856,
-"tag": "synco-16th",
-"src": "vocal"
-},
-{
 "t": 159.216,
 "tag": "clap",
 "bar": 82,
@@ -1722,7 +1768,7 @@
 },
 {
 "t": 160.416,
-"tag": "vocal",
+"tag": "kick",
 "bar": 83,
 "slot8": 6,
 "sec": "Build",
@@ -1738,17 +1784,31 @@
 },
 {
 "t": 161.136,
-"tag": "fill-triplet"
+"tag": "clap",
+"bar": 83,
+"slot8": 12,
+"sec": "Build"
 },
 {
-"t": 161.296,
-"tag": "fill-triplet",
-"src": "other"
+"t": 161.256,
+"tag": "fill-16th",
+"bar": 83,
+"slot8": 13,
+"sec": "Build"
 },
 {
-"t": 161.456,
-"tag": "fill-triplet",
-"src": "hat"
+"t": 161.376,
+"tag": "fill-16th",
+"bar": 83,
+"slot8": 14,
+"sec": "Build"
+},
+{
+"t": 161.496,
+"tag": "fill-16th",
+"bar": 83,
+"slot8": 15,
+"sec": "Build"
 },
 {
 "t": 161.616,
@@ -1759,28 +1819,12 @@
 "onsetOffsetMs": -52
 },
 {
-"t": 162.096,
-"tag": "clap",
-"bar": 84,
-"slot8": 4,
-"sec": "Build",
-"onsetOffsetMs": -44
-},
-{
 "t": 162.336,
-"tag": "vocal",
+"tag": "kick",
 "bar": 84,
 "slot8": 6,
 "sec": "Build",
 "onsetOffsetMs": 41
-},
-{
-"t": 163.056,
-"tag": "clap",
-"bar": 84,
-"slot8": 12,
-"sec": "Build",
-"onsetOffsetMs": -52
 },
 {
 "t": 163.536,
@@ -1807,31 +1851,12 @@
 "onsetOffsetMs": null
 },
 {
-"t": 164.976,
-"tag": "fill-triplet"
-},
-{
-"t": 165.136,
-"tag": "fill-triplet",
-"src": "other"
-},
-{
-"t": 165.296,
-"tag": "fill-triplet",
-"src": "hat"
-},
-{
 "t": 165.456,
 "tag": "kick",
 "bar": 86,
 "slot8": 0,
 "sec": "Build",
 "onsetOffsetMs": -49
-},
-{
-"t": 167.015,
-"tag": "synco-16th",
-"src": "vocal"
 },
 {
 "t": 167.375,
@@ -1846,14 +1871,6 @@
 "tag": "bass",
 "bar": 87,
 "slot8": 4,
-"sec": "Build",
-"onsetOffsetMs": null
-},
-{
-"t": 168.335,
-"tag": "bass",
-"bar": 87,
-"slot8": 8,
 "sec": "Build",
 "onsetOffsetMs": null
 },
@@ -1914,22 +1931,6 @@
 "onsetOffsetMs": -49
 },
 {
-"t": 171.695,
-"tag": "clap",
-"bar": 89,
-"slot8": 4,
-"sec": "Final chorus",
-"onsetOffsetMs": -41
-},
-{
-"t": 171.935,
-"tag": "kick",
-"bar": 89,
-"slot8": 6,
-"sec": "Final chorus",
-"onsetOffsetMs": null
-},
-{
 "t": 172.415,
 "tag": "kick",
 "bar": 89,
@@ -1986,14 +1987,6 @@
 "onsetOffsetMs": null
 },
 {
-"t": 176.015,
-"tag": "bass",
-"bar": 91,
-"slot8": 8,
-"sec": "Final chorus",
-"onsetOffsetMs": -54
-},
-{
 "t": 176.255,
 "tag": "clap",
 "bar": 91,
@@ -2039,17 +2032,7 @@
 "bar": 92,
 "slot8": 12,
 "sec": "Final chorus",
-"onsetOffsetMs": -51
-},
-{
-"t": 178.575,
-"tag": "fill-triplet",
-"src": "vocal"
-},
-{
-"t": 178.735,
-"tag": "fill-triplet",
-"src": "hat"
+"rep": "Final chorus bar 0 (+4)"
 },
 {
 "t": 178.895,
@@ -2084,14 +2067,6 @@
 "onsetOffsetMs": null
 },
 {
-"t": 181.295,
-"tag": "clap",
-"bar": 94,
-"slot8": 4,
-"sec": "Final chorus",
-"onsetOffsetMs": -52
-},
-{
 "t": 181.535,
 "tag": "kick",
 "bar": 94,
@@ -2124,12 +2099,12 @@
 "onsetOffsetMs": 48
 },
 {
-"t": 183.695,
-"tag": "bass",
+"t": 183.455,
+"tag": "clap",
 "bar": 95,
-"slot8": 8,
+"slot8": 6,
 "sec": "Final chorus",
-"onsetOffsetMs": -48
+"rep": "Final chorus bar 3 (+4)"
 },
 {
 "t": 183.935,
@@ -2172,6 +2147,14 @@
 "onsetOffsetMs": null
 },
 {
+"t": 186.095,
+"tag": "clap",
+"bar": 96,
+"slot8": 12,
+"sec": "Final chorus",
+"rep": "Final chorus bar 4 (+4)"
+},
+{
 "t": 186.575,
 "tag": "kick",
 "bar": 97,
@@ -2180,12 +2163,12 @@
 "onsetOffsetMs": -49
 },
 {
-"t": 187.775,
-"tag": "kick",
+"t": 187.055,
+"tag": "clap",
 "bar": 97,
-"slot8": 10,
+"slot8": 4,
 "sec": "Final chorus",
-"onsetOffsetMs": -53
+"rep": "Final chorus bar 5 (+4)"
 },
 {
 "t": 188.015,
@@ -2244,14 +2227,6 @@
 "onsetOffsetMs": -58
 },
 {
-"t": 191.375,
-"tag": "phrase",
-"bar": 99,
-"slot8": 8,
-"sec": "Final chorus",
-"onsetOffsetMs": -43
-},
-{
 "t": 191.615,
 "tag": "clap",
 "bar": 99,
@@ -2300,16 +2275,6 @@
 "onsetOffsetMs": -51
 },
 {
-"t": 193.935,
-"tag": "fill-triplet",
-"src": "vocal"
-},
-{
-"t": 194.095,
-"tag": "fill-triplet",
-"src": "hat"
-},
-{
 "t": 194.255,
 "tag": "kick",
 "bar": 101,
@@ -2318,17 +2283,12 @@
 "onsetOffsetMs": -43
 },
 {
-"t": 194.855,
-"tag": "synco-16th",
-"src": "vocal"
-},
-{
-"t": 195.455,
+"t": 194.735,
 "tag": "kick",
 "bar": 101,
-"slot8": 10,
+"slot8": 4,
 "sec": "Final chorus",
-"onsetOffsetMs": -47
+"rep": "Final chorus bar 9 (+4)"
 },
 {
 "t": 195.695,
@@ -2345,14 +2305,6 @@
 "slot8": 0,
 "sec": "Final chorus",
 "onsetOffsetMs": null
-},
-{
-"t": 196.655,
-"tag": "clap",
-"bar": 102,
-"slot8": 4,
-"sec": "Final chorus",
-"onsetOffsetMs": -52
 },
 {
 "t": 196.895,
@@ -2401,14 +2353,6 @@
 "slot8": 6,
 "sec": "Final chorus",
 "onsetOffsetMs": null
-},
-{
-"t": 199.055,
-"tag": "bass",
-"bar": 103,
-"slot8": 8,
-"sec": "Final chorus",
-"onsetOffsetMs": -48
 },
 {
 "t": 199.295,
@@ -2489,6 +2433,14 @@
 "slot8": 12,
 "sec": "Outro",
 "onsetOffsetMs": null
+},
+{
+"t": 211.055,
+"tag": "melody",
+"bar": 109,
+"slot8": 12,
+"sec": "Outro",
+"rep": "Outro bar 1 (+4)"
 }
 ],
 "sections": [

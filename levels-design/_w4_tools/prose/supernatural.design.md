@@ -18,10 +18,10 @@ Codex reference: none had arrived in `codex-ref/` when this was built, so the de
 | Bridge | 97.2–114.8 | **fall −8** off the tower into the star layer when the drums drop (97.1 s), then a slow staircase and a **switchback** climb (+4) | 8 → 0 → 4 | **top** | floating petal pads drift around the road |
 | Chorus 2 | 114.8–132.4 | **serpentine with overpasses** (rotate every 2nd tap): a figure-8 knot climbing +4 across the earlier roads | 4 → 8 | iso | gantry pylons carry the overpass |
 | Interlude | 132.4–150.1 | **second helix** (+5) around the gantry pylon | 8 → 13 | **high** | crown checkpoint 2 at 132.6; fork at 141.3 |
-| Final chorus | 150.1–167.7 | **big drop −8** (149.0 s) onto the deck, then **staircase → zigzag** at the highest density (2.84 taps/s) | 5 | iso | same signal poster seen again |
+| Final chorus | 150.1–167.7 | **big drop −8** (149.0 s) onto the deck, then **staircase → zigzag** at the highest density | 5 | iso | same signal poster seen again |
 | Outro | 167.7–191.0 | long **turn-out** glide toward the moon | 5 | wide → orbit swing at 176.5 | bunny-face moon EGG framed by the camera swing |
 
-Multi-level crossings: the validator counts 21 over/under passes (106 overlapping road cells in my own plot), from the helices and overpasses. There are no same-level overlaps. Every fall lands ≥ 0.35 s before the next tap: 0.64 s at 97.1 and 1.05 s at 149.0.
+Multi-level crossings come from the helices and overpasses (see the validator output in chart-report.md / route.png). There are no same-level overlaps. Every fall lands ≥ 0.35 s before the next tap: 0.64 s at 97.1 and 1.05 s at 149.0.
 
 ## Landmarks and easter eggs
 - **Flower billboard** (start): textured with `art/flower-billboard.jpg`.
@@ -51,4 +51,4 @@ The GenerateImage outputs were stored outside this box. The files committed here
 Nothing is placed at or flashes on an upcoming tap. Events follow the music clock only: beats, bars and section downbeats. The forks are scenery, revealed together with the road.
 
 ## Chart summary
-348 taps, up from 162 in legacy v1 (2.15×). The hardest stretches are the 8–9-tap 8th runs into each chorus. Five off-beat 16th syncopations were added on real snare/vocal onsets. No triplet or 16th-roll events exist in the stems (checked), so no fake bursts were added. See chart-report.md.
+**320 taps** (legacy v1: 162). This is the rhythmic-logic audit of the curated 343-tap chart: one layer per section (the drum kit through most of the song, the sample hits in the intro), shared patterns for repeated phrases, and faint/off-layer taps removed. The full mix has no prominent 16th figure, so there are no 16th bursts. The honest peak stays at 8ths: 218 CPM, i.e. 8–9-tap runs into the choruses. See chart-report.md.

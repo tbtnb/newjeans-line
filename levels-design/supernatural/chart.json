@@ -11,7 +11,7 @@
   {
    "t": 2.534,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 3.084,
@@ -21,7 +21,7 @@
   {
    "t": 4.736,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 5.286,
@@ -31,7 +31,7 @@
   {
    "t": 6.937,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 8.038,
@@ -74,18 +74,23 @@
    "tag": "kick"
   },
   {
-   "t": 13.543,
+   "t": 12.992,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 13.818,
+   "t": 13.543,
    "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 13.818,
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 14.644,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
@@ -95,12 +100,12 @@
   },
   {
    "t": 16.295,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 16.846,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
@@ -110,7 +115,7 @@
   },
   {
    "t": 18.497,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
@@ -119,24 +124,44 @@
    "tag": "kick"
   },
   {
-   "t": 20.148,
+   "t": 19.598,
+   "dir": "R",
+   "tag": "clap"
+  },
+  {
+   "t": 19.873,
    "dir": "L",
    "tag": "kick"
   },
   {
+   "t": 20.148,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
    "t": 20.699,
+   "dir": "L",
+   "tag": "clap"
+  },
+  {
+   "t": 20.974,
    "dir": "R",
    "tag": "clap"
   },
   {
    "t": 21.8,
-   "dir": "L",
+   "dir": "R",
    "tag": "bass"
   },
   {
    "t": 22.35,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
+  },
+  {
+   "t": 22.901,
+   "dir": "R",
+   "tag": "clap"
   },
   {
    "t": 23.451,
@@ -150,23 +175,28 @@
   },
   {
    "t": 24.552,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 25.378,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 25.653,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 26.754,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
+  },
+  {
+   "t": 27.58,
+   "dir": "L",
+   "tag": "kick"
   },
   {
    "t": 28.13,
@@ -224,14 +254,9 @@
    "tag": "clap"
   },
   {
-   "t": 34.873,
+   "t": 34.46,
    "dir": "R",
-   "tag": "synco-16th"
-  },
-  {
-   "t": 35.286,
-   "dir": "L",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 35.561,
@@ -256,7 +281,7 @@
   {
    "t": 37.488,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 37.763,
@@ -269,24 +294,24 @@
    "tag": "clap"
   },
   {
-   "t": 38.864,
+   "t": 38.589,
    "dir": "L",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
-   "t": 39.965,
+   "t": 39.415,
    "dir": "R",
    "tag": "kick"
   },
   {
-   "t": 40.24,
+   "t": 39.965,
    "dir": "L",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
-   "t": 41.066,
+   "t": 40.515,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 41.616,
@@ -301,7 +326,7 @@
   {
    "t": 42.442,
    "dir": "L",
-   "tag": "melody"
+   "tag": "clap"
   },
   {
    "t": 43.818,
@@ -315,13 +340,13 @@
   },
   {
    "t": 44.919,
-   "dir": "L",
-   "tag": "vocal"
+   "dir": "R",
+   "tag": "clap"
   },
   {
    "t": 45.194,
-   "dir": "R",
-   "tag": "melody"
+   "dir": "L",
+   "tag": "kick"
   },
   {
    "t": 45.745,
@@ -341,7 +366,7 @@
   {
    "t": 46.846,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 47.121,
@@ -356,7 +381,7 @@
   {
    "t": 48.222,
    "dir": "L",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 48.772,
@@ -367,11 +392,6 @@
    "t": 49.323,
    "dir": "R",
    "tag": "clap"
-  },
-  {
-   "t": 49.736,
-   "dir": "L",
-   "tag": "synco-16th"
   },
   {
    "t": 50.148,
@@ -386,17 +406,12 @@
   {
    "t": 50.699,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 50.974,
    "dir": "L",
    "tag": "kick"
-  },
-  {
-   "t": 51.249,
-   "dir": "R",
-   "tag": "vocal"
   },
   {
    "t": 51.525,
@@ -405,22 +420,22 @@
   },
   {
    "t": 52.626,
-   "dir": "L",
-   "tag": "vocal"
+   "dir": "R",
+   "tag": "kick"
   },
   {
    "t": 53.176,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 53.451,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 53.726,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
@@ -444,29 +459,19 @@
    "tag": "clap"
   },
   {
-   "t": 56.754,
-   "dir": "R",
-   "tag": "melody"
-  },
-  {
    "t": 57.029,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
-   "t": 57.58,
    "dir": "R",
    "tag": "kick"
   },
   {
-   "t": 58.13,
+   "t": 57.58,
    "dir": "L",
-   "tag": "clap"
+   "tag": "kick"
   },
   {
-   "t": 58.681,
+   "t": 58.13,
    "dir": "R",
-   "tag": "bass"
+   "tag": "clap"
   },
   {
    "t": 58.956,
@@ -479,39 +484,39 @@
    "tag": "clap"
   },
   {
-   "t": 59.782,
+   "t": 59.506,
    "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 59.782,
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 60.057,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 60.332,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 60.607,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 60.882,
-   "dir": "L",
-   "tag": "clap"
-  },
-  {
-   "t": 61.158,
    "dir": "R",
    "tag": "clap"
   },
   {
-   "t": 61.433,
+   "t": 61.158,
    "dir": "L",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 61.708,
@@ -519,23 +524,13 @@
    "tag": "clap"
   },
   {
-   "t": 61.983,
+   "t": 62.534,
    "dir": "L",
    "tag": "clap"
-  },
-  {
-   "t": 62.534,
-   "dir": "R",
-   "tag": "clap"
-  },
-  {
-   "t": 63.084,
-   "dir": "R",
-   "tag": "vocal"
   },
   {
    "t": 63.36,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -546,7 +541,7 @@
   {
    "t": 63.91,
    "dir": "L",
-   "tag": "melody"
+   "tag": "kick"
   },
   {
    "t": 64.185,
@@ -561,12 +556,7 @@
   {
    "t": 65.011,
    "dir": "R",
-   "tag": "melody"
-  },
-  {
-   "t": 65.286,
-   "dir": "L",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 65.837,
@@ -575,26 +565,21 @@
   },
   {
    "t": 66.387,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 66.662,
-   "dir": "L",
-   "tag": "clap"
-  },
-  {
-   "t": 66.937,
    "dir": "R",
    "tag": "clap"
   },
   {
-   "t": 67.488,
+   "t": 66.937,
    "dir": "L",
    "tag": "clap"
   },
   {
-   "t": 67.763,
+   "t": 67.488,
    "dir": "R",
    "tag": "clap"
   },
@@ -624,18 +609,13 @@
    "tag": "clap"
   },
   {
-   "t": 70.515,
-   "dir": "L",
-   "tag": "clap"
-  },
-  {
    "t": 70.791,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 71.066,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
@@ -645,33 +625,28 @@
   },
   {
    "t": 71.616,
-   "dir": "R",
-   "tag": "vocal"
+   "dir": "L",
+   "tag": "clap"
   },
   {
    "t": 71.892,
-   "dir": "L",
-   "tag": "vocal"
+   "dir": "R",
+   "tag": "clap"
   },
   {
    "t": 72.167,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 72.442,
-   "dir": "L",
+   "dir": "R",
    "tag": "bass"
   },
   {
    "t": 72.993,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 73.268,
    "dir": "L",
-   "tag": "clap"
+   "tag": "kick"
   },
   {
    "t": 73.543,
@@ -679,13 +654,13 @@
    "tag": "clap"
   },
   {
-   "t": 74.093,
-   "dir": "R",
-   "tag": "clap"
+   "t": 73.818,
+   "dir": "L",
+   "tag": "kick"
   },
   {
    "t": 74.644,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
@@ -699,12 +674,12 @@
    "tag": "clap"
   },
   {
-   "t": 76.295,
+   "t": 75.745,
    "dir": "R",
-   "tag": "melody"
+   "tag": "clap"
   },
   {
-   "t": 76.571,
+   "t": 76.295,
    "dir": "L",
    "tag": "clap"
   },
@@ -721,7 +696,7 @@
   {
    "t": 77.671,
    "dir": "L",
-   "tag": "melody"
+   "tag": "kick"
   },
   {
    "t": 78.497,
@@ -729,34 +704,24 @@
    "tag": "clap"
   },
   {
-   "t": 78.772,
-   "dir": "L",
-   "tag": "melody"
-  },
-  {
-   "t": 79.323,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
    "t": 79.598,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 80.974,
+   "t": 80.424,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 81.249,
+   "t": 80.974,
    "dir": "R",
-   "tag": "clap"
+   "tag": "kick"
   },
   {
-   "t": 81.525,
+   "t": 81.249,
    "dir": "L",
-   "tag": "bass"
+   "tag": "clap"
   },
   {
    "t": 81.8,
@@ -769,9 +734,9 @@
    "tag": "clap"
   },
   {
-   "t": 82.901,
+   "t": 82.626,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 83.451,
@@ -809,9 +774,9 @@
    "tag": "clap"
   },
   {
-   "t": 88.13,
+   "t": 87.305,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 88.405,
@@ -820,18 +785,23 @@
   },
   {
    "t": 88.956,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 89.782,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 90.057,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
+  },
+  {
+   "t": 90.332,
+   "dir": "L",
+   "tag": "kick"
   },
   {
    "t": 90.607,
@@ -844,9 +814,9 @@
    "tag": "clap"
   },
   {
-   "t": 91.708,
+   "t": 91.433,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 92.259,
@@ -880,23 +850,13 @@
   },
   {
    "t": 95.837,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 96.112,
-   "dir": "L",
-   "tag": "clap"
-  },
-  {
-   "t": 96.662,
    "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 97.075,
-   "dir": "L",
-   "tag": "synco-16th"
+   "tag": "clap"
   },
   {
    "t": 97.763,
@@ -931,7 +891,7 @@
   {
    "t": 104.094,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 104.369,
@@ -939,39 +899,29 @@
    "tag": "kick"
   },
   {
-   "t": 104.782,
-   "dir": "R",
-   "tag": "synco-16th"
-  },
-  {
    "t": 105.47,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 106.571,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 107.672,
-   "dir": "R",
-   "tag": "vocal"
+   "dir": "L",
+   "tag": "kick"
   },
   {
    "t": 108.772,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 109.323,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 109.736,
    "dir": "L",
-   "tag": "synco-16th"
+   "tag": "clap"
   },
   {
    "t": 110.149,
@@ -980,73 +930,53 @@
   },
   {
    "t": 110.974,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 111.525,
-   "dir": "L",
-   "tag": "melody"
-  },
-  {
    "t": 112.075,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 112.626,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 112.901,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 113.176,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 113.451,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 113.727,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 114.002,
-   "dir": "R",
+   "dir": "L",
    "tag": "phrase"
   },
   {
    "t": 114.277,
-   "dir": "L",
-   "tag": "clap"
-  },
-  {
-   "t": 114.828,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 115.378,
    "dir": "L",
    "tag": "clap"
-  },
-  {
-   "t": 115.653,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 115.928,
-   "dir": "R",
-   "tag": "vocal"
   },
   {
    "t": 116.204,
@@ -1055,8 +985,8 @@
   },
   {
    "t": 116.479,
-   "dir": "L",
-   "tag": "vocal"
+   "dir": "R",
+   "tag": "kick"
   },
   {
    "t": 116.754,
@@ -1065,7 +995,7 @@
   },
   {
    "t": 117.029,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1075,13 +1005,8 @@
   },
   {
    "t": 117.855,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 118.13,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 118.681,
@@ -1096,7 +1021,7 @@
   {
    "t": 119.506,
    "dir": "L",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 119.782,
@@ -1111,12 +1036,12 @@
   {
    "t": 120.332,
    "dir": "L",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 120.607,
    "dir": "L",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 120.883,
@@ -1135,68 +1060,63 @@
   },
   {
    "t": 122.259,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 122.534,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 123.084,
-   "dir": "L",
+   "dir": "R",
    "tag": "bass"
   },
   {
    "t": 123.36,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 123.635,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 123.91,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 124.185,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 124.461,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 124.736,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
-   "t": 125.011,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 125.286,
    "dir": "L",
    "tag": "clap"
   },
   {
-   "t": 125.837,
+   "t": 124.736,
    "dir": "R",
+   "tag": "clap"
+  },
+  {
+   "t": 125.011,
+   "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 126.112,
+   "t": 125.286,
+   "dir": "R",
+   "tag": "clap"
+  },
+  {
+   "t": 125.837,
    "dir": "L",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 126.387,
@@ -1204,7 +1124,7 @@
    "tag": "clap"
   },
   {
-   "t": 126.938,
+   "t": 126.662,
    "dir": "L",
    "tag": "clap"
   },
@@ -1229,19 +1149,9 @@
    "tag": "clap"
   },
   {
-   "t": 129.415,
-   "dir": "R",
-   "tag": "clap"
-  },
-  {
    "t": 129.69,
-   "dir": "L",
-   "tag": "clap"
-  },
-  {
-   "t": 129.965,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 130.24,
@@ -1271,12 +1181,12 @@
   {
    "t": 131.892,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 133.268,
    "dir": "L",
-   "tag": "melody"
+   "tag": "kick"
   },
   {
    "t": 133.818,
@@ -1316,7 +1226,7 @@
   {
    "t": 137.672,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 137.947,
@@ -1369,9 +1279,9 @@
    "tag": "clap"
   },
   {
-   "t": 144.552,
+   "t": 144.277,
    "dir": "R",
-   "tag": "melody"
+   "tag": "clap"
   },
   {
    "t": 145.653,
@@ -1404,19 +1314,9 @@
    "tag": "clap"
   },
   {
-   "t": 150.057,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
    "t": 150.607,
-   "dir": "R",
-   "tag": "clap"
-  },
-  {
-   "t": 150.883,
    "dir": "L",
-   "tag": "kick"
+   "tag": "clap"
   },
   {
    "t": 151.433,
@@ -1439,24 +1339,14 @@
    "tag": "kick"
   },
   {
-   "t": 152.534,
-   "dir": "R",
-   "tag": "clap"
-  },
-  {
    "t": 152.809,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 153.084,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 153.36,
    "dir": "L",
-   "tag": "clap"
+   "tag": "kick"
   },
   {
    "t": 153.91,
@@ -1479,63 +1369,53 @@
    "tag": "clap"
   },
   {
-   "t": 155.286,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
    "t": 155.562,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 156.112,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 156.662,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 156.938,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 157.213,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 157.488,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 157.763,
-   "dir": "L",
-   "tag": "clap"
-  },
-  {
-   "t": 158.314,
    "dir": "R",
    "tag": "clap"
   },
   {
-   "t": 158.589,
+   "t": 158.314,
    "dir": "L",
    "tag": "clap"
   },
   {
-   "t": 158.864,
+   "t": 158.589,
    "dir": "R",
    "tag": "clap"
   },
   {
    "t": 159.14,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
@@ -1569,28 +1449,18 @@
    "tag": "kick"
   },
   {
-   "t": 161.341,
-   "dir": "L",
-   "tag": "clap"
-  },
-  {
    "t": 161.617,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 161.892,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
-   "t": 162.167,
    "dir": "R",
-   "tag": "clap"
+   "tag": "kick"
   },
   {
    "t": 162.718,
-   "dir": "L",
+   "dir": "R",
    "tag": "bass"
   },
   {
@@ -1609,99 +1479,89 @@
    "tag": "clap"
   },
   {
-   "t": 164.094,
-   "dir": "R",
-   "tag": "clap"
-  },
-  {
    "t": 164.369,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 164.919,
-   "dir": "R",
+   "dir": "L",
    "tag": "bass"
   },
   {
    "t": 165.47,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 165.745,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 166.02,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 166.295,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 166.571,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 167.121,
-   "dir": "L",
+   "dir": "R",
    "tag": "phrase"
   },
   {
    "t": 169.323,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 169.873,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 170.974,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 172.075,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 172.626,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 173.176,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 173.727,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 174.828,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 176.204,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 177.029,
    "dir": "L",
-   "tag": "clap"
+   "tag": "kick"
   },
   {
    "t": 178.13,
@@ -1716,7 +1576,7 @@
   {
    "t": 179.782,
    "dir": "R",
-   "tag": "melody"
+   "tag": "kick"
   },
   {
    "t": 180.332,
@@ -1726,7 +1586,7 @@
   {
    "t": 180.883,
    "dir": "R",
-   "tag": "melody"
+   "tag": "kick"
   },
   {
    "t": 181.433,
@@ -1813,10 +1673,11 @@
   "note": "bar n starts at 0.358 + 2.20184*n (4/4); constant tempo (beat-tracker fit, median residual 4.7 ms)"
  },
  "judgment": {
-  "perfect": 0.05,
-  "good": 0.09,
-  "miss_beyond": 0.12,
-  "note": "+/-90 ms good; min tap gap 0.275 s (eighth at 109 BPM) so windows never overlap. Validate on real touch: if late-tap bias > 30 ms, shift engine latency, not chart."
+  "perfect": 0.04,
+  "good": 0.11,
+  "minWindow": 0.11,
+  "rule": "schema v2.5 per-tap: min(0.5*g, clamp(0.45*g, 0.045, 0.11)), g = smaller neighbouring gap",
+  "note": "min tap gap 0.275 s -> tightest window \u00b1110 ms (always <= half the local gap); sparse taps \u00b1110 ms."
  },
- "notes": "Semi-automatic: per-section density/weights set by hand, slot choice scored on demucs stems (kick/clap/vocal/synth), phrase fills hand-planned (bar 27 8-run, bar 51 7-run). See chart-report.md."
+ "notes": "Curated per section (one audible layer each), audited by _w4_tools/audit.py: repeated phrases share patterns, faint/off-layer taps removed, 16th bursts only where prominent in the full mix. See chart-report.md."
 }

@@ -1,0 +1,471 @@
+{
+ "retag": [
+  14.055,
+  16.34,
+  17.483,
+  26.054,
+  28.911,
+  34.053,
+  37.482,
+  60.908,
+  61.48,
+  64.051,
+  70.051,
+  72.622,
+  75.479,
+  79.764,
+  80.336,
+  110.048,
+  124.904,
+  129.19,
+  136.332,
+  136.618,
+  141.189,
+  146.331,
+  148.617,
+  152.331,
+  157.759,
+  163.33,
+  164.616,
+  166.901,
+  169.187,
+  171.044,
+  172.472,
+  188.9,
+  189.471
+ ],
+ "off_layer_removed": [
+  [
+   65.194,
+   "vocal"
+  ],
+  [
+   135.761,
+   "vocal"
+  ],
+  [
+   137.332,
+   "vocal"
+  ],
+  [
+   138.332,
+   "vocal"
+  ]
+ ],
+ "faint_removed": [
+  [
+   4.341,
+   "melody",
+   0.54,
+   0.54
+  ],
+  [
+   11.769,
+   "melody",
+   0.5,
+   0.5
+  ]
+ ],
+ "unified": [
+  [
+   7,
+   "verse instances bar 0",
+   [
+    4
+   ],
+   [
+    0
+   ]
+  ],
+  [
+   8,
+   "verse instances bar 1",
+   [
+    12
+   ],
+   [
+    0
+   ]
+  ],
+  [
+   41,
+   "verse instances bar 2",
+   [
+    0
+   ],
+   []
+  ],
+  [
+   10,
+   "verse instances bar 3",
+   [
+    12
+   ],
+   [
+    0
+   ]
+  ],
+  [
+   11,
+   "verse instances bar 4",
+   [
+    0
+   ],
+   []
+  ],
+  [
+   44,
+   "verse instances bar 5",
+   [
+    0
+   ],
+   []
+  ],
+  [
+   52,
+   "pre instances bar 1",
+   [
+    0
+   ],
+   [
+    8
+   ]
+  ],
+  [
+   19,
+   "pre instances bar 4",
+   [
+    10
+   ],
+   [
+    8
+   ]
+  ],
+  [
+   20,
+   "pre instances bar 5",
+   [
+    0
+   ],
+   [
+    8
+   ]
+  ],
+  [
+   57,
+   "pre instances bar 6",
+   [
+    8
+   ],
+   []
+  ],
+  [
+   24,
+   "chorus instances bar 0",
+   [
+    2
+   ],
+   [
+    8
+   ]
+  ],
+  [
+   59,
+   "chorus instances bar 0",
+   [
+    2,
+    4
+   ],
+   []
+  ],
+  [
+   60,
+   "chorus instances bar 1",
+   [
+    8
+   ],
+   [
+    14
+   ]
+  ],
+  [
+   72,
+   "chorus instances bar 1",
+   [],
+   [
+    2
+   ]
+  ],
+  [
+   26,
+   "chorus instances bar 2",
+   [],
+   [
+    6,
+    10
+   ]
+  ],
+  [
+   73,
+   "chorus instances bar 2",
+   [],
+   [
+    2,
+    15
+   ]
+  ],
+  [
+   27,
+   "chorus instances bar 3",
+   [
+    4
+   ],
+   [
+    2
+   ]
+  ],
+  [
+   74,
+   "chorus instances bar 3",
+   [
+    0
+   ],
+   [
+    9
+   ]
+  ],
+  [
+   28,
+   "chorus instances bar 4",
+   [
+    2
+   ],
+   [
+    4
+   ]
+  ],
+  [
+   75,
+   "chorus instances bar 4",
+   [
+    2
+   ],
+   [
+    4
+   ]
+  ],
+  [
+   29,
+   "chorus instances bar 5",
+   [
+    0
+   ],
+   []
+  ],
+  [
+   64,
+   "chorus instances bar 5",
+   [
+    8
+   ],
+   [
+    2
+   ]
+  ],
+  [
+   30,
+   "chorus instances bar 6",
+   [
+    8
+   ],
+   []
+  ],
+  [
+   77,
+   "chorus instances bar 6",
+   [
+    14
+   ],
+   []
+  ],
+  [
+   67,
+   "chorus instances bar 8",
+   [
+    2
+   ],
+   [
+    8
+   ]
+  ],
+  [
+   79,
+   "chorus instances bar 8",
+   [
+    2
+   ],
+   [
+    8
+   ]
+  ],
+  [
+   5,
+   "Intro bar 1 (+4)",
+   [],
+   [
+    4
+   ]
+  ],
+  [
+   11,
+   "Verse 1 bar 0 (+4)",
+   [],
+   [
+    0
+   ]
+  ],
+  [
+   12,
+   "Verse 1 bar 1 (+4)",
+   [],
+   [
+    0
+   ]
+  ],
+  [
+   19,
+   "Pre-chorus 1 bar 0 (+4)",
+   [
+    8
+   ],
+   [
+    10
+   ]
+  ],
+  [
+   28,
+   "Chorus 1 bar 0 (+4)",
+   [
+    4
+   ],
+   [
+    8
+   ]
+  ],
+  [
+   30,
+   "Chorus 1 bar 2 (+4)",
+   [],
+   [
+    14
+   ]
+  ],
+  [
+   31,
+   "Chorus 1 bar 3 (+4)",
+   [],
+   [
+    8
+   ]
+  ],
+  [
+   43,
+   "Verse 2 bar 0 (+4)",
+   [],
+   [
+    0
+   ]
+  ],
+  [
+   44,
+   "Verse 2 bar 1 (+4)",
+   [],
+   [
+    0
+   ]
+  ],
+  [
+   46,
+   "Verse 2 bar 3 (+4)",
+   [
+    4
+   ],
+   []
+  ],
+  [
+   48,
+   "Verse 2 bar 5 (+4)",
+   [],
+   [
+    0
+   ]
+  ],
+  [
+   55,
+   "Pre-chorus 2 bar 0 (+4)",
+   [
+    8
+   ],
+   [
+    10
+   ]
+  ],
+  [
+   63,
+   "Chorus 2 bar 0 (+4)",
+   [
+    4
+   ],
+   [
+    8
+   ]
+  ],
+  [
+   65,
+   "Chorus 2 bar 2 (+4)",
+   [],
+   [
+    14
+   ]
+  ],
+  [
+   68,
+   "Chorus 2 bar 5 (+4)",
+   [],
+   [
+    2
+   ]
+  ],
+  [
+   75,
+   "Final chorus bar 0 (+4)",
+   [
+    4
+   ],
+   [
+    8
+   ]
+  ],
+  [
+   77,
+   "Final chorus bar 2 (+4)",
+   [],
+   [
+    14
+   ]
+  ]
+ ],
+ "bursts_16th": [],
+ "layers": {
+  "Intro": "melodic",
+  "Verse 1": "drums",
+  "Pre-chorus 1": "drums",
+  "Chorus 1": "drums",
+  "Breakdown": "melodic",
+  "Verse 2": "drums",
+  "Pre-chorus 2": "drums",
+  "Chorus 2": "drums",
+  "Final chorus": "drums",
+  "Outro": "drums"
+ }
+}

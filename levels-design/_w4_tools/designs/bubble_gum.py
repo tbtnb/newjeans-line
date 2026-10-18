@@ -29,7 +29,7 @@ CAMERA=[{'t':0,'preset':'side','blend':0},{'t':18.05,'preset':'iso','blend':2.5}
 OBJECTS=[
  {'id':'seawall','kind':'row','t0':0.5,'t1':17.8,'side':-3.2,'spacing':2.0,'bothSides':False,'item':{'kind':'box','size':[1.2,1.6,2.0],'color':'#e3ddd0'},'name':'seawall blocks on the sea side'},
  {'id':'planks','kind':'row','t0':18.2,'t1':36.0,'side':1.9,'spacing':1.1,'bothSides':True,'item':{'kind':'box','size':[0.9,0.15,1.0],'color':'#c99e6e','react':'tap'},'name':'boardwalk planks (dip on actual taps)'},
- {'id':'gh_arches','kind':'row','t0':36.5,'t1':56.5,'side':3.4,'spacing':4.0,'bothSides':True,'item':{'kind':'box','size':[0.35,4,0.35],'color':'#ffffff'},'name':'greenhouse frames arching over the road (7 wide, 6 high, clear of the road)'},
+ {'id':'gh_arches','kind':'row','t0':36.5,'t1':56.5,'side':3.4,'spacing':4.0,'bothSides':True,'item':{'kind':'box','size':[0.35,4,0.35],'color':'#ffffff'},'name':'white greenhouse posts on both sides of the road (3.4 off centre)'},
  {'id':'gh_arches2','kind':'row','t0':118.8,'t1':136.5,'side':3.4,'spacing':4.0,'bothSides':True,'item':{'kind':'box','size':[0.35,4,0.35],'color':'#ffffff'}},
  {'id':'giant_bubble','t':86.0,'off':(0,22),'y':6,'kind':'sphere','size':[12,12,12],'color':'#ffb8d6','landmark':True,'clear':7,'react':'beat',
   'name':'giant bubble-gum bubble hanging ahead during the breakdown; pops at 91.19 when the drums return','appear':{'t':80.0,'mode':'grow','dur':3.0},'exit':{'t':91.19,'mode':'shrink','dur':0.15}},
@@ -77,7 +77,8 @@ ELEV=[{'t0':gb(24)+0.3,'t1':gb(34)-0.3,'type':'ramp','dy':5,'note':'chorus 1: bo
       {'t':gb(34),'type':'jump','dy':3,'snap':True,'note':'drums drop out -> hop onto road pieces floating on bubbles'},
       {'t':gb(39),'type':'fall','dy':-6,'snap':True,'note':'drums return, the giant bubble pops -> drop to the grass island'},
       {'t0':gb(59),'t1':gb(65),'type':'ramp','dy':3,'note':'chorus 2: pier climbs over the verse-2 road'},
-      {'t':gb(71),'type':'fall','dy':-5,'snap':True,'note':'land on the sunset beach right before the final-chorus downbeat'}]
+      {'t':gb(71),'type':'fall','dy':-5,'snap':True,'note':'land on the sunset beach right before the final-chorus downbeat'},
+      {'t0':gb(77),'t1':gb(81)-0.3,'type':'ramp','dy':3,'note':'final chorus 2nd half: sunset pier loops up and over the beach spiral'}]
 BLOCKS=[
  {'t0':0,'tex':'stair'},
  {'t0':gb(7),'tex':'serpL','P':[1.1,1.6],'m':[4,6],'phases':[0]},
@@ -92,7 +93,7 @@ BLOCKS=[
  {'t0':gb(59),'tex':'orbit','P':[2*B,1.5*B],'m':[3],'phases':[0,B/2],'cross':1},
  {'t0':gb(65),'tex':'bolt','P':[B],'phases':[0,B/2]},
  {'t0':gb(71),'tex':'xspiral','P':[B,0.75*B],'m':[5,6],'phases':[0,B/2]},
- {'t0':gb(77),'tex':'stair'},
+ {'t0':gb(77),'tex':'orbit','P':[2*B,1.5*B,2.5*B],'m':[3,4],'phases':[0,B/2,B],'look':4},
  {'t0':gb(83),'tex':'turn','phases':[0]},
 ]
 MARGIN=0.3

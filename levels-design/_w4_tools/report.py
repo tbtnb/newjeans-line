@@ -40,8 +40,8 @@ lines.append(f"# {ch.get('id')} — chart report (worker 4)\n")
 lines.append(f"Audio: `public/audio/{slug}.mp3`, full length {dur:.2f} s, used as-is. Tempo {60/P:.2f} BPM (constant), grid bar0 = {bar0:.3f} s, bar = {4*P:.4f} s.\n")
 lines.append("## Counts\n")
 lines.append(f"| | legacy v1 | new |\n|---|---|---|\n| taps | {OLD} | **{len(taps)}** ({len(taps)/OLD:.2f}x) |\n| avg taps/s | {OLD/dur:.2f} | {len(taps)/dur:.2f} |\n| min gap | {min(np.diff(legacy['turns'])):.3f} s | {min(gaps):.3f} s |\n| fastest run (gaps <= 0.30 s) | - | {fr[0]} taps from {taps[fr[1]]:.2f} s |\n| longest run at the minimum gap ({min(gaps):.3f} s) | - | {fr2[0]} taps from {taps[fr2[1]]:.2f} s |\n")
-lines.append(f"\nRecommended judgment window: **perfect ±{int(ch['judgment']['perfect']*1000)} ms, good ±{int(ch['judgment']['good']*1000)} ms, miss beyond ±{int(ch['judgment']['miss_beyond']*1000)} ms** ({ch['judgment']['note']}).\n")
-lines.append("Humanly playable floor used: no two taps closer than %.3f s (%s).\n"%(min(gaps),'one 8th note'))
+lines.append(f"\nJudgment window (schema v2.5 engine rule, per tap): **PERFECT ±{int(ch['judgment']['perfect']*1000)} ms; window = min(0.5·g, clamp(0.45·g, 45, 110 ms))**, so the tightest is ±{ch['judgment']['minWindow']*1000:.0f} ms and sparse taps get ±110 ms ({ch['judgment']['note']}).\n")
+lines.append("Minimum tap gap: %.3f s (%s).\n"%(min(gaps),'a 16th-note fill' if min(gaps)<0.15 else 'one 8th note'))
 lines.append("\n## Per-section density\n\n| section | kind | start | end | taps | taps/s | max run (<=0.30 s) |\n|---|---|---|---|---|---|---|\n")
 for i,s in enumerate(secs):
     e=secs[i+1]['t'] if i+1<len(secs) else dur

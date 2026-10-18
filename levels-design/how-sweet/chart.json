@@ -16,7 +16,7 @@
   {
    "t": 3.699,
    "dir": "L",
-   "tag": "melody"
+   "tag": "kick"
   },
   {
    "t": 4.179,
@@ -31,11 +31,16 @@
   {
    "t": 7.539,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 8.019,
    "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 8.739,
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -44,48 +49,53 @@
    "tag": "kick"
   },
   {
-   "t": 11.859,
+   "t": 11.139,
    "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 11.859,
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 12.339,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 12.579,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 13.779,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 14.019,
-   "dir": "R",
-   "tag": "vocal"
+   "dir": "L",
+   "tag": "kick"
   },
   {
    "t": 16.179,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 17.139,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 17.619,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 18.099,
-   "dir": "L",
+   "t": 18.819,
+   "dir": "R",
    "tag": "clap"
   },
   {
@@ -104,34 +114,39 @@
    "tag": "kick"
   },
   {
-   "t": 20.979,
+   "t": 21.459,
    "dir": "R",
-   "tag": "melody"
+   "tag": "kick"
   },
   {
-   "t": 21.459,
+   "t": 21.699,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 21.939,
+   "t": 23.379,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 25.299,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 26.739,
-   "dir": "L",
+   "t": 26.499,
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 27.219,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
+  },
+  {
+   "t": 27.699,
+   "dir": "L",
+   "tag": "clap"
   },
   {
    "t": 27.939,
@@ -139,17 +154,12 @@
    "tag": "kick"
   },
   {
-   "t": 28.659,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
    "t": 29.139,
    "dir": "L",
    "tag": "clap"
   },
   {
-   "t": 30.339,
+   "t": 29.379,
    "dir": "L",
    "tag": "kick"
   },
@@ -159,24 +169,24 @@
    "tag": "kick"
   },
   {
-   "t": 32.499,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
    "t": 32.979,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 33.818,
-   "dir": "L",
-   "tag": "synco-16th"
+   "t": 34.178,
+   "dir": "R",
+   "tag": "clap"
   },
   {
    "t": 34.898,
    "dir": "R",
    "tag": "kick"
+  },
+  {
+   "t": 35.378,
+   "dir": "L",
+   "tag": "clap"
   },
   {
    "t": 35.618,
@@ -194,22 +204,47 @@
    "tag": "kick"
   },
   {
+   "t": 38.258,
+   "dir": "R",
+   "tag": "clap"
+  },
+  {
+   "t": 38.378,
+   "dir": "L",
+   "tag": "fill-16th"
+  },
+  {
+   "t": 38.498,
+   "dir": "R",
+   "tag": "fill-16th"
+  },
+  {
+   "t": 38.618,
+   "dir": "L",
+   "tag": "fill-16th"
+  },
+  {
    "t": 38.738,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 39.218,
-   "dir": "R",
-   "tag": "vocal"
+   "dir": "L",
+   "tag": "kick"
   },
   {
    "t": 40.178,
-   "dir": "L",
-   "tag": "vocal"
+   "dir": "R",
+   "tag": "kick"
   },
   {
    "t": 40.658,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 41.138,
    "dir": "R",
    "tag": "kick"
   },
@@ -219,29 +254,19 @@
    "tag": "kick"
   },
   {
-   "t": 42.098,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
    "t": 42.578,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 43.058,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 43.298,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 43.658,
+   "t": 43.298,
    "dir": "R",
-   "tag": "synco-16th"
+   "tag": "kick"
   },
   {
    "t": 44.018,
@@ -251,12 +276,12 @@
   {
    "t": 44.738,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 45.458,
    "dir": "L",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 45.698,
@@ -269,9 +294,19 @@
    "tag": "kick"
   },
   {
-   "t": 46.178,
+   "t": 46.058,
    "dir": "R",
-   "tag": "clap"
+   "tag": "fill-16th"
+  },
+  {
+   "t": 46.178,
+   "dir": "L",
+   "tag": "fill-16th"
+  },
+  {
+   "t": 46.298,
+   "dir": "R",
+   "tag": "fill-16th"
   },
   {
    "t": 46.418,
@@ -279,18 +314,18 @@
    "tag": "kick"
   },
   {
-   "t": 46.778,
+   "t": 47.138,
    "dir": "R",
-   "tag": "synco-16th"
+   "tag": "kick"
   },
   {
-   "t": 47.138,
+   "t": 47.858,
    "dir": "L",
    "tag": "kick"
   },
   {
    "t": 48.338,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
@@ -325,18 +360,18 @@
   },
   {
    "t": 54.098,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
-   "t": 54.578,
+   "t": 54.818,
    "dir": "R",
-   "tag": "clap"
+   "tag": "kick"
   },
   {
    "t": 55.538,
    "dir": "L",
-   "tag": "clap"
+   "tag": "kick"
   },
   {
    "t": 56.018,
@@ -344,9 +379,9 @@
    "tag": "kick"
   },
   {
-   "t": 57.098,
+   "t": 56.498,
    "dir": "L",
-   "tag": "synco-16th"
+   "tag": "kick"
   },
   {
    "t": 57.458,
@@ -359,13 +394,8 @@
    "tag": "kick"
   },
   {
-   "t": 58.418,
-   "dir": "R",
-   "tag": "clap"
-  },
-  {
    "t": 58.658,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -380,13 +410,8 @@
   },
   {
    "t": 60.338,
-   "dir": "L",
-   "tag": "clap"
-  },
-  {
-   "t": 60.818,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 61.058,
@@ -410,48 +435,53 @@
   },
   {
    "t": 62.498,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 64.898,
+   "t": 63.218,
    "dir": "R",
+   "tag": "clap"
+  },
+  {
+   "t": 63.698,
+   "dir": "L",
    "tag": "kick"
+  },
+  {
+   "t": 64.178,
+   "dir": "L",
+   "tag": "clap"
   },
   {
    "t": 65.138,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 65.618,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 66.338,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 67.058,
+   "t": 66.338,
    "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 67.058,
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 67.538,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 68.738,
    "dir": "L",
    "tag": "clap"
-  },
-  {
-   "t": 69.098,
-   "dir": "R",
-   "tag": "synco-16th"
   },
   {
    "t": 69.458,
@@ -464,19 +494,19 @@
    "tag": "kick"
   },
   {
-   "t": 71.018,
+   "t": 70.898,
    "dir": "L",
-   "tag": "synco-16th"
+   "tag": "kick"
   },
   {
    "t": 71.378,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 71.858,
    "dir": "R",
-   "tag": "clap"
+   "tag": "kick"
   },
   {
    "t": 72.818,
@@ -489,12 +519,12 @@
    "tag": "kick"
   },
   {
-   "t": 73.778,
+   "t": 74.018,
    "dir": "L",
-   "tag": "clap"
+   "tag": "kick"
   },
   {
-   "t": 74.018,
+   "t": 74.738,
    "dir": "R",
    "tag": "kick"
   },
@@ -509,11 +539,6 @@
    "tag": "clap"
   },
   {
-   "t": 76.178,
-   "dir": "L",
-   "tag": "melody"
-  },
-  {
    "t": 76.418,
    "dir": "R",
    "tag": "bass"
@@ -524,84 +549,84 @@
    "tag": "kick"
   },
   {
-   "t": 76.818,
+   "t": 76.898,
    "dir": "R",
-   "tag": "fill-triplet"
-  },
-  {
-   "t": 76.978,
-   "dir": "L",
-   "tag": "fill-triplet"
+   "tag": "bass"
   },
   {
    "t": 77.138,
-   "dir": "R",
-   "tag": "melody"
+   "dir": "L",
+   "tag": "kick"
   },
   {
    "t": 77.858,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 79.057,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 80.257,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 80.977,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 81.457,
    "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 81.697,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 82.417,
-   "dir": "R",
    "tag": "clap"
   },
   {
-   "t": 82.897,
+   "t": 81.697,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 83.377,
+   "t": 82.897,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "kick"
+  },
+  {
+   "t": 83.137,
+   "dir": "L",
+   "tag": "kick"
   },
   {
    "t": 84.817,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 85.537,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 86.737,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
-   "t": 87.457,
-   "dir": "R",
-   "tag": "vocal"
+   "t": 87.937,
+   "dir": "L",
+   "tag": "clap"
   },
   {
    "t": 88.657,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
+  },
+  {
+   "t": 89.137,
+   "dir": "L",
+   "tag": "clap"
   },
   {
    "t": 89.377,
@@ -614,63 +639,73 @@
    "tag": "kick"
   },
   {
-   "t": 92.497,
+   "t": 90.817,
    "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 92.497,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 93.217,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 94.417,
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 95.617,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 95.857,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 96.337,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 97.057,
+   "t": 96.817,
    "dir": "L",
+   "tag": "clap"
+  },
+  {
+   "t": 97.057,
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 98.257,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
-   "t": 98.977,
-   "dir": "R",
-   "tag": "vocal"
+   "t": 98.497,
+   "dir": "L",
+   "tag": "clap"
   },
   {
    "t": 100.177,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 100.897,
-   "dir": "L",
-   "tag": "clap"
-  },
-  {
-   "t": 101.617,
-   "dir": "L",
-   "tag": "clap"
-  },
-  {
-   "t": 102.817,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "clap"
+  },
+  {
+   "t": 102.097,
+   "dir": "R",
+   "tag": "kick"
   },
   {
    "t": 103.297,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -679,18 +714,28 @@
    "tag": "kick"
   },
   {
-   "t": 107.857,
+   "t": 104.737,
    "dir": "R",
    "tag": "kick"
   },
   {
-   "t": 108.577,
+   "t": 107.857,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 109.777,
+   "t": 108.577,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 109.297,
    "dir": "L",
+   "tag": "clap"
+  },
+  {
+   "t": 109.777,
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -699,28 +744,23 @@
    "tag": "kick"
   },
   {
-   "t": 111.217,
-   "dir": "L",
-   "tag": "clap"
-  },
-  {
    "t": 111.697,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 112.417,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 113.137,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 113.617,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -734,38 +774,28 @@
    "tag": "clap"
   },
   {
-   "t": 115.177,
-   "dir": "L",
-   "tag": "synco-16th"
-  },
-  {
    "t": 115.537,
    "dir": "R",
    "tag": "kick"
   },
   {
-   "t": 116.017,
+   "t": 116.257,
    "dir": "L",
-   "tag": "clap"
+   "tag": "kick"
   },
   {
-   "t": 116.257,
+   "t": 116.977,
    "dir": "R",
    "tag": "kick"
   },
   {
-   "t": 117.097,
-   "dir": "L",
-   "tag": "synco-16th"
-  },
-  {
    "t": 117.457,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 117.937,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
@@ -779,29 +809,24 @@
    "tag": "clap"
   },
   {
-   "t": 119.857,
-   "dir": "L",
-   "tag": "clap"
-  },
-  {
    "t": 120.097,
    "dir": "R",
    "tag": "kick"
   },
   {
-   "t": 121.297,
+   "t": 120.817,
    "dir": "L",
+   "tag": "clap"
+  },
+  {
+   "t": 121.297,
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 121.777,
-   "dir": "R",
-   "tag": "clap"
-  },
-  {
-   "t": 122.257,
    "dir": "L",
-   "tag": "melody"
+   "tag": "clap"
   },
   {
    "t": 122.496,
@@ -825,27 +850,37 @@
   },
   {
    "t": 123.936,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 126.336,
+   "t": 124.656,
    "dir": "R",
+   "tag": "clap"
+  },
+  {
+   "t": 125.136,
+   "dir": "L",
    "tag": "kick"
+  },
+  {
+   "t": 125.616,
+   "dir": "R",
+   "tag": "clap"
   },
   {
    "t": 126.576,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 127.056,
    "dir": "L",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 127.776,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -865,7 +900,7 @@
   },
   {
    "t": 130.176,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
@@ -875,7 +910,7 @@
   },
   {
    "t": 131.616,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -891,22 +926,17 @@
   {
    "t": 133.296,
    "dir": "R",
-   "tag": "clap"
+   "tag": "kick"
   },
   {
    "t": 134.256,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 134.736,
    "dir": "L",
-   "tag": "clap"
-  },
-  {
-   "t": 135.216,
-   "dir": "R",
-   "tag": "clap"
+   "tag": "kick"
   },
   {
    "t": 135.456,
@@ -920,22 +950,17 @@
   },
   {
    "t": 136.656,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 137.136,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
-   "t": 137.616,
-   "dir": "R",
-   "tag": "bass"
-  },
-  {
    "t": 137.856,
-   "dir": "L",
+   "dir": "R",
    "tag": "bass"
   },
   {
@@ -944,23 +969,13 @@
    "tag": "clap"
   },
   {
-   "t": 138.256,
+   "t": 138.336,
    "dir": "R",
-   "tag": "fill-triplet"
-  },
-  {
-   "t": 138.416,
-   "dir": "L",
-   "tag": "fill-triplet"
-  },
-  {
-   "t": 138.576,
-   "dir": "R",
-   "tag": "accent"
+   "tag": "kick"
   },
   {
    "t": 139.056,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -975,7 +990,7 @@
   },
   {
    "t": 141.936,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1019,29 +1034,39 @@
    "tag": "clap"
   },
   {
-   "t": 150.336,
-   "dir": "L",
-   "tag": "clap"
-  },
-  {
    "t": 150.576,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 151.536,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 152.496,
    "dir": "R",
    "tag": "kick"
   },
   {
-   "t": 153.456,
+   "t": 152.496,
    "dir": "L",
    "tag": "kick"
+  },
+  {
+   "t": 153.456,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 153.576,
+   "dir": "L",
+   "tag": "fill-16th"
+  },
+  {
+   "t": 153.696,
+   "dir": "R",
+   "tag": "fill-16th"
+  },
+  {
+   "t": 153.816,
+   "dir": "L",
+   "tag": "fill-16th"
   },
   {
    "t": 153.936,
@@ -1050,52 +1075,32 @@
   },
   {
    "t": 154.656,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
-   "t": 155.496,
-   "dir": "L",
-   "tag": "synco-16th"
-  },
-  {
    "t": 155.856,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 156.336,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 156.576,
-   "dir": "R",
-   "tag": "melody"
-  },
-  {
-   "t": 157.296,
    "dir": "L",
-   "tag": "fill-triplet"
-  },
-  {
-   "t": 157.456,
-   "dir": "R",
-   "tag": "fill-triplet"
-  },
-  {
-   "t": 157.616,
-   "dir": "L",
-   "tag": "fill-triplet"
+   "tag": "kick"
   },
   {
    "t": 157.776,
    "dir": "R",
-   "tag": "melody"
+   "tag": "clap"
   },
   {
    "t": 158.256,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
@@ -1104,24 +1109,19 @@
    "tag": "kick"
   },
   {
-   "t": 158.856,
-   "dir": "R",
-   "tag": "synco-16th"
-  },
-  {
    "t": 159.216,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 159.696,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 160.416,
-   "dir": "L",
-   "tag": "vocal"
+   "dir": "R",
+   "tag": "kick"
   },
   {
    "t": 160.896,
@@ -1131,37 +1131,32 @@
   {
    "t": 161.136,
    "dir": "L",
-   "tag": "fill-triplet"
-  },
-  {
-   "t": 161.296,
-   "dir": "R",
-   "tag": "fill-triplet"
-  },
-  {
-   "t": 161.456,
-   "dir": "L",
-   "tag": "fill-triplet"
-  },
-  {
-   "t": 161.616,
-   "dir": "R",
    "tag": "clap"
   },
   {
-   "t": 162.096,
+   "t": 161.256,
+   "dir": "R",
+   "tag": "fill-16th"
+  },
+  {
+   "t": 161.376,
+   "dir": "L",
+   "tag": "fill-16th"
+  },
+  {
+   "t": 161.496,
+   "dir": "R",
+   "tag": "fill-16th"
+  },
+  {
+   "t": 161.616,
    "dir": "L",
    "tag": "clap"
   },
   {
    "t": 162.336,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
-   "t": 163.056,
    "dir": "R",
-   "tag": "clap"
+   "tag": "kick"
   },
   {
    "t": 163.536,
@@ -1175,33 +1170,13 @@
   },
   {
    "t": 164.256,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 164.976,
    "dir": "R",
-   "tag": "fill-triplet"
-  },
-  {
-   "t": 165.136,
-   "dir": "L",
-   "tag": "fill-triplet"
-  },
-  {
-   "t": 165.296,
-   "dir": "L",
-   "tag": "fill-triplet"
+   "tag": "kick"
   },
   {
    "t": 165.456,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 167.015,
    "dir": "L",
-   "tag": "synco-16th"
+   "tag": "kick"
   },
   {
    "t": 167.375,
@@ -1214,94 +1189,74 @@
    "tag": "bass"
   },
   {
-   "t": 168.335,
-   "dir": "R",
-   "tag": "bass"
-  },
-  {
    "t": 168.575,
-   "dir": "L",
+   "dir": "R",
    "tag": "bass"
   },
   {
    "t": 168.815,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 169.055,
-   "dir": "L",
+   "dir": "R",
    "tag": "bass"
   },
   {
    "t": 169.295,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 170.015,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 170.735,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 171.215,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 171.695,
    "dir": "R",
-   "tag": "clap"
-  },
-  {
-   "t": 171.935,
-   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 172.415,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 173.135,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 173.855,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 174.575,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 175.055,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 175.535,
-   "dir": "R",
-   "tag": "clap"
-  },
-  {
-   "t": 175.775,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 176.015,
+   "t": 175.535,
+   "dir": "L",
+   "tag": "clap"
+  },
+  {
+   "t": 175.775,
    "dir": "R",
-   "tag": "bass"
+   "tag": "kick"
   },
   {
    "t": 176.255,
@@ -1334,23 +1289,13 @@
    "tag": "clap"
   },
   {
-   "t": 178.575,
-   "dir": "L",
-   "tag": "fill-triplet"
-  },
-  {
-   "t": 178.735,
-   "dir": "R",
-   "tag": "fill-triplet"
-  },
-  {
    "t": 178.895,
    "dir": "L",
    "tag": "kick"
   },
   {
    "t": 179.375,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
@@ -1364,109 +1309,104 @@
    "tag": "kick"
   },
   {
-   "t": 181.295,
-   "dir": "R",
-   "tag": "clap"
-  },
-  {
    "t": 181.535,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 182.255,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 182.735,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 183.215,
+   "dir": "L",
+   "tag": "clap"
+  },
+  {
+   "t": 183.455,
    "dir": "R",
    "tag": "clap"
   },
   {
-   "t": 183.695,
-   "dir": "L",
-   "tag": "bass"
-  },
-  {
    "t": 183.935,
-   "dir": "R",
+   "dir": "L",
    "tag": "bass"
   },
   {
    "t": 184.175,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 184.415,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 184.655,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 185.375,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
+  },
+  {
+   "t": 186.095,
+   "dir": "R",
+   "tag": "clap"
   },
   {
    "t": 186.575,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 187.775,
+   "t": 187.055,
    "dir": "R",
-   "tag": "kick"
+   "tag": "clap"
   },
   {
    "t": 188.015,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 188.495,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 189.215,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 189.935,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 190.415,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 190.895,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 191.135,
    "dir": "R",
    "tag": "kick"
-  },
-  {
-   "t": 191.375,
-   "dir": "L",
-   "tag": "phrase"
   },
   {
    "t": 191.615,
@@ -1499,44 +1439,24 @@
    "tag": "clap"
   },
   {
-   "t": 193.935,
-   "dir": "R",
-   "tag": "fill-triplet"
-  },
-  {
-   "t": 194.095,
-   "dir": "L",
-   "tag": "fill-triplet"
-  },
-  {
    "t": 194.255,
    "dir": "R",
    "tag": "kick"
   },
   {
-   "t": 194.855,
+   "t": 194.735,
    "dir": "L",
-   "tag": "synco-16th"
-  },
-  {
-   "t": 195.455,
-   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 195.695,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 196.175,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 196.655,
    "dir": "L",
-   "tag": "clap"
+   "tag": "kick"
   },
   {
    "t": 196.895,
@@ -1545,33 +1465,28 @@
   },
   {
    "t": 197.615,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 198.095,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 198.335,
-   "dir": "L",
+   "dir": "R",
    "tag": "bass"
   },
   {
    "t": 198.575,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 198.815,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 199.055,
    "dir": "R",
-   "tag": "bass"
+   "tag": "kick"
   },
   {
    "t": 199.295,
@@ -1622,6 +1537,11 @@
    "t": 209.135,
    "dir": "L",
    "tag": "vocal"
+  },
+  {
+   "t": 211.055,
+   "dir": "R",
+   "tag": "melody"
   }
  ],
  "sections": [
@@ -1683,10 +1603,11 @@
   "note": "bar n starts at 0.339 + 1.91996*n; grid fitted to beat tracker then shifted -23 ms to the measured transient (max-slope) of claps/hats"
  },
  "judgment": {
-  "perfect": 0.045,
-  "good": 0.085,
-  "miss_beyond": 0.11,
-  "note": "min gap 0.239 s (8th at 125 BPM); good window +/-85 ms keeps neighbouring taps unambiguous"
+  "perfect": 0.04,
+  "good": 0.11,
+  "minWindow": 0.054,
+  "rule": "schema v2.5 per-tap: min(0.5*g, clamp(0.45*g, 0.045, 0.11)), g = smaller neighbouring gap",
+  "note": "min tap gap 0.120 s -> tightest window \u00b154 ms (always <= half the local gap); sparse taps \u00b1110 ms."
  },
- "notes": "Miami-bass tresillo (16th slots 0/6/12) is the backbone in verses and choruses; phrase-end 8th runs (4-6 taps) every 4 bars in choruses; final bar of last chorus = 8-tap run. See chart-report.md."
+ "notes": "Curated per section (one audible layer each), audited by _w4_tools/audit.py: repeated phrases share patterns, faint/off-layer taps removed, 16th bursts only where prominent in the full mix. See chart-report.md."
 }

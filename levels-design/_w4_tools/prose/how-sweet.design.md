@@ -23,7 +23,7 @@
 | Chorus 2b | 123.2–138.6 | **lightning bolt** | 6 | iso | panels poster (art) on a courtyard wall; fork 127.8 s |
 | Bridge | 138.6–153.9 | **narrow laundry bridge**: switchbacks gliding down −3 between laundry poles on both sides | 6 → 3 | low | crown 2 at 146.1 |
 | Build | 153.9–169.3 | **square helix climbing +6 around the water tower** (4–5 same-side turns, laps pass over each other) | 3 → 9 | iso | water tower anchored in the clear centre of the helix |
-| Final chorus | 169.3–184.7 | **fall −6** at 169.35 s onto the plaza, then an **expanding spiral** | 3 | iso | densest part: 8th-triplet fills into phrase ends |
+| Final chorus | 169.3–184.7 | **fall −6** at 169.35 s onto the plaza, then an **expanding spiral** | 3 | iso | densest section (Chorus-1 tap pattern) |
 | Final chorus b | 184.7–200.0 | **rooftop-garden loop** climbing +3 and **passing over the spiral** | 3 → 6 | **high** | cat silhouette returns on a far rooftop (EGG E1); fork 189.9 s |
 | Outro | 200.0–219.1 | long **turn-out** glide to the record shop | 6 | wide | the shop sign flips CLOSED→OPEN on the last chord; outfit-rail EGG |
 
@@ -49,3 +49,6 @@ The GenerateImage outputs were stored outside this box. The committed files are 
 
 ## No tap hints
 All events follow the music clock: beats, half-bars and section downbeats. Nothing marks a corner.
+
+## Chart summary
+**307 taps** (legacy v1 count in chart-report.md). This is the rhythmic-logic audit of the curated 295-tap chart: drum layer (kick + clap) in every non-intro/outro section, and chorus/verse instances share one pattern bar for bar where it is audible. There are **four 16th fills (5 taps, 0.12 s gaps)**, each at a phrase end where the full mix has a prominent 16th hat/snare figure: 38.26 (into pre-chorus), 45.94 (into Chorus 1), 153.46 (into the build) and 161.14 (build phrase end). Peak 500 CPM with a ±54 ms window. See chart-report.md.

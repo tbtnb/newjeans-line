@@ -1,5 +1,8 @@
 # Supernatural — chart report
 
+> Note: the rationale below describes the curated basis chart. It was written before the 11:55 rhythmic-logic audit. Where it differs (for example, verse taps that followed vocals are now on the drum layer), the audit section and the per-section *what the taps follow* table are authoritative.
+
+
 ## Rationale (tied to audio events)
 - **Intro 0.33–9.14 (bars 0–3)**: only the *Back of My Mind* sample/ad-libs and claps, no kick. Roughly two taps per bar on beat 1 / the clap — calm, readable start. First tap 2.53 s (bar-0 taps dropped: first-tap rule).
 - **Groove 9.14–26.75 (bars 4–11)**: NJS drums enter, no lead vocal yet. Taps follow the kick on 1, the syncopated kick on the "2&" and the kick/clap figure on beats 3–4 (e.g. bar 4 `1 . . . | . . 2& . | . . 3& . | 4 . . .`) → 3–4 taps per bar with rests that read as long straights.
@@ -11,16 +14,40 @@
 - **Outro 167.67–**: sample returns, clap on 2/4 only → sparse.
 
 
-## Difficulty calibration vs. original Dancing Line (11:48 steering)
+## Rhythmic-logic audit (user override 11:55) and difficulty
 
-Chart change in this pass: 343 -> **348 taps** (+0 taps from 8th-triplet fill bursts tagged `fill-triplet` replacing beat interiors, 5 off-beat 16th syncopations tagged `synco-16th`).
+Rules applied by `_w4_tools/audit.py` to the curated chart (343 taps): one audible layer per section; repeated phrases get one shared pattern; 16th bursts only where the 16th figure is prominent in the **full mix** (not just a stem), starting and ending on beats; breathing room kept; no taps on faint onsets. The stem-only triplet/syncopation taps from the previous pass were dropped. Result: **320 taps**.
+
+- removed as off-layer (no audible hit of the section's layer within ±35 ms): 15 — 51.25, 56.75, 61.43, 63.08, 65.29, 78.77, 79.32, 82.90, 88.13, 96.66, 111.53, 115.93, 118.13, 129.97, 155.29
+- removed as faint (full-mix onset < 0.7× median strength in both the tag band and broadband): 6 — 61.98, 67.76, 70.52, 129.41, 153.36, 158.86
+- re-tagged to the section layer (they coincide with an audible hit of that layer): 42
+- bars unified to a shared pattern (same phrase in another instance or 4 bars earlier, every added slot verified audible): 31
+- 16th bursts: 0 (none: no prominent 16th figure in the full mix at a phrase end)
+
+### What the taps follow, per section
+
+| section | layer the taps follow |
+|---|---|
+| Intro | the 'Back of My Mind' sample hits and ad-libs (two per bar); no drums yet |
+| Groove | NJS drum kit: kick on 1, syncopated kick on 2&, clap on the backbeat |
+| Verse 1 | same drum figure as the Groove, so the verse can be learned from the groove; vocal phrases sit on top without taps of their own |
+| Pre-chorus 1 | kick + clap, with 8th pairs on beats 3–4; the snare roll into the chorus becomes an 8-tap 8th run |
+| Chorus 1 | kick + clap backbeat, with 8th runs on beats 3–4 (the hook drum figure) |
+| Verse 2 | drum figure from Verse 1 (shared pattern) |
+| Bridge | sparse kick hits under the held vocals; long glides; the bar-51 snare fill re-enters as an 8th run |
+| Chorus 2 | same tap pattern as Chorus 1 (unified bar for bar where audible) |
+| Interlude | backbeat claps and kick, sparse |
+| Final chorus | Chorus-1 pattern again, densest because the drums are fullest |
+| Outro | clap on 2 and 4 only |
+
+### Difficulty (soft references, not quotas)
 
 | metric | this chart |
 |---|---|
-| avg CPM = taps / full audio length x 60 | **109** (348 taps / 191.0 s) |
-| avg CPM over the playable span (first->last tap) | 115 |
-| wiki-style avg CPM (mean of instantaneous 60/gap) | **150** (median 109) |
-| peak CPM = 60 / min gap | **218** (min gap 275 ms at 148.68 s) |
+| avg CPM = taps / full audio length x 60 | **101** (320 taps / 191.0 s) |
+| avg CPM over the playable span (first->last tap) | 105 |
+| wiki-style avg CPM (mean of instantaneous 60/gap) | **140** (median 109) |
+| peak CPM = 60 / min gap | **218** (min gap 275 ms at 144.00 s) |
 | sustained 4-tap peak (3 gaps) | 218 CPM from 112.63 s |
 | tightest engine judgment window | ±110 ms at 2.53 s (local gap 550 ms); half-gap rule violations: 0 |
 
@@ -31,30 +58,30 @@ Audio: `public/audio/supernatural.mp3`, full length 191.00 s, used as-is. Tempo 
 ## Counts
 | | legacy v1 | new |
 |---|---|---|
-| taps | 162 | **348** (2.15x) |
-| avg taps/s | 0.85 | 1.82 |
+| taps | 162 | **320** (1.98x) |
+| avg taps/s | 0.85 | 1.68 |
 | min gap | 0.468 s | 0.275 s |
-| fastest run (gaps <= 0.30 s) | - | 9 taps from 59.78 s |
-| longest run at the minimum gap (0.275 s) | - | 9 taps from 59.78 s |
+| fastest run (gaps <= 0.30 s) | - | 9 taps from 58.96 s |
+| longest run at the minimum gap (0.275 s) | - | 9 taps from 58.96 s |
 
-Recommended judgment window: **perfect ±50 ms, good ±90 ms, miss beyond ±120 ms** (+/-90 ms good; min tap gap 0.275 s (eighth at 109 BPM) so windows never overlap. Validate on real touch: if late-tap bias > 30 ms, shift engine latency, not chart.).
-Humanly playable floor used: no two taps closer than 0.275 s (one 8th note).
+Judgment window (schema v2.5 engine rule, per tap): **PERFECT ±40 ms; window = min(0.5·g, clamp(0.45·g, 45, 110 ms))**, so the tightest is ±110 ms and sparse taps get ±110 ms (min tap gap 0.275 s -> tightest window ±110 ms (always <= half the local gap); sparse taps ±110 ms.).
+Minimum tap gap: 0.275 s (one 8th note).
 
 ## Per-section density
 
 | section | kind | start | end | taps | taps/s | max run (<=0.30 s) |
 |---|---|---|---|---|---|---|
 | Intro | intro | 0.33 | 9.14 | 6 | 0.68 | 1 |
-| Groove | verse | 9.14 | 26.75 | 25 | 1.42 | 2 |
+| Groove | verse | 9.14 | 26.75 | 30 | 1.70 | 4 |
 | Verse 1 | verse | 26.75 | 44.37 | 29 | 1.65 | 4 |
-| Pre-chorus 1 | pre | 44.37 | 61.98 | 42 | 2.38 | 8 |
-| Chorus 1 | chorus | 61.98 | 79.60 | 44 | 2.50 | 9 |
-| Verse 2 | verse | 79.60 | 97.21 | 32 | 1.82 | 4 |
-| Bridge | bridge | 97.21 | 114.83 | 26 | 1.48 | 7 |
-| Chorus 2 | chorus | 114.83 | 132.44 | 49 | 2.78 | 9 |
+| Pre-chorus 1 | pre | 44.37 | 61.98 | 38 | 2.16 | 9 |
+| Chorus 1 | chorus | 61.98 | 79.60 | 36 | 2.04 | 7 |
+| Verse 2 | verse | 79.60 | 97.21 | 31 | 1.76 | 4 |
+| Bridge | bridge | 97.21 | 114.83 | 23 | 1.31 | 7 |
+| Chorus 2 | chorus | 114.83 | 132.44 | 42 | 2.38 | 9 |
 | Interlude | break | 132.44 | 150.06 | 26 | 1.48 | 3 |
-| Final chorus | chorus | 150.06 | 167.67 | 50 | 2.84 | 9 |
-| Outro | outro | 167.67 | 191.00 | 19 | 0.81 | 1 |
+| Final chorus | chorus | 150.06 | 167.67 | 41 | 2.33 | 6 |
+| Outro | outro | 167.67 | 191.00 | 18 | 0.77 | 1 |
 
 ## Sync measurement
 
@@ -74,37 +101,37 @@ For every tap the nearest transient in the **full mix** (band chosen by the tap'
 | Final chorus | 18 | -3.2 | 5.7 |
 | Outro | 14 | -23.8 | 23.9 |
 
-Cross-check on separated stems (demucs; times corrected −50 ms): 341/348 taps have a stem onset (drums/bass/vocals/other, strength > 0.35) within ±60 ms; median offset +5.0 ms, 90th pct |offset| 20.0 ms. Section-boundary taps are listed below.
+Cross-check on separated stems (demucs; times corrected −50 ms): 313/320 taps have a stem onset (drums/bass/vocals/other, strength > 0.35) within ±60 ms; median offset +4.0 ms, 90th pct |offset| 18.8 ms. Section-boundary taps are listed below.
 
 ## Spot checks (start / section changes / middle / end)
 
 | tap t (s) | section | grid position | tagged event | band | measured offset ms |
 |---|---|---|---|---|---|
-| 2.534 | Intro | bar 1 slot 0/16 | vocal | mid | +1.2 |
+| 2.534 | Intro | bar 1 slot 0/16 | kick | mid | +1.2 |
 | 3.084 | Intro | bar 1 slot 4/16 | kick | lo | n/a (soft onset) |
-| 4.736 | Intro | bar 2 slot 0/16 | vocal | mid | +1.0 |
+| 4.736 | Intro | bar 2 slot 0/16 | kick | mid | +1.0 |
 | 5.286 | Intro | bar 2 slot 4/16 | clap | hi | -23.6 |
 | 9.139 | Groove | bar 4 slot 0/16 | kick | lo | n/a (soft onset) |
 | 9.965 | Groove | bar 4 slot 6/16 | kick | lo | n/a (soft onset) |
 | 26.754 | Verse 1 | bar 12 slot 0/16 | clap | hi | n/a (soft onset) |
-| 28.130 | Verse 1 | bar 12 slot 10/16 | kick | lo | n/a (soft onset) |
+| 27.580 | Verse 1 | bar 12 pos 1.50 beats | kick (burst pass) | stem other | +13.0 (stem) |
 | 44.369 | Pre-chorus 1 | bar 20 slot 0/16 | clap | hi | n/a (soft onset) |
-| 44.919 | Pre-chorus 1 | bar 20 slot 4/16 | vocal | mid | +0.9 |
-| 61.983 | Chorus 1 | bar 28 slot 0/16 | clap | hi | n/a (soft onset) |
+| 44.919 | Pre-chorus 1 | bar 20 slot 4/16 | clap | mid | +0.9 |
 | 62.534 | Chorus 1 | bar 28 slot 4/16 | clap | hi | -14.6 |
+| 63.360 | Chorus 1 | bar 28 slot 10/16 | kick | lo | n/a (soft onset) |
 | 79.598 | Verse 2 | bar 36 slot 0/16 | kick | lo | n/a (soft onset) |
-| 80.974 | Verse 2 | bar 36 slot 10/16 | kick | lo | n/a (soft onset) |
+| 80.424 | Verse 2 | bar 36 pos 1.50 beats | kick (burst pass) | stem other | +6.0 (stem) |
 | 95.011 | Verse 2 | bar 43 slot 0/16 | kick | lo | n/a (soft onset) |
 | 95.837 | Verse 2 | bar 43 slot 6/16 | kick | lo | n/a (soft onset) |
 | 96.112 | Verse 2 | bar 43 slot 8/16 | clap | hi | +3.7 |
 | 97.763 | Bridge | bar 44 slot 4/16 | kick | lo | n/a (soft onset) |
 | 98.864 | Bridge | bar 44 slot 12/16 | kick | lo | n/a (soft onset) |
-| 114.828 | Chorus 2 | bar 52 slot 0/16 | vocal | mid | n/a (soft onset) |
 | 115.378 | Chorus 2 | bar 52 slot 4/16 | clap | hi | +0.2 |
-| 133.268 | Interlude | bar 60 slot 6/16 | melody | mid | n/a (soft onset) |
+| 116.204 | Chorus 2 | bar 52 slot 10/16 | kick | lo | n/a (soft onset) |
+| 133.268 | Interlude | bar 60 slot 6/16 | kick | mid | n/a (soft onset) |
 | 133.818 | Interlude | bar 60 slot 10/16 | kick | lo | n/a (soft onset) |
-| 150.057 | Final chorus | bar 68 slot 0/16 | kick | lo | n/a (soft onset) |
 | 150.607 | Final chorus | bar 68 slot 4/16 | clap | hi | n/a (soft onset) |
+| 151.433 | Final chorus | bar 68 slot 10/16 | kick | lo | n/a (soft onset) |
 | 169.323 | Outro | bar 76 slot 12/16 | clap | hi | -24.0 |
 | 169.873 | Outro | bar 77 slot 0/16 | clap | hi | +0.4 |
 | 181.433 | Outro | bar 82 slot 4/16 | clap | hi | -23.9 |

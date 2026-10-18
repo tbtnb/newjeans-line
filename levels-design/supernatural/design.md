@@ -18,10 +18,10 @@ Codex reference: none had arrived in `codex-ref/` when this was built, so the de
 | Bridge | 97.2–114.8 | **fall −8** off the tower into the star layer when the drums drop (97.1 s), then a slow staircase and a **switchback** climb (+4) | 8 → 0 → 4 | **top** | floating petal pads drift around the road |
 | Chorus 2 | 114.8–132.4 | **serpentine with overpasses** (rotate every 2nd tap): a figure-8 knot climbing +4 across the earlier roads | 4 → 8 | iso | gantry pylons carry the overpass |
 | Interlude | 132.4–150.1 | **second helix** (+5) around the gantry pylon | 8 → 13 | **high** | crown checkpoint 2 at 132.6; fork at 141.3 |
-| Final chorus | 150.1–167.7 | **big drop −8** (149.0 s) onto the deck, then **staircase → zigzag** at the highest density (2.84 taps/s) | 5 | iso | same signal poster seen again |
+| Final chorus | 150.1–167.7 | **big drop −8** (149.0 s) onto the deck, then **staircase → zigzag** at the highest density | 5 | iso | same signal poster seen again |
 | Outro | 167.7–191.0 | long **turn-out** glide toward the moon | 5 | wide → orbit swing at 176.5 | bunny-face moon EGG framed by the camera swing |
 
-Multi-level crossings: the validator counts 21 over/under passes (106 overlapping road cells in my own plot), from the helices and overpasses. There are no same-level overlaps. Every fall lands ≥ 0.35 s before the next tap: 0.64 s at 97.1 and 1.05 s at 149.0.
+Multi-level crossings come from the helices and overpasses (see the validator output in chart-report.md / route.png). There are no same-level overlaps. Every fall lands ≥ 0.35 s before the next tap: 0.64 s at 97.1 and 1.05 s at 149.0.
 
 ## Landmarks and easter eggs
 - **Flower billboard** (start): textured with `art/flower-billboard.jpg`.
@@ -51,14 +51,14 @@ The GenerateImage outputs were stored outside this box. The files committed here
 Nothing is placed at or flashes on an upcoming tap. Events follow the music clock only: beats, bars and section downbeats. The forks are scenery, revealed together with the road.
 
 ## Chart summary
-348 taps, up from 162 in legacy v1 (2.15×). The hardest stretches are the 8–9-tap 8th runs into each chorus. Five off-beat 16th syncopations were added on real snare/vocal onsets. No triplet or 16th-roll events exist in the stems (checked), so no fake bursts were added. See chart-report.md.
+**320 taps** (legacy v1: 162). This is the rhythmic-logic audit of the curated 343-tap chart: one layer per section (the drum kit through most of the song, the sample hits in the intro), shared patterns for repeated phrases, and faint/off-layer taps removed. The full mix has no prominent 16th figure, so there are no 16th bursts. The honest peak stays at 8ths: 218 CPM, i.e. 8–9-tap runs into the choruses. See chart-report.md.
 
 ## Generated facts (from layout.json / chart.json)
 
 - Road width {'width': [{'t': 0, 'w': 2.6}, {'t': 26.78, 'w': 2.3}, {'t': 62.01, 'w': 2.2}, {'t': 97.24, 'w': 2.4}, {'t': 114.85, 'w': 2.0}, {'t': 150.08, 'w': 1.8}, {'t': 167.7, 'w': 2.4}], 'height': 0.6, 'reveal': [{'t': 0, 'mode': 'static', 'lead': 3.0}, {'t': 9.17, 'mode': 'rise', 'lead': 2.0}, {'t': 62.01, 'mode': 'rise', 'lead': 1.6}, {'t': 97.24, 'mode': 'unfold', 'lead': 1.8}, {'t': 114.85, 'mode': 'drop', 'lead': 1.5}, {'t': 150.08, 'mode': 'rise', 'lead': 1.4}, {'t': 167.7, 'mode': 'fade', 'lead': 2.5}]}; start heading N; speed [{'t': 0, 'v': 9.0}]
-- Elevation: ramp +8 @ 62.279999999999994–79.6 (Chorus 1: square helix of staircases around the flower antenna, +4 per lap); fall -8 @ 97.125 (drums drop out -> long fall off the antenna tower into the floating star layer); ramp +4 @ 106.02–114.83 (climb out of the star layer); ramp +4 @ 117.03–128.04 (Chorus 2 gantry climbs over earlier roads); ramp +5 @ 132.44–141.25 (interlude helix around the gantry pylon); fall -8 @ 149.006 (big drop onto the final-chorus deck)
+- Elevation: ramp +8 @ 62.279999999999994–79.6 (Chorus 1: square helix of staircases around the flower antenna, +4 per lap); fall -8 @ 97.813 (drums drop out -> long fall off the antenna tower into the floating star layer); ramp +4 @ 106.02–114.83 (climb out of the star layer); ramp +4 @ 117.03–128.04 (Chorus 2 gantry climbs over earlier roads); ramp +5 @ 132.44–141.25 (interlude helix around the gantry pylon); fall -8 @ 150.657 (big drop onto the final-chorus deck)
 - Camera: 0s close; 9.17s iso; 26.78s iso; 44.39s low; 60.0s wide; 62.01s high; 79.62s iso; 97.24s top; 112.65s iso; 123.66s iso; 132.47s high; 141.28s iso; 150.08s iso; 150.6s iso; 167.7s wide; 176.5s 
-- Diamonds (t): 7.488, 20.424, 38.038, 57.305, 85.928, 103.681, 122.809, 142.625, 160.791, 177.579; crowns (checkpoints): 43.13, 132.58
+- Diamonds (t): 7.488, 20.424, 38.038, 57.305, 85.928, 103.681, 122.809, 142.625, 160.791, 178.68; crowns (checkpoints): 43.13, 132.58
 - Landmarks: `flower_billboard` (Murakami flower billboard (album cover) above the radio booth); `flower_antenna` (Flower dish antenna at the centre of the loop: petals closed until Chorus 1, bloom on the downbeat; reachable only by eye (the loop orbits it)); `bunny_moon` (EGG/landmark: the moon is the bunny face from the cover (only framed when the outro camera swings at 176.5 s)); `gantry_sign` (gantry pylons holding the overpass (two-signals crossing))
 - Easter eggs: `radio_egg` (EGG: old receiver; its dial lights the 5 cover colours in turn and the needle is a tiny bunny); `bunny_moon` (EGG/landmark: the moon is the bunny face from the cover (only framed when the outro camera swings at 176.5 s))
 - Fake-out forks (visual only, road-coloured dead-end stubs that rise 2 s early and sink after the corner; they are revealed together with the road (same lead), so they add no timing information and only fake a straight continuation): fork0, fork1, fork2, fork3

@@ -35,27 +35,17 @@
    "tag": "melody"
   },
   {
-   "t": 2.951,
-   "dir": "R",
-   "tag": "melody"
-  },
-  {
    "t": 3.125,
-   "dir": "L",
+   "dir": "R",
    "tag": "melody"
   },
   {
    "t": 3.997,
-   "dir": "R",
-   "tag": "melody"
-  },
-  {
-   "t": 5.044,
    "dir": "L",
    "tag": "melody"
   },
   {
-   "t": 5.916,
+   "t": 5.044,
    "dir": "R",
    "tag": "melody"
   },
@@ -75,34 +65,29 @@
    "tag": "vocal"
   },
   {
-   "t": 9.056,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
    "t": 9.579,
-   "dir": "L",
+   "dir": "R",
    "tag": "melody"
   },
   {
    "t": 10.8,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 11.497,
    "dir": "L",
    "tag": "vocal"
   },
   {
-   "t": 11.846,
+   "t": 11.497,
    "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 11.846,
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 12.369,
    "dir": "L",
-   "tag": "melody"
+   "tag": "kick"
   },
   {
    "t": 12.893,
@@ -127,36 +112,36 @@
   {
    "t": 14.288,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 14.637,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 15.509,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 15.683,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 16.207,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 16.556,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 17.079,
+   "t": 16.556,
    "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 17.079,
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -167,7 +152,7 @@
   {
    "t": 17.951,
    "dir": "R",
-   "tag": "melody"
+   "tag": "kick"
   },
   {
    "t": 18.997,
@@ -191,18 +176,13 @@
   },
   {
    "t": 20.218,
-   "dir": "L",
-   "tag": "clap"
-  },
-  {
-   "t": 20.742,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 21.09,
    "dir": "L",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 21.265,
@@ -217,7 +197,7 @@
   {
    "t": 21.963,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 22.137,
@@ -231,12 +211,12 @@
   },
   {
    "t": 23.009,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
-   "t": 23.184,
-   "dir": "R",
+   "t": 23.532,
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -251,18 +231,18 @@
   },
   {
    "t": 24.928,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 25.451,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 25.8,
    "dir": "L",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 25.974,
@@ -271,12 +251,12 @@
   },
   {
    "t": 26.497,
-   "dir": "L",
-   "tag": "vocal"
+   "dir": "R",
+   "tag": "clap"
   },
   {
    "t": 26.846,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
@@ -291,12 +271,12 @@
   },
   {
    "t": 28.242,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 28.591,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
@@ -311,18 +291,18 @@
   },
   {
    "t": 29.637,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
-   "t": 30.509,
-   "dir": "R",
+   "t": 30.16,
+   "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 30.684,
+   "t": 30.509,
    "dir": "L",
-   "tag": "clap"
+   "tag": "kick"
   },
   {
    "t": 31.032,
@@ -352,7 +332,7 @@
   {
    "t": 32.777,
    "dir": "L",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 32.951,
@@ -382,7 +362,7 @@
   {
    "t": 35.218,
    "dir": "L",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 35.567,
@@ -402,7 +382,7 @@
   {
    "t": 36.265,
    "dir": "L",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 36.614,
@@ -437,12 +417,12 @@
   {
    "t": 38.184,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 38.532,
    "dir": "L",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 39.056,
@@ -461,67 +441,67 @@
   },
   {
    "t": 40.451,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 40.8,
-   "dir": "R",
-   "tag": "vocal"
+   "dir": "L",
+   "tag": "clap"
   },
   {
    "t": 41.149,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 41.498,
-   "dir": "R",
-   "tag": "vocal"
+   "dir": "L",
+   "tag": "clap"
   },
   {
    "t": 41.672,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 42.195,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 42.544,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 42.719,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 43.242,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 43.416,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 43.939,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 44.114,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 44.463,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -550,49 +530,54 @@
    "tag": "clap"
   },
   {
-   "t": 46.207,
+   "t": 46.033,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "clap"
+  },
+  {
+   "t": 46.207,
+   "dir": "L",
+   "tag": "kick"
   },
   {
    "t": 46.381,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 46.73,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 47.079,
-   "dir": "L",
-   "tag": "melody"
+   "dir": "R",
+   "tag": "clap"
   },
   {
    "t": 47.253,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 47.428,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 47.777,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 47.951,
    "dir": "L",
-   "tag": "clap"
+   "tag": "kick"
   },
   {
    "t": 48.126,
    "dir": "R",
    "tag": "clap"
+  },
+  {
+   "t": 48.3,
+   "dir": "L",
+   "tag": "kick"
   },
   {
    "t": 48.649,
@@ -607,12 +592,12 @@
   {
    "t": 48.998,
    "dir": "L",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 49.172,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 49.521,
@@ -662,7 +647,7 @@
   {
    "t": 51.788,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 51.963,
@@ -671,33 +656,28 @@
   },
   {
    "t": 52.312,
-   "dir": "R",
-   "tag": "clap"
-  },
-  {
-   "t": 52.486,
    "dir": "L",
-   "tag": "kick"
+   "tag": "clap"
   },
   {
    "t": 52.66,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "clap"
+  },
+  {
+   "t": 52.835,
+   "dir": "L",
+   "tag": "kick"
   },
   {
    "t": 53.009,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 53.358,
-   "dir": "R",
-   "tag": "melody"
-  },
-  {
-   "t": 53.881,
    "dir": "L",
-   "tag": "clap"
+   "tag": "kick"
   },
   {
    "t": 54.753,
@@ -720,6 +700,11 @@
    "tag": "kick"
   },
   {
+   "t": 56.149,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
    "t": 56.498,
    "dir": "R",
    "tag": "clap"
@@ -732,51 +717,51 @@
   {
    "t": 57.021,
    "dir": "R",
-   "tag": "melody"
+   "tag": "kick"
   },
   {
    "t": 57.195,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 57.37,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 57.544,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 58.067,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 58.242,
-   "dir": "L",
-   "tag": "melody"
-  },
-  {
-   "t": 58.416,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 58.94,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 59.288,
    "dir": "R",
    "tag": "clap"
   },
   {
-   "t": 59.463,
+   "t": 58.416,
    "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 58.94,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 59.288,
+   "dir": "L",
+   "tag": "clap"
+  },
+  {
+   "t": 59.463,
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -792,7 +777,7 @@
   {
    "t": 60.335,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 60.684,
@@ -831,6 +816,11 @@
   },
   {
    "t": 62.602,
+   "dir": "L",
+   "tag": "clap"
+  },
+  {
+   "t": 62.777,
    "dir": "R",
    "tag": "clap"
   },
@@ -852,7 +842,7 @@
   {
    "t": 63.823,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 63.998,
@@ -875,13 +865,8 @@
    "tag": "kick"
   },
   {
-   "t": 65.393,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
    "t": 65.568,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
@@ -916,32 +901,32 @@
   },
   {
    "t": 67.312,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 67.661,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 67.835,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 68.358,
-   "dir": "L",
-   "tag": "clap"
-  },
-  {
-   "t": 68.707,
    "dir": "R",
    "tag": "clap"
   },
   {
-   "t": 69.056,
+   "t": 68.707,
    "dir": "L",
+   "tag": "clap"
+  },
+  {
+   "t": 69.056,
+   "dir": "R",
    "tag": "clap"
   },
   {
@@ -972,7 +957,7 @@
   {
    "t": 71.498,
    "dir": "L",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 72.021,
@@ -1016,11 +1001,6 @@
   },
   {
    "t": 74.812,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 75.161,
    "dir": "L",
    "tag": "kick"
   },
@@ -1050,18 +1030,13 @@
    "tag": "kick"
   },
   {
-   "t": 77.079,
+   "t": 77.428,
    "dir": "L",
    "tag": "clap"
   },
   {
-   "t": 77.428,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
    "t": 77.951,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1071,51 +1046,46 @@
   },
   {
    "t": 80.393,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 80.568,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 80.916,
-   "dir": "R",
+   "dir": "L",
    "tag": "bass"
   },
   {
    "t": 81.265,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 81.614,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 81.963,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 82.486,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 83.358,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 83.707,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 84.056,
    "dir": "L",
    "tag": "kick"
   },
@@ -1125,29 +1095,34 @@
    "tag": "clap"
   },
   {
+   "t": 85.975,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
    "t": 86.149,
    "dir": "L",
    "tag": "clap"
   },
   {
-   "t": 86.847,
+   "t": 86.498,
    "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 86.847,
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 87.196,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 87.544,
-   "dir": "R",
-   "tag": "clap"
-  },
-  {
-   "t": 87.719,
    "dir": "L",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 88.068,
@@ -1170,44 +1145,44 @@
    "tag": "clap"
   },
   {
-   "t": 89.637,
+   "t": 90.335,
    "dir": "R",
+   "tag": "clap"
+  },
+  {
+   "t": 91.556,
+   "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 90.335,
-   "dir": "L",
-   "tag": "clap"
-  },
-  {
-   "t": 91.033,
+   "t": 91.73,
    "dir": "R",
    "tag": "clap"
-  },
-  {
-   "t": 91.73,
-   "dir": "L",
-   "tag": "vocal"
   },
   {
    "t": 92.079,
-   "dir": "R",
-   "tag": "vocal"
+   "dir": "L",
+   "tag": "kick"
   },
   {
    "t": 92.428,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 92.777,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 93.126,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
+  },
+  {
+   "t": 93.649,
+   "dir": "L",
+   "tag": "kick"
   },
   {
    "t": 94.521,
@@ -1220,19 +1195,9 @@
    "tag": "kick"
   },
   {
-   "t": 95.219,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
    "t": 95.917,
-   "dir": "L",
-   "tag": "clap"
-  },
-  {
-   "t": 96.265,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 96.614,
@@ -1272,11 +1237,11 @@
   {
    "t": 100.626,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 100.8,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
@@ -1295,14 +1260,14 @@
    "tag": "clap"
   },
   {
-   "t": 102.021,
+   "t": 101.847,
    "dir": "R",
-   "tag": "kick"
+   "tag": "clap"
   },
   {
-   "t": 102.196,
+   "t": 102.021,
    "dir": "L",
-   "tag": "clap"
+   "tag": "kick"
   },
   {
    "t": 102.545,
@@ -1332,7 +1297,7 @@
   {
    "t": 103.94,
    "dir": "L",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
    "t": 104.114,
@@ -1340,23 +1305,28 @@
    "tag": "kick"
   },
   {
-   "t": 104.638,
+   "t": 104.463,
    "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 104.638,
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 104.812,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 104.986,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 105.335,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
@@ -1385,43 +1355,48 @@
    "tag": "clap"
   },
   {
-   "t": 107.254,
-   "dir": "R",
-   "tag": "clap"
-  },
-  {
-   "t": 107.428,
-   "dir": "L",
-   "tag": "clap"
-  },
-  {
-   "t": 107.603,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 107.777,
-   "dir": "L",
-   "tag": "clap"
-  },
-  {
-   "t": 108.126,
-   "dir": "R",
-   "tag": "clap"
-  },
-  {
-   "t": 108.475,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
-   "t": 108.649,
+   "t": 106.905,
    "dir": "R",
    "tag": "kick"
   },
   {
-   "t": 108.824,
+   "t": 107.254,
    "dir": "L",
+   "tag": "clap"
+  },
+  {
+   "t": 107.428,
+   "dir": "R",
+   "tag": "clap"
+  },
+  {
+   "t": 107.603,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 107.777,
+   "dir": "R",
+   "tag": "clap"
+  },
+  {
+   "t": 108.3,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 108.475,
+   "dir": "R",
+   "tag": "clap"
+  },
+  {
+   "t": 108.649,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 108.824,
+   "dir": "R",
    "tag": "clap"
   },
   {
@@ -1436,12 +1411,12 @@
   },
   {
    "t": 109.696,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 110.045,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
@@ -1456,12 +1431,12 @@
   },
   {
    "t": 110.568,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 110.917,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
@@ -1476,12 +1451,12 @@
   },
   {
    "t": 111.614,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 111.963,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1496,26 +1471,21 @@
   },
   {
    "t": 112.835,
-   "dir": "R",
-   "tag": "melody"
+   "dir": "L",
+   "tag": "kick"
   },
   {
    "t": 113.01,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 113.184,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 113.359,
-   "dir": "L",
-   "tag": "clap"
-  },
-  {
-   "t": 113.707,
    "dir": "R",
    "tag": "clap"
   },
@@ -1527,25 +1497,35 @@
   {
    "t": 114.056,
    "dir": "R",
-   "tag": "melody"
+   "tag": "clap"
+  },
+  {
+   "t": 114.231,
+   "dir": "L",
+   "tag": "kick"
   },
   {
    "t": 114.405,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 114.754,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 115.103,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 115.277,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 115.626,
    "dir": "R",
    "tag": "kick"
   },
@@ -1586,72 +1566,72 @@
   },
   {
    "t": 119.638,
-   "dir": "R",
+   "dir": "L",
    "tag": "melody"
   },
   {
    "t": 120.335,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
-   "t": 120.684,
    "dir": "R",
    "tag": "vocal"
   },
   {
-   "t": 121.207,
+   "t": 120.684,
    "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 121.207,
+   "dir": "R",
    "tag": "melody"
   },
   {
    "t": 123.126,
    "dir": "L",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 123.475,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 123.649,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 123.998,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 124.173,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 124.347,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 124.521,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 125.045,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 125.219,
-   "dir": "L",
-   "tag": "melody"
+   "dir": "R",
+   "tag": "kick"
   },
   {
    "t": 125.393,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1677,7 +1657,7 @@
   {
    "t": 126.789,
    "dir": "L",
-   "tag": "melody"
+   "tag": "kick"
   },
   {
    "t": 126.963,
@@ -1721,88 +1701,88 @@
   },
   {
    "t": 129.056,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 129.231,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 129.58,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 129.754,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 129.928,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 130.103,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 130.626,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 130.801,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 130.975,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 131.149,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 131.498,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 131.847,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 132.021,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 132.37,
-   "dir": "L",
-   "tag": "vocal"
+   "dir": "R",
+   "tag": "kick"
   },
   {
    "t": 132.545,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 132.719,
-   "dir": "L",
-   "tag": "vocal"
+   "dir": "R",
+   "tag": "kick"
   },
   {
    "t": 132.894,
-   "dir": "R",
-   "tag": "clap"
+   "dir": "L",
+   "tag": "kick"
   },
   {
    "t": 133.242,
@@ -1830,74 +1810,64 @@
    "tag": "kick"
   },
   {
-   "t": 134.463,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
    "t": 134.638,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 134.812,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 135.161,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 135.335,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 135.51,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 135.684,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 135.859,
-   "dir": "L",
-   "tag": "vocal"
+   "dir": "R",
+   "tag": "kick"
   },
   {
    "t": 136.033,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 136.382,
-   "dir": "L",
-   "tag": "vocal"
+   "dir": "R",
+   "tag": "clap"
   },
   {
    "t": 136.556,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 136.731,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 137.08,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 137.254,
    "dir": "L",
-   "tag": "clap"
+   "tag": "kick"
   },
   {
    "t": 137.428,
@@ -1915,157 +1885,157 @@
    "tag": "bass"
   },
   {
-   "t": 138.301,
+   "t": 138.126,
    "dir": "L",
+   "tag": "clap"
+  },
+  {
+   "t": 138.301,
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 138.475,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 138.824,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 138.998,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 139.347,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 139.521,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 139.87,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 140.219,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 140.394,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 140.742,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 140.917,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 141.091,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 141.266,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 141.615,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 141.789,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 141.963,
-   "dir": "R",
-   "tag": "melody"
+   "dir": "L",
+   "tag": "clap"
   },
   {
    "t": 142.138,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 142.487,
-   "dir": "R",
-   "tag": "vocal"
+   "dir": "L",
+   "tag": "clap"
   },
   {
    "t": 142.661,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 143.01,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 143.184,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 143.533,
-   "dir": "R",
-   "tag": "vocal"
+   "dir": "L",
+   "tag": "clap"
   },
   {
    "t": 143.708,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 143.882,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 144.056,
-   "dir": "L",
-   "tag": "clap"
-  },
-  {
-   "t": 144.405,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 144.58,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 144.754,
+   "t": 144.056,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "clap"
   },
   {
-   "t": 145.103,
+   "t": 144.405,
    "dir": "L",
    "tag": "clap"
   },
   {
-   "t": 147.545,
+   "t": 144.58,
    "dir": "R",
-   "tag": "melody"
+   "tag": "kick"
   },
   {
-   "t": 148.068,
+   "t": 144.754,
+   "dir": "L",
+   "tag": "clap"
+  },
+  {
+   "t": 145.103,
+   "dir": "R",
+   "tag": "clap"
+  },
+  {
+   "t": 147.545,
    "dir": "R",
    "tag": "melody"
   },
@@ -2076,16 +2046,6 @@
   },
   {
    "t": 150.161,
-   "dir": "R",
-   "tag": "melody"
-  },
-  {
-   "t": 151.033,
-   "dir": "L",
-   "tag": "melody"
-  },
-  {
-   "t": 152.254,
    "dir": "R",
    "tag": "melody"
   },
@@ -2180,9 +2140,10 @@
  },
  "judgment": {
   "perfect": 0.04,
-  "good": 0.075,
-  "miss_beyond": 0.085,
-  "note": "min gap 0.174 s (8th at 172): good window +/-75 ms so a tap is never ambiguous between neighbours (half-gap 87 ms). Must be checked with real touch latency."
+  "good": 0.11,
+  "minWindow": 0.078,
+  "rule": "schema v2.5 per-tap: min(0.5*g, clamp(0.45*g, 0.045, 0.11)), g = smaller neighbouring gap",
+  "note": "min tap gap 0.174 s -> tightest window \u00b178 ms (always <= half the local gap); sparse taps \u00b1110 ms."
  },
- "notes": "Drum & bass: taps on kick (1, 3&) and snare (2, 4) with vocal pickups; 8th bursts of max 3 in verse/chorus, max 4 in the final chorus; half-time bridge follows the snare on 3 + vocal. Piano-only intro/outro tapped sparsely on chord hits. See chart-report.md."
+ "notes": "Curated per section (one audible layer each), audited by _w4_tools/audit.py: repeated phrases share patterns, faint/off-layer taps removed, 16th bursts only where prominent in the full mix. See chart-report.md."
 }
