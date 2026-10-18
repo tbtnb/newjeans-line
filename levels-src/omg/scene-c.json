@@ -7920,7 +7920,8 @@
       ],
       "r": 4.6,
       "row": true
-     }
+     },
+     "hug": true
     },
     {
      "asset": "mushroom-house",
@@ -7952,7 +7953,8 @@
       ],
       "r": 4.6,
       "row": true
-     }
+     },
+     "hug": true
     }
    ],
    "setpieces": [
@@ -9833,7 +9835,7 @@
     {
      "asset": "mushroom-house",
      "layer": "mid",
-     "count": 2,
+     "count": 6,
      "near": [
       6.0,
       10.0
@@ -9864,7 +9866,7 @@
     {
      "asset": "mushroom-house",
      "layer": "mid",
-     "count": 4,
+     "count": 11,
      "near": [
       5.0,
       12.0
@@ -9895,7 +9897,7 @@
     {
      "asset": "bunny-house",
      "layer": "mid",
-     "count": 1,
+     "count": 4,
      "near": [
       6.0,
       13.0
@@ -9926,7 +9928,7 @@
     {
      "asset": "mushroom-house",
      "layer": "mid",
-     "count": 2,
+     "count": 5,
      "near": [
       5.0,
       12.0
@@ -10075,7 +10077,8 @@
       ],
       "r": 4.6,
       "row": true
-     }
+     },
+     "hug": true
     },
     {
      "asset": "mushroom-house",
@@ -10106,7 +10109,8 @@
       ],
       "r": 4.6,
       "row": true
-     }
+     },
+     "hug": true
     }
    ],
    "setpieces": [

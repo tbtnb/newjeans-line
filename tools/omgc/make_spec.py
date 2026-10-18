@@ -332,10 +332,11 @@ for z in zones:   # v6 budget: z08 (carousel + wheel + village) over 150k -> lan
         if ly['asset'] == 'lantern-tower': ly['count'] = max(1, round(ly['count'] * 0.4))
         elif ly['asset'] in ('balloons', 'bunting', 'hedge') and ly.get('hi'): ly['count'] = max(1, round(ly['count'] * 0.5))
 # ---- v7 ----
-def addl(z, aid, layer, n, near, sc, hi, cl=None):
+def addl(z, aid, layer, n, near, sc, hi, cl=None, hug=False):
     if aid not in assets or n < 1: return
     d = dict(asset=aid, layer=layer, count=n, near=near, y=[0, 0], scale=sc, colors=(z['layers'][0]['colors'] if z['layers'] else [0, 1, 2, 3, 4]), hi=hi)
     if cl: d['cluster'] = cl
+    if hug: d['hug'] = True
     z['layers'].append(d)
 for z in zones:
     zid = z['id']; zk = (z['t1'] - z['t0']) / 15.12
@@ -354,12 +355,12 @@ for z in zones:
             if ly['asset'] == 'firefly-lamp': ly['count'] = max(1, round(ly['count'] * 0.5))
     if zid == 'z09':   # v7: with houses allowed near the road the v6 village rows over-fill z09 (126 houses): x0.35
         for ly in z['layers']:
-            if 'house' in ly['asset'] and ly.get('cluster'): ly['count'] = max(1, round(ly['count'] * 0.35))
+            pass
     if zid in ('z07', 'z09'):   # bigger lit house rows hugging the road (merged into the chunk mid mesh); towers cut to pay
         for ly in z['layers']:
             if ly['asset'] == 'lantern-tower': ly['count'] = max(1, round(ly['count'] * 0.4))
-        addl(z, 'mushroom-house', 'mid', round(3 * zk), [3.5, 8.0], [1.35, 1.7], True, dict(n=[3, 4], r=4.6, row=True))
-        addl(z, 'mushroom-house', 'mid', round(1 * zk), [3.5, 8.0], [1.35, 1.7], False, dict(n=[2, 3], r=4.6, row=True))
+        addl(z, 'mushroom-house', 'mid', round(3 * zk), [3.5, 8.0], [1.35, 1.7], True, dict(n=[3, 4], r=4.6, row=True), hug=True)
+        addl(z, 'mushroom-house', 'mid', round(1 * zk), [3.5, 8.0], [1.35, 1.7], False, dict(n=[2, 3], r=4.6, row=True), hug=True)
     if zid == 'z01':   # top-right mint mass: tree / hill / forest masses beyond the near band mostly gone, colourful houses instead
         for ly in z['layers']:
             if ly.get('layer') == 'mid' and ly['asset'] in TREEY + ('forest-clump', 'paper-hill-lo', 'paper-hill', 'hedge'): ly['count'] = max(1, round(ly['count'] * 0.3))
