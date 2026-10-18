@@ -62,6 +62,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
   const nearCam = (x: number, z: number, t: number) => { const i0 = Math.max(0, Math.floor((t - 10) * 4)), i1 = Math.min(camPath.length - 1, Math.ceil((t + 3) * 4));
     for (let i = i0; i <= i1; i++) { const c = camPath[i]; if ((c.x - x) ** 2 + (c.z - z) ** 2 < 28 * 28) return true; } return false; };
   /** near band: the bottom of the key camera's frame (ground ~4 m behind the flow point, i.e. around the head); big masses there fill the screen */
+  const MASSY = /tree|pine|forest|hill|hedge|bush/;   // v7: only green masses are kept out of the near band
   const nearBand = (x: number, z: number, t: number, r: number) => { const i0 = Math.max(0, Math.floor((t - 4) * 4)), i1 = Math.min(camPath.length - 1, Math.ceil((t + 2) * 4));
     for (let i = i0; i <= i1; i++) { const c = camPath[i]; if ((c.gx - x) ** 2 + (c.gz - z) ** 2 < r * r) return true; } return false; };
   let placed = 0, rejected = 0;
@@ -84,7 +85,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
         const r = Math.max(0.15, Math.max(A.h, A.w ?? 0, A.d ?? 0) * s * (A.shape === 'far' ? 0.2 : 0.35));   // wide pieces (paper hills) need their width
         const pad = h < groundMaxH ? 0.15 : clearNear + 1.0 * w;
         if (y0 < 4 && o.hits(a.pos.x, a.pos.z, r + pad, a.pos.y - 1, a.pos.y + h)) { rejected++; continue; }
-        if (L.layer === 'mid' && h > 2.6 && nearBand(a.pos.x, a.pos.z, t, 16 + r)) { rejected++; continue; }   // big masses stay out of the near band
+        if (L.layer === 'mid' && h > 2.6 && nearBand(a.pos.x, a.pos.z, t, (MASSY.test(L.asset) ? 16 : 3) + r)) { rejected++; continue; }   // big green masses stay out of the near band; houses / towers may hug the road (v7)
         const rp = anchor(route, t).pos;
         const yaw = A.shape === 'far' || L.layer === 'mid' ? Math.atan2(rp.x - a.pos.x, rp.z - a.pos.z) : R() * Math.PI * 2;
         const ci = chunkAt(t);
@@ -100,7 +101,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
             if (Cn.row) { ty = t + Math.ceil(j / 2) * (j % 2 ? 1 : -1) * Cn.r * s / v; if (ty < z.t0 || ty > t1) continue;
               const b = edge < 6 ? anchor(route, ty, off, 0, 0) : flowAnchor(route, ty, off, 0, 0); x = b.pos.x; zz = b.pos.z; const bp = anchor(route, ty).pos; my = Math.atan2(bp.x - x, bp.z - zz); }
             else { const an = R() * Math.PI * 2, rr = Cn.r * s * Math.sqrt(0.15 + 0.85 * R()); x = a.pos.x + Math.cos(an) * rr; zz = a.pos.z + Math.sin(an) * rr; my = L.layer === 'mid' ? yaw + (R() - 0.5) * 0.8 : R() * Math.PI * 2; }
-            if (o.hits(x, zz, r * ms / s + pad, a.pos.y - 1, a.pos.y + A.h * ms) || (A.h * ms > 2.6 && nearBand(x, zz, ty, 16 + r * ms / s))) { rejected++; continue; }
+            if (o.hits(x, zz, r * ms / s + pad, a.pos.y - 1, a.pos.y + A.h * ms) || (A.h * ms > 2.6 && nearBand(x, zz, ty, (MASSY.test(L.asset) ? 16 : 3) + r * ms / s))) { rejected++; continue; }
             const cj = chunkAt(ty);
             chunks[cj].items.push({ a: L.asset, layer: L.layer, x, y: groundY(chunks[cj], x, zz) + y0, z: zz, yaw: my, s: ms, c: col(), zone: zi, t: ty, chunk: cj, ...(L.hi ? { hi: true } : {}) }); placed++;
           }

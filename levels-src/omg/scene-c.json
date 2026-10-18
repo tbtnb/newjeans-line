@@ -9833,7 +9833,7 @@
     {
      "asset": "mushroom-house",
      "layer": "mid",
-     "count": 6,
+     "count": 2,
      "near": [
       6.0,
       10.0
@@ -9864,7 +9864,7 @@
     {
      "asset": "mushroom-house",
      "layer": "mid",
-     "count": 11,
+     "count": 4,
      "near": [
       5.0,
       12.0
@@ -9895,7 +9895,7 @@
     {
      "asset": "bunny-house",
      "layer": "mid",
-     "count": 4,
+     "count": 1,
      "near": [
       6.0,
       13.0
@@ -9926,7 +9926,7 @@
     {
      "asset": "mushroom-house",
      "layer": "mid",
-     "count": 5,
+     "count": 2,
      "near": [
       5.0,
       12.0
