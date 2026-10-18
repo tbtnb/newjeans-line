@@ -1,0 +1,170 @@
+## Chart logic: ditto (412 taps)
+
+| section | follows | taps | /s | layer strength (median) | off-layer taps | faint taps | weak bursts | off-grid >25ms | phrase patterns (unique/total) |
+|---|---|---|---|---|---|---|---|---|---|
+| Intro · 录像带入口 | mid | 14 | 0.96 | 0.23 | 3 ⚠ | 10 ⚠ | 0 | 3 | 3/4 |
+| Verse 1 · 教室走廊 | full | 37 | 2.58 | 0.74 | 2 | 0 | 0 | 1 | 3/5 |
+| Chorus 1 · 摄像机取景框 | full | 41 | 2.86 | 0.55 | 3 | 0 | 0 | 4 | 5/5 |
+| Post 1 · 屋顶坡道 | snare | 32 | 2.55 | 0.61 | 1 | 0 | 0 | 0 | 3/4 |
+| Break · 雪地鹿岛 | mid | 8 | 0.89 | 0.43 | 0 | 0 | 0 | 2 | 3/3 |
+| Verse 2a · 雾隙 | snare | 13 | 1.81 | 0.53 | 0 | 1 ⚠ | 0 | 1 | 3/3 |
+| Verse 2 · 窗墙长 U | kick | 32 | 2.23 | 0.59 | 1 | 0 | 1 ⚠ | 0 | 3/4 |
+| Chorus 2 · 屋顶空椅 | kick | 44 | 3.07 | 0.55 | 2 | 0 | 0 | 1 | 4/5 |
+| Post 2 · 跨空桥 | kick | 35 | 2.44 | 0.55 | 0 | 0 | 0 | 3 | 4/4 |
+| Bridge · 鹿回头 | mid | 22 | 1.54 | 0.42 | 1 | 0 | 0 | 11 | 4/4 |
+| Pre · 取景屏 | snare | 22 | 1.75 | 0.43 | 1 | 0 | 3 ⚠ | 6 | 4/4 |
+| Final chorus · 记忆庭院 | full | 56 | 3.47 | 0.64 | 2 | 0 | 5 ⚠ | 32 | 5/6 |
+| Final post · 网点兔 | kick | 43 | 3.00 | 0.51 | 0 | 0 | 2 ⚠ | 32 | 3/4 |
+| Fade · 暖窗熄灭 | full | 11 | 1.54 | 0.95 | 0 | 0 | 0 | 8 | 2/3 |
+| Outro · 录像带合上 | snare | 2 | 0.27 | 0.14 | 0 | 1 ⚠ | 0 | 0 | 1/1 |
+
+Totals: off-layer (hop) 16, faint 12, weak bursts 11, off-grid 104
+
+<details><summary>flagged taps</summary>
+
+```
+   FAINT 1.654s bar 0 step 12: mid 0.18, full 0.11
+   off-grid 3.917s (+41 ms from 16th grid)
+   HOP 3.917s bar 2 step 0: mid 0.25 but kick 0.69 (section follows mid)
+   FAINT 4.789s bar 2 step 8: mid 0.17, full 0.08
+   FAINT 5.684s bar 3 step 0: mid 0.24, full 0.15
+   FAINT 6.580s bar 3 step 8: mid 0.14, full 0.09
+   HOP 7.477s bar 4 step 0: mid 0.33 but kick 0.73 (section follows mid)
+   FAINT 8.371s bar 4 step 8: mid 0.16, full 0.07
+   off-grid 9.290s (+40 ms from 16th grid)
+   FAINT 9.290s bar 5 step 0: mid 0.31, full 0.08
+   FAINT 10.162s bar 5 step 8: mid 0.22, full 0.11
+   FAINT 11.057s bar 6 step 0: mid 0.22, full 0.10
+   FAINT 11.947s bar 6 step 8: mid 0.23, full 0.11
+   off-grid 13.756s (+28 ms from 16th grid)
+   HOP 13.756s bar 7 step 8: mid 0.25 but kick 0.65 (section follows mid)
+   FAINT 14.192s bar 7 step 12: mid 0.22, full 0.15
+   HOP 15.865s bar 8 step 11: full 0.24 but kick 0.83 (section follows full)
+   off-grid 19.747s (-27 ms from 16th grid)
+   HOP 26.610s bar 14 step 11: full 0.34 but kick 0.77 (section follows full)
+   off-grid 30.221s (+35 ms from 16th grid)
+   HOP 30.221s bar 16 step 11: full 0.31 but kick 0.94 (section follows full)
+   off-grid 33.810s (+41 ms from 16th grid)
+   HOP 35.227s bar 19 step 8: full 0.26 but kick 0.85 (section follows full)
+   off-grid 37.392s (+40 ms from 16th grid)
+   HOP 38.803s bar 21 step 8: full 0.22 but kick 1.28 (section follows full)
+   off-grid 40.968s (+33 ms from 16th grid)
+   HOP 53.135s bar 29 step 8: snare 0.30 but kick 0.61 (section follows snare)
+   off-grid 57.201s (+32 ms from 16th grid)
+   off-grid 59.235s (+51 ms from 16th grid)
+   off-grid 66.654s (-32 ms from 16th grid)
+   FAINT 66.654s bar 37 step 1: snare 0.35, full 0.26
+   HOP 74.398s bar 41 step 6: kick 0.28 but hat 0.92 (section follows kick)
+   WEAK-BURST 74.510s bar 41 step 7: full 0.48, kick 0.41
+   HOP 86.937s bar 48 step 6: kick 0.29 but hat 0.62 (section follows kick)
+   HOP 88.727s bar 49 step 6: kick 0.32 but snare 0.64 (section follows kick)
+   off-grid 96.764s (-39 ms from 16th grid)
+   off-grid 114.014s (-31 ms from 16th grid)
+   off-grid 114.124s (-33 ms from 16th grid)
+   off-grid 114.235s (-34 ms from 16th grid)
+   off-grid 116.997s (+41 ms from 16th grid)
+   off-grid 117.877s (+25 ms from 16th grid)
+   off-grid 119.225s (+30 ms from 16th grid)
+   off-grid 120.618s (-33 ms from 16th grid)
+   off-grid 120.961s (-25 ms from 16th grid)
+   off-grid 122.817s (+39 ms from 16th grid)
+   off-grid 123.709s (+35 ms from 16th grid)
+   off-grid 124.646s (-35 ms from 16th grid)
+   HOP 124.646s bar 69 step 7: mid 0.20 but kick 0.70 (section follows mid)
+   off-grid 125.203s (-38 ms from 16th grid)
+   off-grid 125.715s (+26 ms from 16th grid)
+   off-grid 128.335s (-41 ms from 16th grid)
+   off-grid 132.375s (-31 ms from 16th grid)
+   off-grid 136.298s (-27 ms from 16th grid)
+   off-grid 138.260s (+32 ms from 16th grid)
+   off-grid 140.880s (-35 ms from 16th grid)
+   WEAK-BURST 140.880s bar 78 step 8: full 0.45, snare 0.15
+   off-grid 140.990s (-37 ms from 16th grid)
+   WEAK-BURST 140.990s bar 78 step 9: full 0.35, snare 0.14
+   off-grid 141.100s (-39 ms from 16th grid)
+   WEAK-BURST 141.100s bar 78 step 10: full 0.39, snare 0.10
+   HOP 141.580s bar 78 step 14: snare 0.33 but kick 0.65 (section follows snare)
+   off-grid 142.673s (-34 ms from 16th grid)
+   WEAK-BURST 142.673s bar 79 step 8: full 0.37, full 0.37
+   off-grid 142.784s (-35 ms from 16th grid)
+   WEAK-BURST 142.784s bar 79 step 9: full 0.58, full 0.58
+   off-grid 142.894s (-37 ms from 16th grid)
+   WEAK-BURST 142.894s bar 79 step 10: full 0.46, full 0.46
+   off-grid 143.016s (-27 ms from 16th grid)
+   WEAK-BURST 143.016s bar 79 step 11: full 0.53, full 0.53
+   off-grid 143.577s (-26 ms from 16th grid)
+   off-grid 144.249s (-25 ms from 16th grid)
+   HOP 144.474s bar 80 step 8: full 0.33 but kick 0.92 (section follows full)
+   off-grid 146.040s (-26 ms from 16th grid)
+   off-grid 146.935s (-26 ms from 16th grid)
+   off-grid 147.160s (-25 ms from 16th grid)
+   off-grid 147.384s (-25 ms from 16th grid)
+   off-grid 147.607s (-26 ms from 16th grid)
+   off-grid 147.831s (-26 ms from 16th grid)
+   off-grid 149.287s (-26 ms from 16th grid)
+   off-grid 149.622s (-26 ms from 16th grid)
+   HOP 149.855s bar 83 step 8: full 0.33 but kick 0.64 (section follows full)
+   off-grid 150.517s (-27 ms from 16th grid)
+   off-grid 150.742s (-26 ms from 16th grid)
+   off-grid 151.413s (-27 ms from 16th grid)
+   off-grid 151.638s (-26 ms from 16th grid)
+   off-grid 152.308s (-27 ms from 16th grid)
+   WEAK-BURST 152.983s bar 85 step 4: full 0.56, full 0.56
+   off-grid 153.204s (-27 ms from 16th grid)
+   off-grid 153.429s (-26 ms from 16th grid)
+   off-grid 154.324s (-27 ms from 16th grid)
+   off-grid 154.548s (-27 ms from 16th grid)
+   off-grid 154.773s (-26 ms from 16th grid)
+   off-grid 154.995s (-28 ms from 16th grid)
+   off-grid 155.220s (-26 ms from 16th grid)
+   off-grid 155.890s (-28 ms from 16th grid)
+   off-grid 156.451s (-27 ms from 16th grid)
+   off-grid 156.786s (-28 ms from 16th grid)
+   off-grid 157.011s (-27 ms from 16th grid)
+   off-grid 157.682s (-28 ms from 16th grid)
+   off-grid 157.906s (-27 ms from 16th grid)
+   off-grid 158.577s (-28 ms from 16th grid)
+   off-grid 158.803s (-26 ms from 16th grid)
+   off-grid 159.472s (-29 ms from 16th grid)
+   off-grid 159.697s (-28 ms from 16th grid)
+   off-grid 160.369s (-28 ms from 16th grid)
+   off-grid 160.595s (-26 ms from 16th grid)
+   off-grid 161.263s (-29 ms from 16th grid)
+   off-grid 161.488s (-28 ms from 16th grid)
+   off-grid 161.824s (-28 ms from 16th grid)
+   off-grid 162.160s (-28 ms from 16th grid)
+   off-grid 163.054s (-30 ms from 16th grid)
+   off-grid 163.279s (-29 ms from 16th grid)
+   off-grid 163.727s (-28 ms from 16th grid)
+   off-grid 164.177s (-26 ms from 16th grid)
+   off-grid 165.407s (-28 ms from 16th grid)
+   off-grid 165.742s (-29 ms from 16th grid)
+   off-grid 165.968s (-27 ms from 16th grid)
+   off-grid 166.637s (-29 ms from 16th grid)
+   off-grid 166.862s (-28 ms from 16th grid)
+   off-grid 167.533s (-29 ms from 16th grid)
+   off-grid 167.758s (-28 ms from 16th grid)
+   WEAK-BURST 167.758s bar 93 step 8: full 0.36, kick 0.51
+   off-grid 167.871s (-27 ms from 16th grid)
+   WEAK-BURST 167.871s bar 93 step 9: full 0.38, kick 0.31
+   off-grid 167.981s (-29 ms from 16th grid)
+   off-grid 168.428s (-30 ms from 16th grid)
+   off-grid 168.652s (-30 ms from 16th grid)
+   off-grid 168.989s (-29 ms from 16th grid)
+   off-grid 169.306s (-47 ms from 16th grid)
+   off-grid 169.549s (-28 ms from 16th grid)
+   off-grid 170.219s (-30 ms from 16th grid)
+   off-grid 170.443s (-30 ms from 16th grid)
+   off-grid 170.891s (-30 ms from 16th grid)
+   off-grid 172.015s (-26 ms from 16th grid)
+   off-grid 172.682s (-30 ms from 16th grid)
+   off-grid 173.353s (-31 ms from 16th grid)
+   off-grid 174.922s (-30 ms from 16th grid)
+   off-grid 176.264s (-31 ms from 16th grid)
+   off-grid 176.936s (-31 ms from 16th grid)
+   off-grid 177.607s (-32 ms from 16th grid)
+   off-grid 178.504s (-30 ms from 16th grid)
+   off-grid 179.399s (-31 ms from 16th grid)
+   FAINT 181.760s bar 101 step 5: snare 0.15, full 0.14
+```
+</details>
