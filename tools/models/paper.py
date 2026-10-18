@@ -159,7 +159,7 @@ def mirror_x(ob, name=None):
 # ---------------- finish ----------------
 SUN = Vector((-0.4, -0.75, 0.55)).normalized()   # key light from the front-left-top (the game camera side)
 
-def bake_light(objs, height=None, lo=0.88, ao=0.05):
+def bake_light(objs, height=None, lo=0.80, ao=0.07):   # v2: deeper fold shading so facets read at the gameplay camera (lit faces stay exact hex)
     """palette-preserving paper light baked into vertex colours: faces turned to the key light keep the EXACT palette hex
     (k = 1), faces turned away fall to `lo` (crisp folds, never muddy), plus a faint height AO at the page. No tint."""
     zs = [(o.matrix_world @ v.co).z for o in objs for v in o.data.vertices]
