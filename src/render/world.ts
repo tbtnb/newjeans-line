@@ -246,6 +246,12 @@ export class World {
 
   private addObject(o: SceneObject, grid?: RoadGrid) {
     if (!this.route || !this.mats || !this.root) return;
+    // on-road structures (bridges, decks under the road) without their own cue rise with the road reveal, so a
+    // deck that belongs to a later overpass never floats over earlier parts of the route
+    if (o.onroad && !o.appear && o.t !== undefined && o.t > 4) {
+      const half = Math.max(...(o.size ?? [0, 0, 0]).filter((_, i) => i !== 1), 0) / 2 / (this.route.spans[0]?.v ?? 9);
+      o = { ...o, appear: { t: o.t - half - 2.5, mode: 'rise', dur: 0.6 } };
+    }
     const t = o.t ?? 0;
     let side = o.side ?? 0;
     const sz = o.size ?? [2, 2, 2];

@@ -117,7 +117,7 @@ export class Dressings {
       const k = Math.min(1, Math.max(0, (t - (it.t - this.lead)) / 0.35));
       const near = Math.abs(it.t - t) < 2.5;
       const occ = occludes(it.x, it.y, it.z, it.r, it.h);
-      const hide = Math.max(0, Math.min(1, it.hide + (occ ? 1 : -1) * dt * 7));
+      const hide = dt <= 0 ? (occ ? 1 : 0) : Math.max(0, Math.min(1, it.hide + (occ ? 1 : -1) * dt * 7)); // dt 0 = seek/preview: settle instantly
       const bk = near ? beatK * this.bounce : 0;
       if (k !== it.k || hide !== it.hide || near) { it.k = k; it.hide = hide; this.write(it, bk); }
     }
