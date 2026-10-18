@@ -10,8 +10,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <title>打点器 · 跳舞的线 NewJeans</title>
 <link rel="icon" href="../icon.svg" />
-  <script type="module" crossorigin src="./assets/index-CNC3KmRd.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-BQccu1hz.css">
+  <script type="module" crossorigin src="./assets/index-BkNcFvqq.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-Ci_pYHLf.css">
 </head>
 <body>
 <div id="app">
@@ -56,7 +56,7 @@
       <button class="btn" id="stop" title="停止（Esc）">■</button>
       <div class="status" id="status">准备好了</div>
     </div>
-    <div class="pad" id="pad"><div class="half l" data-type="drum"><b>鼓点</b><small>F · 左半</small></div><div class="half r" data-type="vocal"><b>人声</b><small>J · 右半</small></div><div class="single"><b>轻点这里</b><small>或按 空格 / 任意键</small></div></div>
+    <div class="pad" id="pad"><div id="unlock" class="unlockpill" hidden>🔇 点一下解锁声音</div><div class="half l" data-type="drum"><b>鼓点</b><small>F · 左半</small></div><div class="half r" data-type="vocal"><b>人声</b><small>J · 右半</small></div><div class="single"><b>轻点这里</b><small>或按 空格 / 任意键</small></div></div>
   </section>
 </div>
 
@@ -96,6 +96,8 @@
       <li><b>重录一段</b>：设 A、B（或框选后点「选区→AB」），点「↻ A–B」：这一段会循环播放，每打完一遍就用这一遍替换 A–B 内原来的点；满意了就停止。</li>
       <li><b>复查</b>：在 ⚙ 里勾「回放点击音」再播放，会在每个点上响一声（鼓点 / 人声音色不同）；「吸附预览」（⚙）显示每个点会吸到 1/8 或 1/16 网格的哪里，红色 = 离网格超过 60 ms，值得再看一眼。</li>
       <li><b>导出</b>：每首歌自动保存在本机浏览器。在 ⚙ 里「导出 JSON」下载文件，「复制 JSON」复制到剪贴板，发给制谱的人即可；也可以「导入 JSON」继续编辑。</li>
+      <li><b>没有声音？</b>手机 / 平板上声音要先被一次点击「解锁」：看到大按钮上的「🔇 点一下解锁声音」时点一下页面任意处。来电、Siri、锁屏或切到别的 App 后若没声音，同样再点一下。</li>
+      <li id="silentnote" hidden><b>iPhone 静音开关</b>：这台设备的浏览器较旧，打开侧边静音开关时网页声音会被静音（节拍器和点击音也是）。请关闭静音开关，或升级到 iOS 17 以上。</li>
     </ol>
   </div>
 </dialog>
