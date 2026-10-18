@@ -42,7 +42,7 @@ export class Impostors {
   private mat: StandardMaterial; private atlas: Atlas | null = null; private mesh: Mesh | null = null; private sig = ''; tris = 0;
   constructor(private scene: Scene, private root: TransformNode, private chunks: CChunk[], private spec: SceneCSpec, base: string, private night: boolean[], private density: number) {
     const m = unlit('paperCImp', scene); const tex = new Texture(base + 'models/omg-c/imp/atlas.webp', scene, false, false, Texture.TRILINEAR_SAMPLINGMODE);
-    tex.hasAlpha = true; m.diffuseTexture = tex; m.useAlphaFromDiffuseTexture = false; m.transparencyMode = Material.MATERIAL_ALPHATEST; m.alphaCutOff = 0.45; m.backFaceCulling = false;
+    tex.hasAlpha = true; m.diffuseTexture = tex; m.useAlphaFromDiffuseTexture = true;   /* alpha test runs after all alpha computations: the texture alpha must feed it */ m.transparencyMode = Material.MATERIAL_ALPHATEST; m.alphaCutOff = 0.45; m.backFaceCulling = false;
     new Cutaway(m); this.mat = m;
     fetch(base + 'models/omg-c/imp/atlas.json').then(r => r.json()).then(a => { this.atlas = a; this.sig = ''; }).catch(e => console.warn('omg-c impostor atlas', e));
   }
