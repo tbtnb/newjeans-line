@@ -109,19 +109,23 @@ def build_path(spec, times, dirs, dur, h0):
     return nodes
 
 def overlaps(spec,nodes,upto=None,W=None):
+    """v2.4 validator rule (per-segment width, ignore < 1.5 s apart, height sampled at 0.02/0.5/0.98, need >= 3)."""
     segs=[(nodes[i],nodes[i+1]) for i in range(len(nodes)-1)]
     if upto: segs=segs[:upto]
-    W=W or max(w for _,w in spec.WIDTH)
     bx=[]
     for (ta,xa,za,_),(tb,xb,zb,_) in segs:
-        bx.append((min(xa,xb)-W/2,max(xa,xb)+W/2,min(za,zb)-W/2,max(za,zb)+W/2,elev_at(spec,(ta+tb)/2)))
-    hits=[]
+        Wd=max(width_at(spec,ta),width_at(spec,tb))
+        bx.append((min(xa,xb)-Wd/2,max(xa,xb)+Wd/2,min(za,zb)-Wd/2,max(za,zb)+Wd/2,[elev_at(spec,ta+f*(tb-ta)) for f in (0.02,0.5,0.98)]))
+    hits=[]; cross=0
     for i in range(len(bx)):
         a=bx[i]
         for j in range(i+2,len(bx)):
             b=bx[j]
-            if a[0]<b[1] and b[0]<a[1] and a[2]<b[3] and b[2]<a[3] and abs(a[4]-b[4])<3:
-                hits.append((segs[i][0][0],segs[j][0][0]))
+            if not (a[0]<b[1] and b[0]<a[1] and a[2]<b[3] and b[2]<a[3]): continue
+            if segs[j][0][0]-segs[i][1][0]<1.5: continue
+            if min(abs(p-q) for p in a[4] for q in b[4])<3: hits.append((segs[i][0][0],segs[j][0][0]))
+            else: cross+=1
+    overlaps.cross=cross
     return hits
 
 def plan_dirs(spec, taps, dur):
@@ -187,11 +191,96 @@ def seg_dist(px,pz,a,b):
     f=0 if L==0 else max(0,min(1,((px-ax)*dx+(pz-az)*dz)/L))
     return math.hypot(px-(ax+f*dx),pz-(az+f*dz))
 
+def road_segs(spec,nodes):
+    return [(a[1],a[2],b[1],b[2],elev_at(spec,(a[0]+b[0])/2),max(width_at(spec,a[0]),width_at(spec,b[0])),a[0],b[0]) for a,b in zip(nodes,nodes[1:])]
+
+def clearance(px,pz,y0,y1,RS,skip=()):
+    best=99
+    for k,(ax,az,bx,bz,ey,w,ta,tb) in enumerate(RS):
+        if k in skip: continue
+        if y0 < ey+4.5 and y1 > ey-1.0:
+            dx,dz=bx-ax,bz-az; L=dx*dx+dz*dz
+            f=0 if L==0 else max(0,min(1,((px-ax)*dx+(pz-az)*dz)/L))
+            d=math.hypot(px-(ax+f*dx),pz-(az+f*dz))-w/2
+            if d<best: best=d
+    return best
+
+def obj_height(o):
+    if o.get('kind')=='group' and o.get('parts'):
+        return max(p.get('pos',[0,0,0])[1]+p.get('size',[1,1,1])[1]/2 for p in o['parts'])
+    return (o.get('size') or [2,2,2])[1]
+
+def place_pockets(spec,nodes,objs):
+    """landmarks -> worldPos in the most open pocket near their anchor time (centre of a spiral/ring/U if there is one)."""
+    RS=road_segs(spec,nodes)
+    for o in objs:
+        if not (o.get('landmark') or o.get('pocket')) or o.get('onroad') or 'worldPos' in o or o.get('kind')=='row' or o.get('nopocket'): continue
+        t=o['t']; r=o.get('radius',2.0); hgt=obj_height(o); need=0.9+r
+        best=None
+        for tt in np.linspace(max(0.5,t-3),t+3,9):
+            x0,z0,hx,hz=at_time(nodes,tt); ey=elev_at(spec,tt)
+            for rad in (3.5,5,6.5,8,10,12.5,15,18):
+                for ang in range(0,360,30):
+                    px=x0+rad*math.sin(math.radians(ang)); pz=z0+rad*math.cos(math.radians(ang))
+                    oy=ey+o.get('y',0)
+                    c=clearance(px,pz,oy,oy+hgt,RS)
+                    if c<need: continue
+                    sc=min(c,need+2.5)-0.12*rad-0.4*abs(tt-t)
+                    if best is None or sc>best[0]: best=(sc,px,pz,oy,c)
+        if best:
+            o['worldPos']=[round(best[1],2),round(best[3],2),round(best[2],2)]; o.pop('side',None); o.pop('along',None)
+            o['_clear']=round(best[4]-need,2)
+        else: print('  !! no pocket for',o.get('id'))
+    return objs
+
+def make_forks(spec,nodes,times,road_color):
+    """visual-only fake-out forks: at a few real corners the slab also continues straight for a few units and breaks off
+    into the void (Dancing Line 'fake branch'). Not a hint: it sits on an already visible corner, it never marks timing."""
+    RS=road_segs(spec,nodes); out=[]
+    for n,tf in enumerate(getattr(spec,'FORKS',[])):
+        i=min(range(len(times)),key=lambda k:abs(times[k]-tf))
+        if i==0 or i>=len(times)-1 or times[i]-times[i-1]<0.35: continue
+        a=nodes[i]; b=nodes[i+1]   # node i+1 = corner at times[i] (nodes[0] is the start)
+        hin=a[3]; hx,hz=HEAD[ORDER[hin]]; W=width_at(spec,times[i]); ey=elev_at(spec,times[i])
+        for Lf in (6.0,4.5,3.0):
+            cx=b[1]+hx*(W/2+Lf/2); cz=b[2]+hz*(W/2+Lf/2)
+            ok=all(clearance(b[1]+hx*(W/2+f*Lf),b[2]+hz*(W/2+f*Lf),ey-0.5,ey+0.5,RS,skip=(i,i+1))>W/2+0.6 for f in (0.1,0.5,1.0))
+            if ok:
+                yaw=[0,90,180,270][hin]
+                out.append(dict(id=f'fakefork{n}',t=round(times[i],3),worldPos=[round(cx,2),round(ey-0.35,2),round(cz,2)],rot=yaw,kind='box',
+                                size=[round(W,2),0.7,Lf],color=road_color,name='fake-out fork (visual only, crumbles away)',
+                                appear=dict(t=round(times[i]-2.0,2),mode='rise',dur=0.6),exit=dict(t=round(times[i]+0.6,2),mode='fall',dur=0.8)))
+                break
+    return out
+
+def make_buildings(spec,nodes,times):
+    """cut-away buildings the road winds through: wall blocks on the bbox perimeter of the path in [t0,t1],
+    with openings wherever the road (or any road on that level) passes."""
+    RS=road_segs(spec,nodes); out=[]
+    for n,bd in enumerate(getattr(spec,'BUILDINGS',[])):
+        t0,t1=bd['t0'],bd['t1']; pts=[(x[1],x[2]) for x in nodes if t0<=x[0]<=t1]
+        if len(pts)<2: continue
+        ey=min(elev_at(spec,t) for t in np.linspace(t0,t1,20)); m=bd.get('margin',2.6)
+        x0=min(p[0] for p in pts)-m; x1=max(p[0] for p in pts)+m; z0=min(p[1] for p in pts)-m; z1=max(p[1] for p in pts)+m
+        hgt=bd.get('h',3.2); blk=1.6; k=0
+        def edge(ax,az,bx,bz):
+            nonlocal k
+            L=math.hypot(bx-ax,bz-az); nb=max(1,int(L/blk))
+            for j in range(nb):
+                f=(j+0.5)/nb; px=ax+(bx-ax)*f; pz=az+(bz-az)*f
+                if clearance(px,pz,ey,ey+hgt,RS)<0.9+0.6: continue
+                yaw=0 if abs(bx-ax)<1e-6 else 90
+                out.append(dict(id=f'{bd["id"]}_{k}',t=round((t0+t1)/2,2),worldPos=[round(px,2),round(ey,2),round(pz,2)],rot=yaw,kind='box',
+                                size=[0.5,hgt,round(L/nb,2)],color=bd.get('color','#ffffff'),
+                                appear=dict(t=round(t0-2.5+0.03*k,2),mode='rise',dur=0.5))); k+=1
+        edge(x0,z0,x0,z1); edge(x1,z0,x1,z1); edge(x0,z0,x1,z0); edge(x0,z1,x1,z1)
+    return out
+
 def fix_objects(spec,nodes,objs):
     """push objects sideways until footprint clears the road (>= W/2+0.8+radius) everywhere at same level band."""
     W=max(w for _,w in spec.WIDTH); fixed=[]
     for o in objs:
-        if o.get('kind')=='row' or o.get('onroad'): fixed.append(o); continue
+        if o.get('kind')=='row' or o.get('onroad') or 'worldPos' in o: fixed.append(o); continue
         size=o.get('size',[2,2,2]); r=0.5*math.hypot(size[0],size[2]) if o.get('kind')!='group' else o.get('radius',2.5)
         if o.get('kind')=='group' and o.get('parts'):
             size=[2,max(p['pos'][1]+p['size'][1]/2 for p in o['parts']),2]
@@ -204,16 +293,37 @@ def fix_objects(spec,nodes,objs):
             s=o.get('side',0) or 1
             o['side']=round(s+ (0.75 if s>0 else -0.75),2)
         else:
-            print('  !! object could not be cleared:',o['id'])
+            print('  !! object could not be cleared (dropped):',o.get('id')); continue
         o['_clear']=round(dmin-need,2); fixed.append(o)
     return fixed
+
+def fix_air(spec,times):
+    """v2.3 air-time rule: a fall/jump needs >= 0.35 s (we use 0.40) before the next tap. Move the event into the
+    nearest gap that allows it (earliest: 0.06 s after the previous tap)."""
+    for e in spec.ELEV:
+        if e['type'] not in ('fall','jump'): continue
+        t=e['t']; nxt=next((x for x in times if x>t+1e-6),9e9)
+        if nxt-t>=0.40: continue
+        best=None
+        for a_,b_ in zip(times,times[1:]):
+            if b_-a_>=0.46:
+                lo,hi=a_+0.06,b_-0.40
+                c=min(max(t,lo),hi); 
+                if best is None or abs(c-t)<abs(best-t): best=c
+        print(f'  air-fix {e["type"]} {t:.3f} -> {best:.3f}'); e['t']=round(best,3)
 
 def build(slug):
     spec=importlib.import_module(f'spec_{slug.replace("-","_")}')
     a=load(slug); dur=a['duration']
     taps,b0,T=make_chart(slug,spec,a)
-    dirs=plan_dirs(spec,taps,dur)
     times=[d['t'] for d in taps]
+    fix_air(spec,times)
+    if hasattr(spec,'ROUTE'):
+        import route
+        fixed={min(range(len(times)),key=lambda i:abs(times[i]-t)):d for t,d in getattr(spec,'DIRS_FIXED',{}).items()}
+        dirs=route.plan(spec,times,dur,lambda t:speed_of(spec,t),lambda t:width_at(spec,t),lambda t:elev_at(spec,t),beam=getattr(spec,'BEAM',80),fixed=fixed)
+    else:
+        dirs=plan_dirs(spec,taps,dur)
     nodes=build_path(spec,times,dirs,dur,spec.START_HEADING)
     hits=overlaps(spec,nodes)
     d=OUT/spec.FOLDER; d.mkdir(parents=True,exist_ok=True)
@@ -233,7 +343,12 @@ def build(slug):
         a_,b_=min(gs,key=lambda g:abs((g[0]+g[1])/2-t)); used.add(times.index(a_)); return round((a_+b_)/2,3)
     ctx=dict(b0=b0,T=T,bar=lambda n:round(b0+n*4*T,3),dur=dur,taps=times,secT=secT,gap_mid=gap_mid)
     L=spec.layout(ctx)
-    objs=fix_objects(spec,nodes,L['objects'])
+    if hasattr(spec,'ART'): L['art']=spec.ART
+    if hasattr(spec,'more_objects'): L['objects']+=spec.more_objects(ctx)
+    if hasattr(spec,'patch_layout'): spec.patch_layout(ctx,L)
+    objs=place_pockets(spec,nodes,L['objects'])
+    objs=fix_objects(spec,nodes,objs)
+    objs+=make_forks(spec,nodes,times,L['palette']['road'])+make_buildings(spec,nodes,times)
     L['objects']=[{k:v for k,v in o.items() if k!='_clear'} for o in objs]
     # diamonds: verify straight
     for dm in L['diamonds']:
@@ -241,7 +356,7 @@ def build(slug):
         if g<0.2: print('  !! diamond near tap',dm['t'],g)
     L['path']=dict(note='computed centerline nodes [t,x,z,y,heading_after] (world units, y = road elevation offset)',
                    nodes=[[round(n[0],3),round(n[1],2),round(n[2],2),round(elev_at(spec,n[0]),2),ORDER[n[3]]] for n in nodes])
-    L['elevation']=spec.ELEV
+    L['elevation']=[{k:(round(v,3) if isinstance(v,float) else v) for k,v in e.items()} for e in spec.ELEV]
     L['road']['width']=[dict(t=t,w=w) for t,w in spec.WIDTH]
     (d/'chart.json').write_text(json.dumps(chart,indent=1,ensure_ascii=False))
     (d/'layout.json').write_text(json.dumps(L,indent=1,ensure_ascii=False))
@@ -253,30 +368,54 @@ def build(slug):
     return chart,L,nodes,taps,a
 
 def plot(slug,spec,nodes,taps,chart,L,objs,d):
-    import matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt
-    fig,ax=plt.subplots(figsize=(12,12)); cols=plt.cm.tab20.colors
-    secs=chart['sections']
+    import matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt, matplotlib.patheffects as pe
+    secs=chart['sections']; cols=list(plt.cm.tab20.colors)
+    segs=[]
     for a_,b_ in zip(nodes,nodes[1:]):
-        k=max([j for j,s in enumerate(secs) if s['t']<=a_[0]] or [0])
-        y=elev_at(spec,(a_[0]+b_[0])/2)
-        ax.plot([a_[1],b_[1]],[a_[2],b_[2]],color=cols[k%20],lw=2.6 if y>-0.1 else 1.4, alpha=1 if y>-0.1 else 0.8,
-                ls='-' if y>-4.5 else '--')
-    for j,s in enumerate(secs):
-        x,z,_,_=at_time(nodes,s['t']); ax.annotate(s['label'].split(' · ')[0],(x,z),fontsize=7,color=cols[j%20])
-    for o in objs:
-        if o.get('kind')=='row' or 't' not in o: continue
-        x,z=obj_world(nodes,o)
-        ax.plot(x,z,'*' if o.get('landmark') else 's',color='r' if o.get('egg') else 'k',ms=12 if o.get('landmark') else 4)
-        if o.get('landmark') or o.get('egg'): ax.annotate(o['id'],(x,z),fontsize=7)
-    for dm in L['diamonds']:
-        x,z,_,_=at_time(nodes,dm['t']); ax.plot(x,z,'D',color='gold',ms=6)
-    for c in L['crowns']:
-        x,z,_,_=at_time(nodes,c['t']); ax.plot(x,z,'^',color='orange',ms=11)
-    for e in spec.ELEV:
-        x,z,_,_=at_time(nodes,e.get('t',e.get('t0'))); ax.plot(x,z,'v' if e['dy']<0 else 'P',color='purple',ms=9)
-    ax.plot(0,0,'go'); ax.set_aspect('equal'); ax.grid(alpha=.3)
-    ax.set_title(f'{slug}: {len(taps)} taps  (thin=lower level, dashed=-8 or below; D diamonds, ^ crowns, v falls)')
-    fig.savefig(d/'route.png',dpi=80); plt.close(fig)
+        k=max([j for j,s in enumerate(secs) if s['t']<=a_[0]] or [0]); y=elev_at(spec,(a_[0]+b_[0])/2)
+        segs.append((y,k,a_,b_))
+    ys=[s[0] for s in segs]; ymin,ymax=min(ys),max(ys)
+    def draw(ax,focus=None,lwk=1.0):
+        for y,k,a_,b_ in sorted(segs,key=lambda s:s[0]):
+            c=cols[k%20] if (focus is None or k==focus) else (0.82,0.82,0.82)
+            lw=(1.6+2.2*(y-ymin)/max(ymax-ymin,1))*lwk
+            ax.plot([a_[1],b_[1]],[a_[2],b_[2]],color=c,lw=lw,solid_capstyle='butt',
+                    path_effects=[pe.Stroke(linewidth=lw+1.6,foreground='k' if (focus is None or k==focus) else (0.9,0.9,0.9)),pe.Normal()])
+        for dm in L['diamonds']:
+            x,z,_,_=at_time(nodes,dm['t']); ax.plot(x,z,'D',color='#00c0d0',ms=5,mec='k',zorder=5)
+        for c in L['crowns']:
+            x,z,_,_=at_time(nodes,c['t']); ax.plot(x,z,'^',color='gold',ms=10,mec='k',zorder=5)
+        for e in spec.ELEV:
+            t=e.get('t',e.get('t0')); x,z,_,_=at_time(nodes,t)
+            ax.plot(x,z,'v' if e['dy']<0 else '^',color='purple',ms=7,zorder=6,mfc='none',mew=1.5)
+        for o in objs:
+            if o.get('landmark') or o.get('egg'):
+                if 'worldPos' in o: x,z=o['worldPos'][0],o['worldPos'][2]
+                elif 't' in o: x,z=obj_world(nodes,o)
+                else: continue
+                ax.plot(x,z,'*',color='r' if o.get('egg') else 'k',ms=11,zorder=7)
+                ax.annotate(o['id'],(x,z),fontsize=6,zorder=8)
+        ax.set_aspect('equal'); ax.grid(alpha=.25)
+    fig,ax=plt.subplots(figsize=(15,13))
+    draw(ax); ax.plot(0,0,'go',ms=8)
+    from matplotlib.lines import Line2D
+    hs=[Line2D([0],[0],color=cols[k%20],lw=3) for k in range(len(secs))]
+    ax.legend(hs,[f"{s['t']:.0f}s {s['label'].split(' · ')[0]}" for s in secs],loc='center left',bbox_to_anchor=(1.01,0.5),fontsize=8)
+    ax.set_title(f'{slug}: {len(taps)} taps, height {ymin:+.0f}..{ymax:+.0f} (line width = height, drawn low->high, black edge = overpass)\n'
+                 f'cyan D diamonds, gold ^ crowns, purple v/^ fall/jump/ramp start, * landmarks (red = egg)',fontsize=9)
+    fig.tight_layout(); fig.savefig(d/'route.png',dpi=72); plt.close(fig)
+    n=len(secs); nc=4; nr=(n+nc-1)//nc
+    fig,axs=plt.subplots(nr,nc,figsize=(4.2*nc,4.2*nr))
+    for k in range(nr*nc):
+        ax=axs.flat[k]
+        if k>=n: ax.axis('off'); continue
+        pts=[(a_[1],a_[2]) for y,kk,a_,b_ in segs if kk==k]+[(b_[1],b_[2]) for y,kk,a_,b_ in segs if kk==k]
+        draw(ax,focus=k,lwk=0.8)
+        if pts:
+            xs=[p[0] for p in pts]; zs=[p[1] for p in pts]; m=6; c=max(max(xs)-min(xs),max(zs)-min(zs))/2+m
+            cx=(max(xs)+min(xs))/2; cz=(max(zs)+min(zs))/2; ax.set_xlim(cx-c,cx+c); ax.set_ylim(cz-c,cz+c)
+        ax.set_title(secs[k]['label'].split(' · ')[0]+f" ({secs[k]['t']:.1f}s)",fontsize=9); ax.tick_params(labelsize=6)
+    fig.tight_layout(); fig.savefig(d/'route-sections.png',dpi=60); plt.close(fig)
 
 if __name__=='__main__':
     sys.path.insert(0,str(W2)); build(sys.argv[1])

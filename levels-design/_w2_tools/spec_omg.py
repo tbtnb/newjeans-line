@@ -126,8 +126,8 @@ WHY={
  'Verse 1b (30.3–45.4 s)':'full UK-garage kick enters (K...|k...|..k.|..kk / ..K.|k.kk|.kk.|K...): taps on the kicks, odd bars use the off-beat kick pair at steps 2/4 and 10/12 = call (even bar) / response (odd bar).',
  'Chorus 1 / 2 / Final (45.4, 105.9, 166.4 s)':'halftime groove: kick 1, snare 3, kick on 4; the synth hook (other stem, "O" hits on steps 4/8/14 then 6/10/14) answers between drum hits, so even bars are drum-led and odd bars become a 6-tap 8th-note run (2,6,8,10,12,14) following the hook. Final chorus b adds the extra hook 8th (step 6) for the climax.',
  'Verse 2 / 2b / Post':'same garage kick but thinned to 4–5 taps per bar so the vocals breathe; Verse 2b inserts the vocal "V V v v" accent at step 8.',
- 'Pre (90.8–105.9 s)':'drums drop out, only bass (..B.|..B.|..B.|..B.) + vocal: taps follow the bass pulses at a relaxed 1.9/s while the road ramps up 8 units; bar 55 is a 7-tap 8th-note build into Chorus 2.',
- 'Bridge (134.2–149.3 s)':'new trap-style kick pattern (...k|..k.|k.k.|.k.k): taps on steps 3,6,8,13,15 / 3,6,8,10,13 — every bar starts on an off-beat, the hardest syncopation in the level, on a narrow 1.8-wide road at night.',
+ 'Pre (90.8–105.9 s)':'drums drop out, only bass (..B.|..B.|..B.|..B.) + vocal: taps follow the bass pulses at a relaxed 1.9/s while the phone bridge ramps up 6 units; bar 55 is a 7-tap 8th-note build into Chorus 2.',
+ 'Bridge (134.2–149.3 s)':'new trap-style kick pattern (...k|..k.|k.k.|.k.k): taps on steps 3,6,8,13,15 / 3,6,8,10,13 — every bar starts on an off-beat, the hardest syncopation in the level, on a narrow 1.8-wide road inside the library.',
  'Break (149.3 s)':'one bar of near silence (2 snare hits + 1 kick): 3 taps, camera to top view.',
  'Dance break (151.2–166.4 s)':'four-on-the-floor kick with 8th-note kick fills: long 8th runs (6, 8 and an 11-tap run on bars 86–87) — the densest passage (3.1 taps/s, 4.2/s peak).',
  'Outro (196.6–212.3 s)':'drums stop, only the synth stabs remain: 2 taps per bar on the stabs, last tap > 1 s before the end.',
@@ -235,3 +235,47 @@ def layout(c):
                 collectibleColors=dict(diamond='#88C7D5',crown='#E3BD60'))
 
 CROWN_T=lambda bar: [bar(48)+0.5,bar(79)+0.5]
+
+# ---- v3 route choreography (2026-10-18 user feedback: richer routes). Overrides MOTIFS/PIVOTS/ELEV above.
+_b=lambda n: 0.0288+n*1.88971
+ELEV=[dict(t=_b(24),type='fall',dy=-4),                      # Chorus 1 drops onto the stage floor (-4)
+      dict(t0=_b(33),t1=_b(35),type='ramp',dy=8),            # Verse 2: spiral staircase around the glass-slipper tower (-4 -> +4)
+      dict(t0=_b(48.3),t1=_b(52),type='ramp',dy=6),          # Pre: phone bridge climbs (+4 -> +10), sweeps over Chorus 1
+      dict(t=_b(56),type='fall',dy=-6),                      # Chorus 2 drop (+4)
+      dict(t0=_b(71.2),t1=_b(78),type='ramp',dy=4),          # Bridge: book-page switchbacks climb (+8)
+      dict(t=_b(88),type='fall',dy=-8),                      # Final chorus falls back to the ward level (0)
+      dict(t0=_b(96.2),t1=_b(99.5),type='ramp',dy=5),        # Final chorus b: skybridge B2 (+5) over the hairpins
+      dict(t=_b(104),type='fall',dy=-5)]                     # Outro: back to 0
+A=lambda aim,w=0.6,**k: dict(w_aim=w,**k)
+ROUTE=[(0,'free',0,A(0,1.0)),(_b(4),'free',90,A(0,1.0)),
+       (_b(8),'switch',90,A(0,0.25,thr=0.5)),                       # Verse 1: serpentine switchbacks along the ward wall
+       (_b(16),'meander',0,A(0,0.3)),                                # Verse 1b: tight zigzag corridor between wall panels
+       (_b(24),'stair',135,A(0)),(_b(26),'stair',225,A(0)),(_b(28),'stair',135,A(0)),(_b(30),'stair',45,A(0)),   # Chorus 1: zigzag of staircases
+       (_b(32),'switch',270,A(0,0.3,thr=0.5)),(_b(33),'spiral',None,A(0,0,hand='R',w_motif=2.5)),(_b(35),'stair',300,A(0)),
+       (_b(38),'meander',270,A(0,0.4)),(_b(42),'stair',0,A(0)),(_b(44),'switch',60,A(0,0.4,thr=0.4)),
+       (_b(48),'free',150,A(0,1.2,cross=1.5)),                       # Pre: long sweeping phone bridge crossing over Chorus 1
+       (_b(56),'stair',90,A(0)),(_b(58),'stair',180,A(0)),(_b(60),'stair',270,A(0)),(_b(62),'stair',0,A(0)),   # Chorus 2: ring of staircases
+       (_b(64),'switch',270,A(0,0.3,thr=0.45)),(_b(68),'meander',180,A(0,0.4)),
+       (_b(71),'switch',200,A(0,0.3,thr=0.4)),                       # Bridge: narrow climbing switchbacks between book pages
+       (_b(79),'free',None,{}),
+       (_b(80),'stair',330,A(0,0.5,cross=1.5)),(_b(82),'stair',60,A(0,0.5,cross=1.5)),(_b(84),'stair',330,A(0,0.5,cross=1.5)),(_b(86),'stair',60,A(0,0.5,cross=1.5)),
+       (_b(88),'spiral',None,A(0,0,hand='L',w_motif=1.2)),(_b(89),'stair',90,A(0)),(_b(90),'spiral',None,A(0,0,hand='L',w_motif=1.2)),(_b(91),'stair',90,A(0)),  # bunny-ear hairpins
+       (_b(92),'meander',180,A(0,0.4)),
+       (_b(96),'stair',270,A(0,0.5,cross=1.5)),(_b(98),'stair',180,A(0,0.5,cross=1.5)),(_b(100),'stair',90,A(0,0.5,cross=1.5)),(_b(102),'stair',0,A(0,0.5,cross=1.5)),
+       (_b(104),'free',180,A(0,0.8))]
+FORKS=[_b(18.5),_b(37.2),_b(66.3),_b(93.1),_b(107.4),_b(122.6),_b(169.2)]
+BUILDINGS=[dict(id='ward_block',t0=_b(16.2),t1=_b(19.8),color='#C9D3CB',h=3.0),      # Verse 1b: the zigzag runs through a cut-away ward
+           dict(id='library',t0=_b(72.2),t1=_b(75.8),color='#F3F0E8',h=4.2)]         # Bridge: switchbacks inside the book-page library
+ART={'backdrop':'art/sky.jpg','ground':{'src':'art/ground-halftone.jpg','scale':36},
+     'files':{'art/sky.jpg':'soft sage->cream sky with halftone clouds and a blush horizon (backdrop)',
+              'art/ground-halftone.jpg':'tileable halftone dots on sage (ground, from the OMG cover print)',
+              'art/bunny-poster.jpg':'halftone black bunny poster, blank white mask, no features (stage wall posters)',
+              'art/phone-screen.jpg':'black phone screen with chat bubbles + typing dots, no text (phone bridge face)',
+              'art/slipper-cat-decal.png':'glass slipper + black cat on a storybook, transparent sticker (fairy-tale identity)'}}
+def more_objects(c):
+    bar=c['bar']
+    return [dict(id='poster_bunny_a',t=bar(25),side=-10,kind='image',src='art/bunny-poster.jpg',size=[5.4,0,7.2],mode='upright',appear=dict(t=bar(24)-0.4,mode='unfold',dur=0.6)),
+            dict(id='poster_bunny_b',t=bar(81),side=10,kind='image',src='art/bunny-poster.jpg',size=[5.4,0,7.2],mode='upright',appear=dict(t=bar(80)-0.4,mode='unfold',dur=0.6),react='kick'),
+            dict(id='phone_face',t=bar(50),side=8,y=0.5,kind='image',src='art/phone-screen.jpg',size=[5,0,9],mode='upright',appear=dict(t=bar(48),mode='rise',dur=0.8)),
+            dict(id='slipper_sticker',t=bar(34),side=-9,y=2,kind='image',src='art/slipper-cat-decal.png',size=[6,0,4.5],mode='billboard',alpha=True,appear=dict(t=bar(33),mode='pop',dur=0.5)),
+            dict(id='cat_sticker',t=bar(76),side=9,y=3,kind='image',src='art/slipper-cat-decal.png',size=[5,0,3.75],mode='billboard',alpha=True,appear=dict(t=bar(75),mode='pop',dur=0.5))]

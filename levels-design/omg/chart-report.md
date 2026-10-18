@@ -5,7 +5,7 @@
 - Min gap 226 ms (design floor = one 8th note = 236 ms; snapped taps never closer than road-geometry floor). Median gap 451 ms.
 - **Fastest run: 11 consecutive taps at 8th-note spacing (236 ms ≈ 4.2 taps/s) from 162.054 s to 164.434 s.**
 - 8th-note runs ≥6 taps: 15; ≥8 taps: 2. Longest 5: 11@162.1s, 8@104.2s, 6@48.0s, 6@51.8s, 6@55.5s
-- Recommended judgment window: perfect ±60 ms, accept ±110 ms. +-110 ms accept window around the geometric corner (early taps beyond -110 ms = turn too early => crash into wall; late beyond +110 ms = run off the edge). 8th-note runs here are 236 ms apart so windows never overlap.
+- Judgment window (engine rule v2.4: clamp(0.45 x min neighbour gap, 65, 110) ms each side, PERFECT ±40 ms): min ±102 ms, median ±110 ms, 200 of 459 taps below the ±110 ms cap. My recommendation stays perfect ±60 / accept ±110 ms where the music allows; the engine rule is what ships.
 - Snapping: 337/459 taps sit on a detected onset of their tagged stem (±45 ms search, attack refined on 2 ms RMS); the rest sit on the fitted grid (where the onset was ambiguous or snapping would have broken the geometry floor).
 
 ## Per-section density
@@ -39,8 +39,8 @@ kick: 263, melody: 89, snare: 58, vocal: 25, bass: 24
 - **Verse 1b (30.3–45.4 s)** — full UK-garage kick enters (K...|k...|..k.|..kk / ..K.|k.kk|.kk.|K...): taps on the kicks, odd bars use the off-beat kick pair at steps 2/4 and 10/12 = call (even bar) / response (odd bar).
 - **Chorus 1 / 2 / Final (45.4, 105.9, 166.4 s)** — halftime groove: kick 1, snare 3, kick on 4; the synth hook (other stem, "O" hits on steps 4/8/14 then 6/10/14) answers between drum hits, so even bars are drum-led and odd bars become a 6-tap 8th-note run (2,6,8,10,12,14) following the hook. Final chorus b adds the extra hook 8th (step 6) for the climax.
 - **Verse 2 / 2b / Post** — same garage kick but thinned to 4–5 taps per bar so the vocals breathe; Verse 2b inserts the vocal "V V v v" accent at step 8.
-- **Pre (90.8–105.9 s)** — drums drop out, only bass (..B.|..B.|..B.|..B.) + vocal: taps follow the bass pulses at a relaxed 1.9/s while the road ramps up 8 units; bar 55 is a 7-tap 8th-note build into Chorus 2.
-- **Bridge (134.2–149.3 s)** — new trap-style kick pattern (...k|..k.|k.k.|.k.k): taps on steps 3,6,8,13,15 / 3,6,8,10,13 — every bar starts on an off-beat, the hardest syncopation in the level, on a narrow 1.8-wide road at night.
+- **Pre (90.8–105.9 s)** — drums drop out, only bass (..B.|..B.|..B.|..B.) + vocal: taps follow the bass pulses at a relaxed 1.9/s while the phone bridge ramps up 6 units; bar 55 is a 7-tap 8th-note build into Chorus 2.
+- **Bridge (134.2–149.3 s)** — new trap-style kick pattern (...k|..k.|k.k.|.k.k): taps on steps 3,6,8,13,15 / 3,6,8,10,13 — every bar starts on an off-beat, the hardest syncopation in the level, on a narrow 1.8-wide road inside the library.
 - **Break (149.3 s)** — one bar of near silence (2 snare hits + 1 kick): 3 taps, camera to top view.
 - **Dance break (151.2–166.4 s)** — four-on-the-floor kick with 8th-note kick fills: long 8th runs (6, 8 and an 11-tap run on bars 86–87) — the densest passage (3.1 taps/s, 4.2/s peak).
 - **Outro (196.6–212.3 s)** — drums stop, only the synth stabs remain: 2 taps per bar on the stabs, last tap > 1 s before the end.

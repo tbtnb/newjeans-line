@@ -35,7 +35,7 @@ f'- **Old (v1) taps: {spec.OLD} → new: {len(taps)}  (×{len(taps)/spec.OLD:.2f
 f'- Min gap {gaps.min()*1000:.0f} ms (design floor = one 8th note = {eighth*1000:.0f} ms; snapped taps never closer than road-geometry floor). Median gap {np.median(gaps)*1000:.0f} ms.',
 f'- **Fastest run: {len(best)} consecutive taps at 8th-note spacing ({eighth*1000:.0f} ms ≈ {1/eighth:.1f} taps/s) from {taps[best[0]]:.3f} s to {taps[best[-1]]:.3f} s.**' if best else '',
 f'- 8th-note runs ≥6 taps: {sum(1 for r in r8 if len(r)>=6)}; ≥8 taps: {sum(1 for r in r8 if len(r)>=8)}. Longest 5: '+', '.join(f'{len(r)}@{taps[r[0]]:.1f}s' for r in sorted(r8,key=len,reverse=True)[:5]),
-f'- Recommended judgment window: perfect ±{spec.JUDGE["perfect"]} ms, accept ±{spec.JUDGE["good"]} ms. {spec.JUDGE["note"]}',
+f'- Judgment window (engine rule v2.4: clamp(0.45 x min neighbour gap, 65, 110) ms each side, PERFECT ±40 ms): '+__import__('jw').summary(taps)+'. My recommendation stays perfect ±'+str(spec.JUDGE['perfect'])+' / accept ±'+str(spec.JUDGE['good'])+' ms where the music allows; the engine rule is what ships.',
 f'- Snapping: {sum(1 for s in src if s!="grid")}/{len(src)} taps sit on a detected onset of their tagged stem (±45 ms search, attack refined on 2 ms RMS); the rest sit on the fitted grid (where the onset was ambiguous or snapping would have broken the geometry floor).',
 '\n## Per-section density\n','| t (s) | section | kind | taps | taps/s | densest 2 s |','|---|---|---|---:|---:|---:|']
 for i,s in enumerate(secs):
