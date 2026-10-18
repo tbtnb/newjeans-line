@@ -1,10 +1,11 @@
 """Repeat-consistency report on the snapped user taps (report only). Pairs of sections whose audio repeats
 (chorus/post-chorus 2 are sample copies of 1 at +128 beats; each chorus/post-chorus is two 4-bar halves 16 beats apart).
-Lists per 2-bar phrase the slots only in A / only in B, so single-tap slips stand out."""
+Usage: omg_user_repeats.py [snap-or-refine.json] [out.json]. Lists per 2-bar phrase the slots only in A / only in B, so single-tap slips stand out."""
 import json, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
-s = json.load(open(ROOT / 'analysis/user/omg-user-snap.json')); P = 0.4724304864737013; B0 = 0.011; S16 = P / 4
+SRC = sys.argv[1] if len(sys.argv) > 1 else str(ROOT / 'analysis/user/omg-user-snap.json'); OUT = sys.argv[2] if len(sys.argv) > 2 else str(ROOT / 'analysis/user/omg-user-repeats.json')
+s = json.load(open(SRC)); P = 0.4724304864737013; B0 = 0.011; S16 = P / 4
 slots = {x['slot16'] for x in s['taps']}
 def t(k): return round(B0 + k * S16, 3)
 def beat(sec): return round((sec - B0) / P)
@@ -21,7 +22,7 @@ for name, a0, a1, shift_beats in PAIRS:
         if a != b: phr.append({'phrase_at_a': t(k0 + p0), 'phrase_at_b': t(k0 + p0 + sh), 'n_a': len(a), 'n_b': len(b),
                                'only_a': [t(k0 + k) for k in sorted(a - b)], 'only_b': [t(k0 + sh + k) for k in sorted(b - a)]})
     out.append({'pair': name, 'taps_a': len(A), 'taps_b': len(B), 'same': len(A & B), 'jaccard': round(len(A & B) / max(1, len(A | B)), 2), 'diff_phrases': phr})
-json.dump(out, open(ROOT / 'analysis/user/omg-user-repeats.json', 'w'), indent=1)
+json.dump(out, open(OUT, 'w'), indent=1)
 for o in out:
     print(f"== {o['pair']}: A {o['taps_a']} B {o['taps_b']} same {o['same']} jaccard {o['jaccard']}")
     for p in o['diff_phrases']: print(f"   phrase {p['phrase_at_a']}/{p['phrase_at_b']}: A {p['n_a']} B {p['n_b']} onlyA {p['only_a']} onlyB {p['only_b']}")
