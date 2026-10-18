@@ -69,3 +69,14 @@ def pos_at(nodes,t,elev=None):
 def world_of(nodes,t,side=0,along=0):
     x,z,h=pos_at(nodes,t); hx,hz=HEAD[ORDER[h]]; rx,rz=hz,-hx
     return x+rx*side+hx*along, z+rz*side+hz*along
+def snap_elev(elev, taps, minnext=0.6):
+    """fall/jump entries with 'snap':True move to 0.05 s after the tap whose following gap is >= minnext, nearest to t."""
+    out = []
+    for e in elev:
+        e = dict(e)
+        if e.get('snap') and e['type'] in ('fall', 'jump'):
+            c = [(abs(a + 0.05 - e['t']), a + 0.05) for a, b in zip(taps, taps[1:]) if b - a >= minnext and abs(a - e['t']) < 3]
+            if c: e['t'] = round(min(c)[1], 3)
+            e.pop('snap')
+        out.append(e)
+    return out

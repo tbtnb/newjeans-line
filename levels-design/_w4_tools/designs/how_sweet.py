@@ -7,11 +7,6 @@ CHART_NOTES='Miami-bass tresillo (16th slots 0/6/12) is the backbone in verses a
 CC='#e8735a'; CREAM='#f6e7b8'; DENIM='#4c6a96'; GREEN='#4f9a62'; BLACK='#141414'
 # Route: start INSIDE the black album frame -> shop street NE -> rooftop (ramp) -> sports-court rooftops NW -> drop to street NE past the sticker
 # -> blue-wall plaza SE -> laundry-flag lane NE -> build NW -> floating sky platforms NE -> long open straight to the record shop.
-ROT=[(46.42,'L'),(77.14,'R'),(107.86,'R'),(138.58,'L'),(153.94,'L'),(169.30,'R')]
-ELEV=[{'t0':38.9,'t1':45.9,'type':'ramp','dy':3,'note':'pre-chorus: street climbs a fire-escape ramp to the rooftops'},
-      {'t':77.22,'type':'fall','dy':-3,'note':'chorus ends -> line hops off the roof back to street level (verse 2)'},
-      {'t0':154.2,'t1':168.0,'type':'ramp','dy':6,'note':'build: long climb above the city'},
-      {'t':169.38,'type':'fall','dy':-2,'note':'final-chorus downbeat drop onto the floating platforms'}]
 WIDTH=[{'t':0,'w':2.6},{'t':8.02,'w':2.2},{'t':46.42,'w':2.4},{'t':77.14,'w':2.1},{'t':107.86,'w':2.2},{'t':138.58,'w':2.0},{'t':169.3,'w':1.8},{'t':200.0,'w':2.6}]
 REVEAL=[{'t':0,'mode':'static','lead':3.0},{'t':8.02,'mode':'rise','lead':2.0},{'t':46.42,'mode':'unfold','lead':1.6},{'t':77.14,'mode':'rise','lead':1.8},
         {'t':138.58,'mode':'drop','lead':1.8},{'t':153.94,'mode':'rise','lead':1.4},{'t':169.3,'mode':'rise','lead':1.4},{'t':200.0,'mode':'static','lead':3.0}]
@@ -36,10 +31,10 @@ CAMERA=[{'t':0,'preset':'close','blend':0},{'t':8.02,'preset':'iso','blend':2.5}
  {'t':200.0,'preset':'wide','blend':3.0}]
 def letter_block(c=CC,h=4): return [{'kind':'box','pos':[0,h/2,0],'size':[2.2,h,1.0],'color':c}]
 OBJECTS=[
- {'id':'cover_frame','t':1.0,'off':(0,6),'kind':'group','landmark':True,'clear':0,'onroad':True,'name':'Black album-cover frame the level starts inside (a hollow square border lying around the start)',
-  'parts':[{'kind':'box','pos':[-9,0.3,6],'size':[1.2,0.6,26],'color':BLACK},{'kind':'box','pos':[9,0.3,6],'size':[1.2,0.6,26],'color':BLACK},
-           {'kind':'box','pos':[0,0.3,-7],'size':[19,0.6,1.2],'color':BLACK}],
-  'exit':{'t':8.02,'mode':'fall','dur':1.2}},
+ {'id':'start_frame','t':1.0,'off':(0,5),'kind':'group','clear':0,'onroad':True,'y':-0.34,'name':'flat charcoal frame decal under the start (cover border motif; below road top, never blocks)',
+  'parts':[{'kind':'box','pos':[-6,0,5],'size':[1.0,0.05,18],'color':'#292d32'},{'kind':'box','pos':[6,0,5],'size':[1.0,0.05,18],'color':'#292d32'},
+           {'kind':'box','pos':[0,0,-4],'size':[13,0.05,1.0],'color':'#292d32'},{'kind':'box','pos':[0,0,14],'size':[13,0.05,1.0],'color':'#292d32'}],
+  'exit':{'t':8.02,'mode':'sink','dur':1.2}},
 ]+[
  {'id':f'nj_letter{i}','t':1.5+i*0.9,'off':(-7 if i%2==0 else 7,0),'kind':'group','parts':letter_block(CC,3+(i%3)),'clear':1.4,'react':'beat',
   'name':'coral NewJeans letter blocks (cover title)', 'appear':{'t':0.4+i*0.25,'mode':'rise','dur':0.5}} for i in range(8)
@@ -59,19 +54,18 @@ OBJECTS=[
  {'id':'barcode_digits','t':69.8,'off':(5,2),'kind':'text','name':'5 220722 221029','size':[6,0,1.2],'color':BLACK,'egg':True,'clear':3},
  {'id':'denim_wall1','t':58.0,'off':(16,0),'kind':'box','size':[2,8,24],'color':DENIM,'clear':12},
  {'id':'denim_wall2','t':66.0,'off':(-16,0),'kind':'box','size':[2,8,24],'color':DENIM,'clear':12},
- {'id':'sticker','t':92.5,'off':(-14,14),'kind':'group','landmark':True,'clear':6,'react':'beat','name':'giant round "How Sweet" sticker from the cover, standing like a sun, slowly turning',
-  'parts':[{'kind':'cylinder','pos':[0,7,0],'size':[11,0.6,11],'rot':[90,0,0],'color':CC},{'kind':'torus','pos':[0,7,-0.35],'size':[8,0.25,8],'rot':[90,0,0],'color':CREAM},
-           {'kind':'cylinder','pos':[0,1,0],'size':[0.6,2,0.6],'color':'#999999'}]},
+ {'id':'sticker','t':92.5,'off':(-14,14),'kind':'image','src':'art/sticker.png','size':[14,0,7],'mode':'billboard','y':4,'landmark':True,'clear':7,'name':'giant cut-corner orange "How Sweet" sticker floating over the rooftops (cover sticker, generated art)'},
+ {'id':'sticker_post','t':92.5,'off':(-14,14),'kind':'cylinder','size':[0.5,4,0.5],'color':'#999999','clear':7},
 ]+[
  {'id':f'vshop{i}','t':t,'off':(s,0),'kind':'group','parts':shop(6,6,4,['#f3e6cf','#d9ecd9','#f9d9c9'][i%3],[CC,GREEN,DENIM][i%3]),'clear':3.5,'appear':{'t':t-2,'mode':'rise','dur':0.6}}
  for i,(t,s) in enumerate([(80,7),(84,-7),(88,7),(97,7),(101,-7),(105,7)])
 ]+[
  {'id':f'bluewall{i}','t':t,'off':(s,0),'kind':'box','size':[2,10,14],'color':DENIM,'clear':8,'appear':{'t':t-2,'mode':'rise','dur':0.8}} for i,(t,s) in enumerate([(110,14),(116,-14),(122,14),(128,-14),(134,14)])
 ]+[
- {'id':'laundry','kind':'row','t0':139.0,'t1':153.5,'side':0,'spacing':3.0,'bothSides':False,'item':{'kind':'group','react':'beat','parts':[
-   {'kind':'cylinder','pos':[0,6.5,0],'size':[0.05,0.05,9],'rot':[0,0,90],'color':'#ffffff'},
+ {'id':'laundry','kind':'row','t0':139.0,'t1':153.5,'side':3.5,'spacing':3.0,'bothSides':True,'item':{'kind':'group','react':'beat','parts':[
+   {'kind':'cylinder','pos':[0,3.2,0],'size':[0.15,6.4,0.15],'color':'#ffffff'},
    {'kind':'box','pos':[-2,5.8,0],'size':[1.0,1.2,0.05],'color':CC},{'kind':'box','pos':[0,5.8,0],'size':[1.0,1.2,0.05],'color':CREAM},{'kind':'box','pos':[2,5.8,0],'size':[1.0,1.2,0.05],'color':GREEN}]},
-  'name':'laundry-flag lines high overhead (y>=5.2, never on the road plane)'},
+  'name':'laundry poles with flags on both sides of the narrow bridge (posts 3.5 off the centre line)'},
 ]+[
  {'id':f'cloud{i}','t':t,'off':(s,6),'y':-6,'kind':'cloud','size':[6,2.5,4],'color':'#ffffff','clear':4,'react':'none'} for i,(t,s) in enumerate([(171,-9),(176,9),(181,-10),(186,10),(191,-9),(196,9)])
 ]+[
@@ -81,7 +75,7 @@ OBJECTS=[
   'parts':[{'kind':'cylinder','pos':[0,2.2,0],'size':[0.06,0.06,5],'rot':[0,0,90],'color':'#888888'}]+[{'kind':'box','pos':[-2+i,1.5,0],'size':[0.7,1.2,0.15],'color':c} for i,c in enumerate([DENIM,BLACK,'#1d2a55',DENIM,GREEN])]},
 ]
 EVENTS=[
- {'t':8.02,'type':'lower','target':'cover_frame','note':'frame edges fall away like the cover being lifted -> street appears'},
+ 
  {'t':46.42,'type':'color','palette':{'ground':GREEN},'dur':1.0},{'t':46.42,'type':'burst','at':'player','particles':'confetti'},
  {'t':77.14,'type':'spin','target':'sticker','until':107.86,'note':'one turn per 8 bars'},
  {'t':107.86,'type':'flash','dur':0.2},
@@ -92,4 +86,63 @@ EVENTS=[
  {'t':212.5,'type':'spin','target':'open_sign','until':213.5,'note':'CLOSED -> OPEN flip'}]
 FINISH={'kind':'gate','note':'record-shop door: the line enters the open door; OPEN sign flips'}
 DIAMOND_TARGETS=[5,24,42,58,84,102,120,146,163,195]; CROWN_TARGETS=[104.5,146.0]
-MARGIN=1.5
+
+B=1.91996; S0=0.339
+def hb(bar): return round(S0+B*bar,2)
+ELEV=[{'t0':hb(20),'t1':hb(24)-0.3,'type':'ramp','dy':3,'note':'pre-chorus: the teal footbridge staircase climbs from street level L0 to the rail plaza L1'},
+      {'t0':hb(48),'t1':hb(56)-0.3,'type':'ramp','dy':3,'note':'verse 2 / pre 2: rooftop terraces climb to L2'},
+      {'t0':hb(72),'t1':hb(80)-0.3,'type':'ramp','dy':-3,'note':'bridge: long narrow bridge glides back down to L1'},
+      {'t0':hb(80),'t1':hb(88)-0.3,'type':'ramp','dy':6,'note':'build: square helix up the water-tower'},
+      {'t':hb(88),'type':'fall','dy':-6,'snap':True,'note':'final-chorus downbeat: drop off the tower onto the plaza'}]
+BLOCKS=[
+ {'t0':0,'tex':'stair'},
+ {'t0':hb(4),'tex':'serpL','P':[1.4,1.9],'m':[4,6],'phases':[0]},
+ {'t0':hb(12),'tex':'bolt','P':[2*B,B],'phases':[0,B]},
+ {'t0':hb(20),'tex':'stair'},
+ {'t0':hb(24),'tex':'orbit','P':[2*B,2.5*B,3*B],'m':[3],'phases':[0,B/2,B]},
+ {'t0':hb(32),'tex':'zig','P':[B,1.5*B,2*B],'phases':[0,B/2,B,1.5*B,2*B,3*B],'sides':['R','L']},
+ {'t0':hb(40),'tex':'switch','P':[2*B,3*B],'phases':[0,B]},
+ {'t0':hb(48),'tex':'serp','m':[6,8],'phases':[0,2,4]},
+ {'t0':hb(56),'tex':'orbit','P':[1.5*B,2*B,2.5*B],'m':[3],'phases':[0,B/2,B]},
+ {'t0':hb(64),'tex':'bolt','P':[B],'phases':[0,B/2]},
+ {'t0':hb(72),'tex':'stair'},
+ {'t0':hb(80),'tex':'orbit','P':[2*B,1.75*B],'m':[4,5],'phases':[0,B/2,B],'cross':1,'look':6},
+ {'t0':hb(88),'tex':'xspiral','P':[B,1.5*B,2*B],'m':[5,6],'phases':[0,B/2,B,1.5*B,2*B,3*B],'sides':['R','L']},
+ {'t0':hb(96),'tex':'stair'},
+ {'t0':hb(104),'tex':'turn','phases':[0,B]},
+]
+MARGIN=0.3
+FORKS=[20.0,85.0,128.0,190.0]
+BEAM=20
+# --- codex-ref alignment (nj-refs/how-sweet): cat balcony egg, teal footbridge, white train + yellow gantries, five B/W panels + orange
+TEAL='#507f83'; SUN='#e9bc48'
+OBJECTS+=[
+ {'id':f'apt{i}','t':t,'off':(s_,0),'kind':'group','clear':4.5,'appear':{'t':t-2,'mode':'rise','dur':0.7},
+  'parts':[{'kind':'box','pos':[0,4,0],'size':[7,8,6],'color':'#f2efe4'},{'kind':'box','pos':[0,8.2,0],'size':[7.4,0.4,6.4],'color':TEAL}]+
+          [{'kind':'box','pos':[-2+2*(k%3),2+2.6*(k//3),-3.05],'size':[1.2,1.4,0.1],'color':'#292d32'} for k in range(6)]+
+          [{'kind':'box','pos':[0,2.6+2.6*k,-3.6],'size':[6,0.15,1.2],'color':TEAL} for k in range(2)]}
+ for i,(t,s_) in enumerate([(10.5,9),(14.5,-9),(18.5,9),(26.5,-9),(30.5,9),(34.5,-9)])]+[
+ {'id':'cat_egg','t':16.5,'off':(-8.5,0),'y':5.4,'kind':'group','egg':True,'clear':4,'react':'beat','name':'EGG E1: orange cat on an apartment balcony; it turns its head with the syncopated claps; the same cat silhouette reappears in the final chorus skyline',
+  'parts':[{'kind':'box','pos':[0,0,0],'size':[3,0.2,1.6],'color':TEAL},{'kind':'sphere','pos':[0,0.6,0],'size':[0.9,0.8,0.7],'color':'#ff5b24'},{'kind':'sphere','pos':[0.45,1.15,0],'size':[0.55,0.5,0.5],'color':'#ff5b24'},
+           {'kind':'cone','pos':[0.33,1.45,0],'size':[0.18,0.25,0.18],'color':'#ff5b24'},{'kind':'cone','pos':[0.6,1.45,0],'size':[0.18,0.25,0.18],'color':'#ff5b24'}]},
+ {'id':'cat_egg2','t':186.0,'off':(16,12),'y':6,'kind':'group','egg':True,'clear':6,'name':'EGG E1 return: cat silhouette on a far rooftop',
+  'parts':[{'kind':'box','pos':[0,-3,0],'size':[5,6,5],'color':'#e6e1d4'},{'kind':'sphere','pos':[0,0.6,0],'size':[1.4,1.2,1.0],'color':'#292d32'},{'kind':'sphere','pos':[0.7,1.4,0],'size':[0.8,0.7,0.7],'color':'#292d32'}]},
+ {'id':'rail_l','kind':'row','t0':38.9,'t1':46.2,'side':2.4,'spacing':1.2,'bothSides':True,'item':{'kind':'box','size':[0.18,0.9,1.0],'color':TEAL},'name':'teal footbridge railings (low, 2.4 off centre)'},
+ {'id':'train','t':54.0,'off':(13,0),'y':-6,'kind':'group','landmark':True,'clear':6,'react':'beat','name':'white commuter train on the lower track beside the rail plaza (MV level crossing)',
+  'parts':[{'kind':'box','pos':[0,1.6,k*7.4],'size':[3,3,7],'color':'#f2efe4'} for k in range(-2,3)]+[{'kind':'box','pos':[-1.52,2.1,k*7.4],'size':[0.05,0.9,5.5],'color':'#292d32'} for k in range(-2,3)]+
+          [{'kind':'box','pos':[0,0,0],'size':[5,0.3,40],'color':'#8f8a80'}]},
+]+[
+ {'id':f'gantry{i}','t':t,'off':(s_,0),'kind':'group','clear':3.5,'appear':{'t':t-1.5,'mode':'unfold','dur':0.6},'name':'yellow level-crossing gantry (opens outward on the chorus downbeat)',
+  'parts':[{'kind':'box','pos':[0,3,0],'size':[0.6,6,0.6],'color':SUN},{'kind':'box','pos':[s_/abs(s_)*-1.6,6,0],'size':[3.8,0.5,0.5],'color':SUN}]} for i,(t,s_) in enumerate([(48,5.5),(52,-5.5),(56,5.5),(60,-5.5),(64,5.5),(68,-5.5)])
+]+[
+ {'id':f'panel{i}','t':58.0,'off':(-17,-6+3.2*i),'y':-6,'kind':'box','size':[2.6,9,0.6],'color':['#292d32','#f2efe4','#292d32','#f2efe4','#292d32','#ff5b24'][i],'clear':10,'landmark':i==5,
+  'name':'five black/white standing panels + the orange sleeve panel (abstracted group cover); they rise one by one in chorus 2 and line up again in the final chorus'} for i in range(6)
+]+[
+ {'id':'panels_poster','t':120.0,'off':(15,8),'kind':'image','src':'art/panels-poster.jpg','size':[12,0,6.75],'mode':'billboard','y':5,'clear':8,'name':'poster of the five panels on the rooftop courtyard wall'},
+ {'id':'water_tower','t':160.0,'world':('hole',154.5,168.5),'kind':'group','landmark':True,'clear':1,'name':'water tower: the build-section helix winds around it',
+  'parts':[{'kind':'cylinder','pos':[0,6,0],'size':[0.8,12,0.8],'color':TEAL},{'kind':'cylinder','pos':[0,13.5,0],'size':[3.4,3,3.4],'color':'#f2efe4'},{'kind':'cone','pos':[0,15.6,0],'size':[3.8,1.2,3.8],'color':'#ff5b24'}]},
+]
+EVENTS+=[{'t':107.86+i*0.96,'type':'raise','target':f'panel{i}','dy':6,'dur':0.5,'note':'panels rise one per half-bar at the chorus-2 downbeat (music clock)'} for i in range(6)]
+EVENTS+=[{'t':46.42,'type':'pulse','target':'train','every':0.47999,'until':77.14}]
+ART={'backdrop':'art/sky-summer.jpg','ground':{'src':'art/plaza-ground.jpg','scale':40}}
+COLLECT={'diamond':'#75e1d0','crown':'#e9bc48'}

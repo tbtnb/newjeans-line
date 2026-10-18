@@ -1,7 +1,7 @@
 import json,sys,numpy as np,importlib.util
 slug=sys.argv[1]; OUT=f'/workspace/newjeans-line-designs/{slug}'
 OLD={'how-sweet':133,'bubble-gum':132,'supernatural':162,'right-now':216}[slug]
-legacy=[l for l in json.load(open('/workspace/nj-design-w4/src/levels.json')) if l['id']==slug][0]
+legacy=[l for l in json.load(open('/tmp/levels_main.json')) if l['id']==slug][0]
 raw=json.load(open(f'{slug}.chart.raw.json')); ch=json.load(open(f'{OUT}/chart.json')); off=json.load(open(f'{slug}.offsets.json'))
 an=json.load(open(f'{slug}.analysis.raw.json')); g=json.load(open(f'{slug}.grid.json')); son=json.load(open(f'{slug}.stem_onsets.json'))
 z=np.load(f'{slug}.stems.npz'); fps=22050/256

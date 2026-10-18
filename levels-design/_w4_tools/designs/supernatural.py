@@ -7,10 +7,6 @@ CHART_NOTES='Semi-automatic: per-section density/weights set by hand, slot choic
 # Route: W-shaped rooftop run (intro->verse1 ridge->pre), then a diamond LOOP around the flower antenna (chorus1->verse2->bridge->chorus2)
 # that closes by crossing OVER the pre-chorus road on a raised gantry (+4) at ~134 s, then out east to the open sky.
 ROT=[(26.78,'R'),(44.39,'L'),(62.01,'L'),(79.62,'R'),(97.24,'R'),(114.85,'R'),(137.0,'L'),(150.08,'L')]
-ELEV=[{'t':97.24,'type':'fall','dy':-4,'note':'drums drop out -> line falls off the roof edge into the floating star layer'},
-      {'t':114.31,'type':'jump','dy':4,'note':'drum fill 7-run ends -> launch pad back to roof level on the chorus downbeat'},
-      {'t0':118.2,'t1':127.0,'type':'ramp','dy':4,'note':'gantry climbs so the loop can cross over the pre-chorus road'},
-      {'t':149.30,'type':'fall','dy':-4,'note':'drop from the gantry, landing just before the final-chorus downbeat'}]
 WIDTH=[{'t':0,'w':2.6},{'t':26.78,'w':2.3},{'t':62.01,'w':2.2},{'t':97.24,'w':2.4},{'t':114.85,'w':2.0},{'t':150.08,'w':1.8},{'t':167.7,'w':2.4}]
 REVEAL=[{'t':0,'mode':'static','lead':3.0},{'t':9.17,'mode':'rise','lead':2.0},{'t':62.01,'mode':'rise','lead':1.6},
         {'t':97.24,'mode':'unfold','lead':1.8},{'t':114.85,'mode':'drop','lead':1.5},{'t':150.08,'mode':'rise','lead':1.4},{'t':167.7,'mode':'fade','lead':2.5}]
@@ -38,7 +34,7 @@ CAMERA=[{'t':0,'preset':'close','blend':0},
  {'t':97.24,'preset':'top','blend':2.5,'note':'falling into stars, top-down calm'},
  {'t':112.65,'preset':'iso','blend':1.6},
  {'t':123.66,'preset':'iso','yaw':40,'dist':20,'blend':2.0},
- {'t':132.47,'preset':'side','blend':2.2,'note':'side view so the overpass crossing reads'},
+ {'t':132.47,'preset':'high','blend':2.2,'note':'high view: the helix around the gantry pylon passes over its own first lap'},
  {'t':141.28,'preset':'iso','blend':2.0},
  {'t':150.08,'preset':'iso','dist':16,'shake':0.15,'blend':0.6},
  {'t':150.6,'preset':'iso','dist':16,'shake':0,'blend':0.4},
@@ -56,16 +52,16 @@ def building(w,h,d,c='#1f2650',win='#ffd98a'):
 OBJECTS=[
  # --- landmarks ---
  {'id':'flower_billboard','t':2.0,'off':(-12,18),'kind':'group','landmark':True,'name':'Murakami flower billboard (album cover) above the radio booth','clear':7,
-  'parts':[{'kind':'box','pos':[0,7,0.6],'size':[13,13,0.4],'color':'#000000'},{'kind':'cylinder','pos':[0,3,0.6],'size':[0.5,6,0.5],'color':'#444b78'}]+murakami_flower(r=5,y=2),
+  'parts':[{'kind':'box','pos':[0,7,0.6],'size':[13,13,0.4],'color':'#000000','texture':'art/flower-billboard.jpg'},{'kind':'cylinder','pos':[0,0.5,0.6],'size':[0.5,1,0.5],'color':'#444b78'}],
   'react':'beat'},
  {'id':'radio_booth','t':1.2,'off':(-5,4),'kind':'group','name':'tiny broadcast booth (start)','clear':2.5,
   'parts':[{'kind':'box','pos':[0,1.3,0],'size':[3,2.6,2.4],'color':'#f6f0e4'},{'kind':'box','pos':[0,2.75,0],'size':[3.4,0.3,2.8],'color':'#c2449a'},{'kind':'box','pos':[0.6,1.5,-1.21],'size':[1.2,0.8,0.05],'color':'#ffd98a'}]+[dict(p,pos=[p['pos'][0]-0.8,p['pos'][1]+2.8,p['pos'][2]]) for p in antenna(3,'#ff5a2c')]},
- {'id':'flower_antenna','t':62.5,'world':(262,205),'kind':'group','landmark':True,'clear':9,
+ {'id':'flower_antenna','t':62.5,'world':('hole',62.5,79.0),'kind':'group','landmark':True,'clear':9,
   'name':'Flower dish antenna at the centre of the loop: petals closed until Chorus 1, bloom on the downbeat; reachable only by eye (the loop orbits it)',
-  'parts':[{'kind':'cylinder','pos':[0,5,0],'size':[1.4,10,1.4],'color':'#c7cbe8'},{'kind':'cylinder','pos':[0,10.2,0],'size':[3,0.6,3],'color':'#9aa3d0'}]+[dict(p,pos=[p['pos'][0],p['pos'][1]+8,p['pos'][2]]) for p in murakami_flower(r=6)],
+  'parts':[{'kind':'cylinder','pos':[0,10,0],'size':[0.9,20,0.9],'color':'#c7cbe8'},{'kind':'cylinder','pos':[0,20.2,0],'size':[3,0.6,3],'color':'#9aa3d0'}]+[dict(p,pos=[p['pos'][0],p['pos'][1]+18,p['pos'][2]]) for p in murakami_flower(r=6)],
   'appear':{'t':61.0,'mode':'grow','dur':1.0},'react':'beat'},
- {'id':'orbit_dot_a','t':62.5,'world':(256,205),'kind':'sphere','size':[1.2,1.2,1.2],'y':22,'color':'#00aeef','name':'signal A (orbits the flower)','clear':1},
- {'id':'orbit_dot_b','t':62.5,'world':(268,205),'kind':'sphere','size':[1.2,1.2,1.2],'y':22,'color':'#ff5fa8','name':'signal B (orbits the flower)','clear':1},
+ {'id':'orbit_dot_a','t':62.5,'world':('hole',62.5,79.0),'wdx':-4,'kind':'sphere','size':[1.2,1.2,1.2],'y':30,'color':'#00aeef','name':'signal A (orbits the flower)','clear':1},
+ {'id':'orbit_dot_b','t':62.5,'world':('hole',62.5,79.0),'wdx':4,'kind':'sphere','size':[1.2,1.2,1.2],'y':30,'color':'#ff5fa8','name':'signal B (orbits the flower)','clear':1},
  {'id':'radio_egg','t':36.0,'off':(9,4),'kind':'group','egg':True,'clear':2.5,
   'name':'EGG: old receiver; its dial lights the 5 cover colours in turn and the needle is a tiny bunny',
   'parts':[{'kind':'box','pos':[0,1,0],'size':[3.2,2,1.4],'color':'#7a4b2a'},{'kind':'box','pos':[0,1.3,-0.71],'size':[2.4,0.6,0.05],'color':'#f6f0e4'},
@@ -77,10 +73,8 @@ OBJECTS=[
            {'kind':'sphere','pos':[-2,1,-1.1],'size':[1.0,1.4,0.2],'color':'#e8272b'},{'kind':'sphere','pos':[2,1,-1.1],'size':[1.0,1.4,0.2],'color':'#1fae6a'},
            {'kind':'sphere','pos':[0,-2,-1.1],'size':[4.5,2.6,0.2],'color':'#ff6fb5'}],
   'appear':{'t':167.7,'mode':'fade','dur':4.0}},
- {'id':'gantry_sign','t':133.0,'off':(-8,0),'kind':'group','landmark':True,'clear':3,'name':'gantry pylons holding the overpass (two-signals crossing)',
+ {'id':'gantry_sign','t':133.0,'world':('hole',133.0,147.0),'kind':'group','landmark':True,'clear':3,'name':'gantry pylons holding the overpass (two-signals crossing)',
   'parts':[{'kind':'box','pos':[0,-3,0],'size':[1,10,1],'color':'#9aa3d0'},{'kind':'box','pos':[0,2,0],'size':[1.4,0.6,1.4],'color':'#ff5a2c'}]},
- {'id':'meet_flash','t':134.2,'off':(0,0),'onroad':True,'kind':'ring','size':[3,0.2,3],'y':0.4,'color':'#ffffff','name':'crossing point ring (decor, appears after the line passes)','clear':0,
-  'appear':{'t':134.6,'mode':'pop','dur':0.4}},
  {'id':'outro_bench','t':183.0,'off':(5,6),'kind':'bench','size':[3,1,1],'color':'#f6f0e4','name':'two-seat stargazing bench at the end','clear':2},
  # --- rooftop dressing (groove / verse 1) ---
 ]+[
@@ -115,7 +109,7 @@ EVENTS=[
  {'t':97.24,'type':'particles','particles':'stars','until':114.85},
  {'t':114.85,'type':'flash','dur':0.25,'note':'drum re-entry; screen-edge flash only, road surface untouched'},
  {'t':114.85,'type':'pulse','target':'flower_antenna','every':0.55046,'until':132.47},
- {'t':134.6,'type':'burst','at':'meet_flash','particles':'stars','note':'after the overpass crossing: the two orbit dots merge into one'},
+ {'t':134.6,'type':'burst','at':'player','color':'#fff6c8','amount':40,'note':'interlude: the two orbit dots merge into one (music phrase start, not a turn)'},
  {'t':134.6,'type':'lower','target':'orbit_dot_a'},{'t':134.6,'type':'lower','target':'orbit_dot_b'},
  {'t':150.08,'type':'shake','dur':0.4,'amount':0.2},
  {'t':150.08,'type':'color','palette':{'skyBottom':'#3b1f5e'},'dur':2.0},
@@ -127,3 +121,39 @@ FINISH={'kind':'custom','note':'bunny-face gate: white arch shaped like the cove
  {'kind':'box','pos':[0,6.2,0],'size':[5.6,1.4,1.2],'color':'#ffffff'},{'kind':'box','pos':[0,8,0],'size':[1.2,2.4,1.2],'color':'#c2449a'}]}
 DIAMOND_TARGETS=[7.5,20.5,38,57,86,104,123,143,160,178]; CROWN_TARGETS=[44.0,133.5]
 MARGIN=1.5
+
+B=2.20184; S0=0.333
+def bt(bar): return round(S0+B*bar,2)
+ELEV=[{'t0':bt(28)+0.3,'t1':bt(36),'type':'ramp','dy':8,'note':'Chorus 1: square helix of staircases around the flower antenna, +4 per lap'},
+      {'t':bt(44),'type':'fall','dy':-8,'snap':True,'note':'drums drop out -> long fall off the antenna tower into the floating star layer'},
+      {'t0':bt(48),'t1':bt(52),'type':'ramp','dy':4,'note':'climb out of the star layer'},
+      {'t0':bt(53),'t1':bt(58),'type':'ramp','dy':4,'note':'Chorus 2 gantry climbs over earlier roads'},
+      {'t0':bt(60),'t1':bt(64),'type':'ramp','dy':5,'note':'interlude helix around the gantry pylon'},
+      {'t':bt(68),'type':'fall','dy':-8,'snap':True,'note':'big drop onto the final-chorus deck'}]
+BLOCKS=[
+ {'t0':0,'tex':'stair'},
+ {'t0':bt(4),'tex':'bolt','P':[B],'phases':[0,B/2]},
+ {'t0':bt(8),'tex':'switch','P':[2*B,1.5*B],'phases':[0,B/2]},
+ {'t0':bt(12),'tex':'serpL','P':[0.8,1.0],'m':[4,6],'phases':[0]},
+ {'t0':bt(16),'tex':'stair'},
+ {'t0':bt(20),'tex':'zig','P':[B,1.5*B],'phases':[0,B/2,B]},
+ {'t0':bt(24),'tex':'stair'},
+ {'t0':bt(28),'tex':'orbit','P':[B,1.25*B],'m':[8,7],'phases':[0,B/2],'cross':1},
+ {'t0':bt(36),'tex':'turn','phases':[0,B],'cross':1},
+ {'t0':bt(40),'tex':'serpL','P':[0.8,1.0],'m':[4,6],'phases':[0]},
+ {'t0':bt(44),'tex':'stair'},
+ {'t0':bt(48),'tex':'switch','P':[B,1.5*B],'phases':[0,B/2]},
+ {'t0':bt(52),'tex':'serp','m':[8,10],'phases':[0,2,4],'cross':1},
+ {'t0':bt(60),'tex':'orbit','P':[B,1.25*B],'m':[4,5],'phases':[0,B/2],'cross':1},
+ {'t0':bt(68),'tex':'stair'},
+ {'t0':bt(72),'tex':'zig','P':[B,1.5*B],'phases':[0,B/2]},
+ {'t0':bt(76),'tex':'turn','phases':[0,B]},
+]
+MARGIN=0.3
+FORKS=[20.5,37.5,86.0,141.0]
+COLLECT={'diamond':'#7fe3ff','crown':'#ffd54a'}
+ART={'backdrop':'art/sky-night.jpg','ground':{'src':'art/roof-ground.jpg','scale':40}}
+OBJECTS+=[
+ {'id':'signal_poster','t':47.0,'off':(-13,6),'kind':'image','src':'art/signal-poster.jpg','size':[12,0,6.75],'mode':'billboard','y':3,'clear':7,'name':'retro broadcast poster on a rooftop hoarding (pre-chorus)'},
+ {'id':'signal_poster2','t':156.0,'off':(13,6),'kind':'image','src':'art/signal-poster.jpg','size':[12,0,6.75],'mode':'billboard','y':3,'clear':7,'name':'same poster seen again in the final chorus'},
+]

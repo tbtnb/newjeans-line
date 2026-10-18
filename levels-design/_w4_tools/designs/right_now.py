@@ -7,10 +7,6 @@ CHART_NOTES='Drum & bass: taps on kick (1, 3&) and snare (2, 4) with vocal picku
 MINT='#bfead6'; CREAM='#fff8ec'; PETAL=PETALS
 # Route: chat-bubble gate N -> mailbox lane NE -> greenhouse corridor (ramp) -> greenhouse opens NW (chorus) -> NE verse 2 ->
 # half-time bridge climbs onto the roof girders SE (ramp +4, slower) -> drop into the flower field NE (chorus 2) -> break -> final NW narrow & fast -> NE plank to the lamp.
-ROT=[(44.98,'L'),(67.31,'R'),(78.47,'R'),(100.79,'L'),(123.12,'L'),(145.45,'R')]
-ELEV=[{'t0':34.2,'t1':44.5,'type':'ramp','dy':2,'note':'pre-chorus: gentle climb into the greenhouse'},
-      {'t0':79.5,'t1':96.0,'type':'ramp','dy':4,'note':'half-time bridge: walk up the greenhouse roof girders'},
-      {'t':100.12,'type':'fall','dy':-6,'note':'jump off the roof into the flower field, landing just before the chorus-2 downbeat'}]
 WIDTH=[{'t':0,'w':2.8},{'t':11.5,'w':2.3},{'t':44.98,'w':2.2},{'t':78.47,'w':2.4},{'t':100.79,'w':2.1},{'t':123.12,'w':1.8},{'t':145.45,'w':2.6}]
 REVEAL=[{'t':0,'mode':'static','lead':3.0},{'t':11.5,'mode':'rise','lead':1.8},{'t':44.98,'mode':'unfold','lead':1.5},{'t':78.47,'mode':'unfold','lead':2.0},
         {'t':100.79,'mode':'rise','lead':1.4},{'t':117.54,'mode':'drop','lead':1.8},{'t':123.12,'mode':'rise','lead':1.3},{'t':145.45,'mode':'static','lead':3.0}]
@@ -34,7 +30,7 @@ CAMERA=[{'t':0,'preset':'close','blend':0},{'t':11.5,'preset':'iso','blend':2.0}
 def mailbox(c): return [{'kind':'cylinder','pos':[0,0.6,0],'size':[0.15,1.2,0.15],'color':'#9aa0a6'},{'kind':'box','pos':[0,1.45,0],'size':[0.9,0.7,1.2],'color':c},
                         {'kind':'box','pos':[0.5,1.7,0],'size':[0.05,0.5,0.15],'color':'#ff5a2c'}]
 OBJECTS=[
- {'id':'chat_gate','t':1.0,'off':(0,6),'onroad':True,'kind':'group','landmark':True,'clear':0,'name':'start gate: an empty white chat bubble arch; three typing dots breathe on top (music clock)',
+ {'id':'chat_gate','t':1.0,'off':(-6,6),'kind':'group','landmark':True,'clear':4.5,'name':'start landmark beside the road: an empty white chat-bubble arch; three typing dots breathe on top (music clock)',
   'parts':[{'kind':'box','pos':[-3.2,2.5,0],'size':[1.0,5,1.0],'color':'#ffffff'},{'kind':'box','pos':[3.2,2.5,0],'size':[1.0,5,1.0],'color':'#ffffff'},{'kind':'box','pos':[0,5.6,0],'size':[7.4,1.6,1.0],'color':'#ffffff'},
            {'kind':'pyramid','pos':[-2.6,4.4,0],'size':[1.2,1.0,1.0],'color':'#ffffff'},
            {'kind':'sphere','pos':[-1.2,5.6,-0.55],'size':[0.6,0.6,0.2],'color':'#b0b8bf','id':'dot1'},{'kind':'sphere','pos':[0,5.6,-0.55],'size':[0.6,0.6,0.2],'color':'#b0b8bf','id':'dot2'},{'kind':'sphere','pos':[1.2,5.6,-0.55],'size':[0.6,0.6,0.2],'color':'#b0b8bf','id':'dot3'}]},
@@ -45,7 +41,7 @@ OBJECTS=[
  {'id':f'pot{i}','t':t,'off':(s,0),'kind':'group','parts':pot(PETAL[(i*5)%12],PETAL[(i*7+3)%12]),'clear':1.0,'react':'beat','appear':{'t':t-1.5,'mode':'grow','dur':0.5}}
  for i,(t,s) in enumerate([(14.5,4.5),(17.5,-4.5),(20.5,4.5),(23.5,-4.5),(26.5,4.5),(29.5,-4.5),(32.5,4.5)])
 ]+[
- {'id':'glass_corridor','kind':'row','t0':34.0,'t1':44.8,'side':0,'spacing':3.5,'bothSides':False,'item':{'kind':'arch','size':[7,6,0.3],'color':'#e8fbff'},'name':'glass greenhouse corridor frames'},
+ {'id':'glass_corridor','kind':'row','t0':34.0,'t1':44.8,'side':3.3,'spacing':3.5,'bothSides':True,'item':{'kind':'box','size':[0.3,5,0.3],'color':'#e8fbff'},'name':'glass greenhouse corridor frames'},
  {'id':'flower_crowd','kind':'row','t0':45.2,'t1':66.9,'side':4.5,'spacing':1.6,'bothSides':True,'item':{'kind':'flower','size':[0.9,1.2,0.9],'color':'#ff9ec4','color2':'#fff200','react':'beat'},'name':'flower crowd nodding on the beat'},
  {'id':'greenhouse','t':52.0,'off':(-20,10),'kind':'group','landmark':True,'clear':10,'name':'the message greenhouse (glass house with mint frame); its far wall opens at Chorus 1',
   'parts':[{'kind':'box','pos':[0,4,0],'size':[16,8,12],'color':'#dff6ff'},{'kind':'pyramid','pos':[0,10,0],'size':[17,4,13],'color':'#c9eef7'},{'kind':'box','pos':[0,4,-6.05],'size':[16.2,0.4,0.1],'color':MINT}]},
@@ -76,4 +72,39 @@ EVENTS=[
  {'t':145.45,'type':'color','palette':{'skyTop':'#ffd7b0','skyBottom':'#fff6e6'},'dur':4.0},{'t':150.0,'type':'light','target':'lamp'}]
 FINISH={'kind':'gate','note':'small wooden doorway with the lamp beside it'}
 DIAMOND_TARGETS=[6,20,38,56,73,90,108,120,134,150]; CROWN_TARGETS=[70.0,120.0]
-MARGIN=1.5
+
+B=1.39536; S0=0.3345
+def rb(bar): return round(S0+B*bar,2)
+ELEV=[{'t0':rb(24),'t1':rb(32)-0.3,'type':'ramp','dy':2,'note':'pre-chorus: gentle climb into the glass greenhouse'},
+      {'t0':rb(32)+0.3,'t1':rb(48)-0.3,'type':'ramp','dy':7,'note':'chorus 1: the flower roundabout loops up and over itself'},
+      {'t0':rb(56),'t1':rb(70),'type':'ramp','dy':4,'note':'half-time bridge: walk up the greenhouse roof girders'},
+      {'t':rb(72),'type':'fall','dy':-6,'snap':True,'note':'jump off the roof into the flower field at the chorus-2 downbeat'},
+      {'t':rb(88),'type':'fall','dy':-5,'snap':True,'note':'final chorus: drop onto the lamp-lit night lane'}]
+BLOCKS=[
+ {'t0':0,'tex':'stair'},
+ {'t0':rb(8),'tex':'bolt','P':[2*B,3*B],'phases':[0,B]},
+ {'t0':rb(16),'tex':'serp','m':[10,12],'phases':[0,2,4]},
+ {'t0':rb(24),'tex':'stair'},
+ {'t0':rb(28),'tex':'switch','P':[2*B,3*B],'phases':[0,B/2]},
+ {'t0':rb(32),'tex':'orbit','P':[2*B,2.5*B],'m':[4,5],'phases':[0,B/2,B],'cross':1},
+ {'t0':rb(40),'tex':'zig','P':[2*B,1.5*B],'phases':[0,B/2]},
+ {'t0':rb(48),'tex':'serpL','P':[0.5,0.7],'m':[4,6],'phases':[0]},
+ {'t0':rb(56),'tex':'orbit','P':[4*B,3*B],'m':[3],'phases':[0,B]},
+ {'t0':rb(64),'tex':'stair'},
+ {'t0':rb(72),'tex':'bolt','P':[2*B,3*B],'phases':[0,B]},
+ {'t0':rb(78),'tex':'serp','m':[8,10],'phases':[0,2]},
+ {'t0':rb(84),'tex':'turn','phases':[0,B]},
+ {'t0':rb(88),'tex':'xspiral','P':[2*B,1.5*B],'m':[5,6],'phases':[0,B]},
+ {'t0':rb(96),'tex':'stair'},
+ {'t0':rb(104),'tex':'turn','phases':[0,B]},
+]
+MARGIN=0.3
+FORKS=[15.0,52.0,72.5,110.0]
+OBJECTS+=[
+ {'id':'chat_sign','t':4.0,'off':(9,8),'kind':'image','src':'art/chat-sign.jpg','size':[9,0,9],'mode':'billboard','y':2,'clear':6,'name':'chat-bubble billboard (typing...) over the mailbox lane'},
+ {'id':'chat_sign2','t':140.0,'off':(-10,8),'kind':'image','src':'art/chat-sign.jpg','size':[9,0,9],'mode':'billboard','y':2,'clear':6,'name':'the same bubble, now in the final chorus (reply on its way)'},
+ {'id':'roundabout_bed','t':55.0,'world':('hole',45.5,66.8),'kind':'group','landmark':True,'clear':1,'react':'beat','name':'round flower bed + lamp post at the centre of the chorus-1 loop',
+  'parts':[{'kind':'cylinder','pos':[0,0,0],'size':[3,0.4,3],'color':'#ff9ec4'},{'kind':'cylinder','pos':[0,4,0],'size':[0.3,8,0.3],'color':'#556070'},{'kind':'sphere','pos':[0,8.2,0],'size':[1,1,1],'color':'#fff2b0'}]},
+]
+ART={'backdrop':'art/sky-dawn.jpg','ground':{'src':'art/flower-ground.jpg','scale':30}}
+COLLECT={'diamond':'#a3c4f3','crown':'#ffd166'}

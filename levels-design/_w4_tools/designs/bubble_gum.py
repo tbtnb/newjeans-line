@@ -7,11 +7,6 @@ CHART_NOTES='Chorus taps follow the "bubble bubble" vocal hook syllables (vocal 
 SEA='#5fc4d6'; SAND='#f4e6c6'; PINK='#ff9ec4'; MINT='#bfe8d2'; CORAL='#ff8a73'
 # Route: seawall north -> boardwalk NE -> greenhouse SE -> beach chorus NE with rising steps -> breakdown floats UP on bubbles ->
 # hill picnic NW -> greenhouse callback NE -> balloon field SE -> sunset beach NE (drop) -> picnic table.
-ROT=[(36.34,'R'),(56.91,'L'),(91.19,'L'),(118.62,'R'),(136.9,'R'),(164.33,'L')]
-ELEV=[{'t0':60.0,'t1':78.0,'type':'ramp','dy':2,'note':'chorus 1: steps of the beach stairs rise gently'},
-      {'t':79.78,'type':'jump','dy':3,'note':'drums drop out -> the line is lifted onto road pieces floating on bubbles'},
-      {'t':91.20,'type':'fall','dy':-5,'note':'drums return, the giant bubble pops -> drop to the grass'},
-      {'t':163.78,'type':'fall','dy':-2,'note':'land on the sunset beach right before the final-chorus downbeat'}]
 WIDTH=[{'t':0,'w':2.8},{'t':18.05,'w':2.4},{'t':56.91,'w':2.3},{'t':79.76,'w':2.6},{'t':91.19,'w':2.2},{'t':136.9,'w':2.1},{'t':164.33,'w':2.0}]
 REVEAL=[{'t':0,'mode':'static','lead':3.0},{'t':18.05,'mode':'rise','lead':2.0},{'t':79.76,'mode':'drop','lead':2.0},{'t':91.19,'mode':'rise','lead':1.8},{'t':164.33,'mode':'rise','lead':1.6}]
 PALETTE={'skyTop':'#8fd3ec','skyBottom':'#f4fbff','fog':'#e7f6fb','fogStart':45,'fogEnd':130,'ground':SEA,'groundY':-1.2,
@@ -34,8 +29,8 @@ CAMERA=[{'t':0,'preset':'side','blend':0},{'t':18.05,'preset':'iso','blend':2.5}
 OBJECTS=[
  {'id':'seawall','kind':'row','t0':0.5,'t1':17.8,'side':-3.2,'spacing':2.0,'bothSides':False,'item':{'kind':'box','size':[1.2,1.6,2.0],'color':'#e3ddd0'},'name':'seawall blocks on the sea side'},
  {'id':'planks','kind':'row','t0':18.2,'t1':36.0,'side':1.9,'spacing':1.1,'bothSides':True,'item':{'kind':'box','size':[0.9,0.15,1.0],'color':'#c99e6e','react':'tap'},'name':'boardwalk planks (dip on actual taps)'},
- {'id':'gh_arches','kind':'row','t0':36.5,'t1':56.5,'side':0,'spacing':4.0,'bothSides':False,'item':{'kind':'arch','size':[7,6,0.4],'color':'#ffffff'},'name':'greenhouse frames arching over the road (7 wide, 6 high, clear of the road)'},
- {'id':'gh_arches2','kind':'row','t0':118.8,'t1':136.5,'side':0,'spacing':4.0,'bothSides':False,'item':{'kind':'arch','size':[7,6,0.4],'color':'#ffffff'}},
+ {'id':'gh_arches','kind':'row','t0':36.5,'t1':56.5,'side':3.4,'spacing':4.0,'bothSides':True,'item':{'kind':'box','size':[0.35,4,0.35],'color':'#ffffff'},'name':'greenhouse frames arching over the road (7 wide, 6 high, clear of the road)'},
+ {'id':'gh_arches2','kind':'row','t0':118.8,'t1':136.5,'side':3.4,'spacing':4.0,'bothSides':True,'item':{'kind':'box','size':[0.35,4,0.35],'color':'#ffffff'}},
  {'id':'giant_bubble','t':86.0,'off':(0,22),'y':6,'kind':'sphere','size':[12,12,12],'color':'#ffb8d6','landmark':True,'clear':7,'react':'beat',
   'name':'giant bubble-gum bubble hanging ahead during the breakdown; pops at 91.19 when the drums return','appear':{'t':80.0,'mode':'grow','dur':3.0},'exit':{'t':91.19,'mode':'shrink','dur':0.15}},
  {'id':'lighthouse','t':10.0,'off':(-18,25),'kind':'group','landmark':True,'clear':4,'name':'striped lighthouse on the breakwater (visible again at the end)',
@@ -75,4 +70,47 @@ EVENTS=[
  {'t':193.0,'type':'raise','target':'sun_bubble8','dy':8,'dur':5.0,'note':'last bubble drifts away'}]
 FINISH={'kind':'gate','note':'two-post picnic arch with string lights'}
 DIAMOND_TARGETS=[12,30,46,66,85,100,125,150,175,188]; CROWN_TARGETS=[85.0,132.0]
-MARGIN=1.5
+
+B=2.28556; S0=2.055
+def gb(bar): return round(S0+B*bar,2)
+ELEV=[{'t0':gb(24)+0.3,'t1':gb(34)-0.3,'type':'ramp','dy':5,'note':'chorus 1: boardwalk spirals up around the giant shell island'},
+      {'t':gb(34),'type':'jump','dy':3,'snap':True,'note':'drums drop out -> hop onto road pieces floating on bubbles'},
+      {'t':gb(39),'type':'fall','dy':-6,'snap':True,'note':'drums return, the giant bubble pops -> drop to the grass island'},
+      {'t0':gb(59),'t1':gb(65),'type':'ramp','dy':3,'note':'chorus 2: pier climbs over the verse-2 road'},
+      {'t':gb(71),'type':'fall','dy':-5,'snap':True,'note':'land on the sunset beach right before the final-chorus downbeat'}]
+BLOCKS=[
+ {'t0':0,'tex':'stair'},
+ {'t0':gb(7),'tex':'serpL','P':[1.1,1.6],'m':[4,6],'phases':[0]},
+ {'t0':gb(15),'tex':'zig','P':[B,1.5*B],'phases':[0,B/2]},
+ {'t0':gb(20),'tex':'stair'},
+ {'t0':gb(24),'tex':'orbit','P':[2*B,1.75*B],'m':[4,5],'phases':[0,B/2],'cross':1},
+ {'t0':gb(34),'tex':'spiral','m':[2,3],'phases':[0,1,2,3,4]},
+ {'t0':gb(39),'tex':'switch','P':[2*B,3*B],'phases':[0,B]},
+ {'t0':gb(45),'tex':'serpL','P':[1.1,1.6],'m':[4,6],'phases':[0]},
+ {'t0':gb(51),'tex':'zig','P':[B,1.5*B],'phases':[0,B/2]},
+ {'t0':gb(55),'tex':'stair'},
+ {'t0':gb(59),'tex':'orbit','P':[2*B,1.5*B],'m':[3],'phases':[0,B/2],'cross':1},
+ {'t0':gb(65),'tex':'bolt','P':[B],'phases':[0,B/2]},
+ {'t0':gb(71),'tex':'xspiral','P':[B,0.75*B],'m':[5,6],'phases':[0,B/2]},
+ {'t0':gb(77),'tex':'stair'},
+ {'t0':gb(83),'tex':'turn','phases':[0]},
+]
+MARGIN=0.3
+FORKS=[30.0,48.0,112.0,150.0]
+# --- codex-ref alignment (nj-refs/bubble-gum concept): island hopping over a turquoise sea, dark rocks, member silhouette screen, camper van, giant shell + bubble wand
+ROCK='#2f3448'
+OBJECTS+=[
+ {'id':f'rock{i}','t':t,'off':(s_,0),'y':-0.8,'kind':'rock','size':[3+i%3,2.2+i%2,3],'color':ROCK,'clear':2.5} for i,(t,s_) in enumerate([(6,-6),(13,7),(21,-7),(33,6),(40,-7),(52,7),(83,-7),(95,7),(122,-7),(133,6),(168,-7),(181,7)])
+]+[
+ {'id':'silhouette_screen','t':28.0,'off':(-14,6),'kind':'image','src':'art/silhouette-screen.png','size':[12,0,5.6],'mode':'upright','y':0,'landmark':True,'clear':8,'name':'folding screen with five featureless paper cut-out silhouettes + the orange panel (concept art); visible again in chorus 2'},
+ {'id':'silhouette_screen2','t':146.0,'off':(15,6),'kind':'image','src':'art/silhouette-screen.png','size':[12,0,5.6],'mode':'upright','y':0,'clear':8,'name':'second screen on the pier'},
+ {'id':'giant_shell','t':66.0,'world':('hole',57.5,79.0),'kind':'group','landmark':True,'clear':1,'react':'beat','name':'giant pink conch shell on its own island: chorus 1 boardwalk spirals up around it',
+  'parts':[{'kind':'cylinder','pos':[0,-0.6,0],'size':[4,0.6,4],'color':'#f2d39b'},{'kind':'cone','pos':[0,0,0],'size':[1.6,7,1.6],'color':'#fff2ea'},{'kind':'sphere','pos':[0,1.4,0],'size':[1.8,2.4,1.8],'color':'#ffb8c9'}]},
+ {'id':'bubble_wand','t':70.0,'off':(9,4),'kind':'group','egg':True,'clear':2,'name':'EGG: a red bubble wand stuck in the sand; blows one bubble on every chorus downbeat',
+  'parts':[{'kind':'cylinder','pos':[0,1.2,0],'size':[0.12,2.4,0.12],'rot':[0,0,20],'color':'#e8505b'},{'kind':'torus','pos':[0.5,2.6,0],'size':[0.9,0.08,0.9],'rot':[90,0,0],'color':'#e8505b'}]},
+ {'id':'camper','t':104.0,'off':(-9,6),'kind':'group','landmark':True,'clear':3.5,'name':'mint camper van with an awning on the grass island (verse 2)',
+  'parts':[{'kind':'box','pos':[0,1.4,0],'size':[2.4,2.2,4.6],'color':'#d9f3ea'},{'kind':'box','pos':[0,2.6,0],'size':[2.5,0.3,4.7],'color':'#7fcdbb'},{'kind':'box','pos':[1.3,1.6,-1.2],'size':[0.05,0.9,1.4],'color':'#5a6b7a'},
+           {'kind':'cylinder','pos':[-1.0,0.4,1.4],'size':[0.8,0.3,0.8],'rot':[0,0,90],'color':'#333333'},{'kind':'cylinder','pos':[-1.0,0.4,-1.4],'size':[0.8,0.3,0.8],'rot':[0,0,90],'color':'#333333'}]},
+]
+ART={'backdrop':'art/sky-beach.jpg','ground':{'src':'art/sea-ground.jpg','scale':30}}
+COLLECT={'diamond':'#4fd0e8','crown':'#ffd54a'}
