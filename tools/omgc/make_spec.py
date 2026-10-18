@@ -39,7 +39,7 @@ ALIAS = {'巨型弹出兔子+爱心': '弹出巨兔+爱心', '无数字纸时钟
 # per layer: lateral distance from the road EDGE [near, far] m, height offset range, and pop-up anim default
 LAYER = {   # dressing pass (in-game vs key renders): decor hugs the road and reads at the gameplay camera's scale
  'ground': dict(near=[0.3, 9.0], y=[0, 0], scale=[1.4, 2.2]),
- 'mid':    dict(near=[1.5, 7.0], y=[0, 0], scale=[1.1, 1.6]),
+ 'mid':    dict(near=[1.5, 7.0], y=[0, 0], scale=[1.5, 2.2]),   # v3: mid pieces read as shapes, not specks
  'land':   dict(near=[8.0, 18.0], y=[0, 0], scale=[1.0, 1.0]),
  'sky':    dict(near=[12.0, 45.0], y=[7, 22], scale=[0.8, 1.25]),
  'anim':   dict(near=[1.0, 9.0], y=[1.0, 5.0], scale=[1.2, 1.8]),
@@ -169,7 +169,7 @@ for z in zones:
         if L['asset'] == 'lily-lamp': L['count'] = round(L['count'] * 0.5)   # 414 tris
         if L['asset'] == 'gift': L['count'] = round(L['count'] * 0.5)   # 252 tris
     for k, aid in enumerate(RING[zid]):
-        z['layers'].append(dict(asset=LO.get(aid, aid), layer='mid', count=round((16 if k == 0 else 12 if aid in ('tree', 'pine', 'tree-bush') else 5) * zk), near=[26.0, 60.0], y=[0, 0], scale=[1.2, 2.0] if k == 0 else [1.4, 2.2], colors=bright, hi=True))
+        z['layers'].append(dict(asset=LO.get(aid, aid), layer='mid', count=round((16 if k == 0 else 12 if aid in ('tree', 'pine', 'tree-bush') else 5) * zk), near=[40.0, 85.0], y=[0, 0], scale=[1.8, 3.0] if k == 0 else [1.8, 2.8], colors=bright, hi=True))
     # secondary hero copies: each hero/landmark set piece gets a smaller twin on the other side 2.5 s later and a far-ring copy
     extra = []
     for sp in z['setpieces']:
@@ -189,6 +189,27 @@ for z in zones:
         for L in z['layers']:
             if L['layer'] == 'ground': L['count'] = round(L['count'] * zf[0])
             elif L['layer'] == 'mid' and L['near'][0] < 20: L['count'] = round(L['count'] * zf[1])
+# ---- v3 'big continuous masses' pass (keys read as solid forest / hedge / hill / house masses, not confetti):
+# specks cut hard, single-tree masses thinned, clustered kit added (place.ts cluster: blob or row). All high tier only.
+CL = {   # zone: [(asset, centres per 15 s, cluster)]
+ 'forest': ('forest-clump', dict(n=[2, 3], r=6.0), [4.0, 16.0]), 'pines': ('pine-lo', dict(n=[5, 8], r=3.2), [3.0, 16.0]),
+ 'hedge': ('hedge', dict(n=[3, 5], r=6.2, row=True), [2.0, 5.0]), 'hills': ('paper-hill-lo', dict(n=[3, 5], r=5.0), [14.0, 32.0]),
+ 'houses': ('bunny-house', dict(n=[3, 4], r=4.2, row=True), [6.0, 10.0]), 'mhouses': ('mushroom-house', dict(n=[3, 4], r=3.8, row=True), [6.0, 10.0]),
+}
+CLUMPS = {'z01': dict(forest=8, hedge=6, hills=4), 'z02': dict(forest=8, hedge=6, hills=4), 'z03': dict(forest=6, hedge=7, hills=3),
+          'z04': dict(pines=6, hedge=4, hills=3, forest=3), 'z05': dict(pines=8, forest=4, hills=5), 'z06': dict(forest=6, hedge=6, hills=3, houses=3),
+          'z07': dict(pines=9, forest=4, hills=4, mhouses=2), 'z08': dict(forest=5, hedge=6, hills=3, mhouses=2), 'z09': dict(pines=8, forest=4, hills=4, mhouses=2),
+          'z10': dict(forest=7, hedge=7, hills=4, houses=2)}
+for aid in ('hedge', 'forest-clump'): assets.setdefault(aid, dict(layer='mid', shape='tree', h={'hedge': 1.3, 'forest-clump': 5.7}[aid], w={'hedge': 6.1, 'forest-clump': 8.6}[aid], tris=300, model=model_of(aid), names=[]))
+for z in zones:
+    zid = z['id']; zk = (z['t1'] - z['t0']) / 15.12
+    for L in z['layers']:
+        if L['layer'] == 'ground': L['count'] = round(L['count'] * (0.3 if L['asset'] in SPECKS or L['asset'].endswith('-decal') else 0.45))
+        if L.get('mass'): L['count'] = round(L['count'] * 0.4)
+    bright = z['layers'][0]['colors'] if z['layers'] else [0, 1, 2, 3, 4]
+    for kind, n in CLUMPS[zid].items():
+        aid, cl, near = CL[kind]
+        z['layers'].append(dict(asset=aid, layer='mid', count=max(1, round(n * zk)), near=near, y=[0, 0], scale=[1.0, 1.35] if aid in ('forest-clump', 'hedge') else [1.3, 1.9] if aid != 'paper-hill-lo' else [1.3, 2.0], colors=bright, hi=True, cluster=cl))
 spec = dict(version=1, source='levels-design/omg/redesign-v3/C/zones_c.py (omg-design-v3)', chunk=20, window=dict(behind=3, ahead=8),
             clear=dict(ground=0.3, groundMaxH=1.2, near=1.0), density=dict(ground=2.0, mid=1.6, anim=1.5), assets=assets, zones=zones)
 # design asset sheets (levels-design/omg/redesign-v3/C/assets/<design id>/spec.json): their size / tri budget win over the table

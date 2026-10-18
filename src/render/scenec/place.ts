@@ -78,8 +78,23 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
         const yaw = A.shape === 'far' || L.layer === 'mid' ? Math.atan2(rp.x - a.pos.x, rp.z - a.pos.z) : R() * Math.PI * 2;
         const ci = chunkAt(t);
         const gy = L.layer === 'ground' || L.layer === 'mid' ? groundY(chunks[ci], a.pos.x, a.pos.z) + y0 : a.pos.y - o.roadH + y0;
-        chunks[ci].items.push({ a: L.asset, layer: L.layer, x: a.pos.x, y: gy, z: a.pos.z, yaw, s, c: (L.colors ?? [0])[Math.floor(R() * (L.colors ?? [0]).length)], zone: zi, t, chunk: ci, ...(L.hi ? { hi: true } : {}) });
-        placed++; break;
+        const col = () => (L.colors ?? [0])[Math.floor(R() * (L.colors ?? [0]).length)];
+        chunks[ci].items.push({ a: L.asset, layer: L.layer, x: a.pos.x, y: gy, z: a.pos.z, yaw, s, c: col(), zone: zi, t, chunk: ci, ...(L.hi ? { hi: true } : {}) });
+        placed++;
+        if (L.cluster) {   // members around the centre (blob) or continuing along the road at the same offset (row); each one must clear the road too
+          const Cn = L.cluster, m = Math.round(Cn.n[0] + R() * ((Cn.n[1] ?? Cn.n[0]) - Cn.n[0]));
+          const q = anchor(route, t + 0.1).pos, v = Math.max(0.5, Math.hypot(q.x - rp.x, q.z - rp.z) / 0.1);
+          for (let j = 1; j < m; j++) {
+            let x: number, zz: number, ty = t, my = yaw; const ms = s * (0.8 + 0.4 * R());
+            if (Cn.row) { ty = t + Math.ceil(j / 2) * (j % 2 ? 1 : -1) * Cn.r * s / v; if (ty < z.t0 || ty > t1) continue;
+              const b = edge < 6 ? anchor(route, ty, off, 0, 0) : flowAnchor(route, ty, off, 0, 0); x = b.pos.x; zz = b.pos.z; const bp = anchor(route, ty).pos; my = Math.atan2(bp.x - x, bp.z - zz); }
+            else { const an = R() * Math.PI * 2, rr = Cn.r * s * Math.sqrt(0.15 + 0.85 * R()); x = a.pos.x + Math.cos(an) * rr; zz = a.pos.z + Math.sin(an) * rr; my = L.layer === 'mid' ? yaw + (R() - 0.5) * 0.8 : R() * Math.PI * 2; }
+            if (o.hits(x, zz, r * ms / s + pad, a.pos.y - 1, a.pos.y + A.h * ms)) { rejected++; continue; }
+            const cj = chunkAt(ty);
+            chunks[cj].items.push({ a: L.asset, layer: L.layer, x, y: groundY(chunks[cj], x, zz) + y0, z: zz, yaw: my, s: ms, c: col(), zone: zi, t: ty, chunk: cj, ...(L.hi ? { hi: true } : {}) }); placed++;
+          }
+        }
+        break;
       }
     }
   });

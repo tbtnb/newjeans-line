@@ -172,7 +172,7 @@ export class World {
     this.events = [...(L.events ?? [])].sort((a, b) => a.t - b.t);
     const widthAt = (t: number) => stepAt(L.road.width, t)?.w ?? 2.2;
     // road
-    this.road = new Road(this.scene, route, L, t => this.env!.settled(t));
+    this.road = new Road(this.scene, route, L, t => this.env!.settled(t), { paper: this.cmode });
     this.road.body.parent = this.root; this.road.top.parent = this.root;
     if (L.art?.road?.src) { const rm = this.road.top.material as StandardMaterial; rm.diffuseTexture = new Texture(this.mats.artBase + L.art.road.src, this.scene); }
     // ground

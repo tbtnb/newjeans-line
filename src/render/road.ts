@@ -6,6 +6,7 @@ import { hex } from './prefabs';
 interface Tile { reveal: number; mode: string; cx: number; cy: number; cz: number; len: number; w: number; yaw: number; pitch: number; seed: number; }
 const TILE = 2.6;
 const ANIM = 0.42;
+const PAPER = { top: hex('#FFF5E1'), edge: hex('#E3AE45'), body: hex('#EED9B0') };
 
 export function stepAt<T extends { t: number }>(list: T[] | undefined, t: number): T | undefined { let r: T | undefined; for (const x of list ?? []) if (x.t <= t + 1e-9) r = x; return r; }
 
@@ -21,7 +22,11 @@ export class Road {
   onFlush: (() => void) | null = null;
   get topBuffer() { return this.mTop; }
 
-  constructor(scene: Scene, route: Route, layout: Layout, paletteAt: (t: number) => Palette) {
+  /** concept C 'paper' style (key renders): cream top cap, a slightly wider gold step just under it, cream-tan body; unlit so the zone
+   *  light never tints it. The gold step is a second set of instances on the body mesh (no extra draw call). */
+  private paper = false;
+  constructor(scene: Scene, route: Route, layout: Layout, paletteAt: (t: number) => Palette, opts?: { paper?: boolean }) {
+    this.paper = !!opts?.paper;
     this.height = layout.road.height ?? 0.6;
     const widthAt = (t: number) => stepAt(layout.road.width, t)?.w ?? 2.2;
     const revealAt = (t: number) => stepAt(layout.road.reveal, t) ?? { t: 0, mode: 'static', lead: 2 };
@@ -55,7 +60,7 @@ export class Road {
         const cy = p0.y + slope * Math.max(0, Math.min(len, mid));
         this.tiles.push({ reveal: rv.mode === 'static' ? -1e9 : tAt - rv.lead, mode: rv.mode, cx: p0.x + hx * mid, cy, cz: p0.z + hz * mid, len: b - a, w: tw, yaw, pitch: -Math.atan(slope), seed: (this.tiles.length * 0.618) % 1 });
         const pal = paletteAt(tAt);
-        const cb = hex(pal.roadSide), ct = hex(pal.road);
+        const cb = this.paper ? PAPER.body : hex(pal.roadSide), ct = this.paper ? PAPER.top : hex(pal.road);
         colorsBody.push(cb.r, cb.g, cb.b, 1); colorsTop.push(ct.r, ct.g, ct.b, 1);
       }
     }
@@ -66,10 +71,13 @@ export class Road {
       const mat = new StandardMaterial(m.name + 'M', scene);
       mat.diffuseColor = hex(c); mat.specularColor = new Color3(0.04, 0.04, 0.04);
       mat.emissiveColor = new Color3(0, 0, 0);
+      if (this.paper) { mat.disableLighting = true; mat.emissiveColor = new Color3(1, 1, 1); mat.diffuseColor = new Color3(0, 0, 0); }
       m.material = mat; m.isPickable = false; m.alwaysSelectAsActiveMesh = true;
     }
     const N = this.tiles.length;
-    this.mBody = new Float32Array(N * 16); this.mTop = new Float32Array(N * 16);
+    const NB = this.paper ? 2 * N : N;   // paper: instances [N, 2N) of the body are the gold step
+    if (this.paper) for (let i = 0; i < N; i++) colorsBody.push(PAPER.edge.r, PAPER.edge.g, PAPER.edge.b, 1);
+    this.mBody = new Float32Array(NB * 16); this.mTop = new Float32Array(N * 16);
     this.body.thinInstanceSetBuffer('matrix', this.mBody, 16, false);
     this.top.thinInstanceSetBuffer('matrix', this.mTop, 16, false);
     this.body.thinInstanceSetBuffer('color', new Float32Array(colorsBody), 4, true);
@@ -102,6 +110,13 @@ export class Road {
     const L = t.len / Math.cos(t.pitch);
     const mb = Matrix.Compose(new Vector3(t.w * s, (h - 0.02) * scaleY * s, L * s), q, new Vector3(t.cx, t.cy - 0.02 - (h - 0.02) / 2 * scaleY + dy, t.cz));
     const mt = Matrix.Compose(new Vector3(t.w * s, 0.04 * s, L * s), q, new Vector3(t.cx, t.cy + dy, t.cz));
+    if (this.paper) {   // top cap 0.10 thick, gold step 0.12 tall and 0.32 m wider just under it, body below
+      const T = 0.10, E = 0.12, bh = Math.max(0.05, h - T - E);
+      const mt2 = Matrix.Compose(new Vector3(t.w * s, T * s, L * s), q, new Vector3(t.cx, t.cy + 0.02 - T / 2 + dy, t.cz));
+      const me = Matrix.Compose(new Vector3((t.w + 0.32) * s, E * scaleY * s, (L + 0.32) * s), q, new Vector3(t.cx, t.cy + 0.02 - T - E / 2 * scaleY + dy, t.cz));
+      const mb2 = Matrix.Compose(new Vector3(t.w * s, bh * scaleY * s, L * s), q, new Vector3(t.cx, t.cy + 0.02 - T - E - bh / 2 * scaleY + dy, t.cz));
+      mb2.copyToArray(this.mBody, i * 16); me.copyToArray(this.mBody, (this.tiles.length + i) * 16); mt2.copyToArray(this.mTop, i * 16); return;
+    }
     mb.copyToArray(this.mBody, i * 16); mt.copyToArray(this.mTop, i * 16);
   }
 
