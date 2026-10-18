@@ -2,7 +2,7 @@ import type { LevelData } from './types';
 import { buildRoute, type Route } from './path';
 
 export const WINDOW_MAX = 0.11;     // ± seconds, sparse taps
-export const WINDOW_MIN = 0.065;    // ± seconds, floor for the densest runs
+export const WINDOW_MIN = 0.045;    // ± seconds, absolute floor (16th bursts at 0.11 s gaps get ±49.5 ms)
 export const WINDOW_GAP_RATIO = 0.45; // window may never exceed 45 % of the neighbouring gap (no ambiguity)
 export const PERFECT = 0.04;
 export const DEBOUNCE = 0.045;
@@ -19,7 +19,9 @@ export function judgmentWindows(taps: number[]): number[] {
   return taps.map((t, i) => {
     const prev = i > 0 ? t - taps[i - 1] : Infinity;
     const next = i + 1 < taps.length ? taps[i + 1] - t : Infinity;
-    return Math.max(WINDOW_MIN, Math.min(WINDOW_MAX, WINDOW_GAP_RATIO * Math.min(prev, next)));
+    const g = Math.min(prev, next);
+    // per-tap window: ≤ 45 % of the local minimum gap, so neighbouring windows never touch and one tap can never count twice
+    return Math.min(0.5 * g, Math.max(WINDOW_MIN, Math.min(WINDOW_MAX, WINDOW_GAP_RATIO * g)));
   });
 }
 
