@@ -567,7 +567,7 @@ export class World {
 
   private applyPalette(p: Palette) {
     const fog = hex(p.fog);
-    this.scene.fogColor = fog; this.scene.fogStart = p.fogStart * 1.5; this.scene.fogEnd = p.fogEnd * 1.6;
+    this.scene.fogColor = fog; this.scene.fogStart = p.fogStart * (this.cmode ? 2.0 : 1.5); this.scene.fogEnd = p.fogEnd * (this.cmode ? 1.9 : 1.6);
     this.hemi.diffuse = hex(p.light); this.hemi.groundColor = hex(p.ambient).scale(0.6); this.hemi.intensity = 0.62;
     this.sun.diffuse = hex(p.light); this.sun.intensity = 0.5 * p.lightIntensity;
     if (this.groundMat) { const g = this.groundTint ?? hex(p.ground); this.groundMat.diffuseColor = g; this.groundMat.emissiveColor = g.scale(this.groundTint ? 0.18 : 0.08); }

@@ -1,5 +1,5 @@
 """P19 Balloon bunch. Size spec.size_m 2 x 1.2 x 3.5 m; 500 tris; root, swing.
-SIMPLIFICATIONS: three balloons share one swing pivot; strings are triangular rods; inflation uses five polygonal belts and large triangulated facets; one visible gold fold seam; shared blush #FFC7DA inner ears follow the faces-pass pink-ear direction; cyan bunny identity retained; shared navy #1F2350 flat eyes and spec pink nose; the official mask fills string-enclosed air."""
+SIMPLIFICATIONS: balloons share one swing pivot; triangular gold strings; pale gold ear insets use the spec light slot; no paper texture."""
 BUDGET = 500
 
 import math
@@ -35,88 +35,85 @@ def finish(P,spec,animated=()):
         roots.append(P.pivot(name,point(Vector(joint)),children)); moving.update(children)
     P.pivot('root',(0,0,0),[o for o in obs if o not in moving]+roots)
 
-def face_patch(P, head, name, outline, color):
-    """Clip a flat mark to actual front facets; lift 12 mm along each face normal.
+def angular_balloon(P,name,loc,scale,col):
+    # Staggered polygon belts give actual triangular paper folds, not flat latitude bands.
+    profile=[(0,-1),(.64,-.80),(.96,-.32),(.97,.27),(.70,.78),(0,1)]
+    n=9; vv=[]; rings=[]
+    for j,(r,z) in enumerate(profile):
+        ids=[]
+        for k in range(n if r else 1):
+            a=math.tau*k/n+(j%2)*math.pi/n
+            ids.append(len(vv));vv.append((loc[0]+scale[0]*r*math.cos(a),loc[1]+scale[1]*r*math.sin(a),loc[2]+scale[2]*z))
+        rings.append(ids)
+    ff=[]
+    for a,b in zip(rings,rings[1:]):
+        for i in range(n):
+            j=(i+1)%n
+            if len(a)==1:ff.append((a[0],b[j],b[i]))
+            elif len(b)==1:ff.append((a[i],a[j],b[0]))
+            else:ff.extend([(a[i],a[j],b[i]),(a[j],b[j],b[i])])
+    return mesh(P,name,vv,ff,col)
 
-    Dissolving coplanar subdivision edges keeps the entire face below 40 tris.
-    Coordinates are in world XZ before the asset's final size normalization.
-    """
-    import bmesh
-    bpy.context.view_layer.update()
-    bm = bmesh.new(); bm.from_mesh(head.data); bm.transform(head.matrix_world)
-    bm.normal_update()
-    bmesh.ops.dissolve_limit(bm, angle_limit=1e-5, verts=list(bm.verts), edges=list(bm.edges))
-    bm.normal_update()
-    def clip(poly, a, b):
-        out = []
-        for u, v in zip(poly, poly[1:] + poly[:1]):
-            du = (b[0]-a[0])*(u.z-a[1]) - (b[1]-a[1])*(u.x-a[0])
-            dv = (b[0]-a[0])*(v.z-a[1]) - (b[1]-a[1])*(v.x-a[0])
-            if du >= -1e-8: out.append(u)
-            if (du >= 0) != (dv >= 0): out.append(u + (v-u)*(du/(du-dv)))
-        return out
-    if sum(a[0]*b[1]-b[0]*a[1] for a,b in zip(outline,outline[1:]+outline[:1])) < 0:
-        outline = outline[::-1]
-    # One tangent-normal offset per mark keeps shared crease vertices together.
-    # Offsetting every clipped fragment by a different normal opens visible seams.
-    from mathutils.bvhtree import BVHTree
-    cx = sum(p[0] for p in outline)/len(outline)
-    cz = sum(p[1] for p in outline)/len(outline)
-    origin = Vector((cx,min(v.co.y for v in bm.verts)-1,cz))
-    _, normal, _, _ = BVHTree.FromBMesh(bm).ray_cast(origin,Vector((0,1,0)))
-    lift = (normal if normal is not None else Vector((0,-1,0)))*.012
-    verts = []; faces = []
-    for f in bm.faces:
-        if f.normal.y >= -.05: continue
-        poly = [v.co.copy() for v in f.verts]
-        for a,b in zip(outline,outline[1:]+outline[:1]):
-            poly = clip(poly,a,b)
-            if not poly: break
-        if len(poly) >= 3:
-            start = len(verts)
-            verts.extend([tuple(v + lift) for v in poly])
-            faces.append(tuple(range(start,len(verts))))
-    bm.free()
-    return mesh(P,name,verts,faces,color)
-
-def build(P, spec):
+def build(P,spec):
     c=spec['colors']; gold=c['gold']; moving=[]
-    # An angular heart with a pronounced valley and a ridge running to its lower point.
-    outline=[(-.99,2.68),(-.96,2.86),(-.79,3.00),(-.57,3.03),(-.39,2.94),(-.25,3.04),(-.05,3.07),(.12,2.94),(.17,2.75),(.09,2.51),(-.13,2.30),(-.40,2.10),(-.68,2.29),(-.88,2.48)]
-    n=len(outline); cx=-.41;cz=2.65
-    verts=[(x,-.02,z) for x,z in outline]
-    verts += [(cx+(x-cx)*.77,-.43,cz+(z-cz)*.77) for x,z in outline]
-    verts += [(cx,-.57,cz),(cx,.34,cz)]
-    faces=[]
+    # Front drawing coordinates in metres. Broad gem faces converge at the heart ridge.
+    outline=[(-1,2.69),(-.94,2.94),(-.67,3.06),(-.40,2.93),
+       (-.14,3.10),(.06,3.04),(.14,2.86),(.10,2.64),(-.15,2.30),
+       (-.43,2.12),(-.72,2.33),(-.91,2.51)]
+    n=len(outline);cx=-.43;cz=2.64
+    vv=[(x,-.04,z) for x,z in outline]
+    vv += [(cx+(x-cx)*.83,-.50,cz+(z-cz)*.83) for x,z in outline]
+    vv += [(cx+(x-cx)*.78,.24,cz+(z-cz)*.78) for x,z in outline]
+    vv += [(cx,-.63,cz),(cx+.05,.37,cz)]
+    ff=[]
     for i in range(n):
         j=(i+1)%n
-        faces.extend([(i,j,n+j),(i,n+j,n+i),(n+i,n+j,2*n),(j,i,2*n+1)])
-    moving.append(mesh(P,'gem heart balloon with broad paper creases',verts,faces,lambda p,n:c['pink'] if n.z>.43 and n.x<.4 else c['magenta']))
-    def angular_balloon(name,loc,scale,col):
-        profile=[(0,-1),(.58,-.81),(.94,-.35),(1,.14),(.82,.66),(.42,.93),(0,1)]
-        ob=P.lathe(name,profile,8,loc=loc,color=col,rot=(0,0,22.5))
-        # Triangulate the coarse rings explicitly; no smoothing or subdivision.
-        bm=bmesh.new();bm.from_mesh(ob.data);bmesh.ops.triangulate(bm,faces=bm.faces,quad_method='ALTERNATE');bm.to_mesh(ob.data);bm.free()
-        for i,v in enumerate(ob.data.vertices):
-            if abs(v.co.z)<.95:
-                v.co.z+=.022*(1 if i%2 else -1)
-            v.co.x*=scale[0];v.co.y*=scale[1];v.co.z*=scale[2]
-        ob.data.update();P.paint(ob,col);return ob
-    moving.append(angular_balloon('creased octagonal pink balloon',(.05,.27,2.01),(.39,.40,.43),c['pink']))
-    head=angular_balloon('creased octagonal blue bunny head',(.59,-.025,2.48),(.43,.44,.41),c['cyan']); moving.append(head)
-    for sign in (-1,1):
-        moving.append(face_patch(P,head,'face_eye_'+str(sign),P.ellipse(.022,.030,6,cx=.59+sign*.155,cz=2.51),'#1F2350'))
-    moving.append(face_patch(P,head,'face_nose',[(.545,2.43),(.59,2.39),(.635,2.43)],c['pink']))
-    for i,(x,ang) in enumerate([(.36,-12),(.80,18)]):
-        moving.append(P.lathe('inflated bunny ear'+str(i),[(0,0),(.09,.10),(.15,.38),(.105,.60),(0,.75)],4,loc=(x,.01,2.79),rot=(-25,ang,0),color=c['cyan']))
-        vv=[(-.05,-.11,.14),(.05,-.11,.14),(.07,-.15,.43),(0,-.11,.64),(-.06,-.15,.44),(0,-.165,.40)]
-        ob=mesh(P,'creased blush inner ear panel'+str(i),vv,[(k,(k+1)%5,5) for k in range(5)],'#FFC7DA')
-        ob.location=(x,.01,2.79);ob.rotation_euler=tuple(math.radians(v) for v in (-25,ang,0));moving.append(ob)
-    for i,p in enumerate([(-.40,-.06,2.10),(.05,.28,1.60),(.59,-.025,2.07)]):
-        moving.append(P.cyl('inflation knot'+str(i),.060,.095,4,loc=(p[0],p[1],p[2]-.085),r2=.025,color=[c['magenta'],c['pink'],c['cyan']][i]))
-        moving.append(rod(P,'converging golden string'+str(i),(0,0,.40),(p[0],p[1],p[2]-.075),.011,gold,3))
-    seam=[(-.82,-.20,2.87),(-.76,-.40,2.69),(-.64,-.45,2.44),(-.40,-.33,2.14)]
+        ff += [(i,j,n+j),(i,n+j,n+i),(n+i,n+j,3*n),
+               (j,i,2*n+i),(j,2*n+i,2*n+j),(2*n+j,2*n+i,3*n+1)]
+    heart=mesh(P,'faceted broad heart balloon',vv,ff,lambda p,n:c['pink'] if n.z>.45 else c['magenta']);moving.append(heart)
+    moving.append(angular_balloon(P,'folded pink balloon',(-.01,.25,1.98),(.39,.38,.385),c['pink']))
+    moving.append(angular_balloon(P,'faceted cyan bunny head',(.49,.015,2.48),(.42,.40,.39),c['cyan']))
+    # Tall asymmetric pointed paper ears, with a folded inner gold panel.
+    for i,(x,lean,h) in enumerate([(.34,-.17,.74),(.69,.25,.70)]):
+        z=2.78;y=.065
+        shape=[(-.075,0),(-.16,.39),(-.10,.70),(0,1),(.14,.77),(.15,.36),(.075,0)]
+        vv=[]
+        for back in (False,True):
+            for u,v in shape:
+                vv.append((x+u+lean*v,y+.035*v+(.17 if back else -.17)*math.sin(math.pi*v),z+h*v))
+        vv += [(x+lean*.47,y-.27+.035*.47,z+h*.47)]
+        ff=[tuple(range(7,14))]+[(k,(k+1)%7,(k+1)%7+7,k+7) for k in range(7)]
+        ff += [(k,(k+1)%7,14) for k in range(7)]
+        ear=mesh(P,'sharp folded cyan ear '+str(i),vv,ff,c['cyan']);moving.append(ear)
+        # Reference inner ear is pale; gold is the light slot available in this spec.
+        panel=[(x-.035+lean*.12,y-.066+.035*.12,z+h*.12),
+               (x+.045+lean*.15,y-.07+.035*.15,z+h*.15),
+               (x+.075+lean*.65,y-.075+.035*.65,z+h*.65),
+               (x+lean*.87,y-.03+.035*.87,z+h*.87),
+               (x-.05+lean*.57,y-.12+.035*.57,z+h*.57)]
+        panel += [(x+lean*.45,y-.205+.035*.45,z+h*.45)]
+        from mathutils.bvhtree import BVHTree
+        tree=BVHTree.FromPolygons([v.co.copy() for v in ear.data.vertices],[list(f.vertices) for f in ear.data.polygons])
+        for j,(px,py,pz) in enumerate(panel):
+            hit,_,_,_=tree.ray_cast(Vector((px,y-1,pz)),Vector((0,1,0)))
+            if hit is not None:panel[j]=(px,hit.y-.012,pz)
+        moving.append(mesh(P,'creased pale gold ear inset '+str(i),panel,[(k,(k+1)%5,5) for k in range(5)],gold))
+    for i,(x,y,z,col) in enumerate([(-.43,-.14,2.12,c['magenta']),(-.01,.25,1.595,c['pink']),(.49,.015,2.09,c['cyan'])]):
+        moving.append(P.cyl('flared tied balloon neck '+str(i),.087,.105,4,loc=(x,y,z-.10),r2=.035,color=col))
+        moving.append(P.cyl('gold neck band '+str(i),.037,.018,5,loc=(x,y,z-.012),color=gold,cap=False))
+        moving.append(rod(P,'taut gold string '+str(i),(0,.06,.43),(x,y,z-.10),.013,gold,3))
+    # Visible gold crease thread on the heart face, following its angular contour.
+    seam=[(-.91,-.37,2.92),(-.84,-.52,2.70),(-.80,-.46,2.46),(-.43,-.20,2.13)]
     for i,(a,b) in enumerate(zip(seam,seam[1:])):
-        ob=rod(P,'fine gold heart fold seam'+str(i),a,b,.0045,gold,3);moving.append(ob)
-    P.lathe('gold faceted weight',[(.18,0),(.22,.08),(.21,.24),(.09,.34),(.055,.40),(0,.42)],6,color=gold)
-    finish(P,spec,[('swing',(0,0,.40),moving)])
+        moving.append(rod(P,'fine gold heart seam '+str(i),a,b,.004,gold,3))
+    weight=P.lathe('faceted gold weight',[(.18,0),(.225,.045),(.225,.20),(.09,.34),(.075,.43),(0,.43)],6,color=gold)
+    for v in weight.data.vertices:
+        if abs(v.co.z-.20)<.001:
+            a=math.atan2(v.co.y,v.co.x)+math.pi/6;r=math.hypot(v.co.x,v.co.y)
+            v.co.x=r*math.cos(a);v.co.y=r*math.sin(a)
+    weight.data.update()
+    bm=bmesh.new();bm.from_mesh(weight.data)
+    bmesh.ops.triangulate(bm,faces=list(bm.faces),quad_method='ALTERNATE')
+    bmesh.ops.recalc_face_normals(bm,faces=bm.faces)
+    bm.to_mesh(weight.data);bm.free();weight.data.update();P.paint(weight,gold)
+    finish(P,spec,[('swing',(0,0,.43),moving)])

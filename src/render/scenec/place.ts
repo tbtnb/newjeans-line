@@ -7,7 +7,9 @@ import type { SceneCSpec, SceneCZone } from '../../core/types';
 
 export interface CInst { a: string; layer: string; x: number; y: number; z: number; yaw: number; s: number; c: number; zone: number; t: number; chunk: number; hi?: boolean }
 export interface CSet extends CInst { popAt: number; label?: string }
-export interface CChunk { i: number; t0: number; t1: number; zone: number; minX: number; maxX: number; minZ: number; maxZ: number; y: number; items: CInst[] }
+export interface CChunk { i: number; t0: number; t1: number; zone: number; minX: number; maxX: number; minZ: number; maxZ: number; y: number; items: CInst[];
+  /** raised page at the chunk's own road level (climbs): pad shrunk so it never covers a lower road; decor inside it sits on it */
+  terr?: { y: number; pad: number } }
 export interface CPlacement { chunks: CChunk[]; sets: CSet[]; stats: { placed: number; rejected: number } }
 
 export function rng(seed: number) { let a = seed >>> 0; return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
@@ -42,6 +44,15 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
   const PAGE = spec.pagePad ?? 28; const own = chunks.map(c => c.y);
   for (const c of chunks) for (let j = 0; j < chunks.length; j++) { const o = chunks[j];
     if (o.maxX >= c.minX - PAGE && o.minX <= c.maxX + PAGE && o.maxZ >= c.minZ - PAGE && o.minZ <= c.maxZ + PAGE && own[j] < c.y) c.y = own[j]; }
+  // terraces: where the page had to drop more than 0.5 m below its own road, raise a second page at road level whose pad stops
+  // short of every lower road (2 m margin for the road width); kept only when it still reaches >= 5 m past the route
+  chunks.forEach((c, k) => {
+    const yh = own[k]; if (yh - c.y < 0.5) return; let pad = PAGE;
+    for (let j = 0; j < chunks.length; j++) { const o = chunks[j]; if (own[j] >= yh - 0.5) continue;
+      const gx = Math.max(o.minX - c.maxX, c.minX - o.maxX), gz = Math.max(o.minZ - c.maxZ, c.minZ - o.maxZ); pad = Math.min(pad, Math.max(gx, gz) - 2); }
+    if (pad >= 5) c.terr = { y: yh, pad };
+  });
+  const groundY = (c: CChunk, x: number, z: number) => c.terr && x >= c.minX - c.terr.pad && x <= c.maxX + c.terr.pad && z >= c.minZ - c.terr.pad && z <= c.maxZ + c.terr.pad ? c.terr.y : c.y;
   const chunkAt = (t: number) => { let lo = 0, hi = chunks.length - 1; while (lo < hi) { const m = (lo + hi + 1) >> 1; if (chunks[m].t0 <= t) lo = m; else hi = m - 1; } return lo; };
   let placed = 0, rejected = 0;
   const clearNear = spec.clear?.near ?? 1.0, groundMaxH = spec.clear?.groundMaxH ?? 0.3;
@@ -66,7 +77,8 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
         const rp = anchor(route, t).pos;
         const yaw = A.shape === 'far' || L.layer === 'mid' ? Math.atan2(rp.x - a.pos.x, rp.z - a.pos.z) : R() * Math.PI * 2;
         const ci = chunkAt(t);
-        chunks[ci].items.push({ a: L.asset, layer: L.layer, x: a.pos.x, y: a.pos.y - o.roadH + y0, z: a.pos.z, yaw, s, c: (L.colors ?? [0])[Math.floor(R() * (L.colors ?? [0]).length)], zone: zi, t, chunk: ci, ...(L.hi ? { hi: true } : {}) });
+        const gy = L.layer === 'ground' || L.layer === 'mid' ? groundY(chunks[ci], a.pos.x, a.pos.z) + y0 : a.pos.y - o.roadH + y0;
+        chunks[ci].items.push({ a: L.asset, layer: L.layer, x: a.pos.x, y: gy, z: a.pos.z, yaw, s, c: (L.colors ?? [0])[Math.floor(R() * (L.colors ?? [0]).length)], zone: zi, t, chunk: ci, ...(L.hi ? { hi: true } : {}) });
         placed++;
       }
     }
@@ -84,7 +96,8 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
       for (let k = 0; k < 24 && o.hits(a.pos.x, a.pos.z, r + 1.5, a.pos.y - 1, a.pos.y + A.h * sc); k++) { off += side * 1.5; a = flowAnchor(route, sp.t, off, 0, 0); }
       const rp = anchor(route, sp.t).pos;
       const popAt = drop && sp.t - drop.t < 8 && sp.t >= drop.t - 0.5 ? drop.t : snap(sp.t - 4);
-      sets.push({ a: sp.asset, layer: 'land', x: a.pos.x, y: a.pos.y - o.roadH, z: a.pos.z, yaw: Math.atan2(rp.x - a.pos.x, rp.z - a.pos.z), s: sc, c: 0, zone: zi, t: sp.t, chunk: chunkAt(sp.t), popAt, label: sp.label, ...(sp.hi ? { hi: true } : {}) });
+      const sc0 = chunks[chunkAt(sp.t)];
+      sets.push({ a: sp.asset, layer: 'land', x: a.pos.x, y: groundY(sc0, a.pos.x, a.pos.z), z: a.pos.z, yaw: Math.atan2(rp.x - a.pos.x, rp.z - a.pos.z), s: sc, c: 0, zone: zi, t: sp.t, chunk: chunkAt(sp.t), popAt, label: sp.label, ...(sp.hi ? { hi: true } : {}) });
     }
   });
   return { chunks, sets, stats: { placed, rejected } };

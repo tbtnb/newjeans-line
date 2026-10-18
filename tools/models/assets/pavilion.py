@@ -1,5 +1,5 @@
-"""H16 Lake Paper Pavilion; size 4.8 x 5.1 x 6 m; budget 3000.
-Pivots root, swing0..7 lanterns at eaves. SIMPLIFICATIONS: side sheet reverses the stairs relative to front/top; front/hero govern. Open column gaps remain open (design-mask extraction fills them). Warm light is flat palette; tiny lamp chains are slim rods; dome is faceted paper."""
+"""H16 Lake Paper Pavilion; size from spec (4.8 x 5.1 x 6 m); budget 3000.
+Pivots root, swing0..7 lanterns at eaves. SIMPLIFICATIONS: side sheet reverses the stairs relative to front/top; front/hero govern. Open column gaps remain open (design-mask extraction fills them). Sixteen-sided faceted island; eight alternating folded roof gores. Warm light is flat palette; tiny lamp chains are slim rods; dome is faceted paper."""
 BUDGET=3000
 
 import math
@@ -71,14 +71,11 @@ def build(P,spec):
  def island(name,r,r2,z,h,col,fold=False):
   def ring(rr,zz):
    pts=[]
-   for i in range(8):
-    t=math.tau*i/8
-    if i==6:
-     yy=-math.sqrt(rr*rr-.77*.77)
-     pts += [(-.77,yy,zz),(-.77,-1.4,zz),(.77,-1.4,zz),(.77,yy,zz)]
-    else:
-     radius=rr
-     pts.append((radius*math.cos(t),radius*math.sin(t),zz))
+   for i in range(16):
+    if i==12:
+     yy=-math.sqrt(rr*rr-.85*.85)
+     pts += [(-.85,yy,zz),(-.85,-1.35,zz),(.85,-1.35,zz),(.85,yy,zz)]
+    else:pts.append((rr*math.cos(math.tau*i/16),rr*math.sin(math.tau*i/16),zz))
    return pts
   lo=ring(r,z);hi=ring(r2,z+h);n=len(lo);vv=lo+hi;ff=[tuple(range(n-1,-1,-1)),tuple(range(n,2*n))]
   for i in range(n):
@@ -87,11 +84,11 @@ def build(P,spec):
     q=[lo[i],lo[j],hi[j],hi[i]];cen=tuple(sum(x[k] for x in q)/4 for k in range(3));idx=len(vv);vv.append((cen[0]*1.02,cen[1]*1.02,cen[2]));ff += [(i,j,idx),(j,n+j,idx),(n+j,n+i,idx),(n+i,i,idx)]
    else:ff.append((i,j,n+j,n+i))
   ob=mesh(P,name,vv,ff,col)
-  if fold:P.paint(ob,M,faces={i for i in range(2,len(ff)) if i%4 in (0,1)})
+  if fold:P.paint(ob,M,faces={i for i in range(2,len(ff)) if i%4==0})
   return ob
- for r,h,z,col,r2 in [(2.40,.09,0,L,2.40),(2.40,.50,.09,L,2.38),(2.38,.055,.59,G,2.38),(2.38,.15,.645,L,2.25),(2.25,.055,.795,G,2.25),(2.25,.10,.85,W,2.19)]:
+ for r,h,z,col,r2 in [(2.40,.09,0,L,2.40),(2.40,.50,.09,L,2.38),(2.38,.055,.59,G,2.38),(2.38,.15,.645,L,2.25),(2.25,.10,.85,W,2.19)]:
   a.append(island('notched island foundation',r,r2,z,h,col,col==L and h>.3))
- a.append(island('notched pearl floor',2.10,2.10,.95,.055,W))
+ # Upper pearl floor is integrated into the final foundation ring.
  # Starburst floor inlays remain visible in the open pavilion.
  for i in range(8):
   t=math.tau*i/8;u=t+math.pi/8;v=t+math.pi/4
@@ -106,40 +103,44 @@ def build(P,spec):
  lamps=[]
  for i in range(8):
   t=math.tau*i/8+math.pi/8;x=1.80*math.cos(t);y=1.80*math.sin(t)
-  a.append(P.lathe('fluted pearl column',[(.25,.92),(.25,1.10),(.18,1.18),(.17,3.56),(.23,3.65),(.23,3.80)],6,loc=(x,y,0),color=W))
-  for z in (1.17,3.59):a.append(P.cyl('column gilded collar',.185,.055,6,loc=(x,y,z),color=G))
+  a.append(P.lathe('fluted pearl column',[(.29,.92),(.29,1.10),(.22,1.20),(.185,1.22),(.185,3.51),(.26,3.61),(.26,3.77)],6,loc=(x,y,0),color=W))
+  for z in (1.17,3.59):a.append(P.cyl('column gilded collar',.22,.065,6,loc=(x,y,z),color=G,cap=False))
   t+=math.pi/8;x=1.98*math.cos(t);y=1.98*math.sin(t);hang=3.74
   lamp=[rod(P,'lantern short chain',(x,y,hang),(x,y,3.43),.018,G,6)]
   lamp.append(P.lathe('warm faceted eave lantern',[(0,2.60),(.065,2.70),(.24,2.91),(.21,3.12),(.065,3.30),(0,3.43)],6,loc=(x,y,0),color=A))
-  lamp.append(P.ico('gold lamp tassel',.032,loc=(x,y,2.61),color=G,subdiv=1,scale=(1,1,1.6)))
+  lamp.append(P.ico('gold lamp tassel',.055,loc=(x,y,2.61),color=G,subdiv=1,scale=(1,1,1.6)))
   lamps.append(P.pivot('swing'+str(i),(x,y,hang),lamp))
  # Scalloped canopy: eight lobes, two facets across each lobe, three radial bands.
  N=32;rings=[]
  for r,z in [(.10,5.12),(.78,4.99),(1.45,4.68),(1.95,4.12),(2.28,3.72)]:
   ring=[]
   for i in range(N):
-   t=math.tau*i/N+(.032 if r==.78 else (-.028 if r==1.45 else (.026 if r==1.95 else 0)));wave=.44*(.5+.5*math.cos(8*t))*(r/2.28)**3
-   ring.append((r*math.cos(t),r*math.sin(t),z+wave+(.085*(i%2) if r==1.45 else (-.035*(i%2) if r==1.95 else 0))))
+   t=math.tau*i/N;wave=.33*(.5+.5*math.cos(8*t))*(r/2.28)**3
+   ring.append((r*math.cos(t),r*math.sin(t),z+wave+(.07*(i%2) if r==1.45 else 0)))
   rings.append(ring)
  for k in range(4):
   for i in range(N):
    j=(i+1)%N;v=[rings[k][i],rings[k][j],rings[k+1][j],rings[k+1][i]]
    col=M if i%4<2 else L
    ob=mesh(P,'canopy folded facet',v,[(0,1,2),(0,2,3)],col)
-   if i%4 in (1,3) and k==2:P.paint(ob,L if col==M else M,faces={1})
+   # Broad unbroken alternating paper gores, with actual planar folds.
    a.append(ob)
  for i in range(N):
   j=(i+1)%N;p=rings[-1][i];q=rings[-1][j]
   a.append(mesh(P,'scalloped gold trim',[p,q,(q[0],q[1],q[2]-.085),(p[0],p[1],p[2]-.085)],[(0,1,2,3)],G))
   a.append(mesh(P,'scalloped lilac valance',[(p[0],p[1],p[2]-.085),(q[0],q[1],q[2]-.085),(q[0]*.98,q[1]*.98,q[2]-.23),(p[0]*.98,p[1]*.98,p[2]-.23)],[(0,1,2,3)],L))
+ for ob in a:
+  if ob.name.startswith('fluted pearl column'):
+   bm=bmesh.new();bm.from_mesh(ob.data);bm.normal_update()
+   bmesh.ops.delete(bm,geom=[f for f in bm.faces if abs(f.normal.z)>.99],context='FACES_ONLY');bm.to_mesh(ob.data);bm.free()
  a.append(P.cyl('crescent gold pedestal',.28,.14,8,loc=(0,0,5.1),color=G,r2=.13))
  # Crescent silhouette is a real concave extruded mesh.
  out=[]
- for i in range(15):
-  t=math.radians(65)+(math.radians(300)-math.radians(65))*i/14;out.append((.43*math.cos(t),.43*math.sin(t)))
  for i in range(11):
-  t=math.radians(290)-(math.radians(290)-math.radians(78))*i/10;out.append((.13+.28*math.cos(t),.06+.31*math.sin(t)))
- n=len(out);vs=[(x+.16,-.09,z+5.67) for x,z in out]+[(x*.88+.16,-.14,z*.88+5.67) for x,z in out]+[(x+.16,.09,z+5.67) for x,z in out]
+  t=math.radians(65)+(math.radians(300)-math.radians(65))*i/10;out.append((.43*math.cos(t),.43*math.sin(t)))
+ for i in range(8):
+  t=math.radians(290)-(math.radians(290)-math.radians(78))*i/7;out.append((.13+.28*math.cos(t),.06+.31*math.sin(t)))
+ n=len(out);vs=[(x+.16,-.09,z+5.67) for x,z in out]+[(x*.88+.16,-.22,z*.88+5.67) for x,z in out]+[(x+.16,.09,z+5.67) for x,z in out]
  fs=[tuple(range(n,2*n)),tuple(range(3*n-1,2*n-1,-1))]
  for i in range(n):
   j=(i+1)%n;fs += [(i,j,n+j,n+i),(i,2*n+i,2*n+j,j)]

@@ -61,8 +61,8 @@ export class SceneC {
   setTier(t: Tier) { if (t === this.tier) return; this.tier = t; for (const m of this.chunkMesh.values()) m.dispose(); this.chunkMesh.clear(); this.range = [-1, -1]; }
 
   private keep(it: CInst) { if (it.hi && this.tier === 'low') return false; return hash(it.x, it.z) < (TIERS[this.tier].density[it.layer] ?? 1); }
-  private colOf(it: CInst, model: boolean) { const c = this.zoneCols[it.zone][it.c] ?? [1, 1, 1]; const k = model ? 0.3 : 0.85; return [1 + (c[0] - 1) * k, 1 + (c[1] - 1) * k, 1 + (c[2] - 1) * k]; }
-  private yOf(it: CInst) { return it.layer === 'ground' || it.layer === 'mid' || it.layer === 'land' ? this.plc.chunks[it.chunk].y : it.y; }
+  private colOf(it: CInst, model: boolean) { const c = this.zoneCols[it.zone][it.c] ?? [1, 1, 1]; const k = model ? 0.12 : 0.85; return [1 + (c[0] - 1) * k, 1 + (c[1] - 1) * k, 1 + (c[2] - 1) * k]; }
+  private yOf(it: CInst) { return it.y; }   // ground / mid / land: the page or terrace level chosen at placement
 
   private meshFrom(name: string, t: Template) {
     const m = new Mesh(name, this.scene); const vd = new VertexData(); vd.positions = t.pos; vd.colors = t.col; vd.indices = t.idx; vd.applyToMesh(m, true);
@@ -80,6 +80,9 @@ export class SceneC {
         if (c.zone !== zi) continue; const y = c.y - 0.004 * (c.i % 3), i0 = pos.length / 3;
         pos.push(c.minX - pg, y, c.minZ - pg, c.maxX + pg, y, c.minZ - pg, c.maxX + pg, y, c.maxZ + pg, c.minX - pg, y, c.maxZ + pg);
         for (let k = 0; k < 4; k++) col.push(gc[0], gc[1], gc[2], 1); idx.push(i0, i0 + 1, i0 + 2, i0, i0 + 2, i0 + 3);
+        if (c.terr) { const p = c.terr.pad, ty = c.terr.y - 0.004 * (c.i % 3), j0 = pos.length / 3;   // raised page (climb), a shade lighter
+          pos.push(c.minX - p, ty, c.minZ - p, c.maxX + p, ty, c.minZ - p, c.maxX + p, ty, c.maxZ + p, c.minX - p, ty, c.maxZ + p);
+          for (let k = 0; k < 4; k++) col.push(Math.min(1, gc[0] * 1.06), Math.min(1, gc[1] * 1.06), Math.min(1, gc[2] * 1.06), 1); idx.push(j0, j0 + 1, j0 + 2, j0, j0 + 2, j0 + 3); }
       }
       const m = new Mesh(`cpage_z${zi}`, this.scene);
       if (pos.length) { const vd = new VertexData(); vd.positions = pos; vd.colors = col; vd.indices = idx; vd.applyToMesh(m, false); }
@@ -92,14 +95,14 @@ export class SceneC {
   // ---- ground chunks (merged static) ----
   private buildChunk(c: CChunk) {
     const pos: number[] = [], col: number[] = [], idx: number[] = [];
-    const y = c.y;   // ground cover sits on its chunk's road level; the paper page itself is the zone's page mesh (buildPages)
+    // ground cover sits on its page or terrace (it.y); the paper page itself is the zone page mesh (buildPages)
     for (const it of c.items) {
       if (it.layer !== 'ground' || !this.keep(it)) continue;
       const t = this.tm.get(it.a); if (!t) continue; const ic = this.colOf(it, t.model);
       const cs = Math.cos(it.yaw), sn = Math.sin(it.yaw), s = it.s, i0 = pos.length / 3;
       for (let i = 0; i < t.pos.length; i += 3) {
         const lx = t.pos[i] * s, ly = t.pos[i + 1] * s, lz = t.pos[i + 2] * s;
-        pos.push(it.x + lx * cs + lz * sn, y + 0.002 + ly, it.z - lx * sn + lz * cs);
+        pos.push(it.x + lx * cs + lz * sn, it.y + 0.002 + ly, it.z - lx * sn + lz * cs);
         const j = i / 3 * 4; col.push(t.col[j] * ic[0], t.col[j + 1] * ic[1], t.col[j + 2] * ic[2], 1);
       }
       for (let i = 0; i < t.idx.length; i++) idx.push(t.idx[i] + i0);
@@ -151,7 +154,7 @@ export class SceneC {
   // ---- set pieces ----
   private makeSet(s: CSet): SetE {
     const node = new TransformNode(`cset_${s.a}`, this.scene); node.parent = this.root;
-    node.position.set(s.x, this.plc.chunks[s.chunk].y, s.z); node.rotation.y = s.yaw; node.scaling.setAll(s.s);
+    node.position.set(s.x, s.y, s.z); node.rotation.y = s.yaw; node.scaling.setAll(s.s);
     const hinge = new TransformNode('hinge', this.scene); hinge.parent = node;
     const e: SetE = { def: s, node, hinge, far: null, near: null, nearMeshes: [], piv: [], tris: 0, on: true, lodFar: false };
     this.buildSetVisual(e); this.setOn(e, false);

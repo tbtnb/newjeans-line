@@ -1,5 +1,5 @@
 """P24 Layered paper cloud. Size 3.5 x 1.2 x 2 m from spec; 300 tris; root, bob.
-SIMPLIFICATIONS: top drawing is flatter than front/side, so top IoU is advisory per spec; seven folded 24-facet puff shells and a continuous scalloped back plate; no paper texture."""
+SIMPLIFICATIONS: top drawing is flatter than front/side, so top IoU is advisory per spec; seven folded 24-facet puff shells and a curved scalloped back plate, without paper texture."""
 BUDGET = 300
 
 import math
@@ -36,36 +36,45 @@ def finish(P,spec,animated=()):
     P.pivot('root',(0,0,0),[o for o in obs if o not in moving]+roots)
 
 def folded_puff(P,name,x,z,rx,rz,depth,back,col):
-    # Eight silhouette corners, eight offset creases and a forward apex: 24 flat facets; rear closes against the plate.
-    vv=[(x+rx*math.cos(k*math.pi/4),back,z+rz*math.sin(k*math.pi/4)) for k in range(8)]
-    vv += [(x+rx*.78*math.cos(k*math.pi/4+math.pi/8),back-depth*.74,z+rz*.78*math.sin(k*math.pi/4+math.pi/8)) for k in range(8)]
-    vv += [(x,back-depth,z)]
+    # Broad triangular creases with a blunt front crown, never a conical spike.
+    n=8
+    vv=[(x+rx*math.cos(k*math.tau/n),back,z+rz*math.sin(k*math.tau/n)) for k in range(n)]
+    vv += [(x+rx*.84*math.cos(k*math.tau/n+math.pi/n),back-depth*.90,z+rz*.84*math.sin(k*math.tau/n+math.pi/n)) for k in range(n)]
+    vv += [(x-rx*.10,back-depth,z+rz*.08)]
     ff=[]
-    for k in range(8):
-        j=(k+1)%8
-        ff += [(k,j,8+k),(j,8+j,8+k),(8+k,8+j,16)]
+    for k in range(n):
+        j=(k+1)%n
+        ff += [(k,j,n+k),(j,n+j,n+k),(n+k,n+j,2*n)]
     return mesh(P,name,vv,ff,lambda p,n: '#F3F1EA' if col=='#FFFFFF' and (n.x>.25 or n.z<-.45) else col)
 
 def build(P, spec):
     c=spec['colors']; pieces=[]
-    # The continuous scalloped back is visible around each puff, not a rectangular side slab.
-    outline=[(-1.75,.38),(-1.70,.69),(-1.49,.91),(-1.23,.93),
-             (-1.13,1.24),(-.91,1.47),(-.67,1.49),(-.58,1.78),
-             (-.24,1.97),(.11,2.0),(.43,1.84),(.64,1.49),
-             (.93,1.50),(1.19,1.35),(1.29,.99),(1.50,1.02),
-             (1.69,.86),(1.72,.62),(1.75,.51),(1.71,.24),
-             (1.49,.15),(.72,.14),(.18,.12),(-.92,.20),(-1.53,.23)]
-    plate=P.prism('scalloped thick layered paper backing',outline,.19,loc=(0,.42,0),color=c['pearl'])
-    P.paint(plate,c['fog'],faces={f.index for f in plate.data.polygons if abs(f.normal.y)<.5})
+    # Trace the actual scalloped paper rim. Its back curves in plan, as on the hero.
+    pixels=[(0,274),(23,214),(65,161),(97,161),(116,126),(173,100),
+      (195,106),(228,51),(284,20),(349,16),(405,46),(445,121),
+      (490,117),(525,135),(552,207),(576,206),(614,260),(638,300),
+      (628,339),(606,358),(317,373),(267,378),(176,345),
+      (137,348),(102,333),(18,322)]
+    outline=[((u-319)*3.5/638,(378-v)*2/362) for u,v in pixels]
+    vv=[]
+    for layer in (0,1):
+        for x,z in outline:
+            y=.16+.48*(1-(abs(x)/1.76)**1.5)
+            vv.append((x,y-.13 if layer==0 else y,z))
+    n=len(outline)
+    ff=[tuple(range(n-1,-1,-1)),tuple(range(n,2*n))]
+    ff += [(i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n)]
+    plate=mesh(P,'scalloped curved paper back plate',vv,ff,c['pearl'])
+    P.paint(plate,c['fog'],faces={f.index for f in plate.data.polygons if abs(f.normal.y)<.45})
     pieces.append(plate)
-    # Arranged from rear to front; front masses and their overlaps follow the hero.
-    puffs=[(-1.45,.64,.34,.35,.60,.38,'white'),
-           (-.92,.99,.37,.45,.68,.38,'pearl'),
-           (-.92,.35,.36,.25,.56,.38,'pearl'),
-           (-.04,1.31,.61,.59,.86,.40,'white'),
-           (.74,.86,.54,.51,.84,.40,'pearl'),
-           (1.34,.49,.32,.34,.64,.40,'white'),
-           (-.28,.49,.59,.49,1.02,.40,'white')]
-    for k,(x,z,rx,rz,d,y,col) in enumerate(puffs):
-        pieces.append(folded_puff(P,'creased paper puff '+str(k),x,z,rx,rz,d,y,c[col]))
+    # Seven polygonal puff shells; dimensions taken from their front-view boundaries.
+    puffs=[(67,251,54,57,.66,.28,'white'),
+           (163,203,61,72,.70,.38,'pearl'),
+           (143,311,51,34,.63,.34,'pearl'),
+           (310,143,107,96,.81,.43,'white'),
+           (445,239,88,87,.88,.36,'pearl'),
+           (555,292,53,55,.65,.27,'white'),
+           (272,288,103,88,1.02,.30,'white')]
+    for k,(u,v,rx,rz,d,y,col) in enumerate(puffs):
+        pieces.append(folded_puff(P,'folded paper puff '+str(k),(u-319)*3.5/638,(378-v)*2/362,rx*3.5/638*1.08,rz*2/362*(1.02 if k==6 else 1.08),d,y,c[col]))
     finish(P,spec,[('bob',(0,0,1),pieces)])

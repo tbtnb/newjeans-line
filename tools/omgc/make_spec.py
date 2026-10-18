@@ -117,6 +117,9 @@ EXTRA = {   # zone: [(asset, layer, count)]  -- counts before spec.density
  'z09': [('fern', G, 220), ('mushroom-group', G, 50), ('reed', G, 60), ('clover', G, 100), ('mushroom', G, 60), ('tree', M, 24), ('firefly-lamp', M, 24), ('bunny-statue', M, 4)],
  'z10': [('tulip', G, 150), ('flower-heart', G, 200), ('gift', G, 70), ('clover', G, 100), ('tulip-bed', M, 8), ('fence', M, 24), ('bunny-statue', M, 6), ('heart-bed', M, 5)],
 }
+KIT_BIG = {'clover', 'fern', 'tulip', 'flower-heart', 'mushroom', 'reed', 'flower'}
+MASS = {'z01': [('tree-bush', 40)], 'z02': [('tree-bush', 40)], 'z03': [('tree-bush', 30)], 'z04': [('pine', 30)], 'z05': [('pine', 30), ('tree-bush', 20)],
+        'z06': [('tree-bush', 40)], 'z07': [('pine', 40)], 'z08': [('tree-bush', 30)], 'z09': [('pine', 60)], 'z10': [('tree-bush', 40)]}
 RING = {   # far ring 22-55 m out: paper hills + zone silhouette pieces, big scale
  'z01': ['paper-hill', 'tree'], 'z02': ['paper-hill', 'tree'], 'z03': ['paper-hill', 'tree'], 'z04': ['paper-hill', 'lantern-tower'],
  'z05': ['paper-hill', 'pine'], 'z06': ['paper-hill', 'tree'], 'z07': ['paper-hill', 'pine', 'spiral-tower'], 'z08': ['paper-hill', 'lantern-tower'],
@@ -127,12 +130,20 @@ for z in zones:
     zid = z['id']
     for L in z['layers']:
         if L['asset'].endswith('-decal') and zid in DECAL_KEEP: L['count'] = round(L['count'] * DECAL_KEEP[zid])
+    lum = lambda h: (0.299 * int(h[1:3], 16) + 0.587 * int(h[3:5], 16) + 0.114 * int(h[5:7], 16)) / 255
+    bright = [i for i, h in enumerate(z['colors']) if lum(h) > 0.35] or [0, 1, 2, 3, 4]   # decor never takes the zone's night navy
+    for L in z['layers']: L['colors'] = bright
     zk = (z['t1'] - z['t0']) / 15.12   # z09 is twice as long: keep density per second
     for aid, layer, n in EXTRA.get(zid, []):
         n = round(n * zk * (0.5 if aid in ('gift', 'lily-lamp') else 1))
-        Ld = LAYER[layer]; z['layers'].append(dict(asset=aid, layer=layer, count=n, near=list(Ld['near']), y=Ld['y'], scale=Ld['scale'], colors=[0, 1, 2, 3, 4], hi=True))
+        Ld = LAYER[layer]; sc = [2.2, 3.4] if layer == G and aid in KIT_BIG else Ld['scale']   # kit reads at the gameplay camera
+        z['layers'].append(dict(asset=aid, layer=layer, count=n, near=list(Ld['near']), y=Ld['y'], scale=sc, colors=bright, hi=True))
+    for aid, n in MASS.get(zid, []):   # cheap tree masses hugging the road (~300 tris each) so no stretch is bare
+        z['layers'].append(dict(asset=aid, layer='mid', count=round(n * zk), near=[2.0, 12.0], y=[0, 0], scale=[1.0, 1.5], colors=bright, hi=True))
+    for L in z['layers']:
+        if zid == 'z10' and L['asset'] == 'bunny-house' and not L.get('hi'): L['count'] = 20   # 1k-tri houses: z10 peak
     for k, aid in enumerate(RING[zid]):
-        z['layers'].append(dict(asset=aid, layer='mid', count=round((26 if k == 0 else 12 if aid in ('tree', 'pine', 'tree-bush') else 5) * zk), near=[22.0, 55.0], y=[0, 0], scale=[2.2, 3.6] if k == 0 else [1.4, 2.2], colors=[0, 1, 2, 3, 4], hi=True))
+        z['layers'].append(dict(asset=aid, layer='mid', count=round((26 if k == 0 else 12 if aid in ('tree', 'pine', 'tree-bush') else 5) * zk), near=[22.0, 55.0], y=[0, 0], scale=[2.2, 3.6] if k == 0 else [1.4, 2.2], colors=bright, hi=True))
     # secondary hero copies: each hero/landmark set piece gets a smaller twin on the other side 2.5 s later and a far-ring copy
     extra = []
     for sp in z['setpieces']:
