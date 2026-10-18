@@ -537,7 +537,7 @@ export class World {
       this.dress.update(t, dt, beatK, (x, y, z, r, h) => {
         tmp.set(x, y + h / 2, z); const v = Vector3.TransformCoordinates(tmp, view);
         const br = Math.hypot(r, h / 2);
-        if (v.z <= 0.5) return Math.hypot(x - cam.x, z - cam.z) < br + 1;
+        if (v.z - br < 5) return true; // never let a prop sit right in front of the lens
         const sx = v.x / (v.z * th * aspect), sy = v.y / (v.z * th), sr = br / (v.z * th);
         for (const q of P) { if (v.z - br * 0.5 >= q.z) continue; if (Math.hypot((sx - q.x) * aspect, sy - q.y) < sr * 0.85 + q.r) return true; }
         return false;
