@@ -49,6 +49,9 @@ export class CameraRig {
   extraPitch = 0; extraDist = 0;
   /** QA close-ups only (play.mjs --camScale); 1 in the game */
   distScale = 1;
+  /** ?cam=key: framing of the concept-C key renders -- lower pitch looking along a long receding road, head in the lower
+   *  third, authored side/top presets ignored (always along the flow); distance stays at or beyond the default's floor */
+  keyMode = typeof location !== 'undefined' && /[?&]cam=key\b/.test(location.search);
 
   private hits: number[] = []; private orbitAng = 0;
 
@@ -84,6 +87,7 @@ export class CameraRig {
 
   update(t: number, head: { x: number; y: number; z: number }, dt: number) {
     const p = this.params(t);
+    if (this.keyMode && !this.menuOrbit) { p.pitch = 31; p.dist = 46; p.fov = 42; p.yawOff = 0; p.sway = 0; p.orbit = 0; p.worldYaw = null; p.roll = 0; p.tilt = 0; p.lead = 2.4; delete (p as any).worldYawBlend; }
     const flow = this.flowYaw(t);
     // slow orbit (breakdowns): drifts while active, eases back when the cue ends; never more than ±35°
     if (p.orbit) this.orbitAng = Math.max(-35, Math.min(35, this.orbitAng + p.orbit * dt)); else this.orbitAng *= Math.exp(-dt * 0.6);
@@ -92,7 +96,7 @@ export class CameraRig {
     if (p.worldYaw !== null) desiredYaw = wy !== undefined ? angLerp(desiredYaw, p.worldYaw * Math.PI / 180, wy) : p.worldYaw * Math.PI / 180;
     if (this.menuOrbit) desiredYaw = flow + performance.now() / 9000;
     const fx = Math.sin(flow), fz = Math.cos(flow);
-    const leadDist = Math.min(p.lead * 9, Math.max(MIN_DIST, p.dist) * 0.2);
+    const leadDist = this.keyMode ? Math.max(MIN_DIST, p.dist) * 0.42 : Math.min(p.lead * 9, Math.max(MIN_DIST, p.dist) * 0.2);   // key: look well ahead, head sits low
     const want = this.freezeAt ?? new Vector3(head.x + fx * leadDist, head.y, head.z + fz * leadDist);
     if (!this.initialized) { this.target.copyFrom(want); this.yaw = desiredYaw; this.ty = want.y; this.initialized = true; }
     const kPos = 1 - Math.exp(-dt * 4.5), kYaw = 1 - Math.exp(-dt * 1.6), kY = 1 - Math.exp(-dt * 2.5);
