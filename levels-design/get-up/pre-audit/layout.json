@@ -1,0 +1,1355 @@
+{
+ "id": "get-up",
+ "title": "Get Up",
+ "palette": {
+  "skyTop": "#A8C8D1",
+  "skyBottom": "#ece3ee",
+  "fog": "#d8dbe6",
+  "fogStart": 25,
+  "fogEnd": 90,
+  "ground": "#b9c9d6",
+  "groundY": -1.5,
+  "road": "#F5F1E8",
+  "roadSide": "#B8B4D5",
+  "line": "#EC679D",
+  "light": "#fff6ee",
+  "lightIntensity": 1.0,
+  "ambient": "#c6c4dc",
+  "particles": null
+ },
+ "road": {
+  "width": [
+   {
+    "t": 0,
+    "w": 2.8
+   },
+   {
+    "t": 8.334,
+    "w": 2.0
+   },
+   {
+    "t": 16.332,
+    "w": 2.4
+   },
+   {
+    "t": 24.331,
+    "w": 2.6
+   },
+   {
+    "t": 32.329,
+    "w": 2.8
+   }
+  ],
+  "height": 0.6,
+  "reveal": [
+   {
+    "t": 0,
+    "mode": "rise",
+    "lead": 2.5
+   },
+   {
+    "t": 8.334,
+    "mode": "unfold",
+    "lead": 2.0
+   },
+   {
+    "t": 16.332,
+    "mode": "rise",
+    "lead": 2.0
+   },
+   {
+    "t": 24.331,
+    "mode": "rise",
+    "lead": 2.0
+   }
+  ]
+ },
+ "elevation": [
+  {
+   "t0": 16.332,
+   "t1": 23.331,
+   "type": "ramp",
+   "dy": 3.5
+  },
+  {
+   "t": 28.38,
+   "type": "fall",
+   "dy": -3.5
+  }
+ ],
+ "sections": [
+  {
+   "t": 0,
+   "label": "After the rain · shallow water",
+   "camera": "iso",
+   "palette": {
+    "ground": "#b9c9d6"
+   }
+  },
+  {
+   "t": 8.334,
+   "label": "One warm light",
+   "camera": "close",
+   "palette": {
+    "ground": "#8f89ab"
+   }
+  },
+  {
+   "t": 16.332,
+   "label": "Horizon gathers",
+   "camera": "high",
+   "palette": {
+    "skyTop": "#b9d3db"
+   }
+  },
+  {
+   "t": 24.331,
+   "label": "Five lights · moon-green grass",
+   "camera": "iso",
+   "palette": {
+    "ground": "#a8c59a",
+    "groundY": -6
+   }
+  },
+  {
+   "t": 32.329,
+   "label": "Last step",
+   "camera": "wide"
+  }
+ ],
+ "camera": [
+  {
+   "t": 0,
+   "preset": "iso",
+   "blend": 0
+  },
+  {
+   "t": 8.334,
+   "preset": "close",
+   "blend": 1.5,
+   "note": "narrow alley"
+  },
+  {
+   "t": 16.332,
+   "preset": "high",
+   "blend": 1.5,
+   "note": "switchback knot climbs; high so laps stay visible"
+  },
+  {
+   "t": 24.331,
+   "preset": "iso",
+   "yaw": -20,
+   "blend": 1.5
+  },
+  {
+   "t": 32.329,
+   "preset": "wide",
+   "blend": 3.0
+  }
+ ],
+ "events": [
+  {
+   "t": 8.334,
+   "type": "light",
+   "target": "warm_lamp",
+   "level": 1.0,
+   "color": "#ffd79a",
+   "note": "lights on the section downbeat"
+  },
+  {
+   "t": 24.331,
+   "type": "light",
+   "target": [
+    "light_beam_0",
+    "light_beam_1",
+    "light_beam_2",
+    "light_beam_3",
+    "light_beam_4"
+   ],
+   "every": 2.0,
+   "level": 0.9,
+   "note": "one beam per vocal phrase (2 s)"
+  },
+  {
+   "t": 16.332,
+   "type": "color",
+   "palette": {
+    "skyTop": "#b9d3db",
+    "skyBottom": "#f2dfe8"
+   },
+   "dur": 2.0
+  },
+  {
+   "t": 24.331,
+   "type": "color",
+   "palette": {
+    "skyTop": "#cfe3e0",
+    "skyBottom": "#fbeee2",
+    "ground": "#a8c59a"
+   },
+   "dur": 2.0
+  },
+  {
+   "t": 24.331,
+   "type": "particles",
+   "particles": "dust",
+   "until": 36.257959
+  },
+  {
+   "t": 32.329,
+   "type": "color",
+   "palette": {
+    "light": "#fff1dc"
+   },
+   "dur": 3.0
+  }
+ ],
+ "diamonds": [
+  {
+   "t": 2.835,
+   "side": 0
+  },
+  {
+   "t": 5.834,
+   "side": 0
+  },
+  {
+   "t": 10.834,
+   "side": 0
+  },
+  {
+   "t": 13.833,
+   "side": 0
+  },
+  {
+   "t": 18.082,
+   "side": 0
+  },
+  {
+   "t": 21.581,
+   "side": 0
+  },
+  {
+   "t": 26.831,
+   "side": 0
+  },
+  {
+   "t": 28.83,
+   "side": 0
+  },
+  {
+   "t": 30.83,
+   "side": 0
+  },
+  {
+   "t": 32.329,
+   "side": 0
+  }
+ ],
+ "crowns": [
+  {
+   "t": 11.833
+  },
+  {
+   "t": 24.831
+  }
+ ],
+ "finish": {
+  "kind": "gate",
+  "color": "#E7B44C"
+ },
+ "collectibleColors": {
+  "diamond": "#56D7E8",
+  "crown": "#E7B44C"
+ },
+ "objects": [
+  {
+   "id": "puddle_frame",
+   "t": 2.2,
+   "side": 70.5,
+   "along": 0,
+   "y": 0,
+   "kind": "group",
+   "name": "Empty gallery frame lying in the water (callback to Cool With You)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.1,
+      0
+     ],
+     "size": [
+      3.4,
+      0.15,
+      4.4
+     ],
+     "color": "#D8B86A"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.12,
+      0
+     ],
+     "size": [
+      2.8,
+      0.16,
+      3.8
+     ],
+     "color": "#9fbac4"
+    }
+   ],
+   "debugXZ": [
+    6.49,
+    -60.49
+   ]
+  },
+  {
+   "id": "egg_feather",
+   "t": 4.5,
+   "side": -4.5,
+   "along": 0,
+   "y": 0.05,
+   "kind": "box",
+   "size": [
+    0.2,
+    0.05,
+    0.9
+   ],
+   "egg": true,
+   "color": "#ffffff",
+   "name": "Easter egg: the feather from Cool With You floats in the water",
+   "debugXZ": [
+    19.5,
+    1.27
+   ]
+  },
+  {
+   "id": "stepping_stones",
+   "kind": "row",
+   "t0": 0.5,
+   "t1": 8.334,
+   "side": 3.2,
+   "spacing": 2.6,
+   "bothSides": true,
+   "item": {
+    "kind": "disc",
+    "size": [
+     1.2,
+     0.2,
+     1.2
+    ],
+    "color": "#B8B4D5",
+    "react": "tap"
+   }
+  },
+  {
+   "id": "shadow_slabs",
+   "kind": "row",
+   "t0": 8.334,
+   "t1": 16.332,
+   "side": 2.0,
+   "spacing": 2.5,
+   "bothSides": true,
+   "item": {
+    "kind": "box",
+    "size": [
+     0.8,
+     3.2,
+     2.2
+    ],
+    "color": "#544D70",
+    "react": "beat"
+   },
+   "appear": {
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "warm_lamp",
+   "t": 11.833,
+   "side": -4,
+   "along": 0,
+   "y": 0,
+   "kind": "lamp",
+   "size": [
+    0.4,
+    4,
+    0.4
+   ],
+   "landmark": true,
+   "color": "#F5F1E8",
+   "color2": "#ffd79a",
+   "name": "The one warm light",
+   "debugXZ": [
+    -2.12,
+    -18.11
+   ]
+  },
+  {
+   "id": "fork_alley",
+   "t": 13.334,
+   "side": 6.1,
+   "along": 0,
+   "y": -1.2,
+   "kind": "group",
+   "fake": true,
+   "name": "shadow alley side stub (visual fake-out, lower, dead end)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      6,
+      0.6,
+      2.0
+     ],
+     "color": "#8d86a8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      3.4,
+      -0.2,
+      0.3
+     ],
+     "size": [
+      0.8,
+      0.5,
+      1.4
+     ],
+     "rot": [
+      0,
+      0,
+      8
+     ],
+     "color": "#8d86a8"
+    },
+    {
+     "kind": "rock",
+     "pos": [
+      4.2,
+      -0.4,
+      -0.4
+     ],
+     "size": [
+      0.9,
+      0.7,
+      0.9
+     ],
+     "color": "#9a8f84"
+    }
+   ],
+   "debugXZ": [
+    -11.72,
+    -14.36
+   ]
+  },
+  {
+   "id": "wing_0",
+   "t": 17.132,
+   "side": 5,
+   "along": 0,
+   "y": 0,
+   "kind": "group",
+   "name": "folded white wing",
+   "landmark": false,
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2,
+      0
+     ],
+     "size": [
+      0.2,
+      3.5,
+      2.4
+     ],
+     "rot": [
+      0,
+      0,
+      12
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.5,
+      2.4,
+      0
+     ],
+     "size": [
+      0.2,
+      2.6,
+      1.8
+     ],
+     "rot": [
+      0,
+      0,
+      -18
+     ],
+     "color": "#e8e3f2"
+    }
+   ],
+   "appear": {
+    "t": 15.732000000000001,
+    "mode": "unfold",
+    "dur": 0.7
+   },
+   "debugXZ": [
+    -19.99,
+    -33.47
+   ]
+  },
+  {
+   "id": "wing_1",
+   "t": 18.532,
+   "side": -8.0,
+   "along": 0,
+   "y": 0,
+   "kind": "group",
+   "name": "folded white wing",
+   "landmark": false,
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2,
+      0
+     ],
+     "size": [
+      0.2,
+      3.5,
+      2.4
+     ],
+     "rot": [
+      0,
+      0,
+      12
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.5,
+      2.4,
+      0
+     ],
+     "size": [
+      0.2,
+      2.6,
+      1.8
+     ],
+     "rot": [
+      0,
+      0,
+      -18
+     ],
+     "color": "#e8e3f2"
+    }
+   ],
+   "appear": {
+    "t": 17.732,
+    "mode": "unfold",
+    "dur": 0.7
+   },
+   "debugXZ": [
+    -9.74,
+    -30.72
+   ]
+  },
+  {
+   "id": "wing_2",
+   "t": 19.932,
+   "side": 5,
+   "along": 0,
+   "y": 0,
+   "kind": "group",
+   "name": "Five folded white wings",
+   "landmark": true,
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2,
+      0
+     ],
+     "size": [
+      0.2,
+      3.5,
+      2.4
+     ],
+     "rot": [
+      0,
+      0,
+      12
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.5,
+      2.4,
+      0
+     ],
+     "size": [
+      0.2,
+      2.6,
+      1.8
+     ],
+     "rot": [
+      0,
+      0,
+      -18
+     ],
+     "color": "#e8e3f2"
+    }
+   ],
+   "appear": {
+    "t": 19.732,
+    "mode": "unfold",
+    "dur": 0.7
+   },
+   "debugXZ": [
+    1.26,
+    -34.22
+   ]
+  },
+  {
+   "id": "wing_3",
+   "t": 21.332,
+   "side": -14.0,
+   "along": 0,
+   "y": 0,
+   "kind": "group",
+   "name": "folded white wing",
+   "landmark": false,
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2,
+      0
+     ],
+     "size": [
+      0.2,
+      3.5,
+      2.4
+     ],
+     "rot": [
+      0,
+      0,
+      12
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.5,
+      2.4,
+      0
+     ],
+     "size": [
+      0.2,
+      2.6,
+      1.8
+     ],
+     "rot": [
+      0,
+      0,
+      -18
+     ],
+     "color": "#e8e3f2"
+    }
+   ],
+   "appear": {
+    "t": 21.732,
+    "mode": "unfold",
+    "dur": 0.7
+   },
+   "debugXZ": [
+    -19.62,
+    -25.6
+   ]
+  },
+  {
+   "id": "wing_4",
+   "t": 22.732,
+   "side": 5,
+   "along": 0,
+   "y": 0,
+   "kind": "group",
+   "name": "folded white wing",
+   "landmark": false,
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2,
+      0
+     ],
+     "size": [
+      0.2,
+      3.5,
+      2.4
+     ],
+     "rot": [
+      0,
+      0,
+      12
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.5,
+      2.4,
+      0
+     ],
+     "size": [
+      0.2,
+      2.6,
+      1.8
+     ],
+     "rot": [
+      0,
+      0,
+      -18
+     ],
+     "color": "#e8e3f2"
+    }
+   ],
+   "appear": {
+    "t": 23.732,
+    "mode": "unfold",
+    "dur": 0.7
+   },
+   "debugXZ": [
+    1.13,
+    -34.35
+   ]
+  },
+  {
+   "id": "door_panels",
+   "kind": "row",
+   "t0": 16.332,
+   "t1": 24.331,
+   "side": 3.0,
+   "spacing": 3.5,
+   "bothSides": true,
+   "item": {
+    "kind": "box",
+    "size": [
+     0.3,
+     2.6,
+     1.6
+    ],
+    "color": "#B8B4D5",
+    "react": "tap"
+   },
+   "appear": {
+    "mode": "rise",
+    "dur": 0.6
+   }
+  },
+  {
+   "id": "light_beam_0",
+   "kind": "cylinder",
+   "worldPos": [
+    6.7,
+    2.33,
+    -29.72
+   ],
+   "size": [
+    0.9,
+    14,
+    0.9
+   ],
+   "color": "#4B9EDF",
+   "name": "light beam",
+   "landmark": false,
+   "appear": {
+    "t": 24.331,
+    "mode": "grow",
+    "dur": 0.8
+   },
+   "t": 23.381,
+   "side": -1.08,
+   "along": 0.0,
+   "y": -1.17,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    6.7,
+    -29.72
+   ]
+  },
+  {
+   "id": "light_beam_1",
+   "kind": "cylinder",
+   "worldPos": [
+    9.7,
+    2.33,
+    -29.72
+   ],
+   "size": [
+    0.9,
+    14,
+    0.9
+   ],
+   "color": "#93CF9B",
+   "name": "light beam",
+   "landmark": false,
+   "appear": {
+    "t": 24.831,
+    "mode": "grow",
+    "dur": 0.8
+   },
+   "t": 23.381,
+   "side": -4.07,
+   "along": 0.0,
+   "y": -1.17,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    9.7,
+    -29.72
+   ]
+  },
+  {
+   "id": "light_beam_2",
+   "kind": "cylinder",
+   "worldPos": [
+    12.7,
+    2.33,
+    -29.72
+   ],
+   "size": [
+    0.9,
+    14,
+    0.9
+   ],
+   "color": "#F1A9C9",
+   "name": "five light beams",
+   "landmark": true,
+   "appear": {
+    "t": 25.331,
+    "mode": "grow",
+    "dur": 0.8
+   },
+   "t": 29.33,
+   "side": 3.38,
+   "along": 0.42,
+   "y": 2.33,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    12.7,
+    -29.72
+   ]
+  },
+  {
+   "id": "light_beam_3",
+   "kind": "cylinder",
+   "worldPos": [
+    15.7,
+    2.33,
+    -29.72
+   ],
+   "size": [
+    0.9,
+    14,
+    0.9
+   ],
+   "color": "#E9BC83",
+   "name": "light beam",
+   "landmark": false,
+   "appear": {
+    "t": 25.831,
+    "mode": "grow",
+    "dur": 0.8
+   },
+   "t": 28.986,
+   "side": 3.38,
+   "along": 0.0,
+   "y": 2.33,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    15.7,
+    -29.72
+   ]
+  },
+  {
+   "id": "light_beam_4",
+   "kind": "cylinder",
+   "worldPos": [
+    18.7,
+    2.33,
+    -29.72
+   ],
+   "size": [
+    0.9,
+    14,
+    0.9
+   ],
+   "color": "#B39AD7",
+   "name": "light beam",
+   "landmark": false,
+   "appear": {
+    "t": 26.331,
+    "mode": "grow",
+    "dur": 0.8
+   },
+   "t": 28.586,
+   "side": 3.38,
+   "along": 0.0,
+   "y": 2.33,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    18.7,
+    -29.72
+   ]
+  },
+  {
+   "id": "five_lights_mural",
+   "t": 26.831,
+   "side": -49.5,
+   "along": 0,
+   "y": 1.5,
+   "kind": "image",
+   "size": [
+    8,
+    0,
+    4.5
+   ],
+   "src": "art/five-lights.jpg",
+   "mode": "billboard",
+   "name": "Five-lights mural (album motif)",
+   "debugXZ": [
+    16.88,
+    8.9
+   ]
+  },
+  {
+   "id": "egg_bunny_ears",
+   "t": 29.831,
+   "side": 10.5,
+   "along": 0,
+   "y": 0,
+   "kind": "group",
+   "egg": true,
+   "name": "Easter egg: two bunny ears poke out of the grass",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      -0.25,
+      0.5,
+      0
+     ],
+     "size": [
+      0.25,
+      1.0,
+      0.25
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.25,
+      0.5,
+      0
+     ],
+     "size": [
+      0.25,
+      1.0,
+      0.25
+     ],
+     "color": "#ffffff"
+    }
+   ],
+   "debugXZ": [
+    2.62,
+    -36.85
+   ]
+  }
+ ],
+ "art": {
+  "backdrop": "art/dawn.jpg",
+  "ground": {
+   "src": "art/grass.jpg",
+   "scale": 30
+  },
+  "catalog": [
+   {
+    "file": "art/dawn.jpg",
+    "use": "backdrop: dawn after rain over shallow water"
+   },
+   {
+    "file": "art/grass.jpg",
+    "use": "ground: moon-green grass"
+   },
+   {
+    "file": "art/five-lights.jpg",
+    "use": "album-motif mural (five ribbons + folded wings)"
+   }
+  ]
+ },
+ "route": {
+  "note": "Centerline computed from chart taps+dir+speed (Babylon left-handed, y up, N=+z, E=+x). nodes = position at each tap (heading after the tap). y = road height from elevation events.",
+  "nodes": [
+   [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    "N"
+   ],
+   [
+    1.335,
+    0.0,
+    0.0,
+    10.012,
+    "E"
+   ],
+   [
+    2.335,
+    7.5,
+    0.0,
+    10.012,
+    "S"
+   ],
+   [
+    3.335,
+    7.5,
+    0.0,
+    2.512,
+    "E"
+   ],
+   [
+    4.335,
+    15.0,
+    0.0,
+    2.512,
+    "S"
+   ],
+   [
+    5.334,
+    15.0,
+    0.0,
+    -4.98,
+    "W"
+   ],
+   [
+    6.334,
+    7.5,
+    0.0,
+    -4.98,
+    "S"
+   ],
+   [
+    7.334,
+    7.5,
+    0.0,
+    -12.48,
+    "E"
+   ],
+   [
+    8.334,
+    15.0,
+    0.0,
+    -12.48,
+    "S"
+   ],
+   [
+    9.334,
+    15.0,
+    0.0,
+    -19.98,
+    "W"
+   ],
+   [
+    10.084,
+    9.375,
+    0.0,
+    -19.98,
+    "S"
+   ],
+   [
+    10.334,
+    9.375,
+    0.0,
+    -21.855,
+    "W"
+   ],
+   [
+    11.333,
+    1.882,
+    0.0,
+    -21.855,
+    "N"
+   ],
+   [
+    12.333,
+    1.882,
+    0.0,
+    -14.355,
+    "W"
+   ],
+   [
+    13.333,
+    -5.618,
+    0.0,
+    -14.355,
+    "S"
+   ],
+   [
+    14.333,
+    -5.618,
+    0.0,
+    -21.855,
+    "W"
+   ],
+   [
+    15.333,
+    -13.118,
+    0.0,
+    -21.855,
+    "S"
+   ],
+   [
+    16.082,
+    -13.118,
+    0.0,
+    -27.473,
+    "W"
+   ],
+   [
+    16.332,
+    -14.993,
+    0.0,
+    -27.473,
+    "S"
+   ],
+   [
+    17.332,
+    -14.993,
+    0.5,
+    -34.972,
+    "E"
+   ],
+   [
+    17.832,
+    -11.243,
+    0.75,
+    -34.972,
+    "S"
+   ],
+   [
+    18.332,
+    -11.243,
+    1.0,
+    -38.722,
+    "E"
+   ],
+   [
+    19.332,
+    -3.743,
+    1.5,
+    -38.722,
+    "N"
+   ],
+   [
+    20.082,
+    -3.743,
+    1.875,
+    -33.097,
+    "W"
+   ],
+   [
+    20.332,
+    -5.618,
+    2.0,
+    -33.097,
+    "N"
+   ],
+   [
+    21.332,
+    -5.618,
+    2.5,
+    -25.597,
+    "E"
+   ],
+   [
+    21.831,
+    -1.875,
+    2.75,
+    -25.597,
+    "S"
+   ],
+   [
+    22.331,
+    -1.875,
+    3.0,
+    -29.347,
+    "E"
+   ],
+   [
+    23.331,
+    5.625,
+    3.5,
+    -29.347,
+    "S"
+   ],
+   [
+    24.081,
+    5.625,
+    3.5,
+    -34.972,
+    "E"
+   ],
+   [
+    24.331,
+    7.5,
+    3.5,
+    -34.972,
+    "S"
+   ],
+   [
+    25.331,
+    7.5,
+    3.5,
+    -42.472,
+    "E"
+   ],
+   [
+    26.081,
+    13.125,
+    3.5,
+    -42.472,
+    "N"
+   ],
+   [
+    26.331,
+    13.125,
+    3.5,
+    -40.597,
+    "E"
+   ],
+   [
+    27.33,
+    20.617,
+    3.5,
+    -40.597,
+    "N"
+   ],
+   [
+    28.33,
+    20.617,
+    3.5,
+    -33.097,
+    "W"
+   ],
+   [
+    29.33,
+    13.117,
+    0.0,
+    -33.097,
+    "S"
+   ],
+   [
+    30.33,
+    13.117,
+    0.0,
+    -40.597,
+    "W"
+   ],
+   [
+    31.33,
+    5.617,
+    0.0,
+    -40.597,
+    "S"
+   ],
+   [
+    33.329,
+    5.617,
+    0.0,
+    -55.59,
+    "W"
+   ],
+   [
+    36.258,
+    -16.35,
+    0.0,
+    -55.59,
+    "W"
+   ]
+  ],
+  "node_format": "[t, x, y, z, headingAfter]",
+  "selfCrossingErrors": [],
+  "overUnderPasses": [
+   {
+    "lowerT": 24.33,
+    "upperT": 30.33,
+    "dy": -3.5
+   },
+   {
+    "lowerT": 24.33,
+    "upperT": 31.33,
+    "dy": -3.5
+   },
+   {
+    "lowerT": 25.33,
+    "upperT": 29.33,
+    "dy": -3.5
+   },
+   {
+    "lowerT": 25.33,
+    "upperT": 30.33,
+    "dy": -3.5
+   },
+   {
+    "lowerT": 25.33,
+    "upperT": 31.33,
+    "dy": -3.5
+   },
+   {
+    "lowerT": 26.08,
+    "upperT": 29.33,
+    "dy": -3.5
+   },
+   {
+    "lowerT": 26.08,
+    "upperT": 30.33,
+    "dy": -3.5
+   },
+   {
+    "lowerT": 26.33,
+    "upperT": 29.33,
+    "dy": -3.5
+   },
+   {
+    "lowerT": 26.33,
+    "upperT": 30.33,
+    "dy": -3.5
+   }
+  ]
+ }
+}

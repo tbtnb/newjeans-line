@@ -78,3 +78,7 @@ GenerateImage was used first, but its files never reached the box after the 11:3
 - Judgment (schema v2.5): per-tap good window = half the local gap (±55 ms inside bursts, ±100 ms max), perfect ±40 ms.
 - See chart-report.md for per-section density, spot checks and the comparison with the originals.
 - No tap hints of any kind.
+
+
+## Integration note (integ-b, 2026-10-18)
+The rhythm-logic audit changed the tap count from 422 to 413 (only removals; see `chart-report.md` → *Rhythm-logic audit*). Tap counts quoted above are the pre-audit numbers; the original files are in `pre-audit/`. Because every removed tap is a removed turn, the route after the first removal is rotated relative to this description; the turn sequence of each phrase (spirals, switchbacks, wraps) was kept wherever legal, and worldPos landmarks were moved with the road (`tools/charts/integb_route.py`).

@@ -54,3 +54,30 @@ Offset = measured attack minus tap time (negative = attack slightly before the t
 
 ## Rationale
 Get Up has no drums, so the chart rides the half-bar swells (16ths 0 and 8 at 120 BPM = every 1.0 s) and adds the pick-up on 16th 12/14 only where a vocal entry is audible. 39 taps (old 16) keeps the interlude meditative: no runs longer than two taps, wide road, slow speed. The last tap lands on the final vocal swell at 33.3 s and the line glides to the end of the 36 s file.
+
+## Rhythm-logic audit (integ-b)
+
+Audited on 2026-10-18 by integrator B against the user's rule *rhythm logic beats density* (this chart was made before the rule). Taps **39 → 37** (-2; 2 removed, 0 added). Nothing was added to reach a CPM target.
+
+Method (same thresholds as `tools/charts/chartlogic.py` and the Ditto trim): each section follows the one band that best explains its taps; a tap is removed if it is **faint** (followed band < 0.35, full mix < 0.35, every other band < 0.5), **off-layer** (followed band < 0.35 while another band ≥ 0.6) or a **weak burst** (gap < 0.15 s and neither the full mix nor the followed band ≥ 0.6). Strengths are onset strengths per band, normalised to the song's 99.5th percentile, max within ±30 ms of the tap. Removing a tap removes a turn, so the route was repaired by `tools/charts/integb_route.py`, which keeps the worker's own turn sequence phrase by phrase wherever it stays legal; worldPos landmarks were moved with the road.
+
+### What the taps follow (per section)
+
+| section | time | taps follow | taps before → after | /s after | median strength of followed band | removed (faint / off-layer / weak burst) |
+|---|---|---|---|---|---|---|
+| After the rain · shallow water | 0.00 | kick + snare drum groove (full mix) | 7 → 7 | 0.84 | 1.00 | 0 / 0 / 0 |
+| One warm light | 8.33 | kick + snare drum groove (full mix) | 10 → 10 | 1.25 | 1.02 | 0 / 0 / 0 |
+| Horizon gathers | 16.33 | kick + snare drum groove (full mix) | 12 → 10 | 1.25 | 0.78 | 2 / 0 / 0 |
+| Five lights · moon-green grass | 24.33 | kick + snare drum groove (full mix) | 9 → 9 | 1.13 | 1.04 | 0 / 0 / 0 |
+| Last step | 32.33 | kick + snare drum groove (full mix) | 1 → 1 | 0.25 | 0.81 | 0 / 0 / 0 |
+
+### Audit diff (removed taps)
+
+| t (s) | tag | reason | followed band | band strength | full-mix strength |
+|---|---|---|---|---|---|
+| 20.082 | bass | faint | drums | 0.21 | 0.05 |
+| 24.081 | vocal | faint | drums | 0.18 | 0.08 |
+
+Added taps: none.
+
+Original (pre-audit) chart and layout: `levels-design/get-up/pre-audit/`. Integrated copy: `levels-src/get-up/`. chartlogic report after the audit: `docs/verification/get-up-chartlogic.md`.

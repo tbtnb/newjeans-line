@@ -119,11 +119,6 @@
    "tag": "snare"
   },
   {
-   "t": 20.082,
-   "dir": "L",
-   "tag": "bass"
-  },
-  {
    "t": 20.332,
    "dir": "R",
    "tag": "kick"
@@ -145,13 +140,8 @@
   },
   {
    "t": 23.331,
-   "dir": "R",
-   "tag": "snare"
-  },
-  {
-   "t": 24.081,
    "dir": "L",
-   "tag": "vocal"
+   "tag": "snare"
   },
   {
    "t": 24.331,
@@ -208,27 +198,32 @@
   {
    "t": 0,
    "label": "After the rain · shallow water",
-   "kind": "intro"
+   "kind": "intro",
+   "follows": "drums"
   },
   {
    "t": 8.334,
    "label": "One warm light",
-   "kind": "verse"
+   "kind": "verse",
+   "follows": "drums"
   },
   {
    "t": 16.332,
    "label": "Horizon gathers",
-   "kind": "chorus"
+   "kind": "chorus",
+   "follows": "drums"
   },
   {
    "t": 24.331,
    "label": "Five lights · moon-green grass",
-   "kind": "outro"
+   "kind": "outro",
+   "follows": "drums"
   },
   {
    "t": 32.329,
    "label": "Last step",
-   "kind": "outro"
+   "kind": "outro",
+   "follows": "drums"
   }
  ],
  "bpm": 120.022,
@@ -243,5 +238,32 @@
   "miss_beyond": 0.125,
   "note": "recommended; see chart-report.md"
  },
- "notes": "39 taps (old 16, x2.44) on half-bar vocal swells; no runs longer than 2 taps; whole 36 s file."
+ "notes": "39 taps (old 16, x2.44) on half-bar vocal swells; no runs longer than 2 taps; whole 36 s file.",
+ "meta": {
+  "audit": {
+   "by": "integrator B (integ-b)",
+   "rule": "one audible layer per section; no faint/off-layer taps; bursts only where clear in the full mix; taps only removed",
+   "taps_before": 39,
+   "taps_after": 37,
+   "removed": [
+    {
+     "t": 20.082,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.21,
+     "full_strength": 0.05,
+     "tag": "bass"
+    },
+    {
+     "t": 24.081,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.18,
+     "full_strength": 0.08,
+     "tag": "vocal"
+    }
+   ]
+  },
+  "old_tap_count": 16
+ }
 }

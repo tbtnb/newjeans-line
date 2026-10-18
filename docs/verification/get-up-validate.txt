@@ -1,0 +1,12 @@
+== get-up  duration 36.26s  taps 37  dirs R/L 18/19  multi-level crossings 9
+   min gap 0.250s  median gap 1.000s
+   peak density 180 CPM (taps in any 1 s window x60), average 61 CPM; gaps < 0.15 s: 0
+   fastest run: 2 taps (gaps<=0.30s) from 10.08s to 10.33s
+   judgment window: min ±110 ms, median ±110 ms (engine rule)
+   longest same-direction run 3 (>=2 = U-turn, >=4 = spiral)  elevation events 2
+      0.00-   8.33 intro   After the rain · shallow water    7 taps  0.84/s
+      8.33-  16.33 verse   One warm light                 10 taps  1.25/s
+     16.33-  24.33 chorus  Horizon gathers                10 taps  1.25/s
+     24.33-  32.33 outro   Five lights · moon-green grass    9 taps  1.13/s
+     32.33-  36.26 outro   Last step                       1 taps  0.25/s
+   extent x[-16,21] z[-63,10]

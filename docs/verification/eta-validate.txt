@@ -1,0 +1,20 @@
+== eta  duration 151.41s  taps 413  dirs R/L 204/209  multi-level crossings 335
+   min gap 0.111s  median gap 0.333s
+   peak density 360 CPM (taps in any 1 s window x60), average 164 CPM; gaps < 0.15 s: 8
+   fastest run: 17 taps (gaps<=0.30s) from 131.00s to 134.56s
+   judgment window: min ±50 ms, median ±100 ms (engine rule)
+   longest same-direction run 3 (>=2 = U-turn, >=4 = spiral)  elevation events 9
+      0.00-   7.00 intro   Intro · phone desk             12 taps  1.71/s
+      7.00-  21.23 verse   Verse 1 · first message        34 taps  2.39/s
+     21.23-  35.45 pre     Pre 1 · forwarding blocks      41 taps  2.88/s
+     35.45-  47.89 chorus  Chorus 1 · signal city hook    41 taps  3.29/s
+     47.89-  49.67 break   Stop 1 · E-T-A voice chops      6 taps  3.38/s
+     49.67-  63.89 verse   Verse 2 · rumor mill           38 taps  2.67/s
+     63.89-  78.11 pre     Pre 2 · fragments rising       34 taps  2.39/s
+     78.11-  92.34 pre     Pre 3 · tower lift             44 taps  3.09/s
+     92.34- 104.78 chorus  Chorus 2 · assembled scene hook   40 taps  3.21/s
+    104.78- 106.56 break   Stop 2 · E-T-A voice chops      5 taps  2.81/s
+    106.56- 120.78 chorus  Final A · rush hour            49 taps  3.45/s
+    120.78- 135.00 chorus  Final B · arrival sprint       56 taps  3.94/s
+    135.00- 151.41 outro   Outro · two bench lamps        13 taps  0.79/s
+   extent x[-41,116] z[-33,71]

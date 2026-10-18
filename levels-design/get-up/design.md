@@ -50,3 +50,7 @@ All three are procedural (`_tools-w3/art_proc.py`) because GenerateImage output 
 - Runs: no run longer than 2 taps, no 16ths.
 - Judgment: ±110 ms good (engine rule, half the 0.25 s minimum gap capped at 100–110 ms), perfect ±50 ms.
 - See chart-report.md.
+
+
+## Integration note (integ-b, 2026-10-18)
+The rhythm-logic audit changed the tap count from 39 to 37 (only removals; see `chart-report.md` → *Rhythm-logic audit*). Tap counts quoted above are the pre-audit numbers; the original files are in `pre-audit/`. Because every removed tap is a removed turn, the route after the first removal is rotated relative to this description; the turn sequence of each phrase (spirals, switchbacks, wraps) was kept wherever legal, and worldPos landmarks were moved with the road (`tools/charts/integb_route.py`).

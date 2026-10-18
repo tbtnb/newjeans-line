@@ -157,20 +157,6 @@
    "note": "lights on the section downbeat"
   },
   {
-   "t": 24.331,
-   "type": "light",
-   "target": [
-    "light_beam_0",
-    "light_beam_1",
-    "light_beam_2",
-    "light_beam_3",
-    "light_beam_4"
-   ],
-   "every": 2.0,
-   "level": 0.9,
-   "note": "one beam per vocal phrase (2 s)"
-  },
-  {
    "t": 16.332,
    "type": "color",
    "palette": {
@@ -178,6 +164,14 @@
     "skyBottom": "#f2dfe8"
    },
    "dur": 2.0
+  },
+  {
+   "t": 24.331,
+   "type": "light",
+   "target": "light_beam_*",
+   "every": 2.0,
+   "level": 0.9,
+   "note": "one beam per vocal phrase (2 s)"
   },
   {
    "t": 24.331,
@@ -774,9 +768,9 @@
    "id": "light_beam_0",
    "kind": "cylinder",
    "worldPos": [
-    6.7,
+    0.38,
     2.33,
-    -29.72
+    -41.39
    ],
    "size": [
     0.9,
@@ -799,15 +793,16 @@
    "debugXZ": [
     6.7,
     -29.72
-   ]
+   ],
+   "rot": 270
   },
   {
    "id": "light_beam_1",
    "kind": "cylinder",
    "worldPos": [
-    9.7,
+    1.88,
     2.33,
-    -29.72
+    -38.39
    ],
    "size": [
     0.9,
@@ -830,15 +825,16 @@
    "debugXZ": [
     9.7,
     -29.72
-   ]
+   ],
+   "rot": 270
   },
   {
    "id": "light_beam_2",
    "kind": "cylinder",
    "worldPos": [
-    12.7,
+    12.708,
     2.33,
-    -29.72
+    -37.212
    ],
    "size": [
     0.9,
@@ -867,9 +863,9 @@
    "id": "light_beam_3",
    "kind": "cylinder",
    "worldPos": [
-    15.7,
+    15.708,
     2.33,
-    -29.72
+    -37.212
    ],
    "size": [
     0.9,
@@ -898,9 +894,9 @@
    "id": "light_beam_4",
    "kind": "cylinder",
    "worldPos": [
-    18.7,
+    18.708,
     2.33,
-    -29.72
+    -37.212
    ],
    "size": [
     0.9,

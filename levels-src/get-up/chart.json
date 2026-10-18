@@ -1,0 +1,269 @@
+{
+ "id": "get-up",
+ "startHeading": "N",
+ "speed": [
+  {
+   "t": 0,
+   "v": 7.5
+  }
+ ],
+ "taps": [
+  {
+   "t": 1.335,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 2.335,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 3.335,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 4.335,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 5.334,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 6.334,
+   "dir": "L",
+   "tag": "bass"
+  },
+  {
+   "t": 7.334,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 8.334,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 9.334,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 10.084,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 10.334,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 11.333,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 12.333,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 13.333,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 14.333,
+   "dir": "R",
+   "tag": "bass"
+  },
+  {
+   "t": 15.333,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 16.082,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 16.332,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 17.332,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 17.832,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 18.332,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 19.332,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 20.332,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 21.332,
+   "dir": "R",
+   "tag": "hat"
+  },
+  {
+   "t": 21.831,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 22.331,
+   "dir": "L",
+   "tag": "bass"
+  },
+  {
+   "t": 23.331,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 24.331,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 25.331,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 26.081,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 26.331,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 27.33,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 28.33,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 29.33,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 30.33,
+   "dir": "R",
+   "tag": "bass"
+  },
+  {
+   "t": 31.33,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 33.329,
+   "dir": "R",
+   "tag": "bass"
+  }
+ ],
+ "sections": [
+  {
+   "t": 0,
+   "label": "After the rain · shallow water",
+   "kind": "intro",
+   "follows": "drums"
+  },
+  {
+   "t": 8.334,
+   "label": "One warm light",
+   "kind": "verse",
+   "follows": "drums"
+  },
+  {
+   "t": 16.332,
+   "label": "Horizon gathers",
+   "kind": "chorus",
+   "follows": "drums"
+  },
+  {
+   "t": 24.331,
+   "label": "Five lights · moon-green grass",
+   "kind": "outro",
+   "follows": "drums"
+  },
+  {
+   "t": 32.329,
+   "label": "Last step",
+   "kind": "outro",
+   "follows": "drums"
+  }
+ ],
+ "bpm": 120.022,
+ "grid": {
+  "t0": 0.335,
+  "sixteenth": 0.124977,
+  "note": "bar n starts at t0+1.99963*n (low-confidence grid, ambient track)"
+ },
+ "judgment": {
+  "perfect": 0.05,
+  "good": 0.1,
+  "miss_beyond": 0.125,
+  "note": "recommended; see chart-report.md"
+ },
+ "notes": "39 taps (old 16, x2.44) on half-bar vocal swells; no runs longer than 2 taps; whole 36 s file.",
+ "meta": {
+  "audit": {
+   "by": "integrator B (integ-b)",
+   "rule": "one audible layer per section; no faint/off-layer taps; bursts only where clear in the full mix; taps only removed",
+   "taps_before": 39,
+   "taps_after": 37,
+   "removed": [
+    {
+     "t": 20.082,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.21,
+     "full_strength": 0.05,
+     "tag": "bass"
+    },
+    {
+     "t": 24.081,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.18,
+     "full_strength": 0.08,
+     "tag": "vocal"
+    }
+   ]
+  },
+  "old_tap_count": 16
+ }
+}

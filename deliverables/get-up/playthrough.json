@@ -1,0 +1,233 @@
+{
+ "summary": {
+  "fails": [],
+  "state": "complete",
+  "status": "complete",
+  "failKind": null,
+  "failTime": 0,
+  "time": 36.2267,
+  "cursor": 37,
+  "taps": 37,
+  "perfect": 37,
+  "good": 0,
+  "diamonds": 10,
+  "ignoredDuplicates": 0,
+  "fps": 15.258439824533363,
+  "save": {
+   "version": 2,
+   "selected": "get-up",
+   "records": {
+    "get-up": {
+     "best": 1,
+     "diamonds": 10,
+     "crowns": 3,
+     "attempts": 1,
+     "completed": true,
+     "perfect": 37,
+     "taps": 37
+    }
+   },
+   "settings": {
+    "volume": 0.8,
+    "offsetMs": 0,
+    "quality": "high",
+    "vibration": true
+   }
+  },
+  "judged": 37,
+  "errorMeanMs": 2.3,
+  "errorSdMs": 1.9,
+  "errorMaxAbsMs": 10,
+  "sent": 37,
+  "logs": []
+ },
+ "errors": [
+  2,
+  3,
+  1,
+  1,
+  3,
+  10,
+  6,
+  1,
+  2,
+  4,
+  5,
+  1,
+  1,
+  3,
+  2,
+  1,
+  1,
+  5,
+  3,
+  5,
+  1,
+  2,
+  3,
+  3,
+  1,
+  1,
+  1,
+  1,
+  3,
+  2,
+  1,
+  1,
+  1,
+  1,
+  1,
+  1,
+  2
+ ],
+ "sent": [
+  {
+   "kind": "tap",
+   "planned": 1.335
+  },
+  {
+   "kind": "tap",
+   "planned": 2.335
+  },
+  {
+   "kind": "tap",
+   "planned": 3.335
+  },
+  {
+   "kind": "tap",
+   "planned": 4.335
+  },
+  {
+   "kind": "tap",
+   "planned": 5.334
+  },
+  {
+   "kind": "tap",
+   "planned": 6.334
+  },
+  {
+   "kind": "tap",
+   "planned": 7.334
+  },
+  {
+   "kind": "tap",
+   "planned": 8.334
+  },
+  {
+   "kind": "tap",
+   "planned": 9.334
+  },
+  {
+   "kind": "tap",
+   "planned": 10.084
+  },
+  {
+   "kind": "tap",
+   "planned": 10.334
+  },
+  {
+   "kind": "tap",
+   "planned": 11.333
+  },
+  {
+   "kind": "tap",
+   "planned": 12.333
+  },
+  {
+   "kind": "tap",
+   "planned": 13.333
+  },
+  {
+   "kind": "tap",
+   "planned": 14.333
+  },
+  {
+   "kind": "tap",
+   "planned": 15.333
+  },
+  {
+   "kind": "tap",
+   "planned": 16.082
+  },
+  {
+   "kind": "tap",
+   "planned": 16.332
+  },
+  {
+   "kind": "tap",
+   "planned": 17.332
+  },
+  {
+   "kind": "tap",
+   "planned": 17.832
+  },
+  {
+   "kind": "tap",
+   "planned": 18.332
+  },
+  {
+   "kind": "tap",
+   "planned": 19.332
+  },
+  {
+   "kind": "tap",
+   "planned": 20.332
+  },
+  {
+   "kind": "tap",
+   "planned": 21.332
+  },
+  {
+   "kind": "tap",
+   "planned": 21.831
+  },
+  {
+   "kind": "tap",
+   "planned": 22.331
+  },
+  {
+   "kind": "tap",
+   "planned": 23.331
+  },
+  {
+   "kind": "tap",
+   "planned": 24.331
+  },
+  {
+   "kind": "tap",
+   "planned": 25.331
+  },
+  {
+   "kind": "tap",
+   "planned": 26.081
+  },
+  {
+   "kind": "tap",
+   "planned": 26.331
+  },
+  {
+   "kind": "tap",
+   "planned": 27.33
+  },
+  {
+   "kind": "tap",
+   "planned": 28.33
+  },
+  {
+   "kind": "tap",
+   "planned": 29.33
+  },
+  {
+   "kind": "tap",
+   "planned": 30.33
+  },
+  {
+   "kind": "tap",
+   "planned": 31.33
+  },
+  {
+   "kind": "tap",
+   "planned": 33.329
+  }
+ ]
+}
