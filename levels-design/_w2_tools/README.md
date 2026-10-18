@@ -12,3 +12,10 @@ Run heavy audio jobs under `flock /workspace/.nj-heavy.lock` (demucs `-d cpu --s
 ## v4 difficulty calibration (fast bursts + CPM)
 - `build.apply_bursts`: for each `spec.BURST_WINDOWS` (t0, t1, max) it looks for 2–4 real onsets, either in one stem or in a merged drum/vocal/melody stream inside a passage with ≥ 5.5 onsets/s, whose gaps are all in [`BURST_MIN` (0.152), `BURST_MAX` (0.19)] s. It replaces the taps around them, keeping ≥ 0.20 s to the neighbours. Lowering `BURST_MIN` to ~0.11 would chart true 16ths if the schema floor (0.15 s) is ever relaxed.
 - `report.py` adds a "Difficulty calibration" section: avg CPM (taps ÷ length, and wiki-style mean of 60/gap), peak CPM, bursts, dotted-8th count, and a comparison table with the original Dancing Line levels.
+
+## v5 (schema v2.5 + user charting rules)
+- `BURST_MIN` defaults to 0.108 s (schema floor 0.105). Bursts come from a single stem only, every tap needs a full-mix onset ≥ 0.12 within 40 ms (`burst_ok`), the burst must start or end on a beat, and bursts are ≥ 1.5 s apart and ≥ 0.6 s from any fall/jump.
+- `drop_ghosts`: removes non-burst taps that have weak full-mix support (< 0.12), weak own-layer support (< 0.35), and are not on a beat.
+- `fix_air`: moves a fall/jump at most 0.6 s; otherwise it drops the 1–2 taps inside the flight so the jump stays on its downbeat.
+- `jw.py` follows the v2.5 per-tap window: min(0.5·g, clamp(0.45·g, 0.045, 0.11)).
+- `report.py` adds the "What the taps follow" table and the validator-style peak CPM (most taps in any 1 s window).
