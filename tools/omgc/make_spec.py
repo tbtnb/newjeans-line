@@ -268,6 +268,24 @@ for z in spec['zones']:
             seen = True; sp['t'] = sp['t'] if sp.get('hero') else 153.5
         keep.append(sp)
     z['setpieces'] = keep
+# ---- v5 near band: tree / hill masses keep out of the near band (they read as oversized mint blobs at the frame edges);
+# near-road decor is mid-sized and colourful. Trees within 14 m of the road are capped at ~4 m and thinned; hills / forest clumps
+# start at 16 m. z01 / z10 get a colourful richness pass (beds, bunnies, balloons, houses, gifts) in their place.
+TREEY = ('tree', 'tree-bush', 'tree-lo', 'tree-bush-lo', 'pine', 'pine-lo')
+for z in zones:
+    for ly in z['layers']:
+        if ly.get('layer') != 'mid': continue
+        a, nr = ly['asset'], ly.get('near', [0, 0])
+        if a in TREEY and nr[0] < 14:
+            h = assets.get(a, {}).get('h', 4.0); ly['scale'] = [round(min(ly['scale'][0], 3.0 / h), 2), round(min(ly['scale'][1], 4.2 / h), 2)]
+            ly['count'] = max(1, round(ly['count'] * 0.55)); ly['near'] = [max(nr[0], 5.0), max(nr[1], 12.0)]
+        elif a in ('paper-hill', 'paper-hill-lo', 'forest-clump') and nr[0] < 16:
+            ly['near'] = [16.0, max(nr[1], 34.0)]
+RICH = {'z01': [('tulip-bed', 12), ('heart-bed', 8), ('bunny-statue', 8), ('balloons', 6), ('mushroom-house', 4), ('bunny-house', 4), ('gift', 6), ('flower-heart', 8)],
+        'z10': [('balloons', 14), ('bunting', 10), ('heart-bed', 10), ('bunny-statue', 14), ('gift', 10), ('flower-heart', 10), ('tulip-bed', 8), ('lantern-string', 4)]}
+for z in zones:
+    for aid, n in RICH.get(z['id'], []):
+        if aid in assets: z['layers'].append(dict(asset=aid, layer='mid', count=n, near=[3.0, 13.0], y=[0, 0], scale=[1.25, 1.7], colors=(z['layers'][0]['colors'] if z['layers'] else [0, 1, 2, 3, 4]), hi=False))
 out = os.path.join(here, '..', '..', 'levels-src', 'omg', 'scene-c.json')
 json.dump(spec, open(out, 'w'), ensure_ascii=False, indent=1)
 n = sum(l['count'] for z in zones for l in z['layers']); print(out, 'zones', len(zones), 'assets', len(assets), 'modelled', sum(bool(a['model']) for a in assets.values()), 'scatter instances', n, 'set pieces', sum(len(z['setpieces']) for z in zones))

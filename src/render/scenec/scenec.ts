@@ -53,7 +53,7 @@ export interface CStats { chunks: [number, number]; chunkMeshes: number; types: 
 export class SceneC {
   readonly plc: CPlacement; readonly spec: SceneCSpec;
   private tm: Map<string, Template>; private mat: StandardMaterial; private matSet: StandardMaterial; private root: TransformNode;
-  private types = new Map<string, TI>(); private chunkMesh = new Map<number, ChunkM>(); private night: boolean[] = []; private matNight!: StandardMaterial; private matGlow!: StandardMaterial; private dirtyAt = -1; private glowAll: Mesh | null = null; private glowSig = ''; private pages: Mesh[] = []; private pageMats: StandardMaterial[] = []; private sets: SetE[] = [];
+  private types = new Map<string, TI>(); private chunkMesh = new Map<number, ChunkM>(); private night: boolean[] = []; private matNight!: StandardMaterial; private matGlow!: StandardMaterial; private dirtyAt = -1; private glowAll: Mesh | null = null; private glowSig = ''; private pages: Mesh[] = []; private stackGeo: { p: number[]; c: number[]; i: number[] }[] = []; private stacks: Mesh | null = null; private stackSig = ''; private pageMats: StandardMaterial[] = []; private sets: SetE[] = [];
   private range: [number, number] = [-1, -1]; private tier: Tier; private zoneCols: number[][][];
   private imp: Impostors | null = null; private back: Backdrop | null = null; private groundTex = new Map<number, Texture>(); private base = './'; curZone = 0;  private route!: Route;
   private disposed = false; private time = 0; models = 0; last: CStats | null = null;
@@ -153,23 +153,26 @@ export class SceneC {
   private buildPages() {
     const pg = this.spec.pagePad ?? 28, Z = this.spec.zones.length;
     const RS: number[][] = []; for (const c of this.plc.chunks) for (let k = 0; k < 6; k++) { const p = anchor(this.route, c.t0 + (c.t1 - c.t0) * k / 6).pos; RS.push([p.x, p.z, c.zone]); }   // road samples by zone
+    const ownZ = (zi: number, x: number, z: number) => { let dO = 1e9, dX = 1e9; for (const r of RS) { const d = (r[0] - x) ** 2 + (r[1] - z) ** 2; if (r[2] === zi) { if (d < dO) dO = d; } else if (d < dX) dX = d; }
+      return Math.min(1, Math.max(0, (Math.sqrt(dX) - Math.sqrt(dO)) / 16 + 0.5)); };
+    const R: { x0: number; z0: number; x1: number; z1: number; y: number; ci: number; zi: number }[] = [];
     for (let zi = 0; zi < Z; zi++) {
       const Zs = this.spec.zones[zi], tex = this.groundTexOf(zi), tile = Zs.tile ?? 25;
       const pos: number[] = [], col: number[] = [], idx: number[] = [], uv: number[] = []; const gc = tex ? [1, 1, 1] : hexRGB(Zs.palette.ground ?? '#eeeeee');
       // each page rect is a 4x4 grid: the outer ring has alpha 0 (dithered fade over F m), so overlapping zones / terraces blend
       // each page rect is a 7x7 grid; alpha = rim fade (F m) x zone ownership: a point belongs to the zone whose road is nearest,
       // blended over ~16 m, so the next zone's page never covers this zone's road area (and vice versa)
-      const own = (x: number, z: number) => { let dO = 1e9, dX = 1e9; for (const r of RS) { const d = (r[0] - x) ** 2 + (r[1] - z) ** 2; if (r[2] === zi) { if (d < dO) dO = d; } else if (d < dX) dX = d; }
-        return Math.min(1, Math.max(0, (Math.sqrt(dX) - Math.sqrt(dO)) / 16 + 0.5)); };
+      const own = (x: number, z: number) => ownZ(zi, x, z);
+      let ci = 0;
       const rect = (x0: number, z0: number, x1: number, z1: number, y: number) => {
-        const N = 7, F = Math.min(14, (x1 - x0) / 3, (z1 - z0) / 3), i0 = pos.length / 3;
+        const N = 7, i0 = pos.length / 3; R.push({ x0, z0, x1, z1, y, ci, zi });
         for (let j = 0; j < N; j++) for (let i = 0; i < N; i++) { const x = x0 + (x1 - x0) * i / (N - 1), z = z0 + (z1 - z0) * j / (N - 1);
-          const rim = Math.min(1, Math.min(x - x0, x1 - x, z - z0, z1 - z) / F);
+          const rim = 1;   // v5: hard page edges, finished by the page-stack mesh (buildStacks) instead of a dithered rim fade
           pos.push(x, y, z); uv.push(x / tile, z / tile); col.push(gc[0], gc[1], gc[2], rim * own(x, z)); }
         for (let j = 0; j < N - 1; j++) for (let i = 0; i < N - 1; i++) { const q = i0 + j * N + i; idx.push(q, q + N, q + N + 1, q, q + N + 1, q + 1); }
       };
       for (const c of this.plc.chunks) {
-        if (c.zone !== zi) continue; const y = c.y - 0.004 * (c.i % 3);
+        if (c.zone !== zi) continue; ci = c.i; const y = c.y - 0.004 * (c.i % 3);
         rect(c.minX - pg, c.minZ - pg, c.maxX + pg, c.maxZ + pg, y);
         if (c.terr) { const p = c.terr.pad; rect(c.minX - p, c.minZ - p, c.maxX + p, c.maxZ + p, c.terr.y - 0.004 * (c.i % 3)); }   // raised page (climb)
       }
@@ -180,6 +183,59 @@ export class SceneC {
       m.material = mat; m.isPickable = false; m.parent = this.root; m.freezeWorldMatrix(); m.setEnabled(false); (m as any).__tris = idx.length / 3;
       this.pages.push(m);
     }
+    this.buildStacks(R, ownZ);
+  }
+
+  // ---- v5 page-stack edges + paper cliffs: every page edge that is not covered by another page at the same height or above gets
+  // three stepped cream page layers with gold ledges (the open-book edge), then three paper strata down toward the ground below.
+  // Geometry is precomputed per chunk as long runs (~24 tris each) and merged for the chunk window into one mesh (1 draw, high tier).
+  private buildStacks(R: { x0: number; z0: number; x1: number; z1: number; y: number; ci: number; zi: number }[], ownZ: (zi: number, x: number, z: number) => number) {
+    const N = this.plc.chunks.length; for (let i = 0; i < N; i++) this.stackGeo.push({ p: [], c: [], i: [] });
+    const CREAM = [1.0, 0.965, 0.89], CREAM2 = [0.97, 0.93, 0.84], GOLD = [0.89, 0.68, 0.27], GOLD2 = [0.96, 0.8, 0.42], TAN = [0.93, 0.85, 0.69], TAN2 = [0.86, 0.75, 0.56];
+    const covered = (r: typeof R[0], x: number, z: number) => { let lo = -1e9; for (const q of R) { if (q === r || x <= q.x0 || x >= q.x1 || z <= q.z0 || z >= q.z1) continue; if (q.y >= r.y - 0.05) return null; lo = Math.max(lo, q.y); } return lo; };
+    const ST = 3;
+    for (const r of R) {
+      const G = this.stackGeo[r.ci];
+      // edges: [ax, az, bx, bz, nx, nz]
+      const E = [[r.x0, r.z0, r.x1, r.z0, 0, -1], [r.x1, r.z0, r.x1, r.z1, 1, 0], [r.x1, r.z1, r.x0, r.z1, 0, 1], [r.x0, r.z1, r.x0, r.z0, -1, 0]];
+      for (const [ax, az, bx, bz, nx, nz] of E) {
+        const L = Math.hypot(bx - ax, bz - az), n = Math.max(1, Math.round(L / ST)), dx = (bx - ax) / L, dz = (bz - az) / L;
+        let run0 = -1, runLo = 0;
+        const flush = (k1: number) => {
+          if (run0 < 0) return; const e0 = run0 === 0 ? -1.8 : run0 * L / n, e1 = k1 === n ? L + 1.8 : k1 * L / n;
+          this.emitStack(G, ax + dx * e0, az + dz * e0, ax + dx * e1, az + dz * e1, nx, nz, r.y, Math.max(runLo, r.y - 14), [CREAM, CREAM2, GOLD, GOLD2, TAN, TAN2]); run0 = -1; };
+        for (let k = 0; k < n; k++) {
+          const s = (k + 0.5) * L / n, x = ax + dx * s, z = az + dz * s, lo = covered(r, x + nx * 0.6, z + nz * 0.6);
+          const ok = lo !== null && ownZ(r.zi, x - nx * 1.5, z - nz * 1.5) > 0.45 && r.y - lo > 0.3;
+          const loQ = lo === null ? 0 : Math.round(Math.max(lo, r.y - 14));
+          if (ok && run0 >= 0 && loQ !== runLo) flush(k);
+          if (ok && run0 < 0) { run0 = k; runLo = loQ; } else if (!ok) flush(k);
+        }
+        flush(n);
+      }
+    }
+    const m = this.mat.clone('paperCStack'); m.backFaceCulling = false; m.diffuseTexture = null; this.matStack = m;
+  }
+  private matStack!: StandardMaterial;
+  private emitStack(G: { p: number[]; c: number[]; i: number[] }, ax: number, az: number, bx: number, bz: number, nx: number, nz: number, y: number, lo: number, C: number[][]) {
+    const quad = (o0: number, y0: number, o1: number, y1: number, c0: number[], c1: number[]) => {   // from (offset o0, height y0) to (o1, y1) along the run
+      const b = G.p.length / 3;
+      G.p.push(ax + nx * o0, y0, az + nz * o0, bx + nx * o0, y0, bz + nz * o0, bx + nx * o1, y1, bz + nz * o1, ax + nx * o1, y1, az + nz * o1);
+      G.c.push(...c0, 1, ...c0, 1, ...c1, 1, ...c1, 1); G.i.push(b, b + 1, b + 2, b, b + 2, b + 3); };
+    const [CR, CR2, GO, GO2, TA, TA2] = C; let o = 0, h = y;
+    // three page layers: a thin gold top edge then cream faces, each stepping out onto a gold ledge
+    for (let k = 0; k < 3; k++) { const d = 0.3; quad(o, h, o, h - d, k ? (k & 1 ? CR2 : CR) : GO2, k ? (k & 1 ? CR2 : CR) : GO); h -= d; quad(o, h, o + 0.3, h, GO, GO2); o += 0.3; }
+    // paper strata (cliff layers) down to the page below / ground
+    const rest = Math.max(0.5, h - lo), sd = rest / 3;
+    for (let k = 0; k < 3; k++) { const c0 = k & 1 ? TA : CR2, c1 = k & 1 ? TA2 : TA; quad(o, h, o, h - sd, c0, c1); h -= sd; if (k < 2) { quad(o, h, o + 0.45, h, CR, CR2); o += 0.45; } }
+  }
+  private refreshStacks(a: number, b: number) {
+    const on = this.tier === 'high', sig = on ? `${a}:${b}` : 'off'; if (sig === this.stackSig) return; this.stackSig = sig;
+    this.stacks?.dispose(); this.stacks = null; if (!on) return;
+    const p: number[] = [], c: number[] = [], idx: number[] = [];
+    for (let i = a; i <= b; i++) { const G = this.stackGeo[i]; if (!G) continue; const o = p.length / 3; for (const v of G.p) p.push(v); for (const v of G.c) c.push(v); for (const v of G.i) idx.push(v + o); }
+    if (!idx.length) return; const m = new Mesh('cstacks', this.scene); const vd = new VertexData(); vd.positions = p; vd.colors = c; vd.indices = idx; vd.applyToMesh(m, false);
+    m.material = this.matStack; m.isPickable = false; m.parent = this.root; m.freezeWorldMatrix(); (m as any).__tris = idx.length / 3; this.stacks = m;
   }
 
   // ---- chunks: ground cover (static) + mid layer (merged, pops per chunk) + lamp halos (night zones), all vertex-colour merged ----
@@ -331,12 +387,14 @@ export class SceneC {
       const on = new Set<number>(); for (let i = a; i <= b; i++) on.add(this.plc.chunks[i].zone); this.pages.forEach((p, zi) => p.setEnabled(on.has(zi)));
     }
     this.writeTypes(t, beatK);
-    this.imp?.update(a, Math.min(this.plc.chunks.length - 1, b + 3));   // impostors reach further ahead than the decor window
+    this.imp?.update(a, Math.min(this.plc.chunks.length - 1, b + 3));
+    this.refreshStacks(a, Math.min(this.plc.chunks.length - 1, b + 2));   // impostors reach further ahead than the decor window
     if (cam && this.back) { let zi = this.plc.chunks[a].zone, ylo = 1e9; for (let i = a; i <= b; i++) { const c = this.plc.chunks[i]; if (c.t0 <= t) zi = c.zone; ylo = Math.min(ylo, c.y); }
       this.back.update(this.tier === 'high' ? zi : -1, cam, ylo - 25, dt || 0.016); this.curZone = zi; }
     this.rebuildGlow(t);
     let tris = 0, inst = 0, sets = 0, tb = 0, win = 0; const A = this.spec.assets;
     for (const e of this.sets) { this.animSet(e, t, beatK, cam); if (e.on) { sets++; win += e.tris; if (!this.scene.frustumPlanes || !e.far || (e.far.computeWorldMatrix(), e.far.isInFrustum(this.scene.frustumPlanes))) tris += e.tris; tb += Math.max(e.tris, A[e.def.a]?.tris ?? 0); } }
+    if (this.stacks) { const st = (this.stacks as any).__tris; tris += st; tb += st; win += st; }
     for (const p of this.pages) if (p.isEnabled()) { tris += (p as any).__tris; tb += (p as any).__tris; }
     if (this.imp) { tris += this.imp.tris; tb += this.imp.tris; win += this.imp.tris; }
     const fp = this.scene.frustumPlanes;
