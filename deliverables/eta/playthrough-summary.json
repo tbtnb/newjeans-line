@@ -7,11 +7,11 @@
  "time": 151.3733,
  "cursor": 413,
  "taps": 413,
- "perfect": 413,
- "good": 0,
+ "perfect": 412,
+ "good": 1,
  "diamonds": 10,
  "ignoredDuplicates": 0,
- "fps": 14.049877063566502,
+ "fps": 11.478859766571974,
  "save": {
   "version": 2,
   "selected": "eta",
@@ -22,7 +22,7 @@
     "crowns": 3,
     "attempts": 1,
     "completed": true,
-    "perfect": 413,
+    "perfect": 412,
     "taps": 413
    }
   },
@@ -34,9 +34,9 @@
   }
  },
  "judged": 413,
- "errorMeanMs": 1.5,
- "errorSdMs": 1.3,
- "errorMaxAbsMs": 8,
+ "errorMeanMs": 1.2,
+ "errorSdMs": 3.9,
+ "errorMaxAbsMs": 49,
  "sent": 413,
  "logs": []
 }
