@@ -300,85 +300,6 @@
  ],
  "events": [
   {
-   "t": 57.225,
-   "type": "light",
-   "target": [
-    "observer_0",
-    "observer_1",
-    "observer_2",
-    "observer_3",
-    "observer_4"
-   ],
-   "every": 1.77784,
-   "level": 0.9,
-   "color": "#ffe1a8",
-   "note": "warm lamps on the observers, one per bar of the drop"
-  },
-  {
-   "t": 71.948,
-   "type": "raise",
-   "target": [
-    "light_a",
-    "light_b"
-   ],
-   "dy": 0,
-   "converge": 0.8,
-   "dur": 13.0,
-   "note": "the two lights drift toward each other through Verse 2"
-  },
-  {
-   "t": 85.671,
-   "type": "lower",
-   "target": "light_b",
-   "dy": -8,
-   "dur": 4.0,
-   "note": "one light sinks away during the break"
-  },
-  {
-   "t": 99.893,
-   "type": "particles",
-   "particles": "petals",
-   "until": 114.116,
-   "note": "feather storm (white petals)"
-  },
-  {
-   "t": 99.893,
-   "type": "spin",
-   "target": "feather_spire",
-   "until": 114.116
-  },
-  {
-   "t": 114.116,
-   "type": "light",
-   "target": [
-    "city_0",
-    "city_1",
-    "city_2",
-    "city_3",
-    "city_4",
-    "city_5",
-    "city_6",
-    "city_7"
-   ],
-   "every": 0.889,
-   "level": 0.8,
-   "note": "windows assemble, one building per half-bar"
-  },
-  {
-   "t": 129.339,
-   "type": "raise",
-   "target": "light_b",
-   "dy": 8,
-   "dur": 3.0,
-   "note": "the second light returns"
-  },
-  {
-   "t": 128.339,
-   "type": "particles",
-   "particles": null,
-   "until": 147.931429
-  },
-  {
    "t": 28.78,
    "type": "particles",
    "particles": "rain",
@@ -395,6 +316,15 @@
   },
   {
    "t": 57.225,
+   "type": "light",
+   "target": "observer_*",
+   "every": 1.77784,
+   "level": 0.9,
+   "color": "#ffe1a8",
+   "note": "warm lamps on the observers, one per bar of the drop"
+  },
+  {
+   "t": 57.225,
    "type": "color",
    "palette": {
     "skyTop": "#6d8a96",
@@ -403,12 +333,42 @@
    "dur": 1.5
   },
   {
+   "t": 71.948,
+   "type": "raise",
+   "target": "light_*",
+   "dy": 0,
+   "converge": 0.8,
+   "dur": 13.0,
+   "note": "the two lights drift toward each other through Verse 2"
+  },
+  {
+   "t": 85.671,
+   "type": "lower",
+   "target": "light_b",
+   "dy": -8,
+   "dur": 4.0,
+   "note": "one light sinks away during the break"
+  },
+  {
    "t": 85.671,
    "type": "color",
    "palette": {
     "skyTop": "#46606b"
    },
    "dur": 2.0
+  },
+  {
+   "t": 99.893,
+   "type": "particles",
+   "particles": "petals",
+   "until": 114.116,
+   "note": "feather storm (white petals)"
+  },
+  {
+   "t": 99.893,
+   "type": "spin",
+   "target": "feather_spire",
+   "until": 114.116
   },
   {
    "t": 99.893,
@@ -421,9 +381,79 @@
   },
   {
    "t": 114.116,
+   "type": "light",
+   "target": "city_0",
+   "every": 0,
+   "level": 0.8,
+   "note": "windows assemble, one building per half-bar"
+  },
+  {
+   "t": 114.116,
    "type": "burst",
    "at": "player",
    "particles": "pixels"
+  },
+  {
+   "t": 115.005,
+   "type": "light",
+   "target": "city_1",
+   "every": 0,
+   "level": 0.8,
+   "note": "windows assemble, one building per half-bar"
+  },
+  {
+   "t": 115.894,
+   "type": "light",
+   "target": "city_2",
+   "every": 0,
+   "level": 0.8,
+   "note": "windows assemble, one building per half-bar"
+  },
+  {
+   "t": 116.783,
+   "type": "light",
+   "target": "city_3",
+   "every": 0,
+   "level": 0.8,
+   "note": "windows assemble, one building per half-bar"
+  },
+  {
+   "t": 117.672,
+   "type": "light",
+   "target": "city_4",
+   "every": 0,
+   "level": 0.8,
+   "note": "windows assemble, one building per half-bar"
+  },
+  {
+   "t": 118.561,
+   "type": "light",
+   "target": "city_5",
+   "every": 0,
+   "level": 0.8,
+   "note": "windows assemble, one building per half-bar"
+  },
+  {
+   "t": 119.45,
+   "type": "light",
+   "target": "city_6",
+   "every": 0,
+   "level": 0.8,
+   "note": "windows assemble, one building per half-bar"
+  },
+  {
+   "t": 120.339,
+   "type": "light",
+   "target": "city_7",
+   "every": 0,
+   "level": 0.8,
+   "note": "windows assemble, one building per half-bar"
+  },
+  {
+   "t": 128.339,
+   "type": "particles",
+   "particles": null,
+   "until": 147.931429
   },
   {
    "t": 128.339,
@@ -435,6 +465,14 @@
    },
    "dur": 4.0,
    "note": "rain stops"
+  },
+  {
+   "t": 129.339,
+   "type": "raise",
+   "target": "light_b",
+   "dy": 8,
+   "dur": 3.0,
+   "note": "the second light returns"
   }
  ],
  "diamonds": [
@@ -617,9 +655,9 @@
    "id": "mirror",
    "kind": "group",
    "worldPos": [
-    17.25,
+    78.763,
     0.0,
-    67.65
+    -10.129
    ],
    "landmark": true,
    "name": "The empty mirror (road wraps around it; it reflects the room but never the line)",
@@ -661,7 +699,8 @@
    "debugXZ": [
     17.25,
     67.65
-   ]
+   ],
+   "rot": 270
   },
   {
    "id": "egg_mirror_wings",
@@ -899,9 +938,9 @@
    "id": "moon_pool",
    "kind": "group",
    "worldPos": [
-    -6.25,
+    100.433,
     -3.64,
-    45.98
+    -33.629
    ],
    "landmark": true,
    "name": "Sunken rain courtyard with the moon pool (the hook spirals round it)",
@@ -943,15 +982,16 @@
    "debugXZ": [
     -6.25,
     45.98
-   ]
+   ],
+   "rot": 270
   },
   {
    "id": "moon",
    "kind": "moon",
    "worldPos": [
-    13.75,
+    70.433,
     26,
-    75.98
+    -13.629
    ],
    "size": [
     6,
@@ -968,15 +1008,16 @@
    "debugXZ": [
     13.75,
     75.98
-   ]
+   ],
+   "rot": 270
   },
   {
    "id": "observer_0",
    "kind": "pillar",
    "worldPos": [
-    -32.94,
+    71.943,
     -2.27,
-    74.47
+    -60.319
    ],
    "size": [
     1.4,
@@ -995,15 +1036,16 @@
    "debugXZ": [
     -32.94,
     74.47
-   ]
+   ],
+   "rot": 270
   },
   {
    "id": "observer_1",
    "kind": "pillar",
    "worldPos": [
-    -28.94,
+    71.943,
     -2.27,
-    74.47
+    -56.319
    ],
    "size": [
     1.4,
@@ -1022,15 +1064,16 @@
    "debugXZ": [
     -28.94,
     74.47
-   ]
+   ],
+   "rot": 270
   },
   {
    "id": "observer_2",
    "kind": "pillar",
    "worldPos": [
-    -24.94,
+    71.943,
     -2.27,
-    74.47
+    -52.319
    ],
    "size": [
     1.4,
@@ -1049,15 +1092,16 @@
    "debugXZ": [
     -24.94,
     74.47
-   ]
+   ],
+   "rot": 270
   },
   {
    "id": "observer_3",
    "kind": "pillar",
    "worldPos": [
-    -20.94,
+    71.943,
     -2.27,
-    74.47
+    -48.319
    ],
    "size": [
     1.4,
@@ -1076,15 +1120,16 @@
    "debugXZ": [
     -20.94,
     74.47
-   ]
+   ],
+   "rot": 270
   },
   {
    "id": "observer_4",
    "kind": "pillar",
    "worldPos": [
-    -16.94,
+    71.943,
     -2.27,
-    74.47
+    -44.319
    ],
    "size": [
     1.4,
@@ -1103,7 +1148,8 @@
    "debugXZ": [
     -16.94,
     74.47
-   ]
+   ],
+   "rot": 270
   },
   {
    "id": "courtyard_lanterns",
@@ -1398,9 +1444,9 @@
    "id": "feather_spire",
    "kind": "group",
    "worldPos": [
-    -44.89,
+    118.547,
     -3,
-    23.16
+    70.475
    ],
    "landmark": true,
    "name": "Feather spire (Final A helix centre)",
@@ -1538,7 +1584,8 @@
    "debugXZ": [
     -44.89,
     23.16
-   ]
+   ],
+   "rot": 90
   },
   {
    "id": "feather_poster_fa",

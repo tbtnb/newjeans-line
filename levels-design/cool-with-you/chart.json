@@ -29,11 +29,6 @@
    "tag": "kick"
   },
   {
-   "t": 6.779,
-   "dir": "L",
-   "tag": "bass"
-  },
-  {
    "t": 7.446,
    "dir": "L",
    "tag": "kick"
@@ -69,18 +64,8 @@
    "tag": "kick"
   },
   {
-   "t": 16.335,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
    "t": 17.224,
    "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 17.891,
-   "dir": "L",
    "tag": "vocal"
   },
   {
@@ -550,18 +535,13 @@
   },
   {
    "t": 70.337,
-   "dir": "L",
+   "dir": "R",
    "tag": "hat"
   },
   {
    "t": 70.559,
-   "dir": "R",
-   "tag": "bass"
-  },
-  {
-   "t": 70.781,
    "dir": "L",
-   "tag": "hat"
+   "tag": "bass"
   },
   {
    "t": 71.004,
@@ -570,7 +550,7 @@
   },
   {
    "t": 71.226,
-   "dir": "R",
+   "dir": "L",
    "tag": "hat"
   },
   {
@@ -715,13 +695,8 @@
   },
   {
    "t": 91.004,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 91.671,
    "dir": "L",
-   "tag": "bass"
+   "tag": "kick"
   },
   {
    "t": 92.116,
@@ -784,11 +759,6 @@
    "tag": "vocal"
   },
   {
-   "t": 98.338,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
    "t": 98.56,
    "dir": "R",
    "tag": "snare"
@@ -811,11 +781,6 @@
   {
    "t": 99.449,
    "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 99.671,
-   "dir": "L",
    "tag": "vocal"
   },
   {
@@ -992,11 +957,6 @@
    "t": 113.228,
    "dir": "L",
    "tag": "bass"
-  },
-  {
-   "t": 113.45,
-   "dir": "R",
-   "tag": "vocal"
   },
   {
    "t": 113.672,
@@ -1273,57 +1233,68 @@
   {
    "t": 0,
    "label": "Intro · empty gallery",
-   "kind": "intro"
+   "kind": "intro",
+   "follows": "drums"
   },
   {
    "t": 14.557,
    "label": "Verse 1 · reflections wake",
-   "kind": "verse"
+   "kind": "verse",
+   "follows": "drums"
   },
   {
    "t": 28.78,
    "label": "Verse 1b · rain curtain",
-   "kind": "pre"
+   "kind": "pre",
+   "follows": "drums"
   },
   {
    "t": 43.003,
    "label": "Hook · moonlit pool (stripped)",
-   "kind": "chorus"
+   "kind": "chorus",
+   "follows": "drums"
   },
   {
    "t": 57.225,
    "label": "Drop 1 · open courtyard",
-   "kind": "drop"
+   "kind": "drop",
+   "follows": "drums"
   },
   {
    "t": 71.448,
    "label": "Verse 2 · two lights approach",
-   "kind": "verse"
+   "kind": "verse",
+   "follows": "drums"
   },
   {
    "t": 85.671,
    "label": "Break · one light leaves",
-   "kind": "break"
+   "kind": "break",
+   "follows": "mid"
   },
   {
    "t": 92.782,
    "label": "Build · wings unfold",
-   "kind": "pre"
+   "kind": "pre",
+   "follows": "drums"
   },
   {
    "t": 99.893,
    "label": "Final drop A · feather storm",
-   "kind": "drop"
+   "kind": "drop",
+   "follows": "drums"
   },
   {
    "t": 114.116,
    "label": "Final drop B · choosing to stay",
-   "kind": "drop"
+   "kind": "drop",
+   "follows": "drums"
   },
   {
    "t": 128.339,
    "label": "Outro · open exit",
-   "kind": "outro"
+   "kind": "outro",
+   "follows": "drums"
   }
  ],
  "bpm": 134.995,
@@ -1338,5 +1309,80 @@
   "miss_beyond": 0.095,
   "note": "schema v2.5 per-tap windows; see chart-report.md"
  },
- "notes": "Hand-composed two-step chart, 252 taps (old 107, x2.36), tier moderate. Four 16th snare-flam pairs in the drops (min gap 0.111 s). Avg 102 CPM, peak 300 CPM. Fastest run 15 taps (124.8-127.9 s)."
+ "notes": "Hand-composed two-step chart, 252 taps (old 107, x2.36), tier moderate. Four 16th snare-flam pairs in the drops (min gap 0.111 s). Avg 102 CPM, peak 300 CPM. Fastest run 15 taps (124.8-127.9 s).",
+ "meta": {
+  "audit": {
+   "by": "integrator B (integ-b)",
+   "rule": "one audible layer per section; no faint/off-layer taps; bursts only where clear in the full mix; taps only removed",
+   "taps_before": 252,
+   "taps_after": 244,
+   "removed": [
+    {
+     "t": 6.779,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.16,
+     "full_strength": 0.01,
+     "tag": "bass"
+    },
+    {
+     "t": 16.335,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.18,
+     "full_strength": 0.16,
+     "tag": "vocal"
+    },
+    {
+     "t": 17.891,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.21,
+     "full_strength": 0.1,
+     "tag": "vocal"
+    },
+    {
+     "t": 70.781,
+     "why": "off-layer",
+     "layer": "drums",
+     "layer_strength": 0.25,
+     "full_strength": 0.27,
+     "tag": "hat"
+    },
+    {
+     "t": 91.671,
+     "why": "faint",
+     "layer": "mid",
+     "layer_strength": 0.21,
+     "full_strength": 0.12,
+     "tag": "bass"
+    },
+    {
+     "t": 98.338,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.24,
+     "full_strength": 0.13,
+     "tag": "vocal"
+    },
+    {
+     "t": 99.671,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.2,
+     "full_strength": 0.12,
+     "tag": "vocal"
+    },
+    {
+     "t": 113.45,
+     "why": "off-layer",
+     "layer": "drums",
+     "layer_strength": 0.19,
+     "full_strength": 0.37,
+     "tag": "vocal"
+    }
+   ]
+  },
+  "old_tap_count": 107
+ }
 }

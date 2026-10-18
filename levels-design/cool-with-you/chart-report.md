@@ -74,3 +74,42 @@ Offset = measured attack minus tap time (negative = attack slightly before the t
 
 ## Rationale
 Two-step needs restraint: the kick pattern (1 and the "and" of 3, 16ths 0 and 10) carries the verses, with the 16th-6 ghost added every other bar; phrase-end bars get the garage fill (0-3-6-10[-12-14]). The stripped hook only takes downbeats and half-bars so the moonlit-pool section reads as long, calm straights. Drops add the snare on 12 and an 8th fill at each phrase end; the final drop B ends with two full 8th bars (15-tap run, 124.8-127.9 s), the densest moment, then the outro opens up to one tap every two bars.
+
+## Rhythm-logic audit (integ-b)
+
+Audited on 2026-10-18 by integrator B against the user's rule *rhythm logic beats density* (this chart was made before the rule). Taps **252 → 244** (-8; 8 removed, 0 added). Nothing was added to reach a CPM target.
+
+Method (same thresholds as `tools/charts/chartlogic.py` and the Ditto trim): each section follows the one band that best explains its taps; a tap is removed if it is **faint** (followed band < 0.35, full mix < 0.35, every other band < 0.5), **off-layer** (followed band < 0.35 while another band ≥ 0.6) or a **weak burst** (gap < 0.15 s and neither the full mix nor the followed band ≥ 0.6). Strengths are onset strengths per band, normalised to the song's 99.5th percentile, max within ±30 ms of the tap. Removing a tap removes a turn, so the route was repaired by `tools/charts/integb_route.py`, which keeps the worker's own turn sequence phrase by phrase wherever it stays legal; worldPos landmarks were moved with the road.
+
+### What the taps follow (per section)
+
+| section | time | taps follow | taps before → after | /s after | median strength of followed band | removed (faint / off-layer / weak burst) |
+|---|---|---|---|---|---|---|
+| Intro · empty gallery | 0.00 | kick + snare drum groove (full mix) | 10 → 9 | 0.62 | 0.90 | 1 / 0 / 0 |
+| Verse 1 · reflections wake | 14.56 | kick + snare drum groove (full mix) | 22 → 20 | 1.41 | 0.95 | 2 / 0 / 0 |
+| Verse 1b · rain curtain | 28.78 | kick + snare drum groove (full mix) | 26 → 26 | 1.83 | 0.89 | 0 / 0 / 0 |
+| Hook · moonlit pool (stripped) | 43.00 | kick + snare drum groove (full mix) | 18 → 18 | 1.27 | 0.73 | 0 / 0 / 0 |
+| Drop 1 · open courtyard | 57.23 | kick + snare drum groove (full mix) | 37 → 36 | 2.53 | 0.78 | 0 / 1 / 0 |
+| Verse 2 · two lights approach | 71.45 | kick + snare drum groove (full mix) | 24 → 24 | 1.69 | 0.94 | 0 / 0 / 0 |
+| Break · one light leaves | 85.67 | melody / synth / vocal line (mid band) | 7 → 6 | 0.84 | 1.08 | 1 / 0 / 0 |
+| Build · wings unfold | 92.78 | kick + snare drum groove (full mix) | 18 → 16 | 2.25 | 0.92 | 2 / 0 / 0 |
+| Final drop A · feather storm | 99.89 | kick + snare drum groove (full mix) | 38 → 37 | 2.60 | 0.76 | 0 / 1 / 0 |
+| Final drop B · choosing to stay | 114.12 | kick + snare drum groove (full mix) | 47 → 47 | 3.30 | 0.79 | 0 / 0 / 0 |
+| Outro · open exit | 128.34 | kick + snare drum groove (full mix) | 5 → 5 | 0.37 | 0.97 | 0 / 0 / 0 |
+
+### Audit diff (removed taps)
+
+| t (s) | tag | reason | followed band | band strength | full-mix strength |
+|---|---|---|---|---|---|
+| 6.779 | bass | faint | drums | 0.16 | 0.01 |
+| 16.335 | vocal | faint | drums | 0.18 | 0.16 |
+| 17.891 | vocal | faint | drums | 0.21 | 0.10 |
+| 70.781 | hat | off-layer | drums | 0.25 | 0.27 |
+| 91.671 | bass | faint | mid | 0.21 | 0.12 |
+| 98.338 | vocal | faint | drums | 0.24 | 0.13 |
+| 99.671 | vocal | faint | drums | 0.20 | 0.12 |
+| 113.450 | vocal | off-layer | drums | 0.19 | 0.37 |
+
+Added taps: none.
+
+Original (pre-audit) chart and layout: `levels-design/cool-with-you/pre-audit/`. Integrated copy: `levels-src/cool-with-you/`. chartlogic report after the audit: `docs/verification/cool-with-you-chartlogic.md`.

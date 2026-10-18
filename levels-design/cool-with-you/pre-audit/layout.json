@@ -1,0 +1,4440 @@
+{
+ "id": "cool-with-you",
+ "title": "Cool With You",
+ "palette": {
+  "skyTop": "#536C78",
+  "skyBottom": "#b8c8cc",
+  "fog": "#8ea3aa",
+  "fogStart": 30,
+  "fogEnd": 110,
+  "ground": "#3c5157",
+  "groundY": -8,
+  "road": "#EEEADF",
+  "roadSide": "#AEBFC5",
+  "line": "#F08B78",
+  "light": "#f2f4f6",
+  "lightIntensity": 1.0,
+  "ambient": "#9fb3ba",
+  "particles": null
+ },
+ "road": {
+  "width": [
+   {
+    "t": 0,
+    "w": 2.8
+   },
+   {
+    "t": 14.557,
+    "w": 2.4
+   },
+   {
+    "t": 28.78,
+    "w": 2.0
+   },
+   {
+    "t": 43.003,
+    "w": 2.6
+   },
+   {
+    "t": 57.225,
+    "w": 2.4
+   },
+   {
+    "t": 71.448,
+    "w": 2.2
+   },
+   {
+    "t": 85.671,
+    "w": 2.6
+   },
+   {
+    "t": 92.782,
+    "w": 2.0
+   },
+   {
+    "t": 99.893,
+    "w": 2.2
+   },
+   {
+    "t": 114.116,
+    "w": 1.9
+   },
+   {
+    "t": 128.339,
+    "w": 2.8
+   }
+  ],
+  "height": 0.6,
+  "reveal": [
+   {
+    "t": 0,
+    "mode": "fade",
+    "lead": 2.5
+   },
+   {
+    "t": 14.557,
+    "mode": "rise",
+    "lead": 1.8
+   },
+   {
+    "t": 28.78,
+    "mode": "drop",
+    "lead": 1.5
+   },
+   {
+    "t": 43.003,
+    "mode": "rise",
+    "lead": 1.8
+   },
+   {
+    "t": 57.225,
+    "mode": "unfold",
+    "lead": 1.5
+   },
+   {
+    "t": 85.671,
+    "mode": "fade",
+    "lead": 2.0
+   },
+   {
+    "t": 92.782,
+    "mode": "rise",
+    "lead": 1.5
+   },
+   {
+    "t": 114.116,
+    "mode": "rise",
+    "lead": 1.3
+   },
+   {
+    "t": 128.339,
+    "mode": "static",
+    "lead": 3.0
+   }
+  ]
+ },
+ "elevation": [
+  {
+   "t": 43.053,
+   "type": "fall",
+   "dy": -3
+  },
+  {
+   "t0": 57.225,
+   "t1": 64.337,
+   "type": "ramp",
+   "dy": 6
+  },
+  {
+   "t": 85.721,
+   "type": "fall",
+   "dy": -3
+  },
+  {
+   "t": 99.944,
+   "type": "jump",
+   "dy": 3
+  },
+  {
+   "t0": 99.893,
+   "t1": 114.116,
+   "type": "ramp",
+   "dy": 6
+  },
+  {
+   "t0": 114.116,
+   "t1": 128.339,
+   "type": "ramp",
+   "dy": -6
+  },
+  {
+   "t0": 128.339,
+   "t1": 135.45,
+   "type": "ramp",
+   "dy": -3
+  }
+ ],
+ "sections": [
+  {
+   "t": 0,
+   "label": "Intro · empty gallery",
+   "camera": "iso"
+  },
+  {
+   "t": 14.557,
+   "label": "Verse 1 · reflections wake",
+   "camera": "high"
+  },
+  {
+   "t": 28.78,
+   "label": "Verse 1b · rain curtain",
+   "camera": "iso",
+   "palette": {
+    "fogEnd": 80
+   }
+  },
+  {
+   "t": 43.003,
+   "label": "Hook · moonlit pool (stripped)",
+   "camera": "high",
+   "palette": {
+    "skyTop": "#3f5966"
+   }
+  },
+  {
+   "t": 57.225,
+   "label": "Drop 1 · open courtyard",
+   "camera": "wide",
+   "palette": {
+    "skyTop": "#6d8a96"
+   }
+  },
+  {
+   "t": 71.448,
+   "label": "Verse 2 · two lights approach",
+   "camera": "iso"
+  },
+  {
+   "t": 85.671,
+   "label": "Break · one light leaves",
+   "camera": "side",
+   "palette": {
+    "skyTop": "#46606b"
+   }
+  },
+  {
+   "t": 92.782,
+   "label": "Build · wings unfold",
+   "camera": "low"
+  },
+  {
+   "t": 99.893,
+   "label": "Final drop A · feather storm",
+   "camera": "high",
+   "palette": {
+    "skyTop": "#7fb0bf"
+   }
+  },
+  {
+   "t": 114.116,
+   "label": "Final drop B · choosing to stay",
+   "camera": "iso",
+   "palette": {
+    "ground": "#5d7d86"
+   }
+  },
+  {
+   "t": 128.339,
+   "label": "Outro · open exit",
+   "camera": "wide",
+   "palette": {
+    "skyTop": "#a9c9d3"
+   }
+  }
+ ],
+ "camera": [
+  {
+   "t": 0,
+   "preset": "iso",
+   "blend": 0
+  },
+  {
+   "t": 14.557,
+   "preset": "high",
+   "blend": 1.5,
+   "note": "road wraps the mirror room"
+  },
+  {
+   "t": 20.557000000000002,
+   "preset": "iso",
+   "yaw": -40,
+   "blend": 1.5
+  },
+  {
+   "t": 28.78,
+   "preset": "iso",
+   "blend": 1.2
+  },
+  {
+   "t": 43.003,
+   "preset": "high",
+   "blend": 1.2,
+   "note": "spiral over the sunken pool"
+  },
+  {
+   "t": 57.225,
+   "preset": "wide",
+   "blend": 1.5
+  },
+  {
+   "t": 71.448,
+   "preset": "iso",
+   "blend": 1.5
+  },
+  {
+   "t": 85.671,
+   "preset": "side",
+   "yaw": 70,
+   "blend": 2.0
+  },
+  {
+   "t": 92.782,
+   "preset": "low",
+   "blend": 1.2
+  },
+  {
+   "t": 99.893,
+   "preset": "high",
+   "blend": 1.0
+  },
+  {
+   "t": 114.116,
+   "preset": "iso",
+   "blend": 1.2
+  },
+  {
+   "t": 128.339,
+   "preset": "wide",
+   "blend": 3.0
+  }
+ ],
+ "events": [
+  {
+   "t": 57.225,
+   "type": "light",
+   "target": [
+    "observer_0",
+    "observer_1",
+    "observer_2",
+    "observer_3",
+    "observer_4"
+   ],
+   "every": 1.77784,
+   "level": 0.9,
+   "color": "#ffe1a8",
+   "note": "warm lamps on the observers, one per bar of the drop"
+  },
+  {
+   "t": 71.948,
+   "type": "raise",
+   "target": [
+    "light_a",
+    "light_b"
+   ],
+   "dy": 0,
+   "converge": 0.8,
+   "dur": 13.0,
+   "note": "the two lights drift toward each other through Verse 2"
+  },
+  {
+   "t": 85.671,
+   "type": "lower",
+   "target": "light_b",
+   "dy": -8,
+   "dur": 4.0,
+   "note": "one light sinks away during the break"
+  },
+  {
+   "t": 99.893,
+   "type": "particles",
+   "particles": "petals",
+   "until": 114.116,
+   "note": "feather storm (white petals)"
+  },
+  {
+   "t": 99.893,
+   "type": "spin",
+   "target": "feather_spire",
+   "until": 114.116
+  },
+  {
+   "t": 114.116,
+   "type": "light",
+   "target": [
+    "city_0",
+    "city_1",
+    "city_2",
+    "city_3",
+    "city_4",
+    "city_5",
+    "city_6",
+    "city_7"
+   ],
+   "every": 0.889,
+   "level": 0.8,
+   "note": "windows assemble, one building per half-bar"
+  },
+  {
+   "t": 129.339,
+   "type": "raise",
+   "target": "light_b",
+   "dy": 8,
+   "dur": 3.0,
+   "note": "the second light returns"
+  },
+  {
+   "t": 128.339,
+   "type": "particles",
+   "particles": null,
+   "until": 147.931429
+  },
+  {
+   "t": 28.78,
+   "type": "particles",
+   "particles": "rain",
+   "until": 57.225
+  },
+  {
+   "t": 43.003,
+   "type": "color",
+   "palette": {
+    "skyTop": "#3f5966",
+    "fog": "#5c7682"
+   },
+   "dur": 1.0
+  },
+  {
+   "t": 57.225,
+   "type": "color",
+   "palette": {
+    "skyTop": "#6d8a96",
+    "skyBottom": "#d8e2e4"
+   },
+   "dur": 1.5
+  },
+  {
+   "t": 85.671,
+   "type": "color",
+   "palette": {
+    "skyTop": "#46606b"
+   },
+   "dur": 2.0
+  },
+  {
+   "t": 99.893,
+   "type": "color",
+   "palette": {
+    "skyTop": "#7fb0bf",
+    "skyBottom": "#eef4f2"
+   },
+   "dur": 2.0
+  },
+  {
+   "t": 114.116,
+   "type": "burst",
+   "at": "player",
+   "particles": "pixels"
+  },
+  {
+   "t": 128.339,
+   "type": "color",
+   "palette": {
+    "skyTop": "#a9c9d3",
+    "skyBottom": "#f5efe3",
+    "light": "#ffe8cc"
+   },
+   "dur": 4.0,
+   "note": "rain stops"
+  }
+ ],
+ "diamonds": [
+  {
+   "t": 8.668,
+   "side": 0
+  },
+  {
+   "t": 19.557,
+   "side": 0
+  },
+  {
+   "t": 32.892,
+   "side": 0
+  },
+  {
+   "t": 47.002,
+   "side": 0
+  },
+  {
+   "t": 61.67,
+   "side": 0
+  },
+  {
+   "t": 76.448,
+   "side": 0
+  },
+  {
+   "t": 90.115,
+   "side": 0
+  },
+  {
+   "t": 103.782,
+   "side": 0
+  },
+  {
+   "t": 117.45,
+   "side": 0
+  },
+  {
+   "t": 132.562,
+   "side": 0
+  }
+ ],
+ "crowns": [
+  {
+   "t": 57.559
+  },
+  {
+   "t": 92.449
+  }
+ ],
+ "finish": {
+  "kind": "gate",
+  "color": "#D8B86A"
+ },
+ "collectibleColors": {
+  "diamond": "#A4E4D1",
+  "crown": "#D8B86A"
+ },
+ "objects": [
+  {
+   "id": "gallery_door",
+   "t": 0.5,
+   "side": 0,
+   "along": 0,
+   "y": 0,
+   "kind": "group",
+   "onroad": true,
+   "name": "Gallery doorway (start)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      -2.0999999999999996,
+      2.75,
+      0
+     ],
+     "size": [
+      0.8,
+      5.5,
+      1.2
+     ],
+     "color": "#EEEADF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2.0999999999999996,
+      2.75,
+      0
+     ],
+     "size": [
+      0.8,
+      5.5,
+      1.2
+     ],
+     "color": "#EEEADF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.9,
+      0
+     ],
+     "size": [
+      5.4,
+      0.8,
+      1.4
+     ],
+     "color": "#D8B86A"
+    }
+   ],
+   "debugXZ": [
+    0.0,
+    4.25
+   ]
+  },
+  {
+   "id": "painting_1",
+   "t": 2.0,
+   "side": 6,
+   "along": 0,
+   "y": 1.5,
+   "kind": "image",
+   "size": [
+    3.6,
+    0,
+    4.8
+   ],
+   "src": "art/wings-painting.jpg",
+   "mode": "upright",
+   "landmark": true,
+   "name": "Floating gallery frame: two ivory forms, one winged",
+   "debugXZ": [
+    6.0,
+    17.0
+   ]
+  },
+  {
+   "id": "painting_2",
+   "t": 9.0,
+   "side": -51.0,
+   "along": 0,
+   "y": 1.8,
+   "kind": "image",
+   "size": [
+    3.0,
+    0,
+    4.0
+   ],
+   "src": "art/wings-painting.jpg",
+   "mode": "upright",
+   "name": "second frame",
+   "debugXZ": [
+    -26.44,
+    33.06
+   ]
+  },
+  {
+   "id": "gallery_plinths",
+   "kind": "row",
+   "t0": 1.5,
+   "t1": 14.557,
+   "side": 4.5,
+   "spacing": 6.0,
+   "bothSides": true,
+   "item": {
+    "kind": "box",
+    "size": [
+     1.2,
+     1.0,
+     1.2
+    ],
+    "color": "#AEBFC5"
+   }
+  },
+  {
+   "id": "mirror",
+   "kind": "group",
+   "worldPos": [
+    17.25,
+    0.0,
+    67.65
+   ],
+   "landmark": true,
+   "name": "The empty mirror (road wraps around it; it reflects the room but never the line)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3,
+      0
+     ],
+     "size": [
+      6,
+      6,
+      0.4
+     ],
+     "color": "#D8B86A"
+    },
+    {
+     "kind": "plane",
+     "pos": [
+      0,
+      3,
+      -0.25
+     ],
+     "size": [
+      5.2,
+      5.2,
+      1
+     ],
+     "color": "#cfe3e8"
+    }
+   ],
+   "t": 22.78,
+   "side": -6.86,
+   "along": 4.14,
+   "y": 0.0,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    17.25,
+    67.65
+   ]
+  },
+  {
+   "id": "egg_mirror_wings",
+   "t": 20.557,
+   "side": 4.6,
+   "along": 0,
+   "y": 5.5,
+   "kind": "group",
+   "egg": true,
+   "name": "Easter egg: a tiny pair of wings appears in the mirror only during the camera swing at 21 s",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      -0.4,
+      0,
+      0
+     ],
+     "size": [
+      0.6,
+      0.3,
+      0.1
+     ],
+     "rot": [
+      0,
+      0,
+      20
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.4,
+      0,
+      0
+     ],
+     "size": [
+      0.6,
+      0.3,
+      0.1
+     ],
+     "rot": [
+      0,
+      0,
+      -20
+     ],
+     "color": "#ffffff"
+    }
+   ],
+   "appear": {
+    "t": 20.757,
+    "mode": "fade",
+    "dur": 0.4
+   },
+   "exit": {
+    "t": 22.557000000000002,
+    "mode": "fade",
+    "dur": 0.4
+   },
+   "debugXZ": [
+    11.46,
+    85.02
+   ]
+  },
+  {
+   "id": "gallery_walls",
+   "kind": "row",
+   "t0": 14.557,
+   "t1": 28.78,
+   "side": 3.2,
+   "spacing": 3.0,
+   "bothSides": true,
+   "item": {
+    "kind": "box",
+    "size": [
+     0.6,
+     3.0,
+     2.6
+    ],
+    "color": "#AEBFC5",
+    "react": "tap"
+   },
+   "appear": {
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "rain_posts",
+   "kind": "row",
+   "t0": 28.78,
+   "t1": 43.003,
+   "side": 1.8,
+   "spacing": 2.2,
+   "bothSides": true,
+   "item": {
+    "kind": "box",
+    "size": [
+     0.2,
+     2.2,
+     0.2
+    ],
+    "color": "#9BD8E2",
+    "react": "tap"
+   }
+  },
+  {
+   "id": "fork_rain_1",
+   "t": 31.78,
+   "side": 21.6,
+   "along": 0,
+   "y": -1.2,
+   "kind": "group",
+   "fake": true,
+   "name": "flooded side path (visual fake-out, lower, ends in water)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      7,
+      0.6,
+      2.0
+     ],
+     "color": "#c3cfd3"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      3.9,
+      -0.2,
+      0.3
+     ],
+     "size": [
+      0.8,
+      0.5,
+      1.4
+     ],
+     "rot": [
+      0,
+      0,
+      8
+     ],
+     "color": "#c3cfd3"
+    },
+    {
+     "kind": "rock",
+     "pos": [
+      4.7,
+      -0.4,
+      -0.4
+     ],
+     "size": [
+      0.9,
+      0.7,
+      0.9
+     ],
+     "color": "#9a8f84"
+    }
+   ],
+   "debugXZ": [
+    0.94,
+    77.34
+   ]
+  },
+  {
+   "id": "fork_rain_2",
+   "t": 38.98,
+   "side": -22.6,
+   "along": 0,
+   "y": -1.2,
+   "kind": "group",
+   "fake": true,
+   "name": "flooded side path (visual fake-out)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      6,
+      0.6,
+      2.0
+     ],
+     "color": "#c3cfd3"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -3.4,
+      -0.2,
+      0.3
+     ],
+     "size": [
+      0.8,
+      0.5,
+      1.4
+     ],
+     "rot": [
+      0,
+      0,
+      -8
+     ],
+     "color": "#c3cfd3"
+    },
+    {
+     "kind": "rock",
+     "pos": [
+      -4.2,
+      -0.4,
+      -0.4
+     ],
+     "size": [
+      0.9,
+      0.7,
+      0.9
+     ],
+     "color": "#9a8f84"
+    }
+   ],
+   "debugXZ": [
+    16.0,
+    39.86
+   ]
+  },
+  {
+   "id": "moon_pool",
+   "kind": "group",
+   "worldPos": [
+    -6.25,
+    -3.64,
+    45.98
+   ],
+   "landmark": true,
+   "name": "Sunken rain courtyard with the moon pool (the hook spirals round it)",
+   "parts": [
+    {
+     "kind": "disc",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      10,
+      1,
+      10
+     ],
+     "color": "#3d6f78"
+    },
+    {
+     "kind": "torus",
+     "pos": [
+      0,
+      0.1,
+      0
+     ],
+     "size": [
+      10.5,
+      0.4,
+      10.5
+     ],
+     "color": "#EEEADF"
+    }
+   ],
+   "t": 37.267,
+   "side": 1.25,
+   "along": 0.0,
+   "y": -3.64,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    -6.25,
+    45.98
+   ]
+  },
+  {
+   "id": "moon",
+   "kind": "moon",
+   "worldPos": [
+    13.75,
+    26,
+    75.98
+   ],
+   "size": [
+    6,
+    6,
+    6
+   ],
+   "color": "#f4f1e0",
+   "name": "moon",
+   "t": 22.287,
+   "side": -3.36,
+   "along": 0.0,
+   "y": 26.0,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    13.75,
+    75.98
+   ]
+  },
+  {
+   "id": "observer_0",
+   "kind": "pillar",
+   "worldPos": [
+    -32.94,
+    -2.27,
+    74.47
+   ],
+   "size": [
+    1.4,
+    7,
+    1.4
+   ],
+   "color": "#9BD8E2",
+   "color2": "#77C9ED",
+   "name": "five pale observers (pillars)",
+   "landmark": false,
+   "t": 64.793,
+   "side": 4.87,
+   "along": 0.0,
+   "y": -5.27,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    -32.94,
+    74.47
+   ]
+  },
+  {
+   "id": "observer_1",
+   "kind": "pillar",
+   "worldPos": [
+    -28.94,
+    -2.27,
+    74.47
+   ],
+   "size": [
+    1.4,
+    7,
+    1.4
+   ],
+   "color": "#9BD8E2",
+   "color2": "#A5DFB5",
+   "name": "five pale observers (pillars)",
+   "landmark": false,
+   "t": 65.004,
+   "side": 4.87,
+   "along": 2.2,
+   "y": -5.27,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    -28.94,
+    74.47
+   ]
+  },
+  {
+   "id": "observer_2",
+   "kind": "pillar",
+   "worldPos": [
+    -24.94,
+    -2.27,
+    74.47
+   ],
+   "size": [
+    1.4,
+    7,
+    1.4
+   ],
+   "color": "#9BD8E2",
+   "color2": "#F3A8C8",
+   "name": "five pale observers (pillars)",
+   "landmark": true,
+   "t": 65.004,
+   "side": 4.87,
+   "along": 6.2,
+   "y": -5.27,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    -24.94,
+    74.47
+   ]
+  },
+  {
+   "id": "observer_3",
+   "kind": "pillar",
+   "worldPos": [
+    -20.94,
+    -2.27,
+    74.47
+   ],
+   "size": [
+    1.4,
+    7,
+    1.4
+   ],
+   "color": "#9BD8E2",
+   "color2": "#F8BB7D",
+   "name": "five pale observers (pillars)",
+   "landmark": false,
+   "t": 68.559,
+   "side": 3.01,
+   "along": 10.55,
+   "y": -5.27,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    -20.94,
+    74.47
+   ]
+  },
+  {
+   "id": "observer_4",
+   "kind": "pillar",
+   "worldPos": [
+    -16.94,
+    -2.27,
+    74.47
+   ],
+   "size": [
+    1.4,
+    7,
+    1.4
+   ],
+   "color": "#9BD8E2",
+   "color2": "#B1A1E3",
+   "name": "five pale observers (pillars)",
+   "landmark": false,
+   "t": 70.337,
+   "side": 7.51,
+   "along": 3.93,
+   "y": -5.27,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    -16.94,
+    74.47
+   ]
+  },
+  {
+   "id": "courtyard_lanterns",
+   "kind": "row",
+   "t0": 57.225,
+   "t1": 71.448,
+   "side": 3.0,
+   "spacing": 4.5,
+   "bothSides": true,
+   "item": {
+    "kind": "lamp",
+    "size": [
+     0.3,
+     3,
+     0.3
+    ],
+    "color": "#EEEADF",
+    "color2": "#ffd79a",
+    "react": "kick"
+   }
+  },
+  {
+   "id": "light_a",
+   "t": 72.448,
+   "side": -15.5,
+   "along": 0,
+   "y": 3,
+   "kind": "sphere",
+   "size": [
+    1.2,
+    1.2,
+    1.2
+   ],
+   "color": "#ffe1a8",
+   "name": "light A",
+   "debugXZ": [
+    7.97,
+    66.13
+   ]
+  },
+  {
+   "id": "light_b",
+   "t": 72.448,
+   "side": 9.5,
+   "along": 0,
+   "y": 3,
+   "kind": "sphere",
+   "size": [
+    1.2,
+    1.2,
+    1.2
+   ],
+   "color": "#ffd0c8",
+   "name": "light B",
+   "debugXZ": [
+    -17.03,
+    66.13
+   ]
+  },
+  {
+   "id": "fork_parallel",
+   "t": 77.648,
+   "side": 61.7,
+   "along": 0,
+   "y": -1.2,
+   "kind": "group",
+   "fake": true,
+   "name": "parallel boardwalk that stops short (visual fake-out)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      9,
+      0.6,
+      2.2
+     ],
+     "color": "#d3dcdf"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      4.9,
+      -0.2,
+      0.3
+     ],
+     "size": [
+      0.8,
+      0.5,
+      1.54
+     ],
+     "rot": [
+      0,
+      0,
+      8
+     ],
+     "color": "#d3dcdf"
+    },
+    {
+     "kind": "rock",
+     "pos": [
+      5.7,
+      -0.4,
+      -0.4
+     ],
+     "size": [
+      0.9,
+      0.7,
+      0.9
+     ],
+     "color": "#9a8f84"
+    }
+   ],
+   "debugXZ": [
+    -21.89,
+    -16.35
+   ]
+  },
+  {
+   "id": "feather_poster_v2",
+   "t": 80.448,
+   "side": -50.5,
+   "along": 0,
+   "y": 1.2,
+   "kind": "image",
+   "size": [
+    3,
+    0,
+    4
+   ],
+   "src": "art/feather-poster.jpg",
+   "mode": "upright",
+   "name": "feather poster",
+   "debugXZ": [
+    28.82,
+    33.07
+   ]
+  },
+  {
+   "id": "black_monument",
+   "t": 88.671,
+   "side": -9,
+   "along": 0,
+   "y": 0,
+   "kind": "group",
+   "landmark": true,
+   "name": "White-topped black monument",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3,
+      0
+     ],
+     "size": [
+      2.5,
+      6,
+      2.5
+     ],
+     "color": "#1f2a2e"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      6.6,
+      0
+     ],
+     "size": [
+      2.7,
+      1.2,
+      2.7
+     ],
+     "color": "#f4f4f4"
+    }
+   ],
+   "debugXZ": [
+    -6.08,
+    -3.77
+   ]
+  },
+  {
+   "id": "wing_panel_0",
+   "t": 93.782,
+   "side": 23.0,
+   "along": 0,
+   "y": 1,
+   "kind": "box",
+   "size": [
+    0.3,
+    3.5,
+    5
+   ],
+   "color": "#ffffff",
+   "color2": "#EEEADF",
+   "rot": 25,
+   "appear": {
+    "t": 92.782,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "name": "wing panel",
+   "debugXZ": [
+    -18.52,
+    3.78
+   ]
+  },
+  {
+   "id": "wing_panel_1",
+   "t": 95.382,
+   "side": -11.0,
+   "along": 0,
+   "y": 1,
+   "kind": "box",
+   "size": [
+    0.3,
+    3.5,
+    5
+   ],
+   "color": "#ffffff",
+   "color2": "#EEEADF",
+   "rot": -25,
+   "appear": {
+    "t": 94.56,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "name": "wing panel",
+   "debugXZ": [
+    -58.19,
+    11.71
+   ]
+  },
+  {
+   "id": "wing_panel_2",
+   "t": 96.982,
+   "side": 21.5,
+   "along": 0,
+   "y": 1,
+   "kind": "box",
+   "size": [
+    0.3,
+    3.5,
+    5
+   ],
+   "color": "#ffffff",
+   "color2": "#EEEADF",
+   "rot": 25,
+   "appear": {
+    "t": 96.338,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "name": "wing panel",
+   "debugXZ": [
+    -54.56,
+    39.44
+   ]
+  },
+  {
+   "id": "wing_panel_3",
+   "t": 98.582,
+   "side": -11.0,
+   "along": 0,
+   "y": 1,
+   "kind": "box",
+   "size": [
+    0.3,
+    3.5,
+    5
+   ],
+   "color": "#ffffff",
+   "color2": "#EEEADF",
+   "rot": -25,
+   "appear": {
+    "t": 98.116,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "name": "wing panel",
+   "debugXZ": [
+    -58.34,
+    38.39
+   ]
+  },
+  {
+   "id": "feather_spire",
+   "kind": "group",
+   "worldPos": [
+    -44.89,
+    -3,
+    23.16
+   ],
+   "landmark": true,
+   "name": "Feather spire (Final A helix centre)",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      6,
+      0
+     ],
+     "size": [
+      2,
+      14,
+      2
+     ],
+     "color": "#EEEADF"
+    },
+    {
+     "kind": "cone",
+     "pos": [
+      0,
+      14,
+      0
+     ],
+     "size": [
+      3,
+      3,
+      3
+     ],
+     "color": "#D8B86A"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.5,
+      4,
+      0
+     ],
+     "size": [
+      2.2,
+      0.15,
+      0.8
+     ],
+     "rot": [
+      0,
+      0,
+      15
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      6,
+      0
+     ],
+     "size": [
+      2.2,
+      0.15,
+      0.8
+     ],
+     "rot": [
+      0,
+      30,
+      15
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.5,
+      8,
+      0
+     ],
+     "size": [
+      2.2,
+      0.15,
+      0.8
+     ],
+     "rot": [
+      0,
+      60,
+      15
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      10,
+      0
+     ],
+     "size": [
+      2.2,
+      0.15,
+      0.8
+     ],
+     "rot": [
+      0,
+      90,
+      15
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.5,
+      12,
+      0
+     ],
+     "size": [
+      2.2,
+      0.15,
+      0.8
+     ],
+     "rot": [
+      0,
+      120,
+      15
+     ],
+     "color": "#ffffff"
+    }
+   ],
+   "react": "kick",
+   "t": 102.612,
+   "side": 1.46,
+   "along": -0.0,
+   "y": -7.15,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    -44.89,
+    23.16
+   ]
+  },
+  {
+   "id": "feather_poster_fa",
+   "t": 103.893,
+   "side": 23.0,
+   "along": 0,
+   "y": 2,
+   "kind": "image",
+   "size": [
+    4,
+    0,
+    5.4
+   ],
+   "src": "art/feather-poster.jpg",
+   "mode": "billboard",
+   "name": "feather billboard",
+   "debugXZ": [
+    -60.77,
+    17.93
+   ]
+  },
+  {
+   "id": "city_0",
+   "t": 114.916,
+   "side": 14.5,
+   "along": 0,
+   "y": 0,
+   "kind": "building",
+   "size": [
+    4,
+    7,
+    4
+   ],
+   "color": "#c7e6ec",
+   "color2": "#77C9ED",
+   "react": "beat",
+   "appear": {
+    "t": 112.616,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "debugXZ": [
+    -31.92,
+    8.15
+   ]
+  },
+  {
+   "id": "city_1",
+   "t": 116.616,
+   "side": -23.5,
+   "along": 0,
+   "y": 0,
+   "kind": "building",
+   "size": [
+    4,
+    9,
+    4
+   ],
+   "color": "#c7e6ec",
+   "color2": "#A5DFB5",
+   "react": "beat",
+   "appear": {
+    "t": 114.316,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "debugXZ": [
+    -25.02,
+    38.6
+   ]
+  },
+  {
+   "id": "city_2",
+   "t": 118.316,
+   "side": 14.5,
+   "along": 0,
+   "y": 0,
+   "kind": "building",
+   "size": [
+    4,
+    11,
+    4
+   ],
+   "color": "#c7e6ec",
+   "color2": "#F3A8C8",
+   "react": "beat",
+   "appear": {
+    "t": 116.016,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "debugXZ": [
+    -31.49,
+    8.68
+   ]
+  },
+  {
+   "id": "city_3",
+   "t": 120.016,
+   "side": -50.5,
+   "along": 0,
+   "y": 0,
+   "kind": "building",
+   "size": [
+    4,
+    7,
+    4
+   ],
+   "color": "#c7e6ec",
+   "color2": "#F8BB7D",
+   "react": "beat",
+   "appear": {
+    "t": 117.716,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "debugXZ": [
+    -58.06,
+    13.3
+   ]
+  },
+  {
+   "id": "city_4",
+   "t": 121.716,
+   "side": 16.0,
+   "along": 0,
+   "y": 0,
+   "kind": "building",
+   "size": [
+    4,
+    9,
+    4
+   ],
+   "color": "#c7e6ec",
+   "color2": "#B1A1E3",
+   "react": "beat",
+   "appear": {
+    "t": 119.416,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "debugXZ": [
+    -0.58,
+    -4.68
+   ]
+  },
+  {
+   "id": "city_5",
+   "t": 123.416,
+   "side": -7,
+   "along": 0,
+   "y": 0,
+   "kind": "building",
+   "size": [
+    4,
+    11,
+    4
+   ],
+   "color": "#c7e6ec",
+   "color2": "#77C9ED",
+   "react": "beat",
+   "appear": {
+    "t": 121.116,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "debugXZ": [
+    6.32,
+    10.77
+   ]
+  },
+  {
+   "id": "city_6",
+   "t": 125.116,
+   "side": 8.5,
+   "along": 0,
+   "y": 0,
+   "kind": "building",
+   "size": [
+    4,
+    7,
+    4
+   ],
+   "color": "#c7e6ec",
+   "color2": "#A5DFB5",
+   "react": "beat",
+   "appear": {
+    "t": 122.816,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "debugXZ": [
+    20.77,
+    -2.86
+   ]
+  },
+  {
+   "id": "city_7",
+   "t": 126.816,
+   "side": -25.0,
+   "along": 0,
+   "y": 0,
+   "kind": "building",
+   "size": [
+    4,
+    9,
+    4
+   ],
+   "color": "#c7e6ec",
+   "color2": "#F3A8C8",
+   "react": "beat",
+   "appear": {
+    "t": 124.516,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "debugXZ": [
+    -5.16,
+    4.03
+   ]
+  },
+  {
+   "id": "city_rails",
+   "kind": "row",
+   "t0": 114.116,
+   "t1": 128.339,
+   "side": 1.5,
+   "spacing": 2.0,
+   "bothSides": true,
+   "item": {
+    "kind": "box",
+    "size": [
+     0.2,
+     0.9,
+     0.2
+    ],
+    "color": "#F08B78",
+    "react": "tap"
+   }
+  },
+  {
+   "id": "zebra",
+   "t": 132.562,
+   "side": -7,
+   "along": 0,
+   "y": 0,
+   "kind": "group",
+   "landmark": true,
+   "name": "Separated zebra crossing (scenery platform)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0,
+      -2.0
+     ],
+     "size": [
+      4,
+      0.1,
+      0.45
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0,
+      -1.2
+     ],
+     "size": [
+      4,
+      0.1,
+      0.45
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0,
+      -0.3999999999999999
+     ],
+     "size": [
+      4,
+      0.1,
+      0.45
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0,
+      0.40000000000000036
+     ],
+     "size": [
+      4,
+      0.1,
+      0.45
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0,
+      1.2000000000000002
+     ],
+     "size": [
+      4,
+      0.1,
+      0.45
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0,
+      2.0
+     ],
+     "size": [
+      4,
+      0.1,
+      0.45
+     ],
+     "color": "#ffffff"
+    }
+   ],
+   "debugXZ": [
+    21.72,
+    -27.8
+   ]
+  },
+  {
+   "id": "egg_feather",
+   "t": 132.562,
+   "side": -7,
+   "along": 0.8,
+   "y": 0.2,
+   "kind": "box",
+   "size": [
+    0.2,
+    0.05,
+    0.9
+   ],
+   "egg": true,
+   "color": "#ffffff",
+   "name": "Easter egg: one white feather left on the crossing (the light that left came back)",
+   "debugXZ": [
+    20.92,
+    -27.8
+   ]
+  }
+ ],
+ "art": {
+  "backdrop": "art/rain-city.jpg",
+  "ground": {
+   "src": "art/wet-stone.jpg",
+   "scale": 40
+  },
+  "catalog": [
+   {
+    "file": "art/rain-city.jpg",
+    "use": "backdrop: rainy pixel city"
+   },
+   {
+    "file": "art/wet-stone.jpg",
+    "use": "ground texture"
+   },
+   {
+    "file": "art/wings-painting.jpg",
+    "use": "gallery frames (Eros & Psyche, abstract)"
+   },
+   {
+    "file": "art/feather-poster.jpg",
+    "use": "posters / billboards in Verse 2 and the feather storm"
+   }
+  ]
+ },
+ "route": {
+  "note": "Centerline computed from chart taps+dir+speed (Babylon left-handed, y up, N=+z, E=+x). nodes = position at each tap (heading after the tap). y = road height from elevation events.",
+  "nodes": [
+   [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    "N"
+   ],
+   [
+    2.779,
+    0.0,
+    0.0,
+    23.621,
+    "E"
+   ],
+   [
+    3.223,
+    3.774,
+    0.0,
+    23.621,
+    "N"
+   ],
+   [
+    3.89,
+    3.774,
+    0.0,
+    29.291,
+    "E"
+   ],
+   [
+    5.668,
+    18.887,
+    0.0,
+    29.291,
+    "S"
+   ],
+   [
+    6.779,
+    18.887,
+    0.0,
+    19.848,
+    "E"
+   ],
+   [
+    7.446,
+    24.556,
+    0.0,
+    19.848,
+    "N"
+   ],
+   [
+    9.89,
+    24.556,
+    0.0,
+    40.622,
+    "E"
+   ],
+   [
+    10.335,
+    28.339,
+    0.0,
+    40.622,
+    "N"
+   ],
+   [
+    11.002,
+    28.339,
+    0.0,
+    46.291,
+    "E"
+   ],
+   [
+    12.779,
+    43.444,
+    0.0,
+    46.291,
+    "N"
+   ],
+   [
+    14.557,
+    43.444,
+    0.0,
+    61.404,
+    "W"
+   ],
+   [
+    15.668,
+    34.0,
+    0.0,
+    61.404,
+    "N"
+   ],
+   [
+    16.335,
+    34.0,
+    0.0,
+    67.074,
+    "W"
+   ],
+   [
+    17.224,
+    26.444,
+    0.0,
+    67.074,
+    "N"
+   ],
+   [
+    17.891,
+    26.444,
+    0.0,
+    72.743,
+    "W"
+   ],
+   [
+    18.113,
+    24.557,
+    0.0,
+    72.743,
+    "N"
+   ],
+   [
+    19.224,
+    24.557,
+    0.0,
+    82.187,
+    "W"
+   ],
+   [
+    19.891,
+    18.887,
+    0.0,
+    82.187,
+    "N"
+   ],
+   [
+    20.224,
+    18.887,
+    0.0,
+    85.017,
+    "W"
+   ],
+   [
+    20.557,
+    16.057,
+    0.0,
+    85.017,
+    "S"
+   ],
+   [
+    21.002,
+    16.057,
+    0.0,
+    81.235,
+    "W"
+   ],
+   [
+    21.669,
+    10.387,
+    0.0,
+    81.235,
+    "S"
+   ],
+   [
+    22.78,
+    10.387,
+    0.0,
+    71.791,
+    "W"
+   ],
+   [
+    23.446,
+    4.726,
+    0.0,
+    71.791,
+    "S"
+   ],
+   [
+    24.113,
+    4.726,
+    0.0,
+    66.122,
+    "W"
+   ],
+   [
+    24.558,
+    0.944,
+    0.0,
+    66.122,
+    "S"
+   ],
+   [
+    25.224,
+    0.944,
+    0.0,
+    60.461,
+    "E"
+   ],
+   [
+    26.335,
+    10.387,
+    0.0,
+    60.461,
+    "S"
+   ],
+   [
+    27.002,
+    10.387,
+    0.0,
+    54.791,
+    "E"
+   ],
+   [
+    27.335,
+    13.218,
+    0.0,
+    54.791,
+    "S"
+   ],
+   [
+    27.669,
+    13.218,
+    0.0,
+    51.952,
+    "E"
+   ],
+   [
+    28.113,
+    16.992,
+    0.0,
+    51.952,
+    "S"
+   ],
+   [
+    28.78,
+    16.992,
+    0.0,
+    46.283,
+    "W"
+   ],
+   [
+    29.891,
+    7.548,
+    0.0,
+    46.283,
+    "N"
+   ],
+   [
+    30.558,
+    7.548,
+    0.0,
+    51.952,
+    "W"
+   ],
+   [
+    31.224,
+    1.887,
+    0.0,
+    51.952,
+    "N"
+   ],
+   [
+    31.669,
+    1.887,
+    0.0,
+    55.735,
+    "W"
+   ],
+   [
+    32.336,
+    -3.782,
+    0.0,
+    55.735,
+    "N"
+   ],
+   [
+    33.447,
+    -3.782,
+    0.0,
+    65.178,
+    "W"
+   ],
+   [
+    34.113,
+    -9.443,
+    0.0,
+    65.178,
+    "S"
+   ],
+   [
+    34.447,
+    -9.443,
+    0.0,
+    62.339,
+    "W"
+   ],
+   [
+    34.78,
+    -12.274,
+    0.0,
+    62.339,
+    "S"
+   ],
+   [
+    35.225,
+    -12.274,
+    0.0,
+    58.557,
+    "E"
+   ],
+   [
+    35.447,
+    -10.387,
+    0.0,
+    58.557,
+    "S"
+   ],
+   [
+    35.669,
+    -10.387,
+    0.0,
+    56.67,
+    "E"
+   ],
+   [
+    35.891,
+    -8.5,
+    0.0,
+    56.67,
+    "S"
+   ],
+   [
+    37.002,
+    -8.5,
+    0.0,
+    47.226,
+    "E"
+   ],
+   [
+    37.669,
+    -2.83,
+    0.0,
+    47.226,
+    "S"
+   ],
+   [
+    38.336,
+    -2.83,
+    0.0,
+    41.557,
+    "W"
+   ],
+   [
+    38.78,
+    -6.604,
+    0.0,
+    41.557,
+    "S"
+   ],
+   [
+    39.447,
+    -6.604,
+    0.0,
+    35.887,
+    "W"
+   ],
+   [
+    40.558,
+    -16.048,
+    0.0,
+    35.887,
+    "N"
+   ],
+   [
+    41.225,
+    -16.048,
+    0.0,
+    41.557,
+    "W"
+   ],
+   [
+    41.558,
+    -18.878,
+    0.0,
+    41.557,
+    "N"
+   ],
+   [
+    41.892,
+    -18.878,
+    0.0,
+    44.396,
+    "W"
+   ],
+   [
+    42.336,
+    -22.652,
+    0.0,
+    44.396,
+    "N"
+   ],
+   [
+    42.558,
+    -22.652,
+    0.0,
+    46.283,
+    "W"
+   ],
+   [
+    42.78,
+    -24.539,
+    0.0,
+    46.283,
+    "S"
+   ],
+   [
+    43.003,
+    -24.539,
+    0.0,
+    44.387,
+    "E"
+   ],
+   [
+    43.892,
+    -16.983,
+    -3.0,
+    44.387,
+    "S"
+   ],
+   [
+    44.781,
+    -16.983,
+    -3.0,
+    36.831,
+    "E"
+   ],
+   [
+    45.669,
+    -9.435,
+    -3.0,
+    36.831,
+    "S"
+   ],
+   [
+    46.558,
+    -9.435,
+    -3.0,
+    29.274,
+    "E"
+   ],
+   [
+    47.447,
+    -1.878,
+    -3.0,
+    29.274,
+    "N"
+   ],
+   [
+    48.336,
+    -1.878,
+    -3.0,
+    36.831,
+    "E"
+   ],
+   [
+    49.225,
+    5.678,
+    -3.0,
+    36.831,
+    "N"
+   ],
+   [
+    49.67,
+    5.678,
+    -3.0,
+    40.613,
+    "E"
+   ],
+   [
+    50.114,
+    9.452,
+    -3.0,
+    40.613,
+    "N"
+   ],
+   [
+    51.003,
+    9.452,
+    -3.0,
+    48.17,
+    "W"
+   ],
+   [
+    51.892,
+    1.896,
+    -3.0,
+    48.17,
+    "N"
+   ],
+   [
+    52.781,
+    1.896,
+    -3.0,
+    55.726,
+    "W"
+   ],
+   [
+    53.67,
+    -5.661,
+    -3.0,
+    55.726,
+    "N"
+   ],
+   [
+    54.559,
+    -5.661,
+    -3.0,
+    63.283,
+    "W"
+   ],
+   [
+    55.448,
+    -13.217,
+    -3.0,
+    63.283,
+    "S"
+   ],
+   [
+    56.337,
+    -13.217,
+    -3.0,
+    55.726,
+    "W"
+   ],
+   [
+    56.781,
+    -16.991,
+    -3.0,
+    55.726,
+    "S"
+   ],
+   [
+    57.225,
+    -16.991,
+    -3.0,
+    51.952,
+    "W"
+   ],
+   [
+    57.892,
+    -22.661,
+    -2.437,
+    51.952,
+    "N"
+   ],
+   [
+    58.337,
+    -22.661,
+    -2.062,
+    55.734,
+    "W"
+   ],
+   [
+    58.559,
+    -24.548,
+    -1.875,
+    55.734,
+    "N"
+   ],
+   [
+    59.003,
+    -24.548,
+    -1.5,
+    59.509,
+    "W"
+   ],
+   [
+    59.67,
+    -30.217,
+    -0.937,
+    59.509,
+    "N"
+   ],
+   [
+    60.114,
+    -30.217,
+    -0.563,
+    63.282,
+    "W"
+   ],
+   [
+    60.781,
+    -35.887,
+    -0.0,
+    63.282,
+    "N"
+   ],
+   [
+    61.448,
+    -35.887,
+    0.563,
+    68.952,
+    "W"
+   ],
+   [
+    61.892,
+    -39.661,
+    0.937,
+    68.952,
+    "N"
+   ],
+   [
+    62.115,
+    -39.661,
+    1.125,
+    70.847,
+    "W"
+   ],
+   [
+    62.559,
+    -43.435,
+    1.5,
+    70.847,
+    "N"
+   ],
+   [
+    62.892,
+    -43.435,
+    1.781,
+    73.678,
+    "E"
+   ],
+   [
+    63.226,
+    -40.596,
+    2.063,
+    73.678,
+    "N"
+   ],
+   [
+    63.448,
+    -40.596,
+    2.25,
+    75.565,
+    "E"
+   ],
+   [
+    63.67,
+    -38.709,
+    2.437,
+    75.565,
+    "N"
+   ],
+   [
+    63.892,
+    -38.709,
+    2.625,
+    77.452,
+    "E"
+   ],
+   [
+    64.115,
+    -36.813,
+    2.813,
+    77.452,
+    "N"
+   ],
+   [
+    64.337,
+    -36.813,
+    3.0,
+    79.339,
+    "E"
+   ],
+   [
+    65.004,
+    -31.144,
+    3.0,
+    79.339,
+    "N"
+   ],
+   [
+    65.448,
+    -31.144,
+    3.0,
+    83.113,
+    "E"
+   ],
+   [
+    65.67,
+    -29.257,
+    3.0,
+    83.113,
+    "N"
+   ],
+   [
+    66.115,
+    -29.257,
+    3.0,
+    86.895,
+    "E"
+   ],
+   [
+    66.781,
+    -23.596,
+    3.0,
+    86.895,
+    "N"
+   ],
+   [
+    67.226,
+    -23.596,
+    3.0,
+    90.678,
+    "E"
+   ],
+   [
+    67.893,
+    -17.926,
+    3.0,
+    90.678,
+    "S"
+   ],
+   [
+    68.559,
+    -17.926,
+    3.0,
+    85.017,
+    "E"
+   ],
+   [
+    69.004,
+    -14.144,
+    3.0,
+    85.017,
+    "S"
+   ],
+   [
+    69.226,
+    -14.144,
+    3.0,
+    83.13,
+    "E"
+   ],
+   [
+    69.67,
+    -10.37,
+    3.0,
+    83.13,
+    "S"
+   ],
+   [
+    70.004,
+    -10.37,
+    3.0,
+    80.291,
+    "E"
+   ],
+   [
+    70.115,
+    -9.426,
+    3.0,
+    80.291,
+    "S"
+   ],
+   [
+    70.337,
+    -9.426,
+    3.0,
+    78.404,
+    "E"
+   ],
+   [
+    70.559,
+    -7.539,
+    3.0,
+    78.404,
+    "S"
+   ],
+   [
+    70.781,
+    -7.539,
+    3.0,
+    76.517,
+    "E"
+   ],
+   [
+    71.004,
+    -5.644,
+    3.0,
+    76.517,
+    "S"
+   ],
+   [
+    71.226,
+    -5.644,
+    3.0,
+    74.63,
+    "W"
+   ],
+   [
+    71.448,
+    -7.531,
+    3.0,
+    74.63,
+    "S"
+   ],
+   [
+    72.559,
+    -7.531,
+    3.0,
+    65.186,
+    "W"
+   ],
+   [
+    73.226,
+    -13.2,
+    3.0,
+    65.186,
+    "S"
+   ],
+   [
+    73.893,
+    -13.2,
+    3.0,
+    59.517,
+    "W"
+   ],
+   [
+    74.337,
+    -16.974,
+    3.0,
+    59.517,
+    "S"
+   ],
+   [
+    75.004,
+    -16.974,
+    3.0,
+    53.847,
+    "W"
+   ],
+   [
+    76.115,
+    -26.418,
+    3.0,
+    53.847,
+    "S"
+   ],
+   [
+    76.782,
+    -26.418,
+    3.0,
+    48.178,
+    "E"
+   ],
+   [
+    77.115,
+    -23.587,
+    3.0,
+    48.178,
+    "S"
+   ],
+   [
+    77.448,
+    -23.587,
+    3.0,
+    45.347,
+    "E"
+   ],
+   [
+    77.893,
+    -19.805,
+    3.0,
+    45.347,
+    "S"
+   ],
+   [
+    78.115,
+    -19.805,
+    3.0,
+    43.46,
+    "E"
+   ],
+   [
+    78.56,
+    -16.022,
+    3.0,
+    43.46,
+    "S"
+   ],
+   [
+    79.671,
+    -16.022,
+    3.0,
+    34.017,
+    "W"
+   ],
+   [
+    80.337,
+    -21.683,
+    3.0,
+    34.017,
+    "S"
+   ],
+   [
+    81.004,
+    -21.683,
+    3.0,
+    28.347,
+    "W"
+   ],
+   [
+    81.449,
+    -25.466,
+    3.0,
+    28.347,
+    "S"
+   ],
+   [
+    82.115,
+    -25.466,
+    3.0,
+    22.686,
+    "W"
+   ],
+   [
+    83.226,
+    -34.909,
+    3.0,
+    22.686,
+    "S"
+   ],
+   [
+    83.893,
+    -34.909,
+    3.0,
+    17.017,
+    "E"
+   ],
+   [
+    84.226,
+    -32.079,
+    3.0,
+    17.017,
+    "S"
+   ],
+   [
+    84.56,
+    -32.079,
+    3.0,
+    14.178,
+    "E"
+   ],
+   [
+    85.004,
+    -28.305,
+    3.0,
+    14.178,
+    "S"
+   ],
+   [
+    85.226,
+    -28.305,
+    3.0,
+    12.291,
+    "E"
+   ],
+   [
+    85.671,
+    -24.522,
+    3.0,
+    12.291,
+    "S"
+   ],
+   [
+    87.449,
+    -24.522,
+    0.0,
+    -2.822,
+    "E"
+   ],
+   [
+    88.56,
+    -15.079,
+    0.0,
+    -2.822,
+    "S"
+   ],
+   [
+    89.227,
+    -15.079,
+    0.0,
+    -8.492,
+    "W"
+   ],
+   [
+    91.004,
+    -30.183,
+    0.0,
+    -8.492,
+    "N"
+   ],
+   [
+    91.671,
+    -30.183,
+    0.0,
+    -2.822,
+    "W"
+   ],
+   [
+    92.116,
+    -33.966,
+    0.0,
+    -2.822,
+    "N"
+   ],
+   [
+    92.782,
+    -33.966,
+    0.0,
+    2.839,
+    "W"
+   ],
+   [
+    93.671,
+    -41.522,
+    0.0,
+    2.839,
+    "N"
+   ],
+   [
+    94.56,
+    -41.522,
+    0.0,
+    10.395,
+    "W"
+   ],
+   [
+    95.227,
+    -47.192,
+    0.0,
+    10.395,
+    "N"
+   ],
+   [
+    95.671,
+    -47.192,
+    0.0,
+    14.169,
+    "W"
+   ],
+   [
+    96.338,
+    -52.861,
+    0.0,
+    14.169,
+    "N"
+   ],
+   [
+    96.782,
+    -52.861,
+    0.0,
+    17.943,
+    "W"
+   ],
+   [
+    97.005,
+    -54.757,
+    0.0,
+    17.943,
+    "N"
+   ],
+   [
+    97.449,
+    -54.757,
+    0.0,
+    21.717,
+    "W"
+   ],
+   [
+    97.671,
+    -56.644,
+    0.0,
+    21.717,
+    "N"
+   ],
+   [
+    98.116,
+    -56.644,
+    0.0,
+    25.5,
+    "W"
+   ],
+   [
+    98.338,
+    -58.531,
+    0.0,
+    25.5,
+    "N"
+   ],
+   [
+    98.56,
+    -58.531,
+    0.0,
+    27.387,
+    "E"
+   ],
+   [
+    98.783,
+    -56.635,
+    0.0,
+    27.387,
+    "N"
+   ],
+   [
+    99.005,
+    -56.635,
+    0.0,
+    29.274,
+    "W"
+   ],
+   [
+    99.227,
+    -58.522,
+    0.0,
+    29.274,
+    "N"
+   ],
+   [
+    99.449,
+    -58.522,
+    0.0,
+    31.161,
+    "E"
+   ],
+   [
+    99.671,
+    -56.635,
+    0.0,
+    31.161,
+    "N"
+   ],
+   [
+    99.894,
+    -56.635,
+    0.0,
+    33.056,
+    "E"
+   ],
+   [
+    100.56,
+    -50.974,
+    3.281,
+    33.056,
+    "S"
+   ],
+   [
+    101.005,
+    -50.974,
+    3.469,
+    29.274,
+    "E"
+   ],
+   [
+    101.227,
+    -49.087,
+    3.563,
+    29.274,
+    "S"
+   ],
+   [
+    101.672,
+    -49.087,
+    3.75,
+    25.491,
+    "E"
+   ],
+   [
+    102.338,
+    -43.426,
+    4.031,
+    25.491,
+    "S"
+   ],
+   [
+    102.783,
+    -43.426,
+    4.219,
+    21.709,
+    "E"
+   ],
+   [
+    103.449,
+    -37.765,
+    4.5,
+    21.709,
+    "S"
+   ],
+   [
+    104.116,
+    -37.765,
+    4.781,
+    16.039,
+    "W"
+   ],
+   [
+    104.561,
+    -41.548,
+    4.969,
+    16.039,
+    "S"
+   ],
+   [
+    104.783,
+    -41.548,
+    5.063,
+    14.152,
+    "W"
+   ],
+   [
+    105.227,
+    -45.322,
+    5.25,
+    14.152,
+    "S"
+   ],
+   [
+    105.561,
+    -45.322,
+    5.391,
+    11.313,
+    "W"
+   ],
+   [
+    105.672,
+    -46.265,
+    5.438,
+    11.313,
+    "S"
+   ],
+   [
+    105.894,
+    -46.265,
+    5.532,
+    9.426,
+    "W"
+   ],
+   [
+    106.116,
+    -48.152,
+    5.625,
+    9.426,
+    "N"
+   ],
+   [
+    106.338,
+    -48.152,
+    5.719,
+    11.313,
+    "W"
+   ],
+   [
+    106.561,
+    -50.048,
+    5.813,
+    11.313,
+    "N"
+   ],
+   [
+    106.783,
+    -50.048,
+    5.907,
+    13.2,
+    "W"
+   ],
+   [
+    107.005,
+    -51.935,
+    6.0,
+    13.2,
+    "N"
+   ],
+   [
+    107.672,
+    -51.935,
+    6.282,
+    18.87,
+    "W"
+   ],
+   [
+    108.116,
+    -55.709,
+    6.469,
+    18.87,
+    "N"
+   ],
+   [
+    108.338,
+    -55.709,
+    6.563,
+    20.757,
+    "E"
+   ],
+   [
+    108.783,
+    -51.926,
+    6.75,
+    20.757,
+    "N"
+   ],
+   [
+    109.45,
+    -51.926,
+    7.032,
+    26.426,
+    "E"
+   ],
+   [
+    109.894,
+    -48.152,
+    7.219,
+    26.426,
+    "N"
+   ],
+   [
+    110.561,
+    -48.152,
+    7.5,
+    32.096,
+    "E"
+   ],
+   [
+    111.227,
+    -42.491,
+    7.781,
+    32.096,
+    "N"
+   ],
+   [
+    111.672,
+    -42.491,
+    7.969,
+    35.878,
+    "E"
+   ],
+   [
+    111.894,
+    -40.604,
+    8.063,
+    35.878,
+    "S"
+   ],
+   [
+    112.339,
+    -40.604,
+    8.25,
+    32.096,
+    "E"
+   ],
+   [
+    112.672,
+    -37.774,
+    8.391,
+    32.096,
+    "S"
+   ],
+   [
+    112.783,
+    -37.774,
+    8.438,
+    31.152,
+    "E"
+   ],
+   [
+    113.005,
+    -35.887,
+    8.531,
+    31.152,
+    "S"
+   ],
+   [
+    113.228,
+    -35.887,
+    8.625,
+    29.257,
+    "E"
+   ],
+   [
+    113.45,
+    -34.0,
+    8.719,
+    29.257,
+    "S"
+   ],
+   [
+    113.672,
+    -34.0,
+    8.813,
+    27.37,
+    "W"
+   ],
+   [
+    113.894,
+    -35.887,
+    8.906,
+    27.37,
+    "S"
+   ],
+   [
+    114.116,
+    -35.887,
+    9.0,
+    25.483,
+    "E"
+   ],
+   [
+    114.45,
+    -33.048,
+    8.859,
+    25.483,
+    "S"
+   ],
+   [
+    114.783,
+    -33.048,
+    8.719,
+    22.652,
+    "E"
+   ],
+   [
+    115.228,
+    -29.265,
+    8.531,
+    22.652,
+    "S"
+   ],
+   [
+    115.45,
+    -29.265,
+    8.437,
+    20.765,
+    "E"
+   ],
+   [
+    115.894,
+    -25.491,
+    8.25,
+    20.765,
+    "S"
+   ],
+   [
+    116.561,
+    -25.491,
+    7.969,
+    15.096,
+    "E"
+   ],
+   [
+    117.005,
+    -21.717,
+    7.781,
+    15.096,
+    "S"
+   ],
+   [
+    117.228,
+    -21.717,
+    7.687,
+    13.2,
+    "E"
+   ],
+   [
+    117.672,
+    -17.943,
+    7.5,
+    13.2,
+    "S"
+   ],
+   [
+    118.005,
+    -17.943,
+    7.359,
+    10.37,
+    "E"
+   ],
+   [
+    118.117,
+    -16.991,
+    7.312,
+    10.37,
+    "S"
+   ],
+   [
+    118.339,
+    -16.991,
+    7.219,
+    8.483,
+    "E"
+   ],
+   [
+    118.783,
+    -13.217,
+    7.031,
+    8.483,
+    "N"
+   ],
+   [
+    119.006,
+    -13.217,
+    6.937,
+    10.378,
+    "E"
+   ],
+   [
+    119.45,
+    -9.443,
+    6.75,
+    10.378,
+    "N"
+   ],
+   [
+    119.672,
+    -9.443,
+    6.656,
+    12.265,
+    "E"
+   ],
+   [
+    119.894,
+    -7.556,
+    6.563,
+    12.265,
+    "N"
+   ],
+   [
+    120.117,
+    -7.556,
+    6.468,
+    14.161,
+    "E"
+   ],
+   [
+    120.339,
+    -5.669,
+    6.375,
+    14.161,
+    "N"
+   ],
+   [
+    120.561,
+    -5.669,
+    6.281,
+    16.048,
+    "E"
+   ],
+   [
+    120.783,
+    -3.782,
+    6.188,
+    16.048,
+    "S"
+   ],
+   [
+    121.006,
+    -3.782,
+    6.093,
+    14.152,
+    "E"
+   ],
+   [
+    121.228,
+    -1.895,
+    6.0,
+    14.152,
+    "S"
+   ],
+   [
+    121.561,
+    -1.895,
+    5.859,
+    11.322,
+    "E"
+   ],
+   [
+    121.895,
+    0.944,
+    5.718,
+    11.322,
+    "S"
+   ],
+   [
+    122.339,
+    0.944,
+    5.531,
+    7.548,
+    "E"
+   ],
+   [
+    122.561,
+    2.831,
+    5.437,
+    7.548,
+    "S"
+   ],
+   [
+    123.006,
+    2.831,
+    5.25,
+    3.765,
+    "E"
+   ],
+   [
+    123.672,
+    8.492,
+    4.969,
+    3.765,
+    "S"
+   ],
+   [
+    124.117,
+    8.492,
+    4.781,
+    -0.017,
+    "E"
+   ],
+   [
+    124.339,
+    10.379,
+    4.687,
+    -0.017,
+    "S"
+   ],
+   [
+    124.783,
+    10.379,
+    4.5,
+    -3.791,
+    "E"
+   ],
+   [
+    125.006,
+    12.274,
+    4.406,
+    -3.791,
+    "N"
+   ],
+   [
+    125.228,
+    12.274,
+    4.312,
+    -1.904,
+    "E"
+   ],
+   [
+    125.45,
+    14.161,
+    4.219,
+    -1.904,
+    "N"
+   ],
+   [
+    125.672,
+    14.161,
+    4.125,
+    -0.017,
+    "E"
+   ],
+   [
+    125.895,
+    16.057,
+    4.031,
+    -0.017,
+    "N"
+   ],
+   [
+    126.117,
+    16.057,
+    3.937,
+    1.87,
+    "E"
+   ],
+   [
+    126.339,
+    17.944,
+    3.844,
+    1.87,
+    "N"
+   ],
+   [
+    126.561,
+    17.944,
+    3.75,
+    3.757,
+    "E"
+   ],
+   [
+    126.784,
+    19.839,
+    3.656,
+    3.757,
+    "N"
+   ],
+   [
+    127.006,
+    19.839,
+    3.562,
+    5.644,
+    "E"
+   ],
+   [
+    127.228,
+    21.726,
+    3.469,
+    5.644,
+    "N"
+   ],
+   [
+    127.45,
+    21.726,
+    3.375,
+    7.531,
+    "E"
+   ],
+   [
+    127.672,
+    23.613,
+    3.281,
+    7.531,
+    "N"
+   ],
+   [
+    127.895,
+    23.613,
+    3.187,
+    9.426,
+    "E"
+   ],
+   [
+    128.339,
+    27.387,
+    3.0,
+    9.426,
+    "S"
+   ],
+   [
+    131.895,
+    27.387,
+    1.5,
+    -20.8,
+    "W"
+   ],
+   [
+    133.228,
+    16.057,
+    0.937,
+    -20.8,
+    "S"
+   ],
+   [
+    135.451,
+    16.057,
+    0.0,
+    -39.695,
+    "E"
+   ],
+   [
+    139.006,
+    46.274,
+    0.0,
+    -39.695,
+    "N"
+   ],
+   [
+    147.931,
+    46.274,
+    0.0,
+    36.171,
+    "N"
+   ]
+  ],
+  "node_format": "[t, x, y, z, headingAfter]",
+  "selfCrossingErrors": [],
+  "overUnderPasses": [
+   {
+    "lowerT": 0.0,
+    "upperT": 121.01,
+    "dy": 6.1
+   },
+   {
+    "lowerT": 0.0,
+    "upperT": 121.23,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 0.0,
+    "upperT": 121.56,
+    "dy": 5.9
+   },
+   {
+    "lowerT": 0.0,
+    "upperT": 121.89,
+    "dy": 5.7
+   },
+   {
+    "lowerT": 0.0,
+    "upperT": 122.34,
+    "dy": 5.5
+   },
+   {
+    "lowerT": 28.78,
+    "upperT": 50.11,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 28.78,
+    "upperT": 51.0,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 29.89,
+    "upperT": 50.11,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 29.89,
+    "upperT": 51.0,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 30.56,
+    "upperT": 51.89,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 31.22,
+    "upperT": 51.89,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 31.22,
+    "upperT": 52.78,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 31.67,
+    "upperT": 51.89,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 31.67,
+    "upperT": 52.78,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 31.67,
+    "upperT": 53.67,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 32.34,
+    "upperT": 52.78,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 32.34,
+    "upperT": 53.67,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 32.34,
+    "upperT": 54.56,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 33.45,
+    "upperT": 53.67,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 33.45,
+    "upperT": 54.56,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 33.45,
+    "upperT": 71.45,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 33.45,
+    "upperT": 72.56,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 34.11,
+    "upperT": 54.56,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 34.11,
+    "upperT": 71.45,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 34.11,
+    "upperT": 72.56,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 34.45,
+    "upperT": 54.56,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 34.45,
+    "upperT": 55.45,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 34.45,
+    "upperT": 73.23,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 34.78,
+    "upperT": 54.56,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 34.78,
+    "upperT": 55.45,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 34.78,
+    "upperT": 73.23,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 34.78,
+    "upperT": 73.89,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 35.23,
+    "upperT": 55.45,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 35.23,
+    "upperT": 73.23,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 35.23,
+    "upperT": 73.89,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 39.45,
+    "upperT": 43.89,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 39.45,
+    "upperT": 44.78,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 39.45,
+    "upperT": 45.67,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 39.45,
+    "upperT": 78.56,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 39.45,
+    "upperT": 79.67,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 40.56,
+    "upperT": 43.89,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 40.56,
+    "upperT": 44.78,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 40.56,
+    "upperT": 78.11,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 40.56,
+    "upperT": 78.56,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 40.56,
+    "upperT": 79.67,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 41.23,
+    "upperT": 43.89,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 41.23,
+    "upperT": 77.89,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 41.23,
+    "upperT": 78.11,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 41.23,
+    "upperT": 78.56,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 41.56,
+    "upperT": 43.89,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 41.56,
+    "upperT": 77.45,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 41.56,
+    "upperT": 77.89,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 41.56,
+    "upperT": 78.11,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 41.89,
+    "upperT": 43.89,
+    "dy": -3.0
+   },
+   {
+    "lowerT": 41.89,
+    "upperT": 77.11,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 41.89,
+    "upperT": 77.45,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 41.89,
+    "upperT": 77.89,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 41.89,
+    "upperT": 78.11,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 42.34,
+    "upperT": 76.78,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 42.34,
+    "upperT": 77.11,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 42.34,
+    "upperT": 77.45,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 42.56,
+    "upperT": 76.11,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 42.56,
+    "upperT": 76.78,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 42.56,
+    "upperT": 77.11,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 42.56,
+    "upperT": 77.45,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 42.78,
+    "upperT": 76.11,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 42.78,
+    "upperT": 76.78,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 42.78,
+    "upperT": 77.11,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 42.78,
+    "upperT": 77.45,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 43.0,
+    "upperT": 77.11,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 43.0,
+    "upperT": 77.45,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 43.0,
+    "upperT": 77.89,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 43.0,
+    "upperT": 78.11,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 43.0,
+    "upperT": 78.56,
+    "dy": 3.0
+   },
+   {
+    "lowerT": 43.89,
+    "upperT": 78.11,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 43.89,
+    "upperT": 78.56,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 44.78,
+    "upperT": 78.56,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 53.67,
+    "upperT": 71.45,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 53.67,
+    "upperT": 72.56,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 54.56,
+    "upperT": 71.45,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 54.56,
+    "upperT": 72.56,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 54.56,
+    "upperT": 73.23,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 55.45,
+    "upperT": 72.56,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 55.45,
+    "upperT": 73.23,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 55.45,
+    "upperT": 73.89,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 56.34,
+    "upperT": 74.34,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 56.34,
+    "upperT": 75.0,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 56.78,
+    "upperT": 74.34,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 56.78,
+    "upperT": 75.0,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 57.23,
+    "upperT": 74.34,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 57.23,
+    "upperT": 75.0,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 57.89,
+    "upperT": 75.0,
+    "dy": 5.4
+   },
+   {
+    "lowerT": 58.34,
+    "upperT": 75.0,
+    "dy": 5.1
+   },
+   {
+    "lowerT": 58.34,
+    "upperT": 76.11,
+    "dy": 5.1
+   },
+   {
+    "lowerT": 58.56,
+    "upperT": 75.0,
+    "dy": 4.9
+   },
+   {
+    "lowerT": 58.56,
+    "upperT": 76.11,
+    "dy": 4.9
+   },
+   {
+    "lowerT": 81.45,
+    "upperT": 115.45,
+    "dy": 5.4
+   },
+   {
+    "lowerT": 81.45,
+    "upperT": 115.89,
+    "dy": 5.2
+   },
+   {
+    "lowerT": 82.11,
+    "upperT": 113.89,
+    "dy": 5.9
+   },
+   {
+    "lowerT": 82.11,
+    "upperT": 114.12,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 82.11,
+    "upperT": 114.45,
+    "dy": 5.9
+   },
+   {
+    "lowerT": 82.11,
+    "upperT": 114.78,
+    "dy": 5.7
+   },
+   {
+    "lowerT": 82.11,
+    "upperT": 115.23,
+    "dy": 5.5
+   },
+   {
+    "lowerT": 82.11,
+    "upperT": 115.45,
+    "dy": 5.4
+   },
+   {
+    "lowerT": 82.11,
+    "upperT": 115.89,
+    "dy": 5.2
+   },
+   {
+    "lowerT": 83.23,
+    "upperT": 113.89,
+    "dy": 5.9
+   },
+   {
+    "lowerT": 83.23,
+    "upperT": 114.12,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 83.23,
+    "upperT": 114.45,
+    "dy": 5.9
+   },
+   {
+    "lowerT": 83.23,
+    "upperT": 114.78,
+    "dy": 5.7
+   },
+   {
+    "lowerT": 94.56,
+    "upperT": 105.23,
+    "dy": 5.3
+   },
+   {
+    "lowerT": 94.56,
+    "upperT": 105.56,
+    "dy": 5.4
+   },
+   {
+    "lowerT": 94.56,
+    "upperT": 105.67,
+    "dy": 5.4
+   },
+   {
+    "lowerT": 94.56,
+    "upperT": 105.89,
+    "dy": 5.5
+   },
+   {
+    "lowerT": 94.56,
+    "upperT": 106.12,
+    "dy": 5.6
+   },
+   {
+    "lowerT": 94.56,
+    "upperT": 106.34,
+    "dy": 5.7
+   },
+   {
+    "lowerT": 95.23,
+    "upperT": 104.78,
+    "dy": 5.1
+   },
+   {
+    "lowerT": 95.23,
+    "upperT": 105.23,
+    "dy": 5.3
+   },
+   {
+    "lowerT": 95.23,
+    "upperT": 105.56,
+    "dy": 5.4
+   },
+   {
+    "lowerT": 95.23,
+    "upperT": 105.67,
+    "dy": 5.4
+   },
+   {
+    "lowerT": 95.23,
+    "upperT": 105.89,
+    "dy": 5.5
+   },
+   {
+    "lowerT": 95.23,
+    "upperT": 106.12,
+    "dy": 5.6
+   },
+   {
+    "lowerT": 95.23,
+    "upperT": 106.34,
+    "dy": 5.7
+   },
+   {
+    "lowerT": 95.67,
+    "upperT": 104.78,
+    "dy": 5.1
+   },
+   {
+    "lowerT": 95.67,
+    "upperT": 105.23,
+    "dy": 5.3
+   },
+   {
+    "lowerT": 95.67,
+    "upperT": 106.56,
+    "dy": 5.8
+   },
+   {
+    "lowerT": 95.67,
+    "upperT": 106.78,
+    "dy": 5.9
+   },
+   {
+    "lowerT": 95.67,
+    "upperT": 107.0,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 96.34,
+    "upperT": 106.78,
+    "dy": 5.9
+   },
+   {
+    "lowerT": 96.34,
+    "upperT": 107.0,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 96.34,
+    "upperT": 107.67,
+    "dy": 6.3
+   },
+   {
+    "lowerT": 96.78,
+    "upperT": 107.0,
+    "dy": 6.0
+   },
+   {
+    "lowerT": 96.78,
+    "upperT": 107.67,
+    "dy": 6.3
+   },
+   {
+    "lowerT": 96.78,
+    "upperT": 108.12,
+    "dy": 6.5
+   },
+   {
+    "lowerT": 97.0,
+    "upperT": 107.67,
+    "dy": 6.3
+   },
+   {
+    "lowerT": 97.0,
+    "upperT": 108.12,
+    "dy": 6.5
+   },
+   {
+    "lowerT": 97.0,
+    "upperT": 108.34,
+    "dy": 6.6
+   },
+   {
+    "lowerT": 97.45,
+    "upperT": 108.12,
+    "dy": 6.5
+   },
+   {
+    "lowerT": 97.45,
+    "upperT": 108.34,
+    "dy": 6.6
+   },
+   {
+    "lowerT": 97.67,
+    "upperT": 108.12,
+    "dy": 6.5
+   },
+   {
+    "lowerT": 97.67,
+    "upperT": 108.34,
+    "dy": 6.6
+   },
+   {
+    "lowerT": 101.0,
+    "upperT": 109.89,
+    "dy": 3.7
+   },
+   {
+    "lowerT": 101.23,
+    "upperT": 109.45,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 101.23,
+    "upperT": 109.89,
+    "dy": 3.7
+   },
+   {
+    "lowerT": 101.67,
+    "upperT": 109.45,
+    "dy": 3.3
+   },
+   {
+    "lowerT": 101.67,
+    "upperT": 109.89,
+    "dy": 3.5
+   }
+  ]
+ }
+}

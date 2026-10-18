@@ -77,3 +77,7 @@ All four are procedural (`_tools-w3/art_proc.py`) because GenerateImage output d
 - Densest run: 15 taps from 124.8 to 127.9 s.
 - Judgment (schema v2.5): good window = half the local gap (±55 ms at the flams, ±100 ms max), perfect ±40 ms.
 - See chart-report.md.
+
+
+## Integration note (integ-b, 2026-10-18)
+The rhythm-logic audit changed the tap count from 252 to 244 (only removals; see `chart-report.md` → *Rhythm-logic audit*). Tap counts quoted above are the pre-audit numbers; the original files are in `pre-audit/`. Because every removed tap is a removed turn, the route after the first removal is rotated relative to this description; the turn sequence of each phrase (spirals, switchbacks, wraps) was kept wherever legal, and worldPos landmarks were moved with the road (`tools/charts/integb_route.py`).

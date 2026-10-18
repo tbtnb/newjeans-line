@@ -1,0 +1,18 @@
+== cool-with-you  duration 147.93s  taps 244  dirs R/L 124/120  multi-level crossings 94
+   min gap 0.111s  median gap 0.444s
+   peak density 300 CPM (taps in any 1 s window x60), average 99 CPM; gaps < 0.15 s: 4
+   fastest run: 15 taps (gaps<=0.30s) from 124.78s to 127.89s
+   judgment window: min ±50 ms, median ±110 ms (engine rule)
+   longest same-direction run 4 (>=2 = U-turn, >=4 = spiral)  elevation events 7
+      0.00-  14.56 intro   Intro · empty gallery           9 taps  0.62/s
+     14.56-  28.78 verse   Verse 1 · reflections wake     20 taps  1.41/s
+     28.78-  43.00 pre     Verse 1b · rain curtain        26 taps  1.83/s
+     43.00-  57.23 chorus  Hook · moonlit pool (stripped)   18 taps  1.27/s
+     57.23-  71.45 drop    Drop 1 · open courtyard        36 taps  2.53/s
+     71.45-  85.67 verse   Verse 2 · two lights approach   24 taps  1.69/s
+     85.67-  92.78 break   Break · one light leaves        6 taps  0.84/s
+     92.78-  99.89 pre     Build · wings unfold           16 taps  2.25/s
+     99.89- 114.12 drop    Final drop A · feather storm   37 taps  2.60/s
+    114.12- 128.34 drop    Final drop B · choosing to stay   47 taps  3.30/s
+    128.34- 147.93 outro   Outro · open exit               5 taps  0.26/s
+   extent x[0,205] z[-71,82]

@@ -55,6 +55,20 @@ def run(sid, audit=False, pins=None, keep=(), follows=None, notes='', meta=None,
             pre_layout = json.loads(src_layout.read_text())
             allowed = {x[0] for x in hits(orig, pre_layout, dur)}   # touches the worker already had (arches, gates) stay
             nudge(chart, layout, dur, allowed, log)
+    # schema: event `target` is ONE id string (or 'prefix*'); worker arrays crash the engine (targets(): id.endsWith)
+    ids = [o.get('id') for o in layout.get('objects', []) if o.get('id')]
+    evs = []
+    for e in layout.get('events', []):
+        tg = e.get('target')
+        if isinstance(tg, list):
+            import os
+            pre = os.path.commonprefix(tg)
+            if pre and set(i for i in ids if i.startswith(pre)) == set(tg): evs.append({**e, 'target': pre + '*'}); log.append(f"event {e['type']}@{e['t']}: target list -> '{pre}*'")
+            else:
+                for k, one in enumerate(tg): evs.append({**e, 'target': one, 't': round(e['t'] + k * e.get('every', 0), 3), **({'every': 0} if 'every' in e else {})})
+                log.append(f"event {e['type']}@{e['t']}: target list split into {len(tg)} events")
+        else: evs.append(e)
+    layout['events'] = sorted(evs, key=lambda e: e['t'])
     if meta: chart.setdefault('meta', {}).update(meta)
     if beat_grid:   # (period, beat0): the music grid for beat/kick-reactive scenery when analysis/<slug>.grid.json is off
         P, b0 = beat_grid; layout['beats'] = [round(b0 + k * P, 3) for k in range(int((dur - b0) / P) + 1) if b0 + k * P >= 0]
