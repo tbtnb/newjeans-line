@@ -246,7 +246,7 @@ export class World {
     const beam = CreateCylinder('beam', { diameter: 2.2, height: 120, tessellation: 16 }, this.scene); beam.parent = fin; beam.position.y = 60;
     const bm = new StandardMaterial('beamM', this.scene); bm.emissiveColor = new Color3(1, 1, 1); bm.disableLighting = true; bm.alpha = 0.18; bm.backFaceCulling = false; beam.material = bm;
     // camera
-    this.rig = new CameraRig(this.scene, route, L.camera ?? []);
+    this.rig = new CameraRig(this.scene, route, L.camera ?? [], L.sections ?? [], (L.kicks?.length ? L.kicks : L.beats) ?? [], L.autoCamera !== false);
     this.scene.activeCamera = this.rig.cam;
     this.runs = []; this.failRun = null; this.trailCount = 0; this.completeAt = -1;
     this.setupShadows();

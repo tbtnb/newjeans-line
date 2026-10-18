@@ -38,7 +38,10 @@ export interface SceneObject {
   // row
   t0?: number; t1?: number; spacing?: number; bothSides?: boolean; item?: SceneObject;
 }
-export interface CameraCue { t: number; preset?: string; yaw?: number; worldYaw?: number; pitch?: number; dist?: number; fov?: number; blend?: number; shake?: number; roll?: number; lead?: number; }
+/** Camera cue. preset resets framing; the rest modify it from t (blended over `blend` s).
+ *  Modifiers hold until the next cue: zoom (× distance), tilt (+° pitch), sway (+° yaw); orbit: slow yaw drift deg/s (±35° max);
+ *  punch: push-in amount on kicks (0..0.1, default 0.025). layout.autoCamera=false disables label-driven defaults. */
+export interface CameraCue { t: number; preset?: string; yaw?: number; worldYaw?: number; pitch?: number; dist?: number; fov?: number; blend?: number; shake?: number; roll?: number; lead?: number; zoom?: number; tilt?: number; sway?: number; orbit?: number; punch?: number; }
 export interface SceneEvent { t: number; type: string; target?: string; every?: number; until?: number; palette?: Partial<Palette>; dur?: number; at?: string; particles?: string; amount?: number; [k: string]: unknown; }
 export interface Elevation { type: 'fall' | 'jump' | 'ramp'; t?: number; t0?: number; t1?: number; dy: number; }
 export interface Layout {
@@ -49,6 +52,7 @@ export interface Layout {
   sections?: { t: number; label?: string; palette?: Partial<Palette>; camera?: string; note?: string; backdrop?: string }[];
   art?: { backdrop?: string; ground?: { src: string; scale?: number }; road?: { src: string } };
   camera?: CameraCue[];
+  autoCamera?: boolean;
   objects?: SceneObject[];
   events?: SceneEvent[];
   diamonds: { t: number; side?: number }[];
