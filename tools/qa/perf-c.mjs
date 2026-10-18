@@ -1,5 +1,5 @@
 // OMG concept C perf harness (render-cost measurement, not gameplay; scripted simulation, not physical-device play).
-// usage: node tools/qa/perf-c.mjs <url> [--gpu] [--shots dir] [--scale 1] [--q high|low]
+// usage: node tools/qa/perf-c.mjs <url> [--gpu] [--shots dir] [--png] [--dpr 1] [--scale 1] [--q high|low]
 //   box (default): headless Chrome, SwiftShader software GL;  --gpu: real GPU (Mac: ANGLE Metal, headed-new headless)
 // Per probe time (zone centres + zone boundaries): draw calls, visible tris (active meshes x thin instances), active meshes,
 // GPU-synced frame time (render + 1px readPixels, median of 30) and, during real playback, rAF frame-interval p50/p95.
@@ -7,11 +7,11 @@ import { chromium } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
 const args = process.argv.slice(2); const url = args[0];
 const opt = k => { const i = args.indexOf(k); return i < 0 ? null : args[i + 1] ?? true; };
-const gpu = args.includes('--gpu'), shots = opt('--shots'), scale = +(opt('--scale') ?? 1), q = opt('--q') ?? 'high';
+const gpu = args.includes('--gpu'), shots = opt('--shots'), scale = +(opt('--scale') ?? 1), q = opt('--q') ?? 'high', dpr = +(opt('--dpr') ?? 1), png = args.includes('--png');
 const exe = process.platform === 'darwin' ? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' : '/usr/bin/google-chrome';
 const flags = gpu ? (process.platform === 'darwin' ? ['--use-angle=metal', '--enable-gpu', '--ignore-gpu-blocklist'] : ['--enable-gpu', '--ignore-gpu-blocklist']) : ['--use-angle=swiftshader', '--enable-unsafe-swiftshader'];
 const browser = await chromium.launch({ headless: true, executablePath: exe, args: [...flags, '--autoplay-policy=no-user-gesture-required', '--headless=new'] });
-const page = await (await browser.newContext({ viewport: { width: 540, height: 960 }, deviceScaleFactor: 1, hasTouch: true })).newPage();
+const page = await (await browser.newContext({ viewport: { width: 540, height: 960 }, deviceScaleFactor: dpr, hasTouch: true })).newPage();
 page.on('pageerror', e => console.error('pageerror', e.message)); page.on('console', m => { if (m.type() === 'error' || m.type() === 'warning') console.error('console', m.text()); });
 await page.goto(url); await page.waitForFunction(() => window.__nj);
 const idx = await page.evaluate(async () => { for (let i = 0; i < 8; i++) { await window.__nj.selectLevel(i); if (window.__nj.level?.id === 'omg') return i; } return -1; });
@@ -40,7 +40,7 @@ for (const [name, T] of probes) {
   }, T);
   rows.push({ name, ...r });
   console.log(JSON.stringify({ name, ...r, sc: r.sc && { chunks: r.sc.chunks, cm: r.sc.chunkMeshes, types: r.sc.types, inst: r.sc.instances, sets: r.sc.sets, models: r.sc.models, trisAtBudget: r.sc.trisAtBudget } }));
-  if (shots) { mkdirSync(shots, { recursive: true }); await page.screenshot({ path: `${shots}/${name}.jpg`, quality: 70 }); }
+  if (shots) { mkdirSync(shots, { recursive: true }); await page.screenshot(png ? { path: `${shots}/${name}.png` } : { path: `${shots}/${name}.jpg`, quality: 70 }); }
 }
 // real playback frame intervals (rAF) for 6 s from the drop
 const play = await page.evaluate(async () => {
