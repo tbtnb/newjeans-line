@@ -62,7 +62,7 @@ PROPS = {'dream': [0, 1, 5, 10], 'ward': [0, 1, 5, 10], 'rise': [3, 6, 10], 'sta
          'finale': [6, 10], 'garden': [2, 10], 'calm': [0, 5, 10]}
 DENS = {'dream': 1.0, 'ward': 1.2, 'rise': 1.1, 'stage': 1.2, 'finale': 1.3, 'garden': 1.0, 'calm': 0.8}
 for a, b, th in rng: dsec.append(dict(t=a, props=PROPS[th], density=DENS[th]))
-dressing = dict(colors=['#fff4fb', '#c9b8ff', '#ff8fc0', '#3a2f7a', '#8fd0ff'], art=art, artShare=0.6, near=[1.4, 6], sections=dsec)
+dressing = dict(colors=['#fff4fb', '#c9b8ff', '#ff8fc0', '#3a2f7a', '#8fd0ff'], art=art, artShare=0.6, near=[2.0, 6], sections=dsec)
 
 import re as _re
 _g = [tp['t'] for tp in C['taps'] if _re.search(r'\bgod\b', str(tp.get('lyric', '')), _re.I)]
