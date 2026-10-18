@@ -8,6 +8,9 @@ import paper as P
 argv = sys.argv[sys.argv.index('--') + 1:]
 aid, out = argv[0], argv[1]; spec_path = argv[2] if len(argv) > 2 else ''
 spec = json.load(open(spec_path)) if spec_path and os.path.exists(spec_path) else {}
+item = argv[3] if len(argv) > 3 and argv[3] != '' else None
+if item is not None and 'items' in spec:   # kit sheet item: {en, cn, size_m (largest extent, m), tris} + the kit's id
+    it = spec['items'][int(item)]; spec = dict(it, kit=spec['id'], item=int(item), tris_budget=it.get('tris'))
 os.makedirs(out, exist_ok=True)
 
 P.reset(); P.seed(sum(map(ord, aid)))

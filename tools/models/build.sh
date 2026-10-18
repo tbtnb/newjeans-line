@@ -1,22 +1,20 @@
 #!/usr/bin/env bash
-# Build OMG-C models: Blender (tools/models/assets/<id>.py) -> raw glb -> gltfpack (meshopt + quantization, named pivots kept)
-# -> public/models/omg-c/<id>.glb, + ortho renders and deliverables/omg-c-models/<id>-compare.jpg.
-# usage: tools/models/build.sh <id> [<id> ...]   env: BLENDER (default /workspace/tools/blender/blender), DESIGN (C design dir)
-set -euo pipefail
+# Build OMG-C models (box or Mac): Blender tools/models/assets/<id>.py -> raw glb -> gltfpack (meshopt, named pivots kept)
+# -> public/models/omg-c/<id>.glb, ortho renders, deliverables/omg-c-models/<id>-compare.jpg (+ <id>.metrics.json in TMP_DIR).
+# usage: tools/models/build.sh <id> [<id> ...]     env: BLENDER, DESIGN (C design dir containing assets/), TMP_DIR
+set -uo pipefail
 cd "$(dirname "$0")/../.."
-BLENDER=${BLENDER:-/workspace/tools/blender/blender}
-DESIGN=${DESIGN:-/workspace/nj-design-v3/levels-design/omg/redesign-v3/C}
-TMP=${TMP_DIR:-/tmp/omgc-build}; mkdir -p "$TMP" public/models/omg-c deliverables/omg-c-models
+if [ -z "${BLENDER:-}" ]; then for b in /workspace/tools/blender/blender "$HOME/tools/Blender.app/Contents/MacOS/Blender"; do [ -x "$b" ] && BLENDER=$b && break; done; fi
+if [ -d design/assets ]; then DESIGN=${DESIGN:-$PWD/design}; TMP=${TMP_DIR:-$PWD/build}; else DESIGN=${DESIGN:-/workspace/nj-design-v3/levels-design/omg/redesign-v3/C}; TMP=${TMP_DIR:-/tmp/omgc-build}; fi
+ mkdir -p "$TMP" public/models/omg-c deliverables/omg-c-models
 for id in "$@"; do
-  # design dir: assets/<id>/ or the design id named in tools/models/specs/<id>.json ("design": "H01_popup_castle")
-  did=$id; [ -f "tools/models/specs/$id.json" ] && did=$(python3 -c "import json;print(json.load(open('tools/models/specs/$id.json')).get('design','$id'))")
+  read -r did item < <(python3 -c "import json;c={x['id']:x for x in json.load(open('tools/models/catalog.json'))}.get('$id',{});print(c.get('design','$id'), c.get('item',''))")
   ddir="$DESIGN/assets/$did"; spec=""; [ -f "$ddir/spec.json" ] && spec="$ddir/spec.json"
   [ -z "$spec" ] && [ -f "tools/models/specs/$id.json" ] && spec="tools/models/specs/$id.json"
-  "$BLENDER" -b --factory-startup -P tools/models/run.py -- "$id" "$TMP" $spec 2>&1 | grep -E '^REPORT|Error|Traceback' || true
+  rm -f "$TMP/$id.raw.glb"
+  "$BLENDER" -b --factory-startup -P tools/models/run.py -- "$id" "$TMP" "$spec" "$item" 2>&1 | grep -E '^REPORT|Error|Traceback|line [0-9]+' || true
   [ -f "$TMP/$id.raw.glb" ] || { echo "FAILED $id"; continue; }
   npx --yes gltfpack@1.3.0 -i "$TMP/$id.raw.glb" -o "public/models/omg-c/$id.glb" -cc -kn -km -noq >/dev/null
-  ref=""; [ -f "tools/models/specs/$id.json" ] && ref=$(python3 -c "import json;print(json.load(open('tools/models/specs/$id.json')).get('ref',''))")
-  [ -n "$ref" ] && [ ! -f "$ref" ] && ref="$DESIGN/$ref"
-  python3 tools/models/compare.py "$id" "$TMP" "deliverables/omg-c-models/$id-compare.jpg" "$ddir" "$ref" >/dev/null
-  printf '%s raw=%s glb=%s\n' "$id" "$(stat -c%s "$TMP/$id.raw.glb")" "$(stat -c%s "public/models/omg-c/$id.glb")"
+  python3 tools/models/compare.py "$id" "$TMP" "deliverables/omg-c-models/$id-compare.jpg" "$ddir" "" ${item:+--item $item} | grep METRICS
+  printf '%s glb=%s\n' "$id" "$(wc -c < "public/models/omg-c/$id.glb" | tr -d ' ')"
 done

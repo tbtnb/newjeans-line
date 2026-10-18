@@ -157,22 +157,23 @@ def mirror_x(ob, name=None):
     return c
 
 # ---------------- finish ----------------
-SUN = Vector((-0.45, -0.65, 0.62)).normalized()
+SUN = Vector((-0.4, -0.75, 0.55)).normalized()   # key light from the front-left-top (the game camera side)
 
-def bake_light(objs, height=None, ambient=0.74, sun=0.3, ao=0.2, warm=(1.0, 0.985, 0.95)):
-    """baked paper light in the vertex colours: flat sun + sky term per face, height AO (darker at the page)."""
-    zs = [ (o.matrix_world @ v.co).z for o in objs for v in o.data.vertices ]
+def bake_light(objs, height=None, lo=0.88, ao=0.05):
+    """palette-preserving paper light baked into vertex colours: faces turned to the key light keep the EXACT palette hex
+    (k = 1), faces turned away fall to `lo` (crisp folds, never muddy), plus a faint height AO at the page. No tint."""
+    zs = [(o.matrix_world @ v.co).z for o in objs for v in o.data.vertices]
     z0 = min(zs) if zs else 0; H = height or max(1e-3, (max(zs) - z0) if zs else 1)
     for o in objs:
         me = o.data; attr = me.color_attributes['Col']; mw = o.matrix_world; nm = mw.to_3x3().inverted().transposed()
         for p in me.polygons:
-            n = (nm @ p.normal).normalized(); lam = max(0.0, n.dot(SUN)); sky = 0.5 + 0.5 * n.z
-            k_face = ambient + sun * lam + 0.08 * (sky - 0.5)
+            n = (nm @ p.normal).normalized(); lam = max(0.0, n.dot(SUN)); up = max(0.0, n.z)
+            k_face = min(1.0, lo + (1 - lo) * min(1.0, 1.25 * lam + 0.35 * up))
             for li in p.loop_indices:
                 v = me.vertices[me.loops[li].vertex_index]; z = (mw @ v.co).z
-                k = k_face * (1 - ao * (1 - min(1.0, max(0.0, (z - z0) / (0.35 * H)))) )
+                k = k_face * (1 - ao * (1 - min(1.0, max(0.0, (z - z0) / (0.25 * H)))))
                 c = attr.data[li].color_srgb
-                attr.data[li].color_srgb = (min(1, c[0] * k * warm[0]), min(1, c[1] * k * warm[1]), min(1, c[2] * k * warm[2]), c[3])
+                attr.data[li].color_srgb = (c[0] * k, c[1] * k, c[2] * k, c[3])
 
 def tris(objs):
     n = 0

@@ -1,0 +1,879 @@
+[
+ {
+  "id": "castle",
+  "design": "H01_popup_castle",
+  "cls": "hero",
+  "budget": 6000,
+  "size": {
+   "w": 15.0,
+   "d": 11.0,
+   "h": 18
+  },
+  "name": "Pop-up Castle",
+  "note": ""
+ },
+ {
+  "id": "bunny-heart",
+  "design": "H02_giant_bunny_heart",
+  "cls": "hero",
+  "budget": 4000,
+  "size": {
+   "w": 6.5,
+   "d": 6.0,
+   "h": 10
+  },
+  "name": "Giant Pop-up Bunny with Heart",
+  "note": ""
+ },
+ {
+  "id": "carousel",
+  "design": "H03_bunny_carousel",
+  "cls": "hero",
+  "budget": 6000,
+  "size": {
+   "w": 7.5,
+   "d": 7.4,
+   "h": 9
+  },
+  "name": "Bunny Carousel",
+  "note": ""
+ },
+ {
+  "id": "ferris-wheel",
+  "design": "H04_heart_ferris_wheel",
+  "cls": "hero",
+  "budget": 6000,
+  "size": {
+   "w": 10.7,
+   "d": 4.9,
+   "h": 13
+  },
+  "name": "Heart Ferris Wheel",
+  "note": ""
+ },
+ {
+  "id": "lantern-tower",
+  "design": "H05_lantern_tower",
+  "cls": "hero",
+  "budget": 2500,
+  "size": {
+   "w": 3.3,
+   "d": 3.2,
+   "h": 9
+  },
+  "name": "Paper Lantern Tower",
+  "note": ""
+ },
+ {
+  "id": "heart-gate",
+  "design": "H06_heart_finish_gate",
+  "cls": "hero",
+  "budget": 5000,
+  "size": {
+   "w": 12.0,
+   "d": 3.0,
+   "h": 11
+  },
+  "name": "Heart Finish Gate",
+  "note": ""
+ },
+ {
+  "id": "bunny-family",
+  "design": "H07_bunny_family",
+  "cls": "hero",
+  "budget": 4000,
+  "size": {
+   "w": 4.6,
+   "d": 1.6,
+   "h": 3
+  },
+  "name": "Bunny Family of Five",
+  "note": ""
+ },
+ {
+  "id": "cannon",
+  "design": "H08_confetti_cannon",
+  "cls": "hero",
+  "budget": 1800,
+  "size": {
+   "w": 2.0,
+   "d": 2.6,
+   "h": 2.5
+  },
+  "name": "Confetti Cannon",
+  "note": ""
+ },
+ {
+  "id": "book-cover",
+  "design": "H09_book_cover",
+  "cls": "hero",
+  "budget": 3000,
+  "size": {
+   "w": 14,
+   "d": 10,
+   "h": 1.5
+  },
+  "name": "Giant Storybook Cover",
+  "note": ""
+ },
+ {
+  "id": "ward-bed",
+  "design": "H10_ward_bed_set",
+  "cls": "hero",
+  "budget": 2000,
+  "size": {
+   "w": 3.4,
+   "d": 2.1,
+   "h": 2.4
+  },
+  "name": "Pop-up Paper Ward Bed",
+  "note": ""
+ },
+ {
+  "id": "clock-tower",
+  "design": "H11_clock_tower",
+  "cls": "hero",
+  "budget": 2500,
+  "size": {
+   "w": 3.5,
+   "d": 3.4,
+   "h": 9
+  },
+  "name": "Paper Clock Tower",
+  "note": ""
+ },
+ {
+  "id": "flip-phone",
+  "design": "H12_flip_phone_sculpture",
+  "cls": "hero",
+  "budget": 2000,
+  "size": {
+   "w": 2.7,
+   "d": 2.2,
+   "h": 5
+  },
+  "name": "Paper Flip Phone Sculpture",
+  "note": "人工复核：俯视图带少许俯角(非纯俯视)，尺寸以正/侧视图为准"
+ },
+ {
+  "id": "phone-tower",
+  "design": "H13_phone_tower",
+  "cls": "hero",
+  "budget": 4000,
+  "size": {
+   "w": 5.1,
+   "d": 3.7,
+   "h": 12
+  },
+  "name": "Giant Flip Phone Tower",
+  "note": ""
+ },
+ {
+  "id": "spiral-tower",
+  "design": "H14_spiral_paper_tower",
+  "cls": "hero",
+  "budget": 3500,
+  "size": {
+   "w": 4.3,
+   "d": 4.2,
+   "h": 14
+  },
+  "name": "Spiral Paper Tower",
+  "note": ""
+ },
+ {
+  "id": "paper-boat",
+  "design": "H15_bunny_sail_boat",
+  "cls": "hero",
+  "budget": 1500,
+  "size": {
+   "w": 3.0,
+   "d": 1.1,
+   "h": 3
+  },
+  "name": "Bunny-Sail Paper Boat",
+  "note": ""
+ },
+ {
+  "id": "pavilion",
+  "design": "H16_lake_pavilion",
+  "cls": "hero",
+  "budget": 3000,
+  "size": {
+   "w": 4.8,
+   "d": 5.1,
+   "h": 6
+  },
+  "name": "Lake Paper Pavilion",
+  "note": ""
+ },
+ {
+  "id": "windmill",
+  "design": "H17_bunny_windmill",
+  "cls": "hero",
+  "budget": 3000,
+  "size": {
+   "w": 5.3,
+   "d": 2.8,
+   "h": 9
+  },
+  "name": "Bunny Village Windmill",
+  "note": ""
+ },
+ {
+  "id": "reading-bunny",
+  "design": "H18_reading_bunny",
+  "cls": "hero",
+  "budget": 2500,
+  "size": {
+   "w": 2.8,
+   "d": 2.9,
+   "h": 3.5
+  },
+  "name": "Reading Bunny under Mushroom",
+  "note": ""
+ },
+ {
+  "id": "sun",
+  "design": "H19_paper_sun",
+  "cls": "hero",
+  "budget": 2000,
+  "size": {
+   "w": 7.8,
+   "d": 1.4,
+   "h": 8
+  },
+  "name": "Layered Paper Sun",
+  "note": ""
+ },
+ {
+  "id": "bunny-house",
+  "design": "P01_bunny_cottage",
+  "cls": "prop",
+  "budget": 1500,
+  "size": {
+   "w": 3.0,
+   "d": 3.0,
+   "h": 4
+  },
+  "name": "Bunny-Ear Cottage",
+  "note": ""
+ },
+ {
+  "id": "mushroom-house",
+  "design": "P02_mushroom_house",
+  "cls": "prop",
+  "budget": 1000,
+  "size": {
+   "w": 2.5,
+   "d": 2.5,
+   "h": 3
+  },
+  "name": "Paper Mushroom House",
+  "note": ""
+ },
+ {
+  "id": "tulip-bed",
+  "design": "P03_tulip_bed",
+  "cls": "prop",
+  "budget": 800,
+  "size": {
+   "w": 2.1,
+   "d": 0.9,
+   "h": 0.8
+  },
+  "name": "Tulip Bed with Fence",
+  "note": ""
+ },
+ {
+  "id": "tree",
+  "design": "P04_paper_tree_round",
+  "cls": "prop",
+  "budget": 600,
+  "size": {
+   "w": 2.3,
+   "d": 2.3,
+   "h": 3.5
+  },
+  "name": "Round Paper Tree",
+  "note": ""
+ },
+ {
+  "id": "pine",
+  "design": "P05_paper_pine",
+  "cls": "prop",
+  "budget": 400,
+  "size": {
+   "w": 2.1,
+   "d": 2.1,
+   "h": 4
+  },
+  "name": "Folded Paper Pine",
+  "note": ""
+ },
+ {
+  "id": "bunny-statue",
+  "design": "P06_sitting_bunny",
+  "cls": "prop",
+  "budget": 1200,
+  "size": {
+   "w": 1.4,
+   "d": 1.4,
+   "h": 2.4
+  },
+  "name": "Sitting Bunny Statue",
+  "note": ""
+ },
+ {
+  "id": "iv-heart",
+  "design": "P07_heart_iv_stand",
+  "cls": "prop",
+  "budget": 500,
+  "size": {
+   "w": 1.0,
+   "d": 1.0,
+   "h": 2.2
+  },
+  "name": "Heart IV Stand",
+  "note": ""
+ },
+ {
+  "id": "screen",
+  "design": "P08_curtain_screen",
+  "cls": "prop",
+  "budget": 400,
+  "size": {
+   "w": 2.3,
+   "d": 0.6,
+   "h": 2
+  },
+  "name": "Paper Curtain Screen",
+  "note": "人工复核通过：薄片物体，深度像素过小致误差偏大；俯视折线与正视一致"
+ },
+ {
+  "id": "pull-tab",
+  "design": "P09_pull_tab",
+  "cls": "prop",
+  "budget": 300,
+  "size": {
+   "w": 1.9,
+   "d": 0.3,
+   "h": 1.2
+  },
+  "name": "Pop-up Pull Tab Mechanism",
+  "note": ""
+ },
+ {
+  "id": "lantern-string",
+  "design": "P10_lantern_string",
+  "cls": "prop",
+  "budget": 900,
+  "size": {
+   "w": 4.1,
+   "d": 0.4,
+   "h": 2
+  },
+  "name": "Paper Lantern String",
+  "note": ""
+ },
+ {
+  "id": "heart-sculpt",
+  "design": "P11_heart_sculpture",
+  "cls": "prop",
+  "budget": 500,
+  "size": {
+   "w": 1.2,
+   "d": 0.5,
+   "h": 1.6
+  },
+  "name": "Paper Heart Sculpture",
+  "note": ""
+ },
+ {
+  "id": "gift",
+  "design": "P12_gift_box",
+  "cls": "prop",
+  "budget": 300,
+  "size": {
+   "w": 0.7,
+   "d": 0.6,
+   "h": 0.8
+  },
+  "name": "Paper Gift Box",
+  "note": ""
+ },
+ {
+  "id": "lily-lamp",
+  "design": "P13_lily_lantern",
+  "cls": "prop",
+  "budget": 500,
+  "size": {
+   "w": 1.1,
+   "d": 1.1,
+   "h": 0.8
+  },
+  "name": "Paper Lily Lantern",
+  "note": ""
+ },
+ {
+  "id": "moon",
+  "design": "P14_crescent_moon",
+  "cls": "prop",
+  "budget": 600,
+  "size": {
+   "w": 3.0,
+   "d": 0.4,
+   "h": 4
+  },
+  "name": "Hanging Crescent Moon",
+  "note": ""
+ },
+ {
+  "id": "cord-arch",
+  "design": "P15_phone_cord_arch",
+  "cls": "prop",
+  "budget": 1200,
+  "size": {
+   "w": 3.6,
+   "d": 0.6,
+   "h": 3.5
+  },
+  "name": "Phone-Cord Vine Arch",
+  "note": ""
+ },
+ {
+  "id": "heart-bed",
+  "design": "P16_heart_flower_bed",
+  "cls": "prop",
+  "budget": 800,
+  "size": {
+   "w": 1.8,
+   "d": 1.0,
+   "h": 0.9
+  },
+  "name": "Heart Flower Patch",
+  "note": ""
+ },
+ {
+  "id": "star-chime",
+  "design": "P17_star_mobile",
+  "cls": "prop",
+  "budget": 600,
+  "size": {
+   "w": 1.7,
+   "d": 1.4,
+   "h": 2.5
+  },
+  "name": "Star Mobile",
+  "note": ""
+ },
+ {
+  "id": "stairs",
+  "design": "P18_paper_stairs",
+  "cls": "prop",
+  "budget": 400,
+  "size": {
+   "w": 2.0,
+   "d": 1.9,
+   "h": 2
+  },
+  "name": "Paper Stair Segment",
+  "note": ""
+ },
+ {
+  "id": "balloons",
+  "design": "P19_balloon_bunch",
+  "cls": "prop",
+  "budget": 500,
+  "size": {
+   "w": 2.0,
+   "d": 1.2,
+   "h": 3.5
+  },
+  "name": "Balloon Bunch",
+  "note": ""
+ },
+ {
+  "id": "stall",
+  "design": "P20_carnival_stall",
+  "cls": "prop",
+  "budget": 1500,
+  "size": {
+   "w": 2.6,
+   "d": 1.5,
+   "h": 3.2
+  },
+  "name": "Carnival Stall",
+  "note": ""
+ },
+ {
+  "id": "bunting",
+  "design": "P21_flag_string",
+  "cls": "prop",
+  "budget": 300,
+  "size": {
+   "w": 2.5,
+   "d": 0.2,
+   "h": 1
+  },
+  "name": "Pennant String",
+  "note": "人工复核通过：细绳物体，深度仅数像素；俯视为直线，与正视一致"
+ },
+ {
+  "id": "firefly-lamp",
+  "design": "P22_firefly_lantern",
+  "cls": "prop",
+  "budget": 200,
+  "size": {
+   "w": 0.7,
+   "d": 0.5,
+   "h": 1.4
+  },
+  "name": "Firefly Paper Lantern",
+  "note": ""
+ },
+ {
+  "id": "book-stack",
+  "design": "P23_stump_books",
+  "cls": "prop",
+  "budget": 500,
+  "size": {
+   "w": 1.0,
+   "d": 1.0,
+   "h": 1
+  },
+  "name": "Stump with Books",
+  "note": ""
+ },
+ {
+  "id": "cloud",
+  "design": "P24_paper_cloud",
+  "cls": "prop",
+  "budget": 300,
+  "size": {
+   "w": 3.5,
+   "d": 1.2,
+   "h": 2
+  },
+  "name": "Paper Cloud",
+  "note": "人工复核：俯视略扁，建模以正/侧视图为准"
+ },
+ {
+  "id": "paper-hill",
+  "design": "P25_paper_hill",
+  "cls": "prop",
+  "budget": 400,
+  "size": {
+   "w": 5.2,
+   "d": 2.8,
+   "h": 2.5
+  },
+  "name": "Paper Hill Piece",
+  "note": ""
+ },
+ {
+  "id": "page-wall",
+  "design": "P26_page_wall",
+  "cls": "prop",
+  "budget": 800,
+  "size": {
+   "w": 8.5,
+   "d": 1.2,
+   "h": 5
+  },
+  "name": "Standing Page Wall",
+  "note": ""
+ },
+ {
+  "id": "mushroom-group",
+  "design": "P27_mushroom_small",
+  "cls": "prop",
+  "budget": 300,
+  "size": {
+   "w": 0.7,
+   "d": 0.7,
+   "h": 0.8
+  },
+  "name": "Paper Mushroom Cluster",
+  "note": ""
+ },
+ {
+  "id": "grass",
+  "design": "G1_ground_plants",
+  "item": 0,
+  "cls": "kit",
+  "budget": 60,
+  "size": 0.4,
+  "name": "paper grass tuft"
+ },
+ {
+  "id": "flower",
+  "design": "G1_ground_plants",
+  "item": 1,
+  "cls": "kit",
+  "budget": 80,
+  "size": 0.3,
+  "name": "5-petal paper flower"
+ },
+ {
+  "id": "tulip",
+  "design": "G1_ground_plants",
+  "item": 2,
+  "cls": "kit",
+  "budget": 90,
+  "size": 0.4,
+  "name": "single tulip"
+ },
+ {
+  "id": "flower-heart",
+  "design": "G1_ground_plants",
+  "item": 3,
+  "cls": "kit",
+  "budget": 90,
+  "size": 0.35,
+  "name": "heart flower"
+ },
+ {
+  "id": "mushroom",
+  "design": "G1_ground_plants",
+  "item": 4,
+  "cls": "kit",
+  "budget": 70,
+  "size": 0.3,
+  "name": "tiny mushroom"
+ },
+ {
+  "id": "clover",
+  "design": "G1_ground_plants",
+  "item": 5,
+  "cls": "kit",
+  "budget": 60,
+  "size": 0.4,
+  "name": "clover patch"
+ },
+ {
+  "id": "reed",
+  "design": "G1_ground_plants",
+  "item": 6,
+  "cls": "kit",
+  "budget": 120,
+  "size": 0.8,
+  "name": "reed tuft"
+ },
+ {
+  "id": "fern",
+  "design": "G1_ground_plants",
+  "item": 7,
+  "cls": "kit",
+  "budget": 120,
+  "size": 0.6,
+  "name": "fern"
+ },
+ {
+  "id": "pebble",
+  "design": "G2_ground_stones",
+  "item": 0,
+  "cls": "kit",
+  "budget": 40,
+  "size": 0.3,
+  "name": "round pebble"
+ },
+ {
+  "id": "slab",
+  "design": "G2_ground_stones",
+  "item": 1,
+  "cls": "kit",
+  "budget": 30,
+  "size": 0.6,
+  "name": "flat stepping stone"
+ },
+ {
+  "id": "moss-rock",
+  "design": "G2_ground_stones",
+  "item": 2,
+  "cls": "kit",
+  "budget": 80,
+  "size": 0.5,
+  "name": "mossy stone"
+ },
+ {
+  "id": "rock",
+  "design": "G2_ground_stones",
+  "item": 3,
+  "cls": "kit",
+  "budget": 120,
+  "size": 1.0,
+  "name": "shore rock"
+ },
+ {
+  "id": "confetti-decal",
+  "design": "G2_ground_stones",
+  "item": 4,
+  "cls": "kit",
+  "budget": 8,
+  "size": 0.2,
+  "name": "paper scrap"
+ },
+ {
+  "id": "star-decal",
+  "design": "G2_ground_stones",
+  "item": 5,
+  "cls": "kit",
+  "budget": 8,
+  "size": 0.4,
+  "name": "star floor decal"
+ },
+ {
+  "id": "gold-decal",
+  "design": "G2_ground_stones",
+  "item": 6,
+  "cls": "kit",
+  "budget": 8,
+  "size": 0.15,
+  "name": "gold foil flake"
+ },
+ {
+  "id": "ripple-decal",
+  "design": "G2_ground_stones",
+  "item": 7,
+  "cls": "kit",
+  "budget": 24,
+  "size": 1.0,
+  "name": "paper wave ripple"
+ },
+ {
+  "id": "hanging-star",
+  "design": "G3_sky_small_anim",
+  "item": 0,
+  "cls": "kit",
+  "budget": 40,
+  "size": 0.8,
+  "name": "hanging paper star"
+ },
+ {
+  "id": "star",
+  "design": "G3_sky_small_anim",
+  "item": 1,
+  "cls": "kit",
+  "budget": 60,
+  "size": 1.2,
+  "name": "big paper star"
+ },
+ {
+  "id": "puff",
+  "design": "G3_sky_small_anim",
+  "item": 2,
+  "cls": "kit",
+  "budget": 80,
+  "size": 1.5,
+  "name": "small cloud puff"
+ },
+ {
+  "id": "petal",
+  "design": "G3_sky_small_anim",
+  "item": 3,
+  "cls": "kit",
+  "budget": 2,
+  "size": 0.1,
+  "name": "petal"
+ },
+ {
+  "id": "butterfly",
+  "design": "G3_sky_small_anim",
+  "item": 4,
+  "cls": "kit",
+  "budget": 8,
+  "size": 0.2,
+  "name": "paper butterfly"
+ },
+ {
+  "id": "glow-dot",
+  "design": "G3_sky_small_anim",
+  "item": 5,
+  "cls": "kit",
+  "budget": 2,
+  "size": 0.05,
+  "name": "firefly"
+ },
+ {
+  "id": "page-bird",
+  "design": "G3_sky_small_anim",
+  "item": 6,
+  "cls": "kit",
+  "budget": 16,
+  "size": 0.4,
+  "name": "page bird"
+ },
+ {
+  "id": "streamer",
+  "design": "G3_sky_small_anim",
+  "item": 7,
+  "cls": "kit",
+  "budget": 2,
+  "size": 0.08,
+  "name": "confetti (heart/star/strip)"
+ },
+ {
+  "id": "road-straight",
+  "design": "G4_road_kit",
+  "item": 0,
+  "cls": "kit",
+  "budget": 12,
+  "size": 2.2,
+  "name": "cream paper road straight tile"
+ },
+ {
+  "id": "road-corner",
+  "design": "G4_road_kit",
+  "item": 1,
+  "cls": "kit",
+  "budget": 20,
+  "size": 2.2,
+  "name": "road corner tile"
+ },
+ {
+  "id": "road-trim",
+  "design": "G4_road_kit",
+  "item": 2,
+  "cls": "kit",
+  "budget": 16,
+  "size": 2.2,
+  "name": "gold-foil edge trim"
+ },
+ {
+  "id": "road-plank",
+  "design": "G4_road_kit",
+  "item": 3,
+  "cls": "kit",
+  "budget": 120,
+  "size": 2.2,
+  "name": "plank bridge tile"
+ },
+ {
+  "id": "road-float",
+  "design": "G4_road_kit",
+  "item": 4,
+  "cls": "kit",
+  "budget": 80,
+  "size": 2.2,
+  "name": "floating cardboard bridge tile"
+ },
+ {
+  "id": "road-page",
+  "design": "G4_road_kit",
+  "item": 5,
+  "cls": "kit",
+  "budget": 40,
+  "size": 2.2,
+  "name": "page-strip road tile"
+ },
+ {
+  "id": "road-carnival",
+  "design": "G4_road_kit",
+  "item": 6,
+  "cls": "kit",
+  "budget": 24,
+  "size": 2.2,
+  "name": "carnival glowing edge"
+ }
+]
