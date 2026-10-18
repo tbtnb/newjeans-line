@@ -19,8 +19,8 @@ def moves():
      dict(name='pre2-climb-spiral', kind='lspiral', t0=97.94, turn='R', thr=0.5, rate=True, dys=[1.4, 1.8, 2.2]),
      dict(name='chorus2-terrace-loop', kind='zig', t0=110.17, diags=['NW', 'SW', 'SE', 'NE'], every=16, everys=[16, 15, 17, 14]),
      dict(name='bridge-jersey-zigzag', kind='zig', t0=134.63, diags=['NE', 'NW'], every=5, everys=[5, 6, 4, 7], cycle=True, toward=(60, 260)),
-     dict(name='final-wide-L', kind='zig', t0=159.09, diags=['SW', 'SE'], every=34, everys=[34, 30, 38], toward=(0, 120)),
-     dict(name='dancebreak-spiral', kind='lspiral', t0=183.55, turn='L', thr=0.5, rate=True, dys=[1.0, 1.3, 1.6], rt1=196.0),
+     dict(name='final-wide-L', kind='zig', t0=159.09, diags=['NE', 'NW'], every=34, everys=[34, 30, 38, 26], toward=(260, 420)),
+     dict(name='dancebreak-sawtooth', kind='zig', t0=183.55, diags=['SE', 'NE'], every=4, everys=[4, 3, 5, 6], cycle=True),
      dict(name='dancebreak-switch', kind='lserp', t0=196.5, A0='W', P='S', thr=0.5),
      dict(name='outro-descent', kind='alt', t0=208.01),
     ]
