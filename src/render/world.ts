@@ -72,6 +72,9 @@ export class World {
   mode: 'menu' | 'play' = 'menu';
   fps = 60; private fpsAcc = 0; private fpsN = 0;
   onSky: ((top: string, bottom: string) => void) | null = null;
+  /** full-screen backdrop image URL (or null) behind the transparent canvas */
+  onBackdrop: ((url: string | null) => void) | null = null;
+  private backdrops: { t: number; src: string }[] = []; private backdropShown: string | null | undefined;
   completeAt = -1;
 
   constructor(canvas: HTMLCanvasElement) {
@@ -132,7 +135,8 @@ export class World {
     this.level = level; this.game = game; this.route = game.route;
     const L = level.layout; const route = game.route;
     this.root = new TransformNode('level', this.scene);
-    this.mats = new Materials(this.scene);
+    this.mats = new Materials(this.scene); this.mats.artBase = `./levels/${level.id}/`;
+    this.backdrops = [...(L.art?.backdrop ? [{ t: -1, src: L.art.backdrop }] : []), ...(L.sections ?? []).filter(s => s.backdrop).map(s => ({ t: s.t, src: s.backdrop! }))].sort((a, b) => a.t - b.t); this.backdropShown = undefined;
     this.env = new EnvTimeline(L);
     this.beats = L.beats ?? []; this.kicks = L.kicks ?? [];
     this.events = [...(L.events ?? [])].sort((a, b) => a.t - b.t);
@@ -140,11 +144,13 @@ export class World {
     // road
     this.road = new Road(this.scene, route, L, t => this.env!.settled(t));
     this.road.body.parent = this.root; this.road.top.parent = this.root;
+    if (L.art?.road?.src) { const rm = this.road.top.material as StandardMaterial; rm.diffuseTexture = new Texture(this.mats.artBase + L.art.road.src, this.scene); }
     // ground
     const pal = this.env.base;
     if (pal.groundY !== null && pal.groundY !== undefined) {
       this.ground = CreateGround('ground', { width: 1600, height: 1600, subdivisions: 1 }, this.scene);
       this.groundMat = new StandardMaterial('groundM', this.scene); this.groundMat.specularColor = Color3.Black();
+      if (L.art?.ground?.src) { const gt = new Texture(this.mats.artBase + L.art.ground.src, this.scene); const rep = 1600 / (L.art.ground.scale ?? 40); gt.uScale = rep; gt.vScale = rep; this.groundMat.diffuseTexture = gt; }
       this.ground.material = this.groundMat; this.ground.position.y = pal.groundY; this.ground.isPickable = false; this.ground.parent = this.root;
     }
     // player line
@@ -383,6 +389,7 @@ export class World {
     // environment
     const pal: Palette = this.env.at(t);
     this.applyPalette(pal);
+    if (this.backdrops.length) { let b: string | null = null; for (const x of this.backdrops) if (x.t <= t) b = x.src; if (b !== this.backdropShown) { this.backdropShown = b; this.onBackdrop?.(b ? this.mats!.artBase + b : null); } }
     // road reveal
     this.road?.update(t);
     // line

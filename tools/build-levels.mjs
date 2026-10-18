@@ -1,5 +1,5 @@
 // Merge levels-src/<slug>/{chart,layout}.json + analysis into src/levels/<slug>.json (runtime format).
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, cpSync, rmSync } from 'node:fs';
 const SONGS = ['attention', 'hype-boy', 'cookie', 'hurt', 'omg', 'ditto', 'new-jeans', 'super-shy', 'eta', 'cool-with-you', 'get-up', 'asap', 'how-sweet', 'bubble-gum', 'supernatural', 'right-now'];
 const META = Object.fromEntries((await import('./song-meta.mjs')).default.map(m => [m.id, m]));
 mkdirSync('src/levels', { recursive: true });
@@ -24,5 +24,8 @@ for (const id of SONGS) {
   const out = { id, title: m.title, album: m.album, duration, bpm: grid ? Math.round(grid.bpm * 100) / 100 : an.tempo, audio: `./audio/${id}.mp3`, cover: m.cover, difficulty, accent: m.accent,
     chart, layout: { ...layout, beats: layout.beats ?? beats, kicks: layout.kicks ?? kicks } };
   writeFileSync(`src/levels/${id}.json`, JSON.stringify(out));
+  // level art (schema v2.4): levels-src/<id>/art -> public/levels/<id>/art (served at ./levels/<id>/art/...)
+  rmSync(`public/levels/${id}`, { recursive: true, force: true });
+  if (existsSync(`${dir}/art`)) { mkdirSync(`public/levels/${id}`, { recursive: true }); cpSync(`${dir}/art`, `public/levels/${id}/art`, { recursive: true }); }
   console.log(`${id}: ${taps.length} taps (legacy ${m.legacyTaps}, x${(taps.length / m.legacyTaps).toFixed(2)}), ${density.toFixed(2)}/s, difficulty ${difficulty}`);
 }

@@ -30,6 +30,12 @@ world.onSky = (top, bottom) => {
   document.body.classList.toggle('dark', lum < 0.42);
 };
 
+world.onBackdrop = url => {
+  const el = $('sky');
+  el.style.backgroundImage = url ? `url("${url}"), linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 72%)` : '';
+  el.style.backgroundSize = url ? 'cover, auto' : ''; el.style.backgroundPosition = url ? 'center bottom, 0 0' : '';
+};
+
 function show(id: string, on: boolean) { $(id).classList.toggle('on', on); }
 function setState(s: State) {
   state = s;

@@ -1,4 +1,4 @@
-import { Color3, CreateBox, CreateCylinder, CreateDisc, CreateIcoSphere, CreatePlane, CreatePolyhedron, CreateSphere, CreateTorus, DynamicTexture, ExtrudeShape, Mesh, Scene, StandardMaterial, TransformNode, Vector3 } from './bjs';
+import { Texture, Color3, CreateBox, CreateCylinder, CreateDisc, CreateIcoSphere, CreatePlane, CreatePolyhedron, CreateSphere, CreateTorus, DynamicTexture, ExtrudeShape, Mesh, Scene, StandardMaterial, TransformNode, Vector3 } from './bjs';
 import type { Part, SceneObject } from '../core/types';
 
 export const hex = (c: string | undefined, d = '#ffffff') => Color3.FromHexString(/^#[0-9a-fA-F]{6}$/.test(c ?? '') ? c! : d);
@@ -20,6 +20,21 @@ export class Materials {
     }
     return m;
   }
+  /** base URL for level art (e.g. ./levels/ditto/) */
+  artBase = './';
+  textured(src: string, opts: { alpha?: boolean; emissive?: number } = {}): StandardMaterial {
+    const key = `tex|${this.artBase}${src}|${opts.alpha ? 1 : 0}|${opts.emissive ?? 0.35}`;
+    let m = this.cache.get(key);
+    if (!m) {
+      m = new StandardMaterial('m' + key, this.scene);
+      const t = new Texture(this.artBase + src, this.scene, false, true, Texture.TRILINEAR_SAMPLINGMODE);
+      if (opts.alpha) { t.hasAlpha = true; m.useAlphaFromDiffuseTexture = true; }
+      m.diffuseTexture = t; m.diffuseColor = new Color3(1, 1, 1); m.specularColor = new Color3(0.03, 0.03, 0.03);
+      m.emissiveColor = new Color3(1, 1, 1).scale(opts.emissive ?? 0.35); m.backFaceCulling = false;
+      this.cache.set(key, m);
+    }
+    return m;
+  }
   dispose() { for (const m of this.cache.values()) m.dispose(); this.cache.clear(); }
 }
 
@@ -28,7 +43,7 @@ const DEF: Record<string, number[]> = {
   tree: [2, 4, 2], pine: [2, 5, 2], cloud: [5, 2, 3], building: [4, 10, 4], tower: [3, 16, 3], arch: [6, 6, 1], pillar: [1, 6, 1],
   lamp: [0.4, 4, 0.4], flower: [1, 1.6, 1], heart: [2, 2, 0.6], star: [2, 2, 0.5], note: [1.2, 2.4, 0.4], bubble: [2, 2, 2],
   rock: [2, 1.4, 2], bridge: [3, 1, 10], stairs: [3, 3, 4], water: [60, 0, 60], moon: [6, 6, 6], sun: [8, 8, 8], ring: [4, 0.4, 4],
-  crystal: [1, 3, 1], cassette: [4, 2.5, 0.6], phone: [2, 4, 0.3], bench: [2.4, 1, 0.8], pyramid: [5, 5, 5], text: [6, 0, 1.6],
+  crystal: [1, 3, 1], cassette: [4, 2.5, 0.6], phone: [2, 4, 0.3], bench: [2.4, 1, 0.8], pyramid: [5, 5, 5], text: [6, 0, 1.6], image: [4, 0, 4],
 };
 
 function starShape(points: number, rO: number, rI: number) { const s: Vector3[] = []; for (let i = 0; i < points * 2; i++) { const r = i % 2 ? rI : rO; const a = Math.PI / 2 + i * Math.PI / points; s.push(new Vector3(Math.cos(a) * r, Math.sin(a) * r, 0)); } s.push(s[0].clone()); return s; }
@@ -167,6 +182,15 @@ export function buildKind(scene: Scene, mats: Materials, o: SceneObject | Part, 
       for (const s of [-1, 1]) add(CreateBox('leg', { width: 0.1, height: sy * 0.5, depth: sz }, scene), M(color2), s * sx * 0.42, sy * 0.25);
       break;
     }
+    case 'image': {
+      const im = o as SceneObject; const w = im.size?.[0] ?? 4, h = im.size?.[2] || im.size?.[1] || 4;
+      const p = CreatePlane('img', { width: w, height: h, sideOrientation: Mesh.DOUBLESIDE }, scene);
+      p.material = mats.textured(im.src ?? '', { alpha: im.alpha !== false });
+      p.parent = node;
+      if (im.mode === 'flat') { p.rotation.x = Math.PI / 2; p.position.y = 0.03; }
+      else { p.position.y = h / 2; if (im.mode === 'billboard') p.billboardMode = Mesh.BILLBOARDMODE_Y; }
+      break;
+    }
     case 'text': { const p = textPlane(scene, (o as SceneObject).name ?? '', color, size); p.parent = node; p.position.y = 0.02; break; }
     case 'group': {
       for (const part of (o as SceneObject).parts ?? []) {
@@ -178,6 +202,8 @@ export function buildKind(scene: Scene, mats: Materials, o: SceneObject | Part, 
     }
     default: add(CreateBox('b', { width: sx, height: sy, depth: sz }, scene), M(color), 0, sy / 2);
   }
+  const tex = (o as Part).texture;
+  if (tex && kind !== 'image') { const m = mats.textured(tex, { alpha: false, emissive: 0.2 }); for (const c of node.getChildMeshes(true)) c.material = m; }
   return node;
 }
 
