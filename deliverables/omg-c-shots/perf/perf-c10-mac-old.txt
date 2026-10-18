@@ -1,0 +1,24 @@
+console Failed to load resource: the server responded with a status of 404 (File not found)
+{"url":"http://127.0.0.1:4468/?debug&scene=old","gpu":true,"q":"high","renderer":"ANGLE (Apple, ANGLE Metal Renderer: Apple M4, Unspecified Version)","w":1080,"h":1920}
+{"name":"z01-in","T":0.6,"drawCalls":40,"tris":21284,"active":37,"frameMs":5.3,"frameP90":6.4,"sc":null}
+{"name":"z01-mid","T":7.57,"drawCalls":41,"tris":21564,"active":38,"frameMs":4.9,"frameP90":6.5,"sc":null}
+{"name":"z02-in","T":15.53,"drawCalls":50,"tris":21754,"active":47,"frameMs":4.5,"frameP90":6.7,"sc":null}
+{"name":"z02-mid","T":22.69,"drawCalls":40,"tris":21784,"active":37,"frameMs":4.1,"frameP90":5.8,"sc":null}
+{"name":"z03-in","T":30.65,"drawCalls":48,"tris":21952,"active":45,"frameMs":4.4,"frameP90":5.1,"sc":null}
+{"name":"z03-mid","T":37.8,"drawCalls":44,"tris":22246,"active":41,"frameMs":5.2,"frameP90":7.3,"sc":null}
+{"name":"z04-in","T":45.76,"drawCalls":47,"tris":22450,"active":44,"frameMs":5.6,"frameP90":6.5,"sc":null}
+{"name":"z04-mid","T":52.92,"drawCalls":51,"tris":22954,"active":47,"frameMs":4.7,"frameP90":8,"sc":null}
+{"name":"z05-in","T":60.88,"drawCalls":48,"tris":23094,"active":44,"frameMs":5.2,"frameP90":6.9,"sc":null}
+{"name":"z05-mid","T":68.04,"drawCalls":43,"tris":23474,"active":40,"frameMs":4.3,"frameP90":5.9,"sc":null}
+{"name":"z06-in","T":76,"drawCalls":49,"tris":23736,"active":46,"frameMs":4.9,"frameP90":6.3,"sc":null}
+{"name":"z06-mid","T":83.16,"drawCalls":39,"tris":23930,"active":36,"frameMs":5.3,"frameP90":6.9,"sc":null}
+{"name":"z07-in","T":91.12,"drawCalls":42,"tris":24130,"active":39,"frameMs":4.8,"frameP90":5.9,"sc":null}
+{"name":"z07-mid","T":98.28,"drawCalls":55,"tris":24538,"active":52,"frameMs":5.7,"frameP90":8,"sc":null}
+{"name":"z08-in","T":106.23,"drawCalls":61,"tris":24826,"active":58,"frameMs":5.6,"frameP90":6.5,"sc":null}
+{"name":"z08-mid","T":113.39,"drawCalls":46,"tris":24756,"active":42,"frameMs":5.3,"frameP90":6.4,"sc":null}
+{"name":"z09-in","T":121.35,"drawCalls":50,"tris":24910,"active":46,"frameMs":5.9,"frameP90":7.7,"sc":null}
+{"name":"z09-mid","T":136.07,"drawCalls":51,"tris":25452,"active":48,"frameMs":5.5,"frameP90":7.6,"sc":null}
+{"name":"z10-in","T":151.59,"drawCalls":58,"tris":25802,"active":55,"frameMs":4.3,"frameP90":5.1,"sc":null}
+{"name":"z10-mid","T":155.91,"drawCalls":46,"tris":25928,"active":42,"frameMs":4.7,"frameP90":6.7,"sc":null}
+{"play":{"state":"ready","frames":361,"p50":16.7,"p95":17.6,"maxDrawCalls":49,"fps":59.98800238236081}}
+{"summary":{"maxDrawCalls":61,"maxTris":25928,"maxTrisAtBudget":25928,"maxFrameMs":5.9,"medianFrameMs":5.2}}
