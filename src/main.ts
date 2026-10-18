@@ -373,3 +373,7 @@ declare const __BUILD__: string;
     sessionStorage.setItem('nj-reloaded', want); const u = new URL(location.href); u.searchParams.set('v', want); location.replace(u.toString());
   } catch { /* offline or no build.json: keep running */ }
 })();
+
+// iOS / Safari: every gesture re-unlocks audio synchronously (touchend / click / keydown are activations; pointerdown is not),
+// which also recovers the iOS-only 'interrupted' state after calls, Siri or the lock screen.
+for (const ev of ['touchend', 'click', 'keydown']) document.addEventListener(ev, () => { if (audio.state !== 'running') audio.unlock(); }, { capture: true, passive: true });

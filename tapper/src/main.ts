@@ -1,6 +1,6 @@
 import './style.css';
 import SONGS from './songs.json';
-import { Player, peaks } from './audio';
+import { Player, peaks, IS_IOS, HAS_AUDIO_SESSION } from './audio';
 
 type TType = 'tap' | 'drum' | 'vocal';
 interface Tap { id: number; t_raw: number; t: number; type: TType; edited?: boolean; }
@@ -37,8 +37,8 @@ async function loadSong(s: Song, file?: File) {
   stopAll(); S.loading = true; setStatus('加载音频…');
   try {
     const buf = file ? await file.arrayBuffer() : await (await fetch(audioUrl(s.id))).arrayBuffer();
-    const blobUrl = URL.createObjectURL(file ?? new Blob([buf], { type: 'audio/mpeg' }));
-    await player.load(buf, blobUrl);
+    // game songs: the <audio> element (slow playback) streams the real URL; blob: only for local files
+    await player.load(buf, file ? URL.createObjectURL(file) : audioUrl(s.id));
   } catch (e) { setStatus('音频加载失败：' + (e as Error).message); S.loading = false; return; }
   S.song = { ...s, duration: player.duration };
   const saved = JSON.parse(localStorage.getItem(LS + 'grid:' + s.id) ?? 'null');
@@ -83,7 +83,7 @@ function setT(tp: Tap, t: number) { tp.t = +Math.max(0, t).toFixed(4); tp.t_raw 
 
 // ---------------- transport ----------------
 const setStatus = (m: string, live = false) => { const e = $('status'); e.textContent = m; e.classList.toggle('live', live); };
-async function togglePlay() { if (!S.song) return; if (player.playing) stopAll(); else { await player.ready(); player.play(player.position >= player.duration - 0.05 ? 0 : player.position); clickCursor = -1; } syncButtons(); }
+async function togglePlay() { if (!S.song) return; player.unlock(); if (player.playing) stopAll(); else { if (!player.mediaPath && !player.readyNow) await player.ready(); player.play(player.position >= player.duration - 0.05 ? 0 : player.position); clickCursor = -1; } syncButtons(); }
 function stopAll() {
   if (S.rec) finishRec(); player.stop(); syncButtons();
 }
@@ -100,7 +100,7 @@ $('dual').onchange = () => $('pad').classList.toggle('dual', dual());
 async function startRec(mode: 'rec' | 'ab') {
   if (!S.song) return;
   if (mode === 'ab' && (S.A === null || S.B === null || S.B - S.A < 0.3)) { toast('请先设置 A 和 B（或框选后点「选区→A–B」）'); return; }
-  await player.ready(); player.stop();
+  player.unlock(); if (!player.mediaPath && !player.readyNow) await player.ready(); player.stop();
   const from = mode === 'ab' ? Math.max(0, S.A! - 1.5) : player.position;
   S.rec = { mode, pass: [], passStart: from }; player.play(from); clickCursor = -1; syncButtons();
   setStatus(mode === 'ab' ? `重录 A–B：循环中，每一遍打完会替换 ${fmt(S.A!)}–${fmt(S.B!)} 内的点` : '录制中… 跟着音乐打点（Esc 停止）', true);
@@ -298,7 +298,7 @@ const calib = {
   active: false, clicks: [] as number[], taps: [] as number[], result: null as number | null, timer: 0,
   open() { $<HTMLDialogElement>('calibdlg').showModal(); this.renderBeats(-1); $('calres').textContent = `当前校准：${S.calibMs.toFixed(0)} ms`; },
   async start() {
-    const ctx = player.ensure(); player.stop(); syncButtons(); await player.ready();
+    player.unlock(); const ctx = player.ensure(); player.stop(); syncButtons(); await player.ready();
     const bpm = 100, p = 60 / bpm, t0 = ctx.currentTime + 0.6; this.clicks = []; this.taps = []; this.result = null; this.active = true; ($('calsave') as HTMLButtonElement).disabled = true;
     for (let i = 0; i < 20; i++) { const t = t0 + i * p; player.click(t, i < 4 ? 'metroHi' : 'metro'); if (i >= 4) this.clicks.push(t); }
     $('calres').textContent = '预备… 第 5 下开始跟着打';
@@ -365,6 +365,33 @@ window.addEventListener('scroll', () => { if (window.scrollY || window.scrollX) 
 for (const d of document.querySelectorAll<HTMLDialogElement>('dialog.sheet')) {
   d.querySelector('[data-close]')?.addEventListener('click', () => d.close());
   d.addEventListener('click', e => { if (e.target === d) d.close(); });   // tap on the backdrop closes
+}
+// ---------------- audio unlock (iOS / Safari) ----------------
+// every gesture re-unlocks synchronously (touchend / click / keydown count as activation on iOS; pointerdown does not)
+for (const ev of ['touchend', 'click', 'keydown', 'pointerup']) document.addEventListener(ev, () => { if (player.locked || ev === 'touchend' || ev === 'click') player.unlock(); }, { capture: true, passive: true });
+const pill = $('unlock');
+function syncLock() {
+  const st = player.state; const show = st !== 'running';
+  pill.hidden = !show;
+  pill.textContent = st === 'interrupted' ? '🔇 声音被系统打断，点一下恢复' : '🔇 点一下解锁声音';
+}
+player.onState = () => syncLock(); syncLock();
+player.onBlocked = () => { if (S.rec) finishRec(); syncButtons(); toast('浏览器拦截了播放，请再点一次 ▶'); };
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) { if (player.playing || S.rec) { stopAll(); syncButtons(); } return; }
+  if (player.ctx && player.state !== 'running') { try { void player.ctx.resume().catch(() => {}); } catch { /* */ } }
+  syncLock();
+});
+if (IS_IOS && !HAS_AUDIO_SESSION) $('silentnote').hidden = false;
+// ?diag: live audio diagnostics line (for checking phones / simulators from a screenshot)
+if (new URLSearchParams(location.search).has('diag')) {
+  const d = document.createElement('div'); d.id = 'diag'; document.body.append(d); let an: AnalyserNode | null = null; const buf = new Float32Array(1024);
+  setInterval(() => {
+    const P: any = player; if (P.ctx && !an) { const a = P.ctx.createAnalyser() as AnalyserNode; a.fftSize = 1024; P.gain.connect(a); P.clickGain.connect(a); an = a; }
+    let rms = 0; if (an) { an.getFloatTimeDomainData(buf); rms = Math.sqrt(buf.reduce((a, v) => a + v * v, 0) / buf.length); }
+    const el = P.el as HTMLAudioElement | null;
+    d.textContent = `ctx=${player.state} sr=${P.ctx?.sampleRate ?? '-'} t=${P.ctx ? P.ctx.currentTime.toFixed(2) : '-'} session=${(navigator as any).audioSession?.type ?? 'n/a'} ios=${IS_IOS} play=${player.playing} pos=${player.position.toFixed(2)} rms=${rms.toFixed(3)} el=${el ? (el.paused ? 'paused' : 'playing') + '/' + el.readyState + (el.muted ? '/muted' : '') : '-'}`;
+  }, 250);
 }
 $('morebtn').onclick = () => $<HTMLDialogElement>('sheet').showModal();
 $('helpbtn').onclick = () => $<HTMLDialogElement>('helpsheet').showModal();

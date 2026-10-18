@@ -1,0 +1,75 @@
+{
+ "browser": "webkit",
+ "version": "27.2",
+ "steps": [
+  {
+   "name": "before any gesture: audio locked and the notice is shown",
+   "pass": true,
+   "state": "none",
+   "pill": true,
+   "session": "playback"
+  },
+  {
+   "name": "tap ▶ unlocks: context running, song plays and the graph carries signal",
+   "pass": true,
+   "state": "running",
+   "playing": true,
+   "pos": 0.854,
+   "pill": false,
+   "session": "playback",
+   "firstStartMs": 162,
+   "rms": {
+    "song": 0.1935,
+    "click": 0
+   }
+  },
+  {
+   "name": "0.75x keep-pitch playback runs on the <audio> element (not muted, advancing at 0.75x)",
+   "pass": true,
+   "fixes": 0,
+   "speed": 0.75,
+   "mediaPath": true,
+   "paused": false,
+   "muted": false,
+   "t": 5.569996976622178,
+   "rate": 0.75,
+   "pos": 5.605533512928434,
+   "readyState": 4,
+   "src": "http://127.0.0.1:4467/audio/omg.mp3"
+  },
+  {
+   "name": "review click sounds produce signal",
+   "pass": true,
+   "rms": {
+    "song": 0.1912,
+    "click": 0.4823
+   }
+  },
+  {
+   "name": "calibration metronome produces signal",
+   "pass": true,
+   "rms": {
+    "song": 0,
+    "click": 0.2695
+   }
+  },
+  {
+   "name": "after an interruption the notice shows and one tap restores audio",
+   "pass": true,
+   "before": {
+    "state": "suspended",
+    "pill": true
+   },
+   "after": {
+    "state": "running",
+    "pill": false
+   }
+  },
+  {
+   "name": "no page errors",
+   "pass": true,
+   "errs": []
+  }
+ ],
+ "pass": true
+}

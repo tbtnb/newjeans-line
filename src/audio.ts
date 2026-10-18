@@ -2,6 +2,13 @@
  * Audio transport. The song clock is derived from the AudioContext output timestamp
  * (what is actually reaching the speakers), never from accumulated frame deltas.
  */
+// iOS: Web Audio uses the "ambient" session, so the ring/silent switch mutes it. 'playback' (Safari 17+) ignores the switch.
+const IS_IOS = typeof navigator !== 'undefined' && (/iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1));
+const HAS_AUDIO_SESSION = typeof navigator !== 'undefined' && typeof (navigator as any).audioSession === 'object' && (navigator as any).audioSession !== null;
+function setPlaybackSession() { try { if (HAS_AUDIO_SESSION && (navigator as any).audioSession.type !== 'playback') (navigator as any).audioSession.type = 'playback'; } catch { /* */ } }
+setPlaybackSession();
+const SILENT_WAV = 'data:audio/wav;base64,UklGRiwAAABXQVZFZm10IBAAAAABAAEARKwAAESsAAABAAgAZGF0YQgAAACAgICAgICAgA==';
+
 export class AudioTransport {
   private ctx: AudioContext | null = null;
   private gain: GainNode | null = null;
@@ -26,7 +33,21 @@ export class AudioTransport {
   }
 
   /** Call synchronously inside a user gesture. */
-  unlock() { const c = this.context(); if (c.state === 'suspended') void c.resume().catch(() => {}); }
+  /** Call synchronously inside a user gesture (click / touchend / keydown). Also recovers iOS 'interrupted' contexts. */
+  unlock() {
+    setPlaybackSession();
+    const c = this.context();
+    if (c.state !== 'running') {
+      try { void c.resume().catch(() => {}); } catch { /* */ }
+      try { const b = c.createBuffer(1, 1, c.sampleRate); const s = c.createBufferSource(); s.buffer = b; s.connect(c.destination); s.start(0); } catch { /* */ }
+    }
+    if (IS_IOS && !HAS_AUDIO_SESSION) {   // older iOS: a playing media element keeps Web Audio audible with the silent switch on
+      if (!this.silentEl) { this.silentEl = new Audio(SILENT_WAV); this.silentEl.loop = true; this.silentEl.setAttribute('playsinline', ''); }
+      if (this.silentEl.paused) void this.silentEl.play().catch(() => {});
+    }
+  }
+  private silentEl: HTMLAudioElement | null = null;
+  get state(): string { return this.ctx ? (this.ctx.state as string) : 'none'; }
 
   load(url: string): Promise<void> {
     if (this.url === url && this.buffer) return Promise.resolve();
@@ -84,7 +105,8 @@ export class AudioTransport {
   async play(from: number) {
     const c = this.context();
     if (!this.buffer) throw new Error('歌曲还没有加载完成');
-    if (c.state !== 'running') await c.resume();
+    // resume() outside a gesture never settles on iOS: don't hang play() on it
+    if (c.state !== 'running') await Promise.race([c.resume().catch(() => {}), new Promise(r => setTimeout(r, 1500))]);
     this.halt();
     this.offset = Math.max(0, Math.min(from, this.buffer.duration));
     const src = c.createBufferSource();

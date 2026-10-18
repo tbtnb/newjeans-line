@@ -9,15 +9,15 @@
   {
    "name": "calibration ≈ simulated 40 ms lateness",
    "pass": true,
-   "calibration_ms": 41
+   "calibration_ms": 39
   },
   {
    "name": "recorded every synthetic tap; calibrated times centred on the truth",
    "pass": true,
    "taps": 27,
    "expected": 27,
-   "meanErrMs": 0.1,
-   "sdMs": 11.8
+   "meanErrMs": 2.8,
+   "sdMs": 12.3
   },
   {
    "name": "click on empty timeline adds a tap",
@@ -26,8 +26,8 @@
   {
    "name": "drag moves the selected tap",
    "pass": true,
-   "from": 13.0726,
-   "to": 13.2726
+   "from": 13.0528,
+   "to": 13.2528
   },
   {
    "name": "Delete removes the selected tap",
@@ -47,8 +47,8 @@
   {
    "name": "A–B from selection",
    "pass": true,
-   "A": 16.227,
-   "B": 17.823
+   "A": 16.205,
+   "B": 17.839
   },
   {
    "name": "export JSON (download + clipboard)",
