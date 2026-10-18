@@ -681,7 +681,6 @@
    "face": "road",
    "color": "#fff4fb",
    "color2": "#c9b8ff",
-   "landmark": true,
    "near": 2,
    "t": 19.477,
    "side": 1,
@@ -699,7 +698,6 @@
    "face": "road",
    "color": "#fff4fb",
    "color2": "#c9b8ff",
-   "landmark": true,
    "near": 2,
    "t": 28.619,
    "side": -1,
@@ -732,7 +730,6 @@
    "face": "road",
    "color": "#fff4fb",
    "color2": "#c9b8ff",
-   "landmark": true,
    "near": 2,
    "t": 61.691,
    "side": -1,
@@ -750,7 +747,6 @@
    "face": "road",
    "color": "#fff4fb",
    "color2": "#c9b8ff",
-   "landmark": true,
    "near": 2,
    "t": 73.888,
    "side": 1,
@@ -767,7 +763,6 @@
    ],
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "art-phone",
    "t": 32.53,
@@ -784,7 +779,6 @@
    ],
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "art-phone",
    "t": 43.475,
@@ -801,7 +795,6 @@
    ],
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "art-phone",
    "t": 79.589,
@@ -818,7 +811,6 @@
    ],
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "art-phone",
    "t": 88.225,
@@ -835,7 +827,6 @@
    ],
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "art-phone",
    "t": 94.599,
@@ -852,7 +843,6 @@
    ],
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "art-phone",
    "t": 99.629,
@@ -869,7 +859,6 @@
    ],
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "art-phone",
    "t": 157.71,
@@ -886,7 +875,6 @@
    ],
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "art-phone",
    "t": 162.352,
@@ -921,10 +909,15 @@
    "face": "camera",
    "landmark": true,
    "near": 3,
-   "y": -9.6,
    "id": "art-bunny_rise",
+   "appear": {
+    "t": 46.373,
+    "mode": "rise",
+    "dur": 2.2
+   },
    "t": 50.988,
-   "side": -1
+   "side": -1,
+   "y": -0.6
   },
   {
    "kind": "standee",
@@ -936,7 +929,6 @@
    ],
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "art-phone",
    "t": 54.498,
@@ -953,7 +945,6 @@
    ],
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "art-phone",
    "t": 58.343,
@@ -988,10 +979,15 @@
    "face": "camera",
    "landmark": true,
    "near": 3,
-   "y": -9.6,
    "id": "art-bunny_rise",
+   "appear": {
+    "t": 106.844,
+    "mode": "rise",
+    "dur": 2.2
+   },
    "t": 111.459,
-   "side": 1
+   "side": 1,
+   "y": -0.6
   },
   {
    "kind": "standee",
@@ -1003,7 +999,6 @@
    ],
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "art-phone",
    "t": 114.732,
@@ -1020,7 +1015,6 @@
    ],
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "art-phone",
    "t": 119.484,
@@ -1037,7 +1031,6 @@
    ],
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "art-phone",
    "t": 126.978,
@@ -1054,7 +1047,6 @@
    ],
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "art-phone",
    "t": 129.083,
@@ -1089,10 +1081,15 @@
    "face": "camera",
    "landmark": true,
    "near": 3,
-   "y": -9.6,
    "id": "art-bunny_rise",
+   "appear": {
+    "t": 167.315,
+    "mode": "rise",
+    "dur": 2.2
+   },
    "t": 170.622,
-   "side": -1
+   "side": -1,
+   "y": -0.6
   },
   {
    "kind": "standee",
@@ -1104,7 +1101,6 @@
    ],
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "art-phone",
    "t": 176.464,
@@ -1121,7 +1117,6 @@
    ],
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "art-phone",
    "t": 179.377,
@@ -1156,10 +1151,15 @@
    "face": "camera",
    "landmark": true,
    "near": 3,
-   "y": -9.6,
    "id": "art-bunny_rise",
+   "appear": {
+    "t": 183.424,
+    "mode": "rise",
+    "dur": 2.2
+   },
    "t": 185.44,
-   "side": -1
+   "side": -1,
+   "y": -0.6
   },
   {
    "kind": "standee",
@@ -1171,7 +1171,6 @@
    ],
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "art-phone",
    "t": 187.889,
@@ -1188,7 +1187,6 @@
    ],
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "art-phone",
    "t": 195.112,
@@ -1273,13 +1271,6 @@
    "amount": 60
   },
   {
-   "t": 46.727,
-   "type": "raise",
-   "target": "art-bunny_rise",
-   "dy": 9,
-   "dur": 2.2
-  },
-  {
    "t": 53.632,
    "type": "light",
    "target": "art-phone",
@@ -1315,13 +1306,6 @@
    "at": "player",
    "color": "#ffe7a8",
    "amount": 60
-  },
-  {
-   "t": 107.198,
-   "type": "raise",
-   "target": "art-bunny_rise",
-   "dy": 9,
-   "dur": 2.2
   },
   {
    "t": 114.103,
@@ -1789,13 +1773,9 @@
  "fx": {
   "exposure": 1.0,
   "contrast": 1.05,
-  "vignette": {
-   "weight": 1.2,
-   "color": "#1c1440"
-  },
   "glow": {
-   "intensity": 0.9,
-   "kernel": 48
+   "intensity": 0.6,
+   "kernel": 24
   },
   "keys": [
    {
@@ -1815,15 +1795,15 @@
    {
     "t": 30.247,
     "exposure": 1.0,
-    "contrast": 1.15,
-    "glow": 0.9,
+    "contrast": 1.12,
+    "glow": 0.55,
     "blend": 1.2
    },
    {
     "t": 45.364,
     "exposure": 1.0,
-    "contrast": 1.15,
-    "glow": 0.9,
+    "contrast": 1.12,
+    "glow": 0.6,
     "blend": 1.2
    },
    {
@@ -1836,29 +1816,29 @@
    {
     "t": 75.6,
     "exposure": 1.0,
-    "contrast": 1.15,
-    "glow": 0.9,
+    "contrast": 1.12,
+    "glow": 0.55,
     "blend": 1.2
    },
    {
     "t": 90.718,
     "exposure": 1.0,
-    "contrast": 1.15,
-    "glow": 0.9,
+    "contrast": 1.12,
+    "glow": 0.55,
     "blend": 1.2
    },
    {
     "t": 105.835,
     "exposure": 1.0,
-    "contrast": 1.15,
-    "glow": 0.9,
+    "contrast": 1.12,
+    "glow": 0.6,
     "blend": 1.2
    },
    {
     "t": 120.953,
     "exposure": 1.0,
-    "contrast": 1.15,
-    "glow": 0.9,
+    "contrast": 1.12,
+    "glow": 0.6,
     "blend": 1.2
    },
    {
@@ -1878,22 +1858,22 @@
    {
     "t": 151.189,
     "exposure": 1.0,
-    "contrast": 1.15,
-    "glow": 0.9,
+    "contrast": 1.12,
+    "glow": 0.55,
     "blend": 1.2
    },
    {
     "t": 166.307,
-    "exposure": 1.04,
-    "contrast": 1.2,
-    "glow": 1.1,
+    "exposure": 1.02,
+    "contrast": 1.15,
+    "glow": 0.7,
     "blend": 1.2
    },
    {
     "t": 181.424,
-    "exposure": 1.04,
-    "contrast": 1.2,
-    "glow": 1.1,
+    "exposure": 1.02,
+    "contrast": 1.15,
+    "glow": 0.7,
     "blend": 1.2
    },
    {
@@ -2287,9 +2267,9 @@
   "road": {
    "gloss": 0.2,
    "trim": "#ffe08a",
-   "trimGlow": 1.4,
+   "trimGlow": 1.2,
    "trimWidth": 0.11,
-   "topGlow": 0.16
+   "topGlow": 0.05
   },
   "maxBeams": 40,
   "maxSparkles": 220,

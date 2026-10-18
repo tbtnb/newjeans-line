@@ -138,7 +138,6 @@
    "face": "road",
    "color": "#fff4fb",
    "color2": "#c9b8ff",
-   "landmark": true,
    "near": 2
   },
   {
@@ -193,7 +192,6 @@
    "face": "road",
    "color": "#fff4fb",
    "color2": "#c9b8ff",
-   "landmark": true,
    "near": 2
   },
   {
@@ -231,7 +229,6 @@
    "count": 2,
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "phone"
   },
@@ -268,7 +265,6 @@
    "count": 2,
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "phone"
   },
@@ -305,7 +301,6 @@
    "count": 2,
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "phone"
   },
@@ -342,7 +337,6 @@
    "count": 2,
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "phone"
   },
@@ -399,8 +393,12 @@
    "face": "camera",
    "landmark": true,
    "near": 3,
-   "y": -9.6,
-   "id": "bunny_rise"
+   "id": "bunny_rise",
+   "appear": {
+    "t": 46.373,
+    "mode": "rise",
+    "dur": 2.2
+   }
   },
   {
    "kind": "standee",
@@ -417,7 +415,6 @@
    "count": 2,
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "phone"
   },
@@ -437,8 +434,7 @@
    "face": "road",
    "color": "#2a2460",
    "color2": "#ffd27a",
-   "near": 3,
-   "landmark": true
+   "near": 3
   },
   {
    "kind": "decal",
@@ -491,8 +487,12 @@
    "face": "camera",
    "landmark": true,
    "near": 3,
-   "y": -9.6,
-   "id": "bunny_rise"
+   "id": "bunny_rise",
+   "appear": {
+    "t": 106.844,
+    "mode": "rise",
+    "dur": 2.2
+   }
   },
   {
    "kind": "standee",
@@ -509,7 +509,6 @@
    "count": 2,
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "phone"
   },
@@ -529,8 +528,7 @@
    "face": "road",
    "color": "#2a2460",
    "color2": "#ffd27a",
-   "near": 3,
-   "landmark": true
+   "near": 3
   },
   {
    "kind": "decal",
@@ -582,7 +580,6 @@
    "count": 2,
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "phone"
   },
@@ -602,8 +599,7 @@
    "face": "road",
    "color": "#2a2460",
    "color2": "#ffd27a",
-   "near": 3,
-   "landmark": true
+   "near": 3
   },
   {
    "kind": "decal",
@@ -656,8 +652,12 @@
    "face": "camera",
    "landmark": true,
    "near": 3,
-   "y": -9.6,
-   "id": "bunny_rise"
+   "id": "bunny_rise",
+   "appear": {
+    "t": 167.315,
+    "mode": "rise",
+    "dur": 2.2
+   }
   },
   {
    "kind": "standee",
@@ -674,7 +674,6 @@
    "count": 2,
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "phone"
   },
@@ -694,8 +693,7 @@
    "face": "road",
    "color": "#2a2460",
    "color2": "#ffd27a",
-   "near": 3,
-   "landmark": true
+   "near": 3
   },
   {
    "kind": "decal",
@@ -748,8 +746,12 @@
    "face": "camera",
    "landmark": true,
    "near": 3,
-   "y": -9.6,
-   "id": "bunny_rise"
+   "id": "bunny_rise",
+   "appear": {
+    "t": 183.424,
+    "mode": "rise",
+    "dur": 2.2
+   }
   },
   {
    "kind": "standee",
@@ -766,7 +768,6 @@
    "count": 2,
    "face": "camera",
    "near": 2.5,
-   "landmark": true,
    "glowfx": true,
    "id": "phone"
   },
@@ -786,8 +787,7 @@
    "face": "road",
    "color": "#2a2460",
    "color2": "#ffd27a",
-   "near": 3,
-   "landmark": true
+   "near": 3
   },
   {
    "kind": "decal",
@@ -1195,13 +1195,9 @@
  "fx": {
   "exposure": 1.0,
   "contrast": 1.05,
-  "vignette": {
-   "weight": 1.2,
-   "color": "#1c1440"
-  },
   "glow": {
-   "intensity": 0.9,
-   "kernel": 48
+   "intensity": 0.6,
+   "kernel": 24
   },
   "keys": [
    {
@@ -1221,15 +1217,15 @@
    {
     "t": 30.247,
     "exposure": 1.0,
-    "contrast": 1.15,
-    "glow": 0.9,
+    "contrast": 1.12,
+    "glow": 0.55,
     "blend": 1.2
    },
    {
     "t": 45.364,
     "exposure": 1.0,
-    "contrast": 1.15,
-    "glow": 0.9,
+    "contrast": 1.12,
+    "glow": 0.6,
     "blend": 1.2
    },
    {
@@ -1242,29 +1238,29 @@
    {
     "t": 75.6,
     "exposure": 1.0,
-    "contrast": 1.15,
-    "glow": 0.9,
+    "contrast": 1.12,
+    "glow": 0.55,
     "blend": 1.2
    },
    {
     "t": 90.718,
     "exposure": 1.0,
-    "contrast": 1.15,
-    "glow": 0.9,
+    "contrast": 1.12,
+    "glow": 0.55,
     "blend": 1.2
    },
    {
     "t": 105.835,
     "exposure": 1.0,
-    "contrast": 1.15,
-    "glow": 0.9,
+    "contrast": 1.12,
+    "glow": 0.6,
     "blend": 1.2
    },
    {
     "t": 120.953,
     "exposure": 1.0,
-    "contrast": 1.15,
-    "glow": 0.9,
+    "contrast": 1.12,
+    "glow": 0.6,
     "blend": 1.2
    },
    {
@@ -1284,22 +1280,22 @@
    {
     "t": 151.189,
     "exposure": 1.0,
-    "contrast": 1.15,
-    "glow": 0.9,
+    "contrast": 1.12,
+    "glow": 0.55,
     "blend": 1.2
    },
    {
     "t": 166.307,
-    "exposure": 1.04,
-    "contrast": 1.2,
-    "glow": 1.1,
+    "exposure": 1.02,
+    "contrast": 1.15,
+    "glow": 0.7,
     "blend": 1.2
    },
    {
     "t": 181.424,
-    "exposure": 1.04,
-    "contrast": 1.2,
-    "glow": 1.1,
+    "exposure": 1.02,
+    "contrast": 1.15,
+    "glow": 0.7,
     "blend": 1.2
    },
    {
@@ -1693,9 +1689,9 @@
   "road": {
    "gloss": 0.2,
    "trim": "#ffe08a",
-   "trimGlow": 1.4,
+   "trimGlow": 1.2,
    "trimWidth": 0.11,
-   "topGlow": 0.16
+   "topGlow": 0.05
   },
   "maxBeams": 40,
   "maxSparkles": 220,
@@ -1728,13 +1724,6 @@
    "at": "player",
    "color": "#ffe7a8",
    "amount": 60
-  },
-  {
-   "t": 46.727,
-   "type": "raise",
-   "target": "art-bunny_rise",
-   "dy": 9,
-   "dur": 2.2
   },
   {
    "t": 53.632,
@@ -1772,13 +1761,6 @@
    "at": "player",
    "color": "#ffe7a8",
    "amount": 60
-  },
-  {
-   "t": 107.198,
-   "type": "raise",
-   "target": "art-bunny_rise",
-   "dy": 9,
-   "dur": 2.2
   },
   {
    "t": 114.103,

@@ -32,7 +32,7 @@ export class ShowFx {
     if (fx.vignette && quality === 'high') { ip.vignetteEnabled = true; ip.vignetteWeight = fx.vignette.weight ?? 1.5; const vc = hex(fx.vignette.color ?? '#000000'); ip.vignetteColor = new Color4(vc.r, vc.g, vc.b, 0); ip.vignetteStretch = 0.4; }
     // glow layer: only meshes that opt in (trims, beams, objects with glowfx) -> emissive halos
     if (fx.glow && quality === 'high') {
-      this.glow = new GlowLayer('fxGlow', scene, { mainTextureRatio: 0.35, blurKernelSize: fx.glow.kernel ?? 48 });
+      this.glow = new GlowLayer('fxGlow', scene, { mainTextureRatio: 0.25, blurKernelSize: fx.glow.kernel ?? 48 });
       this.glow.intensity = fx.glow.intensity ?? 0.9;
     }
     // glossy road top + glowing edge trims sharing the road-top instance matrices (so trims reveal exactly with the tiles)

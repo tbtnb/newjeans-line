@@ -64,6 +64,13 @@ DENS = {'dream': 1.6, 'ward': 2.0, 'rise': 1.8, 'stage': 2.0, 'finale': 2.2, 'ga
 for a, b, th in rng: dsec.append(dict(t=a, props=PROPS[th], density=DENS[th]))
 dressing = dict(colors=['#fff4fb', '#c9b8ff', '#ff8fc0', '#3a2f7a', '#8fd0ff'], art=art, artShare=0.6, near=[1.4, 6], sections=dsec)
 
+import re as _re
+_g = [tp['t'] for tp in C['taps'] if _re.search(r'\bgod\b', str(tp.get('lyric', '')), _re.I)]
+def drop_near(a):
+    # giant bunny rises (appear mode 'rise') at the first 'God' hit of the chorus starting at a, else 2 s in
+    g = [x for x in _g if a - 0.5 <= x <= a + 12]
+    return (g[0] + 0.3) if g else a + 2
+
 # ---- landmarks / set pieces (time windows; artkit picks times + sides on the current route)
 O = []
 def add(kind, src, size, w, count=1, **k): O.append(dict(kind=kind, src=A(src), size=size, window=list(w), count=count, **k))
@@ -74,17 +81,17 @@ for a, b in spans('dream', 'calm'):
     add('decal', 'mural-stars.png', [6, 0, 6], (a + 1, b - 1), 1, face='road', glow=0.6)
 for a, b in spans('ward'):
     st('ward-bed.png', [5.5, 4.1, 0], (a + 1, b - 1), 1, near=2)
-    add('facade', 'ward-facade.jpg', [5, 6, 3], (a + 1, b - 1), 2, face='road', color='#fff4fb', color2='#c9b8ff', landmark=True, near=2)
+    add('facade', 'ward-facade.jpg', [5, 6, 3], (a + 1, b - 1), 2, face='road', color='#fff4fb', color2='#c9b8ff', near=2)
     st('call-bubble.png', [4, 3, 0.8], (a + 2, b - 1), 1, color='#ffd27a', color2='#ffd27a', near=1.5, glowfx=True, id='call')
 for a, b in spans('rise'):
-    st('flip-phone.png', [4.2, 5.6, 0], (a + 1, b - 1), 2, near=2.5, landmark=True, glowfx=True, id='phone')
+    st('flip-phone.png', [4.2, 5.6, 0], (a + 1, b - 1), 2, near=2.5, glowfx=True, id='phone')
     add('facade', 'stage-facade.jpg', [6, 6, 3], (a + 1, b - 1), 1, face='road', color='#2a2460', color2='#ffd27a', near=3)
 for i, (a, b) in enumerate(spans('stage', 'finale')):
     big = i == 0 or b - a > 14
     st('star-arch.png', [7, 5.25, 0], (a + 0.3, a + 2.5), 1, landmark=True, glowfx=True, near=2, face='camera', id='arch')
-    if big: st('bunny-giant.png', [8, 8, 0], (a + 3, a + 8), 1, landmark=True, near=3, y=-9.6, id='bunny_rise')
-    st('flip-phone.png', [4.2, 5.6, 0], (a + 2, b - 1), 2, near=2.5, landmark=True, glowfx=True, id='phone')
-    add('facade', 'stage-facade.jpg', [6, 6, 3], (a + 1, b - 1), 1, face='road', color='#2a2460', color2='#ffd27a', near=3, landmark=True)
+    if big: st('bunny-giant.png', [8, 8, 0], (a + 3, a + 8), 1, landmark=True, near=3, id='bunny_rise', appear=dict(t=round(drop_near(a), 3), mode='rise', dur=2.2))
+    st('flip-phone.png', [4.2, 5.6, 0], (a + 2, b - 1), 2, near=2.5, glowfx=True, id='phone')
+    add('facade', 'stage-facade.jpg', [6, 6, 3], (a + 1, b - 1), 1, face='road', color='#2a2460', color2='#ffd27a', near=3)
     add('decal', 'mural-stars.png', [7, 0, 7], (a + 1, b - 1), 1, face='road', glow=0.7)
 for a, b in spans('garden'):
     st('bunny-giant.png', [6, 6, 0], (a + 1, a + 5), 1, landmark=True, near=3)
@@ -107,15 +114,13 @@ for g in gods:  # phone screens light up one after another on every 'Oh my god'
     ev.append(dict(t=round(g, 3), type='light', target='art-phone', every=0.07, dur=0.15, color='#ffb3e0', level=1.4, until=round(g + 2.4, 3)))
 for d in drops:
     ev.append(dict(t=round(d, 3), type='burst', at='player', color='#ffe7a8', amount=60))
-for d in drops[:2]:
-    ev.append(dict(t=round(d + 0.3, 3), type='raise', target='art-bunny_rise', dy=9, dur=2.2))  # giant bunny rises behind the stage
 for s, th in zip(secs, themes):
     if th == 'ward': ev.append(dict(t=round(s['t'] + 1, 3), type='light', target='art-call', every=0.4, dur=0.4, color='#ffe7a8', level=0.8, until=round(s['t'] + 9, 3)))
 ev.sort(key=lambda e: e['t'])
 
 # ---- fx: show visuals
 keys, pulse, flashes, beams, sparkles = [], [], [], [], []
-GR = {'dream': (0.97, 1.05, 0.5), 'ward': (0.97, 1.05, 0.5), 'rise': (1.0, 1.15, 0.9), 'stage': (1.0, 1.15, 0.9), 'finale': (1.04, 1.2, 1.1), 'garden': (0.95, 1.1, 0.8), 'calm': (1.0, 1.0, 0.5)}
+GR = {'dream': (0.97, 1.05, 0.5), 'ward': (0.97, 1.05, 0.5), 'rise': (1.0, 1.12, 0.55), 'stage': (1.0, 1.12, 0.6), 'finale': (1.02, 1.15, 0.7), 'garden': (0.95, 1.1, 0.8), 'calm': (1.0, 1.0, 0.5)}
 for a, b, th in rng:
     e, c, g = GR[th]; keys.append(dict(t=round(a, 3), exposure=e, contrast=c, glow=g, blend=1.2))
     if th in ('stage', 'finale', 'rise'): pulse.append(dict(t=round(a, 3), t1=round(b, 3), amount=0.12 if th == 'rise' else 0.18))
@@ -124,8 +129,8 @@ for a, b, th in rng:
     sp = {'dream': 0.5, 'ward': 0.3, 'rise': 1.0, 'stage': 1.6, 'finale': 2.0, 'garden': 1.2, 'calm': 0.6}[th]
     sparkles.append(dict(t0=round(a, 3), t1=round(b, 3), density=sp, colors=['#fff3c4', '#ffc4e8', '#c4e4ff'], size=0.9 if th in ('stage', 'finale') else 0.6, spread=12, height=9))
 flashes = [dict(t=round(d, 3), dur=0.7, amount=0.55) for d in drops]
-fx = dict(exposure=1.0, contrast=1.05, vignette=dict(weight=1.2, color='#1c1440'), glow=dict(intensity=0.9, kernel=48), keys=keys, pulse=pulse,
-          flashes=flashes, beams=beams, sparkles=sparkles, road=dict(gloss=0.2, trim='#ffe08a', trimGlow=1.4, trimWidth=0.11, topGlow=0.16), maxBeams=40, maxSparkles=220, sprite=A('sparkle.png'))
+fx = dict(exposure=1.0, contrast=1.05, glow=dict(intensity=0.6, kernel=24), keys=keys, pulse=pulse,
+          flashes=flashes, beams=beams, sparkles=sparkles, road=dict(gloss=0.2, trim='#ffe08a', trimGlow=1.2, trimWidth=0.11, topGlow=0.05), maxBeams=40, maxSparkles=220, sprite=A('sparkle.png'))
 
 sections = [dict(t=s['t'], palette=T[th]['palette'], backdrop=T[th]['backdrop'], ground=T[th]['ground']) for s, th in zip(secs, themes)]
 spec = dict(keep=['fakefork'], minclear=3.0, objects=O, dressing=dressing, fx=fx, events=ev,
