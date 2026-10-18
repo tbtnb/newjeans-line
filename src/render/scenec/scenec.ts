@@ -36,7 +36,7 @@ export interface CStats { chunks: [number, number]; chunkMeshes: number; types: 
 export class SceneC {
   readonly plc: CPlacement; readonly spec: SceneCSpec;
   private tm: Map<string, Template>; private mat: StandardMaterial; private matSet: StandardMaterial; private root: TransformNode;
-  private types = new Map<string, TI>(); private chunkMesh = new Map<number, Mesh>(); private sets: SetE[] = [];
+  private types = new Map<string, TI>(); private chunkMesh = new Map<number, Mesh>(); private pages: Mesh[] = []; private pageMats: StandardMaterial[] = []; private sets: SetE[] = [];
   private range: [number, number] = [-1, -1]; private tier: Tier; private zoneCols: number[][][];
   private disposed = false; private time = 0; models = 0; last: CStats | null = null;
 
@@ -52,6 +52,7 @@ export class SceneC {
     this.mat = m;
     // set pieces / landmarks skip fog so hero creams and pinks stay clean in the dark zones (like the key renders)
     this.matSet = m.clone('paperCSet'); this.matSet.fogEnabled = false;
+    this.buildPages();
     for (const s of this.plc.sets) this.sets.push(this.makeSet(s));
     // swap in built models as they load (placeholders until then; a missing model simply keeps its placeholder)
     for (const [id, a] of Object.entries(spec.assets)) if (a.model) loadModel(scene, o.base, id, a.h, typeof a.model === 'string' ? a.model : id).then(t => { if (this.disposed) { t.container?.dispose(); return; } this.tm.set(id, t); this.models++; this.refreshAsset(id); }).catch(e => console.warn('omg-c model', id, e));
@@ -68,14 +69,30 @@ export class SceneC {
     m.material = this.mat; m.isPickable = false; m.parent = this.root; return m;
   }
 
+  // ---- zone pages: one static mesh per zone (the union of its chunks' padded page quads, terraced with the route's falls).
+  // Neighbouring zones overlap by the pad; a per-zone polygon offset gives a fixed order (later zone on top) instead of the
+  // interleaved staircase the per-chunk quads produced. Only the zones touching the chunk window are enabled.
+  private buildPages() {
+    const pg = 28, Z = this.spec.zones.length;
+    for (let zi = 0; zi < Z; zi++) {
+      const pos: number[] = [], col: number[] = [], idx: number[] = []; const gc = hexRGB(this.spec.zones[zi].palette.ground ?? '#eeeeee');
+      for (const c of this.plc.chunks) {
+        if (c.zone !== zi) continue; const y = c.y - 0.004 * (c.i % 3), i0 = pos.length / 3;
+        pos.push(c.minX - pg, y, c.minZ - pg, c.maxX + pg, y, c.minZ - pg, c.maxX + pg, y, c.maxZ + pg, c.minX - pg, y, c.maxZ + pg);
+        for (let k = 0; k < 4; k++) col.push(gc[0], gc[1], gc[2], 1); idx.push(i0, i0 + 1, i0 + 2, i0, i0 + 2, i0 + 3);
+      }
+      const m = new Mesh(`cpage_z${zi}`, this.scene);
+      if (pos.length) { const vd = new VertexData(); vd.positions = pos; vd.colors = col; vd.indices = idx; vd.applyToMesh(m, false); }
+      const mat = this.mat.clone(`paperCPage${zi}`); mat.zOffset = 2 * (Z - 1 - zi); this.pageMats.push(mat);   // positive = pushed back; the latest zone has 0
+      m.material = mat; m.isPickable = false; m.parent = this.root; m.freezeWorldMatrix(); m.setEnabled(false); (m as any).__tris = idx.length / 3;
+      this.pages.push(m);
+    }
+  }
+
   // ---- ground chunks (merged static) ----
   private buildChunk(c: CChunk) {
-    const pos: number[] = [], col: number[] = [], idx: number[] = []; const pg = 28;
-    const gc = hexRGB(this.spec.zones[c.zone].palette.ground ?? '#eeeeee');
-    const y = c.y - 0.03 * (c.i % 3);   // neighbouring pages overlap: 3 cm steps (0.4 cm z-fought on Metal/SwiftShader)
-    // paper page under the chunk (terraces with the route's falls), slightly darker rim band reads as the page edge
-    const x0 = c.minX - pg, x1 = c.maxX + pg, z0 = c.minZ - pg, z1 = c.maxZ + pg;
-    pos.push(x0, y, z0, x1, y, z0, x1, y, z1, x0, y, z1); for (let k = 0; k < 4; k++) col.push(gc[0], gc[1], gc[2], 1); idx.push(0, 1, 2, 0, 2, 3);
+    const pos: number[] = [], col: number[] = [], idx: number[] = [];
+    const y = c.y;   // ground cover sits on its chunk's road level; the paper page itself is the zone's page mesh (buildPages)
     for (const it of c.items) {
       if (it.layer !== 'ground' || !this.keep(it)) continue;
       const t = this.tm.get(it.a); if (!t) continue; const ic = this.colOf(it, t.model);
@@ -87,7 +104,7 @@ export class SceneC {
       }
       for (let i = 0; i < t.idx.length; i++) idx.push(t.idx[i] + i0);
     }
-    const m = new Mesh(`cchunk${c.i}`, this.scene); const vd = new VertexData(); vd.positions = pos; vd.colors = col; vd.indices = idx; vd.applyToMesh(m, false);
+    const m = new Mesh(`cchunk${c.i}`, this.scene); if (pos.length) { const vd = new VertexData(); vd.positions = pos; vd.colors = col; vd.indices = idx; vd.applyToMesh(m, false); }
     m.material = this.mat; m.isPickable = false; m.parent = this.root; m.freezeWorldMatrix(); (m as any).__tris = idx.length / 3;
     return m;
   }
@@ -197,11 +214,13 @@ export class SceneC {
       for (const [i, m] of this.chunkMesh) if (i < a || i > b) { m.dispose(); this.chunkMesh.delete(i); }
       for (let i = a; i <= b; i++) if (!this.chunkMesh.has(i)) this.chunkMesh.set(i, this.buildChunk(this.plc.chunks[i]));
       this.range = [a, b]; this.refill(a, b);
+      const on = new Set<number>(); for (let i = a; i <= b; i++) on.add(this.plc.chunks[i].zone); this.pages.forEach((p, zi) => p.setEnabled(on.has(zi)));
     }
     this.writeTypes(t, beatK);
     let tris = 0, inst = 0, sets = 0, tb = 0; const A = this.spec.assets;
     for (const e of this.sets) { this.animSet(e, t, beatK, cam); if (e.on) { sets++; tris += e.tris; tb += Math.max(e.tris, A[e.def.a]?.tris ?? 0); } }
-    for (const [i, m] of this.chunkMesh) { tris += (m as any).__tris; tb += 2; for (const it of this.plc.chunks[i].items) if (it.layer === 'ground' && this.keep(it)) tb += Math.max(this.tm.get(it.a)?.tris ?? 0, A[it.a]?.tris ?? 0); }
+    for (const p of this.pages) if (p.isEnabled()) { tris += (p as any).__tris; tb += (p as any).__tris; }
+    for (const [i, m] of this.chunkMesh) { tris += (m as any).__tris; for (const it of this.plc.chunks[i].items) if (it.layer === 'ground' && this.keep(it)) tb += Math.max(this.tm.get(it.a)?.tris ?? 0, A[it.a]?.tris ?? 0); }
     let types = 0; for (const ti of this.types.values()) if (ti.items.length) { types++; inst += ti.items.length; tris += ti.items.length * ti.tris; tb += ti.items.length * Math.max(ti.tris, A[ti.id]?.tris ?? 0); }
     let zone = 0; for (let i = 0; i < this.spec.zones.length; i++) if (this.spec.zones[i].t0 <= t) zone = i;
     this.last = { chunks: [a, b], chunkMeshes: this.chunkMesh.size, types, instances: inst, sets, tris, zone, models: this.models, trisAtBudget: tb };
@@ -210,6 +229,6 @@ export class SceneC {
   dispose() {
     this.disposed = true;
     for (const [id, t] of this.tm) if (t.container) { t.container.dispose(); this.tm.delete(id); }
-    this.root.dispose(false, false); this.mat.dispose(); this.matSet.dispose();
+    this.root.dispose(false, false); this.mat.dispose(); this.matSet.dispose(); for (const m of this.pageMats) m.dispose();
   }
 }
