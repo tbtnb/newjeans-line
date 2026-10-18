@@ -1,17 +1,17 @@
-== how-sweet  duration 219.06s  taps 307  dirs R/L 155/152  multi-level crossings 73
+== how-sweet  duration 219.06s  taps 300  dirs R/L 147/153  multi-level crossings 90
    min gap 0.120s  median gap 0.720s
-   peak density 420 CPM (taps in any 1 s window x60), average 84 CPM; gaps < 0.15 s: 16
-   fastest run: 7 taps (gaps<=0.30s) from 45.46s to 46.42s
+   peak density 300 CPM (taps in any 1 s window x60), average 82 CPM; gaps < 0.15 s: 5
+   fastest run: 5 taps (gaps<=0.30s) from 160.90s to 161.62s
    judgment window: min ±54 ms, median ±110 ms (engine rule)
-   longest same-direction run 2 (>=2 = U-turn, >=4 = spiral)  elevation events 6
+   longest same-direction run 4 (>=2 = U-turn, >=4 = spiral)  elevation events 6
       0.34-   8.02 intro   Intro                           5 taps  0.65/s
-      8.02-  38.74 verse   Verse 1                        38 taps  1.24/s
-     38.74-  46.42 pre     Pre-chorus 1                   17 taps  2.21/s
+      8.02-  38.74 verse   Verse 1                        36 taps  1.17/s
+     38.74-  46.42 pre     Pre-chorus 1                   15 taps  1.95/s
      46.42-  77.14 chorus  Chorus 1                       49 taps  1.60/s
      77.14- 107.86 verse   Verse 2                        33 taps  1.07/s
-    107.86- 138.58 chorus  Chorus 2                       51 taps  1.66/s
-    138.58- 153.94 bridge  Bridge                         19 taps  1.24/s
-    153.94- 169.29 pre     Build                          27 taps  1.76/s
+    107.86- 138.58 chorus  Chorus 2                       50 taps  1.63/s
+    138.58- 153.94 bridge  Bridge                         18 taps  1.17/s
+    153.94- 169.29 pre     Build                          26 taps  1.69/s
     169.29- 200.01 chorus  Final chorus                   60 taps  1.95/s
     200.01- 219.06 outro   Outro                           8 taps  0.42/s
-   extent x[-163,220] z[-6,174]
+   extent x[-28,219] z[-137,175]

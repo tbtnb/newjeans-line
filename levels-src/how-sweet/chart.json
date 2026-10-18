@@ -209,17 +209,7 @@
    "tag": "clap"
   },
   {
-   "t": 38.378,
-   "dir": "R",
-   "tag": "fill-16th"
-  },
-  {
    "t": 38.498,
-   "dir": "L",
-   "tag": "fill-16th"
-  },
-  {
-   "t": 38.618,
    "dir": "R",
    "tag": "fill-16th"
   },
@@ -295,16 +285,6 @@
   },
   {
    "t": 46.058,
-   "dir": "L",
-   "tag": "fill-16th"
-  },
-  {
-   "t": 46.178,
-   "dir": "R",
-   "tag": "fill-16th"
-  },
-  {
-   "t": 46.298,
    "dir": "L",
    "tag": "fill-16th"
   },
@@ -934,13 +914,8 @@
    "tag": "clap"
   },
   {
-   "t": 134.736,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
    "t": 135.456,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -950,12 +925,12 @@
   },
   {
    "t": 136.656,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 137.136,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
@@ -970,7 +945,7 @@
   },
   {
    "t": 138.336,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -985,7 +960,7 @@
   },
   {
    "t": 140.976,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
@@ -1054,18 +1029,13 @@
    "tag": "kick"
   },
   {
-   "t": 153.576,
-   "dir": "R",
-   "tag": "fill-16th"
-  },
-  {
    "t": 153.696,
    "dir": "L",
    "tag": "fill-16th"
   },
   {
    "t": 153.816,
-   "dir": "R",
+   "dir": "L",
    "tag": "fill-16th"
   },
   {
@@ -1080,7 +1050,7 @@
   },
   {
    "t": 155.856,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1100,27 +1070,27 @@
   },
   {
    "t": 158.256,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 158.496,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 159.216,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 159.696,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 160.416,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1132,11 +1102,6 @@
    "t": 161.136,
    "dir": "L",
    "tag": "clap"
-  },
-  {
-   "t": 161.256,
-   "dir": "R",
-   "tag": "fill-16th"
   },
   {
    "t": 161.376,
@@ -1634,5 +1599,50 @@
   "rule": "schema v2.5 per-tap: min(0.5*g, clamp(0.45*g, 0.045, 0.11)), g = smaller neighbouring gap",
   "note": "min tap gap 0.120 s -> tightest window ±54 ms (always <= half the local gap); sparse taps ±110 ms."
  },
- "notes": "Curated per section (one audible layer each), audited by _w4_tools/audit.py: repeated phrases share patterns, faint/off-layer taps removed, 16th bursts only where prominent in the full mix. See chart-report.md."
+ "notes": "Curated per section (one audible layer each), audited by _w4_tools/audit.py: repeated phrases share patterns, faint/off-layer taps removed, 16th bursts only where prominent in the full mix. See chart-report.md.",
+ "meta": {
+  "integc_removed": [
+   {
+    "t": 38.378,
+    "tag": "fill-16th",
+    "why": ""
+   },
+   {
+    "t": 38.618,
+    "tag": "fill-16th",
+    "why": ""
+   },
+   {
+    "t": 46.178,
+    "tag": "fill-16th",
+    "why": ""
+   },
+   {
+    "t": 46.298,
+    "tag": "fill-16th",
+    "why": ""
+   },
+   {
+    "t": 134.736,
+    "tag": "kick",
+    "why": ""
+   },
+   {
+    "t": 153.576,
+    "tag": "fill-16th",
+    "why": ""
+   },
+   {
+    "t": 161.256,
+    "tag": "fill-16th",
+    "why": ""
+   }
+  ],
+  "integc_repair": [
+   "group [38.378, 38.618]: window 38.258-38.738 s (2 re-planned turns), remainder re-attached with rotation 0 deg, translation (0.00, -0.00); crossings 73; objects transformed 45, window-moved 0, new object/road intersections before nudge 0",
+   "group [46.178, 46.298]: window 46.058-46.418 s (1 re-planned turns), remainder re-attached with rotation 0 deg, translation (-1.08, 1.08); crossings 76; objects transformed 45, window-moved 0, new object/road intersections before nudge 0",
+   "group [134.736]: window 134.256-140.976 s (10 re-planned turns), remainder re-attached with rotation 270 deg, translation (76.50, 31.14); crossings 89; objects transformed 11, window-moved 0, new object/road intersections before nudge 1",
+   "group [153.576, 161.256]: window 153.456-161.376 s (16 re-planned turns), remainder re-attached with rotation 0 deg, translation (-4.32, -4.32); crossings 90; objects transformed 10, window-moved 1, new object/road intersections before nudge 1"
+  ]
+ }
 }

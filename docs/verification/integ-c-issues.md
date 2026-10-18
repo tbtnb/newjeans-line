@@ -47,3 +47,23 @@ Flags were reported, not fixed (task: taps unchanged). Candidates for a later tr
 - The `?debug` preview camera frames the road tightly; most side landmarks (e.g. How Sweet cat / sticker / water tower, Supernatural billboard / stage) are outside these frames, so landmark *visibility in motion* is unverified. Layout objects are the designers' unchanged ones, so they match design.md by construction.
 - Right Now's flower-ground texture (scale 30) is busy; the road still reads but it is the noisiest of the four.
 - Bubble Gum's single GOOD (tap 24 at 36.910 s, 74 ms early) is a scripted-dispatch timing outlier (other agents' browser jobs were running on the box at the time), not a chart problem.
+
+## Follow-up (2026-10-18): flagged taps fixed, not just reported
+Tool: `tools/charts/integc_repair.py`, a new per-song helper; no engine change. Every tap is a 90° turn, so removing one tap flips the heading parity of the whole rest of the route: a straight that ran N would now run E. Simply re-tracking the old route with flipped axes fails on long straights; my first attempt on Right Now drifted up to 38 units and lost all 11 crossings.
+- The tool re-plans only a short window after each removal. In most cases that is 1 turn; the longest is 16 turns, in How Sweet 153.5–161.4 s.
+- It then re-attaches the designer's remaining route verbatim as a rigid copy: rotation k·90° plus translation. It uses k = 0 with zero translation whenever two removals can be paired, which gives an exact re-join.
+- Objects placed at absolute world positions that come after the join get the same transform (rot += 90k). Objects inside the window move with the local route. Candidate joins are scored to avoid new object/road intersections, and any object the edit still pushed into the road is nudged out.
+- Every candidate is checked with a validator-exact pairwise test (same-level overlap rule); the air-time rule is unaffected.
+
+| song | taps | removed | crossings (design → now) | chartlogic now |
+|---|---|---|---|---|
+| supernatural | 320 → 314 | 38.589, 59.506, 91.433, 114.277, 153.084, 172.075 | 37 → 40 | clean |
+| how-sweet | 307 → 300 | 38.378, 38.618, 46.178, 46.298, 134.736, 153.576, 161.256 | 73 → 90 | clean |
+| bubble-gum | 257 → 253 | 2.627, 57.194, 87.192, 183.186 | 20 → 39 | 1 justified HOP (80.336: the chorus's last snare, 0.86 in the full mix, carried across the section line into the breakdown) |
+| right-now | 411 → 410 | 10.800 | 11 → 11 | clean |
+
+Notes for the integrator:
+- **vocal_env.py does not correct the stem lag.** The `/workspace/nj-stems/htdemucs/*/vocals.mp3` stems lag the browser decode by about 46 ms (cross-correlation; mp3 encoder delay plus demucs), so its ±30 ms window misses vocal onsets and marks real syllables as faint. For bubble-gum I rebuilt the `vocal` envelope from `/workspace/w4/stems/htdemucs/bubble-gum/vocals.wav` with the measured 23 ms lag removed (same normalisation and −18 dB gate), and wrote it to `analysis/bubble-gum.env.npz`. Other songs that use vocal_env.py should be re-checked.
+- **How Sweet water tower, still to check visually:** the build helix still sweeps 324° around the tower (design: 289°). The closest road pass is now 2.2 units from the tower's centre; it clears the 0.8-unit pole, and the tank sits above the road.
+- **Supernatural's bunny-moon camera cue:** its `worldYaw` cue (176.5 s) was rotated together with the remainder.
+- The `route` key in layout.json (informational) is recomputed. `levels-design/<slug>/` copies are synced with `levels-src/`, and chart-report.md has a new section listing every removed tap and the repair log.

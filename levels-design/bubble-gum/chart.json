@@ -9,11 +9,6 @@
  ],
  "taps": [
   {
-   "t": 2.627,
-   "dir": "R",
-   "tag": "melody"
-  },
-  {
    "t": 7.198,
    "dir": "L",
    "tag": "melody"
@@ -294,43 +289,38 @@
    "tag": "clap"
   },
   {
-   "t": 57.194,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
    "t": 57.48,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 58.623,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 59.194,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
    "t": 59.766,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 60.337,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 60.908,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
    "t": 61.48,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
@@ -340,7 +330,7 @@
   },
   {
    "t": 62.623,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
@@ -506,11 +496,6 @@
   {
    "t": 86.621,
    "dir": "L",
-   "tag": "vocal"
-  },
-  {
-   "t": 87.192,
-   "dir": "R",
    "tag": "vocal"
   },
   {
@@ -1214,28 +1199,23 @@
    "tag": "kick"
   },
   {
-   "t": 183.186,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
    "t": 184.329,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 184.9,
-   "dir": "R",
-   "tag": "clap"
-  },
-  {
-   "t": 185.472,
    "dir": "L",
    "tag": "clap"
   },
   {
-   "t": 186.043,
+   "t": 185.472,
    "dir": "R",
+   "tag": "clap"
+  },
+  {
+   "t": 186.043,
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1298,52 +1278,77 @@
   {
    "t": 2.055,
    "label": "Intro",
-   "kind": "intro"
+   "kind": "intro",
+   "follows": "mid",
+   "follows_note": "from chart-report.md: shared pattern of the earlier section",
+   "follows_src": "integ-c manual mapping of chart-report.md row"
   },
   {
    "t": 18.054,
    "label": "Verse 1",
-   "kind": "verse"
+   "kind": "verse",
+   "follows": "drums",
+   "follows_note": "soft kick + clap groove"
   },
   {
    "t": 36.339,
    "label": "Pre-chorus 1",
-   "kind": "pre"
+   "kind": "pre",
+   "follows": "drums",
+   "follows_note": "kick + clap, 8th pairs at phrase ends"
   },
   {
    "t": 56.909,
    "label": "Chorus 1",
-   "kind": "chorus"
+   "kind": "chorus",
+   "follows": "drums",
+   "follows_note": "kick + clap backbeat with 8th pickups"
   },
   {
    "t": 79.764,
    "label": "Breakdown",
-   "kind": "break"
+   "kind": "break",
+   "follows": "vocal",
+   "follows_note": "vocal phrases over the drop-out (vocal layer); sparse"
   },
   {
    "t": 91.192,
    "label": "Verse 2",
-   "kind": "verse"
+   "kind": "verse",
+   "follows": "drums",
+   "follows_note": "from chart-report.md: shared pattern of the earlier section",
+   "follows_src": "integ-c manual mapping of chart-report.md row"
   },
   {
    "t": 118.619,
    "label": "Pre-chorus 2",
-   "kind": "pre"
+   "kind": "pre",
+   "follows": "drums",
+   "follows_note": "from chart-report.md: shared pattern of the earlier section",
+   "follows_src": "integ-c manual mapping of chart-report.md row"
   },
   {
    "t": 136.903,
    "label": "Chorus 2",
-   "kind": "chorus"
+   "kind": "chorus",
+   "follows": "drums",
+   "follows_note": "from chart-report.md: shared pattern of the earlier section",
+   "follows_src": "integ-c manual mapping of chart-report.md row"
   },
   {
    "t": 164.33,
    "label": "Final chorus",
-   "kind": "chorus"
+   "kind": "chorus",
+   "follows": "drums",
+   "follows_note": "from chart-report.md: shared pattern of the earlier section",
+   "follows_src": "integ-c manual mapping of chart-report.md row"
   },
   {
    "t": 191.757,
    "label": "Outro",
-   "kind": "outro"
+   "kind": "outro",
+   "follows": "snare",
+   "follows_note": "single closing clap"
   }
  ],
  "bpm": 105.0,
@@ -1357,7 +1362,37 @@
   "good": 0.11,
   "minWindow": 0.11,
   "rule": "schema v2.5 per-tap: min(0.5*g, clamp(0.45*g, 0.045, 0.11)), g = smaller neighbouring gap",
-  "note": "min tap gap 0.285 s -> tightest window \u00b1110 ms (always <= half the local gap); sparse taps \u00b1110 ms."
+  "note": "min tap gap 0.285 s -> tightest window ±110 ms (always <= half the local gap); sparse taps ±110 ms."
  },
- "notes": "Curated per section (one audible layer each), audited by _w4_tools/audit.py: repeated phrases share patterns, faint/off-layer taps removed, 16th bursts only where prominent in the full mix. See chart-report.md."
+ "notes": "Curated per section (one audible layer each), audited by _w4_tools/audit.py: repeated phrases share patterns, faint/off-layer taps removed, 16th bursts only where prominent in the full mix. See chart-report.md.",
+ "meta": {
+  "integc_removed": [
+   {
+    "t": 2.627,
+    "tag": "melody",
+    "why": "faint intro pluck (mid 0.33, full 0.24)"
+   },
+   {
+    "t": 57.194,
+    "tag": "kick",
+    "why": "faint (drums 0.28, full 0.08)"
+   },
+   {
+    "t": 87.192,
+    "tag": "vocal",
+    "why": "faint breakdown syllable (lag-corrected vocal stem 0.33, full 0.19)"
+   },
+   {
+    "t": 183.186,
+    "tag": "kick",
+    "why": "faint (drums 0.33, full 0.23)"
+   }
+  ],
+  "integc_repair": [
+   "group [2.627]: window 0.000-7.198 s (1 re-planned turns), remainder re-attached with rotation 270 deg, translation (22.33, 22.33); crossings 20; objects transformed 66, window-moved 2, new object/road intersections before nudge 1",
+   "group [57.194]: window 56.909-62.623 s (9 re-planned turns), remainder re-attached with rotation 90 deg, translation (-316.12, 34.49); crossings 40; objects transformed 51, window-moved 3, new object/road intersections before nudge 1",
+   "group [87.192]: window 86.621-88.907 s (1 re-planned turns), remainder re-attached with rotation 270 deg, translation (12.65, 352.55); crossings 40; objects transformed 36, window-moved 0, new object/road intersections before nudge 1",
+   "group [183.186]: window 182.900-186.043 s (4 re-planned turns), remainder re-attached with rotation 90 deg, translation (-449.73, 78.30); crossings 39; objects transformed 4, window-moved 1, new object/road intersections before nudge 1"
+  ]
+ }
 }
