@@ -1,0 +1,7761 @@
+{
+ "id": "supernatural",
+ "title": "Supernatural",
+ "palette": {
+  "skyTop": "#070b24",
+  "skyBottom": "#1b2152",
+  "fog": "#141a40",
+  "fogStart": 35,
+  "fogEnd": 110,
+  "ground": "#0e1230",
+  "groundY": -14,
+  "road": "#f6f0e4",
+  "roadSide": "#5b3f9e",
+  "line": "#ff5fa8",
+  "light": "#fff1dc",
+  "lightIntensity": 0.9,
+  "ambient": "#3a4374",
+  "particles": null
+ },
+ "road": {
+  "width": [
+   {
+    "t": 0,
+    "w": 2.6
+   },
+   {
+    "t": 26.78,
+    "w": 2.3
+   },
+   {
+    "t": 62.01,
+    "w": 2.2
+   },
+   {
+    "t": 97.24,
+    "w": 2.4
+   },
+   {
+    "t": 114.85,
+    "w": 2.0
+   },
+   {
+    "t": 150.08,
+    "w": 1.8
+   },
+   {
+    "t": 167.7,
+    "w": 2.4
+   }
+  ],
+  "height": 0.6,
+  "reveal": [
+   {
+    "t": 0,
+    "mode": "static",
+    "lead": 3.0
+   },
+   {
+    "t": 9.17,
+    "mode": "rise",
+    "lead": 2.0
+   },
+   {
+    "t": 62.01,
+    "mode": "rise",
+    "lead": 1.6
+   },
+   {
+    "t": 97.24,
+    "mode": "unfold",
+    "lead": 1.8
+   },
+   {
+    "t": 114.85,
+    "mode": "drop",
+    "lead": 1.5
+   },
+   {
+    "t": 150.08,
+    "mode": "rise",
+    "lead": 1.4
+   },
+   {
+    "t": 167.7,
+    "mode": "fade",
+    "lead": 2.5
+   }
+  ]
+ },
+ "elevation": [
+  {
+   "t0": 62.279999999999994,
+   "t1": 79.6,
+   "type": "ramp",
+   "dy": 8,
+   "note": "Chorus 1: square helix of staircases around the flower antenna, +4 per lap"
+  },
+  {
+   "t": 97.813,
+   "type": "fall",
+   "dy": -8,
+   "note": "drums drop out -> long fall off the antenna tower into the floating star layer"
+  },
+  {
+   "t0": 106.02,
+   "t1": 114.83,
+   "type": "ramp",
+   "dy": 4,
+   "note": "climb out of the star layer"
+  },
+  {
+   "t0": 117.03,
+   "t1": 128.04,
+   "type": "ramp",
+   "dy": 4,
+   "note": "Chorus 2 gantry climbs over earlier roads"
+  },
+  {
+   "t0": 132.44,
+   "t1": 141.25,
+   "type": "ramp",
+   "dy": 5,
+   "note": "interlude helix around the gantry pylon"
+  },
+  {
+   "t": 150.657,
+   "type": "fall",
+   "dy": -8,
+   "note": "big drop onto the final-chorus deck"
+  }
+ ],
+ "sections": [
+  {
+   "t": 0,
+   "label": "Intro",
+   "palette": {
+    "roadSide": "#5b3f9e"
+   },
+   "camera": "close",
+   "note": "radio booth under the flower billboard; sample ad-libs, no drums"
+  },
+  {
+   "t": 9.17,
+   "label": "Groove",
+   "palette": {
+    "roadSide": "#0072bc",
+    "particles": "dust"
+   },
+   "camera": "iso",
+   "note": "NJS groove enters: antennas & water tanks on rooftops"
+  },
+  {
+   "t": 26.78,
+   "label": "Verse 1",
+   "palette": {
+    "roadSide": "#00aeef"
+   },
+   "camera": "iso",
+   "note": "route bends right along a long roof ridge"
+  },
+  {
+   "t": 44.39,
+   "label": "Pre-chorus 1",
+   "palette": {
+    "roadSide": "#00a651"
+   },
+   "camera": "low",
+   "note": "climb toward the loop; receivers light up one by one"
+  },
+  {
+   "t": 62.01,
+   "label": "Chorus 1",
+   "palette": {
+    "roadSide": "#93d14b",
+    "skyBottom": "#2a2a66"
+   },
+   "camera": "high",
+   "note": "flower antenna blooms; loop begins"
+  },
+  {
+   "t": 79.62,
+   "label": "Verse 2",
+   "palette": {
+    "roadSide": "#fff200"
+   },
+   "camera": "iso",
+   "note": "north edge of the loop, city lights below"
+  },
+  {
+   "t": 97.24,
+   "label": "Bridge",
+   "palette": {
+    "roadSide": "#ffc928",
+    "skyTop": "#03040f",
+    "fogEnd": 140,
+    "particles": "stars"
+   },
+   "camera": "top",
+   "note": "drums out: fall into the floating star layer"
+  },
+  {
+   "t": 114.85,
+   "label": "Chorus 2",
+   "palette": {
+    "roadSide": "#ff8f2a",
+    "skyTop": "#0b0f30"
+   },
+   "camera": "iso",
+   "note": "back up; gantry climbs over the loop"
+  },
+  {
+   "t": 132.47,
+   "label": "Interlude",
+   "palette": {
+    "roadSide": "#ff5a2c"
+   },
+   "camera": "side",
+   "note": "crossing over our own pre-chorus road = the two signals meet"
+  },
+  {
+   "t": 150.08,
+   "label": "Final chorus",
+   "palette": {
+    "roadSide": "#ff5fa8",
+    "particles": "stars"
+   },
+   "camera": "iso",
+   "note": "drop + narrow road, everything pulses"
+  },
+  {
+   "t": 167.7,
+   "label": "Outro",
+   "palette": {
+    "roadSide": "#c2449a",
+    "fog": "#0a0d26"
+   },
+   "camera": "wide",
+   "note": "sample returns, road runs into empty sky toward the bunny moon"
+  }
+ ],
+ "camera": [
+  {
+   "t": 0,
+   "preset": "close",
+   "blend": 0
+  },
+  {
+   "t": 9.17,
+   "preset": "iso",
+   "blend": 2.2
+  },
+  {
+   "t": 26.78,
+   "preset": "iso",
+   "yaw": 30,
+   "blend": 2.0
+  },
+  {
+   "t": 44.39,
+   "preset": "low",
+   "blend": 2.0
+  },
+  {
+   "t": 60.0,
+   "preset": "wide",
+   "blend": 1.6,
+   "note": "one-bar reveal of the flower antenna during the 8-run (road ahead still in frame)"
+  },
+  {
+   "t": 62.01,
+   "preset": "high",
+   "blend": 1.0
+  },
+  {
+   "t": 79.62,
+   "preset": "iso",
+   "yaw": -25,
+   "blend": 2.0
+  },
+  {
+   "t": 97.24,
+   "preset": "top",
+   "blend": 2.5,
+   "note": "falling into stars, top-down calm"
+  },
+  {
+   "t": 112.65,
+   "preset": "iso",
+   "blend": 1.6
+  },
+  {
+   "t": 123.66,
+   "preset": "iso",
+   "yaw": 40,
+   "dist": 20,
+   "blend": 2.0
+  },
+  {
+   "t": 132.47,
+   "preset": "high",
+   "blend": 2.2,
+   "note": "high view: the helix around the gantry pylon passes over its own first lap"
+  },
+  {
+   "t": 141.28,
+   "preset": "iso",
+   "blend": 2.0
+  },
+  {
+   "t": 150.08,
+   "preset": "iso",
+   "dist": 16,
+   "shake": 0.15,
+   "blend": 0.6
+  },
+  {
+   "t": 150.6,
+   "preset": "iso",
+   "dist": 16,
+   "shake": 0,
+   "blend": 0.4
+  },
+  {
+   "t": 167.7,
+   "preset": "wide",
+   "blend": 3.0
+  },
+  {
+   "t": 176.5,
+   "worldYaw": 45,
+   "pitch": 28,
+   "dist": 26,
+   "blend": 4.0,
+   "note": "swing to face the bunny moon"
+  }
+ ],
+ "objects": [
+  {
+   "id": "flower_billboard",
+   "t": 2.0,
+   "kind": "group",
+   "landmark": true,
+   "name": "Murakami flower billboard (album cover) above the radio booth",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      7,
+      0.6
+     ],
+     "size": [
+      13,
+      13,
+      0.4
+     ],
+     "color": "#000000",
+     "texture": "art/flower-billboard.jpg"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      0.5,
+      0.6
+     ],
+     "size": [
+      0.5,
+      1,
+      0.5
+     ],
+     "color": "#444b78"
+    }
+   ],
+   "react": "beat",
+   "rot": 7.9,
+   "worldPos": [
+    -9.4,
+    0.0,
+    37.48
+   ],
+   "debugXZ": [
+    -9.4,
+    37.48
+   ]
+  },
+  {
+   "id": "radio_booth",
+   "t": 1.2,
+   "kind": "group",
+   "name": "tiny broadcast booth (start)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.3,
+      0
+     ],
+     "size": [
+      3,
+      2.6,
+      2.4
+     ],
+     "color": "#f6f0e4"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.75,
+      0
+     ],
+     "size": [
+      3.4,
+      0.3,
+      2.8
+     ],
+     "color": "#c2449a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.6,
+      1.5,
+      -1.21
+     ],
+     "size": [
+      1.2,
+      0.8,
+      0.05
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      -0.8,
+      4.3,
+      0
+     ],
+     "size": [
+      0.25,
+      3,
+      0.25
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -0.8,
+      4.8999999999999995,
+      0
+     ],
+     "size": [
+      2.4,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -0.8,
+      5.35,
+      0
+     ],
+     "size": [
+      1.6,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      -0.8,
+      6.0,
+      0
+     ],
+     "size": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "color": "#ff5a2c"
+    }
+   ],
+   "rot": 9.9,
+   "worldPos": [
+    -5.32,
+    0.0,
+    15.79
+   ],
+   "debugXZ": [
+    -5.32,
+    15.79
+   ]
+  },
+  {
+   "id": "flower_antenna",
+   "t": 62.48,
+   "kind": "group",
+   "landmark": true,
+   "name": "Flower dish antenna at the centre of the loop: petals closed until Chorus 1, bloom on the downbeat; reachable only by eye (the loop orbits it)",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      10,
+      0
+     ],
+     "size": [
+      0.9,
+      20,
+      0.9
+     ],
+     "color": "#c7cbe8"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      20.2,
+      0
+     ],
+     "size": [
+      3,
+      0.6,
+      3
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0.0,
+      28.68,
+      0
+     ],
+     "size": [
+      3.3000000000000003,
+      3.3000000000000003,
+      0.35
+     ],
+     "color": "#c2449a"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      2.34,
+      28.05,
+      0
+     ],
+     "size": [
+      3.3000000000000003,
+      3.3000000000000003,
+      0.35
+     ],
+     "color": "#ff5fa8"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      4.05,
+      26.34,
+      0
+     ],
+     "size": [
+      3.3000000000000003,
+      3.3000000000000003,
+      0.35
+     ],
+     "color": "#ff5a2c"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      4.68,
+      24.0,
+      0
+     ],
+     "size": [
+      3.3000000000000003,
+      3.3000000000000003,
+      0.35
+     ],
+     "color": "#ff8f2a"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      4.05,
+      21.66,
+      0
+     ],
+     "size": [
+      3.3000000000000003,
+      3.3000000000000003,
+      0.35
+     ],
+     "color": "#ffc928"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      2.34,
+      19.95,
+      0
+     ],
+     "size": [
+      3.3000000000000003,
+      3.3000000000000003,
+      0.35
+     ],
+     "color": "#fff200"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0.0,
+      19.32,
+      0
+     ],
+     "size": [
+      3.3000000000000003,
+      3.3000000000000003,
+      0.35
+     ],
+     "color": "#93d14b"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      -2.34,
+      19.95,
+      0
+     ],
+     "size": [
+      3.3000000000000003,
+      3.3000000000000003,
+      0.35
+     ],
+     "color": "#00a651"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      -4.05,
+      21.66,
+      0
+     ],
+     "size": [
+      3.3000000000000003,
+      3.3000000000000003,
+      0.35
+     ],
+     "color": "#00b3a4"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      -4.68,
+      24.0,
+      0
+     ],
+     "size": [
+      3.3000000000000003,
+      3.3000000000000003,
+      0.35
+     ],
+     "color": "#00aeef"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      -4.05,
+      26.34,
+      0
+     ],
+     "size": [
+      3.3000000000000003,
+      3.3000000000000003,
+      0.35
+     ],
+     "color": "#0072bc"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      -2.34,
+      28.05,
+      0
+     ],
+     "size": [
+      3.3000000000000003,
+      3.3000000000000003,
+      0.35
+     ],
+     "color": "#5b3f9e"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      24.0,
+      0.05
+     ],
+     "size": [
+      6.300000000000001,
+      0.4,
+      6.0
+     ],
+     "rot": [
+      90,
+      0,
+      0
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      26.7,
+      0.1
+     ],
+     "size": [
+      1.32,
+      3.0,
+      0.3
+     ],
+     "color": "#c2449a"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      -1.2000000000000002,
+      24.3,
+      -0.25
+     ],
+     "size": [
+      0.6999999999999998,
+      1.0,
+      0.1
+     ],
+     "color": "#e8272b"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      1.2000000000000002,
+      24.3,
+      -0.25
+     ],
+     "size": [
+      0.6999999999999998,
+      1.0,
+      0.1
+     ],
+     "color": "#1fae6a"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      22.5,
+      -0.25
+     ],
+     "size": [
+      2.7,
+      1.6800000000000002,
+      0.1
+     ],
+     "color": "#ff6fb5"
+    }
+   ],
+   "appear": {
+    "t": 61.0,
+    "mode": "grow",
+    "dur": 1.0
+   },
+   "react": "beat",
+   "rot": -116.1,
+   "worldPos": [
+    -14.77,
+    0.09,
+    -137.6
+   ],
+   "debugXZ": [
+    -14.77,
+    -137.6
+   ]
+  },
+  {
+   "id": "orbit_dot_a",
+   "t": 62.48,
+   "kind": "sphere",
+   "size": [
+    1.2,
+    1.2,
+    1.2
+   ],
+   "color": "#00aeef",
+   "name": "signal A (orbits the flower)",
+   "rot": -116.1,
+   "worldPos": [
+    -18.77,
+    30.09,
+    -137.6
+   ],
+   "debugXZ": [
+    -18.77,
+    -137.6
+   ]
+  },
+  {
+   "id": "orbit_dot_b",
+   "t": 62.48,
+   "kind": "sphere",
+   "size": [
+    1.2,
+    1.2,
+    1.2
+   ],
+   "color": "#ff5fa8",
+   "name": "signal B (orbits the flower)",
+   "rot": -116.1,
+   "worldPos": [
+    -10.77,
+    30.09,
+    -137.6
+   ],
+   "debugXZ": [
+    -10.77,
+    -137.6
+   ]
+  },
+  {
+   "id": "radio_egg",
+   "t": 36.0,
+   "kind": "group",
+   "egg": true,
+   "name": "EGG: old receiver; its dial lights the 5 cover colours in turn and the needle is a tiny bunny",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1,
+      0
+     ],
+     "size": [
+      3.2,
+      2,
+      1.4
+     ],
+     "color": "#7a4b2a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.3,
+      -0.71
+     ],
+     "size": [
+      2.4,
+      0.6,
+      0.05
+     ],
+     "color": "#f6f0e4"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      -0.6,
+      1.35,
+      -0.75
+     ],
+     "size": [
+      0.25,
+      0.35,
+      0.1
+     ],
+     "color": "#ffffff",
+     "id": "bunny_needle"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      -1.0,
+      0.6,
+      -0.72
+     ],
+     "size": [
+      0.5,
+      0.1,
+      0.5
+     ],
+     "rot": [
+      90,
+      0,
+      0
+     ],
+     "color": "#c2449a"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      1.0,
+      0.6,
+      -0.72
+     ],
+     "size": [
+      0.5,
+      0.1,
+      0.5
+     ],
+     "rot": [
+      90,
+      0,
+      0
+     ],
+     "color": "#00aeef"
+    }
+   ],
+   "rot": -166.9,
+   "worldPos": [
+    23.54,
+    0.0,
+    -21.16
+   ],
+   "debugXZ": [
+    23.54,
+    -21.16
+   ]
+  },
+  {
+   "id": "bunny_moon",
+   "t": 178.0,
+   "kind": "group",
+   "egg": true,
+   "landmark": true,
+   "name": "EGG/landmark: the moon is the bunny face from the cover (only framed when the outro camera swings at 176.5 s)",
+   "parts": [
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      12,
+      12,
+      2
+     ],
+     "color": "#fff8e8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      6.5,
+      0
+     ],
+     "size": [
+      2.6,
+      5,
+      1
+     ],
+     "color": "#fff8e8"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      -2,
+      1,
+      -1.1
+     ],
+     "size": [
+      1.0,
+      1.4,
+      0.2
+     ],
+     "color": "#e8272b"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      2,
+      1,
+      -1.1
+     ],
+     "size": [
+      1.0,
+      1.4,
+      0.2
+     ],
+     "color": "#1fae6a"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      -2,
+      -1.1
+     ],
+     "size": [
+      4.5,
+      2.6,
+      0.2
+     ],
+     "color": "#ff6fb5"
+    }
+   ],
+   "appear": {
+    "t": 167.7,
+    "mode": "fade",
+    "dur": 4.0
+   },
+   "rot": -48.3,
+   "worldPos": [
+    -347.69,
+    43.0,
+    -47.19
+   ],
+   "debugXZ": [
+    -347.69,
+    -47.19
+   ]
+  },
+  {
+   "id": "gantry_sign",
+   "t": 133.0,
+   "kind": "group",
+   "landmark": true,
+   "name": "gantry pylons holding the overpass (two-signals crossing)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -3,
+      0
+     ],
+     "size": [
+      1,
+      10,
+      1
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2,
+      0
+     ],
+     "size": [
+      1.4,
+      0.6,
+      1.4
+     ],
+     "color": "#ff5a2c"
+    }
+   ],
+   "rot": -150.3,
+   "worldPos": [
+    -115.5,
+    8.32,
+    -62.47
+   ],
+   "debugXZ": [
+    -115.5,
+    -62.47
+   ]
+  },
+  {
+   "id": "outro_bench",
+   "t": 183.0,
+   "kind": "bench",
+   "size": [
+    3,
+    1,
+    1
+   ],
+   "color": "#f6f0e4",
+   "name": "two-seat stargazing bench at the end",
+   "rot": -46.9,
+   "worldPos": [
+    -288.25,
+    5.0,
+    -29.4
+   ],
+   "debugXZ": [
+    -288.25,
+    -29.4
+   ]
+  },
+  {
+   "id": "tank0",
+   "t": 11.5,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      1.6,
+      0
+     ],
+     "size": [
+      2.2,
+      2.4,
+      2.2
+     ],
+     "color": "#2d3566"
+    },
+    {
+     "kind": "cone",
+     "pos": [
+      0,
+      3.1,
+      0
+     ],
+     "size": [
+      2.4,
+      0.8,
+      2.4
+     ],
+     "color": "#3c4680"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.3,
+      0
+     ],
+     "size": [
+      2.6,
+      0.6,
+      2.6
+     ],
+     "color": "#232a52"
+    }
+   ],
+   "appear": {
+    "t": 9.7,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "rot": 77.8,
+   "worldPos": [
+    32.64,
+    0.0,
+    55.6
+   ],
+   "debugXZ": [
+    32.64,
+    55.6
+   ]
+  },
+  {
+   "id": "tank1",
+   "t": 15.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      1.6,
+      0
+     ],
+     "size": [
+      2.2,
+      2.4,
+      2.2
+     ],
+     "color": "#2d3566"
+    },
+    {
+     "kind": "cone",
+     "pos": [
+      0,
+      3.1,
+      0
+     ],
+     "size": [
+      2.4,
+      0.8,
+      2.4
+     ],
+     "color": "#3c4680"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.3,
+      0
+     ],
+     "size": [
+      2.6,
+      0.6,
+      2.6
+     ],
+     "color": "#232a52"
+    }
+   ],
+   "appear": {
+    "t": 13.2,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "rot": 85.9,
+   "worldPos": [
+    47.29,
+    0.0,
+    79.34
+   ],
+   "debugXZ": [
+    47.29,
+    79.34
+   ]
+  },
+  {
+   "id": "tank2",
+   "t": 19.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      1.6,
+      0
+     ],
+     "size": [
+      2.2,
+      2.4,
+      2.2
+     ],
+     "color": "#2d3566"
+    },
+    {
+     "kind": "cone",
+     "pos": [
+      0,
+      3.1,
+      0
+     ],
+     "size": [
+      2.4,
+      0.8,
+      2.4
+     ],
+     "color": "#3c4680"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.3,
+      0
+     ],
+     "size": [
+      2.6,
+      0.6,
+      2.6
+     ],
+     "color": "#232a52"
+    }
+   ],
+   "appear": {
+    "t": 17.2,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "rot": 133.4,
+   "worldPos": [
+    56.78,
+    0.0,
+    53.97
+   ],
+   "debugXZ": [
+    56.78,
+    53.97
+   ]
+  },
+  {
+   "id": "tank3",
+   "t": 23.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      1.6,
+      0
+     ],
+     "size": [
+      2.2,
+      2.4,
+      2.2
+     ],
+     "color": "#2d3566"
+    },
+    {
+     "kind": "cone",
+     "pos": [
+      0,
+      3.1,
+      0
+     ],
+     "size": [
+      2.4,
+      0.8,
+      2.4
+     ],
+     "color": "#3c4680"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.3,
+      0
+     ],
+     "size": [
+      2.6,
+      0.6,
+      2.6
+     ],
+     "color": "#232a52"
+    }
+   ],
+   "appear": {
+    "t": 21.2,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "rot": -153.1,
+   "worldPos": [
+    72.23,
+    0.0,
+    41.94
+   ],
+   "debugXZ": [
+    72.23,
+    41.94
+   ]
+  },
+  {
+   "id": "tank4",
+   "t": 30.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      1.6,
+      0
+     ],
+     "size": [
+      2.2,
+      2.4,
+      2.2
+     ],
+     "color": "#2d3566"
+    },
+    {
+     "kind": "cone",
+     "pos": [
+      0,
+      3.1,
+      0
+     ],
+     "size": [
+      2.4,
+      0.8,
+      2.4
+     ],
+     "color": "#3c4680"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.3,
+      0
+     ],
+     "size": [
+      2.6,
+      0.6,
+      2.6
+     ],
+     "color": "#232a52"
+    }
+   ],
+   "appear": {
+    "t": 28.2,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "rot": -140.0,
+   "worldPos": [
+    32.31,
+    0.0,
+    14.92
+   ],
+   "debugXZ": [
+    32.31,
+    14.92
+   ]
+  },
+  {
+   "id": "tank5",
+   "t": 41.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      1.6,
+      0
+     ],
+     "size": [
+      2.2,
+      2.4,
+      2.2
+     ],
+     "color": "#2d3566"
+    },
+    {
+     "kind": "cone",
+     "pos": [
+      0,
+      3.1,
+      0
+     ],
+     "size": [
+      2.4,
+      0.8,
+      2.4
+     ],
+     "color": "#3c4680"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.3,
+      0
+     ],
+     "size": [
+      2.6,
+      0.6,
+      2.6
+     ],
+     "color": "#232a52"
+    }
+   ],
+   "appear": {
+    "t": 39.2,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "rot": -146.0,
+   "worldPos": [
+    22.08,
+    0.0,
+    -51.03
+   ],
+   "debugXZ": [
+    22.08,
+    -51.03
+   ]
+  },
+  {
+   "id": "ant0",
+   "t": 13.06,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      3.0,
+      0
+     ],
+     "size": [
+      0.25,
+      6,
+      0.25
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.199999999999999,
+      0
+     ],
+     "size": [
+      2.4,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.1,
+      0
+     ],
+     "size": [
+      1.6,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      6.2,
+      0
+     ],
+     "size": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "color": "#c2449a"
+    }
+   ],
+   "react": "beat",
+   "appear": {
+    "t": 11,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "rot": 78.8,
+   "worldPos": [
+    41.41,
+    0.0,
+    74.46
+   ],
+   "debugXZ": [
+    41.41,
+    74.46
+   ]
+  },
+  {
+   "id": "ant1",
+   "t": 17.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      3.5,
+      0
+     ],
+     "size": [
+      0.25,
+      7,
+      0.25
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.8999999999999995,
+      0
+     ],
+     "size": [
+      2.4,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.95,
+      0
+     ],
+     "size": [
+      1.6,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      7.2,
+      0
+     ],
+     "size": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "color": "#fff200"
+    }
+   ],
+   "react": "beat",
+   "appear": {
+    "t": 15,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "rot": 106.0,
+   "worldPos": [
+    58.12,
+    0.0,
+    54.1
+   ],
+   "debugXZ": [
+    58.12,
+    54.1
+   ]
+  },
+  {
+   "id": "ant2",
+   "t": 21.04,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      4.0,
+      0
+     ],
+     "size": [
+      0.25,
+      8,
+      0.25
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.6,
+      0
+     ],
+     "size": [
+      2.4,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      6.8,
+      0
+     ],
+     "size": [
+      1.6,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      8.2,
+      0
+     ],
+     "size": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "color": "#0072bc"
+    }
+   ],
+   "react": "beat",
+   "appear": {
+    "t": 19,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "rot": -169.7,
+   "worldPos": [
+    77.37,
+    0.0,
+    53.86
+   ],
+   "debugXZ": [
+    77.37,
+    53.86
+   ]
+  },
+  {
+   "id": "ant3",
+   "t": 25.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      3.0,
+      0
+     ],
+     "size": [
+      0.25,
+      6,
+      0.25
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.199999999999999,
+      0
+     ],
+     "size": [
+      2.4,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.1,
+      0
+     ],
+     "size": [
+      1.6,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      6.2,
+      0
+     ],
+     "size": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "color": "#ff8f2a"
+    }
+   ],
+   "react": "beat",
+   "appear": {
+    "t": 23,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "rot": -143.6,
+   "worldPos": [
+    50.96,
+    0.0,
+    38.07
+   ],
+   "debugXZ": [
+    50.96,
+    38.07
+   ]
+  },
+  {
+   "id": "ant4",
+   "t": 28.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      3.5,
+      0
+     ],
+     "size": [
+      0.25,
+      7,
+      0.25
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.8999999999999995,
+      0
+     ],
+     "size": [
+      2.4,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.95,
+      0
+     ],
+     "size": [
+      1.6,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      7.2,
+      0
+     ],
+     "size": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "color": "#00b3a4"
+    }
+   ],
+   "react": "beat",
+   "appear": {
+    "t": 26,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "rot": -134.5,
+   "worldPos": [
+    50.55,
+    0.0,
+    12.63
+   ],
+   "debugXZ": [
+    50.55,
+    12.63
+   ]
+  },
+  {
+   "id": "ant5",
+   "t": 33.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      4.0,
+      0
+     ],
+     "size": [
+      0.25,
+      8,
+      0.25
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.6,
+      0
+     ],
+     "size": [
+      2.4,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      6.8,
+      0
+     ],
+     "size": [
+      1.6,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      8.2,
+      0
+     ],
+     "size": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "color": "#ff5fa8"
+    }
+   ],
+   "react": "beat",
+   "appear": {
+    "t": 31,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "rot": 172.2,
+   "worldPos": [
+    22.32,
+    0.0,
+    -7.38
+   ],
+   "debugXZ": [
+    22.32,
+    -7.38
+   ]
+  },
+  {
+   "id": "ant6",
+   "t": 38.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      3.0,
+      0
+     ],
+     "size": [
+      0.25,
+      6,
+      0.25
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.199999999999999,
+      0
+     ],
+     "size": [
+      2.4,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.1,
+      0
+     ],
+     "size": [
+      1.6,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      6.2,
+      0
+     ],
+     "size": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "color": "#93d14b"
+    }
+   ],
+   "react": "beat",
+   "appear": {
+    "t": 36,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "rot": -147.9,
+   "worldPos": [
+    31.26,
+    0.0,
+    -36.23
+   ],
+   "debugXZ": [
+    31.26,
+    -36.23
+   ]
+  },
+  {
+   "id": "ant7",
+   "t": 47.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      3.5,
+      0
+     ],
+     "size": [
+      0.25,
+      7,
+      0.25
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.8999999999999995,
+      0
+     ],
+     "size": [
+      2.4,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.95,
+      0
+     ],
+     "size": [
+      1.6,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      7.2,
+      0
+     ],
+     "size": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "color": "#5b3f9e"
+    }
+   ],
+   "react": "beat",
+   "appear": {
+    "t": 45,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "rot": 148.3,
+   "worldPos": [
+    0.9,
+    0.0,
+    -85.0
+   ],
+   "debugXZ": [
+    0.9,
+    -85.0
+   ]
+  },
+  {
+   "id": "ant8",
+   "t": 51.04,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      4.0,
+      0
+     ],
+     "size": [
+      0.25,
+      8,
+      0.25
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.6,
+      0
+     ],
+     "size": [
+      2.4,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      6.8,
+      0
+     ],
+     "size": [
+      1.6,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      8.2,
+      0
+     ],
+     "size": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "color": "#ffc928"
+    }
+   ],
+   "react": "beat",
+   "appear": {
+    "t": 49,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "rot": 137.9,
+   "worldPos": [
+    29.57,
+    0.0,
+    -85.31
+   ],
+   "debugXZ": [
+    29.57,
+    -85.31
+   ]
+  },
+  {
+   "id": "ant9",
+   "t": 55.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      3.0,
+      0
+     ],
+     "size": [
+      0.25,
+      6,
+      0.25
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.199999999999999,
+      0
+     ],
+     "size": [
+      2.4,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.1,
+      0
+     ],
+     "size": [
+      1.6,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      6.2,
+      0
+     ],
+     "size": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "color": "#00aeef"
+    }
+   ],
+   "react": "beat",
+   "appear": {
+    "t": 53,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "rot": -143.6,
+   "worldPos": [
+    11.33,
+    0.0,
+    -108.09
+   ],
+   "debugXZ": [
+    11.33,
+    -108.09
+   ]
+  },
+  {
+   "id": "ant10",
+   "t": 59.02,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      3.5,
+      0
+     ],
+     "size": [
+      0.25,
+      7,
+      0.25
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.8999999999999995,
+      0
+     ],
+     "size": [
+      2.4,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.95,
+      0
+     ],
+     "size": [
+      1.6,
+      0.15,
+      0.15
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      7.2,
+      0
+     ],
+     "size": [
+      0.5,
+      0.5,
+      0.5
+     ],
+     "color": "#ff5a2c"
+    }
+   ],
+   "react": "beat",
+   "appear": {
+    "t": 57,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "rot": -135.5,
+   "worldPos": [
+    4.72,
+    0.0,
+    -136.32
+   ],
+   "debugXZ": [
+    4.72,
+    -136.32
+   ]
+  },
+  {
+   "id": "bld0",
+   "t": 5.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -8.0,
+      0
+     ],
+     "size": [
+      8,
+      16,
+      8
+     ],
+     "color": "#1f2650"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -1.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -4.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.44,
+      -7.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -10.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -13.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    }
+   ],
+   "rot": 26.5,
+   "worldPos": [
+    19.86,
+    -0.6,
+    31.43
+   ],
+   "debugXZ": [
+    19.86,
+    31.43
+   ]
+  },
+  {
+   "id": "bld1",
+   "t": 14.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -10.0,
+      0
+     ],
+     "size": [
+      8,
+      20,
+      8
+     ],
+     "color": "#1f2650"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -1.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -4.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.44,
+      -7.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -10.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -13.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.44,
+      -16.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    }
+   ],
+   "rot": 78.8,
+   "worldPos": [
+    41.68,
+    -0.6,
+    81.28
+   ],
+   "debugXZ": [
+    41.68,
+    81.28
+   ]
+  },
+  {
+   "id": "bld2",
+   "t": 24.06,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -12.0,
+      0
+     ],
+     "size": [
+      8,
+      24,
+      8
+     ],
+     "color": "#1f2650"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -1.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -4.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.44,
+      -7.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -10.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -13.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.44,
+      -16.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -19.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -22.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    }
+   ],
+   "rot": -148.0,
+   "worldPos": [
+    48.69,
+    -0.6,
+    48.11
+   ],
+   "debugXZ": [
+    48.69,
+    48.11
+   ]
+  },
+  {
+   "id": "bld3",
+   "t": 34.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -8.0,
+      0
+     ],
+     "size": [
+      8,
+      16,
+      8
+     ],
+     "color": "#1f2650"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -1.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -4.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.44,
+      -7.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -10.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -13.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    }
+   ],
+   "rot": 173.8,
+   "worldPos": [
+    47.93,
+    -0.6,
+    -7.79
+   ],
+   "debugXZ": [
+    47.93,
+    -7.79
+   ]
+  },
+  {
+   "id": "bld4",
+   "t": 45.96,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -10.0,
+      0
+     ],
+     "size": [
+      8,
+      20,
+      8
+     ],
+     "color": "#1f2650"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -1.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -4.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.44,
+      -7.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -10.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -13.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.44,
+      -16.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    }
+   ],
+   "rot": 175.6,
+   "worldPos": [
+    -13.02,
+    -0.6,
+    -74.95
+   ],
+   "debugXZ": [
+    -13.02,
+    -74.95
+   ]
+  },
+  {
+   "id": "bld5",
+   "t": 56.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -12.0,
+      0
+     ],
+     "size": [
+      8,
+      24,
+      8
+     ],
+     "color": "#1f2650"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -1.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -4.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.44,
+      -7.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -10.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -13.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.44,
+      -16.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -19.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -22.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    }
+   ],
+   "rot": -146.9,
+   "worldPos": [
+    24.96,
+    -0.6,
+    -122.28
+   ],
+   "debugXZ": [
+    24.96,
+    -122.28
+   ]
+  },
+  {
+   "id": "bld6",
+   "t": 70.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -8.0,
+      0
+     ],
+     "size": [
+      8,
+      16,
+      8
+     ],
+     "color": "#1f2650"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -1.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -4.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.44,
+      -7.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -10.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -13.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    }
+   ],
+   "rot": 124.9,
+   "worldPos": [
+    -25.27,
+    2.97,
+    -158.98
+   ],
+   "debugXZ": [
+    -25.27,
+    -158.98
+   ]
+  },
+  {
+   "id": "bld7",
+   "t": 86.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -10.0,
+      0
+     ],
+     "size": [
+      8,
+      20,
+      8
+     ],
+     "color": "#1f2650"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -1.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -4.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.44,
+      -7.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -10.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -13.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.44,
+      -16.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    }
+   ],
+   "rot": -33.1,
+   "worldPos": [
+    -46.27,
+    7.4,
+    -104.84
+   ],
+   "debugXZ": [
+    -46.27,
+    -104.84
+   ]
+  },
+  {
+   "id": "bld8",
+   "t": 105.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -12.0,
+      0
+     ],
+     "size": [
+      8,
+      24,
+      8
+     ],
+     "color": "#1f2650"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -1.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -4.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.44,
+      -7.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -10.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -13.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.44,
+      -16.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -19.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -22.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    }
+   ],
+   "rot": 36.9,
+   "worldPos": [
+    -24.38,
+    -0.6,
+    -3.42
+   ],
+   "debugXZ": [
+    -24.38,
+    -3.42
+   ]
+  },
+  {
+   "id": "bld9",
+   "t": 122.04,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -8.0,
+      0
+     ],
+     "size": [
+      8,
+      16,
+      8
+     ],
+     "color": "#1f2650"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -1.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -4.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.44,
+      -7.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -10.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -13.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    }
+   ],
+   "rot": -151.1,
+   "worldPos": [
+    -49.31,
+    5.22,
+    -30.03
+   ],
+   "debugXZ": [
+    -49.31,
+    -30.03
+   ]
+  },
+  {
+   "id": "bld10",
+   "t": 142.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -10.0,
+      0
+     ],
+     "size": [
+      8,
+      20,
+      8
+     ],
+     "color": "#1f2650"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -1.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -4.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.44,
+      -7.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -10.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -13.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.44,
+      -16.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    }
+   ],
+   "rot": -134.4,
+   "worldPos": [
+    -147.43,
+    12.4,
+    -49.33
+   ],
+   "debugXZ": [
+    -147.43,
+    -49.33
+   ]
+  },
+  {
+   "id": "bld11",
+   "t": 158.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -12.0,
+      0
+     ],
+     "size": [
+      8,
+      24,
+      8
+     ],
+     "color": "#1f2650"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -1.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -4.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.44,
+      -7.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -10.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -13.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.44,
+      -16.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.44,
+      -19.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      -22.5,
+      -4.05
+     ],
+     "size": [
+      0.8,
+      1.0,
+      0.1
+     ],
+     "color": "#ffd98a"
+    }
+   ],
+   "rot": -102.8,
+   "worldPos": [
+    -206.64,
+    4.4,
+    -146.38
+   ],
+   "debugXZ": [
+    -206.64,
+    -146.38
+   ]
+  },
+  {
+   "id": "recv0",
+   "t": 45.5,
+   "kind": "group",
+   "name": "receiver dish (lights up one by one in Pre-chorus 1)",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      1,
+      0
+     ],
+     "size": [
+      0.4,
+      2,
+      0.4
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "disc",
+     "pos": [
+      0,
+      2.4,
+      0
+     ],
+     "size": [
+      2.4,
+      2.4,
+      0.1
+     ],
+     "rot": [
+      60,
+      0,
+      0
+     ],
+     "color": "#ff5a2c"
+    }
+   ],
+   "appear": {
+    "t": 44.0,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "rot": -180.0,
+   "worldPos": [
+    6.0,
+    0.0,
+    -72.6
+   ],
+   "debugXZ": [
+    6.0,
+    -72.6
+   ]
+  },
+  {
+   "id": "recv1",
+   "t": 48.0,
+   "kind": "group",
+   "name": "receiver dish (lights up one by one in Pre-chorus 1)",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      1,
+      0
+     ],
+     "size": [
+      0.4,
+      2,
+      0.4
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "disc",
+     "pos": [
+      0,
+      2.4,
+      0
+     ],
+     "size": [
+      2.4,
+      2.4,
+      0.1
+     ],
+     "rot": [
+      60,
+      0,
+      0
+     ],
+     "color": "#ffc928"
+    }
+   ],
+   "appear": {
+    "t": 46.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "rot": 125.4,
+   "worldPos": [
+    4.77,
+    0.0,
+    -92.14
+   ],
+   "debugXZ": [
+    4.77,
+    -92.14
+   ]
+  },
+  {
+   "id": "recv2",
+   "t": 50.5,
+   "kind": "group",
+   "name": "receiver dish (lights up one by one in Pre-chorus 1)",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      1,
+      0
+     ],
+     "size": [
+      0.4,
+      2,
+      0.4
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "disc",
+     "pos": [
+      0,
+      2.4,
+      0
+     ],
+     "size": [
+      2.4,
+      2.4,
+      0.1
+     ],
+     "rot": [
+      60,
+      0,
+      0
+     ],
+     "color": "#93d14b"
+    }
+   ],
+   "appear": {
+    "t": 49.0,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "rot": 125.9,
+   "worldPos": [
+    24.82,
+    0.0,
+    -81.92
+   ],
+   "debugXZ": [
+    24.82,
+    -81.92
+   ]
+  },
+  {
+   "id": "recv3",
+   "t": 53.0,
+   "kind": "group",
+   "name": "receiver dish (lights up one by one in Pre-chorus 1)",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      1,
+      0
+     ],
+     "size": [
+      0.4,
+      2,
+      0.4
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "disc",
+     "pos": [
+      0,
+      2.4,
+      0
+     ],
+     "size": [
+      2.4,
+      2.4,
+      0.1
+     ],
+     "rot": [
+      60,
+      0,
+      0
+     ],
+     "color": "#00b3a4"
+    }
+   ],
+   "appear": {
+    "t": 51.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "rot": -171.1,
+   "worldPos": [
+    16.59,
+    0.0,
+    -98.45
+   ],
+   "debugXZ": [
+    16.59,
+    -98.45
+   ]
+  },
+  {
+   "id": "recv4",
+   "t": 55.5,
+   "kind": "group",
+   "name": "receiver dish (lights up one by one in Pre-chorus 1)",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      1,
+      0
+     ],
+     "size": [
+      0.4,
+      2,
+      0.4
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "disc",
+     "pos": [
+      0,
+      2.4,
+      0
+     ],
+     "size": [
+      2.4,
+      2.4,
+      0.1
+     ],
+     "rot": [
+      60,
+      0,
+      0
+     ],
+     "color": "#0072bc"
+    }
+   ],
+   "appear": {
+    "t": 54.0,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "rot": -150.1,
+   "worldPos": [
+    20.95,
+    0.0,
+    -117.31
+   ],
+   "debugXZ": [
+    20.95,
+    -117.31
+   ]
+  },
+  {
+   "id": "recv5",
+   "t": 58.0,
+   "kind": "group",
+   "name": "receiver dish (lights up one by one in Pre-chorus 1)",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      1,
+      0
+     ],
+     "size": [
+      0.4,
+      2,
+      0.4
+     ],
+     "color": "#9aa3d0"
+    },
+    {
+     "kind": "disc",
+     "pos": [
+      0,
+      2.4,
+      0
+     ],
+     "size": [
+      2.4,
+      2.4,
+      0.1
+     ],
+     "rot": [
+      60,
+      0,
+      0
+     ],
+     "color": "#c2449a"
+    }
+   ],
+   "appear": {
+    "t": 56.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "rot": -134.5,
+   "worldPos": [
+    0.71,
+    0.0,
+    -121.71
+   ],
+   "debugXZ": [
+    0.71,
+    -121.71
+   ]
+  },
+  {
+   "id": "petal0",
+   "t": 99.0,
+   "kind": "cylinder",
+   "size": [
+    2.4,
+    0.3,
+    2.4
+   ],
+   "color": "#c2449a",
+   "react": "tap",
+   "appear": {
+    "t": 97.5,
+    "mode": "pop",
+    "dur": 0.3
+   },
+   "exit": {
+    "t": 103,
+    "mode": "shrink",
+    "dur": 0.6
+   },
+   "name": "floating petal pads",
+   "rot": 38.2,
+   "worldPos": [
+    -63.4,
+    -2.5,
+    -22.43
+   ],
+   "debugXZ": [
+    -63.4,
+    -22.43
+   ]
+  },
+  {
+   "id": "petal1",
+   "t": 101.0,
+   "kind": "cylinder",
+   "size": [
+    2.4,
+    0.3,
+    2.4
+   ],
+   "color": "#ff5fa8",
+   "react": "tap",
+   "appear": {
+    "t": 99.5,
+    "mode": "pop",
+    "dur": 0.3
+   },
+   "exit": {
+    "t": 105,
+    "mode": "shrink",
+    "dur": 0.6
+   },
+   "name": "floating petal pads",
+   "rot": 46.5,
+   "worldPos": [
+    -46.72,
+    -2.5,
+    -20.47
+   ],
+   "debugXZ": [
+    -46.72,
+    -20.47
+   ]
+  },
+  {
+   "id": "petal2",
+   "t": 103.0,
+   "kind": "cylinder",
+   "size": [
+    2.4,
+    0.3,
+    2.4
+   ],
+   "color": "#ff5a2c",
+   "react": "tap",
+   "appear": {
+    "t": 101.5,
+    "mode": "pop",
+    "dur": 0.3
+   },
+   "exit": {
+    "t": 107,
+    "mode": "shrink",
+    "dur": 0.6
+   },
+   "name": "floating petal pads",
+   "rot": 33.1,
+   "worldPos": [
+    -48.21,
+    -2.5,
+    -2.93
+   ],
+   "debugXZ": [
+    -48.21,
+    -2.93
+   ]
+  },
+  {
+   "id": "petal3",
+   "t": 105.0,
+   "kind": "cylinder",
+   "size": [
+    2.4,
+    0.3,
+    2.4
+   ],
+   "color": "#ff8f2a",
+   "react": "tap",
+   "appear": {
+    "t": 103.5,
+    "mode": "pop",
+    "dur": 0.3
+   },
+   "exit": {
+    "t": 109,
+    "mode": "shrink",
+    "dur": 0.6
+   },
+   "name": "floating petal pads",
+   "rot": 36.9,
+   "worldPos": [
+    -33.18,
+    -2.5,
+    3.18
+   ],
+   "debugXZ": [
+    -33.18,
+    3.18
+   ]
+  },
+  {
+   "id": "petal4",
+   "t": 107.0,
+   "kind": "cylinder",
+   "size": [
+    2.4,
+    0.3,
+    2.4
+   ],
+   "color": "#ffc928",
+   "react": "tap",
+   "appear": {
+    "t": 105.5,
+    "mode": "pop",
+    "dur": 0.3
+   },
+   "exit": {
+    "t": 111,
+    "mode": "shrink",
+    "dur": 0.6
+   },
+   "name": "floating petal pads",
+   "rot": -3.8,
+   "worldPos": [
+    -32.26,
+    -2.06,
+    13.94
+   ],
+   "debugXZ": [
+    -32.26,
+    13.94
+   ]
+  },
+  {
+   "id": "petal5",
+   "t": 109.0,
+   "kind": "cylinder",
+   "size": [
+    2.4,
+    0.3,
+    2.4
+   ],
+   "color": "#fff200",
+   "react": "tap",
+   "appear": {
+    "t": 107.5,
+    "mode": "pop",
+    "dur": 0.3
+   },
+   "exit": {
+    "t": 113,
+    "mode": "shrink",
+    "dur": 0.6
+   },
+   "name": "floating petal pads",
+   "rot": -43.9,
+   "worldPos": [
+    -33.57,
+    -1.15,
+    25.84
+   ],
+   "debugXZ": [
+    -33.57,
+    25.84
+   ]
+  },
+  {
+   "id": "petal6",
+   "t": 111.04,
+   "kind": "cylinder",
+   "size": [
+    2.4,
+    0.3,
+    2.4
+   ],
+   "color": "#93d14b",
+   "react": "tap",
+   "appear": {
+    "t": 109.5,
+    "mode": "pop",
+    "dur": 0.3
+   },
+   "exit": {
+    "t": 115,
+    "mode": "shrink",
+    "dur": 0.6
+   },
+   "name": "floating petal pads",
+   "rot": -80.3,
+   "worldPos": [
+    -46.92,
+    -0.22,
+    22.59
+   ],
+   "debugXZ": [
+    -46.92,
+    22.59
+   ]
+  },
+  {
+   "id": "petal7",
+   "t": 113.0,
+   "kind": "cylinder",
+   "size": [
+    2.4,
+    0.3,
+    2.4
+   ],
+   "color": "#00a651",
+   "react": "tap",
+   "appear": {
+    "t": 111.5,
+    "mode": "pop",
+    "dur": 0.3
+   },
+   "exit": {
+    "t": 117,
+    "mode": "shrink",
+    "dur": 0.6
+   },
+   "name": "floating petal pads",
+   "rot": -108.7,
+   "worldPos": [
+    -58.59,
+    0.67,
+    31.59
+   ],
+   "debugXZ": [
+    -58.59,
+    31.59
+   ]
+  },
+  {
+   "id": "stars_row",
+   "kind": "row",
+   "t0": 97.4,
+   "t1": 114.4,
+   "side": 6,
+   "spacing": 4.0,
+   "bothSides": true,
+   "item": {
+    "kind": "star",
+    "size": [
+     0.8,
+     0.8,
+     0.8
+    ],
+    "color": "#fff6c8",
+    "react": "beat"
+   }
+  },
+  {
+   "id": "city_lights",
+   "kind": "row",
+   "t0": 62.0,
+   "t1": 97.0,
+   "side": 9,
+   "spacing": 5.0,
+   "bothSides": true,
+   "item": {
+    "kind": "lamp",
+    "size": [
+     0.6,
+     3,
+     0.6
+    ],
+    "color": "#ffd98a",
+    "react": "kick"
+   }
+  },
+  {
+   "id": "final_lamps",
+   "kind": "row",
+   "t0": 150.2,
+   "t1": 167.6,
+   "side": 4.0,
+   "spacing": 3.0,
+   "bothSides": true,
+   "item": {
+    "kind": "box",
+    "size": [
+     0.6,
+     0.6,
+     0.6
+    ],
+    "color": "#ff5fa8",
+    "react": "tap"
+   }
+  },
+  {
+   "id": "signal_poster",
+   "t": 47.0,
+   "kind": "image",
+   "src": "art/signal-poster.jpg",
+   "size": [
+    12,
+    0,
+    6.75
+   ],
+   "mode": "billboard",
+   "name": "retro broadcast poster on a rooftop hoarding (pre-chorus)",
+   "rot": 148.3,
+   "worldPos": [
+    25.09,
+    3.0,
+    -74.77
+   ],
+   "debugXZ": [
+    25.09,
+    -74.77
+   ]
+  },
+  {
+   "id": "signal_poster2",
+   "t": 156.0,
+   "kind": "image",
+   "src": "art/signal-poster.jpg",
+   "size": [
+    12,
+    0,
+    6.75
+   ],
+   "mode": "billboard",
+   "name": "same poster seen again in the final chorus",
+   "rot": -135.5,
+   "worldPos": [
+    -233.65,
+    8.0,
+    -98.29
+   ],
+   "debugXZ": [
+    -233.65,
+    -98.29
+   ]
+  },
+  {
+   "id": "cloud_tower",
+   "t": 6.0,
+   "kind": "group",
+   "landmark": true,
+   "name": "L1 cloud weather tower: faceted cloud blocks stacked on a mast (rain/wind motif, never over the road)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      6,
+      0
+     ],
+     "size": [
+      0.8,
+      12,
+      0.8
+     ],
+     "color": "#7772b6"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1,
+      12.0,
+      0
+     ],
+     "size": [
+      4.0,
+      1.4,
+      3
+     ],
+     "color": "#dfe2f4"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1,
+      13.6,
+      0
+     ],
+     "size": [
+      3.5,
+      1.4,
+      3
+     ],
+     "color": "#dfe2f4"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1,
+      15.2,
+      0
+     ],
+     "size": [
+      3.0,
+      1.4,
+      3
+     ],
+     "color": "#dfe2f4"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1,
+      16.8,
+      0
+     ],
+     "size": [
+      2.5,
+      1.4,
+      3
+     ],
+     "color": "#dfe2f4"
+    }
+   ],
+   "appear": {
+    "t": 0.4,
+    "mode": "rise",
+    "dur": 3.0
+   },
+   "rot": 26.2,
+   "worldPos": [
+    43.47,
+    0.0,
+    49.85
+   ],
+   "debugXZ": [
+    43.47,
+    49.85
+   ]
+  },
+  {
+   "id": "crt_tv",
+   "t": 30.0,
+   "kind": "group",
+   "landmark": true,
+   "name": "L2 retro CRT TV with colour-block screen only (no text)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.6,
+      0
+     ],
+     "size": [
+      3.4,
+      2.8,
+      2.6
+     ],
+     "color": "#34345c"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.7,
+      -1.31
+     ],
+     "size": [
+      2.6,
+      2.0,
+      0.05
+     ],
+     "color": "#08aee0",
+     "id": "crt_screen"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      -0.6,
+      3.6,
+      0
+     ],
+     "size": [
+      0.06,
+      1.4,
+      0.06
+     ],
+     "rot": [
+      0,
+      0,
+      25
+     ],
+     "color": "#cccccc"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0.6,
+      3.6,
+      0
+     ],
+     "size": [
+      0.06,
+      1.4,
+      0.06
+     ],
+     "rot": [
+      0,
+      0,
+      -25
+     ],
+     "color": "#cccccc"
+    }
+   ],
+   "rot": -140.0,
+   "worldPos": [
+    41.23,
+    0.0,
+    2.22
+   ],
+   "debugXZ": [
+    41.23,
+    2.22
+   ]
+  },
+  {
+   "id": "broadcast_stage",
+   "t": 70.0,
+   "kind": "group",
+   "landmark": true,
+   "name": "L3 rooftop broadcast stage: metal deck, three square front lamps, five white square mic plinths (stand-ins for the five members, no figures)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.3,
+      0
+     ],
+     "size": [
+      10,
+      0.6,
+      6
+     ],
+     "color": "#9aa0b8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -3,
+      1.2,
+      -3.2
+     ],
+     "size": [
+      1.0,
+      1.0,
+      0.6
+     ],
+     "color": "#fff8f1"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.2,
+      -3.2
+     ],
+     "size": [
+      1.0,
+      1.0,
+      0.6
+     ],
+     "color": "#fff8f1"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      3,
+      1.2,
+      -3.2
+     ],
+     "size": [
+      1.0,
+      1.0,
+      0.6
+     ],
+     "color": "#fff8f1"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -3.6,
+      1.4,
+      0.5
+     ],
+     "size": [
+      0.7,
+      1.6,
+      0.7
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.8,
+      1.4,
+      0.5
+     ],
+     "size": [
+      0.7,
+      1.6,
+      0.7
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      1.4,
+      0.5
+     ],
+     "size": [
+      0.7,
+      1.6,
+      0.7
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.8000000000000003,
+      1.4,
+      0.5
+     ],
+     "size": [
+      0.7,
+      1.6,
+      0.7
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      3.6,
+      1.4,
+      0.5
+     ],
+     "size": [
+      0.7,
+      1.6,
+      0.7
+     ],
+     "color": "#ffffff"
+    }
+   ],
+   "rot": 124.9,
+   "worldPos": [
+    33.67,
+    -0.03,
+    -74.35
+   ],
+   "debugXZ": [
+    33.67,
+    -74.35
+   ]
+  },
+  {
+   "id": "boat_egg",
+   "t": 104.0,
+   "kind": "group",
+   "egg": true,
+   "name": "E1 tiny boat with a red beret slides out of a cloud gap (far scenery, no collision)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      3,
+      0.6,
+      1.2
+     ],
+     "color": "#fff8f1"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      0.7,
+      0
+     ],
+     "size": [
+      0.5,
+      0.15,
+      0.5
+     ],
+     "color": "#e8272b"
+    }
+   ],
+   "appear": {
+    "t": 101.0,
+    "mode": "fade",
+    "dur": 1.0
+   },
+   "exit": {
+    "t": 108.0,
+    "mode": "fade",
+    "dur": 1.0
+   },
+   "rot": 42.8,
+   "worldPos": [
+    -67.67,
+    2.0,
+    39.28
+   ],
+   "debugXZ": [
+    -67.67,
+    39.28
+   ]
+  },
+  {
+   "id": "flower_terrace0",
+   "t": 152.04,
+   "kind": "cylinder",
+   "size": [
+    4.5,
+    0.8,
+    4.5
+   ],
+   "color": "#fa428e",
+   "appear": {
+    "t": 150.06,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "name": "L6 five coloured flower terraces rise one per bar in the final chorus",
+   "rot": -136.3,
+   "worldPos": [
+    -179.77,
+    3.8,
+    -107.28
+   ],
+   "debugXZ": [
+    -179.77,
+    -107.28
+   ]
+  },
+  {
+   "id": "flower_terrace1",
+   "t": 155.2,
+   "kind": "cylinder",
+   "size": [
+    4.5,
+    0.8,
+    4.5
+   ],
+   "color": "#ff8935",
+   "appear": {
+    "t": 152.2618,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "name": "L6 five coloured flower terraces rise one per bar in the final chorus",
+   "rot": -141.8,
+   "worldPos": [
+    -205.23,
+    3.8,
+    -112.06
+   ],
+   "debugXZ": [
+    -205.23,
+    -112.06
+   ]
+  },
+  {
+   "id": "flower_terrace2",
+   "t": 158.4,
+   "kind": "cylinder",
+   "size": [
+    4.5,
+    0.8,
+    4.5
+   ],
+   "color": "#f6e829",
+   "appear": {
+    "t": 154.4636,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "name": "L6 five coloured flower terraces rise one per bar in the final chorus",
+   "rot": -101.1,
+   "worldPos": [
+    -211.29,
+    3.8,
+    -140.38
+   ],
+   "debugXZ": [
+    -211.29,
+    -140.38
+   ]
+  },
+  {
+   "id": "flower_terrace3",
+   "t": 161.56,
+   "kind": "cylinder",
+   "size": [
+    4.5,
+    0.8,
+    4.5
+   ],
+   "color": "#93cd42",
+   "appear": {
+    "t": 156.6654,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "name": "L6 five coloured flower terraces rise one per bar in the final chorus",
+   "rot": -13.0,
+   "worldPos": [
+    -219.11,
+    3.8,
+    -119.34
+   ],
+   "debugXZ": [
+    -219.11,
+    -119.34
+   ]
+  },
+  {
+   "id": "flower_terrace4",
+   "t": 164.8,
+   "kind": "cylinder",
+   "size": [
+    4.5,
+    0.8,
+    4.5
+   ],
+   "color": "#08aee0",
+   "appear": {
+    "t": 158.8672,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "name": "L6 five coloured flower terraces rise one per bar in the final chorus",
+   "rot": 18.1,
+   "worldPos": [
+    -229.11,
+    3.8,
+    -102.71
+   ],
+   "debugXZ": [
+    -229.11,
+    -102.71
+   ]
+  },
+  {
+   "id": "bunny_stone",
+   "t": 186.0,
+   "kind": "group",
+   "landmark": true,
+   "name": "L7 white bunny-ear finish stone",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.5,
+      0
+     ],
+     "size": [
+      2.4,
+      3,
+      1.2
+     ],
+     "color": "#fff8f1"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -0.6,
+      4.0,
+      0
+     ],
+     "size": [
+      0.5,
+      2.2,
+      0.5
+     ],
+     "color": "#fff8f1"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.6,
+      4.0,
+      0
+     ],
+     "size": [
+      0.5,
+      2.2,
+      0.5
+     ],
+     "color": "#fff8f1"
+    }
+   ],
+   "rot": -15.8,
+   "worldPos": [
+    -292.96,
+    5.0,
+    -14.63
+   ],
+   "debugXZ": [
+    -292.96,
+    -14.63
+   ]
+  },
+  {
+   "id": "fork0",
+   "t": 20.699,
+   "kind": "box",
+   "onroad": true,
+   "size": [
+    2.6,
+    0.6,
+    6.0
+   ],
+   "worldPos": [
+    69.35,
+    -0.6,
+    53.29
+   ],
+   "rot": 180.0,
+   "color": "#f6f0e4",
+   "name": "fake-out fork: dead-end stub that rises with the road and sinks once the line has turned (scenery only)",
+   "appear": {
+    "t": 18.699,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "exit": {
+    "t": 21.049,
+    "mode": "sink",
+    "dur": 0.8
+   },
+   "debugXZ": [
+    69.35,
+    53.29
+   ]
+  },
+  {
+   "id": "fork1",
+   "t": 37.488,
+   "kind": "box",
+   "onroad": true,
+   "size": [
+    2.6,
+    0.6,
+    6.0
+   ],
+   "worldPos": [
+    29.72,
+    -0.6,
+    -33.42
+   ],
+   "rot": 180.0,
+   "color": "#f6f0e4",
+   "name": "fake-out fork: dead-end stub that rises with the road and sinks once the line has turned (scenery only)",
+   "appear": {
+    "t": 35.488,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "exit": {
+    "t": 37.838,
+    "mode": "sink",
+    "dur": 0.8
+   },
+   "debugXZ": [
+    29.72,
+    -33.42
+   ]
+  },
+  {
+   "id": "fork2",
+   "t": 86.204,
+   "kind": "box",
+   "onroad": true,
+   "size": [
+    2.6,
+    0.6,
+    6.0
+   ],
+   "worldPos": [
+    -38.91,
+    7.4,
+    -96.1
+   ],
+   "rot": -90.0,
+   "color": "#f6f0e4",
+   "name": "fake-out fork: dead-end stub that rises with the road and sinks once the line has turned (scenery only)",
+   "appear": {
+    "t": 84.204,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "exit": {
+    "t": 86.554,
+    "mode": "sink",
+    "dur": 0.8
+   },
+   "debugXZ": [
+    -38.91,
+    -96.1
+   ]
+  },
+  {
+   "id": "fork3",
+   "t": 141.25,
+   "kind": "box",
+   "onroad": true,
+   "size": [
+    2.6,
+    0.6,
+    6.0
+   ],
+   "worldPos": [
+    -137.96,
+    12.4,
+    -56.48
+   ],
+   "rot": -90.0,
+   "color": "#f6f0e4",
+   "name": "fake-out fork: dead-end stub that rises with the road and sinks once the line has turned (scenery only)",
+   "appear": {
+    "t": 139.25,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "exit": {
+    "t": 141.6,
+    "mode": "sink",
+    "dur": 0.8
+   },
+   "debugXZ": [
+    -137.96,
+    -56.48
+   ]
+  }
+ ],
+ "events": [
+  {
+   "t": 0.36,
+   "type": "light",
+   "target": "flower_billboard",
+   "note": "billboard flickers on with the first sample hit"
+  },
+  {
+   "t": 9.17,
+   "type": "particles",
+   "particles": "dust",
+   "until": 26.78
+  },
+  {
+   "t": 36.0,
+   "type": "color",
+   "target": "radio_egg",
+   "every": 2.2018,
+   "until": 44.39,
+   "note": "dial cycles the 5 cover colours, one per bar (music clock)"
+  },
+  {
+   "t": 44.39,
+   "type": "light",
+   "target": "recv0"
+  },
+  {
+   "t": 46.6,
+   "type": "light",
+   "target": "recv1"
+  },
+  {
+   "t": 48.8,
+   "type": "light",
+   "target": "recv2"
+  },
+  {
+   "t": 51.0,
+   "type": "light",
+   "target": "recv3"
+  },
+  {
+   "t": 53.2,
+   "type": "light",
+   "target": "recv4"
+  },
+  {
+   "t": 55.4,
+   "type": "light",
+   "target": "recv5"
+  },
+  {
+   "t": 62.01,
+   "type": "burst",
+   "at": "flower_antenna",
+   "particles": "confetti"
+  },
+  {
+   "t": 62.01,
+   "type": "spin",
+   "target": "orbit_dot_a",
+   "until": 132.47,
+   "note": "signals orbit the flower, one revolution per 4 bars"
+  },
+  {
+   "t": 62.01,
+   "type": "spin",
+   "target": "orbit_dot_b",
+   "until": 132.47
+  },
+  {
+   "t": 62.01,
+   "type": "pulse",
+   "target": "flower_antenna",
+   "every": 0.55046,
+   "until": 79.62
+  },
+  {
+   "t": 97.24,
+   "type": "color",
+   "palette": {
+    "skyTop": "#03040f",
+    "skyBottom": "#101436"
+   },
+   "dur": 1.5
+  },
+  {
+   "t": 97.24,
+   "type": "particles",
+   "particles": "stars",
+   "until": 114.85
+  },
+  {
+   "t": 114.85,
+   "type": "flash",
+   "dur": 0.25,
+   "note": "drum re-entry; screen-edge flash only, road surface untouched"
+  },
+  {
+   "t": 114.85,
+   "type": "pulse",
+   "target": "flower_antenna",
+   "every": 0.55046,
+   "until": 132.47
+  },
+  {
+   "t": 134.6,
+   "type": "burst",
+   "at": "player",
+   "color": "#fff6c8",
+   "amount": 40,
+   "note": "interlude: the two orbit dots merge into one (music phrase start, not a turn)"
+  },
+  {
+   "t": 134.6,
+   "type": "lower",
+   "target": "orbit_dot_a"
+  },
+  {
+   "t": 134.6,
+   "type": "lower",
+   "target": "orbit_dot_b"
+  },
+  {
+   "t": 150.08,
+   "type": "shake",
+   "dur": 0.4,
+   "amount": 0.2
+  },
+  {
+   "t": 150.08,
+   "type": "color",
+   "palette": {
+    "skyBottom": "#3b1f5e"
+   },
+   "dur": 2.0
+  },
+  {
+   "t": 167.7,
+   "type": "color",
+   "palette": {
+    "skyTop": "#05071a",
+    "skyBottom": "#141a40",
+    "particles": "stars"
+   },
+   "dur": 3.0
+  },
+  {
+   "t": 176.5,
+   "type": "raise",
+   "target": "bunny_moon",
+   "dy": 4,
+   "dur": 4
+  },
+  {
+   "t": 26.754,
+   "type": "color",
+   "target": "crt_tv",
+   "every": 1.10092,
+   "until": 44.37,
+   "note": "CRT colour block changes on the snare backbeat (music clock)"
+  },
+  {
+   "t": 61.983,
+   "type": "light",
+   "target": "broadcast_stage",
+   "note": "stage lamps switch on at the chorus downbeat"
+  }
+ ],
+ "diamonds": [
+  {
+   "t": 7.488,
+   "side": 0
+  },
+  {
+   "t": 20.424,
+   "side": 0
+  },
+  {
+   "t": 38.038,
+   "side": 0
+  },
+  {
+   "t": 57.305,
+   "side": 0
+  },
+  {
+   "t": 85.928,
+   "side": 0
+  },
+  {
+   "t": 103.681,
+   "side": 0
+  },
+  {
+   "t": 122.809,
+   "side": 0
+  },
+  {
+   "t": 142.625,
+   "side": 0
+  },
+  {
+   "t": 160.791,
+   "side": 0
+  },
+  {
+   "t": 178.68,
+   "side": 0
+  }
+ ],
+ "crowns": [
+  {
+   "t": 43.13
+  },
+  {
+   "t": 132.58
+  }
+ ],
+ "finish": {
+  "kind": "custom",
+  "note": "bunny-face gate: white arch shaped like the cover face, mouth opens as the line enters",
+  "parts": [
+   {
+    "kind": "box",
+    "pos": [
+     -2.2,
+     3,
+     0
+    ],
+    "size": [
+     1.2,
+     6,
+     1.2
+    ],
+    "color": "#ffffff"
+   },
+   {
+    "kind": "box",
+    "pos": [
+     2.2,
+     3,
+     0
+    ],
+    "size": [
+     1.2,
+     6,
+     1.2
+    ],
+    "color": "#ffffff"
+   },
+   {
+    "kind": "box",
+    "pos": [
+     0,
+     6.2,
+     0
+    ],
+    "size": [
+     5.6,
+     1.4,
+     1.2
+    ],
+    "color": "#ffffff"
+   },
+   {
+    "kind": "box",
+    "pos": [
+     0,
+     8,
+     0
+    ],
+    "size": [
+     1.2,
+     2.4,
+     1.2
+    ],
+    "color": "#c2449a"
+   }
+  ]
+ },
+ "collectibleColors": {
+  "diamond": "#ffd34e",
+  "crown": "#ffd34e"
+ },
+ "art": {
+  "backdrop": "art/sky-night.jpg",
+  "ground": {
+   "src": "art/roof-ground.jpg",
+   "scale": 40
+  }
+ },
+ "route": {
+  "note": "centerline nodes [t,x,z,headingIndex(0N,1E,2S,3W),y] computed from taps+dirs+speed (same math as validate.py)",
+  "nodes": [
+   [
+    0.0,
+    0.0,
+    0.0,
+    0,
+    0.0
+   ],
+   [
+    2.534,
+    0.0,
+    22.81,
+    1,
+    0.0
+   ],
+   [
+    3.084,
+    4.95,
+    22.81,
+    0,
+    0.0
+   ],
+   [
+    4.736,
+    4.95,
+    37.67,
+    1,
+    0.0
+   ],
+   [
+    5.286,
+    9.9,
+    37.67,
+    0,
+    0.0
+   ],
+   [
+    6.937,
+    9.9,
+    52.53,
+    1,
+    0.0
+   ],
+   [
+    8.038,
+    19.81,
+    52.53,
+    0,
+    0.0
+   ],
+   [
+    9.139,
+    19.81,
+    62.44,
+    1,
+    0.0
+   ],
+   [
+    9.965,
+    27.24,
+    62.44,
+    0,
+    0.0
+   ],
+   [
+    10.515,
+    27.24,
+    67.39,
+    1,
+    0.0
+   ],
+   [
+    10.791,
+    29.73,
+    67.39,
+    2,
+    0.0
+   ],
+   [
+    11.341,
+    29.73,
+    62.44,
+    1,
+    0.0
+   ],
+   [
+    11.892,
+    34.69,
+    62.44,
+    2,
+    0.0
+   ],
+   [
+    12.167,
+    34.69,
+    59.97,
+    1,
+    0.0
+   ],
+   [
+    12.992,
+    42.11,
+    59.97,
+    0,
+    0.0
+   ],
+   [
+    13.543,
+    42.11,
+    64.93,
+    1,
+    0.0
+   ],
+   [
+    13.818,
+    44.59,
+    64.93,
+    0,
+    0.0
+   ],
+   [
+    14.644,
+    44.59,
+    72.36,
+    1,
+    0.0
+   ],
+   [
+    15.745,
+    54.5,
+    72.36,
+    2,
+    0.0
+   ],
+   [
+    16.295,
+    54.5,
+    67.41,
+    1,
+    0.0
+   ],
+   [
+    16.846,
+    59.45,
+    67.41,
+    2,
+    0.0
+   ],
+   [
+    17.947,
+    59.45,
+    57.5,
+    1,
+    0.0
+   ],
+   [
+    18.497,
+    64.4,
+    57.5,
+    0,
+    0.0
+   ],
+   [
+    19.323,
+    64.4,
+    64.93,
+    1,
+    0.0
+   ],
+   [
+    19.598,
+    66.88,
+    64.93,
+    2,
+    0.0
+   ],
+   [
+    19.873,
+    66.88,
+    62.46,
+    1,
+    0.0
+   ],
+   [
+    20.148,
+    69.35,
+    62.46,
+    2,
+    0.0
+   ],
+   [
+    20.699,
+    69.35,
+    57.5,
+    1,
+    0.0
+   ],
+   [
+    20.974,
+    71.83,
+    57.5,
+    2,
+    0.0
+   ],
+   [
+    21.8,
+    71.83,
+    50.07,
+    3,
+    0.0
+   ],
+   [
+    22.35,
+    66.88,
+    50.07,
+    2,
+    0.0
+   ],
+   [
+    22.901,
+    66.88,
+    45.11,
+    3,
+    0.0
+   ],
+   [
+    23.451,
+    61.93,
+    45.11,
+    2,
+    0.0
+   ],
+   [
+    24.002,
+    61.93,
+    40.15,
+    3,
+    0.0
+   ],
+   [
+    24.552,
+    56.98,
+    40.15,
+    2,
+    0.0
+   ],
+   [
+    25.378,
+    56.98,
+    32.71,
+    3,
+    0.0
+   ],
+   [
+    25.653,
+    54.5,
+    32.71,
+    2,
+    0.0
+   ],
+   [
+    26.754,
+    54.5,
+    22.81,
+    3,
+    0.0
+   ],
+   [
+    27.58,
+    47.07,
+    22.81,
+    2,
+    0.0
+   ],
+   [
+    28.13,
+    47.07,
+    17.86,
+    3,
+    0.0
+   ],
+   [
+    28.405,
+    44.59,
+    17.86,
+    2,
+    0.0
+   ],
+   [
+    28.956,
+    44.59,
+    12.9,
+    3,
+    0.0
+   ],
+   [
+    29.506,
+    39.64,
+    12.9,
+    2,
+    0.0
+   ],
+   [
+    29.781,
+    39.64,
+    10.42,
+    3,
+    0.0
+   ],
+   [
+    30.607,
+    32.21,
+    10.42,
+    2,
+    0.0
+   ],
+   [
+    31.158,
+    32.21,
+    5.46,
+    3,
+    0.0
+   ],
+   [
+    31.708,
+    27.26,
+    5.46,
+    2,
+    0.0
+   ],
+   [
+    32.809,
+    27.26,
+    -4.45,
+    1,
+    0.0
+   ],
+   [
+    33.359,
+    32.21,
+    -4.45,
+    2,
+    0.0
+   ],
+   [
+    33.91,
+    32.21,
+    -9.41,
+    1,
+    0.0
+   ],
+   [
+    34.46,
+    37.16,
+    -9.41,
+    2,
+    0.0
+   ],
+   [
+    35.561,
+    37.16,
+    -19.31,
+    3,
+    0.0
+   ],
+   [
+    36.112,
+    32.2,
+    -19.31,
+    2,
+    0.0
+   ],
+   [
+    36.937,
+    32.2,
+    -26.74,
+    3,
+    0.0
+   ],
+   [
+    37.213,
+    29.72,
+    -26.74,
+    2,
+    0.0
+   ],
+   [
+    37.488,
+    29.72,
+    -29.21,
+    3,
+    0.0
+   ],
+   [
+    37.763,
+    27.24,
+    -29.21,
+    2,
+    0.0
+   ],
+   [
+    38.314,
+    27.24,
+    -34.17,
+    3,
+    0.0
+   ],
+   [
+    38.589,
+    24.77,
+    -34.17,
+    2,
+    0.0
+   ],
+   [
+    39.415,
+    24.77,
+    -41.61,
+    3,
+    0.0
+   ],
+   [
+    39.965,
+    19.82,
+    -41.61,
+    2,
+    0.0
+   ],
+   [
+    40.515,
+    19.82,
+    -46.56,
+    3,
+    0.0
+   ],
+   [
+    41.616,
+    9.91,
+    -46.56,
+    2,
+    0.0
+   ],
+   [
+    42.167,
+    9.91,
+    -51.52,
+    3,
+    0.0
+   ],
+   [
+    42.442,
+    7.43,
+    -51.52,
+    2,
+    0.0
+   ],
+   [
+    43.818,
+    7.43,
+    -63.9,
+    3,
+    0.0
+   ],
+   [
+    44.369,
+    2.48,
+    -63.9,
+    2,
+    0.0
+   ],
+   [
+    44.919,
+    2.48,
+    -68.85,
+    3,
+    0.0
+   ],
+   [
+    45.194,
+    -0.0,
+    -68.85,
+    2,
+    0.0
+   ],
+   [
+    45.745,
+    -0.0,
+    -73.81,
+    1,
+    0.0
+   ],
+   [
+    46.02,
+    2.48,
+    -73.81,
+    2,
+    0.0
+   ],
+   [
+    46.57,
+    2.48,
+    -78.76,
+    1,
+    0.0
+   ],
+   [
+    46.846,
+    4.96,
+    -78.76,
+    2,
+    0.0
+   ],
+   [
+    47.121,
+    4.96,
+    -81.23,
+    1,
+    0.0
+   ],
+   [
+    47.396,
+    7.43,
+    -81.23,
+    2,
+    0.0
+   ],
+   [
+    48.222,
+    7.43,
+    -88.67,
+    1,
+    0.0
+   ],
+   [
+    48.772,
+    12.38,
+    -88.67,
+    0,
+    0.0
+   ],
+   [
+    49.323,
+    12.38,
+    -83.71,
+    1,
+    0.0
+   ],
+   [
+    50.148,
+    19.81,
+    -83.71,
+    2,
+    0.0
+   ],
+   [
+    50.424,
+    19.81,
+    -86.19,
+    1,
+    0.0
+   ],
+   [
+    50.699,
+    22.28,
+    -86.19,
+    2,
+    0.0
+   ],
+   [
+    50.974,
+    22.28,
+    -88.67,
+    1,
+    0.0
+   ],
+   [
+    51.525,
+    27.24,
+    -88.67,
+    2,
+    0.0
+   ],
+   [
+    52.626,
+    27.24,
+    -98.58,
+    3,
+    0.0
+   ],
+   [
+    53.176,
+    22.29,
+    -98.58,
+    2,
+    0.0
+   ],
+   [
+    53.451,
+    22.29,
+    -101.05,
+    3,
+    0.0
+   ],
+   [
+    53.726,
+    19.82,
+    -101.05,
+    2,
+    0.0
+   ],
+   [
+    54.552,
+    19.82,
+    -108.49,
+    3,
+    0.0
+   ],
+   [
+    54.827,
+    17.34,
+    -108.49,
+    2,
+    0.0
+   ],
+   [
+    55.378,
+    17.34,
+    -113.44,
+    3,
+    0.0
+   ],
+   [
+    55.928,
+    12.39,
+    -113.44,
+    2,
+    0.0
+   ],
+   [
+    57.029,
+    12.39,
+    -123.35,
+    3,
+    0.0
+   ],
+   [
+    57.58,
+    7.43,
+    -123.35,
+    2,
+    0.0
+   ],
+   [
+    58.13,
+    7.43,
+    -128.3,
+    3,
+    0.0
+   ],
+   [
+    58.956,
+    0.0,
+    -128.3,
+    2,
+    0.0
+   ],
+   [
+    59.231,
+    0.0,
+    -130.78,
+    3,
+    0.0
+   ],
+   [
+    59.506,
+    -2.47,
+    -130.78,
+    2,
+    0.0
+   ],
+   [
+    59.782,
+    -2.47,
+    -133.26,
+    3,
+    0.0
+   ],
+   [
+    60.057,
+    -4.95,
+    -133.26,
+    2,
+    0.0
+   ],
+   [
+    60.332,
+    -4.95,
+    -135.74,
+    3,
+    0.0
+   ],
+   [
+    60.607,
+    -7.42,
+    -135.74,
+    2,
+    0.0
+   ],
+   [
+    60.882,
+    -7.42,
+    -138.21,
+    3,
+    0.0
+   ],
+   [
+    61.158,
+    -9.91,
+    -138.21,
+    2,
+    0.0
+   ],
+   [
+    61.708,
+    -9.91,
+    -143.16,
+    3,
+    0.0
+   ],
+   [
+    62.534,
+    -17.34,
+    -143.16,
+    2,
+    0.12
+   ],
+   [
+    63.36,
+    -17.34,
+    -150.6,
+    3,
+    0.5
+   ],
+   [
+    63.635,
+    -19.82,
+    -150.6,
+    0,
+    0.63
+   ],
+   [
+    63.91,
+    -19.82,
+    -148.12,
+    3,
+    0.75
+   ],
+   [
+    64.185,
+    -22.29,
+    -148.12,
+    0,
+    0.88
+   ],
+   [
+    64.736,
+    -22.29,
+    -143.16,
+    3,
+    1.13
+   ],
+   [
+    65.011,
+    -24.77,
+    -143.16,
+    0,
+    1.26
+   ],
+   [
+    65.837,
+    -24.77,
+    -135.73,
+    1,
+    1.64
+   ],
+   [
+    66.387,
+    -19.82,
+    -135.73,
+    0,
+    1.9
+   ],
+   [
+    66.662,
+    -19.82,
+    -133.25,
+    1,
+    2.02
+   ],
+   [
+    66.937,
+    -17.34,
+    -133.25,
+    0,
+    2.15
+   ],
+   [
+    67.488,
+    -17.34,
+    -128.29,
+    1,
+    2.41
+   ],
+   [
+    68.038,
+    -12.39,
+    -128.29,
+    0,
+    2.66
+   ],
+   [
+    68.589,
+    -12.39,
+    -123.34,
+    1,
+    2.91
+   ],
+   [
+    68.864,
+    -9.92,
+    -123.34,
+    2,
+    3.04
+   ],
+   [
+    69.139,
+    -9.92,
+    -125.81,
+    1,
+    3.17
+   ],
+   [
+    70.24,
+    -0.01,
+    -125.81,
+    2,
+    3.68
+   ],
+   [
+    70.791,
+    -0.01,
+    -130.77,
+    1,
+    3.93
+   ],
+   [
+    71.066,
+    2.47,
+    -130.77,
+    2,
+    4.06
+   ],
+   [
+    71.341,
+    2.47,
+    -133.24,
+    3,
+    4.19
+   ],
+   [
+    71.616,
+    -0.01,
+    -133.24,
+    2,
+    4.31
+   ],
+   [
+    71.892,
+    -0.01,
+    -135.73,
+    3,
+    4.44
+   ],
+   [
+    72.167,
+    -2.48,
+    -135.73,
+    2,
+    4.57
+   ],
+   [
+    72.442,
+    -2.48,
+    -138.2,
+    3,
+    4.69
+   ],
+   [
+    72.993,
+    -7.44,
+    -138.2,
+    2,
+    4.95
+   ],
+   [
+    73.543,
+    -7.44,
+    -143.15,
+    3,
+    5.2
+   ],
+   [
+    73.818,
+    -9.92,
+    -143.15,
+    2,
+    5.33
+   ],
+   [
+    74.644,
+    -9.92,
+    -150.59,
+    3,
+    5.71
+   ],
+   [
+    75.194,
+    -14.87,
+    -150.59,
+    0,
+    5.96
+   ],
+   [
+    75.47,
+    -14.87,
+    -148.1,
+    3,
+    6.09
+   ],
+   [
+    75.745,
+    -17.34,
+    -148.1,
+    0,
+    6.22
+   ],
+   [
+    76.295,
+    -17.34,
+    -143.15,
+    3,
+    6.47
+   ],
+   [
+    76.846,
+    -22.3,
+    -143.15,
+    0,
+    6.73
+   ],
+   [
+    77.396,
+    -22.3,
+    -138.2,
+    1,
+    6.98
+   ],
+   [
+    77.671,
+    -19.83,
+    -138.2,
+    0,
+    7.11
+   ],
+   [
+    78.497,
+    -19.83,
+    -130.77,
+    1,
+    7.49
+   ],
+   [
+    79.598,
+    -9.92,
+    -130.77,
+    0,
+    8.0
+   ],
+   [
+    80.424,
+    -9.92,
+    -123.34,
+    3,
+    8.0
+   ],
+   [
+    80.974,
+    -14.87,
+    -123.34,
+    0,
+    8.0
+   ],
+   [
+    81.249,
+    -14.87,
+    -120.86,
+    3,
+    8.0
+   ],
+   [
+    81.8,
+    -19.83,
+    -120.86,
+    0,
+    8.0
+   ],
+   [
+    82.35,
+    -19.83,
+    -115.91,
+    3,
+    8.0
+   ],
+   [
+    82.626,
+    -22.31,
+    -115.91,
+    0,
+    8.0
+   ],
+   [
+    83.451,
+    -22.31,
+    -108.49,
+    3,
+    8.0
+   ],
+   [
+    84.002,
+    -27.27,
+    -108.49,
+    0,
+    8.0
+   ],
+   [
+    84.277,
+    -27.27,
+    -106.01,
+    3,
+    8.0
+   ],
+   [
+    84.552,
+    -29.75,
+    -106.01,
+    0,
+    8.0
+   ],
+   [
+    85.653,
+    -29.75,
+    -96.1,
+    3,
+    8.0
+   ],
+   [
+    86.204,
+    -34.7,
+    -96.1,
+    0,
+    8.0
+   ],
+   [
+    86.754,
+    -34.7,
+    -91.15,
+    3,
+    8.0
+   ],
+   [
+    87.305,
+    -39.66,
+    -91.15,
+    0,
+    8.0
+   ],
+   [
+    88.405,
+    -39.66,
+    -81.25,
+    3,
+    8.0
+   ],
+   [
+    88.956,
+    -44.62,
+    -81.25,
+    0,
+    8.0
+   ],
+   [
+    89.782,
+    -44.62,
+    -73.82,
+    3,
+    8.0
+   ],
+   [
+    90.057,
+    -47.1,
+    -73.82,
+    0,
+    8.0
+   ],
+   [
+    90.332,
+    -47.1,
+    -71.34,
+    3,
+    8.0
+   ],
+   [
+    90.607,
+    -49.57,
+    -71.34,
+    0,
+    8.0
+   ],
+   [
+    91.158,
+    -49.57,
+    -66.38,
+    3,
+    8.0
+   ],
+   [
+    91.433,
+    -52.05,
+    -66.38,
+    0,
+    8.0
+   ],
+   [
+    92.259,
+    -52.05,
+    -58.95,
+    3,
+    8.0
+   ],
+   [
+    92.809,
+    -57.0,
+    -58.95,
+    0,
+    8.0
+   ],
+   [
+    93.36,
+    -57.0,
+    -53.99,
+    3,
+    8.0
+   ],
+   [
+    93.91,
+    -61.95,
+    -53.99,
+    0,
+    8.0
+   ],
+   [
+    94.46,
+    -61.95,
+    -49.04,
+    3,
+    8.0
+   ],
+   [
+    95.011,
+    -66.91,
+    -49.04,
+    0,
+    8.0
+   ],
+   [
+    95.837,
+    -66.91,
+    -41.61,
+    3,
+    8.0
+   ],
+   [
+    96.112,
+    -69.38,
+    -41.61,
+    0,
+    8.0
+   ],
+   [
+    97.763,
+    -69.38,
+    -26.75,
+    1,
+    8.0
+   ],
+   [
+    98.864,
+    -59.47,
+    -26.75,
+    0,
+    0.0
+   ],
+   [
+    99.965,
+    -59.47,
+    -16.84,
+    1,
+    0.0
+   ],
+   [
+    101.066,
+    -49.56,
+    -16.84,
+    0,
+    0.0
+   ],
+   [
+    102.167,
+    -49.56,
+    -6.93,
+    1,
+    0.0
+   ],
+   [
+    103.268,
+    -39.65,
+    -6.93,
+    0,
+    0.0
+   ],
+   [
+    104.094,
+    -39.65,
+    0.5,
+    1,
+    0.0
+   ],
+   [
+    104.369,
+    -37.18,
+    0.5,
+    0,
+    0.0
+   ],
+   [
+    105.47,
+    -37.18,
+    10.41,
+    1,
+    0.0
+   ],
+   [
+    106.571,
+    -27.27,
+    10.41,
+    0,
+    0.25
+   ],
+   [
+    107.672,
+    -27.27,
+    20.32,
+    3,
+    0.75
+   ],
+   [
+    108.772,
+    -37.17,
+    20.32,
+    0,
+    1.25
+   ],
+   [
+    109.323,
+    -37.17,
+    25.28,
+    3,
+    1.5
+   ],
+   [
+    110.149,
+    -44.6,
+    25.28,
+    0,
+    1.87
+   ],
+   [
+    110.974,
+    -44.6,
+    32.71,
+    3,
+    2.25
+   ],
+   [
+    112.075,
+    -54.51,
+    32.71,
+    2,
+    2.75
+   ],
+   [
+    112.626,
+    -54.51,
+    27.75,
+    3,
+    3.0
+   ],
+   [
+    112.901,
+    -56.99,
+    27.75,
+    2,
+    3.12
+   ],
+   [
+    113.176,
+    -56.99,
+    25.27,
+    3,
+    3.25
+   ],
+   [
+    113.451,
+    -59.46,
+    25.27,
+    2,
+    3.37
+   ],
+   [
+    113.727,
+    -59.46,
+    22.79,
+    3,
+    3.5
+   ],
+   [
+    114.002,
+    -61.94,
+    22.79,
+    2,
+    3.62
+   ],
+   [
+    114.277,
+    -61.94,
+    20.31,
+    3,
+    3.75
+   ],
+   [
+    115.378,
+    -71.85,
+    20.31,
+    2,
+    4.0
+   ],
+   [
+    116.204,
+    -71.85,
+    12.88,
+    1,
+    4.0
+   ],
+   [
+    116.479,
+    -69.37,
+    12.88,
+    2,
+    4.0
+   ],
+   [
+    116.754,
+    -69.37,
+    10.4,
+    3,
+    4.0
+   ],
+   [
+    117.029,
+    -71.85,
+    10.4,
+    2,
+    4.0
+   ],
+   [
+    117.58,
+    -71.85,
+    5.44,
+    1,
+    4.2
+   ],
+   [
+    117.855,
+    -69.37,
+    5.44,
+    2,
+    4.3
+   ],
+   [
+    118.681,
+    -69.37,
+    -1.99,
+    3,
+    4.6
+   ],
+   [
+    119.231,
+    -74.32,
+    -1.99,
+    2,
+    4.8
+   ],
+   [
+    119.506,
+    -74.32,
+    -4.46,
+    1,
+    4.9
+   ],
+   [
+    119.782,
+    -71.84,
+    -4.46,
+    2,
+    5.0
+   ],
+   [
+    120.057,
+    -71.84,
+    -6.94,
+    3,
+    5.1
+   ],
+   [
+    120.332,
+    -74.31,
+    -6.94,
+    2,
+    5.2
+   ],
+   [
+    120.607,
+    -74.31,
+    -9.41,
+    1,
+    5.3
+   ],
+   [
+    120.883,
+    -71.83,
+    -9.41,
+    2,
+    5.4
+   ],
+   [
+    121.433,
+    -71.83,
+    -14.36,
+    3,
+    5.6
+   ],
+   [
+    121.983,
+    -76.78,
+    -14.36,
+    2,
+    5.8
+   ],
+   [
+    122.259,
+    -76.78,
+    -16.85,
+    3,
+    5.9
+   ],
+   [
+    122.534,
+    -79.25,
+    -16.85,
+    2,
+    6.0
+   ],
+   [
+    123.084,
+    -79.25,
+    -21.8,
+    3,
+    6.2
+   ],
+   [
+    123.36,
+    -81.74,
+    -21.8,
+    2,
+    6.3
+   ],
+   [
+    123.635,
+    -81.74,
+    -24.27,
+    3,
+    6.4
+   ],
+   [
+    123.91,
+    -84.21,
+    -24.27,
+    2,
+    6.5
+   ],
+   [
+    124.185,
+    -84.21,
+    -26.75,
+    3,
+    6.6
+   ],
+   [
+    124.461,
+    -86.7,
+    -26.75,
+    2,
+    6.7
+   ],
+   [
+    124.736,
+    -86.7,
+    -29.22,
+    3,
+    6.8
+   ],
+   [
+    125.011,
+    -89.17,
+    -29.22,
+    2,
+    6.9
+   ],
+   [
+    125.286,
+    -89.17,
+    -31.7,
+    3,
+    7.0
+   ],
+   [
+    125.837,
+    -94.13,
+    -31.7,
+    2,
+    7.2
+   ],
+   [
+    126.387,
+    -94.13,
+    -36.65,
+    3,
+    7.4
+   ],
+   [
+    126.662,
+    -96.61,
+    -36.65,
+    2,
+    7.5
+   ],
+   [
+    127.488,
+    -96.61,
+    -44.08,
+    3,
+    7.8
+   ],
+   [
+    128.039,
+    -101.56,
+    -44.08,
+    2,
+    8.0
+   ],
+   [
+    128.314,
+    -101.56,
+    -46.56,
+    3,
+    8.0
+   ],
+   [
+    129.139,
+    -108.99,
+    -46.56,
+    2,
+    8.0
+   ],
+   [
+    129.69,
+    -108.99,
+    -51.52,
+    3,
+    8.0
+   ],
+   [
+    130.24,
+    -113.94,
+    -51.52,
+    2,
+    8.0
+   ],
+   [
+    130.516,
+    -113.94,
+    -54.0,
+    3,
+    8.0
+   ],
+   [
+    130.791,
+    -116.41,
+    -54.0,
+    2,
+    8.0
+   ],
+   [
+    131.066,
+    -116.41,
+    -56.48,
+    3,
+    8.0
+   ],
+   [
+    131.341,
+    -118.89,
+    -56.48,
+    2,
+    8.0
+   ],
+   [
+    131.892,
+    -118.89,
+    -61.43,
+    3,
+    8.0
+   ],
+   [
+    133.268,
+    -131.27,
+    -61.43,
+    2,
+    8.47
+   ],
+   [
+    133.818,
+    -131.27,
+    -66.38,
+    1,
+    8.78
+   ],
+   [
+    134.369,
+    -126.32,
+    -66.38,
+    2,
+    9.09
+   ],
+   [
+    134.644,
+    -126.32,
+    -68.86,
+    1,
+    9.25
+   ],
+   [
+    135.195,
+    -121.36,
+    -68.86,
+    0,
+    9.56
+   ],
+   [
+    135.47,
+    -121.36,
+    -66.38,
+    1,
+    9.72
+   ],
+   [
+    136.846,
+    -108.97,
+    -66.38,
+    0,
+    10.5
+   ],
+   [
+    137.396,
+    -108.97,
+    -61.43,
+    3,
+    10.81
+   ],
+   [
+    137.672,
+    -111.46,
+    -61.43,
+    0,
+    10.97
+   ],
+   [
+    137.947,
+    -111.46,
+    -58.96,
+    3,
+    11.13
+   ],
+   [
+    138.497,
+    -116.41,
+    -58.96,
+    0,
+    11.44
+   ],
+   [
+    139.048,
+    -116.41,
+    -54.0,
+    3,
+    11.75
+   ],
+   [
+    140.149,
+    -126.32,
+    -54.0,
+    2,
+    12.38
+   ],
+   [
+    140.424,
+    -126.32,
+    -56.48,
+    3,
+    12.53
+   ],
+   [
+    141.25,
+    -133.75,
+    -56.48,
+    2,
+    13.0
+   ],
+   [
+    141.525,
+    -133.75,
+    -58.95,
+    3,
+    13.0
+   ],
+   [
+    141.8,
+    -136.22,
+    -58.95,
+    2,
+    13.0
+   ],
+   [
+    143.451,
+    -136.22,
+    -73.81,
+    3,
+    13.0
+   ],
+   [
+    144.002,
+    -141.18,
+    -73.81,
+    2,
+    13.0
+   ],
+   [
+    144.277,
+    -141.18,
+    -76.28,
+    3,
+    13.0
+   ],
+   [
+    145.653,
+    -153.57,
+    -76.28,
+    2,
+    13.0
+   ],
+   [
+    145.928,
+    -153.57,
+    -78.76,
+    3,
+    13.0
+   ],
+   [
+    146.754,
+    -161.0,
+    -78.76,
+    2,
+    13.0
+   ],
+   [
+    147.855,
+    -161.0,
+    -88.67,
+    3,
+    13.0
+   ],
+   [
+    148.681,
+    -168.44,
+    -88.67,
+    2,
+    13.0
+   ],
+   [
+    148.956,
+    -168.44,
+    -91.14,
+    3,
+    13.0
+   ],
+   [
+    150.607,
+    -183.29,
+    -91.14,
+    2,
+    13.0
+   ],
+   [
+    151.433,
+    -183.29,
+    -98.58,
+    3,
+    5.0
+   ],
+   [
+    151.708,
+    -185.77,
+    -98.58,
+    2,
+    5.0
+   ],
+   [
+    151.984,
+    -185.77,
+    -101.06,
+    3,
+    5.0
+   ],
+   [
+    152.259,
+    -188.24,
+    -101.06,
+    2,
+    5.0
+   ],
+   [
+    152.809,
+    -188.24,
+    -106.01,
+    3,
+    5.0
+   ],
+   [
+    153.084,
+    -190.72,
+    -106.01,
+    2,
+    5.0
+   ],
+   [
+    153.91,
+    -190.72,
+    -113.45,
+    3,
+    5.0
+   ],
+   [
+    154.461,
+    -195.68,
+    -113.45,
+    2,
+    5.0
+   ],
+   [
+    154.736,
+    -195.68,
+    -115.92,
+    3,
+    5.0
+   ],
+   [
+    155.011,
+    -198.15,
+    -115.92,
+    2,
+    5.0
+   ],
+   [
+    155.562,
+    -198.15,
+    -120.88,
+    3,
+    5.0
+   ],
+   [
+    156.112,
+    -203.1,
+    -120.88,
+    2,
+    5.0
+   ],
+   [
+    156.662,
+    -203.1,
+    -125.83,
+    3,
+    5.0
+   ],
+   [
+    156.938,
+    -205.59,
+    -125.83,
+    2,
+    5.0
+   ],
+   [
+    157.213,
+    -205.59,
+    -128.3,
+    3,
+    5.0
+   ],
+   [
+    157.488,
+    -208.06,
+    -128.3,
+    2,
+    5.0
+   ],
+   [
+    157.763,
+    -208.06,
+    -130.78,
+    3,
+    5.0
+   ],
+   [
+    158.314,
+    -213.02,
+    -130.78,
+    2,
+    5.0
+   ],
+   [
+    158.589,
+    -213.02,
+    -133.25,
+    3,
+    5.0
+   ],
+   [
+    159.14,
+    -217.98,
+    -133.25,
+    0,
+    5.0
+   ],
+   [
+    159.415,
+    -217.98,
+    -130.78,
+    3,
+    5.0
+   ],
+   [
+    159.69,
+    -220.46,
+    -130.78,
+    0,
+    5.0
+   ],
+   [
+    159.965,
+    -220.46,
+    -128.3,
+    3,
+    5.0
+   ],
+   [
+    160.24,
+    -222.93,
+    -128.3,
+    0,
+    5.0
+   ],
+   [
+    160.516,
+    -222.93,
+    -125.82,
+    3,
+    5.0
+   ],
+   [
+    161.066,
+    -227.88,
+    -125.82,
+    0,
+    5.0
+   ],
+   [
+    161.617,
+    -227.88,
+    -120.86,
+    3,
+    5.0
+   ],
+   [
+    161.892,
+    -230.36,
+    -120.86,
+    0,
+    5.0
+   ],
+   [
+    162.718,
+    -230.36,
+    -113.43,
+    1,
+    5.0
+   ],
+   [
+    163.268,
+    -225.41,
+    -113.43,
+    0,
+    5.0
+   ],
+   [
+    163.543,
+    -225.41,
+    -110.95,
+    1,
+    5.0
+   ],
+   [
+    163.818,
+    -222.93,
+    -110.95,
+    0,
+    5.0
+   ],
+   [
+    164.369,
+    -222.93,
+    -105.99,
+    1,
+    5.0
+   ],
+   [
+    164.919,
+    -217.98,
+    -105.99,
+    0,
+    5.0
+   ],
+   [
+    165.47,
+    -217.98,
+    -101.03,
+    1,
+    5.0
+   ],
+   [
+    165.745,
+    -215.51,
+    -101.03,
+    0,
+    5.0
+   ],
+   [
+    166.02,
+    -215.51,
+    -98.56,
+    3,
+    5.0
+   ],
+   [
+    166.295,
+    -217.98,
+    -98.56,
+    0,
+    5.0
+   ],
+   [
+    166.571,
+    -217.98,
+    -96.08,
+    3,
+    5.0
+   ],
+   [
+    167.121,
+    -222.93,
+    -96.08,
+    0,
+    5.0
+   ],
+   [
+    169.323,
+    -222.93,
+    -76.26,
+    3,
+    5.0
+   ],
+   [
+    169.873,
+    -227.88,
+    -76.26,
+    2,
+    5.0
+   ],
+   [
+    170.974,
+    -227.88,
+    -86.17,
+    3,
+    5.0
+   ],
+   [
+    172.075,
+    -237.79,
+    -86.17,
+    0,
+    5.0
+   ],
+   [
+    172.626,
+    -237.79,
+    -81.21,
+    3,
+    5.0
+   ],
+   [
+    173.176,
+    -242.74,
+    -81.21,
+    0,
+    5.0
+   ],
+   [
+    173.727,
+    -242.74,
+    -76.25,
+    3,
+    5.0
+   ],
+   [
+    174.828,
+    -252.65,
+    -76.25,
+    0,
+    5.0
+   ],
+   [
+    176.204,
+    -252.65,
+    -63.86,
+    3,
+    5.0
+   ],
+   [
+    178.13,
+    -269.98,
+    -63.86,
+    0,
+    5.0
+   ],
+   [
+    179.231,
+    -269.98,
+    -53.96,
+    3,
+    5.0
+   ],
+   [
+    179.782,
+    -274.94,
+    -53.96,
+    0,
+    5.0
+   ],
+   [
+    180.332,
+    -274.94,
+    -49.01,
+    3,
+    5.0
+   ],
+   [
+    180.883,
+    -279.9,
+    -49.01,
+    0,
+    5.0
+   ],
+   [
+    181.433,
+    -279.9,
+    -44.06,
+    3,
+    5.0
+   ],
+   [
+    182.534,
+    -289.81,
+    -44.06,
+    0,
+    5.0
+   ],
+   [
+    183.635,
+    -289.81,
+    -34.15,
+    3,
+    5.0
+   ],
+   [
+    184.736,
+    -299.72,
+    -34.15,
+    0,
+    5.0
+   ],
+   [
+    191.033,
+    -299.72,
+    22.53,
+    0,
+    5.0
+   ]
+  ]
+ }
+}
