@@ -3408,6 +3408,251 @@
     210.88,
     285.27
    ]
+  },
+  {
+   "id": "art-1",
+   "kind": "standee",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    3,
+    3,
+    0.8
+   ],
+   "face": "camera",
+   "color": "#fff4fa",
+   "color2": "#c2457f",
+   "t": 2.071,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-2",
+   "kind": "decal",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    4,
+    0,
+    4
+   ],
+   "face": "road",
+   "t": 20.432,
+   "side": -1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-3",
+   "kind": "facade",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    5,
+    5,
+    3
+   ],
+   "face": "road",
+   "color": "#f7c6dc",
+   "color2": "#ff6fb1",
+   "t": 53.465,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-4",
+   "kind": "standee",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    3,
+    3,
+    0.8
+   ],
+   "face": "camera",
+   "color": "#fff4fa",
+   "color2": "#c2457f",
+   "t": 55.858,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-5",
+   "kind": "decal",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    4,
+    0,
+    4
+   ],
+   "face": "road",
+   "t": 93.794,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-6",
+   "kind": "standee",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    3,
+    3,
+    0.8
+   ],
+   "face": "camera",
+   "color": "#fff4fa",
+   "color2": "#c2457f",
+   "t": 112.021,
+   "side": -1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-7",
+   "kind": "facade",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    4,
+    4.5,
+    3
+   ],
+   "face": "road",
+   "color": "#f7c6dc",
+   "color2": "#ff6fb1",
+   "t": 14.782,
+   "side": -1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-8",
+   "kind": "facade",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    4,
+    4.5,
+    3
+   ],
+   "face": "road",
+   "color": "#f7c6dc",
+   "color2": "#ff6fb1",
+   "t": 26.933,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-9",
+   "kind": "standee",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    3,
+    3,
+    0.8
+   ],
+   "face": "camera",
+   "color": "#fff4fa",
+   "color2": "#c2457f",
+   "t": 33.862,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-10",
+   "kind": "decal",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    4,
+    0,
+    4
+   ],
+   "face": "road",
+   "t": 69.375,
+   "side": -1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-11",
+   "kind": "facade",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    4,
+    4.5,
+    3
+   ],
+   "face": "road",
+   "color": "#f7c6dc",
+   "color2": "#ff6fb1",
+   "t": 102.108,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-12",
+   "kind": "standee",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    3,
+    3,
+    0.8
+   ],
+   "face": "camera",
+   "color": "#fff4fa",
+   "color2": "#c2457f",
+   "t": 124.608,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-13",
+   "kind": "standee",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    3,
+    3,
+    0.8
+   ],
+   "face": "camera",
+   "color": "#fff4fa",
+   "color2": "#c2457f",
+   "t": 129.289,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-14",
+   "kind": "decal",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    4,
+    0,
+    4
+   ],
+   "face": "road",
+   "t": 156.452,
+   "side": -1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-15",
+   "kind": "decal",
+   "src": "art/chat-sign.jpg",
+   "size": [
+    4,
+    0,
+    4
+   ],
+   "face": "road",
+   "t": 78.612,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
   }
  ],
  "events": [
@@ -6481,6 +6726,77 @@
     2,
     2.0
    ]
+  ]
+ },
+ "dressing": {
+  "colors": [
+   "#fff4fa",
+   "#f7c6dc",
+   "#ff6fb1",
+   "#c2457f",
+   "#8bbf7a"
+  ],
+  "art": [
+   {
+    "src": "art/chat-sign.jpg",
+    "as": "facade",
+    "size": [
+     2.6,
+     3.2,
+     2.6
+    ],
+    "weight": 1.0,
+    "scale": [
+     0.8,
+     1.2
+    ],
+    "scaleY": [
+     0.8,
+     1.5
+    ]
+   },
+   {
+    "src": "art/chat-sign.jpg",
+    "uv": [
+     0.08,
+     0.2,
+     0.92,
+     0.82
+    ],
+    "as": "card",
+    "size": [
+     1.8,
+     1.35,
+     0.1
+    ],
+    "weight": 0.8,
+    "scale": [
+     0.8,
+     1.2
+    ],
+    "scaleY": [
+     1,
+     1
+    ]
+   },
+   {
+    "src": "art/chat-sign.jpg",
+    "as": "tile",
+    "size": [
+     2.4,
+     0,
+     2.4
+    ],
+    "weight": 0.5,
+    "scale": [
+     0.8,
+     1.2
+    ],
+    "scaleY": [
+     1,
+     1
+    ]
+   }
   ]
  }
 }

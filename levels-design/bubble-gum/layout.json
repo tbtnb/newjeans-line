@@ -3066,6 +3066,351 @@
     196.2,
     286.98
    ]
+  },
+  {
+   "id": "art-1",
+   "kind": "standee",
+   "src": "art/silhouette-screen.png",
+   "size": [
+    6,
+    2.8,
+    0
+   ],
+   "face": "camera",
+   "uv": [
+    0.04,
+    0.2,
+    0.69,
+    0.8
+   ],
+   "t": 10.667,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-2",
+   "kind": "decal",
+   "src": "art/silhouette-screen.png",
+   "size": [
+    4.2,
+    0,
+    2.8
+   ],
+   "face": "road",
+   "uv": [
+    0.69,
+    0.24,
+    0.97,
+    0.64
+   ],
+   "alpha": true,
+   "t": 28.504,
+   "side": -1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-3",
+   "kind": "standee",
+   "src": "art/silhouette-screen.png",
+   "size": [
+    3.4,
+    2.3,
+    0.9
+   ],
+   "face": "camera",
+   "uv": [
+    0.69,
+    0.24,
+    0.97,
+    0.64
+   ],
+   "color": "#1f2d55",
+   "color2": "#f3e6c8",
+   "t": 45.676,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-4",
+   "kind": "decal",
+   "src": "art/silhouette-screen.png",
+   "size": [
+    7,
+    0,
+    3
+   ],
+   "face": "road",
+   "uv": [
+    0.04,
+    0.2,
+    0.69,
+    0.8
+   ],
+   "alpha": true,
+   "t": 66.812,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-5",
+   "kind": "standee",
+   "src": "art/silhouette-screen.png",
+   "size": [
+    1.9,
+    3.0,
+    0
+   ],
+   "face": "camera",
+   "uv": [
+    0.3,
+    0.2,
+    0.48,
+    0.8
+   ],
+   "t": 86.934,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-6",
+   "kind": "standee",
+   "src": "art/silhouette-screen.png",
+   "size": [
+    6,
+    2.8,
+    0
+   ],
+   "face": "camera",
+   "uv": [
+    0.04,
+    0.2,
+    0.69,
+    0.8
+   ],
+   "t": 105.648,
+   "side": -1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-7",
+   "kind": "standee",
+   "src": "art/silhouette-screen.png",
+   "size": [
+    3.4,
+    2.3,
+    0.9
+   ],
+   "face": "camera",
+   "uv": [
+    0.69,
+    0.24,
+    0.97,
+    0.64
+   ],
+   "color": "#1f2d55",
+   "color2": "#f3e6c8",
+   "t": 35.771,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-8",
+   "kind": "decal",
+   "src": "art/silhouette-screen.png",
+   "size": [
+    7,
+    0,
+    3
+   ],
+   "face": "road",
+   "uv": [
+    0.04,
+    0.2,
+    0.69,
+    0.8
+   ],
+   "alpha": true,
+   "t": 53.671,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-9",
+   "kind": "standee",
+   "src": "art/silhouette-screen.png",
+   "size": [
+    6,
+    2.8,
+    0
+   ],
+   "face": "camera",
+   "uv": [
+    0.04,
+    0.2,
+    0.69,
+    0.8
+   ],
+   "t": 121.666,
+   "side": -1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-10",
+   "kind": "standee",
+   "src": "art/silhouette-screen.png",
+   "size": [
+    6,
+    2.8,
+    0
+   ],
+   "face": "camera",
+   "uv": [
+    0.04,
+    0.2,
+    0.69,
+    0.8
+   ],
+   "t": 126.237,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-11",
+   "kind": "decal",
+   "src": "art/silhouette-screen.png",
+   "size": [
+    4.2,
+    0,
+    2.8
+   ],
+   "face": "road",
+   "uv": [
+    0.69,
+    0.24,
+    0.97,
+    0.64
+   ],
+   "alpha": true,
+   "t": 137.666,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-12",
+   "kind": "decal",
+   "src": "art/silhouette-screen.png",
+   "size": [
+    4.2,
+    0,
+    2.8
+   ],
+   "face": "road",
+   "uv": [
+    0.69,
+    0.24,
+    0.97,
+    0.64
+   ],
+   "alpha": true,
+   "t": 144.522,
+   "side": -1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-13",
+   "kind": "standee",
+   "src": "art/silhouette-screen.png",
+   "size": [
+    1.9,
+    3.0,
+    0
+   ],
+   "face": "camera",
+   "uv": [
+    0.3,
+    0.2,
+    0.48,
+    0.8
+   ],
+   "t": 174.615,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-14",
+   "kind": "standee",
+   "src": "art/silhouette-screen.png",
+   "size": [
+    1.9,
+    3.0,
+    0
+   ],
+   "face": "camera",
+   "uv": [
+    0.3,
+    0.2,
+    0.48,
+    0.8
+   ],
+   "t": 180.472,
+   "side": -1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-15",
+   "kind": "standee",
+   "src": "art/silhouette-screen.png",
+   "size": [
+    1.9,
+    3.0,
+    0
+   ],
+   "face": "camera",
+   "uv": [
+    0.3,
+    0.2,
+    0.48,
+    0.8
+   ],
+   "t": 58.242,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-16",
+   "kind": "standee",
+   "src": "art/silhouette-screen.png",
+   "size": [
+    1.9,
+    3.0,
+    0
+   ],
+   "face": "camera",
+   "uv": [
+    0.3,
+    0.2,
+    0.48,
+    0.8
+   ],
+   "t": 75.955,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
   }
  ],
  "events": [
@@ -4979,6 +5324,89 @@
     1,
     3.0
    ]
+  ]
+ },
+ "dressing": {
+  "colors": [
+   "#f3e6c8",
+   "#5fd0d0",
+   "#ff7b2e",
+   "#1f2d55",
+   "#e8d7b0"
+  ],
+  "art": [
+   {
+    "src": "art/silhouette-screen.png",
+    "uv": [
+     0.3,
+     0.2,
+     0.48,
+     0.8
+    ],
+    "as": "card",
+    "size": [
+     1.3,
+     2.0,
+     0.05
+    ],
+    "weight": 0.9,
+    "scale": [
+     0.8,
+     1.3
+    ],
+    "scaleY": [
+     1,
+     1
+    ]
+   },
+   {
+    "src": "art/silhouette-screen.png",
+    "uv": [
+     0.47,
+     0.2,
+     0.6,
+     0.8
+    ],
+    "as": "card",
+    "size": [
+     1.0,
+     2.0,
+     0.05
+    ],
+    "weight": 0.7,
+    "scale": [
+     0.8,
+     1.2
+    ],
+    "scaleY": [
+     1,
+     1
+    ]
+   },
+   {
+    "src": "art/silhouette-screen.png",
+    "uv": [
+     0.69,
+     0.24,
+     0.97,
+     0.64
+    ],
+    "as": "card",
+    "size": [
+     2.2,
+     1.5,
+     0.05
+    ],
+    "weight": 0.6,
+    "scale": [
+     0.8,
+     1.2
+    ],
+    "scaleY": [
+     1,
+     1
+    ]
+   }
   ]
  }
 }

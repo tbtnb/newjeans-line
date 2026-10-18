@@ -5205,6 +5205,257 @@
     -137.96,
     -56.48
    ]
+  },
+  {
+   "id": "art-1",
+   "kind": "standee",
+   "src": "art/signal-poster.jpg",
+   "size": [
+    6,
+    3.4,
+    0.8
+   ],
+   "face": "camera",
+   "color": "#1a1d3a",
+   "color2": "#3b3f6e",
+   "t": 6.573,
+   "side": -1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-2",
+   "kind": "standee",
+   "src": "art/flower-billboard.jpg",
+   "size": [
+    3.6,
+    3.6,
+    1.0
+   ],
+   "face": "camera",
+   "color": "#1a1d3a",
+   "color2": "#ff5fa2",
+   "t": 31.891,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-3",
+   "kind": "decal",
+   "src": "art/flower-billboard.jpg",
+   "size": [
+    5,
+    0,
+    5
+   ],
+   "face": "road",
+   "color": "#1a1d3a",
+   "t": 36.406,
+   "side": -1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-4",
+   "kind": "facade",
+   "src": "art/signal-poster.jpg",
+   "size": [
+    6,
+    5.5,
+    3
+   ],
+   "face": "road",
+   "color": "#3b3f6e",
+   "color2": "#ff5fa2",
+   "t": 63.681,
+   "side": -1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-5",
+   "kind": "standee",
+   "src": "art/flower-billboard.jpg",
+   "size": [
+    3.6,
+    3.6,
+    1.0
+   ],
+   "face": "camera",
+   "color": "#1a1d3a",
+   "color2": "#5b3fa0",
+   "t": 70.464,
+   "side": -1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-6",
+   "kind": "decal",
+   "src": "art/signal-poster.jpg",
+   "size": [
+    8,
+    0,
+    4.5
+   ],
+   "face": "road",
+   "color": "#1a1d3a",
+   "t": 134.277,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-7",
+   "kind": "standee",
+   "src": "art/signal-poster.jpg",
+   "size": [
+    6,
+    3.4,
+    0.8
+   ],
+   "face": "camera",
+   "color": "#1a1d3a",
+   "color2": "#3b3f6e",
+   "t": 84.736,
+   "side": -1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-8",
+   "kind": "standee",
+   "src": "art/signal-poster.jpg",
+   "size": [
+    6,
+    3.4,
+    0.8
+   ],
+   "face": "camera",
+   "color": "#1a1d3a",
+   "color2": "#3b3f6e",
+   "t": 115.063,
+   "side": -1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-9",
+   "kind": "standee",
+   "src": "art/signal-poster.jpg",
+   "size": [
+    6,
+    3.4,
+    0.8
+   ],
+   "face": "camera",
+   "color": "#1a1d3a",
+   "color2": "#3b3f6e",
+   "t": 150.101,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-10",
+   "kind": "decal",
+   "src": "art/flower-billboard.jpg",
+   "size": [
+    5,
+    0,
+    5
+   ],
+   "face": "road",
+   "color": "#1a1d3a",
+   "t": 99.047,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-11",
+   "kind": "decal",
+   "src": "art/flower-billboard.jpg",
+   "size": [
+    5,
+    0,
+    5
+   ],
+   "face": "road",
+   "color": "#1a1d3a",
+   "t": 184.78,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-12",
+   "kind": "facade",
+   "src": "art/flower-billboard.jpg",
+   "size": [
+    4,
+    5,
+    3
+   ],
+   "face": "road",
+   "color": "#3b3f6e",
+   "color2": "#5b3fa0",
+   "t": 56.111,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-13",
+   "kind": "facade",
+   "src": "art/flower-billboard.jpg",
+   "size": [
+    4,
+    5,
+    3
+   ],
+   "face": "road",
+   "color": "#3b3f6e",
+   "color2": "#5b3fa0",
+   "t": 142.075,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-14",
+   "kind": "standee",
+   "src": "art/flower-billboard.jpg",
+   "size": [
+    3,
+    3,
+    0.8
+   ],
+   "face": "camera",
+   "color": "#1a1d3a",
+   "color2": "#ff5fa2",
+   "t": 14.828,
+   "side": -1,
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "id": "art-15",
+   "kind": "standee",
+   "src": "art/flower-billboard.jpg",
+   "size": [
+    3,
+    3,
+    0.8
+   ],
+   "face": "camera",
+   "color": "#1a1d3a",
+   "color2": "#ff5fa2",
+   "t": 25.711,
+   "side": 1,
+   "near": 0.8,
+   "y": -0.6
   }
  ],
  "events": [
@@ -7714,6 +7965,77 @@
     0,
     5.0
    ]
+  ]
+ },
+ "dressing": {
+  "colors": [
+   "#3b3f6e",
+   "#5b3fa0",
+   "#ff5fa2",
+   "#1a1d3a",
+   "#2f6e5a"
+  ],
+  "art": [
+   {
+    "src": "art/signal-poster.jpg",
+    "uv": [
+     0,
+     0.6,
+     1,
+     1
+    ],
+    "as": "facade",
+    "size": [
+     3,
+     4.5,
+     3
+    ],
+    "weight": 1.2,
+    "scale": [
+     0.8,
+     1.2
+    ],
+    "scaleY": [
+     0.8,
+     1.8
+    ]
+   },
+   {
+    "src": "art/flower-billboard.jpg",
+    "as": "card",
+    "size": [
+     2,
+     2,
+     0.15
+    ],
+    "weight": 0.8,
+    "scale": [
+     0.8,
+     1.2
+    ],
+    "scaleY": [
+     1,
+     1
+    ]
+   },
+   {
+    "src": "art/flower-billboard.jpg",
+    "as": "crate",
+    "size": [
+     1.2,
+     1.2,
+     1.2
+    ],
+    "weight": 0.6,
+    "scale": [
+     0.7,
+     1.1
+    ],
+    "scaleY": [
+     1,
+     1
+    ]
+   }
   ]
  }
 }
