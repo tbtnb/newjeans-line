@@ -110,3 +110,48 @@ Whole chart vs FULL-MIX onset detector (not used for snapping): 360/378 taps hav
 - last 25%: n=114, median 9.5 ms, p90 29.3 ms
 
 Caveat: these offsets are measured against the same librosa/demucs onset detector family used for candidates (self-consistency, not an independent listening test). Grid-placed taps on soft vocal entries can show 20–60 ms offsets to the nearest transient; that is a detector limit, not a deliberate shift. No human listening or real-device test has been done by this worker.
+
+## Rhythm-logic audit (integ-b)
+
+Audited on 2026-10-18 by integrator B against the user's rule *rhythm logic beats density* (W2 already audited this chart with stem analysis; this pass applies the same full-mix thresholds that were applied to Ditto, so a few W2 kick/burst taps that are not clear in the full mix were dropped). Taps **378 → 364** (-14; 14 removed, 0 added). Nothing was added to reach a CPM target.
+
+Method (same thresholds as `tools/charts/chartlogic.py` and the Ditto trim): each section follows the one band that best explains its taps; a tap is removed if it is **faint** (followed band < 0.35, full mix < 0.35, every other band < 0.5), **off-layer** (followed band < 0.35 while another band ≥ 0.6) or a **weak burst** (gap < 0.15 s and neither the full mix nor the followed band ≥ 0.6). Strengths are onset strengths per band, normalised to the song's 99.5th percentile, max within ±30 ms of the tap. Removing a tap removes a turn, so the route was repaired by `tools/charts/integb_route.py`, which keeps the worker's own turn sequence phrase by phrase wherever it stays legal; worldPos landmarks were moved with the road.
+
+### What the taps follow (per section)
+
+| section | time | taps follow | taps before → after | /s after | median strength of followed band | removed (faint / off-layer / weak burst) |
+|---|---|---|---|---|---|---|
+| Intro · 薄荷街角 | 0.00 | melody / synth / vocal line (mid band) | 13 → 13 | 0.99 | 0.69 | 0 / 0 / 0 |
+| Verse 1 · 石砖小巷 | 13.16 | kick + snare drum groove (full mix) | 62 → 60 | 2.34 | 0.56 | 1 / 0 / 1 |
+| Chorus 1 · 公园遮阳伞 | 38.76 | kick + snare drum groove (full mix) | 72 → 71 | 2.77 | 0.50 | 1 / 0 / 0 |
+| Break · 下沉喷泉广场 | 64.36 | kick + snare drum groove (full mix) | 8 → 8 | 1.25 | 0.38 | 0 / 0 / 0 |
+| Build · 里斯本阶梯 | 70.76 | melody / synth / vocal line (mid band) | 15 → 14 | 2.19 | 0.78 | 1 / 0 / 0 |
+| Verse 2 · 市场拱廊 | 77.16 | kick + snare drum groove (full mix) | 61 → 60 | 2.34 | 0.62 | 0 / 1 / 0 |
+| Break 2 · 观景台 | 102.76 | lead vocal syllables (vocal stem, gated to the full mix) | 5 → 4 | 1.25 | 1.27 | 0 / 1 / 0 |
+| Verse 3 · 下坡 | 105.96 | kick + snare drum groove (full mix) | 24 → 22 | 2.29 | 0.65 | 0 / 1 / 1 |
+| Final chorus · 五人广场 | 115.56 | melody / synth / vocal line (mid band) | 36 → 34 | 2.66 | 0.55 | 0 / 1 / 1 |
+| Final chorus b · 像素浮雕墙 | 128.36 | kick + snare drum groove (full mix) | 43 → 40 | 3.12 | 0.82 | 2 / 0 / 1 |
+| Final chorus c · 巴士街 | 141.16 | kick + snare drum groove (full mix) | 39 → 38 | 2.54 | 0.94 | 1 / 0 / 0 |
+
+### Audit diff (removed taps)
+
+| t (s) | tag | reason | followed band | band strength | full-mix strength |
+|---|---|---|---|---|---|
+| 37.053 | kick | weak-burst | drums | 0.57 | 0.45 |
+| 38.356 | kick | faint | drums | 0.21 | 0.21 |
+| 42.347 | kick | faint | drums | 0.29 | 0.21 |
+| 76.356 | kick | faint | mid | 0.19 | 0.14 |
+| 97.742 | kick | off-layer | drums | 0.30 | 0.43 |
+| 105.941 | kick | off-layer | vocal | 0.20 | 1.50 |
+| 112.129 | kick | off-layer | drums | 0.30 | 0.16 |
+| 113.706 | hat | weak-burst | drums | 0.55 | 0.07 |
+| 117.156 | kick | off-layer | mid | 0.32 | 0.25 |
+| 128.153 | melody | weak-burst | mid | 0.48 | 0.32 |
+| 130.956 | kick | faint | drums | 0.25 | 0.14 |
+| 134.121 | kick | weak-burst | drums | 0.43 | 0.21 |
+| 137.358 | kick | faint | drums | 0.25 | 0.18 |
+| 146.156 | kick | faint | drums | 0.30 | 0.25 |
+
+Added taps: none.
+
+Original (pre-audit) chart and layout: `levels-design/super-shy/pre-audit/`. Integrated copy: `levels-src/super-shy/`. chartlogic report after the audit: `docs/verification/super-shy-chartlogic.md`.

@@ -354,11 +354,6 @@
    "tag": "kick"
   },
   {
-   "t": 37.053,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
    "t": 37.547,
    "dir": "L",
    "tag": "kick"
@@ -374,11 +369,6 @@
    "tag": "kick"
   },
   {
-   "t": 38.356,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
    "t": 38.547,
    "dir": "R",
    "tag": "kick"
@@ -390,47 +380,42 @@
   },
   {
    "t": 39.145,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 39.542,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 39.845,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 40.35,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 40.742,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 41.142,
    "dir": "R",
    "tag": "kick"
   },
   {
-   "t": 41.75,
+   "t": 41.142,
    "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 41.75,
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 41.944,
    "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 42.347,
-   "dir": "R",
    "tag": "kick"
   },
   {
@@ -830,12 +815,12 @@
   },
   {
    "t": 75.142,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 75.543,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -844,13 +829,8 @@
    "tag": "kick"
   },
   {
-   "t": 76.356,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
    "t": 76.756,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1080,12 +1060,12 @@
   },
   {
    "t": 96.142,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 96.74,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1095,11 +1075,6 @@
   },
   {
    "t": 97.342,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 97.742,
    "dir": "R",
    "tag": "kick"
   },
@@ -1184,11 +1159,6 @@
    "tag": "vocal"
   },
   {
-   "t": 105.941,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
    "t": 106.339,
    "dir": "R",
    "tag": "kick"
@@ -1259,11 +1229,6 @@
    "tag": "kick"
   },
   {
-   "t": 112.129,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
    "t": 112.746,
    "dir": "L",
    "tag": "kick"
@@ -1271,11 +1236,6 @@
   {
    "t": 113.526,
    "dir": "R",
-   "tag": "hat"
-  },
-  {
-   "t": 113.706,
-   "dir": "L",
    "tag": "hat"
   },
   {
@@ -1326,11 +1286,6 @@
   {
    "t": 116.941,
    "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 117.156,
-   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1479,57 +1434,47 @@
    "tag": "kick"
   },
   {
-   "t": 128.153,
-   "dir": "R",
-   "tag": "melody"
-  },
-  {
    "t": 128.273,
    "dir": "L",
    "tag": "melody"
   },
   {
    "t": 128.389,
-   "dir": "L",
+   "dir": "R",
    "tag": "melody"
   },
   {
    "t": 128.739,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 129.141,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 129.441,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 129.741,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 129.942,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 130.339,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 130.741,
+   "t": 130.339,
    "dir": "R",
    "tag": "kick"
   },
   {
-   "t": 130.956,
+   "t": 130.741,
    "dir": "L",
    "tag": "kick"
   },
@@ -1575,7 +1520,7 @@
   },
   {
    "t": 133.539,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1584,18 +1529,13 @@
    "tag": "kick"
   },
   {
-   "t": 134.121,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
    "t": 134.241,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 134.556,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1605,12 +1545,12 @@
   },
   {
    "t": 135.139,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 135.541,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1636,11 +1576,6 @@
   {
    "t": 137.141,
    "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 137.358,
-   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1750,17 +1685,17 @@
   },
   {
    "t": 144.141,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 144.356,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 144.739,
+   "t": 144.356,
    "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 144.739,
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1781,11 +1716,6 @@
   {
    "t": 145.952,
    "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 146.156,
-   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1903,57 +1833,68 @@
   {
    "t": 0,
    "label": "Intro · 薄荷街角",
-   "kind": "intro"
+   "kind": "intro",
+   "follows": "mid"
   },
   {
    "t": 13.156,
    "label": "Verse 1 · 石砖小巷",
-   "kind": "verse"
+   "kind": "verse",
+   "follows": "drums"
   },
   {
    "t": 38.756,
    "label": "Chorus 1 · 公园遮阳伞",
-   "kind": "chorus"
+   "kind": "chorus",
+   "follows": "drums"
   },
   {
    "t": 64.356,
    "label": "Break · 下沉喷泉广场",
-   "kind": "break"
+   "kind": "break",
+   "follows": "drums"
   },
   {
    "t": 70.756,
    "label": "Build · 里斯本阶梯",
-   "kind": "pre"
+   "kind": "pre",
+   "follows": "mid"
   },
   {
    "t": 77.156,
    "label": "Verse 2 · 市场拱廊",
-   "kind": "verse"
+   "kind": "verse",
+   "follows": "drums"
   },
   {
    "t": 102.756,
    "label": "Break 2 · 观景台",
-   "kind": "break"
+   "kind": "break",
+   "follows": "vocal"
   },
   {
    "t": 105.956,
    "label": "Verse 3 · 下坡",
-   "kind": "verse"
+   "kind": "verse",
+   "follows": "drums"
   },
   {
    "t": 115.556,
    "label": "Final chorus · 五人广场",
-   "kind": "chorus"
+   "kind": "chorus",
+   "follows": "mid"
   },
   {
    "t": 128.356,
    "label": "Final chorus b · 像素浮雕墙",
-   "kind": "chorus"
+   "kind": "chorus",
+   "follows": "drums"
   },
   {
    "t": 141.156,
    "label": "Final chorus c · 巴士街",
-   "kind": "chorus"
+   "kind": "chorus",
+   "follows": "drums"
   }
  ],
  "notes": "150.0 BPM grid (drum-stem fit, residual ≤ 2 ms). Verses follow the broken-beat kick on steps 4,7,10,14 (3+3+4 sixteenths: the skippy \"shy\" groove); choruses follow the jersey-style kick on 0,4,8,11,14; 8th-note kick runs (200 ms) close each 4-bar phrase. Drumless breaks follow the vocal syllables.",
@@ -2387,6 +2328,126 @@
    "kick",
    "kick",
    "kick"
-  ]
+  ],
+  "audit": {
+   "by": "integrator B (integ-b)",
+   "rule": "one audible layer per section; no faint/off-layer taps; bursts only where clear in the full mix; taps only removed",
+   "taps_before": 378,
+   "taps_after": 364,
+   "removed": [
+    {
+     "t": 37.053,
+     "why": "weak-burst",
+     "layer": "drums",
+     "layer_strength": 0.57,
+     "full_strength": 0.45,
+     "tag": "kick"
+    },
+    {
+     "t": 38.356,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.21,
+     "full_strength": 0.21,
+     "tag": "kick"
+    },
+    {
+     "t": 42.347,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.29,
+     "full_strength": 0.21,
+     "tag": "kick"
+    },
+    {
+     "t": 76.356,
+     "why": "faint",
+     "layer": "mid",
+     "layer_strength": 0.19,
+     "full_strength": 0.14,
+     "tag": "kick"
+    },
+    {
+     "t": 97.742,
+     "why": "off-layer",
+     "layer": "drums",
+     "layer_strength": 0.3,
+     "full_strength": 0.43,
+     "tag": "kick"
+    },
+    {
+     "t": 105.941,
+     "why": "off-layer",
+     "layer": "vocal",
+     "layer_strength": 0.2,
+     "full_strength": 1.5,
+     "tag": "kick"
+    },
+    {
+     "t": 112.129,
+     "why": "off-layer",
+     "layer": "drums",
+     "layer_strength": 0.3,
+     "full_strength": 0.16,
+     "tag": "kick"
+    },
+    {
+     "t": 113.706,
+     "why": "weak-burst",
+     "layer": "drums",
+     "layer_strength": 0.55,
+     "full_strength": 0.07,
+     "tag": "hat"
+    },
+    {
+     "t": 117.156,
+     "why": "off-layer",
+     "layer": "mid",
+     "layer_strength": 0.32,
+     "full_strength": 0.25,
+     "tag": "kick"
+    },
+    {
+     "t": 128.153,
+     "why": "weak-burst",
+     "layer": "mid",
+     "layer_strength": 0.48,
+     "full_strength": 0.32,
+     "tag": "melody"
+    },
+    {
+     "t": 130.956,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.25,
+     "full_strength": 0.14,
+     "tag": "kick"
+    },
+    {
+     "t": 134.121,
+     "why": "weak-burst",
+     "layer": "drums",
+     "layer_strength": 0.43,
+     "full_strength": 0.21,
+     "tag": "kick"
+    },
+    {
+     "t": 137.358,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.25,
+     "full_strength": 0.18,
+     "tag": "kick"
+    },
+    {
+     "t": 146.156,
+     "why": "faint",
+     "layer": "drums",
+     "layer_strength": 0.3,
+     "full_strength": 0.25,
+     "tag": "kick"
+    }
+   ]
+  }
  }
 }

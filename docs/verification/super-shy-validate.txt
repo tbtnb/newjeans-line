@@ -1,0 +1,18 @@
+== super-shy  duration 154.70s  taps 364  dirs R/L 186/178  multi-level crossings 93
+   min gap 0.116s  median gap 0.387s
+   peak density 240 CPM (taps in any 1 s window x60), average 141 CPM; gaps < 0.15 s: 1
+   fastest run: 4 taps (gaps<=0.30s) from 122.74s to 123.56s
+   judgment window: min ±52 ms, median ±110 ms (engine rule)
+   longest same-direction run 6 (>=2 = U-turn, >=4 = spiral)  elevation events 8
+      0.00-  13.16 intro   Intro · 薄荷街角                   13 taps  0.99/s
+     13.16-  38.76 verse   Verse 1 · 石砖小巷                 60 taps  2.34/s
+     38.76-  64.36 chorus  Chorus 1 · 公园遮阳伞               71 taps  2.77/s
+     64.36-  70.76 break   Break · 下沉喷泉广场                  8 taps  1.25/s
+     70.76-  77.16 pre     Build · 里斯本阶梯                  14 taps  2.19/s
+     77.16- 102.76 verse   Verse 2 · 市场拱廊                 60 taps  2.34/s
+    102.76- 105.96 break   Break 2 · 观景台                   4 taps  1.25/s
+    105.96- 115.56 verse   Verse 3 · 下坡                   22 taps  2.29/s
+    115.56- 128.36 chorus  Final chorus · 五人广场            34 taps  2.66/s
+    128.36- 141.16 chorus  Final chorus b · 像素浮雕墙         40 taps  3.12/s
+    141.16- 154.70 chorus  Final chorus c · 巴士街           38 taps  2.81/s
+   extent x[-65,35] z[-109,164]

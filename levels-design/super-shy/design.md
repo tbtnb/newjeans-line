@@ -114,3 +114,7 @@ The art is procedural PIL (`_w2_tools/artgen.py`) in the codex palette; the imag
 
 
 Sync: every tap is snapped to a real onset of its tagged demucs stem (shifted −25.03 ms) within ±45 ms; spot checks at start / middle / section changes / end are in `chart-report.md` (stem and independent full-mix detector).
+
+
+## Integration note (integ-b, 2026-10-18)
+The rhythm-logic audit changed the tap count from 378 to 364 (only removals; see `chart-report.md` → *Rhythm-logic audit*). Tap counts quoted above are the pre-audit numbers; the original files are in `pre-audit/`. Because every removed tap is a removed turn, the route after the first removal is rotated relative to this description; the turn sequence of each phrase (spirals, switchbacks, wraps) was kept wherever legal, and worldPos landmarks were moved with the road (`tools/charts/integb_route.py`).
