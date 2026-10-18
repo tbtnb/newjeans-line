@@ -6519,7 +6519,7 @@
     {
      "asset": "grass",
      "layer": "ground",
-     "count": 88,
+     "count": 101,
      "near": [
       0.3,
       9.0
@@ -6541,7 +6541,7 @@
     {
      "asset": "mushroom",
      "layer": "ground",
-     "count": 66,
+     "count": 76,
      "near": [
       0.3,
       9.0
@@ -6563,7 +6563,7 @@
     {
      "asset": "moss-rock",
      "layer": "ground",
-     "count": 22,
+     "count": 25,
      "near": [
       0.3,
       9.0
@@ -6585,7 +6585,7 @@
     {
      "asset": "pine",
      "layer": "mid",
-     "count": 50,
+     "count": 62,
      "near": [
       1.5,
       7.0
@@ -6607,7 +6607,7 @@
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 40,
+     "count": 50,
      "near": [
       1.5,
       7.0
@@ -6629,7 +6629,7 @@
     {
      "asset": "book-stack",
      "layer": "mid",
-     "count": 32,
+     "count": 40,
      "near": [
       1.5,
       7.0
@@ -6739,7 +6739,7 @@
     {
      "asset": "fern",
      "layer": "ground",
-     "count": 242,
+     "count": 278,
      "near": [
       0.3,
       9.0
@@ -6762,7 +6762,7 @@
     {
      "asset": "mushroom-group",
      "layer": "ground",
-     "count": 55,
+     "count": 63,
      "near": [
       0.3,
       9.0
@@ -6785,7 +6785,7 @@
     {
      "asset": "reed",
      "layer": "ground",
-     "count": 40,
+     "count": 46,
      "near": [
       0.3,
       9.0
@@ -6808,7 +6808,7 @@
     {
      "asset": "clover",
      "layer": "ground",
-     "count": 110,
+     "count": 126,
      "near": [
       0.3,
       9.0
@@ -6831,7 +6831,7 @@
     {
      "asset": "mushroom",
      "layer": "ground",
-     "count": 66,
+     "count": 76,
      "near": [
       0.3,
       9.0
@@ -6854,7 +6854,7 @@
     {
      "asset": "tree",
      "layer": "mid",
-     "count": 35,
+     "count": 44,
      "near": [
       1.5,
       7.0
@@ -6877,7 +6877,7 @@
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 48,
+     "count": 60,
      "near": [
       1.5,
       7.0
@@ -6900,7 +6900,7 @@
     {
      "asset": "bunny-statue",
      "layer": "mid",
-     "count": 6,
+     "count": 8,
      "near": [
       1.5,
       7.0
@@ -6923,7 +6923,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 120,
+     "count": 150,
      "near": [
       2.0,
       12.0
@@ -6947,7 +6947,7 @@
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 50,
+     "count": 62,
      "near": [
       1.5,
       7.0
@@ -6970,7 +6970,7 @@
     {
      "asset": "lily-lamp",
      "layer": "mid",
-     "count": 15,
+     "count": 19,
      "near": [
       1.5,
       7.0
@@ -6993,7 +6993,7 @@
     {
      "asset": "mushroom-house",
      "layer": "mid",
-     "count": 6,
+     "count": 8,
      "near": [
       1.5,
       7.0
@@ -7016,7 +7016,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 84,
+     "count": 105,
      "near": [
       1.5,
       7.0
@@ -7039,7 +7039,7 @@
     {
      "asset": "tree-lo",
      "layer": "mid",
-     "count": 58,
+     "count": 72,
      "near": [
       1.5,
       7.0

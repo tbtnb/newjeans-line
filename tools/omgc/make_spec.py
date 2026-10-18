@@ -184,7 +184,7 @@ for z in zones:
         if L['layer'] == 'ground': L['count'] = round(L['count'] * (0.33 if L['asset'] == 'reed' else 0.55))
         elif L['layer'] == 'mid' and not L['asset'].endswith('-lo') and L['near'][0] < 20:
             L['count'] = round(L['count'] * (0.45 if L['asset'] in ('firefly-lamp', 'lily-lamp', 'star-chime', 'heart-sculpt') else 0.72))
-    zf = {'z07': (1, 0.85), 'z08': (0.9, 0.78), 'z10': (0.8, 0.65)}.get(z['id'])   # (ground, mid) peak zones
+    zf = {'z07': (1, 0.85), 'z08': (0.9, 0.78), 'z09': (1.15, 1.25), 'z10': (0.8, 0.65)}.get(z['id'])   # (ground, mid) peak zones
     if zf:
         for L in z['layers']:
             if L['layer'] == 'ground': L['count'] = round(L['count'] * zf[0])

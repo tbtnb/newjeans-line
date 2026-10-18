@@ -28,7 +28,8 @@ export const TIERS: Record<Tier, { density: Record<string, number>; ahead: numbe
 const hash = (x: number, z: number) => { const s = Math.sin(x * 12.9898 + z * 78.233) * 43758.5453; return s - Math.floor(s); };
 /** lamp-like decor: glow head height (fraction of the piece's height) and halo radius (m per unit scale) -- night zones only */
 const LAMP: Record<string, [number, number]> = { 'firefly-lamp': [0.85, 0.7], 'lily-lamp': [0.55, 0.9], 'lantern-string': [0.75, 0.8], 'lantern-tower': [0.75, 2.2],
-  'star-chime': [0.8, 0.7], 'iv-heart': [0.8, 0.5], 'spiral-tower': [0.85, 2.0], 'stall': [0.6, 1.4], 'mushroom-house': [0.4, 1.2], 'bunny-house': [0.4, 1.2], 'book-stack': [0.9, 0.5], 'heart-sculpt': [0.6, 0.8] };
+  'star-chime': [0.8, 0.7], 'iv-heart': [0.8, 0.5], 'spiral-tower': [0.85, 2.0], 'stall': [0.6, 1.4], 'mushroom-house': [0.4, 1.2], 'bunny-house': [0.4, 1.2], 'book-stack': [0.9, 0.5], 'heart-sculpt': [0.6, 0.8],
+  'pine': [0.55, 0.9], 'pine-lo': [0.55, 0.9], 'tree': [0.6, 0.9], 'tree-lo': [0.6, 0.9], 'tree-bush-lo': [0.6, 0.8], 'mushroom-group': [0.6, 0.5] };   // night trees: fairy-light glow
 type ChunkM = { g: Mesh; m: Mesh | null; glow: Mesh | null; t0: number; tris: number; y: number; L: { pos: number[]; col: number[]; uv: number[]; idx: number[] } | null };
 const spring = (x: number) => x <= 0 ? 0 : 1 - Math.exp(-x * 7) * Math.cos(x * 13);
 const hexRGB = (h: string) => { const n = parseInt(h.replace('#', ''), 16); return [(n >> 16 & 255) / 255, (n >> 8 & 255) / 255, (n & 255) / 255]; };
@@ -65,8 +66,8 @@ export class SceneC {
     const tex = new DynamicTexture('cglow', 64, scene, true); const ctx = tex.getContext() as CanvasRenderingContext2D;
     const gr = ctx.createRadialGradient(32, 32, 0, 32, 32, 32); gr.addColorStop(0, 'rgba(255,236,170,1)'); gr.addColorStop(0.35, 'rgba(255,214,120,0.55)'); gr.addColorStop(1, 'rgba(255,190,90,0)');
     ctx.fillStyle = gr; ctx.fillRect(0, 0, 64, 64); tex.update(); tex.hasAlpha = true;
-    const gm = new StandardMaterial('paperCGlow', scene); gm.disableLighting = true; gm.diffuseTexture = tex; gm.useAlphaFromDiffuseTexture = true; gm.diffuseColor = Color3.White();
-    gm.emissiveColor = Color3.Black(); gm.specularColor = Color3.Black(); gm.alphaMode = Constants.ALPHA_ADD; gm.disableDepthWrite = true; gm.backFaceCulling = false; gm.fogEnabled = false;
+    const gm = new StandardMaterial('paperCGlow', scene); gm.disableLighting = true; gm.diffuseTexture = tex; gm.useAlphaFromDiffuseTexture = true; gm.diffuseColor = Color3.Black();
+    gm.emissiveColor = Color3.White(); gm.specularColor = Color3.Black(); gm.alphaMode = Constants.ALPHA_ADD; gm.disableDepthWrite = true; gm.backFaceCulling = false; gm.fogEnabled = false;
     this.matGlow = gm;
     for (const s of this.plc.sets) this.sets.push(this.makeSet(s));
     // swap in built models as they load (placeholders until then; a missing model simply keeps its placeholder)
@@ -121,7 +122,7 @@ export class SceneC {
 
   // ---- chunks: ground cover (static) + mid layer (merged, pops per chunk) + lamp halos (night zones), all vertex-colour merged ----
   private buildChunk(c: CChunk): ChunkM {
-    const night = this.night[c.zone], lift = night ? 0.22 : 0;
+    const night = this.night[c.zone], lift = night ? 0.32 : 0, lc = hexRGB(this.spec.zones[c.zone].palette.light ?? '#FFE8B0');   // lift toward the zone's warm light
     const G = { pos: [] as number[], col: [] as number[], idx: [] as number[] }, M = { pos: [] as number[], col: [] as number[], idx: [] as number[] };
     const L = { pos: [] as number[], col: [] as number[], uv: [] as number[], idx: [] as number[] };
     const quad = (p: number[][], k: number) => { const i0 = L.pos.length / 3; for (const q of p) L.pos.push(q[0], q[1], q[2]); L.uv.push(0, 0, 1, 0, 1, 1, 0, 1); for (let n = 0; n < 4; n++) L.col.push(k, k, k, 1); L.idx.push(i0, i0 + 1, i0 + 2, i0, i0 + 2, i0 + 3); };
@@ -134,16 +135,17 @@ export class SceneC {
         const lx = t.pos[i] * s, ly = t.pos[i + 1] * s, lz = t.pos[i + 2] * s;
         B.pos.push(it.x + lx * cs + lz * sn, y0 + ly, it.z - lx * sn + lz * cs);
         const j = i / 3 * 4; let r = t.col[j] * ic[0], g = t.col[j + 1] * ic[1], b = t.col[j + 2] * ic[2];
-        if (lift) { r += (1 - r) * lift; g += (0.96 - g) * lift; b += (0.9 - b) * lift; }
+        if (lift) { r += (lc[0] - r) * lift; g += (lc[1] - g) * lift; b += (lc[2] - b) * lift; }
         B.col.push(r, g, b, 1);
       }
       for (let i = 0; i < t.idx.length; i++) B.idx.push(t.idx[i] + i0);
       const lp = night ? LAMP[it.a] : undefined;
       if (lp) {   // halo: a pool of light on the page + two crossed quads at the lamp head
-        const h = (this.spec.assets[it.a]?.h ?? 1) * s, r = lp[1] * s, hy = it.y - c.y + h * lp[0], gy = it.y - c.y + 0.03;   // relative to the chunk pivot (c.y)
-        const R = r * 2.2; quad([[it.x - R, gy, it.z - R], [it.x + R, gy, it.z - R], [it.x + R, gy, it.z + R], [it.x - R, gy, it.z + R]], 0.55);
-        quad([[it.x - r, hy - r, it.z], [it.x + r, hy - r, it.z], [it.x + r, hy + r, it.z], [it.x - r, hy + r, it.z]], 0.9);
-        quad([[it.x, hy - r, it.z - r], [it.x, hy - r, it.z + r], [it.x, hy + r, it.z + r], [it.x, hy + r, it.z - r]], 0.9);
+        const h = (this.spec.assets[it.a]?.h ?? 1) * s, r = lp[1] * s * 1.4, hy = it.y - c.y + h * lp[0], gy = it.y - c.y + 0.03;   // relative to the chunk pivot (c.y)
+        const tree = /pine|tree|mushroom-group/.test(it.a), R = r * 2.0;
+        if (!tree) quad([[it.x - R, gy, it.z - R], [it.x + R, gy, it.z - R], [it.x + R, gy, it.z + R], [it.x - R, gy, it.z + R]], 0.16);
+        quad([[it.x - r, hy - r, it.z], [it.x + r, hy - r, it.z], [it.x + r, hy + r, it.z], [it.x - r, hy + r, it.z]], tree ? 0.24 : 0.42);
+        quad([[it.x, hy - r, it.z - r], [it.x, hy - r, it.z + r], [it.x, hy + r, it.z + r], [it.x, hy + r, it.z - r]], tree ? 0.24 : 0.42);
       }
     }
     const mk = (name: string, B: { pos: number[]; col: number[]; idx: number[]; uv?: number[] }, mat: StandardMaterial) => {
