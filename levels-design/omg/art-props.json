@@ -1563,29 +1563,19 @@
   ],
   "flashes": [
    {
-    "t": 45.364,
-    "dur": 0.6,
-    "amount": 0.5
+    "t": 46.427,
+    "dur": 0.7,
+    "amount": 0.55
    },
    {
-    "t": 105.835,
-    "dur": 0.6,
-    "amount": 0.5
+    "t": 106.898,
+    "dur": 0.7,
+    "amount": 0.55
    },
    {
-    "t": 120.953,
-    "dur": 0.6,
-    "amount": 0.5
-   },
-   {
-    "t": 166.307,
-    "dur": 0.6,
-    "amount": 0.5
-   },
-   {
-    "t": 181.424,
-    "dur": 0.6,
-    "amount": 0.5
+    "t": 167.369,
+    "dur": 0.7,
+    "amount": 0.55
    }
   ],
   "beams": [
@@ -1923,28 +1913,38 @@
    "until": 24.129
   },
   {
-   "t": 45.364,
+   "t": 46.073,
    "type": "light",
    "target": "art-phone",
-   "every": 0.12,
-   "dur": 0.3,
+   "every": 0.07,
+   "dur": 0.15,
    "color": "#ffb3e0",
-   "level": 1.2,
-   "until": 57.364
+   "level": 1.4,
+   "until": 48.473
   },
   {
-   "t": 45.364,
+   "t": 46.427,
    "type": "burst",
    "at": "player",
    "color": "#ffe7a8",
-   "amount": 50
+   "amount": 60
   },
   {
-   "t": 47.864,
+   "t": 46.727,
    "type": "raise",
    "target": "art-bunny_rise",
    "dy": 9,
    "dur": 2.2
+  },
+  {
+   "t": 53.632,
+   "type": "light",
+   "target": "art-phone",
+   "every": 0.07,
+   "dur": 0.15,
+   "color": "#ffb3e0",
+   "level": 1.4,
+   "until": 56.032
   },
   {
    "t": 61.482,
@@ -1957,79 +1957,65 @@
    "until": 69.482
   },
   {
-   "t": 105.835,
+   "t": 106.544,
    "type": "light",
    "target": "art-phone",
-   "every": 0.12,
-   "dur": 0.3,
+   "every": 0.07,
+   "dur": 0.15,
    "color": "#ffb3e0",
-   "level": 1.2,
-   "until": 117.835
+   "level": 1.4,
+   "until": 108.944
   },
   {
-   "t": 105.835,
+   "t": 106.898,
    "type": "burst",
    "at": "player",
    "color": "#ffe7a8",
-   "amount": 50
+   "amount": 60
   },
   {
-   "t": 108.335,
+   "t": 107.198,
    "type": "raise",
    "target": "art-bunny_rise",
    "dy": 9,
    "dur": 2.2
   },
   {
-   "t": 120.953,
+   "t": 114.103,
    "type": "light",
    "target": "art-phone",
-   "every": 0.12,
-   "dur": 0.3,
+   "every": 0.07,
+   "dur": 0.15,
    "color": "#ffb3e0",
-   "level": 1.2,
-   "until": 132.953
+   "level": 1.4,
+   "until": 116.503
   },
   {
-   "t": 120.953,
+   "t": 167.015,
+   "type": "light",
+   "target": "art-phone",
+   "every": 0.07,
+   "dur": 0.15,
+   "color": "#ffb3e0",
+   "level": 1.4,
+   "until": 169.415
+  },
+  {
+   "t": 167.369,
    "type": "burst",
    "at": "player",
    "color": "#ffe7a8",
-   "amount": 50
+   "amount": 60
   },
   {
-   "t": 166.307,
+   "t": 174.574,
    "type": "light",
    "target": "art-phone",
-   "every": 0.12,
-   "dur": 0.3,
+   "every": 0.07,
+   "dur": 0.15,
    "color": "#ffb3e0",
-   "level": 1.2,
-   "until": 178.307
-  },
-  {
-   "t": 166.307,
-   "type": "burst",
-   "at": "player",
-   "color": "#ffe7a8",
-   "amount": 50
-  },
-  {
-   "t": 181.424,
-   "type": "light",
-   "target": "art-phone",
-   "every": 0.12,
-   "dur": 0.3,
-   "color": "#ffb3e0",
-   "level": 1.2,
-   "until": 193.424
-  },
-  {
-   "t": 181.424,
-   "type": "burst",
-   "at": "player",
-   "color": "#ffe7a8",
-   "amount": 50
+   "level": 1.4,
+   "until": 176.974
   }
  ],
  "art": {

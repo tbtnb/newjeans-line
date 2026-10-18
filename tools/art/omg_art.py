@@ -14,10 +14,10 @@ for p in sorted(SRC.glob('*.png')):
     im = Image.open(p)
     if rule[0] == 'jpg':
         im = cover(im.convert('RGB'), rule[1])
-        for o in OUT: im.save(o / (p.stem + '.jpg'), quality=86, optimize=True)
+        for o in OUT: im.save(o / (p.stem + '.jpg'), quality=86)
     else:
         im = im.convert('RGBA')
         if rule[1]: im = im.resize(rule[1], Image.LANCZOS)
         else: im.thumbnail((640, 640), Image.LANCZOS)
-        for o in OUT: im.save(o / (p.stem + '.png'), optimize=True)
+        for o in OUT: im.save(o / (p.stem + '.png'))
     print(p.name, '->', rule[0], im.size)

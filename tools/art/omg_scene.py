@@ -94,14 +94,24 @@ for a, b in spans('garden'):
     add('decal', 'mural-stars.png', [5, 0, 5], (a + 1, b - 1), 3, face='road', glow=0.7)
     st('heart-pill.png', [2, 2, 0.5], (a + 1, b - 1), 3, color='#c9b37a', color2='#c9b37a', near=1.2, react='beat')
 
-# ---- events: set pieces that animate with the music
+# ---- events: set pieces that animate with the music (keyed off the lyric chart where possible)
+import re
 ev = []
-choruses = [s['t'] for s, th in zip(secs, themes) if th in ('stage', 'finale')]
-for t in choruses:
-    ev.append(dict(t=round(t, 3), type='light', target='art-phone', every=0.12, dur=0.3, color='#ffb3e0', level=1.2, until=round(t + 12, 3)))  # 'oh my god' screens light up
-    ev.append(dict(t=round(t, 3), type='burst', at='player', color='#ffe7a8', amount=50))
-for t in [rng[i][0] for i in range(len(rng)) if themes[i] in ('stage', 'finale')][:2]:
-    ev.append(dict(t=round(t + 2.5, 3), type='raise', target='art-bunny_rise', dy=9, dur=2.2))  # giant bunny rises behind the stage
+taps = C['taps']
+gods = [tp['t'] for tp in taps if re.search(r'\bgod\b', str(tp.get('lyric', '')), re.I)]   # "Oh my god" hits
+drops = []
+for g in gods:
+    if not drops or g - drops[-1][0] > 20:
+        nxt = next((tp['t'] for tp in taps if tp['t'] > g + 1e-6), g)
+        drops.append((g, nxt))
+drops = [d for _, d in drops]
+if not drops: drops = [s['t'] for s, th in zip(secs, themes) if th in ('stage', 'finale')][:3]
+for g in gods:  # phone screens light up one after another on every 'Oh my god'
+    ev.append(dict(t=round(g, 3), type='light', target='art-phone', every=0.07, dur=0.15, color='#ffb3e0', level=1.4, until=round(g + 2.4, 3)))
+for d in drops:
+    ev.append(dict(t=round(d, 3), type='burst', at='player', color='#ffe7a8', amount=60))
+for d in drops[:2]:
+    ev.append(dict(t=round(d + 0.3, 3), type='raise', target='art-bunny_rise', dy=9, dur=2.2))  # giant bunny rises behind the stage
 for s, th in zip(secs, themes):
     if th == 'ward': ev.append(dict(t=round(s['t'] + 1, 3), type='light', target='art-call', every=0.4, dur=0.4, color='#ffe7a8', level=0.8, until=round(s['t'] + 9, 3)))
 ev.sort(key=lambda e: e['t'])
@@ -112,11 +122,11 @@ GR = {'dream': (1.05, 1.05, 0.5), 'ward': (1.0, 1.05, 0.5), 'rise': (1.0, 1.15, 
 for a, b, th in rng:
     e, c, g = GR[th]; keys.append(dict(t=round(a, 3), exposure=e, contrast=c, glow=g, blend=1.2))
     if th in ('stage', 'finale', 'rise'): pulse.append(dict(t=round(a, 3), t1=round(b, 3), amount=0.12 if th == 'rise' else 0.18))
-    if th in ('stage', 'finale'): flashes.append(dict(t=round(a, 3), dur=0.6, amount=0.5))
     if th in ('rise', 'stage', 'finale'):
         beams.append(dict(t0=round(a + 0.5, 3), t1=round(b - 0.5, 3), every=1.1 if th != 'rise' else 1.6, colors=['#ff9ad5', '#9fd8ff', '#c9a8ff', '#ffe08a'], height=45, near=3.5))
     sp = {'dream': 1.2, 'ward': 0.8, 'rise': 2.5, 'stage': 4, 'finale': 5, 'garden': 3, 'calm': 1.5}[th]
     sparkles.append(dict(t0=round(a, 3), t1=round(b, 3), density=sp, colors=['#fff3c4', '#ffc4e8', '#c4e4ff'], size=0.9 if th in ('stage', 'finale') else 0.6, spread=12, height=9))
+flashes = [dict(t=round(d, 3), dur=0.7, amount=0.55) for d in drops]
 fx = dict(exposure=1.0, contrast=1.05, vignette=dict(weight=1.2, color='#1c1440'), glow=dict(intensity=0.9, kernel=48), keys=keys, pulse=pulse,
           flashes=flashes, beams=beams, sparkles=sparkles, road=dict(gloss=0.5, trim='#ffd27a', trimGlow=0.9), sprite=A('sparkle.png'))
 
@@ -126,4 +136,4 @@ spec = dict(keep=['fakefork'], objects=O, dressing=dressing, fx=fx, events=ev,
             palette=T['dream']['palette'], sections_by_time=sections)
 Path('levels-design/omg/art-props.json').write_text(json.dumps(spec, indent=1, ensure_ascii=False) + '\n')
 print('themes', list(zip([round(s["t"], 1) for s in secs], themes)))
-print(len(O), 'object specs,', len(ev), 'events')
+print(len(O), 'object specs,', len(ev), 'events; drops', drops, 'gods', gods)

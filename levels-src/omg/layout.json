@@ -604,7 +604,7 @@
    "glow": 0.45,
    "near": 2.5,
    "id": "art-bunny_intro",
-   "t": 4.16,
+   "t": 1.694,
    "side": -1,
    "y": -0.6
   },
@@ -618,7 +618,7 @@
    ],
    "face": "camera",
    "near": 1.5,
-   "t": 6.692,
+   "t": 6.064,
    "side": 1,
    "id": "art-2",
    "y": -0.6
@@ -633,8 +633,8 @@
    ],
    "face": "camera",
    "near": 1.5,
-   "t": 9.296,
-   "side": 1,
+   "t": 10.739,
+   "side": -1,
    "id": "art-3",
    "y": -0.6
   },
@@ -648,8 +648,8 @@
    ],
    "face": "camera",
    "near": 1.5,
-   "t": 13.448,
-   "side": 1,
+   "t": 13.643,
+   "side": -1,
    "id": "art-4",
    "y": -0.6
   },
@@ -666,71 +666,9 @@
    "color2": "#ffd27a",
    "near": 1.2,
    "react": "beat",
-   "t": 2.069,
-   "side": 1,
+   "t": 3.997,
+   "side": -1,
    "id": "art-5",
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/bunny-giant.png",
-   "size": [
-    6,
-    6,
-    0
-   ],
-   "face": "camera",
-   "landmark": true,
-   "glow": 0.45,
-   "near": 2.5,
-   "id": "art-bunny_intro",
-   "t": 200.482,
-   "side": -1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/ward-bed.png",
-   "size": [
-    4.4,
-    3.3,
-    0
-   ],
-   "face": "camera",
-   "near": 1.5,
-   "t": 208.433,
-   "side": 1,
-   "id": "art-7",
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/ward-bed.png",
-   "size": [
-    4.4,
-    3.3,
-    0
-   ],
-   "face": "camera",
-   "near": 1.5,
-   "t": 211.317,
-   "side": -1,
-   "id": "art-8",
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/ward-bed.png",
-   "size": [
-    4.4,
-    3.3,
-    0
-   ],
-   "face": "camera",
-   "near": 1.5,
-   "t": 213.817,
-   "side": -1,
-   "id": "art-9",
    "y": -0.6
   },
   {
@@ -746,9 +684,26 @@
    "color2": "#ffd27a",
    "near": 1.2,
    "react": "beat",
-   "t": 204.46,
-   "side": 1,
-   "id": "art-10",
+   "t": 8.22,
+   "side": -1,
+   "id": "art-6",
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/bunny-giant.png",
+   "size": [
+    6,
+    6,
+    0
+   ],
+   "face": "camera",
+   "landmark": true,
+   "glow": 0.45,
+   "near": 2.5,
+   "id": "art-bunny_intro",
+   "t": 200.678,
+   "side": -1,
    "y": -0.6
   },
   {
@@ -761,7 +716,55 @@
    ],
    "face": "camera",
    "near": 1.5,
-   "t": 16.238,
+   "t": 207.843,
+   "side": -1,
+   "id": "art-8",
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/ward-bed.png",
+   "size": [
+    4.4,
+    3.3,
+    0
+   ],
+   "face": "camera",
+   "near": 1.5,
+   "t": 211.317,
+   "side": 1,
+   "id": "art-9",
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/ward-bed.png",
+   "size": [
+    4.4,
+    3.3,
+    0
+   ],
+   "face": "camera",
+   "near": 1.5,
+   "t": 213.817,
+   "side": 1,
+   "id": "art-10",
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/heart-pill.png",
+   "size": [
+    2.2,
+    2.2,
+    0.5
+   ],
+   "face": "camera",
+   "color": "#ffd27a",
+   "color2": "#ffd27a",
+   "near": 1.2,
+   "react": "beat",
+   "t": 205.166,
    "side": -1,
    "id": "art-11",
    "y": -0.6
@@ -776,26 +779,23 @@
    ],
    "face": "camera",
    "near": 1.5,
-   "t": 21.074,
-   "side": -1,
+   "t": 16.861,
+   "side": 1,
    "id": "art-12",
    "y": -0.6
   },
   {
-   "kind": "facade",
-   "src": "art/v2/ward-facade.jpg",
+   "kind": "standee",
+   "src": "art/v2/ward-bed.png",
    "size": [
-    5,
-    6,
-    3
+    4.4,
+    3.3,
+    0
    ],
-   "face": "road",
-   "color": "#fff4fb",
-   "color2": "#c9b8ff",
-   "landmark": true,
-   "near": 2,
-   "t": 25.6,
-   "side": -1,
+   "face": "camera",
+   "near": 1.5,
+   "t": 19.584,
+   "side": 1,
    "id": "art-13",
    "y": -0.6
   },
@@ -812,28 +812,49 @@
    "color2": "#c9b8ff",
    "landmark": true,
    "near": 2,
-   "t": 28.475,
+   "t": 23.363,
    "side": -1,
    "id": "art-14",
    "y": -0.6
   },
   {
-   "kind": "standee",
-   "src": "art/v2/ward-bed.png",
+   "kind": "facade",
+   "src": "art/v2/ward-facade.jpg",
    "size": [
-    4.4,
-    3.3,
-    0
+    5,
+    6,
+    3
    ],
-   "face": "camera",
-   "near": 1.5,
-   "t": 62.962,
-   "side": -1,
+   "face": "road",
+   "color": "#fff4fb",
+   "color2": "#c9b8ff",
+   "landmark": true,
+   "near": 2,
+   "t": 26.12,
+   "side": 1,
    "id": "art-15",
    "y": -0.6
   },
   {
    "kind": "standee",
+   "src": "art/v2/call-bubble.png",
+   "size": [
+    3.2,
+    2.4,
+    0.8
+   ],
+   "face": "camera",
+   "color": "#ffd27a",
+   "color2": "#ffd27a",
+   "near": 1.5,
+   "glowfx": true,
+   "id": "art-call",
+   "t": 28.58,
+   "side": 1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
    "src": "art/v2/ward-bed.png",
    "size": [
     4.4,
@@ -842,30 +863,27 @@
    ],
    "face": "camera",
    "near": 1.5,
-   "t": 69.109,
+   "t": 63.159,
    "side": 1,
-   "id": "art-16",
-   "y": -0.6
-  },
-  {
-   "kind": "facade",
-   "src": "art/v2/ward-facade.jpg",
-   "size": [
-    5,
-    6,
-    3
-   ],
-   "face": "road",
-   "color": "#fff4fb",
-   "color2": "#c9b8ff",
-   "landmark": true,
-   "near": 2,
-   "t": 65.755,
-   "side": -1,
    "id": "art-17",
    "y": -0.6
   },
   {
+   "kind": "standee",
+   "src": "art/v2/ward-bed.png",
+   "size": [
+    4.4,
+    3.3,
+    0
+   ],
+   "face": "camera",
+   "near": 1.5,
+   "t": 73.691,
+   "side": 1,
+   "id": "art-18",
+   "y": -0.6
+  },
+  {
    "kind": "facade",
    "src": "art/v2/ward-facade.jpg",
    "size": [
@@ -878,43 +896,61 @@
    "color2": "#c9b8ff",
    "landmark": true,
    "near": 2,
-   "t": 72.53,
-   "side": -1,
-   "id": "art-18",
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    3.4,
-    4.5,
-    0
-   ],
-   "face": "camera",
-   "near": 2,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 35.091,
-   "side": -1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    3.4,
-    4.5,
-    0
-   ],
-   "face": "camera",
-   "near": 2,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 38.872,
+   "t": 65.974,
    "side": 1,
+   "id": "art-19",
+   "y": -0.6
+  },
+  {
+   "kind": "facade",
+   "src": "art/v2/ward-facade.jpg",
+   "size": [
+    5,
+    6,
+    3
+   ],
+   "face": "road",
+   "color": "#fff4fb",
+   "color2": "#c9b8ff",
+   "landmark": true,
+   "near": 2,
+   "t": 70.167,
+   "side": -1,
+   "id": "art-20",
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 31.605,
+   "side": 1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 39.518,
+   "side": -1,
    "y": -0.6
   },
   {
@@ -931,74 +967,6 @@
    "glowfx": true,
    "id": "art-phone",
    "t": 43.79,
-   "side": -1,
-   "y": -0.6
-  },
-  {
-   "kind": "facade",
-   "src": "art/v2/stage-facade.jpg",
-   "size": [
-    5,
-    5,
-    3
-   ],
-   "face": "road",
-   "color": "#2a2460",
-   "color2": "#ffd27a",
-   "near": 2.5,
-   "t": 31.977,
-   "side": -1,
-   "id": "art-22",
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    3.4,
-    4.5,
-    0
-   ],
-   "face": "camera",
-   "near": 2,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 81.662,
-   "side": 1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    3.4,
-    4.5,
-    0
-   ],
-   "face": "camera",
-   "near": 2,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 87.33,
-   "side": 1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    3.4,
-    4.5,
-    0
-   ],
-   "face": "camera",
-   "near": 2,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 89.37,
    "side": 1,
    "y": -0.6
   },
@@ -1014,9 +982,60 @@
    "color": "#2a2460",
    "color2": "#ffd27a",
    "near": 2.5,
-   "t": 78.078,
+   "t": 36.1,
+   "side": 1,
+   "id": "art-24",
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 81.053,
+   "side": 1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 84.681,
    "side": -1,
-   "id": "art-26",
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 89.005,
+   "side": 1,
    "y": -0.6
   },
   {
@@ -1031,43 +1050,9 @@
    "color": "#2a2460",
    "color2": "#ffd27a",
    "near": 2.5,
-   "t": 84.655,
-   "side": -1,
-   "id": "art-27",
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    3.4,
-    4.5,
-    0
-   ],
-   "face": "camera",
-   "near": 2,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 91.865,
-   "side": -1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    3.4,
-    4.5,
-    0
-   ],
-   "face": "camera",
-   "near": 2,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 95.872,
+   "t": 77.726,
    "side": 1,
+   "id": "art-28",
    "y": -0.6
   },
   {
@@ -1083,8 +1068,42 @@
    "landmark": true,
    "glowfx": true,
    "id": "art-phone",
-   "t": 102.679,
+   "t": 94.786,
    "side": -1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 100.094,
+   "side": -1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 104.162,
+   "side": 1,
    "y": -0.6
   },
   {
@@ -1099,9 +1118,9 @@
    "color": "#2a2460",
    "color2": "#ffd27a",
    "near": 2.5,
-   "t": 98.513,
+   "t": 92.162,
    "side": 1,
-   "id": "art-31",
+   "id": "art-32",
    "y": -0.6
   },
   {
@@ -1117,42 +1136,42 @@
    "landmark": true,
    "glowfx": true,
    "id": "art-phone",
-   "t": 153.0,
-   "side": 1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    3.4,
-    4.5,
-    0
-   ],
-   "face": "camera",
-   "near": 2,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 157.41,
-   "side": 1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    3.4,
-    4.5,
-    0
-   ],
-   "face": "camera",
-   "near": 2,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 160.243,
+   "t": 153.315,
    "side": -1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 156.984,
+   "side": 1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 161.044,
+   "side": 1,
    "y": -0.6
   },
   {
@@ -1167,9 +1186,9 @@
    "color": "#2a2460",
    "color2": "#ffd27a",
    "near": 2.5,
-   "t": 163.03,
-   "side": -1,
-   "id": "art-35",
+   "t": 164.128,
+   "side": 1,
+   "id": "art-36",
    "y": -0.6
   },
   {
@@ -1185,8 +1204,8 @@
    "glowfx": true,
    "near": 2,
    "id": "art-arch",
-   "t": 46.464,
-   "side": -1,
+   "t": 46.368,
+   "side": 1,
    "y": -0.6
   },
   {
@@ -1202,7 +1221,7 @@
    "near": 3,
    "y": -9.6,
    "id": "art-bunny_rise",
-   "t": 53.29,
+   "t": 50.988,
    "side": -1
   },
   {
@@ -1218,7 +1237,7 @@
    "landmark": true,
    "glowfx": true,
    "id": "art-phone",
-   "t": 50.321,
+   "t": 54.045,
    "side": 1,
    "y": -0.6
   },
@@ -1235,7 +1254,7 @@
    "landmark": true,
    "glowfx": true,
    "id": "art-phone",
-   "t": 56.543,
+   "t": 56.584,
    "side": -1,
    "y": -0.6
   },
@@ -1252,160 +1271,8 @@
    "landmark": true,
    "glowfx": true,
    "id": "art-phone",
-   "t": 59.414,
+   "t": 58.79,
    "side": -1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/star-arch.png",
-   "size": [
-    7,
-    5.25,
-    0
-   ],
-   "face": "camera",
-   "landmark": true,
-   "glowfx": true,
-   "near": 2,
-   "id": "art-arch",
-   "t": 107.883,
-   "side": -1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/bunny-giant.png",
-   "size": [
-    8,
-    8,
-    0
-   ],
-   "face": "camera",
-   "landmark": true,
-   "near": 3,
-   "y": -9.6,
-   "id": "art-bunny_rise",
-   "t": 113.467,
-   "side": 1
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    3.4,
-    4.5,
-    0
-   ],
-   "face": "camera",
-   "near": 2,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 110.178,
-   "side": 1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    3.4,
-    4.5,
-    0
-   ],
-   "face": "camera",
-   "near": 2,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 115.999,
-   "side": -1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    3.4,
-    4.5,
-    0
-   ],
-   "face": "camera",
-   "near": 2,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 119.684,
-   "side": -1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/star-arch.png",
-   "size": [
-    7,
-    5.25,
-    0
-   ],
-   "face": "camera",
-   "landmark": true,
-   "glowfx": true,
-   "near": 2,
-   "id": "art-arch",
-   "t": 123.159,
-   "side": -1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    3.4,
-    4.5,
-    0
-   ],
-   "face": "camera",
-   "near": 2,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 125.794,
-   "side": 1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    3.4,
-    4.5,
-    0
-   ],
-   "face": "camera",
-   "near": 2,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 128.829,
-   "side": -1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    3.4,
-    4.5,
-    0
-   ],
-   "face": "camera",
-   "near": 2,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 130.994,
-   "side": 1,
    "y": -0.6
   },
   {
@@ -1418,9 +1285,9 @@
    ],
    "face": "road",
    "glow": 0.7,
-   "t": 133.041,
+   "t": 48.966,
    "side": -1,
-   "id": "art-50",
+   "id": "art-42",
    "near": 0.8,
    "y": -0.6
   },
@@ -1437,8 +1304,8 @@
    "glowfx": true,
    "near": 2,
    "id": "art-arch",
-   "t": 167.411,
-   "side": -1,
+   "t": 107.036,
+   "side": 1,
    "y": -0.6
   },
   {
@@ -1454,7 +1321,7 @@
    "near": 3,
    "y": -9.6,
    "id": "art-bunny_rise",
-   "t": 174.161,
+   "t": 110.586,
    "side": -1
   },
   {
@@ -1470,24 +1337,7 @@
    "landmark": true,
    "glowfx": true,
    "id": "art-phone",
-   "t": 172.133,
-   "side": -1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    3.4,
-    4.5,
-    0
-   ],
-   "face": "camera",
-   "near": 2,
-   "landmark": true,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 176.396,
+   "t": 112.902,
    "side": 1,
    "y": -0.6
   },
@@ -1504,8 +1354,93 @@
    "landmark": true,
    "glowfx": true,
    "id": "art-phone",
-   "t": 178.983,
+   "t": 116.111,
+   "side": 1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 119.261,
+   "side": 1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/star-arch.png",
+   "size": [
+    7,
+    5.25,
+    0
+   ],
+   "face": "camera",
+   "landmark": true,
+   "glowfx": true,
+   "near": 2,
+   "id": "art-arch",
+   "t": 123.079,
    "side": -1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 127.331,
+   "side": 1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 129.509,
+   "side": 1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 132.228,
+   "side": 1,
    "y": -0.6
   },
   {
@@ -1518,9 +1453,9 @@
    ],
    "face": "road",
    "glow": 0.7,
-   "t": 169.458,
-   "side": -1,
-   "id": "art-56",
+   "t": 125.284,
+   "side": 1,
+   "id": "art-52",
    "near": 0.8,
    "y": -0.6
   },
@@ -1537,7 +1472,7 @@
    "glowfx": true,
    "near": 2,
    "id": "art-arch",
-   "t": 182.139,
+   "t": 168.058,
    "side": -1,
    "y": -0.6
   },
@@ -1554,7 +1489,7 @@
    "near": 3,
    "y": -9.6,
    "id": "art-bunny_rise",
-   "t": 185.285,
+   "t": 171.93,
    "side": -1
   },
   {
@@ -1570,7 +1505,7 @@
    "landmark": true,
    "glowfx": true,
    "id": "art-phone",
-   "t": 188.436,
+   "t": 175.362,
    "side": -1,
    "y": -0.6
   },
@@ -1587,8 +1522,8 @@
    "landmark": true,
    "glowfx": true,
    "id": "art-phone",
-   "t": 192.926,
-   "side": 1,
+   "t": 177.527,
+   "side": -1,
    "y": -0.6
   },
   {
@@ -1604,8 +1539,92 @@
    "landmark": true,
    "glowfx": true,
    "id": "art-phone",
-   "t": 195.206,
+   "t": 180.302,
    "side": 1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/star-arch.png",
+   "size": [
+    7,
+    5.25,
+    0
+   ],
+   "face": "camera",
+   "landmark": true,
+   "glowfx": true,
+   "near": 2,
+   "id": "art-arch",
+   "t": 182.31,
+   "side": 1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/bunny-giant.png",
+   "size": [
+    8,
+    8,
+    0
+   ],
+   "face": "camera",
+   "landmark": true,
+   "near": 3,
+   "y": -9.6,
+   "id": "art-bunny_rise",
+   "t": 189.2,
+   "side": -1
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 184.365,
+   "side": -1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 193.432,
+   "side": -1,
+   "y": -0.6
+  },
+  {
+   "kind": "standee",
+   "src": "art/v2/flip-phone.png",
+   "size": [
+    3.4,
+    4.5,
+    0
+   ],
+   "face": "camera",
+   "near": 2,
+   "landmark": true,
+   "glowfx": true,
+   "id": "art-phone",
+   "t": 195.486,
+   "side": -1,
    "y": -0.6
   },
   {
@@ -1618,45 +1637,45 @@
    ],
    "face": "road",
    "glow": 0.7,
-   "t": 190.73,
-   "side": 1,
-   "id": "art-62",
-   "near": 0.8,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/bunny-giant.png",
-   "size": [
-    6,
-    6,
-    0
-   ],
-   "face": "camera",
-   "landmark": true,
-   "near": 3,
-   "t": 138.952,
-   "side": 1,
+   "t": 186.883,
+   "side": -1,
    "id": "art-63",
+   "near": 0.8,
    "y": -0.6
   },
   {
    "kind": "decal",
    "src": "art/v2/mural-stars.png",
    "size": [
-    5,
+    6,
     0,
-    5
+    6
    ],
    "face": "road",
    "glow": 0.7,
-   "t": 142.784,
+   "t": 191.424,
    "side": 1,
    "id": "art-64",
    "near": 0.8,
    "y": -0.6
   },
   {
+   "kind": "standee",
+   "src": "art/v2/bunny-giant.png",
+   "size": [
+    6,
+    6,
+    0
+   ],
+   "face": "camera",
+   "landmark": true,
+   "near": 3,
+   "t": 137.134,
+   "side": 1,
+   "id": "art-65",
+   "y": -0.6
+  },
+  {
    "kind": "decal",
    "src": "art/v2/mural-stars.png",
    "size": [
@@ -1666,9 +1685,9 @@
    ],
    "face": "road",
    "glow": 0.7,
-   "t": 145.936,
-   "side": -1,
-   "id": "art-65",
+   "t": 139.712,
+   "side": 1,
+   "id": "art-66",
    "near": 0.8,
    "y": -0.6
   },
@@ -1682,9 +1701,25 @@
    ],
    "face": "road",
    "glow": 0.7,
-   "t": 147.944,
-   "side": -1,
-   "id": "art-66",
+   "t": 144.122,
+   "side": 1,
+   "id": "art-67",
+   "near": 0.8,
+   "y": -0.6
+  },
+  {
+   "kind": "decal",
+   "src": "art/v2/mural-stars.png",
+   "size": [
+    5,
+    0,
+    5
+   ],
+   "face": "road",
+   "glow": 0.7,
+   "t": 146.761,
+   "side": 1,
+   "id": "art-68",
    "near": 0.8,
    "y": -0.6
   },
@@ -1701,9 +1736,9 @@
    "color2": "#c9b37a",
    "near": 1.2,
    "react": "beat",
-   "t": 135.627,
-   "side": -1,
-   "id": "art-67",
+   "t": 141.725,
+   "side": 1,
+   "id": "art-69",
    "y": -0.6
   },
   {
@@ -1717,9 +1752,9 @@
    "face": "camera",
    "landmark": true,
    "near": 3,
-   "t": 150.745,
-   "side": -1,
-   "id": "art-68",
+   "t": 150.369,
+   "side": 1,
+   "id": "art-70",
    "y": -0.6
   }
  ],
@@ -1735,28 +1770,38 @@
    "until": 24.129
   },
   {
-   "t": 45.364,
+   "t": 46.073,
    "type": "light",
    "target": "art-phone",
-   "every": 0.12,
-   "dur": 0.3,
+   "every": 0.07,
+   "dur": 0.15,
    "color": "#ffb3e0",
-   "level": 1.2,
-   "until": 57.364
+   "level": 1.4,
+   "until": 48.473
   },
   {
-   "t": 45.364,
+   "t": 46.427,
    "type": "burst",
    "at": "player",
    "color": "#ffe7a8",
-   "amount": 50
+   "amount": 60
   },
   {
-   "t": 47.864,
+   "t": 46.727,
    "type": "raise",
    "target": "art-bunny_rise",
    "dy": 9,
    "dur": 2.2
+  },
+  {
+   "t": 53.632,
+   "type": "light",
+   "target": "art-phone",
+   "every": 0.07,
+   "dur": 0.15,
+   "color": "#ffb3e0",
+   "level": 1.4,
+   "until": 56.032
   },
   {
    "t": 61.482,
@@ -1769,79 +1814,65 @@
    "until": 69.482
   },
   {
-   "t": 105.835,
+   "t": 106.544,
    "type": "light",
    "target": "art-phone",
-   "every": 0.12,
-   "dur": 0.3,
+   "every": 0.07,
+   "dur": 0.15,
    "color": "#ffb3e0",
-   "level": 1.2,
-   "until": 117.835
+   "level": 1.4,
+   "until": 108.944
   },
   {
-   "t": 105.835,
+   "t": 106.898,
    "type": "burst",
    "at": "player",
    "color": "#ffe7a8",
-   "amount": 50
+   "amount": 60
   },
   {
-   "t": 108.335,
+   "t": 107.198,
    "type": "raise",
    "target": "art-bunny_rise",
    "dy": 9,
    "dur": 2.2
   },
   {
-   "t": 120.953,
+   "t": 114.103,
    "type": "light",
    "target": "art-phone",
-   "every": 0.12,
-   "dur": 0.3,
+   "every": 0.07,
+   "dur": 0.15,
    "color": "#ffb3e0",
-   "level": 1.2,
-   "until": 132.953
+   "level": 1.4,
+   "until": 116.503
   },
   {
-   "t": 120.953,
+   "t": 167.015,
+   "type": "light",
+   "target": "art-phone",
+   "every": 0.07,
+   "dur": 0.15,
+   "color": "#ffb3e0",
+   "level": 1.4,
+   "until": 169.415
+  },
+  {
+   "t": 167.369,
    "type": "burst",
    "at": "player",
    "color": "#ffe7a8",
-   "amount": 50
+   "amount": 60
   },
   {
-   "t": 166.307,
+   "t": 174.574,
    "type": "light",
    "target": "art-phone",
-   "every": 0.12,
-   "dur": 0.3,
+   "every": 0.07,
+   "dur": 0.15,
    "color": "#ffb3e0",
-   "level": 1.2,
-   "until": 178.307
-  },
-  {
-   "t": 166.307,
-   "type": "burst",
-   "at": "player",
-   "color": "#ffe7a8",
-   "amount": 50
-  },
-  {
-   "t": 181.424,
-   "type": "light",
-   "target": "art-phone",
-   "every": 0.12,
-   "dur": 0.3,
-   "color": "#ffb3e0",
-   "level": 1.2,
-   "until": 193.424
-  },
-  {
-   "t": 181.424,
-   "type": "burst",
-   "at": "player",
-   "color": "#ffe7a8",
-   "amount": 50
+   "level": 1.4,
+   "until": 176.974
   }
  ],
  "diamonds": [
@@ -2476,29 +2507,19 @@
   ],
   "flashes": [
    {
-    "t": 45.364,
-    "dur": 0.6,
-    "amount": 0.5
+    "t": 46.427,
+    "dur": 0.7,
+    "amount": 0.55
    },
    {
-    "t": 105.835,
-    "dur": 0.6,
-    "amount": 0.5
+    "t": 106.898,
+    "dur": 0.7,
+    "amount": 0.55
    },
    {
-    "t": 120.953,
-    "dur": 0.6,
-    "amount": 0.5
-   },
-   {
-    "t": 166.307,
-    "dur": 0.6,
-    "amount": 0.5
-   },
-   {
-    "t": 181.424,
-    "dur": 0.6,
-    "amount": 0.5
+    "t": 167.369,
+    "dur": 0.7,
+    "amount": 0.55
    }
   ],
   "beams": [
