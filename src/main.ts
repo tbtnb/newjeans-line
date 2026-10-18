@@ -1,5 +1,5 @@
 import './style.css';
-import { SONGS, loadLevel } from './catalog';
+import { SONGS, loadLevel, hasLevel } from './catalog';
 import { AudioTransport } from './audio';
 import { Game, LATE_GRACE, LATE_GRACE_MAX } from './core/game';
 import type { LevelData } from './core/types';
@@ -15,7 +15,10 @@ const audio = new AudioTransport();
 const canvas = $<HTMLCanvasElement>('scene');
 const world = new World(canvas);
 let state: State = 'menu';
-let index = Math.max(0, ids.indexOf(save.selected));
+// initial song: ?level=<slug> deep link, else the saved selection, else the first song that has level data
+const firstPlayable = Math.max(0, ids.findIndex(id => hasLevel(id)));
+const qLevel = new URLSearchParams(location.search).get('level');
+let index = qLevel && ids.includes(qLevel) ? ids.indexOf(qLevel) : hasLevel(save.selected) ? ids.indexOf(save.selected) : firstPlayable;
 let level: LevelData | null = null;
 let game: Game | null = null;
 let readyFrom = 0;           // song time the next start/resume begins at
@@ -57,6 +60,9 @@ function renderCard() {
   $('lv-pct').textContent = `${best}%`; ($('lv-bar').style.width = `${best}%`);
   $('lv-gems').textContent = String(r?.diamonds ?? 0); $('lv-crowns').innerHTML = crownsHtml(r?.crowns ?? 0);
   document.documentElement.style.setProperty('--accent', s.accent);
+  const soon = !hasLevel(s.id);
+  $('level-card').classList.toggle('soon', soon); document.body.classList.toggle('soon', soon);
+  $('start-label').textContent = soon ? '即将上线 · 左右滑动选择其他歌曲' : '轻点开始';
 }
 
 async function selectLevel(i: number, dir = 0) {
@@ -65,6 +71,7 @@ async function selectLevel(i: number, dir = 0) {
   const card = $('level-card');
   if (dir) { card.classList.add(dir < 0 ? 'swap-r' : 'swap-l'); setTimeout(() => { renderCard(); card.classList.remove('swap-l', 'swap-r'); }, 180); } else renderCard();
   const token = ++loadToken;
+  if (!hasLevel(SONGS[index].id)) { level = null; game = null; return; }   // 'coming soon' card, nothing to load
   try {
     const data = await loadLevel(SONGS[index].id);
     if (token !== loadToken) return;
@@ -89,6 +96,7 @@ function makeGame(data: LevelData) {
 
 // ---------------- game flow ----------------
 async function enterLevel() {
+  if (!hasLevel(SONGS[index].id)) { toast(`${SONGS[index].title} 即将上线`); return; }
   if (!level || !game) return;
   audio.unlock();
   if (!audio.ready) {
@@ -248,7 +256,7 @@ $('btn-next-c').onclick = async () => { toMenu(); await selectLevel(index + 1, 1
 function renderLibrary() {
   $('song-list').innerHTML = SONGS.map((s, i) => {
     const r = save.records[s.id];
-    return `<li data-i="${i}" class="${i === index ? 'sel' : ''}"><span class="no">${String(i + 1).padStart(2, '0')}</span><img src="${s.cover}" alt="" loading="lazy"/><div><div class="t">${s.title}</div><div class="a">${s.album}</div></div><div class="r"><span>${Math.floor((r?.best ?? 0) * 100)}%</span><span class="crowns mini">${crownsHtml(r?.crowns ?? 0)}</span></div></li>`;
+    return `<li data-i="${i}" class="${i === index ? 'sel' : ''}${hasLevel(s.id) ? '' : ' soon'}"><span class="no">${String(i + 1).padStart(2, '0')}</span><img src="${s.cover}" alt="" loading="lazy"/><div><div class="t">${s.title}</div><div class="a">${s.album}</div></div><div class="r"><span>${hasLevel(s.id) ? Math.floor((r?.best ?? 0) * 100) + '%' : '即将上线'}</span><span class="crowns mini">${crownsHtml(r?.crowns ?? 0)}</span></div></li>`;
   }).join('');
 }
 $('btn-library').onclick = () => { renderLibrary(); show('library', true); };

@@ -141,3 +141,9 @@ body.dark .bar { background: rgba(255,255,255,.2); }
   .btn-row { margin-top: 8px; }
   .crown-row i { width: 44px; height: 34px; }
 }
+
+/* songs without level data yet: 'coming soon' card instead of an error */
+.level-card.soon .level-progress { opacity: .35; }
+.level-card.soon .level-title::after { content: '即将上线'; display: inline-block; margin-left: .5em; padding: .15em .55em; font-size: .32em; vertical-align: middle; letter-spacing: .08em; border-radius: 999px; background: var(--accent); color: #fff; }
+body.soon #start-hint .finger { display: none; }
+#song-list li.soon { opacity: .5; }
