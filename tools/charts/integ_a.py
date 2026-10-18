@@ -27,6 +27,63 @@ def cutaway(layout):
         if h > 5: o.pop('onroad'); o['integNote'] = 'onroad dropped by integ-a so the occluder cutaway can fade it'
 CUTAWAY = {'attention', 'hype-boy', 'cookie', 'hurt'}
 
+# ---- v2.6 roadside dressing, themed per level (DL-style dense roadsides; props flat-coloured from each level's palette)
+def B(size, color, w=1.0, sc=(0.75, 1.25), sy=(0.7, 1.5)): return {'kind': 'box', 'size': size, 'color': color, 'weight': w, 'scale': list(sc), 'scaleY': list(sy)}
+def G(parts, w=1.0, sc=(0.8, 1.25), sy=(0.85, 1.3)): return {'kind': 'group', 'parts': parts, 'weight': w, 'scale': list(sc), 'scaleY': list(sy)}
+def P(kind, pos, size, color, **k): d = {'kind': kind, 'pos': pos, 'size': size, 'color': color}; d.update(k); return d
+DRESSING = {
+  # Attention: sunny school rooftops - roof blocks, water tanks, AC units, potted trees, blue railings
+  'attention': {'density': 4.4, 'near': [0.4, 4.0], 'seed': 11, 'props': [
+      B([1.8, 2.4, 1.8], '#F4F0DB', 3, sy=(0.5, 2.2)),                                                     # 0 roof block
+      G([P('cylinder', [0, 1.3, 0], [1.4, 1.6, 1.4], '#4F75CB'), P('box', [0, 0.25, 0], [1.6, 0.5, 1.6], '#E9E3CC')], 1.5),  # 1 water tank
+      G([P('box', [0, 0.45, 0], [1.2, 0.9, 0.8], '#DCE6EE'), P('cylinder', [0, 0.92, 0], [0.6, 0.06, 0.6], '#9FB3C8')], 1.6),  # 2 AC unit
+      G([P('box', [0, 0.3, 0], [0.7, 0.6, 0.7], '#EF6555'), P('sphere', [0, 1.15, 0], [1.2, 1.1, 1.2], '#7FBF8E')], 1.4),        # 3 potted tree
+      B([0.25, 1.1, 2.4], '#4F75CB', 1.0, sy=(0.9, 1.1)),                                                   # 4 railing
+      B([0.9, 0.9, 0.9], '#F6C85F', 0.8, sy=(0.6, 1.2))],                                                   # 5 yellow crate
+    'sections': [{'t': 0, 'density': 3.4}, {'t': 9.607, 'density': 4.6}, {'t': 27.893, 'density': 4.0, 'props': [0, 2, 4, 5]},
+                 {'t': 62.18, 'density': 5.2}, {'t': 83.32, 'density': 4.0}, {'t': 117.03, 'density': 5.2}, {'t': 156.1, 'density': 3.2, 'props': [0, 1, 3]}]},
+  # Hype Boy: summer pool + school sports - lockers, deck chairs, pool floats, palms, cones
+  'hype-boy': {'density': 4.4, 'near': [0.4, 4.0], 'seed': 23, 'props': [
+      B([0.9, 2.6, 0.7], '#2447C6', 2.5, sc=(0.9, 1.1), sy=(0.8, 1.15)),                                    # 0 locker
+      G([P('box', [0, 0.25, 0], [0.9, 0.18, 1.9], '#F4F1E8'), P('box', [0, 0.55, -0.85], [0.9, 0.6, 0.15], '#FF7185', rot=[-25, 0, 0])], 1.6, sy=(1, 1)),  # 1 deck chair
+      G([P('torus', [0, 0.25, 0], [1.4, 0.35, 1.4], '#FF7185')], 1.2, sy=(1, 1)),                             # 2 pool float
+      G([P('cylinder', [0, 1.4, 0], [0.3, 2.8, 0.3], '#C9A37A'), P('sphere', [0, 3.0, 0], [2.0, 0.8, 2.0], '#4FB477')], 1.4),  # 3 palm
+      G([P('cone', [0, 0.4, 0], [0.5, 0.8, 0.5], '#FF9F43')], 0.8, sy=(0.9, 1.2)),                           # 4 cone
+      B([1.6, 1.8, 1.6], '#F4F1E8', 2.0, sy=(0.5, 2.0))],                                                   # 5 block
+    'sections': [{'t': 0, 'density': 3.6, 'props': [1, 2, 3, 5]}, {'t': 19.452, 'density': 4.4, 'props': [0, 4, 5]}, {'t': 53.052, 'density': 5.2},
+                 {'t': 91.452, 'density': 4.4, 'props': [0, 4, 5]}, {'t': 129.852, 'density': 5.2}, {'t': 170.652, 'density': 3.0, 'props': [1, 2, 3]}]},
+  # Cookie: black/white studio flat - studio cubes, speakers, CD discs, cookie stools, light stands
+  'cookie': {'density': 4.6, 'near': [0.4, 3.6], 'seed': 37, 'props': [
+      B([1.6, 1.6, 1.6], '#F2EEE5', 3, sy=(0.6, 2.0)),                                                     # 0 white cube
+      B([1.2, 1.9, 1.0], '#20222C', 2, sy=(0.8, 1.4)),                                                     # 1 speaker
+      G([P('cylinder', [0, 0.06, 0], [1.6, 0.1, 1.6], '#CFE6FA'), P('cylinder', [0, 0.1, 0], [0.4, 0.1, 0.4], '#244BD8')], 1.2, sy=(1, 1)),   # 2 CD
+      G([P('cylinder', [0, 0.35, 0], [1.1, 0.7, 1.1], '#C98B52'), P('sphere', [0.25, 0.72, 0.1], [0.18, 0.1, 0.18], '#4A2E1E')], 1.2, sy=(1, 1.3)),  # 3 cookie stool
+      G([P('cylinder', [0, 1.4, 0], [0.12, 2.8, 0.12], '#20222C'), P('box', [0, 2.9, 0], [0.7, 0.5, 0.4], '#FFAE70')], 1.0, sy=(0.9, 1.2)),  # 4 light stand
+      B([2.0, 0.5, 2.0], '#496EC4', 1.2, sy=(0.8, 2.5))],                                                  # 5 riser
+    'sections': [{'t': 0, 'density': 3.6}, {'t': 49.02, 'density': 5.4}, {'t': 73.48, 'density': 4.6}, {'t': 110.17, 'density': 5.4},
+                 {'t': 134.63, 'density': 6.0, 'props': [0, 1, 2, 5]}, {'t': 183.55, 'density': 4.0, 'props': [0, 1, 4]}, {'t': 208.01, 'density': 3.4}]},
+  # Hurt: quiet misty morning - reeds, low stones, empty frames, paper boxes; sparser, calm
+  'hurt': {'density': 3.0, 'near': [0.5, 4.5], 'seed': 41, 'bounce': 0.06, 'props': [
+      G([P('box', [0, 0.9, 0], [0.12, 1.8, 0.12], '#8FA3A8'), P('box', [0.25, 0.7, 0.1], [0.1, 1.4, 0.1], '#9DB2B5'), P('box', [-0.2, 0.6, -0.1], [0.1, 1.2, 0.1], '#7F9499')], 3, sy=(0.7, 1.4)),  # 0 reeds
+      G([P('sphere', [0, 0.2, 0], [1.1, 0.45, 0.9], '#C9D3D9')], 2, sy=(0.8, 1.3)),                           # 1 stone
+      G([P('box', [0, 0.9, 0], [1.2, 1.5, 0.1], '#182446'), P('box', [0, 0.9, -0.06], [0.95, 1.25, 0.04], '#F5F1E8')], 1.0, sy=(0.9, 1.1)),  # 2 empty frame
+      B([1.0, 0.7, 1.0], '#F5F1E8', 1.5, sy=(0.6, 1.6)),                                                   # 3 paper box
+      B([1.4, 1.8, 1.4], '#B7C6D4', 1.2, sy=(0.6, 2.0))],                                                  # 4 block
+    'sections': [{'t': 0, 'density': 2.2, 'props': [0, 1]}, {'t': 10.927, 'density': 3.0}, {'t': 42.927, 'density': 3.6}, {'t': 80.26, 'density': 1.6, 'props': [0, 1]},
+                 {'t': 96.26, 'density': 3.6}, {'t': 143.594, 'density': 2.4, 'props': [0, 1, 3]}]},
+  # New Jeans: graph-paper blueprint city - voxel blocks in the five trail colours, paper houses, pixel plants
+  'new-jeans': {'density': 4.6, 'near': [0.4, 3.8], 'seed': 53, 'props': [
+      B([1.0, 1.0, 1.0], '#FFF9ED', 3, sc=(0.8, 1.6), sy=(0.6, 2.4)),                                       # 0 paper voxel
+      G([P('box', [0, 0.7, 0], [1.4, 1.4, 1.4], '#FFF9ED'), P('pyramid', [0, 1.4, 0], [1.6, 1.0, 1.6], '#164A63')], 2),  # 1 paper house
+      B([0.8, 0.8, 0.8], '#F36BA5', 1, sy=(0.6, 1.8)), B([0.8, 0.8, 0.8], '#F5CA63', 1, sy=(0.6, 1.8)),
+      B([0.8, 0.8, 0.8], '#5BC0EB', 1, sy=(0.6, 1.8)), B([0.8, 0.8, 0.8], '#9BC53D', 1, sy=(0.6, 1.8)), B([0.8, 0.8, 0.8], '#8E7CC3', 1, sy=(0.6, 1.8)),  # 2-6 five colours
+      G([P('box', [0, 0.3, 0], [0.4, 0.6, 0.4], '#164A63'), P('box', [0, 0.85, 0], [0.8, 0.5, 0.8], '#9BC53D')], 1.0)],  # 7 pixel plant
+    'sections': [{'t': 0, 'density': 2.8, 'props': [0, 7]}, {'t': 7.511, 'density': 3.8, 'props': [0, 1, 7]}, {'t': 14.675, 'density': 4.6, 'props': [0, 1, 7]},
+                 {'t': 36.168, 'density': 5.4}, {'t': 50.496, 'density': 2.0, 'props': [2, 3, 4, 5, 6]}, {'t': 57.66, 'density': 4.6},
+                 {'t': 64.825, 'density': 5.0, 'props': [0, 1, 7]}, {'t': 86.317, 'density': 5.6}, {'t': 100.645, 'density': 3.0, 'props': [0, 1]}]},
+}
+
+
 def run(slug, trim=True):
     src = ROOT / f'levels-design/{slug}'; dst = ROOT / f'levels-src/{slug}'; dst.mkdir(parents=True, exist_ok=True)
     chart = json.loads((src / 'chart.json').read_text()); layout = json.loads((src / 'layout.json').read_text())
@@ -170,6 +227,7 @@ def run(slug, trim=True):
         if 'worldYaw' in c: c['worldYaw'] = (c['worldYaw'] + 90 * rot_k(c['t'])) % 360
     layout.pop('path', None)
     if slug in CUTAWAY: cutaway(layout)
+    if slug in DRESSING: layout['dressing'] = DRESSING[slug]
     (dst / 'layout.json').write_text(json.dumps(layout, indent=1, ensure_ascii=False))
     if (dst / 'art').exists(): shutil.rmtree(dst / 'art')
     if (src / 'art').exists(): shutil.copytree(src / 'art', dst / 'art')
