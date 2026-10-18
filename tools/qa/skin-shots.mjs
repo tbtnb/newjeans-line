@@ -24,9 +24,10 @@ const skins = A.skins ? A.skins.split(',') : await (async () => { const { ctx, p
   ?? (A.skins ?? 'classic,bunny,denim,bubble-gum,phoning,film,supernatural').split(',');
 
 const W = +(A.w ?? 540), H = +(A.h ?? 960);
-const headClip = async (page, W, H, S = 400) => { const r = await page.evaluate(() => { const w = window.__nj.world; const h = w.scene.getMeshByName('head') ?? w.scene.getMeshByName('shard'); const cam = w.scene.activeCamera; const V = h.position.constructor; const p = V.TransformCoordinates(h.position, cam.getTransformationMatrix()); return { x: (p.x + 1) / 2, y: (1 - p.y) / 2 }; }); const cx = Math.max(S / 2, Math.min(W - S / 2, r.x * W)), cy = Math.max(S / 2, Math.min(H - S / 2, r.y * H - S * 0.08)); return { x: Math.round(cx - S / 2), y: Math.round(cy - S / 2), width: S, height: S }; };
+const headClip = async (page, W, H, S = 400) => { const r = await page.evaluate(() => { const w = window.__nj.world; const h = w.scene.getMeshByName('head') ?? w.scene.getMeshByName('shard'); const cam = w.scene.activeCamera; const V = h.position.constructor; const p = V.TransformCoordinates(h.position, cam.getTransformationMatrix()); return { x: (p.x + 1) / 2, y: (1 - p.y) / 2 }; }); const cx = Math.max(S / 2, Math.min(W - S / 2, r.x * W)), cy = Math.max(S / 2, Math.min(H - S / 2, r.y * H)); return { x: Math.round(cx - S / 2), y: Math.round(cy - S / 2), width: S, height: S }; };
 
-for (const skin of skins) {
+for (let si = 0, tries = 0; si < skins.length; si++) {
+  const skin = skins[si];
   const { ctx, page } = await open(W, H, skin);
   await page.evaluate(i => window.__nj.selectLevel(i), LEVEL);
   await page.waitForFunction(() => window.__nj.level && window.__nj.audio.ready, null, { timeout: 60000 });
@@ -55,6 +56,8 @@ for (const skin of skins) {
   await page.waitForTimeout(430);
   const deathShot = `${OUT}/death-${skin}.png`; await page.screenshot({ path: deathShot }); const deathCrop = `${OUT}/death-${skin}-head.png`; await page.screenshot({ path: deathCrop, clip: tclip });
   const stats = await page.evaluate(() => window.__nj.stats());
+  if (failInfo.t < FROM && tries < 2) { tries++; console.log('retry', skin, 'run did not start from the preview point'); await ctx.close(); si--; continue; }
+  tries = 0;
   report.play.push({ skin, saved, turnShot, deathShot, turnCrop, deathCrop, plannedTaps: plan.length, ...failInfo, stats });
   console.log(skin, JSON.stringify(report.play.at(-1)));
   await ctx.close();
