@@ -1,0 +1,11 @@
+omg: 402 taps, onset lag correction -7.1 ms, grid 127.003 BPM beat0 0.0288
+  full    taps with strong onset within 90ms: 340  median offset   +1.2 ms  IQR -9.3..+3.3
+  kick    taps with strong onset within 90ms: 327  median offset   +1.5 ms  IQR -2.0..+4.6
+  snare   taps with strong onset within 90ms: 333  median offset   +0.3 ms  IQR -4.1..+1.5
+  hat     taps with strong onset within 90ms: 325  median offset   +0.6 ms  IQR -8.7..+2.3
+  vocals  taps with strong onset within 90ms: 300  median offset   -0.3 ms  IQR -16.5..+7.8
+  bass    taps with strong onset within 90ms: 172  median offset   +4.4 ms  IQR -2.3..+7.3
+  other   taps with strong onset within 90ms: 362  median offset   +1.1 ms  IQR -10.8..+4.5
+  taps whose strongest onset (any layer, +-60ms) < 0.4: 1
+  median |grid err| 17.9 ms; grid err median -17.8 ms
+  strong onsets with no tap within 70 ms: 1024

@@ -12,6 +12,17 @@ for sid in sys.argv[1:]:
     if not stem: print(sid, 'no vocal stem'); continue
     sr, hop = 22050, 128
     v, _ = librosa.load(stem, sr=sr, mono=True); y, _ = librosa.load(ROOT / f'public/audio/{sid}.mp3', sr=sr, mono=True)
+    # Align the stem to the gapless decode of the mix (what Chrome's decodeAudioData returns). The demucs stems were
+    # rendered from decodes that keep the mp3 encoder delay (wav stems ~25 ms late, mp3 stems ~46 ms late), so the
+    # envelope used to be sampled late. Lag = cross-correlation of the summed stems with the mix (2026-10-18).
+    others = [p for p in stem.parent.iterdir() if p.suffix in ('.wav', '.mp3') and p != stem]
+    ssum = v.copy()
+    for p in others:
+        a, _ = librosa.load(p, sr=sr, mono=True); n0 = min(len(ssum), len(a)); ssum = ssum[:n0] + a[:n0]
+    M = 3000; seg = slice(sr * 30, sr * 40)
+    lag = int(np.argmax(np.correlate(ssum[seg.start - M:seg.stop + M], y[seg], 'valid'))) - M
+    v = v[lag:] if lag >= 0 else np.concatenate([np.zeros(-lag), v])
+    print(sid, f'stem lag {lag} samples = {lag / sr * 1000:.1f} ms (removed)')
     n = min(len(v), len(y)); v, y = v[:n], y[:n]
     on = librosa.onset.onset_strength(y=v, sr=sr, hop_length=hop); on = on / (np.percentile(on, 99.5) + 1e-9)
     rv = librosa.feature.rms(y=v, frame_length=2048, hop_length=hop)[0]; ry = librosa.feature.rms(y=y, frame_length=2048, hop_length=hop)[0]

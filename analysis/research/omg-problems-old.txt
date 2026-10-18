@@ -1,0 +1,41 @@
+|   3.79 | 2 | Intro · 病房走廊 | 5 9 13 | offbeat-only bar (taps on steps [5, 9, 13]) while the beat has accents |
+|  11.35 | 6 | Intro · 病房走廊 |  | strong beat accents not tapped: beat 2 (0.9), beat 4 (1.3) |
+|  13.24 | 7 | Intro · 病房走廊 | 7 11 | offbeat-only bar (taps on steps [7, 11]) while the beat has accents; 16th syncopation at 14.09s (step 7) on a weak onset (0.58) |
+|  15.13 | 8 | Verse 1 · 治疗桌与五椅 | 6 8 14 | strong beat accents not tapped: beat 1 (0.9), beat 2 (1.2); weak tap 16.09s (0.39) |
+|  26.47 | 14 | Verse 1 · 治疗桌与五椅 | 0 6 8 14 | strong beat accents not tapped: beat 2 (1.1), beat 4 (2.3) |
+|  30.25 | 16 | Verse 1b · 墙板外折 | 0 10 14 | strong beat accents not tapped: beat 2 (1.0), beat 3 (1.0) |
+|  34.03 | 18 | Verse 1b · 墙板外折 | 0 10 14 | strong beat accents not tapped: beat 2 (1.0), beat 3 (1.3), beat 4 (0.8) |
+|  41.58 | 22 | Verse 1b · 墙板外折 | 0 10 14 | strong beat accents not tapped: beat 2 (1.0), beat 3 (1.2), beat 4 (1.1) |
+|  58.59 | 31 | Chorus 1 · 黑兔舞台 | 2 10 14 | offbeat-only bar (taps on steps [2, 10, 14]) while the beat has accents |
+|  60.48 | 32 | Verse 2 · 玻璃鞋 | 0 4 10 14 | strong beat accents not tapped: beat 3 (1.5), beat 4 (1.0) |
+|  64.26 | 34 | Verse 2 · 玻璃鞋 | 0 4 10 14 | strong beat accents not tapped: beat 3 (0.9), beat 4 (1.2) |
+|  68.04 | 36 | Verse 2 · 玻璃鞋 | 0 4 10 14 | strong beat accents not tapped: beat 3 (1.2), beat 4 (1.2) |
+|  71.82 | 38 | Verse 2 · 玻璃鞋 | 0 4 10 14 | strong beat accents not tapped: beat 3 (1.1), beat 4 (1.3) |
+|  73.71 | 39 | Verse 2 · 玻璃鞋 | 2 4 10 12 | strong beat accents not tapped: beat 1 (1.2), beat 3 (1.0) |
+|  77.49 | 41 | Verse 2b · 双折长短路 | 2 10 12 | strong beat accents not tapped: beat 1 (1.1), beat 2 (1.1) |
+|  81.27 | 43 | Verse 2b · 双折长短路 | 2 10 12 | strong beat accents not tapped: beat 2 (1.1), beat 3 (0.9) |
+|  85.05 | 45 | Verse 2b · 双折长短路 | 2 10 12 | strong beat accents not tapped: beat 1 (0.9), beat 2 (1.4), beat 3 (1.5) |
+|  90.72 | 48 | Pre · 手机桥 | 10 | strong beat accents not tapped: beat 1 (0.9), beat 3 (1.1) |
+|  92.61 | 49 | Pre · 手机桥 | 2 6 10 14 | offbeat-only bar (taps on steps [2, 6, 10, 14]) while the beat has accents |
+|  96.39 | 51 | Pre · 手机桥 | 2 6 10 14 | offbeat-only bar (taps on steps [2, 6, 10, 14]) while the beat has accents |
+| 100.17 | 53 | Pre · 手机桥 | 2 6 10 14 | offbeat-only bar (taps on steps [2, 6, 10, 14]) while the beat has accents; strong beat accents not tapped: beat 1 (1.3), beat 2 (0.9), beat 3 (1.3); weak tap 100.42s (0.38) |
+| 102.06 | 54 | Pre · 手机桥 | 0 10 | strong beat accents not tapped: beat 3 (1.1), beat 4 (1.0) |
+| 103.95 | 55 | Pre · 手机桥 | 2 4 6 8 10 12 14 | weak tap 105.61s (0.40) |
+| 120.95 | 64 | Post · 错列直角 | 0 10 14 | strong beat accents not tapped: beat 2 (1.0), beat 3 (0.9) |
+| 122.84 | 65 | Post · 错列直角 | 2 7 10 12 | strong beat accents not tapped: beat 1 (1.1), beat 2 (1.3), beat 3 (0.8) |
+| 126.62 | 67 | Post · 错列直角 | 2 7 10 12 | strong beat accents not tapped: beat 1 (1.2), beat 2 (1.1) |
+| 132.29 | 70 | Post · 错列直角 | 0 10 14 | strong beat accents not tapped: beat 2 (1.0), beat 3 (1.0), beat 4 (1.0) |
+| 134.18 | 71 | Bridge · 书页墙与猫 | 3 6 8 13 15 | strong beat accents not tapped: beat 1 (1.5), beat 2 (1.2) |
+| 137.96 | 73 | Bridge · 书页墙与猫 | 3 6 8 13 15 | strong beat accents not tapped: beat 1 (1.1), beat 4 (1.0) |
+| 139.85 | 74 | Bridge · 书页墙与猫 | 3 6 8 10 13 | strong beat accents not tapped: beat 1 (1.3), beat 4 (1.0) |
+| 141.74 | 75 | Bridge · 书页墙与猫 | 3 6 8 13 15 | strong beat accents not tapped: beat 1 (1.0), beat 4 (0.8) |
+| 145.52 | 77 | Bridge · 书页墙与猫 | 3 6 8 13 15 | strong beat accents not tapped: beat 1 (1.1), beat 4 (1.1) |
+| 147.41 | 78 | Bridge · 书页墙与猫 | 3 6 8 10 13 | strong beat accents not tapped: beat 1 (0.9), beat 4 (1.3) |
+| 200.32 | 106 | Outro · 尾奏琴键 | 14 | strong beat accents not tapped: beat 1 (1.0), beat 3 (2.1) |
+| 207.88 | 110 | Outro · 尾奏琴键 | 14 | strong beat accents not tapped: beat 1 (1.0), beat 3 (2.2) |
+
+chorus 8-bar patterns:
+  Chorus 1 · 黑兔舞台 ['0 8 12 14', '2 4 8 12', '0 8 12 14', '2 4 8 12', '0 8 12 14', '2 4 8 12', '0 8 12 14', '2 10 14']
+  Chorus 2 · 屏幕块 ['0 8 12 14', '2 4 8 12', '0 8 12 14', '2 4 8 12', '0 8 12 14', '2 4 8 12', '0 8 12 14', '2 4']
+  Final chorus · 兔耳发夹 ['0 8 12 14', '2 4 8 12', '0 8 12 14', '2 4 8 12', '0 8 12 14', '2 4 8 12', '0 8 12 14', '2 4 12']
+  Final chorus b · 天桥 ['0 8 12 14', '2 4 8 12', '0 8 12 14', '2 4 8 12', '0 8 12 14', '2 4 8 12', '0 8 12 14', '2 4']

@@ -1,0 +1,148 @@
+{
+ "sections": {
+  "Intro \u00b7 \u75c5\u623f\u8d70\u5eca": {
+   "taps": 9,
+   "on_beat": 3,
+   "off8": 0,
+   "s16": 6,
+   "strong": 9,
+   "strong_tapped": 2,
+   "weak": 0
+  },
+  "Verse 1 \u00b7 \u6cbb\u7597\u684c\u4e0e\u4e94\u6905": {
+   "taps": 29,
+   "on_beat": 14,
+   "off8": 15,
+   "s16": 0,
+   "strong": 13,
+   "strong_tapped": 5,
+   "weak": 0
+  },
+  "Verse 1b \u00b7 \u5899\u677f\u5916\u6298": {
+   "taps": 30,
+   "on_beat": 13,
+   "off8": 16,
+   "s16": 1,
+   "strong": 26,
+   "strong_tapped": 12,
+   "weak": 0
+  },
+  "Chorus 1 \u00b7 \u9ed1\u5154\u821e\u53f0": {
+   "taps": 31,
+   "on_beat": 21,
+   "off8": 10,
+   "s16": 0,
+   "strong": 24,
+   "strong_tapped": 20,
+   "weak": 0
+  },
+  "Verse 2 \u00b7 \u73bb\u7483\u978b": {
+   "taps": 34,
+   "on_beat": 17,
+   "off8": 17,
+   "s16": 0,
+   "strong": 30,
+   "strong_tapped": 17,
+   "weak": 0
+  },
+  "Verse 2b \u00b7 \u53cc\u6298\u957f\u77ed\u8def": {
+   "taps": 29,
+   "on_beat": 16,
+   "off8": 12,
+   "s16": 1,
+   "strong": 28,
+   "strong_tapped": 16,
+   "weak": 0
+  },
+  "Pre \u00b7 \u624b\u673a\u6865": {
+   "taps": 27,
+   "on_beat": 7,
+   "off8": 20,
+   "s16": 0,
+   "strong": 12,
+   "strong_tapped": 3,
+   "weak": 0
+  },
+  "Chorus 2 \u00b7 \u5c4f\u5e55\u5757": {
+   "taps": 30,
+   "on_beat": 22,
+   "off8": 8,
+   "s16": 0,
+   "strong": 24,
+   "strong_tapped": 19,
+   "weak": 0
+  },
+  "Post \u00b7 \u9519\u5217\u76f4\u89d2": {
+   "taps": 23,
+   "on_beat": 6,
+   "off8": 14,
+   "s16": 3,
+   "strong": 23,
+   "strong_tapped": 6,
+   "weak": 0
+  },
+  "Bridge \u00b7 \u4e66\u9875\u5899\u4e0e\u732b": {
+   "taps": 41,
+   "on_beat": 9,
+   "off8": 12,
+   "s16": 20,
+   "strong": 23,
+   "strong_tapped": 9,
+   "weak": 0
+  },
+  "Break \u00b7 \u4e66\u9875\u5408\u62e2": {
+   "taps": 2,
+   "on_beat": 2,
+   "off8": 0,
+   "s16": 0,
+   "strong": 2,
+   "strong_tapped": 2,
+   "weak": 0
+  },
+  "Dance break \u00b7 \u821e\u53f0\u4e94\u5899": {
+   "taps": 46,
+   "on_beat": 32,
+   "off8": 14,
+   "s16": 0,
+   "strong": 31,
+   "strong_tapped": 31,
+   "weak": 0
+  },
+  "Final chorus \u00b7 \u5154\u8033\u53d1\u5939": {
+   "taps": 31,
+   "on_beat": 23,
+   "off8": 8,
+   "s16": 0,
+   "strong": 23,
+   "strong_tapped": 19,
+   "weak": 0
+  },
+  "Final chorus b \u00b7 \u5929\u6865": {
+   "taps": 29,
+   "on_beat": 21,
+   "off8": 8,
+   "s16": 0,
+   "strong": 22,
+   "strong_tapped": 19,
+   "weak": 0
+  },
+  "Outro \u00b7 \u5c3e\u594f\u7434\u952e": {
+   "taps": 11,
+   "on_beat": 1,
+   "off8": 10,
+   "s16": 0,
+   "strong": 7,
+   "strong_tapped": 1,
+   "weak": 0
+  }
+ },
+ "total": {
+  "taps": 402,
+  "on_beat": 207,
+  "off8": 164,
+  "s16": 31,
+  "strong": 297,
+  "strong_tapped": 181,
+  "weak": 0
+ }
+}
