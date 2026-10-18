@@ -984,6 +984,41 @@
    "design": "H07_bunny_family",
    "w": 4.6,
    "d": 1.6
+  },
+  "clover": {
+   "layer": "ground",
+   "shape": "tuft",
+   "h": 0.14,
+   "tris": 200,
+   "model": true,
+   "names": []
+  },
+  "fern": {
+   "layer": "ground",
+   "shape": "tuft",
+   "h": 0.55,
+   "tris": 200,
+   "model": true,
+   "names": []
+  },
+  "tulip": {
+   "layer": "ground",
+   "shape": "flower",
+   "h": 0.4,
+   "tris": 200,
+   "model": true,
+   "names": []
+  },
+  "mushroom-group": {
+   "layer": "ground",
+   "shape": "mushroom",
+   "h": 0.8,
+   "tris": 300,
+   "model": true,
+   "names": [],
+   "design": "P27_mushroom_small",
+   "w": 0.7,
+   "d": 0.7
   }
  },
  "zones": [
@@ -1250,6 +1285,231 @@
       3,
       4
      ]
+    },
+    {
+     "asset": "clover",
+     "layer": "ground",
+     "count": 160,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "fern",
+     "layer": "ground",
+     "count": 90,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tulip",
+     "layer": "ground",
+     "count": 90,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "mushroom",
+     "layer": "ground",
+     "count": 50,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tree",
+     "layer": "mid",
+     "count": 24,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "fence",
+     "layer": "mid",
+     "count": 24,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tulip-bed",
+     "layer": "mid",
+     "count": 10,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "paper-hill",
+     "layer": "mid",
+     "count": 26,
+     "near": [
+      22.0,
+      55.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      2.2,
+      3.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tree",
+     "layer": "mid",
+     "count": 12,
+     "near": [
+      22.0,
+      55.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
     }
    ],
    "setpieces": [
@@ -1263,6 +1523,16 @@
      "label": "巨书封面翻开(开场)"
     },
     {
+     "t": 3.0,
+     "side": -1,
+     "asset": "book-cover",
+     "dist": 6.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
+    },
+    {
      "t": 3.5,
      "side": 1,
      "asset": "bunny-statue",
@@ -1270,6 +1540,16 @@
      "scale": 1.0,
      "pop": "spring",
      "label": "坐着的兔子雕像"
+    },
+    {
+     "t": 6.0,
+     "side": -1,
+     "asset": "bunny-statue",
+     "dist": 4.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
     },
     {
      "t": 7.5,
@@ -1281,6 +1561,16 @@
      "label": "纸树丛"
     },
     {
+     "t": 10.0,
+     "side": 1,
+     "asset": "tree-bush",
+     "dist": 4.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
+    },
+    {
      "t": 12.0,
      "side": 1,
      "asset": "paper-hill",
@@ -1288,6 +1578,16 @@
      "scale": 1.0,
      "pop": "spring",
      "label": "纸山+星星挂饰"
+    },
+    {
+     "t": 14.5,
+     "side": -1,
+     "asset": "paper-hill",
+     "dist": 4.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
     }
    ],
    "moments": [
@@ -1632,6 +1932,206 @@
       3,
       4
      ]
+    },
+    {
+     "asset": "clover",
+     "layer": "ground",
+     "count": 140,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tulip",
+     "layer": "ground",
+     "count": 120,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "fern",
+     "layer": "ground",
+     "count": 70,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "mushroom-group",
+     "layer": "ground",
+     "count": 30,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "bunny-statue",
+     "layer": "mid",
+     "count": 6,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tree-bush",
+     "layer": "mid",
+     "count": 24,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "paper-hill",
+     "layer": "mid",
+     "count": 26,
+     "near": [
+      22.0,
+      55.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      2.2,
+      3.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tree",
+     "layer": "mid",
+     "count": 12,
+     "near": [
+      22.0,
+      55.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
     }
    ],
    "setpieces": [
@@ -1654,6 +2154,16 @@
      "label": "landmark"
     },
     {
+     "t": 19.5,
+     "side": 1,
+     "asset": "bunny-house",
+     "dist": 4.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
+    },
+    {
      "t": 21.0,
      "side": 1,
      "asset": "mushroom-house",
@@ -1661,6 +2171,26 @@
      "scale": 1.0,
      "pop": "spring",
      "label": "纸蘑菇屋"
+    },
+    {
+     "t": 21.41,
+     "side": 1,
+     "asset": "windmill",
+     "dist": 7.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
+    },
+    {
+     "t": 23.5,
+     "side": -1,
+     "asset": "mushroom-house",
+     "dist": 4.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
     },
     {
      "t": 25.0,
@@ -1679,6 +2209,26 @@
      "scale": 1.0,
      "pop": "spring",
      "label": "landmark"
+    },
+    {
+     "t": 27.5,
+     "side": 1,
+     "asset": "tulip-bed",
+     "dist": 4.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
+    },
+    {
+     "t": 27.71,
+     "side": -1,
+     "asset": "windmill",
+     "dist": 7.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
     },
     {
      "t": 29.0,
@@ -1719,7 +2269,7 @@
     {
      "asset": "tile-decal",
      "layer": "ground",
-     "count": 200,
+     "count": 70,
      "near": [
       0.3,
       9.0
@@ -1767,7 +2317,7 @@
     {
      "asset": "confetti-decal",
      "layer": "ground",
-     "count": 120,
+     "count": 42,
      "near": [
       0.3,
       9.0
@@ -2003,6 +2553,256 @@
       3,
       4
      ]
+    },
+    {
+     "asset": "flower-heart",
+     "layer": "ground",
+     "count": 200,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tulip",
+     "layer": "ground",
+     "count": 120,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "gift",
+     "layer": "ground",
+     "count": 30,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "mushroom",
+     "layer": "ground",
+     "count": 80,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "clover",
+     "layer": "ground",
+     "count": 100,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tulip-bed",
+     "layer": "mid",
+     "count": 14,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "bunny-statue",
+     "layer": "mid",
+     "count": 6,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "iv-heart",
+     "layer": "mid",
+     "count": 8,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "paper-hill",
+     "layer": "mid",
+     "count": 26,
+     "near": [
+      22.0,
+      55.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      2.2,
+      3.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tree",
+     "layer": "mid",
+     "count": 12,
+     "near": [
+      22.0,
+      55.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
     }
    ],
    "setpieces": [
@@ -2014,6 +2814,16 @@
      "scale": 1.0,
      "pop": "spring",
      "label": "立体纸病床+纸帘"
+    },
+    {
+     "t": 34.0,
+     "side": 1,
+     "asset": "ward-bed",
+     "dist": 4.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
     },
     {
      "t": 35.5,
@@ -2034,6 +2844,26 @@
      "label": "landmark"
     },
     {
+     "t": 38.0,
+     "side": -1,
+     "asset": "iv-heart",
+     "dist": 4.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
+    },
+    {
+     "t": 39.23,
+     "side": -1,
+     "asset": "clock-tower",
+     "dist": 7.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
+    },
+    {
      "t": 39.5,
      "side": -1,
      "asset": "clock-tower",
@@ -2041,6 +2871,16 @@
      "scale": 1.0,
      "pop": "spring",
      "label": "无数字纸时钟"
+    },
+    {
+     "t": 42.0,
+     "side": 1,
+     "asset": "clock-tower",
+     "dist": 6.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
     }
    ],
    "moments": [
@@ -2077,7 +2917,7 @@
     {
      "asset": "star-decal",
      "layer": "ground",
-     "count": 300,
+     "count": 90,
      "near": [
       0.3,
       9.0
@@ -2337,6 +3177,256 @@
       3,
       4
      ]
+    },
+    {
+     "asset": "flower-heart",
+     "layer": "ground",
+     "count": 160,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "gift",
+     "layer": "ground",
+     "count": 45,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "lily-lamp",
+     "layer": "ground",
+     "count": 25,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tulip",
+     "layer": "ground",
+     "count": 90,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "star-chime",
+     "layer": "mid",
+     "count": 16,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "firefly-lamp",
+     "layer": "mid",
+     "count": 24,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "bunny-statue",
+     "layer": "mid",
+     "count": 6,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "heart-sculpt",
+     "layer": "mid",
+     "count": 12,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "paper-hill",
+     "layer": "mid",
+     "count": 26,
+     "near": [
+      22.0,
+      55.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      2.2,
+      3.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "lantern-tower",
+     "layer": "mid",
+     "count": 5,
+     "near": [
+      22.0,
+      55.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
     }
    ],
    "setpieces": [
@@ -2359,6 +3449,26 @@
      "label": "巨型立体城堡"
     },
     {
+     "t": 47.9,
+     "side": 1,
+     "asset": "castle",
+     "dist": 6.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
+    },
+    {
+     "t": 49.5,
+     "side": -1,
+     "asset": "castle",
+     "dist": 6.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
+    },
+    {
      "t": 50.5,
      "side": -1,
      "asset": "bunny-heart",
@@ -2366,6 +3476,16 @@
      "scale": 1.0,
      "pop": "spring",
      "label": "巨型弹出兔子+爱心"
+    },
+    {
+     "t": 53.0,
+     "side": 1,
+     "asset": "bunny-heart",
+     "dist": 6.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
     },
     {
      "t": 58.0,
@@ -2415,7 +3535,7 @@
     {
      "asset": "ripple-decal",
      "layer": "ground",
-     "count": 240,
+     "count": 84,
      "near": [
       0.3,
       9.0
@@ -2651,6 +3771,331 @@
       3,
       4
      ]
+    },
+    {
+     "asset": "reed",
+     "layer": "ground",
+     "count": 260,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "lily-lamp",
+     "layer": "ground",
+     "count": 45,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "fern",
+     "layer": "ground",
+     "count": 120,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "mushroom",
+     "layer": "ground",
+     "count": 60,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "clover",
+     "layer": "ground",
+     "count": 120,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "rock",
+     "layer": "mid",
+     "count": 30,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tulip-bed",
+     "layer": "mid",
+     "count": 8,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "firefly-lamp",
+     "layer": "mid",
+     "count": 24,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tree",
+     "layer": "mid",
+     "count": 18,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "pine",
+     "layer": "mid",
+     "count": 16,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "bunny-statue",
+     "layer": "mid",
+     "count": 4,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "paper-hill",
+     "layer": "mid",
+     "count": 26,
+     "near": [
+      22.0,
+      55.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      2.2,
+      3.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "pine",
+     "layer": "mid",
+     "count": 12,
+     "near": [
+      22.0,
+      55.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
     }
    ],
    "setpieces": [
@@ -2662,6 +4107,16 @@
      "scale": 1.0,
      "pop": "spring",
      "label": "兔子帆纸船"
+    },
+    {
+     "t": 64.5,
+     "side": -1,
+     "asset": "paper-boat",
+     "dist": 4.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
     },
     {
      "t": 66.96,
@@ -2682,6 +4137,26 @@
      "label": "纸睡莲灯"
     },
     {
+     "t": 69.46,
+     "side": -1,
+     "asset": "pavilion",
+     "dist": 7.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
+    },
+    {
+     "t": 70.5,
+     "side": 1,
+     "asset": "lily-lamp",
+     "dist": 4.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
+    },
+    {
      "t": 72.0,
      "side": 1,
      "asset": "moon",
@@ -2689,6 +4164,16 @@
      "scale": 1.0,
      "pop": "spring",
      "label": "吊线弯月"
+    },
+    {
+     "t": 74.5,
+     "side": -1,
+     "asset": "moon",
+     "dist": 6.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
     }
    ],
    "moments": [
@@ -2985,6 +4470,206 @@
       3,
       4
      ]
+    },
+    {
+     "asset": "tulip",
+     "layer": "ground",
+     "count": 150,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "clover",
+     "layer": "ground",
+     "count": 150,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "mushroom-group",
+     "layer": "ground",
+     "count": 30,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tulip-bed",
+     "layer": "mid",
+     "count": 14,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "fence",
+     "layer": "mid",
+     "count": 24,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "bunny-house",
+     "layer": "mid",
+     "count": 6,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "paper-hill",
+     "layer": "mid",
+     "count": 26,
+     "near": [
+      22.0,
+      55.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      2.2,
+      3.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tree",
+     "layer": "mid",
+     "count": 12,
+     "near": [
+      22.0,
+      55.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
     }
    ],
    "setpieces": [
@@ -2996,6 +4681,16 @@
      "scale": 1.0,
      "pop": "spring",
      "label": "纸艺翻盖手机雕塑"
+    },
+    {
+     "t": 79.5,
+     "side": 1,
+     "asset": "flip-phone",
+     "dist": 4.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
     },
     {
      "t": 81.0,
@@ -3016,6 +4711,26 @@
      "label": "landmark"
     },
     {
+     "t": 83.5,
+     "side": 1,
+     "asset": "cord-arch",
+     "dist": 4.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
+    },
+    {
+     "t": 84.58,
+     "side": -1,
+     "asset": "phone-tower",
+     "dist": 7.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
+    },
+    {
      "t": 85.0,
      "side": -1,
      "asset": "heart-bed",
@@ -3023,6 +4738,16 @@
      "scale": 1.0,
      "pop": "spring",
      "label": "爱心花圃"
+    },
+    {
+     "t": 87.5,
+     "side": 1,
+     "asset": "heart-bed",
+     "dist": 4.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
     },
     {
      "t": 89.0,
@@ -3063,7 +4788,7 @@
     {
      "asset": "star-decal",
      "layer": "ground",
-     "count": 240,
+     "count": 72,
      "near": [
       0.3,
       9.0
@@ -3087,7 +4812,7 @@
     {
      "asset": "confetti-decal",
      "layer": "ground",
-     "count": 160,
+     "count": 48,
      "near": [
       0.3,
       9.0
@@ -3299,6 +5024,256 @@
       3,
       4
      ]
+    },
+    {
+     "asset": "mushroom",
+     "layer": "ground",
+     "count": 90,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "gift",
+     "layer": "ground",
+     "count": 30,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "lily-lamp",
+     "layer": "ground",
+     "count": 30,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "flower-heart",
+     "layer": "ground",
+     "count": 120,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "star-chime",
+     "layer": "mid",
+     "count": 16,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "book-stack",
+     "layer": "mid",
+     "count": 14,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "pine",
+     "layer": "mid",
+     "count": 20,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "paper-hill",
+     "layer": "mid",
+     "count": 26,
+     "near": [
+      22.0,
+      55.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      2.2,
+      3.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "pine",
+     "layer": "mid",
+     "count": 12,
+     "near": [
+      22.0,
+      55.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "spiral-tower",
+     "layer": "mid",
+     "count": 5,
+     "near": [
+      22.0,
+      55.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
     }
    ],
    "setpieces": [
@@ -3321,6 +5296,16 @@
      "label": "landmark"
     },
     {
+     "t": 94.5,
+     "side": 1,
+     "asset": "spiral-tower",
+     "dist": 4.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
+    },
+    {
      "t": 96.0,
      "side": -1,
      "asset": "star-chime",
@@ -3330,6 +5315,26 @@
      "label": "吊线星星风铃"
     },
     {
+     "t": 97.0,
+     "side": -1,
+     "asset": "tall-tower",
+     "dist": 7.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
+    },
+    {
+     "t": 98.5,
+     "side": 1,
+     "asset": "star-chime",
+     "dist": 4.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
+    },
+    {
      "t": 100.79,
      "side": 1,
      "asset": "tall-tower",
@@ -3337,6 +5342,16 @@
      "scale": 1.0,
      "pop": "spring",
      "label": "landmark"
+    },
+    {
+     "t": 103.29,
+     "side": -1,
+     "asset": "tall-tower",
+     "dist": 7.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
     }
    ],
    "moments": [
@@ -3377,7 +5392,7 @@
     {
      "asset": "star-decal",
      "layer": "ground",
-     "count": 300,
+     "count": 90,
      "near": [
       0.3,
       9.0
@@ -3637,6 +5652,256 @@
       3,
       4
      ]
+    },
+    {
+     "asset": "gift",
+     "layer": "ground",
+     "count": 60,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "flower-heart",
+     "layer": "ground",
+     "count": 200,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "lily-lamp",
+     "layer": "ground",
+     "count": 30,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tulip",
+     "layer": "ground",
+     "count": 100,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "balloons",
+     "layer": "mid",
+     "count": 20,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "bunting",
+     "layer": "mid",
+     "count": 20,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "stall",
+     "layer": "mid",
+     "count": 8,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tulip-bed",
+     "layer": "mid",
+     "count": 10,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "paper-hill",
+     "layer": "mid",
+     "count": 26,
+     "near": [
+      22.0,
+      55.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      2.2,
+      3.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "lantern-tower",
+     "layer": "mid",
+     "count": 5,
+     "near": [
+      22.0,
+      55.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
     }
    ],
    "setpieces": [
@@ -3650,6 +5915,16 @@
      "label": "兔子旋转木马"
     },
     {
+     "t": 110.5,
+     "side": -1,
+     "asset": "carousel",
+     "dist": 6.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
+    },
+    {
      "t": 112.0,
      "side": -1,
      "asset": "ferris-wheel",
@@ -3657,6 +5932,16 @@
      "scale": 1.0,
      "pop": "spring",
      "label": "爱心摩天轮"
+    },
+    {
+     "t": 114.5,
+     "side": 1,
+     "asset": "ferris-wheel",
+     "dist": 6.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
     },
     {
      "t": 119.0,
@@ -3942,6 +6227,256 @@
       3,
       4
      ]
+    },
+    {
+     "asset": "fern",
+     "layer": "ground",
+     "count": 440,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "mushroom-group",
+     "layer": "ground",
+     "count": 100,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "reed",
+     "layer": "ground",
+     "count": 120,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "clover",
+     "layer": "ground",
+     "count": 200,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "mushroom",
+     "layer": "ground",
+     "count": 120,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tree",
+     "layer": "mid",
+     "count": 48,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "firefly-lamp",
+     "layer": "mid",
+     "count": 48,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "bunny-statue",
+     "layer": "mid",
+     "count": 8,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "paper-hill",
+     "layer": "mid",
+     "count": 52,
+     "near": [
+      22.0,
+      55.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      2.2,
+      3.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "pine",
+     "layer": "mid",
+     "count": 24,
+     "near": [
+      22.0,
+      55.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
     }
    ],
    "setpieces": [
@@ -3953,6 +6488,16 @@
      "scale": 1.0,
      "pop": "spring",
      "label": "折纸松林"
+    },
+    {
+     "t": 126.0,
+     "side": 1,
+     "asset": "pine",
+     "dist": 4.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
     },
     {
      "t": 128.5,
@@ -3973,6 +6518,26 @@
      "label": "landmark"
     },
     {
+     "t": 131.0,
+     "side": 1,
+     "asset": "firefly-lamp",
+     "dist": 4.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
+    },
+    {
+     "t": 131.01,
+     "side": -1,
+     "asset": "page-wall",
+     "dist": 7.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
+    },
+    {
      "t": 139.0,
      "side": -1,
      "asset": "reading-bunny",
@@ -3991,6 +6556,26 @@
      "label": "landmark"
     },
     {
+     "t": 141.5,
+     "side": 1,
+     "asset": "reading-bunny",
+     "dist": 6.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
+    },
+    {
+     "t": 143.61,
+     "side": -1,
+     "asset": "page-wall",
+     "dist": 7.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
+    },
+    {
      "t": 145.0,
      "side": 1,
      "asset": "pine",
@@ -3998,6 +6583,16 @@
      "scale": 1.0,
      "pop": "spring",
      "label": "折纸松林②"
+    },
+    {
+     "t": 147.5,
+     "side": -1,
+     "asset": "pine",
+     "dist": 4.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
     }
    ],
    "moments": [
@@ -4086,7 +6681,7 @@
     {
      "asset": "gold-decal",
      "layer": "ground",
-     "count": 160,
+     "count": 64,
      "near": [
       0.3,
       9.0
@@ -4274,6 +6869,256 @@
       3,
       4
      ]
+    },
+    {
+     "asset": "tulip",
+     "layer": "ground",
+     "count": 94,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "flower-heart",
+     "layer": "ground",
+     "count": 125,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "gift",
+     "layer": "ground",
+     "count": 22,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "clover",
+     "layer": "ground",
+     "count": 62,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tulip-bed",
+     "layer": "mid",
+     "count": 5,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "fence",
+     "layer": "mid",
+     "count": 15,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "bunny-statue",
+     "layer": "mid",
+     "count": 4,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "heart-bed",
+     "layer": "mid",
+     "count": 3,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "paper-hill",
+     "layer": "mid",
+     "count": 16,
+     "near": [
+      22.0,
+      55.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      2.2,
+      3.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tree-bush",
+     "layer": "mid",
+     "count": 7,
+     "near": [
+      22.0,
+      55.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.4,
+      2.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
     }
    ],
    "setpieces": [
@@ -4294,6 +7139,16 @@
      "scale": 1.0,
      "pop": "spring",
      "label": "纸太阳+光芒"
+    },
+    {
+     "t": 159.5,
+     "side": -1,
+     "asset": "sun",
+     "dist": 6.0,
+     "scale": 0.6,
+     "pop": "spring",
+     "label": "twin",
+     "hi": true
     },
     {
      "t": 160.4,

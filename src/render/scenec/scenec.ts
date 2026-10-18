@@ -60,7 +60,7 @@ export class SceneC {
 
   setTier(t: Tier) { if (t === this.tier) return; this.tier = t; for (const m of this.chunkMesh.values()) m.dispose(); this.chunkMesh.clear(); this.range = [-1, -1]; }
 
-  private keep(it: CInst) { return hash(it.x, it.z) < (TIERS[this.tier].density[it.layer] ?? 1); }
+  private keep(it: CInst) { if (it.hi && this.tier === 'low') return false; return hash(it.x, it.z) < (TIERS[this.tier].density[it.layer] ?? 1); }
   private colOf(it: CInst, model: boolean) { const c = this.zoneCols[it.zone][it.c] ?? [1, 1, 1]; const k = model ? 0.3 : 0.85; return [1 + (c[0] - 1) * k, 1 + (c[1] - 1) * k, 1 + (c[2] - 1) * k]; }
   private yOf(it: CInst) { return it.layer === 'ground' || it.layer === 'mid' || it.layer === 'land' ? this.plc.chunks[it.chunk].y : it.y; }
 
@@ -177,7 +177,7 @@ export class SceneC {
   private applyLod(e: SetE) { e.far?.setEnabled(e.on && (e.lodFar || !e.near)); e.near?.setEnabled(e.on && !e.lodFar && !!e.near); }
   private setOn(e: SetE, on: boolean) { if (e.on === on) return; e.on = on; e.node.setEnabled(on); this.applyLod(e); }
   private animSet(e: SetE, t: number, beatK: number, cam: Vector3 | null) {
-    const d = e.def; const on = t >= d.popAt - 1.5 && t <= d.t + 10; this.setOn(e, on); if (!on) return;
+    const d = e.def; const on = t >= d.popAt - 1.5 && t <= d.t + 10 && !(d.hi && this.tier === 'low'); this.setOn(e, on); if (!on) return;
     e.hinge.rotation.x = -Math.PI / 2 * (1 - spring(t - d.popAt));                     // pop-up book: lies flat, springs upright
     if (cam) { const far = Vector3.Distance(cam, e.node.position) > TIERS[this.tier].lod; if (far !== e.lodFar) { e.lodFar = far; this.applyLod(e); } }
     if (e.lodFar) return;

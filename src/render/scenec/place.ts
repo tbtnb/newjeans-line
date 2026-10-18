@@ -5,7 +5,7 @@
 import { anchor, flowAnchor, type Route } from '../../core/path';
 import type { SceneCSpec, SceneCZone } from '../../core/types';
 
-export interface CInst { a: string; layer: string; x: number; y: number; z: number; yaw: number; s: number; c: number; zone: number; t: number; chunk: number }
+export interface CInst { a: string; layer: string; x: number; y: number; z: number; yaw: number; s: number; c: number; zone: number; t: number; chunk: number; hi?: boolean }
 export interface CSet extends CInst { popAt: number; label?: string }
 export interface CChunk { i: number; t0: number; t1: number; zone: number; minX: number; maxX: number; minZ: number; maxZ: number; y: number; items: CInst[] }
 export interface CPlacement { chunks: CChunk[]; sets: CSet[]; stats: { placed: number; rejected: number } }
@@ -66,7 +66,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
         const rp = anchor(route, t).pos;
         const yaw = A.shape === 'far' || L.layer === 'mid' ? Math.atan2(rp.x - a.pos.x, rp.z - a.pos.z) : R() * Math.PI * 2;
         const ci = chunkAt(t);
-        chunks[ci].items.push({ a: L.asset, layer: L.layer, x: a.pos.x, y: a.pos.y - o.roadH + y0, z: a.pos.z, yaw, s, c: (L.colors ?? [0])[Math.floor(R() * (L.colors ?? [0]).length)], zone: zi, t, chunk: ci });
+        chunks[ci].items.push({ a: L.asset, layer: L.layer, x: a.pos.x, y: a.pos.y - o.roadH + y0, z: a.pos.z, yaw, s, c: (L.colors ?? [0])[Math.floor(R() * (L.colors ?? [0]).length)], zone: zi, t, chunk: ci, ...(L.hi ? { hi: true } : {}) });
         placed++;
       }
     }
@@ -84,7 +84,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
       for (let k = 0; k < 24 && o.hits(a.pos.x, a.pos.z, r + 1.5, a.pos.y - 1, a.pos.y + A.h * sc); k++) { off += side * 1.5; a = flowAnchor(route, sp.t, off, 0, 0); }
       const rp = anchor(route, sp.t).pos;
       const popAt = drop && sp.t - drop.t < 8 && sp.t >= drop.t - 0.5 ? drop.t : snap(sp.t - 4);
-      sets.push({ a: sp.asset, layer: 'land', x: a.pos.x, y: a.pos.y - o.roadH, z: a.pos.z, yaw: Math.atan2(rp.x - a.pos.x, rp.z - a.pos.z), s: sc, c: 0, zone: zi, t: sp.t, chunk: chunkAt(sp.t), popAt, label: sp.label });
+      sets.push({ a: sp.asset, layer: 'land', x: a.pos.x, y: a.pos.y - o.roadH, z: a.pos.z, yaw: Math.atan2(rp.x - a.pos.x, rp.z - a.pos.z), s: sc, c: 0, zone: zi, t: sp.t, chunk: chunkAt(sp.t), popAt, label: sp.label, ...(sp.hi ? { hi: true } : {}) });
     }
   });
   return { chunks, sets, stats: { placed, rejected } };

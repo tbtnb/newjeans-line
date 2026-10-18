@@ -100,6 +100,46 @@ for z in Z.ZONES:
         if sets[i + 1]['t'] - sets[i]['t'] < 3 and sets[i + 1]['side'] == sets[i]['side']: sets[i]['side'] *= -1
     moments = [dict(t=t, label=label) for t, side, label in z['pieces'] if side == 0]
     zones.append(dict(id=zid, key=z['key'], t0=z['t0'], t1=z['t1'], name=z['cn'], colors=z['pal'], palette=PAL[zid], layers=layers, setpieces=sets, moments=moments))
+# ---- density pass (high tier): 3D kit instead of most flat decals, continuous mid clusters, a far ring, secondary hero copies.
+# Everything added here carries hi=True so the low tier keeps its old counts.
+KIT = {'clover': ('clover', 'tuft', 0.14), 'fern': ('fern', 'tuft', 0.55), 'tulip': ('tulip', 'flower', 0.4), 'mushroom-group': ('mushroom-group', 'mushroom', 0.5)}
+DECAL_KEEP = {'z03': 0.35, 'z04': 0.3, 'z05': 0.35, 'z07': 0.3, 'z08': 0.3, 'z10': 0.4}
+G, M = 'ground', 'mid'
+EXTRA = {   # zone: [(asset, layer, count)]  -- counts before spec.density
+ 'z01': [('clover', G, 160), ('fern', G, 90), ('tulip', G, 90), ('mushroom', G, 50), ('tree', M, 24), ('fence', M, 24), ('tulip-bed', M, 10)],
+ 'z02': [('clover', G, 140), ('tulip', G, 120), ('fern', G, 70), ('mushroom-group', G, 30), ('bunny-statue', M, 6), ('tree-bush', M, 24)],
+ 'z03': [('flower-heart', G, 200), ('tulip', G, 120), ('gift', G, 60), ('mushroom', G, 80), ('clover', G, 100), ('tulip-bed', M, 14), ('bunny-statue', M, 6), ('iv-heart', M, 8)],
+ 'z04': [('flower-heart', G, 160), ('gift', G, 90), ('lily-lamp', G, 50), ('tulip', G, 90), ('star-chime', M, 16), ('firefly-lamp', M, 24), ('bunny-statue', M, 6), ('heart-sculpt', M, 12)],
+ 'z05': [('reed', G, 260), ('lily-lamp', G, 90), ('fern', G, 120), ('mushroom', G, 60), ('clover', G, 120), ('rock', M, 30), ('tulip-bed', M, 8), ('firefly-lamp', M, 24), ('tree', M, 18), ('pine', M, 16), ('bunny-statue', M, 4)],
+ 'z06': [('tulip', G, 150), ('clover', G, 150), ('mushroom-group', G, 30), ('tulip-bed', M, 14), ('fence', M, 24), ('bunny-house', M, 6)],
+ 'z07': [('mushroom', G, 90), ('gift', G, 60), ('lily-lamp', G, 60), ('flower-heart', G, 120), ('star-chime', M, 16), ('book-stack', M, 14), ('pine', M, 20)],
+ 'z08': [('gift', G, 120), ('flower-heart', G, 200), ('lily-lamp', G, 60), ('tulip', G, 100), ('balloons', M, 20), ('bunting', M, 20), ('stall', M, 8), ('tulip-bed', M, 10)],
+ 'z09': [('fern', G, 220), ('mushroom-group', G, 50), ('reed', G, 60), ('clover', G, 100), ('mushroom', G, 60), ('tree', M, 24), ('firefly-lamp', M, 24), ('bunny-statue', M, 4)],
+ 'z10': [('tulip', G, 150), ('flower-heart', G, 200), ('gift', G, 70), ('clover', G, 100), ('tulip-bed', M, 8), ('fence', M, 24), ('bunny-statue', M, 6), ('heart-bed', M, 5)],
+}
+RING = {   # far ring 22-55 m out: paper hills + zone silhouette pieces, big scale
+ 'z01': ['paper-hill', 'tree'], 'z02': ['paper-hill', 'tree'], 'z03': ['paper-hill', 'tree'], 'z04': ['paper-hill', 'lantern-tower'],
+ 'z05': ['paper-hill', 'pine'], 'z06': ['paper-hill', 'tree'], 'z07': ['paper-hill', 'pine', 'spiral-tower'], 'z08': ['paper-hill', 'lantern-tower'],
+ 'z09': ['paper-hill', 'pine'], 'z10': ['paper-hill', 'tree-bush'],
+}
+for a in KIT.values(): assets.setdefault(a[0], dict(layer='ground', shape=a[1], h=a[2], tris=200, model=model_of(a[0]), names=[]))
+for z in zones:
+    zid = z['id']
+    for L in z['layers']:
+        if L['asset'].endswith('-decal') and zid in DECAL_KEEP: L['count'] = round(L['count'] * DECAL_KEEP[zid])
+    zk = (z['t1'] - z['t0']) / 15.12   # z09 is twice as long: keep density per second
+    for aid, layer, n in EXTRA.get(zid, []):
+        n = round(n * zk * (0.5 if aid in ('gift', 'lily-lamp') else 1))
+        Ld = LAYER[layer]; z['layers'].append(dict(asset=aid, layer=layer, count=n, near=list(Ld['near']), y=Ld['y'], scale=Ld['scale'], colors=[0, 1, 2, 3, 4], hi=True))
+    for k, aid in enumerate(RING[zid]):
+        z['layers'].append(dict(asset=aid, layer='mid', count=round((26 if k == 0 else 12 if aid in ('tree', 'pine', 'tree-bush') else 5) * zk), near=[22.0, 55.0], y=[0, 0], scale=[2.2, 3.6] if k == 0 else [1.4, 2.2], colors=[0, 1, 2, 3, 4], hi=True))
+    # secondary hero copies: each hero/landmark set piece gets a smaller twin on the other side 2.5 s later and a far-ring copy
+    extra = []
+    for sp in z['setpieces']:
+        if sp['asset'] in ('bunny-family',): continue
+        t2 = sp['t'] + 2.5
+        if t2 < z['t1'] - 0.5: extra.append(dict(sp, t=round(t2, 2), side=-sp['side'], dist=max(4.0, sp['dist'] - 2), scale=0.6, label='twin', hi=True))
+    z['setpieces'] = sorted(z['setpieces'] + extra, key=lambda d: d['t'])
 spec = dict(version=1, source='levels-design/omg/redesign-v3/C/zones_c.py (omg-design-v3)', chunk=20, window=dict(behind=3, ahead=8),
             clear=dict(ground=0.3, groundMaxH=1.2, near=1.0), density=dict(ground=2.0, mid=1.6, anim=1.5), assets=assets, zones=zones)
 # design asset sheets (levels-design/omg/redesign-v3/C/assets/<design id>/spec.json): their size / tri budget win over the table
