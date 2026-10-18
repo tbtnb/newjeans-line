@@ -51,7 +51,7 @@ export class CameraRig {
   distScale = 1;
   /** ?cam=key: framing of the concept-C key renders -- lower pitch looking along a long receding road, head in the lower
    *  third, authored side/top presets ignored (always along the flow); distance stays at or beyond the default's floor */
-  keyMode = typeof location !== 'undefined' && /[?&]cam=key\b/.test(location.search);
+  keyMode = typeof location !== 'undefined' && /[?&]cam=key\b/.test(location.search);   // world.ts turns it on for the concept-C scene unless ?cam=old
 
   private hits: number[] = []; private orbitAng = 0;
 

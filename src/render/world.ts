@@ -292,6 +292,7 @@ export class World {
     const bm = new StandardMaterial('beamM', this.scene); bm.emissiveColor = new Color3(1, 1, 1); bm.disableLighting = true; bm.alpha = 0.18; bm.backFaceCulling = false; beam.material = bm;
     // camera
     this.rig = new CameraRig(this.scene, route, L.camera ?? [], L.sections ?? [], (L.kicks?.length ? L.kicks : L.beats) ?? [], L.autoCamera !== false);
+    if (this.cmode && !(typeof location !== 'undefined' && /[?&]cam=old\b/.test(location.search))) this.rig.keyMode = true;   /* C scene: key-render framing is the default, old camera behind ?cam=old */
     this.scene.activeCamera = this.rig.cam;
     this.runs = []; this.failRun = null; this.trailCount = 0; this.completeAt = -1;
     this.setupShadows();
