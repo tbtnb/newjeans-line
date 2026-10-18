@@ -2,6 +2,7 @@
 // THIS IS A SCRIPTED SIMULATION (CDP Input.dispatchTouchEvent), NOT physical-device play, and NOT proof of music sync.
 // usage: DISPLAY=:99 node tools/qa/play.mjs --url URL --level 5 --w 540 --h 960 [--from 0] [--to 999] [--record out.mp4]
 //        [--jitter 0.008] [--miss T] [--double T] [--extra T] [--pauseAt T] [--log out.json] [--verbose]
+import { mkdirSync } from 'node:fs';
 import { chromium } from '@playwright/test';
 import { spawn } from 'node:child_process';
 import { writeFileSync } from 'node:fs';
@@ -19,7 +20,7 @@ await page.waitForFunction(() => window.__nj);
 await page.evaluate(i => window.__nj.selectLevel(i), level);
 await page.waitForFunction(() => window.__nj.level && window.__nj.audio.ready, null, { timeout: 60000 });
 // optional render-cost knobs for smoother software-rendered captures: --quality low (no shadows), --scale 1.5 (render at 1/1.5 res, upscaled)
-if (A.quality || A.scale) await page.evaluate(([q, sc]) => { const w = window.__nj.world; if (q) w.setQuality(q); if (sc) w.engine.setHardwareScalingLevel(+sc); }, [A.quality, A.scale]);
+if (A.quality || A.scale || A.camScale) await page.evaluate(([q, sc, cs]) => { const w = window.__nj.world; if (q) w.setQuality(q); if (sc) w.engine.setHardwareScalingLevel(+sc); if (cs) w.__camScale = +cs; }, [A.quality, A.scale, A.camScale]);
 await page.waitForTimeout(1500);
 const cdp = await ctx.newCDPSession(page);
 // Fire-and-forget: the browser stamps the event when it receives it (measured 0.4-4 ms after send);
@@ -58,6 +59,11 @@ const missAt = A.miss ? +A.miss : null, dblAt = A.double ? +A.double : null, ext
 const plan = [];
 for (const t of taps) { if (t <= from + 0.01 || t > to) continue; if (missAt !== null && Math.abs(t - missAt) < 0.12) continue; plan.push({ t: t + jitter * gauss(), kind: 'tap' }); if (dblAt !== null && Math.abs(t - dblAt) < 0.12) plan.push({ t: t + 0.012, kind: 'double' }); }
 if (extraAt !== null) plan.push({ t: extraAt, kind: 'extra' });
+// --shots 20,45,90 --shotdir dir : screenshots taken during real (scripted) play, so they show the trail, live scenery
+// and the real HUD (unlike snap.mjs, whose static debug preview shows the ready prompt and no trail)
+const shotTimes = A.shots ? A.shots.split(',').map(Number) : [];
+if (shotTimes.length) { mkdirSync(A.shotdir ?? 'shots', { recursive: true }); for (const t of shotTimes) plan.push({ t, kind: 'shot' }); }
+const shotJobs = [];
 plan.sort((a, b) => a.t - b.t);
 const sent = []; let lastSync = performance.now(); let paused = false;
 const busyUntil = async target => { for (;;) { const dt = (target - songNow()) * 1000; if (dt < 8) break; await new Promise(r => setTimeout(r, Math.min(dt - 6, 50))); } while (songNow() < target) { /* spin */ } };
@@ -74,9 +80,10 @@ for (let i = 0; i < plan.length; i++) {
   }
   if (performance.now() - lastSync > 600 && p.t - songNow() > 0.2) { ref = await sync(); lastSync = performance.now(); if (ref.status !== 'playing') break; }
   await busyUntil(p.t);
+  if (p.kind === 'shot') { shotJobs.push(page.screenshot({ path: `${A.shotdir ?? 'shots'}/play-t${String(Math.round(p.t)).padStart(3, '0')}.png` })); continue; }
   touch(); sent.push({ kind: p.kind, planned: p.t }); if (sent.length % 50 === 0) dbg('sent', sent.length, p.t.toFixed(2));
 }
-dbg('plan done');
+await Promise.all(shotJobs); dbg('plan done');
 for (;;) { const s = await page.evaluate(() => ({ t: window.__nj.game.time, gs: window.__nj.game.status })); if (s.gs !== 'playing' || s.t >= to) break; await page.waitForTimeout(250); }
 await page.waitForTimeout(+(A.tail ?? 4500));
 const result = await page.evaluate(() => { const g = window.__nj.game; const rl = window.__runlog || { fails: [], turns: [] }; return { fails: rl.fails, turns: rl.turns || [], state: window.__nj.state, status: g.status, failKind: g.failKind, failTime: g.failTime, time: g.time, cursor: g.cursor, taps: g.taps.length, perfect: g.perfect, good: g.good, diamonds: g.diamondsTaken.size, ignoredDuplicates: g.ignoredDuplicates, fps: window.__nj.world.fps, save: JSON.parse(localStorage.getItem('newjeans-line.save.v2') || 'null') }; });
