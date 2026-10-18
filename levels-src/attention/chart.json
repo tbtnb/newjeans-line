@@ -1,0 +1,1653 @@
+{
+ "id": "attention",
+ "startHeading": "N",
+ "speed": [
+  {
+   "t": 0,
+   "v": 9.0
+  }
+ ],
+ "taps": [
+  {
+   "t": 1.335,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 3.622,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 5.909,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 7.607,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 9.322,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 9.608,
+   "dir": "L",
+   "tag": "bass"
+  },
+  {
+   "t": 10.179,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 11.9,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 12.759,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 13.322,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 13.608,
+   "dir": "R",
+   "tag": "bass"
+  },
+  {
+   "t": 14.18,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 15.035,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 15.906,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 16.475,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 16.751,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 17.322,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 17.612,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 17.894,
+   "dir": "R",
+   "tag": "bass"
+  },
+  {
+   "t": 18.18,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 18.751,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 19.331,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 20.19,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 20.468,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 21.037,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 21.323,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 21.609,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 21.894,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 22.175,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 22.477,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 22.752,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 23.037,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 23.323,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 23.893,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 24.466,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 24.764,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 25.038,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 25.623,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 26.192,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 26.482,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 26.749,
+   "dir": "L",
+   "tag": "bass"
+  },
+  {
+   "t": 27.04,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 27.324,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 27.887,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 29.327,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 30.186,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 30.465,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 30.752,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 31.324,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 31.602,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 31.904,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 32.467,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 38.185,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 38.753,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 39.325,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 40.468,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 43.607,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 43.896,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 44.745,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 45.047,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 46.452,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 46.765,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 47.04,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 47.325,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 47.624,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 49.897,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 50.468,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 51.326,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 51.611,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 52.477,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 52.754,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 53.325,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 53.905,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 54.764,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 55.612,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 55.898,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 56.183,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 57.326,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 57.898,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 58.183,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 58.909,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 60.186,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 60.469,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 60.755,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 61.614,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 61.898,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 64.47,
+   "dir": "L",
+   "tag": "bass"
+  },
+  {
+   "t": 65.341,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 65.898,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 66.188,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 66.756,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 67.041,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 67.628,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 68.184,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 68.452,
+   "dir": "L",
+   "tag": "bass"
+  },
+  {
+   "t": 69.042,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 69.899,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 70.194,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 70.473,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 70.756,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 71.332,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 71.613,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 71.899,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 72.202,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 72.47,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 72.756,
+   "dir": "L",
+   "tag": "bass"
+  },
+  {
+   "t": 73.042,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 73.613,
+   "dir": "L",
+   "tag": "bass"
+  },
+  {
+   "t": 73.909,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 74.188,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 74.471,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 74.768,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 75.047,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 75.328,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 75.614,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 75.899,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 76.185,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 76.471,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 76.757,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 77.042,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 77.185,
+   "dir": "L",
+   "tag": "hat"
+  },
+  {
+   "t": 77.334,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 77.614,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 77.9,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 78.185,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 78.757,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 79.052,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 79.328,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 79.614,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 79.9,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 80.757,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 81.614,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 81.9,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 82.186,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 82.471,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 82.756,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 84.472,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 85.329,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 86.192,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 87.342,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 87.899,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 88.186,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 88.472,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 90.186,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 90.767,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 91.044,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 91.336,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 92.472,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 94.749,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 95.318,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 96.491,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 98.743,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 99.614,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 101.912,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 105.906,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 106.188,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 106.487,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 107.346,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 107.616,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 108.193,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 108.474,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 108.774,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 109.621,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 110.469,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 111.045,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 111.316,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 112.188,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 112.744,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 113.035,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 113.604,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 113.766,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 115.032,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 115.331,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 115.612,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 115.903,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 116.46,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 116.773,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 119.316,
+   "dir": "R",
+   "tag": "bass"
+  },
+  {
+   "t": 120.198,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 120.761,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 121.046,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 121.618,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 122.485,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 123.046,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 123.332,
+   "dir": "L",
+   "tag": "bass"
+  },
+  {
+   "t": 123.904,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 124.761,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 125.047,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 125.33,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 125.618,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 126.189,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 126.475,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 126.761,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 127.618,
+   "dir": "L",
+   "tag": "bass"
+  },
+  {
+   "t": 127.904,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 128.464,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 128.761,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 129.045,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 129.347,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 129.614,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 129.904,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 130.19,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 130.461,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 130.761,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 131.047,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 131.333,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 131.619,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 131.904,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 132.047,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 132.203,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 132.476,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 132.748,
+   "dir": "R",
+   "tag": "bass"
+  },
+  {
+   "t": 133.047,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 133.619,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 133.909,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 134.19,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 134.476,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 134.762,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 135.619,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 135.905,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 136.476,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 136.762,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 137.048,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 138.762,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 139.334,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 139.905,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 140.477,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 140.759,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 141.328,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 141.62,
+   "dir": "R",
+   "tag": "bass"
+  },
+  {
+   "t": 142.191,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 143.035,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 143.906,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 144.475,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 144.763,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 145.048,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 145.345,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 145.62,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 145.906,
+   "dir": "R",
+   "tag": "bass"
+  },
+  {
+   "t": 146.191,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 146.763,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 147.342,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 148.19,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 148.477,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 149.049,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 149.335,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 149.62,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 149.908,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 150.192,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 150.335,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 150.477,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 150.763,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 151.057,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 151.324,
+   "dir": "L",
+   "tag": "bass"
+  },
+  {
+   "t": 151.906,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 152.478,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 152.764,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 153.049,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 153.612,
+   "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 153.89,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 154.192,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 154.478,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 154.764,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 155.04,
+   "dir": "L",
+   "tag": "bass"
+  },
+  {
+   "t": 155.335,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 155.907,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 156.201,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 158.192,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 158.476,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 159.045,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 159.335,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 159.907,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 160.496,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 160.763,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 161.332,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 161.622,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 162.764,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 163.051,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 163.622,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 163.907,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 165.907,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 168.193,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 170.469,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 171.607,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 172.768,
+   "dir": "L",
+   "tag": "vocal"
+  }
+ ],
+ "sections": [
+  {
+   "t": 0.0,
+   "label": "Intro",
+   "kind": "intro",
+   "follows": "vocal",
+   "follows_note": "0.00 9.61 5 -> 5 0.52 1.698 vocal vocal syllables - one tap per sung syllable onset, held notes left open"
+  },
+  {
+   "t": 9.607,
+   "label": "Hook A",
+   "kind": "chorus",
+   "follows": "drums",
+   "follows_note": "9.61 27.89 32 -> 39 2.13 0.267 drums kick/snare backbeat and its syncopated pickups (the dotted/off-beat claps of the hook)"
+  },
+  {
+   "t": 27.893,
+   "label": "Verse 1",
+   "kind": "verse",
+   "follows": "vocal",
+   "follows_note": "27.89 46.75 24 -> 17 0.90 0.278 vocal vocal syllables - one tap per sung syllable onset, held notes left open"
+  },
+  {
+   "t": 46.75,
+   "label": "Pre-chorus 1",
+   "kind": "pre",
+   "follows": "vocal",
+   "follows_note": "46.75 62.18 22 -> 25 1.62 0.275 vocal vocal syllables - one tap per sung syllable onset, held notes left open"
+  },
+  {
+   "t": 62.18,
+   "label": "Chorus 1",
+   "kind": "chorus",
+   "follows": "drums",
+   "follows_note": "62.18 83.32 46 -> 50 2.37 0.143 drums kick/snare backbeat and its syncopated pickups (the dotted/off-beat claps of the hook); 1 16th burst tap(s) on an audible "
+  },
+  {
+   "t": 83.32,
+   "label": "Verse 2",
+   "kind": "verse",
+   "follows": "vocal",
+   "follows_note": "83.32 101.60 20 -> 17 0.93 0.277 vocal vocal syllables - one tap per sung syllable onset, held notes left open"
+  },
+  {
+   "t": 101.6,
+   "label": "Pre-chorus 2",
+   "kind": "pre",
+   "follows": "vocal",
+   "follows_note": "101.60 117.03 26 -> 24 1.56 0.162 vocal vocal syllables - one tap per sung syllable onset, held notes left open"
+  },
+  {
+   "t": 117.03,
+   "label": "Chorus 2",
+   "kind": "chorus",
+   "follows": "drums",
+   "follows_note": "117.03 137.60 46 -> 46 2.24 0.143 drums kick/snare backbeat and its syncopated pickups (the dotted/off-beat claps of the hook); 1 16th burst tap(s) on an audibl"
+  },
+  {
+   "t": 137.6,
+   "label": "Final chorus",
+   "kind": "chorus",
+   "follows": "drums",
+   "follows_note": "137.60 156.10 45 -> 43 2.32 0.142 drums kick/snare backbeat and its syncopated pickups (the dotted/off-beat claps of the hook); 1 16th burst tap(s) on an audibl"
+  },
+  {
+   "t": 156.1,
+   "label": "Outro",
+   "kind": "outro",
+   "follows": "vocal",
+   "follows_note": "156.10 178.00 19 -> 19 0.87 0.267 vocal vocal syllables - one tap per sung syllable onset, held notes left open"
+  }
+ ],
+ "notes": "Attention 104.99 BPM (beat 0.5715 s). 285 taps (legacy 139). Each section follows one audible layer (see chart-report.md); repeated phrases share one tap pattern; 3 16th burst tap(s) only on fills clearly audible in the full mix; min gap 0.142 s, honest peak 423 CPM, avg 96 CPM (total) / 202 (wiki-style). Engine judgment window ±64..±110 ms.",
+ "meta": {
+  "bpm": 104.99,
+  "bursts16": [
+   77.185,
+   132.047,
+   150.335
+  ],
+  "route_moves": [
+   {
+    "name": "intro",
+    "kind": "alt",
+    "t0": 0,
+    "variant": {}
+   },
+   {
+    "name": "hookA-stair",
+    "kind": "stair",
+    "t0": 9.607,
+    "variant": {
+     "diags": [
+      "NE"
+     ]
+    }
+   },
+   {
+    "name": "hookA-zig",
+    "kind": "zig",
+    "t0": 18.75,
+    "variant": {
+     "diags": [
+      "NW",
+      "NE"
+     ],
+     "every": 5
+    }
+   },
+   {
+    "name": "verse1-switchback",
+    "kind": "lserp",
+    "t0": 27.893,
+    "variant": {
+     "A0": "E",
+     "P": "N"
+    }
+   },
+   {
+    "name": "pre1-skybridge",
+    "kind": "stair",
+    "t0": 46.6,
+    "variant": {
+     "diags": [
+      "SE"
+     ]
+    }
+   },
+   {
+    "name": "chorus1-wrap",
+    "kind": "zig",
+    "t0": 62.18,
+    "variant": {
+     "diags": [
+      "SE",
+      "SW",
+      "NW"
+     ],
+     "every": 16
+    }
+   },
+   {
+    "name": "verse2-spiral",
+    "kind": "lspiral",
+    "t0": 83.32,
+    "variant": {
+     "turn": "R",
+     "dy": 1.8,
+     "alt0": true
+    }
+   },
+   {
+    "name": "verse2-wall",
+    "kind": "lserp",
+    "t0": 93.9,
+    "variant": {
+     "A0": "W",
+     "P": "S"
+    }
+   },
+   {
+    "name": "pre2-sawtooth",
+    "kind": "zig",
+    "t0": 101.6,
+    "variant": {
+     "diags": [
+      "SW",
+      "NW"
+     ],
+     "every": 3
+    }
+   },
+   {
+    "name": "chorus2-zigzag",
+    "kind": "zig",
+    "t0": 117.03,
+    "variant": {
+     "diags": [
+      "NW",
+      "NE"
+     ],
+     "every": 8
+    }
+   },
+   {
+    "name": "final-loop",
+    "kind": "zig",
+    "t0": 137.6,
+    "variant": {
+     "diags": [
+      "NW",
+      "SW",
+      "SE",
+      "NE"
+     ],
+     "every": 9
+    }
+   },
+   {
+    "name": "outro-sweep",
+    "kind": "alt",
+    "t0": 156.1,
+    "variant": {}
+   },
+   {
+    "name": "outro-switch",
+    "kind": "lserp",
+    "t0": 163.8,
+    "variant": {
+     "A0": "N",
+     "P": "W"
+    }
+   }
+  ],
+  "source": "levels-design/attention (worker design, integrated by integ-a)"
+ }
+}
