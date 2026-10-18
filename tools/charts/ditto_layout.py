@@ -153,6 +153,7 @@ L.scatter(T(96), T(103), 10, [{'kind': 'cloud', 'size': [8, 3, 5], 'color': '#ff
 # ---------- collectibles ----------
 for pct in [0.07, 0.15, 0.24, 0.33, 0.43, 0.52, 0.61, 0.70, 0.83, 0.93]:
     d['diamonds'].append({'t': L.gap_mid(pct * 185.5, 0.6)})
+# checkpoints sit in the middle of the long calm straight that opens the pre-chorus and the night break (before the falls)
 c1 = L.gap_after(T(31), 1.0); c2 = L.gap_after(T(71), 1.2)
-d['crowns'] = [{'t': round(c1[0] + 0.05, 3)}, {'t': round(c2[0] + 0.05, 3)}]
+d['crowns'] = [{'t': round(c1[0] + 0.06, 3)}, {'t': round(c2[0] + 0.07, 3)}]
 L.save()

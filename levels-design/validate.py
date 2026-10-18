@@ -169,7 +169,7 @@ def main(slug):
             if any(abs(dm['t'] - t) < 0.2 for t in taps): warns.append(f'diamond at {dm["t"]} within 0.2s of a tap')
             if abs(dm.get('side', 0)) > w_at(dm['t']) / 2: errs.append(f'diamond at {dm["t"]} side {dm.get("side")} is off the road')
         for c in layout.get('crowns', []):
-            if any(abs(c['t'] - t) < 0.3 for t in taps): warns.append(f'crown at {c["t"]} within 0.3s of a tap (checkpoint should sit on a calm straight)')
+            if any(0 < c['t'] - t < 0.05 or 0 < t - c['t'] < 0.3 for t in taps): warns.append(f'crown at {c["t"]} within 0.3s of a tap (checkpoint should be followed by a calm straight)')
         # art references
         refs = []
         art = layout.get('art', {}) or {}
