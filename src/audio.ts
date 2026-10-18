@@ -65,11 +65,20 @@ export class AudioTransport {
     return Math.min(this.duration, t);
   }
 
-  /** Monotonic clock for rendering (guards against tiny backwards jitter). */
-  renderTime(): number {
-    const t = this.songTime();
-    if (this.playing) { this.lastReported = Math.max(this.lastReported, t); return this.lastReported; }
-    this.lastReported = t; return t;
+  /** Smooth, monotonic clock for rendering. The raw output timestamp advances in audio-callback-sized steps
+   *  (10-40 ms on many phones/Bluetooth stacks), which made the line head stutter. We run a perf-clock-driven
+   *  estimate and pull it toward the raw audio clock gently (snap on large jumps), so motion is smooth but never
+   *  drifts from what is heard. `ahead` predicts the time at which this frame will actually be on screen. */
+  private smooth = 0; private smoothPerf = 0;
+  renderTime(ahead = 0): number {
+    const now = performance.now();
+    const raw = this.songTime(now);
+    if (!this.playing) { this.smooth = raw; this.smoothPerf = now; this.lastReported = raw; return raw; }
+    const pred = this.smooth + (now - this.smoothPerf) / 1000;
+    const err = raw - pred;
+    this.smooth = Math.abs(err) > 0.08 ? raw : pred + err * 0.12; this.smoothPerf = now;
+    const t = Math.min(this.duration, this.smooth + ahead);
+    this.lastReported = Math.max(this.lastReported, t); return this.lastReported;
   }
 
   async play(from: number) {
@@ -90,7 +99,7 @@ export class AudioTransport {
     void outLat;
     this.source = src;
     this.playing = true;
-    this.lastReported = this.offset;
+    this.lastReported = this.offset; this.smooth = this.offset; this.smoothPerf = performance.now();
     src.onended = () => { if (this.source === src) { this.playing = false; this.offset = this.buffer?.duration ?? 0; this.source = null; } };
   }
 

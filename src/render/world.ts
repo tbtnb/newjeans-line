@@ -168,7 +168,7 @@ export class World {
     // player line
     this.headMat = new StandardMaterial('headM', this.scene); this.headMat.specularColor = new Color3(0.1, 0.1, 0.1);
     this.trailMat = new StandardMaterial('trailM', this.scene); this.trailMat.specularColor = new Color3(0.05, 0.05, 0.05);
-    this.head = CreateBox('head', { size: 1 }, this.scene); this.head.scaling.set(LINE_W, LINE_H, LINE_W); this.head.material = this.headMat; this.head.parent = this.root;
+    this.head = CreateBox('head', { size: 1 }, this.scene); this.head.scaling.set(LINE_W * 1.06, LINE_H + 0.05, LINE_W * 1.06); // slightly larger than the trail cross-section: no coplanar faces with the run it caps (z-fighting flicker) this.head.material = this.headMat; this.head.parent = this.root;
     this.trail = CreateBox('trail', { size: 1 }, this.scene); this.trail.material = this.trailMat; this.trail.parent = this.root; this.trail.alwaysSelectAsActiveMesh = true;
     this.trailBuf = new Float32Array(16 * 256); this.trail.thinInstanceSetBuffer('matrix', this.trailBuf, 16, false); this.trail.thinInstanceCount = 0;
     this.skin.attach(this.head, this.headMat, this.trailMat, this.root);
@@ -466,7 +466,10 @@ export class World {
     // camera
     this.rig.menuOrbit = this.mode === 'menu'; this.rig.distScale = (this as any).__camScale ?? 1;
     this.rig.update(this.mode === 'menu' ? 0 : lt, failed ? this.head.position : lp, dt || 1 / 60);
-    this.sun.position = this.rig.cam.getTarget().add(new Vector3(30, 60, -20));
+    // shadow frustum follows the camera, snapped to whole shadow-map texels in light space (no shimmering edges)
+    { const tg = this.rig.cam.getTarget(); const d = this.sun.direction.normalizeToNew(); const r = Vector3.Cross(Vector3.Up(), d).normalize(); const u = Vector3.Cross(d, r);
+      const tex = 52 / 1024; const a = Math.round(Vector3.Dot(tg, r) / tex) * tex, b = Math.round(Vector3.Dot(tg, u) / tex) * tex, c = Vector3.Dot(tg, d);
+      this.sun.position = r.scale(a).add(u.scale(b)).add(d.scale(c)).add(new Vector3(30, 60, -20)); }
     // collectibles
     const tt = performance.now() / 1000;
     for (const d of this.diamonds) if (!d.taken) { d.mesh.rotation.y = tt * 2.2; d.mesh.position.y = d.base.y + Math.sin(tt * 3 + d.t) * 0.12; }

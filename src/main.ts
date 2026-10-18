@@ -296,21 +296,21 @@ $('btn-calibrate').onclick = () => {
   show('settings', false); show('calib', true);
   audio.unlock(); const ctx = audio.context();
   const start = ctx.currentTime + 0.6; const beat = 0.6; const clicks: number[] = []; const errors: number[] = [];
-  for (let i = 0; i < 12; i++) { const o = ctx.createOscillator(); const g = ctx.createGain(); o.frequency.value = i % 4 ? 880 : 1320; g.gain.setValueAtTime(0.0001, start + i * beat); g.gain.exponentialRampToValueAtTime(0.5, start + i * beat + 0.002); g.gain.exponentialRampToValueAtTime(0.0001, start + i * beat + 0.08); o.connect(g).connect(ctx.destination); o.start(start + i * beat); o.stop(start + i * beat + 0.1); clicks.push(start + i * beat); }
+  for (let i = 0; i < 16; i++) { const o = ctx.createOscillator(); const g = ctx.createGain(); o.frequency.value = i % 4 ? 880 : 1320; g.gain.setValueAtTime(0.0001, start + i * beat); g.gain.exponentialRampToValueAtTime(0.5, start + i * beat + 0.002); g.gain.exponentialRampToValueAtTime(0.0001, start + i * beat + 0.08); o.connect(g).connect(ctx.destination); o.start(start + i * beat); o.stop(start + i * beat + 0.1); clicks.push(start + i * beat); }
   const dot = $('calib-dot');
   const ts0 = ctx.getOutputTimestamp?.();
   const heard = (perf: number) => { const ts = ctx.getOutputTimestamp?.(); return ts && ts.contextTime ? ts.contextTime + (perf - (ts.performanceTime ?? perf)) / 1000 : ctx.currentTime - (ctx.outputLatency || 0); };
   void ts0;
   const iv = setInterval(() => { const h = heard(performance.now()); const near = clicks.some(c => h >= c && h < c + 0.1); dot.classList.toggle('beat', near); }, 16);
-  const onTap = (e: PointerEvent) => { if ((e.target as HTMLElement).closest('button')) return; const h = heard(e.timeStamp); const c = clicks.reduce((a, b) => (Math.abs(b - h) < Math.abs(a - h) ? b : a)); if (Math.abs(h - c) < 0.3 && c >= clicks[3]) errors.push(h - c); $('calib-msg').textContent = `已记录 ${errors.length} / 8`; if (errors.length >= 8) finish(); };
+  const onTap = (e: PointerEvent) => { if ((e.target as HTMLElement).closest('button')) return; const h = heard(e.timeStamp); const c = clicks.reduce((a, b) => (Math.abs(b - h) < Math.abs(a - h) ? b : a)); if (Math.abs(h - c) < 0.3 && c >= clicks[3]) errors.push(h - c); $('calib-msg').textContent = `已记录 ${errors.length} / 10`; if (errors.length >= 10) finish(); };
   const finish = () => {
     clearInterval(iv); $('calib').removeEventListener('pointerdown', onTap);
-    if (errors.length >= 5) { const sorted = [...errors].sort((a, b) => a - b); const med = sorted[Math.floor(sorted.length / 2)]; save.settings.offsetMs = Math.max(-200, Math.min(200, Math.round(med * 1000 / 5) * 5)); persist(); toast(`音画延迟已设为 ${save.settings.offsetMs} ms`); }
+    if (errors.length >= 5) { const sorted = [...errors].sort((a, b) => a - b); const med = sorted[Math.floor(sorted.length / 2)]; save.settings.offsetMs = Math.max(-300, Math.min(300, Math.round(med * 1000 / 5) * 5)); persist(); toast(`音画延迟已设为 ${save.settings.offsetMs} ms`); }
     show('calib', false); $('calib-msg').textContent = '听到节拍时轻点屏幕'; openSettings();
   };
   $('calib').addEventListener('pointerdown', onTap);
   $('btn-calib-cancel').onclick = () => { errors.length = 0; finish(); };
-  setTimeout(() => { if ($('calib').classList.contains('on')) finish(); }, (12 * beat + 2) * 1000);
+  setTimeout(() => { if ($('calib').classList.contains('on')) finish(); }, (16 * beat + 2) * 1000);
 };
 
 // ---------------- sync probe (QA only, ?syncprobe) ----------------
@@ -336,7 +336,8 @@ function loop() {
   game.lateGrace = Math.min(LATE_GRACE_MAX, Math.max(LATE_GRACE, 0.05 + 2.5 * frameEma));
   let t = game.time;
   if (state === 'playing') {
-    t = audio.renderTime() - save.settings.offsetMs / 1000;
+    // predict ~1 frame ahead: what we draw now reaches the screen at the next vsync
+    t = audio.renderTime(Math.min(0.05, frameEma)) - save.settings.offsetMs / 1000;
     game.update(t);
     if (game.status === 'playing' && !audio.playing && audio.songTime() >= level!.duration - 0.05) game.update(level!.duration);
     t = game.status === 'failed' ? game.failTime : game.time;
