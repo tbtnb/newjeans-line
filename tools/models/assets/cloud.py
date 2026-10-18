@@ -1,5 +1,5 @@
 """P24 Layered paper cloud. Size 3.5 x 1.2 x 2 m from spec; 300 tris; root, bob.
-SIMPLIFICATIONS: top drawing is flatter than front/side, so top IoU is advisory per spec; eight overlapping puffs (one subdivision-2, seven subdivision-1) fit the 300-triangle budget; thin polygonal back plate; no paper texture."""
+SIMPLIFICATIONS: top drawing is flatter than front/side, so top IoU is advisory per spec; seven folded 24-facet puff shells and a continuous scalloped back plate; no paper texture."""
 BUDGET = 300
 
 import math
@@ -29,35 +29,43 @@ def finish(P,spec,animated=()):
     for ob in obs:
         mw=ob.matrix_world.copy()
         for v in ob.data.vertices: v.co=point(mw@v.co)
-        ob.matrix_world=Matrix.Identity(4)
+        ob.matrix_world=Matrix.Identity(4);ob.data.update()
     moving=set(); roots=[]
     for name,joint,children in animated:
         roots.append(P.pivot(name,point(Vector(joint)),children)); moving.update(children)
     P.pivot('root',(0,0,0),[o for o in obs if o not in moving]+roots)
 
+def folded_puff(P,name,x,z,rx,rz,depth,back,col):
+    # Eight silhouette corners, eight offset creases and a forward apex: 24 flat facets; rear closes against the plate.
+    vv=[(x+rx*math.cos(k*math.pi/4),back,z+rz*math.sin(k*math.pi/4)) for k in range(8)]
+    vv += [(x+rx*.78*math.cos(k*math.pi/4+math.pi/8),back-depth*.74,z+rz*.78*math.sin(k*math.pi/4+math.pi/8)) for k in range(8)]
+    vv += [(x,back-depth,z)]
+    ff=[]
+    for k in range(8):
+        j=(k+1)%8
+        ff += [(k,j,8+k),(j,8+j,8+k),(8+k,8+j,16)]
+    return mesh(P,name,vv,ff,lambda p,n: '#F3F1EA' if col=='#FFFFFF' and (n.x>.25 or n.z<-.45) else col)
+
 def build(P, spec):
     c=spec['colors']; pieces=[]
-    # A thin paper back plate joins eight overlapping faceted puffs.
-    outline=[(-1.75,.15),(-1.75,.65),(-1.30,.85),(-1.05,1.40),
-             (-.70,1.35),(-.40,1.94),(.10,2),(.50,1.84),
-             (.70,1.40),(1.20,1.35),(1.72,.62),(1.70,.15)]
-    pieces.append(P.prism('thin scalloped paper back plate',outline,.12,
-                          loc=(0,.25,0),color=c['pearl'],side_color=c['fog']))
-    puffs=[
-        (-1.43,-.07,.53,.36,.29,.38,'white'),
-        (-.94,-.10,.98,.41,.33,.46,'pearl'),
-        (-1.01,-.11,.29,.35,.29,.27,'pearl'),
-        (-.10,-.09,1.30,.60,.40,.66,'white'),
-        (-.38,-.18,.50,.56,.43,.50,'white'),
-        (.77,-.11,.84,.61,.36,.57,'pearl'),
-        (1.36,-.05,.43,.34,.28,.35,'white'),
-        (.66,-.05,.30,.45,.29,.29,'pearl'),
-    ]
-    for k,(x,y,z,rx,ry,rz,col) in enumerate(puffs):
-        ob=P.ico('overlapping geodesic puff'+str(k),1,loc=(x,y,z),
-                 scale=(rx,ry,rz),subdiv=2 if k==3 else 1,
-                 rot=(0,0,0),color=c[col])
-        for v in ob.data.vertices:
-            if v.co.z+z < .12: v.co.z=.12-z
-        pieces.append(ob)
+    # The continuous scalloped back is visible around each puff, not a rectangular side slab.
+    outline=[(-1.75,.38),(-1.70,.69),(-1.49,.91),(-1.23,.93),
+             (-1.13,1.24),(-.91,1.47),(-.67,1.49),(-.58,1.78),
+             (-.24,1.97),(.11,2.0),(.43,1.84),(.64,1.49),
+             (.93,1.50),(1.19,1.35),(1.29,.99),(1.50,1.02),
+             (1.69,.86),(1.72,.62),(1.75,.51),(1.71,.24),
+             (1.49,.15),(.72,.14),(.18,.12),(-.92,.20),(-1.53,.23)]
+    plate=P.prism('scalloped thick layered paper backing',outline,.19,loc=(0,.42,0),color=c['pearl'])
+    P.paint(plate,c['fog'],faces={f.index for f in plate.data.polygons if abs(f.normal.y)<.5})
+    pieces.append(plate)
+    # Arranged from rear to front; front masses and their overlaps follow the hero.
+    puffs=[(-1.45,.64,.34,.35,.60,.38,'white'),
+           (-.92,.99,.37,.45,.68,.38,'pearl'),
+           (-.92,.35,.36,.25,.56,.38,'pearl'),
+           (-.04,1.31,.61,.59,.86,.40,'white'),
+           (.74,.86,.54,.51,.84,.40,'pearl'),
+           (1.34,.49,.32,.34,.64,.40,'white'),
+           (-.28,.49,.59,.49,1.02,.40,'white')]
+    for k,(x,z,rx,rz,d,y,col) in enumerate(puffs):
+        pieces.append(folded_puff(P,'creased paper puff '+str(k),x,z,rx,rz,d,y,c[col]))
     finish(P,spec,[('bob',(0,0,1),pieces)])

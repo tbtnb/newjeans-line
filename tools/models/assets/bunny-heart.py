@@ -1,8 +1,9 @@
 """H02 Giant Pop-up Bunny with Heart — 6.5 × 6 × 10 m; 4000 tris.
 Pivots: root (0,0,0), ears0/ears1 at folded ear roots, heart at gem centre.
 SIMPLIFICATIONS: printed paper texture omitted; page edges are stacked folded leaves;
-face marks use palette pink; heart microfacets follow the principal diamond creases;
-reference top-view ear placement is interpreted through front + hero.
+face marks use palette pink; gem microfacets follow the principal diamond creases;
+shared paper #FFF8EC supplements the exact spec palette; top-view ear placement
+is interpreted through front + hero (the drawn top ears extend farther back).
 """
 import math
 import bpy
@@ -71,7 +72,7 @@ def surface_patch(P,ob,name,outline,color):
 def head_hull(P,c):
     outline=[(0,7.15),(.70,7.10),(1.18,6.85),(1.50,6.45),(1.62,5.91),(1.55,5.39),(.95,5.01),(0,4.70),(-.95,5.01),(-1.50,5.43),(-1.57,5.90),(-1.48,6.45),(-1.10,6.85),(-.60,7.10)]
     vv=[(x,-1.02 if z<4.8 else .12,z) for x,z in outline]
-    vv.extend([(0,-.78,6.91),(-.85,-1.30,6.37),(.85,-1.30,6.37),(0,-1.45,6.18),(-1.25,-.95,6.18),(1.25,-.95,6.18),(-.62,-1.57,5.83),(.62,-1.57,5.83),(-.52,-1.26,5.22),(.52,-1.26,5.22),(0,-1.73,5.65),(-1.05,-1.30,5.65),(1.05,-1.30,5.65),(0,-1.05,5.02),(-.70,-.72,4.99),(.70,-.72,4.99),(0,1.19,5.75),(-.8,1.03,6.1),(.8,1.03,6.1),(0,.85,6.79),(-.65,.86,5.12),(.65,.86,5.12)])
+    vv.extend([(0,-.78,6.91),(-.85,-1.30,6.37),(.85,-1.30,6.37),(0,-1.45,6.18),(-1.25,-.95,6.18),(1.25,-.95,6.18),(-.62,-1.57,5.83),(.62,-1.57,5.83),(-.52,-1.26,5.22),(.52,-1.26,5.22),(0,-1.73,5.65),(-1.05,-1.30,5.65),(1.05,-1.30,5.65),(0,-1.05,5.02),(-.70,-.72,4.99),(.70,-.72,4.99),(0,1.19,5.75),(-.8,1.03,6.1),(.8,1.03,6.1),(0,.85,6.79),(0,.96,7.02),(0,-.84,7.01),(-.65,.86,5.12),(.65,.86,5.12)])
     bm=bmesh.new()
     for co in vv:bm.verts.new(co)
     bmesh.ops.convex_hull(bm,input=list(bm.verts),use_existing_faces=False)
@@ -97,16 +98,17 @@ def ear(P,name,sign,c):
     # Front contour measured from H02 front; each shell is a solid wedge in plan.
     if sign<0:
         outline=[(-.69,6.80),(-1.13,7.15),(-1.55,7.85),(-1.67,8.74),(-1.17,9.98),(-.36,9.30),(.05,8.55),(.10,7.02)]
-        inner=[(-.70,6.94),(-1.40,7.88),(-1.57,8.67),(-.78,8.19),(-.32,7.01)]
+        inner=[(-.65,6.97),(-1.40,7.88),(-1.54,8.59),(-1.12,9.30),(-.65,8.98),(-.20,7.04)]
         mid=(-.50,8.20)
     else:
-        outline=[(.43,6.87),(.57,8.50),(1.20,9.29),(2.34,10.0),(2.55,8.48),(2.12,7.41),(1.12,6.77)]
+        outline=[(.43,6.87),(.57,8.50),(1.18,9.29),(2.34,10.0),(2.55,8.48),(2.12,7.41),(1.12,6.77)]
         inner=[(.85,6.95),(1.09,8.23),(2.08,9.44),(2.09,8.37),(1.58,7.42),(1.02,6.91)]
         mid=(1.43,8.20)
     # Solid triangular cross-sections, gently swept back; cream rims surround the inset.
     def pos(x,z,back=0):
         t=(z-6.8)/3.2
-        front = .10+.80*t + (.20*(x+.8) if sign<0 else .20*(x-1.4))
+        front = .02+.65*t + (.20*(x+.8) if sign<0 else .20*(x-1.4))
+        x=mid[0]+(x-mid[0])*(1+.06*math.sin(math.pi*max(0,min(1,t))))
         return (x, front+back, z)
     n=len(outline)
     v=[pos(x,z) for x,z in outline]
@@ -144,16 +146,16 @@ def ear(P,name,sign,c):
 def gem_heart(P,c):
     outline=[(0,4.59),(.62,5.05),(1.12,5.18),(1.55,5.03),(1.85,4.61),(1.94,4.29),(1.76,3.65),(1.18,2.92),(0,1.75),(-1.18,2.92),(-1.76,3.65),(-1.94,4.29),(-1.85,4.61),(-1.55,5.03),(-1.12,5.18),(-.62,5.05)]
     # The design's central diamond is an actual ridge, joined to lobe apices.
-    v=[(x,-1.18 if i!=8 else -1.82,z) for i,(x,z) in enumerate(outline)]
-    v.extend([(-1.12,-2.10,4.25),(1.12,-2.10,4.25),(0,-2.24,3.28),(0,-2.03,2.22),(-1.05,-1.68,5.01),(1.05,-1.68,5.01)])
+    v=[(x,-1.18 if i!=8 else -2.14,z) for i,(x,z) in enumerate(outline)]
+    v.extend([(-1.12,-2.00,4.25),(1.12,-2.00,4.25),(0,-2.24,3.28),(0,-2.14,2.22),(-1.05,-1.68,5.01),(1.05,-1.68,5.01)])
     A,B,C,D,E,F=range(16,22)
     faces=[(0,1,F),(1,2,F),(2,3,F),(3,4,B),(3,B,F),(4,5,B),(5,6,B),(6,7,B),(7,C,B),(7,8,D),(7,D,C),(0,F,B),(0,B,C),
            (0,E,15),(15,E,14),(14,E,13),(13,A,12),(13,E,A),(12,A,11),(11,A,10),(10,A,9),(9,A,C),(9,D,8),(9,C,D),(0,A,E),(0,C,A)]
     fv=list(v); folded_faces=[]
     for k,f in enumerate(faces):
-        if k in (4,8,10,17,21,23):
+        if k in (0,2,4,6,8,10,11,13,15,17,19,21,23,24):
             q=sum((Vector(v[i]) for i in f),Vector())/3
-            q.y-=.055
+            q.y-=.075
             mid=len(fv);fv.append(tuple(q))
             for i in range(3):folded_faces.append((f[(i+1)%3],f[i],mid))
         else:folded_faces.append(tuple(reversed(f)))
@@ -163,7 +165,9 @@ def gem_heart(P,c):
     rv=v[:16]+backv[:16]
     rim=mesh(P,'heart_bevel',rv,[(i,(i+1)%16,16+(i+1)%16,16+i) for i in range(16)],c['pink'],1)
     for ob in (front,back,rim):
-        for v in ob.data.vertices:v.co.x-=.13
+        for v in ob.data.vertices:
+            v.co.x=v.co.x*1.09-.13
+            v.co.y=-.60+(v.co.y+.60)*1.04-.04
     return P.pivot('heart',(-.13,-1.27,3.465),[front,back,rim])
 
 def build(P,spec):
@@ -182,23 +186,25 @@ def build(P,spec):
         for yy in (-2.94,2.94):
             poly=[(0,1.31),(s*.39,.13),(s*.29,.13),(0,1.09)]
             parts.append(P.prism('gold_hinge_fold',poly[::s],.05,loc=(0,yy,0),color=c['gold']))
-    parts.append(sections(P,'folded_pear_body',[(1.41,1.50,1.40,.55),(1.75,1.97,1.67,.58),(2.60,2.13,1.72,.47),(3.45,1.99,1.49,.35),(4.25,1.66,1.18,.23),(4.95,.72,.65,.15)],c['cream']))
-    parts.append(folded(P,'folded_chest',(0,.05,4.40),(1.72,1.47,1.22),c['cream']))
+    parts.append(sections(P,'folded_pear_body',[(1.41,1.50,1.37,.65),(1.75,1.97,1.60,.65),(2.15,2.05,1.68,.63),(2.60,2.04,1.63,.57),(3.45,1.99,1.50,.42),(4.25,1.66,1.18,.23),(4.95,.72,.65,.15)],c['cream']))
+    parts.append(folded(P,'folded_chest',(0,.05,4.40),(1.72,1.32,1.22),c['cream']))
     head=head_hull(P,c['cream'])
     for v in head.data.vertices:
-        v.co.x+=.12
-        if v.co.y<0:v.co.y*=.86
+        v.co.x=v.co.x*1.02+.12
+        if v.co.z>6.1:v.co.x=.12+(v.co.x-.12)*(1-.18*(v.co.z-6.1))
+        v.co.z=5.95+(v.co.z-5.95)*1.035
+        if v.co.y<0:v.co.y*=1.02
     head.data.update();parts.append(head)
     for s in (-1,1):
-        foot=folded(P,'blocky_foot',(s*1.37,-1.00,2.13),(1.08,.98,1.00),c['cream'])
-        turn=Matrix.Rotation(math.radians(s*12),3,'Y');ctr=Vector((s*1.37,-1.00,2.13))
+        foot=folded(P,'blocky_foot',(s*1.37,-1.09,2.13),(1.13,1.07,1.00),c['cream'])
+        turn=Matrix.Rotation(math.radians(s*12),3,'Y');ctr=Vector((s*1.37,-1.09,2.13))
         for vertex in foot.data.vertices:vertex.co=ctr+turn@(vertex.co-ctr)
         foot.data.update();parts.append(foot)
         pad=[(s*1.37+x,2.02+z) for x,z in [(-.49,-.56),(.41,-.56),(.54,.12),(.25,.60),(-.38,.58),(-.54,.12)]]
         pad=[(s*1.37+(x-s*1.37)*math.cos(math.radians(s*12))+(z-2.13)*math.sin(math.radians(s*12)),2.13-(x-s*1.37)*math.sin(math.radians(s*12))+(z-2.13)*math.cos(math.radians(s*12))) for x,z in pad]
         parts.append(surface_patch(P,foot,'blush_sole',pad,c['blush']))
         parts.append(folded(P,'folded_forearm',(s*1.63,-.55,3.87),(.65,.85,.95),c['cream']))
-        parts.append(folded(P,'hugging_paw',(s*1.72-.10,-1.74,3.44),(.58,.62,.60),c['cream']))
+        parts.append(folded(P,'hugging_paw',(s*1.76-.10,-1.77,3.44),(.58,.64,.60),c['cream']))
     parts.append(folded(P,'small_paper_tail',(.44,1.87,1.98),(.37,.39,.39),c['cream'],segs=8))
     # Palette-only face, small creases on the actual forehead planes.
     head=next(o for o in parts if o.name.startswith('folded_cheek_head'))
@@ -207,12 +213,15 @@ def build(P,spec):
         ('eye_left',[(-.66,6.02),(-.57,6.00),(-.60,6.055)],c['pink']),
         ('eye_right',[(.57,6.00),(.66,6.02),(.60,6.055)],c['pink'])]:
         parts.append(surface_patch(P,head,name,[(x+.12,z) for x,z in coords],col))
-    # Bow sits on the bunny's right neck, with folded triangular wings.
-    for s in (-1,1):
-        v=[(1.62,-.77,4.90),(1.62+s*.45,-.80,5.23),(1.62+s*.51,-.77,4.60),(1.62+s*.28,-1.02,4.91),(1.62+s*.32,-.61,4.91)]
-        v=[(1.62+(x-1.62)*.64,-.77+(y+.77)+(x-1.62)*.77,z) for x,y,z in v]
-        parts.append(mesh(P,'pink_bow_wing',v,[(0,1,3),(1,2,3),(2,0,3),(0,4,1),(1,4,2),(2,4,0)],c['pink']))
-    parts.append(P.box('blush_bow_knot',(.22,.25,.26),loc=(1.62,-.90,4.80),color=c['blush'],rot=(0,12,0)))
+    # Folded bow tangent to the bunny's right neck: wings spread fore/aft,
+    # readable as a bow in side view and as a pink ribbon in plan.
+    for sign in (-1,1):
+        v=[(1.76,-.10,4.91),(1.72,-.10+sign*.60,5.22),
+           (1.72,-.10+sign*.60,4.62),(2.00,-.10+sign*.38,4.91),
+           (1.65,-.10+sign*.38,4.91)]
+        parts.append(mesh(P,'pink_bow_wing',v,[(0,1,3),(1,2,3),(2,0,3),
+                          (0,4,1),(1,4,2),(2,4,0)],c['pink']))
+    parts.append(P.box('blush_bow_knot',(.25,.24,.26),loc=(1.80,-.22,4.78),color=c['blush'],rot=(0,12,0)))
     animated=[ear(P,'ears0',-1,c),ear(P,'ears1',1,c),gem_heart(P,c)]
     root=P.pivot('root',(0,0,0),parts+animated)
     bpy.context.view_layer.update()

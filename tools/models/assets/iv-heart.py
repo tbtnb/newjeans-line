@@ -1,5 +1,5 @@
 """P07 Heart IV Stand. spec size 1 x 1 x 2.2 m; budget 500; pivots root,swing.
-SIMPLIFICATIONS: cream fittings replace unspec gold; tube is an angular thin hose; five actual caster wheels."""
+SIMPLIFICATIONS: cream fittings replace unlisted gold; six-sided casters and paper yokes; tube is a continuous thin angular hose."""
 
 import math
 import bpy
@@ -41,34 +41,47 @@ def rod(P,name,a,b,r,color,segs=4):
 
 def mesh(P,name,verts,faces,color):
     me=bpy.data.meshes.new(name); me.from_pydata(verts,[],faces);me.update()
+    import bmesh
+    bm=bmesh.new();bm.from_mesh(me);bmesh.ops.recalc_face_normals(bm,faces=bm.faces);bm.to_mesh(me);bm.free();me.update()
     ob=bpy.data.objects.new(name,me);bpy.context.collection.objects.link(ob);P.paint(ob,color);return ob
 
 
 def build(P, spec):
-    c=spec['colors'];x=.08
-    P.lathe('five wheel base hub',[(.10,.10),(.10,.26),(.055,.38)],6,loc=(x,0,0),color=c['wardgray'])
+    c=spec['colors'];x=.15
+    P.lathe('pentagonal caster hub',[(.105,.12),(.105,.28),(.065,.30)],5,loc=(x,0,0),color=c['wardgray'])
     for i in range(5):
         a=math.pi/2+2*math.pi*i/5
         ex=x+.44*math.cos(a);ey=.44*math.sin(a)
-        rod(P,'splayed caster leg',(x,0,.31),(ex,ey,.23),.060,c['wardgray'],3)
-        P.box('cream caster fork',(.085,.085,.16),loc=(ex,ey,.065),color=c['cream'])
-        P.cyl('caster wheel',.083,.075,4,loc=(ex-.0375,ey,.075),rot=(0,90,0),color=c['cream'])
-    P.cyl('upright IV pole',.042,1.86,4,loc=(x,0,.29),color=c['wardgray'])
-    for z in [.25,1.94,2.13]:P.cyl('cream pole collar',.035,.04,3,loc=(x,0,z),color=c['cream'])
-    rod(P,'top hook arm',(x,0,2.14),(-.27,0,2.14),.022,c['cream'],3)
-    for a,b in [((-.27,0,2.14),(-.29,0,2.08)),((-.29,0,2.08),(-.24,0,2.04)),((-.24,0,2.04),(-.20,0,2.08))]:rod(P,'curled hook',a,b,.018,c['cream'],3)
-    P.cyl('pole finial',.036,.04,4,loc=(x,0,2.17),r2=0,color=c['cream'])
-    outline=P.heart(.39,14);vv=[]
-    for y,scale in [(-.04,1),(-.13,.72),(.04,1),(.11,.72)]:vv += [(u*scale-.13,y-.12,1.62+v*scale) for u,v in outline]
-    vv += [(-.13,-.23,1.75),(-.13,.10,1.75)]
+        # Rectangular paper spokes sit horizontally above five recognisable casters.
+        P.box('broad rectangular caster spoke',(.43,.12,.10),loc=(x+.215*math.cos(a),.215*math.sin(a),.26),rot=(0,0,math.degrees(a)),base=False,color=c['wardgray'])
+        P.card('cream caster yoke',[(-.035,0),(.035,0),(.035,.14),(-.035,.14)],loc=(ex,ey,.075),color=c['cream'])
+        P.cyl('six-sided caster wheel',.083,.092,6,loc=(ex-.046,ey,.083),rot=(0,90,math.degrees(a)+120),color=c['cream'])
+    P.cyl('upright square IV pole',.040,1.85,4,loc=(x,0,.29),color=c['wardgray'],rot=(0,0,45))
+    for z in [.32,1.94]:P.cyl('cream pole collar',.043,.035,4,loc=(x,0,z),color=c['cream'])
+    P.cyl('cream pole finial',.049,.05,5,loc=(x,0,2.15),r2=.03,color=c['cream'])
+    # The long squared hook reaches over the hanging loop, as on the sheet.
+    pts=[(x,0,2.12),(-.18,0,2.12),(-.23,-.08,2.03),(-.18,-.08,2.02),(-.15,-.08,2.06)]
+    for a,b in zip(pts,pts[1:]):rod(P,'squared hanging hook',a,b,.023,c['cream'],3)
+    ol=[(0,.79),(.16,.98),(.34,1),(.5,.83),(.49,.54),(.33,.27),(0,0),(-.33,.27),(-.49,.54),(-.5,.83),(-.34,1),(-.16,.98)]
+    w=.72;h=.64;cx=-.18;z0=1.38;yc=-.08;n=len(ol)
+    vv=[(cx+u*w,yc,z0+v*h) for u,v in ol]
+    vv += [(cx+u*w*.75,yc-.18-(.04 if v>.65 else 0),z0+h*.52+(v-.52)*h*.75) for u,v in ol]
+    vv += [(cx+u*w*.75,yc+.075,z0+h*.52+(v-.52)*h*.75) for u,v in ol]
+    vv += [(cx,yc-.27,z0+h*.49),(cx,yc+.12,z0+h*.55)]
     ff=[]
-    for i in range(14):
-        j=(i+1)%14;ff +=[(i,j,14+j,14+i),(14+i,14+j,56),(28+i,57,28+j),(i,28+i,28+j,j)]
-    bag=mesh(P,'inflated faceted coral heart bag',vv,ff,c['coral'])
-    tabs=[bag,P.box('bag hanging tab',(.07,.05,.13),loc=(-.13,-.12,1.94),color=c['blush']),P.cyl('cream bag nozzle',.033,.09,3,loc=(-.20,-.12,1.28),color=c['cream'])]
-    P.pivot('swing',(-.13,-.12,2.10),tabs)
-    pts=[(-.20,-.12,1.31),(-.24,-.12,1.18),(-.20,-.12,1.04),(-.11,-.10,.97),(.035,-.04,.92),(.07,-.02,.87),(.07,-.02,.33)]
-    for a,b in zip(pts,pts[1:]):rod(P,'blush drip tube',a,b,.009,c['blush'],3)
-    for z in [.87,1.36]:P.box('coral hose clip',(.055,.065,.055),loc=(x,-.02,z),color=c['coral'])
-
+    for i in range(n):
+        j=(i+1)%n;ff += [(i,j,n+j),(i,n+j,n+i),(n+i,n+j,3*n),(j,i,2*n+i),(j,2*n+i,2*n+j),(2*n+j,2*n+i,3*n+1)]
+    bag=mesh(P,'creased gem coral heart drip bag',vv,ff,c['coral'])
+    tabs=[bag,P.prism('folded blush hanging tab',[(-.037,0),(.037,0),(.026,.19),(-.025,.19)],.05,loc=(cx,yc,1.87),color=c['blush']),P.cyl('cream bag nozzle',.043,.085,4,loc=(cx,yc,1.32),r2=.060,color=c['cream']),P.box('blush drip connector',(.045,.043,.07),loc=(cx,yc,1.26),color=c['blush'])]
+    P.pivot('swing',(cx,yc,2.06),tabs)
+    # A continuous triangular-section hose preserves the clear soft loop.
+    path=[(cx,yc,1.27),(cx+.015,yc,1.12),(cx+.07,yc,1.02),(cx+.17,yc,.95),(x-.022,-.025,.87),(x-.022,-.025,.34)]
+    vv=[]
+    for p in path:
+        vv += [(p[0]+.009*math.cos(k*2*math.pi/3),p[1]+.009*math.sin(k*2*math.pi/3),p[2]) for k in range(3)]
+    ff=[]
+    for j in range(len(path)-1):
+        for k in range(3):ff.append((j*3+k,j*3+(k+1)%3,(j+1)*3+(k+1)%3,(j+1)*3+k))
+    mesh(P,'continuous folded blush hose',vv,ff,c['blush'])
+    for z in [.87,1.43]:P.box('blush hose clip',(.060,.060,.065),loc=(x,-.025,z),color=c['blush'])
     finish(P,spec)

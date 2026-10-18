@@ -22,25 +22,36 @@ def build(P,spec):
         for y in (-2.10,2.10):
             static.extend([P.box('base_corner_post',(.67,.66,1.26),loc=(x,y,.12),color=K),P.box('post_gold_foot',(.77,.76,.15),loc=(x,y,.10),color=G),P.box('post_gold_cap',(.74,.73,.14),loc=(x,y,1.30),color=G),P.cyl('pyramid_finial',.42,.55,4,loc=(x,y,1.44),r2=0,rot=(0,0,45),color=G)])
             static.append(P.box('post_magenta_panel',(.43,.045,.88),loc=(x,y-.35,.33),color=M))
+    static.append(P.box('cream_platform_inlay',(7.85,4.20,.025),loc=(0,0,1.24),color=K))
     hubz=8.05
     # Two A frames, with the front frame's plum paper inset visible between gold edges.
     for y in (-.73,.73):
         for side in (-1,1):
             poly=[(side*.20,hubz+.06),(side*1.08,hubz-.02),(side*3.38,1.13),(side*2.35,1.13)]
             static.append(P.prism('A_frame_paper_leg',poly[::side],.34,loc=(0,y,0),color=K))
-            inner=[(side*.42,hubz-.57),(side*.83,hubz-.65),(side*3.05,1.35),(side*2.55,1.35)]
+            inner=[(side*1.42,4.70),(side*1.96,4.60),(side*3.05,1.35),(side*2.55,1.35)]
             static.append(P.prism('plum_leg_inset',inner[::side],.04,loc=(0,y-.20,0),color=D))
             for u,v in [(poly[0],poly[3]),(poly[1],poly[2])]:static.append(beam(P,'gold_leg_edge',(u[0],y-.20,u[1]),(v[0],y-.20,v[1]),.045,G))
             static.append(P.box('frame_gold_shoe',(.90,.69,.20),loc=(side*2.85,y,1.06),color=G))
         static.append(beam(P,'crossbar',(-2.75,y,1.56),(2.75,y,1.56),.09,G))
-    # Front/back spreaders make the true depth and structural A shape readable from the side.
-    for side in (-1,1):
-        for sy in (-1,1):static.append(beam(P,'depth_brace',(side*.28,0,hubz-.35),(side*2.82,sy*1.93,1.11),.115,K,8))
-    for side in (-1,1):
-        poly=[(side*.12,hubz-.15),(side*.57,hubz-.15),(side*2.08,1.13),(side*1.42,1.13)]
-        static.append(P.prism('side_A_frame',poly[::side],.40,loc=(.15,0,0),rot=(0,0,90),color=K))
-        inner=[(side*.31,hubz-.65),(side*.45,hubz-.65),(side*1.91,1.35),(side*1.68,1.35)]
-        static.append(P.prism('side_plum_inset',inner[::side],.04,loc=(.38,0,0),rot=(0,0,90),color=D))
+    # Four folded legs spread toward the actual base corners in plan view.
+    bpy.context.view_layer.update()
+    for ob in static:
+        if ob.name.startswith(('A_frame_paper_leg','plum_leg_inset','gold_leg_edge','frame_gold_shoe','crossbar')):
+            inv=ob.matrix_world.inverted()
+            for vertex in ob.data.vertices:
+                pt=ob.matrix_world@vertex.co
+                pt.y *= .36+2.04*max(0,min(1,(hubz-pt.z)/(hubz-1.13)))
+                vertex.co=inv@pt
+            ob.data.update()
+    for sx in [-1,1]:
+        for sy in [-1,1]:
+            points=[]
+            for z,half in [(1.37,.26),(4.65,.13)]:
+                t=(z-1.13)/(hubz-1.13);xx=sx*(3.38+(1.08-3.38)*t+.012)
+                yy=sy*.73*(.36+2.04*(1-t))
+                points.extend([(xx,yy-half,z),(xx,yy+half,z)])
+            static.append(mesh(P,'side_plum_leg_panel',points,[(0,1,3,2)],D))
     static.append(beam(P,'horizontal_axle',(0,-1.18,hubz),(0,1.18,hubz),.22,G,12))
     # Polygonal heart rim has a real open centre and two parallel gold rims.
     left=[(0,11.03),(-1.27,12.22),(-2.35,12.83),(-3.75,12.42),(-4.80,11.23),(-5.18,9.88),(-5.03,8.55),(-4.44,7.15),(-3.28,5.90),(-1.62,4.54),(0,3.75)]
@@ -53,37 +64,41 @@ def build(P,spec):
     wheel.append(mesh(P,'rim_thickness',vs,[(i,(i+1)%n,n+(i+1)%n,n+i) for i in range(n)]+[(2*n+i,3*n+i,3*n+(i+1)%n,2*n+(i+1)%n) for i in range(n)],M))
     for pts in (outline,inner):
         for i,(x,z) in enumerate(pts):
-            nx,nz=pts[(i+1)%n];wheel.append(beam(P,'gold_heart_outline',(x,-.29,z),(nx,-.29,nz),.040,G))
+            nx,nz=pts[(i+1)%n];wheel.append(beam(P,'gold_heart_outline',(x,-.29,z),(nx,-.29,nz),.040,G,3))
     for i,(x,z) in enumerate(outline):
         ix,iz=inner[i];wheel.append(P.ico('chasing_bulb',.15,loc=((x+ix)*.5,-.36,(z+iz)*.5),subdiv=1,color=Y if i%2==0 else M))
         if i%2==0:wheel.append(P.ico('rear_rim_bulb',.14,loc=((x+ix)*.5,.36,(z+iz)*.5),subdiv=1,color=Y))
-    anchors=[(-2.43,11.93),(2.43,11.93),(-4.08,9.55),(4.08,9.55),(-3.33,6.78),(3.33,6.78),(0,4.13),(0,4.13)]
+    anchors=[(-2.43,12.08),(2.43,12.08),(-4.08,9.55),(4.08,9.55),(-3.33,6.55),(3.33,6.55),(0,3.75),(0,3.75)]
     # Eight flat cream/gold spokes stop inside the rim.
-    for x,z in anchors:
-        wheel.append(beam(P,'cream_spoke',(0,0,hubz),(x,0,z),.21,K,4))
-        wheel.append(beam(P,'gold_spoke_trim',(0,-.23,hubz),(x,-.23,z),.035,G,4))
-    wheel.append(P.cyl('gold_hub',.94,.30,12,loc=(0,-1.05,hubz),rot=(-90,0,0),color=G))
+    for x,z in anchors[:7]:
+        length=math.hypot(x,z-hubz);nx=-(z-hubz)/length;nz=x/length
+        for width,depth,yy,color in [(.46,.17,0,G),(.35,.03,-.105,K)]:
+            poly=[(nx*width/2,hubz+nz*width/2),(x+nx*width/2,z+nz*width/2),(x-nx*width/2,z-nz*width/2),(-nx*width/2,hubz-nz*width/2)]
+            wheel.append(P.prism('laminated_paper_spoke',poly,depth,loc=(0,yy,0),color=color))
+    wheel.append(P.lathe('bevelled_gold_hub',[(.65,0),(.88,.10),(.94,.23),(.86,.37),(.68,.44)],12,loc=(0,-1.00,hubz),rot=(-90,0,0),color=G))
     wheel.append(P.cyl('cream_hub_medallion',.65,.08,12,loc=(0,-1.13,hubz),rot=(-90,0,0),color=K))
-    wheel.append(P.prism('hub_heart',P.heart(.34,20),.13,loc=(0,-1.21,hubz-.12),color=M))
+    heart=P.prism('hub_heart',P.heart(.34,12),.13,loc=(0,-1.22,hubz-.12),color=M)
+    import bmesh
+    bm=bmesh.new();bm.from_mesh(heart.data);bm.normal_update();bmesh.ops.poke(bm,faces=[f for f in bm.faces if f.normal.y<-.7],offset=.15);bm.to_mesh(heart.data);bm.free();P.paint(heart,M);wheel.append(heart)
     for k,(x,z) in enumerate(anchors):
         # Capsule gondolas have faceted magenta bowls, cyan windows and cream pitched roofs.
         yy=-.05 if k<6 else (-.90 if k==6 else .90)
         cabin=[]
         cabin.append(P.cyl('suspension_ring',.15,.10,6,loc=(x,yy-.05,z),rot=(90,0,0),color=G))
         cabin.append(beam(P,'suspension_stem',(x,yy,z-.06),(x,yy,z-.42),.065,G))
-        profile=[(0,-1.96),(.47,-1.93),(.73,-1.72),(.83,-1.47),(.83,-1.34)]
+        profile=[(0,-1.96),(.47,-1.93),(.67,-1.76),(.82,-1.48),(.83,-1.34)]
         cabin.append(P.lathe('gondola_bowl',[(r,zz+z) for r,zz in profile],10,loc=(x,yy,0),color=M))
         cabin.append(P.lathe('cream_roof',[(.83,z-.81),(.73,z-.62),(.40,z-.43),(.13,z-.37)],10,loc=(x,yy,0),color=K))
         for jj in range(4):
             aa=math.tau*jj/4;eps=.022
             vv=[(x+rr*math.cos(aa+da),yy+rr*math.sin(aa+da),z+zz) for rr,zz,da in [(.832,-.81,-eps),(.832,-.81,eps),(.14,-.37,eps),(.14,-.37,-eps)]]
             cabin.append(mesh(P,'roof_gold_fold',vv,[(0,1,2,3)],G))
-        for j in range(8):
-            a=math.tau*j/8;b=math.tau*(j+1)/8
+        for j in range(10):
+            a=math.tau*j/10;b=math.tau*(j+1)/10
             vs=[(x+.808*math.cos(a),yy+.808*math.sin(a),z-1.32),(x+.808*math.cos(b),yy+.808*math.sin(b),z-1.32),(x+.785*math.cos(b),yy+.785*math.sin(b),z-.83),(x+.785*math.cos(a),yy+.785*math.sin(a),z-.83)]
             cabin.append(mesh(P,'cyan_window_pane',vs,[(0,1,2,3)],C))
-            cabin.append(beam(P,'window_mullion',vs[0],vs[3],.028,G,4))
-        for zz,r in [(-1.35,.85),(-.82,.85),(-.43,.38)]:cabin.append(P.cyl('gondola_gold_band',r,.055,4 if r<.5 else 8,loc=(x,yy,z+zz),color=G))
+            cabin.append(beam(P,'window_mullion',vs[0],vs[3],.027,G,3))
+        for zz,r in [(-1.35,.84),(-.82,.84),(-.43,.30)]:cabin.append(P.cyl('gondola_gold_band',r,.055,6 if r<.5 else 10,loc=(x,yy,z+zz),color=G))
         bpy.context.view_layer.update()
         for ob in cabin:
             for v in ob.data.vertices:

@@ -1,5 +1,5 @@
 """H13 phone-tower; size 5.1 x 3.7 x 12 m; budget 4000. Pivots root, lid0, tower0, swing0, spin0.
-SIMPLIFICATIONS: no key glyphs; screen glow uses flat palette; tiny flower stamens omitted."""
+SIMPLIFICATIONS: blank keys have no glyphs; screen glow uses flat palette; cord corrugations are separate chamfered segments; star is three crossed gem folds."""
 BUDGET=4000
 LARGE=True
 
@@ -70,7 +70,14 @@ def finish(P,spec,roots):
 def phone_panel(P,name,w,d,h,loc,col,cut):
     k=min(cut,w*.23,h*.23)
     out=[(-w/2+k,0),(w/2-k,0),(w/2,k),(w/2,h-k),(w/2-k,h),(-w/2+k,h),(-w/2,h-k),(-w/2,k)]
-    return P.prism(name,out,d,loc=loc,color=col)
+    if 'coral shell' not in name:return P.prism(name,out,d,loc=loc,color=col)
+    # Broad bevels catch the light as sharp folded-paper edge planes.
+    b=.075;inner=[(x*(w-2*b)/w,b+z*(h-2*b)/h) for x,z in out]
+    vs=[(x,-d/2,z) for x,z in inner]+[(x,-d/2+b,z) for x,z in out]+[(x,d/2-b,z) for x,z in out]+[(x,d/2,z) for x,z in inner]
+    fs=[tuple(range(7,-1,-1)),tuple(range(24,32))]
+    for r in range(3):
+     for i in range(8):fs.append((r*8+i,r*8+(i+1)%8,(r+1)*8+(i+1)%8,(r+1)*8+i))
+    ob=mesh(P,name,vs,fs,col);ob.location=loc;return ob
 
 def build(P,spec):
  c=spec['colors'];C,R,K=[c[k] for k in ('cream','coral','pink')];large=LARGE
@@ -78,53 +85,59 @@ def build(P,spec):
  # A unified sculpted clamshell, with separate hinge and extendable antenna.
  def panel(name,w,h,z,y,angle,upper=False):
   before=set(bpy.context.scene.objects)
-  phone_panel(P,name+' coral shell',w,.49,h,(0,0,0),R,.19)
+  phone_panel(P,name+' coral shell',w,.38,h,(0,0,0),R,.19)
   phone_panel(P,name+' cream bezel',w-.23,.055,h-.25,(0,-.19,.125),C,.17)
   if upper:
    phone_panel(P,name+' inset screen',w-.48,.035,h-.72,(0,-.23,.29),G if large else C,.09)
-   phone_panel(P,name+' screen inner',w-.56,.025,h-.8,(0,-.255,.33),L if large else c['peach'],.075)
-   if not large:P.paint(bpy.context.scene.objects[name+' screen inner'],c['peach'])
-   outline=P.heart((w-.67)*.52,16)
-   verts=[(xx,-.34,h*.43+zz) for xx,zz in outline]+[(0,-.45,h*.65)]
-   heart=mesh(P,name+' faceted heart',verts,[(16,i,(i+1)%16) for i in range(16)],K)
+   phone_panel(P,name+' screen inner',w-.56,.025,h-.8,(0,-.255,.33),L if large else C,.075)
+   if not large:P.paint(bpy.context.scene.objects[name+' screen inner'],C)
+   hw=(w-.64)*.42
+   # Ten-cut gemstone outline and four distinct, planar creases.
+   outline=[(-1,.32),(-1,.69),(-.66,.91),(-.30,.91),(0,.64),(.30,.91),(.66,.91),(1,.69),(1,.32),(0,-.55)]
+   outline=[(x*hw,z*hw+h*.42) for x,z in outline]
+   verts=[(x,-.28,z) for x,z in outline]+[(-hw*.42,-.33,h*.53),(hw*.42,-.33,h*.53),(0,-.36,h*.39)]
+   fs=[(0,1,10),(1,2,10),(2,3,10),(3,4,10),(4,11,10),(4,5,11),(5,6,11),(6,7,11),(7,8,11),(8,9,12),(8,12,11),(9,0,12),(0,10,12),(10,11,12)]
+   heart=mesh(P,name+' faceted heart',verts,fs,K)
    if large:
-    rim=P.prism(name+' heart gold rim',P.heart((w-.62)*.54,16),.05,loc=(0,-.285,h*.43),color=G)
+    rim=P.prism(name+' heart gold rim',[(x*1.055,(z-h*.42)*1.055+h*.42) for x,z in outline],.025,loc=(0,-.27,0),color=G)
    bevel(P,name+' speaker',(.4,.04,.055),(0,-.25,h-.32),G,.018)
    bevel(P,name+' side button',(.055,.13,.39),(w/2+.015,0,.65),G,.025)
   else:
    for row in range(4):
     for col in range(3):
-     xx=(col-1)*(w-.45)/3;zz=.34+row*(h-.7)/4
-     bevel(P,'key '+str(row)+str(col),((w-.65)/3,.065,(h-.95)/4),(xx,-.255,zz),K if large else C,.045)
+     xx=(col-1)*(w-.45)/3;zz=.28+row*(h-.48)/4
+     bevel(P,'key '+str(row)+str(col),((w-.56)/3,.085,(h-.76)/4),(xx,-.255,zz),K if large else C,.045)
   bpy.context.view_layer.update();obs=list(set(bpy.context.scene.objects)-before)
   for ob in obs:
    if 'coral shell' not in ob.name and 'side button' not in ob.name:
-    ob.location.y-=.075
+    ob.location.y+=0
   bpy.context.view_layer.update();T=Matrix.Translation((0,y,z))@Matrix.Rotation(math.radians(angle),4,'X')
   for ob in obs:ob.data.transform(T@ob.matrix_world);ob.matrix_world=Matrix.Identity(4)
   return obs
  # coordinates use compact phone units, final spec scaling preserves the architecture.
  if large:
   # chunky wound telephone cord, a clear open oval in plan.
-  cord=[];n=26
+  cord=[];n=18
+  # The reference cord is an open U: the rear is the phone, not another ring.
   for i in range(n):
-   t=math.tau*i/n;x=1.19*math.cos(t);y=.79*math.sin(t);z=.22+.09*(math.sin(t)+1)
-   ob=P.lathe('coiled cord segment',[(.11,0),(.18,.04),(.18,.24),(.11,.28)],8,color=L)
-   tangent=Vector((-1.19*math.sin(t),.79*math.cos(t),.04));ob.rotation_euler=tangent.to_track_quat('Z','Y').to_euler();ob.location=(x,y,z)
-   cord.append(ob)
+   t=math.pi-.20+(math.pi+.40)*i/(n-1)
+   x=1.19*math.cos(t);y=.91*math.sin(t)+.19;z=.23+.18*(math.sin(t)+1)
+   ob=P.lathe('coiled cord segment',[(.11,0),(.18,.04),(.18,.20),(.11,.24)],8,color=L)
+   tangent=Vector((-1.19*math.sin(t),.91*math.cos(t),.18*math.cos(t)))
+   ob.rotation_euler=tangent.to_track_quat('Z','Y').to_euler();ob.location=(x,y,z);cord.append(ob)
   for side in (-1,1):
-   path=[Vector((side*.84,.24,1.06 if side==1 else .80)),Vector((side*1.12,.25,.82 if side==1 else .64)),Vector((side*1.20,.20,.45))]
-   for q in range(2):
+   path=[Vector((side*.87,.42,1.12 if side==1 else .87)),Vector((side*1.14,.69,.87 if side==1 else .69)),Vector((side*1.20,.62,.57)),Vector((side*1.17,.37,.43))]
+   for q in range(3):
     d=path[q+1]-path[q]
-    for j in range(3):
-     p0=path[q]+d*(j/3)
-     ob=P.lathe('cord rising coil',[(.10,0),(.16,.03),(.16,.11),(.10,.14)],8,loc=tuple(p0),color=L)
+    for j in range(2):
+     p0=path[q]+d*(j/2)
+     ob=P.lathe('cord rising coil',[(.10,0),(.17,.025),(.17,.105),(.10,.13)],8,loc=tuple(p0),color=L)
      ob.rotation_euler=d.to_track_quat('Z','Y').to_euler();cord.append(ob)
-   a.append(P.cyl('gold cord socket',.13,.12,8,loc=(side*.78,.24,1.06 if side==1 else .8),color=G,rot=(0,90*side,0)))
+   a.append(P.cyl('gold cord socket',.13,.12,8,loc=(side*.81,.42,1.12 if side==1 else .87),color=G,rot=(0,90*side,0)))
   a.append(P.pivot('swing0',(1.02,.33,.7),cord))
-  lower=panel('keypad',1.67,2.10,.42,-.28,-24);a+=lower
-  hinge_z=2.37;hy=.55
-  upper=panel('lid',1.73,1.95,hinge_z,hy,10,True)
+  lower=panel('keypad',1.79,2.10,.42,-.22,-24);a+=lower
+  hinge_z=2.37;hy=.67
+  upper=panel('lid',1.83,1.95,hinge_z,hy,10,True)
  else:
   # Eight lobes, layered coral / cream / peach flower pedestal.
   outline=[]
@@ -145,18 +158,24 @@ def build(P,spec):
   for i,(x,y,rx,rz) in enumerate([(-1,-.1,-35,-30),(-.8,.32,25,-35),(1,.0,35,35),(.8,.39,-20,40)]):
    a.append(P.blade('mint folded leaf',.48,.63,loc=(x,y,.32),color=c['mint'],rot=(rx,rz,0),bend=.26))
  # horizontal X-axis barrel hinge and its gold/cream end collars.
- for x,width,col in [(-.6,.18,G),(-.38,.22,R if not large else L),(0,.57,C if not large else L),(.38,.22,R if not large else L),(.6,.18,G)]:
-  a.append(P.cyl('hinge barrel',.245,width,12,loc=(x-width/2,hy,hinge_z),color=col,rot=(0,90,0)))
+ for x,width,col in [(-(.87 if large else .76),.16,G),(-.60,.20,R if not large else L),(0,1.0,C if not large else L),(.60,.20,R if not large else L),((.87 if large else .76),.16,G)]:
+  a.append(P.cyl('hinge barrel',.155,width,12,loc=(x-width/2,hy-.15,hinge_z),color=col,rot=(0,90,0)))
  # Antenna rides with the lid: extension is an engine scale-Z tower group.
  ant=[];x=-.80 if large else .61;top=4.28 if large else 4.40
- ant_y=hy+(-.34 if large else .03)
+ ant_y=hy+(-.48 if large else .03)
  ant.append(P.cyl('antenna socket',.11,.17,8,loc=(x,ant_y,top-.03),color=G))
  for i in range(3 if large else 1):
   ant.append(P.cyl('telescoping antenna',.065-i*.013,.31 if large else .42,8,loc=(x,ant_y,top+.12+i*.27),color=L if large and i<2 else C))
  if large:
-  star=P.prism('antenna five-point star',P.star(.235,.105),.085,loc=(x,ant_y,5.33),color=G)
-  ant.append(P.pivot('spin0',(x,ant_y,5.33),[star]))
+  outline=P.star(.235,.105);vs=[(x+u,ant_y,5.33+v) for u,v in outline]+[(x,ant_y-.095,5.33),(x,ant_y+.095,5.33)];star=mesh(P,'antenna five-point star',vs,[(10,i,(i+1)%10) for i in range(10)]+[(11,(i+1)%10,i) for i in range(10)],G)
+  cross=[];center=Vector((x,ant_y,5.33))
+  for plane in ('side','top'):
+   out=P.star(0.235,0.105);vs=[]
+   for u,v in out:vs.append(tuple(center+Vector((0,u,v) if plane=='side' else (u,v,0))))
+   axis=Vector((.075,0,0) if plane=='side' else (0,0,.075));vs += [tuple(center+axis),tuple(center-axis)]
+   cross.append(mesh(P,'creased star '+plane,vs,[(10,i,(i+1)%10) for i in range(10)]+[(11,(i+1)%10,i) for i in range(10)],G))
+  ant.append(P.pivot('spin0',(x,ant_y,5.33),[star]+cross))
  else:ant.append(P.ico('coral antenna tip',.135,loc=(x,ant_y,4.91),color=R,subdiv=1,scale=(1,1,1.3)))
  upper.append(P.pivot('tower0',(x,ant_y,top),ant))
- a.append(P.pivot('lid0',(0,hy,hinge_z),upper))
+ a.append(P.pivot('lid0',(0,hy-.15,hinge_z),upper))
  finish(P,spec,a)

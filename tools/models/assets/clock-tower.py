@@ -21,11 +21,11 @@ def rod(P,name,a,b,r,color,n=8):
 
 def ear(P,name,x,y,z,w,h,color,inner,lean=0):
     outline=[(-.30*w,0),(-.58*w,.48*h),(-.47*w,.92*h),(-.15*w,h),(.45*w,.72*h),(.50*w,.48*h),(.28*w,0)]
-    def point(u,v,k=1):return (x+u+lean*v/h,y+.50*v/h-.18*w,z+v)
+    def point(u,v,k=1):return (x+u+lean*v/h,y+.62*v/h-.34*w*max(.12,math.sin(math.pi*v/h)**.65),z+v)
     outer=[point(u,v) for u,v in outline]
     inset=[(a+.0,b-.055*w,c) for a,b,c in [point(u*.62,.13*h+v*.72) for u,v in outline]]
-    center=(x+lean*.49,y+.50*.49-.42*w,z+.49*h)
-    back=[(a,b+.7*w,c) for a,b,c in outer]
+    center=(x+lean*.49,y+.62*.49-.40*w,z+.49*h)
+    back=[(a,b+.82*w*max(.10,math.sin(math.pi*(c-z)/h)**.65),c) for a,b,c in outer]
     vs=outer+inset+[center]+back;fs=[]
     for i in range(7):fs.append((i,(i+1)%7,(i+1)%7+7,i+7))
     for i in range(7):fs.append((14,7+i,7+(i+1)%7))
@@ -78,7 +78,7 @@ def build(P,spec):
  for z in (1,4.35,6.27):
   a.append(bevel(P,'gold belt',(2.55,2.45,.1),(0,0,z),G,.035));a.append(P.box('cream cornice',(2.42,2.35,.12),loc=(0,0,z+.1),color=C))
  for x in (-1.2,1.2):
-  for y in (-1.16,1.16):a.append(P.ico('roof corner gold button',.085,loc=(x,y,6.48),color=G,subdiv=1))
+  for y in (-1.16,1.16):a.append(P.cyl('roof corner gold gem',.17,.11,4,loc=(x,y,6.43),color=G,r2=.11,rot=(0,0,45)))
  for side in (False,True):
   rot=90 if side else 0;x,y=(1.12,0) if side else (0,-1.105)
   for off,w,h,col in [(0,.99,2.7,C),(.04,.85,2.55,G),(.07,.68,2.34,L)]:
@@ -87,6 +87,12 @@ def build(P,spec):
    a.append(P.box('window mullion',(.04,.055,2.05),loc=(1.21,0,1.55),color=G));a.append(P.box('window bar',(.04,.7,.055),loc=(1.21,0,2.48),color=G));a.append(P.box('upper window bar',(.04,.7,.055),loc=(1.21,0,3.37),color=G))
   else:
    a.append(P.box('window mullion',(.055,.04,2.05),loc=(0,-1.21,1.55),color=G));a.append(P.box('window bar',(.7,.04,.055),loc=(0,-1.21,2.48),color=G));a.append(P.box('upper window bar',(.7,.04,.055),loc=(0,-1.21,3.37),color=G))
+ # Two broad diagonal mullions form the recognisable pointed Y tracery.
+ for side in (False,True):
+  for sign in [-1,1]:
+   start=(1.225,0,3.37) if side else (0,-1.225,3.37)
+   end=(1.225,sign*.25,3.66) if side else (sign*.25,-1.225,3.66)
+   a.append(rod(P,'gothic window diagonal',start,end,.028,G,4))
  a.append(P.cyl('clock rim',.81,.09,32,loc=(0,-1.03,5.33),color=G,rot=(90,0,0)))
  a.append(P.cyl('clock face',.74,.03,32,loc=(0,-1.13,5.33),color=C,rot=(90,0,0)))
  for i in range(12):
@@ -99,11 +105,18 @@ def build(P,spec):
   for y in (-1.2,1.2):a.append(rod(P,'roof gold seam',(x,y,6.49),(0,0,7.17),.04,G))
  a.append(bevel(P,'roof cap',(.42,.42,.16),(0,0,7.1),G,.05))
  for i,s in enumerate((-1,1)):
-  es=ear(P,'folded roof ear',s*.55,.05,6.98,.80,2.02,C,R,s*.62)
+  es=ear(P,'folded roof ear',s*.55,.05,6.98,.95,2.02,C,R,s*.66)
   if s>0:
    for ob in es:
     for v in ob.data.vertices:
-     axis=s*.55+s*.62*(v.co.z-6.98)/2.02;v.co.x=2*axis-v.co.x
+     axis=s*.55+s*.66*(v.co.z-6.98)/2.02;v.co.x=2*axis-v.co.x
+  # Turn the two folded ear faces outward so the coral inset reads from the hero and side views.
+  angle=math.radians(s*22)
+  for ob in es:
+   for v in ob.data.vertices:
+    dx=v.co.x-s*.55;dy=v.co.y-.05
+    v.co.x=s*.55+dx*math.cos(angle)-dy*math.sin(angle)
+    v.co.y=.05+dx*math.sin(angle)+dy*math.cos(angle)
   a.append(P.pivot('ears'+str(i),(s*.55,.05,6.98),es))
  for ob in bpy.context.scene.objects:
   if ob.type=='MESH' and not ob.name.startswith('base'):

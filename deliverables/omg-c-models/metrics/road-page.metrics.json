@@ -1,13 +1,13 @@
 {
  "front": {
-  "iou": 0.835,
-  "aspect_design": 3.55,
+  "iou": 0.834,
+  "aspect_design": 3.49,
   "aspect_model": 4.0,
-  "aspect_delta": 0.127,
+  "aspect_delta": 0.146,
   "col_design": [
    228,
-   200,
-   182
+   201,
+   183
   ],
   "col_model": [
    232,
@@ -16,12 +16,12 @@
   ]
  },
  "top": {
-  "iou": 0.975,
-  "aspect_design": 0.245,
+  "iou": 0.978,
+  "aspect_design": 0.251,
   "aspect_model": 0.249,
-  "aspect_delta": 0.014,
+  "aspect_delta": -0.008,
   "col_design": [
-   241,
+   240,
    203,
    199
   ],

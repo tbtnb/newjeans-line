@@ -1,40 +1,68 @@
-"""H07 Bunny Family of Five; size from spec 4.6×1.6×3 m; budget 4000.
-Pivots: root, bob0..4, ears0..4 nested under each bob (11 groups).
-SIMPLIFICATIONS: tiny facial marks use palette lavender; arms share their bunny bob rather than independent shoulder animation.
+"""H07 Bunny Family of Five; spec 4.6 x 1.6 x 3 m; budget 4000.
+Pivots: root, bob0..4, ears0..4 (11 groups).
+SIMPLIFICATIONS: waving arms share each bunny bob to respect the 12-group cap; eyes use the spec lavender/sky rather than an extra dark pigment.
 """
 import math
 BUDGET=4000
 
 def build(P,spec):
- C=spec['colors'];static=[];bobs=[];all_ears=[]
- base=P.lathe('faceted_paper_hill',[(0,0),(1,.0),(.99,.19),(.94,.36),(0,.36)],14,color=C['cream']);base.scale=(2.3,.8,1);static.append(base)
- o=P.cyl('mint_hill_top',1,.025,14,loc=(0,0,.36),color=C['mint']);o.scale=(2.16,.70,1);static.append(o)
- for i,(x,h,col) in enumerate([(-1.66,2.17,'mint'),(-.83,2.08,'blush'),(0,2.72,'lavender'),(.91,2.23,'sun'),(1.74,1.91,'sky')]):
-  k=h/2.72; z=.38;parts=[];arms=[];earparts=[];wave=-1 if i in (0,1) else 1
+ import bpy,bmesh
+ C=spec['colors'];static=[];bobs=[]
+ def mesh(n,vs,fs,c):
+  me=bpy.data.meshes.new(n);me.from_pydata(vs,[],fs);me.update();o=bpy.data.objects.new(n,me);bpy.context.collection.objects.link(o);P.paint(o,C[c]);return o
+ # Triangulated, chamfered oval plinth: broad creases rather than a smooth hill.
+ n=16;vs=[]
+ for rx,ry,z in [(2.3,.8,0),(2.30,.80,.08),(2.20,.73,.43),(2.10,.68,.46)]:
+  vs.extend([(rx*math.cos(t*math.tau/n+(.07 if z==.08 else 0)),ry*math.sin(t*math.tau/n+(.07 if z==.08 else 0)),z) for t in range(n)])
+ fs=[tuple(reversed(range(n)))]
+ for ring in range(3):
+  for j in range(n):
+   a=ring*n+j;b=ring*n+(j+1)%n;c=(ring+1)*n+(j+1)%n;d=(ring+1)*n+j
+   fs.extend([(a,b,d),(b,c,d)])
+ fs.append(tuple(range(3*n,4*n)));static.append(mesh('creased_cream_hill',vs,fs,'cream'))
+ o=P.cyl('mint_hill_top',1,.025,16,loc=(0,0,.46),color=C['mint']);o.scale=(2.10,.68,1);static.append(o)
+ for i,(x,h,col) in enumerate([(-1.66,2.21,'mint'),(-.83,2.22,'blush'),(0,2.72,'lavender'),(.91,2.22,'sun'),(1.74,1.91,'sky')]):
+  k=h/2.72;z=.485;parts=[];es=[];wave=-1 if i in (0,1) else 1
   def ico(n,l,scale,c=col,sub=2):
-   ob=P.ico(str(i)+n,1,loc=l,scale=tuple(v*k for v in scale),subdiv=sub,color=C[c]);parts.append(ob);return ob
-  body=P.lathe('faceted_bunny_body',[(0,0),(.26,.05),(.43,.22),(.48,.40),(.33,.90),(.24,1.09),(0,1.19)],10,loc=(x,.03,z),color=C[col]);body.scale=(k,.92*k,k);parts.append(body)
-  ico('belly',(x,-.46*k,z+.59*k),(.255,.10,.47),'cream')
-  ico('head',(x,-.015,z+1.62*k),(.50,.46,.47));ico('muzzle',(x,-.45*k,z+1.50*k),(.34,.13,.20),'cream')
+   o=P.ico(str(i)+n,1,loc=l,scale=tuple(v*k for v in scale),subdiv=sub,color=C[c]);parts.append(o);return o
+  body=P.lathe('angular_bunny_body',[(0,0),(.30,.04),(.44,.19),(.48,.42),(.36,.71),(.30,1.05),(.23,1.21),(0,1.24)],10,loc=(x,.05,z),color=C[col]);body.scale=(k,k,k);parts.append(body)
+  # Stagger ring edges to make genuine triangular origami facets instead of lathe strips.
+  for v in body.data.vertices:
+   if abs(v.co.z-.42)<.001 or abs(v.co.z-1.05)<.001:
+    u,w=v.co.x,v.co.y;v.co.x=u*math.cos(.055)-w*math.sin(.055);v.co.y=u*math.sin(.055)+w*math.cos(.055)
+  bm=bmesh.new();bm.from_mesh(body.data);bmesh.ops.triangulate(bm,faces=list(bm.faces));bm.to_mesh(body.data);bm.free();P.paint(body,C[col])
+  # A broad creased cream chest follows the torso taper and meets the muzzle.
+  outline=[(-.10,1.24),(.10,1.24),(.20,.98),(.29,.53),(.22,.22),(0,.10),(-.22,.22),(-.29,.53),(-.20,.98)]
+  vs=[(x+a*k,-(.31 if b>.8 else .41)*k,z+b*k) for a,b in outline]+[(x,-.52*k,z+.51*k)]
+  parts.append(mesh('folded_cream_belly',vs,[(j,(j+1)%9,9) for j in range(9)],'cream'))
+  head=ico('angular_head',(x,-.005,z+1.51*k),(.51,.46,.46))
+  # Colour the head's lower face itself cream; an attached faceted muzzle supplies the folded cheeks.
+  P.paint(head,lambda center,normal:C['cream'] if center.z<-.08*k and center.y<-.09*k else C[col])
+  ico('cream_muzzle',(x,-.395*k,z+1.36*k),(.40,.16,.205),'cream')
   for sx in [-1,1]:
-   ico('foot',(x+sx*.245*k,-.14*k,z+.07*k),(.20,.26,.12),'cream',1)
-   ico('eye',(x+sx*.18*k,-.47*k,z+1.65*k),(.041,.026,.052),('sky' if col=='lavender' else 'lavender'),1)
-   ob=ico('arm',(x+sx*.50*k,-.04,z+(.99 if sx==wave else .68)*k),(.15,.16,.27),col,1);
-   if sx==wave:parts.remove(ob);arms.append(ob)
-   hand=P.ico('hand',1,loc=(x+sx*.59*k,-.105,z+(1.22 if sx==wave else .48)*k),scale=(.105*k,.115*k,.12*k),subdiv=1,color=C['cream']);(arms if sx==wave else parts).append(hand)
-   # Thick ear with a front ridge and a folded tip.
-   outline=[(-.14,0),(-.23,.40),(-.20,.65),(-.03,.80),(.19,.65),(.19,.26),(.08,0)]
-   ob=P.prism('folded_ear',[(a*k,b*k) for a,b in outline],.30*k,loc=(x+sx*.23*k,.015,z+1.93*k),color=C[col],rot=(0,sx*16,0))
-   for v in ob.data.vertices:
-    t=v.co.z/(.80*k);v.co.y*=max(.12,max(0,math.sin(math.pi*t))**.7)
-    v.co.y+=.12*k*t
-   earparts.append(ob)
-   inner=P.prism('inner_pink',[(a*.58*k,b*.79*k+.065*k) for a,b in outline],.025*k,loc=(x+sx*.23*k,-.163*k,z+1.93*k),color=C['blush'],rot=(0,sx*16,0));earparts.append(inner)
-   fold=P.prism('ear_fold',[(0,.12*k),(.07*k,.55*k),(0,.73*k),(-.04*k,.49*k)],.035*k,loc=(x+sx*.23*k,-.185*k,z+1.93*k),color=C['cream'],rot=(0,sx*16,0));earparts.append(fold)
-  ico('nose',(x,-.60*k,z+1.55*k),(.038,.025,.026),'blush',1)
-  parts.append(P.pivot('ears'+str(i),(x,0,z+1.93*k),earparts))
-  parts.extend(arms)
-  bobs.append(P.pivot('bob'+str(i),(x,0,z),parts))
+   ico('paper_foot',(x+sx*.245*k,-.15*k,z+.05*k),(.20,.25,.12),'cream',1)
+   ico('eye',(x+sx*.205*k,-.445*k,z+1.53*k),(.043,.025,.059),'sky' if col=='lavender' else 'lavender',1)
+   arm=ico('waving_arm' if sx==wave else 'lowered_arm',(x+sx*.50*k,-.04,z+(1.02 if sx==wave else .68)*k),(.16,.18,.29),col,2)
+   arm.rotation_euler.y=math.radians(sx*(-24 if sx==wave else 13))
+   ico('cream_hand',(x+sx*.59*k,-.13*k,z+(1.23 if sx==wave else .46)*k),(.12,.13,.14),'cream',1)
+   # Thick seven-plane ears, with a recessed blush insert and a true front crease.
+   outline=[(-.10,0),(-.23,.31),(-.24,.61),(-.04,.81),(.18,.62),(.19,.25),(.08,0)]
+   lean=sx*.16;ex=x+sx*.22*k;ez=z+1.83*k
+   front=[(ex+(a+lean*b/.81)*k,-.09*k+.24*b*k,ez+b*k) for a,b in outline]
+   back=[(a,b+.34*k*max(.18,max(0,math.sin(math.pi*(c-ez)/(.81*k)))**.5),c) for a,b,c in front]
+   inner=[(ex+(a*.61+lean*(.08+b*.76)/.81)*k,-.11*k+.24*(.08+b*.76)*k,ez+(.08+b*.76)*k) for a,b in outline]
+   vs=front+inner+[(ex+lean*.47*k,-.20*k,ez+.41*k)]+back;fs=[]
+   for j in range(7):fs.append((j,(j+1)%7,(j+1)%7+7,j+7))
+   for j in range(7):fs.append((14,j+7,(j+1)%7+7))
+   for j in range(7):fs.append((j,15+j,15+(j+1)%7,(j+1)%7))
+   fs.append(tuple(range(15,22)));o=mesh('creased_thick_ear',vs,fs,col);P.paint(o,C['cream'],faces=set(range(7)));P.paint(o,C['blush'],faces=set(range(7,14)));es.append(o)
+  ico('gem_nose',(x,-.57*k,z+1.43*k),(.050,.027,.034),'blush',1)
+  parts.append(P.pivot('ears'+str(i),(x,0,z+1.83*k),es));bobs.append(P.pivot('bob'+str(i),(x,0,z),parts))
+ # The bunnies occupy a compact front-to-back row, with a generous oval page margin.
+ for o in list(bpy.context.scene.objects):
+  if o.type=='MESH' and o not in static:
+   o.location.y*=.84
+   for v in o.data.vertices:v.co.y*=.84
  _fit(P,spec,static+bobs)
 
 def _fit(P,spec,children):

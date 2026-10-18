@@ -110,21 +110,24 @@ def build(P,spec):
   for z in (1.17,3.59):a.append(P.cyl('column gilded collar',.185,.055,6,loc=(x,y,z),color=G))
   t+=math.pi/8;x=1.98*math.cos(t);y=1.98*math.sin(t);hang=3.74
   lamp=[rod(P,'lantern short chain',(x,y,hang),(x,y,3.43),.018,G,6)]
-  lamp.append(P.lathe('warm faceted eave lantern',[(0,2.60),(.07,2.72),(.22,2.93),(.17,3.15),(.04,3.32),(0,3.44)],6,loc=(x,y,0),color=A))
+  lamp.append(P.lathe('warm faceted eave lantern',[(0,2.60),(.065,2.70),(.24,2.91),(.21,3.12),(.065,3.30),(0,3.43)],6,loc=(x,y,0),color=A))
   lamp.append(P.ico('gold lamp tassel',.032,loc=(x,y,2.61),color=G,subdiv=1,scale=(1,1,1.6)))
   lamps.append(P.pivot('swing'+str(i),(x,y,hang),lamp))
  # Scalloped canopy: eight lobes, two facets across each lobe, three radial bands.
- N=40;rings=[]
- for r,z in [(.12,5.12),(.91,4.94),(1.72,4.49),(2.28,3.72)]:
+ N=32;rings=[]
+ for r,z in [(.10,5.12),(.78,4.99),(1.45,4.68),(1.95,4.12),(2.28,3.72)]:
   ring=[]
   for i in range(N):
-   t=math.tau*i/N;wave=.35*(.5+.5*math.cos(8*t))*(r/2.28)**3
-   ring.append((r*math.cos(t),r*math.sin(t),z+wave))
+   t=math.tau*i/N+(.032 if r==.78 else (-.028 if r==1.45 else (.026 if r==1.95 else 0)));wave=.44*(.5+.5*math.cos(8*t))*(r/2.28)**3
+   ring.append((r*math.cos(t),r*math.sin(t),z+wave+(.085*(i%2) if r==1.45 else (-.035*(i%2) if r==1.95 else 0))))
   rings.append(ring)
- for k in range(3):
+ for k in range(4):
   for i in range(N):
    j=(i+1)%N;v=[rings[k][i],rings[k][j],rings[k+1][j],rings[k+1][i]]
-   ob=mesh(P,'canopy folded facet',v,[(0,1,2),(0,2,3)],M if (i//5)%2 else L);a.append(ob)
+   col=M if i%4<2 else L
+   ob=mesh(P,'canopy folded facet',v,[(0,1,2),(0,2,3)],col)
+   if i%4 in (1,3) and k==2:P.paint(ob,L if col==M else M,faces={1})
+   a.append(ob)
  for i in range(N):
   j=(i+1)%N;p=rings[-1][i];q=rings[-1][j]
   a.append(mesh(P,'scalloped gold trim',[p,q,(q[0],q[1],q[2]-.085),(p[0],p[1],p[2]-.085)],[(0,1,2,3)],G))
@@ -136,7 +139,11 @@ def build(P,spec):
   t=math.radians(65)+(math.radians(300)-math.radians(65))*i/14;out.append((.43*math.cos(t),.43*math.sin(t)))
  for i in range(11):
   t=math.radians(290)-(math.radians(290)-math.radians(78))*i/10;out.append((.13+.28*math.cos(t),.06+.31*math.sin(t)))
- a.append(P.prism('crescent moon',out,.19,loc=(.16,0,5.67),color=G))
+ n=len(out);vs=[(x+.16,-.09,z+5.67) for x,z in out]+[(x*.88+.16,-.14,z*.88+5.67) for x,z in out]+[(x+.16,.09,z+5.67) for x,z in out]
+ fs=[tuple(range(n,2*n)),tuple(range(3*n-1,2*n-1,-1))]
+ for i in range(n):
+  j=(i+1)%n;fs += [(i,j,n+j,n+i),(i,2*n+i,2*n+j,j)]
+ a.append(mesh(P,'creased crescent moon',vs,fs,G))
  bpy.context.view_layer.update()
  for ob in bpy.context.scene.objects:
   if ob.type=='MESH':
@@ -145,4 +152,11 @@ def build(P,spec):
     p=mw@v.co;z=p.z
     p.z=z*1.16 if z<=1.01 else (1.1716+(z-1.01)*.78 if z<3.8 else 3.3478+(z-3.8)*1.06)
     v.co=iv@p
+ # Move each swing origin onto the warped hook without moving its children.
+ for empty in lamps:
+  worlds={child:child.matrix_world.copy() for child in empty.children}
+  z=empty.location.z
+  empty.location.z=z*1.16 if z<=1.01 else (1.1716+(z-1.01)*.78 if z<3.8 else 3.3478+(z-3.8)*1.06)
+  bpy.context.view_layer.update()
+  for child,mw in worlds.items():child.matrix_world=mw
  finish(P,spec,a+lamps)

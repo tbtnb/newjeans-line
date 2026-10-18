@@ -1,6 +1,6 @@
 """H09 Giant Storybook Cover; size spec 14×10×1.5 m; budget 3000.
 Pivots: root, lid at left spine, gate at page spine.
-SIMPLIFICATIONS: no text; page edges represented by layered leaves; shallow bunny relief follows top view; side/front drawing thickness disagrees with spec.
+SIMPLIFICATIONS: no text; page edges represented by layered leaves; creased gem bunny relief follows top view; side/front drawing thickness disagrees with spec.
 """
 import math
 BUDGET=3000
@@ -14,30 +14,45 @@ def build(P,spec):
  # A dense visible stack of actual thin paper leaves and tiny irregular fore-edge offsets.
  for i in range(35):
   w=13.12+.035*math.sin(i*2);d=9.64+.025*math.cos(i*1.7)
-  bevel('paper_leaf',(w,d,.0164),(.22,0,.17+i*.0167),'cream' if i%3 else 'pearl',.015,pages)
+  bevel('paper_leaf',(w,d,.0164),(.22,0,.17+i*.0146),'cream' if i%3 else 'pearl',.015,pages)
  page=P.pivot('gate',(-6.45,0,.18),pages);base.append(page)
- bevel('top_mint_board',(14,10,.16),(0,0,.77),'mint',.13,cover)
+ bevel('top_mint_board',(13.0,10,.16),(.50,0,.77),'mint',.13,cover)
  # The rolled spine is a beveled rounded block and four gilded transverse bands.
- bevel('rounded_spine',(1.04,9.93,.81),(-6.47,0,.07),'mint',.23)
- for y in [-3.9,-1.35,1.30,3.85]:bevel('gold_spine_band',(1.10,.25,.85),(-6.46,y,.05),'gold',.13)
+ bevel('rounded_spine',(1.04,9.93,.90),(-6.47,0,.07),'mint',.23)
+ for y in [-3.9,-1.35,1.30,3.85]:bevel('gold_spine_band',(1.10,.25,.95),(-6.46,y,.05),'gold',.025)
  # Thin raised inset border with clipped corners.
- pts=[(-5.65,-4.38), (5.78,-4.38),(6.38,-3.78),(6.38,3.78),(5.78,4.38),(-5.65,4.38),(-6.06,3.97),(-6.06,-3.97)]
+ pts=[(-5.65,-4.38), (5.78,-4.38),(6.38,-3.78),(6.38,3.78),(5.78,4.38),(-5.65,4.38),(-5.77,3.97),(-5.77,-3.97)]
  for a,b in zip(pts,pts[1:]+pts[:1]):
   dx=b[0]-a[0];dy=b[1]-a[1];L=math.hypot(dx,dy)
   ob=P.box('embossed_border',(L,.06,.028),((a[0]+b[0])/2,(a[1]+b[1])/2,.935),C['mint'],rot=(0,0,math.degrees(math.atan2(dy,dx))));cover.append(ob)
- # Corner protectors, folded gold triangles on both boards.
+ # Gold protectors are folded triangular solids, with a raised diagonal crease.
+ def relief(name,outline,z,peak,col,target,center=None):
+  center=center or (sum(p[0] for p in outline)/len(outline),sum(p[1] for p in outline)/len(outline))
+  vs=[(x,y,z) for x,y in outline]+[(center[0],center[1],peak)]+[(x,y,z-.055) for x,y in outline];n=len(outline)
+  fs=[(i,(i+1)%n,n) for i in range(n)]+[(i,n+1+i,n+1+(i+1)%n,(i+1)%n) for i in range(n)]+[tuple(range(n+1,2*n+1))]
+  me=bpy.data.meshes.new(name);me.from_pydata(vs,[],fs);me.update();ob=bpy.data.objects.new(name,me);bpy.context.collection.objects.link(ob);P.paint(ob,C[col]);target.append(ob);return ob
  for x in [-1,1]:
   for y in [-1,1]:
    for z,tgt in [(.94,cover),(.165,base)]:
-    ob=P.prism('folded_gold_corner',[(0,0),(1.24,0),(0,1.24)],.045,loc=(x*6.98,y*4.98,z),rot=(90,0,0),color=C['gold']);ob.scale=( -x,1,y);tgt.append(ob)
- # Bunny relief laid in XY. Front remains at -Y.
- cover.append(P.ico('bunny_head_medallion',1,loc=(.38,-.36,1.04),scale=(1.95,1.24,.14),subdiv=2,color=C['cream']))
+    shift=1.10 if x<0 and tgt is cover else 0
+    relief('creased_gold_corner',[(x*6.95+shift,y*4.95),(x*5.50+shift,y*4.95),(x*6.95+shift,y*3.50)],z,z+.04,'gold',tgt)
+ # Twelve broad cut planes surround a domed, triangulated bunny-head relief.
+ outline=[(.38+1.95*math.cos(t*math.tau/12),-.36+1.24*math.sin(t*math.tau/12)) for t in range(12)]
+ vs=[(x,y,.945) for x,y in outline]+[(.38+(x-.38)*.69,-.36+(y+.36)*.69,1.065) for x,y in outline]+[(.38,-.36,1.105)]
+ fs=[]
+ for j in range(12):
+  k=(j+1)%12;fs.extend([(j,k,12+j),(k,12+k,12+j),(12+j,12+k,24)])
+ fs.append(tuple(reversed(range(12))))
+ me=bpy.data.meshes.new('faceted_bunny_medallion');me.from_pydata(vs,[],fs);me.update();ob=bpy.data.objects.new('faceted_bunny_medallion',me);bpy.context.collection.objects.link(ob);P.paint(ob,C['cream']);P.paint(ob,C['pearl'],faces={2,8,14,20,26,32});cover.append(ob)
  for side in [-1,1]:
-  outline=[(-.34,0),(-.53,1.20),(-.31,2.72),(.12,3.27),(.40,2.56),(.40,.63),(.19,0)]
-  ob=P.prism('folded_bunny_relief_ear',outline,.18,loc=(.38+side*.68,.40,1.02),color=C['pearl'],rot=(-90,0,-side*20));cover.append(ob)
-  ridge=P.prism('ear_relief_ridge',[(-.08,.15),(.04,2.97),(.22,1.7),(.18,.4)],.24,loc=(.38+side*.68,.40,1.04),color=C['cream'],rot=(-90,0,-side*20));cover.append(ridge)
- h=P.prism('gold_heart_emblem',P.heart(.75,24),.18,loc=(.38,-2.12,1.11),color=C['gold'],rot=(-90,0,0));cover.append(h)
- cover.append(P.ico('heart_facet',.34,loc=(.38,-2.09,1.15),scale=(1,1,.18),subdiv=1,color=C['foil']))
+  # Polygonal ear with a knife crease, broad at the middle and pointed at the tip.
+  ear=[(-.30,0),(-.62,1.35),(-.30,2.73),(.05,3.25),(.50,2.44),(.48,.71),(.19,0)]
+  angle=math.radians(-side*20)
+  outline=[(.38+side*.68+u*math.cos(angle)-v*math.sin(angle),.40+u*math.sin(angle)+v*math.cos(angle)) for u,v in ear]
+  relief('creased_pearl_ear',outline,.945,1.105,'cream',cover)
+ # The heart is a ten-sided gem, including the notch and pointed lower tip.
+ out=[(-.76,.18),(-.76,.62),(-.42,.83),(0,.56),(.42,.83),(.76,.62),(.76,.18),(0,-.58)]
+ relief('faceted_gold_heart',[(.38+x,-2.12+y) for x,y in out],.96,1.11,'gold',cover,center=(.38,-1.96))
  base.append(P.pivot('lid',(-6.48,0,.78),cover));_fit(P,spec,base)
  # Both spine joints use local X along the physical Y-axis spine.
  for name in ['pivot_lid','pivot_gate']:

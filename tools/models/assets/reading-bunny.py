@@ -62,55 +62,88 @@ def ear(P,name,x,y,z,w,h,outer,inner,lean=0):
 
 def build(P, spec):
     c=spec['colors']
-    P.lathe('mint mossy polygon plinth',[(0,0),(1.25,0),(1.31,.17),(1.26,.29),(0,.32)],18,color=c['mint'])
-    P.lathe('faceted mushroom stem',[(.43,.22),(.37,.75),(.30,1.5),(.45,2.40),(.61,2.57)],12,loc=(.25,.30,0),color=c['cream'])
-    cap=P.lathe('deep teal umbrella cap',[(0,2.30),(.75,2.32),(1.34,2.45),(1.40,2.55),(1.23,2.93),(.87,3.25),(.40,3.46),(0,3.5)],20,loc=(0,.10,0),color=c['teal'])
-    # The mushroom canopy visibly tilts down to the right in the design.
-    for v in cap.data.vertices:v.co.z-=.20*v.co.x+.31*v.co.y
-    P.paint(cap,lambda p,n:c['navy'] if int(abs(p.x*7+p.y*9+p.z*5))%7==0 else c['teal'])
-    gills=P.lathe('cream folded gill underside',[(0,2.32),(.45,2.32),(.94,2.39),(1.34,2.45),(1.40,2.52)],20,loc=(0,.10,0),color=c['cream'])
-    for v in gills.data.vertices:v.co.z-=.20*v.co.x+.31*v.co.y+.055
+    # A shallow many-sided paper plinth with a triangulated top.
+    base=P.lathe('mint polygon plinth',[(0,0),(1.34,0),(1.32,.23),(1.27,.30),(0,.30)],16,color=c['mint'])
+    # Twelve broad canopy panels, explicitly triangulated along their creases.
+    N=12; rings=[(1.42,2.32),(1.30,2.60),(.91,3.08),(.44,3.36)]
+    vv=[]
+    def canopy_z(x,y,z): return z-.17*x-.19*y
+    for ring_index,(radius,z) in enumerate(rings):
+        for i in range(N):
+            ang=math.tau*i/N;x=radius*math.cos(ang);y=radius*math.sin(ang)
+            vv.append((x,y+.22,canopy_z(x,y,z)))
+    vv.append((0,.10,3.50));ff=[]
+    for k in range(3):
+        for i in range(N):
+            j=(i+1)%N;a=k*N+i;b=k*N+j;d=(k+1)*N+i;e=(k+1)*N+j
+            ff.extend([(a,b,e),(a,e,d)] if (i+k)%2 else [(a,b,d),(b,e,d)])
+    ff += [(36+i,36+(i+1)%N,48) for i in range(N)]
+    cap=mesh(P,'creased twelve-panel mushroom canopy',vv,ff,c['teal'])
+    P.paint(cap,c['navy'],faces={4,5,6,7,28,29,30,31,52,53,54,55,74,75})
+    # Folded cream underside: ridge and valley alternation remains visible under the brim.
+    gv=[(.15,.24,2.40)]
+    for radius,z in [(.68,2.29),(1.39,2.29)]:
+        for i in range(24):
+            t=math.tau*i/24;x=radius*math.cos(t);y=radius*math.sin(t)
+            gv.append((x,y+.22,canopy_z(x,y,z)+(.065 if i%2 else 0)))
+    gf=[]
+    for i in range(24):
+        j=(i+1)%24;gf.extend([(0,1+i,1+j),(1+i,25+i,25+j),(1+i,25+j,1+j)])
+    mesh(P,'creased radial mushroom gills',gv,[tuple(reversed(f)) for f in gf],c['cream'])
+    stem=P.lathe('angular tapered mushroom stem',[(.55,.28),(.47,.72),(.34,1.50),(.36,2.12),(.60,2.40)],8,loc=(.30,.36,0),color=c['cream'])
     for i in range(6):
-        a=2*math.pi*i/6
-        rod(P,'umbrella radial paper seam',(0,.10,2.34),(1.33*math.cos(a),.10+1.33*math.sin(a),2.46),.009,c['lamp'],4)
-    P.ico('seated rabbit body',1,loc=(-.05,-.37,.78),scale=(.46,.36,.46),subdiv=2,color=c['cream'])
-    P.ico('reading bunny head',1,loc=(-.05,-.53,1.42),scale=(.39,.33,.36),subdiv=2,color=c['cream'])
+        idx=i*2
+        path=[vv[k*N+idx] for k in [3,2,1,0]]
+        for q,r in zip(path,path[1:]): rod(P,'gold canopy panel seam',q,r,.009,c['lamp'],3)
+    for i in range(N):rod(P,'gold polygon brim',vv[i],vv[(i+1)%N],.010,c['lamp'],3)
+    P.ico('seated rabbit body',1,loc=(-.05,-.37,.76),scale=(.43,.33,.43),subdiv=2,color=c['cream'])
+    P.ico('reading bunny head',1,loc=(-.05,-.58,1.35),scale=(.38,.32,.34),subdiv=2,color=c['cream'])
     for sign in [-1,1]:
-        e=ear(P,'reading bunny thick folded ear',-.05+sign*.17,-.42,1.67,.25,.62,c['cream'],c['lamp'],sign*.20)
-        P.pivot('ears'+str((sign+1)//2),(-.05+sign*.17,-.42,1.67),e)
-        P.ico('navy bead eye',.042,loc=(-.05+sign*.145,-.768,1.43),subdiv=1,color=c['navy'])
-        P.ico('bunny foot',1,loc=(-.05+sign*.27,-.69,.47),scale=(.17,.22,.20),subdiv=2,color=c['cream'])
-        P.ico('warm sole',1,loc=(-.05+sign*.27,-.89,.46),scale=(.10,.025,.14),subdiv=1,color=c['lamp'])
-        P.ico('book holding paw',1,loc=(-.05+sign*.33,-.61,1.03),scale=(.12,.14,.13),subdiv=2,color=c['cream'])
-    P.prism('tiny bunny nose',[(-.04,0),(.04,0),(0,-.04)],.022,loc=(-.05,-.798,1.35),color=c['lamp'])
-    # Open book is a substantial V, page stacks and a separate spine hinge.
+        e=ear(P,'reading bunny thick folded ear',-.05+sign*.17,-.42,1.58,.29,.66,c['cream'],c['lamp'],sign*.20)
+        P.pivot('ears'+str((sign+1)//2),(-.05+sign*.17,-.42,1.58),e)
+        P.ico('navy bead eye',.042,loc=(-.05+sign*.145,-.88,1.37),subdiv=1,color=c['navy'])
+        P.ico('bunny foot',1,loc=(-.05+sign*.27,-.78,.51),scale=(.17,.22,.22),subdiv=2,color=c['cream'])
+        P.ico('warm sole',1,loc=(-.05+sign*.27,-.99,.50),scale=(.10,.025,.14),subdiv=1,color=c['lamp'])
+        P.ico('book holding paw',1,loc=(-.05+sign*.39,-.72,1.15),scale=(.115,.12,.11),subdiv=1,color=c['cream'])
+    P.prism('tiny bunny nose',[(-.04,0),(.04,0),(0,-.04)],.022,loc=(-.05,-.90,1.29),color=c['lamp'])
+    # Open V book, cream page stacks riding on a spine hinge.
     pages=[]
     for sign in [-1,1]:
-        outline=[(0,.05),(sign*.55,.14),(sign*.57,.04),(0,-.06)]
-        ob=P.prism('navy hard book cover',outline,.60,loc=(-.05,-.86,.85),color=c['navy']);ob.rotation_euler.x=math.radians(16)
-        for layer in range(2):
-            p=P.prism('cream book page layer',[(0,.10+layer*.025),(sign*.51,.20+layer*.025),(sign*.52,.17+layer*.025),(0,.07+layer*.025)],.63,loc=(-.05,-.86,.85),color=c['cream']);p.rotation_euler.x=math.radians(16)
+        outline=[(0,0),(sign*.63,.20),(sign*.63,.09),(0,-.11)]
+        ob=P.prism('navy hard book cover',outline,.63,loc=(-.05,-.85,.86),color=c['navy']);ob.rotation_euler.x=math.radians(23)
+        for layer in range(3):
+            outline=[(0,.05+layer*.025),(sign*.25,.18+layer*.025),(sign*.58,.25+layer*.025),(sign*.59,.225+layer*.025),(sign*.25,.155+layer*.025),(0,.025+layer*.025)]
+            p=P.prism('folded cream book leaf',outline,.63,loc=(-.05,-.85,.86),color=c['cream']);p.rotation_euler.x=math.radians(23)
             pages.append(p)
+        rod(P,'gold book cover corner',(-.05+sign*.62,-1.12,.88),(-.05+sign*.62,-.58,1.08),.018,c['lamp'],4)
+    P.prism('navy folded cover below pages',[(-.63,.16),(0,-.08),(.63,.16),(.47,-.33),(0,-.41),(-.47,-.33)],.08,loc=(-.05,-1.10,.86),color=c['navy'])
+    P.cyl('navy book spine',.095,.48,8,loc=(-.05,-1.12,.84),rot=(-90,0,0),color=c['navy'])
     P.pivot('lid',(-.05,-.56,.97),pages)
     # Small bent desk lamp to the rabbit's left.
     P.cyl('lamp foot',.17,.055,10,loc=(-.89,-.32,.32),color=c['lamp'])
     for a,b in [((-.89,-.32,.36),(-.95,-.32,1.65)),((-.95,-.32,1.65),(-.69,-.32,1.96)),((-.69,-.32,1.96),(-.48,-.32,1.89))]:rod(P,'angular lamp arm',a,b,.035,c['lamp'])
     shade=P.cyl('glowing little shade',.23,.25,10,r2=.085,loc=(-.48,-.32,1.56),color=c['lamp'])
     P.pivot('pulse',(-.48,-.32,1.70),[shade])
-    for i in range(10):
-        a=2*math.pi*i/10;r=1.06;x=r*math.cos(a);y=r*math.sin(a)
+    for i in range(8):
+        a=2*math.pi*i/8;r=1.06;x=r*math.cos(a);y=r*math.sin(a)
         if y<-.80 and abs(x)<.6:continue
-        P.ico('angular moss rock',1,loc=(x,y,.27+(.32+(i%3)*.15)*.9),scale=(.20,.20,.32+(i%3)*.15),subdiv=1,color=c['teal'] if i%3==0 else c['mint'])
-        if i%2==0:
-            for k in range(3):
-                aa=k*2*math.pi/3;P.ico('small cream flower petal',.055,loc=(x+.075*math.cos(aa),y+.075*math.sin(aa),.56),subdiv=1,color=c['cream'])
-            P.ico('lamp flower center',.035,loc=(x,y,.58),subdiv=1,color=c['lamp'])
+        P.ico('angular moss rock',1,loc=(x,y,.27+(.32+(i%3)*.15)*.9),scale=(.20,.20,.24+(i%3)*.10),subdiv=1,color=c['teal'] if i%3==0 else c['mint'])
+    # Visible five-petal daisies frame the feet and lamp, instead of hiding inside moss.
+    for x,y,z,r in [(-1.02,-.66,.61,.075),(-.78,-1.02,.45,.065),(1.00,-.71,.59,.09),(.77,-1.00,.44,.06),(-1.02,.20,.72,.065)]:
+        for k in range(5):
+            aa=math.tau*k/5
+            P.prism('cream five petal daisy',P.ellipse(r*.65,r*.75,4),.01,loc=(x+r*math.cos(aa),y-.04,z+r*math.sin(aa)),color=c['cream'])
+        P.ico('gold daisy heart',.038,loc=(x,y-.065,z),subdiv=1,color=c['lamp'])
     for x,y in [(-1.07,.12),(1.1,.2),(.92,-.55),(-.89,-.70)]:
-        for k in range(2):P.blade('creased moss leaf',.28,.70,loc=(x,y,.27),rot=(0,(k-1)*25,k*100),color=c['teal'],bend=.3)
-    for xx,zz in [(-.77,1.86),(.80,1.66)]:P.prism('floating paper glow star',P.star(.07,.028),.015,loc=(xx,-.82,zz),color=c['lamp'])
+        for k in range(2):P.blade('creased moss leaf',.29,.61,loc=(x,y,.27),rot=(0,(k-1)*25,k*100),color=c['teal'],bend=.3)
+    for xx,zz in [(-1.10,1.90),(.88,1.65),(-.31,1.62)]:P.prism('floating paper glow star',P.star(.07,.028,n=4),.015,loc=(xx,-.82,zz),color=c['lamp'])
     bpy.context.view_layer.update()
-    for x,z in [(-.75,2.93),(.42,3.09),(.96,2.73)]:
+    for x,z,r in [(-.75,2.79,.07),(.20,3.01,.12),(.91,2.47,.065),(-.23,2.98,.055)]:
         hit,loc,normal,ind=cap.ray_cast(Vector((x,-3,z)),Vector((0,1,0)))
-        if hit:P.prism('cap golden star',P.star(.095,.04),.018,loc=(x,loc.y+.08,z),color=c['lamp'])
+        if hit:
+            outline=P.star(r,r*.28,n=4)
+            front=[(x+xx,loc.y-.02,z+zz) for xx,zz in outline]
+            center=(x,loc.y-.11,z)
+            mesh(P,'raised four point gold canopy star',front+[center],[(8,(i+1)%8,i) for i in range(8)],c['lamp'])
 
     finish(P,spec)

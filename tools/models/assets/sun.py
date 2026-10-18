@@ -1,5 +1,5 @@
 """H19 Layered Paper Sun. spec size 7.8 x 1.4 x 8 m; budget 2000; pivots root,spin,pulse.
-SIMPLIFICATIONS: smile and eyes are palette gold rods; cloud facets replace tiny paper rim seams."""
+SIMPLIFICATIONS: continuous gold crescent face strips; cloud border sheets replace tiny paper rim seams."""
 
 import math
 import bpy
@@ -45,30 +45,36 @@ def mesh(P,name,verts,faces,color):
 
 
 def build(P, spec):
-    c=spec['colors'];center=(0,0,4.35)
+    c=spec['colors'];center=(0,0,4.08)
     disc=[]
-    for name,r,y,depth,col in [('cream outer paper rim',2.96,-.10,.19,c['cream']),('gold raised ring',2.74,-.24,.16,c['gold']),('sun face',2.56,-.36,.20,c['sun'])]:
-        disc.append(P.lathe(name,[(0,0),(r*.87,0),(r,.10),(r*.99,depth),(r*.75,depth+.035),(0,depth+.12)],24,loc=(0,y,4.35),rot=(90,0,0),color=col))
+    for name,r,y,depth,col in [('cream outer paper rim',2.96,-.10,.19,c['cream']),('gold raised ring',2.74,-.24,.16,c['gold'])]:
+        disc.append(P.lathe(name,[(0,0),(r*.96,0),(r,.06),(r*.99,depth),(r*.94,depth+.035),(0,depth+.04)],16,loc=(0,y,4.08),rot=(90,0,0),color=col))
+    face=P.ico('triangulated folded sun face',1,loc=(0,-.44,4.08),scale=(2.60,.31,2.60),subdiv=2,color=c['sun'])
+    # Only the front half is visible; broad triangles make the radial paper folds readable.
+    face.data.update()
+    P.paint(face,c['sun'])
+    disc.append(face)
     rays=[]
     for i in range(16):
         a=math.pi/2+2*math.pi*i/16;R=3.90;r=2.55;wid=.70
         u=Vector((math.cos(a),0,math.sin(a)));v=Vector((-math.sin(a),0,math.cos(a)));cen=Vector(center)
         pts=[cen+u*r-v*wid,cen+u*R,cen+u*r+v*wid,cen+u*(r+.65)+Vector((0,-.42,0))]
-        vv=[tuple(p+Vector((0,.30,0))) for p in pts[:3]]+[tuple(p+Vector((0,-.12,0))) for p in pts[:3]]+[tuple(pts[3])]
+        vv=[tuple(p+Vector((0,.12 if j==1 else .30,0))) for j,p in enumerate(pts[:3])]+[tuple(p+Vector((0,.02 if j==1 else -.12,0))) for j,p in enumerate(pts[:3])]+[tuple(pts[3])]
         rays.append(mesh(P,'folded alternating ray',vv,[(0,2,1),(0,1,4,3),(1,2,5,4),(2,0,3,5),(6,3,4),(6,4,5),(6,5,3)],c['pink'] if i%2==0 else c['gold']))
     P.pivot('spin',center,rays)
-    # Raised smiling face, closed crescent eyes.
+    # Raised crescent cut-paper strips are continuous, so the smile has no bead joints.
     for x in [-.95,.95]:
-        for j in range(6):
-            a=math.pi*j/6;b=math.pi*(j+1)/6
-            disc.append(rod(P,'closed smiling eye',(x+.38*math.cos(a),-.66,4.51+.30*math.sin(a)),(x+.38*math.cos(b),-.66,4.51+.30*math.sin(b)),.045,c['gold'],4))
-        disc.append(P.ico('peach cheek',1,loc=(x*1.17,-.66,4.12),scale=(.25,.05,.24),subdiv=2,color=c['peach']))
-    for j in range(6):
-        a=math.pi+math.pi*j/6;b=math.pi+math.pi*(j+1)/6
-        disc.append(rod(P,'curved sun smile',(.40*math.cos(a),-.67,4.21+.27*math.sin(a)),(.40*math.cos(b),-.67,4.21+.27*math.sin(b)),.045,c['gold'],4))
+        outer=[(x+.39*math.cos(math.pi*j/8),4.24+.32*math.sin(math.pi*j/8)) for j in range(9)]
+        inner=[(x+.28*math.cos(math.pi*j/8),4.24+.20*math.sin(math.pi*j/8)) for j in range(8,-1,-1)]
+        disc.append(P.prism('creased crescent eye',outer+inner,.10,loc=(0,-.79,0),color=c['gold']))
+        disc.append(P.ico('peach polygon cheek',1,loc=(x*1.17,-.78,3.85),scale=(.25,.055,.24),subdiv=1,color=c['peach']))
+    outer=[(.43*math.cos(math.pi+math.pi*j/8),3.94+.29*math.sin(math.pi+math.pi*j/8)) for j in range(9)]
+    inner=[(.32*math.cos(math.pi+math.pi*j/8),3.94+.18*math.sin(math.pi+math.pi*j/8)) for j in range(8,-1,-1)]
+    disc.append(P.prism('continuous paper smile',outer+inner,.10,loc=(0,-.80,0),color=c['gold']))
     P.pivot('pulse',center,disc)
-    for i,(x,z,rx,rz) in enumerate([(-2.28,.94,.94,.90),(-1.33,1.45,1.04,1.11),(-.22,1.05,1.16,1.05),(1.03,.65,.84,.65),(1.93,.86,.72,.70),(2.43,.44,.73,.45)]):
-        P.ico('peach cloud paper border',1,loc=(x,-.44,z),scale=(rx*1.045,.36,rz*1.045),subdiv=1,color=c['peach'])
-        P.ico('cream faceted cloud',1,loc=(x,-.68,z+.02),scale=(rx,.38,rz),subdiv=2,color=c['cream'])
+    for i,(x,z,rx,rz) in enumerate([(-2.28,.98,.94,.86),(-1.33,1.70,1.04,1.11),(-.22,1.25,1.16,1.20),(1.03,.66,.84,.65),(1.93,.89,.72,.70),(2.43,.49,.73,.45)]):
+        depth_offset=[.10,.10,-.06,-.02,.08,.10][i]
+        P.ico('peach cloud paper border',1,loc=(x,-.44+depth_offset,z),scale=(rx*1.10,.28,rz*1.10),subdiv=2,color=c['peach'])
+        P.ico('cream faceted cloud',1,loc=(x,-.68+depth_offset,z+.02),scale=(rx,.38,rz),subdiv=2,color=c['cream'])
 
     finish(P,spec)

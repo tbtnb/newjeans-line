@@ -1,13 +1,13 @@
 {
  "front": {
-  "iou": 0.617,
-  "aspect_design": 0.693,
+  "iou": 0.628,
+  "aspect_design": 0.692,
   "aspect_model": 0.758,
-  "aspect_delta": 0.095,
+  "aspect_delta": 0.097,
   "col_design": [
-   117,
-   165,
-   140
+   121,
+   167,
+   143
   ],
   "col_model": [
    170,
@@ -16,14 +16,14 @@
   ]
  },
  "top": {
-  "iou": 0.401,
-  "aspect_design": 0.733,
+  "iou": 0.405,
+  "aspect_design": 0.734,
   "aspect_model": 1.182,
-  "aspect_delta": 0.612,
+  "aspect_delta": 0.611,
   "col_design": [
-   118,
-   160,
-   136
+   119,
+   161,
+   138
   ],
   "col_model": [
    167,

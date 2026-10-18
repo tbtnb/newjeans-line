@@ -1,5 +1,5 @@
-"""P17 Star mobile. 1.7 x 1.4 x 2.5 m; 600 tris; root, swing0/1 pendant groups.
-SIMPLIFICATIONS: five pendants share two swinging banks; open hoop and suspension triangle remain open despite filled design masks; tiny beads simplified to octahedra."""
+"""P17 Star mobile. 1.7 x 1.4 x 2.5 m; 600 tris; root, spin0/1 pendant groups.
+SIMPLIFICATIONS: five pendants share two rotation banks; open hoop and suspension triangle remain open despite filled design masks; crescent uses diamond folds; tiny beads simplified to octahedra."""
 
 import math
 import bpy
@@ -58,7 +58,7 @@ def finish(P,s,static,groups=()):
     for ob in obs:
         mw=ob.matrix_world.copy()
         for v in ob.data.vertices:v.co=tf(mw@v.co)
-        ob.matrix_world=Matrix.Identity(4)
+        ob.matrix_world=Matrix.Identity(4);ob.data.update()
     piv=[]
     for name,joint,children in groups:piv.append(P.pivot(name,tf(Vector(joint)),children))
     P.pivot('root',(0,0,0),static+piv)
@@ -66,13 +66,18 @@ def finish(P,s,static,groups=()):
 def build(P,s):
     c=s['colors']; st=[];g=[[],[]];R=.72;z=1.54
     # Flat polygonal annulus, open in its centre.
-    n=14;vv=[]
-    for h,r in [(z-.095,R-.01),(z+.045,R),(z-.095,R-.075),(z+.045,R-.065)]:vv += [(r*math.cos(2*math.pi*i/n),r*math.sin(2*math.pi*i/n),h) for i in range(n)]
+    n=12;vv=[]
+    for h,r in [(z-.115,R-.01),(z+.055,R),(z-.115,R-.085),(z+.055,R-.075)]:vv += [(r*math.cos(2*math.pi*i/n),r*math.sin(2*math.pi*i/n),h) for i in range(n)]
+    # Each outside panel folds out to a middle ridge, giving the lilac band sharp triangular planes.
+    for i in range(n):
+        a=2*math.pi*(i+.5)/n;vv.append(((R+.012)*math.cos(a),(R+.012)*math.sin(a),z-.03))
     ff=[]
     for i in range(n):
-        j=(i+1)%n;ff += [(i,j,n+j,n+i),(2*n+i,3*n+i,3*n+j,2*n+j),(n+i,n+j,3*n+j,3*n+i),(i,2*n+i,2*n+j,j)]
+        j=(i+1)%n;mid=4*n+i
+        ff += [(i,j,mid),(j,n+j,mid),(n+j,n+i,mid),(n+i,i,mid),
+               (2*n+i,3*n+i,3*n+j,2*n+j),(n+i,n+j,3*n+j,3*n+i),(i,2*n+i,2*n+j,j)]
     st.append(mesh(P,'open lilac hoop',vv,ff,c['lilac']))
-    rim=[(R*math.cos(2*math.pi*i/n),R*math.sin(2*math.pi*i/n),z+.047) for i in range(n)]+[((R-.010)*math.cos(2*math.pi*i/n),(R-.010)*math.sin(2*math.pi*i/n),z+.047) for i in range(n)]
+    rim=[(R*math.cos(2*math.pi*i/n),R*math.sin(2*math.pi*i/n),z+.057) for i in range(n)]+[((R-.022)*math.cos(2*math.pi*i/n),(R-.022)*math.sin(2*math.pi*i/n),z+.057) for i in range(n)]
     st.append(mesh(P,'gold rim line',rim,[(i,(i+1)%n,(i+1)%n+n,i+n) for i in range(n)],c['gold']))
     for a in [math.pi/6,5*math.pi/6,3*math.pi/2]:
         st.append(beam(P,'suspension cord',(R*math.cos(a),R*math.sin(a),z+.04),(0,0,2.32),.012,c['gold'],3))
@@ -101,10 +106,21 @@ def build(P,s):
         g[i%2].append(mesh(P,'pendant diamond bead',vv,[(j,(j+1)%4,4) for j in range(4)]+[((j+1)%4,j,5) for j in range(4)],c['gold']))
         g[i%2].append(beam(P,'pendant thread',(x,y,z-.04),(x,y,h+r),.011,c['gold'],3))
         if i==4:
-            ol=[(.015,.26),(.13,.18),(.19,.04),(.18,-.12),(.08,-.24),(-.07,-.26),(-.20,-.19),(-.25,-.10),(-.12,-.13),(.01,-.08),(.06,.04),(.055,.16)]
-            g[i%2].append(P.prism('little crescent',ol,.14,loc=(x,y,h),color=c['gold'],rot=(0,0,22)))
+            # Diamond sections along a curved crescent create large folded gold planes.
+            outer=[(-.07,.30),(.08,.21),(.18,.07),(.18,-.09),(.10,-.23),(-.05,-.29),(-.22,-.24)]
+            inner=[(-.07,.30),(-.015,.17),(.02,.04),(-.015,-.09),(-.09,-.16),(-.16,-.20),(-.22,-.24)]
+            vv=[(x+outer[0][0],y,h+outer[0][1])]
+            for j in range(1,6):
+                a,b=outer[j],inner[j];mx=(a[0]+b[0])/2;mz=(a[1]+b[1])/2
+                vv += [(x+a[0],y,h+a[1]),(x+mx,y-.105,h+mz),(x+b[0],y,h+b[1]),(x+mx,y+.105,h+mz)]
+            vv.append((x+outer[-1][0],y,h+outer[-1][1]));ff=[]
+            for j in range(4):ff.append((0,1+j,1+(j+1)%4))
+            for k in range(4):
+                for j in range(4):ff.append((1+4*k+j,1+4*k+(j+1)%4,5+4*k+(j+1)%4,5+4*k+j))
+            for j in range(4):ff.append((17+j,21,17+(j+1)%4))
+            g[i%2].append(mesh(P,'folded crescent with convex gold facets',vv,ff,c['gold']))
         else:g[i%2].append(puffstar(P,'dimensional paper star',r,.30 if i==0 else .21,(x,y,h),c['gold']))
     for i,a in enumerate([-math.pi/2,-math.pi,0,-2.16,-.98]):
         x,y=R*math.cos(a),R*math.sin(a)
         q=.035;h=z-.04;vv=[(x+q,y,h),(x,y+q,h),(x-q,y,h),(x,y-q,h),(x,y,h+.07),(x,y,h-.07)];st.append(mesh(P,'diamond hoop fitting',vv,[(j,(j+1)%4,4) for j in range(4)]+[((j+1)%4,j,5) for j in range(4)],c['gold']))
-    finish(P,s,st,[('swing0',(0,0,z),g[0]),('swing1',(0,0,z),g[1])])
+    finish(P,s,st,[('spin0',(0,0,z),g[0]),('spin1',(0,0,z),g[1])])

@@ -68,38 +68,63 @@ def finish(P,spec,roots):
 
 def build(P,spec):
  c=spec['colors'];L,W,V,G,I=[c[k] for k in ('lilac','white','lavender','gold','indigo')];a=[]
- for j,(r,h,z,col) in enumerate([(1.8,.25,0,V),(1.8,.08,.25,G),(1.7,.35,.33,L),(1.57,.08,.68,G),(1.52,.25,.76,W)]):
+ for j,(r,h,z,col) in enumerate([(1.95,.28,0,V),(1.95,.075,.28,G),(1.84,.43,.355,V),(1.69,.075,.785,G),(1.64,.28,.86,L),(1.54,.075,1.14,G),(1.50,.12,1.215,W)]):
   a.append(P.cyl('octagonal foundation',r,h,8,loc=(0,0,z),color=col,rot=(0,0,22.5)))
- a.append(P.cyl('slender tower core',.96,10.95,8,loc=(0,0,1.0),color=lambda c,n: L if n.x<.3 else W,rot=(0,0,22.5)))
+ a.append(P.cyl('slender tower core',.96,10.22,8,loc=(0,0,1.33),color=lambda c,n: L if n.x<.3 else W,rot=(0,0,22.5)))
  for i in range(8):
   t=math.tau*i/8+math.pi/8;x=.97*math.cos(t);y=.97*math.sin(t)
-  a.append(P.cyl('folded corner pilaster',.095,10.9,4,loc=(x,y,.82),color=W,rot=(0,0,45)))
- for z in (.9,3.2,5.8,8.35,10.95):a.append(P.cyl('tower stone belt',1.035,.16,8,loc=(0,0,z),color=V,rot=(0,0,22.5)))
+  a.append(P.cyl('folded corner pilaster',.105,10.18,4,loc=(x,y,1.31),color=V,rot=(0,0,45)))
+ for z in (1.35,4.10,7.10,9.98,11.39):a.append(P.cyl('tower stone belt',1.035,.16,8,loc=(0,0,z),color=V,rot=(0,0,22.5)))
  for side in (False,True):
-  for z in (1.18,3.8,6.45,9.1):
+  for z in (1.45,3.55,6.95,9.64):
    x,y=(.96,0) if side else (0,-.96);rot=90 if side else 0
-   for off,w,h,col in [(0,.52,1.14,V),(.025,.40,1.02,I),(.05,.28,.86,G)]:a.append(arch(P,'pointed tower window',x+off if side else x,y if side else y-off,z,w,h,.025,col,rot))
+   for off,w,h,col in [(0,.54,1.13,V),(.025,.41,1.00,I),(.05,.29,.85,G)]:a.append(arch(P,'pointed tower window',x+off if side else x,y if side else y-off,z,w,h,.025,col,rot))
+ # The middle window sits on the oblique front-right face in the design.
+ for off,w,h,col in [(0,.51,1.10,V),(.025,.40,.99,I),(.05,.28,.85,G)]:
+  a.append(arch(P,'oblique glowing window',.70+off*.707,-.70-off*.707,5.25,w,h,.025,col,45))
+ for i in range(4):
+  t=math.tau*i/4+math.pi/4
+  a.append(P.box('paper pilaster foot',(.20,.20,.37),loc=(.94*math.cos(t),.94*math.sin(t),1.32),color=V))
  # Each step is a real closed wedge, not a painted helix.
- N=64;turns=1.6;t0=-math.pi*.60
+ N=56;turns=-1.28;t0=math.pi*.60
  for i in range(N):
-  t=t0+turns*math.tau*i/N;u=t0+turns*math.tau*(i+1)/N;z=1.5+9*i/N
+  t=t0+turns*math.tau*i/N;u=t0+turns*math.tau*(i+1)/N;z=2.4+6.9*i/N
   vs=[]
   for zz in (z-.12,z):
-   for r,ang in [(.98,t),(1.69,t),(1.69,u),(.98,u)]:vs.append((r*math.cos(ang),r*math.sin(ang),zz))
+   for r,ang in [(.98,t),(1.64,t),(1.64,u),(.98,u)]:vs.append((r*math.cos(ang),r*math.sin(ang),zz))
   a.append(mesh(P,'spiral stair tread',vs,[(0,3,2,1),(4,5,6,7),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7)],V if i%2 else L))
  # Helical cream parapet and fine gold coping, sampled in shared rectangular panels.
- for i in range(48):
-  t=t0+turns*math.tau*i/48;u=t0+turns*math.tau*(i+1)/48;z=1.5+9*i/48;zu=1.5+9*(i+1)/48
+ for i in range(40):
+  t=t0+turns*math.tau*i/40;u=t0+turns*math.tau*(i+1)/40;z=2.4+6.9*i/40;zu=2.4+6.9*(i+1)/40
   for bottom,top,col in [(0,.68,W),(.68,.74,G)]:
-   vs=[(r*math.cos(ang),r*math.sin(ang),zz+dz) for r in (1.64,1.73) for ang,zz in ((t,z),(u,zu)) for dz in (bottom,top)]
+   vs=[(r*math.cos(ang),r*math.sin(ang),zz+dz) for r in (1.59,1.68) for ang,zz in ((t,z),(u,zu)) for dz in (bottom,top)]
    a.append(mesh(P,'spiral paper railing',vs,[(0,2,3,1),(4,5,7,6),(0,1,5,4),(2,6,7,3)],col))
  for i in range(5):
-  t=t0+turns*math.tau*i/4;z=1.5+9*i/4;x=1.69*math.cos(t);y=1.69*math.sin(t)
+  t=t0+turns*math.tau*i/4;z=2.4+6.9*i/4;x=1.64*math.cos(t);y=1.64*math.sin(t)
   a.append(bevel(P,'stair landing post',(.17,.17,.83),(x,y,z),W,.02));a.append(bevel(P,'post gold cap',(.26,.26,.08),(x,y,z+.83),G,.02))
+ for i in range(8):
+  t=math.tau*i/8+math.pi/8;co=math.cos(t);si=math.sin(t)
+  out=[(.94*co,.94*si,10.95),(1.24*co,1.24*si,11.55),(.94*co,.94*si,11.55)]
+  tangent=Vector((-si,co,0))*.055;vs=[tuple(Vector(v)+tangent) for v in out]+[tuple(Vector(v)-tangent) for v in out]
+  a.append(mesh(P,'creased eave bracket',vs,[(0,1,2),(3,5,4),(0,3,4,1),(1,4,5,2),(2,5,3,0)],V))
  a.append(P.cyl('roof underside',1.3,.18,8,loc=(0,0,11.55),color=W,rot=(0,0,22.5)))
  a.append(P.cyl('roof gold eave',1.33,.08,8,loc=(0,0,11.73),color=G,rot=(0,0,22.5)))
- a.append(P.cyl('lavender folded spire',1.31,1.95,8,loc=(0,0,11.81),r2=.06,color=lambda c,n: V if n.x>-.1 else L,rot=(0,0,22.5)))
- a.append(P.cyl('gold roof finial',.13,.38,8,loc=(0,0,13.67),r2=.045,color=G))
- star=P.prism('five point star',P.star(.39,.17),.13,loc=(0,0,14.32),color=G)
- a.append(P.pivot('spin0',(0,0,14.32),[star]));tower=P.pivot('tower0',(-1.6,0,0),a)
+ a.append(P.cyl('lavender folded spire',1.31,1.65,8,loc=(0,0,11.81),r2=.025,color=lambda c,n: V if n.x>-.1 else L,rot=(0,0,22.5)))
+ a.append(P.cyl('gold roof finial',.13,.70,8,loc=(0,0,13.40),r2=.045,color=G))
+ outline=P.star(.39,.17);vs=[(x,0,14.32+z) for x,z in outline]+[(0,-.16,14.32),(0,.16,14.32)];star=mesh(P,'five point folded star',vs,[(10,i,(i+1)%10) for i in range(10)]+[(11,(i+1)%10,i) for i in range(10)],G)
+ cross=[];center=Vector((0,0,14.32))
+ for plane in ('side','top'):
+  out=P.star(0.39,0.17);vs=[]
+  for u,v in out:vs.append(tuple(center+Vector((0,u,v) if plane=='side' else (u,v,0))))
+  axis=Vector((.075,0,0) if plane=='side' else (0,0,.075));vs += [tuple(center+axis),tuple(center-axis)]
+  cross.append(mesh(P,'creased star '+plane,vs,[(10,i,(i+1)%10) for i in range(10)]+[(11,(i+1)%10,i) for i in range(10)],G))
+ a.append(P.pivot('spin0',(0,0,14.32),[star]+cross));tower=P.pivot('tower0',(-1.6,0,0),a)
+ bpy.context.view_layer.update()
+ for ob in bpy.context.scene.objects:
+  if ob.type=='MESH':
+   mw=ob.matrix_world.copy();iv=mw.inverted()
+   for v in ob.data.vertices:
+    q=mw@v.co;z=q.z
+    if z<11.55:q.z=z*1.35 if z<=1.335 else 1.80225+(z-1.335)*(11.55-1.80225)/(11.55-1.335)
+    v.co=iv@q
  finish(P,spec,[tower])

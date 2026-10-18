@@ -16,14 +16,14 @@
   ]
  },
  "top": {
-  "iou": 0.523,
-  "aspect_design": 1.346,
+  "iou": 0.512,
+  "aspect_design": 1.345,
   "aspect_model": 4.224,
-  "aspect_delta": 2.137,
+  "aspect_delta": 2.14,
   "col_design": [
    232,
-   200,
-   146
+   201,
+   148
   ],
   "col_model": [
    221,

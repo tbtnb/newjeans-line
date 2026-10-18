@@ -20,11 +20,11 @@ def rod(P,name,a,b,r,color,n=8):
 
 def ear(P,name,x,y,z,w,h,color,inner,lean=0):
     outline=[(-.30*w,0),(-.58*w,.48*h),(-.43*w,.88*h),(0,h),(.43*w,.82*h),(.50*w,.48*h),(.28*w,0)]
-    def point(u,v,k=1):return (x+u+lean*v/h,y+.72*v/h-.18*w,z+v)
+    def point(u,v,k=1):return (x+u+lean*v/h,y+.90*v/h-.18*w,z+v)
     outer=[point(u,v) for u,v in outline]
     inset=[(a+.0,b-.055*w,c) for a,b,c in [point(u*.62,.13*h+v*.72) for u,v in outline]]
     center=(x+lean*.49,y+.72*.49-.42*w,z+.49*h)
-    back=[(a,b+.7*w,c) for a,b,c in outer]
+    back=[(a,b+.35*w,c) for a,b,c in outer]
     vs=outer+inset+[center]+back;fs=[]
     for i in range(7):fs.append((i,(i+1)%7,(i+1)%7+7,i+7))
     for i in range(7):fs.append((14,7+i,7+(i+1)%7))
@@ -98,33 +98,43 @@ def build(P,spec):
      t=math.tau*k/5;dx=0 if side else .055*math.cos(t);dy=.055*math.cos(t) if side else 0
      a.append(P.prism('five petal flower',P.ellipse(.043,.042,3),.018,loc=(xx+dx+( .04 if side else 0),yy+dy-(0 if side else .04),z+.08+.055*math.sin(t)),color=R if j%2 else C,rot=(0,0,90 if side else 0)))
     a.append(P.card('flower sun centre',P.ellipse(.028,.028,5),loc=(xx+.065 if side else xx,yy if side else yy-.065,z+.08),color=S,rot=(0,0,90 if side else 0)))
- a.append(P.cyl('red roof',1.25,1.5,8,loc=(0,0,5.8),color=R,r2=.02,rot=(0,0,22.5)))
+ a.append(P.lathe('creased red roof',[(1.25,0),(.97,.55),(.48,1.21),(0,1.65)],8,loc=(0,0,5.8),color=R,rot=(0,0,22.5)))
  a.append(P.cyl('roof gold edge',1.27,.13,8,loc=(0,0,5.73),color=S,rot=(0,0,22.5)))
  for i,sgn in enumerate((-1,1)):
-  es=ear(P,'roof bunny ear',sgn*.45,.1,6.93,.80,2.07,C,R,sgn*1.02);a.append(P.pivot('ears'+str(i),(sgn*.45,.1,6.93),es))
+  es=ear(P,'roof bunny ear',sgn*.45,-.05,6.93,1.05,2.07,C,R,sgn*1.12);a.append(P.pivot('ears'+str(i),(sgn*.45,-.05,6.93),es))
  # Four framed paper sails: exposed timber spar, cream folded cloth and sun edge pins.
  sail=[];hub=(0,-1.19,4.78)
  for i in range(4):
   t=math.radians([38,142,218,322][i]);v=Vector((math.cos(t),0,math.sin(t)));n=Vector((-math.sin(t),0,math.cos(t)))
   def at(r,w,y=-1.29):return tuple(Vector((0,y,4.78))+v*r+n*w)
   sail.append(rod(P,'timber spoke',at(.08,0,-1.2),at(3.30,0,-1.2),.065,W,6))
-  vs=[at(.69,-.43),at(3.31,-.43),at(3.31,.43),at(.69,.43),at(1.96,0,-1.34)]
+  vs=[at(1.00,-.43),at(3.31,-.43),at(3.31,.43),at(1.00,.43),at(1.96,0,-1.34)]
   sail.append(mesh(P,'creased cream sail',vs,[(0,1,4),(1,2,4),(2,3,4),(3,0,4)],C))
-  for r0,r1,w0,w1 in [(.69,3.31,-.43,-.43),(.69,3.31,.43,.43),(.69,.69,-.43,.43),(3.31,3.31,-.43,.43)]:
-   sail.append(rod(P,'gold sail border',at(r0,w0),at(r1,w1),.032,S,6))
-  for j in range(1,4):sail.append(rod(P,'sail paper rib',at(.69+j*.655,-.42,-1.30),at(.69+j*.655,.42,-1.30),.009,W,4))
- for r,h,y,col in [(.26,.15,-1.13,W),(.21,.20,-1.27,S),(.16,.04,-1.49,S)]:sail.append(P.cyl('faceted windmill hub',r,h,12,loc=(0,y,4.78),color=col,rot=(90,0,0)))
+  for r0,r1,w0,w1 in [(1.00,3.31,-.43,-.43),(1.00,3.31,.43,.43),(1.00,1.00,-.43,.43),(3.31,3.31,-.43,.43)]:
+   sail.append(rod(P,'gold sail border',at(r0,w0),at(r1,w1),.040,W if w0==w1 else S,4))
+  for j in range(1,3):sail.append(rod(P,'sail paper rib',at(1.00+j*.5775,-.42,-1.30),at(1.00+j*.5775,.42,-1.30),.009,W,4))
+ for i in range(4):
+  t=math.radians([38,142,218,322][i]);v=Vector((math.cos(t),0,math.sin(t)));n=Vector((-math.sin(t),0,math.cos(t)))
+  for rr in (1.0,3.31):
+   for ww in (-.43,.43):
+    pt=Vector((0,-1.32,4.78))+v*rr+n*ww
+    sail.append(P.cyl('gold sail corner pin',.055,.065,4,loc=pt,color=S,r2=0,rot=(90,0,0)))
+ for r,h,y,col in [(.34,.15,-1.13,W),(.29,.20,-1.27,S),(.24,.09,-1.49,S)]:sail.append(P.cyl('faceted windmill hub',r,h,12,loc=(0,y,4.78),color=col,rot=(90,0,0)))
+ sail.append(P.ico('creased golden hub jewel',1,loc=(0,-1.60,4.78),scale=(.25,.10,.25),subdiv=1,color=S))
  for sg in (-1,1):
   a.append(P.box('base flower planter',(.32,.4,.22),loc=(sg*1.04,0,.55),color=W))
   for j in range(2):
    a.append(P.ico('planter foliage',.11,loc=(sg*1.07,(j-1)*.12,.79),color=G,subdiv=1))
  a.append(P.prism('porch gold diamond',[(0,.13),(.1,0),(0,-.13),(-.1,0)],.04,loc=(0,-1.36,1.9),color=S))
+ for sg in (-1,1):
+  a.append(P.box('porch side upright',(.08,.12,.50),loc=(sg*.64,-1.22,1.20),color=W))
+  a.append(P.prism('gable eave bracket',[(0,0),(.15,.20),(.15,0)],.10,loc=(sg*.47,-1.26,1.51),color=W))
  a.append(P.pivot('wheel0',hub,sail))
  bpy.context.view_layer.update()
  for ob in bpy.context.scene.objects:
   if ob.type=='MESH' and ob.parent is None:
    mw=ob.matrix_world.copy();iv=mw.inverted()
    for v in ob.data.vertices:
-    p=mw@v.co;factor=1.12 if p.z<5.9 else 1.10
-    p.x*=factor;p.y*=factor;v.co=iv@p
+    p=mw@v.co;factor=1.12 if p.z<5.9 else 1.0
+    p.x*=factor*((1.12*(1+.10*max(0,1-p.z/5.75))) if p.z<5.75 else 1);p.y*=factor;v.co=iv@p
  finish(P,spec,a)

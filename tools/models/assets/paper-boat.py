@@ -68,42 +68,47 @@ def finish(P,spec,roots):
 
 def build(P,spec):
  c=spec['colors'];W,L,M,G,A=[c[k] for k in ('pearl','lilac','moon','gold','lamp')];a=[]
- top=[(-1.5,0,.79),(-.83,-.33,.68),(0,-.55,.66),(.83,-.33,.68),(1.5,0,.79),(.83,.33,.68),(0,.55,.66),(-.83,.33,.68)]
- low=[(-.94,0,0),(-.79,-.20,.0),(0,-.27,0),(.79,-.20,0),(.94,0,0),(.79,.20,0),(0,.27,0),(-.79,.20,0)]
- low=[(x,y*.035,z) for x,y,z in low]
- # Creased outer shell, with distinct triangular paper facets.
+ # Front vertices follow the actual cut-paper pattern, not a rounded bunny icon.
+ def xyz(px,py,y=0):return ((px-311)/207.33,y,(603-py)/201)
+ def paper(name,outline,frontpoints,faces,depths,colours):
+  n=len(outline);vs=[xyz(x,z,0) for x,z in outline]
+  vs += [xyz(x,z,y) for x,z,y in frontpoints]
+  # A shallow rear ridge gives the edge-on folded-paper profile.
+  back=len(vs);vs += [xyz(x,z,depths) for x,z in outline]
+  center=len(vs);vs.append(xyz(sum(x for x,z in outline)/n,sum(z for x,z in outline)/n,depths+.045))
+  fs=list(faces)+[(center,back+i,back+(i+1)%n) for i in range(n)]+[(i,(i+1)%n,back+(i+1)%n,back+i) for i in range(n)]
+  ob=mesh(P,name,vs,fs,W)
+  for col,inds in colours:P.paint(ob,col,faces=set(inds))
+  a.append(ob)
+ # Irregular broad head with a sharply projecting central crease.
+ out=[(190,225),(280,198),(316,187),(406,226),(453,305),(427,382),(361,415),(267,418),(184,386),(153,305)]
+ pts=[(245,239,-.12),(350,300,-.24),(422,331,-.075),(222,339,-.09)]
+ fs=[(0,1,10),(1,2,11),(1,11,10),(2,3,11),(3,4,12),(3,12,11),(4,5,12),(5,6,11),(5,11,12),(6,7,11),(7,13,11),(7,8,13),(8,9,13),(9,0,10),(9,10,13),(10,11,13)]
+ paper('creased cream sail head',out,pts,fs,.12,[(M,[1,4,6,9,13]),(L,[11])])
+ # Large asymmetrical ears with angular edges, broad inner panels, and a real ridge.
+ for name,out,pts,fs,blue in [
+ ('left',[(245,239),(190,225),(116,124),(142,15),(237,70),(282,198)],[(165,118,-.12),(219,96,-.12),(206,190,-.10)],[(0,1,8),(1,2,6),(1,6,8),(2,3,6),(3,7,6),(3,4,7),(4,5,7),(5,0,7),(0,8,6),(0,6,7)],8),
+ ('right',[(330,193),(371,73),(456,16),(487,123),(405,228)],[(394,107,-.12),(437,72,-.12),(449,118,-.10)],[(0,1,5),(1,2,6),(1,6,5),(2,3,6),(3,7,6),(3,4,7),(4,0,5),(4,5,7),(5,6,7)],2)]:
+  paper('creased cream sail '+name+' ear',out,pts,fs,.14,[(L,[4,8,9] if name=='left' else [7,8]),(M,[blue])])
+ # Eight planar hull sides converge to a genuine keel, with the cockpit left open.
+ top=[xyz(x,z,y) for x,z,y in [(0,432,0),(145,479,-.35),(295,485,-.55),(422,484,-.35),(621,462,0),(466,455,.35),(311,450,.55),(155,449,.35)]]
+ low=[xyz(x,603,y) for x,y in [(106,0),(116,-.045),(298,-.080),(496,-.045),(496,0),(492,.045),(298,.080),(110,.045)]]
  for i in range(8):
-  j=(i+1)%8;v=[top[i],top[j],low[j],low[i]];center=tuple(sum(p[k] for p in v)/4 for k in range(3));v.append((center[0],center[1]*1.04,center[2]))
-  ob=mesh(P,'folded hull facet',v,[(0,1,4),(1,2,4),(2,3,4),(3,0,4)],W);P.paint(ob,L if i%2 else M,faces={1})
- # Interior is visible from above and contains an actual lower cockpit.
- inner=[(x*.93,y*.89,z-.045) for x,y,z in top];floor=[(x*.55,y*.30,.23) for x,y,z in top]
+  j=(i+1)%8;v=[top[i],top[j],low[j],low[i]];center=tuple(sum(p[k] for p in v)/4 for k in range(3));v.append((center[0],center[1]*1.07,center[2]))
+  ob=mesh(P,'folded hull facet',v,[(0,1,4),(1,2,4),(2,3,4),(3,0,4)],W);P.paint(ob,M,faces={2 if i%2 else 3});P.paint(ob,L,faces={1} if i in (0,3,4,7) else set());a.append(ob)
+ inner=[(x*.97,y*.92,z-.04) for x,y,z in top];floor=[(x*.65,y*.28,.19) for x,y,z in top]
  for i in range(8):
-  j=(i+1)%8;a.append(mesh(P,'lilac hull interior',[inner[i],inner[j],floor[j],floor[i]],[(0,1,2),(0,2,3)],L))
-  a.append(rod(P,'gold folded rim',top[i],top[j],.016,G,12))
+  j=(i+1)%8;q=[inner[i],inner[j],floor[j],floor[i]];mid=tuple(sum(p[k] for p in q)/4 for k in range(3));q.append((mid[0],mid[1],mid[2]-.04))
+  ob=mesh(P,'lilac hull interior',q,[(0,1,4),(1,2,4),(2,3,4),(3,0,4)],L);a.append(ob)
+  a.append(rod(P,'gold folded rim',top[i],top[j],.015,G,12))
  a.append(mesh(P,'cockpit floor',floor,[tuple(range(8))],L))
- # Collect shell panels that were generated directly above.
- a=list(bpy.context.scene.objects)
- a.append(P.lathe('gold mast',[(.033,.25),(.033,2.76),(.045,2.77),(.045,2.81),(.03,2.81),(.03,2.9)],12,color=G))
- a.append(P.cyl('mast foot',.065,.055,12,loc=(0,0,.30),color=G))
- a.append(P.lathe('mast diamond',[(0,2.81),(.10,2.96),(0,3.11)],4,color=G))
- outline=[(-.70,1.45),(-.55,1.81),(-.18,2.00),(.28,1.96),(.59,1.70),(.71,1.44),(.57,1.13),(.19,.99),(-.28,1.01),(-.59,1.16)]
- vs=[(x,-.035,z) for x,z in outline]+[(-.12,-.24,1.48),(.12,-.16,1.82),(.46,-.14,1.42),(.10,-.12,1.12)]
- front=[(0,1,10),(1,2,11),(1,11,10),(2,3,11),(3,4,11),(4,12,11),(4,5,12),(5,6,12),(6,7,13),(6,13,12),(7,8,13),(8,9,10),(8,10,13),(9,0,10),(10,11,12),(10,12,13)]
- vs += [(x,.06,z) for x,z in outline]+[(0,.18,1.5)]
- fs=front+[(24,14+(i+1)%10,14+i) for i in range(10)]+[(i,14+i,14+(i+1)%10,(i+1)%10) for i in range(10)]
- head=mesh(P,'large irregular origami sail facets',vs,fs,W);P.paint(head,M,faces={0,6,10,13});P.paint(head,L,faces={1,8,17,22});a.append(head)
-
- for i,sgn in enumerate((-1,1)):
-  es=ear(P,'bunny sail folded ear',sgn*.38,0,1.85,.49,1.12,W,L,sgn*.39)
-  # Thin but genuinely folded fabric/paper sail, rather than a flat card.
-  for ob in es:
-   for v in ob.data.vertices:v.co.y=v.co.y*.40-.10
-  a+=es
- # Bow lantern: gold frame, warm faceted core, pagoda cap and diamond finial.
- x=1.32;y=0
- for z,r,h,col,r2 in [(.73,.07,.06,G,.07),(.79,.045,.1,G,.045),(.89,.09,.035,G,.09),(.925,.09,.24,A,.13),(1.165,.16,.035,G,.16),(1.2,.16,.11,G,.025)]:
+ a.append(P.lathe('gold mast',[(.033,.25),(.033,2.72),(.048,2.72),(.048,2.78),(.03,2.78),(.03,2.9)],12,color=G))
+ for z in (.68,2.08,2.73):a.append(P.cyl('mast folded collar',.075,.045,8,loc=(0,0,z),color=G))
+ a.append(P.lathe('mast diamond',[(0,2.77),(.10,2.90),(0,3.0)],4,color=G))
+ x=1.34;y=0
+ for z,r,h,col,r2 in [(.71,.07,.06,G,.07),(.77,.045,.08,G,.045),(.85,.10,.035,G,.10),(.885,.10,.26,A,.15),(1.145,.18,.035,G,.18),(1.18,.18,.12,G,.025)]:
   a.append(P.cyl('bow lantern',r,h,8,loc=(x,y,z),color=col,r2=r2))
  for i in range(4):
-  t=math.pi/4+i*math.pi/2;a.append(rod(P,'lantern frame',(x+.09*math.cos(t),.09*math.sin(t),.93),(x+.13*math.cos(t),.13*math.sin(t),1.17),.008,G,5))
- a.append(P.ico('lantern finial',.04,loc=(x,0,1.35),color=G,subdiv=1,scale=(1,1,1.4)))
+  t=math.pi/4+i*math.pi/2;a.append(rod(P,'lantern frame',(x+.10*math.cos(t),.10*math.sin(t),.89),(x+.15*math.cos(t),.15*math.sin(t),1.145),.01,G,6))
+ a.append(P.lathe('lantern diamond',[(0,1.29),(.055,1.36),(0,1.43)],4,loc=(x,0,0),color=G))
  b=P.pivot('bob0',(0,0,.4),a);finish(P,spec,[b])
