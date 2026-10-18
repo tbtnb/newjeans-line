@@ -1,0 +1,42 @@
+{
+ "fails": [],
+ "state": "complete",
+ "status": "complete",
+ "failKind": null,
+ "failTime": 0,
+ "time": 176.5907,
+ "cursor": 327,
+ "taps": 327,
+ "perfect": 327,
+ "good": 0,
+ "diamonds": 10,
+ "ignoredDuplicates": 0,
+ "fps": 13.011152416356877,
+ "save": {
+  "version": 2,
+  "selected": "hype-boy",
+  "records": {
+   "hype-boy": {
+    "best": 1,
+    "diamonds": 10,
+    "crowns": 3,
+    "attempts": 1,
+    "completed": true,
+    "perfect": 327,
+    "taps": 327
+   }
+  },
+  "settings": {
+   "volume": 0.8,
+   "offsetMs": 0,
+   "quality": "high",
+   "vibration": true
+  }
+ },
+ "judged": 327,
+ "errorMeanMs": 1.4,
+ "errorSdMs": 1.3,
+ "errorMaxAbsMs": 12,
+ "sent": 327,
+ "logs": []
+}
