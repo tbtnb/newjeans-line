@@ -49,7 +49,7 @@ class Chart:
         self.taps.sort(key=lambda x: x['t'])
         self._apply_dirs()
         for a, b in zip(self.taps, self.taps[1:]):
-            assert b['t'] - a['t'] >= 0.149, (a, b)
+            assert b['t'] - a['t'] >= 0.105, (a, b)
         out = {'id': self.sid, 'startHeading': startHeading, 'speed': speed or [{'t': 0, 'v': 9.0}], 'taps': self.taps, 'sections': self.sections, 'notes': notes}
         p = ROOT / f'levels-src/{self.sid}/chart.json'; p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(json.dumps(out, indent=1))

@@ -1,7 +1,7 @@
 import './style.css';
 import { SONGS, loadLevel } from './catalog';
 import { AudioTransport } from './audio';
-import { Game } from './core/game';
+import { Game, LATE_GRACE, LATE_GRACE_MAX } from './core/game';
 import type { LevelData } from './core/types';
 import { World } from './render/world';
 import { loadSave, persistSave, parseSave, mergeRecord, type SaveData } from './storage';
@@ -305,10 +305,13 @@ $('btn-calibrate').onclick = () => {
 };
 
 // ---------------- main loop ----------------
-let hudTick = 0;
+let hudTick = 0; let lastLoop = 0; let frameEma = 1 / 60;
 function loop() {
   requestAnimationFrame(loop);
+  const nowMs = performance.now(); if (lastLoop) frameEma += (Math.min(0.25, (nowMs - lastLoop) / 1000) - frameEma) * 0.1; lastLoop = nowMs;
   if (!game) { return; }
+  // input events arrive at most ~2 frames late: never declare a miss before a queued, in-time tap could be processed
+  game.lateGrace = Math.min(LATE_GRACE_MAX, Math.max(LATE_GRACE, 0.05 + 2.5 * frameEma));
   let t = game.time;
   if (state === 'playing') {
     t = audio.renderTime() - save.settings.offsetMs / 1000;

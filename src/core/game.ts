@@ -2,13 +2,14 @@ import type { LevelData } from './types';
 import { buildRoute, type Route } from './path';
 
 export const WINDOW_MAX = 0.11;     // ± seconds, sparse taps
-export const WINDOW_MIN = 0.065;    // ± seconds, floor for the densest runs
+export const WINDOW_MIN = 0.045;    // ± seconds, absolute floor (16th bursts at 0.11 s gaps get ±49.5 ms)
 export const WINDOW_GAP_RATIO = 0.45; // window may never exceed 45 % of the neighbouring gap (no ambiguity)
 export const PERFECT = 0.04;
 export const DEBOUNCE = 0.045;
 /** Input events are delivered to JS after a frame or two; their timestamps are what we judge. The clock-driven
  * "late" failure therefore waits this long past the deadline so a queued (but in-time) event can still land. */
-export const LATE_GRACE = 0.15;      // duplicate hardware events closer than this to an accepted tap are ignored
+export const LATE_GRACE = 0.15;
+export const LATE_GRACE_MAX = 0.4;
 
 export type Status = 'ready' | 'playing' | 'paused' | 'failed' | 'complete';
 export type FailKind = 'late' | 'early' | 'extra';
@@ -19,12 +20,16 @@ export function judgmentWindows(taps: number[]): number[] {
   return taps.map((t, i) => {
     const prev = i > 0 ? t - taps[i - 1] : Infinity;
     const next = i + 1 < taps.length ? taps[i + 1] - t : Infinity;
-    return Math.max(WINDOW_MIN, Math.min(WINDOW_MAX, WINDOW_GAP_RATIO * Math.min(prev, next)));
+    const g = Math.min(prev, next);
+    // per-tap window: ≤ 45 % of the local minimum gap, so neighbouring windows never touch and one tap can never count twice
+    return Math.min(0.5 * g, Math.max(WINDOW_MIN, Math.min(WINDOW_MAX, WINDOW_GAP_RATIO * g)));
   });
 }
 
 /** Pure rhythm/route state machine. Time is ALWAYS the song time from the audio clock. */
 export class Game {
+  /** grace before a missing tap is declared late; the app widens it on slow frames (input is delivered once per frame) */
+  lateGrace = LATE_GRACE;
   readonly level: LevelData;
   readonly route: Route;
   readonly taps: number[];
@@ -86,7 +91,7 @@ export class Game {
     t = Math.max(this.time, t);
     if (this.cursor < this.taps.length) {
       const deadline = this.taps[this.cursor] + this.windows[this.cursor];
-      if (t > deadline + LATE_GRACE) { this.collect(deadline); this.fail('late', deadline); return; }
+      if (t > deadline + this.lateGrace) { this.collect(deadline); this.fail('late', deadline); return; }
     }
     this.collect(t);
     this.time = t;

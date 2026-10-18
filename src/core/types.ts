@@ -30,6 +30,8 @@ export interface SceneObject {
   worldPos?: number[];
   /** part of / under the road (bridges, decks): never pushed off the road */
   onroad?: boolean;
+  /** internal: row item anchored to the actual road edge rather than the mean corridor */
+  hug?: boolean;
   radius?: number;
   /** kind 'image': texture path relative to the level folder (art/x.png); mode upright|flat|billboard */
   src?: string; mode?: string; alpha?: boolean; texture?: string;

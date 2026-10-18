@@ -20,15 +20,15 @@ L.section(T(79), 'Final 黎明', palette={'skyTop': '#8fa6d8', 'skyBottom': '#ff
 L.section(T(96), 'Outro 光', palette={'skyTop': '#f3e6ee', 'skyBottom': '#fffaf2', 'fog': '#fff6ef', 'roadSide': '#e2c7cf', 'line': '#4b4f8f', 'particles': 'dust'})
 
 # ---------- road: narrows across the level; reveal style per section ----------
-for bar, w in [(0, 2.6), (8, 2.3), (16, 2.1), (31, 2.3), (40, 1.9), (64, 2.1), (79, 1.75), (96, 2.4)]: L.width(T(bar) if bar else 0, w)
+import json as _json
+from common import ROOT as _ROOT
+_plan = _json.load(open(_ROOT / 'levels-src/ditto/elevation.json'))
+for _t, _w in _plan['width']: L.width(_t, _w)
 L.reveal(0, 'rise', 2.4); L.reveal(T(8), 'static'); L.reveal(T(31), 'unfold', 2.0); L.reveal(T(40), 'drop', 1.9)
 L.reveal(T(48), 'static'); L.reveal(T(64), 'fade', 2.0); L.reveal(T(79), 'rise', 1.6); L.reveal(T(96), 'rise', 2.2)
 
 # ---------- elevation: falls into the gym and onto the lake; ascent at dawn ----------
-a, b = L.gap_after(T(31), 1.0); d['elevation'].append({'t': round(a + 0.12, 3), 'type': 'fall', 'dy': -3})      # step down into the gym
-a, b = L.gap_after(T(71), 1.2); d['elevation'].append({'t': round(a + 0.15, 3), 'type': 'fall', 'dy': -4})      # drop to the night lake
-d['elevation'].append({'t0': T(79), 't1': T(95), 'type': 'ramp', 'dy': 7})                                       # climb towards dawn
-d['elevation'].append({'t0': T(97), 't1': T(102), 'type': 'ramp', 'dy': 3})
+d['elevation'] = _plan['elevation']   # shared with the route search in ditto.py (crossings depend on it)
 
 # ---------- camera: phrase-level changes ----------
 L.cam(0, preset='wide', blend=0); L.cam(T(4), preset='iso', blend=4.5)
@@ -80,7 +80,8 @@ L.obj(id='clocktower', t=T(20), side=12, kind='group', landmark=True, name='钟�
 L.obj(id='lamps1', kind='row', t0=T(16), t1=T(24), side=3.0, spacing=7, bothSides=True, item={'kind': 'lamp', 'size': [0.4, 3.6, 0.4], 'color': '#ffe6a8', 'color2': '#56606f', 'react': 'beat'})
 # Verse b: corridor — window panels on both sides react to every tap (Piano-key style)
 L.obj(id='windows', kind='row', t0=T(24), t1=T(31), side=3.6, spacing=2.4, bothSides=True, item={'kind': 'box', 'size': [0.3, 2.2, 1.2], 'color': '#e4edf6', 'react': 'tap'})
-L.obj(id='lockers', kind='row', t0=T(24), t1=T(31), side=6.5, spacing=1.2, bothSides=True, item={'kind': 'box', 'size': [0.9, 1.8, 1.0], 'color': '#7d9cc4', 'react': 'beat'})
+# (lockers row removed: too dense once the route weaves)
+_unused = dict(id='lockers', kind='row', t0=T(24), t1=T(31), side=6.5, spacing=1.2, bothSides=True, item={'kind': 'box', 'size': [0.9, 1.8, 1.0], 'color': '#7d9cc4', 'react': 'beat'})
 # Pre: the gym — bleachers, hoops, banner
 for i, bar in enumerate([32, 34, 36, 38]):
     L.obj(id=f'bleach{i}', t=T(bar), side=-9 if i % 2 else 9, kind='stairs', size=[10, 4, 5], rot=90 if i % 2 else -90, color='#c98e55', color2='#e3b17a', appear={'t': T(bar) - 1.5, 'mode': 'unfold', 'dur': 0.8})
@@ -123,6 +124,23 @@ L.obj(id='tokki2', t=T(76, 4), side=-5, kind='group', egg=True, name='Tokki 在�
     {'kind': 'sphere', 'pos': [0, 0, 0], 'size': [1.0, 0.9, 1.0], 'color': '#ffffff'}, {'kind': 'sphere', 'pos': [0, 0.85, 0], 'size': [0.75, 0.7, 0.75], 'color': '#ffffff'},
     {'kind': 'box', 'pos': [-0.18, 1.35, 0], 'size': [0.15, 0.75, 0.12], 'color': '#ffffff'}, {'kind': 'box', 'pos': [0.18, 1.35, 0], 'size': [0.15, 0.75, 0.12], 'color': '#ffffff'}])
 # Final: dawn — crystals rise with the road, the sun comes up
+# Final chorus: the road climbs a clockwise staircase spiral; put a landmark in the eye of the spiral (absolute position).
+def _route_xz(ts):
+    H = [(0, 1), (1, 0), (0, -1), (-1, 0)]; h, x, z, t0 = 0, 0.0, 0.0, 0.0; out = []
+    taps = L.chart['taps']; k = 0
+    for tq in ts:
+        while k < len(taps) and taps[k]['t'] <= tq:
+            x += H[h][0] * (taps[k]['t'] - t0) * 9; z += H[h][1] * (taps[k]['t'] - t0) * 9; t0 = taps[k]['t']
+            h = (h + (1 if taps[k]['dir'] == 'R' else -1)) % 4; k += 1
+        out.append((x + H[h][0] * (tq - t0) * 9, z + H[h][1] * (tq - t0) * 9))
+    return out
+_pts = _route_xz([T(79) + i * 0.25 for i in range(int((T(96) - T(79)) / 0.25))])
+_cx = (min(p[0] for p in _pts) + max(p[0] for p in _pts)) / 2; _cz = (min(p[1] for p in _pts) + max(p[1] for p in _pts)) / 2
+L.obj(id='dawn_globe', t=T(88), kind='group', landmark=True, name='黎明雪景球（螺旋中心）', worldPos=[round(_cx, 2), 1.5, round(_cz, 2)], react='beat', parts=[
+    {'kind': 'cylinder', 'pos': [0, 0, 0], 'size': [5.5, 1.6, 5.5], 'color': '#c9a7b4'},
+    {'kind': 'sphere', 'pos': [0, 1.6, 0], 'size': [5, 5, 5], 'color': '#eaf3ff'},
+    {'kind': 'cone', 'pos': [0, 2.4, 0], 'size': [1.6, 2.4, 1.6], 'color': '#3f6b5a'},
+    {'kind': 'box', 'pos': [1.1, 2.4, 0.4], 'size': [0.9, 0.9, 0.9], 'color': '#ffffff'}])
 L.obj(id='sun', t=T(90), side=-30, y=4, kind='sun', size=[14, 14, 14], color='#ffd2b0', color2='#ffe9d6', landmark=True, name='朝阳')
 L.ev(T(79), 'raise', target='sun', dur=T(95) - T(79), dy=22)
 L.obj(id='icepillars', kind='row', t0=T(79), t1=T(96), side=3.0, spacing=3.0, bothSides=True, item={'kind': 'crystal', 'size': [0.9, 3.0, 0.9], 'color': '#ffe3ef', 'react': 'kick'},
@@ -135,6 +153,7 @@ L.scatter(T(96), T(103), 10, [{'kind': 'cloud', 'size': [8, 3, 5], 'color': '#ff
 # ---------- collectibles ----------
 for pct in [0.07, 0.15, 0.24, 0.33, 0.43, 0.52, 0.61, 0.70, 0.83, 0.93]:
     d['diamonds'].append({'t': L.gap_mid(pct * 185.5, 0.6)})
+# checkpoints sit in the middle of the long calm straight that opens the pre-chorus and the night break (before the falls)
 c1 = L.gap_after(T(31), 1.0); c2 = L.gap_after(T(71), 1.2)
-d['crowns'] = [{'t': round(c1[0] + 0.05, 3)}, {'t': round(c2[0] + 0.05, 3)}]
+d['crowns'] = [{'t': round(c1[0] + 0.06, 3)}, {'t': round(c2[0] + 0.07, 3)}]
 L.save()
