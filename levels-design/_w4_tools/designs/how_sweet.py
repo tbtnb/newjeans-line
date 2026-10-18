@@ -93,7 +93,8 @@ ELEV=[{'t0':hb(20),'t1':hb(24)-0.3,'type':'ramp','dy':3,'note':'pre-chorus: the 
       {'t0':hb(48),'t1':hb(56)-0.3,'type':'ramp','dy':3,'note':'verse 2 / pre 2: rooftop terraces climb to L2'},
       {'t0':hb(72),'t1':hb(80)-0.3,'type':'ramp','dy':-3,'note':'bridge: long narrow bridge glides back down to L1'},
       {'t0':hb(80),'t1':hb(88)-0.3,'type':'ramp','dy':6,'note':'build: square helix up the water-tower'},
-      {'t':hb(88),'type':'fall','dy':-6,'snap':True,'note':'final-chorus downbeat: drop off the tower onto the plaza'}]
+      {'t':hb(88),'type':'fall','dy':-6,'snap':True,'note':'final-chorus downbeat: drop off the tower onto the plaza'},
+      {'t0':hb(96),'t1':hb(100)-0.3,'type':'ramp','dy':3,'note':'final chorus 2nd half: rooftop-garden loop climbs and passes over the expanding spiral'}]
 BLOCKS=[
  {'t0':0,'tex':'stair'},
  {'t0':hb(4),'tex':'serpL','P':[1.4,1.9],'m':[4,6],'phases':[0]},
@@ -105,10 +106,10 @@ BLOCKS=[
  {'t0':hb(48),'tex':'serp','m':[6,8],'phases':[0,2,4]},
  {'t0':hb(56),'tex':'orbit','P':[1.5*B,2*B,2.5*B],'m':[3],'phases':[0,B/2,B]},
  {'t0':hb(64),'tex':'bolt','P':[B],'phases':[0,B/2]},
- {'t0':hb(72),'tex':'stair'},
+ {'t0':hb(72),'tex':'switch','P':[B,1.5*B,2*B],'phases':[0,B/2,B]},
  {'t0':hb(80),'tex':'orbit','P':[2*B,1.75*B],'m':[4,5],'phases':[0,B/2,B],'cross':1,'look':6},
  {'t0':hb(88),'tex':'xspiral','P':[B,1.5*B,2*B],'m':[5,6],'phases':[0,B/2,B,1.5*B,2*B,3*B],'sides':['R','L']},
- {'t0':hb(96),'tex':'stair'},
+ {'t0':hb(96),'tex':'orbit','P':[2*B,1.5*B,2.5*B],'m':[3,4],'phases':[0,B/2,B],'look':4},
  {'t0':hb(104),'tex':'turn','phases':[0,B]},
 ]
 MARGIN=0.3
@@ -128,14 +129,14 @@ OBJECTS+=[
  {'id':'cat_egg2','t':186.0,'off':(16,12),'y':6,'kind':'group','egg':True,'clear':6,'name':'EGG E1 return: cat silhouette on a far rooftop',
   'parts':[{'kind':'box','pos':[0,-3,0],'size':[5,6,5],'color':'#e6e1d4'},{'kind':'sphere','pos':[0,0.6,0],'size':[1.4,1.2,1.0],'color':'#292d32'},{'kind':'sphere','pos':[0.7,1.4,0],'size':[0.8,0.7,0.7],'color':'#292d32'}]},
  {'id':'rail_l','kind':'row','t0':38.9,'t1':46.2,'side':2.4,'spacing':1.2,'bothSides':True,'item':{'kind':'box','size':[0.18,0.9,1.0],'color':TEAL},'name':'teal footbridge railings (low, 2.4 off centre)'},
- {'id':'train','t':54.0,'off':(13,0),'y':-6,'kind':'group','landmark':True,'clear':6,'react':'beat','name':'white commuter train on the lower track beside the rail plaza (MV level crossing)',
+ {'id':'train','t':54.0,'off':(13,0),'y':-3,'kind':'group','landmark':True,'clear':6,'react':'beat','name':'white commuter train on the lower track beside the rail plaza (MV level crossing)',
   'parts':[{'kind':'box','pos':[0,1.6,k*7.4],'size':[3,3,7],'color':'#f2efe4'} for k in range(-2,3)]+[{'kind':'box','pos':[-1.52,2.1,k*7.4],'size':[0.05,0.9,5.5],'color':'#292d32'} for k in range(-2,3)]+
           [{'kind':'box','pos':[0,0,0],'size':[5,0.3,40],'color':'#8f8a80'}]},
 ]+[
  {'id':f'gantry{i}','t':t,'off':(s_,0),'kind':'group','clear':3.5,'appear':{'t':t-1.5,'mode':'unfold','dur':0.6},'name':'yellow level-crossing gantry (opens outward on the chorus downbeat)',
   'parts':[{'kind':'box','pos':[0,3,0],'size':[0.6,6,0.6],'color':SUN},{'kind':'box','pos':[s_/abs(s_)*-1.6,6,0],'size':[3.8,0.5,0.5],'color':SUN}]} for i,(t,s_) in enumerate([(48,5.5),(52,-5.5),(56,5.5),(60,-5.5),(64,5.5),(68,-5.5)])
 ]+[
- {'id':f'panel{i}','t':58.0,'off':(-17,-6+3.2*i),'y':-6,'kind':'box','size':[2.6,9,0.6],'color':['#292d32','#f2efe4','#292d32','#f2efe4','#292d32','#ff5b24'][i],'clear':10,'landmark':i==5,
+ {'id':f'panel{i}','t':58.0,'off':(-17,-6+3.2*i),'y':-3,'kind':'box','size':[2.6,9,0.6],'color':['#292d32','#f2efe4','#292d32','#f2efe4','#292d32','#ff5b24'][i],'clear':10,'landmark':i==5,
   'name':'five black/white standing panels + the orange sleeve panel (abstracted group cover); they rise one by one in chorus 2 and line up again in the final chorus'} for i in range(6)
 ]+[
  {'id':'panels_poster','t':120.0,'off':(15,8),'kind':'image','src':'art/panels-poster.jpg','size':[12,0,6.75],'mode':'billboard','y':5,'clear':8,'name':'poster of the five panels on the rooftop courtyard wall'},

@@ -15,7 +15,7 @@ else:
     dirs,used=assign_dirs(taps,D.ROT)
 nodes=build(taps,dirs,speeds,dur,D.START)
 hits=overlaps(nodes,D.ELEV,W,margin=getattr(D,'MARGIN',0.3))
-print(slug,'rotations used:',[(round(t,2),d) for i,t,d in used],'of',len(D.ROT))
+print(slug,'rotations used:',[(round(t,2),d) for i,t,d in used],'of',len(getattr(D,'ROT',[])))
 print('overlaps (margin):',len(hits),hits[:10])
 hard=overlaps(nodes,D.ELEV,W,margin=0)
 print('overlaps (validator-equivalent):',len(hard))

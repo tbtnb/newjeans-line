@@ -1,0 +1,8063 @@
+{
+ "id": "how-sweet",
+ "title": "How Sweet",
+ "palette": {
+  "skyTop": "#9fc6ea",
+  "skyBottom": "#fff4dc",
+  "fog": "#f6eedc",
+  "fogStart": 40,
+  "fogEnd": 120,
+  "ground": "#e9dcc2",
+  "groundY": -0.6,
+  "road": "#fff7e6",
+  "roadSide": "#e8735a",
+  "line": "#e8735a",
+  "light": "#fff4e0",
+  "lightIntensity": 1.15,
+  "ambient": "#c9c2b4",
+  "particles": null
+ },
+ "road": {
+  "width": [
+   {
+    "t": 0,
+    "w": 2.6
+   },
+   {
+    "t": 8.02,
+    "w": 2.2
+   },
+   {
+    "t": 46.42,
+    "w": 2.4
+   },
+   {
+    "t": 77.14,
+    "w": 2.1
+   },
+   {
+    "t": 107.86,
+    "w": 2.2
+   },
+   {
+    "t": 138.58,
+    "w": 2.0
+   },
+   {
+    "t": 169.3,
+    "w": 1.8
+   },
+   {
+    "t": 200.0,
+    "w": 2.6
+   }
+  ],
+  "height": 0.6,
+  "reveal": [
+   {
+    "t": 0,
+    "mode": "static",
+    "lead": 3.0
+   },
+   {
+    "t": 8.02,
+    "mode": "rise",
+    "lead": 2.0
+   },
+   {
+    "t": 46.42,
+    "mode": "unfold",
+    "lead": 1.6
+   },
+   {
+    "t": 77.14,
+    "mode": "rise",
+    "lead": 1.8
+   },
+   {
+    "t": 138.58,
+    "mode": "drop",
+    "lead": 1.8
+   },
+   {
+    "t": 153.94,
+    "mode": "rise",
+    "lead": 1.4
+   },
+   {
+    "t": 169.3,
+    "mode": "rise",
+    "lead": 1.4
+   },
+   {
+    "t": 200.0,
+    "mode": "static",
+    "lead": 3.0
+   }
+  ]
+ },
+ "elevation": [
+  {
+   "t0": 38.74,
+   "t1": 46.120000000000005,
+   "type": "ramp",
+   "dy": 3,
+   "note": "pre-chorus: the teal footbridge staircase climbs from street level L0 to the rail plaza L1"
+  },
+  {
+   "t0": 92.5,
+   "t1": 107.56,
+   "type": "ramp",
+   "dy": 3,
+   "note": "verse 2 / pre 2: rooftop terraces climb to L2"
+  },
+  {
+   "t0": 138.58,
+   "t1": 153.64,
+   "type": "ramp",
+   "dy": -3,
+   "note": "bridge: long narrow bridge glides back down to L1"
+  },
+  {
+   "t0": 153.94,
+   "t1": 169.0,
+   "type": "ramp",
+   "dy": 6,
+   "note": "build: square helix up the water-tower"
+  },
+  {
+   "t": 169.345,
+   "type": "fall",
+   "dy": -6,
+   "note": "final-chorus downbeat: drop off the tower onto the plaza"
+  },
+  {
+   "t0": 184.66,
+   "t1": 192.04,
+   "type": "ramp",
+   "dy": 3,
+   "note": "final chorus 2nd half: rooftop-garden loop climbs and passes over the expanding spiral"
+  }
+ ],
+ "sections": [
+  {
+   "t": 0,
+   "label": "Intro",
+   "palette": {
+    "skyTop": "#20201f",
+    "skyBottom": "#3a3a38",
+    "ground": "#141414",
+    "fogEnd": 60
+   },
+   "camera": "close",
+   "note": "inside the black frame of the cover; coral letter blocks as walls"
+  },
+  {
+   "t": 8.02,
+   "label": "Verse 1",
+   "palette": {
+    "skyTop": "#b9d4ee",
+    "skyBottom": "#fff4dc",
+    "ground": "#e9dcc2"
+   },
+   "camera": "iso",
+   "note": "frame tips open -> narrow shop street, awnings unfold"
+  },
+  {
+   "t": 38.74,
+   "label": "Pre-chorus 1",
+   "palette": {
+    "roadSide": "#d9644c"
+   },
+   "camera": "low",
+   "note": "fire-escape ramp up"
+  },
+  {
+   "t": 46.42,
+   "label": "Chorus 1",
+   "palette": {
+    "ground": "#4f9a62",
+    "roadSide": "#4c6a96",
+    "skyTop": "#8cc0ec"
+   },
+   "camera": "high",
+   "note": "rooftop sports courts: green court, denim walls, barcode crossing"
+  },
+  {
+   "t": 77.14,
+   "label": "Verse 2",
+   "palette": {
+    "ground": "#e9dcc2",
+    "roadSide": "#e8735a"
+   },
+   "camera": "iso",
+   "note": "back on the street, the giant How Sweet sticker"
+  },
+  {
+   "t": 107.86,
+   "label": "Chorus 2",
+   "palette": {
+    "ground": "#d7e3f2",
+    "roadSide": "#4c6a96"
+   },
+   "camera": "side",
+   "note": "denim-blue wall plaza, wide space"
+  },
+  {
+   "t": 138.58,
+   "label": "Bridge",
+   "palette": {
+    "skyTop": "#f2b38f",
+    "skyBottom": "#ffe7c4",
+    "roadSide": "#c75a46"
+   },
+   "camera": "low",
+   "note": "late afternoon, laundry flags overhead"
+  },
+  {
+   "t": 153.94,
+   "label": "Build",
+   "palette": {
+    "skyTop": "#9fc6ea"
+   },
+   "camera": "iso",
+   "note": "road rises late, climbing above roofs"
+  },
+  {
+   "t": 169.3,
+   "label": "Final chorus",
+   "palette": {
+    "groundY": -30,
+    "ground": "#cfe3f5",
+    "roadSide": "#e8735a",
+    "particles": "confetti"
+   },
+   "camera": "iso",
+   "note": "floating platforms in open sky"
+  },
+  {
+   "t": 200.0,
+   "label": "Outro",
+   "palette": {
+    "groundY": -0.6,
+    "ground": "#e9dcc2",
+    "particles": null
+   },
+   "camera": "wide",
+   "note": "long calm straight to the record shop; sign flips CLOSED->OPEN"
+  }
+ ],
+ "camera": [
+  {
+   "t": 0,
+   "preset": "close",
+   "blend": 0
+  },
+  {
+   "t": 8.02,
+   "preset": "iso",
+   "blend": 2.5
+  },
+  {
+   "t": 38.74,
+   "preset": "low",
+   "blend": 1.8
+  },
+  {
+   "t": 46.42,
+   "preset": "high",
+   "blend": 1.2
+  },
+  {
+   "t": 61.78,
+   "preset": "iso",
+   "yaw": -30,
+   "blend": 2.0
+  },
+  {
+   "t": 77.14,
+   "preset": "iso",
+   "blend": 1.0
+  },
+  {
+   "t": 92.5,
+   "preset": "iso",
+   "yaw": 35,
+   "dist": 20,
+   "blend": 2.5,
+   "note": "frame the sticker"
+  },
+  {
+   "t": 107.86,
+   "preset": "side",
+   "blend": 1.5
+  },
+  {
+   "t": 123.2,
+   "preset": "iso",
+   "yaw": -20,
+   "blend": 2.0
+  },
+  {
+   "t": 138.58,
+   "preset": "low",
+   "blend": 2.0
+  },
+  {
+   "t": 153.94,
+   "preset": "iso",
+   "blend": 2.0
+  },
+  {
+   "t": 169.3,
+   "preset": "iso",
+   "dist": 17,
+   "shake": 0.12,
+   "blend": 0.6
+  },
+  {
+   "t": 169.9,
+   "preset": "iso",
+   "dist": 17,
+   "blend": 0.5
+  },
+  {
+   "t": 184.66,
+   "preset": "high",
+   "blend": 2.0
+  },
+  {
+   "t": 200.0,
+   "preset": "wide",
+   "blend": 3.0
+  }
+ ],
+ "objects": [
+  {
+   "id": "start_frame",
+   "t": 1.0,
+   "kind": "group",
+   "onroad": true,
+   "name": "flat charcoal frame decal under the start (cover border motif; below road top, never blocks)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      -6,
+      0,
+      5
+     ],
+     "size": [
+      1.0,
+      0.05,
+      18
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      6,
+      0,
+      5
+     ],
+     "size": [
+      1.0,
+      0.05,
+      18
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0,
+      -4
+     ],
+     "size": [
+      13,
+      0.05,
+      1.0
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0,
+      14
+     ],
+     "size": [
+      13,
+      0.05,
+      1.0
+     ],
+     "color": "#292d32"
+    }
+   ],
+   "exit": {
+    "t": 8.02,
+    "mode": "sink",
+    "dur": 1.2
+   },
+   "rot": 28.8,
+   "worldPos": [
+    2.41,
+    -0.34,
+    13.38
+   ],
+   "debugXZ": [
+    2.41,
+    13.38
+   ]
+  },
+  {
+   "id": "nj_letter0",
+   "t": 1.5,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.5,
+      0
+     ],
+     "size": [
+      2.2,
+      3,
+      1.0
+     ],
+     "color": "#e8735a"
+    }
+   ],
+   "react": "beat",
+   "name": "coral NewJeans letter blocks (cover title)",
+   "appear": {
+    "t": 0.4,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "rot": 29.4,
+   "worldPos": [
+    -6.1,
+    0.0,
+    16.93
+   ],
+   "debugXZ": [
+    -6.1,
+    16.93
+   ]
+  },
+  {
+   "id": "nj_letter1",
+   "t": 2.4,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.0,
+      0
+     ],
+     "size": [
+      2.2,
+      4,
+      1.0
+     ],
+     "color": "#e8735a"
+    }
+   ],
+   "react": "beat",
+   "name": "coral NewJeans letter blocks (cover title)",
+   "appear": {
+    "t": 0.65,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "rot": 38.3,
+   "worldPos": [
+    6.76,
+    0.0,
+    16.0
+   ],
+   "debugXZ": [
+    6.76,
+    16.0
+   ]
+  },
+  {
+   "id": "nj_letter2",
+   "t": 3.3,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      0
+     ],
+     "size": [
+      2.2,
+      5,
+      1.0
+     ],
+     "color": "#e8735a"
+    }
+   ],
+   "react": "beat",
+   "name": "coral NewJeans letter blocks (cover title)",
+   "appear": {
+    "t": 0.9,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "rot": 53.6,
+   "worldPos": [
+    5.22,
+    0.0,
+    25.97
+   ],
+   "debugXZ": [
+    5.22,
+    25.97
+   ]
+  },
+  {
+   "id": "nj_letter3",
+   "t": 4.24,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.5,
+      0
+     ],
+     "size": [
+      2.2,
+      3,
+      1.0
+     ],
+     "color": "#e8735a"
+    }
+   ],
+   "react": "beat",
+   "name": "coral NewJeans letter blocks (cover title)",
+   "appear": {
+    "t": 1.15,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "rot": 53.6,
+   "worldPos": [
+    17.66,
+    0.0,
+    19.01
+   ],
+   "debugXZ": [
+    17.66,
+    19.01
+   ]
+  },
+  {
+   "id": "nj_letter4",
+   "t": 5.1,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.0,
+      0
+     ],
+     "size": [
+      2.2,
+      4,
+      1.0
+     ],
+     "color": "#e8735a"
+    }
+   ],
+   "react": "beat",
+   "name": "coral NewJeans letter blocks (cover title)",
+   "appear": {
+    "t": 1.4,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "rot": 47.3,
+   "worldPos": [
+    16.5,
+    0.0,
+    29.79
+   ],
+   "debugXZ": [
+    16.5,
+    29.79
+   ]
+  },
+  {
+   "id": "nj_letter5",
+   "t": 6.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      0
+     ],
+     "size": [
+      2.2,
+      5,
+      1.0
+     ],
+     "color": "#e8735a"
+    }
+   ],
+   "react": "beat",
+   "name": "coral NewJeans letter blocks (cover title)",
+   "appear": {
+    "t": 1.65,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "rot": 36.3,
+   "worldPos": [
+    31.56,
+    0.0,
+    23.93
+   ],
+   "debugXZ": [
+    31.56,
+    23.93
+   ]
+  },
+  {
+   "id": "nj_letter6",
+   "t": 6.9,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.5,
+      0
+     ],
+     "size": [
+      2.2,
+      3,
+      1.0
+     ],
+     "color": "#e8735a"
+    }
+   ],
+   "react": "beat",
+   "name": "coral NewJeans letter blocks (cover title)",
+   "appear": {
+    "t": 1.9,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "rot": 27.2,
+   "worldPos": [
+    19.7,
+    0.0,
+    39.38
+   ],
+   "debugXZ": [
+    19.7,
+    39.38
+   ]
+  },
+  {
+   "id": "nj_letter7",
+   "t": 7.8,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.0,
+      0
+     ],
+     "size": [
+      2.2,
+      4,
+      1.0
+     ],
+     "color": "#e8735a"
+    }
+   ],
+   "react": "beat",
+   "name": "coral NewJeans letter blocks (cover title)",
+   "appear": {
+    "t": 2.15,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "rot": 6.5,
+   "worldPos": [
+    35.22,
+    0.0,
+    41.14
+   ],
+   "debugXZ": [
+    35.22,
+    41.14
+   ]
+  },
+  {
+   "id": "shop0",
+   "t": 9.5,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      0
+     ],
+     "size": [
+      6,
+      5,
+      4
+     ],
+     "color": "#f3e6cf"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.1,
+      -2.6
+     ],
+     "size": [
+      5.4,
+      0.15,
+      1.4
+     ],
+     "rot": [
+      18,
+      0,
+      0
+     ],
+     "color": "#e8735a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.3,
+      -2.05
+     ],
+     "size": [
+      4.199999999999999,
+      0.8,
+      0.1
+     ],
+     "color": "#111111"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      1.2,
+      -2.05
+     ],
+     "size": [
+      1.4,
+      2.4,
+      0.1
+     ],
+     "color": "#5b6f8f"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.2000000000000002,
+      1.6,
+      -2.05
+     ],
+     "size": [
+      1.8,
+      1.4,
+      0.1
+     ],
+     "color": "#ffe9b8"
+    }
+   ],
+   "appear": {
+    "t": 7.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "react": "beat",
+   "rot": -29.0,
+   "worldPos": [
+    24.12,
+    0.0,
+    51.87
+   ],
+   "debugXZ": [
+    24.12,
+    51.87
+   ]
+  },
+  {
+   "id": "shop1",
+   "t": 11.5,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.0,
+      0
+     ],
+     "size": [
+      6,
+      6,
+      4
+     ],
+     "color": "#e8d6f0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.7199999999999998,
+      -2.6
+     ],
+     "size": [
+      5.4,
+      0.15,
+      1.4
+     ],
+     "rot": [
+      18,
+      0,
+      0
+     ],
+     "color": "#4c6a96"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.16,
+      -2.05
+     ],
+     "size": [
+      4.199999999999999,
+      0.8,
+      0.1
+     ],
+     "color": "#111111"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      1.2,
+      -2.05
+     ],
+     "size": [
+      1.4,
+      2.4,
+      0.1
+     ],
+     "color": "#5b6f8f"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.2000000000000002,
+      1.6,
+      -2.05
+     ],
+     "size": [
+      1.8,
+      1.4,
+      0.1
+     ],
+     "color": "#ffe9b8"
+    }
+   ],
+   "appear": {
+    "t": 9.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "react": "beat",
+   "rot": -42.3,
+   "worldPos": [
+    22.36,
+    0.0,
+    64.82
+   ],
+   "debugXZ": [
+    22.36,
+    64.82
+   ]
+  },
+  {
+   "id": "shop2",
+   "t": 13.5,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.5,
+      0
+     ],
+     "size": [
+      6,
+      7,
+      4
+     ],
+     "color": "#d9ecd9"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.34,
+      -2.6
+     ],
+     "size": [
+      5.4,
+      0.15,
+      1.4
+     ],
+     "rot": [
+      18,
+      0,
+      0
+     ],
+     "color": "#4f9a62"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      6.02,
+      -2.05
+     ],
+     "size": [
+      4.199999999999999,
+      0.8,
+      0.1
+     ],
+     "color": "#111111"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      1.2,
+      -2.05
+     ],
+     "size": [
+      1.4,
+      2.4,
+      0.1
+     ],
+     "color": "#5b6f8f"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.2000000000000002,
+      1.6,
+      -2.05
+     ],
+     "size": [
+      1.8,
+      1.4,
+      0.1
+     ],
+     "color": "#ffe9b8"
+    }
+   ],
+   "appear": {
+    "t": 11.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "react": "beat",
+   "rot": -20.1,
+   "worldPos": [
+    4.23,
+    0.0,
+    69.42
+   ],
+   "debugXZ": [
+    4.23,
+    69.42
+   ]
+  },
+  {
+   "id": "shop3",
+   "t": 15.5,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      0
+     ],
+     "size": [
+      6,
+      5,
+      4
+     ],
+     "color": "#f9d9c9"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.1,
+      -2.6
+     ],
+     "size": [
+      5.4,
+      0.15,
+      1.4
+     ],
+     "rot": [
+      18,
+      0,
+      0
+     ],
+     "color": "#f2c14e"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.3,
+      -2.05
+     ],
+     "size": [
+      4.199999999999999,
+      0.8,
+      0.1
+     ],
+     "color": "#111111"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      1.2,
+      -2.05
+     ],
+     "size": [
+      1.4,
+      2.4,
+      0.1
+     ],
+     "color": "#5b6f8f"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.2000000000000002,
+      1.6,
+      -2.05
+     ],
+     "size": [
+      1.8,
+      1.4,
+      0.1
+     ],
+     "color": "#ffe9b8"
+    }
+   ],
+   "appear": {
+    "t": 13.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "react": "beat",
+   "rot": 17.8,
+   "worldPos": [
+    15.3,
+    0.0,
+    85.51
+   ],
+   "debugXZ": [
+    15.3,
+    85.51
+   ]
+  },
+  {
+   "id": "shop4",
+   "t": 17.5,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.0,
+      0
+     ],
+     "size": [
+      6,
+      6,
+      4
+     ],
+     "color": "#f3e6cf"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.7199999999999998,
+      -2.6
+     ],
+     "size": [
+      5.4,
+      0.15,
+      1.4
+     ],
+     "rot": [
+      18,
+      0,
+      0
+     ],
+     "color": "#e8735a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.16,
+      -2.05
+     ],
+     "size": [
+      4.199999999999999,
+      0.8,
+      0.1
+     ],
+     "color": "#111111"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      1.2,
+      -2.05
+     ],
+     "size": [
+      1.4,
+      2.4,
+      0.1
+     ],
+     "color": "#5b6f8f"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.2000000000000002,
+      1.6,
+      -2.05
+     ],
+     "size": [
+      1.8,
+      1.4,
+      0.1
+     ],
+     "color": "#ffe9b8"
+    }
+   ],
+   "appear": {
+    "t": 15.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "react": "beat",
+   "rot": 17.5,
+   "worldPos": [
+    9.33,
+    0.0,
+    99.53
+   ],
+   "debugXZ": [
+    9.33,
+    99.53
+   ]
+  },
+  {
+   "id": "shop5",
+   "t": 19.48,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.5,
+      0
+     ],
+     "size": [
+      6,
+      7,
+      4
+     ],
+     "color": "#e8d6f0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.34,
+      -2.6
+     ],
+     "size": [
+      5.4,
+      0.15,
+      1.4
+     ],
+     "rot": [
+      18,
+      0,
+      0
+     ],
+     "color": "#4c6a96"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      6.02,
+      -2.05
+     ],
+     "size": [
+      4.199999999999999,
+      0.8,
+      0.1
+     ],
+     "color": "#111111"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      1.2,
+      -2.05
+     ],
+     "size": [
+      1.4,
+      2.4,
+      0.1
+     ],
+     "color": "#5b6f8f"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.2000000000000002,
+      1.6,
+      -2.05
+     ],
+     "size": [
+      1.8,
+      1.4,
+      0.1
+     ],
+     "color": "#ffe9b8"
+    }
+   ],
+   "appear": {
+    "t": 17.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "react": "beat",
+   "rot": -21.2,
+   "worldPos": [
+    28.13,
+    0.0,
+    113.05
+   ],
+   "debugXZ": [
+    28.13,
+    113.05
+   ]
+  },
+  {
+   "id": "shop6",
+   "t": 21.52,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      0
+     ],
+     "size": [
+      6,
+      5,
+      4
+     ],
+     "color": "#d9ecd9"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.1,
+      -2.6
+     ],
+     "size": [
+      5.4,
+      0.15,
+      1.4
+     ],
+     "rot": [
+      18,
+      0,
+      0
+     ],
+     "color": "#4f9a62"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.3,
+      -2.05
+     ],
+     "size": [
+      4.199999999999999,
+      0.8,
+      0.1
+     ],
+     "color": "#111111"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      1.2,
+      -2.05
+     ],
+     "size": [
+      1.4,
+      2.4,
+      0.1
+     ],
+     "color": "#5b6f8f"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.2000000000000002,
+      1.6,
+      -2.05
+     ],
+     "size": [
+      1.8,
+      1.4,
+      0.1
+     ],
+     "color": "#ffe9b8"
+    }
+   ],
+   "appear": {
+    "t": 19.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "react": "beat",
+   "rot": -26.8,
+   "worldPos": [
+    1.47,
+    0.0,
+    113.09
+   ],
+   "debugXZ": [
+    1.47,
+    113.09
+   ]
+  },
+  {
+   "id": "shop7",
+   "t": 23.5,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.0,
+      0
+     ],
+     "size": [
+      6,
+      6,
+      4
+     ],
+     "color": "#f9d9c9"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.7199999999999998,
+      -2.6
+     ],
+     "size": [
+      5.4,
+      0.15,
+      1.4
+     ],
+     "rot": [
+      18,
+      0,
+      0
+     ],
+     "color": "#f2c14e"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.16,
+      -2.05
+     ],
+     "size": [
+      4.199999999999999,
+      0.8,
+      0.1
+     ],
+     "color": "#111111"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      1.2,
+      -2.05
+     ],
+     "size": [
+      1.4,
+      2.4,
+      0.1
+     ],
+     "color": "#5b6f8f"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.2000000000000002,
+      1.6,
+      -2.05
+     ],
+     "size": [
+      1.8,
+      1.4,
+      0.1
+     ],
+     "color": "#ffe9b8"
+    }
+   ],
+   "appear": {
+    "t": 21.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "react": "beat",
+   "rot": 3.3,
+   "worldPos": [
+    13.47,
+    0.0,
+    131.18
+   ],
+   "debugXZ": [
+    13.47,
+    131.18
+   ]
+  },
+  {
+   "id": "shop8",
+   "t": 25.5,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.5,
+      0
+     ],
+     "size": [
+      6,
+      7,
+      4
+     ],
+     "color": "#f3e6cf"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.34,
+      -2.6
+     ],
+     "size": [
+      5.4,
+      0.15,
+      1.4
+     ],
+     "rot": [
+      18,
+      0,
+      0
+     ],
+     "color": "#e8735a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      6.02,
+      -2.05
+     ],
+     "size": [
+      4.199999999999999,
+      0.8,
+      0.1
+     ],
+     "color": "#111111"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      1.2,
+      -2.05
+     ],
+     "size": [
+      1.4,
+      2.4,
+      0.1
+     ],
+     "color": "#5b6f8f"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.2000000000000002,
+      1.6,
+      -2.05
+     ],
+     "size": [
+      1.8,
+      1.4,
+      0.1
+     ],
+     "color": "#ffe9b8"
+    }
+   ],
+   "appear": {
+    "t": 23.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "react": "beat",
+   "rot": 14.2,
+   "worldPos": [
+    0.2,
+    0.0,
+    149.82
+   ],
+   "debugXZ": [
+    0.2,
+    149.82
+   ]
+  },
+  {
+   "id": "shop9",
+   "t": 27.5,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      0
+     ],
+     "size": [
+      6,
+      5,
+      4
+     ],
+     "color": "#e8d6f0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.1,
+      -2.6
+     ],
+     "size": [
+      5.4,
+      0.15,
+      1.4
+     ],
+     "rot": [
+      18,
+      0,
+      0
+     ],
+     "color": "#4c6a96"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.3,
+      -2.05
+     ],
+     "size": [
+      4.199999999999999,
+      0.8,
+      0.1
+     ],
+     "color": "#111111"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      1.2,
+      -2.05
+     ],
+     "size": [
+      1.4,
+      2.4,
+      0.1
+     ],
+     "color": "#5b6f8f"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.2000000000000002,
+      1.6,
+      -2.05
+     ],
+     "size": [
+      1.8,
+      1.4,
+      0.1
+     ],
+     "color": "#ffe9b8"
+    }
+   ],
+   "appear": {
+    "t": 25.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "react": "beat",
+   "rot": 27.0,
+   "worldPos": [
+    25.68,
+    0.0,
+    147.63
+   ],
+   "debugXZ": [
+    25.68,
+    147.63
+   ]
+  },
+  {
+   "id": "shop10",
+   "t": 29.5,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.0,
+      0
+     ],
+     "size": [
+      6,
+      6,
+      4
+     ],
+     "color": "#d9ecd9"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.7199999999999998,
+      -2.6
+     ],
+     "size": [
+      5.4,
+      0.15,
+      1.4
+     ],
+     "rot": [
+      18,
+      0,
+      0
+     ],
+     "color": "#4f9a62"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.16,
+      -2.05
+     ],
+     "size": [
+      4.199999999999999,
+      0.8,
+      0.1
+     ],
+     "color": "#111111"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      1.2,
+      -2.05
+     ],
+     "size": [
+      1.4,
+      2.4,
+      0.1
+     ],
+     "color": "#5b6f8f"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.2000000000000002,
+      1.6,
+      -2.05
+     ],
+     "size": [
+      1.8,
+      1.4,
+      0.1
+     ],
+     "color": "#ffe9b8"
+    }
+   ],
+   "appear": {
+    "t": 27.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "react": "beat",
+   "rot": -17.3,
+   "worldPos": [
+    6.28,
+    0.0,
+    158.39
+   ],
+   "debugXZ": [
+    6.28,
+    158.39
+   ]
+  },
+  {
+   "id": "shop11",
+   "t": 31.5,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.5,
+      0
+     ],
+     "size": [
+      6,
+      7,
+      4
+     ],
+     "color": "#f9d9c9"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.34,
+      -2.6
+     ],
+     "size": [
+      5.4,
+      0.15,
+      1.4
+     ],
+     "rot": [
+      18,
+      0,
+      0
+     ],
+     "color": "#f2c14e"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      6.02,
+      -2.05
+     ],
+     "size": [
+      4.199999999999999,
+      0.8,
+      0.1
+     ],
+     "color": "#111111"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      1.2,
+      -2.05
+     ],
+     "size": [
+      1.4,
+      2.4,
+      0.1
+     ],
+     "color": "#5b6f8f"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.2000000000000002,
+      1.6,
+      -2.05
+     ],
+     "size": [
+      1.8,
+      1.4,
+      0.1
+     ],
+     "color": "#ffe9b8"
+    }
+   ],
+   "appear": {
+    "t": 29.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "react": "beat",
+   "rot": -4.7,
+   "worldPos": [
+    20.61,
+    0.0,
+    174.14
+   ],
+   "debugXZ": [
+    20.61,
+    174.14
+   ]
+  },
+  {
+   "id": "shop12",
+   "t": 33.5,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      0
+     ],
+     "size": [
+      6,
+      5,
+      4
+     ],
+     "color": "#f3e6cf"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.1,
+      -2.6
+     ],
+     "size": [
+      5.4,
+      0.15,
+      1.4
+     ],
+     "rot": [
+      18,
+      0,
+      0
+     ],
+     "color": "#e8735a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.3,
+      -2.05
+     ],
+     "size": [
+      4.199999999999999,
+      0.8,
+      0.1
+     ],
+     "color": "#111111"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      1.2,
+      -2.05
+     ],
+     "size": [
+      1.4,
+      2.4,
+      0.1
+     ],
+     "color": "#5b6f8f"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.2000000000000002,
+      1.6,
+      -2.05
+     ],
+     "size": [
+      1.8,
+      1.4,
+      0.1
+     ],
+     "color": "#ffe9b8"
+    }
+   ],
+   "appear": {
+    "t": 31.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "react": "beat",
+   "rot": -5.3,
+   "worldPos": [
+    -0.33,
+    0.0,
+    185.59
+   ],
+   "debugXZ": [
+    -0.33,
+    185.59
+   ]
+  },
+  {
+   "id": "shop13",
+   "t": 35.5,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.0,
+      0
+     ],
+     "size": [
+      6,
+      6,
+      4
+     ],
+     "color": "#e8d6f0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.7199999999999998,
+      -2.6
+     ],
+     "size": [
+      5.4,
+      0.15,
+      1.4
+     ],
+     "rot": [
+      18,
+      0,
+      0
+     ],
+     "color": "#4c6a96"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.16,
+      -2.05
+     ],
+     "size": [
+      4.199999999999999,
+      0.8,
+      0.1
+     ],
+     "color": "#111111"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      1.2,
+      -2.05
+     ],
+     "size": [
+      1.4,
+      2.4,
+      0.1
+     ],
+     "color": "#5b6f8f"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.2000000000000002,
+      1.6,
+      -2.05
+     ],
+     "size": [
+      1.8,
+      1.4,
+      0.1
+     ],
+     "color": "#ffe9b8"
+    }
+   ],
+   "appear": {
+    "t": 33.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "react": "beat",
+   "rot": 2.5,
+   "worldPos": [
+    23.26,
+    0.0,
+    194.51
+   ],
+   "debugXZ": [
+    23.26,
+    194.51
+   ]
+  },
+  {
+   "id": "apple_egg",
+   "t": 19.96,
+   "kind": "group",
+   "egg": true,
+   "name": "EGG: an apple with one small bite on a shop shelf",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.6,
+      0
+     ],
+     "size": [
+      1.6,
+      1.2,
+      0.8
+     ],
+     "color": "#8a6a4a"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      1.55,
+      0
+     ],
+     "size": [
+      0.7,
+      0.7,
+      0.7
+     ],
+     "color": "#d8312a"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0.28,
+      1.65,
+      -0.2
+     ],
+     "size": [
+      0.3,
+      0.3,
+      0.3
+     ],
+     "color": "#fff7e6"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      2.0,
+      0
+     ],
+     "size": [
+      0.06,
+      0.25,
+      0.06
+     ],
+     "color": "#5a3b22"
+    }
+   ],
+   "rot": -22.9,
+   "worldPos": [
+    23.64,
+    0.0,
+    113.51
+   ],
+   "debugXZ": [
+    23.64,
+    113.51
+   ]
+  },
+  {
+   "id": "court",
+   "t": 55.0,
+   "onroad": true,
+   "kind": "group",
+   "landmark": true,
+   "name": "green rooftop sports court under the chorus route (big colour field, white lines)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      60,
+      0.1,
+      40
+     ],
+     "color": "#4f9a62"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.06,
+      0
+     ],
+     "size": [
+      56,
+      0.02,
+      0.4
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "torus",
+     "pos": [
+      0,
+      0.06,
+      0
+     ],
+     "size": [
+      10,
+      0.2,
+      10
+     ],
+     "color": "#ffffff"
+    }
+   ],
+   "appear": {
+    "t": 46.42,
+    "mode": "unfold",
+    "dur": 1.0
+   },
+   "rot": -99.0,
+   "worldPos": [
+    16.72,
+    2.45,
+    274.12
+   ],
+   "debugXZ": [
+    16.72,
+    274.12
+   ]
+  },
+  {
+   "id": "hoop1",
+   "t": 52.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      3,
+      0
+     ],
+     "size": [
+      0.3,
+      6,
+      0.3
+     ],
+     "color": "#e0e0e0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      6,
+      0.5
+     ],
+     "size": [
+      3,
+      2,
+      0.2
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "torus",
+     "pos": [
+      0,
+      5.2,
+      1.2
+     ],
+     "size": [
+      1.2,
+      0.1,
+      1.2
+     ],
+     "color": "#e8735a"
+    }
+   ],
+   "rot": -41.2,
+   "worldPos": [
+    16.94,
+    3.0,
+    262.75
+   ],
+   "debugXZ": [
+    16.94,
+    262.75
+   ]
+  },
+  {
+   "id": "hoop2",
+   "t": 70.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      3,
+      0
+     ],
+     "size": [
+      0.3,
+      6,
+      0.3
+     ],
+     "color": "#e0e0e0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      6,
+      0.5
+     ],
+     "size": [
+      3,
+      2,
+      0.2
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "torus",
+     "pos": [
+      0,
+      5.2,
+      1.2
+     ],
+     "size": [
+      1.2,
+      0.1,
+      1.2
+     ],
+     "color": "#e8735a"
+    }
+   ],
+   "rot": -136.8,
+   "worldPos": [
+    -49.29,
+    3.0,
+    250.78
+   ],
+   "debugXZ": [
+    -49.29,
+    250.78
+   ]
+  },
+  {
+   "id": "barcode",
+   "kind": "row",
+   "t0": 62.0,
+   "t1": 69.5,
+   "side": 2.4,
+   "spacing": 0.7,
+   "bothSides": true,
+   "item": {
+    "kind": "box",
+    "size": [
+     0.35,
+     0.08,
+     3.0
+    ],
+    "color": "#141414",
+    "react": "tap"
+   },
+   "name": "barcode crossing (cover barcode) - stripes dip on the player's actual taps"
+  },
+  {
+   "id": "barcode_digits",
+   "t": 69.8,
+   "kind": "text",
+   "name": "5 220722 221029",
+   "size": [
+    6,
+    0,
+    1.2
+   ],
+   "color": "#141414",
+   "egg": true,
+   "rot": -130.6,
+   "worldPos": [
+    -43.29,
+    3.0,
+    250.62
+   ],
+   "debugXZ": [
+    -43.29,
+    250.62
+   ]
+  },
+  {
+   "id": "denim_wall1",
+   "t": 58.0,
+   "kind": "box",
+   "size": [
+    2,
+    8,
+    24
+   ],
+   "color": "#4c6a96",
+   "rot": -154.6,
+   "worldPos": [
+    -16.61,
+    3.0,
+    272.86
+   ],
+   "debugXZ": [
+    -16.61,
+    272.86
+   ]
+  },
+  {
+   "id": "denim_wall2",
+   "t": 66.0,
+   "kind": "box",
+   "size": [
+    2,
+    8,
+    24
+   ],
+   "color": "#4c6a96",
+   "rot": -68.0,
+   "worldPos": [
+    -48.71,
+    3.0,
+    168.53
+   ],
+   "debugXZ": [
+    -48.71,
+    168.53
+   ]
+  },
+  {
+   "id": "sticker",
+   "t": 92.56,
+   "kind": "image",
+   "src": "art/sticker.png",
+   "size": [
+    14,
+    0,
+    7
+   ],
+   "mode": "billboard",
+   "landmark": true,
+   "name": "giant cut-corner orange \"How Sweet\" sticker floating over the rooftops (cover sticker, generated art)",
+   "rot": -31.9,
+   "worldPos": [
+    -141.74,
+    7.01,
+    219.69
+   ],
+   "debugXZ": [
+    -141.74,
+    219.69
+   ]
+  },
+  {
+   "id": "sticker_post",
+   "t": 92.56,
+   "kind": "cylinder",
+   "size": [
+    0.5,
+    4,
+    0.5
+   ],
+   "color": "#999999",
+   "rot": -31.9,
+   "worldPos": [
+    -141.74,
+    3.01,
+    219.69
+   ],
+   "debugXZ": [
+    -141.74,
+    219.69
+   ]
+  },
+  {
+   "id": "vshop0",
+   "t": 80.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.0,
+      0
+     ],
+     "size": [
+      6,
+      6,
+      4
+     ],
+     "color": "#f3e6cf"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.7199999999999998,
+      -2.6
+     ],
+     "size": [
+      5.4,
+      0.15,
+      1.4
+     ],
+     "rot": [
+      18,
+      0,
+      0
+     ],
+     "color": "#e8735a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.16,
+      -2.05
+     ],
+     "size": [
+      4.199999999999999,
+      0.8,
+      0.1
+     ],
+     "color": "#111111"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      1.2,
+      -2.05
+     ],
+     "size": [
+      1.4,
+      2.4,
+      0.1
+     ],
+     "color": "#5b6f8f"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.2000000000000002,
+      1.6,
+      -2.05
+     ],
+     "size": [
+      1.8,
+      1.4,
+      0.1
+     ],
+     "color": "#ffe9b8"
+    }
+   ],
+   "appear": {
+    "t": 78,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "rot": -129.8,
+   "worldPos": [
+    -42.28,
+    3.0,
+    201.56
+   ],
+   "debugXZ": [
+    -42.28,
+    201.56
+   ]
+  },
+  {
+   "id": "vshop1",
+   "t": 84.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.0,
+      0
+     ],
+     "size": [
+      6,
+      6,
+      4
+     ],
+     "color": "#d9ecd9"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.7199999999999998,
+      -2.6
+     ],
+     "size": [
+      5.4,
+      0.15,
+      1.4
+     ],
+     "rot": [
+      18,
+      0,
+      0
+     ],
+     "color": "#4f9a62"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.16,
+      -2.05
+     ],
+     "size": [
+      4.199999999999999,
+      0.8,
+      0.1
+     ],
+     "color": "#111111"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      1.2,
+      -2.05
+     ],
+     "size": [
+      1.4,
+      2.4,
+      0.1
+     ],
+     "color": "#5b6f8f"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.2000000000000002,
+      1.6,
+      -2.05
+     ],
+     "size": [
+      1.8,
+      1.4,
+      0.1
+     ],
+     "color": "#ffe9b8"
+    }
+   ],
+   "appear": {
+    "t": 82,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "rot": -35.6,
+   "worldPos": [
+    -58.97,
+    3.0,
+    191.06
+   ],
+   "debugXZ": [
+    -58.97,
+    191.06
+   ]
+  },
+  {
+   "id": "vshop2",
+   "t": 88.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.0,
+      0
+     ],
+     "size": [
+      6,
+      6,
+      4
+     ],
+     "color": "#f9d9c9"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.7199999999999998,
+      -2.6
+     ],
+     "size": [
+      5.4,
+      0.15,
+      1.4
+     ],
+     "rot": [
+      18,
+      0,
+      0
+     ],
+     "color": "#4c6a96"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.16,
+      -2.05
+     ],
+     "size": [
+      4.199999999999999,
+      0.8,
+      0.1
+     ],
+     "color": "#111111"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      1.2,
+      -2.05
+     ],
+     "size": [
+      1.4,
+      2.4,
+      0.1
+     ],
+     "color": "#5b6f8f"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.2000000000000002,
+      1.6,
+      -2.05
+     ],
+     "size": [
+      1.8,
+      1.4,
+      0.1
+     ],
+     "color": "#ffe9b8"
+    }
+   ],
+   "appear": {
+    "t": 86,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "rot": -22.7,
+   "worldPos": [
+    -59.78,
+    3.0,
+    220.88
+   ],
+   "debugXZ": [
+    -59.78,
+    220.88
+   ]
+  },
+  {
+   "id": "vshop3",
+   "t": 97.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.0,
+      0
+     ],
+     "size": [
+      6,
+      6,
+      4
+     ],
+     "color": "#f3e6cf"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.7199999999999998,
+      -2.6
+     ],
+     "size": [
+      5.4,
+      0.15,
+      1.4
+     ],
+     "rot": [
+      18,
+      0,
+      0
+     ],
+     "color": "#e8735a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.16,
+      -2.05
+     ],
+     "size": [
+      4.199999999999999,
+      0.8,
+      0.1
+     ],
+     "color": "#111111"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      1.2,
+      -2.05
+     ],
+     "size": [
+      1.4,
+      2.4,
+      0.1
+     ],
+     "color": "#5b6f8f"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.2000000000000002,
+      1.6,
+      -2.05
+     ],
+     "size": [
+      1.8,
+      1.4,
+      0.1
+     ],
+     "color": "#ffe9b8"
+    }
+   ],
+   "appear": {
+    "t": 95,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "rot": -4.1,
+   "worldPos": [
+    -79.2,
+    3.9,
+    267.79
+   ],
+   "debugXZ": [
+    -79.2,
+    267.79
+   ]
+  },
+  {
+   "id": "vshop4",
+   "t": 101.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.0,
+      0
+     ],
+     "size": [
+      6,
+      6,
+      4
+     ],
+     "color": "#d9ecd9"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.7199999999999998,
+      -2.6
+     ],
+     "size": [
+      5.4,
+      0.15,
+      1.4
+     ],
+     "rot": [
+      18,
+      0,
+      0
+     ],
+     "color": "#4f9a62"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.16,
+      -2.05
+     ],
+     "size": [
+      4.199999999999999,
+      0.8,
+      0.1
+     ],
+     "color": "#111111"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      1.2,
+      -2.05
+     ],
+     "size": [
+      1.4,
+      2.4,
+      0.1
+     ],
+     "color": "#5b6f8f"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.2000000000000002,
+      1.6,
+      -2.05
+     ],
+     "size": [
+      1.8,
+      1.4,
+      0.1
+     ],
+     "color": "#ffe9b8"
+    }
+   ],
+   "appear": {
+    "t": 99,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "rot": -17.4,
+   "worldPos": [
+    -98.46,
+    4.69,
+    285.79
+   ],
+   "debugXZ": [
+    -98.46,
+    285.79
+   ]
+  },
+  {
+   "id": "vshop5",
+   "t": 105.0,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.0,
+      0
+     ],
+     "size": [
+      6,
+      6,
+      4
+     ],
+     "color": "#f9d9c9"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.7199999999999998,
+      -2.6
+     ],
+     "size": [
+      5.4,
+      0.15,
+      1.4
+     ],
+     "rot": [
+      18,
+      0,
+      0
+     ],
+     "color": "#4c6a96"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.16,
+      -2.05
+     ],
+     "size": [
+      4.199999999999999,
+      0.8,
+      0.1
+     ],
+     "color": "#111111"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      1.2,
+      -2.05
+     ],
+     "size": [
+      1.4,
+      2.4,
+      0.1
+     ],
+     "color": "#5b6f8f"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.2000000000000002,
+      1.6,
+      -2.05
+     ],
+     "size": [
+      1.8,
+      1.4,
+      0.1
+     ],
+     "color": "#ffe9b8"
+    }
+   ],
+   "appear": {
+    "t": 103,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "rot": 5.8,
+   "worldPos": [
+    -83.03,
+    5.49,
+    307.82
+   ],
+   "debugXZ": [
+    -83.03,
+    307.82
+   ]
+  },
+  {
+   "id": "bluewall0",
+   "t": 110.0,
+   "kind": "box",
+   "size": [
+    2,
+    10,
+    14
+   ],
+   "color": "#4c6a96",
+   "appear": {
+    "t": 108,
+    "mode": "rise",
+    "dur": 0.8
+   },
+   "rot": -22.5,
+   "worldPos": [
+    -72.58,
+    6.0,
+    350.4
+   ],
+   "debugXZ": [
+    -72.58,
+    350.4
+   ]
+  },
+  {
+   "id": "bluewall1",
+   "t": 115.96,
+   "kind": "box",
+   "size": [
+    2,
+    10,
+    14
+   ],
+   "color": "#4c6a96",
+   "appear": {
+    "t": 114,
+    "mode": "rise",
+    "dur": 0.8
+   },
+   "rot": -122.1,
+   "worldPos": [
+    -111.2,
+    6.0,
+    338.58
+   ],
+   "debugXZ": [
+    -111.2,
+    338.58
+   ]
+  },
+  {
+   "id": "bluewall2",
+   "t": 122.0,
+   "kind": "box",
+   "size": [
+    2,
+    10,
+    14
+   ],
+   "color": "#4c6a96",
+   "appear": {
+    "t": 120,
+    "mode": "rise",
+    "dur": 0.8
+   },
+   "rot": 148.1,
+   "worldPos": [
+    -132.11,
+    6.0,
+    311.87
+   ],
+   "debugXZ": [
+    -132.11,
+    311.87
+   ]
+  },
+  {
+   "id": "bluewall3",
+   "t": 128.0,
+   "kind": "box",
+   "size": [
+    2,
+    10,
+    14
+   ],
+   "color": "#4c6a96",
+   "appear": {
+    "t": 126,
+    "mode": "rise",
+    "dur": 0.8
+   },
+   "rot": -171.1,
+   "worldPos": [
+    -73.81,
+    6.0,
+    279.83
+   ],
+   "debugXZ": [
+    -73.81,
+    279.83
+   ]
+  },
+  {
+   "id": "bluewall4",
+   "t": 134.0,
+   "kind": "box",
+   "size": [
+    2,
+    10,
+    14
+   ],
+   "color": "#4c6a96",
+   "appear": {
+    "t": 132,
+    "mode": "rise",
+    "dur": 0.8
+   },
+   "rot": -176.8,
+   "worldPos": [
+    -131.91,
+    6.0,
+    257.25
+   ],
+   "debugXZ": [
+    -131.91,
+    257.25
+   ]
+  },
+  {
+   "id": "laundry",
+   "kind": "row",
+   "t0": 139.0,
+   "t1": 153.5,
+   "side": 3.5,
+   "spacing": 3.0,
+   "bothSides": true,
+   "item": {
+    "kind": "group",
+    "react": "beat",
+    "parts": [
+     {
+      "kind": "cylinder",
+      "pos": [
+       0,
+       3.2,
+       0
+      ],
+      "size": [
+       0.15,
+       6.4,
+       0.15
+      ],
+      "color": "#ffffff"
+     },
+     {
+      "kind": "box",
+      "pos": [
+       -2,
+       5.8,
+       0
+      ],
+      "size": [
+       1.0,
+       1.2,
+       0.05
+      ],
+      "color": "#e8735a"
+     },
+     {
+      "kind": "box",
+      "pos": [
+       0,
+       5.8,
+       0
+      ],
+      "size": [
+       1.0,
+       1.2,
+       0.05
+      ],
+      "color": "#f6e7b8"
+     },
+     {
+      "kind": "box",
+      "pos": [
+       2,
+       5.8,
+       0
+      ],
+      "size": [
+       1.0,
+       1.2,
+       0.05
+      ],
+      "color": "#4f9a62"
+     }
+    ]
+   },
+   "name": "laundry poles with flags on both sides of the narrow bridge (posts 3.5 off the centre line)"
+  },
+  {
+   "id": "cloud0",
+   "t": 171.0,
+   "kind": "cloud",
+   "size": [
+    6,
+    2.5,
+    4
+   ],
+   "color": "#ffffff",
+   "react": "none",
+   "rot": -45.6,
+   "worldPos": [
+    -207.5,
+    -3.0,
+    311.71
+   ],
+   "debugXZ": [
+    -207.5,
+    311.71
+   ]
+  },
+  {
+   "id": "cloud1",
+   "t": 175.96,
+   "kind": "cloud",
+   "size": [
+    6,
+    2.5,
+    4
+   ],
+   "color": "#ffffff",
+   "react": "none",
+   "rot": 13.0,
+   "worldPos": [
+    -154.21,
+    -3.0,
+    329.28
+   ],
+   "debugXZ": [
+    -154.21,
+    329.28
+   ]
+  },
+  {
+   "id": "cloud2",
+   "t": 181.0,
+   "kind": "cloud",
+   "size": [
+    6,
+    2.5,
+    4
+   ],
+   "color": "#ffffff",
+   "react": "none",
+   "rot": 106.4,
+   "worldPos": [
+    -181.64,
+    -3.0,
+    357.62
+   ],
+   "debugXZ": [
+    -181.64,
+    357.62
+   ]
+  },
+  {
+   "id": "cloud3",
+   "t": 186.0,
+   "kind": "cloud",
+   "size": [
+    6,
+    2.5,
+    4
+   ],
+   "color": "#ffffff",
+   "react": "none",
+   "rot": -163.6,
+   "worldPos": [
+    -193.7,
+    -2.46,
+    330.88
+   ],
+   "debugXZ": [
+    -193.7,
+    330.88
+   ]
+  },
+  {
+   "id": "cloud4",
+   "t": 191.0,
+   "kind": "cloud",
+   "size": [
+    6,
+    2.5,
+    4
+   ],
+   "color": "#ffffff",
+   "react": "none",
+   "rot": -0.8,
+   "worldPos": [
+    -216.9,
+    -0.42,
+    343.37
+   ],
+   "debugXZ": [
+    -216.9,
+    343.37
+   ]
+  },
+  {
+   "id": "cloud5",
+   "t": 196.0,
+   "kind": "cloud",
+   "size": [
+    6,
+    2.5,
+    4
+   ],
+   "color": "#ffffff",
+   "react": "none",
+   "rot": 49.9,
+   "worldPos": [
+    -159.53,
+    0.0,
+    357.72
+   ],
+   "debugXZ": [
+    -159.53,
+    357.72
+   ]
+  },
+  {
+   "id": "record_shop",
+   "t": 212.0,
+   "onroad": false,
+   "kind": "group",
+   "landmark": true,
+   "name": "finish: the record shop; its flip sign turns from CLOSED to OPEN as the line arrives (EGG: new beginning)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.5,
+      0
+     ],
+     "size": [
+      10,
+      7,
+      6
+     ],
+     "color": "#f3e6cf"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.34,
+      -3.6
+     ],
+     "size": [
+      9.0,
+      0.15,
+      1.4
+     ],
+     "rot": [
+      18,
+      0,
+      0
+     ],
+     "color": "#e8735a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      6.02,
+      -3.05
+     ],
+     "size": [
+      7.0,
+      0.8,
+      0.1
+     ],
+     "color": "#141414"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -2.5,
+      1.2,
+      -3.05
+     ],
+     "size": [
+      1.4,
+      2.4,
+      0.1
+     ],
+     "color": "#5b6f8f"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2.0,
+      1.6,
+      -3.05
+     ],
+     "size": [
+      1.8,
+      1.4,
+      0.1
+     ],
+     "color": "#ffe9b8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.2,
+      -3.2
+     ],
+     "size": [
+      2.2,
+      0.8,
+      0.1
+     ],
+     "color": "#ffffff",
+     "id": "open_sign"
+    }
+   ],
+   "rot": -90.0,
+   "worldPos": [
+    -216.19,
+    6.0,
+    440.98
+   ],
+   "debugXZ": [
+    -216.19,
+    440.98
+   ]
+  },
+  {
+   "id": "members5",
+   "t": 205.0,
+   "kind": "group",
+   "egg": true,
+   "name": "EGG: five small denim/green/black outfits on a clothes rail outside the shop (cover outfits)",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      2.2,
+      0
+     ],
+     "size": [
+      0.06,
+      0.06,
+      5
+     ],
+     "rot": [
+      0,
+      0,
+      90
+     ],
+     "color": "#888888"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -2,
+      1.5,
+      0
+     ],
+     "size": [
+      0.7,
+      1.2,
+      0.15
+     ],
+     "color": "#4c6a96"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1,
+      1.5,
+      0
+     ],
+     "size": [
+      0.7,
+      1.2,
+      0.15
+     ],
+     "color": "#141414"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.5,
+      0
+     ],
+     "size": [
+      0.7,
+      1.2,
+      0.15
+     ],
+     "color": "#1d2a55"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1,
+      1.5,
+      0
+     ],
+     "size": [
+      0.7,
+      1.2,
+      0.15
+     ],
+     "color": "#4c6a96"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2,
+      1.5,
+      0
+     ],
+     "size": [
+      0.7,
+      1.2,
+      0.15
+     ],
+     "color": "#4f9a62"
+    }
+   ],
+   "rot": -30.1,
+   "worldPos": [
+    -178.86,
+    6.0,
+    402.51
+   ],
+   "debugXZ": [
+    -178.86,
+    402.51
+   ]
+  },
+  {
+   "id": "apt0",
+   "t": 10.5,
+   "kind": "group",
+   "appear": {
+    "t": 8.5,
+    "mode": "rise",
+    "dur": 0.7
+   },
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4,
+      0
+     ],
+     "size": [
+      7,
+      8,
+      6
+     ],
+     "color": "#f2efe4"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      8.2,
+      0
+     ],
+     "size": [
+      7.4,
+      0.4,
+      6.4
+     ],
+     "color": "#507f83"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -2,
+      2.0,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.0,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2,
+      2.0,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -2,
+      4.6,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.6,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2,
+      4.6,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.6,
+      -3.6
+     ],
+     "size": [
+      6,
+      0.15,
+      1.2
+     ],
+     "color": "#507f83"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.2,
+      -3.6
+     ],
+     "size": [
+      6,
+      0.15,
+      1.2
+     ],
+     "color": "#507f83"
+    }
+   ],
+   "rot": -37.2,
+   "worldPos": [
+    33.62,
+    0.0,
+    65.61
+   ],
+   "debugXZ": [
+    33.62,
+    65.61
+   ]
+  },
+  {
+   "id": "apt1",
+   "t": 14.5,
+   "kind": "group",
+   "appear": {
+    "t": 12.5,
+    "mode": "rise",
+    "dur": 0.7
+   },
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4,
+      0
+     ],
+     "size": [
+      7,
+      8,
+      6
+     ],
+     "color": "#f2efe4"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      8.2,
+      0
+     ],
+     "size": [
+      7.4,
+      0.4,
+      6.4
+     ],
+     "color": "#507f83"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -2,
+      2.0,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.0,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2,
+      2.0,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -2,
+      4.6,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.6,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2,
+      4.6,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.6,
+      -3.6
+     ],
+     "size": [
+      6,
+      0.15,
+      1.2
+     ],
+     "color": "#507f83"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.2,
+      -3.6
+     ],
+     "size": [
+      6,
+      0.15,
+      1.2
+     ],
+     "color": "#507f83"
+    }
+   ],
+   "rot": 5.3,
+   "worldPos": [
+    -0.32,
+    0.0,
+    79.49
+   ],
+   "debugXZ": [
+    -0.32,
+    79.49
+   ]
+  },
+  {
+   "id": "apt2",
+   "t": 18.5,
+   "kind": "group",
+   "appear": {
+    "t": 16.5,
+    "mode": "rise",
+    "dur": 0.7
+   },
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4,
+      0
+     ],
+     "size": [
+      7,
+      8,
+      6
+     ],
+     "color": "#f2efe4"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      8.2,
+      0
+     ],
+     "size": [
+      7.4,
+      0.4,
+      6.4
+     ],
+     "color": "#507f83"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -2,
+      2.0,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.0,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2,
+      2.0,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -2,
+      4.6,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.6,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2,
+      4.6,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.6,
+      -3.6
+     ],
+     "size": [
+      6,
+      0.15,
+      1.2
+     ],
+     "color": "#507f83"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.2,
+      -3.6
+     ],
+     "size": [
+      6,
+      0.15,
+      1.2
+     ],
+     "color": "#507f83"
+    }
+   ],
+   "rot": 5.8,
+   "worldPos": [
+    30.55,
+    0.0,
+    100.79
+   ],
+   "debugXZ": [
+    30.55,
+    100.79
+   ]
+  },
+  {
+   "id": "apt3",
+   "t": 26.5,
+   "kind": "group",
+   "appear": {
+    "t": 24.5,
+    "mode": "rise",
+    "dur": 0.7
+   },
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4,
+      0
+     ],
+     "size": [
+      7,
+      8,
+      6
+     ],
+     "color": "#f2efe4"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      8.2,
+      0
+     ],
+     "size": [
+      7.4,
+      0.4,
+      6.4
+     ],
+     "color": "#507f83"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -2,
+      2.0,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.0,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2,
+      2.0,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -2,
+      4.6,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.6,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2,
+      4.6,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.6,
+      -3.6
+     ],
+     "size": [
+      6,
+      0.15,
+      1.2
+     ],
+     "color": "#507f83"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.2,
+      -3.6
+     ],
+     "size": [
+      6,
+      0.15,
+      1.2
+     ],
+     "color": "#507f83"
+    }
+   ],
+   "rot": 23.0,
+   "worldPos": [
+    2.05,
+    0.0,
+    154.24
+   ],
+   "debugXZ": [
+    2.05,
+    154.24
+   ]
+  },
+  {
+   "id": "apt4",
+   "t": 30.5,
+   "kind": "group",
+   "appear": {
+    "t": 28.5,
+    "mode": "rise",
+    "dur": 0.7
+   },
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4,
+      0
+     ],
+     "size": [
+      7,
+      8,
+      6
+     ],
+     "color": "#f2efe4"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      8.2,
+      0
+     ],
+     "size": [
+      7.4,
+      0.4,
+      6.4
+     ],
+     "color": "#507f83"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -2,
+      2.0,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.0,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2,
+      2.0,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -2,
+      4.6,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.6,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2,
+      4.6,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.6,
+      -3.6
+     ],
+     "size": [
+      6,
+      0.15,
+      1.2
+     ],
+     "color": "#507f83"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.2,
+      -3.6
+     ],
+     "size": [
+      6,
+      0.15,
+      1.2
+     ],
+     "color": "#507f83"
+    }
+   ],
+   "rot": 4.1,
+   "worldPos": [
+    24.81,
+    0.0,
+    168.72
+   ],
+   "debugXZ": [
+    24.81,
+    168.72
+   ]
+  },
+  {
+   "id": "apt5",
+   "t": 34.5,
+   "kind": "group",
+   "appear": {
+    "t": 32.5,
+    "mode": "rise",
+    "dur": 0.7
+   },
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4,
+      0
+     ],
+     "size": [
+      7,
+      8,
+      6
+     ],
+     "color": "#f2efe4"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      8.2,
+      0
+     ],
+     "size": [
+      7.4,
+      0.4,
+      6.4
+     ],
+     "color": "#507f83"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -2,
+      2.0,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.0,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2,
+      2.0,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -2,
+      4.6,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.6,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2,
+      4.6,
+      -3.05
+     ],
+     "size": [
+      1.2,
+      1.4,
+      0.1
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.6,
+      -3.6
+     ],
+     "size": [
+      6,
+      0.15,
+      1.2
+     ],
+     "color": "#507f83"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.2,
+      -3.6
+     ],
+     "size": [
+      6,
+      0.15,
+      1.2
+     ],
+     "color": "#507f83"
+    }
+   ],
+   "rot": 15.0,
+   "worldPos": [
+    -1.24,
+    0.0,
+    192.62
+   ],
+   "debugXZ": [
+    -1.24,
+    192.62
+   ]
+  },
+  {
+   "id": "cat_egg",
+   "t": 16.5,
+   "kind": "group",
+   "egg": true,
+   "react": "beat",
+   "name": "EGG E1: orange cat on an apartment balcony; it turns its head with the syncopated claps; the same cat silhouette reappears in the final chorus skyline",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      3,
+      0.2,
+      1.6
+     ],
+     "color": "#507f83"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      0.6,
+      0
+     ],
+     "size": [
+      0.9,
+      0.8,
+      0.7
+     ],
+     "color": "#ff5b24"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0.45,
+      1.15,
+      0
+     ],
+     "size": [
+      0.55,
+      0.5,
+      0.5
+     ],
+     "color": "#ff5b24"
+    },
+    {
+     "kind": "cone",
+     "pos": [
+      0.33,
+      1.45,
+      0
+     ],
+     "size": [
+      0.18,
+      0.25,
+      0.18
+     ],
+     "color": "#ff5b24"
+    },
+    {
+     "kind": "cone",
+     "pos": [
+      0.6,
+      1.45,
+      0
+     ],
+     "size": [
+      0.18,
+      0.25,
+      0.18
+     ],
+     "color": "#ff5b24"
+    }
+   ],
+   "rot": 21.9,
+   "worldPos": [
+    2.23,
+    5.4,
+    97.5
+   ],
+   "debugXZ": [
+    2.23,
+    97.5
+   ]
+  },
+  {
+   "id": "cat_egg2",
+   "t": 186.0,
+   "kind": "group",
+   "egg": true,
+   "name": "EGG E1 return: cat silhouette on a far rooftop",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -3,
+      0
+     ],
+     "size": [
+      5,
+      6,
+      5
+     ],
+     "color": "#e6e1d4"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      0.6,
+      0
+     ],
+     "size": [
+      1.4,
+      1.2,
+      1.0
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0.7,
+      1.4,
+      0
+     ],
+     "size": [
+      0.8,
+      0.7,
+      0.7
+     ],
+     "color": "#292d32"
+    }
+   ],
+   "rot": -163.6,
+   "worldPos": [
+    -189.62,
+    9.54,
+    323.43
+   ],
+   "debugXZ": [
+    -189.62,
+    323.43
+   ]
+  },
+  {
+   "id": "rail_l",
+   "kind": "row",
+   "t0": 38.9,
+   "t1": 46.2,
+   "side": 2.4,
+   "spacing": 1.2,
+   "bothSides": true,
+   "item": {
+    "kind": "box",
+    "size": [
+     0.18,
+     0.9,
+     1.0
+    ],
+    "color": "#507f83"
+   },
+   "name": "teal footbridge railings (low, 2.4 off centre)"
+  },
+  {
+   "id": "train",
+   "t": 54.0,
+   "kind": "group",
+   "landmark": true,
+   "react": "beat",
+   "name": "white commuter train on the lower track beside the rail plaza (MV level crossing)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.6,
+      -14.8
+     ],
+     "size": [
+      3,
+      3,
+      7
+     ],
+     "color": "#f2efe4"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.6,
+      -7.4
+     ],
+     "size": [
+      3,
+      3,
+      7
+     ],
+     "color": "#f2efe4"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.6,
+      0.0
+     ],
+     "size": [
+      3,
+      3,
+      7
+     ],
+     "color": "#f2efe4"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.6,
+      7.4
+     ],
+     "size": [
+      3,
+      3,
+      7
+     ],
+     "color": "#f2efe4"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.6,
+      14.8
+     ],
+     "size": [
+      3,
+      3,
+      7
+     ],
+     "color": "#f2efe4"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.52,
+      2.1,
+      -14.8
+     ],
+     "size": [
+      0.05,
+      0.9,
+      5.5
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.52,
+      2.1,
+      -7.4
+     ],
+     "size": [
+      0.05,
+      0.9,
+      5.5
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.52,
+      2.1,
+      0.0
+     ],
+     "size": [
+      0.05,
+      0.9,
+      5.5
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.52,
+      2.1,
+      7.4
+     ],
+     "size": [
+      0.05,
+      0.9,
+      5.5
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.52,
+      2.1,
+      14.8
+     ],
+     "size": [
+      0.05,
+      0.9,
+      5.5
+     ],
+     "color": "#292d32"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      5,
+      0.3,
+      40
+     ],
+     "color": "#8f8a80"
+    }
+   ],
+   "rot": -80.6,
+   "worldPos": [
+    23.53,
+    0.0,
+    291.27
+   ],
+   "debugXZ": [
+    23.53,
+    291.27
+   ]
+  },
+  {
+   "id": "gantry0",
+   "t": 48.0,
+   "kind": "group",
+   "appear": {
+    "t": 46.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "name": "yellow level-crossing gantry (opens outward on the chorus downbeat)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3,
+      0
+     ],
+     "size": [
+      0.6,
+      6,
+      0.6
+     ],
+     "color": "#e9bc48"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.6,
+      6,
+      0
+     ],
+     "size": [
+      3.8,
+      0.5,
+      0.5
+     ],
+     "color": "#e9bc48"
+    }
+   ],
+   "rot": -12.5,
+   "worldPos": [
+    55.1,
+    3.0,
+    253.08
+   ],
+   "debugXZ": [
+    55.1,
+    253.08
+   ]
+  },
+  {
+   "id": "gantry1",
+   "t": 52.0,
+   "kind": "group",
+   "appear": {
+    "t": 50.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "name": "yellow level-crossing gantry (opens outward on the chorus downbeat)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3,
+      0
+     ],
+     "size": [
+      0.6,
+      6,
+      0.6
+     ],
+     "color": "#e9bc48"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.6,
+      6,
+      0
+     ],
+     "size": [
+      3.8,
+      0.5,
+      0.5
+     ],
+     "color": "#e9bc48"
+    }
+   ],
+   "rot": -41.2,
+   "worldPos": [
+    22.61,
+    3.0,
+    262.4
+   ],
+   "debugXZ": [
+    22.61,
+    262.4
+   ]
+  },
+  {
+   "id": "gantry2",
+   "t": 55.96,
+   "kind": "group",
+   "appear": {
+    "t": 54.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "name": "yellow level-crossing gantry (opens outward on the chorus downbeat)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3,
+      0
+     ],
+     "size": [
+      0.6,
+      6,
+      0.6
+     ],
+     "color": "#e9bc48"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.6,
+      6,
+      0
+     ],
+     "size": [
+      3.8,
+      0.5,
+      0.5
+     ],
+     "color": "#e9bc48"
+    }
+   ],
+   "rot": -119.4,
+   "worldPos": [
+    7.26,
+    3.0,
+    278.53
+   ],
+   "debugXZ": [
+    7.26,
+    278.53
+   ]
+  },
+  {
+   "id": "gantry3",
+   "t": 60.0,
+   "kind": "group",
+   "appear": {
+    "t": 58.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "name": "yellow level-crossing gantry (opens outward on the chorus downbeat)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3,
+      0
+     ],
+     "size": [
+      0.6,
+      6,
+      0.6
+     ],
+     "color": "#e9bc48"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.6,
+      6,
+      0
+     ],
+     "size": [
+      3.8,
+      0.5,
+      0.5
+     ],
+     "color": "#e9bc48"
+    }
+   ],
+   "rot": 165.2,
+   "worldPos": [
+    7.7,
+    3.0,
+    256.51
+   ],
+   "debugXZ": [
+    7.7,
+    256.51
+   ]
+  },
+  {
+   "id": "gantry4",
+   "t": 64.0,
+   "kind": "group",
+   "appear": {
+    "t": 62.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "name": "yellow level-crossing gantry (opens outward on the chorus downbeat)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3,
+      0
+     ],
+     "size": [
+      0.6,
+      6,
+      0.6
+     ],
+     "color": "#e9bc48"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.6,
+      6,
+      0
+     ],
+     "size": [
+      3.8,
+      0.5,
+      0.5
+     ],
+     "color": "#e9bc48"
+    }
+   ],
+   "rot": -85.9,
+   "worldPos": [
+    -4.4,
+    3.0,
+    247.28
+   ],
+   "debugXZ": [
+    -4.4,
+    247.28
+   ]
+  },
+  {
+   "id": "gantry5",
+   "t": 68.0,
+   "kind": "group",
+   "appear": {
+    "t": 66.5,
+    "mode": "unfold",
+    "dur": 0.6
+   },
+   "name": "yellow level-crossing gantry (opens outward on the chorus downbeat)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3,
+      0
+     ],
+     "size": [
+      0.6,
+      6,
+      0.6
+     ],
+     "color": "#e9bc48"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.6,
+      6,
+      0
+     ],
+     "size": [
+      3.8,
+      0.5,
+      0.5
+     ],
+     "color": "#e9bc48"
+    }
+   ],
+   "rot": -87.5,
+   "worldPos": [
+    -28.27,
+    3.0,
+    245.65
+   ],
+   "debugXZ": [
+    -28.27,
+    245.65
+   ]
+  },
+  {
+   "id": "panel0",
+   "t": 58.0,
+   "kind": "box",
+   "size": [
+    2.6,
+    9,
+    0.6
+   ],
+   "color": "#292d32",
+   "landmark": false,
+   "name": "five black/white standing panels + the orange sleeve panel (abstracted group cover); they rise one by one in chorus 2 and line up again in the final chorus",
+   "rot": -154.6,
+   "worldPos": [
+    63.17,
+    0.0,
+    241.64
+   ],
+   "debugXZ": [
+    63.17,
+    241.64
+   ]
+  },
+  {
+   "id": "panel1",
+   "t": 58.0,
+   "kind": "box",
+   "size": [
+    2.6,
+    9,
+    0.6
+   ],
+   "color": "#f2efe4",
+   "landmark": false,
+   "name": "five black/white standing panels + the orange sleeve panel (abstracted group cover); they rise one by one in chorus 2 and line up again in the final chorus",
+   "rot": -154.6,
+   "worldPos": [
+    61.79,
+    0.0,
+    238.75
+   ],
+   "debugXZ": [
+    61.79,
+    238.75
+   ]
+  },
+  {
+   "id": "panel2",
+   "t": 58.0,
+   "kind": "box",
+   "size": [
+    2.6,
+    9,
+    0.6
+   ],
+   "color": "#292d32",
+   "landmark": false,
+   "name": "five black/white standing panels + the orange sleeve panel (abstracted group cover); they rise one by one in chorus 2 and line up again in the final chorus",
+   "rot": -154.6,
+   "worldPos": [
+    17.89,
+    0.0,
+    256.04
+   ],
+   "debugXZ": [
+    17.89,
+    256.04
+   ]
+  },
+  {
+   "id": "panel3",
+   "t": 58.0,
+   "kind": "box",
+   "size": [
+    2.6,
+    9,
+    0.6
+   ],
+   "color": "#f2efe4",
+   "landmark": false,
+   "name": "five black/white standing panels + the orange sleeve panel (abstracted group cover); they rise one by one in chorus 2 and line up again in the final chorus",
+   "rot": -154.6,
+   "worldPos": [
+    22.62,
+    0.0,
+    250.26
+   ],
+   "debugXZ": [
+    22.62,
+    250.26
+   ]
+  },
+  {
+   "id": "panel4",
+   "t": 58.0,
+   "kind": "box",
+   "size": [
+    2.6,
+    9,
+    0.6
+   ],
+   "color": "#292d32",
+   "landmark": false,
+   "name": "five black/white standing panels + the orange sleeve panel (abstracted group cover); they rise one by one in chorus 2 and line up again in the final chorus",
+   "rot": -154.6,
+   "worldPos": [
+    21.25,
+    0.0,
+    247.37
+   ],
+   "debugXZ": [
+    21.25,
+    247.37
+   ]
+  },
+  {
+   "id": "panel5",
+   "t": 58.0,
+   "kind": "box",
+   "size": [
+    2.6,
+    9,
+    0.6
+   ],
+   "color": "#ff5b24",
+   "landmark": true,
+   "name": "five black/white standing panels + the orange sleeve panel (abstracted group cover); they rise one by one in chorus 2 and line up again in the final chorus",
+   "rot": -154.6,
+   "worldPos": [
+    23.49,
+    0.0,
+    242.76
+   ],
+   "debugXZ": [
+    23.49,
+    242.76
+   ]
+  },
+  {
+   "id": "panels_poster",
+   "t": 120.0,
+   "kind": "image",
+   "src": "art/panels-poster.jpg",
+   "size": [
+    12,
+    0,
+    6.75
+   ],
+   "mode": "billboard",
+   "name": "poster of the five panels on the rooftop courtyard wall",
+   "rot": 162.2,
+   "worldPos": [
+    -137.26,
+    11.0,
+    319.88
+   ],
+   "debugXZ": [
+    -137.26,
+    319.88
+   ]
+  },
+  {
+   "id": "water_tower",
+   "t": 160.0,
+   "kind": "group",
+   "landmark": true,
+   "name": "water tower: the build-section helix winds around it",
+   "parts": [
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      6,
+      0
+     ],
+     "size": [
+      0.8,
+      12,
+      0.8
+     ],
+     "color": "#507f83"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      13.5,
+      0
+     ],
+     "size": [
+      3.4,
+      3,
+      3.4
+     ],
+     "color": "#f2efe4"
+    },
+    {
+     "kind": "cone",
+     "pos": [
+      0,
+      15.6,
+      0
+     ],
+     "size": [
+      3.8,
+      1.2,
+      3.8
+     ],
+     "color": "#ff5b24"
+    }
+   ],
+   "rot": 149.7,
+   "worldPos": [
+    -186.96,
+    5.41,
+    279.18
+   ],
+   "debugXZ": [
+    -186.96,
+    279.18
+   ]
+  },
+  {
+   "id": "fork0",
+   "t": 20.019,
+   "kind": "box",
+   "onroad": true,
+   "size": [
+    2.6,
+    0.6,
+    6.0
+   ],
+   "worldPos": [
+    13.07,
+    -0.6,
+    111.05
+   ],
+   "rot": -90.0,
+   "color": "#fff7e6",
+   "name": "fake-out fork: dead-end stub that rises with the road and sinks once the line has turned (scenery only)",
+   "appear": {
+    "t": 18.019,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "exit": {
+    "t": 20.369,
+    "mode": "sink",
+    "dur": 0.8
+   },
+   "debugXZ": [
+    13.07,
+    111.05
+   ]
+  },
+  {
+   "id": "fork1",
+   "t": 84.817,
+   "kind": "box",
+   "onroad": true,
+   "size": [
+    2.6,
+    0.6,
+    6.0
+   ],
+   "worldPos": [
+    -53.27,
+    2.4,
+    206.69
+   ],
+   "rot": 0.0,
+   "color": "#fff7e6",
+   "name": "fake-out fork: dead-end stub that rises with the road and sinks once the line has turned (scenery only)",
+   "appear": {
+    "t": 82.817,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "exit": {
+    "t": 85.167,
+    "mode": "sink",
+    "dur": 0.8
+   },
+   "debugXZ": [
+    -53.27,
+    206.69
+   ]
+  },
+  {
+   "id": "fork2",
+   "t": 127.776,
+   "kind": "box",
+   "onroad": true,
+   "size": [
+    2.6,
+    0.6,
+    6.0
+   ],
+   "worldPos": [
+    -100.91,
+    5.4,
+    286.72
+   ],
+   "rot": 90.0,
+   "color": "#fff7e6",
+   "name": "fake-out fork: dead-end stub that rises with the road and sinks once the line has turned (scenery only)",
+   "appear": {
+    "t": 125.776,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "exit": {
+    "t": 128.126,
+    "mode": "sink",
+    "dur": 0.8
+   },
+   "debugXZ": [
+    -100.91,
+    286.72
+   ]
+  },
+  {
+   "id": "fork3",
+   "t": 189.935,
+   "kind": "box",
+   "onroad": true,
+   "size": [
+    2.6,
+    0.6,
+    6.0
+   ],
+   "worldPos": [
+    -191.77,
+    4.54,
+    332.43
+   ],
+   "rot": -90.0,
+   "color": "#fff7e6",
+   "name": "fake-out fork: dead-end stub that rises with the road and sinks once the line has turned (scenery only)",
+   "appear": {
+    "t": 187.935,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "exit": {
+    "t": 190.285,
+    "mode": "sink",
+    "dur": 0.8
+   },
+   "debugXZ": [
+    -191.77,
+    332.43
+   ]
+  }
+ ],
+ "events": [
+  {
+   "t": 46.42,
+   "type": "color",
+   "palette": {
+    "ground": "#4f9a62"
+   },
+   "dur": 1.0
+  },
+  {
+   "t": 46.42,
+   "type": "burst",
+   "at": "player",
+   "particles": "confetti"
+  },
+  {
+   "t": 77.14,
+   "type": "spin",
+   "target": "sticker",
+   "until": 107.86,
+   "note": "one turn per 8 bars"
+  },
+  {
+   "t": 107.86,
+   "type": "flash",
+   "dur": 0.2
+  },
+  {
+   "t": 138.58,
+   "type": "color",
+   "palette": {
+    "skyTop": "#f2b38f",
+    "skyBottom": "#ffe7c4"
+   },
+   "dur": 3.0
+  },
+  {
+   "t": 153.94,
+   "type": "color",
+   "palette": {
+    "skyTop": "#9fc6ea",
+    "skyBottom": "#fff4dc"
+   },
+   "dur": 6.0
+  },
+  {
+   "t": 169.3,
+   "type": "burst",
+   "at": "player",
+   "particles": "confetti"
+  },
+  {
+   "t": 169.3,
+   "type": "shake",
+   "dur": 0.35,
+   "amount": 0.15
+  },
+  {
+   "t": 200.0,
+   "type": "particles",
+   "particles": null
+  },
+  {
+   "t": 212.5,
+   "type": "spin",
+   "target": "open_sign",
+   "until": 213.5,
+   "note": "CLOSED -> OPEN flip"
+  },
+  {
+   "t": 107.86,
+   "type": "raise",
+   "target": "panel0",
+   "dy": 6,
+   "dur": 0.5,
+   "note": "panels rise one per half-bar at the chorus-2 downbeat (music clock)"
+  },
+  {
+   "t": 108.82,
+   "type": "raise",
+   "target": "panel1",
+   "dy": 6,
+   "dur": 0.5,
+   "note": "panels rise one per half-bar at the chorus-2 downbeat (music clock)"
+  },
+  {
+   "t": 109.78,
+   "type": "raise",
+   "target": "panel2",
+   "dy": 6,
+   "dur": 0.5,
+   "note": "panels rise one per half-bar at the chorus-2 downbeat (music clock)"
+  },
+  {
+   "t": 110.74,
+   "type": "raise",
+   "target": "panel3",
+   "dy": 6,
+   "dur": 0.5,
+   "note": "panels rise one per half-bar at the chorus-2 downbeat (music clock)"
+  },
+  {
+   "t": 111.7,
+   "type": "raise",
+   "target": "panel4",
+   "dy": 6,
+   "dur": 0.5,
+   "note": "panels rise one per half-bar at the chorus-2 downbeat (music clock)"
+  },
+  {
+   "t": 112.66,
+   "type": "raise",
+   "target": "panel5",
+   "dy": 6,
+   "dur": 0.5,
+   "note": "panels rise one per half-bar at the chorus-2 downbeat (music clock)"
+  },
+  {
+   "t": 46.42,
+   "type": "pulse",
+   "target": "train",
+   "every": 0.47999,
+   "until": 77.14
+  }
+ ],
+ "diamonds": [
+  {
+   "t": 4.899,
+   "side": 0
+  },
+  {
+   "t": 23.619,
+   "side": 0
+  },
+  {
+   "t": 41.738,
+   "side": 0
+  },
+  {
+   "t": 58.178,
+   "side": 0
+  },
+  {
+   "t": 84.097,
+   "side": 0
+  },
+  {
+   "t": 102.217,
+   "side": 0
+  },
+  {
+   "t": 119.617,
+   "side": 0
+  },
+  {
+   "t": 146.136,
+   "side": 0
+  },
+  {
+   "t": 163.296,
+   "side": 0
+  },
+  {
+   "t": 195.155,
+   "side": 0
+  }
+ ],
+ "crowns": [
+  {
+   "t": 105.937
+  },
+  {
+   "t": 146.136
+  }
+ ],
+ "finish": {
+  "kind": "gate",
+  "note": "record-shop door: the line enters the open door; OPEN sign flips"
+ },
+ "collectibleColors": {
+  "diamond": "#75e1d0",
+  "crown": "#e9bc48"
+ },
+ "art": {
+  "backdrop": "art/sky-summer.jpg",
+  "ground": {
+   "src": "art/plaza-ground.jpg",
+   "scale": 40
+  }
+ },
+ "route": {
+  "note": "centerline nodes [t,x,z,headingIndex(0N,1E,2S,3W),y] computed from taps+dirs+speed (same math as validate.py)",
+  "nodes": [
+   [
+    0.0,
+    0.0,
+    0.0,
+    0,
+    0.0
+   ],
+   [
+    2.259,
+    0.0,
+    20.33,
+    1,
+    0.0
+   ],
+   [
+    3.699,
+    12.96,
+    20.33,
+    0,
+    0.0
+   ],
+   [
+    4.179,
+    12.96,
+    24.65,
+    1,
+    0.0
+   ],
+   [
+    5.619,
+    25.92,
+    24.65,
+    0,
+    0.0
+   ],
+   [
+    7.539,
+    25.92,
+    41.93,
+    1,
+    0.0
+   ],
+   [
+    8.019,
+    30.24,
+    41.93,
+    0,
+    0.0
+   ],
+   [
+    9.939,
+    30.24,
+    59.21,
+    3,
+    0.0
+   ],
+   [
+    11.859,
+    12.96,
+    59.21,
+    0,
+    0.0
+   ],
+   [
+    12.339,
+    12.96,
+    63.53,
+    3,
+    0.0
+   ],
+   [
+    12.579,
+    10.8,
+    63.53,
+    0,
+    0.0
+   ],
+   [
+    13.779,
+    10.8,
+    74.33,
+    3,
+    0.0
+   ],
+   [
+    14.019,
+    8.64,
+    74.33,
+    0,
+    0.0
+   ],
+   [
+    16.179,
+    8.64,
+    93.77,
+    1,
+    0.0
+   ],
+   [
+    17.139,
+    17.28,
+    93.77,
+    0,
+    0.0
+   ],
+   [
+    17.619,
+    17.28,
+    98.09,
+    1,
+    0.0
+   ],
+   [
+    18.099,
+    21.6,
+    98.09,
+    0,
+    0.0
+   ],
+   [
+    19.539,
+    21.6,
+    111.05,
+    3,
+    0.0
+   ],
+   [
+    20.019,
+    17.28,
+    111.05,
+    0,
+    0.0
+   ],
+   [
+    20.259,
+    17.28,
+    113.21,
+    3,
+    0.0
+   ],
+   [
+    20.979,
+    10.8,
+    113.21,
+    0,
+    0.0
+   ],
+   [
+    21.459,
+    10.8,
+    117.53,
+    3,
+    0.0
+   ],
+   [
+    21.939,
+    6.48,
+    117.53,
+    0,
+    0.0
+   ],
+   [
+    25.299,
+    6.48,
+    147.77,
+    1,
+    0.0
+   ],
+   [
+    26.739,
+    19.44,
+    147.77,
+    0,
+    0.0
+   ],
+   [
+    27.219,
+    19.44,
+    152.09,
+    3,
+    0.0
+   ],
+   [
+    27.939,
+    12.96,
+    152.09,
+    0,
+    0.0
+   ],
+   [
+    28.659,
+    12.96,
+    158.57,
+    1,
+    0.0
+   ],
+   [
+    29.139,
+    17.28,
+    158.57,
+    0,
+    0.0
+   ],
+   [
+    30.339,
+    17.28,
+    169.37,
+    3,
+    0.0
+   ],
+   [
+    31.059,
+    10.8,
+    169.37,
+    0,
+    0.0
+   ],
+   [
+    32.499,
+    10.8,
+    182.33,
+    1,
+    0.0
+   ],
+   [
+    32.979,
+    15.12,
+    182.33,
+    0,
+    0.0
+   ],
+   [
+    33.818,
+    15.12,
+    189.88,
+    3,
+    0.0
+   ],
+   [
+    34.898,
+    5.4,
+    189.88,
+    0,
+    0.0
+   ],
+   [
+    35.618,
+    5.4,
+    196.36,
+    1,
+    0.0
+   ],
+   [
+    36.818,
+    16.2,
+    196.36,
+    0,
+    0.0
+   ],
+   [
+    38.018,
+    16.2,
+    207.16,
+    3,
+    0.0
+   ],
+   [
+    38.738,
+    9.72,
+    207.16,
+    0,
+    0.0
+   ],
+   [
+    39.218,
+    9.72,
+    211.48,
+    1,
+    0.19
+   ],
+   [
+    40.178,
+    18.36,
+    211.48,
+    0,
+    0.58
+   ],
+   [
+    40.658,
+    18.36,
+    215.8,
+    1,
+    0.78
+   ],
+   [
+    41.378,
+    24.84,
+    215.8,
+    0,
+    1.07
+   ],
+   [
+    42.098,
+    24.84,
+    222.28,
+    1,
+    1.37
+   ],
+   [
+    42.578,
+    29.16,
+    222.28,
+    0,
+    1.56
+   ],
+   [
+    43.058,
+    29.16,
+    226.6,
+    1,
+    1.76
+   ],
+   [
+    43.298,
+    31.32,
+    226.6,
+    0,
+    1.85
+   ],
+   [
+    43.658,
+    31.32,
+    229.84,
+    1,
+    2.0
+   ],
+   [
+    44.018,
+    34.56,
+    229.84,
+    0,
+    2.15
+   ],
+   [
+    44.738,
+    34.56,
+    236.32,
+    1,
+    2.44
+   ],
+   [
+    45.458,
+    41.04,
+    236.32,
+    0,
+    2.73
+   ],
+   [
+    45.698,
+    41.04,
+    238.48,
+    1,
+    2.83
+   ],
+   [
+    45.938,
+    43.2,
+    238.48,
+    0,
+    2.93
+   ],
+   [
+    46.178,
+    43.2,
+    240.64,
+    1,
+    3.0
+   ],
+   [
+    46.418,
+    45.36,
+    240.64,
+    0,
+    3.0
+   ],
+   [
+    46.778,
+    45.36,
+    243.88,
+    1,
+    3.0
+   ],
+   [
+    47.138,
+    48.6,
+    243.88,
+    0,
+    3.0
+   ],
+   [
+    48.338,
+    48.6,
+    254.68,
+    3,
+    3.0
+   ],
+   [
+    49.538,
+    37.8,
+    254.68,
+    0,
+    3.0
+   ],
+   [
+    50.258,
+    37.8,
+    261.16,
+    3,
+    3.0
+   ],
+   [
+    50.978,
+    31.32,
+    261.16,
+    0,
+    3.0
+   ],
+   [
+    51.698,
+    31.32,
+    267.64,
+    3,
+    3.0
+   ],
+   [
+    52.178,
+    27.0,
+    267.64,
+    0,
+    3.0
+   ],
+   [
+    53.378,
+    27.0,
+    278.44,
+    3,
+    3.0
+   ],
+   [
+    54.098,
+    20.52,
+    278.44,
+    2,
+    3.0
+   ],
+   [
+    54.578,
+    20.52,
+    274.12,
+    3,
+    3.0
+   ],
+   [
+    55.538,
+    11.88,
+    274.12,
+    2,
+    3.0
+   ],
+   [
+    56.018,
+    11.88,
+    269.8,
+    3,
+    3.0
+   ],
+   [
+    57.098,
+    2.16,
+    269.8,
+    2,
+    3.0
+   ],
+   [
+    57.458,
+    2.16,
+    266.56,
+    3,
+    3.0
+   ],
+   [
+    57.938,
+    -2.16,
+    266.56,
+    2,
+    3.0
+   ],
+   [
+    58.418,
+    -2.16,
+    262.24,
+    3,
+    3.0
+   ],
+   [
+    58.658,
+    -4.32,
+    262.24,
+    2,
+    3.0
+   ],
+   [
+    59.378,
+    -4.32,
+    255.76,
+    1,
+    3.0
+   ],
+   [
+    59.858,
+    0.0,
+    255.76,
+    2,
+    3.0
+   ],
+   [
+    60.338,
+    0.0,
+    251.44,
+    1,
+    3.0
+   ],
+   [
+    60.818,
+    4.32,
+    251.44,
+    2,
+    3.0
+   ],
+   [
+    61.058,
+    4.32,
+    249.28,
+    1,
+    3.0
+   ],
+   [
+    61.298,
+    6.48,
+    249.28,
+    2,
+    3.0
+   ],
+   [
+    61.538,
+    6.48,
+    247.12,
+    1,
+    3.0
+   ],
+   [
+    61.778,
+    8.64,
+    247.12,
+    2,
+    3.0
+   ],
+   [
+    62.498,
+    8.64,
+    240.64,
+    3,
+    3.0
+   ],
+   [
+    64.898,
+    -12.96,
+    240.64,
+    0,
+    3.0
+   ],
+   [
+    65.138,
+    -12.96,
+    242.8,
+    3,
+    3.0
+   ],
+   [
+    65.618,
+    -17.28,
+    242.8,
+    0,
+    3.0
+   ],
+   [
+    66.338,
+    -17.28,
+    249.28,
+    3,
+    3.0
+   ],
+   [
+    67.058,
+    -23.76,
+    249.28,
+    0,
+    3.0
+   ],
+   [
+    67.538,
+    -23.76,
+    253.6,
+    3,
+    3.0
+   ],
+   [
+    68.738,
+    -34.56,
+    253.6,
+    2,
+    3.0
+   ],
+   [
+    69.098,
+    -34.56,
+    250.36,
+    3,
+    3.0
+   ],
+   [
+    69.458,
+    -37.8,
+    250.36,
+    2,
+    3.0
+   ],
+   [
+    70.178,
+    -37.8,
+    243.88,
+    3,
+    3.0
+   ],
+   [
+    71.018,
+    -45.36,
+    243.88,
+    2,
+    3.0
+   ],
+   [
+    71.378,
+    -45.36,
+    240.64,
+    1,
+    3.0
+   ],
+   [
+    71.858,
+    -41.04,
+    240.64,
+    2,
+    3.0
+   ],
+   [
+    72.818,
+    -41.04,
+    232.0,
+    1,
+    3.0
+   ],
+   [
+    73.298,
+    -36.72,
+    232.0,
+    2,
+    3.0
+   ],
+   [
+    73.778,
+    -36.72,
+    227.68,
+    1,
+    3.0
+   ],
+   [
+    74.018,
+    -34.56,
+    227.68,
+    2,
+    3.0
+   ],
+   [
+    75.218,
+    -34.56,
+    216.88,
+    1,
+    3.0
+   ],
+   [
+    75.698,
+    -30.24,
+    216.88,
+    2,
+    3.0
+   ],
+   [
+    76.178,
+    -30.24,
+    212.56,
+    1,
+    3.0
+   ],
+   [
+    76.418,
+    -28.08,
+    212.56,
+    2,
+    3.0
+   ],
+   [
+    76.658,
+    -28.08,
+    210.4,
+    1,
+    3.0
+   ],
+   [
+    76.818,
+    -26.64,
+    210.4,
+    2,
+    3.0
+   ],
+   [
+    76.978,
+    -26.64,
+    208.96,
+    1,
+    3.0
+   ],
+   [
+    77.138,
+    -25.2,
+    208.96,
+    2,
+    3.0
+   ],
+   [
+    77.858,
+    -25.2,
+    202.48,
+    3,
+    3.0
+   ],
+   [
+    79.057,
+    -35.99,
+    202.48,
+    2,
+    3.0
+   ],
+   [
+    80.257,
+    -35.99,
+    191.68,
+    3,
+    3.0
+   ],
+   [
+    80.977,
+    -42.47,
+    191.68,
+    2,
+    3.0
+   ],
+   [
+    81.697,
+    -42.47,
+    185.2,
+    3,
+    3.0
+   ],
+   [
+    82.417,
+    -48.95,
+    185.2,
+    0,
+    3.0
+   ],
+   [
+    82.897,
+    -48.95,
+    189.52,
+    3,
+    3.0
+   ],
+   [
+    83.377,
+    -53.27,
+    189.52,
+    0,
+    3.0
+   ],
+   [
+    84.817,
+    -53.27,
+    202.48,
+    3,
+    3.0
+   ],
+   [
+    85.537,
+    -59.75,
+    202.48,
+    0,
+    3.0
+   ],
+   [
+    86.737,
+    -59.75,
+    213.28,
+    3,
+    3.0
+   ],
+   [
+    87.457,
+    -66.23,
+    213.28,
+    0,
+    3.0
+   ],
+   [
+    88.657,
+    -66.23,
+    224.08,
+    3,
+    3.0
+   ],
+   [
+    89.377,
+    -72.71,
+    224.08,
+    0,
+    3.0
+   ],
+   [
+    90.577,
+    -72.71,
+    234.88,
+    3,
+    3.0
+   ],
+   [
+    92.497,
+    -89.99,
+    234.88,
+    0,
+    3.0
+   ],
+   [
+    95.617,
+    -89.99,
+    262.96,
+    3,
+    3.62
+   ],
+   [
+    95.857,
+    -92.15,
+    262.96,
+    0,
+    3.67
+   ],
+   [
+    96.337,
+    -92.15,
+    267.28,
+    1,
+    3.76
+   ],
+   [
+    97.057,
+    -85.67,
+    267.28,
+    0,
+    3.91
+   ],
+   [
+    98.257,
+    -85.67,
+    278.08,
+    3,
+    4.15
+   ],
+   [
+    98.977,
+    -92.15,
+    278.08,
+    0,
+    4.29
+   ],
+   [
+    100.177,
+    -92.15,
+    288.88,
+    1,
+    4.53
+   ],
+   [
+    100.897,
+    -85.67,
+    288.88,
+    0,
+    4.67
+   ],
+   [
+    101.617,
+    -85.67,
+    295.36,
+    3,
+    4.82
+   ],
+   [
+    102.817,
+    -96.47,
+    295.36,
+    0,
+    5.06
+   ],
+   [
+    103.297,
+    -96.47,
+    299.68,
+    1,
+    5.15
+   ],
+   [
+    104.017,
+    -89.99,
+    299.68,
+    0,
+    5.29
+   ],
+   [
+    107.857,
+    -89.99,
+    334.24,
+    1,
+    6.0
+   ],
+   [
+    108.577,
+    -83.51,
+    334.24,
+    0,
+    6.0
+   ],
+   [
+    109.777,
+    -83.51,
+    345.04,
+    3,
+    6.0
+   ],
+   [
+    110.977,
+    -94.31,
+    345.04,
+    0,
+    6.0
+   ],
+   [
+    111.217,
+    -94.31,
+    347.2,
+    3,
+    6.0
+   ],
+   [
+    111.697,
+    -98.63,
+    347.2,
+    0,
+    6.0
+   ],
+   [
+    112.417,
+    -98.63,
+    353.68,
+    3,
+    6.0
+   ],
+   [
+    113.137,
+    -105.11,
+    353.68,
+    0,
+    6.0
+   ],
+   [
+    113.617,
+    -105.11,
+    358.0,
+    3,
+    6.0
+   ],
+   [
+    114.337,
+    -111.59,
+    358.0,
+    2,
+    6.0
+   ],
+   [
+    114.817,
+    -111.59,
+    353.68,
+    3,
+    6.0
+   ],
+   [
+    115.177,
+    -114.83,
+    353.68,
+    2,
+    6.0
+   ],
+   [
+    115.537,
+    -114.83,
+    350.44,
+    3,
+    6.0
+   ],
+   [
+    116.017,
+    -119.15,
+    350.44,
+    2,
+    6.0
+   ],
+   [
+    116.257,
+    -119.15,
+    348.28,
+    3,
+    6.0
+   ],
+   [
+    117.097,
+    -126.71,
+    348.28,
+    2,
+    6.0
+   ],
+   [
+    117.457,
+    -126.71,
+    345.04,
+    3,
+    6.0
+   ],
+   [
+    117.937,
+    -131.03,
+    345.04,
+    2,
+    6.0
+   ],
+   [
+    118.897,
+    -131.03,
+    336.4,
+    1,
+    6.0
+   ],
+   [
+    119.377,
+    -126.71,
+    336.4,
+    2,
+    6.0
+   ],
+   [
+    119.857,
+    -126.71,
+    332.08,
+    1,
+    6.0
+   ],
+   [
+    120.097,
+    -124.55,
+    332.08,
+    2,
+    6.0
+   ],
+   [
+    121.297,
+    -124.55,
+    321.28,
+    1,
+    6.0
+   ],
+   [
+    121.777,
+    -120.23,
+    321.28,
+    2,
+    6.0
+   ],
+   [
+    122.257,
+    -120.23,
+    316.96,
+    1,
+    6.0
+   ],
+   [
+    122.496,
+    -118.08,
+    316.96,
+    2,
+    6.0
+   ],
+   [
+    122.736,
+    -118.08,
+    314.8,
+    1,
+    6.0
+   ],
+   [
+    122.976,
+    -115.92,
+    314.8,
+    2,
+    6.0
+   ],
+   [
+    123.216,
+    -115.92,
+    312.64,
+    1,
+    6.0
+   ],
+   [
+    123.936,
+    -109.44,
+    312.64,
+    2,
+    6.0
+   ],
+   [
+    126.336,
+    -109.44,
+    291.04,
+    3,
+    6.0
+   ],
+   [
+    126.576,
+    -111.6,
+    291.04,
+    2,
+    6.0
+   ],
+   [
+    127.056,
+    -111.6,
+    286.72,
+    1,
+    6.0
+   ],
+   [
+    127.776,
+    -105.12,
+    286.72,
+    2,
+    6.0
+   ],
+   [
+    128.496,
+    -105.12,
+    280.24,
+    3,
+    6.0
+   ],
+   [
+    128.976,
+    -109.44,
+    280.24,
+    2,
+    6.0
+   ],
+   [
+    129.696,
+    -109.44,
+    273.76,
+    3,
+    6.0
+   ],
+   [
+    130.176,
+    -113.76,
+    273.76,
+    2,
+    6.0
+   ],
+   [
+    130.896,
+    -113.76,
+    267.28,
+    1,
+    6.0
+   ],
+   [
+    131.616,
+    -107.28,
+    267.28,
+    2,
+    6.0
+   ],
+   [
+    132.336,
+    -107.28,
+    260.8,
+    3,
+    6.0
+   ],
+   [
+    132.816,
+    -111.6,
+    260.8,
+    2,
+    6.0
+   ],
+   [
+    133.296,
+    -111.6,
+    256.48,
+    3,
+    6.0
+   ],
+   [
+    134.256,
+    -120.24,
+    256.48,
+    2,
+    6.0
+   ],
+   [
+    134.736,
+    -120.24,
+    252.16,
+    1,
+    6.0
+   ],
+   [
+    135.216,
+    -115.92,
+    252.16,
+    2,
+    6.0
+   ],
+   [
+    135.456,
+    -115.92,
+    250.0,
+    1,
+    6.0
+   ],
+   [
+    136.176,
+    -109.44,
+    250.0,
+    2,
+    6.0
+   ],
+   [
+    136.656,
+    -109.44,
+    245.68,
+    3,
+    6.0
+   ],
+   [
+    137.136,
+    -113.76,
+    245.68,
+    2,
+    6.0
+   ],
+   [
+    137.616,
+    -113.76,
+    241.36,
+    3,
+    6.0
+   ],
+   [
+    137.856,
+    -115.92,
+    241.36,
+    2,
+    6.0
+   ],
+   [
+    138.096,
+    -115.92,
+    239.2,
+    1,
+    6.0
+   ],
+   [
+    138.256,
+    -114.48,
+    239.2,
+    2,
+    6.0
+   ],
+   [
+    138.416,
+    -114.48,
+    237.76,
+    1,
+    6.0
+   ],
+   [
+    138.576,
+    -113.04,
+    237.76,
+    2,
+    6.0
+   ],
+   [
+    139.056,
+    -113.04,
+    233.44,
+    3,
+    5.91
+   ],
+   [
+    140.016,
+    -121.68,
+    233.44,
+    2,
+    5.71
+   ],
+   [
+    140.976,
+    -121.68,
+    224.8,
+    3,
+    5.52
+   ],
+   [
+    141.936,
+    -130.32,
+    224.8,
+    0,
+    5.33
+   ],
+   [
+    142.896,
+    -130.32,
+    233.44,
+    3,
+    5.14
+   ],
+   [
+    143.856,
+    -138.96,
+    233.44,
+    0,
+    4.95
+   ],
+   [
+    144.816,
+    -138.96,
+    242.08,
+    3,
+    4.76
+   ],
+   [
+    145.536,
+    -145.44,
+    242.08,
+    0,
+    4.61
+   ],
+   [
+    146.736,
+    -145.44,
+    252.88,
+    3,
+    4.38
+   ],
+   [
+    147.696,
+    -154.08,
+    252.88,
+    0,
+    4.18
+   ],
+   [
+    148.656,
+    -154.08,
+    261.52,
+    3,
+    3.99
+   ],
+   [
+    149.616,
+    -162.72,
+    261.52,
+    0,
+    3.8
+   ],
+   [
+    150.336,
+    -162.72,
+    268.0,
+    3,
+    3.66
+   ],
+   [
+    150.576,
+    -164.88,
+    268.0,
+    0,
+    3.61
+   ],
+   [
+    151.536,
+    -164.88,
+    276.64,
+    3,
+    3.42
+   ],
+   [
+    152.496,
+    -173.52,
+    276.64,
+    0,
+    3.23
+   ],
+   [
+    153.456,
+    -173.52,
+    285.28,
+    3,
+    3.04
+   ],
+   [
+    153.936,
+    -177.84,
+    285.28,
+    0,
+    3.0
+   ],
+   [
+    154.656,
+    -177.84,
+    291.76,
+    3,
+    3.29
+   ],
+   [
+    155.496,
+    -185.4,
+    291.76,
+    2,
+    3.62
+   ],
+   [
+    155.856,
+    -185.4,
+    288.52,
+    3,
+    3.76
+   ],
+   [
+    156.336,
+    -189.72,
+    288.52,
+    2,
+    3.95
+   ],
+   [
+    156.576,
+    -189.72,
+    286.36,
+    3,
+    4.05
+   ],
+   [
+    157.296,
+    -196.2,
+    286.36,
+    2,
+    4.34
+   ],
+   [
+    157.456,
+    -196.2,
+    284.92,
+    3,
+    4.4
+   ],
+   [
+    157.616,
+    -197.64,
+    284.92,
+    2,
+    4.46
+   ],
+   [
+    157.776,
+    -197.64,
+    283.48,
+    3,
+    4.53
+   ],
+   [
+    158.256,
+    -201.96,
+    283.48,
+    2,
+    4.72
+   ],
+   [
+    158.496,
+    -201.96,
+    281.32,
+    1,
+    4.82
+   ],
+   [
+    158.856,
+    -198.72,
+    281.32,
+    2,
+    4.96
+   ],
+   [
+    159.216,
+    -198.72,
+    278.08,
+    1,
+    5.1
+   ],
+   [
+    159.696,
+    -194.4,
+    278.08,
+    2,
+    5.29
+   ],
+   [
+    160.416,
+    -194.4,
+    271.6,
+    1,
+    5.58
+   ],
+   [
+    160.896,
+    -190.08,
+    271.6,
+    2,
+    5.77
+   ],
+   [
+    161.136,
+    -190.08,
+    269.44,
+    1,
+    5.87
+   ],
+   [
+    161.296,
+    -188.64,
+    269.44,
+    2,
+    5.93
+   ],
+   [
+    161.456,
+    -188.64,
+    268.0,
+    1,
+    5.99
+   ],
+   [
+    161.616,
+    -187.2,
+    268.0,
+    2,
+    6.06
+   ],
+   [
+    162.096,
+    -187.2,
+    263.68,
+    1,
+    6.25
+   ],
+   [
+    162.336,
+    -185.04,
+    263.68,
+    0,
+    6.35
+   ],
+   [
+    163.056,
+    -185.04,
+    270.16,
+    1,
+    6.63
+   ],
+   [
+    163.536,
+    -180.72,
+    270.16,
+    0,
+    6.82
+   ],
+   [
+    164.016,
+    -180.72,
+    274.48,
+    1,
+    7.01
+   ],
+   [
+    164.256,
+    -178.56,
+    274.48,
+    0,
+    7.11
+   ],
+   [
+    164.976,
+    -178.56,
+    280.96,
+    1,
+    7.4
+   ],
+   [
+    165.136,
+    -177.12,
+    280.96,
+    0,
+    7.46
+   ],
+   [
+    165.296,
+    -177.12,
+    282.4,
+    3,
+    7.52
+   ],
+   [
+    165.456,
+    -178.56,
+    282.4,
+    0,
+    7.59
+   ],
+   [
+    167.015,
+    -178.56,
+    296.43,
+    3,
+    8.21
+   ],
+   [
+    167.375,
+    -181.8,
+    296.43,
+    0,
+    8.35
+   ],
+   [
+    167.855,
+    -181.8,
+    300.75,
+    3,
+    8.54
+   ],
+   [
+    168.335,
+    -186.12,
+    300.75,
+    0,
+    8.74
+   ],
+   [
+    168.575,
+    -186.12,
+    302.91,
+    3,
+    8.83
+   ],
+   [
+    168.815,
+    -188.28,
+    302.91,
+    0,
+    8.93
+   ],
+   [
+    169.055,
+    -188.28,
+    305.07,
+    3,
+    9.0
+   ],
+   [
+    169.295,
+    -190.44,
+    305.07,
+    0,
+    9.0
+   ],
+   [
+    170.015,
+    -190.44,
+    311.55,
+    3,
+    3.0
+   ],
+   [
+    170.735,
+    -196.92,
+    311.55,
+    0,
+    3.0
+   ],
+   [
+    171.215,
+    -196.92,
+    315.87,
+    3,
+    3.0
+   ],
+   [
+    171.695,
+    -201.24,
+    315.87,
+    0,
+    3.0
+   ],
+   [
+    171.935,
+    -201.24,
+    318.03,
+    3,
+    3.0
+   ],
+   [
+    172.415,
+    -205.56,
+    318.03,
+    0,
+    3.0
+   ],
+   [
+    173.135,
+    -205.56,
+    324.51,
+    3,
+    3.0
+   ],
+   [
+    173.855,
+    -212.04,
+    324.51,
+    0,
+    3.0
+   ],
+   [
+    174.575,
+    -212.04,
+    330.99,
+    3,
+    3.0
+   ],
+   [
+    175.055,
+    -216.36,
+    330.99,
+    0,
+    3.0
+   ],
+   [
+    175.535,
+    -216.36,
+    335.31,
+    1,
+    3.0
+   ],
+   [
+    175.775,
+    -214.2,
+    335.31,
+    0,
+    3.0
+   ],
+   [
+    176.015,
+    -214.2,
+    337.47,
+    1,
+    3.0
+   ],
+   [
+    176.255,
+    -212.04,
+    337.47,
+    0,
+    3.0
+   ],
+   [
+    176.495,
+    -212.04,
+    339.63,
+    1,
+    3.0
+   ],
+   [
+    176.735,
+    -209.88,
+    339.63,
+    0,
+    3.0
+   ],
+   [
+    176.975,
+    -209.88,
+    341.79,
+    1,
+    3.0
+   ],
+   [
+    177.695,
+    -203.4,
+    341.79,
+    0,
+    3.0
+   ],
+   [
+    178.415,
+    -203.4,
+    348.27,
+    1,
+    3.0
+   ],
+   [
+    178.575,
+    -201.96,
+    348.27,
+    0,
+    3.0
+   ],
+   [
+    178.735,
+    -201.96,
+    349.71,
+    1,
+    3.0
+   ],
+   [
+    178.895,
+    -200.52,
+    349.71,
+    0,
+    3.0
+   ],
+   [
+    179.375,
+    -200.52,
+    354.03,
+    1,
+    3.0
+   ],
+   [
+    180.335,
+    -191.88,
+    354.03,
+    2,
+    3.0
+   ],
+   [
+    180.815,
+    -191.88,
+    349.71,
+    1,
+    3.0
+   ],
+   [
+    181.295,
+    -187.56,
+    349.71,
+    2,
+    3.0
+   ],
+   [
+    181.535,
+    -187.56,
+    347.55,
+    1,
+    3.0
+   ],
+   [
+    182.255,
+    -181.08,
+    347.55,
+    2,
+    3.0
+   ],
+   [
+    182.735,
+    -181.08,
+    343.23,
+    1,
+    3.0
+   ],
+   [
+    183.215,
+    -176.76,
+    343.23,
+    2,
+    3.0
+   ],
+   [
+    183.695,
+    -176.76,
+    338.91,
+    1,
+    3.0
+   ],
+   [
+    183.935,
+    -174.6,
+    338.91,
+    2,
+    3.0
+   ],
+   [
+    184.175,
+    -174.6,
+    336.75,
+    1,
+    3.0
+   ],
+   [
+    184.415,
+    -172.44,
+    336.75,
+    2,
+    3.0
+   ],
+   [
+    184.655,
+    -172.44,
+    334.59,
+    1,
+    3.0
+   ],
+   [
+    185.375,
+    -165.96,
+    334.59,
+    2,
+    3.29
+   ],
+   [
+    186.575,
+    -165.96,
+    323.79,
+    3,
+    3.78
+   ],
+   [
+    187.775,
+    -176.76,
+    323.79,
+    0,
+    4.27
+   ],
+   [
+    188.015,
+    -176.76,
+    325.95,
+    3,
+    4.36
+   ],
+   [
+    188.495,
+    -181.08,
+    325.95,
+    0,
+    4.56
+   ],
+   [
+    189.215,
+    -181.08,
+    332.43,
+    3,
+    4.85
+   ],
+   [
+    189.935,
+    -187.56,
+    332.43,
+    0,
+    5.14
+   ],
+   [
+    190.415,
+    -187.56,
+    336.75,
+    3,
+    5.34
+   ],
+   [
+    190.895,
+    -191.88,
+    336.75,
+    0,
+    5.53
+   ],
+   [
+    191.135,
+    -191.88,
+    338.91,
+    1,
+    5.63
+   ],
+   [
+    191.375,
+    -189.72,
+    338.91,
+    0,
+    5.73
+   ],
+   [
+    191.615,
+    -189.72,
+    341.07,
+    1,
+    5.83
+   ],
+   [
+    191.855,
+    -187.56,
+    341.07,
+    0,
+    5.92
+   ],
+   [
+    192.095,
+    -187.56,
+    343.23,
+    1,
+    6.0
+   ],
+   [
+    192.335,
+    -185.4,
+    343.23,
+    0,
+    6.0
+   ],
+   [
+    193.055,
+    -185.4,
+    349.71,
+    1,
+    6.0
+   ],
+   [
+    193.775,
+    -178.92,
+    349.71,
+    0,
+    6.0
+   ],
+   [
+    193.935,
+    -178.92,
+    351.15,
+    1,
+    6.0
+   ],
+   [
+    194.095,
+    -177.48,
+    351.15,
+    0,
+    6.0
+   ],
+   [
+    194.255,
+    -177.48,
+    352.59,
+    1,
+    6.0
+   ],
+   [
+    194.855,
+    -172.08,
+    352.59,
+    0,
+    6.0
+   ],
+   [
+    195.455,
+    -172.08,
+    357.99,
+    1,
+    6.0
+   ],
+   [
+    195.695,
+    -169.92,
+    357.99,
+    0,
+    6.0
+   ],
+   [
+    196.175,
+    -169.92,
+    362.31,
+    1,
+    6.0
+   ],
+   [
+    196.655,
+    -165.6,
+    362.31,
+    0,
+    6.0
+   ],
+   [
+    196.895,
+    -165.6,
+    364.47,
+    1,
+    6.0
+   ],
+   [
+    197.615,
+    -159.12,
+    364.47,
+    0,
+    6.0
+   ],
+   [
+    198.095,
+    -159.12,
+    368.79,
+    1,
+    6.0
+   ],
+   [
+    198.335,
+    -156.96,
+    368.79,
+    0,
+    6.0
+   ],
+   [
+    198.575,
+    -156.96,
+    370.95,
+    1,
+    6.0
+   ],
+   [
+    198.815,
+    -154.8,
+    370.95,
+    0,
+    6.0
+   ],
+   [
+    199.055,
+    -154.8,
+    373.11,
+    1,
+    6.0
+   ],
+   [
+    199.295,
+    -152.64,
+    373.11,
+    0,
+    6.0
+   ],
+   [
+    199.535,
+    -152.64,
+    375.27,
+    1,
+    6.0
+   ],
+   [
+    199.775,
+    -150.48,
+    375.27,
+    0,
+    6.0
+   ],
+   [
+    201.455,
+    -150.48,
+    390.39,
+    3,
+    6.0
+   ],
+   [
+    203.375,
+    -167.76,
+    390.39,
+    0,
+    6.0
+   ],
+   [
+    204.815,
+    -167.76,
+    403.35,
+    3,
+    6.0
+   ],
+   [
+    205.295,
+    -172.08,
+    403.35,
+    0,
+    6.0
+   ],
+   [
+    205.775,
+    -172.08,
+    407.67,
+    3,
+    6.0
+   ],
+   [
+    206.255,
+    -176.4,
+    407.67,
+    0,
+    6.0
+   ],
+   [
+    209.135,
+    -176.4,
+    433.59,
+    3,
+    6.0
+   ],
+   [
+    219.063,
+    -265.75,
+    433.59,
+    3,
+    6.0
+   ]
+  ]
+ }
+}

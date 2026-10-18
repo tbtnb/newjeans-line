@@ -64,7 +64,11 @@ for t in taps:
     if abs(d[0]-t)<=0.06: hit.append((d[0]-t)*1000)
 lines.append(f"\nCross-check on separated stems (demucs; times corrected −50 ms): {len(hit)}/{len(taps)} taps have a stem onset (drums/bass/vocals/other, strength > 0.35) within ±60 ms; median offset {np.median(hit):+.1f} ms, 90th pct |offset| {np.percentile(np.abs(hit),90):.1f} ms. Section-boundary taps are listed below.\n")
 def ex(t):
-    r=[x for x in raw['taps'] if x['t']==t][0]; f=ofs[t]
+    r=[x for x in raw['taps'] if x['t']==t][0]; f=ofs.get(t)
+    if f is None or 'sec' not in r:
+        i=bisect.bisect_left(tso,t); c=[allon[j] for j in (i-1,i) if 0<=j<len(allon)]; d=min(c,key=lambda x:abs(x[0]-t))
+        sec=[x['label'] for x in secs if x['t']<=t+1e-6][-1]; bp=(t-g['bar0'])/(4*g.get('period',g.get('beat'))); b=int(bp)
+        return f"| {t:.3f} | {sec} | bar {b} pos {(bp-b)*4:.2f} beats | {r.get('tag','')} (burst pass) | stem {d[2]} | {'%+.1f'%((d[0]-t)*1000)+' (stem)' if abs(d[0]-t)<=0.06 else 'n/a'} |\n"
     return f"| {t:.3f} | {r['sec']} | bar {r['bar']} slot {r['slot8']}/{getattr(S,'SUB',16)} | {r['tag']} | {f['band']} | {'%+.1f'%f['offset_ms'] if f['offset_ms'] is not None else 'n/a (soft onset)'} |\n"
 lines.append("\n## Spot checks (start / section changes / middle / end)\n\n| tap t (s) | section | grid position | tagged event | band | measured offset ms |\n|---|---|---|---|---|---|\n")
 pick=taps[:4]
