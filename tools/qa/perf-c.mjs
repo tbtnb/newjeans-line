@@ -44,7 +44,7 @@ for (const [name, T] of probes) {
     return { T: +T.toFixed(2), drawCalls: dc, tris: Math.round(tris), active: act.length, frameMs: +ts[15].toFixed(2), frameP90: +ts[27].toFixed(2), sc: st.scenec };
   }, T);
   rows.push({ name, ...r });
-  console.log(JSON.stringify({ name, ...r, sc: r.sc && { chunks: r.sc.chunks, cm: r.sc.chunkMeshes, types: r.sc.types, inst: r.sc.instances, sets: r.sc.sets, models: r.sc.models, trisAtBudget: r.sc.trisAtBudget } }));
+  console.log(JSON.stringify({ name, ...r, sc: r.sc && { chunks: r.sc.chunks, cm: r.sc.chunkMeshes, types: r.sc.types, inst: r.sc.instances, sets: r.sc.sets, models: r.sc.models, trisAtBudget: r.sc.trisAtBudget, win: r.sc.trisWindow } }));
   if (shots) { mkdirSync(shots, { recursive: true }); await page.screenshot(png ? { path: `${shots}/${name}.png` } : { path: `${shots}/${name}.jpg`, quality: 70 }); }
 }
 // real playback frame intervals (rAF) for 6 s from the drop

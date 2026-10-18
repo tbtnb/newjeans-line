@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Generate levels-src/omg/scene-c.json (concept C placement spec) from the design data zones_c.py (branch omg-design-v3).
 Everything is relative to the route by time t and side, so it survives re-charts. usage: make_spec.py [path/to/zones_c.py]"""
-import json, sys, importlib.util, os
+import json, sys, importlib.util, os, glob
 src = sys.argv[1] if len(sys.argv) > 1 else '/workspace/nj-design-v3/levels-design/omg/redesign-v3/C/zones_c.py'
 sp = importlib.util.spec_from_file_location('zones_c', src); Z = importlib.util.module_from_spec(sp); sp.loader.exec_module(Z)
 
@@ -58,7 +58,7 @@ PAL = {   # zone environment (sky/fog/page) from DESIGN.md light notes
 }
 here = os.path.dirname(os.path.abspath(__file__)); glbdir = os.path.join(here, '..', '..', 'public', 'models', 'omg-c')
 # engine asset ids that reuse another asset's model (no sheet of their own)
-GLB = {'tree-bush': 'tree', 'tall-tower': 'spiral-tower', 'bird': 'page-bird', 'firework': 'star', 'lantern': 'firefly-lamp', 'leaf': 'petal', 'float-heart': 'flower-heart'}
+GLB = {'tree-lo': 'tree-lo', 'tree-bush-lo': 'tree-lo', 'pine-lo': 'pine-lo', 'paper-hill-lo': 'paper-hill-lo', 'tree-bush': 'tree', 'tall-tower': 'spiral-tower', 'bird': 'page-bird', 'firework': 'star', 'lantern': 'firefly-lamp', 'leaf': 'petal', 'float-heart': 'flower-heart'}
 def model_of(aid):
     g = GLB.get(aid, aid)
     return (True if g == aid else g) if os.path.exists(os.path.join(glbdir, g + '.glb')) else False
@@ -120,11 +120,22 @@ EXTRA = {   # zone: [(asset, layer, count)]  -- counts before spec.density
 KIT_BIG = {'clover', 'fern', 'tulip', 'flower-heart', 'mushroom', 'reed', 'flower'}
 MASS = {'z01': [('tree-bush', 40)], 'z02': [('tree-bush', 40)], 'z03': [('tree-bush', 30)], 'z04': [('pine', 30)], 'z05': [('pine', 30), ('tree-bush', 20)],
         'z06': [('tree-bush', 40)], 'z07': [('pine', 40)], 'z08': [('tree-bush', 30)], 'z09': [('pine', 60)], 'z10': [('tree-bush', 40)]}
+# pass 2 (merged mid layer): mid filler <= 650 tris x2.2, heavy mid unchanged; base ground specks halved (they read as dots at this camera)
+MT = {}
+for f in glob.glob(os.path.join(here, '..', '..', 'deliverables', 'omg-c-models', 'metrics', '*.metrics.json')):
+    try: MT[os.path.basename(f).split('.')[0]] = json.load(open(f)).get('tris') or 0
+    except Exception: pass
+SPECKS = {'flower', 'grass', 'flower-heart', 'pebble', 'moss-rock', 'slab'}
+NIGHT_LAMPS = {'z04': [('firefly-lamp', 'mid', 30), ('lily-lamp', 'mid', 20)], 'z07': [('firefly-lamp', 'mid', 36), ('lily-lamp', 'mid', 20), ('star-chime', 'mid', 12)],
+               'z08': [('firefly-lamp', 'mid', 30), ('lily-lamp', 'mid', 16)], 'z09': [('firefly-lamp', 'mid', 50), ('lily-lamp', 'mid', 30), ('mushroom-house', 'mid', 8)]}
+Z10 = [('bunny-statue', 'mid', 12), ('balloons', 'mid', 16), ('bunting', 'mid', 24), ('heart-bed', 'mid', 10), ('tulip-bed', 'mid', 10), ('tree-bush', 'mid', 14)]
 RING = {   # far ring 22-55 m out: paper hills + zone silhouette pieces, big scale
  'z01': ['paper-hill', 'tree'], 'z02': ['paper-hill', 'tree'], 'z03': ['paper-hill', 'tree'], 'z04': ['paper-hill', 'lantern-tower'],
  'z05': ['paper-hill', 'pine'], 'z06': ['paper-hill', 'tree'], 'z07': ['paper-hill', 'pine', 'spiral-tower'], 'z08': ['paper-hill', 'lantern-tower'],
  'z09': ['paper-hill', 'pine'], 'z10': ['paper-hill', 'tree-bush'],
 }
+for lo, base in (('tree-lo', 'tree'), ('tree-bush-lo', 'tree-bush'), ('pine-lo', 'pine'), ('paper-hill-lo', 'paper-hill')):
+    if base in assets: assets[lo] = dict(assets[base], model=model_of(lo), names=[], tris=150)
 for a in KIT.values(): assets.setdefault(a[0], dict(layer='ground', shape=a[1], h=a[2], tris=200, model=model_of(a[0]), names=[]))
 for z in zones:
     zid = z['id']
@@ -139,18 +150,45 @@ for z in zones:
         Ld = LAYER[layer]; sc = [2.2, 3.4] if layer == G and aid in KIT_BIG else Ld['scale']   # kit reads at the gameplay camera
         z['layers'].append(dict(asset=aid, layer=layer, count=n, near=list(Ld['near']), y=Ld['y'], scale=sc, colors=bright, hi=True))
     for aid, n in MASS.get(zid, []):   # cheap tree masses hugging the road (~300 tris each) so no stretch is bare
-        z['layers'].append(dict(asset=aid, layer='mid', count=round(n * zk), near=[2.0, 12.0], y=[0, 0], scale=[1.0, 1.5], colors=bright, hi=True))
+        z['layers'].append(dict(asset=aid, layer='mid', count=round(n * zk), near=[2.0, 12.0], y=[0, 0], scale=[1.0, 1.5], colors=bright, hi=True, mass=True))
     for L in z['layers']:
         if zid == 'z10' and L['asset'] == 'bunny-house' and not L.get('hi'): L['count'] = 20   # 1k-tri houses: z10 peak
+    for aid, layer, n in NIGHT_LAMPS.get(zid, []) + (Z10 if zid == 'z10' else []):
+        Ld = LAYER[layer]; z['layers'].append(dict(asset=aid, layer=layer, count=n, near=list(Ld['near']), y=Ld['y'], scale=Ld['scale'], colors=bright, hi=True))
+    LO = {'tree': 'tree-lo', 'tree-bush': 'tree-bush-lo', 'pine': 'pine-lo', 'paper-hill': 'paper-hill-lo'}   # ~110-145 tri decimated fillers
+    for L in list(z['layers']):
+        g = GLB.get(L['asset'], L['asset']); t = MT.get(g, 9999)
+        if L.get('mass') and L['asset'] in LO: L['asset'] = LO[L['asset']]
+        elif L['layer'] == 'mid' and t <= 650 and L['near'][0] < 20:
+            if L['asset'] in LO: z['layers'].append(dict(L, asset=LO[L['asset']], count=round(L['count'] * 1.2), hi=True))   # the extra copies are low-poly
+            else: L['count'] = round(L['count'] * 2.2)
+        elif L['layer'] == 'mid' and L['asset'] in LO and (L['near'][0] >= 20 or L.get('mass')): L['asset'] = LO[L['asset']]   # far ring / masses
+        if L['layer'] == 'ground' and not L.get('hi') and L['asset'] in SPECKS: L['count'] = round(L['count'] * 0.5)
+        if zid == 'z10' and L['layer'] == 'anim' and L['asset'] == 'streamer': L['count'] = 150   # 'scattered leaves'
+        if zid == 'z10' and L['asset'] == 'gold-decal': L['count'] = 30
+        if L['asset'] == 'lily-lamp': L['count'] = round(L['count'] * 0.5)   # 414 tris
+        if L['asset'] == 'gift': L['count'] = round(L['count'] * 0.5)   # 252 tris
     for k, aid in enumerate(RING[zid]):
-        z['layers'].append(dict(asset=aid, layer='mid', count=round((26 if k == 0 else 12 if aid in ('tree', 'pine', 'tree-bush') else 5) * zk), near=[22.0, 55.0], y=[0, 0], scale=[2.2, 3.6] if k == 0 else [1.4, 2.2], colors=bright, hi=True))
+        z['layers'].append(dict(asset=LO.get(aid, aid), layer='mid', count=round((16 if k == 0 else 12 if aid in ('tree', 'pine', 'tree-bush') else 5) * zk), near=[26.0, 60.0], y=[0, 0], scale=[1.2, 2.0] if k == 0 else [1.4, 2.2], colors=bright, hi=True))
     # secondary hero copies: each hero/landmark set piece gets a smaller twin on the other side 2.5 s later and a far-ring copy
     extra = []
     for sp in z['setpieces']:
-        if sp['asset'] in ('bunny-family',): continue
+        if sp['asset'] in ('bunny-family',) or MT.get(GLB.get(sp['asset'], sp['asset']), 0) > 3000: continue   # heavy heroes: no twin (draws + tris)
         t2 = sp['t'] + 2.5
         if t2 < z['t1'] - 0.5: extra.append(dict(sp, t=round(t2, 2), side=-sp['side'], dist=max(4.0, sp['dist'] - 2), scale=0.6, label='twin', hi=True))
     z['setpieces'] = sorted(z['setpieces'] + extra, key=lambda d: d['t'])
+# placement now retries spots over other road segments (place.ts), so ~95% of ground / ~70% of mid land instead of ~55% / ~30%:
+# rescale the counts to the high-tier budget (~150k tris)
+for z in zones:
+    for L in z['layers']:
+        if L['layer'] == 'ground': L['count'] = round(L['count'] * (0.33 if L['asset'] == 'reed' else 0.55))
+        elif L['layer'] == 'mid' and not L['asset'].endswith('-lo') and L['near'][0] < 20:
+            L['count'] = round(L['count'] * (0.45 if L['asset'] in ('firefly-lamp', 'lily-lamp', 'star-chime', 'heart-sculpt') else 0.72))
+    zf = {'z07': (1, 0.85), 'z08': (0.9, 0.78), 'z10': (0.8, 0.65)}.get(z['id'])   # (ground, mid) peak zones
+    if zf:
+        for L in z['layers']:
+            if L['layer'] == 'ground': L['count'] = round(L['count'] * zf[0])
+            elif L['layer'] == 'mid' and L['near'][0] < 20: L['count'] = round(L['count'] * zf[1])
 spec = dict(version=1, source='levels-design/omg/redesign-v3/C/zones_c.py (omg-design-v3)', chunk=20, window=dict(behind=3, ahead=8),
             clear=dict(ground=0.3, groundMaxH=1.2, near=1.0), density=dict(ground=2.0, mid=1.6, anim=1.5), assets=assets, zones=zones)
 # design asset sheets (levels-design/omg/redesign-v3/C/assets/<design id>/spec.json): their size / tri budget win over the table

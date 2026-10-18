@@ -985,6 +985,38 @@
    "w": 4.6,
    "d": 1.6
   },
+  "tree-lo": {
+   "layer": "mid",
+   "shape": "tree",
+   "h": 4.0,
+   "tris": 150,
+   "model": true,
+   "names": []
+  },
+  "tree-bush-lo": {
+   "layer": "mid",
+   "shape": "tree",
+   "h": 3.2,
+   "tris": 150,
+   "model": "tree-lo",
+   "names": []
+  },
+  "pine-lo": {
+   "layer": "mid",
+   "shape": "tree",
+   "h": 5.0,
+   "tris": 150,
+   "model": true,
+   "names": []
+  },
+  "paper-hill-lo": {
+   "layer": "mid",
+   "shape": "card",
+   "h": 4.0,
+   "tris": 150,
+   "model": true,
+   "names": []
+  },
   "clover": {
    "layer": "ground",
    "shape": "tuft",
@@ -1049,7 +1081,7 @@
     {
      "asset": "grass",
      "layer": "ground",
-     "count": 260,
+     "count": 72,
      "near": [
       0.3,
       9.0
@@ -1073,7 +1105,7 @@
     {
      "asset": "flower",
      "layer": "ground",
-     "count": 220,
+     "count": 61,
      "near": [
       0.3,
       9.0
@@ -1097,7 +1129,7 @@
     {
      "asset": "pebble",
      "layer": "ground",
-     "count": 80,
+     "count": 22,
      "near": [
       0.3,
       9.0
@@ -1121,7 +1153,7 @@
     {
      "asset": "tree-bush",
      "layer": "mid",
-     "count": 36,
+     "count": 26,
      "near": [
       1.5,
       7.0
@@ -1145,7 +1177,7 @@
     {
      "asset": "bunny-statue",
      "layer": "mid",
-     "count": 6,
+     "count": 4,
      "near": [
       1.5,
       7.0
@@ -1169,7 +1201,7 @@
     {
      "asset": "paper-hill",
      "layer": "mid",
-     "count": 18,
+     "count": 13,
      "near": [
       1.5,
       7.0
@@ -1289,7 +1321,7 @@
     {
      "asset": "clover",
      "layer": "ground",
-     "count": 160,
+     "count": 88,
      "near": [
       0.3,
       9.0
@@ -1314,7 +1346,7 @@
     {
      "asset": "fern",
      "layer": "ground",
-     "count": 90,
+     "count": 50,
      "near": [
       0.3,
       9.0
@@ -1339,7 +1371,7 @@
     {
      "asset": "tulip",
      "layer": "ground",
-     "count": 90,
+     "count": 50,
      "near": [
       0.3,
       9.0
@@ -1364,7 +1396,7 @@
     {
      "asset": "mushroom",
      "layer": "ground",
-     "count": 50,
+     "count": 28,
      "near": [
       0.3,
       9.0
@@ -1389,7 +1421,7 @@
     {
      "asset": "tree",
      "layer": "mid",
-     "count": 24,
+     "count": 17,
      "near": [
       1.5,
       7.0
@@ -1414,7 +1446,7 @@
     {
      "asset": "fence",
      "layer": "mid",
-     "count": 24,
+     "count": 38,
      "near": [
       1.5,
       7.0
@@ -1439,7 +1471,7 @@
     {
      "asset": "tulip-bed",
      "layer": "mid",
-     "count": 10,
+     "count": 7,
      "near": [
       1.5,
       7.0
@@ -1462,7 +1494,7 @@
      "hi": true
     },
     {
-     "asset": "tree-bush",
+     "asset": "tree-bush-lo",
      "layer": "mid",
      "count": 40,
      "near": [
@@ -1484,23 +1516,24 @@
       3,
       4
      ],
-     "hi": true
+     "hi": true,
+     "mass": true
     },
     {
-     "asset": "paper-hill",
+     "asset": "tree-bush-lo",
      "layer": "mid",
-     "count": 26,
+     "count": 43,
      "near": [
-      22.0,
-      55.0
+      1.5,
+      7.0
      ],
      "y": [
       0,
       0
      ],
      "scale": [
-      2.2,
-      3.6
+      1.1,
+      1.6
      ],
      "colors": [
       0,
@@ -1512,12 +1545,87 @@
      "hi": true
     },
     {
-     "asset": "tree",
+     "asset": "paper-hill-lo",
+     "layer": "mid",
+     "count": 22,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tree-lo",
+     "layer": "mid",
+     "count": 29,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "paper-hill-lo",
+     "layer": "mid",
+     "count": 16,
+     "near": [
+      26.0,
+      60.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.2,
+      2.0
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tree-lo",
      "layer": "mid",
      "count": 12,
      "near": [
-      22.0,
-      55.0
+      26.0,
+      60.0
      ],
      "y": [
       0,
@@ -1649,7 +1757,7 @@
     {
      "asset": "grass",
      "layer": "ground",
-     "count": 300,
+     "count": 82,
      "near": [
       0.3,
       9.0
@@ -1673,7 +1781,7 @@
     {
      "asset": "flower",
      "layer": "ground",
-     "count": 260,
+     "count": 72,
      "near": [
       0.3,
       9.0
@@ -1697,7 +1805,7 @@
     {
      "asset": "mushroom",
      "layer": "ground",
-     "count": 90,
+     "count": 50,
      "near": [
       0.3,
       9.0
@@ -1721,7 +1829,7 @@
     {
      "asset": "slab",
      "layer": "ground",
-     "count": 60,
+     "count": 16,
      "near": [
       0.3,
       9.0
@@ -1745,7 +1853,7 @@
     {
      "asset": "bunny-house",
      "layer": "mid",
-     "count": 10,
+     "count": 7,
      "near": [
       1.5,
       7.0
@@ -1769,7 +1877,7 @@
     {
      "asset": "mushroom-house",
      "layer": "mid",
-     "count": 8,
+     "count": 6,
      "near": [
       1.5,
       7.0
@@ -1793,7 +1901,7 @@
     {
      "asset": "fence",
      "layer": "mid",
-     "count": 48,
+     "count": 76,
      "near": [
       1.5,
       7.0
@@ -1817,7 +1925,7 @@
     {
      "asset": "tulip-bed",
      "layer": "mid",
-     "count": 16,
+     "count": 12,
      "near": [
       1.5,
       7.0
@@ -1841,7 +1949,7 @@
     {
      "asset": "tree",
      "layer": "mid",
-     "count": 30,
+     "count": 22,
      "near": [
       1.5,
       7.0
@@ -1961,7 +2069,7 @@
     {
      "asset": "clover",
      "layer": "ground",
-     "count": 140,
+     "count": 77,
      "near": [
       0.3,
       9.0
@@ -1986,7 +2094,7 @@
     {
      "asset": "tulip",
      "layer": "ground",
-     "count": 120,
+     "count": 66,
      "near": [
       0.3,
       9.0
@@ -2011,7 +2119,7 @@
     {
      "asset": "fern",
      "layer": "ground",
-     "count": 70,
+     "count": 38,
      "near": [
       0.3,
       9.0
@@ -2036,7 +2144,7 @@
     {
      "asset": "mushroom-group",
      "layer": "ground",
-     "count": 30,
+     "count": 16,
      "near": [
       0.3,
       9.0
@@ -2061,7 +2169,7 @@
     {
      "asset": "bunny-statue",
      "layer": "mid",
-     "count": 6,
+     "count": 4,
      "near": [
       1.5,
       7.0
@@ -2086,7 +2194,7 @@
     {
      "asset": "tree-bush",
      "layer": "mid",
-     "count": 24,
+     "count": 17,
      "near": [
       1.5,
       7.0
@@ -2109,7 +2217,7 @@
      "hi": true
     },
     {
-     "asset": "tree-bush",
+     "asset": "tree-bush-lo",
      "layer": "mid",
      "count": 40,
      "near": [
@@ -2131,23 +2239,24 @@
       3,
       4
      ],
-     "hi": true
+     "hi": true,
+     "mass": true
     },
     {
-     "asset": "paper-hill",
+     "asset": "tree-lo",
      "layer": "mid",
-     "count": 26,
+     "count": 36,
      "near": [
-      22.0,
-      55.0
+      1.5,
+      7.0
      ],
      "y": [
       0,
       0
      ],
      "scale": [
-      2.2,
-      3.6
+      1.1,
+      1.6
      ],
      "colors": [
       0,
@@ -2159,12 +2268,62 @@
      "hi": true
     },
     {
-     "asset": "tree",
+     "asset": "tree-bush-lo",
+     "layer": "mid",
+     "count": 29,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "paper-hill-lo",
+     "layer": "mid",
+     "count": 16,
+     "near": [
+      26.0,
+      60.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.2,
+      2.0
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tree-lo",
      "layer": "mid",
      "count": 12,
      "near": [
-      22.0,
-      55.0
+      26.0,
+      60.0
      ],
      "y": [
       0,
@@ -2319,7 +2478,7 @@
     {
      "asset": "tile-decal",
      "layer": "ground",
-     "count": 70,
+     "count": 38,
      "near": [
       0.3,
       9.0
@@ -2342,7 +2501,7 @@
     {
      "asset": "flower",
      "layer": "ground",
-     "count": 160,
+     "count": 44,
      "near": [
       0.3,
       9.0
@@ -2365,7 +2524,7 @@
     {
      "asset": "confetti-decal",
      "layer": "ground",
-     "count": 42,
+     "count": 23,
      "near": [
       0.3,
       9.0
@@ -2388,7 +2547,7 @@
     {
      "asset": "ward-bed",
      "layer": "mid",
-     "count": 12,
+     "count": 9,
      "near": [
       1.5,
       7.0
@@ -2411,7 +2570,7 @@
     {
      "asset": "screen",
      "layer": "mid",
-     "count": 16,
+     "count": 25,
      "near": [
       1.5,
       7.0
@@ -2434,7 +2593,7 @@
     {
      "asset": "iv-heart",
      "layer": "mid",
-     "count": 12,
+     "count": 19,
      "near": [
       1.5,
       7.0
@@ -2457,7 +2616,7 @@
     {
      "asset": "pull-tab",
      "layer": "mid",
-     "count": 20,
+     "count": 32,
      "near": [
       1.5,
       7.0
@@ -2480,7 +2639,7 @@
     {
      "asset": "tree",
      "layer": "mid",
-     "count": 20,
+     "count": 14,
      "near": [
       1.5,
       7.0
@@ -2595,7 +2754,7 @@
     {
      "asset": "flower-heart",
      "layer": "ground",
-     "count": 200,
+     "count": 110,
      "near": [
       0.3,
       9.0
@@ -2619,7 +2778,7 @@
     {
      "asset": "tulip",
      "layer": "ground",
-     "count": 120,
+     "count": 66,
      "near": [
       0.3,
       9.0
@@ -2643,7 +2802,7 @@
     {
      "asset": "gift",
      "layer": "ground",
-     "count": 30,
+     "count": 8,
      "near": [
       0.3,
       9.0
@@ -2667,7 +2826,7 @@
     {
      "asset": "mushroom",
      "layer": "ground",
-     "count": 80,
+     "count": 44,
      "near": [
       0.3,
       9.0
@@ -2691,7 +2850,7 @@
     {
      "asset": "clover",
      "layer": "ground",
-     "count": 100,
+     "count": 55,
      "near": [
       0.3,
       9.0
@@ -2715,7 +2874,7 @@
     {
      "asset": "tulip-bed",
      "layer": "mid",
-     "count": 14,
+     "count": 10,
      "near": [
       1.5,
       7.0
@@ -2739,7 +2898,7 @@
     {
      "asset": "bunny-statue",
      "layer": "mid",
-     "count": 6,
+     "count": 4,
      "near": [
       1.5,
       7.0
@@ -2763,7 +2922,7 @@
     {
      "asset": "iv-heart",
      "layer": "mid",
-     "count": 8,
+     "count": 13,
      "near": [
       1.5,
       7.0
@@ -2785,7 +2944,7 @@
      "hi": true
     },
     {
-     "asset": "tree-bush",
+     "asset": "tree-bush-lo",
      "layer": "mid",
      "count": 30,
      "near": [
@@ -2806,23 +2965,24 @@
       3,
       4
      ],
-     "hi": true
+     "hi": true,
+     "mass": true
     },
     {
-     "asset": "paper-hill",
+     "asset": "tree-lo",
      "layer": "mid",
-     "count": 26,
+     "count": 24,
      "near": [
-      22.0,
-      55.0
+      1.5,
+      7.0
      ],
      "y": [
       0,
       0
      ],
      "scale": [
-      2.2,
-      3.6
+      1.1,
+      1.6
      ],
      "colors": [
       0,
@@ -2833,12 +2993,36 @@
      "hi": true
     },
     {
-     "asset": "tree",
+     "asset": "paper-hill-lo",
+     "layer": "mid",
+     "count": 16,
+     "near": [
+      26.0,
+      60.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.2,
+      2.0
+     ],
+     "colors": [
+      0,
+      1,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tree-lo",
      "layer": "mid",
      "count": 12,
      "near": [
-      22.0,
-      55.0
+      26.0,
+      60.0
      ],
      "y": [
       0,
@@ -2969,7 +3153,7 @@
     {
      "asset": "star-decal",
      "layer": "ground",
-     "count": 90,
+     "count": 50,
      "near": [
       0.3,
       9.0
@@ -2992,7 +3176,7 @@
     {
      "asset": "flower",
      "layer": "ground",
-     "count": 200,
+     "count": 55,
      "near": [
       0.3,
       9.0
@@ -3015,7 +3199,7 @@
     {
      "asset": "gift",
      "layer": "ground",
-     "count": 40,
+     "count": 11,
      "near": [
       0.3,
       9.0
@@ -3038,7 +3222,7 @@
     {
      "asset": "lantern-string",
      "layer": "mid",
-     "count": 30,
+     "count": 22,
      "near": [
       1.5,
       7.0
@@ -3084,7 +3268,7 @@
     {
      "asset": "tree",
      "layer": "mid",
-     "count": 24,
+     "count": 17,
      "near": [
       1.5,
       7.0
@@ -3107,7 +3291,7 @@
     {
      "asset": "cannon",
      "layer": "mid",
-     "count": 8,
+     "count": 6,
      "near": [
       1.5,
       7.0
@@ -3222,7 +3406,7 @@
     {
      "asset": "flower-heart",
      "layer": "ground",
-     "count": 160,
+     "count": 88,
      "near": [
       0.3,
       9.0
@@ -3246,7 +3430,7 @@
     {
      "asset": "gift",
      "layer": "ground",
-     "count": 45,
+     "count": 12,
      "near": [
       0.3,
       9.0
@@ -3270,7 +3454,7 @@
     {
      "asset": "lily-lamp",
      "layer": "ground",
-     "count": 25,
+     "count": 7,
      "near": [
       0.3,
       9.0
@@ -3294,7 +3478,7 @@
     {
      "asset": "tulip",
      "layer": "ground",
-     "count": 90,
+     "count": 50,
      "near": [
       0.3,
       9.0
@@ -3366,7 +3550,7 @@
     {
      "asset": "bunny-statue",
      "layer": "mid",
-     "count": 6,
+     "count": 4,
      "near": [
       1.5,
       7.0
@@ -3412,7 +3596,7 @@
      "hi": true
     },
     {
-     "asset": "pine",
+     "asset": "pine-lo",
      "layer": "mid",
      "count": 30,
      "near": [
@@ -3433,23 +3617,96 @@
       3,
       4
      ],
-     "hi": true
+     "hi": true,
+     "mass": true
     },
     {
-     "asset": "paper-hill",
+     "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 26,
+     "count": 30,
      "near": [
-      22.0,
-      55.0
+      1.5,
+      7.0
      ],
      "y": [
       0,
       0
      ],
      "scale": [
-      2.2,
-      3.6
+      1.1,
+      1.6
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "lily-lamp",
+     "layer": "mid",
+     "count": 10,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tree-lo",
+     "layer": "mid",
+     "count": 29,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "paper-hill-lo",
+     "layer": "mid",
+     "count": 16,
+     "near": [
+      26.0,
+      60.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.2,
+      2.0
      ],
      "colors": [
       1,
@@ -3464,8 +3721,8 @@
      "layer": "mid",
      "count": 5,
      "near": [
-      22.0,
-      55.0
+      26.0,
+      60.0
      ],
      "y": [
       0,
@@ -3504,26 +3761,6 @@
      "label": "巨型立体城堡"
     },
     {
-     "t": 47.9,
-     "side": 1,
-     "asset": "castle",
-     "dist": 6.0,
-     "scale": 0.6,
-     "pop": "spring",
-     "label": "twin",
-     "hi": true
-    },
-    {
-     "t": 49.5,
-     "side": -1,
-     "asset": "castle",
-     "dist": 6.0,
-     "scale": 0.6,
-     "pop": "spring",
-     "label": "twin",
-     "hi": true
-    },
-    {
      "t": 50.5,
      "side": -1,
      "asset": "bunny-heart",
@@ -3531,16 +3768,6 @@
      "scale": 1.0,
      "pop": "spring",
      "label": "巨型弹出兔子+爱心"
-    },
-    {
-     "t": 53.0,
-     "side": 1,
-     "asset": "bunny-heart",
-     "dist": 6.0,
-     "scale": 0.6,
-     "pop": "spring",
-     "label": "twin",
-     "hi": true
     },
     {
      "t": 58.0,
@@ -3590,7 +3817,7 @@
     {
      "asset": "ripple-decal",
      "layer": "ground",
-     "count": 84,
+     "count": 46,
      "near": [
       0.3,
       9.0
@@ -3614,7 +3841,7 @@
     {
      "asset": "lily-pad",
      "layer": "ground",
-     "count": 120,
+     "count": 66,
      "near": [
       0.3,
       9.0
@@ -3638,7 +3865,7 @@
     {
      "asset": "reed",
      "layer": "ground",
-     "count": 100,
+     "count": 33,
      "near": [
       0.3,
       9.0
@@ -3662,7 +3889,7 @@
     {
      "asset": "paper-boat",
      "layer": "mid",
-     "count": 12,
+     "count": 9,
      "near": [
       1.5,
       7.0
@@ -3686,7 +3913,7 @@
     {
      "asset": "lily-lamp",
      "layer": "mid",
-     "count": 30,
+     "count": 15,
      "near": [
       1.5,
       7.0
@@ -3710,7 +3937,7 @@
     {
      "asset": "rock",
      "layer": "mid",
-     "count": 40,
+     "count": 63,
      "near": [
       1.5,
       7.0
@@ -3830,7 +4057,7 @@
     {
      "asset": "reed",
      "layer": "ground",
-     "count": 260,
+     "count": 86,
      "near": [
       0.3,
       9.0
@@ -3855,7 +4082,7 @@
     {
      "asset": "lily-lamp",
      "layer": "ground",
-     "count": 45,
+     "count": 12,
      "near": [
       0.3,
       9.0
@@ -3880,7 +4107,7 @@
     {
      "asset": "fern",
      "layer": "ground",
-     "count": 120,
+     "count": 66,
      "near": [
       0.3,
       9.0
@@ -3905,7 +4132,7 @@
     {
      "asset": "mushroom",
      "layer": "ground",
-     "count": 60,
+     "count": 33,
      "near": [
       0.3,
       9.0
@@ -3930,7 +4157,7 @@
     {
      "asset": "clover",
      "layer": "ground",
-     "count": 120,
+     "count": 66,
      "near": [
       0.3,
       9.0
@@ -3955,7 +4182,7 @@
     {
      "asset": "rock",
      "layer": "mid",
-     "count": 30,
+     "count": 48,
      "near": [
       1.5,
       7.0
@@ -3980,7 +4207,7 @@
     {
      "asset": "tulip-bed",
      "layer": "mid",
-     "count": 8,
+     "count": 6,
      "near": [
       1.5,
       7.0
@@ -4030,7 +4257,7 @@
     {
      "asset": "tree",
      "layer": "mid",
-     "count": 18,
+     "count": 13,
      "near": [
       1.5,
       7.0
@@ -4055,7 +4282,7 @@
     {
      "asset": "pine",
      "layer": "mid",
-     "count": 16,
+     "count": 12,
      "near": [
       1.5,
       7.0
@@ -4080,7 +4307,7 @@
     {
      "asset": "bunny-statue",
      "layer": "mid",
-     "count": 4,
+     "count": 3,
      "near": [
       1.5,
       7.0
@@ -4103,7 +4330,7 @@
      "hi": true
     },
     {
-     "asset": "pine",
+     "asset": "pine-lo",
      "layer": "mid",
      "count": 30,
      "near": [
@@ -4125,10 +4352,11 @@
       3,
       4
      ],
-     "hi": true
+     "hi": true,
+     "mass": true
     },
     {
-     "asset": "tree-bush",
+     "asset": "tree-bush-lo",
      "layer": "mid",
      "count": 20,
      "near": [
@@ -4150,23 +4378,24 @@
       3,
       4
      ],
-     "hi": true
+     "hi": true,
+     "mass": true
     },
     {
-     "asset": "paper-hill",
+     "asset": "tree-lo",
      "layer": "mid",
-     "count": 26,
+     "count": 22,
      "near": [
-      22.0,
-      55.0
+      1.5,
+      7.0
      ],
      "y": [
       0,
       0
      ],
      "scale": [
-      2.2,
-      3.6
+      1.1,
+      1.6
      ],
      "colors": [
       0,
@@ -4178,12 +4407,62 @@
      "hi": true
     },
     {
-     "asset": "pine",
+     "asset": "pine-lo",
+     "layer": "mid",
+     "count": 19,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "paper-hill-lo",
+     "layer": "mid",
+     "count": 16,
+     "near": [
+      26.0,
+      60.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.2,
+      2.0
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "pine-lo",
      "layer": "mid",
      "count": 12,
      "near": [
-      22.0,
-      55.0
+      26.0,
+      60.0
      ],
      "y": [
       0,
@@ -4315,7 +4594,7 @@
     {
      "asset": "grass",
      "layer": "ground",
-     "count": 320,
+     "count": 88,
      "near": [
       0.3,
       9.0
@@ -4339,7 +4618,7 @@
     {
      "asset": "flower-heart",
      "layer": "ground",
-     "count": 300,
+     "count": 82,
      "near": [
       0.3,
       9.0
@@ -4363,7 +4642,7 @@
     {
      "asset": "mushroom",
      "layer": "ground",
-     "count": 60,
+     "count": 33,
      "near": [
       0.3,
       9.0
@@ -4387,7 +4666,7 @@
     {
      "asset": "flip-phone",
      "layer": "mid",
-     "count": 8,
+     "count": 6,
      "near": [
       1.5,
       7.0
@@ -4411,7 +4690,7 @@
     {
      "asset": "cord-arch",
      "layer": "mid",
-     "count": 10,
+     "count": 7,
      "near": [
       1.5,
       7.0
@@ -4435,7 +4714,7 @@
     {
      "asset": "heart-bed",
      "layer": "mid",
-     "count": 20,
+     "count": 32,
      "near": [
       1.5,
       7.0
@@ -4459,7 +4738,7 @@
     {
      "asset": "tree",
      "layer": "mid",
-     "count": 24,
+     "count": 17,
      "near": [
       1.5,
       7.0
@@ -4579,7 +4858,7 @@
     {
      "asset": "tulip",
      "layer": "ground",
-     "count": 150,
+     "count": 82,
      "near": [
       0.3,
       9.0
@@ -4604,7 +4883,7 @@
     {
      "asset": "clover",
      "layer": "ground",
-     "count": 150,
+     "count": 82,
      "near": [
       0.3,
       9.0
@@ -4629,7 +4908,7 @@
     {
      "asset": "mushroom-group",
      "layer": "ground",
-     "count": 30,
+     "count": 16,
      "near": [
       0.3,
       9.0
@@ -4654,7 +4933,7 @@
     {
      "asset": "tulip-bed",
      "layer": "mid",
-     "count": 14,
+     "count": 10,
      "near": [
       1.5,
       7.0
@@ -4679,7 +4958,7 @@
     {
      "asset": "fence",
      "layer": "mid",
-     "count": 24,
+     "count": 38,
      "near": [
       1.5,
       7.0
@@ -4704,7 +4983,7 @@
     {
      "asset": "bunny-house",
      "layer": "mid",
-     "count": 6,
+     "count": 4,
      "near": [
       1.5,
       7.0
@@ -4727,7 +5006,7 @@
      "hi": true
     },
     {
-     "asset": "tree-bush",
+     "asset": "tree-bush-lo",
      "layer": "mid",
      "count": 40,
      "near": [
@@ -4749,23 +5028,24 @@
       3,
       4
      ],
-     "hi": true
+     "hi": true,
+     "mass": true
     },
     {
-     "asset": "paper-hill",
+     "asset": "tree-lo",
      "layer": "mid",
-     "count": 26,
+     "count": 29,
      "near": [
-      22.0,
-      55.0
+      1.5,
+      7.0
      ],
      "y": [
       0,
       0
      ],
      "scale": [
-      2.2,
-      3.6
+      1.1,
+      1.6
      ],
      "colors": [
       0,
@@ -4777,12 +5057,37 @@
      "hi": true
     },
     {
-     "asset": "tree",
+     "asset": "paper-hill-lo",
+     "layer": "mid",
+     "count": 16,
+     "near": [
+      26.0,
+      60.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.2,
+      2.0
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tree-lo",
      "layer": "mid",
      "count": 12,
      "near": [
-      22.0,
-      55.0
+      26.0,
+      60.0
      ],
      "y": [
       0,
@@ -4851,16 +5156,6 @@
      "hi": true
     },
     {
-     "t": 84.58,
-     "side": -1,
-     "asset": "phone-tower",
-     "dist": 7.0,
-     "scale": 0.6,
-     "pop": "spring",
-     "label": "twin",
-     "hi": true
-    },
-    {
      "t": 85.0,
      "side": -1,
      "asset": "heart-bed",
@@ -4918,7 +5213,7 @@
     {
      "asset": "star-decal",
      "layer": "ground",
-     "count": 72,
+     "count": 40,
      "near": [
       0.3,
       9.0
@@ -4941,7 +5236,7 @@
     {
      "asset": "confetti-decal",
      "layer": "ground",
-     "count": 48,
+     "count": 26,
      "near": [
       0.3,
       9.0
@@ -4964,7 +5259,7 @@
     {
      "asset": "flower",
      "layer": "ground",
-     "count": 120,
+     "count": 33,
      "near": [
       0.3,
       9.0
@@ -4987,7 +5282,7 @@
     {
      "asset": "spiral-tower",
      "layer": "mid",
-     "count": 12,
+     "count": 8,
      "near": [
       1.5,
       7.0
@@ -5010,7 +5305,7 @@
     {
      "asset": "star-chime",
      "layer": "mid",
-     "count": 16,
+     "count": 14,
      "near": [
       1.5,
       7.0
@@ -5033,7 +5328,7 @@
     {
      "asset": "stairs",
      "layer": "mid",
-     "count": 20,
+     "count": 27,
      "near": [
       1.5,
       7.0
@@ -5148,7 +5443,7 @@
     {
      "asset": "mushroom",
      "layer": "ground",
-     "count": 90,
+     "count": 50,
      "near": [
       0.3,
       9.0
@@ -5172,7 +5467,7 @@
     {
      "asset": "gift",
      "layer": "ground",
-     "count": 30,
+     "count": 8,
      "near": [
       0.3,
       9.0
@@ -5196,7 +5491,7 @@
     {
      "asset": "lily-lamp",
      "layer": "ground",
-     "count": 30,
+     "count": 8,
      "near": [
       0.3,
       9.0
@@ -5220,7 +5515,7 @@
     {
      "asset": "flower-heart",
      "layer": "ground",
-     "count": 120,
+     "count": 66,
      "near": [
       0.3,
       9.0
@@ -5244,7 +5539,7 @@
     {
      "asset": "star-chime",
      "layer": "mid",
-     "count": 16,
+     "count": 14,
      "near": [
       1.5,
       7.0
@@ -5268,7 +5563,7 @@
     {
      "asset": "book-stack",
      "layer": "mid",
-     "count": 14,
+     "count": 19,
      "near": [
       1.5,
       7.0
@@ -5291,6 +5586,127 @@
     },
     {
      "asset": "pine",
+     "layer": "mid",
+     "count": 12,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "pine-lo",
+     "layer": "mid",
+     "count": 34,
+     "near": [
+      2.0,
+      12.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.0,
+      1.5
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "mass": true
+    },
+    {
+     "asset": "firefly-lamp",
+     "layer": "mid",
+     "count": 31,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "lily-lamp",
+     "layer": "mid",
+     "count": 8,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "star-chime",
+     "layer": "mid",
+     "count": 10,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "pine-lo",
      "layer": "mid",
      "count": 20,
      "near": [
@@ -5314,20 +5730,20 @@
      "hi": true
     },
     {
-     "asset": "pine",
+     "asset": "paper-hill-lo",
      "layer": "mid",
-     "count": 40,
+     "count": 16,
      "near": [
-      2.0,
-      12.0
+      26.0,
+      60.0
      ],
      "y": [
       0,
       0
      ],
      "scale": [
-      1.0,
-      1.5
+      1.2,
+      2.0
      ],
      "colors": [
       1,
@@ -5338,36 +5754,12 @@
      "hi": true
     },
     {
-     "asset": "paper-hill",
-     "layer": "mid",
-     "count": 26,
-     "near": [
-      22.0,
-      55.0
-     ],
-     "y": [
-      0,
-      0
-     ],
-     "scale": [
-      2.2,
-      3.6
-     ],
-     "colors": [
-      1,
-      2,
-      3,
-      4
-     ],
-     "hi": true
-    },
-    {
-     "asset": "pine",
+     "asset": "pine-lo",
      "layer": "mid",
      "count": 12,
      "near": [
-      22.0,
-      55.0
+      26.0,
+      60.0
      ],
      "y": [
       0,
@@ -5390,8 +5782,8 @@
      "layer": "mid",
      "count": 5,
      "near": [
-      22.0,
-      55.0
+      26.0,
+      60.0
      ],
      "y": [
       0,
@@ -5430,16 +5822,6 @@
      "label": "landmark"
     },
     {
-     "t": 94.5,
-     "side": 1,
-     "asset": "spiral-tower",
-     "dist": 4.0,
-     "scale": 0.6,
-     "pop": "spring",
-     "label": "twin",
-     "hi": true
-    },
-    {
      "t": 96.0,
      "side": -1,
      "asset": "star-chime",
@@ -5447,16 +5829,6 @@
      "scale": 1.0,
      "pop": "spring",
      "label": "吊线星星风铃"
-    },
-    {
-     "t": 97.0,
-     "side": -1,
-     "asset": "tall-tower",
-     "dist": 7.0,
-     "scale": 0.6,
-     "pop": "spring",
-     "label": "twin",
-     "hi": true
     },
     {
      "t": 98.5,
@@ -5476,16 +5848,6 @@
      "scale": 1.0,
      "pop": "spring",
      "label": "landmark"
-    },
-    {
-     "t": 103.29,
-     "side": -1,
-     "asset": "tall-tower",
-     "dist": 7.0,
-     "scale": 0.6,
-     "pop": "spring",
-     "label": "twin",
-     "hi": true
     }
    ],
    "moments": [
@@ -5526,7 +5888,7 @@
     {
      "asset": "star-decal",
      "layer": "ground",
-     "count": 90,
+     "count": 45,
      "near": [
       0.3,
       9.0
@@ -5549,7 +5911,7 @@
     {
      "asset": "gift",
      "layer": "ground",
-     "count": 80,
+     "count": 20,
      "near": [
       0.3,
       9.0
@@ -5572,7 +5934,7 @@
     {
      "asset": "flower",
      "layer": "ground",
-     "count": 200,
+     "count": 50,
      "near": [
       0.3,
       9.0
@@ -5595,7 +5957,7 @@
     {
      "asset": "lantern-tower",
      "layer": "mid",
-     "count": 12,
+     "count": 7,
      "near": [
       1.5,
       7.0
@@ -5618,7 +5980,7 @@
     {
      "asset": "stall",
      "layer": "mid",
-     "count": 10,
+     "count": 5,
      "near": [
       1.5,
       7.0
@@ -5641,7 +6003,7 @@
     {
      "asset": "balloons",
      "layer": "mid",
-     "count": 20,
+     "count": 25,
      "near": [
       1.5,
       7.0
@@ -5664,7 +6026,7 @@
     {
      "asset": "bunting",
      "layer": "mid",
-     "count": 30,
+     "count": 37,
      "near": [
       1.5,
       7.0
@@ -5779,7 +6141,7 @@
     {
      "asset": "gift",
      "layer": "ground",
-     "count": 60,
+     "count": 14,
      "near": [
       0.3,
       9.0
@@ -5803,7 +6165,7 @@
     {
      "asset": "flower-heart",
      "layer": "ground",
-     "count": 200,
+     "count": 99,
      "near": [
       0.3,
       9.0
@@ -5827,7 +6189,7 @@
     {
      "asset": "lily-lamp",
      "layer": "ground",
-     "count": 30,
+     "count": 7,
      "near": [
       0.3,
       9.0
@@ -5851,7 +6213,7 @@
     {
      "asset": "tulip",
      "layer": "ground",
-     "count": 100,
+     "count": 50,
      "near": [
       0.3,
       9.0
@@ -5875,7 +6237,7 @@
     {
      "asset": "balloons",
      "layer": "mid",
-     "count": 20,
+     "count": 25,
      "near": [
       1.5,
       7.0
@@ -5899,7 +6261,7 @@
     {
      "asset": "bunting",
      "layer": "mid",
-     "count": 20,
+     "count": 25,
      "near": [
       1.5,
       7.0
@@ -5923,7 +6285,7 @@
     {
      "asset": "stall",
      "layer": "mid",
-     "count": 8,
+     "count": 5,
      "near": [
       1.5,
       7.0
@@ -5947,7 +6309,7 @@
     {
      "asset": "tulip-bed",
      "layer": "mid",
-     "count": 10,
+     "count": 5,
      "near": [
       1.5,
       7.0
@@ -5969,9 +6331,9 @@
      "hi": true
     },
     {
-     "asset": "tree-bush",
+     "asset": "tree-bush-lo",
      "layer": "mid",
-     "count": 30,
+     "count": 23,
      "near": [
       2.0,
       12.0
@@ -5990,23 +6352,72 @@
       3,
       4
      ],
-     "hi": true
+     "hi": true,
+     "mass": true
     },
     {
-     "asset": "paper-hill",
+     "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 26,
+     "count": 23,
      "near": [
-      22.0,
-      55.0
+      1.5,
+      7.0
      ],
      "y": [
       0,
       0
      ],
      "scale": [
-      2.2,
-      3.6
+      1.1,
+      1.6
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "lily-lamp",
+     "layer": "mid",
+     "count": 6,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "paper-hill-lo",
+     "layer": "mid",
+     "count": 16,
+     "near": [
+      26.0,
+      60.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.2,
+      2.0
      ],
      "colors": [
       1,
@@ -6021,8 +6432,8 @@
      "layer": "mid",
      "count": 5,
      "near": [
-      22.0,
-      55.0
+      26.0,
+      60.0
      ],
      "y": [
       0,
@@ -6052,16 +6463,6 @@
      "label": "兔子旋转木马"
     },
     {
-     "t": 110.5,
-     "side": -1,
-     "asset": "carousel",
-     "dist": 6.0,
-     "scale": 0.6,
-     "pop": "spring",
-     "label": "twin",
-     "hi": true
-    },
-    {
      "t": 112.0,
      "side": -1,
      "asset": "ferris-wheel",
@@ -6069,16 +6470,6 @@
      "scale": 1.0,
      "pop": "spring",
      "label": "爱心摩天轮"
-    },
-    {
-     "t": 114.5,
-     "side": 1,
-     "asset": "ferris-wheel",
-     "dist": 6.0,
-     "scale": 0.6,
-     "pop": "spring",
-     "label": "twin",
-     "hi": true
     },
     {
      "t": 119.0,
@@ -6128,7 +6519,7 @@
     {
      "asset": "grass",
      "layer": "ground",
-     "count": 320,
+     "count": 88,
      "near": [
       0.3,
       9.0
@@ -6150,7 +6541,7 @@
     {
      "asset": "mushroom",
      "layer": "ground",
-     "count": 120,
+     "count": 66,
      "near": [
       0.3,
       9.0
@@ -6172,7 +6563,7 @@
     {
      "asset": "moss-rock",
      "layer": "ground",
-     "count": 80,
+     "count": 22,
      "near": [
       0.3,
       9.0
@@ -6194,7 +6585,7 @@
     {
      "asset": "pine",
      "layer": "mid",
-     "count": 70,
+     "count": 50,
      "near": [
       1.5,
       7.0
@@ -6238,7 +6629,7 @@
     {
      "asset": "book-stack",
      "layer": "mid",
-     "count": 20,
+     "count": 32,
      "near": [
       1.5,
       7.0
@@ -6348,7 +6739,7 @@
     {
      "asset": "fern",
      "layer": "ground",
-     "count": 440,
+     "count": 242,
      "near": [
       0.3,
       9.0
@@ -6371,7 +6762,7 @@
     {
      "asset": "mushroom-group",
      "layer": "ground",
-     "count": 100,
+     "count": 55,
      "near": [
       0.3,
       9.0
@@ -6394,7 +6785,7 @@
     {
      "asset": "reed",
      "layer": "ground",
-     "count": 120,
+     "count": 40,
      "near": [
       0.3,
       9.0
@@ -6417,7 +6808,7 @@
     {
      "asset": "clover",
      "layer": "ground",
-     "count": 200,
+     "count": 110,
      "near": [
       0.3,
       9.0
@@ -6440,7 +6831,7 @@
     {
      "asset": "mushroom",
      "layer": "ground",
-     "count": 120,
+     "count": 66,
      "near": [
       0.3,
       9.0
@@ -6463,7 +6854,7 @@
     {
      "asset": "tree",
      "layer": "mid",
-     "count": 48,
+     "count": 35,
      "near": [
       1.5,
       7.0
@@ -6509,7 +6900,7 @@
     {
      "asset": "bunny-statue",
      "layer": "mid",
-     "count": 8,
+     "count": 6,
      "near": [
       1.5,
       7.0
@@ -6530,7 +6921,7 @@
      "hi": true
     },
     {
-     "asset": "pine",
+     "asset": "pine-lo",
      "layer": "mid",
      "count": 120,
      "near": [
@@ -6550,23 +6941,24 @@
       3,
       4
      ],
-     "hi": true
+     "hi": true,
+     "mass": true
     },
     {
-     "asset": "paper-hill",
+     "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 52,
+     "count": 50,
      "near": [
-      22.0,
-      55.0
+      1.5,
+      7.0
      ],
      "y": [
       0,
       0
      ],
      "scale": [
-      2.2,
-      3.6
+      1.1,
+      1.6
      ],
      "colors": [
       2,
@@ -6576,12 +6968,127 @@
      "hi": true
     },
     {
-     "asset": "pine",
+     "asset": "lily-lamp",
+     "layer": "mid",
+     "count": 15,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "mushroom-house",
+     "layer": "mid",
+     "count": 6,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "pine-lo",
+     "layer": "mid",
+     "count": 84,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tree-lo",
+     "layer": "mid",
+     "count": 58,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "paper-hill-lo",
+     "layer": "mid",
+     "count": 32,
+     "near": [
+      26.0,
+      60.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.2,
+      2.0
+     ],
+     "colors": [
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "pine-lo",
      "layer": "mid",
      "count": 24,
      "near": [
-      22.0,
-      55.0
+      26.0,
+      60.0
      ],
      "y": [
       0,
@@ -6753,7 +7260,7 @@
     {
      "asset": "grass",
      "layer": "ground",
-     "count": 300,
+     "count": 66,
      "near": [
       0.3,
       9.0
@@ -6777,7 +7284,7 @@
     {
      "asset": "flower",
      "layer": "ground",
-     "count": 300,
+     "count": 66,
      "near": [
       0.3,
       9.0
@@ -6801,7 +7308,7 @@
     {
      "asset": "gold-decal",
      "layer": "ground",
-     "count": 64,
+     "count": 13,
      "near": [
       0.3,
       9.0
@@ -6825,7 +7332,7 @@
     {
      "asset": "bunny-house",
      "layer": "mid",
-     "count": 20,
+     "count": 9,
      "near": [
       1.5,
       7.0
@@ -6849,7 +7356,7 @@
     {
      "asset": "lantern-string",
      "layer": "mid",
-     "count": 20,
+     "count": 9,
      "near": [
       1.5,
       7.0
@@ -6873,7 +7380,7 @@
     {
      "asset": "tree",
      "layer": "mid",
-     "count": 24,
+     "count": 11,
      "near": [
       1.5,
       7.0
@@ -6945,7 +7452,7 @@
     {
      "asset": "streamer",
      "layer": "anim",
-     "count": 500,
+     "count": 150,
      "near": [
       1.0,
       9.0
@@ -6993,7 +7500,7 @@
     {
      "asset": "tulip",
      "layer": "ground",
-     "count": 94,
+     "count": 42,
      "near": [
       0.3,
       9.0
@@ -7018,7 +7525,7 @@
     {
      "asset": "flower-heart",
      "layer": "ground",
-     "count": 125,
+     "count": 55,
      "near": [
       0.3,
       9.0
@@ -7043,7 +7550,7 @@
     {
      "asset": "gift",
      "layer": "ground",
-     "count": 22,
+     "count": 5,
      "near": [
       0.3,
       9.0
@@ -7068,7 +7575,7 @@
     {
      "asset": "clover",
      "layer": "ground",
-     "count": 62,
+     "count": 27,
      "near": [
       0.3,
       9.0
@@ -7093,7 +7600,7 @@
     {
      "asset": "tulip-bed",
      "layer": "mid",
-     "count": 5,
+     "count": 3,
      "near": [
       1.5,
       7.0
@@ -7118,7 +7625,7 @@
     {
      "asset": "fence",
      "layer": "mid",
-     "count": 15,
+     "count": 16,
      "near": [
       1.5,
       7.0
@@ -7143,7 +7650,7 @@
     {
      "asset": "bunny-statue",
      "layer": "mid",
-     "count": 4,
+     "count": 2,
      "near": [
       1.5,
       7.0
@@ -7191,9 +7698,9 @@
      "hi": true
     },
     {
-     "asset": "tree-bush",
+     "asset": "tree-bush-lo",
      "layer": "mid",
-     "count": 25,
+     "count": 16,
      "near": [
       2.0,
       12.0
@@ -7213,23 +7720,124 @@
       3,
       4
      ],
-     "hi": true
+     "hi": true,
+     "mass": true
     },
     {
-     "asset": "paper-hill",
+     "asset": "bunny-statue",
      "layer": "mid",
-     "count": 16,
+     "count": 6,
      "near": [
-      22.0,
-      55.0
+      1.5,
+      7.0
      ],
      "y": [
       0,
       0
      ],
      "scale": [
-      2.2,
-      3.6
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "balloons",
+     "layer": "mid",
+     "count": 16,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "bunting",
+     "layer": "mid",
+     "count": 25,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "heart-bed",
+     "layer": "mid",
+     "count": 10,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tulip-bed",
+     "layer": "mid",
+     "count": 5,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
      ],
      "colors": [
       0,
@@ -7243,10 +7851,110 @@
     {
      "asset": "tree-bush",
      "layer": "mid",
+     "count": 6,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tree-lo",
+     "layer": "mid",
+     "count": 19,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tree-bush-lo",
+     "layer": "mid",
+     "count": 11,
+     "near": [
+      1.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "paper-hill-lo",
+     "layer": "mid",
+     "count": 10,
+     "near": [
+      26.0,
+      60.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.2,
+      2.0
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tree-bush-lo",
+     "layer": "mid",
      "count": 7,
      "near": [
-      22.0,
-      55.0
+      26.0,
+      60.0
      ],
      "y": [
       0,

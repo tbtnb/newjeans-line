@@ -12,6 +12,8 @@ import { VertexData } from '@babylonjs/core/Meshes/mesh.vertexData';
 import { TransformNode } from '@babylonjs/core/Meshes/transformNode';
 import { StandardMaterial } from '@babylonjs/core/Materials/standardMaterial';
 import { Color3 } from '@babylonjs/core/Maths/math.color';
+import { DynamicTexture } from '@babylonjs/core/Materials/Textures/dynamicTexture';
+import { Constants } from '@babylonjs/core/Engines/constants';
 import { Quaternion, Vector3 } from '@babylonjs/core/Maths/math.vector';
 import type { Route } from '../../core/path';
 import type { SceneCSpec } from '../../core/types';
@@ -24,6 +26,10 @@ export const TIERS: Record<Tier, { density: Record<string, number>; ahead: numbe
   low: { density: { ground: 0.5, mid: 0.7, sky: 0.6, anim: 0 }, ahead: 6, behind: 2, lod: 22 },
 };
 const hash = (x: number, z: number) => { const s = Math.sin(x * 12.9898 + z * 78.233) * 43758.5453; return s - Math.floor(s); };
+/** lamp-like decor: glow head height (fraction of the piece's height) and halo radius (m per unit scale) -- night zones only */
+const LAMP: Record<string, [number, number]> = { 'firefly-lamp': [0.85, 0.7], 'lily-lamp': [0.55, 0.9], 'lantern-string': [0.75, 0.8], 'lantern-tower': [0.75, 2.2],
+  'star-chime': [0.8, 0.7], 'iv-heart': [0.8, 0.5], 'spiral-tower': [0.85, 2.0], 'stall': [0.6, 1.4], 'mushroom-house': [0.4, 1.2], 'bunny-house': [0.4, 1.2], 'book-stack': [0.9, 0.5], 'heart-sculpt': [0.6, 0.8] };
+type ChunkM = { g: Mesh; m: Mesh | null; glow: Mesh | null; t0: number; tris: number; y: number; L: { pos: number[]; col: number[]; uv: number[]; idx: number[] } | null };
 const spring = (x: number) => x <= 0 ? 0 : 1 - Math.exp(-x * 7) * Math.cos(x * 13);
 const hexRGB = (h: string) => { const n = parseInt(h.replace('#', ''), 16); return [(n >> 16 & 255) / 255, (n >> 8 & 255) / 255, (n & 255) / 255]; };
 
@@ -31,12 +37,12 @@ interface TI { id: string; mesh: Mesh; mats: Float32Array; cols: Float32Array; c
 interface Piv { node: TransformNode; kind: string; i: number; base: Quaternion | null; baseS: Vector3; baseP: Vector3 }
 interface SetE { def: CSet; node: TransformNode; hinge: TransformNode; far: Mesh | null; near: TransformNode | null; nearMeshes: Mesh[]; piv: Piv[]; tris: number; on: boolean; lodFar: boolean }
 
-export interface CStats { chunks: [number, number]; chunkMeshes: number; types: number; instances: number; sets: number; tris: number; zone: number; models: number; /** visible tris if every asset were modelled at its full spec budget */ trisAtBudget: number }
+export interface CStats { chunks: [number, number]; chunkMeshes: number; types: number; instances: number; sets: number; tris: number; zone: number; models: number; /** visible tris if every asset were modelled at its full spec budget */ trisAtBudget: number; /** tris of everything in the chunk window (incl. off-screen chunks); `tris` counts only frustum-visible chunks / sets */ trisWindow?: number }
 
 export class SceneC {
   readonly plc: CPlacement; readonly spec: SceneCSpec;
   private tm: Map<string, Template>; private mat: StandardMaterial; private matSet: StandardMaterial; private root: TransformNode;
-  private types = new Map<string, TI>(); private chunkMesh = new Map<number, Mesh>(); private pages: Mesh[] = []; private pageMats: StandardMaterial[] = []; private sets: SetE[] = [];
+  private types = new Map<string, TI>(); private chunkMesh = new Map<number, ChunkM>(); private night: boolean[] = []; private matNight!: StandardMaterial; private matGlow!: StandardMaterial; private dirtyAt = -1; private glowAll: Mesh | null = null; private glowSig = ''; private pages: Mesh[] = []; private pageMats: StandardMaterial[] = []; private sets: SetE[] = [];
   private range: [number, number] = [-1, -1]; private tier: Tier; private zoneCols: number[][][];
   private disposed = false; private time = 0; models = 0; last: CStats | null = null;
 
@@ -53,12 +59,33 @@ export class SceneC {
     // set pieces / landmarks skip fog so hero creams and pinks stay clean in the dark zones (like the key renders)
     this.matSet = m.clone('paperCSet'); this.matSet.fogEnabled = false;
     this.buildPages();
+    // night zones: decor skips fog and gets a colour lift so it reads on navy; lamps get additive halos (no realtime lights)
+    this.night = spec.zones.map(z => { const g = hexRGB(z.palette.ground ?? '#eeeeee'); return 0.299 * g[0] + 0.587 * g[1] + 0.114 * g[2] < 0.45; });
+    this.matNight = m.clone('paperCNight'); this.matNight.fogEnabled = false;
+    const tex = new DynamicTexture('cglow', 64, scene, true); const ctx = tex.getContext() as CanvasRenderingContext2D;
+    const gr = ctx.createRadialGradient(32, 32, 0, 32, 32, 32); gr.addColorStop(0, 'rgba(255,236,170,1)'); gr.addColorStop(0.35, 'rgba(255,214,120,0.55)'); gr.addColorStop(1, 'rgba(255,190,90,0)');
+    ctx.fillStyle = gr; ctx.fillRect(0, 0, 64, 64); tex.update(); tex.hasAlpha = true;
+    const gm = new StandardMaterial('paperCGlow', scene); gm.disableLighting = true; gm.diffuseTexture = tex; gm.useAlphaFromDiffuseTexture = true; gm.diffuseColor = Color3.White();
+    gm.emissiveColor = Color3.Black(); gm.specularColor = Color3.Black(); gm.alphaMode = Constants.ALPHA_ADD; gm.disableDepthWrite = true; gm.backFaceCulling = false; gm.fogEnabled = false;
+    this.matGlow = gm;
     for (const s of this.plc.sets) this.sets.push(this.makeSet(s));
     // swap in built models as they load (placeholders until then; a missing model simply keeps its placeholder)
     for (const [id, a] of Object.entries(spec.assets)) if (a.model) loadModel(scene, o.base, id, a.h, typeof a.model === 'string' ? a.model : id).then(t => { if (this.disposed) { t.container?.dispose(); return; } this.tm.set(id, t); this.models++; this.refreshAsset(id); }).catch(e => console.warn('omg-c model', id, e));
   }
 
-  setTier(t: Tier) { if (t === this.tier) return; this.tier = t; for (const m of this.chunkMesh.values()) m.dispose(); this.chunkMesh.clear(); this.range = [-1, -1]; }
+  private dropChunk(c: ChunkM) { c.g.dispose(); c.m?.dispose(); c.glow?.dispose(); }
+  private rebuildGlow(t: number) {
+    const on = [...this.chunkMesh.entries()].filter(([, c]) => c.L && t > c.t0 - 4.8).map(([i]) => i); const sig = on.join(',');
+    if (sig === this.glowSig) return; this.glowSig = sig; this.glowAll?.dispose(); this.glowAll = null; if (!on.length) return;
+    const pos: number[] = [], col: number[] = [], uv: number[] = [], idx: number[] = [];
+    for (const i of on) { const c = this.chunkMesh.get(i)!, L = c.L!, i0 = pos.length / 3;
+      for (let k = 0; k < L.pos.length; k += 3) pos.push(L.pos[k], L.pos[k + 1] + c.y, L.pos[k + 2]);
+      col.push(...L.col); uv.push(...L.uv); for (const x of L.idx) idx.push(x + i0); }
+    const m = new Mesh('cglow', this.scene); const vd = new VertexData(); vd.positions = pos; vd.colors = col; vd.uvs = uv; vd.indices = idx; vd.applyToMesh(m, false);
+    m.material = this.matGlow; m.isPickable = false; m.parent = this.root; this.glowAll = m;
+  }
+  private dropChunks() { for (const c of this.chunkMesh.values()) this.dropChunk(c); this.chunkMesh.clear(); this.range = [-1, -1]; }
+  setTier(t: Tier) { if (t === this.tier) return; this.tier = t; this.dropChunks(); }
 
   private keep(it: CInst) { if (it.hi && this.tier === 'low') return false; return hash(it.x, it.z) < (TIERS[this.tier].density[it.layer] ?? 1); }
   private colOf(it: CInst, model: boolean) { const c = this.zoneCols[it.zone][it.c] ?? [1, 1, 1]; const k = model ? 0.12 : 0.85; return [1 + (c[0] - 1) * k, 1 + (c[1] - 1) * k, 1 + (c[2] - 1) * k]; }
@@ -80,9 +107,9 @@ export class SceneC {
         if (c.zone !== zi) continue; const y = c.y - 0.004 * (c.i % 3), i0 = pos.length / 3;
         pos.push(c.minX - pg, y, c.minZ - pg, c.maxX + pg, y, c.minZ - pg, c.maxX + pg, y, c.maxZ + pg, c.minX - pg, y, c.maxZ + pg);
         for (let k = 0; k < 4; k++) col.push(gc[0], gc[1], gc[2], 1); idx.push(i0, i0 + 1, i0 + 2, i0, i0 + 2, i0 + 3);
-        if (c.terr) { const p = c.terr.pad, ty = c.terr.y - 0.004 * (c.i % 3), j0 = pos.length / 3;   // raised page (climb), a shade lighter
+        if (c.terr) { const p = c.terr.pad, ty = c.terr.y - 0.004 * (c.i % 3), j0 = pos.length / 3;   // raised page (climb), same paper colour as the zone page
           pos.push(c.minX - p, ty, c.minZ - p, c.maxX + p, ty, c.minZ - p, c.maxX + p, ty, c.maxZ + p, c.minX - p, ty, c.maxZ + p);
-          for (let k = 0; k < 4; k++) col.push(Math.min(1, gc[0] * 1.06), Math.min(1, gc[1] * 1.06), Math.min(1, gc[2] * 1.06), 1); idx.push(j0, j0 + 1, j0 + 2, j0, j0 + 2, j0 + 3); }
+          for (let k = 0; k < 4; k++) col.push(gc[0], gc[1], gc[2], 1); idx.push(j0, j0 + 1, j0 + 2, j0, j0 + 2, j0 + 3); }
       }
       const m = new Mesh(`cpage_z${zi}`, this.scene);
       if (pos.length) { const vd = new VertexData(); vd.positions = pos; vd.colors = col; vd.indices = idx; vd.applyToMesh(m, false); }
@@ -92,24 +119,41 @@ export class SceneC {
     }
   }
 
-  // ---- ground chunks (merged static) ----
-  private buildChunk(c: CChunk) {
-    const pos: number[] = [], col: number[] = [], idx: number[] = [];
-    // ground cover sits on its page or terrace (it.y); the paper page itself is the zone page mesh (buildPages)
+  // ---- chunks: ground cover (static) + mid layer (merged, pops per chunk) + lamp halos (night zones), all vertex-colour merged ----
+  private buildChunk(c: CChunk): ChunkM {
+    const night = this.night[c.zone], lift = night ? 0.22 : 0;
+    const G = { pos: [] as number[], col: [] as number[], idx: [] as number[] }, M = { pos: [] as number[], col: [] as number[], idx: [] as number[] };
+    const L = { pos: [] as number[], col: [] as number[], uv: [] as number[], idx: [] as number[] };
+    const quad = (p: number[][], k: number) => { const i0 = L.pos.length / 3; for (const q of p) L.pos.push(q[0], q[1], q[2]); L.uv.push(0, 0, 1, 0, 1, 1, 0, 1); for (let n = 0; n < 4; n++) L.col.push(k, k, k, 1); L.idx.push(i0, i0 + 1, i0 + 2, i0, i0 + 2, i0 + 3); };
     for (const it of c.items) {
-      if (it.layer !== 'ground' || !this.keep(it)) continue;
+      if ((it.layer !== 'ground' && it.layer !== 'mid') || !this.keep(it)) continue;
       const t = this.tm.get(it.a); if (!t) continue; const ic = this.colOf(it, t.model);
-      const cs = Math.cos(it.yaw), sn = Math.sin(it.yaw), s = it.s, i0 = pos.length / 3;
+      const B = it.layer === 'ground' ? G : M, y0 = it.layer === 'ground' ? it.y + 0.002 : it.y - c.y;   // mid: relative to the chunk pivot
+      const cs = Math.cos(it.yaw), sn = Math.sin(it.yaw), s = it.s, i0 = B.pos.length / 3;
       for (let i = 0; i < t.pos.length; i += 3) {
         const lx = t.pos[i] * s, ly = t.pos[i + 1] * s, lz = t.pos[i + 2] * s;
-        pos.push(it.x + lx * cs + lz * sn, it.y + 0.002 + ly, it.z - lx * sn + lz * cs);
-        const j = i / 3 * 4; col.push(t.col[j] * ic[0], t.col[j + 1] * ic[1], t.col[j + 2] * ic[2], 1);
+        B.pos.push(it.x + lx * cs + lz * sn, y0 + ly, it.z - lx * sn + lz * cs);
+        const j = i / 3 * 4; let r = t.col[j] * ic[0], g = t.col[j + 1] * ic[1], b = t.col[j + 2] * ic[2];
+        if (lift) { r += (1 - r) * lift; g += (0.96 - g) * lift; b += (0.9 - b) * lift; }
+        B.col.push(r, g, b, 1);
       }
-      for (let i = 0; i < t.idx.length; i++) idx.push(t.idx[i] + i0);
+      for (let i = 0; i < t.idx.length; i++) B.idx.push(t.idx[i] + i0);
+      const lp = night ? LAMP[it.a] : undefined;
+      if (lp) {   // halo: a pool of light on the page + two crossed quads at the lamp head
+        const h = (this.spec.assets[it.a]?.h ?? 1) * s, r = lp[1] * s, hy = it.y - c.y + h * lp[0], gy = it.y - c.y + 0.03;   // relative to the chunk pivot (c.y)
+        const R = r * 2.2; quad([[it.x - R, gy, it.z - R], [it.x + R, gy, it.z - R], [it.x + R, gy, it.z + R], [it.x - R, gy, it.z + R]], 0.55);
+        quad([[it.x - r, hy - r, it.z], [it.x + r, hy - r, it.z], [it.x + r, hy + r, it.z], [it.x - r, hy + r, it.z]], 0.9);
+        quad([[it.x, hy - r, it.z - r], [it.x, hy - r, it.z + r], [it.x, hy + r, it.z + r], [it.x, hy + r, it.z - r]], 0.9);
+      }
     }
-    const m = new Mesh(`cchunk${c.i}`, this.scene); if (pos.length) { const vd = new VertexData(); vd.positions = pos; vd.colors = col; vd.indices = idx; vd.applyToMesh(m, false); }
-    m.material = this.mat; m.isPickable = false; m.parent = this.root; m.freezeWorldMatrix(); (m as any).__tris = idx.length / 3;
-    return m;
+    const mk = (name: string, B: { pos: number[]; col: number[]; idx: number[]; uv?: number[] }, mat: StandardMaterial) => {
+      if (!B.pos.length) return null; const m = new Mesh(name, this.scene); const vd = new VertexData(); vd.positions = B.pos; vd.colors = B.col; vd.indices = B.idx; if (B.uv) vd.uvs = B.uv;
+      vd.applyToMesh(m, false); m.material = mat; m.isPickable = false; m.parent = this.root; return m; };
+    const mat = night ? this.matNight : this.mat;
+    const g = mk(`cchunk${c.i}`, G, mat) ?? new Mesh(`cchunk${c.i}`, this.scene); g.parent = this.root; g.freezeWorldMatrix();
+    const m = mk(`cmid${c.i}`, M, mat); if (m) { m.position.y = c.y; m.scaling.y = 0.02; }
+    // halos are merged across the whole window into one additive mesh (rebuildGlow), shown once their chunk has popped
+    return { g, m, glow: null, t0: c.t0, tris: (G.idx.length + M.idx.length + L.idx.length) / 3, y: c.y, L: L.pos.length ? L : null };
   }
 
   // ---- thin-instance types ----
@@ -126,7 +170,7 @@ export class SceneC {
   private refill(a: number, b: number) {
     for (const ti of this.types.values()) ti.items = [];
     if (a < 0 || b < 0) return;   // window not placed yet (or invalidated by a ground refresh): the next update refills
-    for (let i = a; i <= b; i++) for (const it of this.plc.chunks[i].items) if (it.layer !== 'ground' && this.keep(it)) this.typeOf(it.a).items.push(it);
+    for (let i = a; i <= b; i++) for (const it of this.plc.chunks[i].items) if (it.layer !== 'ground' && it.layer !== 'mid' && this.keep(it)) this.typeOf(it.a).items.push(it);
     for (const ti of this.types.values()) {
       if (ti.items.length > ti.cap) { ti.cap = Math.max(ti.items.length, ti.cap * 2); ti.mats = new Float32Array(16 * ti.cap); ti.cols = new Float32Array(4 * ti.cap); ti.mesh.thinInstanceSetBuffer('matrix', ti.mats, 16, false); ti.mesh.thinInstanceSetBuffer('color', ti.cols, 4, false); }
       const model = this.tm.get(ti.id)!.model;
@@ -206,32 +250,39 @@ export class SceneC {
 
   private refreshAsset(id: string) {
     const ti = this.types.get(id); if (ti) { const t = this.tm.get(id)!; const vd = new VertexData(); vd.positions = t.pos; vd.colors = t.col; vd.indices = t.idx; vd.applyToMesh(ti.mesh, true); ti.tris = t.tris; this.refill(this.range[0], this.range[1]); }
-    if (this.spec.assets[id]?.layer === 'ground') { for (const m of this.chunkMesh.values()) m.dispose(); this.chunkMesh.clear(); this.range = [-1, -1]; }
+    if (this.dirtyAt < 0) this.dirtyAt = this.time;   // ground + mid are merged per chunk: rebuild (throttled) once models land
     for (const e of this.sets) if (e.def.a === id) { this.buildSetVisual(e); const on = e.on; e.on = !on; this.setOn(e, on); }
   }
 
   update(t: number, dt: number, beatK: number, cam: Vector3 | null) {
     this.time += dt; const T = TIERS[this.tier];
+    if (this.dirtyAt >= 0 && this.time - this.dirtyAt > 0.4) { this.dirtyAt = -1; this.dropChunks(); }
     const [a, b] = activeRange(this.plc.chunks, t, T.behind, T.ahead);
     if (a !== this.range[0] || b !== this.range[1]) {
-      for (const [i, m] of this.chunkMesh) if (i < a || i > b) { m.dispose(); this.chunkMesh.delete(i); }
+      for (const [i, m] of this.chunkMesh) if (i < a || i > b) { this.dropChunk(m); this.chunkMesh.delete(i); }
       for (let i = a; i <= b; i++) if (!this.chunkMesh.has(i)) this.chunkMesh.set(i, this.buildChunk(this.plc.chunks[i]));
       this.range = [a, b]; this.refill(a, b);
       const on = new Set<number>(); for (let i = a; i <= b; i++) on.add(this.plc.chunks[i].zone); this.pages.forEach((p, zi) => p.setEnabled(on.has(zi)));
     }
     this.writeTypes(t, beatK);
-    let tris = 0, inst = 0, sets = 0, tb = 0; const A = this.spec.assets;
-    for (const e of this.sets) { this.animSet(e, t, beatK, cam); if (e.on) { sets++; tris += e.tris; tb += Math.max(e.tris, A[e.def.a]?.tris ?? 0); } }
+    this.rebuildGlow(t);
+    let tris = 0, inst = 0, sets = 0, tb = 0, win = 0; const A = this.spec.assets;
+    for (const e of this.sets) { this.animSet(e, t, beatK, cam); if (e.on) { sets++; win += e.tris; if (!this.scene.frustumPlanes || !e.far || (e.far.computeWorldMatrix(), e.far.isInFrustum(this.scene.frustumPlanes))) tris += e.tris; tb += Math.max(e.tris, A[e.def.a]?.tris ?? 0); } }
     for (const p of this.pages) if (p.isEnabled()) { tris += (p as any).__tris; tb += (p as any).__tris; }
-    for (const [i, m] of this.chunkMesh) { tris += (m as any).__tris; for (const it of this.plc.chunks[i].items) if (it.layer === 'ground' && this.keep(it)) tb += Math.max(this.tm.get(it.a)?.tris ?? 0, A[it.a]?.tris ?? 0); }
-    let types = 0; for (const ti of this.types.values()) if (ti.items.length) { types++; inst += ti.items.length; tris += ti.items.length * ti.tris; tb += ti.items.length * Math.max(ti.tris, A[ti.id]?.tris ?? 0); }
+    const fp = this.scene.frustumPlanes;
+    const vis = (x: Mesh | null) => !!x && x.isEnabled() && (!fp || x.isInFrustum(fp));
+    const triOf = (x: Mesh | null) => x ? x.getTotalIndices() / 3 : 0;
+    for (const [i, m] of this.chunkMesh) {
+      win += m.tris; tris += (vis(m.g) ? triOf(m.g) : 0) + (vis(m.m) ? triOf(m.m) : 0) + (m.glow && vis(m.m ?? m.glow) ? triOf(m.glow) : 0); if (m.m) m.m.scaling.y = Math.max(0.02, spring(t - (m.t0 - 5)));   // merged mid layer pops up per chunk, 5 s ahead
+      for (const it of this.plc.chunks[i].items) if ((it.layer === 'ground' || it.layer === 'mid') && this.keep(it)) tb += Math.max(this.tm.get(it.a)?.tris ?? 0, A[it.a]?.tris ?? 0); }
+    let types = 0; for (const ti of this.types.values()) if (ti.items.length) { types++; inst += ti.items.length; tris += ti.items.length * ti.tris; win += ti.items.length * ti.tris; tb += ti.items.length * Math.max(ti.tris, A[ti.id]?.tris ?? 0); }
     let zone = 0; for (let i = 0; i < this.spec.zones.length; i++) if (this.spec.zones[i].t0 <= t) zone = i;
-    this.last = { chunks: [a, b], chunkMeshes: this.chunkMesh.size, types, instances: inst, sets, tris, zone, models: this.models, trisAtBudget: tb };
+    this.last = { chunks: [a, b], chunkMeshes: this.chunkMesh.size, types, instances: inst, sets, tris, zone, models: this.models, trisAtBudget: tb, trisWindow: win };
   }
 
   dispose() {
     this.disposed = true;
     for (const [id, t] of this.tm) if (t.container) { t.container.dispose(); this.tm.delete(id); }
-    this.root.dispose(false, false); this.mat.dispose(); this.matSet.dispose(); for (const m of this.pageMats) m.dispose();
+    this.root.dispose(false, false); this.glowAll?.dispose(); this.matGlow.diffuseTexture?.dispose(); this.matGlow.dispose(); this.matNight.dispose(); this.mat.dispose(); this.matSet.dispose(); for (const m of this.pageMats) m.dispose();
   }
 }

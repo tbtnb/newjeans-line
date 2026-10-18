@@ -61,7 +61,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
     for (const L of z.layers) {
       const A = spec.assets[L.asset]; if (!A) continue;
       const n = Math.round(L.count * (o.density?.[L.layer] ?? 1));
-      for (let k = 0; k < n; k++) {
+      for (let k = 0; k < n; k++) for (let att = 0; att < 6; att++) {   // a spot over another road segment retries elsewhere (zig-zag routes)
         const t = z.t0 + (k + R()) / n * (t1 - z.t0);
         const side = R() < 0.5 ? -1 : 1, w = o.widthAt(t);
         const s = (L.scale[0] ?? 1) + R() * ((L.scale[1] ?? 1) - (L.scale[0] ?? 1)); const h = A.h * s;
@@ -71,7 +71,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
         const off = side * (w / 2 + edge);
         const a = edge < 6 ? anchor(route, t, off, 0, 0) : flowAnchor(route, t, off, 0, 0);
         const y0 = (L.y[0] ?? 0) + R() * ((L.y[1] ?? 0) - (L.y[0] ?? 0));
-        const r = Math.max(0.15, A.h * s * (A.shape === 'far' ? 0.2 : 0.3));
+        const r = Math.max(0.15, Math.max(A.h, A.w ?? 0, A.d ?? 0) * s * (A.shape === 'far' ? 0.2 : 0.35));   // wide pieces (paper hills) need their width
         const pad = h < groundMaxH ? 0.15 : clearNear + 1.0 * w;
         if (y0 < 4 && o.hits(a.pos.x, a.pos.z, r + pad, a.pos.y - 1, a.pos.y + h)) { rejected++; continue; }
         const rp = anchor(route, t).pos;
@@ -79,7 +79,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
         const ci = chunkAt(t);
         const gy = L.layer === 'ground' || L.layer === 'mid' ? groundY(chunks[ci], a.pos.x, a.pos.z) + y0 : a.pos.y - o.roadH + y0;
         chunks[ci].items.push({ a: L.asset, layer: L.layer, x: a.pos.x, y: gy, z: a.pos.z, yaw, s, c: (L.colors ?? [0])[Math.floor(R() * (L.colors ?? [0]).length)], zone: zi, t, chunk: ci, ...(L.hi ? { hi: true } : {}) });
-        placed++;
+        placed++; break;
       }
     }
   });
