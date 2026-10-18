@@ -174,7 +174,7 @@ export class SceneC {
         if (c.terr) { const p = c.terr.pad; rect(c.minX - p, c.minZ - p, c.maxX + p, c.maxZ + p, c.terr.y - 0.004 * (c.i % 3)); }   // raised page (climb)
       }
       const m = new Mesh(`cpage_z${zi}`, this.scene);
-      if (pos.length) { const vd = new VertexData(); vd.positions = pos; vd.colors = col; vd.uvs = uv; vd.indices = idx; vd.applyToMesh(m, false); m.hasVertexAlpha = false; }
+      if (pos.length) { const vd = new VertexData(); vd.positions = pos; vd.colors = col; vd.uvs = uv; vd.indices = idx; vd.applyToMesh(m, false); m.hasVertexAlpha = true; }   /* vColor.a only reaches the shader with VERTEXALPHA; the material is pinned opaque */
       const mat = this.mat.clone(`paperCPage${zi}`); mat.zOffset = 2 * (Z - 1 - zi); this.pageMats.push(mat);   // positive = pushed back; the latest zone has 0
       mat.transparencyMode = Material.MATERIAL_OPAQUE; if (tex) mat.diffuseTexture = tex; new PageFade(mat);
       m.material = mat; m.isPickable = false; m.parent = this.root; m.freezeWorldMatrix(); m.setEnabled(false); (m as any).__tris = idx.length / 3;
