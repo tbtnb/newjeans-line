@@ -280,7 +280,7 @@ export class SceneC {
     this.time += dt; const T = TIERS[this.tier];
     if (this.dirtyAt >= 0 && this.time - this.dirtyAt > 0.4) { this.dirtyAt = -1; this.dropChunks(); }
     const key = typeof location !== 'undefined' && /[?&]cam=key\b/.test(location.search);   // key camera sees further ahead, nothing behind
-    const [a, b] = activeRange(this.plc.chunks, t, key ? 1.5 : T.behind, key ? T.ahead + 3 : T.ahead);
+    const [a, b] = activeRange(this.plc.chunks, t, key ? 1.5 : T.behind, key ? T.ahead + 2 : T.ahead);
     if (a !== this.range[0] || b !== this.range[1]) {
       for (const [i, m] of this.chunkMesh) if (i < a || i > b) { this.dropChunk(m); this.chunkMesh.delete(i); }
       for (let i = a; i <= b; i++) if (!this.chunkMesh.has(i)) this.chunkMesh.set(i, this.buildChunk(this.plc.chunks[i]));
