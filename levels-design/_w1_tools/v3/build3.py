@@ -95,26 +95,37 @@ for k, tf in enumerate(getattr(S3, 'fork_taps', [])):
                  'name': 'fake fork (scenery only, ends in a broken edge)', 'appear': {'t': round(tc - 1.6, 3), 'mode': 'rise', 'dur': 0.5},
                  'exit': {'t': round(tc + 1.2, 3), 'mode': 'fall', 'dur': 0.8}})
 # (4) wrap-through buildings: arcade walls + roof beams around one long straight
-for k, (tt, name) in enumerate(getattr(S3, 'arcades', [])):
-    a, b = next((a, b) for a, b in segs if a[0] <= tt <= b[0])
-    hx, hz = HEAD[a[3]]; rx, rz = hz, -hx; L = math.hypot(b[1] - a[1], b[2] - a[2]); w = W(tt); y = Y(tt)
-    mx, mz = (a[1] + b[1]) / 2, (a[2] + b[2]) / 2; off = w / 2 + 0.9; parts = []
-    ok = True
-    for sgn in (-1, 1):
-        for s in np.linspace(-L / 2 + w / 2 + 1.6, L / 2 - w / 2 - 1.6, max(2, int(L / 2))):
-            if not clear(mx + rx * off * sgn + hx * s, mz + rz * off * sgn + hz * s, y, y + 5, 0.3, skip=(a[0] - 0.4, b[0] + 0.4)): ok = False
-    if not ok: print('arcade skipped', tt); continue
-    Lw = L - w - 2.6
-    if Lw < 3: print('arcade too short', tt); continue
-    parts.append({'kind': 'box', 'pos': [-off, 2.4, 0], 'size': [0.6, 4.8, Lw], 'color': S3.arcade_colors[0]})
-    parts.append({'kind': 'box', 'pos': [off, 2.4, 0], 'size': [0.6, 4.8, Lw], 'color': S3.arcade_colors[0]})
-    if getattr(S3, 'arcade_texture', None):
-        for sg in (-1, 1): parts.append({'kind': 'box', 'pos': [sg * (off - 0.32), 2.4, 0], 'size': [0.05, 3.6, Lw - 1.0], 'color': '#FFFFFF', 'texture': S3.arcade_texture})
-    for s in np.arange(-Lw / 2 + 0.4, Lw / 2, 2.6):
-        parts.append({'kind': 'box', 'pos': [0, 5.0, round(float(s), 2)], 'size': [2 * off + 0.6, 0.45, 0.5], 'color': S3.arcade_colors[1]})
-    auto.append({'id': f'arcade-{k}', 'kind': 'group', 'worldPos': [round(mx, 2), round(y - 0.3, 2), round(mz, 2)], 'rot': YAW[a[3]], 'onroad': True,
-                 'landmark': True, 'name': name, 'parts': parts, 'appear': {'t': round(a[0] - 2.5, 3), 'mode': 'rise', 'dur': 1.0}})
-    cam_extra.append((a[0] - 0.5, b[0] + 0.5, {'preset': 'high', 'pitch': 66, 'blend': 0.6}))
+def arcade_cands(entry):
+    if len(entry) == 2: return [entry[0]], entry[1]
+    t0, t1, name = entry
+    ss = sorted([(b[0] - a[0], (a[0] + b[0]) / 2) for a, b in segs if a[0] >= t0 and b[0] <= t1], reverse=True)
+    return [m for _, m in ss[:8]], name
+arc_list = []
+for entry in getattr(S3, 'arcades', []):
+    cands_, name = arcade_cands(entry)
+    arc_list.append((cands_, name))
+for k, (cands_, name) in enumerate(arc_list):
+  for tt in cands_:
+      a, b = next((a, b) for a, b in segs if a[0] <= tt <= b[0])
+      hx, hz = HEAD[a[3]]; rx, rz = hz, -hx; L = math.hypot(b[1] - a[1], b[2] - a[2]); w = W(tt); y = Y(tt)
+      mx, mz = (a[1] + b[1]) / 2, (a[2] + b[2]) / 2; off = w / 2 + 0.9; parts = []
+      ok = True
+      for sgn in (-1, 1):
+          for s in np.linspace(-L / 2 + w / 2 + 1.6, L / 2 - w / 2 - 1.6, max(2, int(L / 2))):
+              if not clear(mx + rx * off * sgn + hx * s, mz + rz * off * sgn + hz * s, y, y + 5, 0.3, skip=(a[0] - 0.4, b[0] + 0.4)): ok = False
+      if not ok: continue
+      Lw = L - w - 2.6
+      if Lw < 3: continue
+      parts.append({'kind': 'box', 'pos': [-off, 2.4, 0], 'size': [0.6, 4.8, Lw], 'color': S3.arcade_colors[0]})
+      parts.append({'kind': 'box', 'pos': [off, 2.4, 0], 'size': [0.6, 4.8, Lw], 'color': S3.arcade_colors[0]})
+      if getattr(S3, 'arcade_texture', None):
+          for sg in (-1, 1): parts.append({'kind': 'box', 'pos': [sg * (off - 0.32), 2.4, 0], 'size': [0.05, 3.6, Lw - 1.0], 'color': '#FFFFFF', 'texture': S3.arcade_texture})
+      for s in np.arange(-Lw / 2 + 0.4, Lw / 2, 2.6):
+          parts.append({'kind': 'box', 'pos': [0, 5.0, round(float(s), 2)], 'size': [2 * off + 0.6, 0.45, 0.5], 'color': S3.arcade_colors[1]})
+      auto.append({'id': f'arcade-{k}', 'kind': 'group', 'worldPos': [round(mx, 2), round(y - 0.3, 2), round(mz, 2)], 'rot': YAW[a[3]], 'onroad': True,
+                   'landmark': True, 'name': name, 'parts': parts, 'appear': {'t': round(a[0] - 2.5, 3), 'mode': 'rise', 'dur': 1.0}})
+      cam_extra.append((a[0] - 0.5, b[0] + 0.5, {'preset': 'high', 'pitch': 66, 'blend': 0.6}))
+      break
 for tu in under:
     cam_extra.append((tu - 0.7, tu + 1.2, {'preset': 'high', 'blend': 0.5}))
 # (5) song-specific v3 features (spiral towers, walls, etc.)

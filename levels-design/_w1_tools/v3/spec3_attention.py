@@ -7,7 +7,7 @@ P = S.P
 pier_color = P['denim']; arcade_colors = ['#F4F0DB', P['deep']]
 collectibles = {'diamond': P['gold'], 'crown': P['gold']}
 fork_taps = [25.9, 70.6, 124.5, 146.9]
-arcades = [(98.8, 'Window arcade: the road runs through the gallery building'), (35.7, 'Roof-court passage')]
+arcades = [(93.9, 101.6, 'Window arcade: the road runs through the gallery building'), (27.9, 46.7, 'Roof-court passage')]
 art = {'backdrop': 'art/sky.jpg', 'ground': {'src': 'art/ground-dots.jpg', 'scale': 40},
        'files': {'sky.jpg': 'soft summer sky backdrop with faint halftone dots', 'sky-dusk.jpg': 'warm outro sky (section backdrop)',
                  'ground-dots.jpg': 'ice-blue halftone ground tile', 'bunny-mural.jpg': '2022 EP bunny mural (cartoon bunny, no faces of people)',
