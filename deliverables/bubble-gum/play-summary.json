@@ -11,7 +11,7 @@
  "good": 0,
  "diamonds": 10,
  "ignoredDuplicates": 0,
- "fps": 15.435076210694335,
+ "fps": 12.76207839562443,
  "save": {
   "version": 2,
   "selected": "bubble-gum",
@@ -34,9 +34,9 @@
   }
  },
  "judged": 253,
- "errorMeanMs": 1.3,
- "errorSdMs": 0.7,
- "errorMaxAbsMs": 6,
+ "errorMeanMs": 1.2,
+ "errorSdMs": 3.6,
+ "errorMaxAbsMs": 31,
  "sent": 253,
  "logs": []
 }
