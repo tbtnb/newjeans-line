@@ -1,0 +1,21 @@
+## Chart logic: new-jeans (154 taps; 16th grid from analysis grid: 133.995 BPM, beat0 0.349 s)
+
+| section | follows | taps | /s | layer strength (median) | off-layer taps | faint taps | weak bursts | off-grid >25ms | phrase patterns (unique/total) |
+|---|---|---|---|---|---|---|---|---|---|
+| Intro · 方格纸 | mid | 2 | 0.27 | 0.34 | 0 | 0 | 0 | 0 | 1/1 |
+| Beat in · 蓝图线 | drums | 13 | 1.81 | 0.87 | 0 | 0 | 0 | 0 | 3/3 |
+| Verse 1 · 纸片房屋 | drums | 26 | 1.21 | 1.02 | 0 | 0 | 0 | 0 | 3/6 |
+| Chorus 1 · 五色尾迹 | drums | 25 | 1.74 | 0.87 | 0 | 0 | 0 | 0 | 2/4 |
+| Break · 像素平面 | snare | 8 | 1.12 | 0.43 | 0 | 0 | 0 | 0 | 2/2 |
+| Rebuild · 重新立起 | drums | 15 | 2.09 | 0.67 | 0 | 0 | 0 | 0 | 3/3 |
+| Verse 2 · 立体城市 | drums | 28 | 1.30 | 0.85 | 0 | 0 | 0 | 0 | 4/6 |
+| Chorus 2 · 飞行 | drums | 33 | 2.30 | 0.83 | 0 | 0 | 0 | 0 | 2/4 |
+| Outro · 牛仔徽章 | mid | 4 | 0.38 | 0.50 | 0 | 0 | 0 | 0 | 2/2 |
+
+Totals: off-layer (hop) 0, faint 0, weak bursts 0, off-grid 0
+
+<details><summary>flagged taps</summary>
+
+```
+```
+</details>

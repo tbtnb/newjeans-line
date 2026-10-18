@@ -1,19 +1,19 @@
-== hype-boy  duration 176.64s  taps 327  dirs R/L 168/159  multi-level crossings 44
+== hype-boy  duration 176.64s  taps 317  dirs R/L 161/156  multi-level crossings 43
    min gap 0.148s  median gap 0.433s
-   peak density 300 CPM (taps in any 1 s window x60), average 111 CPM; gaps < 0.15 s: 2
+   peak density 300 CPM (taps in any 1 s window x60), average 108 CPM; gaps < 0.15 s: 2
    fastest run: 4 taps (gaps<=0.30s) from 35.65s to 36.25s
    judgment window: min ±67 ms, median ±110 ms (engine rule)
    longest same-direction run 4 (>=2 = U-turn, >=4 = spiral)  elevation events 7
       0.00-  19.45 intro   Intro riff                     17 taps  0.87/s
      19.45-  38.65 verse   Verse 1                        42 taps  2.19/s
-     38.65-  48.25 pre     Pre-chorus 1                   10 taps  1.04/s
+     38.65-  48.25 pre     Pre-chorus 1                    5 taps  0.52/s
      48.25-  53.05 pre     Build 1                         9 taps  1.88/s
      53.05-  72.25 chorus  Chorus 1                       43 taps  2.24/s
      72.25-  91.45 post    Post-chorus 1                  37 taps  1.93/s
      91.45- 115.45 verse   Verse 2                        46 taps  1.92/s
-    115.45- 125.05 pre     Pre-chorus 2                   10 taps  1.04/s
+    115.45- 125.05 pre     Pre-chorus 2                    5 taps  0.52/s
     125.05- 129.85 pre     Build 2                         8 taps  1.67/s
     129.85- 149.05 chorus  Chorus 2                       46 taps  2.40/s
     149.05- 170.65 chorus  Final chorus                   59 taps  2.73/s
     170.65- 176.64 outro   Outro                           0 taps  0.00/s
-   extent x[0,141] z[-15,189]
+   extent x[0,225] z[0,194]

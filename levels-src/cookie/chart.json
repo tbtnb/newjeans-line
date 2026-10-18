@@ -265,7 +265,7 @@
   },
   {
    "t": 31.251,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -277,11 +277,6 @@
    "t": 32.392,
    "dir": "L",
    "tag": "vocal"
-  },
-  {
-   "t": 32.589,
-   "dir": "L",
-   "tag": "kick"
   },
   {
    "t": 32.972,
@@ -344,11 +339,6 @@
    "tag": "vocal"
   },
   {
-   "t": 38.512,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
    "t": 38.893,
    "dir": "R",
    "tag": "vocal"
@@ -359,28 +349,13 @@
    "tag": "vocal"
   },
   {
-   "t": 40.6,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
    "t": 40.996,
    "dir": "R",
    "tag": "vocal"
   },
   {
-   "t": 41.761,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
    "t": 42.143,
    "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 42.701,
-   "dir": "L",
    "tag": "vocal"
   },
   {
@@ -390,7 +365,7 @@
   },
   {
    "t": 43.48,
-   "dir": "R",
+   "dir": "L",
    "tag": "vocal"
   },
   {
@@ -409,11 +384,6 @@
    "tag": "vocal"
   },
   {
-   "t": 45.582,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
    "t": 46.538,
    "dir": "R",
    "tag": "kick"
@@ -425,17 +395,12 @@
   },
   {
    "t": 47.102,
-   "dir": "R",
+   "dir": "L",
    "tag": "vocal"
   },
   {
    "t": 47.493,
    "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 48.623,
-   "dir": "L",
    "tag": "vocal"
   },
   {
@@ -445,13 +410,8 @@
   },
   {
    "t": 50.168,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 50.359,
    "dir": "R",
-   "tag": "vocal"
+   "tag": "kick"
   },
   {
    "t": 50.742,
@@ -466,11 +426,6 @@
   {
    "t": 51.506,
    "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 51.888,
-   "dir": "R",
    "tag": "kick"
   },
   {
@@ -564,11 +519,6 @@
    "tag": "snare"
   },
   {
-   "t": 58.194,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
    "t": 58.767,
    "dir": "L",
    "tag": "kick"
@@ -620,7 +570,7 @@
   },
   {
    "t": 61.823,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -634,11 +584,6 @@
    "tag": "snare"
   },
   {
-   "t": 62.971,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
    "t": 63.158,
    "dir": "L",
    "tag": "vocal"
@@ -646,11 +591,6 @@
   {
    "t": 63.735,
    "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 63.936,
-   "dir": "L",
    "tag": "kick"
   },
   {
@@ -665,7 +605,7 @@
   },
   {
    "t": 64.882,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -721,11 +661,6 @@
   {
    "t": 69.068,
    "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 69.474,
-   "dir": "L",
    "tag": "vocal"
   },
   {
@@ -786,11 +721,6 @@
   {
    "t": 74.627,
    "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 76.347,
-   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1039,18 +969,13 @@
    "tag": "vocal"
   },
   {
-   "t": 97.942,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
    "t": 98.325,
    "dir": "R",
    "tag": "vocal"
   },
   {
    "t": 99.468,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
   },
   {
@@ -1060,11 +985,6 @@
   },
   {
    "t": 100.995,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 101.75,
    "dir": "R",
    "tag": "vocal"
   },
@@ -1084,13 +1004,8 @@
    "tag": "vocal"
   },
   {
-   "t": 103.851,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
    "t": 104.436,
-   "dir": "R",
+   "dir": "L",
    "tag": "vocal"
   },
   {
@@ -1139,11 +1054,6 @@
    "tag": "vocal"
   },
   {
-   "t": 109.772,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
    "t": 110.742,
    "dir": "R",
    "tag": "kick"
@@ -1151,11 +1061,6 @@
   {
    "t": 111.315,
    "dir": "L",
-   "tag": "vocal"
-  },
-  {
-   "t": 111.507,
-   "dir": "R",
    "tag": "vocal"
   },
   {
@@ -1255,7 +1160,7 @@
   },
   {
    "t": 118.386,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
   },
   {
@@ -1267,11 +1172,6 @@
    "t": 119.15,
    "dir": "L",
    "tag": "snare"
-  },
-  {
-   "t": 119.341,
-   "dir": "R",
-   "tag": "kick"
   },
   {
    "t": 119.914,
@@ -1302,11 +1202,6 @@
    "t": 121.634,
    "dir": "R",
    "tag": "kick"
-  },
-  {
-   "t": 121.823,
-   "dir": "L",
-   "tag": "vocal"
   },
   {
    "t": 122.009,
@@ -1340,7 +1235,7 @@
   },
   {
    "t": 124.118,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1351,11 +1246,6 @@
   {
    "t": 124.883,
    "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 125.074,
-   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1425,11 +1315,6 @@
   },
   {
    "t": 130.218,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
-   "t": 130.624,
    "dir": "R",
    "tag": "vocal"
   },
@@ -1437,11 +1322,6 @@
    "t": 130.806,
    "dir": "L",
    "tag": "snare"
-  },
-  {
-   "t": 131.007,
-   "dir": "R",
-   "tag": "kick"
   },
   {
    "t": 131.379,
@@ -1502,11 +1382,6 @@
    "t": 136.73,
    "dir": "L",
    "tag": "snare"
-  },
-  {
-   "t": 137.112,
-   "dir": "R",
-   "tag": "kick"
   },
   {
    "t": 138.067,
@@ -1694,11 +1569,6 @@
    "tag": "snare"
   },
   {
-   "t": 149.341,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
    "t": 149.724,
    "dir": "L",
    "tag": "kick"
@@ -1864,11 +1734,6 @@
    "tag": "vocal"
   },
   {
-   "t": 160.424,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
    "t": 160.806,
    "dir": "L",
    "tag": "kick"
@@ -1884,13 +1749,8 @@
    "tag": "vocal"
   },
   {
-   "t": 161.953,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
    "t": 162.144,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1979,11 +1839,6 @@
    "tag": "kick"
   },
   {
-   "t": 168.259,
-   "dir": "R",
-   "tag": "snare"
-  },
-  {
    "t": 168.832,
    "dir": "L",
    "tag": "kick"
@@ -2060,16 +1915,6 @@
   },
   {
    "t": 173.8,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 173.991,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 174.182,
    "dir": "R",
    "tag": "kick"
   },
@@ -2284,11 +2129,6 @@
    "tag": "kick"
   },
   {
-   "t": 197.495,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
    "t": 198.45,
    "dir": "R",
    "tag": "kick"
@@ -2384,22 +2224,7 @@
    "tag": "vocal"
   },
   {
-   "t": 210.28,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
    "t": 210.5,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 211.244,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
-   "t": 211.812,
    "dir": "R",
    "tag": "vocal"
   },
@@ -2416,11 +2241,6 @@
   {
    "t": 214.111,
    "dir": "L",
-   "tag": "vocal"
-  },
-  {
-   "t": 214.309,
-   "dir": "R",
    "tag": "vocal"
   },
   {
@@ -2455,11 +2275,6 @@
   },
   {
    "t": 220.234,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
-   "t": 220.425,
    "dir": "R",
    "tag": "vocal"
   },
@@ -2469,22 +2284,7 @@
    "tag": "vocal"
   },
   {
-   "t": 221.565,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
    "t": 221.971,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
-   "t": 223.291,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 223.482,
    "dir": "L",
    "tag": "vocal"
   },
@@ -2495,16 +2295,6 @@
   },
   {
    "t": 225.584,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
-   "t": 226.349,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 228.659,
    "dir": "L",
    "tag": "vocal"
   }
@@ -2719,6 +2509,413 @@
     "variant": {}
    }
   ],
-  "source": "levels-design/cookie (worker design, integrated by integ-a)"
+  "source": "levels-design/cookie (worker design, integrated by integ-a)",
+  "integration": {
+   "tool": "tools/charts/integ_a.py",
+   "source_taps": 500,
+   "trimmed": [
+    {
+     "t": 32.589,
+     "why": "faint",
+     "follows": "drums",
+     "layer": 0.32,
+     "full": 0.33,
+     "other": 0.28,
+     "vocal": 0.21
+    },
+    {
+     "t": 38.512,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.25,
+     "full": 0.79,
+     "other": 0.82,
+     "vocal": 0.25
+    },
+    {
+     "t": 40.6,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.13,
+     "full": 1.37,
+     "other": 0.81,
+     "vocal": 0.13
+    },
+    {
+     "t": 41.761,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.16,
+     "full": 0.86,
+     "other": 0.64,
+     "vocal": 0.16
+    },
+    {
+     "t": 42.701,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.17,
+     "full": 0.65,
+     "other": 0.81,
+     "vocal": 0.17
+    },
+    {
+     "t": 45.582,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.27,
+     "full": 0.6,
+     "other": 0.61,
+     "vocal": 0.27
+    },
+    {
+     "t": 48.623,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.24,
+     "full": 0.76,
+     "other": 0.94,
+     "vocal": 0.24
+    },
+    {
+     "t": 50.359,
+     "why": "faint",
+     "follows": "drums",
+     "layer": 0.32,
+     "full": 0.25,
+     "other": 0.34,
+     "vocal": 0.24
+    },
+    {
+     "t": 51.888,
+     "why": "faint",
+     "follows": "drums",
+     "layer": 0.32,
+     "full": 0.31,
+     "other": 0.39,
+     "vocal": 0.11
+    },
+    {
+     "t": 58.194,
+     "why": "faint",
+     "follows": "drums",
+     "layer": 0.34,
+     "full": 0.21,
+     "other": 0.26,
+     "vocal": 0.31
+    },
+    {
+     "t": 62.971,
+     "why": "off-layer",
+     "follows": "drums",
+     "layer": 0.32,
+     "full": 0.34,
+     "other": 0.6,
+     "vocal": 0.08
+    },
+    {
+     "t": 63.936,
+     "why": "faint",
+     "follows": "drums",
+     "layer": 0.18,
+     "full": 0.27,
+     "other": 0.16,
+     "vocal": 0.23
+    },
+    {
+     "t": 69.474,
+     "why": "faint",
+     "follows": "drums",
+     "layer": 0.26,
+     "full": 0.2,
+     "other": 0.32,
+     "vocal": 0.16
+    },
+    {
+     "t": 76.347,
+     "why": "faint",
+     "follows": "drums",
+     "layer": 0.33,
+     "full": 0.31,
+     "other": 0.3,
+     "vocal": 0.11
+    },
+    {
+     "t": 97.942,
+     "why": "faint",
+     "follows": "vocal",
+     "layer": 0.24,
+     "full": 0.33,
+     "other": 0.4,
+     "vocal": 0.24
+    },
+    {
+     "t": 101.75,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.14,
+     "full": 1.4,
+     "other": 0.67,
+     "vocal": 0.14
+    },
+    {
+     "t": 103.851,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.2,
+     "full": 0.41,
+     "other": 0.68,
+     "vocal": 0.2
+    },
+    {
+     "t": 109.772,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.24,
+     "full": 0.79,
+     "other": 0.81,
+     "vocal": 0.24
+    },
+    {
+     "t": 111.507,
+     "why": "faint",
+     "follows": "drums",
+     "layer": 0.3,
+     "full": 0.24,
+     "other": 0.32,
+     "vocal": 0.2
+    },
+    {
+     "t": 119.341,
+     "why": "faint",
+     "follows": "drums",
+     "layer": 0.31,
+     "full": 0.22,
+     "other": 0.27,
+     "vocal": 0.32
+    },
+    {
+     "t": 121.823,
+     "why": "faint",
+     "follows": "drums",
+     "layer": 0.3,
+     "full": 0.29,
+     "other": 0.24,
+     "vocal": 0.16
+    },
+    {
+     "t": 125.074,
+     "why": "faint",
+     "follows": "drums",
+     "layer": 0.25,
+     "full": 0.27,
+     "other": 0.24,
+     "vocal": 0.15
+    },
+    {
+     "t": 130.624,
+     "why": "faint",
+     "follows": "drums",
+     "layer": 0.31,
+     "full": 0.21,
+     "other": 0.25,
+     "vocal": 0.15
+    },
+    {
+     "t": 131.007,
+     "why": "faint",
+     "follows": "drums",
+     "layer": 0.31,
+     "full": 0.29,
+     "other": 0.22,
+     "vocal": 0.2
+    },
+    {
+     "t": 137.112,
+     "why": "faint",
+     "follows": "drums",
+     "layer": 0.24,
+     "full": 0.22,
+     "other": 0.2,
+     "vocal": 0.25
+    },
+    {
+     "t": 149.341,
+     "why": "faint",
+     "follows": "drums",
+     "layer": 0.29,
+     "full": 0.25,
+     "other": 0.27,
+     "vocal": 0.23
+    },
+    {
+     "t": 160.424,
+     "why": "faint",
+     "follows": "drums",
+     "layer": 0.32,
+     "full": 0.3,
+     "other": 0.33,
+     "vocal": 0.19
+    },
+    {
+     "t": 161.953,
+     "why": "faint",
+     "follows": "drums",
+     "layer": 0.32,
+     "full": 0.29,
+     "other": 0.32,
+     "vocal": 0.19
+    },
+    {
+     "t": 168.259,
+     "why": "faint",
+     "follows": "drums",
+     "layer": 0.34,
+     "full": 0.22,
+     "other": 0.27,
+     "vocal": 0.3
+    },
+    {
+     "t": 173.991,
+     "why": "faint",
+     "follows": "drums",
+     "layer": 0.24,
+     "full": 0.26,
+     "other": 0.27,
+     "vocal": 0.4
+    },
+    {
+     "t": 174.182,
+     "why": "faint",
+     "follows": "drums",
+     "layer": 0.32,
+     "full": 0.27,
+     "other": 0.28,
+     "vocal": 0.19
+    },
+    {
+     "t": 197.495,
+     "why": "off-layer",
+     "follows": "drums",
+     "layer": 0.26,
+     "full": 0.68,
+     "other": 0.88,
+     "vocal": 0.0
+    },
+    {
+     "t": 210.28,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.25,
+     "full": 0.78,
+     "other": 0.82,
+     "vocal": 0.25
+    },
+    {
+     "t": 211.244,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.13,
+     "full": 0.31,
+     "other": 0.83,
+     "vocal": 0.13
+    },
+    {
+     "t": 211.812,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.19,
+     "full": 0.75,
+     "other": 0.79,
+     "vocal": 0.19
+    },
+    {
+     "t": 214.309,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.05,
+     "full": 0.4,
+     "other": 0.91,
+     "vocal": 0.05
+    },
+    {
+     "t": 220.425,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.06,
+     "full": 0.52,
+     "other": 0.68,
+     "vocal": 0.06
+    },
+    {
+     "t": 221.565,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.06,
+     "full": 1.0,
+     "other": 0.65,
+     "vocal": 0.06
+    },
+    {
+     "t": 223.291,
+     "why": "faint",
+     "follows": "vocal",
+     "layer": 0.19,
+     "full": 0.28,
+     "other": 0.41,
+     "vocal": 0.19
+    },
+    {
+     "t": 223.482,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.08,
+     "full": 0.4,
+     "other": 0.92,
+     "vocal": 0.08
+    },
+    {
+     "t": 226.349,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.12,
+     "full": 0.83,
+     "other": 0.93,
+     "vocal": 0.12
+    },
+    {
+     "t": 228.659,
+     "why": "faint",
+     "follows": "vocal",
+     "layer": 0.24,
+     "full": 0.15,
+     "other": 0.38,
+     "vocal": 0.24
+    }
+   ],
+   "kept_flagged": [],
+   "flipped_dirs_at": [
+    31.251,
+    43.48,
+    47.102,
+    50.168,
+    61.823,
+    64.882,
+    99.468,
+    104.436,
+    118.386,
+    124.118,
+    130.218,
+    162.144,
+    211.812,
+    220.234
+   ],
+   "route": "designer route kept; local repair around each trimmed tap",
+   "flip_weight": 12,
+   "crossings": {
+    "designer": 63,
+    "shipped": 63
+   }
+  }
  }
 }

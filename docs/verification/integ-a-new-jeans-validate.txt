@@ -1,0 +1,16 @@
+== new-jeans  duration 109.04s  taps 154  dirs R/L 76/78  multi-level crossings 57
+   min gap 0.222s  median gap 0.671s
+   peak density 300 CPM (taps in any 1 s window x60), average 85 CPM; gaps < 0.15 s: 0
+   fastest run: 6 taps (gaps<=0.30s) from 63.25s to 64.38s
+   judgment window: min ±100 ms, median ±110 ms (engine rule)
+   longest same-direction run 6 (>=2 = U-turn, >=4 = spiral)  elevation events 4
+      0.00-   7.51 intro   Intro · 方格纸                     2 taps  0.27/s
+      7.51-  14.68 intro   Beat in · 蓝图线                  13 taps  1.81/s
+     14.68-  36.17 verse   Verse 1 · 纸片房屋                 26 taps  1.21/s
+     36.17-  50.50 chorus  Chorus 1 · 五色尾迹                25 taps  1.74/s
+     50.50-  57.66 break   Break · 像素平面                    8 taps  1.12/s
+     57.66-  64.83 break   Rebuild · 重新立起                 15 taps  2.09/s
+     64.83-  86.32 verse   Verse 2 · 立体城市                 28 taps  1.30/s
+     86.32- 100.64 chorus  Chorus 2 · 飞行                  33 taps  2.30/s
+    100.64- 109.04 outro   Outro · 牛仔徽章                    4 taps  0.48/s
+   extent x[-18,121] z[0,173]

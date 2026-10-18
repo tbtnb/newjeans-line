@@ -1,18 +1,18 @@
-== cookie  duration 233.43s  taps 500  dirs R/L 254/246  multi-level crossings 63
-   min gap 0.173s  median gap 0.382s
-   peak density 360 CPM (taps in any 1 s window x60), average 129 CPM; gaps < 0.15 s: 0
+== cookie  duration 233.43s  taps 458  dirs R/L 233/225  multi-level crossings 63
+   min gap 0.173s  median gap 0.383s
+   peak density 360 CPM (taps in any 1 s window x60), average 118 CPM; gaps < 0.15 s: 0
    fastest run: 6 taps (gaps<=0.30s) from 135.77s to 136.73s
    judgment window: min ±78 ms, median ±86 ms (engine rule)
-   longest same-direction run 4 (>=2 = U-turn, >=4 = spiral)  elevation events 7
+   longest same-direction run 5 (>=2 = U-turn, >=4 = spiral)  elevation events 7
       0.00-  12.33 intro   Intro                           9 taps  0.73/s
-     12.33-  36.79 verse   Verse 1                        55 taps  2.25/s
-     36.79-  49.02 pre     Pre-chorus 1                   22 taps  1.80/s
-     49.02-  73.48 chorus  Chorus 1                       67 taps  2.74/s
-     73.48-  97.94 verse   Verse 2                        53 taps  2.17/s
-     97.94- 110.17 pre     Pre-chorus 2                   21 taps  1.72/s
-    110.17- 134.63 chorus  Chorus 2                       65 taps  2.66/s
-    134.63- 159.09 bridge  Jersey-club bridge             76 taps  3.11/s
-    159.09- 183.55 chorus  Final chorus                   68 taps  2.78/s
-    183.55- 208.01 break   Dance break                    34 taps  1.39/s
-    208.01- 233.43 outro   Outro                          30 taps  1.18/s
-   extent x[0,469] z[0,550]
+     12.33-  36.79 verse   Verse 1                        54 taps  2.21/s
+     36.79-  49.02 pre     Pre-chorus 1                   16 taps  1.31/s
+     49.02-  73.48 chorus  Chorus 1                       61 taps  2.49/s
+     73.48-  97.94 verse   Verse 2                        52 taps  2.13/s
+     97.94- 110.17 pre     Pre-chorus 2                   17 taps  1.39/s
+    110.17- 134.63 chorus  Chorus 2                       59 taps  2.41/s
+    134.63- 159.09 bridge  Jersey-club bridge             74 taps  3.03/s
+    159.09- 183.55 chorus  Final chorus                   63 taps  2.58/s
+    183.55- 208.01 break   Dance break                    33 taps  1.35/s
+    208.01- 233.43 outro   Outro                          20 taps  0.79/s
+   extent x[-303,59] z[0,467]

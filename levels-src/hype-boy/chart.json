@@ -304,43 +304,18 @@
    "tag": "kick"
   },
   {
-   "t": 38.656,
-   "dir": "R",
-   "tag": "snare"
-  },
-  {
    "t": 40.02,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 40.755,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 41.064,
    "dir": "L",
    "tag": "vocal"
   },
   {
+   "t": 41.064,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
    "t": 41.505,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 42.411,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 43.155,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 43.455,
-   "dir": "R",
+   "dir": "L",
    "tag": "vocal"
   },
   {
@@ -360,7 +335,7 @@
   },
   {
    "t": 48.555,
-   "dir": "L",
+   "dir": "R",
    "tag": "snare"
   },
   {
@@ -1034,11 +1009,6 @@
    "tag": "vocal"
   },
   {
-   "t": 117.56,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
    "t": 117.864,
    "dir": "L",
    "tag": "vocal"
@@ -1049,33 +1019,13 @@
    "tag": "vocal"
   },
   {
-   "t": 119.2,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 119.96,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
-   "t": 120.26,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
    "t": 122.66,
-   "dir": "R",
-   "tag": "vocal"
-  },
-  {
-   "t": 123.26,
-   "dir": "R",
+   "dir": "L",
    "tag": "vocal"
   },
   {
    "t": 123.71,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
   },
   {
@@ -1872,6 +1822,124 @@
     "variant": {}
    }
   ],
-  "source": "levels-design/hype-boy (worker design, integrated by integ-a)"
+  "source": "levels-design/hype-boy (worker design, integrated by integ-a)",
+  "integration": {
+   "tool": "tools/charts/integ_a.py",
+   "source_taps": 327,
+   "trimmed": [
+    {
+     "t": 38.656,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.26,
+     "full": 0.49,
+     "other": 0.76,
+     "vocal": 0.26
+    },
+    {
+     "t": 40.755,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.08,
+     "full": 0.44,
+     "other": 0.98,
+     "vocal": 0.08
+    },
+    {
+     "t": 42.411,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.25,
+     "full": 1.0,
+     "other": 0.79,
+     "vocal": 0.25
+    },
+    {
+     "t": 43.155,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.1,
+     "full": 0.43,
+     "other": 1.27,
+     "vocal": 0.1
+    },
+    {
+     "t": 43.455,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.3,
+     "full": 0.24,
+     "other": 1.0,
+     "vocal": 0.3
+    },
+    {
+     "t": 117.56,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.11,
+     "full": 0.65,
+     "other": 0.98,
+     "vocal": 0.11
+    },
+    {
+     "t": 119.2,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.33,
+     "full": 0.57,
+     "other": 0.77,
+     "vocal": 0.33
+    },
+    {
+     "t": 119.96,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.13,
+     "full": 0.42,
+     "other": 1.27,
+     "vocal": 0.13
+    },
+    {
+     "t": 120.26,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.33,
+     "full": 0.27,
+     "other": 1.02,
+     "vocal": 0.33
+    },
+    {
+     "t": 123.26,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.32,
+     "full": 0.42,
+     "other": 1.31,
+     "vocal": 0.32
+    }
+   ],
+   "kept_flagged": [],
+   "flipped_dirs_at": [
+    38.505,
+    40.02,
+    41.064,
+    43.455,
+    38.505,
+    48.555,
+    41.505,
+    115.31,
+    115.31,
+    119.96,
+    123.71,
+    120.26,
+    122.66
+   ],
+   "route": "designer route kept; local repair around each trimmed tap",
+   "flip_weight": 8,
+   "crossings": {
+    "designer": 44,
+    "shipped": 43
+   }
+  }
  }
 }

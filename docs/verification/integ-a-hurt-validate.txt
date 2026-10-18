@@ -1,0 +1,17 @@
+== hurt  duration 175.05s  taps 80  dirs R/L 41/39  multi-level crossings 10
+   min gap 0.322s  median gap 1.993s
+   peak density 180 CPM (taps in any 1 s window x60), average 27 CPM; gaps < 0.15 s: 0
+   judgment window: min ±110 ms, median ±110 ms (engine rule)
+   longest same-direction run 5 (>=2 = U-turn, >=4 = spiral)  elevation events 3
+      0.00-  10.93 intro   Intro                           5 taps  0.46/s
+     10.93-  32.26 verse   Verse 1                        13 taps  0.61/s
+     32.26-  42.93 pre     Pre-chorus 1                    4 taps  0.37/s
+     42.93-  64.26 chorus  Chorus 1                       12 taps  0.56/s
+     64.26-  80.26 verse   Verse 2                         6 taps  0.38/s
+     80.26-  85.59 break   Breath                          1 taps  0.19/s
+     85.59-  96.26 pre     Pre-chorus 2                    6 taps  0.56/s
+     96.26- 117.59 chorus  Chorus 2                        9 taps  0.42/s
+    117.59- 128.26 bridge  Bridge                          4 taps  0.38/s
+    128.26- 143.59 chorus  Final chorus                    8 taps  0.52/s
+    143.59- 175.05 outro   Outro                          12 taps  0.38/s
+   extent x[-235,80] z[-169,111]

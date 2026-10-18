@@ -14,6 +14,15 @@ not physical-device play and not proof of audio/visual sync.
 - Suggested engine fix (not done, engine untouched): let `onroad` objects fade too when they are taller than the road deck, or add an
   explicit `noCutaway` flag for true decks.
 
+## 1b. Trimming a tap rotates the rest of the route (turn parity), so "local" repair is rigid-tail + nearby flips
+- User rule (2026-10-18): remove every tap chartlogic flags as faint or off-layer. Each removed turn changes the heading parity,
+  so no choice of the remaining directions can restore the designer's tail; the tail is carried as a rigid piece (rotated 90 deg
+  about the edit) and up to 3 directions within +-4 taps of the edit are flipped so the whole route stays legal (route.py overlap
+  rule, never worse than the designer route) and the multi-level crossing count stays near the designer's (integ_a_tune.py picks the
+  flip weight per song). worldPos scenery and worldYaw camera cues move with the route. Weak bursts are NOT trimmed (not in the rule).
+- Hurt loses 38 of 118 taps (32 off-layer: the vocal-stem onset is < 0.35 while a drum/mid band is >= 0.6 at those taps); this
+  is the chartlogic verdict applied literally. If the parent prefers, the Hurt sections could be re-declared `mid` (melody) instead.
+
 ## 2. chartlogic grid mismatch on Hype Boy (report only)
 - chartlogic refits the grid to 100.468 BPM and reports 195 "off-grid > 25 ms" taps. Hype Boy is ~100 BPM with a swung/syncopated
   vocal groove; the worker chart does not declare `meta.beat_period`, so the off-grid count is most likely a grid artifact, not

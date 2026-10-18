@@ -1,0 +1,979 @@
+{
+ "id": "hurt",
+ "startHeading": "N",
+ "speed": [
+  {
+   "t": 0,
+   "v": 8.0
+  }
+ ],
+ "taps": [
+  {
+   "t": 1.927,
+   "dir": "R",
+   "tag": "bass"
+  },
+  {
+   "t": 4.593,
+   "dir": "L",
+   "tag": "bass"
+  },
+  {
+   "t": 7.26,
+   "dir": "R",
+   "tag": "bass"
+  },
+  {
+   "t": 9.26,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 10.252,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 11.598,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 12.272,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 12.927,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 13.584,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 15.593,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 16.927,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 18.262,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 20.927,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 22.593,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 22.941,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 26.26,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 29.594,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 31.602,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 34.927,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 36.27,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 38.94,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 41.262,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 44.269,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 45.604,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 48.26,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 49.609,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 50.26,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 52.605,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 52.927,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 55.26,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 56.924,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 58.259,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 60.592,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 62.26,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 64.911,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 67.582,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 68.94,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 72.911,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 77.589,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 78.251,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 83.927,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 86.599,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 88.259,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 88.594,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 90.604,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 92.927,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 95.608,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 97.593,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 98.267,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 98.917,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 105.268,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 110.261,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 112.93,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 113.604,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 114.277,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 115.927,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 117.934,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 120.261,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 124.927,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 126.27,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 128.929,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 129.927,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 131.587,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 134.261,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 135.256,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 136.255,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 140.594,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 142.261,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 145.927,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 146.261,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 146.594,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 149.594,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 150.268,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 152.261,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 155.594,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 156.932,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 158.256,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 160.253,
+   "dir": "R",
+   "tag": "vocal"
+  },
+  {
+   "t": 166.58,
+   "dir": "L",
+   "tag": "vocal"
+  },
+  {
+   "t": 168.263,
+   "dir": "L",
+   "tag": "vocal"
+  }
+ ],
+ "sections": [
+  {
+   "t": 0.0,
+   "label": "Intro",
+   "kind": "intro",
+   "follows": "drums",
+   "follows_note": "0.00 10.93 5 -> 5 0.46 0.992 drums the bass/chord hits that open each bar (about one per bar)"
+  },
+  {
+   "t": 10.927,
+   "label": "Verse 1",
+   "kind": "verse",
+   "follows": "vocal",
+   "follows_note": "10.93 32.26 15 -> 17 0.80 0.336 vocal vocal phrase onsets and held-note releases (sung syllables only, no drum fills)"
+  },
+  {
+   "t": 32.26,
+   "label": "Pre-chorus 1",
+   "kind": "pre",
+   "follows": "vocal",
+   "follows_note": "32.26 42.93 9 -> 8 0.75 0.661 vocal vocal phrase onsets and held-note releases (sung syllables only, no drum fills)"
+  },
+  {
+   "t": 42.927,
+   "label": "Chorus 1",
+   "kind": "chorus",
+   "follows": "vocal",
+   "follows_note": "42.93 64.26 21 -> 17 0.80 0.322 vocal vocal phrase onsets and held-note releases (sung syllables only, no drum fills)"
+  },
+  {
+   "t": 64.26,
+   "label": "Verse 2",
+   "kind": "verse",
+   "follows": "vocal",
+   "follows_note": "64.26 80.26 14 -> 7 0.44 0.662 vocal vocal phrase onsets and held-note releases (sung syllables only, no drum fills)"
+  },
+  {
+   "t": 80.26,
+   "label": "Breath",
+   "kind": "break",
+   "follows": "vocal",
+   "follows_note": "80.26 85.59 2 -> 1 0.19 nan vocal vocal phrase onsets and held-note releases (sung syllables only, no drum fills); deliberately near-empty (break / held notes -"
+  },
+  {
+   "t": 85.594,
+   "label": "Pre-chorus 2",
+   "kind": "pre",
+   "follows": "vocal",
+   "follows_note": "85.59 96.26 9 -> 7 0.66 0.335 vocal vocal phrase onsets and held-note releases (sung syllables only, no drum fills)"
+  },
+  {
+   "t": 96.26,
+   "label": "Chorus 2",
+   "kind": "chorus",
+   "follows": "vocal",
+   "follows_note": "96.26 117.59 22 -> 18 0.84 0.341 vocal vocal phrase onsets and held-note releases (sung syllables only, no drum fills)"
+  },
+  {
+   "t": 117.594,
+   "label": "Bridge",
+   "kind": "bridge",
+   "follows": "vocal",
+   "follows_note": "117.59 128.26 9 -> 9 0.84 0.666 vocal vocal phrase onsets and held-note releases (sung syllables only, no drum fills)"
+  },
+  {
+   "t": 128.26,
+   "label": "Final chorus",
+   "kind": "chorus",
+   "follows": "vocal",
+   "follows_note": "128.26 143.59 18 -> 12 0.78 0.316 vocal vocal phrase onsets and held-note releases (sung syllables only, no drum fills)"
+  },
+  {
+   "t": 143.594,
+   "label": "Outro",
+   "kind": "outro",
+   "follows": "vocal",
+   "follows_note": "143.59 175.01 20 -> 17 0.54 0.316 vocal vocal phrase onsets and held-note releases (sung syllables only, no drum fills)"
+  }
+ ],
+ "notes": "Hurt 90.00 BPM (beat 0.6667 s). 118 taps (legacy 64). Each section follows one audible layer (see chart-report.md); repeated phrases share one tap pattern; 0 16th burst tap(s) only on fills clearly audible in the full mix; min gap 0.316 s, honest peak 190 CPM, avg 40 CPM (total) / 45 (wiki-style). Engine judgment window ±110..±110 ms.",
+ "meta": {
+  "bpm": 90.0,
+  "bursts16": [],
+  "route_moves": [
+   {
+    "name": "intro-sweep",
+    "kind": "alt",
+    "t0": 0,
+    "variant": {}
+   },
+   {
+    "name": "verse1-frame-switchbacks",
+    "kind": "lserp",
+    "t0": 10.927,
+    "variant": {
+     "A0": "W",
+     "P": "N"
+    }
+   },
+   {
+    "name": "pre1-paper-stair",
+    "kind": "stair",
+    "t0": 32.26,
+    "variant": {
+     "diags": [
+      "NE"
+     ]
+    }
+   },
+   {
+    "name": "chorus1-court-horseshoe",
+    "kind": "zig",
+    "t0": 42.927,
+    "variant": {
+     "diags": [
+      "NW",
+      "SW",
+      "SE"
+     ],
+     "every": 6
+    }
+   },
+   {
+    "name": "verse2-reed-switchbacks",
+    "kind": "lserp",
+    "t0": 64.26,
+    "variant": {
+     "A0": "W",
+     "P": "S"
+    }
+   },
+   {
+    "name": "breath-straight",
+    "kind": "alt",
+    "t0": 80.26,
+    "variant": {}
+   },
+   {
+    "name": "pre2-paper-corridor",
+    "kind": "zig",
+    "t0": 85.594,
+    "variant": {
+     "diags": [
+      "SE",
+      "SW"
+     ],
+     "every": 2
+    }
+   },
+   {
+    "name": "chorus2-trestle-U",
+    "kind": "zig",
+    "t0": 96.26,
+    "variant": {
+     "diags": [
+      "SW",
+      "NW",
+      "NE"
+     ],
+     "every": 5
+    }
+   },
+   {
+    "name": "bridge-quiet-switchbacks",
+    "kind": "lserp",
+    "t0": 117.594,
+    "variant": {
+     "A0": "N",
+     "P": "W"
+    }
+   },
+   {
+    "name": "final-fan-terraces",
+    "kind": "zig",
+    "t0": 128.26,
+    "variant": {
+     "diags": [
+      "SE",
+      "SW"
+     ],
+     "every": 3
+    }
+   },
+   {
+    "name": "outro-long-steps",
+    "kind": "stair",
+    "t0": 143.594,
+    "variant": {
+     "diags": [
+      "SW"
+     ]
+    }
+   }
+  ],
+  "source": "levels-design/hurt (worker design, integrated by integ-a)",
+  "integration": {
+   "tool": "tools/charts/integ_a.py",
+   "source_taps": 118,
+   "trimmed": [
+    {
+     "t": 11.262,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.17,
+     "full": 0.45,
+     "other": 0.68,
+     "vocal": 0.17
+    },
+    {
+     "t": 24.927,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.27,
+     "full": 1.46,
+     "other": 0.68,
+     "vocal": 0.27
+    },
+    {
+     "t": 27.26,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.14,
+     "full": 0.49,
+     "other": 0.64,
+     "vocal": 0.14
+    },
+    {
+     "t": 30.26,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.12,
+     "full": 1.38,
+     "other": 0.7,
+     "vocal": 0.12
+    },
+    {
+     "t": 33.599,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.21,
+     "full": 0.74,
+     "other": 0.71,
+     "vocal": 0.21
+    },
+    {
+     "t": 34.26,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.07,
+     "full": 1.5,
+     "other": 0.66,
+     "vocal": 0.07
+    },
+    {
+     "t": 38.26,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.0,
+     "full": 1.5,
+     "other": 0.72,
+     "vocal": 0.0
+    },
+    {
+     "t": 42.26,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.12,
+     "full": 1.1,
+     "other": 0.66,
+     "vocal": 0.12
+    },
+    {
+     "t": 43.259,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.15,
+     "full": 1.13,
+     "other": 1.31,
+     "vocal": 0.15
+    },
+    {
+     "t": 46.916,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.09,
+     "full": 0.92,
+     "other": 0.82,
+     "vocal": 0.09
+    },
+    {
+     "t": 50.933,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.12,
+     "full": 0.4,
+     "other": 0.6,
+     "vocal": 0.12
+    },
+    {
+     "t": 51.594,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.15,
+     "full": 1.5,
+     "other": 0.7,
+     "vocal": 0.15
+    },
+    {
+     "t": 59.594,
+     "why": "faint",
+     "follows": "vocal",
+     "layer": 0.32,
+     "full": 0.26,
+     "other": 0.42,
+     "vocal": 0.32
+    },
+    {
+     "t": 79.594,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.0,
+     "full": 0.63,
+     "other": 0.66,
+     "vocal": 0.0
+    },
+    {
+     "t": 91.928,
+     "why": "faint",
+     "follows": "vocal",
+     "layer": 0.21,
+     "full": 0.27,
+     "other": 0.49,
+     "vocal": 0.21
+    },
+    {
+     "t": 96.27,
+     "why": "faint",
+     "follows": "vocal",
+     "layer": 0.34,
+     "full": 0.26,
+     "other": 0.4,
+     "vocal": 0.34
+    },
+    {
+     "t": 97.245,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.1,
+     "full": 0.64,
+     "other": 0.86,
+     "vocal": 0.1
+    },
+    {
+     "t": 101.251,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.22,
+     "full": 0.52,
+     "other": 0.66,
+     "vocal": 0.22
+    },
+    {
+     "t": 101.924,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.12,
+     "full": 0.75,
+     "other": 0.69,
+     "vocal": 0.12
+    },
+    {
+     "t": 104.261,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.32,
+     "full": 0.42,
+     "other": 0.65,
+     "vocal": 0.32
+    },
+    {
+     "t": 104.927,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.1,
+     "full": 0.95,
+     "other": 0.73,
+     "vocal": 0.1
+    },
+    {
+     "t": 108.261,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.09,
+     "full": 0.77,
+     "other": 0.66,
+     "vocal": 0.09
+    },
+    {
+     "t": 108.927,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.03,
+     "full": 1.5,
+     "other": 0.7,
+     "vocal": 0.03
+    },
+    {
+     "t": 109.594,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.16,
+     "full": 0.87,
+     "other": 1.3,
+     "vocal": 0.16
+    },
+    {
+     "t": 118.927,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.12,
+     "full": 1.05,
+     "other": 0.94,
+     "vocal": 0.12
+    },
+    {
+     "t": 121.594,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.04,
+     "full": 1.11,
+     "other": 0.62,
+     "vocal": 0.04
+    },
+    {
+     "t": 122.915,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.13,
+     "full": 0.93,
+     "other": 0.85,
+     "vocal": 0.13
+    },
+    {
+     "t": 124.261,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.06,
+     "full": 1.24,
+     "other": 0.72,
+     "vocal": 0.06
+    },
+    {
+     "t": 127.594,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.16,
+     "full": 0.57,
+     "other": 0.66,
+     "vocal": 0.16
+    },
+    {
+     "t": 130.926,
+     "why": "faint",
+     "follows": "vocal",
+     "layer": 0.31,
+     "full": 0.3,
+     "other": 0.46,
+     "vocal": 0.31
+    },
+    {
+     "t": 136.916,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.27,
+     "full": 0.72,
+     "other": 0.75,
+     "vocal": 0.27
+    },
+    {
+     "t": 140.91,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.26,
+     "full": 1.0,
+     "other": 1.01,
+     "vocal": 0.26
+    },
+    {
+     "t": 141.247,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.15,
+     "full": 0.36,
+     "other": 0.61,
+     "vocal": 0.15
+    },
+    {
+     "t": 143.594,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.0,
+     "full": 1.5,
+     "other": 0.73,
+     "vocal": 0.0
+    },
+    {
+     "t": 155.91,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.24,
+     "full": 1.5,
+     "other": 1.21,
+     "vocal": 0.24
+    },
+    {
+     "t": 162.911,
+     "why": "off-layer",
+     "follows": "vocal",
+     "layer": 0.31,
+     "full": 1.25,
+     "other": 1.1,
+     "vocal": 0.31
+    },
+    {
+     "t": 163.594,
+     "why": "faint",
+     "follows": "vocal",
+     "layer": 0.26,
+     "full": 0.3,
+     "other": 0.45,
+     "vocal": 0.26
+    },
+    {
+     "t": 167.602,
+     "why": "faint",
+     "follows": "vocal",
+     "layer": 0.11,
+     "full": 0.34,
+     "other": 0.42,
+     "vocal": 0.11
+    }
+   ],
+   "kept_flagged": [],
+   "flipped_dirs_at": [
+    18.262,
+    31.602,
+    34.26,
+    29.594,
+    29.594,
+    38.94,
+    38.94,
+    48.26,
+    77.589,
+    90.604,
+    110.261,
+    120.261,
+    122.915,
+    146.261
+   ],
+   "route": "designer route kept; local repair around each trimmed tap",
+   "flip_weight": 5,
+   "crossings": {
+    "designer": 11,
+    "shipped": 10
+   }
+  }
+ }
+}

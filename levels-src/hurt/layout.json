@@ -1,0 +1,3466 @@
+{
+ "id": "hurt",
+ "title": "Hurt",
+ "palette": {
+  "skyTop": "#C9DAE6",
+  "skyBottom": "#DDE9EF",
+  "fog": "#DDE9EF",
+  "fogStart": 35,
+  "fogEnd": 105,
+  "ground": "#D3E2EA",
+  "groundY": -10,
+  "road": "#F5F1E8",
+  "roadSide": "#182446",
+  "line": "#D76F72",
+  "light": "#FFF3E6",
+  "lightIntensity": 0.95,
+  "ambient": "#B7C6D4",
+  "particles": null
+ },
+ "road": {
+  "width": [
+   {
+    "t": 0,
+    "w": 2.3
+   },
+   {
+    "t": 10.927,
+    "w": 2.0
+   },
+   {
+    "t": 32.26,
+    "w": 2.2
+   },
+   {
+    "t": 42.927,
+    "w": 2.2
+   },
+   {
+    "t": 64.26,
+    "w": 1.9
+   },
+   {
+    "t": 80.26,
+    "w": 2.4
+   },
+   {
+    "t": 85.594,
+    "w": 1.8
+   },
+   {
+    "t": 96.26,
+    "w": 2.1
+   },
+   {
+    "t": 117.594,
+    "w": 2.2
+   },
+   {
+    "t": 128.26,
+    "w": 1.9
+   },
+   {
+    "t": 143.594,
+    "w": 2.3
+   }
+  ],
+  "height": 0.6,
+  "reveal": [
+   {
+    "t": 0,
+    "mode": "rise",
+    "lead": 2.0
+   },
+   {
+    "t": 42.927,
+    "mode": "unfold",
+    "lead": 1.8
+   },
+   {
+    "t": 80.26,
+    "mode": "fade",
+    "lead": 2.2
+   },
+   {
+    "t": 96.26,
+    "mode": "unfold",
+    "lead": 1.8
+   },
+   {
+    "t": 117.594,
+    "mode": "rise",
+    "lead": 2.0
+   },
+   {
+    "t": 128.26,
+    "mode": "rise",
+    "lead": 1.6
+   },
+   {
+    "t": 143.594,
+    "mode": "fade",
+    "lead": 2.2
+   }
+  ]
+ },
+ "elevation": [
+  {
+   "type": "ramp",
+   "t0": 32.6,
+   "t1": 42.5,
+   "dy": 3.5
+  },
+  {
+   "type": "ramp",
+   "t0": 96.6,
+   "t1": 116.8,
+   "dy": 4
+  },
+  {
+   "type": "fall",
+   "t": 128.989,
+   "dy": -4
+  }
+ ],
+ "sections": [
+  {
+   "t": 0,
+   "label": "Intro",
+   "note": "Sparse entrance, about one tap per bar on the intro chords; two long NE steps."
+  },
+  {
+   "t": 10.927,
+   "label": "Verse 1",
+   "note": "Frame switchbacks: long lanes on the held vocal lines, hairpins on the short syllable pairs; one lane runs through the portrait-frame gallery.",
+   "palette": {
+    "fogEnd": 85
+   }
+  },
+  {
+   "t": 32.26,
+   "label": "Pre-chorus 1",
+   "note": "Paper staircase climbing NE (ramp +3.5); the unsent folded letter opens beside it.",
+   "palette": {
+    "fogEnd": 110
+   }
+  },
+  {
+   "t": 42.927,
+   "label": "Chorus 1",
+   "note": "Three-leg staircase horseshoe around the quiet court and its halftone bunny wall; one fake fork.",
+   "palette": {
+    "skyTop": "#BCD0E2"
+   }
+  },
+  {
+   "t": 64.26,
+   "label": "Verse 2",
+   "note": "Reed switchbacks heading back SW and passing OVER the verse-1 area (+3.5 above it).",
+   "palette": {
+    "fogEnd": 90
+   }
+  },
+  {
+   "t": 80.26,
+   "label": "Breath",
+   "note": "Vocal-gap breath: one tap, long straight over still water.",
+   "palette": {
+    "skyTop": "#D4E1EA",
+    "fogEnd": 130
+   }
+  },
+  {
+   "t": 85.594,
+   "label": "Pre-chorus 2",
+   "note": "Narrow paper corridor: short 2-3-tap zigzag (road 1.8)."
+  },
+  {
+   "t": 96.26,
+   "label": "Chorus 2",
+   "note": "Ramp +4 onto the ear trestle: three-leg staircase U that crosses over the earlier route; five pixel bunnies under the trestle.",
+   "palette": {
+    "skyTop": "#B4C8E0",
+    "ground": "#C8D9E6"
+   }
+  },
+  {
+   "t": 117.594,
+   "label": "Bridge",
+   "note": "Long quiet switchbacks through the colonnade, few bends.",
+   "palette": {
+    "fogEnd": 140
+   }
+  },
+  {
+   "t": 128.26,
+   "label": "Final chorus",
+   "note": "Fall -4, then fan terraces: 2-4-tap zigzag steps; the frames open on alternating beats.",
+   "palette": {
+    "skyTop": "#E2D3D3",
+    "skyBottom": "#F1E7E2"
+   },
+   "backdrop": "art/sky-dawn.jpg"
+  },
+  {
+   "t": 143.594,
+   "label": "Outro",
+   "note": "Long dawn staircase to the square quiet platform; frames stop moving.",
+   "palette": {
+    "skyTop": "#F0DCCF",
+    "skyBottom": "#F7EEE6",
+    "light": "#FFE8D2"
+   }
+  }
+ ],
+ "camera": [
+  {
+   "t": 0,
+   "preset": "iso",
+   "dist": 17,
+   "blend": 0
+  },
+  {
+   "t": 10.927,
+   "preset": "high",
+   "dist": 19,
+   "blend": 2.5
+  },
+  {
+   "t": 17.762,
+   "preset": "high",
+   "pitch": 66,
+   "blend": 0.6
+  },
+  {
+   "t": 21.427,
+   "preset": "high",
+   "dist": 19,
+   "blend": 1.2
+  },
+  {
+   "t": 32.26,
+   "preset": "side",
+   "yaw": -60,
+   "dist": 22,
+   "pitch": 35,
+   "blend": 3.0
+  },
+  {
+   "t": 42.927,
+   "preset": "wide",
+   "dist": 24,
+   "blend": 2.0
+  },
+  {
+   "t": 64.26,
+   "preset": "high",
+   "dist": 21,
+   "blend": 2.5
+  },
+  {
+   "t": 80.26,
+   "preset": "low",
+   "dist": 18,
+   "blend": 3.0
+  },
+  {
+   "t": 85.594,
+   "preset": "iso",
+   "dist": 17,
+   "blend": 2.0
+  },
+  {
+   "t": 96.26,
+   "preset": "wide",
+   "dist": 25,
+   "blend": 2.0
+  },
+  {
+   "t": 117.594,
+   "preset": "side",
+   "yaw": 60,
+   "dist": 22,
+   "pitch": 30,
+   "blend": 3.0
+  },
+  {
+   "t": 122.415,
+   "preset": "high",
+   "pitch": 66,
+   "blend": 0.6
+  },
+  {
+   "t": 124.761,
+   "preset": "side",
+   "yaw": 60,
+   "dist": 22,
+   "pitch": 30,
+   "blend": 1.2
+  },
+  {
+   "t": 128.26,
+   "preset": "iso",
+   "dist": 20,
+   "blend": 2.0
+  },
+  {
+   "t": 143.594,
+   "preset": "wide",
+   "dist": 26,
+   "blend": 4.0
+  }
+ ],
+ "objects": [
+  {
+   "id": "outer-bases",
+   "kind": "row",
+   "t0": 0.5,
+   "t1": 10.5,
+   "side": 7,
+   "spacing": 6,
+   "bothSides": true,
+   "item": {
+    "kind": "box",
+    "size": [
+     3,
+     1,
+     3
+    ],
+    "color": "#A8B9A5"
+   }
+  },
+  {
+   "id": "portrait-frame-0",
+   "t": 13.0,
+   "side": 5.5,
+   "kind": "group",
+   "radius": 2.5,
+   "name": "empty portrait frame",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      -0.9
+     ],
+     "size": [
+      2.6,
+      0.3,
+      0.2
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      0.9
+     ],
+     "size": [
+      2.6,
+      0.3,
+      0.2
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.3,
+      0
+     ],
+     "size": [
+      2.6,
+      0.3,
+      2
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.7,
+      0
+     ],
+     "size": [
+      2.6,
+      0.3,
+      2
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "plane",
+     "pos": [
+      0,
+      2.5,
+      0
+     ],
+     "size": [
+      2.2,
+      1,
+      2.2
+     ],
+     "color": "#EEF3F6"
+    }
+   ],
+   "appear": {
+    "t": 10.927,
+    "mode": "rise",
+    "dur": 1.0
+   }
+  },
+  {
+   "id": "portrait-frame-1",
+   "t": 16.9,
+   "side": -5.5,
+   "kind": "group",
+   "radius": 2.5,
+   "name": "empty portrait frame",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      -0.9
+     ],
+     "size": [
+      2.6,
+      0.3,
+      0.2
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      0.9
+     ],
+     "size": [
+      2.6,
+      0.3,
+      0.2
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.3,
+      0
+     ],
+     "size": [
+      2.6,
+      0.3,
+      2
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.7,
+      0
+     ],
+     "size": [
+      2.6,
+      0.3,
+      2
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "plane",
+     "pos": [
+      0,
+      2.5,
+      0
+     ],
+     "size": [
+      2.2,
+      1,
+      2.2
+     ],
+     "color": "#EEF3F6"
+    }
+   ],
+   "appear": {
+    "t": 14.927,
+    "mode": "rise",
+    "dur": 1.0
+   }
+  },
+  {
+   "id": "portrait-frame-2",
+   "t": 20.8,
+   "side": 5.5,
+   "kind": "group",
+   "radius": 2.5,
+   "name": "M1 five empty portrait frames",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      -0.9
+     ],
+     "size": [
+      2.6,
+      0.3,
+      0.2
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      0.9
+     ],
+     "size": [
+      2.6,
+      0.3,
+      0.2
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.3,
+      0
+     ],
+     "size": [
+      2.6,
+      0.3,
+      2
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.7,
+      0
+     ],
+     "size": [
+      2.6,
+      0.3,
+      2
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "plane",
+     "pos": [
+      0,
+      2.5,
+      0
+     ],
+     "size": [
+      2.2,
+      1,
+      2.2
+     ],
+     "color": "#EEF3F6"
+    }
+   ],
+   "appear": {
+    "t": 18.928,
+    "mode": "rise",
+    "dur": 1.0
+   },
+   "landmark": true
+  },
+  {
+   "id": "portrait-frame-3",
+   "t": 24.7,
+   "side": -5.5,
+   "kind": "group",
+   "radius": 2.5,
+   "name": "empty portrait frame",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      -0.9
+     ],
+     "size": [
+      2.6,
+      0.3,
+      0.2
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      0.9
+     ],
+     "size": [
+      2.6,
+      0.3,
+      0.2
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.3,
+      0
+     ],
+     "size": [
+      2.6,
+      0.3,
+      2
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.7,
+      0
+     ],
+     "size": [
+      2.6,
+      0.3,
+      2
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "plane",
+     "pos": [
+      0,
+      2.5,
+      0
+     ],
+     "size": [
+      2.2,
+      1,
+      2.2
+     ],
+     "color": "#EEF3F6"
+    }
+   ],
+   "appear": {
+    "t": 22.928,
+    "mode": "rise",
+    "dur": 1.0
+   }
+  },
+  {
+   "id": "portrait-frame-4",
+   "t": 28.6,
+   "side": 5.5,
+   "kind": "group",
+   "radius": 2.5,
+   "name": "empty portrait frame",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      -0.9
+     ],
+     "size": [
+      2.6,
+      0.3,
+      0.2
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      0.9
+     ],
+     "size": [
+      2.6,
+      0.3,
+      0.2
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.3,
+      0
+     ],
+     "size": [
+      2.6,
+      0.3,
+      2
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.7,
+      0
+     ],
+     "size": [
+      2.6,
+      0.3,
+      2
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "plane",
+     "pos": [
+      0,
+      2.5,
+      0
+     ],
+     "size": [
+      2.2,
+      1,
+      2.2
+     ],
+     "color": "#EEF3F6"
+    }
+   ],
+   "appear": {
+    "t": 26.929,
+    "mode": "rise",
+    "dur": 1.0
+   }
+  },
+  {
+   "id": "unsent-paper",
+   "t": 37.0,
+   "side": -8,
+   "kind": "group",
+   "radius": 4,
+   "landmark": true,
+   "name": "M2 unsent blank folded letter",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      -1.6,
+      1.5,
+      0
+     ],
+     "size": [
+      3,
+      0.1,
+      4
+     ],
+     "color": "#FBF8F2",
+     "rot": [
+      0,
+      0,
+      25
+     ]
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.6,
+      1.5,
+      0
+     ],
+     "size": [
+      3,
+      0.1,
+      4
+     ],
+     "color": "#FBF8F2",
+     "rot": [
+      0,
+      0,
+      -25
+     ]
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.8,
+      0
+     ],
+     "size": [
+      0.2,
+      1.5,
+      4
+     ],
+     "color": "#E5BCB3"
+    }
+   ],
+   "appear": {
+    "t": 32.26,
+    "mode": "unfold",
+    "dur": 2.6
+   }
+  },
+  {
+   "id": "halftone-bunny-wall",
+   "t": 52.0,
+   "side": 18,
+   "kind": "group",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      6.6000000000000005,
+      0
+     ],
+     "size": [
+      17.6,
+      13.200000000000001,
+      1.32
+     ],
+     "color": "#243C9F"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      7.15,
+      -0.8800000000000001
+     ],
+     "size": [
+      7.700000000000001,
+      6.050000000000001,
+      0.66
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -2.2,
+      12.100000000000001,
+      -0.8800000000000001
+     ],
+     "size": [
+      1.7600000000000002,
+      5.5,
+      0.66
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2.2,
+      12.100000000000001,
+      -0.8800000000000001
+     ],
+     "size": [
+      1.7600000000000002,
+      5.5,
+      0.66
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.54,
+      7.920000000000001,
+      -1.32
+     ],
+     "size": [
+      1.1,
+      1.32,
+      0.33
+     ],
+     "color": "#243C9F"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.54,
+      7.920000000000001,
+      -1.32
+     ],
+     "size": [
+      1.1,
+      1.32,
+      0.33
+     ],
+     "color": "#243C9F"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      6.16,
+      -1.32
+     ],
+     "size": [
+      1.32,
+      0.55,
+      0.33
+     ],
+     "color": "#E8A0A8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -6.050000000000001,
+      4.95,
+      -0.8800000000000001
+     ],
+     "size": [
+      4.4,
+      1.54,
+      0.66
+     ],
+     "color": "#F5F1E8",
+     "rot": [
+      0,
+      0,
+      20
+     ]
+    },
+    {
+     "kind": "box",
+     "pos": [
+      6.050000000000001,
+      4.95,
+      -0.8800000000000001
+     ],
+     "size": [
+      4.4,
+      1.54,
+      0.66
+     ],
+     "color": "#F5F1E8",
+     "rot": [
+      0,
+      0,
+      -20
+     ]
+    }
+   ],
+   "radius": 9.9,
+   "landmark": true,
+   "name": "M3 halftone bunny wall (2022 EP cover)",
+   "appear": {
+    "t": 40.3,
+    "mode": "rise",
+    "dur": 2.5
+   }
+  },
+  {
+   "id": "hair-pillars",
+   "kind": "row",
+   "t0": 64.5,
+   "t1": 96,
+   "side": 6,
+   "spacing": 3.5,
+   "bothSides": false,
+   "item": {
+    "kind": "cylinder",
+    "size": [
+     0.3,
+     7,
+     0.3
+    ],
+    "color": "#182446",
+    "react": "beat"
+   }
+  },
+  {
+   "id": "reeds",
+   "kind": "row",
+   "t0": 66,
+   "t1": 95,
+   "side": -5,
+   "spacing": 5,
+   "bothSides": false,
+   "item": {
+    "kind": "cone",
+    "size": [
+     1,
+     2.5,
+     1
+    ],
+    "color": "#A8B9A5"
+   }
+  },
+  {
+   "id": "still-water",
+   "t": 83.0,
+   "side": 0,
+   "y": -2.0,
+   "kind": "water",
+   "size": [
+    30,
+    0.2,
+    30
+   ],
+   "color": "#C9DCE8",
+   "name": "still water under the breath straight"
+  },
+  {
+   "id": "ear-pier-0",
+   "t": 101.0,
+   "side": -6,
+   "kind": "box",
+   "size": [
+    2.2,
+    8,
+    6
+   ],
+   "color": "#F5F1E8",
+   "color2": "#243C9F",
+   "name": "M4 ear pier",
+   "landmark": true,
+   "appear": {
+    "t": 97.0,
+    "mode": "rise",
+    "dur": 1.2
+   }
+  },
+  {
+   "id": "ear-pier-1",
+   "t": 112.5,
+   "side": -6,
+   "kind": "box",
+   "size": [
+    2.2,
+    8,
+    6
+   ],
+   "color": "#F5F1E8",
+   "color2": "#243C9F",
+   "name": "M4 ear pier",
+   "landmark": false,
+   "appear": {
+    "t": 108.5,
+    "mode": "rise",
+    "dur": 1.2
+   }
+  },
+  {
+   "id": "egg-pixel-bunnies",
+   "t": 99.0,
+   "side": 4,
+   "y": -2.4,
+   "kind": "group",
+   "radius": 4,
+   "egg": true,
+   "name": "E1 five pixel bunnies under the trestle",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      -3.0,
+      0.4,
+      0
+     ],
+     "size": [
+      0.8,
+      0.8,
+      0.8
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -3.2,
+      1.1,
+      0
+     ],
+     "size": [
+      0.2,
+      0.6,
+      0.2
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -2.8,
+      1.1,
+      0
+     ],
+     "size": [
+      0.2,
+      0.6,
+      0.2
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5,
+      0.4,
+      0
+     ],
+     "size": [
+      0.8,
+      0.8,
+      0.8
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.7000000000000002,
+      1.1,
+      0
+     ],
+     "size": [
+      0.2,
+      0.6,
+      0.2
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.2999999999999998,
+      1.1,
+      0
+     ],
+     "size": [
+      0.2,
+      0.6,
+      0.2
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      0.4,
+      0
+     ],
+     "size": [
+      0.8,
+      0.8,
+      0.8
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -0.20000000000000018,
+      1.1,
+      0
+     ],
+     "size": [
+      0.2,
+      0.6,
+      0.2
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.20000000000000018,
+      1.1,
+      0
+     ],
+     "size": [
+      0.2,
+      0.6,
+      0.2
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.5,
+      0.4,
+      0
+     ],
+     "size": [
+      0.8,
+      0.8,
+      0.8
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.2999999999999998,
+      1.1,
+      0
+     ],
+     "size": [
+      0.2,
+      0.6,
+      0.2
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.7000000000000002,
+      1.1,
+      0
+     ],
+     "size": [
+      0.2,
+      0.6,
+      0.2
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      3.0,
+      0.4,
+      0
+     ],
+     "size": [
+      0.8,
+      0.8,
+      0.8
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2.8,
+      1.1,
+      0
+     ],
+     "size": [
+      0.2,
+      0.6,
+      0.2
+     ],
+     "color": "#FFFFFF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      3.2,
+      1.1,
+      0
+     ],
+     "size": [
+      0.2,
+      0.6,
+      0.2
+     ],
+     "color": "#FFFFFF"
+    }
+   ],
+   "appear": {
+    "t": 97.0,
+    "mode": "pop",
+    "dur": 0.5
+   },
+   "exit": {
+    "t": 103.0,
+    "mode": "fade",
+    "dur": 1.0
+   }
+  },
+  {
+   "id": "fan-terrace-0",
+   "t": 130.0,
+   "side": -9,
+   "kind": "group",
+   "radius": 6,
+   "name": "M5 opening frame terrace",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -0.6,
+      0
+     ],
+     "size": [
+      8,
+      1.2,
+      6
+     ],
+     "color": "#A8B9A5"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2,
+      0
+     ],
+     "size": [
+      0.3,
+      3,
+      5
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -3,
+      0
+     ],
+     "size": [
+      7.6,
+      4,
+      5.6
+     ],
+     "color": "#182446"
+    }
+   ],
+   "appear": {
+    "t": 128.26,
+    "mode": "unfold",
+    "dur": 1.0
+   }
+  },
+  {
+   "id": "fan-terrace-1",
+   "t": 134.5,
+   "side": 9,
+   "kind": "group",
+   "radius": 6,
+   "name": "M5 opening frame terrace",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -0.6,
+      0
+     ],
+     "size": [
+      8,
+      1.2,
+      6
+     ],
+     "color": "#A8B9A5"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2,
+      0
+     ],
+     "size": [
+      0.3,
+      3,
+      5
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -3,
+      0
+     ],
+     "size": [
+      7.6,
+      4,
+      5.6
+     ],
+     "color": "#182446"
+    }
+   ],
+   "appear": {
+    "t": 128.927,
+    "mode": "unfold",
+    "dur": 1.0
+   }
+  },
+  {
+   "id": "fan-terrace-2",
+   "t": 139.0,
+   "side": -9,
+   "kind": "group",
+   "radius": 6,
+   "name": "M5 opening frame terrace",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -0.6,
+      0
+     ],
+     "size": [
+      8,
+      1.2,
+      6
+     ],
+     "color": "#A8B9A5"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2,
+      0
+     ],
+     "size": [
+      0.3,
+      3,
+      5
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -3,
+      0
+     ],
+     "size": [
+      7.6,
+      4,
+      5.6
+     ],
+     "color": "#182446"
+    }
+   ],
+   "appear": {
+    "t": 129.594,
+    "mode": "unfold",
+    "dur": 1.0
+   }
+  },
+  {
+   "id": "quiet-platform",
+   "t": 168.0,
+   "side": 6,
+   "kind": "group",
+   "radius": 6,
+   "landmark": true,
+   "name": "square quiet platform at dawn",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -0.6,
+      0
+     ],
+     "size": [
+      10,
+      1.2,
+      10
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -3.5,
+      0
+     ],
+     "size": [
+      9.6,
+      5,
+      9.6
+     ],
+     "color": "#182446"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.8,
+      0
+     ],
+     "size": [
+      1.2,
+      1.6,
+      1.2
+     ],
+     "color": "#E5BCB3"
+    }
+   ],
+   "appear": {
+    "t": 160.0,
+    "mode": "rise",
+    "dur": 2.0
+   }
+  },
+  {
+   "id": "trees",
+   "kind": "row",
+   "t0": 0,
+   "t1": 171,
+   "side": 18,
+   "spacing": 22,
+   "bothSides": true,
+   "item": {
+    "kind": "tree",
+    "size": [
+     3,
+     5,
+     3
+    ],
+    "color": "#A8B9A5"
+   }
+  },
+  {
+   "id": "sticker-0",
+   "t": 6.0,
+   "side": 3.2,
+   "kind": "image",
+   "src": "art/sticker-drop.png",
+   "size": [
+    1.6,
+    0,
+    1.6
+   ],
+   "mode": "flat",
+   "alpha": true
+  },
+  {
+   "id": "sticker-1",
+   "t": 18.0,
+   "side": -3.2,
+   "kind": "image",
+   "src": "art/sticker-heart.png",
+   "size": [
+    1.6,
+    0,
+    1.6
+   ],
+   "mode": "flat",
+   "alpha": true
+  },
+  {
+   "id": "sticker-2",
+   "t": 29.0,
+   "side": 3.2,
+   "kind": "image",
+   "src": "art/sticker-window.png",
+   "size": [
+    1.6,
+    0,
+    1.6
+   ],
+   "mode": "flat",
+   "alpha": true
+  },
+  {
+   "id": "sticker-3",
+   "t": 38.0,
+   "side": -3.2,
+   "kind": "image",
+   "src": "art/sticker-star.png",
+   "size": [
+    1.6,
+    0,
+    1.6
+   ],
+   "mode": "flat",
+   "alpha": true
+  },
+  {
+   "id": "sticker-4",
+   "t": 50.0,
+   "side": 3.2,
+   "kind": "image",
+   "src": "art/sticker-bunny.png",
+   "size": [
+    1.6,
+    0,
+    1.6
+   ],
+   "mode": "flat",
+   "alpha": true
+  },
+  {
+   "id": "sticker-5",
+   "t": 60.0,
+   "side": -3.2,
+   "kind": "image",
+   "src": "art/sticker-heart.png",
+   "size": [
+    1.6,
+    0,
+    1.6
+   ],
+   "mode": "flat",
+   "alpha": true
+  },
+  {
+   "id": "sticker-6",
+   "t": 72.0,
+   "side": 3.2,
+   "kind": "image",
+   "src": "art/sticker-drop.png",
+   "size": [
+    1.6,
+    0,
+    1.6
+   ],
+   "mode": "flat",
+   "alpha": true
+  },
+  {
+   "id": "sticker-7",
+   "t": 90.0,
+   "side": -3.2,
+   "kind": "image",
+   "src": "art/sticker-window.png",
+   "size": [
+    1.6,
+    0,
+    1.6
+   ],
+   "mode": "flat",
+   "alpha": true
+  },
+  {
+   "id": "sticker-8",
+   "t": 104.0,
+   "side": 3.2,
+   "kind": "image",
+   "src": "art/sticker-star.png",
+   "size": [
+    1.6,
+    0,
+    1.6
+   ],
+   "mode": "flat",
+   "alpha": true
+  },
+  {
+   "id": "sticker-9",
+   "t": 112.0,
+   "side": -3.2,
+   "kind": "image",
+   "src": "art/sticker-bunny.png",
+   "size": [
+    1.6,
+    0,
+    1.6
+   ],
+   "mode": "flat",
+   "alpha": true
+  },
+  {
+   "id": "sticker-10",
+   "t": 122.0,
+   "side": 3.2,
+   "kind": "image",
+   "src": "art/sticker-drop.png",
+   "size": [
+    1.6,
+    0,
+    1.6
+   ],
+   "mode": "flat",
+   "alpha": true
+  },
+  {
+   "id": "sticker-11",
+   "t": 134.0,
+   "side": -3.2,
+   "kind": "image",
+   "src": "art/sticker-heart.png",
+   "size": [
+    1.6,
+    0,
+    1.6
+   ],
+   "mode": "flat",
+   "alpha": true
+  },
+  {
+   "id": "sticker-12",
+   "t": 148.0,
+   "side": 3.2,
+   "kind": "image",
+   "src": "art/sticker-star.png",
+   "size": [
+    1.6,
+    0,
+    1.6
+   ],
+   "mode": "flat",
+   "alpha": true
+  },
+  {
+   "id": "sticker-13",
+   "t": 158.0,
+   "side": -3.2,
+   "kind": "image",
+   "src": "art/sticker-bunny.png",
+   "size": [
+    1.6,
+    0,
+    1.6
+   ],
+   "mode": "flat",
+   "alpha": true
+  },
+  {
+   "id": "sticker-14",
+   "t": 166.0,
+   "side": 3.2,
+   "kind": "image",
+   "src": "art/sticker-heart.png",
+   "size": [
+    1.6,
+    0,
+    1.6
+   ],
+   "mode": "flat",
+   "alpha": true
+  },
+  {
+   "id": "frames-poster-0",
+   "t": 45.0,
+   "side": 5,
+   "kind": "image",
+   "src": "art/poster-frames.jpg",
+   "size": [
+    3,
+    0,
+    4
+   ],
+   "mode": "billboard",
+   "y": 0.5,
+   "appear": {
+    "t": 42.927,
+    "mode": "fade",
+    "dur": 0.8
+   }
+  },
+  {
+   "id": "frames-poster-1",
+   "t": 52.0,
+   "side": -6,
+   "kind": "image",
+   "src": "art/poster-frames.jpg",
+   "size": [
+    3,
+    0,
+    4
+   ],
+   "mode": "billboard",
+   "y": 0.5,
+   "appear": {
+    "t": 44.26,
+    "mode": "fade",
+    "dur": 0.8
+   }
+  },
+  {
+   "id": "quiet-court",
+   "kind": "group",
+   "worldPos": [
+    -2.94,
+    3.0,
+    -20.44
+   ],
+   "rot": 90,
+   "name": "Quiet square court with the halftone bunny wall (chorus-1 horseshoe wraps it)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      -0.5,
+      0
+     ],
+     "size": [
+      16.0,
+      1,
+      16.0
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.05,
+      0
+     ],
+     "size": [
+      13.0,
+      0.1,
+      13.0
+     ],
+     "color": "#D7E3EA"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.800000000000001,
+      -5.333333333333333
+     ],
+     "size": [
+      12.8,
+      9.600000000000001,
+      0.96
+     ],
+     "color": "#243C9F"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.2,
+      -5.973333333333333
+     ],
+     "size": [
+      5.6000000000000005,
+      4.4,
+      0.48
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.6,
+      8.8,
+      -5.973333333333333
+     ],
+     "size": [
+      1.2800000000000002,
+      4.0,
+      0.48
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.6,
+      8.8,
+      -5.973333333333333
+     ],
+     "size": [
+      1.2800000000000002,
+      4.0,
+      0.48
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.1199999999999999,
+      5.760000000000001,
+      -6.293333333333333
+     ],
+     "size": [
+      0.8,
+      0.96,
+      0.24
+     ],
+     "color": "#243C9F"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.1199999999999999,
+      5.760000000000001,
+      -6.293333333333333
+     ],
+     "size": [
+      0.8,
+      0.96,
+      0.24
+     ],
+     "color": "#243C9F"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.4799999999999995,
+      -6.293333333333333
+     ],
+     "size": [
+      0.96,
+      0.4,
+      0.24
+     ],
+     "color": "#E8A0A8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -4.4,
+      3.6,
+      -5.973333333333333
+     ],
+     "size": [
+      3.2,
+      1.1199999999999999,
+      0.48
+     ],
+     "color": "#F5F1E8",
+     "rot": [
+      0,
+      0,
+      20
+     ]
+    },
+    {
+     "kind": "box",
+     "pos": [
+      4.4,
+      3.6,
+      -5.973333333333333
+     ],
+     "size": [
+      3.2,
+      1.1199999999999999,
+      0.48
+     ],
+     "color": "#F5F1E8",
+     "rot": [
+      0,
+      0,
+      -20
+     ]
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.5,
+      -5.933333333333333
+     ],
+     "size": [
+      6.0,
+      6.0,
+      0.15
+     ],
+     "color": "#FFFFFF",
+     "texture": "art/bunny-halftone-wall.jpg"
+    }
+   ],
+   "radius": 11.2,
+   "landmark": true,
+   "appear": {
+    "t": 41.5,
+    "mode": "rise",
+    "dur": 1.5
+   },
+   "integNote": "onroad dropped by integ-a so the occluder cutaway can fade it"
+  },
+  {
+   "id": "pier-0",
+   "kind": "pillar",
+   "worldPos": [
+    -28.31,
+    -6.0,
+    -46.25
+   ],
+   "size": [
+    0.7,
+    8.3,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 90
+  },
+  {
+   "id": "pier-1",
+   "kind": "pillar",
+   "worldPos": [
+    -0.02,
+    -6.0,
+    46.12
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 180
+  },
+  {
+   "id": "pier-2",
+   "kind": "pillar",
+   "worldPos": [
+    45.31,
+    -6.0,
+    63.35
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 90
+  },
+  {
+   "id": "pier-3",
+   "kind": "pillar",
+   "worldPos": [
+    50.55,
+    -6.0,
+    31.22
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 180
+  },
+  {
+   "id": "pier-4",
+   "kind": "pillar",
+   "worldPos": [
+    32.09,
+    -6.0,
+    15.35
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 180
+  },
+  {
+   "id": "pier-5",
+   "kind": "pillar",
+   "worldPos": [
+    41.51,
+    -6.0,
+    18.04
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 180
+  },
+  {
+   "id": "pier-6",
+   "kind": "pillar",
+   "worldPos": [
+    -2.74,
+    -6.0,
+    40.58
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 90
+  },
+  {
+   "id": "pier-7",
+   "kind": "pillar",
+   "worldPos": [
+    -26.92,
+    -6.0,
+    13.93
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true
+  },
+  {
+   "id": "pier-8",
+   "kind": "pillar",
+   "worldPos": [
+    -16.24,
+    -6.0,
+    1.94
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true
+  },
+  {
+   "id": "pier-9",
+   "kind": "pillar",
+   "worldPos": [
+    -22.92,
+    -6.0,
+    -11.39
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 90
+  },
+  {
+   "id": "pier-10",
+   "kind": "pillar",
+   "worldPos": [
+    -29.59,
+    -6.0,
+    -22.0
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 90
+  },
+  {
+   "id": "pier-11",
+   "kind": "pillar",
+   "worldPos": [
+    10.73,
+    -6.0,
+    76.9
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 90
+  },
+  {
+   "id": "pier-12",
+   "kind": "pillar",
+   "worldPos": [
+    21.11,
+    -6.0,
+    119.2
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true
+  },
+  {
+   "id": "pier-13",
+   "kind": "pillar",
+   "worldPos": [
+    42.77,
+    -6.0,
+    116.15
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 270
+  },
+  {
+   "id": "pier-14",
+   "kind": "pillar",
+   "worldPos": [
+    48.07,
+    -6.0,
+    129.49
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 270
+  },
+  {
+   "id": "pier-15",
+   "kind": "pillar",
+   "worldPos": [
+    68.07,
+    -6.0,
+    105.46
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 270
+  },
+  {
+   "id": "pier-16",
+   "kind": "pillar",
+   "worldPos": [
+    85.4,
+    -6.0,
+    94.77
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 270
+  },
+  {
+   "id": "pier-17",
+   "kind": "pillar",
+   "worldPos": [
+    68.14,
+    -6.0,
+    47.94
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 90
+  },
+  {
+   "id": "pier-18",
+   "kind": "pillar",
+   "worldPos": [
+    53.46,
+    -6.0,
+    45.26
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 90
+  },
+  {
+   "id": "pier-19",
+   "kind": "pillar",
+   "worldPos": [
+    34.25,
+    -6.0,
+    40.7
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true
+  },
+  {
+   "id": "pier-20",
+   "kind": "pillar",
+   "worldPos": [
+    44.97,
+    -6.0,
+    36.7
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true
+  },
+  {
+   "id": "pier-21",
+   "kind": "pillar",
+   "worldPos": [
+    51.8,
+    -6.0,
+    31.41
+   ],
+   "size": [
+    0.7,
+    9.18,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true
+  },
+  {
+   "id": "pier-22",
+   "kind": "pillar",
+   "worldPos": [
+    42.5,
+    -6.0,
+    26.02
+   ],
+   "size": [
+    0.7,
+    9.54,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true
+  },
+  {
+   "id": "pier-23",
+   "kind": "pillar",
+   "worldPos": [
+    33.17,
+    -6.0,
+    23.42
+   ],
+   "size": [
+    0.7,
+    9.84,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true
+  },
+  {
+   "id": "pier-24",
+   "kind": "pillar",
+   "worldPos": [
+    14.48,
+    -6.0,
+    28.81
+   ],
+   "size": [
+    0.7,
+    10.44,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true
+  },
+  {
+   "id": "pier-25",
+   "kind": "pillar",
+   "worldPos": [
+    2.41,
+    -6.0,
+    46.11
+   ],
+   "size": [
+    0.7,
+    11.16,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true
+  },
+  {
+   "id": "pier-26",
+   "kind": "pillar",
+   "worldPos": [
+    64.14,
+    -6.0,
+    79.7
+   ],
+   "size": [
+    0.7,
+    11.79,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 90
+  },
+  {
+   "id": "pier-27",
+   "kind": "pillar",
+   "worldPos": [
+    85.37,
+    -6.0,
+    54.99
+   ],
+   "size": [
+    0.7,
+    12.12,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 270
+  },
+  {
+   "id": "pier-28",
+   "kind": "pillar",
+   "worldPos": [
+    90.87,
+    -6.0,
+    65.04
+   ],
+   "size": [
+    0.7,
+    12.81,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 90
+  },
+  {
+   "id": "pier-29",
+   "kind": "pillar",
+   "worldPos": [
+    39.91,
+    -6.0,
+    74.14
+   ],
+   "size": [
+    0.7,
+    13.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true
+  },
+  {
+   "id": "pier-30",
+   "kind": "pillar",
+   "worldPos": [
+    31.97,
+    -6.0,
+    87.5
+   ],
+   "size": [
+    0.7,
+    13.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true
+  },
+  {
+   "id": "pier-31",
+   "kind": "pillar",
+   "worldPos": [
+    21.31,
+    -6.0,
+    87.56
+   ],
+   "size": [
+    0.7,
+    13.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true
+  },
+  {
+   "id": "pier-32",
+   "kind": "pillar",
+   "worldPos": [
+    10.54,
+    -6.0,
+    84.94
+   ],
+   "size": [
+    0.7,
+    13.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true
+  },
+  {
+   "id": "pier-33",
+   "kind": "pillar",
+   "worldPos": [
+    -85.8,
+    -6.0,
+    -83.14
+   ],
+   "size": [
+    0.7,
+    13.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 90
+  },
+  {
+   "id": "pier-34",
+   "kind": "pillar",
+   "worldPos": [
+    -111.16,
+    -6.0,
+    -67.28
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 90
+  },
+  {
+   "id": "pier-35",
+   "kind": "pillar",
+   "worldPos": [
+    -91.14,
+    -6.0,
+    -80.46
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 90
+  },
+  {
+   "id": "pier-36",
+   "kind": "pillar",
+   "worldPos": [
+    -120.44,
+    -6.0,
+    -64.58
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 90
+  },
+  {
+   "id": "pier-37",
+   "kind": "pillar",
+   "worldPos": [
+    -128.4,
+    -6.0,
+    -49.89
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 90
+  },
+  {
+   "id": "pier-38",
+   "kind": "pillar",
+   "worldPos": [
+    -133.69,
+    -6.0,
+    -60.6
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 90
+  },
+  {
+   "id": "pier-39",
+   "kind": "pillar",
+   "worldPos": [
+    -117.81,
+    -6.0,
+    -100.4
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true
+  },
+  {
+   "id": "pier-40",
+   "kind": "pillar",
+   "worldPos": [
+    -152.52,
+    -6.0,
+    -84.58
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true
+  },
+  {
+   "id": "pier-41",
+   "kind": "pillar",
+   "worldPos": [
+    -143.2,
+    -6.0,
+    -91.24
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 180
+  },
+  {
+   "id": "pier-42",
+   "kind": "pillar",
+   "worldPos": [
+    -187.17,
+    -6.0,
+    -101.97
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true
+  },
+  {
+   "id": "pier-43",
+   "kind": "pillar",
+   "worldPos": [
+    -195.14,
+    -6.0,
+    -115.3
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true
+  },
+  {
+   "id": "pier-44",
+   "kind": "pillar",
+   "worldPos": [
+    -205.85,
+    -6.0,
+    -123.34
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 90
+  },
+  {
+   "id": "pier-45",
+   "kind": "pillar",
+   "worldPos": [
+    -213.84,
+    -6.0,
+    -118.04
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 90
+  },
+  {
+   "id": "pier-46",
+   "kind": "pillar",
+   "worldPos": [
+    -221.82,
+    -6.0,
+    -107.41
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 90
+  },
+  {
+   "id": "pier-47",
+   "kind": "pillar",
+   "worldPos": [
+    -218.06,
+    -6.0,
+    -59.25
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true
+  },
+  {
+   "id": "pier-48",
+   "kind": "pillar",
+   "worldPos": [
+    -230.0,
+    -6.0,
+    -64.78
+   ],
+   "size": [
+    0.7,
+    9.15,
+    0.7
+   ],
+   "color": "#182446",
+   "onroad": true,
+   "rot": 90
+  },
+  {
+   "id": "fake-fork-1",
+   "kind": "box",
+   "worldPos": [
+    -0.17,
+    3.15,
+    19.57
+   ],
+   "rot": 180,
+   "size": [
+    2.02,
+    0.6,
+    5.0
+   ],
+   "color": "#F5F1E8",
+   "color2": "#182446",
+   "onroad": true,
+   "name": "fake fork (scenery only, ends in a broken edge)",
+   "appear": {
+    "t": 49.994,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "exit": {
+    "t": 52.794,
+    "mode": "fall",
+    "dur": 0.8
+   }
+  },
+  {
+   "id": "fake-fork-2",
+   "kind": "box",
+   "worldPos": [
+    -60.0,
+    4.8,
+    -165.95
+   ],
+   "rot": 270,
+   "size": [
+    1.93,
+    0.6,
+    5.0
+   ],
+   "color": "#F5F1E8",
+   "color2": "#182446",
+   "onroad": true,
+   "name": "fake fork (scenery only, ends in a broken edge)",
+   "appear": {
+    "t": 103.327,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "exit": {
+    "t": 106.127,
+    "mode": "fall",
+    "dur": 0.8
+   }
+  },
+  {
+   "id": "fake-fork-3",
+   "kind": "box",
+   "worldPos": [
+    -179.2,
+    3.15,
+    -105.61
+   ],
+   "rot": 180,
+   "size": [
+    2.12,
+    0.6,
+    5.0
+   ],
+   "color": "#F5F1E8",
+   "color2": "#182446",
+   "onroad": true,
+   "name": "fake fork (scenery only, ends in a broken edge)",
+   "appear": {
+    "t": 148.668,
+    "mode": "rise",
+    "dur": 0.5
+   },
+   "exit": {
+    "t": 151.468,
+    "mode": "fall",
+    "dur": 0.8
+   }
+  },
+  {
+   "id": "arcade-0",
+   "kind": "group",
+   "worldPos": [
+    80.09,
+    -0.3,
+    76.67
+   ],
+   "rot": 0,
+   "landmark": true,
+   "name": "Portrait-frame gallery (one verse-1 lane runs through it)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      -1.9,
+      2.4,
+      0
+     ],
+     "size": [
+      0.6,
+      4.8,
+      16.71999999999999
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.9,
+      2.4,
+      0
+     ],
+     "size": [
+      0.6,
+      4.8,
+      16.71999999999999
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.5799999999999998,
+      2.4,
+      0
+     ],
+     "size": [
+      0.05,
+      3.6,
+      15.719999999999992
+     ],
+     "color": "#FFFFFF",
+     "texture": "art/poster-frames.jpg"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.5799999999999998,
+      2.4,
+      0
+     ],
+     "size": [
+      0.05,
+      3.6,
+      15.719999999999992
+     ],
+     "color": "#FFFFFF",
+     "texture": "art/poster-frames.jpg"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.0,
+      -7.96
+     ],
+     "size": [
+      4.3999999999999995,
+      0.45,
+      0.5
+     ],
+     "color": "#182446"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.0,
+      -5.36
+     ],
+     "size": [
+      4.3999999999999995,
+      0.45,
+      0.5
+     ],
+     "color": "#182446"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.0,
+      -2.76
+     ],
+     "size": [
+      4.3999999999999995,
+      0.45,
+      0.5
+     ],
+     "color": "#182446"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.0,
+      -0.16
+     ],
+     "size": [
+      4.3999999999999995,
+      0.45,
+      0.5
+     ],
+     "color": "#182446"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.0,
+      2.44
+     ],
+     "size": [
+      4.3999999999999995,
+      0.45,
+      0.5
+     ],
+     "color": "#182446"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.0,
+      5.04
+     ],
+     "size": [
+      4.3999999999999995,
+      0.45,
+      0.5
+     ],
+     "color": "#182446"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.0,
+      7.64
+     ],
+     "size": [
+      4.3999999999999995,
+      0.45,
+      0.5
+     ],
+     "color": "#182446"
+    }
+   ],
+   "appear": {
+    "t": 15.762,
+    "mode": "rise",
+    "dur": 1.0
+   },
+   "integNote": "onroad dropped by integ-a so the occluder cutaway can fade it"
+  },
+  {
+   "id": "arcade-1",
+   "kind": "group",
+   "worldPos": [
+    -96.43,
+    7.2,
+    -99.27
+   ],
+   "rot": 0,
+   "landmark": true,
+   "name": "Quiet colonnade on the bridge",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      -2.0,
+      2.4,
+      0
+     ],
+     "size": [
+      0.6,
+      4.8,
+      5.9679999999999165
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2.0,
+      2.4,
+      0
+     ],
+     "size": [
+      0.6,
+      4.8,
+      5.9679999999999165
+     ],
+     "color": "#F5F1E8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.68,
+      2.4,
+      0
+     ],
+     "size": [
+      0.05,
+      3.6,
+      4.9679999999999165
+     ],
+     "color": "#FFFFFF",
+     "texture": "art/poster-frames.jpg"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.68,
+      2.4,
+      0
+     ],
+     "size": [
+      0.05,
+      3.6,
+      4.9679999999999165
+     ],
+     "color": "#FFFFFF",
+     "texture": "art/poster-frames.jpg"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.0,
+      -2.58
+     ],
+     "size": [
+      4.6,
+      0.45,
+      0.5
+     ],
+     "color": "#182446"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.0,
+      0.02
+     ],
+     "size": [
+      4.6,
+      0.45,
+      0.5
+     ],
+     "color": "#182446"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5.0,
+      2.62
+     ],
+     "size": [
+      4.6,
+      0.45,
+      0.5
+     ],
+     "color": "#182446"
+    }
+   ],
+   "appear": {
+    "t": 120.415,
+    "mode": "rise",
+    "dur": 1.0
+   },
+   "integNote": "onroad dropped by integ-a so the occluder cutaway can fade it"
+  }
+ ],
+ "events": [
+  {
+   "t": 0.26,
+   "type": "raise",
+   "target": "outer-bases",
+   "every": 2.6668,
+   "until": 10.9
+  },
+  {
+   "t": 42.927,
+   "type": "light",
+   "target": "halftone-bunny-wall",
+   "every": 2.6668,
+   "until": 64.0,
+   "note": "one row of dots per bar of the chorus"
+  },
+  {
+   "t": 42.927,
+   "type": "pulse",
+   "target": "quiet-court",
+   "every": 2.6668,
+   "until": 64.0
+  },
+  {
+   "t": 80.26,
+   "type": "color",
+   "palette": {
+    "skyTop": "#D4E1EA"
+   },
+   "dur": 2.0
+  },
+  {
+   "t": 96.26,
+   "type": "raise",
+   "target": "ear-pier-0",
+   "dur": 1.5
+  },
+  {
+   "t": 117.594,
+   "type": "lower",
+   "target": "hair-pillars",
+   "dur": 3.0
+  },
+  {
+   "t": 128.26,
+   "type": "pulse",
+   "target": "fan-terrace-0",
+   "every": 1.3334,
+   "until": 143.5
+  },
+  {
+   "t": 143.594,
+   "type": "color",
+   "palette": {
+    "skyTop": "#F0DCCF",
+    "skyBottom": "#F7EEE6"
+   },
+   "dur": 6.0
+  },
+  {
+   "t": 143.594,
+   "type": "particles",
+   "particles": "dust",
+   "until": 175
+  }
+ ],
+ "diamonds": [
+  {
+   "t": 8.26,
+   "side": 0
+  },
+  {
+   "t": 16.26,
+   "side": 0
+  },
+  {
+   "t": 25.593,
+   "side": 0
+  },
+  {
+   "t": 37.265,
+   "side": 0
+  },
+  {
+   "t": 50.596,
+   "side": 0
+  },
+  {
+   "t": 78.922,
+   "side": 0
+  },
+  {
+   "t": 89.599,
+   "side": 0
+  },
+  {
+   "t": 104.594,
+   "side": 0
+  },
+  {
+   "t": 123.588,
+   "side": 0
+  },
+  {
+   "t": 148.094,
+   "side": 0
+  }
+ ],
+ "crowns": [
+  {
+   "t": 63.585
+  },
+  {
+   "t": 116.93
+  }
+ ],
+ "finish": {
+  "kind": "pyramid",
+  "color": "#243C9F"
+ },
+ "collectibleColors": {
+  "diamond": "#E3BC65",
+  "crown": "#E3BC65"
+ },
+ "art": {
+  "backdrop": "art/sky.jpg",
+  "ground": {
+   "src": "art/ground-halftone.jpg",
+   "scale": 26
+  },
+  "files": {
+   "sky.jpg": "misty blue-grey morning sky",
+   "sky-dawn.jpg": "dawn backdrop for the final chorus/outro (section backdrop)",
+   "ground-halftone.jpg": "pale halftone ground",
+   "bunny-halftone-wall.jpg": "halftone bunny wall (court landmark face)",
+   "poster-frames.jpg": "five empty frames poster (arcade walls, billboards)",
+   "sticker-*.png": "heart / star / bunny / drop / window decals"
+  }
+ },
+ "route": {
+  "note": "v3 route choreography; per-section textures",
+  "moves": [
+   {
+    "name": "intro-sweep",
+    "kind": "alt",
+    "t0": 0
+   },
+   {
+    "name": "verse1-frame-switchbacks",
+    "kind": "lserp",
+    "t0": 10.927
+   },
+   {
+    "name": "pre1-paper-stair",
+    "kind": "stair",
+    "t0": 32.26
+   },
+   {
+    "name": "chorus1-court-horseshoe",
+    "kind": "zig",
+    "t0": 42.927
+   },
+   {
+    "name": "verse2-reed-switchbacks",
+    "kind": "lserp",
+    "t0": 64.26
+   },
+   {
+    "name": "breath-straight",
+    "kind": "alt",
+    "t0": 80.26
+   },
+   {
+    "name": "pre2-paper-corridor",
+    "kind": "zig",
+    "t0": 85.594
+   },
+   {
+    "name": "chorus2-trestle-U",
+    "kind": "zig",
+    "t0": 96.26
+   },
+   {
+    "name": "bridge-quiet-switchbacks",
+    "kind": "lserp",
+    "t0": 117.594
+   },
+   {
+    "name": "final-fan-terraces",
+    "kind": "zig",
+    "t0": 128.26
+   },
+   {
+    "name": "outro-long-steps",
+    "kind": "stair",
+    "t0": 143.594
+   }
+  ],
+  "crossings": [
+   {
+    "t_early": 27.26,
+    "t_late": 68.94,
+    "late_under": false,
+    "dy": 3.5
+   },
+   {
+    "t_early": 10.25,
+    "t_late": 88.59,
+    "late_under": false,
+    "dy": 3.5
+   },
+   {
+    "t_early": 11.26,
+    "t_late": 88.59,
+    "late_under": false,
+    "dy": 3.5
+   },
+   {
+    "t_early": 11.6,
+    "t_late": 88.59,
+    "late_under": false,
+    "dy": 3.5
+   },
+   {
+    "t_early": 9.26,
+    "t_late": 90.6,
+    "late_under": false,
+    "dy": 3.5
+   },
+   {
+    "t_early": 10.25,
+    "t_late": 90.6,
+    "late_under": false,
+    "dy": 3.5
+   },
+   {
+    "t_early": 11.26,
+    "t_late": 90.6,
+    "late_under": false,
+    "dy": 3.5
+   },
+   {
+    "t_early": 7.26,
+    "t_late": 91.93,
+    "late_under": false,
+    "dy": 3.5
+   },
+   {
+    "t_early": 7.26,
+    "t_late": 92.93,
+    "late_under": false,
+    "dy": 3.5
+   },
+   {
+    "t_early": 9.26,
+    "t_late": 92.93,
+    "late_under": false,
+    "dy": 3.5
+   },
+   {
+    "t_early": 4.59,
+    "t_late": 101.92,
+    "late_under": false,
+    "dy": 4.8
+   }
+  ],
+  "fake_forks": [
+   51.594,
+   104.927,
+   150.268
+  ]
+ }
+}
