@@ -520,10 +520,11 @@ export class World {
       let occ = false;
       if (v.z > 0.5) {
         const sx = v.x / (v.z * th * aspect), sy = v.y / (v.z * th), sr = o.br! / (v.z * th);
-        for (const q of P) {
+        const lm = !!o.def.landmark;
+        for (const q of lm ? P.slice(0, 1) : P) {                   // landmarks only give way when they cover the head itself
           if (v.z - o.br! * 0.5 >= q.z) continue;                 // object is behind the protected point
           const dx = (sx - q.x) * aspect, dy = sy - q.y;           // compare in height-normalised units
-          if (Math.hypot(dx, dy) < sr * 0.85 + q.r) { occ = true; break; }
+          if (Math.hypot(dx, dy) < (lm ? sr * 0.6 + 0.04 : sr * 0.85 + q.r)) { occ = true; break; }
         }
       } else if (Vector3.Distance(c, cam) < o.br! + 1) occ = true; // camera inside/next to the object
       const want = occ ? 0.12 : 1; const f = o.fade! + (want - o.fade!) * k;

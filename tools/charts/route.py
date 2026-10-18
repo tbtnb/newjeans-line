@@ -51,13 +51,13 @@ class Router:
         return segs, (x, z, h, t0)
 
     def arr(self, segs):
-        """numpy rows: [t0, t1, xmin, xmax, zmin, zmax, y@5%, y@50%, y@95%]"""
+        """numpy rows: [t0, t1, xmin, xmax, zmin, zmax, y@0%, y@5%, y@50%, y@95%, y@100%] (ends sampled 1 ms inside the segment so a fall right after a corner still counts the corner tile)"""
         rows = []
         for (t0, t1, x0, z0, x1, z1) in segs:
             w = max(self.width_at(t0), self.width_at(t1)) / 2 + self.margin / 2
-            ys = [elev_at(self.elev, t0 + f * (t1 - t0)) for f in (0.05, 0.5, 0.95)]
+            ys = [elev_at(self.elev, min(t1, t0 + 0.001))] + [elev_at(self.elev, t0 + f * (t1 - t0)) for f in (0.05, 0.5, 0.95)] + [elev_at(self.elev, max(t0, t1 - 0.001))]
             rows.append([t0, t1, min(x0, x1) - w, max(x0, x1) + w, min(z0, z1) - w, max(z0, z1) + w, *ys])
-        return np.array(rows, dtype=float).reshape(-1, 9)
+        return np.array(rows, dtype=float).reshape(-1, 11)
 
     def check(self, new, old):
         """new, old: arrays from arr(). returns (ok, crossings)"""
@@ -68,7 +68,7 @@ class Router:
             m = (r[0] - old_k[:, 1] >= self.min_dt) & (r[2] < old_k[:, 3]) & (old_k[:, 2] < r[3]) & (r[4] < old_k[:, 5]) & (old_k[:, 4] < r[5])
             if not m.any(): continue
             o = old_k[m]
-            dy = np.min(np.abs(r[6:9][None, :, None] - o[:, None, 6:9]).reshape(len(o), -1), axis=1)
+            dy = np.min(np.abs(r[6:11][None, :, None] - o[:, None, 6:11]).reshape(len(o), -1), axis=1)
             if (dy < self.min_dy).any(): return False, 0
             cross += int(m.sum())
         return True, cross
@@ -76,7 +76,7 @@ class Router:
     def search(self, phrases, beam=40, seed=1, bbox_soft=260.0, w_cross=6.0, w_turnfig=1.0):
         """phrases: list of (i0, i1, [pattern names]) covering tap indices [i0, i1). Returns dirs, stats."""
         rng = random.Random(seed)
-        states = [dict(dirs=[], segs=np.zeros((0, 9)), end=(0.0, 0.0, self.h0, 0.0), prev='L', score=0.0, cross=0, figs=0, ext=(0, 0, 0, 0))]
+        states = [dict(dirs=[], segs=np.zeros((0, 11)), end=(0.0, 0.0, self.h0, 0.0), prev='L', score=0.0, cross=0, figs=0, ext=(0, 0, 0, 0))]
         for (i0, i1, pats) in phrases:
             times = self.taps[i0:i1]; n = len(times)
             gaps = [b - a for a, b in zip(self.taps[max(0, i0 - 1):i1], self.taps[max(0, i0 - 1) + 1:i1])]
