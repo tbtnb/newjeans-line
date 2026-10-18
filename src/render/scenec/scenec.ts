@@ -20,6 +20,9 @@ import type { SceneCSpec } from '../../core/types';
 import { activeRange, place, type CChunk, type CInst, type CPlacement, type CSet } from './place';
 import { loadModel, placeholders, type Template } from './assets';
 import { CUT, Cutaway } from './cutaway';
+import { Backdrop, Impostors, PageFade } from './paint';
+import { Texture } from '@babylonjs/core/Materials/Textures/texture';
+import { Material } from '@babylonjs/core/Materials/material';
 
 export type Tier = 'high' | 'low';
 export const TIERS: Record<Tier, { density: Record<string, number>; ahead: number; behind: number; lod: number }> = {
@@ -50,10 +53,11 @@ export class SceneC {
   private tm: Map<string, Template>; private mat: StandardMaterial; private matSet: StandardMaterial; private root: TransformNode;
   private types = new Map<string, TI>(); private chunkMesh = new Map<number, ChunkM>(); private night: boolean[] = []; private matNight!: StandardMaterial; private matGlow!: StandardMaterial; private dirtyAt = -1; private glowAll: Mesh | null = null; private glowSig = ''; private pages: Mesh[] = []; private pageMats: StandardMaterial[] = []; private sets: SetE[] = [];
   private range: [number, number] = [-1, -1]; private tier: Tier; private zoneCols: number[][][];
+  private imp: Impostors | null = null; private back: Backdrop | null = null; private groundTex = new Map<number, Texture>(); private base = './'; curZone = 0;
   private disposed = false; private time = 0; models = 0; last: CStats | null = null;
 
   constructor(private scene: Scene, parent: TransformNode, route: Route, spec: SceneCSpec, o: { duration: number; widthAt: (t: number) => number; roadH: number; hits: (x: number, z: number, r: number, y0: number, y1: number) => boolean; beats: number[]; base: string; tier: Tier }) {
-    this.spec = spec; this.tier = o.tier;
+    this.spec = spec; this.tier = o.tier; this.base = o.base;
     this.root = new TransformNode('scenec', scene); this.root.parent = parent;
     this.plc = place(spec, route, { duration: o.duration, widthAt: o.widthAt, roadH: o.roadH, hits: o.hits, beats: o.beats, density: spec.density });
     this.zoneCols = spec.zones.map(z => z.colors.map(hexRGB));
@@ -74,6 +78,7 @@ export class SceneC {
     const gm = new StandardMaterial('paperCGlow', scene); gm.disableLighting = true; gm.diffuseTexture = tex; gm.useAlphaFromDiffuseTexture = true; gm.diffuseColor = Color3.Black();
     gm.emissiveColor = Color3.White(); gm.specularColor = Color3.Black(); gm.alphaMode = Constants.ALPHA_ADD; gm.disableDepthWrite = true; gm.backFaceCulling = false; gm.fogEnabled = false;
     this.matGlow = gm;
+    this.imp = new Impostors(scene, this.root, this.plc.chunks, spec, o.base, this.night, o.tier === 'low' ? 0.35 : 1); this.back = new Backdrop(scene, this.root, spec, o.base);
     for (const mm of [this.mat, this.matSet, this.matNight, this.matGlow]) new Cutaway(mm);   // after the page clones: pages / road are never cut
     for (const s of this.plc.sets) this.sets.push(this.makeSet(s));
     // swap in built models as they load (placeholders until then; a missing model simply keeps its placeholder)
@@ -119,21 +124,32 @@ export class SceneC {
   // ---- zone pages: one static mesh per zone (the union of its chunks' padded page quads, terraced with the route's falls).
   // Neighbouring zones overlap by the pad; a per-zone polygon offset gives a fixed order (later zone on top) instead of the
   // interleaved staircase the per-chunk quads produced. Only the zones touching the chunk window are enabled.
+  /** painted ground tile of a zone (shared by its page and the base ground under everything) */
+  groundTexOf(zi: number) {
+    let t = this.groundTex.get(zi); const f = this.spec.zones[zi]?.ground; if (t || !f) return t ?? null;
+    t = new Texture(this.base + f, this.scene, false, true, Texture.TRILINEAR_SAMPLINGMODE); t.anisotropicFilteringLevel = 4; this.groundTex.set(zi, t); return t;
+  }
+  tileOf(zi: number) { return this.spec.zones[zi]?.tile ?? 25; }
   private buildPages() {
-    const pg = 28, Z = this.spec.zones.length;
+    const pg = this.spec.pagePad ?? 28, Z = this.spec.zones.length;
     for (let zi = 0; zi < Z; zi++) {
-      const pos: number[] = [], col: number[] = [], idx: number[] = []; const gc = hexRGB(this.spec.zones[zi].palette.ground ?? '#eeeeee');
+      const Zs = this.spec.zones[zi], tex = this.groundTexOf(zi), tile = Zs.tile ?? 25;
+      const pos: number[] = [], col: number[] = [], idx: number[] = [], uv: number[] = []; const gc = tex ? [1, 1, 1] : hexRGB(Zs.palette.ground ?? '#eeeeee');
+      // each page rect is a 4x4 grid: the outer ring has alpha 0 (dithered fade over F m), so overlapping zones / terraces blend
+      const rect = (x0: number, z0: number, x1: number, z1: number, y: number) => {
+        const F = Math.min(14, (x1 - x0) / 3, (z1 - z0) / 3), xs = [x0, x0 + F, x1 - F, x1], zs = [z0, z0 + F, z1 - F, z1], i0 = pos.length / 3;
+        for (let j = 0; j < 4; j++) for (let i = 0; i < 4; i++) { pos.push(xs[i], y, zs[j]); uv.push(xs[i] / tile, zs[j] / tile); col.push(gc[0], gc[1], gc[2], i % 3 && j % 3 ? 1 : 0); }
+        for (let j = 0; j < 3; j++) for (let i = 0; i < 3; i++) { const q = i0 + j * 4 + i; idx.push(q, q + 4, q + 5, q, q + 5, q + 1); }
+      };
       for (const c of this.plc.chunks) {
-        if (c.zone !== zi) continue; const y = c.y - 0.004 * (c.i % 3), i0 = pos.length / 3;
-        pos.push(c.minX - pg, y, c.minZ - pg, c.maxX + pg, y, c.minZ - pg, c.maxX + pg, y, c.maxZ + pg, c.minX - pg, y, c.maxZ + pg);
-        for (let k = 0; k < 4; k++) col.push(gc[0], gc[1], gc[2], 1); idx.push(i0, i0 + 1, i0 + 2, i0, i0 + 2, i0 + 3);
-        if (c.terr) { const p = c.terr.pad, ty = c.terr.y - 0.004 * (c.i % 3), j0 = pos.length / 3;   // raised page (climb), same paper colour as the zone page
-          pos.push(c.minX - p, ty, c.minZ - p, c.maxX + p, ty, c.minZ - p, c.maxX + p, ty, c.maxZ + p, c.minX - p, ty, c.maxZ + p);
-          for (let k = 0; k < 4; k++) col.push(gc[0], gc[1], gc[2], 1); idx.push(j0, j0 + 1, j0 + 2, j0, j0 + 2, j0 + 3); }
+        if (c.zone !== zi) continue; const y = c.y - 0.004 * (c.i % 3);
+        rect(c.minX - pg, c.minZ - pg, c.maxX + pg, c.maxZ + pg, y);
+        if (c.terr) { const p = c.terr.pad; rect(c.minX - p, c.minZ - p, c.maxX + p, c.maxZ + p, c.terr.y - 0.004 * (c.i % 3)); }   // raised page (climb)
       }
       const m = new Mesh(`cpage_z${zi}`, this.scene);
-      if (pos.length) { const vd = new VertexData(); vd.positions = pos; vd.colors = col; vd.indices = idx; vd.applyToMesh(m, false); }
+      if (pos.length) { const vd = new VertexData(); vd.positions = pos; vd.colors = col; vd.uvs = uv; vd.indices = idx; vd.applyToMesh(m, false); m.hasVertexAlpha = false; }
       const mat = this.mat.clone(`paperCPage${zi}`); mat.zOffset = 2 * (Z - 1 - zi); this.pageMats.push(mat);   // positive = pushed back; the latest zone has 0
+      mat.transparencyMode = Material.MATERIAL_OPAQUE; if (tex) mat.diffuseTexture = tex; new PageFade(mat);
       m.material = mat; m.isPickable = false; m.parent = this.root; m.freezeWorldMatrix(); m.setEnabled(false); (m as any).__tris = idx.length / 3;
       this.pages.push(m);
     }
@@ -288,10 +304,14 @@ export class SceneC {
       const on = new Set<number>(); for (let i = a; i <= b; i++) on.add(this.plc.chunks[i].zone); this.pages.forEach((p, zi) => p.setEnabled(on.has(zi)));
     }
     this.writeTypes(t, beatK);
+    this.imp?.update(a, Math.min(this.plc.chunks.length - 1, b + 3));   // impostors reach further ahead than the decor window
+    if (cam && this.back) { let zi = this.plc.chunks[a].zone, ylo = 1e9; for (let i = a; i <= b; i++) { const c = this.plc.chunks[i]; if (c.t0 <= t) zi = c.zone; ylo = Math.min(ylo, c.y); }
+      this.back.update(zi, cam, ylo - 25, dt || 0.016); this.curZone = zi; }
     this.rebuildGlow(t);
     let tris = 0, inst = 0, sets = 0, tb = 0, win = 0; const A = this.spec.assets;
     for (const e of this.sets) { this.animSet(e, t, beatK, cam); if (e.on) { sets++; win += e.tris; if (!this.scene.frustumPlanes || !e.far || (e.far.computeWorldMatrix(), e.far.isInFrustum(this.scene.frustumPlanes))) tris += e.tris; tb += Math.max(e.tris, A[e.def.a]?.tris ?? 0); } }
     for (const p of this.pages) if (p.isEnabled()) { tris += (p as any).__tris; tb += (p as any).__tris; }
+    if (this.imp) { tris += this.imp.tris; tb += this.imp.tris; win += this.imp.tris; }
     const fp = this.scene.frustumPlanes;
     const vis = (x: Mesh | null) => !!x && x.isEnabled() && (!fp || x.isInFrustum(fp));
     const triOf = (x: Mesh | null) => x ? x.getTotalIndices() / 3 : 0;
@@ -306,6 +326,6 @@ export class SceneC {
   dispose() {
     this.disposed = true;
     for (const [id, t] of this.tm) if (t.container) { t.container.dispose(); this.tm.delete(id); }
-    this.root.dispose(false, false); this.glowAll?.dispose(); this.matGlow.diffuseTexture?.dispose(); this.matGlow.dispose(); this.matNight.dispose(); this.mat.dispose(); this.matSet.dispose(); for (const m of this.pageMats) m.dispose();
+    this.imp?.dispose(); this.back?.dispose(); for (const t of this.groundTex.values()) t.dispose(); this.root.dispose(false, false); this.glowAll?.dispose(); this.matGlow.diffuseTexture?.dispose(); this.matGlow.dispose(); this.matNight.dispose(); this.mat.dispose(); this.matSet.dispose(); for (const m of this.pageMats) m.dispose();
   }
 }

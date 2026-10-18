@@ -140,7 +140,7 @@ export class World {
     this.shadows?.dispose(); this.shadows = null;
     for (const f of this.fx) f.mesh.dispose(); this.fx = [];
     this.failAnim?.pieces.forEach(p => p.mesh.dispose()); this.failAnim = null;
-    this.road?.dispose(); this.road = null;
+    this.road?.dispose(); this.road = null; for (const t of this.cgTex.values()) t.dispose(); this.cgTex.clear();
     this.root?.dispose(false, true); this.root = null;
     this.mats?.dispose(); this.mats = null;
     this.trailMat?.dispose(); this.headMat?.dispose(); this.groundMat?.dispose();
@@ -562,7 +562,7 @@ export class World {
     // particles
     { const ov = this.particleOverride(t); const want = ov === undefined ? pal.particles : ov; if (want !== this.particleKind) this.setParticles(want); }
     if (this.particles) (this.particles.emitter as Vector3).copyFrom(this.rig.cam.getTarget().add(new Vector3(0, 10, 0)));
-    if (this.ground && this.groundMat) { if (pal.groundY !== null && pal.groundY !== undefined) this.ground.position.y = pal.groundY + this.minRoadY(lt) - (this.cmode ? 4 : 0); /* concept C: pages are the ground; legacy plane kept 4 m below (it z-fought the pages after drops) */ this.ground.position.x = this.rig.cam.getTarget().x; this.ground.position.z = this.rig.cam.getTarget().z; }
+    if (this.ground && this.groundMat) { if (pal.groundY !== null && pal.groundY !== undefined) this.ground.position.y = pal.groundY + this.minRoadY(lt) - (this.cmode ? 4 : 0); /* concept C: pages are the ground; legacy plane kept 4 m below (it z-fought the pages after drops) */ if (this.cmode && this.sc) this.paintGround(); else { this.ground.position.x = this.rig.cam.getTarget().x; this.ground.position.z = this.rig.cam.getTarget().z; } }
     this.lastTime = t;
   }
 
@@ -571,7 +571,7 @@ export class World {
     this.scene.fogColor = fog; this.scene.fogStart = p.fogStart * (this.cmode ? 2.0 : 1.5); this.scene.fogEnd = p.fogEnd * (this.cmode ? 1.9 : 1.6);
     this.hemi.diffuse = hex(p.light); this.hemi.groundColor = hex(p.ambient).scale(0.6); this.hemi.intensity = 0.62;
     this.sun.diffuse = hex(p.light); this.sun.intensity = 0.5 * p.lightIntensity;
-    if (this.groundMat) { const g = this.groundTint ?? hex(p.ground); this.groundMat.diffuseColor = g; this.groundMat.emissiveColor = g.scale(this.groundTint ? 0.18 : 0.08); }
+    if (this.groundMat && !(this.cmode && this.groundMat.disableLighting)) { const g = this.groundTint ?? hex(p.ground); this.groundMat.diffuseColor = g; this.groundMat.emissiveColor = g.scale(this.groundTint ? 0.18 : 0.08); }
     this.onSky?.(p.skyTop, p.skyBottom);
   }
 
@@ -606,6 +606,16 @@ export class World {
     this.particles = ps;
   }
 
+  /** concept C v4: the base plane under the pages carries the current zone's painted ground tile (unlit), snapped to the tile
+   *  grid so the texture never slides and lines up with the pages' world-space UVs */
+  private cgTex = new Map<number, Texture>();
+  private paintGround() {
+    const sc = this.sc!, g = this.ground!, gm = this.groundMat!, zi = sc.curZone, src = sc.groundTexOf(zi), tile = sc.tileOf(zi), tg = this.rig!.cam.getTarget();
+    g.position.x = Math.round(tg.x / tile) * tile; g.position.z = Math.round(tg.z / tile) * tile;
+    if (!src) return;
+    let t = this.cgTex.get(zi); if (!t) { t = src.clone(); t.uScale = t.vScale = 1600 / tile; this.cgTex.set(zi, t); }
+    if (gm.diffuseTexture !== t) { gm.diffuseTexture = t; gm.disableLighting = true; gm.emissiveColor = Color3.White(); gm.diffuseColor = Color3.Black(); this.groundTint = null; }
+  }
   /** lowest road height reached up to t: the ground follows falls but stays put while the road climbs */
   private minRoadY(t: number) { let m = 0; for (const s of this.route!.spans) { if (s.t0 > t) break; if (!s.air) m = Math.min(m, s.y0, s.t1 <= t ? s.y1 : s.y0); } return m; }
 

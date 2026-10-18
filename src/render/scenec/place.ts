@@ -7,7 +7,8 @@ import type { SceneCSpec, SceneCZone } from '../../core/types';
 
 export interface CInst { a: string; layer: string; x: number; y: number; z: number; yaw: number; s: number; c: number; zone: number; t: number; chunk: number; hi?: boolean }
 export interface CSet extends CInst { popAt: number; label?: string }
-export interface CChunk { i: number; t0: number; t1: number; zone: number; minX: number; maxX: number; minZ: number; maxZ: number; y: number; items: CInst[];
+export interface CImp { k: string; x: number; y: number; z: number; yaw: number; s: number; zone: number }
+export interface CChunk { imp?: CImp[]; i: number; t0: number; t1: number; zone: number; minX: number; maxX: number; minZ: number; maxZ: number; y: number; items: CInst[];
   /** raised page at the chunk's own road level (climbs): pad shrunk so it never covers a lower road; decor inside it sits on it */
   terr?: { y: number; pad: number } }
 export interface CPlacement { chunks: CChunk[]; sets: CSet[]; stats: { placed: number; rejected: number } }
@@ -96,6 +97,21 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
         }
         break;
       }
+    }
+  });
+  // impostor carpet: sprite cards facing back along the flow (towards the key camera), clear of every road segment
+  spec.zones.forEach((z, zi) => {
+    const I = z.impostors; if (!I) return; const t1 = Math.min(z.t1, o.duration); const W = I.sprites.reduce((a, b) => a + b[1], 0);
+    const n = Math.round(I.count);
+    for (let k = 0; k < n; k++) {
+      const t = z.t0 + (k + R()) / n * (t1 - z.t0), side = R() < 0.5 ? -1 : 1, w = o.widthAt(t);
+      let u = R() * W, id = I.sprites[0][0]; for (const [sid, sw] of I.sprites) { u -= sw; if (u <= 0) { id = sid; break; } }
+      const s = I.scale[0] + R() * (I.scale[1] - I.scale[0]);
+      const edge = I.near[0] + Math.pow(R(), 0.8) * (I.near[1] - I.near[0]);
+      const a = flowAnchor(route, t, side * (w / 2 + edge), 0, 0);
+      if (o.hits(a.pos.x, a.pos.z, 1.5 * s + 2.0, a.pos.y - 30, a.pos.y + 30)) { rejected++; continue; }
+      const f0 = flowAnchor(route, t - 1, 0, 0, 0).pos, f1 = flowAnchor(route, t + 1, 0, 0, 0).pos;
+      const ci = chunkAt(t); const c = chunks[ci]; (c.imp ??= []).push({ k: id, x: a.pos.x, y: groundY(c, a.pos.x, a.pos.z), z: a.pos.z, yaw: Math.atan2(-(f1.x - f0.x), -(f1.z - f0.z)), s, zone: zi });
     }
   });
   // set pieces: landmark / hero props at (t, side), pushed outward until clear of every road segment, facing the road
