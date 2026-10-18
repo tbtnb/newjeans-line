@@ -1054,39 +1054,39 @@
    "dir": "R"
   },
   {
-   "t": 77.608,
+   "t": 77.726,
    "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 77.844,
+   "t": 77.962,
    "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 78.08,
+   "t": 78.198,
    "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 78.316,
+   "t": 78.434,
    "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 78.553,
+   "t": 78.671,
    "tag": "tap",
    "dir": "L"
   },
   {
    "t": 78.907,
    "tag": "tap",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 79.379,
    "tag": "kick",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 80.324,
@@ -1117,14 +1117,14 @@
    "tag": "vocals",
    "lyric": "no",
    "syl": "no",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 82.686,
    "tag": "vocals",
    "lyric": "걱정",
    "syl": "걱",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 83.159,
@@ -1153,24 +1153,24 @@
   {
    "t": 85.757,
    "tag": "tap",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 86.23,
    "tag": "tap",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 86.466,
    "tag": "vocals",
    "lyric": "혼자라도",
    "syl": "혼",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 86.702,
    "tag": "tap",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 86.938,
@@ -1943,22 +1943,22 @@
   {
    "t": 146.464,
    "tag": "snare",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 147.409,
    "tag": "snare",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 148.354,
    "tag": "snare",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 149.299,
    "tag": "tap",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 150.244,
@@ -2005,14 +2005,14 @@
   {
    "t": 154.968,
    "tag": "snare",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 155.441,
    "tag": "vocals",
    "lyric": "있으면",
    "syl": "으",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 155.913,
@@ -2053,7 +2053,7 @@
   {
    "t": 157.803,
    "tag": "tap",
-   "dir": "L"
+   "dir": "R"
   }
  ],
  "sections": [
@@ -2195,7 +2195,7 @@
    },
    "raw": 362,
    "final": 361,
-   "questionable": 6,
+   "questionable": 1,
    "removed": 1
   },
   "user_taps": {
@@ -2232,33 +2232,41 @@
      "median": -56.0,
      "max": -16.0
     },
-    "changed_vs_faa6927": [
+    "changed_vs_faa6927": [],
+    "min_gap": 0.15,
+    "review_withdrawn": [
      {
-      "from": 77.7258,
-      "to": 77.6077,
-      "reason": "vocal run: \"noth-\" (syllable 77.634, raw tap -6 ms) on e"
+      "t_raw": 77.628,
+      "kept": 77.726,
+      "proposed": 77.608,
+      "why": "vocal run: \"noth-\" (syllable 77.634, raw tap -6 ms) on e"
      },
      {
-      "from": 77.962,
-      "to": 77.8439,
-      "reason": "vocal run: \"else\" (77.855) on a"
+      "t_raw": 77.835,
+      "kept": 77.962,
+      "proposed": 77.844,
+      "why": "vocal run: \"else\" (77.855) on a"
      },
      {
-      "from": 78.1982,
-      "to": 78.0801,
-      "reason": "vocal run: \"I\" (78.093) on e"
+      "t_raw": 78.052,
+      "kept": 78.198,
+      "proposed": 78.08,
+      "why": "vocal run: \"I\" (78.093) on e"
      },
      {
-      "from": 78.4345,
-      "to": 78.3164,
-      "reason": "vocal run: \"would\" (78.287) + kick on a"
+      "t_raw": 78.319,
+      "kept": 78.434,
+      "proposed": 78.316,
+      "why": "vocal run: \"would\" (78.287) + kick on a"
      },
      {
-      "from": 78.6707,
-      "to": 78.5526,
-      "reason": "vocal run: \"on\" (78.583) on e"
+      "t_raw": 78.551,
+      "kept": 78.671,
+      "proposed": 78.553,
+      "why": "vocal run: \"on\" (78.583) on e"
      }
     ],
+    "note": "all 361 taps re-checked against stem/syllable onsets; same slots as faa6927. The Verse-2 vocal-run reading (77.6-78.6 s) needs a 0.118 s gap and was withdrawn (min gap 0.15 s).",
     "report": "deliverables/omg-user-refine-report.md"
    }
   },

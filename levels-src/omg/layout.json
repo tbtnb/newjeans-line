@@ -667,8 +667,8 @@
    "near": 2.5,
    "glowfx": true,
    "id": "art-phone",
-   "t": 80.639,
-   "side": 1,
+   "t": 80.481,
+   "side": -1,
    "y": -0.6
   },
   {
@@ -938,7 +938,7 @@
    "glowfx": true,
    "id": "art-phone",
    "t": 155.204,
-   "side": 1,
+   "side": -1,
    "y": -0.6
   },
   {
@@ -954,7 +954,7 @@
    "glowfx": true,
    "id": "art-phone",
    "t": 158.109,
-   "side": 1,
+   "side": -1,
    "y": -0.6
   },
   {
@@ -983,7 +983,7 @@
    ],
    "face": "road",
    "glow": 0.7,
-   "t": 144.732,
+   "t": 145.363,
    "side": -1,
    "id": "art-32",
    "near": 0.8,
@@ -1956,7 +1956,7 @@
    "gloss": 0.2,
    "trim": "#ffe08a",
    "trimGlow": 1.2,
-   "trimWidth": 0.06,
+   "trimWidth": 0.11,
    "topGlow": 0.05
   },
   "maxBeams": 28,

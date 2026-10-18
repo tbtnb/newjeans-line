@@ -8,11 +8,11 @@ tie-breaker. v2 anchors everything on the audio:
      syllable attack, ahead of its p-center), weighted kick/snare/vocal 1.0, bass/synth 0.8, x0.3 when the stem is buried in
      the mix (rel < -14 dB).
   3. Viterbi over the 1/16 slots within +-120 ms of the offset-corrected tap. Cost = position error (sigma 30 ms) - 3 x evidence +
-     1/16 off-beat penalty 2 (8 when the 1/16 slot has no real onset, ev < 0.6) + interval error vs the user's own gap to the previous tap (sigma 30 ms, gaps < 1.2 s). Slots strictly
-     increase, so no tap is merged or invented.
+     1/16 off-beat penalty 2 (8 when the 1/16 slot has no real onset, ev < 0.6) + interval error vs the user's own gap to the previous tap (sigma 30 ms, gaps < 1.2 s). Consecutive slots
+     are >= 0.15 s apart (2 sixteenths), so no tap is merged or invented.
   4. empty-slot pass: a tap whose slot has no real onset (evidence < 0.35) moves to the adjacent 1/16 or 1/8 slot when that slot
      has a strong onset (>= 0.6), is free, keeps the order, and the corrected tap is within 75 ms of it (plausible hand error).
-  4b. reviewed decisions (REVIEW, with the evidence in the comment), currently one Verse-2 vocal run.
+  4b. reviewed decisions (REVIEW): one Verse-2 vocal run, withdrawn because it needs a gap < 0.15 s (listed in the report).
   5. copy consistency (chorus/post 2 = chorus/post 1 + 128 beats): same tapped moment -> same slot (stronger evidence).
 Final times are the grid slot times (the 127.003 BPM grid sits on the drums: snare onsets median 0 ms off it).
 Usage: omg_user_refine.py <export.json> <out_export.json>"""
@@ -65,13 +65,14 @@ off = np.array([np.median(raw_off[max(0, i - 4):i + 5]) for i in range(n)]) / 10
 glob = xoff(T)
 U = T - off
 # 3. Viterbi
+MINGAP = 0.15   # min tap gap (judgment windows never overlap on the wider road)
 SA, SI, WEV, PEN16, PEN16_WEAK, WIN = 0.030, 0.030, 3.0, 2.0, 8.0, 0.120
 cands = [[k for k in range(int(np.floor((u - WIN - B0) / S16)), int(np.ceil((u + WIN - B0) / S16)) + 1) if abs(B0 + k * S16 - u) <= WIN] for u in U]
 def node(i, k):
     e = (U[i] - (B0 + k * S16)) / SA; v = evk(k)[0]
     return e * e - WEV * v + ((PEN16 if v >= 0.6 else PEN16_WEAK) if k % 2 else 0.0)   # a 1/16 off-beat needs a real onset there
 def trans(i, kp, k):
-    if k <= kp: return 1e18
+    if (k - kp) * S16 < MINGAP: return 1e18
     gap = T[i] - T[i - 1]
     if gap >= 1.2: return 0.0
     e = (gap - (k - kp) * S16) / SI; return e * e
@@ -106,10 +107,14 @@ for i in range(n):
 REVIEW = {77.628: (77.608, 'vocal run: "noth-" (syllable 77.634, raw tap -6 ms) on e'), 77.835: (77.844, 'vocal run: "else" (77.855) on a'),
           78.052: (78.080, 'vocal run: "I" (78.093) on e'), 78.319: (78.316, 'vocal run: "would" (78.287) + kick on a'),
           78.551: (78.553, 'vocal run: "on" (78.583) on e')}
+# Withdrawn (2026-10-18): this reading needs a 0.118 s gap (77.490 -> 77.608), below the 0.15 s minimum tap gap of the
+# wider-road judgment windows; every alternative that keeps >= 0.15 s inside this run is either the straight-8th v1 reading
+# or moves "ain't" off its syllable. The run stays on v1's 8th slots (kick/snare 1.0 on each); listed in the report.
+REVIEW_APPLIED = False
+review_withdrawn = []
 for i in range(n):
     r_ = REVIEW.get(round(float(T[i]), 3))
-    if r_:
-        path[i] = int(round((r_[0] - B0) / S16)); why[i] = r_[1]
+    if r_: review_withdrawn.append({'t_raw': round(float(T[i]), 3), 'kept': round(B0 + path[i] * S16, 3), 'proposed': r_[0], 'why': r_[1]})
 # 5. copy consistency
 copyfix = []
 for i in range(n):
@@ -148,7 +153,7 @@ rep = {'n': n, 'global_offset_onset_ms': glob, 'global_offset_v1_ms': v1['global
        'offset_onset_ms': {'min': round(float(off.min() * 1000), 1), 'median': round(float(np.median(off) * 1000), 1), 'max': round(float(off.max() * 1000), 1)},
        'offset_diff_vs_v1_ms': {'median_abs': round(float(np.median(np.abs(off * 1000 - v1off))), 1), 'max_abs': round(float(np.abs(off * 1000 - v1off).max()), 1)},
        'grid': {'quarter': int((pos == 0).sum()), '8th_offbeat': int((pos == 2).sum()), '16th_e': int((pos == 1).sum()), '16th_a': int((pos == 3).sum())},
-       'changed': int(sum(t['changed'] for t in taps)), 'empty_slot_moves': moved_empty, 'copy_consistency_fixes': copyfix,
+       'changed': int(sum(t['changed'] for t in taps)), 'review_withdrawn': review_withdrawn, 'empty_slot_moves': moved_empty, 'copy_consistency_fixes': copyfix,
        'err_after_ms': {'abs_median': round(float(np.median(np.abs(U - S)) * 1000), 1), 'p90': round(float(np.percentile(np.abs(U - S) * 1000, 90)), 1), 'abs_max': round(float(np.abs(U - S).max() * 1000), 1)},
        'on_onset': {'ev>=0.6': int(sum(t['ev'] >= 0.6 for t in taps)), 'ev>=0.35': int(sum(t['ev'] >= 0.35 for t in taps)), 'v1 ev>=0.6': int(sum(t['v1_ev'] >= 0.6 for t in taps)), 'v1 ev>=0.35': int(sum(t['v1_ev'] >= 0.35 for t in taps))},
        'min_gap': round(float(np.diff(S).min()), 3), 'taps': taps}

@@ -15,12 +15,13 @@ w('# OMG 用户打点精修报告（v2）\n')
 w('对象：`levels-src/omg/chart.json`。v1 = 已发布的 faa6927（用户原始 362 个点吸附成 361 个），v2 = 这次精修。')
 w('原则：用户点了哪些拍、点了几下都不动，只修正时间精度和明显手误；每个点都对照音频起音来确定它对的是哪个音。\n')
 w('## 1. 结论\n')
-w(f'- 361 个点里 **{len(moved)} 个点换了格位**，都在 Verse 2 的一句人声上（77.6–78.6 s）。另外 {361 - len(moved)} 个点和 v1 完全一样：用音频起音重新判了一遍，结果相同。')
-w(f'- 点数 361 → 361：没有新增、没有删除、没有合并。0.956 s 那一点照旧去掉（引擎规定第一个点 ≥ 1.0 s），v1 已经去掉了。')
-w(f'- 落在真实起音上的点（证据 ≥ 0.6，见第 3 节）：v1 {R["on_onset"]["v1 ev>=0.6"]} → v2 {R["on_onset"]["ev>=0.6"]}；证据 ≥ 0.35：{R["on_onset"]["v1 ev>=0.35"]} → {R["on_onset"]["ev>=0.35"]}。'
-  '剩下的点在前奏的稳拍和几处弱拍上（第 6 节），按用户的节奏保留。')
+w(f'- 361 个点逐个对照音频起音（鼓、贝斯、合成器的分轨起音，人声分轨，歌词音节）复查了一遍，**结果和 faa6927 一样：0 个点改动**。v1 的吸附已经在用户想点的音上了。')
+w('- 点数 361 → 361：没有新增、没有删除、没有合并。0.956 s 那一点照旧去掉（引擎规定第一个点 ≥ 1.0 s）。')
+w('- 有一处我本来想改、后来撤回（第 4 节）：Verse 2 的一句人声（77.6–78.6 s）。用户很可能是在跟唱出来的 1/16 音节点，但那样一来会有两个点只隔 0.118 s，'
+  '而路面加宽以后最小点距是 0.15 s（判定窗口不能重叠）。在这个限制下还能成立的方案，要么就是 v1 的整齐 1/8（每个点上都有 kick/snare 1.0），要么得把 “ain\'t” 挪离它的音节。所以保留 v1。')
+w(f'- 落在真实起音上的点（证据 ≥ 0.6，见第 3 节）：{R["on_onset"]["ev>=0.6"]} 个；证据 ≥ 0.35：{R["on_onset"]["ev>=0.35"]} 个。剩下的是前奏的稳拍和几处弱拍（第 6 节），按用户的节奏保留。')
 g = R['grid']; w(f'- 网格：1/4 拍 {g["quarter"]}，1/8 反拍 {g["8th_offbeat"]}，1/16 {g["16th_e"] + g["16th_a"]}（e {g["16th_e"]} / a {g["16th_a"]}），三连音 0。最小间隔 {R["min_gap"]} s（≥ 0.105 s）。')
-w('- 关卡结尾（160.637 s，音乐 1.5 s 淡出）、三个下落、10 颗钻石、2 个皇冠都没变。路线用 route_forward 重跑了（这句的点距变了），布景也随之重新生成。validate：0 错误。\n')
+w('- 关卡结尾（160.637 s，音乐 1.5 s 淡出）、三个下落、10 颗钻石、2 个皇冠、路线、布景都和 faa6927 一样（路宽是集成那边改的 2.6/2.5/2.4）。最小点距 0.236 s，validate：0 错误。\n')
 w('## 2. 偏移模型复核（用音频起音对齐，而不只是本地平均）\n')
 w(f'v1 用点自己在 1/8 网格上的相位做本地平均（±12 s）。v2 把每个点附近 ±10 s（至少 16 个点）的点和真实起音（鼓、人声、贝斯、合成器，来自分轨，已校正检测延迟）做互相关，'
   f'扫 −140..+60 ms，再取前后 9 个点的中位数。全曲：起音互相关 {R["global_offset_onset_ms"]} ms，v1 相位法 {R["global_offset_v1_ms"]} ms。'
@@ -42,22 +43,21 @@ w('- 人工复核：自动结果和 v1 不同的地方，以及 v1 标记的 23 
 w('- 最终时间就是网格时间（127.003 BPM，beat0 0.011）。这个网格和鼓是对齐的：snare 起音相对网格的中位偏差 0 ms，贝斯 +3.6 ms，人声 +3.1 ms。所以点在网格上，听起来也就在音上。\n')
 dts = [abs(t['onset_dt_ms']) for t in T if t['ev'] >= 0.35]
 w(f'v2 每个点到它对应起音的距离：中位 {np.median(dts):.1f} ms，90% 在 {np.percentile(dts, 90):.1f} ms 以内（{len(dts)} 个点有起音可比）。\n')
-w('## 4. 改动列表（相对 faa6927）\n')
-w('| 原始点 (s) | v1 | v2 | 格位 | v1 证据 | v2 证据 | 原因 |'); w('|---|---|---|---|---|---|---|')
-for t in moved:
-    w(f'| {t["t_raw"]:.3f} | {t["v1_t"]:.3f} | {t["t"]:.3f} | {t["pos"]} | {t["v1_ev"]} {t["v1_layer"]} | {t["ev"]} {t["layer"]} | {t["reason"]} |')
-w('\n这一句是 Verse 2 的 “There ain\'t nothing else that I would hold on to”。用户点的是唱出来的音节，它们大多落在 1/16 反拍上：'
-  '原始点相对歌词音节分别是 −53（ain\'t）/ −6（noth）/ −20（else）/ −41（I）/ +32（would）/ −32（on）ms。用户在全曲对人声音节的平均提前量是 −25 ms，正好对得上。'
-  'v1 把它们吸到了整齐的 1/8 上，这样算出来用户在这四五个点上要比平时再早 60 ms 左右（−98 ~ −146 ms），不合理。'
-  '“would” 那一点同时也有 kick（1.0）。最后一个点（78.907 拍）两版一样。\n')
-w('**有疑问、请试听确认的地方**：“noth-” 放在 77.608（e，音节本身）还是 77.726（&，有 kick 和 “-ing”）。'
-  '原始点（77.628）几乎正好在 “noth” 的起音上，所以选了 77.608，但这样它和前一点只隔一个 1/16（0.118 s，全曲唯一这么密的地方，判定窗口 ±53 ms）。'
-  '如果想要原来的感觉，把这一点改回 77.726 就行。A/B：`deliverables/omg-ab/user-v1.mp3` 和 `user-v2.mp3`，72–87 s，差别在第 5.6–6.7 秒。\n')
+w('## 4. 改动：0 个。一处提议已撤回（请试听决定）\n')
+w('Verse 2：“There ain\'t nothing else that I would hold on to”。用户在这里的原始点和歌词音节的偏差是 −53（ain\'t）/ −6（noth）/ −20（else）/ −41（I）/ +32（would）/ −32（on）ms，'
+  '和用户全曲对人声音节平均提前 −25 ms 很吻合。如果按 v1 的 1/8 来算，这几个点会比用户平时再早 60 ms 左右（−98 ~ −146 ms）。所以用户很可能是在跟唱的 1/16 节奏点。下表是撤回的提议：\n')
+w('| 原始点 (s) | 现在（= v1） | 提议 | 理由 |'); w('|---|---|---|---|')
+for x in R['review_withdrawn']: w(f'| {x["t_raw"]:.3f} | {x["kept"]:.3f} | {x["proposed"]:.3f} | {x["why"]} |')
+w('\n撤回的原因：提议里 77.490 → 77.608 只隔 0.118 s，低于路面加宽后的最小点距 0.15 s。“noth” 改放 77.726 的话，它和 “else”（77.844）之间又是 0.118 s。'
+  '在这一段，满足 0.15 s 的方案只有两种：(a) v1 的整齐 1/8，也就是现在用的；(b) 把整句往前移一个 1/16，“ain\'t” 放到 77.372（这里有 kick 1.0），但这样它离自己的音节（77.472）就太远了。\n')
+w('试听：`deliverables/omg-ab/user-v1.mp3`（= 现在的谱面）和 `deliverables/omg-ab/user-v2-vocal-proposal.mp3`（撤回的提议），72–87 s，差别在第 5.6–6.7 秒。'
+  '如果你觉得提议那版才是你想点的，可以选 (b)，或者放宽这一处的最小点距。`user-v2.mp3` 是这次的结果，和 v1 一模一样。\n')
 w('## 5. v1 的 23 个可疑点复查\n')
 w('| 原始点 | v1 标记 | v2 结果 | 格位 | 证据 | 偏差 (ms) | 判断 |'); w('|---|---|---|---|---|---|---|')
 for t in T:
     if t['v1_flag']:
-        if t['changed']: j = '改了，见第 4 节'
+        if any(abs(x['t_raw'] - round(t['t_raw'], 3)) < 1e-6 for x in R['review_withdrawn']): j = '保留 1/8，人声提议已撤回（第 4 节）'
+        elif t['changed']: j = '改了'
         elif t['ev'] >= 0.6: j = '保留：这个格位有强起音；其他候选格位没有更强的起音，也不符合用户的点距'
         elif t['t_raw'] < 13: j = '保留：前奏的稳拍（隔两拍一下），附近没有别的起音'
         else: j = '保留：起音偏弱，但前后点距是整齐的 1/8'
@@ -83,19 +83,18 @@ w(f'- endTime {lay["endTime"]} s，endFade {lay["endFade"]} s（不变）。')
 w('- 下落：' + '，'.join(f'{e["t"]:.3f} s（{e["dy"]}）' for e in lay['elevation'] if e['type'] == 'fall') + '（不变，都在用户的副歌/drop 重拍上）。')
 w('- 钻石：' + '，'.join(str(d['t']) for d in lay['diamonds']) + '（不变）；皇冠：' + '，'.join(str(c['t']) for c in lay['crowns']) + '（不变）。')
 flips = sum(1 for a, b in zip(v1, v2) if a['dir'] != b['dir'])
-w(f'- 路线：route_forward 重跑（这句的点距变了）。{flips} 个点的左右转向变了（77.6 s 以后几段的左右镜像），长度和最终位置基本一样，只能往前走。'
-  'artkit 按新路线重新挑了几个布景件的位置和边（手机灯牌、书页墙）。validate：0 错误。\n')
+w(f'- 路线：route_forward 重跑后和 faa6927 完全相同（转向不同的点：{flips} 个），布景也一样。validate：0 错误，最小点距 0.236 s。\n')
 w('## 9. 试玩（box 上的脚本模拟，不是真人在手机上玩）\n')
 for i, p in enumerate(plays, 1):
     s = p['summary']
     w(f'- 第 {i} 次（本地 vite 构建，SwiftShader 软件渲染约 {s["fps"]:.0f} fps）：{s["status"]}，结束于 {s["time"]} s，{s["perfect"]} perfect + {s["good"]} good / {s["taps"]}，'
       f'钻石 {s["diamonds"]}/10，输入误差均值 {s["errorMeanMs"]} ms（SD {s["errorSdMs"]}，最大 {s["errorMaxAbsMs"]} ms）')
-w('- 偶尔出现的 good 是软件渲染掉帧，脚本的触摸晚到了（不是谱面的问题；那些点不在这次改动的范围内）。这次没有发布，线上 /preview/ 还是 faa6927。\n')
+w('- 偶尔出现的 good 是软件渲染掉帧，脚本的触摸晚到了（不是谱面的问题）。这次没有发布，线上 /preview/ 还是 faa6927。\n')
 w('## 10. 文件\n')
 w('- `tools/charts/omg_user_refine.py`：精修工具，有说明和人工复核记录 → `analysis/user/omg-user-refine.json`（逐点：偏移、候选、证据、v1/v2、原因）和 `analysis/user/omg-user-taps-refined.json`')
 w('- `analysis/user/omg-user-repeats-v2.json`，`analysis/user/omg-import-report-v2.json`')
 w('- `levels-src/omg/chart.json`，`levels-src/omg/layout.json`，`src/levels/omg.json`')
 w('- `deliverables/omg-user-clicks-v2.mp3`（歌 + 每个点一个 click，到 160.637 s 淡出）')
-w('- `deliverables/omg-ab/user-v1.mp3` / `user-v2.mp3`（72–87 s，A/B）')
+w('- `deliverables/omg-ab/user-v1.mp3` / `user-v2.mp3`（72–87 s，两个一样）/ `user-v2-vocal-proposal.mp3`（撤回的提议）')
 (ROOT / 'deliverables/omg-user-refine-report.md').write_text('\n'.join(L) + '\n')
 print('ok', len(L), 'lines')
