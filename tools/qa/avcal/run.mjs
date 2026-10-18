@@ -7,7 +7,7 @@ const b = await chromium.launch({ headless: false, executablePath: '/usr/bin/goo
 const page = await (await b.newContext({ viewport: null })).newPage();
 await page.goto('file://' + new URL('./index.html', import.meta.url).pathname); await page.waitForTimeout(800);
 const geo = await page.evaluate(() => ({ x: window.screenX, y: window.screenY + (window.outerHeight - window.innerHeight) }));
-const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-thread_queue_size', '1024', '-f', 'x11grab', '-draw_mouse', '0', '-framerate', '30', '-video_size', '540x960', '-i', `${process.env.DISPLAY ?? ':99'}+${geo.x},${geo.y}`, '-thread_queue_size', '1024', '-f', 'pulse', '-i', 'rec.monitor', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '22', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k', out], { stdio: ['pipe', 'inherit', 'inherit'] });
-await page.waitForTimeout(1500); await page.evaluate(() => window.go()); await page.waitForTimeout(17000);
-console.log(JSON.stringify(await page.evaluate(() => window.info)));
+const ff = spawn('ffmpeg', ['-y', '-loglevel', 'error', '-thread_queue_size', '1024', '-f', 'x11grab', '-draw_mouse', '0', '-framerate', '30', '-video_size', '540x960', '-i', `${process.env.DISPLAY ?? ':99'}+${geo.x},${geo.y}`, '-thread_queue_size', '1024', ...(process.env.FRAG ? ['-fragment_size', process.env.FRAG] : []), '-f', 'pulse', '-i', 'rec.monitor', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '22', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k', out], { stdio: ['pipe', 'inherit', 'inherit'] });
+await page.waitForTimeout(1500); await page.evaluate(() => window.go()); await page.waitForTimeout(17500);
+console.log(JSON.stringify(await page.evaluate(() => window.info())));
 ff.stdin.write('q'); await new Promise(r => ff.on('close', r)); await b.close();
