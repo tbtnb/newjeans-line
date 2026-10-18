@@ -279,3 +279,7 @@ def more_objects(c):
             dict(id='phone_face',t=bar(50),side=8,y=0.5,kind='image',src='art/phone-screen.jpg',size=[5,0,9],mode='upright',appear=dict(t=bar(48),mode='rise',dur=0.8)),
             dict(id='slipper_sticker',t=bar(34),side=-9,y=2,kind='image',src='art/slipper-cat-decal.png',size=[6,0,4.5],mode='billboard',alpha=True,appear=dict(t=bar(33),mode='pop',dur=0.5)),
             dict(id='cat_sticker',t=bar(76),side=9,y=3,kind='image',src='art/slipper-cat-decal.png',size=[5,0,3.75],mode='billboard',alpha=True,appear=dict(t=bar(75),mode='pop',dur=0.5))]
+
+# ---- v4 difficulty calibration: fast bursts only on real fast onset runs (fills / build-ups / drops / finals)
+BURST_WINDOWS=[(43.0,45.6,1),(58.5,60.8,1),(62.8,64.2,1),(88.5,91.0,1),(103.5,106.0,1),(140.5,142.2,1),(144.3,146.2,1),
+               (148.2,151.5,1),(164.0,166.5,1),(166.3,196.5,3)]

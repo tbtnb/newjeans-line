@@ -175,3 +175,7 @@ def layout(c):
                 sections=secs,camera=cam,objects=O,events=ev,diamonds=[dict(t=t,side=0) for t in dia],
                 crowns=[dict(t=x) for x in cr],finish=dict(kind='gate',color='#F5CA63'),collectibleColors=dict(diamond='#F36BA5',crown='#F5CA63'))
 CROWN_T=lambda bar: [bar(19.9)-0.4,bar(47.6)]
+
+# ---- v4 difficulty calibration (moderate tier: few bursts)
+BURST_WINDOWS=[(34.5,36.4,1),(72.4,74.0,1),(84.5,86.5,1),(88.8,90.4,1)]
+TIER='moderate (EP opener, not a title track: only a few bursts)'

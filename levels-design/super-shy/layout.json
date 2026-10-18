@@ -2,19 +2,19 @@
  "id": "super-shy",
  "title": "Super Shy",
  "palette": {
-  "skyTop": "#a8e6d8",
-  "skyBottom": "#fff8e8",
-  "fog": "#eaf7f2",
+  "skyTop": "#B9E4EA",
+  "skyBottom": "#CDEDF1",
+  "fog": "#CDEDF1",
   "fogStart": 30,
   "fogEnd": 100,
-  "ground": "#f3ead8",
+  "ground": "#BEE9C9",
   "groundY": -10,
-  "road": "#fffdf6",
-  "roadSide": "#e2c79e",
-  "line": "#ff5c8a",
-  "light": "#fff3dc",
-  "lightIntensity": 1.2,
-  "ambient": "#d7efe7",
+  "road": "#FFF8ED",
+  "roadSide": "#3B8A89",
+  "line": "#295BE7",
+  "light": "#FFF6E6",
+  "lightIntensity": 1.15,
+  "ambient": "#DDEFEA",
   "particles": null
  },
  "road": {
@@ -73,95 +73,97 @@
   {
    "t": 0,
    "label": "Intro · 薄荷街角",
-   "palette": {
-    "skyTop": "#bdeee2"
-   },
    "camera": "low",
-   "note": "mint street corner, small bike, flags half hidden behind windows"
+   "note": "long straight past the red bike + bench (A), short switchbacks"
   },
   {
    "t": 13.156,
    "label": "Verse 1 · 石砖小巷",
    "palette": {
-    "road": "#f6efe2",
-    "roadSide": "#d9b98d"
+    "road": "#FBF1E2"
    },
    "camera": "iso",
-   "note": "cobblestone alleys; tiled (azulejo) facades both sides"
+   "note": "cobble zigzag corridor through cut-away courtyard walls, staircase, switchbacks along the teal wall"
+  },
+  {
+   "t": 32.356,
+   "label": "Verse 1 end · 绿庭院螺旋",
+   "camera": "high",
+   "note": "square spiral up round the green courtyard (B) to +3"
   },
   {
    "t": 38.756,
    "label": "Chorus 1 · 公园遮阳伞",
    "palette": {
-    "skyTop": "#8fe0cd",
-    "ground": "#cfe9b8",
     "particles": "petals"
    },
-   "camera": "high",
-   "note": "park opens; parasols open on the kick"
+   "camera": "wide",
+   "note": "+3 deck: staircases cross OVER the verse alleys (Bridge A); parasols open on the kick"
   },
   {
    "t": 64.356,
    "label": "Break · 下沉喷泉广场",
    "palette": {
-    "skyTop": "#c9f1ff",
+    "skyTop": "#C6EDF5",
     "particles": null
    },
    "camera": "wide",
-   "note": "drop into a sunken fountain plaza"
+   "note": "drop to L0, sweeping S under the chorus deck"
   },
   {
    "t": 70.756,
    "label": "Build · 里斯本阶梯",
    "camera": "side",
-   "note": "road climbs a long stairway (+6)"
+   "note": "stairway spiral to +6"
   },
   {
    "t": 77.156,
-   "label": "Verse 2 · 山坡电车",
+   "label": "Verse 2 · 市场拱廊",
    "palette": {
-    "skyTop": "#ffd6a8",
-    "skyBottom": "#fff4e0",
-    "light": "#ffe6c2"
+    "skyTop": "#F9D3C4",
+    "skyBottom": "#FFF1E4",
+    "light": "#FFE6CC"
    },
-   "camera": "side",
-   "note": "hillside tram line, yellow tram running parallel"
+   "camera": "iso",
+   "note": "+6 terrace: switchbacks under coral awnings, wrap through the market arcade (D); E1 bunny tile under the bench"
   },
   {
    "t": 102.756,
    "label": "Break 2 · 观景台",
    "camera": "wide",
-   "note": "viewpoint: whole town visible below"
+   "dist": 34,
+   "note": "viewpoint straight: the whole town below"
   },
   {
    "t": 105.956,
    "label": "Verse 3 · 下坡",
-   "camera": "iso"
+   "camera": "iso",
+   "note": "downhill staircase back to L0"
   },
   {
    "t": 115.556,
-   "label": "Final chorus · 广场集体舞",
+   "label": "Final chorus · 五人广场",
    "palette": {
-    "skyTop": "#9ce7d4",
-    "skyBottom": "#fff2f6",
     "particles": "confetti"
    },
    "camera": "high",
-   "note": "big plaza; geometric dancers far off the road wave in sync"
+   "note": "jump onto Bridge B over the five-dancer plaza (C)"
   },
   {
    "t": 128.356,
-   "label": "Final chorus b · 喷泉",
-   "camera": "iso"
+   "label": "Final chorus b · 像素浮雕墙",
+   "camera": "iso",
+   "note": "spiral round the teal stepped wall with the five-colour pixel relief (E) to +6"
   },
   {
    "t": 141.156,
-   "label": "Final chorus c · 巴士",
+   "label": "Final chorus c · 巴士街",
    "palette": {
-    "skyTop": "#ffc9a8",
-    "skyBottom": "#fff0e0"
+    "skyTop": "#F6C9B4",
+    "skyBottom": "#FFF0E2"
    },
-   "camera": "wide"
+   "camera": "wide",
+   "note": "big drop to the bus street; switchbacks to the finish"
   }
  ],
  "camera": [
@@ -176,14 +178,13 @@
    "blend": 2.0
   },
   {
-   "t": 25.956,
-   "preset": "iso",
-   "yaw": 60,
-   "blend": 2.0
+   "t": 32.356,
+   "preset": "high",
+   "blend": 1.2
   },
   {
    "t": 38.756,
-   "preset": "high",
+   "preset": "wide",
    "blend": 1.0
   },
   {
@@ -202,7 +203,7 @@
    "blend": 1.5
   },
   {
-   "t": 89.956,
+   "t": 77.156,
    "preset": "iso",
    "blend": 2.0
   },
@@ -247,14 +248,12 @@
  ],
  "objects": [
   {
-   "id": "bike",
-   "t": 1.5,
-   "side": 4.5,
-   "along": 3,
+   "id": "bike_bench",
+   "t": 1.6,
    "kind": "group",
-   "radius": 2,
+   "radius": 2.5,
    "landmark": true,
-   "name": "街角小自行车",
+   "name": "A 红色自行车与长椅",
    "parts": [
     {
      "kind": "torus",
@@ -273,7 +272,7 @@
       90,
       0
      ],
-     "color": "#333"
+     "color": "#333333"
     },
     {
      "kind": "torus",
@@ -292,7 +291,7 @@
       90,
       0
      ],
-     "color": "#333"
+     "color": "#333333"
     },
     {
      "kind": "box",
@@ -306,7 +305,7 @@
       0.12,
       0.12
      ],
-     "color": "#ff5c8a"
+     "color": "#E8463C"
     },
     {
      "kind": "box",
@@ -320,29 +319,115 @@
       0.8,
       0.1
      ],
-     "color": "#ff5c8a"
+     "color": "#E8463C"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.45,
+      1.6
+     ],
+     "size": [
+      2.2,
+      0.15,
+      0.6
+     ],
+     "color": "#F4A39B"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.8,
+      1.9
+     ],
+     "size": [
+      2.2,
+      0.6,
+      0.1
+     ],
+     "color": "#F4A39B"
     }
+   ],
+   "worldPos": [
+    6.93,
+    0.0,
+    12.78
    ]
   },
   {
-   "id": "azulejo_row",
-   "kind": "row",
-   "t0": 13.156,
-   "t1": 38.756,
-   "side": 4.0,
-   "spacing": 3.2,
-   "bothSides": true,
-   "item": {
-    "kind": "building",
-    "size": [
-     2.8,
-     6,
-     2.6
-    ],
-    "color": "#ffffff",
-    "color2": "#5aa8d8",
-    "react": "tap"
-   }
+   "id": "bike_decal",
+   "t": 3.2,
+   "side": -4,
+   "y": 0.02,
+   "kind": "image",
+   "src": "art/red-bike-decal.png",
+   "size": [
+    3,
+    0,
+    1.8
+   ],
+   "mode": "flat",
+   "alpha": true
+  },
+  {
+   "id": "courtyard_green",
+   "t": 34.756,
+   "kind": "group",
+   "radius": 5,
+   "landmark": true,
+   "name": "B 绿色庭院 (the V1 spiral winds round it)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.2,
+      0
+     ],
+     "size": [
+      6,
+      0.4,
+      6
+     ],
+     "color": "#BEE9C9"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      1.6,
+      0
+     ],
+     "size": [
+      0.5,
+      2.8,
+      0.5
+     ],
+     "color": "#8B6B4A"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      3.6,
+      0
+     ],
+     "size": [
+      3,
+      2.4,
+      3
+     ],
+     "color": "#7FCF96"
+    }
+   ],
+   "react": "beat",
+   "worldPos": [
+    -30.9,
+    0.73,
+    134.67
+   ]
   },
   {
    "id": "parasol0",
@@ -363,7 +448,7 @@
       2.4,
       0.12
      ],
-     "color": "#ffffff"
+     "color": "#FFFFFF"
     },
     {
      "kind": "cone",
@@ -377,7 +462,7 @@
       0.8,
       3
      ],
-     "color": "#ff8fb1"
+     "color": "#295BE7"
     }
    ],
    "appear": {
@@ -406,7 +491,7 @@
       2.4,
       0.12
      ],
-     "color": "#ffffff"
+     "color": "#FFFFFF"
     },
     {
      "kind": "cone",
@@ -420,7 +505,7 @@
       0.8,
       3
      ],
-     "color": "#7fd8c6"
+     "color": "#FF82D0"
     }
    ],
    "appear": {
@@ -433,7 +518,7 @@
   {
    "id": "parasol2",
    "t": 45.156,
-   "side": 7.75,
+   "side": 5.5,
    "kind": "group",
    "radius": 2,
    "parts": [
@@ -449,7 +534,7 @@
       2.4,
       0.12
      ],
-     "color": "#ffffff"
+     "color": "#FFFFFF"
     },
     {
      "kind": "cone",
@@ -463,7 +548,7 @@
       0.8,
       3
      ],
-     "color": "#ffd86b"
+     "color": "#F7CE63"
     }
    ],
    "appear": {
@@ -476,7 +561,7 @@
   {
    "id": "parasol3",
    "t": 47.556,
-   "side": -8.5,
+   "side": -5.5,
    "kind": "group",
    "radius": 2,
    "parts": [
@@ -492,7 +577,7 @@
       2.4,
       0.12
      ],
-     "color": "#ffffff"
+     "color": "#FFFFFF"
     },
     {
      "kind": "cone",
@@ -506,7 +591,7 @@
       0.8,
       3
      ],
-     "color": "#a3c8ff"
+     "color": "#BEE9C9"
     }
    ],
    "appear": {
@@ -519,7 +604,7 @@
   {
    "id": "parasol4",
    "t": 49.956,
-   "side": 7.75,
+   "side": 5.5,
    "kind": "group",
    "radius": 2,
    "parts": [
@@ -535,7 +620,7 @@
       2.4,
       0.12
      ],
-     "color": "#ffffff"
+     "color": "#FFFFFF"
     },
     {
      "kind": "cone",
@@ -549,7 +634,7 @@
       0.8,
       3
      ],
-     "color": "#ffb38a"
+     "color": "#B1A6E8"
     }
    ],
    "appear": {
@@ -578,7 +663,7 @@
       2.4,
       0.12
      ],
-     "color": "#ffffff"
+     "color": "#FFFFFF"
     },
     {
      "kind": "cone",
@@ -592,7 +677,7 @@
       0.8,
       3
      ],
-     "color": "#ff8fb1"
+     "color": "#295BE7"
     }
    ],
    "appear": {
@@ -621,7 +706,7 @@
       2.4,
       0.12
      ],
-     "color": "#ffffff"
+     "color": "#FFFFFF"
     },
     {
      "kind": "cone",
@@ -635,7 +720,7 @@
       0.8,
       3
      ],
-     "color": "#7fd8c6"
+     "color": "#FF82D0"
     }
    ],
    "appear": {
@@ -648,7 +733,7 @@
   {
    "id": "parasol7",
    "t": 57.156000000000006,
-   "side": -14.5,
+   "side": -8.5,
    "kind": "group",
    "radius": 2,
    "parts": [
@@ -664,7 +749,7 @@
       2.4,
       0.12
      ],
-     "color": "#ffffff"
+     "color": "#FFFFFF"
     },
     {
      "kind": "cone",
@@ -678,7 +763,7 @@
       0.8,
       3
      ],
-     "color": "#ffd86b"
+     "color": "#F7CE63"
     }
    ],
    "appear": {
@@ -691,7 +776,7 @@
   {
    "id": "parasol8",
    "t": 59.556,
-   "side": 7.75,
+   "side": 28.0,
    "kind": "group",
    "radius": 2,
    "parts": [
@@ -707,7 +792,7 @@
       2.4,
       0.12
      ],
-     "color": "#ffffff"
+     "color": "#FFFFFF"
     },
     {
      "kind": "cone",
@@ -721,7 +806,7 @@
       0.8,
       3
      ],
-     "color": "#a3c8ff"
+     "color": "#BEE9C9"
     }
    ],
    "appear": {
@@ -734,7 +819,7 @@
   {
    "id": "parasol9",
    "t": 61.956,
-   "side": -6.25,
+   "side": -16.0,
    "kind": "group",
    "radius": 2,
    "parts": [
@@ -750,7 +835,7 @@
       2.4,
       0.12
      ],
-     "color": "#ffffff"
+     "color": "#FFFFFF"
     },
     {
      "kind": "cone",
@@ -764,7 +849,7 @@
       0.8,
       3
      ],
-     "color": "#ffb38a"
+     "color": "#B1A6E8"
     }
    ],
    "appear": {
@@ -776,8 +861,7 @@
   },
   {
    "id": "fountain",
-   "t": 65.956,
-   "side": -9,
+   "t": 66.756,
    "kind": "group",
    "radius": 4,
    "landmark": true,
@@ -791,11 +875,11 @@
       0
      ],
      "size": [
-      7,
+      6,
       0.8,
-      7
+      6
      ],
-     "color": "#f0e6d2"
+     "color": "#FFF8ED"
     },
     {
      "kind": "cylinder",
@@ -809,7 +893,7 @@
       2,
       1
      ],
-     "color": "#f0e6d2"
+     "color": "#FFF8ED"
     },
     {
      "kind": "sphere",
@@ -823,7 +907,7 @@
       1.2,
       2
      ],
-     "color": "#9ee3ff"
+     "color": "#9EDCEB"
     }
    ],
    "react": "beat",
@@ -831,87 +915,317 @@
     "t": 63.855999999999995,
     "mode": "rise",
     "dur": 1.0
+   },
+   "worldPos": [
+    -35.6,
+    0.0,
+    40.38
+   ]
+  },
+  {
+   "id": "awning0",
+   "t": 78.756,
+   "side": -17.7,
+   "kind": "image",
+   "src": "art/awning-stripes.jpg",
+   "size": [
+    3.2,
+    0,
+    1.4
+   ],
+   "mode": "upright",
+   "appear": {
+    "t": 77.356,
+    "mode": "unfold",
+    "dur": 0.4
    }
   },
   {
-   "id": "stairs_side",
-   "t": 72.356,
-   "side": 11.5,
-   "kind": "stairs",
+   "id": "awning1",
+   "t": 80.956,
+   "side": 7.95,
+   "kind": "image",
+   "src": "art/awning-stripes.jpg",
    "size": [
-    3,
-    6,
-    10
+    3.2,
+    0,
+    1.4
    ],
-   "color": "#f3ead8",
-   "name": "里斯本阶梯扶栏"
+   "mode": "upright",
+   "appear": {
+    "t": 79.556,
+    "mode": "unfold",
+    "dur": 0.4
+   }
   },
   {
-   "id": "tram",
-   "t": 80.356,
-   "side": -20.25,
+   "id": "awning2",
+   "t": 83.156,
+   "side": -10.2,
+   "kind": "image",
+   "src": "art/awning-stripes.jpg",
+   "size": [
+    3.2,
+    0,
+    1.4
+   ],
+   "mode": "upright",
+   "appear": {
+    "t": 81.756,
+    "mode": "unfold",
+    "dur": 0.4
+   }
+  },
+  {
+   "id": "awning3",
+   "t": 85.356,
+   "side": 17.7,
+   "kind": "image",
+   "src": "art/awning-stripes.jpg",
+   "size": [
+    3.2,
+    0,
+    1.4
+   ],
+   "mode": "upright",
+   "appear": {
+    "t": 83.95599999999999,
+    "mode": "unfold",
+    "dur": 0.4
+   }
+  },
+  {
+   "id": "awning4",
+   "t": 87.556,
+   "side": -4.2,
+   "kind": "image",
+   "src": "art/awning-stripes.jpg",
+   "size": [
+    3.2,
+    0,
+    1.4
+   ],
+   "mode": "upright",
+   "appear": {
+    "t": 86.15599999999999,
+    "mode": "unfold",
+    "dur": 0.4
+   }
+  },
+  {
+   "id": "awning5",
+   "t": 89.756,
+   "side": 4.2,
+   "kind": "image",
+   "src": "art/awning-stripes.jpg",
+   "size": [
+    3.2,
+    0,
+    1.4
+   ],
+   "mode": "upright",
+   "appear": {
+    "t": 88.356,
+    "mode": "unfold",
+    "dur": 0.4
+   }
+  },
+  {
+   "id": "market_flags",
+   "t": 85.956,
+   "pocket": true,
    "kind": "group",
    "radius": 3,
    "landmark": true,
-   "name": "黄色电车",
+   "name": "D 市场拱廊 (coral awnings, columns, flags)",
    "parts": [
     {
-     "kind": "box",
+     "kind": "cylinder",
+     "pos": [
+      -2,
+      1.6,
+      0
+     ],
+     "size": [
+      0.35,
+      3.2,
+      0.35
+     ],
+     "color": "#FFF8ED"
+    },
+    {
+     "kind": "cylinder",
      "pos": [
       0,
       1.6,
       0
      ],
      "size": [
-      2.4,
-      2.6,
-      6
+      0.35,
+      3.2,
+      0.35
      ],
-     "color": "#ffd23f"
+     "color": "#FFF8ED"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      2,
+      1.6,
+      0
+     ],
+     "size": [
+      0.35,
+      3.2,
+      0.35
+     ],
+     "color": "#FFF8ED"
     },
     {
      "kind": "box",
      "pos": [
       0,
-      3.05,
+      3.4,
       0
      ],
      "size": [
-      2.5,
+      5,
       0.3,
-      6.1
+      1.6
      ],
-     "color": "#ffffff"
+     "color": "#F4A39B",
+     "texture": "art/awning-stripes.jpg"
     },
     {
      "kind": "box",
      "pos": [
-      1.21,
-      1.9,
+      -2,
+      3.9,
+      0.8
+     ],
+     "size": [
+      0.4,
+      0.5,
+      0.02
+     ],
+     "color": "#295BE7"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1,
+      3.9,
+      0.8
+     ],
+     "size": [
+      0.4,
+      0.5,
+      0.02
+     ],
+     "color": "#FF82D0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.9,
+      0.8
+     ],
+     "size": [
+      0.4,
+      0.5,
+      0.02
+     ],
+     "color": "#F7CE63"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1,
+      3.9,
+      0.8
+     ],
+     "size": [
+      0.4,
+      0.5,
+      0.02
+     ],
+     "color": "#BEE9C9"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      2,
+      3.9,
+      0.8
+     ],
+     "size": [
+      0.4,
+      0.5,
+      0.02
+     ],
+     "color": "#B1A6E8"
+    }
+   ],
+   "worldPos": [
+    17.35,
+    6.0,
+    57.6
+   ]
+  },
+  {
+   "id": "egg_bunny_tile",
+   "t": 91.956,
+   "pocket": true,
+   "radius": 1.5,
+   "kind": "group",
+   "egg": true,
+   "name": "E1 长椅下的白色像素兔砖 (flips once in the final chorus to show five colour squares)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.45,
       0
      ],
      "size": [
-      0.05,
-      0.9,
-      4.6
+      1.8,
+      0.12,
+      0.6
      ],
-     "color": "#7fc8e8"
+     "color": "#F4A39B"
+    },
+    {
+     "kind": "plane",
+     "pos": [
+      0,
+      0.03,
+      0
+     ],
+     "size": [
+      0.8,
+      0,
+      0.8
+     ],
+     "color": "#FFFFFF",
+     "texture": "art/bunny-tile.jpg"
     }
    ],
-   "appear": {
-    "t": 77.156,
-    "mode": "fade",
-    "dur": 0.8
-   }
+   "worldPos": [
+    -9.22,
+    6.0,
+    33.56
+   ]
   },
   {
    "id": "viewpoint_town",
    "t": 103.556,
-   "side": -32.0,
+   "side": -26,
    "y": -10,
    "kind": "group",
    "radius": 10,
-   "landmark": true,
+   "nopocket": true,
    "name": "观景台下的整座小城",
    "parts": [
     {
@@ -926,13 +1240,13 @@
       3.0,
       2.6
      ],
-     "color": "#ffffff"
+     "color": "#FFF8ED"
     },
     {
      "kind": "box",
      "pos": [
       -6,
-      4.5,
+      1.5,
       -3
      ],
      "size": [
@@ -940,13 +1254,13 @@
       6.6,
       2.6
      ],
-     "color": "#ffe1c4"
+     "color": "#F4A39B"
     },
     {
      "kind": "box",
      "pos": [
       -6,
-      3.5,
+      1.5,
       0
      ],
      "size": [
@@ -954,13 +1268,13 @@
       5.4,
       2.6
      ],
-     "color": "#ffd0dc"
+     "color": "#B1A6E8"
     },
     {
      "kind": "box",
      "pos": [
       -6,
-      2.5,
+      1.5,
       3
      ],
      "size": [
@@ -968,7 +1282,7 @@
       4.2,
       2.6
      ],
-     "color": "#d4f1ea"
+     "color": "#CDEDF1"
     },
     {
      "kind": "box",
@@ -982,13 +1296,13 @@
       3.0,
       2.6
      ],
-     "color": "#ffffff"
+     "color": "#FFF8ED"
     },
     {
      "kind": "box",
      "pos": [
       -3,
-      4.5,
+      1.5,
       -6
      ],
      "size": [
@@ -996,13 +1310,13 @@
       6.6,
       2.6
      ],
-     "color": "#ffe1c4"
+     "color": "#F4A39B"
     },
     {
      "kind": "box",
      "pos": [
       -3,
-      3.5,
+      1.5,
       -3
      ],
      "size": [
@@ -1010,13 +1324,13 @@
       5.4,
       2.6
      ],
-     "color": "#ffd0dc"
+     "color": "#B1A6E8"
     },
     {
      "kind": "box",
      "pos": [
       -3,
-      2.5,
+      1.5,
       0
      ],
      "size": [
@@ -1024,7 +1338,7 @@
       4.2,
       2.6
      ],
-     "color": "#d4f1ea"
+     "color": "#CDEDF1"
     },
     {
      "kind": "box",
@@ -1038,13 +1352,13 @@
       3.0,
       2.6
      ],
-     "color": "#ffffff"
+     "color": "#FFF8ED"
     },
     {
      "kind": "box",
      "pos": [
       -3,
-      4.5,
+      1.5,
       6
      ],
      "size": [
@@ -1052,13 +1366,13 @@
       6.6,
       2.6
      ],
-     "color": "#ffe1c4"
+     "color": "#F4A39B"
     },
     {
      "kind": "box",
      "pos": [
       0,
-      3.5,
+      1.5,
       -6
      ],
      "size": [
@@ -1066,13 +1380,13 @@
       5.4,
       2.6
      ],
-     "color": "#ffd0dc"
+     "color": "#B1A6E8"
     },
     {
      "kind": "box",
      "pos": [
       0,
-      2.5,
+      1.5,
       -3
      ],
      "size": [
@@ -1080,7 +1394,7 @@
       4.2,
       2.6
      ],
-     "color": "#d4f1ea"
+     "color": "#CDEDF1"
     },
     {
      "kind": "box",
@@ -1094,13 +1408,13 @@
       3.0,
       2.6
      ],
-     "color": "#ffffff"
+     "color": "#FFF8ED"
     },
     {
      "kind": "box",
      "pos": [
       0,
-      4.5,
+      1.5,
       3
      ],
      "size": [
@@ -1108,13 +1422,13 @@
       6.6,
       2.6
      ],
-     "color": "#ffe1c4"
+     "color": "#F4A39B"
     },
     {
      "kind": "box",
      "pos": [
       0,
-      3.5,
+      1.5,
       6
      ],
      "size": [
@@ -1122,13 +1436,13 @@
       5.4,
       2.6
      ],
-     "color": "#ffd0dc"
+     "color": "#B1A6E8"
     },
     {
      "kind": "box",
      "pos": [
       3,
-      2.5,
+      1.5,
       -6
      ],
      "size": [
@@ -1136,7 +1450,7 @@
       4.2,
       2.6
      ],
-     "color": "#d4f1ea"
+     "color": "#CDEDF1"
     },
     {
      "kind": "box",
@@ -1150,13 +1464,13 @@
       3.0,
       2.6
      ],
-     "color": "#ffffff"
+     "color": "#FFF8ED"
     },
     {
      "kind": "box",
      "pos": [
       3,
-      4.5,
+      1.5,
       0
      ],
      "size": [
@@ -1164,13 +1478,13 @@
       6.6,
       2.6
      ],
-     "color": "#ffe1c4"
+     "color": "#F4A39B"
     },
     {
      "kind": "box",
      "pos": [
       3,
-      3.5,
+      1.5,
       3
      ],
      "size": [
@@ -1178,13 +1492,13 @@
       5.4,
       2.6
      ],
-     "color": "#ffd0dc"
+     "color": "#B1A6E8"
     },
     {
      "kind": "box",
      "pos": [
       3,
-      2.5,
+      1.5,
       6
      ],
      "size": [
@@ -1192,7 +1506,7 @@
       4.2,
       2.6
      ],
-     "color": "#d4f1ea"
+     "color": "#CDEDF1"
     },
     {
      "kind": "box",
@@ -1206,13 +1520,13 @@
       3.0,
       2.6
      ],
-     "color": "#ffffff"
+     "color": "#FFF8ED"
     },
     {
      "kind": "box",
      "pos": [
       6,
-      4.5,
+      1.5,
       -3
      ],
      "size": [
@@ -1220,13 +1534,13 @@
       6.6,
       2.6
      ],
-     "color": "#ffe1c4"
+     "color": "#F4A39B"
     },
     {
      "kind": "box",
      "pos": [
       6,
-      3.5,
+      1.5,
       0
      ],
      "size": [
@@ -1234,13 +1548,13 @@
       5.4,
       2.6
      ],
-     "color": "#ffd0dc"
+     "color": "#B1A6E8"
     },
     {
      "kind": "box",
      "pos": [
       6,
-      2.5,
+      1.5,
       3
      ],
      "size": [
@@ -1248,7 +1562,7 @@
       4.2,
       2.6
      ],
-     "color": "#d4f1ea"
+     "color": "#CDEDF1"
     },
     {
      "kind": "box",
@@ -1262,14 +1576,14 @@
       3.0,
       2.6
      ],
-     "color": "#ffffff"
+     "color": "#FFF8ED"
     }
    ]
   },
   {
    "id": "dancer0",
-   "t": 117.156,
-   "side": -14,
+   "t": 117.956,
+   "side": -12,
    "along": -8,
    "kind": "group",
    "radius": 1.5,
@@ -1280,21 +1594,21 @@
      "kind": "cylinder",
      "pos": [
       0,
-      1,
+      1.2,
       0
      ],
      "size": [
       0.8,
-      2,
+      2.4,
       0.8
      ],
-     "color": "#ff8fb1"
+     "color": "#295BE7"
     },
     {
      "kind": "sphere",
      "pos": [
       0,
-      2.4,
+      2.8,
       0
      ],
      "size": [
@@ -1302,7 +1616,7 @@
       0.9,
       0.9
      ],
-     "color": "#fff1e0"
+     "color": "#FFF8ED"
     }
    ],
    "react": "beat",
@@ -1314,8 +1628,8 @@
   },
   {
    "id": "dancer1",
-   "t": 117.156,
-   "side": -14,
+   "t": 117.956,
+   "side": -12,
    "along": -4,
    "kind": "group",
    "radius": 1.5,
@@ -1326,21 +1640,21 @@
      "kind": "cylinder",
      "pos": [
       0,
-      1,
+      1.2,
       0
      ],
      "size": [
       0.8,
-      2,
+      2.4,
       0.8
      ],
-     "color": "#7fd8c6"
+     "color": "#FF82D0"
     },
     {
      "kind": "sphere",
      "pos": [
       0,
-      2.4,
+      2.8,
       0
      ],
      "size": [
@@ -1348,7 +1662,7 @@
       0.9,
       0.9
      ],
-     "color": "#fff1e0"
+     "color": "#FFF8ED"
     }
    ],
    "react": "beat",
@@ -1360,33 +1674,31 @@
   },
   {
    "id": "dancer2",
-   "t": 117.156,
-   "side": -14,
-   "along": 0,
+   "t": 117.956,
    "kind": "group",
    "radius": 1.5,
    "landmark": true,
-   "name": "远处的同步舞者",
+   "name": "C 五人广场: five abstract dancer sculptures (no faces)",
    "parts": [
     {
      "kind": "cylinder",
      "pos": [
       0,
-      1,
+      1.2,
       0
      ],
      "size": [
       0.8,
-      2,
+      2.4,
       0.8
      ],
-     "color": "#ffd86b"
+     "color": "#F7CE63"
     },
     {
      "kind": "sphere",
      "pos": [
       0,
-      2.4,
+      2.8,
       0
      ],
      "size": [
@@ -1394,7 +1706,7 @@
       0.9,
       0.9
      ],
-     "color": "#fff1e0"
+     "color": "#FFF8ED"
     }
    ],
    "react": "beat",
@@ -1402,12 +1714,17 @@
     "t": 115.35600000000001,
     "mode": "pop",
     "dur": 0.3
-   }
+   },
+   "worldPos": [
+    -62.09,
+    3.0,
+    -42.64
+   ]
   },
   {
    "id": "dancer3",
-   "t": 117.156,
-   "side": -17.75,
+   "t": 117.956,
+   "side": -12,
    "along": 4,
    "kind": "group",
    "radius": 1.5,
@@ -1418,21 +1735,21 @@
      "kind": "cylinder",
      "pos": [
       0,
-      1,
+      1.2,
       0
      ],
      "size": [
       0.8,
-      2,
+      2.4,
       0.8
      ],
-     "color": "#a3c8ff"
+     "color": "#BEE9C9"
     },
     {
      "kind": "sphere",
      "pos": [
       0,
-      2.4,
+      2.8,
       0
      ],
      "size": [
@@ -1440,7 +1757,7 @@
       0.9,
       0.9
      ],
-     "color": "#fff1e0"
+     "color": "#FFF8ED"
     }
    ],
    "react": "beat",
@@ -1452,8 +1769,8 @@
   },
   {
    "id": "dancer4",
-   "t": 117.156,
-   "side": -20.0,
+   "t": 117.956,
+   "side": -27.0,
    "along": 8,
    "kind": "group",
    "radius": 1.5,
@@ -1464,21 +1781,21 @@
      "kind": "cylinder",
      "pos": [
       0,
-      1,
+      1.2,
       0
      ],
      "size": [
       0.8,
-      2,
+      2.4,
       0.8
      ],
-     "color": "#ffb38a"
+     "color": "#B1A6E8"
     },
     {
      "kind": "sphere",
      "pos": [
       0,
-      2.4,
+      2.8,
       0
      ],
      "size": [
@@ -1486,7 +1803,7 @@
       0.9,
       0.9
      ],
-     "color": "#fff1e0"
+     "color": "#FFF8ED"
     }
    ],
    "react": "beat",
@@ -1497,63 +1814,81 @@
    }
   },
   {
-   "id": "fountain2",
-   "t": 131.556,
-   "side": 10,
+   "id": "relief_wall",
+   "t": 130.756,
    "kind": "group",
    "radius": 4,
    "landmark": true,
-   "name": "广场大喷泉",
+   "name": "E 青绿阶梯墙与五色像素浮雕",
    "parts": [
     {
-     "kind": "cylinder",
+     "kind": "box",
      "pos": [
       0,
-      0.5,
-      0
+      1.5,
+      0.0
      ],
      "size": [
-      8,
-      1,
-      8
-     ],
-     "color": "#f0e6d2"
-    },
-    {
-     "kind": "cylinder",
-     "pos": [
-      0,
-      2,
-      0
-     ],
-     "size": [
-      1.2,
+      6,
       3,
       1.2
      ],
-     "color": "#f0e6d2"
+     "color": "#3B8A89"
     },
     {
-     "kind": "sphere",
+     "kind": "box",
+     "pos": [
+      0,
+      3.0,
+      -0.8
+     ],
+     "size": [
+      5,
+      3,
+      1.2
+     ],
+     "color": "#3B8A89"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      4.5,
+      -1.6
+     ],
+     "size": [
+      4,
+      3,
+      1.2
+     ],
+     "color": "#3B8A89"
+    },
+    {
+     "kind": "plane",
      "pos": [
       0,
       4,
-      0
+      0.62
      ],
      "size": [
-      3,
-      2,
+      4.5,
+      0,
       3
      ],
-     "color": "#9ee3ff"
+     "color": "#FFFFFF",
+     "texture": "art/pixel-relief.jpg"
     }
    ],
-   "react": "kick"
+   "react": "kick",
+   "worldPos": [
+    8.04,
+    4.39,
+    -5.31
+   ]
   },
   {
    "id": "bus",
    "t": 147.556,
-   "side": 11.0,
    "kind": "group",
    "radius": 4,
    "landmark": true,
@@ -1571,212 +1906,98 @@
       2.8,
       8
      ],
-     "color": "#ffffff"
+     "color": "#FFF8ED"
     },
     {
      "kind": "box",
      "pos": [
       1.31,
       2.2,
-      -2
+      -3.0
      ],
      "size": [
       0.05,
       0.9,
-      1.4
+      1.2
      ],
-     "color": "#ff8fb1"
+     "color": "#295BE7"
     },
     {
      "kind": "box",
      "pos": [
       1.31,
       2.2,
-      0
+      -1.5
      ],
      "size": [
       0.05,
       0.9,
-      1.4
+      1.2
      ],
-     "color": "#7fd8c6"
+     "color": "#FF82D0"
     },
     {
      "kind": "box",
      "pos": [
       1.31,
       2.2,
-      2
+      0.0
      ],
      "size": [
       0.05,
       0.9,
-      1.4
+      1.2
      ],
-     "color": "#ffd86b"
+     "color": "#F7CE63"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.31,
+      2.2,
+      1.5
+     ],
+     "size": [
+      0.05,
+      0.9,
+      1.2
+     ],
+     "color": "#BEE9C9"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.31,
+      2.2,
+      3.0
+     ],
+     "size": [
+      0.05,
+      0.9,
+      1.2
+     ],
+     "color": "#B1A6E8"
     }
    ],
    "appear": {
     "t": 144.356,
     "mode": "fade",
     "dur": 0.8
-   }
-  },
-  {
-   "id": "greeting_card",
-   "t": 152.756,
-   "side": -5,
-   "y": 0.5,
-   "kind": "box",
-   "size": [
-    1.6,
-    1.1,
-    0.06
-   ],
-   "color": "#fff1f5",
-   "color2": "#ff5c8a",
-   "name": "终于翻到正面的问候卡",
-   "react": "none",
-   "appear": {
-    "t": 152.356,
-    "mode": "unfold",
-    "dur": 0.6
-   }
-  },
-  {
-   "id": "egg_bunny_parasol",
-   "t": 43.855999999999995,
-   "side": -7.5,
-   "kind": "group",
-   "radius": 1.2,
-   "egg": true,
-   "name": "伞后迷你兔 (returns waving at the end)",
-   "parts": [
-    {
-     "kind": "sphere",
-     "pos": [
-      0,
-      0.5,
-      0
-     ],
-     "size": [
-      0.8,
-      0.8,
-      0.8
-     ],
-     "color": "#ffffff"
-    },
-    {
-     "kind": "box",
-     "pos": [
-      -0.15,
-      1.1,
-      0
-     ],
-     "size": [
-      0.12,
-      0.5,
-      0.12
-     ],
-     "color": "#ffffff"
-    },
-    {
-     "kind": "box",
-     "pos": [
-      0.15,
-      1.1,
-      0
-     ],
-     "size": [
-      0.12,
-      0.5,
-      0.12
-     ],
-     "color": "#ffffff"
-    }
+   },
+   "worldPos": [
+    11.73,
+    0.0,
+    9.81
    ]
-  },
-  {
-   "id": "egg_bunny_wave",
-   "t": 150.756,
-   "side": -6,
-   "kind": "group",
-   "radius": 1.2,
-   "egg": true,
-   "name": "迷你兔挥手",
-   "parts": [
-    {
-     "kind": "sphere",
-     "pos": [
-      0,
-      0.5,
-      0
-     ],
-     "size": [
-      0.8,
-      0.8,
-      0.8
-     ],
-     "color": "#ffffff"
-    },
-    {
-     "kind": "box",
-     "pos": [
-      -0.15,
-      1.1,
-      0
-     ],
-     "size": [
-      0.12,
-      0.5,
-      0.12
-     ],
-     "color": "#ffffff"
-    },
-    {
-     "kind": "box",
-     "pos": [
-      0.15,
-      1.1,
-      0
-     ],
-     "size": [
-      0.12,
-      0.5,
-      0.12
-     ],
-     "color": "#ffffff"
-    },
-    {
-     "kind": "box",
-     "pos": [
-      0.5,
-      0.7,
-      0
-     ],
-     "size": [
-      0.4,
-      0.1,
-      0.1
-     ],
-     "rot": [
-      0,
-      0,
-      40
-     ],
-     "color": "#ffffff"
-    }
-   ],
-   "react": "beat"
   },
   {
    "id": "egg_bell",
    "t": 149.156,
-   "side": 5.75,
+   "side": 5,
    "kind": "group",
-   "radius": 1.5,
+   "radius": 1.2,
    "egg": true,
-   "name": "自行车铃 (silent wobble)",
+   "name": "E2 自行车铃 (silent wobble on taps)",
    "parts": [
     {
      "kind": "sphere",
@@ -1790,17 +2011,1949 @@
       0.3,
       0.4
      ],
-     "color": "#ffd23f"
+     "color": "#F7CE63"
     }
    ],
    "react": "tap"
+  },
+  {
+   "id": "fakefork0",
+   "t": 10.943,
+   "worldPos": [
+    17.53,
+    -0.35,
+    71.55
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    2.0,
+    0.7,
+    6.0
+   ],
+   "color": "#FFF8ED",
+   "name": "fake-out fork (visual only, crumbles away)",
+   "appear": {
+    "t": 8.94,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "exit": {
+    "t": 11.54,
+    "mode": "fall",
+    "dur": 0.8
+   }
+  },
+  {
+   "id": "fakefork2",
+   "t": 49.142,
+   "worldPos": [
+    -74.08,
+    2.65,
+    66.99
+   ],
+   "rot": 180,
+   "kind": "box",
+   "size": [
+    1.9,
+    0.7,
+    6.0
+   ],
+   "color": "#FFF8ED",
+   "name": "fake-out fork (visual only, crumbles away)",
+   "appear": {
+    "t": 47.14,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "exit": {
+    "t": 49.74,
+    "mode": "fall",
+    "dur": 0.8
+   }
+  },
+  {
+   "id": "fakefork5",
+   "t": 124.341,
+   "worldPos": [
+    -26.15,
+    2.65,
+    -41.39
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    1.9,
+    0.7,
+    6.0
+   ],
+   "color": "#FFF8ED",
+   "name": "fake-out fork (visual only, crumbles away)",
+   "appear": {
+    "t": 122.34,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "exit": {
+    "t": 124.94,
+    "mode": "fall",
+    "dur": 0.8
+   }
+  },
+  {
+   "id": "courtyard_walls_0",
+   "t": 17.16,
+   "worldPos": [
+    21.83,
+    0.0,
+    81.16
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 12.58,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_1",
+   "t": 17.16,
+   "worldPos": [
+    21.83,
+    0.0,
+    82.78
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 12.61,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_2",
+   "t": 17.16,
+   "worldPos": [
+    21.83,
+    0.0,
+    84.4
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 12.64,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_3",
+   "t": 17.16,
+   "worldPos": [
+    21.83,
+    0.0,
+    86.02
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 12.67,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_4",
+   "t": 17.16,
+   "worldPos": [
+    21.83,
+    0.0,
+    87.64
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 12.7,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_5",
+   "t": 17.16,
+   "worldPos": [
+    21.83,
+    0.0,
+    89.26
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 12.73,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_6",
+   "t": 17.16,
+   "worldPos": [
+    21.83,
+    0.0,
+    90.88
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 12.76,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_7",
+   "t": 17.16,
+   "worldPos": [
+    21.83,
+    0.0,
+    92.5
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 12.79,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_8",
+   "t": 17.16,
+   "worldPos": [
+    21.83,
+    0.0,
+    94.12
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 12.82,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_9",
+   "t": 17.16,
+   "worldPos": [
+    21.83,
+    0.0,
+    95.74
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 12.85,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_10",
+   "t": 17.16,
+   "worldPos": [
+    21.83,
+    0.0,
+    97.36
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 12.88,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_11",
+   "t": 17.16,
+   "worldPos": [
+    21.83,
+    0.0,
+    98.98
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 12.91,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_12",
+   "t": 17.16,
+   "worldPos": [
+    21.83,
+    0.0,
+    100.6
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 12.94,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_13",
+   "t": 17.16,
+   "worldPos": [
+    21.83,
+    0.0,
+    102.22
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 12.97,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_14",
+   "t": 17.16,
+   "worldPos": [
+    21.83,
+    0.0,
+    103.84
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.0,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_15",
+   "t": 17.16,
+   "worldPos": [
+    21.83,
+    0.0,
+    105.46
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.03,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_16",
+   "t": 17.16,
+   "worldPos": [
+    21.83,
+    0.0,
+    107.08
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.06,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_17",
+   "t": 17.16,
+   "worldPos": [
+    38.01,
+    0.0,
+    81.16
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.09,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_18",
+   "t": 17.16,
+   "worldPos": [
+    38.01,
+    0.0,
+    82.78
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.12,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_19",
+   "t": 17.16,
+   "worldPos": [
+    38.01,
+    0.0,
+    84.4
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.15,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_20",
+   "t": 17.16,
+   "worldPos": [
+    38.01,
+    0.0,
+    86.02
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.18,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_21",
+   "t": 17.16,
+   "worldPos": [
+    38.01,
+    0.0,
+    87.64
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.21,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_22",
+   "t": 17.16,
+   "worldPos": [
+    38.01,
+    0.0,
+    89.26
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.24,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_23",
+   "t": 17.16,
+   "worldPos": [
+    38.01,
+    0.0,
+    90.88
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.27,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_24",
+   "t": 17.16,
+   "worldPos": [
+    38.01,
+    0.0,
+    92.5
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.3,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_25",
+   "t": 17.16,
+   "worldPos": [
+    38.01,
+    0.0,
+    94.12
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.33,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_26",
+   "t": 17.16,
+   "worldPos": [
+    38.01,
+    0.0,
+    95.74
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.36,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_27",
+   "t": 17.16,
+   "worldPos": [
+    38.01,
+    0.0,
+    97.36
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.39,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_28",
+   "t": 17.16,
+   "worldPos": [
+    38.01,
+    0.0,
+    98.98
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.42,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_29",
+   "t": 17.16,
+   "worldPos": [
+    38.01,
+    0.0,
+    100.6
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.45,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_30",
+   "t": 17.16,
+   "worldPos": [
+    38.01,
+    0.0,
+    102.22
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.48,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_31",
+   "t": 17.16,
+   "worldPos": [
+    38.01,
+    0.0,
+    103.84
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.51,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_32",
+   "t": 17.16,
+   "worldPos": [
+    38.01,
+    0.0,
+    105.46
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.54,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_33",
+   "t": 17.16,
+   "worldPos": [
+    38.01,
+    0.0,
+    107.08
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.57,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_34",
+   "t": 17.16,
+   "worldPos": [
+    22.64,
+    0.0,
+    80.35
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.6,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_35",
+   "t": 17.16,
+   "worldPos": [
+    24.26,
+    0.0,
+    80.35
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.63,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_36",
+   "t": 17.16,
+   "worldPos": [
+    25.88,
+    0.0,
+    80.35
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.66,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_37",
+   "t": 17.16,
+   "worldPos": [
+    33.96,
+    0.0,
+    80.35
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.69,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_38",
+   "t": 17.16,
+   "worldPos": [
+    35.58,
+    0.0,
+    80.35
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.72,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_39",
+   "t": 17.16,
+   "worldPos": [
+    37.2,
+    0.0,
+    80.35
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.75,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_40",
+   "t": 17.16,
+   "worldPos": [
+    27.49,
+    0.0,
+    107.89
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.78,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_41",
+   "t": 17.16,
+   "worldPos": [
+    29.11,
+    0.0,
+    107.89
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.81,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_42",
+   "t": 17.16,
+   "worldPos": [
+    30.73,
+    0.0,
+    107.89
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.84,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_43",
+   "t": 17.16,
+   "worldPos": [
+    32.35,
+    0.0,
+    107.89
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.87,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_44",
+   "t": 17.16,
+   "worldPos": [
+    33.96,
+    0.0,
+    107.89
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.9,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_45",
+   "t": 17.16,
+   "worldPos": [
+    35.58,
+    0.0,
+    107.89
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.93,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "courtyard_walls_46",
+   "t": 17.16,
+   "worldPos": [
+    37.2,
+    0.0,
+    107.89
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.4,
+    1.62
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 13.96,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_0",
+   "t": 85.96,
+   "worldPos": [
+    0.1,
+    6.0,
+    50.75
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 81.38,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_1",
+   "t": 85.96,
+   "worldPos": [
+    0.1,
+    6.0,
+    52.36
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 81.41,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_2",
+   "t": 85.96,
+   "worldPos": [
+    0.1,
+    6.0,
+    53.98
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 81.44,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_3",
+   "t": 85.96,
+   "worldPos": [
+    0.1,
+    6.0,
+    55.59
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 81.47,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_4",
+   "t": 85.96,
+   "worldPos": [
+    0.1,
+    6.0,
+    57.21
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 81.5,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_5",
+   "t": 85.96,
+   "worldPos": [
+    0.1,
+    6.0,
+    58.82
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 81.53,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_6",
+   "t": 85.96,
+   "worldPos": [
+    0.1,
+    6.0,
+    60.44
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 81.56,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_7",
+   "t": 85.96,
+   "worldPos": [
+    0.1,
+    6.0,
+    62.05
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 81.59,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_8",
+   "t": 85.96,
+   "worldPos": [
+    0.1,
+    6.0,
+    63.67
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 81.62,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_9",
+   "t": 85.96,
+   "worldPos": [
+    0.1,
+    6.0,
+    65.28
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 81.65,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_10",
+   "t": 85.96,
+   "worldPos": [
+    0.1,
+    6.0,
+    66.9
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 81.68,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_11",
+   "t": 85.96,
+   "worldPos": [
+    11.95,
+    6.0,
+    45.9
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 81.71,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_12",
+   "t": 85.96,
+   "worldPos": [
+    11.95,
+    6.0,
+    47.52
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 81.74,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_13",
+   "t": 85.96,
+   "worldPos": [
+    11.95,
+    6.0,
+    49.13
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 81.77,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_14",
+   "t": 85.96,
+   "worldPos": [
+    11.95,
+    6.0,
+    50.75
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 81.8,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_15",
+   "t": 85.96,
+   "worldPos": [
+    11.95,
+    6.0,
+    52.36
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 81.83,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_16",
+   "t": 85.96,
+   "worldPos": [
+    11.95,
+    6.0,
+    53.98
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 81.86,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_17",
+   "t": 85.96,
+   "worldPos": [
+    11.95,
+    6.0,
+    55.59
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 81.89,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_18",
+   "t": 85.96,
+   "worldPos": [
+    11.95,
+    6.0,
+    57.21
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 81.92,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_19",
+   "t": 85.96,
+   "worldPos": [
+    11.95,
+    6.0,
+    58.82
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 81.95,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_20",
+   "t": 85.96,
+   "worldPos": [
+    11.95,
+    6.0,
+    60.44
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 81.98,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_21",
+   "t": 85.96,
+   "worldPos": [
+    11.95,
+    6.0,
+    62.05
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 82.01,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_22",
+   "t": 85.96,
+   "worldPos": [
+    11.95,
+    6.0,
+    63.67
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 82.04,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_23",
+   "t": 85.96,
+   "worldPos": [
+    11.95,
+    6.0,
+    65.28
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 82.07,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_24",
+   "t": 85.96,
+   "worldPos": [
+    11.95,
+    6.0,
+    66.9
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 82.1,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_25",
+   "t": 85.96,
+   "worldPos": [
+    11.95,
+    6.0,
+    68.51
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 82.13,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_26",
+   "t": 85.96,
+   "worldPos": [
+    11.95,
+    6.0,
+    70.13
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 82.16,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_27",
+   "t": 85.96,
+   "worldPos": [
+    11.95,
+    6.0,
+    71.74
+   ],
+   "rot": 0,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.61
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 82.19,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_28",
+   "t": 85.96,
+   "worldPos": [
+    4.33,
+    6.0,
+    45.1
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.69
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 82.22,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_29",
+   "t": 85.96,
+   "worldPos": [
+    6.02,
+    6.0,
+    45.1
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.69
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 82.25,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_30",
+   "t": 85.96,
+   "worldPos": [
+    7.72,
+    6.0,
+    45.1
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.69
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 82.28,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_31",
+   "t": 85.96,
+   "worldPos": [
+    9.41,
+    6.0,
+    45.1
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.69
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 82.31,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_32",
+   "t": 85.96,
+   "worldPos": [
+    11.1,
+    6.0,
+    45.1
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.69
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 82.34,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_33",
+   "t": 85.96,
+   "worldPos": [
+    6.02,
+    6.0,
+    72.55
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.69
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 82.37,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_34",
+   "t": 85.96,
+   "worldPos": [
+    7.72,
+    6.0,
+    72.55
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.69
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 82.4,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_35",
+   "t": 85.96,
+   "worldPos": [
+    9.41,
+    6.0,
+    72.55
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.69
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 82.43,
+    "mode": "rise",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "market_arcade_36",
+   "t": 85.96,
+   "worldPos": [
+    11.1,
+    6.0,
+    72.55
+   ],
+   "rot": 90,
+   "kind": "box",
+   "size": [
+    0.5,
+    3.6,
+    1.69
+   ],
+   "color": "#F4A39B",
+   "appear": {
+    "t": 82.46,
+    "mode": "rise",
+    "dur": 0.5
+   }
   }
  ],
  "events": [
   {
    "t": 13.156,
    "type": "raise",
-   "target": "azulejo_row",
+   "target": "courtyard_walls*",
    "dur": 0.8
   },
   {
@@ -1813,15 +3966,19 @@
    "t": 64.356,
    "type": "color",
    "palette": {
-    "skyTop": "#c9f1ff"
+    "skyTop": "#C6EDF5"
    },
    "dur": 1.0
   },
   {
    "t": 77.156,
    "type": "light",
-   "target": "tram",
-   "dur": 2.0
+   "target": "awning*",
+   "every": 0.8,
+   "level": 0.5,
+   "color": "#FFFFFF",
+   "dur": 0.3,
+   "until": 102.756
   },
   {
    "t": 115.556,
@@ -1830,17 +3987,24 @@
    "particles": "confetti"
   },
   {
-   "t": 115.556,
+   "t": 115.756,
+   "type": "spin",
+   "target": "egg_bunny_tile",
+   "speed": 1.0,
+   "until": 116.356
+  },
+  {
+   "t": 128.356,
    "type": "pulse",
-   "target": "fountain2",
+   "target": "relief_wall",
    "every": 0.8,
-   "until": 153.956
+   "until": 141.156
   },
   {
    "t": 141.156,
    "type": "color",
    "palette": {
-    "skyTop": "#ffc9a8"
+    "skyTop": "#F6C9B4"
    },
    "dur": 3.0
   }
@@ -1892,11 +4056,31 @@
    "t": 65.968
   },
   {
-   "t": 103.463
+   "t": 109.041
   }
  ],
  "finish": {
-  "kind": "gate"
+  "kind": "gate",
+  "color": "#F7CE63"
+ },
+ "collectibleColors": {
+  "diamond": "#FF82D0",
+  "crown": "#F7CE63"
+ },
+ "art": {
+  "backdrop": "art/sky.jpg",
+  "ground": {
+   "src": "art/ground-park.jpg",
+   "scale": 34
+  },
+  "files": {
+   "art/sky.jpg": "Lisbon afternoon sky #CDEDF1 with soft clouds (backdrop)",
+   "art/ground-park.jpg": "park-green #BEE9C9 tile with paving dots (ground)",
+   "art/awning-stripes.jpg": "coral/cream awning stripes (market arcade canopies)",
+   "art/pixel-relief.jpg": "five-colour pixel relief for the teal stepped wall (landmark E)",
+   "art/red-bike-decal.png": "flat red bicycle sticker (landmark A, transparent)",
+   "art/bunny-tile.jpg": "white pixel bunny tile (egg E1, flips to five colour squares)"
+  }
  },
  "path": {
   "note": "computed centerline nodes [t,x,z,y,heading_after] (world units, y = road elevation offset)",
@@ -1913,2753 +4097,2826 @@
     0.0,
     25.77,
     0.0,
-    "E"
+    "W"
    ],
    [
     3.947,
-    17.64,
+    -17.64,
     25.77,
     0.0,
     "N"
    ],
    [
     4.543,
-    17.64,
+    -17.64,
     32.33,
     0.0,
     "E"
    ],
    [
     5.543,
-    28.64,
+    -6.64,
     32.33,
     0.0,
     "N"
    ],
    [
     7.143,
-    28.64,
+    -6.64,
     49.93,
     0.0,
     "E"
    ],
    [
     7.742,
-    35.23,
+    -0.05,
     49.93,
     0.0,
     "N"
    ],
    [
     8.743,
-    35.23,
+    -0.05,
     60.94,
     0.0,
     "E"
    ],
    [
     10.342,
-    52.82,
+    17.53,
     60.94,
     0.0,
     "N"
    ],
    [
     10.943,
-    52.82,
+    17.53,
     67.55,
     0.0,
     "E"
    ],
    [
     11.943,
-    63.82,
+    28.53,
     67.55,
     0.0,
     "N"
    ],
    [
     12.256,
-    63.82,
+    28.53,
     70.99,
     0.0,
-    "E"
+    "W"
    ],
    [
     12.556,
-    67.12,
+    25.23,
     70.99,
     0.0,
     "N"
    ],
    [
     12.94,
-    67.12,
+    25.23,
     75.22,
     0.0,
     "E"
    ],
    [
     13.545,
-    73.78,
+    31.89,
     75.22,
     0.0,
-    "S"
+    "N"
    ],
    [
     13.846,
-    73.78,
-    71.91,
+    31.89,
+    78.53,
     0.0,
-    "E"
+    "W"
    ],
    [
     14.138,
-    76.99,
-    71.91,
+    28.68,
+    78.53,
     0.0,
     "N"
    ],
    [
     14.54,
-    76.99,
-    76.33,
+    28.68,
+    82.95,
     0.0,
     "E"
    ],
    [
     15.152,
-    83.72,
-    76.33,
+    35.41,
+    82.95,
     0.0,
-    "S"
+    "N"
    ],
    [
     15.741,
-    83.72,
-    69.85,
+    35.41,
+    89.43,
     0.0,
-    "E"
+    "W"
    ],
    [
     16.739,
-    94.7,
-    69.85,
+    24.43,
+    89.43,
     0.0,
     "N"
    ],
    [
     17.043,
-    94.7,
-    73.19,
+    24.43,
+    92.77,
     0.0,
     "E"
    ],
    [
     17.342,
-    97.99,
-    73.19,
+    27.72,
+    92.77,
     0.0,
-    "S"
+    "N"
    ],
    [
     17.756,
-    97.99,
-    68.64,
+    27.72,
+    97.33,
     0.0,
-    "E"
+    "W"
    ],
    [
     17.951,
-    100.13,
-    68.64,
+    25.57,
+    97.33,
     0.0,
     "N"
    ],
    [
     18.347,
-    100.13,
-    73.0,
+    25.57,
+    101.68,
     0.0,
     "E"
    ],
    [
     18.642,
-    103.38,
-    73.0,
+    28.82,
+    101.68,
     0.0,
-    "S"
+    "N"
    ],
    [
     18.97,
-    103.38,
-    69.39,
+    28.82,
+    105.29,
     0.0,
-    "E"
+    "W"
    ],
    [
     19.34,
-    107.45,
-    69.39,
+    24.75,
+    105.29,
     0.0,
-    "S"
+    "N"
    ],
    [
     19.94,
-    107.45,
-    62.79,
+    24.75,
+    111.89,
     0.0,
     "W"
    ],
    [
     20.241,
-    104.14,
-    62.79,
+    21.44,
+    111.89,
     0.0,
-    "S"
+    "N"
    ],
    [
     20.535,
-    104.14,
-    59.55,
+    21.44,
+    115.13,
     0.0,
-    "E"
+    "W"
    ],
    [
     20.941,
-    108.6,
-    59.55,
+    16.97,
+    115.13,
     0.0,
-    "S"
+    "N"
    ],
    [
     21.546,
-    108.6,
-    52.9,
+    16.97,
+    121.78,
     0.0,
     "W"
    ],
    [
     22.141,
-    102.06,
-    52.9,
+    10.43,
+    121.78,
     0.0,
-    "S"
+    "N"
    ],
    [
     23.146,
-    102.06,
-    41.84,
+    10.43,
+    132.84,
     0.0,
-    "E"
+    "W"
    ],
    [
     23.438,
-    105.27,
-    41.84,
+    7.22,
+    132.84,
     0.0,
-    "S"
+    "N"
    ],
    [
     23.741,
-    105.27,
-    38.51,
+    7.22,
+    136.17,
     0.0,
     "W"
    ],
    [
     24.14,
-    100.88,
-    38.51,
+    2.83,
+    136.17,
     0.0,
-    "S"
+    "N"
    ],
    [
     24.356,
-    100.88,
-    36.13,
+    2.83,
+    138.55,
     0.0,
-    "E"
+    "W"
    ],
    [
     24.746,
-    105.17,
-    36.13,
+    -1.46,
+    138.55,
     0.0,
-    "S"
+    "N"
    ],
    [
     25.041,
-    105.17,
-    32.89,
+    -1.46,
+    141.79,
     0.0,
     "W"
    ],
    [
     25.341,
-    101.87,
-    32.89,
+    -4.76,
+    141.79,
     0.0,
-    "S"
+    "N"
    ],
    [
     25.74,
-    101.87,
-    28.5,
-    0.0,
-    "E"
-   ],
-   [
-    26.345,
-    108.53,
-    28.5,
-    0.0,
-    "S"
-   ],
-   [
-    26.641,
-    108.53,
-    25.24,
+    -4.76,
+    146.18,
     0.0,
     "W"
    ],
    [
-    26.942,
-    105.21,
-    25.24,
+    26.345,
+    -11.42,
+    146.18,
     0.0,
-    "S"
+    "N"
    ],
    [
-    27.345,
-    105.21,
-    20.81,
+    26.641,
+    -11.42,
+    149.44,
     0.0,
     "E"
    ],
    [
-    27.946,
-    111.83,
-    20.81,
+    26.942,
+    -8.11,
+    149.44,
     0.0,
-    "S"
+    "N"
+   ],
+   [
+    27.345,
+    -8.11,
+    153.87,
+    0.0,
+    "W"
+   ],
+   [
+    27.946,
+    -14.72,
+    153.87,
+    0.0,
+    "N"
    ],
    [
     28.538,
-    111.83,
-    14.3,
+    -14.72,
+    160.38,
     0.0,
     "W"
    ],
    [
     29.539,
-    100.81,
-    14.3,
+    -25.73,
+    160.38,
     0.0,
-    "S"
+    "N"
    ],
    [
     29.852,
-    100.81,
-    10.86,
+    -25.73,
+    163.82,
     0.0,
     "E"
    ],
    [
     30.147,
-    104.06,
-    10.86,
+    -22.48,
+    163.82,
     0.0,
     "S"
    ],
    [
     30.539,
-    104.06,
-    6.54,
+    -22.48,
+    159.51,
     0.0,
     "W"
    ],
    [
     30.742,
-    101.83,
-    6.54,
+    -24.72,
+    159.51,
     0.0,
     "S"
    ],
    [
     31.146,
-    101.83,
-    2.1,
+    -24.72,
+    155.07,
     0.0,
     "E"
    ],
    [
     31.444,
-    105.1,
-    2.1,
+    -21.44,
+    155.07,
     0.0,
     "S"
    ],
    [
     31.751,
-    105.1,
-    -1.28,
+    -21.44,
+    151.69,
     0.0,
     "W"
    ],
    [
     32.14,
-    100.83,
-    -1.28,
+    -25.72,
+    151.69,
     0.0,
     "S"
    ],
    [
     32.739,
-    100.83,
-    -7.87,
-    0.0,
-    "E"
-   ],
-   [
-    33.041,
-    104.15,
-    -7.87,
-    0.0,
-    "S"
-   ],
-   [
-    33.342,
-    104.15,
-    -11.18,
-    0.0,
+    -25.72,
+    145.1,
+    0.03,
     "W"
    ],
    [
+    33.041,
+    -29.04,
+    145.1,
+    0.2,
+    "N"
+   ],
+   [
+    33.342,
+    -29.04,
+    148.41,
+    0.37,
+    "E"
+   ],
+   [
     33.741,
-    99.76,
-    -11.18,
-    0.0,
+    -24.65,
+    148.41,
+    0.59,
     "S"
    ],
    [
     34.327,
-    99.76,
-    -17.62,
-    0.0,
+    -24.65,
+    141.97,
+    0.91,
     "E"
    ],
    [
     34.941,
-    106.51,
-    -17.62,
-    0.0,
+    -17.9,
+    141.97,
+    1.25,
     "S"
    ],
    [
     35.94,
-    106.51,
-    -28.61,
-    0.0,
+    -17.9,
+    130.98,
+    1.8,
     "W"
    ],
    [
     36.241,
-    103.2,
-    -28.61,
-    0.0,
-    "S"
+    -21.21,
+    130.98,
+    1.97,
+    "N"
    ],
    [
     36.542,
-    103.2,
-    -31.92,
-    0.0,
+    -21.21,
+    134.29,
+    2.13,
     "E"
    ],
    [
     36.942,
-    107.6,
-    -31.92,
-    0.0,
+    -16.81,
+    134.29,
+    2.35,
     "S"
    ],
    [
     37.547,
-    107.6,
-    -38.58,
-    0.0,
-    "W"
+    -16.81,
+    127.63,
+    2.69,
+    "E"
    ],
    [
     37.845,
-    104.32,
-    -38.58,
-    0.0,
+    -13.53,
+    127.63,
+    2.85,
     "S"
    ],
    [
-    38.142,
-    104.32,
-    -41.84,
-    0.0,
-    "E"
-   ],
-   [
-    38.356,
-    106.68,
-    -41.84,
-    0.0,
-    "S"
-   ],
-   [
-    38.547,
-    106.68,
-    -43.94,
-    0.0,
-    "W"
-   ],
-   [
-    38.775,
-    104.17,
-    -43.94,
-    0.0,
-    "S"
-   ],
-   [
-    39.145,
-    104.17,
-    -48.02,
-    0.0,
-    "W"
-   ],
-   [
-    39.542,
-    99.8,
-    -48.02,
-    0.0,
-    "S"
-   ],
-   [
-    39.845,
-    99.8,
-    -51.35,
-    0.0,
-    "W"
-   ],
-   [
-    40.142,
-    96.54,
-    -51.35,
-    0.0,
-    "S"
-   ],
-   [
-    40.35,
-    96.54,
-    -53.64,
-    0.0,
-    "W"
-   ],
-   [
-    40.742,
-    92.22,
-    -53.64,
-    0.0,
-    "S"
-   ],
-   [
-    41.142,
-    92.22,
-    -58.04,
-    0.0,
-    "W"
-   ],
-   [
-    41.75,
-    85.54,
-    -58.04,
-    0.0,
-    "S"
-   ],
-   [
-    41.944,
-    85.54,
-    -60.17,
-    0.0,
-    "W"
-   ],
-   [
-    42.347,
-    81.1,
-    -60.17,
-    0.0,
-    "S"
-   ],
-   [
-    42.742,
-    81.1,
-    -64.52,
-    0.0,
-    "W"
-   ],
-   [
-    43.044,
-    77.78,
-    -64.52,
-    0.0,
-    "S"
-   ],
-   [
-    43.342,
-    77.78,
-    -67.79,
-    0.0,
-    "W"
-   ],
-   [
-    43.572,
-    75.25,
-    -67.79,
-    0.0,
-    "S"
-   ],
-   [
-    43.942,
-    75.25,
-    -71.86,
-    0.0,
-    "W"
-   ],
-   [
-    44.342,
-    70.85,
-    -71.86,
-    0.0,
-    "S"
-   ],
-   [
-    44.556,
-    70.85,
-    -74.22,
-    0.0,
-    "W"
-   ],
-   [
-    44.748,
-    68.74,
-    -74.22,
-    0.0,
-    "S"
-   ],
-   [
-    44.941,
-    68.74,
-    -76.34,
-    0.0,
-    "W"
-   ],
-   [
-    45.15,
-    66.44,
-    -76.34,
-    0.0,
-    "N"
-   ],
-   [
-    45.542,
-    66.44,
-    -72.03,
-    0.0,
-    "W"
-   ],
-   [
-    45.941,
-    62.05,
-    -72.03,
-    0.0,
-    "N"
-   ],
-   [
-    46.25,
-    62.05,
-    -68.63,
-    0.0,
-    "W"
-   ],
-   [
-    46.542,
-    58.84,
-    -68.63,
-    0.0,
-    "N"
-   ],
-   [
-    46.756,
-    58.84,
-    -66.28,
-    0.0,
-    "W"
-   ],
-   [
-    47.138,
-    54.64,
-    -66.28,
-    0.0,
-    "N"
-   ],
-   [
-    47.542,
-    54.64,
-    -61.83,
-    0.0,
-    "W"
-   ],
-   [
-    48.153,
-    47.92,
-    -61.83,
-    0.0,
-    "N"
-   ],
-   [
-    48.35,
-    47.92,
-    -59.66,
-    0.0,
-    "W"
-   ],
-   [
-    48.742,
-    43.6,
-    -59.66,
-    0.0,
-    "N"
-   ],
-   [
-    49.142,
-    43.6,
-    -55.26,
-    0.0,
-    "W"
-   ],
-   [
-    49.442,
-    40.3,
-    -55.26,
-    0.0,
-    "N"
-   ],
-   [
-    49.75,
-    40.3,
-    -51.88,
-    0.0,
-    "W"
-   ],
-   [
-    49.95,
-    38.1,
-    -51.88,
-    0.0,
-    "N"
-   ],
-   [
-    50.338,
-    38.1,
-    -47.61,
-    0.0,
-    "W"
-   ],
-   [
-    50.742,
-    33.66,
-    -47.61,
-    0.0,
-    "N"
-   ],
-   [
-    50.956,
-    33.66,
-    -45.25,
-    0.0,
-    "W"
-   ],
-   [
-    51.161,
-    31.41,
-    -45.25,
-    0.0,
-    "N"
-   ],
-   [
-    51.356,
-    31.41,
-    -43.11,
-    0.0,
-    "W"
-   ],
-   [
-    51.556,
-    29.21,
-    -43.11,
-    0.0,
-    "N"
-   ],
-   [
-    51.939,
-    29.21,
-    -38.9,
-    0.0,
-    "W"
-   ],
-   [
-    52.341,
-    24.78,
-    -38.9,
-    0.0,
-    "N"
-   ],
-   [
-    52.641,
-    24.78,
-    -35.6,
-    0.0,
-    "W"
-   ],
-   [
-    52.941,
-    21.48,
-    -35.6,
-    0.0,
-    "N"
-   ],
-   [
-    53.198,
-    21.48,
-    -32.77,
-    0.0,
-    "W"
-   ],
-   [
-    53.539,
-    17.73,
-    -32.77,
-    0.0,
-    "N"
-   ],
-   [
-    53.941,
-    17.73,
-    -28.35,
-    0.0,
-    "W"
-   ],
-   [
-    54.541,
-    11.13,
-    -28.35,
-    0.0,
-    "N"
-   ],
-   [
-    54.766,
-    11.13,
-    -25.87,
-    0.0,
-    "W"
-   ],
-   [
-    55.139,
-    7.03,
-    -25.87,
-    0.0,
-    "N"
-   ],
-   [
-    55.541,
-    7.03,
-    -21.45,
-    0.0,
-    "W"
-   ],
-   [
-    55.856,
-    3.56,
-    -21.45,
-    0.0,
-    "N"
-   ],
-   [
-    56.141,
-    3.56,
-    -18.31,
-    0.0,
-    "W"
-   ],
-   [
-    56.366,
-    1.09,
-    -18.31,
-    0.0,
-    "N"
-   ],
-   [
-    56.739,
-    1.09,
-    -14.21,
-    0.0,
-    "W"
-   ],
-   [
-    57.141,
-    -3.33,
-    -14.21,
-    0.0,
-    "N"
-   ],
-   [
-    57.348,
-    -3.33,
-    -11.94,
-    0.0,
-    "W"
-   ],
-   [
-    57.556,
-    -5.62,
-    -11.94,
-    0.0,
-    "N"
-   ],
-   [
-    57.756,
-    -5.62,
-    -9.73,
-    0.0,
-    "W"
-   ],
-   [
-    57.956,
-    -7.82,
-    -9.73,
-    0.0,
-    "S"
-   ],
-   [
-    58.339,
-    -7.82,
-    -13.95,
-    0.0,
-    "W"
-   ],
-   [
-    58.741,
-    -12.24,
-    -13.95,
-    0.0,
-    "S"
-   ],
-   [
-    59.041,
-    -12.24,
-    -17.25,
-    0.0,
-    "W"
-   ],
-   [
-    59.341,
-    -15.54,
-    -17.25,
-    0.0,
-    "S"
-   ],
-   [
-    59.542,
-    -15.54,
-    -19.46,
-    0.0,
-    "W"
-   ],
-   [
-    59.939,
-    -19.91,
-    -19.46,
-    0.0,
-    "S"
-   ],
-   [
-    60.341,
-    -19.91,
-    -23.88,
-    0.0,
-    "W"
-   ],
-   [
-    60.941,
-    -26.51,
-    -23.88,
-    0.0,
-    "S"
-   ],
-   [
-    61.152,
-    -26.51,
-    -26.2,
-    0.0,
-    "W"
-   ],
-   [
-    61.539,
-    -30.77,
-    -26.2,
-    0.0,
-    "S"
-   ],
-   [
-    61.941,
-    -30.77,
-    -30.62,
-    0.0,
-    "W"
-   ],
-   [
-    62.243,
-    -34.09,
-    -30.62,
-    0.0,
-    "S"
-   ],
-   [
-    62.556,
-    -34.09,
-    -34.07,
-    0.0,
-    "W"
-   ],
-   [
-    62.766,
-    -36.4,
-    -34.07,
-    0.0,
-    "S"
-   ],
-   [
-    63.139,
-    -36.4,
-    -38.17,
-    0.0,
-    "W"
-   ],
-   [
-    63.541,
-    -40.82,
-    -38.17,
-    0.0,
-    "S"
-   ],
-   [
-    63.841,
-    -40.82,
-    -41.47,
-    0.0,
-    "W"
-   ],
-   [
-    64.056,
-    -43.19,
-    -41.47,
-    0.0,
-    "S"
-   ],
-   [
-    64.269,
-    -43.19,
-    -43.81,
-    0.0,
-    "E"
-   ],
-   [
-    65.544,
-    -29.16,
-    -43.81,
-    -4.0,
-    "S"
-   ],
-   [
-    66.392,
-    -29.16,
-    -53.14,
-    -4.0,
-    "W"
-   ],
-   [
-    66.787,
-    -33.51,
-    -53.14,
-    -4.0,
-    "S"
-   ],
-   [
-    67.719,
-    -33.51,
-    -63.39,
-    -4.0,
-    "E"
-   ],
-   [
-    68.366,
-    -26.39,
-    -63.39,
-    -4.0,
-    "S"
-   ],
-   [
-    68.731,
-    -26.39,
-    -67.41,
-    -4.0,
-    "W"
-   ],
-   [
-    69.786,
-    -37.99,
-    -67.41,
-    -4.0,
-    "S"
-   ],
-   [
-    70.387,
-    -37.99,
-    -74.02,
-    -4.0,
-    "E"
-   ],
-   [
-    71.146,
-    -29.65,
-    -74.02,
-    -3.76,
-    "S"
-   ],
-   [
-    71.943,
-    -29.65,
-    -82.79,
-    -2.97,
-    "E"
-   ],
-   [
-    72.343,
-    -25.25,
-    -82.79,
-    -2.58,
-    "S"
-   ],
-   [
-    72.743,
-    -25.25,
-    -87.19,
-    -2.19,
-    "E"
-   ],
-   [
-    73.338,
-    -18.7,
-    -87.19,
-    -1.6,
-    "S"
-   ],
-   [
-    73.543,
-    -18.7,
-    -89.44,
-    -1.4,
-    "E"
-   ],
-   [
-    73.943,
-    -14.3,
-    -89.44,
-    -1.01,
-    "S"
-   ],
-   [
-    74.343,
-    -14.3,
-    -93.84,
-    -0.61,
-    "E"
-   ],
-   [
-    74.938,
-    -7.76,
-    -93.84,
-    -0.03,
-    "S"
-   ],
-   [
-    75.142,
-    -7.76,
-    -96.08,
-    0.17,
-    "E"
-   ],
-   [
-    75.543,
-    -3.34,
-    -96.08,
-    0.57,
-    "S"
-   ],
-   [
-    75.943,
-    -3.34,
-    -100.48,
-    0.96,
-    "E"
-   ],
-   [
-    76.356,
-    1.2,
-    -100.48,
-    1.37,
-    "S"
-   ],
-   [
-    76.556,
-    1.2,
-    -102.68,
-    1.56,
-    "E"
-   ],
-   [
-    76.756,
-    3.4,
-    -102.68,
-    1.76,
-    "S"
-   ],
-   [
-    76.956,
-    3.4,
-    -104.88,
-    1.96,
-    "E"
-   ],
-   [
-    77.545,
-    9.88,
-    -104.88,
-    2.0,
-    "N"
-   ],
-   [
-    77.838,
-    9.88,
-    -101.66,
-    2.0,
-    "E"
-   ],
-   [
-    78.142,
-    13.22,
-    -101.66,
-    2.0,
-    "S"
-   ],
-   [
-    78.541,
-    13.22,
-    -106.05,
-    2.0,
-    "E"
-   ],
-   [
-    79.139,
-    19.8,
-    -106.05,
-    2.0,
-    "N"
-   ],
-   [
-    79.738,
-    19.8,
-    -99.46,
-    2.0,
-    "E"
-   ],
-   [
-    80.34,
-    26.42,
-    -99.46,
-    2.0,
-    "S"
-   ],
-   [
-    80.739,
-    26.42,
-    -103.85,
-    2.0,
-    "E"
-   ],
-   [
-    81.052,
-    29.86,
-    -103.85,
-    2.0,
-    "N"
-   ],
-   [
-    81.347,
-    29.86,
-    -100.61,
-    2.0,
-    "E"
-   ],
-   [
-    81.739,
-    34.18,
-    -100.61,
-    2.0,
-    "S"
-   ],
-   [
-    82.346,
-    34.18,
-    -107.28,
-    2.0,
-    "E"
-   ],
-   [
-    82.644,
-    37.46,
-    -107.28,
-    2.0,
-    "N"
-   ],
-   [
-    82.941,
-    37.46,
-    -104.02,
-    2.0,
-    "E"
-   ],
-   [
-    83.342,
-    41.87,
-    -104.02,
-    2.0,
-    "N"
-   ],
-   [
-    83.94,
-    41.87,
-    -97.44,
-    2.0,
-    "W"
-   ],
-   [
-    84.246,
-    38.5,
-    -97.44,
-    2.0,
-    "N"
-   ],
-   [
-    84.534,
-    38.5,
-    -94.27,
-    2.0,
-    "E"
-   ],
-   [
-    84.941,
-    42.98,
-    -94.27,
-    2.0,
-    "N"
-   ],
-   [
-    85.546,
-    42.98,
-    -87.61,
-    2.0,
-    "W"
-   ],
-   [
-    86.141,
-    36.43,
-    -87.61,
-    2.0,
-    "N"
-   ],
-   [
-    86.741,
-    36.43,
-    -81.01,
-    2.0,
-    "E"
-   ],
-   [
-    87.152,
-    40.95,
-    -81.01,
-    2.0,
-    "N"
-   ],
-   [
-    87.438,
-    40.95,
-    -77.87,
-    2.0,
-    "W"
-   ],
-   [
-    87.742,
-    37.61,
-    -77.87,
-    2.0,
-    "N"
-   ],
-   [
-    88.14,
-    37.61,
-    -73.49,
-    2.0,
-    "E"
-   ],
-   [
-    88.747,
-    44.29,
-    -73.49,
-    2.0,
-    "N"
-   ],
-   [
-    89.041,
-    44.29,
-    -70.26,
-    2.0,
-    "W"
-   ],
-   [
-    89.342,
-    40.97,
-    -70.26,
-    2.0,
-    "N"
-   ],
-   [
-    89.747,
-    40.97,
-    -65.8,
-    2.0,
-    "W"
-   ],
-   [
-    90.34,
-    34.45,
-    -65.8,
-    2.0,
-    "S"
-   ],
-   [
-    90.638,
-    34.45,
-    -69.08,
-    2.0,
-    "W"
-   ],
-   [
-    90.934,
-    31.2,
-    -69.08,
-    2.0,
-    "N"
-   ],
-   [
-    91.34,
-    31.2,
-    -64.61,
-    2.0,
-    "W"
-   ],
-   [
-    91.94,
-    24.6,
-    -64.61,
-    2.0,
-    "S"
-   ],
-   [
-    92.538,
-    24.6,
-    -71.19,
-    2.0,
-    "W"
-   ],
-   [
-    93.141,
-    17.96,
-    -71.19,
-    2.0,
-    "N"
-   ],
-   [
-    93.539,
-    17.96,
-    -66.81,
-    2.0,
-    "W"
-   ],
-   [
-    93.838,
-    14.67,
-    -66.81,
-    2.0,
-    "S"
-   ],
-   [
-    94.142,
-    14.67,
-    -70.16,
-    2.0,
-    "W"
-   ],
-   [
-    94.539,
-    10.31,
-    -70.16,
-    2.0,
-    "N"
-   ],
-   [
-    95.141,
-    10.31,
-    -63.54,
-    2.0,
-    "W"
-   ],
-   [
-    95.441,
-    7.01,
-    -63.54,
-    2.0,
-    "S"
-   ],
-   [
-    95.741,
-    7.01,
-    -66.84,
-    2.0,
-    "W"
-   ],
-   [
-    96.142,
-    2.6,
-    -66.84,
-    2.0,
-    "N"
-   ],
-   [
-    96.74,
-    2.6,
-    -60.26,
-    2.0,
-    "W"
-   ],
-   [
-    97.041,
-    -0.71,
-    -60.26,
-    2.0,
-    "S"
-   ],
-   [
-    97.342,
-    -0.71,
-    -63.57,
-    2.0,
-    "W"
-   ],
-   [
-    97.742,
-    -5.12,
-    -63.57,
-    2.0,
-    "N"
-   ],
-   [
-    98.346,
-    -5.12,
-    -56.92,
-    2.0,
-    "W"
-   ],
-   [
-    98.942,
-    -11.67,
-    -56.92,
-    2.0,
-    "S"
-   ],
-   [
-    99.541,
-    -11.67,
-    -63.51,
-    2.0,
-    "W"
-   ],
-   [
-    99.939,
-    -16.05,
-    -63.51,
-    2.0,
-    "N"
-   ],
-   [
-    100.241,
-    -16.05,
-    -60.19,
-    2.0,
-    "W"
-   ],
-   [
-    100.542,
-    -19.36,
-    -60.19,
-    2.0,
-    "S"
-   ],
-   [
-    100.94,
-    -19.36,
-    -64.57,
-    2.0,
-    "W"
-   ],
-   [
-    101.547,
-    -26.04,
-    -64.57,
-    2.0,
-    "N"
-   ],
-   [
-    101.841,
-    -26.04,
-    -61.34,
-    2.0,
-    "W"
-   ],
-   [
-    102.141,
-    -29.34,
-    -61.34,
-    2.0,
-    "S"
-   ],
-   [
-    102.356,
-    -29.34,
-    -63.7,
-    2.0,
-    "W"
-   ],
-   [
-    102.556,
-    -31.54,
-    -63.7,
-    2.0,
-    "N"
-   ],
-   [
-    102.966,
-    -31.54,
-    -59.19,
-    2.0,
-    "W"
-   ],
-   [
-    103.96,
-    -42.47,
-    -59.19,
-    2.0,
-    "N"
-   ],
-   [
-    104.597,
-    -42.47,
-    -52.18,
-    2.0,
-    "W"
-   ],
-   [
-    105.256,
-    -49.72,
-    -52.18,
-    2.0,
-    "N"
-   ],
-   [
-    105.941,
-    -49.72,
-    -44.65,
-    2.0,
-    "W"
-   ],
-   [
-    106.339,
-    -54.1,
-    -44.65,
-    1.93,
-    "N"
-   ],
-   [
-    106.643,
-    -54.1,
-    -41.3,
-    1.86,
-    "W"
-   ],
-   [
-    106.942,
-    -57.39,
-    -41.3,
-    1.8,
-    "N"
-   ],
-   [
-    107.339,
-    -57.39,
-    -36.94,
-    1.72,
-    "W"
-   ],
-   [
-    107.941,
-    -64.01,
-    -36.94,
-    1.59,
-    "N"
-   ],
-   [
-    108.541,
-    -64.01,
-    -30.34,
-    1.46,
-    "W"
-   ],
-   [
-    109.54,
-    -75.0,
-    -30.34,
-    1.25,
-    "N"
-   ],
-   [
-    109.841,
-    -75.0,
-    -27.03,
-    1.18,
-    "W"
-   ],
-   [
-    110.142,
-    -78.31,
-    -27.03,
-    1.12,
-    "N"
-   ],
-   [
-    110.541,
-    -78.31,
-    -22.64,
-    1.03,
+    38.17,
+    -13.53,
+    124.06,
+    3.0,
     "W"
-   ],
-   [
-    110.78,
-    -80.94,
-    -22.64,
-    0.98,
-    "N"
-   ],
-   [
-    111.146,
-    -80.94,
-    -18.61,
-    0.91,
-    "W"
-   ],
-   [
-    111.438,
-    -84.15,
-    -18.61,
-    0.84,
-    "N"
    ],
    [
-    111.741,
-    -84.15,
+    38.329,
     -15.28,
-    0.78,
-    "W"
-   ],
-   [
-    112.129,
-    -88.42,
-    -15.28,
-    0.7,
-    "N"
-   ],
-   [
-    112.746,
-    -88.42,
-    -8.49,
-    0.56,
-    "W"
-   ],
-   [
-    113.341,
-    -94.96,
-    -8.49,
-    0.44,
-    "N"
-   ],
-   [
-    114.341,
-    -94.96,
-    2.51,
-    0.23,
-    "W"
-   ],
-   [
-    114.645,
-    -98.31,
-    2.51,
-    0.16,
-    "N"
-   ],
-   [
-    114.941,
-    -98.31,
-    5.76,
-    0.1,
-    "W"
-   ],
-   [
-    115.347,
-    -102.77,
-    5.76,
-    0.01,
-    "N"
-   ],
-   [
-    115.542,
-    -102.77,
-    7.91,
-    0.0,
-    "E"
-   ],
-   [
-    115.939,
-    -98.41,
-    7.91,
+    124.06,
     3.0,
     "N"
    ],
    [
+    38.488,
+    -15.28,
+    125.81,
+    3.0,
+    "E"
+   ],
+   [
+    38.648,
+    -13.52,
+    125.81,
+    3.0,
+    "S"
+   ],
+   [
+    39.145,
+    -13.52,
+    120.34,
+    3.0,
+    "W"
+   ],
+   [
+    39.542,
+    -17.89,
+    120.34,
+    3.0,
+    "S"
+   ],
+   [
+    39.845,
+    -17.89,
+    117.01,
+    3.0,
+    "W"
+   ],
+   [
+    40.142,
+    -21.15,
+    117.01,
+    3.0,
+    "S"
+   ],
+   [
+    40.35,
+    -21.15,
+    114.72,
+    3.0,
+    "W"
+   ],
+   [
+    40.742,
+    -25.46,
+    114.72,
+    3.0,
+    "S"
+   ],
+   [
+    41.142,
+    -25.46,
+    110.32,
+    3.0,
+    "W"
+   ],
+   [
+    41.75,
+    -32.15,
+    110.32,
+    3.0,
+    "S"
+   ],
+   [
+    41.944,
+    -32.15,
+    108.19,
+    3.0,
+    "W"
+   ],
+   [
+    42.347,
+    -36.59,
+    108.19,
+    3.0,
+    "S"
+   ],
+   [
+    42.742,
+    -36.59,
+    103.84,
+    3.0,
+    "W"
+   ],
+   [
+    43.044,
+    -39.91,
+    103.84,
+    3.0,
+    "S"
+   ],
+   [
+    43.342,
+    -39.91,
+    100.56,
+    3.0,
+    "W"
+   ],
+   [
+    43.572,
+    -42.44,
+    100.56,
+    3.0,
+    "S"
+   ],
+   [
+    43.942,
+    -42.44,
+    96.49,
+    3.0,
+    "W"
+   ],
+   [
+    44.342,
+    -46.84,
+    96.49,
+    3.0,
+    "S"
+   ],
+   [
+    44.556,
+    -46.84,
+    94.14,
+    3.0,
+    "W"
+   ],
+   [
+    44.748,
+    -48.95,
+    94.14,
+    3.0,
+    "S"
+   ],
+   [
+    44.941,
+    -48.95,
+    92.02,
+    3.0,
+    "W"
+   ],
+   [
+    45.15,
+    -51.25,
+    92.02,
+    3.0,
+    "S"
+   ],
+   [
+    45.542,
+    -51.25,
+    87.7,
+    3.0,
+    "W"
+   ],
+   [
+    45.941,
+    -55.64,
+    87.7,
+    3.0,
+    "S"
+   ],
+   [
+    46.25,
+    -55.64,
+    84.3,
+    3.0,
+    "W"
+   ],
+   [
+    46.542,
+    -58.85,
+    84.3,
+    3.0,
+    "S"
+   ],
+   [
+    46.756,
+    -58.85,
+    81.95,
+    3.0,
+    "W"
+   ],
+   [
+    47.138,
+    -63.05,
+    81.95,
+    3.0,
+    "S"
+   ],
+   [
+    47.542,
+    -63.05,
+    77.51,
+    3.0,
+    "W"
+   ],
+   [
+    48.153,
+    -69.77,
+    77.51,
+    3.0,
+    "S"
+   ],
+   [
+    48.35,
+    -69.77,
+    75.34,
+    3.0,
+    "W"
+   ],
+   [
+    48.742,
+    -74.08,
+    75.34,
+    3.0,
+    "S"
+   ],
+   [
+    49.142,
+    -74.08,
+    70.94,
+    3.0,
+    "W"
+   ],
+   [
+    49.442,
+    -77.38,
+    70.94,
+    3.0,
+    "S"
+   ],
+   [
+    49.75,
+    -77.38,
+    67.55,
+    3.0,
+    "W"
+   ],
+   [
+    49.95,
+    -79.58,
+    67.55,
+    3.0,
+    "S"
+   ],
+   [
+    50.338,
+    -79.58,
+    63.28,
+    3.0,
+    "W"
+   ],
+   [
+    50.742,
+    -84.03,
+    63.28,
+    3.0,
+    "S"
+   ],
+   [
+    50.956,
+    -84.03,
+    60.93,
+    3.0,
+    "W"
+   ],
+   [
+    51.161,
+    -86.28,
+    60.93,
+    3.0,
+    "S"
+   ],
+   [
+    51.356,
+    -86.28,
+    58.78,
+    3.0,
+    "W"
+   ],
+   [
+    51.556,
+    -88.48,
+    58.78,
+    3.0,
+    "S"
+   ],
+   [
+    51.939,
+    -88.48,
+    54.57,
+    3.0,
+    "E"
+   ],
+   [
+    52.341,
+    -84.06,
+    54.57,
+    3.0,
+    "S"
+   ],
+   [
+    52.641,
+    -84.06,
+    51.27,
+    3.0,
+    "E"
+   ],
+   [
+    52.941,
+    -80.76,
+    51.27,
+    3.0,
+    "S"
+   ],
+   [
+    53.198,
+    -80.76,
+    48.44,
+    3.0,
+    "E"
+   ],
+   [
+    53.539,
+    -77.01,
+    48.44,
+    3.0,
+    "S"
+   ],
+   [
+    53.941,
+    -77.01,
+    44.02,
+    3.0,
+    "E"
+   ],
+   [
+    54.541,
+    -70.41,
+    44.02,
+    3.0,
+    "S"
+   ],
+   [
+    54.766,
+    -70.41,
+    41.55,
+    3.0,
+    "E"
+   ],
+   [
+    55.139,
+    -66.31,
+    41.55,
+    3.0,
+    "S"
+   ],
+   [
+    55.541,
+    -66.31,
+    37.12,
+    3.0,
+    "E"
+   ],
+   [
+    55.856,
+    -62.84,
+    37.12,
+    3.0,
+    "S"
+   ],
+   [
+    56.141,
+    -62.84,
+    33.99,
+    3.0,
+    "E"
+   ],
+   [
+    56.366,
+    -60.37,
+    33.99,
+    3.0,
+    "S"
+   ],
+   [
+    56.739,
+    -60.37,
+    29.89,
+    3.0,
+    "E"
+   ],
+   [
+    57.141,
+    -55.95,
+    29.89,
+    3.0,
+    "N"
+   ],
+   [
+    57.348,
+    -55.95,
+    32.16,
+    3.0,
+    "E"
+   ],
+   [
+    57.556,
+    -53.66,
+    32.16,
+    3.0,
+    "N"
+   ],
+   [
+    57.756,
+    -53.66,
+    34.36,
+    3.0,
+    "E"
+   ],
+   [
+    57.956,
+    -51.46,
+    34.36,
+    3.0,
+    "N"
+   ],
+   [
+    58.339,
+    -51.46,
+    38.58,
+    3.0,
+    "W"
+   ],
+   [
+    58.741,
+    -55.88,
+    38.58,
+    3.0,
+    "N"
+   ],
+   [
+    59.041,
+    -55.88,
+    41.88,
+    3.0,
+    "E"
+   ],
+   [
+    59.341,
+    -52.58,
+    41.88,
+    3.0,
+    "N"
+   ],
+   [
+    59.542,
+    -52.58,
+    44.09,
+    3.0,
+    "W"
+   ],
+   [
+    59.939,
+    -56.95,
+    44.09,
+    3.0,
+    "N"
+   ],
+   [
+    60.341,
+    -56.95,
+    48.51,
+    3.0,
+    "E"
+   ],
+   [
+    60.941,
+    -50.35,
+    48.51,
+    3.0,
+    "N"
+   ],
+   [
+    61.152,
+    -50.35,
+    50.83,
+    3.0,
+    "W"
+   ],
+   [
+    61.539,
+    -54.6,
+    50.83,
+    3.0,
+    "N"
+   ],
+   [
+    61.941,
+    -54.6,
+    55.25,
+    3.0,
+    "E"
+   ],
+   [
+    62.243,
+    -51.28,
+    55.25,
+    3.0,
+    "N"
+   ],
+   [
+    62.556,
+    -51.28,
+    58.7,
+    3.0,
+    "W"
+   ],
+   [
+    62.766,
+    -53.59,
+    58.7,
+    3.0,
+    "N"
+   ],
+   [
+    63.139,
+    -53.59,
+    62.8,
+    3.0,
+    "E"
+   ],
+   [
+    63.541,
+    -49.17,
+    62.8,
+    3.0,
+    "N"
+   ],
+   [
+    63.841,
+    -49.17,
+    66.1,
+    3.0,
+    "W"
+   ],
+   [
+    64.056,
+    -51.53,
+    66.1,
+    3.0,
+    "N"
+   ],
+   [
+    64.269,
+    -51.53,
+    68.44,
+    3.0,
+    "E"
+   ],
+   [
+    65.544,
+    -37.51,
+    68.44,
+    0.0,
+    "S"
+   ],
+   [
+    66.392,
+    -37.51,
+    59.11,
+    0.0,
+    "W"
+   ],
+   [
+    66.787,
+    -41.85,
+    59.11,
+    0.0,
+    "S"
+   ],
+   [
+    67.719,
+    -41.85,
+    48.86,
+    0.0,
+    "E"
+   ],
+   [
+    68.366,
+    -34.74,
+    48.86,
+    0.0,
+    "N"
+   ],
+   [
+    68.731,
+    -34.74,
+    52.88,
+    0.0,
+    "E"
+   ],
+   [
+    69.786,
+    -23.13,
+    52.88,
+    0.0,
+    "N"
+   ],
+   [
+    70.387,
+    -23.13,
+    59.49,
+    0.0,
+    "E"
+   ],
+   [
+    71.146,
+    -14.78,
+    59.49,
+    0.08,
+    "N"
+   ],
+   [
+    71.943,
+    -14.78,
+    68.26,
+    0.96,
+    "W"
+   ],
+   [
+    72.343,
+    -19.18,
+    68.26,
+    1.4,
+    "N"
+   ],
+   [
+    72.743,
+    -19.18,
+    72.66,
+    1.84,
+    "W"
+   ],
+   [
+    73.338,
+    -25.73,
+    72.66,
+    2.49,
+    "S"
+   ],
+   [
+    73.543,
+    -25.73,
+    70.4,
+    2.72,
+    "W"
+   ],
+   [
+    73.943,
+    -30.13,
+    70.4,
+    3.16,
+    "S"
+   ],
+   [
+    74.343,
+    -30.13,
+    66.0,
+    3.6,
+    "W"
+   ],
+   [
+    74.938,
+    -36.67,
+    66.0,
+    4.26,
+    "S"
+   ],
+   [
+    75.142,
+    -36.67,
+    63.76,
+    4.48,
+    "E"
+   ],
+   [
+    75.543,
+    -32.26,
+    63.76,
+    4.93,
+    "S"
+   ],
+   [
+    75.943,
+    -32.26,
+    59.36,
+    5.37,
+    "E"
+   ],
+   [
+    76.356,
+    -27.72,
+    59.36,
+    5.82,
+    "N"
+   ],
+   [
+    76.556,
+    -27.72,
+    61.56,
+    6.0,
+    "W"
+   ],
+   [
+    76.756,
+    -29.92,
+    61.56,
+    6.0,
+    "S"
+   ],
+   [
+    77.025,
+    -29.92,
+    58.6,
+    6.0,
+    "E"
+   ],
+   [
+    77.186,
+    -28.15,
+    58.6,
+    6.0,
+    "N"
+   ],
+   [
+    77.346,
+    -28.15,
+    60.36,
+    6.0,
+    "E"
+   ],
+   [
+    77.838,
+    -22.74,
+    60.36,
+    6.0,
+    "S"
+   ],
+   [
+    78.142,
+    -22.74,
+    57.01,
+    6.0,
+    "E"
+   ],
+   [
+    78.541,
+    -18.35,
+    57.01,
+    6.0,
+    "N"
+   ],
+   [
+    79.139,
+    -18.35,
+    63.59,
+    6.0,
+    "E"
+   ],
+   [
+    79.738,
+    -11.76,
+    63.59,
+    6.0,
+    "N"
+   ],
+   [
+    80.34,
+    -11.76,
+    70.21,
+    6.0,
+    "E"
+   ],
+   [
+    80.739,
+    -7.37,
+    70.21,
+    6.0,
+    "S"
+   ],
+   [
+    81.052,
+    -7.37,
+    66.77,
+    6.0,
+    "E"
+   ],
+   [
+    81.347,
+    -4.12,
+    66.77,
+    6.0,
+    "N"
+   ],
+   [
+    81.739,
+    -4.12,
+    71.08,
+    6.0,
+    "E"
+   ],
+   [
+    82.346,
+    2.55,
+    71.08,
+    6.0,
+    "N"
+   ],
+   [
+    82.644,
+    2.55,
+    74.36,
+    6.0,
+    "W"
+   ],
+   [
+    82.941,
+    -0.71,
+    74.36,
+    6.0,
+    "S"
+   ],
+   [
+    83.342,
+    -0.71,
+    69.95,
+    6.0,
+    "E"
+   ],
+   [
+    83.94,
+    5.86,
+    69.95,
+    6.0,
+    "S"
+   ],
+   [
+    84.246,
+    5.86,
+    66.58,
+    6.0,
+    "W"
+   ],
+   [
+    84.534,
+    2.7,
+    66.58,
+    6.0,
+    "S"
+   ],
+   [
+    84.941,
+    2.7,
+    62.11,
+    6.0,
+    "E"
+   ],
+   [
+    85.546,
+    9.35,
+    62.11,
+    6.0,
+    "S"
+   ],
+   [
+    86.141,
+    9.35,
+    55.56,
+    6.0,
+    "W"
+   ],
+   [
+    86.741,
+    2.75,
+    55.56,
+    6.0,
+    "S"
+   ],
+   [
+    87.152,
+    2.75,
+    51.04,
+    6.0,
+    "E"
+   ],
+   [
+    87.438,
+    5.9,
+    51.04,
+    6.0,
+    "S"
+   ],
+   [
+    87.742,
+    5.9,
+    47.7,
+    6.0,
+    "W"
+   ],
+   [
+    88.14,
+    1.52,
+    47.7,
+    6.0,
+    "S"
+   ],
+   [
+    88.747,
+    1.52,
+    41.02,
+    6.0,
+    "E"
+   ],
+   [
+    89.041,
+    4.75,
+    41.02,
+    6.0,
+    "S"
+   ],
+   [
+    89.342,
+    4.75,
+    37.71,
+    6.0,
+    "W"
+   ],
+   [
+    89.747,
+    0.3,
+    37.71,
+    6.0,
+    "S"
+   ],
+   [
+    90.34,
+    0.3,
+    31.19,
+    6.0,
+    "W"
+   ],
+   [
+    90.638,
+    -2.98,
+    31.19,
+    6.0,
+    "S"
+   ],
+   [
+    90.934,
+    -2.98,
+    27.93,
+    6.0,
+    "W"
+   ],
+   [
+    91.34,
+    -7.45,
+    27.93,
+    6.0,
+    "S"
+   ],
+   [
+    91.94,
+    -7.45,
+    21.33,
+    6.0,
+    "W"
+   ],
+   [
+    92.538,
+    -14.02,
+    21.33,
+    6.0,
+    "S"
+   ],
+   [
+    93.141,
+    -14.02,
+    14.7,
+    6.0,
+    "W"
+   ],
+   [
+    93.539,
+    -18.4,
+    14.7,
+    6.0,
+    "S"
+   ],
+   [
+    93.838,
+    -18.4,
+    11.41,
+    6.0,
+    "W"
+   ],
+   [
+    94.142,
+    -21.75,
+    11.41,
+    6.0,
+    "S"
+   ],
+   [
+    94.539,
+    -21.75,
+    7.04,
+    6.0,
+    "W"
+   ],
+   [
+    95.141,
+    -28.37,
+    7.04,
+    6.0,
+    "S"
+   ],
+   [
+    95.441,
+    -28.37,
+    3.74,
+    6.0,
+    "W"
+   ],
+   [
+    95.741,
+    -31.67,
+    3.74,
+    6.0,
+    "S"
+   ],
+   [
+    96.142,
+    -31.67,
+    -0.67,
+    6.0,
+    "W"
+   ],
+   [
+    96.74,
+    -38.25,
+    -0.67,
+    6.0,
+    "S"
+   ],
+   [
+    97.041,
+    -38.25,
+    -3.98,
+    6.0,
+    "E"
+   ],
+   [
+    97.342,
+    -34.94,
+    -3.98,
+    6.0,
+    "S"
+   ],
+   [
+    97.742,
+    -34.94,
+    -8.38,
+    6.0,
+    "W"
+   ],
+   [
+    98.346,
+    -41.58,
+    -8.38,
+    6.0,
+    "S"
+   ],
+   [
+    98.942,
+    -41.58,
+    -14.94,
+    6.0,
+    "W"
+   ],
+   [
+    99.541,
+    -48.17,
+    -14.94,
+    6.0,
+    "S"
+   ],
+   [
+    99.939,
+    -48.17,
+    -19.32,
+    6.0,
+    "W"
+   ],
+   [
+    100.241,
+    -51.49,
+    -19.32,
+    6.0,
+    "N"
+   ],
+   [
+    100.542,
+    -51.49,
+    -16.0,
+    6.0,
+    "W"
+   ],
+   [
+    100.94,
+    -55.87,
+    -16.0,
+    6.0,
+    "S"
+   ],
+   [
+    101.147,
+    -55.87,
+    -18.28,
+    6.0,
+    "E"
+   ],
+   [
+    101.336,
+    -53.79,
+    -18.28,
+    6.0,
+    "N"
+   ],
+   [
+    101.522,
+    -53.79,
+    -16.24,
+    6.0,
+    "W"
+   ],
+   [
+    101.841,
+    -57.3,
+    -16.24,
+    6.0,
+    "S"
+   ],
+   [
+    102.141,
+    -57.3,
+    -19.54,
+    6.0,
+    "W"
+   ],
+   [
+    102.356,
+    -59.66,
+    -19.54,
+    6.0,
+    "N"
+   ],
+   [
+    102.556,
+    -59.66,
+    -17.34,
+    6.0,
+    "W"
+   ],
+   [
+    102.966,
+    -64.17,
+    -17.34,
+    6.0,
+    "N"
+   ],
+   [
+    103.96,
+    -64.17,
+    -6.4,
+    3.0,
+    "E"
+   ],
+   [
+    104.597,
+    -57.17,
+    -6.4,
+    3.0,
+    "N"
+   ],
+   [
+    105.256,
+    -57.17,
+    0.85,
+    3.0,
+    "E"
+   ],
+   [
+    105.941,
+    -49.63,
+    0.85,
+    3.0,
+    "S"
+   ],
+   [
+    106.339,
+    -49.63,
+    -3.53,
+    2.98,
+    "E"
+   ],
+   [
+    106.643,
+    -46.29,
+    -3.53,
+    2.87,
+    "S"
+   ],
+   [
+    106.942,
+    -46.29,
+    -6.82,
+    2.76,
+    "E"
+   ],
+   [
+    107.339,
+    -41.92,
+    -6.82,
+    2.62,
+    "S"
+   ],
+   [
+    107.941,
+    -41.92,
+    -13.44,
+    2.4,
+    "W"
+   ],
+   [
+    108.541,
+    -48.52,
+    -13.44,
+    2.18,
+    "S"
+   ],
+   [
+    109.54,
+    -48.52,
+    -24.43,
+    1.82,
+    "W"
+   ],
+   [
+    109.841,
+    -51.83,
+    -24.43,
+    1.71,
+    "N"
+   ],
+   [
+    110.142,
+    -51.83,
+    -21.12,
+    1.61,
+    "E"
+   ],
+   [
+    110.541,
+    -47.44,
+    -21.12,
+    1.46,
+    "N"
+   ],
+   [
+    110.78,
+    -47.44,
+    -18.49,
+    1.38,
+    "W"
+   ],
+   [
+    111.146,
+    -51.47,
+    -18.49,
+    1.24,
+    "N"
+   ],
+   [
+    111.438,
+    -51.47,
+    -15.28,
+    1.14,
+    "W"
+   ],
+   [
+    111.741,
+    -54.8,
+    -15.28,
+    1.03,
+    "S"
+   ],
+   [
+    112.129,
+    -54.8,
+    -19.55,
+    0.89,
+    "W"
+   ],
+   [
+    112.746,
+    -61.59,
+    -19.55,
+    0.67,
+    "S"
+   ],
+   [
+    113.341,
+    -61.59,
+    -26.09,
+    0.45,
+    "W"
+   ],
+   [
+    114.341,
+    -72.59,
+    -26.09,
+    0.09,
+    "S"
+   ],
+   [
+    114.645,
+    -72.59,
+    -29.44,
+    0.0,
+    "W"
+   ],
+   [
+    114.941,
+    -75.84,
+    -29.44,
+    0.0,
+    "S"
+   ],
+   [
+    115.368,
+    -75.84,
+    -34.13,
+    3.0,
+    "W"
+   ],
+   [
+    115.542,
+    -77.76,
+    -34.13,
+    3.0,
+    "S"
+   ],
+   [
+    115.727,
+    -77.76,
+    -36.17,
+    3.0,
+    "E"
+   ],
+   [
+    115.939,
+    -75.43,
+    -36.17,
+    3.0,
+    "S"
+   ],
+   [
     116.341,
-    -98.41,
-    12.33,
+    -75.43,
+    -40.59,
     3.0,
     "E"
    ],
    [
     116.641,
-    -95.11,
-    12.33,
+    -72.13,
+    -40.59,
     3.0,
-    "N"
+    "S"
    ],
    [
     116.941,
-    -95.11,
-    15.63,
+    -72.13,
+    -43.89,
     3.0,
     "E"
    ],
    [
     117.156,
-    -92.74,
-    15.63,
+    -69.76,
+    -43.89,
     3.0,
-    "N"
+    "S"
    ],
    [
     117.539,
-    -92.74,
-    19.84,
+    -69.76,
+    -48.1,
     3.0,
     "E"
    ],
    [
     117.941,
-    -88.32,
-    19.84,
+    -65.34,
+    -48.1,
     3.0,
-    "N"
+    "S"
    ],
    [
     118.54,
-    -88.32,
-    26.43,
+    -65.34,
+    -54.69,
     3.0,
     "E"
    ],
    [
     118.745,
-    -86.06,
-    26.43,
+    -63.08,
+    -54.69,
     3.0,
-    "N"
+    "S"
    ],
    [
     119.139,
-    -86.06,
-    30.77,
+    -63.08,
+    -59.03,
     3.0,
     "E"
    ],
    [
     119.541,
-    -81.64,
-    30.77,
+    -58.66,
+    -59.03,
     3.0,
-    "N"
+    "S"
    ],
    [
     119.841,
-    -81.64,
-    34.07,
+    -58.66,
+    -62.33,
     3.0,
     "E"
    ],
    [
     120.141,
-    -78.34,
-    34.07,
+    -55.36,
+    -62.33,
     3.0,
     "N"
    ],
    [
     120.356,
-    -78.34,
-    36.43,
+    -55.36,
+    -59.96,
     3.0,
     "E"
    ],
    [
     120.739,
-    -74.13,
-    36.43,
+    -51.15,
+    -59.96,
     3.0,
     "N"
    ],
    [
     121.141,
-    -74.13,
-    40.85,
+    -51.15,
+    -55.54,
     3.0,
     "E"
    ],
    [
     121.741,
-    -67.53,
-    40.85,
+    -44.55,
+    -55.54,
     3.0,
     "N"
    ],
    [
     121.942,
-    -67.53,
-    43.06,
+    -44.55,
+    -53.33,
     3.0,
     "E"
    ],
    [
     122.339,
-    -63.16,
-    43.06,
+    -40.18,
+    -53.33,
     3.0,
     "N"
    ],
    [
     122.741,
-    -63.16,
-    47.49,
+    -40.18,
+    -48.91,
     3.0,
     "E"
    ],
    [
     123.041,
-    -59.86,
-    47.49,
+    -36.88,
+    -48.91,
     3.0,
     "N"
    ],
    [
     123.341,
-    -59.86,
-    50.79,
+    -36.88,
+    -45.61,
     3.0,
     "E"
    ],
    [
     123.556,
-    -57.5,
-    50.79,
+    -34.52,
+    -45.61,
     3.0,
     "N"
    ],
    [
     123.939,
-    -57.5,
-    55.0,
+    -34.52,
+    -41.39,
     3.0,
     "E"
    ],
    [
     124.341,
-    -53.07,
-    55.0,
+    -30.1,
+    -41.39,
     3.0,
     "N"
    ],
    [
     124.945,
-    -53.07,
-    61.64,
+    -30.1,
+    -34.75,
     3.0,
     "E"
    ],
    [
     125.156,
-    -50.75,
-    61.64,
+    -27.77,
+    -34.75,
     3.0,
     "N"
    ],
    [
     125.539,
-    -50.75,
-    65.86,
+    -27.77,
+    -30.54,
     3.0,
     "E"
    ],
    [
     125.941,
-    -46.33,
-    65.86,
+    -23.35,
+    -30.54,
     3.0,
     "N"
    ],
    [
-    126.241,
-    -46.33,
-    69.16,
+    126.374,
+    -23.35,
+    -25.77,
     3.0,
     "E"
    ],
    [
     126.541,
-    -43.03,
-    69.16,
+    -21.52,
+    -25.77,
     3.0,
     "N"
    ],
    [
-    126.745,
-    -43.03,
-    71.4,
+    126.721,
+    -21.52,
+    -23.79,
     3.0,
     "E"
+   ],
+   [
+    126.899,
+    -19.56,
+    -23.79,
+    3.0,
+    "N"
    ],
    [
     127.139,
-    -38.7,
-    71.4,
+    -19.56,
+    -21.15,
     3.0,
-    "N"
+    "E"
    ],
    [
     127.541,
-    -38.7,
-    75.82,
+    -15.14,
+    -21.15,
     3.0,
-    "E"
+    "N"
    ],
    [
     128.156,
-    -31.93,
-    75.82,
+    -15.14,
+    -14.39,
     3.0,
-    "N"
+    "E"
    ],
    [
     128.362,
-    -31.93,
-    78.09,
+    -12.87,
+    -14.39,
     3.0,
-    "E"
+    "N"
    ],
    [
     128.739,
-    -27.79,
-    78.09,
-    3.0,
-    "N"
+    -12.87,
+    -10.24,
+    3.04,
+    "E"
    ],
    [
     129.141,
-    -27.79,
-    82.51,
-    3.0,
-    "E"
+    -8.45,
+    -10.24,
+    3.31,
+    "N"
    ],
    [
     129.441,
-    -24.49,
-    82.51,
-    3.0,
-    "N"
+    -8.45,
+    -6.94,
+    3.51,
+    "E"
    ],
    [
     129.741,
-    -24.49,
-    85.81,
-    3.0,
-    "E"
+    -5.15,
+    -6.94,
+    3.71,
+    "N"
    ],
    [
     129.942,
-    -22.27,
-    85.81,
-    3.0,
-    "N"
+    -5.15,
+    -4.73,
+    3.85,
+    "E"
    ],
    [
     130.339,
-    -22.27,
-    90.18,
-    3.0,
-    "E"
+    -0.78,
+    -4.73,
+    4.11,
+    "N"
    ],
    [
     130.741,
-    -17.85,
-    90.18,
-    3.0,
-    "N"
+    -0.78,
+    -0.31,
+    4.38,
+    "E"
    ],
    [
     130.956,
-    -17.85,
-    92.54,
-    3.0,
-    "E"
+    1.58,
+    -0.31,
+    4.53,
+    "N"
    ],
    [
     131.156,
-    -15.65,
-    92.54,
-    3.0,
-    "N"
+    1.58,
+    1.89,
+    4.66,
+    "W"
    ],
    [
     131.356,
-    -15.65,
-    94.74,
-    3.0,
-    "E"
+    -0.62,
+    1.89,
+    4.79,
+    "N"
    ],
    [
     131.552,
-    -13.5,
-    94.74,
-    3.0,
-    "N"
+    -0.62,
+    4.05,
+    4.93,
+    "W"
    ],
    [
     131.939,
-    -13.5,
-    99.0,
-    3.0,
-    "E"
+    -4.87,
+    4.05,
+    5.18,
+    "N"
    ],
    [
     132.341,
-    -9.07,
-    99.0,
-    3.0,
-    "N"
+    -4.87,
+    8.47,
+    5.45,
+    "E"
    ],
    [
     132.666,
-    -9.07,
-    102.57,
-    3.0,
-    "E"
+    -1.3,
+    8.47,
+    5.67,
+    "N"
    ],
    [
     132.941,
-    -6.05,
-    102.57,
-    3.0,
-    "N"
+    -1.3,
+    11.5,
+    5.86,
+    "E"
    ],
    [
     133.156,
-    -6.05,
-    104.94,
-    3.0,
-    "E"
+    1.07,
+    11.5,
+    6.0,
+    "N"
    ],
    [
     133.539,
-    -1.84,
-    104.94,
-    3.0,
-    "N"
+    1.07,
+    15.71,
+    6.0,
+    "W"
    ],
    [
     133.941,
-    -1.84,
-    109.36,
-    3.0,
-    "E"
+    -3.35,
+    15.71,
+    6.0,
+    "N"
    ],
    [
     134.156,
-    0.53,
-    109.36,
-    3.0,
-    "N"
+    -3.35,
+    18.07,
+    6.0,
+    "E"
    ],
    [
     134.356,
-    0.53,
-    111.56,
-    3.0,
-    "E"
+    -1.15,
+    18.07,
+    6.0,
+    "N"
    ],
    [
     134.556,
-    2.73,
-    111.56,
-    3.0,
-    "N"
+    -1.15,
+    20.27,
+    6.0,
+    "E"
    ],
    [
     134.756,
-    2.73,
-    113.76,
-    3.0,
-    "E"
+    1.05,
+    20.27,
+    6.0,
+    "N"
    ],
    [
     135.139,
-    6.94,
-    113.76,
-    3.0,
-    "N"
+    1.05,
+    24.49,
+    6.0,
+    "E"
    ],
    [
     135.541,
-    6.94,
-    118.18,
-    3.0,
-    "E"
+    5.47,
+    24.49,
+    6.0,
+    "S"
    ],
    [
     135.862,
-    10.47,
-    118.18,
-    3.0,
-    "N"
+    5.47,
+    20.96,
+    6.0,
+    "E"
    ],
    [
     136.141,
-    10.47,
-    121.25,
-    3.0,
-    "E"
+    8.54,
+    20.96,
+    6.0,
+    "N"
    ],
    [
     136.356,
-    12.84,
-    121.25,
-    3.0,
-    "N"
+    8.54,
+    23.32,
+    6.0,
+    "E"
    ],
    [
     136.739,
-    12.84,
-    125.47,
-    3.0,
-    "E"
+    12.75,
+    23.32,
+    6.0,
+    "N"
    ],
    [
     137.141,
-    17.26,
-    125.47,
-    3.0,
-    "N"
+    12.75,
+    27.74,
+    6.0,
+    "W"
    ],
    [
     137.358,
-    17.26,
-    127.85,
-    3.0,
-    "E"
-   ],
-   [
-    137.565,
-    19.54,
-    127.85,
-    3.0,
+    10.36,
+    27.74,
+    6.0,
     "N"
    ],
    [
-    137.756,
-    19.54,
-    129.95,
-    3.0,
+    137.565,
+    10.36,
+    30.02,
+    6.0,
     "E"
    ],
    [
-    137.956,
-    21.74,
-    129.95,
-    3.0,
+    137.741,
+    12.3,
+    30.02,
+    6.0,
+    "N"
+   ],
+   [
+    137.931,
+    12.3,
+    32.11,
+    6.0,
+    "W"
+   ],
+   [
+    138.083,
+    10.63,
+    32.11,
+    6.0,
     "N"
    ],
    [
     138.339,
-    21.74,
-    134.17,
-    3.0,
+    10.63,
+    34.93,
+    6.0,
     "E"
    ],
    [
     138.741,
-    26.16,
-    134.17,
-    3.0,
+    15.05,
+    34.93,
+    6.0,
     "N"
    ],
    [
     139.041,
-    26.16,
-    137.47,
-    3.0,
-    "E"
+    15.05,
+    38.23,
+    6.0,
+    "W"
    ],
    [
     139.341,
-    29.46,
-    137.47,
-    3.0,
+    11.75,
+    38.23,
+    6.0,
     "N"
    ],
    [
     139.556,
-    29.46,
-    139.83,
-    3.0,
+    11.75,
+    40.59,
+    6.0,
     "E"
    ],
    [
     139.939,
-    33.67,
-    139.83,
-    3.0,
+    15.96,
+    40.59,
+    6.0,
     "N"
    ],
    [
-    140.341,
-    33.67,
-    144.25,
-    3.0,
+    140.378,
+    15.96,
+    45.42,
+    0.0,
+    "W"
+   ],
+   [
+    140.531,
+    14.28,
+    45.42,
+    0.0,
+    "N"
+   ],
+   [
+    140.688,
+    14.28,
+    47.15,
+    0.0,
     "E"
    ],
    [
-    140.556,
-    36.04,
-    144.25,
-    3.0,
-    "N"
-   ],
-   [
-    140.765,
-    36.04,
-    146.55,
-    3.0,
-    "E"
-   ],
-   [
-    140.956,
-    38.14,
-    146.55,
-    3.0,
-    "N"
+    140.87,
+    16.28,
+    47.15,
+    0.0,
+    "S"
    ],
    [
     141.156,
-    38.14,
-    148.75,
-    3.0,
-    "E"
+    16.28,
+    44.0,
+    0.0,
+    "W"
    ],
    [
     141.539,
-    42.35,
-    148.75,
+    12.07,
+    44.0,
     0.0,
-    "N"
+    "S"
    ],
    [
     141.941,
-    42.35,
-    153.17,
+    12.07,
+    39.58,
     0.0,
-    "E"
+    "W"
    ],
    [
     142.241,
-    45.65,
-    153.17,
+    8.77,
+    39.58,
     0.0,
-    "N"
+    "S"
    ],
    [
     142.541,
-    45.65,
-    156.47,
+    8.77,
+    36.28,
     0.0,
-    "E"
+    "W"
    ],
    [
     142.742,
-    47.86,
-    156.47,
+    6.56,
+    36.28,
     0.0,
     "N"
    ],
    [
     142.956,
-    47.86,
-    158.83,
+    6.56,
+    38.63,
     0.0,
     "E"
    ],
    [
     143.156,
-    50.06,
-    158.83,
+    8.76,
+    38.63,
     0.0,
-    "N"
+    "S"
    ],
    [
     143.356,
-    50.06,
-    161.03,
+    8.76,
+    36.43,
     0.0,
     "E"
    ],
    [
     143.556,
-    52.26,
-    161.03,
+    10.96,
+    36.43,
     0.0,
-    "N"
+    "S"
    ],
    [
     143.841,
-    52.26,
-    164.16,
+    10.96,
+    33.3,
     0.0,
     "E"
    ],
    [
     144.141,
-    55.56,
-    164.16,
+    14.26,
+    33.3,
     0.0,
-    "N"
+    "S"
    ],
    [
     144.356,
-    55.56,
-    166.53,
+    14.26,
+    30.93,
     0.0,
-    "E"
+    "W"
    ],
    [
     144.739,
-    59.77,
-    166.53,
+    10.04,
+    30.93,
     0.0,
-    "N"
+    "S"
    ],
    [
     145.141,
-    59.77,
-    170.95,
+    10.04,
+    26.51,
     0.0,
-    "E"
+    "W"
    ],
    [
     145.466,
-    63.35,
-    170.95,
+    6.47,
+    26.51,
     0.0,
-    "N"
+    "S"
    ],
    [
     145.741,
-    63.35,
-    173.98,
+    6.47,
+    23.49,
     0.0,
-    "E"
+    "W"
    ],
    [
     145.952,
-    65.67,
-    173.98,
+    4.15,
+    23.49,
     0.0,
-    "N"
+    "S"
    ],
    [
     146.156,
-    65.67,
-    176.22,
+    4.15,
+    21.24,
     0.0,
     "E"
    ],
    [
     146.356,
-    67.87,
-    176.22,
+    6.35,
+    21.24,
     0.0,
     "N"
    ],
    [
     146.556,
-    67.87,
-    178.42,
+    6.35,
+    23.44,
     0.0,
     "E"
    ],
    [
     146.756,
-    70.07,
-    178.42,
+    8.55,
+    23.44,
     0.0,
-    "N"
+    "S"
    ],
    [
     147.063,
-    70.07,
-    181.8,
+    8.55,
+    20.06,
     0.0,
     "E"
    ],
    [
     147.341,
-    73.13,
-    181.8,
+    11.61,
+    20.06,
     0.0,
     "N"
    ],
    [
     147.545,
-    73.13,
-    184.04,
+    11.61,
+    22.31,
     0.0,
     "E"
    ],
    [
     147.939,
-    77.46,
-    184.04,
+    15.94,
+    22.31,
+    0.0,
+    "S"
+   ],
+   [
+    148.097,
+    15.94,
+    20.57,
+    0.0,
+    "W"
+   ],
+   [
+    148.25,
+    14.26,
+    20.57,
     0.0,
     "N"
    ],
    [
-    148.341,
-    77.46,
-    188.46,
+    148.426,
+    14.26,
+    22.51,
     0.0,
     "E"
    ],
    [
     148.641,
-    80.76,
-    188.46,
+    16.62,
+    22.51,
     0.0,
-    "N"
+    "S"
    ],
    [
     148.941,
-    80.76,
-    191.76,
+    16.62,
+    19.21,
     0.0,
     "E"
    ],
    [
     149.162,
-    83.19,
-    191.76,
+    19.05,
+    19.21,
     0.0,
     "N"
    ],
    [
     149.356,
-    83.19,
-    193.9,
+    19.05,
+    21.34,
     0.0,
     "E"
    ],
    [
     149.556,
-    85.39,
-    193.9,
+    21.25,
+    21.34,
     0.0,
-    "N"
+    "S"
    ],
    [
     149.756,
-    85.39,
-    196.1,
+    21.25,
+    19.14,
     0.0,
     "E"
    ],
    [
     149.956,
-    87.59,
-    196.1,
+    23.45,
+    19.14,
     0.0,
     "N"
    ],
    [
     150.241,
-    87.59,
-    199.23,
+    23.45,
+    22.28,
     0.0,
     "E"
    ],
    [
     150.541,
-    90.89,
-    199.23,
+    26.75,
+    22.28,
     0.0,
-    "N"
+    "S"
    ],
    [
     150.742,
-    90.89,
-    201.44,
+    26.75,
+    20.06,
     0.0,
     "E"
    ],
    [
     151.139,
-    95.26,
-    201.44,
+    31.12,
+    20.06,
     0.0,
     "N"
    ],
    [
     151.541,
-    95.26,
-    205.86,
+    31.12,
+    24.49,
     0.0,
     "E"
    ],
    [
     151.841,
-    98.56,
-    205.86,
+    34.42,
+    24.49,
     0.0,
-    "N"
+    "S"
    ],
    [
     152.141,
-    98.56,
-    209.16,
+    34.42,
+    21.19,
     0.0,
-    "E"
+    "W"
    ],
    [
     152.376,
-    101.15,
-    209.16,
+    31.83,
+    21.19,
     0.0,
     "N"
    ],
    [
     152.739,
-    101.15,
-    213.16,
+    31.83,
+    25.18,
     0.0,
     "E"
    ],
    [
     153.141,
-    105.57,
-    213.16,
+    36.26,
+    25.18,
     0.0,
-    "N"
+    "S"
    ],
    [
     154.667,
-    105.57,
-    229.94,
+    36.26,
+    8.4,
     0.0,
-    "N"
+    "S"
    ]
   ]
  },
  "elevation": [
   {
-   "t": 64.36,
-   "type": "fall",
-   "dy": -4
+   "t0": 32.676,
+   "t1": 38.116,
+   "type": "ramp",
+   "dy": 3
   },
   {
-   "t0": 70.9,
-   "t1": 77.0,
+   "t": 64.356,
+   "type": "fall",
+   "dy": -3
+  },
+  {
+   "t0": 71.076,
+   "t1": 76.516,
    "type": "ramp",
    "dy": 6
   },
   {
-   "t0": 106.0,
-   "t1": 115.4,
-   "type": "ramp",
-   "dy": -2
+   "t": 103.0,
+   "type": "fall",
+   "dy": -3
   },
   {
-   "t": 115.56,
+   "t0": 106.276,
+   "t1": 114.596,
+   "type": "ramp",
+   "dy": -3
+  },
+  {
+   "t": 114.96,
    "type": "jump",
    "dy": 3
   },
   {
-   "t": 141.16,
+   "t0": 128.676,
+   "t1": 133.156,
+   "type": "ramp",
+   "dy": 3
+  },
+  {
+   "t": 139.96,
    "type": "fall",
-   "dy": -3
+   "dy": -6
   }
  ]
 }

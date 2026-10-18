@@ -258,3 +258,7 @@ def more_objects(c):
                  name='E1 camcorder screen: the rooftop with a sixth chair',appear=dict(t=bar(74),mode='unfold',dur=0.6)),
             dict(id='deer_sticker',t=bar(33),side=9,y=0,kind='image',src='art/deer-decal.png',size=[5,0,5],mode='billboard',alpha=True,appear=dict(t=bar(31)+0.5,mode='fade',dur=1.0)),
             dict(id='bunny_relief',t=bar(82),side=-11,y=0,kind='image',src='art/halftone-bunny-relief.jpg',size=[7,0,7],mode='upright',appear=dict(t=bar(79),mode='rise',dur=1.0))]
+
+# ---- v4 difficulty calibration
+BURST_WINDOWS=[(21.5,24.0,1),(26.5,29.2,1),(33.5,35.2,1),(38.0,40.0,1),(73.5,75.2,1),(84.0,86.5,1),(104.5,106.5,1),
+               (113.0,115.5,1),(139.0,142.0,1),(141.8,172.0,3)]

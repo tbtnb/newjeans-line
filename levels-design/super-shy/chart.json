@@ -10,12 +10,12 @@
  "taps": [
   {
    "t": 2.343,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 3.947,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -60,12 +60,12 @@
   },
   {
    "t": 12.256,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 12.556,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -75,7 +75,7 @@
   },
   {
    "t": 13.545,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -85,7 +85,7 @@
   },
   {
    "t": 14.138,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -95,7 +95,7 @@
   },
   {
    "t": 15.152,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -105,7 +105,7 @@
   },
   {
    "t": 16.739,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -115,7 +115,7 @@
   },
   {
    "t": 17.342,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -125,7 +125,7 @@
   },
   {
    "t": 17.951,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -135,7 +135,7 @@
   },
   {
    "t": 18.642,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -150,12 +150,12 @@
   },
   {
    "t": 19.94,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 20.241,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -170,12 +170,12 @@
   },
   {
    "t": 21.546,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 22.141,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -190,12 +190,12 @@
   },
   {
    "t": 23.741,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 24.14,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -210,12 +210,12 @@
   },
   {
    "t": 25.041,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 25.341,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -250,17 +250,17 @@
   },
   {
    "t": 28.538,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 29.539,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 29.852,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -300,7 +300,7 @@
   },
   {
    "t": 32.739,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -315,7 +315,7 @@
   },
   {
    "t": 33.741,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -335,12 +335,12 @@
   },
   {
    "t": 36.241,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 36.542,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -350,33 +350,33 @@
   },
   {
    "t": 37.547,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 37.845,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 38.142,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 38.356,
    "dir": "R",
    "tag": "kick"
   },
   {
-   "t": 38.547,
+   "t": 38.17,
    "dir": "R",
-   "tag": "kick"
+   "tag": "hat"
   },
   {
-   "t": 38.775,
-   "dir": "L",
-   "tag": "kick"
+   "t": 38.329,
+   "dir": "R",
+   "tag": "hat"
+  },
+  {
+   "t": 38.488,
+   "dir": "R",
+   "tag": "hat"
+  },
+  {
+   "t": 38.648,
+   "dir": "R",
+   "tag": "hat"
   },
   {
    "t": 39.145,
@@ -475,107 +475,107 @@
   },
   {
    "t": 45.15,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 45.542,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 45.941,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 46.25,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 46.542,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 46.756,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 47.138,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 47.542,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 48.153,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 48.35,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 48.742,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 49.142,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 49.442,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 49.75,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 49.95,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 50.338,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 50.742,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 50.956,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 51.161,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 51.356,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 51.556,
+   "t": 51.356,
    "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 51.556,
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -655,22 +655,22 @@
   },
   {
    "t": 57.141,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 57.348,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 57.556,
    "dir": "R",
    "tag": "kick"
   },
   {
-   "t": 57.756,
+   "t": 57.556,
    "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 57.756,
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -680,12 +680,12 @@
   },
   {
    "t": 58.339,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 58.741,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -700,12 +700,12 @@
   },
   {
    "t": 59.542,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 59.939,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -720,12 +720,12 @@
   },
   {
    "t": 61.152,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 61.539,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -740,12 +740,12 @@
   },
   {
    "t": 62.556,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 62.766,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -760,17 +760,17 @@
   },
   {
    "t": 63.841,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 64.056,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 64.269,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -795,7 +795,7 @@
   },
   {
    "t": 68.366,
-   "dir": "R",
+   "dir": "L",
    "tag": "vocal"
   },
   {
@@ -810,12 +810,12 @@
   },
   {
    "t": 70.387,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
   },
   {
    "t": 71.146,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -835,27 +835,27 @@
   },
   {
    "t": 73.338,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 73.543,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 73.943,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 74.343,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 74.938,
+   "t": 74.343,
    "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 74.938,
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -875,7 +875,7 @@
   },
   {
    "t": 76.356,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -885,18 +885,23 @@
   },
   {
    "t": 76.756,
+   "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 77.025,
+   "dir": "L",
+   "tag": "hat"
+  },
+  {
+   "t": 77.186,
+   "dir": "L",
+   "tag": "hat"
+  },
+  {
+   "t": 77.346,
    "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 76.956,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 77.545,
-   "dir": "L",
-   "tag": "kick"
+   "tag": "hat"
   },
   {
    "t": 77.838,
@@ -905,7 +910,7 @@
   },
   {
    "t": 78.142,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -915,12 +920,12 @@
   },
   {
    "t": 79.139,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 79.738,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -930,7 +935,7 @@
   },
   {
    "t": 80.739,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -940,7 +945,7 @@
   },
   {
    "t": 81.347,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -960,7 +965,7 @@
   },
   {
    "t": 82.941,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -970,7 +975,7 @@
   },
   {
    "t": 83.94,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -980,7 +985,7 @@
   },
   {
    "t": 84.534,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -990,7 +995,7 @@
   },
   {
    "t": 85.546,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1000,7 +1005,7 @@
   },
   {
    "t": 86.741,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1010,7 +1015,7 @@
   },
   {
    "t": 87.438,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1020,7 +1025,7 @@
   },
   {
    "t": 88.14,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1030,7 +1035,7 @@
   },
   {
    "t": 89.041,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1045,12 +1050,12 @@
   },
   {
    "t": 90.34,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 90.638,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1065,12 +1070,12 @@
   },
   {
    "t": 91.94,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 92.538,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1085,12 +1090,12 @@
   },
   {
    "t": 93.838,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 94.142,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1105,12 +1110,12 @@
   },
   {
    "t": 95.441,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 95.741,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1145,12 +1150,12 @@
   },
   {
    "t": 98.942,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 99.541,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1160,7 +1165,7 @@
   },
   {
    "t": 100.241,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1170,13 +1175,23 @@
   },
   {
    "t": 100.94,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 101.547,
-   "dir": "R",
-   "tag": "kick"
+   "t": 101.147,
+   "dir": "L",
+   "tag": "hat"
+  },
+  {
+   "t": 101.336,
+   "dir": "L",
+   "tag": "hat"
+  },
+  {
+   "t": 101.522,
+   "dir": "L",
+   "tag": "hat"
   },
   {
    "t": 101.841,
@@ -1185,7 +1200,7 @@
   },
   {
    "t": 102.141,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1195,12 +1210,12 @@
   },
   {
    "t": 102.556,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 102.966,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
   },
   {
@@ -1220,27 +1235,27 @@
   },
   {
    "t": 105.941,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 106.339,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 106.643,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 106.942,
    "dir": "R",
    "tag": "kick"
   },
   {
-   "t": 107.339,
+   "t": 106.942,
    "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 107.339,
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1260,7 +1275,7 @@
   },
   {
    "t": 109.841,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1275,17 +1290,17 @@
   },
   {
    "t": 110.78,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 111.146,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 111.438,
+   "t": 111.146,
    "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 111.438,
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1324,73 +1339,78 @@
    "tag": "kick"
   },
   {
-   "t": 115.347,
+   "t": 115.368,
    "dir": "R",
-   "tag": "kick"
+   "tag": "hat"
   },
   {
    "t": 115.542,
-   "dir": "R",
-   "tag": "kick"
+   "dir": "L",
+   "tag": "hat"
+  },
+  {
+   "t": 115.727,
+   "dir": "L",
+   "tag": "hat"
   },
   {
    "t": 115.939,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 116.341,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 116.641,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 116.941,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 117.156,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 117.539,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 117.941,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 118.54,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 118.745,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 119.139,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 119.541,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 119.841,
+   "t": 119.541,
    "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 119.841,
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1479,78 +1499,83 @@
    "tag": "kick"
   },
   {
-   "t": 126.241,
+   "t": 126.374,
    "dir": "R",
-   "tag": "kick"
+   "tag": "snare"
   },
   {
    "t": 126.541,
    "dir": "L",
-   "tag": "kick"
+   "tag": "snare"
   },
   {
-   "t": 126.745,
+   "t": 126.721,
    "dir": "R",
-   "tag": "kick"
+   "tag": "snare"
+  },
+  {
+   "t": 126.899,
+   "dir": "L",
+   "tag": "snare"
   },
   {
    "t": 127.139,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 127.541,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 128.156,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 128.362,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 128.739,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 129.141,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 129.441,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 129.741,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 129.942,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 130.339,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 130.741,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 130.956,
+   "t": 130.741,
    "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 130.956,
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1575,22 +1600,22 @@
   },
   {
    "t": 132.341,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 132.666,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 132.941,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 133.156,
+   "t": 132.941,
    "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 133.156,
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1605,27 +1630,27 @@
   },
   {
    "t": 134.156,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 134.356,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 134.556,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 134.756,
    "dir": "R",
    "tag": "kick"
   },
   {
-   "t": 135.139,
+   "t": 134.756,
    "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 135.139,
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1640,17 +1665,17 @@
   },
   {
    "t": 136.141,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 136.356,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 136.739,
+   "t": 136.356,
    "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 136.739,
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1665,18 +1690,23 @@
   },
   {
    "t": 137.565,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 137.756,
    "dir": "R",
-   "tag": "kick"
+   "tag": "snare"
   },
   {
-   "t": 137.956,
+   "t": 137.741,
    "dir": "L",
-   "tag": "kick"
+   "tag": "snare"
+  },
+  {
+   "t": 137.931,
+   "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 138.083,
+   "dir": "R",
+   "tag": "snare"
   },
   {
    "t": 138.339,
@@ -1690,12 +1720,12 @@
   },
   {
    "t": 139.041,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 139.341,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1709,24 +1739,24 @@
    "tag": "kick"
   },
   {
-   "t": 140.341,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 140.556,
+   "t": 140.378,
    "dir": "L",
-   "tag": "kick"
+   "tag": "melody"
   },
   {
-   "t": 140.765,
+   "t": 140.531,
    "dir": "R",
-   "tag": "kick"
+   "tag": "melody"
   },
   {
-   "t": 140.956,
-   "dir": "L",
-   "tag": "kick"
+   "t": 140.688,
+   "dir": "R",
+   "tag": "melody"
+  },
+  {
+   "t": 140.87,
+   "dir": "R",
+   "tag": "melody"
   },
   {
    "t": 141.156,
@@ -1755,7 +1785,7 @@
   },
   {
    "t": 142.742,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1765,27 +1795,27 @@
   },
   {
    "t": 143.156,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 143.356,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 143.556,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
-   "t": 143.841,
    "dir": "R",
    "tag": "kick"
   },
   {
-   "t": 144.141,
+   "t": 143.841,
    "dir": "L",
+   "tag": "kick"
+  },
+  {
+   "t": 144.141,
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1820,7 +1850,7 @@
   },
   {
    "t": 146.156,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1835,12 +1865,12 @@
   },
   {
    "t": 146.756,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 147.063,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1855,22 +1885,32 @@
   },
   {
    "t": 147.939,
-   "dir": "L",
-   "tag": "kick"
+   "dir": "R",
+   "tag": "melody"
   },
   {
-   "t": 148.341,
+   "t": 148.097,
    "dir": "R",
-   "tag": "kick"
+   "tag": "melody"
+  },
+  {
+   "t": 148.25,
+   "dir": "R",
+   "tag": "melody"
+  },
+  {
+   "t": 148.426,
+   "dir": "R",
+   "tag": "melody"
   },
   {
    "t": 148.641,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 148.941,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1885,12 +1925,12 @@
   },
   {
    "t": 149.556,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 149.756,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1905,12 +1945,12 @@
   },
   {
    "t": 150.541,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 150.742,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1925,7 +1965,7 @@
   },
   {
    "t": 151.841,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1935,7 +1975,7 @@
   },
   {
    "t": 152.376,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -1945,7 +1985,7 @@
   },
   {
    "t": 153.141,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   }
  ],
@@ -1977,7 +2017,7 @@
   },
   {
    "t": 77.156,
-   "label": "Verse 2 · 山坡电车",
+   "label": "Verse 2 · 市场拱廊",
    "kind": "verse"
   },
   {
@@ -1992,17 +2032,17 @@
   },
   {
    "t": 115.556,
-   "label": "Final chorus · 广场集体舞",
+   "label": "Final chorus · 五人广场",
    "kind": "chorus"
   },
   {
    "t": 128.356,
-   "label": "Final chorus b · 喷泉",
+   "label": "Final chorus b · 像素浮雕墙",
    "kind": "chorus"
   },
   {
    "t": 141.156,
-   "label": "Final chorus c · 巴士",
+   "label": "Final chorus c · 巴士街",
    "kind": "chorus"
   }
  ],
@@ -2090,10 +2130,10 @@
    "kick",
    "kick",
    "kick",
-   "kick",
-   "grid",
-   "kick",
-   "kick",
+   "hat",
+   "hat",
+   "hat",
+   "hat",
    "kick",
    "kick",
    "kick",
@@ -2196,7 +2236,9 @@
    "grid",
    "grid",
    "grid",
-   "grid",
+   "hat",
+   "hat",
+   "hat",
    "kick",
    "kick",
    "kick",
@@ -2252,8 +2294,9 @@
    "kick",
    "kick",
    "kick",
-   "kick",
-   "kick",
+   "hat",
+   "hat",
+   "hat",
    "kick",
    "kick",
    "grid",
@@ -2283,17 +2326,9 @@
    "kick",
    "kick",
    "kick",
-   "kick",
-   "kick",
-   "kick",
-   "kick",
-   "kick",
-   "kick",
-   "grid",
-   "kick",
-   "kick",
-   "kick",
-   "kick",
+   "hat",
+   "hat",
+   "hat",
    "kick",
    "kick",
    "kick",
@@ -2311,26 +2346,6 @@
    "kick",
    "kick",
    "kick",
-   "grid",
-   "kick",
-   "kick",
-   "kick",
-   "kick",
-   "kick",
-   "kick",
-   "kick",
-   "grid",
-   "kick",
-   "kick",
-   "kick",
-   "kick",
-   "kick",
-   "kick",
-   "kick",
-   "kick",
-   "grid",
-   "grid",
-   "grid",
    "kick",
    "kick",
    "kick",
@@ -2339,32 +2354,20 @@
    "grid",
    "kick",
    "kick",
-   "grid",
-   "grid",
-   "grid",
-   "grid",
-   "kick",
-   "kick",
-   "kick",
    "kick",
    "grid",
    "kick",
    "kick",
-   "kick",
-   "kick",
-   "grid",
-   "grid",
-   "kick",
-   "kick",
+   "snare",
+   "snare",
+   "snare",
+   "snare",
    "kick",
    "kick",
    "grid",
    "kick",
    "kick",
-   "grid",
    "kick",
-   "grid",
-   "grid",
    "kick",
    "kick",
    "kick",
@@ -2373,13 +2376,12 @@
    "grid",
    "grid",
    "grid",
-   "grid",
+   "kick",
+   "kick",
+   "kick",
    "kick",
    "kick",
    "grid",
-   "kick",
-   "kick",
-   "kick",
    "kick",
    "kick",
    "grid",
@@ -2390,7 +2392,53 @@
    "kick",
    "kick",
    "kick",
+   "grid",
    "kick",
+   "kick",
+   "kick",
+   "snare",
+   "snare",
+   "snare",
+   "snare",
+   "kick",
+   "kick",
+   "kick",
+   "kick",
+   "grid",
+   "kick",
+   "other",
+   "other",
+   "other",
+   "other",
+   "grid",
+   "kick",
+   "kick",
+   "kick",
+   "kick",
+   "kick",
+   "grid",
+   "grid",
+   "grid",
+   "grid",
+   "kick",
+   "kick",
+   "grid",
+   "kick",
+   "kick",
+   "kick",
+   "kick",
+   "kick",
+   "grid",
+   "grid",
+   "grid",
+   "grid",
+   "kick",
+   "kick",
+   "kick",
+   "other",
+   "other",
+   "other",
+   "other",
    "kick",
    "kick",
    "kick",

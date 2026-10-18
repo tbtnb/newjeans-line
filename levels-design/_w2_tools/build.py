@@ -73,7 +73,64 @@ def make_chart(slug, spec, a):
             elif d['grid']-out[-1]['grid']>=mg and (len(out)<2 or out[-1]['grid']-out[-2]['t']>=mg): out[-1]['t']=out[-1]['grid']; out[-1]['src']='grid'; d['t']=d['grid']; d['src']='grid'
             else: print('  drop close tap',d['t'],'after',out[-1]['t']); continue
         out.append(d)
+    out=apply_bursts(spec,a,out)
     return out, b0, T
+
+BTAG={'snare':'snare','hat':'hat','vocals':'vocal','other':'melody','kick':'kick'}
+def burst_runs(a,t0,t1,lo,hi,stems):
+    runs=[]
+    for k in stems:
+        ev=sorted((t,s) for t,s in a.get(k,[]) if s>=0.2 and t0<=t<=t1)
+        cur=[]
+        for x in ev:
+            if cur and lo<=x[0]-cur[-1][0]<=hi: cur.append(x)
+            else:
+                if len(cur)>=3: runs.append((k,cur))
+                cur=[x]
+        if len(cur)>=3: runs.append((k,cur))
+    out=[]
+    for k,r in runs:
+        for i in range(0,len(r)-2):          # all sub-runs of 3..4
+            for n in (4,3):
+                if i+n<=len(r): out.append((n,sum(x[1] for x in r[i:i+n])/n,k,[x[0] for x in r[i:i+n]]))
+    # merged percussive+vocal stream (a fast roll often alternates snare/hat/vocal hits): greedy chains of real onsets
+    ev={}
+    for k in stems+['drums']:
+        for t,s in a.get(k,[]):
+            if s>=0.25 and t0<=t<=t1:
+                key=round(t/0.03)
+                if key not in ev or ev[key][1]<s: ev[key]=(t,s,k)
+    ev=sorted(ev.values())
+    dense=lambda x0:sum(1 for e in ev if x0-0.6<=e[0]<=x0+0.6)/1.2
+    for i,e in enumerate(ev):
+        if dense(e[0])<5.5: continue                 # only inside genuinely 16th-dense passages
+        ch=[e]
+        while len(ch)<4:
+            nx=[f for f in ev if lo<=f[0]-ch[-1][0]<=hi]
+            if not nx: break
+            ch.append(max(nx,key=lambda f:f[1]))
+        if len(ch)>=3:
+            k=max(set(c[2] for c in ch),key=lambda k:sum(c[2]==k for c in ch))
+            out.append((len(ch),sum(c[1] for c in ch)/len(ch)-0.15,k if k!='drums' else 'snare',[c[0] for c in ch]))
+    out.sort(key=lambda x:(-x[0],-x[1])); return out
+
+def apply_bursts(spec,a,taps):
+    """short fast bursts (3-4 taps) placed ONLY on real fast onset runs of one stem (snare/hat rolls, triplet fills,
+    rapid vocal syllables) inside designated fill / build-up / drop / final-chorus windows. Gap floor = schema 0.15 s
+    (true 16ths at 127-150 BPM are 0.10-0.118 s and would violate it), ceiling 0.19 s (faster than any 8th here)."""
+    lo=getattr(spec,'BURST_MIN',0.152); hi=getattr(spec,'BURST_MAX',0.19); stems=getattr(spec,'BURST_STEMS',['snare','hat','vocals','other','kick'])
+    taps=list(taps); spec._bursts=[]
+    for w in getattr(spec,'BURST_WINDOWS',[]):
+        t0,t1,mx=w if len(w)==3 else (w[0],w[1],1)
+        used=0
+        for n,st,k,r in burst_runs(a,t0,t1,lo,hi,stems):
+            if used>=mx: break
+            if any(not(r[-1]+0.19<=b0 or r[0]-0.19>=b1) for b0,b1 in spec._bursts): continue
+            keep=[d for d in taps if d['t']<=r[0]-0.20 or d['t']>=r[-1]+0.20]
+            keep+= [dict(t=round(x,3),tag=BTAG.get(k,k),src=k,grid=round(x,3)) for x in r]
+            taps=sorted(keep,key=lambda d:d['t']); spec._bursts.append((r[0],r[-1])); used+=1
+            print(f'  burst {len(r)} x {k} at {r[0]:.3f}-{r[-1]:.3f} gaps {[round(y-x,3) for x,y in zip(r,r[1:])]}')
+    return taps
 
 def speed_of(spec,t):
     v=spec.SPEED[0][1]

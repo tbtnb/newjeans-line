@@ -15,12 +15,12 @@
 | 38.756 | Chorus 1 · 公园遮阳伞 | chorus |
 | 64.356 | Break · 下沉喷泉广场 | break |
 | 70.756 | Build · 里斯本阶梯 | pre |
-| 77.156 | Verse 2 · 山坡电车 | verse |
+| 77.156 | Verse 2 · 市场拱廊 | verse |
 | 102.756 | Break 2 · 观景台 | break |
 | 105.956 | Verse 3 · 下坡 | verse |
-| 115.556 | Final chorus · 广场集体舞 | chorus |
-| 128.356 | Final chorus b · 喷泉 | chorus |
-| 141.156 | Final chorus c · 巴士 | chorus |
+| 115.556 | Final chorus · 五人广场 | chorus |
+| 128.356 | Final chorus b · 像素浮雕墙 | chorus |
+| 141.156 | Final chorus c · 巴士街 | chorus |
 
 ## Per-bar 16-step onset map (what the chart was hand-picked from)
 
