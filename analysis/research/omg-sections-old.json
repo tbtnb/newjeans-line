@@ -14,7 +14,7 @@
    "on_beat": 14,
    "off8": 15,
    "s16": 0,
-   "strong": 12,
+   "strong": 13,
    "strong_tapped": 5,
    "weak": 0
   },
@@ -23,7 +23,7 @@
    "on_beat": 13,
    "off8": 16,
    "s16": 1,
-   "strong": 27,
+   "strong": 26,
    "strong_tapped": 12,
    "weak": 0
   },
@@ -59,7 +59,7 @@
    "on_beat": 7,
    "off8": 20,
    "s16": 0,
-   "strong": 11,
+   "strong": 12,
    "strong_tapped": 3,
    "weak": 0
   },
@@ -122,7 +122,7 @@
    "on_beat": 21,
    "off8": 8,
    "s16": 0,
-   "strong": 21,
+   "strong": 22,
    "strong_tapped": 19,
    "weak": 0
   },
@@ -141,7 +141,7 @@
   "on_beat": 207,
   "off8": 164,
   "s16": 31,
-  "strong": 295,
+  "strong": 297,
   "strong_tapped": 181,
   "weak": 0
  }

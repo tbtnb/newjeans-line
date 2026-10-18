@@ -16,8 +16,17 @@ def norm(e):
 
 def peaks(e, lag=0.0, thr=0.12, wait_s=0.06):
     """local maxima above thr (normalised), at least wait_s apart. returns arrays (times, strengths); times corrected by lag"""
-    idx = librosa.util.peak_pick(e, pre_max=6, post_max=6, pre_avg=40, post_avg=10, delta=0.02, wait=int(wait_s * SR / HOP))
+    # local maxima (+-17 ms) above a running mean, then strongest-first non-maximum suppression within wait_s
+    # (librosa's `wait` keeps the EARLIEST peak and drops a stronger one right after it, which hides real hits)
+    idx = librosa.util.peak_pick(e, pre_max=6, post_max=6, pre_avg=40, post_avg=10, delta=0.02, wait=0)
     idx = idx[e[idx] >= thr]
+    order = idx[np.argsort(-e[idx])]; keep = []; W = wait_s * SR / HOP
+    taken = np.zeros(len(e), bool)
+    for i in order:
+        lo, hi = max(0, int(i - W)), int(i + W) + 1
+        if taken[lo:hi].any(): continue
+        taken[i] = True; keep.append(i)
+    idx = np.array(sorted(keep), dtype=int)
     return idx * HOP / SR - lag, e[idx]
 
 def calibrate():
