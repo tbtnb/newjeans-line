@@ -2,7 +2,7 @@ def windows(taps):
     w=[]
     for i,t in enumerate(taps):
         p=t-taps[i-1] if i>0 else 9; n=taps[i+1]-t if i+1<len(taps) else 9
-        w.append(max(0.065,min(0.11,0.45*min(p,n))))
+        g=min(p,n); w.append(min(0.5*g,max(0.045,min(0.11,0.45*g))))   # v2.5 per-tap rule
     return w
 def summary(taps):
     w=sorted(windows(taps)); n=len(w)

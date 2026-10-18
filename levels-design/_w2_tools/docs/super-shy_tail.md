@@ -2,15 +2,15 @@
 How each section reads (see `route-sections.png`):
 - **Intro (0–13.2 s):** a long straight past the red bike and bench (A, with a flat red-bike sticker), then short switchbacks on the synth stabs.
 - **Verse 1 (13.2–38.8 s):** a tight RRLL zigzag corridor through **cut-away courtyard walls** (`courtyard_walls_*`, openings wherever the road passes), a staircase, switchbacks along the wall, then a same-hand **square spiral up round the green courtyard (B)** to +3.
-- **Chorus 1 (38.8–64.4 s):** on +3, four staircases in different bearings (W, S, E, N) under ten parasols that open on the kick; a 4-tap hat burst lands on the fill into the break.
+- **Chorus 1 (38.8–64.4 s):** on +3, four staircases in different bearings (W, S, E, N) under ten parasols that open on the kick; a 3-tap kick burst (36.8 s) sits on the verse-end fill just before; the chorus itself is the kick groove only.
 - **Break (64.4–70.8 s):** drums out; **fall −3** into the sunken fountain plaza and one sweeping S on the vocal syllables. The first crown waits here.
-- **Build (70.8–77.2 s):** a left-hand **spiral up the Lisbon stairway** (+6 in 5.4 s, laps stacked ≥ 3 apart); a 3-tap hat burst on the build's last beat.
+- **Build (70.8–77.2 s):** a left-hand **spiral up the Lisbon stairway** (+6 in 5.4 s, laps stacked ≥ 3 apart).
 - **Verse 2 (77.2–102.8 s):** on the +6 market terrace: switchbacks under coral awnings, an RRLL corridor that **wraps through the market arcade** (`market_arcade_*`), a staircase, more switchbacks. Most over/under-passes of the song happen here, against the lower plaza and stairway. **E1** (white pixel bunny tile) lies under the market bench.
 - **Break 2 (102.8–106 s):** step down to the viewpoint, a straight with the whole town spread out below.
 - **Verse 3 (106–115.6 s):** a long downhill staircase back to L0, crossing under the earlier terrace.
 - **Final chorus (115.6–128.4 s):** **jump onto Bridge B** (+3) over the five-dancer plaza (C: five abstract sculptures, no faces); two crossing staircases. The E1 tile flips once here to show five colour squares.
-- **Final chorus b (128.4–141.2 s):** staircases and an RRLL corridor climbing +3 past the **teal stepped wall with the five-colour pixel relief (E)**; snare and hat bursts at 126.4 and 137.6 s.
-- **Final chorus c (141.2–end):** **big fall −6** to the bus street, staircase, switchbacks on the 8th-note kick rolls (four 6-tap runs plus two bursts), then a calm straight to the gate.
+- **Final chorus b (128.4–141.2 s):** staircases and an RRLL corridor climbing +3 past the **teal stepped wall with the five-colour pixel relief (E)**; melody-figure and kick bursts at 128.2 and 133.9 s where the 16th figure is audible in the full mix.
+- **Final chorus c (141.2–end):** **big fall −6** to the bus street, staircase, switchbacks on the 8th-note kick rolls (8th-note kick runs plus one burst at 142.4 s; faint kick-pattern steps were removed), then a calm straight to the gate.
 
 ## Map performance, camera, scenery
 - **Camera:** low at the start; iso through the alleys; high on the courtyard spiral; wide at Chorus 1 and the break; side on the stairway; iso on the terrace; wide (dist 34) at the viewpoint; high with a small shake at the final chorus; wide, then close, then a slow high pull-back at the end. The camera turns only on downbeats or long straights.

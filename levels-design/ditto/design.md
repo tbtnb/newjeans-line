@@ -1,6 +1,6 @@
 # Ditto — 冬日录像带（Winter Videotape）· level design (worker w2, v3)
 
-Files: `chart.json` (422 taps) · `layout.json` (v2.4 + `path.nodes`) · `route.png` · `route-sections.png` · `chart-report.md` · `analysis.json` / `analysis-notes.md` · `art/` (6 images).
+Files: `chart.json` (412 taps) · `layout.json` (v2.5 + `path.nodes`) · `route.png` · `route-sections.png` · `chart-report.md` · `analysis.json` / `analysis-notes.md` · `art/` (6 images).
 The codex-ref (`/workspace/nj-refs/ditto/`) is a mood reference only; the route choreography is ours (rev v3 after "routes too simple").
 Palette from codex-ref:
 
@@ -30,10 +30,10 @@ The cover (OMG single, black/white halftone bunny) appears only as an off-road r
 
 ## Core numbers
 - **Speed and width:** 10.2 u/s (an 8th = 224 ms = 2.28 u). Width 2.2 → 2.0 (Verse 2) → 2.2 (bridge) → 2.0 → **1.8 (final post)** → 2.2 (outro).
-- **Taps: old 181 → new 422 (×2.33)**, averaging 2.27/s. The final chorus is densest.
-- **Difficulty (hard tier, title track):** avg CPM 136 (taps ÷ length) / 184 wiki-style; **peak CPM 390** (min gap 154 ms). 11 fast bursts of 3–4 taps on the swung synth/vocal 16ths at phrase fills, the chorus entries, the Post-2 pickup and the final chorus; 86 dotted-8th gaps (the tresillo 3-3-2 feel). Comparison with the original levels is in `chart-report.md`.
-- **Fastest run:** 7 consecutive 8ths (224 ms) at 41.3–42.6 s, the Jersey kick roll. The validator counts 8 taps with gaps ≤ 0.30 s at 40.97–42.62 s. Minimum 8th gap 222 ms; bursts go down to 154 ms.
-- **Judgment:** the engine rule (v2.4) gives min ±69 ms (inside bursts) and median ±105 ms, i.e. ≤ half the local minimum gap. My target is perfect ±60 / accept ±110 ms.
+- **Taps: old 181 → new 412 (×2.28)**, averaging 2.22/s. The re-audit removed 6 faint taps; 2 taps were dropped inside jump flights (142.03, 158.24 s) so the jumps stay on the final-chorus downbeats.
+- **Difficulty (hard tier, title track):** avg CPM 133 (taps ÷ length) / 186 wiki-style. **Peak CPM 360** (validator style) and 545 instantaneous (min gap 110 ms). 7 bursts of 3–4 real 16ths (hat/snare/kick fills, all audible in the full mix and starting or ending on a beat) at 28.0, 74.4, 114.0, 140.9, 142.7, 152.6 and 167.8 s, i.e. Chorus 1 fill, Verse 2 fill, bridge entry, final-chorus entry and fills, Final post. Charting rules (user override): one audible layer per section, the same pattern on every repeat of a phrase, bursts only where the 16th figure is audible in the full mix and starts or ends on a beat, breaks stay sparse, no taps on faint or ghost onsets. CPM numbers are references, not quotas. See the per-section 'What the taps follow' table in `chart-report.md`.
+- **Fastest run:** 7 consecutive 8ths (224 ms) at 41.3–42.6 s, the Jersey kick roll. The validator counts 8 taps with gaps ≤ 0.30 s at 40.97–42.62 s. Minimum 8th gap 222 ms; bursts go down to 110 ms.
+- **Judgment:** the engine rule (v2.5, per tap) gives min ±49 ms (inside bursts) and median ±106 ms, always ≤ half the local gap.
 - **Levels:** 0 → ramp +3 (Post 1 roof) → **fall −7** (snow island, −4) → ramp +6 (Verse 2, +2) → ramp +4 (bridge B1, +6) → **fall −4** (+2) → **spiral ramp −8 round the deer** (−6) → ramp +4 (−2) → **jump +4** onto the memory courtyard (+2, on the pickup at 140.9 s) → **jump +3** onto the rim (+5, 159.8 s) → **fall −5** (fade, 0).
 - **Checks:** the validator reports 0 same-level overlaps. The longest same-direction run is 6 (the descending spiral).
 
@@ -41,21 +41,21 @@ The cover (OMG single, black/white halftone bunny) appears only as an off-road r
 The planner is the same as OMG's: a beam search over per-section motifs and drift bearings with the exact v2.4 overlap rule. The table is computed from the built path.
 | Section | Route texture (planner motifs) | taps | max same-dir run | U-turns | height | over/under-passes |
 |---|---|---|---|---|---|---|
-| Intro · 录像带入口 (0.0s) | long sweeping legs → 0°, long sweeping legs → 270° | 16 | 2 | 1 | +0..+0 | 0 |
-| Verse 1 · 教室走廊 (14.6s) | switchbacks → 90°, zigzag corridor (RRLL) → 180° | 39 | 4 | 17 | +0..+0 | 6 |
-| Chorus 1 · 摄像机取景框 (29.0s) | staircase → 45°, staircase → 315°, staircase → 45°, staircase → 315° | 43 | 2 | 3 | +0..+0 | 22 |
-| Post 1 · 屋顶坡道 (43.3s) | switchbacks → 270° | 32 | 3 | 8 | +0..+3 | 8 |
-| Break · 雪地鹿岛 (55.8s) | long sweeping legs → 180° | 8 | 2 | 1 | -4..+3 | 3 |
-| Verse 2a · 雾隙 (64.8s) | zigzag corridor (RRLL) → 90° | 13 | 2 | 5 | -4..-4 | 7 |
-| Verse 2 · 窗墙长 U (72.0s) | switchbacks → 0° | 36 | 6 | 15 | -4..+2 | 11 |
-| Chorus 2 · 屋顶空椅 (86.3s) | staircase → 90°, staircase → 180°, staircase → 270°, staircase → 0° | 44 | 2 | 2 | +2..+2 | 0 |
-| Post 2 · 跨空桥 (100.6s) | long sweeping legs → 225°, staircase → 225° | 33 | 3 | 8 | +2..+6 | 29 |
-| Bridge · 鹿回头 (114.9s) | switchbacks → 135°, spiral / wrap L, staircase → 90° | 25 | 6 | 7 | -6..+2 | 18 |
-| Pre · 取景屏 (129.3s) | long sweeping legs → 270° | 20 | 2 | 5 | -6..-2 | 14 |
-| Final chorus · 记忆庭院 (141.8s) | switchbacks → 0°, staircase → 300° | 56 | 3 | 15 | -2..+2 | 41 |
-| Final post · 网点兔 (157.9s) | zigzag corridor (RRLL) → 60°, staircase → 150° | 44 | 3 | 15 | +5..+5 | 43 |
-| Fade · 暖窗熄灭 (172.3s) | long sweeping legs → 270° | 11 | 2 | 3 | +0..+5 | 3 |
-| Outro · 录像带合上 (179.4s) | long sweeping legs → 270° | 2 | 1 | 0 | +0..+0 | 0 |
+| Intro · 录像带入口 (0.0s) | long sweeping legs → 0°, long sweeping legs → 270° | 14 | 2 | 3 | +0..+0 | 5 |
+| Verse 1 · 教室走廊 (14.6s) | switchbacks → 90°, zigzag corridor (RRLL) → 180° | 37 | 2 | 15 | +0..+0 | 18 |
+| Chorus 1 · 摄像机取景框 (29.0s) | staircase → 45°, staircase → 315°, staircase → 45°, staircase → 315° | 41 | 2 | 3 | +0..+0 | 0 |
+| Post 1 · 屋顶坡道 (43.3s) | switchbacks → 270° | 32 | 3 | 8 | +0..+3 | 3 |
+| Break · 雪地鹿岛 (55.8s) | long sweeping legs → 180° | 8 | 2 | 3 | -4..+3 | 6 |
+| Verse 2a · 雾隙 (64.8s) | zigzag corridor (RRLL) → 90° | 13 | 2 | 5 | -4..-4 | 13 |
+| Verse 2 · 窗墙长 U (72.0s) | switchbacks → 0° | 32 | 5 | 17 | -4..+2 | 8 |
+| Chorus 2 · 屋顶空椅 (86.3s) | staircase → 90°, staircase → 180°, staircase → 270°, staircase → 0° | 44 | 2 | 3 | +2..+2 | 14 |
+| Post 2 · 跨空桥 (100.6s) | long sweeping legs → 225°, staircase → 225° | 35 | 3 | 12 | +2..+6 | 34 |
+| Bridge · 鹿回头 (114.9s) | switchbacks → 135°, spiral / wrap L, staircase → 90° | 22 | 6 | 7 | -6..+2 | 5 |
+| Pre · 取景屏 (129.3s) | long sweeping legs → 270° | 22 | 2 | 2 | -6..-2 | 17 |
+| Final chorus · 记忆庭院 (141.8s) | switchbacks → 0°, staircase → 300° | 56 | 5 | 16 | -2..+2 | 44 |
+| Final post · 网点兔 (157.9s) | zigzag corridor (RRLL) → 60°, staircase → 150° | 43 | 2 | 11 | +5..+5 | 40 |
+| Fade · 暖窗熄灭 (172.3s) | long sweeping legs → 270° | 11 | 2 | 3 | +0..+5 | 1 |
+| Outro · 录像带合上 (179.4s) | long sweeping legs → 270° | 2 | 1 | 0 | +0..+0 | 2 |
 
 How each section reads (see `route-sections.png`):
 - **Intro (0–14.6 s):** long legs (one per choir chord) out of the **cassette start box** (the start platform). The first leg heads north, then the line turns west.
@@ -137,19 +137,19 @@ The art is procedural PIL (`_w2_tools/artgen.py`), in the level palette, with no
 
 | t (s) | section | kind | taps | taps/s | densest 2 s |
 |---|---|---|---:|---:|---:|
-| 0.00 | Intro · 录像带入口 | intro | 16 | 1.09 | 2.0/s |
-| 14.64 | Verse 1 · 教室走廊 | verse | 39 | 2.72 | 4.5/s |
-| 28.97 | Chorus 1 · 摄像机取景框 | chorus | 43 | 3.00 | 4.0/s |
+| 0.00 | Intro · 录像带入口 | intro | 14 | 0.96 | 1.5/s |
+| 14.64 | Verse 1 · 教室走廊 | verse | 37 | 2.58 | 4.5/s |
+| 28.97 | Chorus 1 · 摄像机取景框 | chorus | 41 | 2.86 | 4.0/s |
 | 43.30 | Post 1 · 屋顶坡道 | post | 32 | 2.55 | 3.0/s |
 | 55.83 | Break · 雪地鹿岛 | break | 8 | 0.89 | 1.5/s |
 | 64.79 | Verse 2a · 雾隙 | verse | 13 | 1.81 | 2.5/s |
-| 71.95 | Verse 2 · 窗墙长 U | verse | 36 | 2.51 | 4.0/s |
+| 71.95 | Verse 2 · 窗墙长 U | verse | 32 | 2.23 | 3.5/s |
 | 86.28 | Chorus 2 · 屋顶空椅 | chorus | 44 | 3.07 | 4.0/s |
-| 100.61 | Post 2 · 跨空桥 | post | 33 | 2.30 | 4.0/s |
-| 114.94 | Bridge · 鹿回头 | bridge | 25 | 1.74 | 2.5/s |
-| 129.27 | Pre · 取景屏 | pre | 20 | 1.60 | 3.0/s |
-| 141.80 | Final chorus · 记忆庭院 | chorus | 56 | 3.47 | 4.0/s |
-| 157.92 | Final post · 网点兔 | chorus | 44 | 3.07 | 4.0/s |
+| 100.61 | Post 2 · 跨空桥 | post | 35 | 2.44 | 3.5/s |
+| 114.94 | Bridge · 鹿回头 | bridge | 22 | 1.54 | 2.5/s |
+| 129.27 | Pre · 取景屏 | pre | 22 | 1.75 | 3.5/s |
+| 141.80 | Final chorus · 记忆庭院 | chorus | 56 | 3.47 | 5.0/s |
+| 157.92 | Final post · 网点兔 | chorus | 43 | 3.00 | 4.5/s |
 | 172.25 | Fade · 暖窗熄灭 | outro | 11 | 1.54 | 2.0/s |
 | 179.41 | Outro · 录像带合上 | outro | 2 | 0.33 | 1.0/s |
 

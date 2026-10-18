@@ -9,38 +9,18 @@
  ],
  "taps": [
   {
-   "t": 1.026,
-   "dir": "R",
-   "tag": "melody"
-  },
-  {
    "t": 2.156,
-   "dir": "L",
-   "tag": "melody"
-  },
-  {
-   "t": 2.85,
    "dir": "R",
    "tag": "melody"
   },
   {
    "t": 3.945,
-   "dir": "R",
-   "tag": "melody"
-  },
-  {
-   "t": 4.597,
    "dir": "L",
    "tag": "melody"
   },
   {
    "t": 5.719,
    "dir": "R",
-   "tag": "melody"
-  },
-  {
-   "t": 6.402,
-   "dir": "L",
    "tag": "melody"
   },
   {
@@ -359,13 +339,8 @@
    "tag": "kick"
   },
   {
-   "t": 49.825,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
    "t": 50.048,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -390,27 +365,27 @@
   },
   {
    "t": 52.498,
-   "dir": "L",
-   "tag": "snare"
-  },
-  {
-   "t": 53.394,
-   "dir": "L",
-   "tag": "snare"
-  },
-  {
-   "t": 54.292,
    "dir": "R",
    "tag": "snare"
   },
   {
-   "t": 55.185,
+   "t": 53.394,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 54.292,
    "dir": "L",
    "tag": "snare"
   },
   {
+   "t": 55.185,
+   "dir": "R",
+   "tag": "snare"
+  },
+  {
    "t": 55.632,
-   "dir": "L",
+   "dir": "R",
    "tag": "snare"
   },
   {
@@ -420,22 +395,22 @@
   },
   {
    "t": 56.976,
-   "dir": "L",
+   "dir": "R",
    "tag": "snare"
   },
   {
    "t": 57.874,
-   "dir": "R",
+   "dir": "L",
    "tag": "snare"
   },
   {
    "t": 58.108,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 58.99,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -445,62 +420,62 @@
   },
   {
    "t": 60.558,
-   "dir": "L",
+   "dir": "R",
    "tag": "snare"
   },
   {
    "t": 60.781,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 61.453,
-   "dir": "L",
+   "dir": "R",
    "tag": "snare"
   },
   {
    "t": 61.677,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 62.572,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 63.251,
-   "dir": "R",
+   "dir": "L",
    "tag": "snare"
   },
   {
    "t": 63.481,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 63.705,
-   "dir": "R",
+   "dir": "L",
    "tag": "snare"
   },
   {
    "t": 63.929,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 64.153,
-   "dir": "R",
+   "dir": "L",
    "tag": "snare"
   },
   {
    "t": 64.377,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 64.813,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -510,12 +485,12 @@
   },
   {
    "t": 66.604,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 67.722,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -525,7 +500,7 @@
   },
   {
    "t": 68.841,
-   "dir": "L",
+   "dir": "R",
    "tag": "snare"
   },
   {
@@ -535,7 +510,7 @@
   },
   {
    "t": 70.19,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -545,7 +520,7 @@
   },
   {
    "t": 71.977,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -555,7 +530,7 @@
   },
   {
    "t": 73.768,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -565,7 +540,7 @@
   },
   {
    "t": 75.564,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -575,7 +550,7 @@
   },
   {
    "t": 76.68,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -625,32 +600,32 @@
   },
   {
    "t": 84.516,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 84.96,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 85.422,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 85.645,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 85.869,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 86.762,
+   "t": 85.869,
    "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 86.762,
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -665,12 +640,12 @@
   },
   {
    "t": 87.884,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 88.108,
-   "dir": "L",
+   "dir": "R",
    "tag": "snare"
   },
   {
@@ -679,28 +654,23 @@
    "tag": "kick"
   },
   {
-   "t": 89.316,
-   "dir": "L",
-   "tag": "melody"
-  },
-  {
-   "t": 89.481,
+   "t": 89.331,
    "dir": "R",
-   "tag": "melody"
+   "tag": "kick"
   },
   {
    "t": 89.67,
    "dir": "L",
-   "tag": "melody"
+   "tag": "kick"
   },
   {
    "t": 90.339,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 90.792,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -710,7 +680,7 @@
   },
   {
    "t": 91.466,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -720,27 +690,27 @@
   },
   {
    "t": 92.575,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 92.919,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 93.261,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
-   "t": 93.915,
    "dir": "L",
    "tag": "kick"
   },
   {
-   "t": 94.366,
+   "t": 93.915,
    "dir": "R",
+   "tag": "kick"
+  },
+  {
+   "t": 94.366,
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -750,12 +720,12 @@
   },
   {
    "t": 95.048,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 95.27,
-   "dir": "R",
+   "dir": "L",
    "tag": "snare"
   },
   {
@@ -765,12 +735,12 @@
   },
   {
    "t": 96.501,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 96.834,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -909,14 +879,18 @@
    "note": "±115 ms accept; the tightest pair is an 8th (224 ms) so windows stay disjoint. Short level with sparse old chart: keep the window generous so the jump in density reads as rhythm, not punishment."
   },
   "old_tap_count": 68,
+  "bursts": [],
+  "ghost_taps_removed": [
+   1.026,
+   2.85,
+   4.597,
+   6.402,
+   49.825
+  ],
   "snap_sources": [
    "other",
    "other",
    "other",
-   "other",
-   "other",
-   "other",
-   "other",
    "grid",
    "snare",
    "snare",
@@ -981,7 +955,6 @@
    "kick",
    "kick",
    "grid",
-   "grid",
    "kick",
    "snare",
    "snare",
@@ -1044,9 +1017,8 @@
    "grid",
    "grid",
    "kick",
-   "other",
-   "other",
-   "other",
+   "kick",
+   "kick",
    "kick",
    "kick",
    "kick",

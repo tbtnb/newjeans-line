@@ -74,7 +74,30 @@ def make_chart(slug, spec, a):
             else: print('  drop close tap',d['t'],'after',out[-1]['t']); continue
         out.append(d)
     out=apply_bursts(spec,a,out)
+    out=drop_ghosts(spec,a,out)
     return out, b0, T
+
+
+def full_support(a,t,win=0.04):
+    return max([s for x,s in a['onsets_full'] if abs(x-t)<=win] or [0])
+def on_beat(a,t,tol=0.04):
+    bp=a['beat_period']; return abs(((t-a['beat0'])/bp+0.5)%1-0.5)*bp<=tol
+def burst_ok(a,r):
+    """user rules: a burst only where the 16th figure is audible in the FULL MIX (every tap within 40 ms of a full-mix
+    onset >= 0.12) and it starts or ends on a beat."""
+    return all(full_support(a,t)>=0.12 for t in r) and (on_beat(a,r[0]) or on_beat(a,r[-1]))
+def drop_ghosts(spec,a,taps):
+    """user rule 5: no isolated taps on ghost notes / faint onsets: drop non-burst taps with weak full-mix support,
+    weak own-layer support, and not on a beat."""
+    out=[];spec._ghosts=[]
+    for d in taps:
+        t=d['t']
+        if any(b0-1e-3<=t<=b1+1e-3 for b0,b1 in getattr(spec,'_bursts',[])): out.append(d); continue
+        ss=max([s for k in ('kick','snare','hat','vocals','other','bass') for x,s in a.get(k,[]) if abs(x-t)<=0.04] or [0])
+        if full_support(a,t,0.05)<0.12 and ss<0.35 and not on_beat(a,t): spec._ghosts.append(t); continue
+        out.append(d)
+    if spec._ghosts: print('  ghost taps dropped',len(spec._ghosts),[round(x,2) for x in spec._ghosts])
+    return out
 
 BTAG={'snare':'snare','hat':'hat','vocals':'vocal','other':'melody','kick':'kick'}
 def burst_runs(a,t0,t1,lo,hi,stems):
@@ -93,39 +116,22 @@ def burst_runs(a,t0,t1,lo,hi,stems):
         for i in range(0,len(r)-2):          # all sub-runs of 3..4
             for n in (4,3):
                 if i+n<=len(r): out.append((n,sum(x[1] for x in r[i:i+n])/n,k,[x[0] for x in r[i:i+n]]))
-    # merged percussive+vocal stream (a fast roll often alternates snare/hat/vocal hits): greedy chains of real onsets
-    ev={}
-    for k in stems+['drums']:
-        for t,s in a.get(k,[]):
-            if s>=0.25 and t0<=t<=t1:
-                key=round(t/0.03)
-                if key not in ev or ev[key][1]<s: ev[key]=(t,s,k)
-    ev=sorted(ev.values())
-    dense=lambda x0:sum(1 for e in ev if x0-0.6<=e[0]<=x0+0.6)/1.2
-    for i,e in enumerate(ev):
-        if dense(e[0])<5.5: continue                 # only inside genuinely 16th-dense passages
-        ch=[e]
-        while len(ch)<4:
-            nx=[f for f in ev if lo<=f[0]-ch[-1][0]<=hi]
-            if not nx: break
-            ch.append(max(nx,key=lambda f:f[1]))
-        if len(ch)>=3:
-            k=max(set(c[2] for c in ch),key=lambda k:sum(c[2]==k for c in ch))
-            out.append((len(ch),sum(c[1] for c in ch)/len(ch)-0.15,k if k!='drums' else 'snare',[c[0] for c in ch]))
     out.sort(key=lambda x:(-x[0],-x[1])); return out
 
 def apply_bursts(spec,a,taps):
     """short fast bursts (3-4 taps) placed ONLY on real fast onset runs of one stem (snare/hat rolls, triplet fills,
     rapid vocal syllables) inside designated fill / build-up / drop / final-chorus windows. Gap floor = schema 0.15 s
     (true 16ths at 127-150 BPM are 0.10-0.118 s and would violate it), ceiling 0.19 s (faster than any 8th here)."""
-    lo=getattr(spec,'BURST_MIN',0.152); hi=getattr(spec,'BURST_MAX',0.19); stems=getattr(spec,'BURST_STEMS',['snare','hat','vocals','other','kick'])
+    lo=getattr(spec,'BURST_MIN',0.108); hi=getattr(spec,'BURST_MAX',0.19); stems=getattr(spec,'BURST_STEMS',['snare','hat','vocals','other','kick'])
     taps=list(taps); spec._bursts=[]
     for w in getattr(spec,'BURST_WINDOWS',[]):
         t0,t1,mx=w if len(w)==3 else (w[0],w[1],1)
         used=0
         for n,st,k,r in burst_runs(a,t0,t1,lo,hi,stems):
             if used>=mx: break
-            if any(not(r[-1]+0.19<=b0 or r[0]-0.19>=b1) for b0,b1 in spec._bursts): continue
+            if any(not(r[-1]+1.5<=b0 or r[0]-1.5>=b1) for b0,b1 in spec._bursts): continue
+            if not burst_ok(a,r): continue
+            if any(e.get('type') in ('fall','jump') and r[0]-0.6<=e['t']<=r[-1]+0.6 for e in getattr(spec,'ELEV',[])): continue   # keep air-time slots free
             keep=[d for d in taps if d['t']<=r[0]-0.20 or d['t']>=r[-1]+0.20]
             keep+= [dict(t=round(x,3),tag=BTAG.get(k,k),src=k,grid=round(x,3)) for x in r]
             taps=sorted(keep,key=lambda d:d['t']); spec._bursts.append((r[0],r[-1])); used+=1
@@ -354,27 +360,38 @@ def fix_objects(spec,nodes,objs):
         o['_clear']=round(dmin-need,2); fixed.append(o)
     return fixed
 
-def fix_air(spec,times):
-    """v2.3 air-time rule: a fall/jump needs >= 0.35 s (we use 0.40) before the next tap. Move the event into the
-    nearest gap that allows it (earliest: 0.06 s after the previous tap)."""
+def fix_air(spec,times,taps=None):
+    """v2.3 air-time rule: a fall/jump needs >= 0.35 s (we use 0.37) before the next tap. If the event can move to a
+    gap within 0.6 s, move it; otherwise drop the single tap that sits inside the flight (the line flies over that beat)
+    so the elevation stays on its musical downbeat."""
     for e in spec.ELEV:
         if e['type'] not in ('fall','jump'): continue
         t=e['t']; nxt=next((x for x in times if x>t+1e-6),9e9)
-        if nxt-t>=0.40: continue
+        if nxt-t>=0.37: continue
         best=None
         for a_,b_ in zip(times,times[1:]):
-            if b_-a_>=0.46:
-                lo,hi=a_+0.06,b_-0.40
-                c=min(max(t,lo),hi); 
+            if b_-a_>=0.43:
+                lo,hi=a_+0.06,b_-0.37
+                c=min(max(t,lo),hi)
                 if best is None or abs(c-t)<abs(best-t): best=c
-        print(f'  air-fix {e["type"]} {t:.3f} -> {best:.3f}'); e['t']=round(best,3)
+        if best is not None and abs(best-t)<=0.6:
+            print(f'  air-fix {e["type"]} {t:.3f} -> {best:.3f}'); e['t']=round(best,3); continue
+        inside=[x for x in times if t<x<t+0.37]
+        prev=max([x for x in times if x<=t] or [-9])
+        after=min([x for x in times if x>=t+0.37] or [9e9])
+        if 1<=len(inside)<=2 and after-t>=0.37:
+            for x in inside:
+                i=times.index(x); times.pop(i)
+                if taps is not None: taps.pop(i)
+            print(f'  air-fix {e["type"]} {t:.3f}: dropped {len(inside)} tap(s) {inside} inside the flight'); continue
+        print(f'  air-fix {e["type"]} {t:.3f} -> {best:.3f} (far move)'); e['t']=round(best,3)
 
 def build(slug):
     spec=importlib.import_module(f'spec_{slug.replace("-","_")}')
     a=load(slug); dur=a['duration']
     taps,b0,T=make_chart(slug,spec,a)
     times=[d['t'] for d in taps]
-    fix_air(spec,times)
+    fix_air(spec,times,taps)
     if hasattr(spec,'ROUTE'):
         import route
         fixed={min(range(len(times)),key=lambda i:abs(times[i]-t)):d for t,d in getattr(spec,'DIRS_FIXED',{}).items()}
@@ -389,7 +406,7 @@ def build(slug):
                sections=[dict(t=round(b0+s['b0']*4*T if s['b0']>0 else 0,3),label=s['label'],kind=s['kind']) for s in spec.SECTIONS],
                notes=spec.NOTES, meta=dict(author='level-design worker w2', bpm=a['bpm'], beat0=round(b0,4),
                beat_period=a['beat_period'], min_gap_design=spec.MIN_GAP, judgment_window_ms=spec.JUDGE,
-               old_tap_count=spec.OLD, snap_sources=[x['src'] for x in taps]))
+               old_tap_count=spec.OLD, bursts=[[round(x,3),round(y,3)] for x,y in getattr(spec,'_bursts',[])], ghost_taps_removed=[round(x,3) for x in getattr(spec,'_ghosts',[])], snap_sources=[x['src'] for x in taps]))
     sec_t=[c['t'] for c in chart['sections']]
     def secT(label): return chart['sections'][[s['label'] for s in spec.SECTIONS].index(label)]['t']
     used=set()

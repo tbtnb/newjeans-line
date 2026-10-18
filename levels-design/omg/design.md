@@ -1,6 +1,6 @@
 # OMG — 借来的自己（病房 → 身份幻想 → 钢琴尾音）· level design (worker w2, v3)
 
-Files: `chart.json` (468 taps) · `layout.json` (schema v2.4, plus computed `path.nodes` [t,x,z,y,heading]) · `route.png` (whole map) · `route-sections.png` (one zoomed panel per section) · `chart-report.md` · `analysis.json` / `analysis-notes.md` · `art/` (5 images).
+Files: `chart.json` (412 taps) · `layout.json` (schema v2.5, plus computed `path.nodes` [t,x,z,y,heading]) · `route.png` (whole map) · `route-sections.png` (one zoomed panel per section) · `chart-report.md` · `analysis.json` / `analysis-notes.md` · `art/` (5 images).
 The codex-ref art (`/workspace/nj-refs/omg/`) is a loose mood reference. **The route choreography below is ours** and is much denser than the blueprint (rev v3 after "routes too simple" feedback).
 Palette from codex-ref: cream road `#F3F0E8`, charcoal sides `#25282B`, ward grey-green `#B8C8BC`, fog `#DCE4DA`, pink line `#EFA6B1`, gems `#88C7D5`, crowns `#E3BD60`. The actual OMG single cover is the black/white halftone black bunny. It appears as a low-poly bunny on a halftone plinth and on two halftone posters.
 
@@ -11,15 +11,15 @@ Palette from codex-ref: cream road `#F3F0E8`, charcoal sides `#25282B`, ward gre
 
 ## Core numbers
 - **Speed and width:** 10.0 u/s, constant. Road width 2.2 → 2.0 (Chorus 2) → 1.8 (Bridge) → 2.0 → 1.8 (Final chorus b).
-- **Taps: old 213 → new 468 (×2.20)**, averaging 2.20 taps/s. The dance break is densest at 3.1/s.
-- **Difficulty (hard tier, title track):** avg CPM 132 (taps ÷ length) / 177 wiki-style; **peak CPM 385** (min gap 156 ms). 6 fast bursts of 3–4 taps on real fast events: the hat fill into Chorus 1 (43.9 s), a snare pickup (63.6 s), and 8th-note-triplet hats in the final choruses (165.5, 170.1, 185.2, 192.8 s); 21 dotted-8th gaps. The bridge's straight 16th snare rolls (118 ms) are below the schema's 150 ms floor and stay uncharted. Comparison with the original levels is in `chart-report.md`.
-- **Fastest run:** 11 consecutive 8ths (236 ms apart) at 162.1–164.4 s. Minimum 8th gap 226 ms; bursts go down to 156 ms.
-- **Judgment:** the engine rule (v2.4) gives min ±70 ms (inside bursts) and median ±110 ms, i.e. ≤ half the local minimum gap. My target is perfect ±60 / accept ±110 ms.
+- **Taps: old 213 → new 412 (×1.93)**, averaging 1.94 taps/s. The re-audit made the choruses follow the kick/snare groove only (the synth hook is no longer charted in between) and removed 5 faint taps (15.0, 119.9, 120.1, 120.6, 158.5 s).
+- **Difficulty (hard tier, title track):** avg CPM 116 (taps ÷ length) / 157 wiki-style. **Peak CPM 360** (validator style, most taps in any 1 s) and 508 instantaneous (min gap 118 ms). Only 2 bursts pass the full-mix and on-beat test: the 3-tap snare 16ths at 63.08 s (Verse 2 entry) and the bridge snare roll at 144.79 s. The final-chorus triplet-hat bursts were removed because they are not clearly audible in the full mix. The honest peak is below 400 CPM. Charting rules (user override): one audible layer per section, the same pattern on every repeat of a phrase, bursts only where the 16th figure is audible in the full mix and starts or ends on a beat, breaks stay sparse, no taps on faint or ghost onsets. CPM numbers are references, not quotas. See the per-section 'What the taps follow' table in `chart-report.md`.
+- **Fastest run:** 11 consecutive 8ths (236 ms apart) at 162.1–164.4 s. Minimum 8th gap 226 ms; bursts go down to 118 ms.
+- **Judgment:** the engine rule (v2.5, per tap) gives min ±53 ms (inside bursts) and median ±110 ms, always ≤ half the local gap.
 - **Levels:** 0 → **fall −4** (Chorus 1 stage) → **spiral ramp +8** (Verse 2, glass-slipper tower, −4 → +4) → **ramp +6** (phone bridge, +10) → **fall −6** (Chorus 2, +4) → **ramp +4** (library, +8) → dance break on the +8 deck → **fall −8** (Final chorus, 0) → **ramp +5** (skybridge B2) → **fall −5** (outro, 0).
 - **Checks:** the validator reports 180 segment pairs that cross on different levels and 0 same-level overlaps. The longest same-direction run is 5 (the spiral).
 
 ## Route choreography (each section has its own texture)
-Planner: every tap's R/L comes from a beam search (width 80) over per-section motifs plus a drift bearing, using the exact v2.4 overlap rule. Motifs:
+Planner: every tap's R/L comes from a beam search (width 160) over per-section motifs plus a drift bearing, using the exact v2.4 overlap rule. Motifs:
 - **staircase:** alternating turns;
 - **zigzag corridor:** R R L L;
 - **switchbacks:** U-turn after short legs, reverse after long ones;
@@ -29,21 +29,21 @@ Planner: every tap's R/L comes from a beam search (width 80) over per-section mo
 The table is computed from the built path.
 | Section | Route texture (planner motifs) | taps | max same-dir run | U-turns | height | over/under-passes |
 |---|---|---|---|---|---|---|
-| Intro · 病房走廊 (0.0s) | long sweeping legs → 0°, long sweeping legs → 90° | 12 | 2 | 1 | +0..+0 | 0 |
-| Verse 1 · 治疗桌与五椅 (15.1s) | switchbacks → 90° | 29 | 2 | 3 | +0..+0 | 1 |
-| Verse 1b · 墙板外折 (30.3s) | zigzag corridor (RRLL) → 0° | 32 | 2 | 16 | +0..+0 | 20 |
-| Chorus 1 · 黑兔舞台 (45.4s) | staircase → 135°, staircase → 225°, staircase → 135°, staircase → 45° | 42 | 2 | 3 | -4..-4 | 29 |
-| Verse 2 · 玻璃鞋 (60.5s) | switchbacks → 270°, spiral / wrap R, staircase → 300°, zigzag corridor (RRLL) → 270° | 33 | 7 | 12 | -4..+4 | 23 |
-| Verse 2b · 双折长短路 (75.6s) | zigzag corridor (RRLL) → 270°, staircase → 0°, switchbacks → 60° | 29 | 5 | 9 | +4..+4 | 0 |
-| Pre · 手机桥 (90.7s) | long sweeping legs → 150° | 28 | 2 | 6 | +4..+10 | 27 |
-| Chorus 2 · 屏幕块 (105.9s) | staircase → 90°, staircase → 180°, staircase → 270°, staircase → 0° | 43 | 2 | 2 | +4..+4 | 0 |
-| Post · 错列直角 (121.0s) | switchbacks → 270°, zigzag corridor (RRLL) → 180° | 23 | 2 | 7 | +4..+4 | 10 |
-| Bridge · 书页墙与猫 (134.2s) | switchbacks → 200° | 40 | 5 | 20 | +4..+8 | 22 |
-| Break · 书页合拢 (149.3s) | long sweeping legs | 3 | 1 | 0 | +8..+8 | 3 |
-| Dance break · 舞台五墙 (151.2s) | staircase → 330°, staircase → 60°, staircase → 330°, staircase → 60° | 47 | 3 | 7 | +8..+8 | 30 |
-| Final chorus · 兔耳发夹 (166.3s) | spiral / wrap L, staircase → 90°, spiral / wrap L, staircase → 90°, zigzag corridor (RRLL) → 180° | 45 | 5 | 17 | +0..+0 | 29 |
-| Final chorus b · 天桥 (181.4s) | staircase → 270°, staircase → 180°, staircase → 90°, staircase → 0° | 48 | 4 | 9 | +0..+5 | 26 |
-| Outro · 尾奏琴键 (196.6s) | long sweeping legs → 180° | 14 | 1 | 0 | +0..+0 | 0 |
+| Intro · 病房走廊 (0.0s) | long sweeping legs → 0°, long sweeping legs → 90° | 11 | 2 | 1 | +0..+0 | 0 |
+| Verse 1 · 治疗桌与五椅 (15.1s) | switchbacks → 90° | 29 | 2 | 3 | +0..+0 | 5 |
+| Verse 1b · 墙板外折 (30.3s) | zigzag corridor (RRLL) → 0° | 30 | 2 | 14 | +0..+0 | 20 |
+| Chorus 1 · 黑兔舞台 (45.4s) | staircase → 135°, staircase → 225°, staircase → 135°, staircase → 45° | 32 | 2 | 3 | -4..-4 | 21 |
+| Verse 2 · 玻璃鞋 (60.5s) | switchbacks → 270°, spiral / wrap R, staircase → 300°, zigzag corridor (RRLL) → 270° | 35 | 10 | 14 | -4..+4 | 22 |
+| Verse 2b · 双折长短路 (75.6s) | zigzag corridor (RRLL) → 270°, staircase → 0°, switchbacks → 60° | 29 | 6 | 9 | +4..+4 | 0 |
+| Pre · 手机桥 (90.7s) | long sweeping legs → 150° | 28 | 2 | 4 | +4..+10 | 16 |
+| Chorus 2 · 屏幕块 (105.9s) | staircase → 90°, staircase → 180°, staircase → 270°, staircase → 0° | 30 | 2 | 2 | +4..+4 | 12 |
+| Post · 错列直角 (121.0s) | switchbacks → 270°, zigzag corridor (RRLL) → 180° | 23 | 2 | 6 | +4..+4 | 13 |
+| Bridge · 书页墙与猫 (134.2s) | switchbacks → 200° | 41 | 5 | 21 | +4..+8 | 3 |
+| Break · 书页合拢 (149.3s) | long sweeping legs | 3 | 2 | 1 | +8..+8 | 0 |
+| Dance break · 舞台五墙 (151.2s) | staircase → 330°, staircase → 60°, staircase → 330°, staircase → 60° | 46 | 2 | 5 | +8..+8 | 19 |
+| Final chorus · 兔耳发夹 (166.3s) | spiral / wrap L, staircase → 90°, spiral / wrap L, staircase → 90°, zigzag corridor (RRLL) → 180° | 32 | 2 | 11 | +0..+0 | 16 |
+| Final chorus b · 天桥 (181.4s) | staircase → 270°, staircase → 180°, staircase → 90°, staircase → 0° | 29 | 3 | 4 | +0..+5 | 18 |
+| Outro · 尾奏琴键 (196.6s) | long sweeping legs → 180° | 14 | 2 | 1 | +0..+0 | 0 |
 
 How each section reads (see `route-sections.png`):
 - **Intro (0–15 s):** long sweeping corridor legs of 2–4 s on the a-cappella "OMG" phrases. Ward door frames mark the scale.
@@ -121,7 +121,7 @@ The art was drawn procedurally with PIL (`_w2_tools/artgen.py`, flat/halftone st
 - **Intro (0–15.2 s)**: a-cappella "OMG" vocal phrases only (no drums in the stem map): 12 taps on the sung syllable entries, 1–4 s gaps = the "waiting for the call" calm.
 - **Verse 1 (15.2–30.3 s)**: finger-snap/clap layer enters with strong hits on step 6 and 14 (the "and" of 2 and 4) — taps on the clap downbeat + those syncopated snaps (s.....s.s.....s.): the first syncopation the player meets.
 - **Verse 1b (30.3–45.4 s)**: full UK-garage kick enters (K...|k...|..k.|..kk / ..K.|k.kk|.kk.|K...): taps on the kicks, odd bars use the off-beat kick pair at steps 2/4 and 10/12 = call (even bar) / response (odd bar).
-- **Chorus 1 / 2 / Final (45.4, 105.9, 166.4 s)**: halftime groove: kick 1, snare 3, kick on 4; the synth hook (other stem, "O" hits on steps 4/8/14 then 6/10/14) answers between drum hits, so even bars are drum-led and odd bars become a 6-tap 8th-note run (2,6,8,10,12,14) following the hook. Final chorus b adds the extra hook 8th (step 6) for the climax.
+- **Chorus 1 / 2 / Final (45.4, 105.9, 166.4 s)**: ONE layer, the halftime drum groove you can hear in the full mix: odd bars kick 1, snare 3, kick 4 + the snare pickup on the last 8th (k.......s...k.s.), even bars the syncopated double kick on the e/and of 1-2, snare 3, kick 4 (..k.k...s...k...). The same 2-bar pattern repeats in every chorus so it can be learned; the synth hook is no longer charted between drum hits.
 - **Verse 2 / 2b / Post**: same garage kick but thinned to 4–5 taps per bar so the vocals breathe; Verse 2b inserts the vocal "V V v v" accent at step 8.
 - **Pre (90.8–105.9 s)**: drums drop out, only bass (..B.|..B.|..B.|..B.) + vocal: taps follow the bass pulses at a relaxed 1.9/s while the phone bridge ramps up 6 units; bar 55 is a 7-tap 8th-note build into Chorus 2.
 - **Bridge (134.2–149.3 s)**: new trap-style kick pattern (...k|..k.|k.k.|.k.k): taps on steps 3,6,8,13,15 / 3,6,8,10,13 — every bar starts on an off-beat, the hardest syncopation in the level, on a narrow 1.8-wide road inside the library.
@@ -133,20 +133,20 @@ The art was drawn procedurally with PIL (`_w2_tools/artgen.py`, flat/halftone st
 
 | t (s) | section | kind | taps | taps/s | densest 2 s |
 |---|---|---|---:|---:|---:|
-| 0.00 | Intro · 病房走廊 | intro | 12 | 0.79 | 1.5/s |
+| 0.00 | Intro · 病房走廊 | intro | 11 | 0.73 | 1.5/s |
 | 15.15 | Verse 1 · 治疗桌与五椅 | verse | 29 | 1.92 | 2.5/s |
-| 30.26 | Verse 1b · 墙板外折 | verse | 32 | 2.12 | 4.5/s |
-| 45.38 | Chorus 1 · 黑兔舞台 | chorus | 42 | 2.78 | 3.5/s |
-| 60.50 | Verse 2 · 玻璃鞋 | verse | 33 | 2.18 | 3.0/s |
+| 30.26 | Verse 1b · 墙板外折 | verse | 30 | 1.98 | 3.5/s |
+| 45.38 | Chorus 1 · 黑兔舞台 | chorus | 32 | 2.12 | 3.0/s |
+| 60.50 | Verse 2 · 玻璃鞋 | verse | 35 | 2.32 | 4.0/s |
 | 75.62 | Verse 2b · 双折长短路 | pre | 29 | 1.92 | 3.0/s |
 | 90.73 | Pre · 手机桥 | break | 28 | 1.85 | 4.0/s |
-| 105.85 | Chorus 2 · 屏幕块 | chorus | 43 | 2.84 | 3.5/s |
+| 105.85 | Chorus 2 · 屏幕块 | chorus | 30 | 1.98 | 3.0/s |
 | 120.97 | Post · 错列直角 | post | 23 | 1.74 | 2.5/s |
-| 134.20 | Bridge · 书页墙与猫 | bridge | 40 | 2.65 | 3.5/s |
+| 134.20 | Bridge · 书页墙与猫 | bridge | 41 | 2.71 | 4.0/s |
 | 149.32 | Break · 书页合拢 | break | 3 | 1.59 | 1.5/s |
-| 151.21 | Dance break · 舞台五墙 | drop | 47 | 3.11 | 4.5/s |
-| 166.32 | Final chorus · 兔耳发夹 | chorus | 45 | 2.98 | 4.5/s |
-| 181.44 | Final chorus b · 天桥 | chorus | 48 | 3.18 | 5.0/s |
+| 151.21 | Dance break · 舞台五墙 | drop | 46 | 3.04 | 4.5/s |
+| 166.32 | Final chorus · 兔耳发夹 | chorus | 32 | 2.12 | 3.0/s |
+| 181.44 | Final chorus b · 天桥 | chorus | 29 | 1.92 | 3.0/s |
 | 196.56 | Outro · 尾奏琴键 | outro | 14 | 0.89 | 1.5/s |
 
 

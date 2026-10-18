@@ -11,29 +11,29 @@ SECTIONS=[
       over={15:'s...s...s.....s.'}),
  dict(b0=16,b1=24,kind='verse',label='Verse 1b · 墙板外折',pats=['k.........k...k.','..k.k.....k.k...'],
       over={23:'k.k.k..k..k.k...'}),
- dict(b0=24,b1=32,kind='chorus',label='Chorus 1 · 黑兔舞台',pats=['k...m...s...k.m.','..k...m.k.m.k.m.'],
+ dict(b0=24,b1=32,kind='chorus',label='Chorus 1 · 黑兔舞台',pats=['k.......s...k.s.','..k.k...s...k...'],
       over={31:'..s.....v.v...v.'}),
  dict(b0=32,b1=40,kind='verse',label='Verse 2 · 玻璃鞋',pats=['k...k.....k...s.','..k.k.....k.k...']),
  dict(b0=40,b1=48,kind='pre',label='Verse 2b · 双折长短路',pats=['k...k...v.....k.','..k.......k.k...'],
       over={47:'k.k.k..k..k.....'}),
  dict(b0=48,b1=56,kind='break',label='Pre · 手机桥',pats=['b.........b.....','..b...b...b...b.'],
       over={55:'..b.v.b.v.b.v.b.'}),
- dict(b0=56,b1=64,kind='chorus',label='Chorus 2 · 屏幕块',pats=['k...m...s...k.m.','..k...m.k.m.k.m.'],
+ dict(b0=56,b1=64,kind='chorus',label='Chorus 2 · 屏幕块',pats=['k.......s...k.s.','..k.k...s...k...'],
       over={63:'..s.s..v.v...v..'}),
  dict(b0=64,b1=71,kind='post',label='Post · 错列直角',pats=['k.........k...s.','..k....k..k.k...']),
  dict(b0=71,b1=79,kind='bridge',label='Bridge · 书页墙与猫',pats=['...k..k.k....k.k','...k..k.k.k..k..']),
  dict(b0=79,b1=80,kind='break',label='Break · 书页合拢',pats=['..s.....k.......']),
  dict(b0=80,b1=88,kind='drop',label='Dance break · 舞台五墙',pats=['k...k.k.k.k.k...','k...k...k...k.k.'],
       over={86:'k.k.k.k.k.k.k.k.',87:'k...k.k.k.k.k...'}),
- dict(b0=88,b1=96,kind='chorus',label='Final chorus · 兔耳发夹',pats=['k...m...s...k.m.','..k...m.k.m.k.m.']),
- dict(b0=96,b1=104,kind='chorus',label='Final chorus b · 天桥',pats=['k...m.m.s...k.m.','..k...m.k.m.k.m.'],
+ dict(b0=88,b1=96,kind='chorus',label='Final chorus · 兔耳发夹',pats=['k.......s...k.s.','..k.k...s...k...']),
+ dict(b0=96,b1=104,kind='chorus',label='Final chorus b · 天桥',pats=['k.......s...k.s.','..k.k...s...k...'],
       over={103:'..s.s...........'}),
  dict(b0=104,b1=112,kind='outro',label='Outro · 尾奏琴键',pats=['....m.........m.','......m...m.....'],
       over={111:'................'}),
 ]
 NOTES=('Hand-built on a 127.0 BPM grid fitted to the drum stem (residual 8 ms). Each bar pattern was chosen from per-bar 16-step onset maps of the '
        'demucs stems (kick/clap/bass/vocal/synth) and every tap is snapped to the nearest real onset of its tagged stem within 45 ms. '
-       'Chorus = halftime kick/snare + the synth hook answering on the off-8ths (call-and-response); bridge = syncopated trap kick; '
+       'Chorus = halftime kick/snare groove only (one layer, same 2-bar pattern in every chorus); bridge = syncopated trap kick; '
        'dance break = four-on-the-floor 8th runs (8-tap and 10-tap runs).')
 # ---- route
 MOTIFS=[(0,'stair'),(15.17,'meander'),(30.29,'stair'),(60.52,'meander'),(75.64,'stair'),(121.0,'meander'),(134.22,'stair'),(151.23,'stair'),(196.58,'meander')]
@@ -124,7 +124,7 @@ WHY={
  'Intro (0–15.2 s)':'a-cappella "OMG" vocal phrases only (no drums in the stem map): 12 taps on the sung syllable entries, 1–4 s gaps = the "waiting for the call" calm.',
  'Verse 1 (15.2–30.3 s)':'finger-snap/clap layer enters with strong hits on step 6 and 14 (the "and" of 2 and 4) — taps on the clap downbeat + those syncopated snaps (s.....s.s.....s.): the first syncopation the player meets.',
  'Verse 1b (30.3–45.4 s)':'full UK-garage kick enters (K...|k...|..k.|..kk / ..K.|k.kk|.kk.|K...): taps on the kicks, odd bars use the off-beat kick pair at steps 2/4 and 10/12 = call (even bar) / response (odd bar).',
- 'Chorus 1 / 2 / Final (45.4, 105.9, 166.4 s)':'halftime groove: kick 1, snare 3, kick on 4; the synth hook (other stem, "O" hits on steps 4/8/14 then 6/10/14) answers between drum hits, so even bars are drum-led and odd bars become a 6-tap 8th-note run (2,6,8,10,12,14) following the hook. Final chorus b adds the extra hook 8th (step 6) for the climax.',
+ 'Chorus 1 / 2 / Final (45.4, 105.9, 166.4 s)':'ONE layer, the halftime drum groove you can hear in the full mix: odd bars kick 1, snare 3, kick 4 + the snare pickup on the last 8th (k.......s...k.s.), even bars the syncopated double kick on the e/and of 1-2, snare 3, kick 4 (..k.k...s...k...). The same 2-bar pattern repeats in every chorus so it can be learned; the synth hook is no longer charted between drum hits.',
  'Verse 2 / 2b / Post':'same garage kick but thinned to 4–5 taps per bar so the vocals breathe; Verse 2b inserts the vocal "V V v v" accent at step 8.',
  'Pre (90.8–105.9 s)':'drums drop out, only bass (..B.|..B.|..B.|..B.) + vocal: taps follow the bass pulses at a relaxed 1.9/s while the phone bridge ramps up 6 units; bar 55 is a 7-tap 8th-note build into Chorus 2.',
  'Bridge (134.2–149.3 s)':'new trap-style kick pattern (...k|..k.|k.k.|.k.k): taps on steps 3,6,8,13,15 / 3,6,8,10,13 — every bar starts on an off-beat, the hardest syncopation in the level, on a narrow 1.8-wide road inside the library.',
@@ -283,3 +283,4 @@ def more_objects(c):
 # ---- v4 difficulty calibration: fast bursts only on real fast onset runs (fills / build-ups / drops / finals)
 BURST_WINDOWS=[(43.0,45.6,1),(58.5,60.8,1),(62.8,64.2,1),(88.5,91.0,1),(103.5,106.0,1),(140.5,142.2,1),(144.3,146.2,1),
                (148.2,151.5,1),(164.0,166.5,1),(166.3,196.5,3)]
+BEAM=160

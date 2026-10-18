@@ -27,7 +27,8 @@ PREVIEW = '--no-preview' not in sys.argv
 HEAD = {'N': (0, 1), 'E': (1, 0), 'S': (0, -1), 'W': (-1, 0)}
 ORDER = ['N', 'E', 'S', 'W']
 G = 30.0; AIR_MIN = 0.15; LAND_BEFORE = 0.05; MIN_AIR_GAP = 0.35
-W_MIN, W_MAX, RATIO = 0.065, 0.11, 0.45
+W_MIN, W_MAX, RATIO = 0.045, 0.11, 0.45
+MIN_GAP = 0.105
 
 def duration(slug):
     p = REPO / 'public/audio' / f'{slug}.mp3'
@@ -85,7 +86,7 @@ def windows(taps):
     w = []
     for i, t in enumerate(taps):
         p = t - taps[i - 1] if i > 0 else 9; n = taps[i + 1] - t if i + 1 < len(taps) else 9
-        w.append(max(W_MIN, min(W_MAX, RATIO * min(p, n))))
+        g = min(p, n); w.append(min(0.5 * g, max(W_MIN, min(W_MAX, RATIO * g))))
     return w
 
 def main(slug):
@@ -99,7 +100,7 @@ def main(slug):
     if dur is None: dur = (taps[-1] + 5) if taps else 60; warns.append(f'audio not found under {REPO}; duration guessed')
     for a, b in zip(taps, taps[1:]):
         if b <= a: errs.append(f'taps not increasing at {a}->{b}')
-        elif b - a < 0.15: errs.append(f'gap {b-a:.3f}s < 0.15 at {a}')
+        elif b - a < MIN_GAP: errs.append(f'gap {b-a:.3f}s < {MIN_GAP} at {a}')
     if taps and taps[0] < 1.0: errs.append('first tap < 1.0 s')
     if taps and taps[-1] > dur - 1.0: errs.append('last tap > duration-1')
     for tp in chart['taps']:
@@ -146,6 +147,9 @@ def main(slug):
             cur += 1
             if cur > best: best, bs = cur, start
         else: cur = 0
+    if taps:
+        cpm = [sum(1 for u in taps if t <= u < t + 1.0) * 60 for t in taps]
+        print(f'   peak density {max(cpm)} CPM (taps in any 1 s window x60), average {len(taps) / dur * 60:.0f} CPM; gaps < 0.15 s: {sum(1 for g in gaps if g < 0.15)}')
     if best: print(f'   fastest run: {best+1} taps (gaps<=0.30s) from {taps[bs]:.2f}s to {taps[bs+best]:.2f}s')
     if taps:
         w = windows(taps); print(f'   judgment window: min ±{min(w)*1000:.0f} ms, median ±{sorted(w)[len(w)//2]*1000:.0f} ms (engine rule)')
@@ -165,7 +169,7 @@ def main(slug):
             if any(abs(dm['t'] - t) < 0.2 for t in taps): warns.append(f'diamond at {dm["t"]} within 0.2s of a tap')
             if abs(dm.get('side', 0)) > w_at(dm['t']) / 2: errs.append(f'diamond at {dm["t"]} side {dm.get("side")} is off the road')
         for c in layout.get('crowns', []):
-            if any(abs(c['t'] - t) < 0.3 for t in taps): warns.append(f'crown at {c["t"]} within 0.3s of a tap (checkpoint should sit on a calm straight)')
+            if any(0 < c['t'] - t < 0.05 or 0 < t - c['t'] < 0.3 for t in taps): warns.append(f'crown at {c["t"]} within 0.3s of a tap (checkpoint should be followed by a calm straight)')
         # art references
         refs = []
         art = layout.get('art', {}) or {}
