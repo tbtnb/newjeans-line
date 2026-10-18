@@ -109,7 +109,7 @@ layout=dict(id='eta',title='ETA',
 for sec,p in zip(layout['sections'],[None,dict(ground='#d9a07f',groundY=-8),None,dict(skyTop='#7fd6e0'),dict(skyTop='#a9c3c9'),dict(ground='#e8b494'),dict(ground='#35C4C8'),dict(fogEnd=160),dict(skyTop='#62c3e8',groundY=-14),None,dict(skyTop='#ffb59a'),dict(line='#e8443a'),dict(skyTop='#f8c58f')]):
     if p: sec['palette']=p
 L.write(dict(bpm=134.998,grid=dict(t0=1.6699,sixteenth=0.111113,note='bar n starts at t0+1.7778*n'),
-  judgment=dict(perfect=0.045,good=0.090,miss_beyond=0.110,note='recommended; see chart-report.md'),
-  notes='Hand-composed motif chart, 410 taps (old 232, x1.77). Min gap 0.222 s. Fastest run 17 taps of 8ths (131.0-134.6 s).'),layout)
+  judgment=dict(perfect=0.040,good='half the local gap, max 0.100 (0.055 in 16th bursts)',miss_beyond=0.090,note='schema v2.5 per-tap windows; see chart-report.md'),
+  notes='Hand-composed motif chart, 422 taps (old 232, x1.82), tier hard. 8th runs plus 12 16th-burst taps on real fills/rolls/syllables (min gap 0.111 s). Avg 167 CPM, peak 420 CPM (1 s window). Fastest run 19 taps (131.0-134.7 s).'),layout)
 L.plot()
 print('ok hits',len(L.hits),'passes',len(L.passes),'objects',len(L.objects))

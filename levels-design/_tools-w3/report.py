@@ -2,7 +2,9 @@
 import json, sys, numpy as np, librosa
 from configs import CONFIGS
 from paths import WORK, OUT, AUDIO
-JUDGE={'eta':(45,90,110),'cool-with-you':(45,95,120),'get-up':(50,100,125),'asap':(45,95,120)}
+JUDGE={'eta':(40,55,90),'cool-with-you':(40,55,95),'get-up':(50,100,125),'asap':(40,57,95)}
+TIER={'eta':'hard','cool-with-you':'moderate','get-up':'easy','asap':'hard'}
+ORIG=[('The Racing (hardest)',220,440),('Amusement Park','-',512),('Storm','-',460),('The Chaos',136,408),('Chinese Garden',148,296),('Winter',140,280),('The Piano',125,250),('The Autumn',96,'-')]
 TITLE={'eta':'ETA','cool-with-you':'Cool With You','get-up':'Get Up','asap':'ASAP'}
 GROOVE={
  'eta':'135 BPM four-on-the-floor Jersey-club/pop: kick on every beat, snare/clap on 2 and 4, constant 16th hats, syncopated vocal hook landing on the "e" and "a" 16ths. Two a-cappella "E-T-A" voice-chop stops (bars 26 and 58) cut the drums for one bar.',
@@ -50,11 +52,19 @@ def main(slug):
             cur=0
     if cur==best and cur>0: runs.append(T[st])
     pf,gd,ms=JUDGE[slug]
+    avg=len(T)/dur*60; peak1=max(int(((T>=t)&(T<t+1.0)).sum()) for t in T)*60; peakg=60/g.min()
+    bursts=[x for x in taps if x.get('burst')]
     L=[f"# {TITLE[slug]}: chart report (worker 3)\n",
        f"| | value |\n|---|---|\n| legacy taps | {len(old)} |\n| new taps | **{len(T)}** (x{len(T)/len(old):.2f}) |\n| grid | {G['bpm']:.3f} BPM, 16th = {G['per16']:.6f} s, phase {G['phase']:.4f} s, attack calibration {G['attack_cal_ms']} ms |\n"
        f"| min gap | {g.min():.3f} s |\n| fastest run | {best+1} taps with gaps <= 0.30 s, from {T[bs]:.2f} s to {T[bs+best]:.2f} s{'' if len(runs)<2 else ' (also at '+', '.join(f'{r:.1f}' for r in runs[1:])+' s)'} |\n"
        f"| attack offset (measured attack minus tap time, strongest-quartile attacks; spread includes hats/consonants caught by the ±35 ms window) | median {med:+.1f} ms, MAD {mad:.1f} ms |\n"
-       f"| recommended judgment | perfect ±{pf} ms, good ±{gd} ms, miss beyond ±{ms} ms (good < half the min gap; engine v2.3 uses grace-based judging on event timestamps) |\n",
+       f"| recommended judgment | per-tap good window = half the local gap, capped at ±100 ms (floor ±45 ms, schema v2.5); {'inside 16th bursts' if bursts else 'densest runs'} that is ±{gd} ms; perfect ±{pf} ms everywhere; a tap more than ±{ms} ms away from an isolated beat is a miss |\n",
+       f"| difficulty tier | **{TIER[slug]}** |\n",
+       "\n## Density vs original Dancing Line (dlfm-wiki CPM)\n",
+       f"| level | avg CPM | peak CPM |\n|---|---|---|\n| **{TITLE[slug]} (this chart)** | **{avg:.0f}** (taps / duration × 60) | **{peak1}** (most taps in any 1 s × 60; validator metric); {peakg:.0f} as 60 / min gap |\n",
+       *[f"| {n} | {a} | {p_} |\n" for n,a,p_ in ORIG],
+       "\nNote: the wiki's 'avg CPM' is not plain taps/duration (The Racing: 357 taps / 144 s = 149 by our formula vs 220 on the wiki), so compare our avg against ~149 for The Racing; peak CPM uses the same 1-second-window idea as the validator.\n",
+       f"\n16th bursts: {len(bursts)} added taps at " + (', '.join(f"{x['t']:.2f} s ({x['pos']}, {x['tag']})" for x in bursts) if bursts else 'none (Get Up is the easy tier: no drums, no 16ths)') + ". Each burst tap sits on a real 16th event (snare/hat roll, flam or rapid vocal syllable, strength ≥ 0.5 within ±25 ms) at a fill, build-up, drop or final chorus.\n",
        "\n## Per-section density\n","| section | t | old | new | new/s |\n|---|---|---|---|---|\n"]
     for k,s in enumerate(secs):
         e=secs[k+1]['t'] if k+1<len(secs) else dur

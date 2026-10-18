@@ -29,7 +29,7 @@ t,bar16,tag,section,attack_offset_ms,clear_attack
 26.335,14:10,kick,"Verse 1 · reflections wake",7.6,0
 27.002,15:0,kick,"Verse 1 · reflections wake",-28.3,1
 27.335,15:3,kick,"Verse 1 · reflections wake",16.2,0
-27.669,15:6,hat,"Verse 1 · reflections wake",16.9,0
+27.669,15:6,hat,"Verse 1 · reflections wake",16.9,1
 28.113,15:10,snare,"Verse 1 · reflections wake",-33.1,0
 28.780,16:0,kick,"Verse 1b · rain curtain",13.7,0
 29.891,16:10,kick,"Verse 1b · rain curtain",-25.7,0
@@ -106,6 +106,7 @@ t,bar16,tag,section,attack_offset_ms,clear_attack
 69.226,38:12,snare,"Drop 1 · open courtyard",12.1,0
 69.670,39:0,bass,"Drop 1 · open courtyard",29.8,0
 70.004,39:3,bass,"Drop 1 · open courtyard",25.1,0
+70.115,39:4,snare,"Drop 1 · open courtyard",-35.6,0
 70.337,39:6,hat,"Drop 1 · open courtyard",-26.8,0
 70.559,39:8,bass,"Drop 1 · open courtyard",27.8,1
 70.781,39:10,hat,"Drop 1 · open courtyard",-34.7,0
@@ -173,6 +174,7 @@ t,bar16,tag,section,attack_offset_ms,clear_attack
 104.783,58:12,snare,"Final drop A · feather storm",-1.6,0
 105.227,59:0,bass,"Final drop A · feather storm",29.0,0
 105.561,59:3,vocal,"Final drop A · feather storm",-8.5,0
+105.672,59:4,snare,"Final drop A · feather storm",-22.8,0
 105.894,59:6,hat,"Final drop A · feather storm",-37.5,1
 106.116,59:8,kick,"Final drop A · feather storm",6.6,0
 106.338,59:10,vocal,"Final drop A · feather storm",-19.6,1
@@ -191,6 +193,7 @@ t,bar16,tag,section,attack_offset_ms,clear_attack
 111.894,62:12,snare,"Final drop A · feather storm",-1.7,0
 112.339,63:0,kick,"Final drop A · feather storm",6.8,1
 112.672,63:3,kick,"Final drop A · feather storm",-25.1,0
+112.783,63:4,snare,"Final drop A · feather storm",-35.8,0
 113.005,63:6,hat,"Final drop A · feather storm",-27.8,0
 113.228,63:8,bass,"Final drop A · feather storm",19.0,1
 113.450,63:10,vocal,"Final drop A · feather storm",-36.9,0
@@ -207,6 +210,7 @@ t,bar16,tag,section,attack_offset_ms,clear_attack
 117.228,65:12,snare,"Final drop B · choosing to stay",-37.2,0
 117.672,66:0,kick,"Final drop B · choosing to stay",13.1,0
 118.005,66:3,kick,"Final drop B · choosing to stay",28.2,0
+118.117,66:4,snare,"Final drop B · choosing to stay",19.7,0
 118.339,66:6,snare,"Final drop B · choosing to stay",24.8,0
 118.783,66:10,snare,"Final drop B · choosing to stay",-36.5,0
 119.006,66:12,snare,"Final drop B · choosing to stay",-3.6,0

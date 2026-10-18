@@ -6,4 +6,4 @@
 - No demucs stems were used (so the 25 ms htdemucs latency does not apply).
 - Groove: 135 BPM four-on-the-floor Jersey-club/pop: kick on every beat, snare/clap on 2 and 4, constant 16th hats, syncopated vocal hook landing on the "e" and "a" 16ths. Two a-cappella "E-T-A" voice-chop stops (bars 26 and 58) cut the drums for one bar.
 - Sections: from beat-synchronous chroma/MFCC/RMS novelty, snapped to bar lines and checked against the arrangement (see analysis.json `sections`).
-- Verification: every tap is on the grid and was kept only when a real event lies within ±35 ms; measured attack offset median -2.5 ms (MAD 9.7 ms), see chart-report.md and chart-sync.csv.
+- Verification: every tap is on the grid and was kept only when a real event lies within ±35 ms; measured attack offset median -1.9 ms (MAD 10.0 ms), see chart-report.md and chart-sync.csv.

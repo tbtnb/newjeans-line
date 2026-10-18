@@ -84,7 +84,9 @@ t,bar16,tag,section,attack_offset_ms,clear_attack
 34.559,18:8,kick,"Pre 1 · forwarding blocks",-21.2,0
 34.781,18:10,hat,"Pre 1 · forwarding blocks",-24.6,0
 35.004,18:12,bass,"Pre 1 · forwarding blocks",-5.0,0
+35.115,18:13,hat,"Pre 1 · forwarding blocks",-26.8,1
 35.226,18:14,hat,"Pre 1 · forwarding blocks",0.9,1
+35.337,18:15,vocal,"Pre 1 · forwarding blocks",-26.2,1
 35.670,19:2,hat,"Chorus 1 · signal city hook",0.6,0
 35.893,19:4,kick,"Chorus 1 · signal city hook",20.6,0
 36.115,19:6,snare,"Chorus 1 · signal city hook",28.2,0
@@ -104,7 +106,7 @@ t,bar16,tag,section,attack_offset_ms,clear_attack
 40.337,21:12,kick,"Chorus 1 · signal city hook",-31.3,0
 40.670,21:15,kick,"Chorus 1 · signal city hook",-1.2,1
 41.004,22:2,bass,"Chorus 1 · signal city hook",23.0,0
-41.226,22:4,kick,"Chorus 1 · signal city hook",-28.8,1
+41.226,22:4,kick,"Chorus 1 · signal city hook",-28.8,0
 41.448,22:6,snare,"Chorus 1 · signal city hook",-11.2,1
 41.670,22:8,kick,"Chorus 1 · signal city hook",20.0,0
 41.893,22:10,hat,"Chorus 1 · signal city hook",-29.5,1
@@ -224,8 +226,9 @@ t,bar16,tag,section,attack_offset_ms,clear_attack
 84.560,46:10,snare,"Pre 3 · tower lift",5.0,1
 84.782,46:12,kick,"Pre 3 · tower lift",-20.6,0
 85.004,46:14,bass,"Pre 3 · tower lift",-33.8,0
+85.116,46:15,vocal,"Pre 3 · tower lift",-10.7,1
 85.227,47:0,snare,"Pre 3 · tower lift",-17.9,1
-85.671,47:4,kick,"Pre 3 · tower lift",-3.5,1
+85.671,47:4,kick,"Pre 3 · tower lift",-3.5,0
 86.116,47:8,snare,"Pre 3 · tower lift",0.5,0
 86.560,47:12,bass,"Pre 3 · tower lift",0.9,0
 87.004,48:0,snare,"Pre 3 · tower lift",-6.6,0
@@ -244,14 +247,18 @@ t,bar16,tag,section,attack_offset_ms,clear_attack
 91.449,50:8,snare,"Pre 3 · tower lift",-22.6,0
 91.671,50:10,vocal,"Pre 3 · tower lift",26.0,0
 91.893,50:12,bass,"Pre 3 · tower lift",28.1,0
+92.005,50:13,snare,"Pre 3 · tower lift",-1.2,1
 92.116,50:14,hat,"Pre 3 · tower lift",0.6,1
+92.227,50:15,vocal,"Pre 3 · tower lift",-35.8,1
 92.560,51:2,hat,"Chorus 2 · assembled scene hook",-0.5,1
+92.671,51:3,vocal,"Chorus 2 · assembled scene hook",-7.6,0
 92.782,51:4,bass,"Chorus 2 · assembled scene hook",20.4,0
 93.005,51:6,snare,"Chorus 2 · assembled scene hook",-37.5,0
 93.227,51:8,snare,"Chorus 2 · assembled scene hook",-28.0,1
 93.671,51:12,kick,"Chorus 2 · assembled scene hook",1.6,0
 94.005,51:15,kick,"Chorus 2 · assembled scene hook",28.2,1
 94.338,52:2,kick,"Chorus 2 · assembled scene hook",28.5,1
+94.449,52:3,vocal,"Chorus 2 · assembled scene hook",0.7,1
 94.560,52:4,kick,"Chorus 2 · assembled scene hook",28.3,1
 95.005,52:8,kick,"Chorus 2 · assembled scene hook",27.8,1
 95.227,52:10,snare,"Chorus 2 · assembled scene hook",-20.1,0
@@ -267,7 +274,7 @@ t,bar16,tag,section,attack_offset_ms,clear_attack
 98.116,54:4,kick,"Chorus 2 · assembled scene hook",-29.9,1
 98.338,54:6,snare,"Chorus 2 · assembled scene hook",-12.2,1
 98.560,54:8,bass,"Chorus 2 · assembled scene hook",18.9,0
-98.782,54:10,hat,"Chorus 2 · assembled scene hook",-29.6,1
+98.782,54:10,hat,"Chorus 2 · assembled scene hook",-29.6,0
 99.005,54:12,kick,"Chorus 2 · assembled scene hook",18.7,0
 99.338,54:15,kick,"Chorus 2 · assembled scene hook",-25.1,1
 99.671,55:2,kick,"Chorus 2 · assembled scene hook",31.5,1
@@ -315,6 +322,7 @@ t,bar16,tag,section,attack_offset_ms,clear_attack
 112.783,62:8,kick,"Final A · rush hour",1.1,0
 113.005,62:10,hat,"Final A · rush hour",-6.6,0
 113.227,62:12,kick,"Final A · rush hour",0.8,0
+113.338,62:13,vocal,"Final A · rush hour",-33.7,0
 113.449,62:14,vocal,"Final A · rush hour",-18.3,0
 113.672,63:0,snare,"Final A · rush hour",-7.0,1
 114.116,63:4,kick,"Final A · rush hour",31.1,0
@@ -326,6 +334,7 @@ t,bar16,tag,section,attack_offset_ms,clear_attack
 115.894,64:4,snare,"Final A · rush hour",30.9,1
 116.338,64:8,kick,"Final A · rush hour",26.7,0
 116.783,64:12,kick,"Final A · rush hour",-21.6,1
+116.894,64:13,vocal,"Final A · rush hour",6.3,0
 117.005,64:14,kick,"Final A · rush hour",-6.4,0
 117.227,65:0,snare,"Final A · rush hour",-1.2,0
 117.672,65:4,kick,"Final A · rush hour",-20.4,0
@@ -374,6 +383,7 @@ t,bar16,tag,section,attack_offset_ms,clear_attack
 128.783,71:8,kick,"Final B · arrival sprint",-34.1,0
 129.005,71:10,vocal,"Final B · arrival sprint",10.1,0
 129.227,71:12,bass,"Final B · arrival sprint",22.7,0
+129.338,71:13,vocal,"Final B · arrival sprint",12.9,0
 129.450,71:14,bass,"Final B · arrival sprint",-6.9,0
 129.672,72:0,snare,"Final B · arrival sprint",-24.5,1
 130.116,72:4,snare,"Final B · arrival sprint",-13.6,0
@@ -388,6 +398,7 @@ t,bar16,tag,section,attack_offset_ms,clear_attack
 132.338,73:8,kick,"Final B · arrival sprint",-22.3,0
 132.561,73:10,hat,"Final B · arrival sprint",-17.7,0
 132.783,73:12,kick,"Final B · arrival sprint",3.1,0
+132.894,73:13,vocal,"Final B · arrival sprint",-27.9,0
 133.005,73:14,bass,"Final B · arrival sprint",-0.3,0
 133.227,74:0,snare,"Final B · arrival sprint",-0.3,1
 133.450,74:2,vocal,"Final B · arrival sprint",-19.0,0
@@ -396,6 +407,7 @@ t,bar16,tag,section,attack_offset_ms,clear_attack
 134.116,74:8,kick,"Final B · arrival sprint",-22.4,0
 134.339,74:10,hat,"Final B · arrival sprint",-9.3,0
 134.561,74:12,kick,"Final B · arrival sprint",0.0,0
+134.672,74:13,hat,"Final B · arrival sprint",-35.5,0
 135.672,75:6,vocal,"Outro · two bench lamps",-16.6,0
 136.116,75:10,vocal,"Outro · two bench lamps",1.5,0
 136.561,75:14,hat,"Outro · two bench lamps",-0.8,0

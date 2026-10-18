@@ -6,7 +6,7 @@
 - Cover colours: #77C9ED #A5DFB5 #F3A8C8 #F8BB7D #B1A1E3. They are used for the pixel tower, the floats, the scene panels and the windows.
 - Speed: 10 u/s, then 9 u/s in the outro.
 - Road width: 2.8 → 2.0 (alley) → 2.4 → 2.2 → 2.4 → 2.1 → **1.8** (sprint) → 2.6.
-- Elevation range: −3 to +15. The road crosses itself 133 times as legal over/under passes (validator count), with 0 illegal crossings.
+- Elevation range: −3 to +15. The road crosses itself 160 times as legal over/under passes (validator count), with 0 illegal crossings.
 
 ## Route choreography (each section has its own texture; see route.png)
 
@@ -23,7 +23,7 @@
 | 9 | Chorus 2 · sky bridge (92.3–104.8) | **Long bridge with a dog-leg** (16 + 9 + rest) high over Pre 2 / Pre 3 | +13 (top) | Bridge gate, rails, five scene panels drop in on bar downbeats, confetti | wide → high |
 | 10 | Stop 2 · E-T-A (104.8–106.6) | **fall −6** off the bridge edge (104.61), then a mirrored V kink | +7 | Letters E, T, A | top |
 | 11 | Final A · pixel heart (106.6–120.8) | **Closed lobe** (pair rotates every 12 taps) round a giant flat pixel heart. It closes because of the descent | **ramp −6** | Giant flat heart image (art/heart-poster.png), lamps that react to taps | high |
-| 12 | Final B · arrival sprint (120.8–135.0) | **Tight 2-tap wiggle corridor** (posts at ±1.6), then a long straight stair carrying the 17-tap run | **fall −3** at the end (134.61) | Sprint posts. **Egg 3**: five windows light one per beat (124.3 s). **Fake-out** closed side street | iso (shake 0.08) |
+| 12 | Final B · arrival sprint (120.8–135.0) | **Tight 2-tap wiggle corridor** (posts at ±1.6), then a long straight stair carrying the 17-tap run | **fall −3** at the end (134.72) | Sprint posts. **Egg 3**: five windows light one per beat (124.3 s). **Fake-out** closed side street | iso (shake 0.08) |
 | 13 | Outro · two lamps (135.0–151.4) | **Big sweeping steps** (16 u legs), then a long straight to the gate | −3 | Bench between two lamps; the lamps light on 136.8 / 138.6 | high → wide |
 
 The fake-out forks are scenery only. They sit 1.2 u lower than the road, have a different tint, end in a broken edge, rock or planter, and never react to music. Nothing marks a tap time.
@@ -65,10 +65,16 @@ The fake-out forks are scenery only. They sit 1.2 u lower than the road, have a 
 
 GenerateImage was used first, but its files never reached the box after the 11:33 restore. These files are drawn procedurally by `_tools-w3/art_proc.py`: flat, pixel and low-poly style, no people and no faces. They can be swapped 1:1 for generated versions.
 
-## Chart summary
-- Taps: 410 (legacy 232, ×1.77).
-- Minimum gap: 0.222 s (an 8th at 135 BPM).
-- Densest run: 17 taps of 8ths from 131.0 to 134.6 s.
-- Per-section density runs from 1.7/s (intro) to 3.9/s (Final B). See chart-report.md.
-- Recommended judgment: perfect ±45 ms, good ±90 ms, miss beyond ±110 ms.
+## Chart summary (tier: hard)
+- Taps: 422 (legacy 232, ×1.82).
+- Density: average 167 CPM, peak 420 CPM (most taps in any 1 s; The Racing peaks at 440).
+- Runs: mostly 8ths (0.222 s), plus **12 short 16th bursts** (0.111 s). They sit only on real 16th events:
+  - the hat/vocal fill into Chorus 1 (bar 18: four 16ths);
+  - the snare fill into Chorus 2 (bar 50);
+  - the rapid "E-T-A" syllables in Chorus 2;
+  - the vocal pickups in Final A/B.
+- The hook keeps its off-beat syncopation (16ths 2-4-6-8-12-15), like The Racing's dotted figures.
+- Densest run: 19 taps from 131.0 to 134.7 s.
+- Judgment (schema v2.5): per-tap good window = half the local gap (±55 ms inside bursts, ±100 ms max), perfect ±40 ms.
+- See chart-report.md for per-section density, spot checks and the comparison with the originals.
 - No tap hints of any kind.

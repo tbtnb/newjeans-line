@@ -30,6 +30,17 @@ def run(slug):
     for tp in taps:
         if out and tp['t']-out[-1]['t']<mg: continue
         out.append(tp)
+    # 16th-note bursts (v2 steering 11:48): extra taps only where a real 16th event exists (+-25 ms, strength >= burstS)
+    for sec in C['sections']:
+        for bar,ks in sec.get('burst',{}).items():
+            for k in ks:
+                t=T0+(bar*16+k)*PER
+                st={L:S(L,t,0.025) for L in ['snare','hat','onsets','vocal','kick']}
+                L_=max(st,key=st.get)
+                if st[L_]<sec.get('burstS',0.5): print('  burst dropped (no event)',bar,k); continue
+                if any(abs(tp['t']-t)<0.1 for tp in out): continue
+                out.append(dict(t=round(t,3),grid=round(float(t),3),pos=f'{bar}:{k}',tag=L_ if L_!='onsets' else 'fx',sec=sec['label'],burst=True))
+    out.sort(key=lambda x:x['t'])
     out=[tp for tp in out if 1.0<=tp['t']<=d['duration']-1.0]
     return out,d
 if __name__=='__main__':

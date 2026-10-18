@@ -86,7 +86,7 @@ layout=dict(id='cool-with-you',title='Cool With You',
 for sec,p in zip(layout['sections'],[None,None,dict(fogEnd=80),dict(skyTop='#3f5966'),dict(skyTop='#6d8a96'),None,dict(skyTop='#46606b'),None,dict(skyTop='#7fb0bf'),dict(ground='#5d7d86'),dict(skyTop='#a9c9d3')]):
     if p: sec['palette']=p
 L.write(dict(bpm=134.995,grid=dict(t0=0.3344,sixteenth=0.111115,note='bar n starts at t0+1.77784*n'),
-  judgment=dict(perfect=0.045,good=0.095,miss_beyond=0.120,note='recommended; see chart-report.md'),
-  notes='Hand-composed two-step chart, 248 taps (old 107, x2.32). Min gap 0.222 s. Fastest run 15 taps (124.8-127.9 s).'),layout)
+  judgment=dict(perfect=0.040,good='half the local gap, max 0.100 (0.055 at the four 16th flams)',miss_beyond=0.095,note='schema v2.5 per-tap windows; see chart-report.md'),
+  notes='Hand-composed two-step chart, 252 taps (old 107, x2.36), tier moderate. Four 16th snare-flam pairs in the drops (min gap 0.111 s). Avg 102 CPM, peak 300 CPM. Fastest run 15 taps (124.8-127.9 s).'),layout)
 L.plot()
 print('ok hits',len(L.hits),'passes',len(L.passes),'objects',len(L.objects))

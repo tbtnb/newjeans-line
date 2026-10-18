@@ -595,11 +595,27 @@
 "sec": "Pre 1 \u00b7 forwarding blocks"
 },
 {
+"t": 35.115,
+"grid": 35.115,
+"pos": "18:13",
+"tag": "hat",
+"sec": "Pre 1 \u00b7 forwarding blocks",
+"burst": true
+},
+{
 "t": 35.226,
 "grid": 35.226,
 "pos": "18:14",
 "tag": "hat",
 "sec": "Pre 1 \u00b7 forwarding blocks"
+},
+{
+"t": 35.337,
+"grid": 35.337,
+"pos": "18:15",
+"tag": "vocal",
+"sec": "Pre 1 \u00b7 forwarding blocks",
+"burst": true
 },
 {
 "t": 35.67,
@@ -1575,6 +1591,14 @@
 "sec": "Pre 3 \u00b7 tower lift"
 },
 {
+"t": 85.116,
+"grid": 85.116,
+"pos": "46:15",
+"tag": "vocal",
+"sec": "Pre 3 \u00b7 tower lift",
+"burst": true
+},
+{
 "t": 85.227,
 "grid": 85.227,
 "pos": "47:0",
@@ -1715,6 +1739,14 @@
 "sec": "Pre 3 \u00b7 tower lift"
 },
 {
+"t": 92.005,
+"grid": 92.005,
+"pos": "50:13",
+"tag": "snare",
+"sec": "Pre 3 \u00b7 tower lift",
+"burst": true
+},
+{
 "t": 92.116,
 "grid": 92.116,
 "pos": "50:14",
@@ -1722,11 +1754,27 @@
 "sec": "Pre 3 \u00b7 tower lift"
 },
 {
+"t": 92.227,
+"grid": 92.227,
+"pos": "50:15",
+"tag": "vocal",
+"sec": "Pre 3 \u00b7 tower lift",
+"burst": true
+},
+{
 "t": 92.56,
 "grid": 92.56,
 "pos": "51:2",
 "tag": "hat",
 "sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 92.671,
+"grid": 92.671,
+"pos": "51:3",
+"tag": "vocal",
+"sec": "Chorus 2 \u00b7 assembled scene hook",
+"burst": true
 },
 {
 "t": 92.782,
@@ -1769,6 +1817,14 @@
 "pos": "52:2",
 "tag": "kick",
 "sec": "Chorus 2 \u00b7 assembled scene hook"
+},
+{
+"t": 94.449,
+"grid": 94.449,
+"pos": "52:3",
+"tag": "vocal",
+"sec": "Chorus 2 \u00b7 assembled scene hook",
+"burst": true
 },
 {
 "t": 94.56,
@@ -2212,6 +2268,14 @@
 "sec": "Final A \u00b7 rush hour"
 },
 {
+"t": 113.338,
+"grid": 113.338,
+"pos": "62:13",
+"tag": "vocal",
+"sec": "Final A \u00b7 rush hour",
+"burst": true
+},
+{
 "t": 113.449,
 "grid": 113.449,
 "pos": "62:14",
@@ -2287,6 +2351,14 @@
 "pos": "64:12",
 "tag": "kick",
 "sec": "Final A \u00b7 rush hour"
+},
+{
+"t": 116.894,
+"grid": 116.894,
+"pos": "64:13",
+"tag": "vocal",
+"sec": "Final A \u00b7 rush hour",
+"burst": true
 },
 {
 "t": 117.005,
@@ -2625,6 +2697,14 @@
 "sec": "Final B \u00b7 arrival sprint"
 },
 {
+"t": 129.338,
+"grid": 129.338,
+"pos": "71:13",
+"tag": "vocal",
+"sec": "Final B \u00b7 arrival sprint",
+"burst": true
+},
+{
 "t": 129.45,
 "grid": 129.45,
 "pos": "71:14",
@@ -2723,6 +2803,14 @@
 "sec": "Final B \u00b7 arrival sprint"
 },
 {
+"t": 132.894,
+"grid": 132.894,
+"pos": "73:13",
+"tag": "vocal",
+"sec": "Final B \u00b7 arrival sprint",
+"burst": true
+},
+{
 "t": 133.005,
 "grid": 133.005,
 "pos": "73:14",
@@ -2777,6 +2865,14 @@
 "pos": "74:12",
 "tag": "kick",
 "sec": "Final B \u00b7 arrival sprint"
+},
+{
+"t": 134.672,
+"grid": 134.672,
+"pos": "74:13",
+"tag": "hat",
+"sec": "Final B \u00b7 arrival sprint",
+"burst": true
 },
 {
 "t": 135.672,

@@ -749,6 +749,14 @@
 "sec": "Drop 1 \u00b7 open courtyard"
 },
 {
+"t": 70.115,
+"grid": 70.115,
+"pos": "39:4",
+"tag": "snare",
+"sec": "Drop 1 \u00b7 open courtyard",
+"burst": true
+},
+{
 "t": 70.337,
 "grid": 70.337,
 "pos": "39:6",
@@ -1218,6 +1226,14 @@
 "sec": "Final drop A \u00b7 feather storm"
 },
 {
+"t": 105.672,
+"grid": 105.672,
+"pos": "59:4",
+"tag": "snare",
+"sec": "Final drop A \u00b7 feather storm",
+"burst": true
+},
+{
 "t": 105.894,
 "grid": 105.894,
 "pos": "59:6",
@@ -1344,6 +1360,14 @@
 "sec": "Final drop A \u00b7 feather storm"
 },
 {
+"t": 112.783,
+"grid": 112.783,
+"pos": "63:4",
+"tag": "snare",
+"sec": "Final drop A \u00b7 feather storm",
+"burst": true
+},
+{
 "t": 113.005,
 "grid": 113.005,
 "pos": "63:6",
@@ -1454,6 +1478,14 @@
 "pos": "66:3",
 "tag": "kick",
 "sec": "Final drop B \u00b7 choosing to stay"
+},
+{
+"t": 118.117,
+"grid": 118.117,
+"pos": "66:4",
+"tag": "snare",
+"sec": "Final drop B \u00b7 choosing to stay",
+"burst": true
 },
 {
 "t": 118.339,

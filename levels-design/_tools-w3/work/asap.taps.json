@@ -231,6 +231,22 @@
 "sec": "Pre \u00b7 letters behind trees"
 },
 {
+"t": 34.838,
+"grid": 34.838,
+"pos": "18:11",
+"tag": "snare",
+"sec": "Pre \u00b7 letters behind trees",
+"burst": true
+},
+{
+"t": 35.3,
+"grid": 35.3,
+"pos": "18:15",
+"tag": "hat",
+"sec": "Pre \u00b7 letters behind trees",
+"burst": true
+},
+{
 "t": 35.415,
 "grid": 35.415,
 "pos": "19:0",
@@ -651,11 +667,27 @@
 "sec": "Dance break \u00b7 stars in groups"
 },
 {
+"t": 75.45,
+"grid": 75.45,
+"pos": "40:11",
+"tag": "snare",
+"sec": "Dance break \u00b7 stars in groups",
+"burst": true
+},
+{
 "t": 75.565,
 "grid": 75.565,
 "pos": "40:12",
 "tag": "hat",
 "sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 75.68,
+"grid": 75.68,
+"pos": "40:13",
+"tag": "hat",
+"sec": "Dance break \u00b7 stars in groups",
+"burst": true
 },
 {
 "t": 76.027,
@@ -670,6 +702,14 @@
 "pos": "41:8",
 "tag": "snare",
 "sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 77.296,
+"grid": 77.296,
+"pos": "41:11",
+"tag": "fx",
+"sec": "Dance break \u00b7 stars in groups",
+"burst": true
 },
 {
 "t": 77.411,
@@ -691,6 +731,14 @@
 "pos": "42:2",
 "tag": "hat",
 "sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 78.219,
+"grid": 78.219,
+"pos": "42:3",
+"tag": "snare",
+"sec": "Dance break \u00b7 stars in groups",
+"burst": true
 },
 {
 "t": 78.334,
@@ -719,6 +767,14 @@
 "pos": "42:10",
 "tag": "hat",
 "sec": "Dance break \u00b7 stars in groups"
+},
+{
+"t": 79.142,
+"grid": 79.142,
+"pos": "42:11",
+"tag": "snare",
+"sec": "Dance break \u00b7 stars in groups",
+"burst": true
 },
 {
 "t": 79.257,
@@ -882,6 +938,14 @@
 "sec": "Turnaround"
 },
 {
+"t": 90.218,
+"grid": 90.218,
+"pos": "48:11",
+"tag": "kick",
+"sec": "Turnaround",
+"burst": true
+},
+{
 "t": 90.333,
 "grid": 90.333,
 "pos": "48:12",
@@ -901,6 +965,14 @@
 "pos": "49:4",
 "tag": "kick",
 "sec": "Turnaround"
+},
+{
+"t": 91.371,
+"grid": 91.371,
+"pos": "49:5",
+"tag": "hat",
+"sec": "Turnaround",
+"burst": true
 },
 {
 "t": 91.717,
@@ -1071,6 +1143,14 @@
 "sec": "Chorus 2 \u00b7 the small house"
 },
 {
+"t": 106.831,
+"grid": 106.831,
+"pos": "57:11",
+"tag": "hat",
+"sec": "Chorus 2 \u00b7 the small house",
+"burst": true
+},
+{
 "t": 106.947,
 "grid": 106.947,
 "pos": "57:12",
@@ -1155,6 +1235,14 @@
 "sec": "Chorus 2 \u00b7 the small house"
 },
 {
+"t": 114.215,
+"grid": 114.215,
+"pos": "61:11",
+"tag": "hat",
+"sec": "Chorus 2 \u00b7 the small house",
+"burst": true
+},
+{
 "t": 114.331,
 "grid": 114.331,
 "pos": "61:12",
@@ -1237,6 +1325,14 @@
 "pos": "66:10",
 "tag": "snare",
 "sec": "Final hook \u00b7 lamp lights"
+},
+{
+"t": 123.445,
+"grid": 123.445,
+"pos": "66:11",
+"tag": "hat",
+"sec": "Final hook \u00b7 lamp lights",
+"burst": true
 },
 {
 "t": 124.022,

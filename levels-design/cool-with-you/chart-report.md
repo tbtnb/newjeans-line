@@ -2,12 +2,30 @@
 | | value |
 |---|---|
 | legacy taps | 107 |
-| new taps | **248** (x2.32) |
+| new taps | **252** (x2.36) |
 | grid | 134.995 BPM, 16th = 0.111115 s, phase 0.0011 s, attack calibration -21.0 ms |
-| min gap | 0.222 s |
+| min gap | 0.111 s |
 | fastest run | 15 taps with gaps <= 0.30 s, from 124.78 s to 127.89 s |
-| attack offset (measured attack minus tap time, strongest-quartile attacks; spread includes hats/consonants caught by the ±35 ms window) | median -8.4 ms, MAD 12.7 ms |
-| recommended judgment | perfect ±45 ms, good ±95 ms, miss beyond ±120 ms (good < half the min gap; engine v2.3 uses grace-based judging on event timestamps) |
+| attack offset (measured attack minus tap time, strongest-quartile attacks; spread includes hats/consonants caught by the ±35 ms window) | median -7.1 ms, MAD 13.1 ms |
+| recommended judgment | per-tap good window = half the local gap, capped at ±100 ms (floor ±45 ms, schema v2.5); inside 16th bursts that is ±55 ms; perfect ±40 ms everywhere; a tap more than ±95 ms away from an isolated beat is a miss |
+| difficulty tier | **moderate** |
+
+## Density vs original Dancing Line (dlfm-wiki CPM)
+| level | avg CPM | peak CPM |
+|---|---|---|
+| **Cool With You (this chart)** | **102** (taps / duration × 60) | **300** (most taps in any 1 s × 60; validator metric); 541 as 60 / min gap |
+| The Racing (hardest) | 220 | 440 |
+| Amusement Park | - | 512 |
+| Storm | - | 460 |
+| The Chaos | 136 | 408 |
+| Chinese Garden | 148 | 296 |
+| Winter | 140 | 280 |
+| The Piano | 125 | 250 |
+| The Autumn | 96 | - |
+
+Note: the wiki's 'avg CPM' is not plain taps/duration (The Racing: 357 taps / 144 s = 149 by our formula vs 220 on the wiki), so compare our avg against ~149 for The Racing; peak CPM uses the same 1-second-window idea as the validator.
+
+16th bursts: 4 added taps at 70.11 s (39:4, snare), 105.67 s (59:4, snare), 112.78 s (63:4, snare), 118.12 s (66:4, snare). Each burst tap sits on a real 16th event (snare/hat roll, flam or rapid vocal syllable, strength ≥ 0.5 within ±25 ms) at a fill, build-up, drop or final chorus.
 
 ## Per-section density
 | section | t | old | new | new/s |
@@ -16,12 +34,12 @@
 | Verse 1 · reflections wake | 14.56-28.78 | 12 | 22 | 1.55 |
 | Verse 1b · rain curtain | 28.78-43.00 | 12 | 26 | 1.83 |
 | Hook · moonlit pool (stripped) | 43.00-57.23 | 8 | 18 | 1.27 |
-| Drop 1 · open courtyard | 57.23-71.45 | 12 | 36 | 2.53 |
+| Drop 1 · open courtyard | 57.23-71.45 | 12 | 37 | 2.60 |
 | Verse 2 · two lights approach | 71.45-85.67 | 12 | 24 | 1.69 |
 | Break · one light leaves | 85.67-92.78 | 5 | 7 | 0.98 |
 | Build · wings unfold | 92.78-99.89 | 7 | 18 | 2.53 |
-| Final drop A · feather storm | 99.89-114.12 | 12 | 36 | 2.53 |
-| Final drop B · choosing to stay | 114.12-128.34 | 12 | 46 | 3.23 |
+| Final drop A · feather storm | 99.89-114.12 | 12 | 38 | 2.67 |
+| Final drop B · choosing to stay | 114.12-128.34 | 12 | 47 | 3.30 |
 | Outro · open exit | 128.34-147.88 | 8 | 5 | 0.26 |
 
 ## Spot checks (start, section changes, middle, end)
@@ -41,7 +59,7 @@ Offset = measured attack minus tap time (negative = attack slightly before the t
 | 57.892 | 32:6 | snare | Drop 1 · open courtyard | +17.1 |
 | 71.448 | 40:0 | kick | Verse 2 · two lights approach | +31.4 |
 | 72.559 | 40:10 | kick | Verse 2 · two lights approach | +32.1 |
-| 78.560 | 44:0 | snare | Verse 2 · two lights approach | -21.9 |
+| 79.671 | 44:10 | kick | Verse 2 · two lights approach | +30.7 |
 | 85.671 | 48:0 | kick | Break · one light leaves | -22.6 |
 | 87.449 | 49:0 | kick | Break · one light leaves | -6.3 |
 | 92.782 | 52:0 | vocal | Build · wings unfold | +25.0 |

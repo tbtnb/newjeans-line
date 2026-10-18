@@ -544,23 +544,28 @@
    "tag": "bass"
   },
   {
-   "t": 70.337,
+   "t": 70.115,
    "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 70.337,
+   "dir": "L",
    "tag": "hat"
   },
   {
    "t": 70.559,
-   "dir": "L",
+   "dir": "R",
    "tag": "bass"
   },
   {
    "t": 70.781,
-   "dir": "R",
+   "dir": "L",
    "tag": "hat"
   },
   {
    "t": 71.004,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
   },
   {
@@ -570,32 +575,32 @@
   },
   {
    "t": 71.448,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 72.559,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 73.226,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 73.893,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 74.337,
-   "dir": "R",
+   "dir": "L",
    "tag": "snare"
   },
   {
    "t": 75.004,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -605,27 +610,27 @@
   },
   {
    "t": 76.782,
-   "dir": "R",
+   "dir": "L",
    "tag": "snare"
   },
   {
    "t": 77.115,
-   "dir": "L",
+   "dir": "R",
    "tag": "bass"
   },
   {
    "t": 77.448,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 77.893,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
   },
   {
    "t": 78.115,
-   "dir": "R",
+   "dir": "L",
    "tag": "snare"
   },
   {
@@ -635,27 +640,27 @@
   },
   {
    "t": 79.671,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 80.337,
-   "dir": "R",
+   "dir": "L",
    "tag": "snare"
   },
   {
    "t": 81.004,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 81.449,
-   "dir": "R",
+   "dir": "L",
    "tag": "hat"
   },
   {
    "t": 82.115,
-   "dir": "L",
+   "dir": "R",
    "tag": "snare"
   },
   {
@@ -665,32 +670,32 @@
   },
   {
    "t": 83.893,
-   "dir": "R",
+   "dir": "L",
    "tag": "bass"
   },
   {
    "t": 84.226,
-   "dir": "L",
+   "dir": "R",
    "tag": "bass"
   },
   {
    "t": 84.56,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 85.004,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
   },
   {
    "t": 85.226,
-   "dir": "R",
+   "dir": "L",
    "tag": "snare"
   },
   {
    "t": 85.671,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
@@ -730,122 +735,122 @@
   },
   {
    "t": 93.671,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 94.56,
-   "dir": "R",
+   "dir": "L",
    "tag": "snare"
   },
   {
    "t": 95.227,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 95.671,
-   "dir": "R",
+   "dir": "L",
    "tag": "hat"
   },
   {
    "t": 96.338,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
   },
   {
    "t": 96.782,
-   "dir": "R",
+   "dir": "L",
    "tag": "vocal"
   },
   {
    "t": 97.005,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 97.449,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 97.671,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
   },
   {
    "t": 98.116,
-   "dir": "R",
+   "dir": "L",
    "tag": "vocal"
   },
   {
    "t": 98.338,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
   },
   {
    "t": 98.56,
-   "dir": "L",
+   "dir": "R",
    "tag": "snare"
   },
   {
    "t": 98.783,
-   "dir": "R",
+   "dir": "L",
    "tag": "bass"
   },
   {
    "t": 99.005,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 99.227,
-   "dir": "L",
+   "dir": "R",
    "tag": "hat"
   },
   {
    "t": 99.449,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
   },
   {
    "t": 99.671,
-   "dir": "R",
+   "dir": "L",
    "tag": "vocal"
   },
   {
    "t": 99.894,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
   },
   {
    "t": 100.56,
-   "dir": "L",
+   "dir": "R",
    "tag": "snare"
   },
   {
    "t": 101.005,
-   "dir": "R",
+   "dir": "L",
    "tag": "snare"
   },
   {
    "t": 101.227,
-   "dir": "L",
+   "dir": "R",
    "tag": "snare"
   },
   {
    "t": 101.672,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 102.338,
-   "dir": "L",
+   "dir": "R",
    "tag": "snare"
   },
   {
    "t": 102.783,
-   "dir": "R",
+   "dir": "L",
    "tag": "hat"
   },
   {
@@ -855,28 +860,33 @@
   },
   {
    "t": 104.116,
-   "dir": "L",
+   "dir": "R",
    "tag": "snare"
   },
   {
    "t": 104.561,
-   "dir": "R",
+   "dir": "L",
    "tag": "snare"
   },
   {
    "t": 104.783,
-   "dir": "L",
+   "dir": "R",
    "tag": "snare"
   },
   {
    "t": 105.227,
-   "dir": "R",
+   "dir": "L",
    "tag": "bass"
   },
   {
    "t": 105.561,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
+  },
+  {
+   "t": 105.672,
+   "dir": "L",
+   "tag": "snare"
   },
   {
    "t": 105.894,
@@ -969,18 +979,23 @@
    "tag": "kick"
   },
   {
-   "t": 113.005,
+   "t": 112.783,
    "dir": "L",
+   "tag": "snare"
+  },
+  {
+   "t": 113.005,
+   "dir": "R",
    "tag": "hat"
   },
   {
    "t": 113.228,
-   "dir": "R",
+   "dir": "L",
    "tag": "bass"
   },
   {
    "t": 113.45,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
   },
   {
@@ -990,12 +1005,12 @@
   },
   {
    "t": 113.894,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 114.116,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1049,8 +1064,13 @@
    "tag": "kick"
   },
   {
-   "t": 118.339,
+   "t": 118.117,
    "dir": "R",
+   "tag": "snare"
+  },
+  {
+   "t": 118.339,
+   "dir": "L",
    "tag": "snare"
   },
   {
@@ -1075,22 +1095,22 @@
   },
   {
    "t": 119.894,
-   "dir": "R",
+   "dir": "L",
    "tag": "vocal"
   },
   {
    "t": 120.117,
-   "dir": "L",
+   "dir": "R",
    "tag": "snare"
   },
   {
    "t": 120.339,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 120.561,
-   "dir": "L",
+   "dir": "R",
    "tag": "vocal"
   },
   {
@@ -1150,7 +1170,7 @@
   },
   {
    "t": 124.783,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -1230,22 +1250,22 @@
   },
   {
    "t": 131.895,
-   "dir": "L",
+   "dir": "R",
    "tag": "kick"
   },
   {
    "t": 133.228,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 135.451,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
    "t": 139.006,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   }
  ],
@@ -1313,10 +1333,10 @@
   "note": "bar n starts at t0+1.77784*n"
  },
  "judgment": {
-  "perfect": 0.045,
-  "good": 0.095,
-  "miss_beyond": 0.12,
-  "note": "recommended; see chart-report.md"
+  "perfect": 0.04,
+  "good": "half the local gap, max 0.100 (0.055 at the four 16th flams)",
+  "miss_beyond": 0.095,
+  "note": "schema v2.5 per-tap windows; see chart-report.md"
  },
- "notes": "Hand-composed two-step chart, 248 taps (old 107, x2.32). Min gap 0.222 s. Fastest run 15 taps (124.8-127.9 s)."
+ "notes": "Hand-composed two-step chart, 252 taps (old 107, x2.36), tier moderate. Four 16th snare-flam pairs in the drops (min gap 0.111 s). Avg 102 CPM, peak 300 CPM. Fastest run 15 taps (124.8-127.9 s)."
 }

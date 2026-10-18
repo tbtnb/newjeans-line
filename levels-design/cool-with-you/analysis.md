@@ -6,4 +6,4 @@
 - No demucs stems were used (so the 25 ms htdemucs latency does not apply).
 - Groove: 135 BPM UK-garage two-step at half-time feel: kick on 1 and the "and" of 3 (16th 10), rim/snare on 2/4, swung hats; long airy vocal lines. A stripped hook (bars 24-32) and a near-silent break (48-52) before the build.
 - Sections: from beat-synchronous chroma/MFCC/RMS novelty, snapped to bar lines and checked against the arrangement (see analysis.json `sections`).
-- Verification: every tap is on the grid and was kept only when a real event lies within ±35 ms; measured attack offset median -8.4 ms (MAD 12.7 ms), see chart-report.md and chart-sync.csv.
+- Verification: every tap is on the grid and was kept only when a real event lies within ±35 ms; measured attack offset median -7.1 ms (MAD 13.1 ms), see chart-report.md and chart-sync.csv.

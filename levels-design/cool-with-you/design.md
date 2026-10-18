@@ -18,7 +18,7 @@ The level follows the mood of the Codex reference: gallery frame, empty mirror, 
 
 - Speed: 8.5 u/s.
 - Road width: 2.8 → 2.4 → **2.0** (rain curtain, build) → 2.6 → 2.4 → 2.2 → **1.9** (final drop B) → 2.8.
-- Elevation: −3 to +9. 101 multi-level crossings (validator), 0 illegal.
+- Elevation: −3 to +9. 141 multi-level crossings (validator), 0 illegal.
 
 ## Route choreography (see route.png)
 
@@ -69,9 +69,11 @@ The fake-out forks are scenery only. They sit 1.2 u lower, are tinted, end in wa
 
 All four are procedural (`_tools-w3/art_proc.py`) because GenerateImage output did not reach the box. No faces.
 
-## Chart summary
-- Taps: 248 (legacy 107, ×2.32).
-- Minimum gap: 0.222 s.
-- Densest run: 15 taps from 124.8 to 127.9 s, the two 8th bars closing Final drop B.
-- Two-step logic: kick on 16ths 0 and 10, ghost on 6, garage fills at phrase ends. The hook and break stay sparse. See chart-report.md.
-- Recommended judgment: perfect ±45 ms, good ±95 ms, miss beyond ±120 ms.
+## Chart summary (tier: moderate)
+- Taps: 252 (legacy 107, ×2.36).
+- Density: average 102 CPM, peak 300 CPM.
+- Two-step logic: kick on 16ths 0 and 10, ghost on 6, dotted garage fills (0-3-6-…) at phrase ends. The hook and break stay sparse.
+- 16th taps: only **four 16th pairs**, on the loud snare flams (16ths 3-4) at phrase ends in the drops: 70.11, 105.67, 112.78 and 118.12 s.
+- Densest run: 15 taps from 124.8 to 127.9 s.
+- Judgment (schema v2.5): good window = half the local gap (±55 ms at the flams, ±100 ms max), perfect ±40 ms.
+- See chart-report.md.
