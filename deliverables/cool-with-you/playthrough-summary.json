@@ -7,11 +7,11 @@
  "time": 147.8803,
  "cursor": 244,
  "taps": 244,
- "perfect": 244,
- "good": 0,
+ "perfect": 242,
+ "good": 2,
  "diamonds": 10,
  "ignoredDuplicates": 0,
- "fps": 14.247551202137133,
+ "fps": 11.531808571961191,
  "save": {
   "version": 2,
   "selected": "cool-with-you",
@@ -22,7 +22,7 @@
     "crowns": 3,
     "attempts": 1,
     "completed": true,
-    "perfect": 244,
+    "perfect": 242,
     "taps": 244
    }
   },
@@ -34,9 +34,9 @@
   }
  },
  "judged": 244,
- "errorMeanMs": 1.4,
- "errorSdMs": 2.3,
- "errorMaxAbsMs": 26,
+ "errorMeanMs": 0.9,
+ "errorSdMs": 6.6,
+ "errorMaxAbsMs": 53,
  "sent": 244,
  "logs": []
 }
