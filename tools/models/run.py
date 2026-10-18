@@ -32,6 +32,7 @@ cam_d.clip_end = 1000
 def shoot(name, direction, scale):
     d = Vector(direction).normalized(); cam.location = ctr + d * (R * 6 + 10)
     cam.rotation_euler = (-d).to_track_quat('-Z', 'Y').to_euler(); cam_d.ortho_scale = scale
+    if abs(d.z) > 0.99: cam.rotation_euler = (0, 0, 0)   # plan view: back (+Y) up, front at the bottom (design sheet convention)
     sc.render.filepath = os.path.join(out, f'{aid}-{name}.png'); bpy.ops.render.render(write_still=True)
 S = max(ext) * 1.12 + 0.05
 shoot('front', (0, -1, 0), S); shoot('side', (1, 0, 0), S); shoot('top', (0, 0, 1), S)

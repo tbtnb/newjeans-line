@@ -14,3 +14,10 @@ Real low-poly papercraft meshes, built by Python (Blender bpy, headless) per ass
   falls back to the zone render named in `tools/models/specs/<id>.json` until the sheet lands).
 
 Conventions: metres, Blender Z-up, model front faces -Y, base on z=0. glTF export is Y-up; vertex colours are COLOR_0 (linear).
+
+## Design sheets (omg-design-v3, C/assets/<design id>/)
+- `tools/models/specs/<id>.json` maps an engine id to its sheet: `{"id": "castle", "design": "H01_popup_castle"}`. build.sh then passes the
+  sheet's `spec.json` (size_m, tris_budget, pivots) to the asset script and compare.py lays the sheet's front/side/top over the model's
+  ortho renders, with design-vs-model size deltas in the header (red when any axis is off by >15%).
+- `tools/omgc/make_spec.py` reads the same spec.json files (DESIGN_IDS) so scene-c.json heights / footprints / tri budgets follow the sheets.
+- Proven so far: castle (H01, 1820/6000 tris, size +0/+2/+0%), bunny-heart (H02, 796/4000, +0/+0/+1%), tree (P04, ~170/600, -2/-1/0%).

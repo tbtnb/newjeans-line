@@ -97,6 +97,29 @@ for z in Z.ZONES:
     zones.append(dict(id=zid, key=z['key'], t0=z['t0'], t1=z['t1'], name=z['cn'], colors=z['pal'], palette=PAL[zid], layers=layers, setpieces=sets, moments=moments))
 spec = dict(version=1, source='levels-design/omg/redesign-v3/C/zones_c.py (omg-design-v3)', chunk=20, window=dict(behind=3, ahead=8),
             clear=dict(ground=0.3, groundMaxH=0.3, near=1.0), assets=assets, zones=zones)
+# design asset sheets (levels-design/omg/redesign-v3/C/assets/<design id>/spec.json): their size / tri budget win over the table
+DESIGN_IDS = {'castle': 'H01_popup_castle', 'bunny-heart': 'H02_giant_bunny_heart', 'carousel': 'H03_bunny_carousel', 'ferris-wheel': 'H04_heart_ferris_wheel',
+ 'lantern-tower': 'H05_lantern_tower', 'heart-gate': 'H06_heart_finish_gate', 'bunny-family': 'H07_bunny_family', 'cannon': 'H08_confetti_cannon',
+ 'book-cover': 'H09_book_cover', 'ward-bed': 'H10_ward_bed_set', 'clock-tower': 'H11_clock_tower', 'flip-phone': 'H12_flip_phone_sculpture',
+ 'phone-tower': 'H13_phone_tower', 'spiral-tower': 'H14_spiral_paper_tower', 'paper-boat': 'H15_bunny_sail_boat', 'pavilion': 'H16_lake_pavilion',
+ 'windmill': 'H17_bunny_windmill', 'reading-bunny': 'H18_reading_bunny', 'sun': 'H19_paper_sun', 'bunny-house': 'P01_bunny_cottage',
+ 'mushroom-house': 'P02_mushroom_house', 'tulip-bed': 'P03_tulip_bed', 'tree': 'P04_paper_tree_round', 'pine': 'P05_paper_pine', 'bunny-statue': 'P06_sitting_bunny',
+ 'iv-heart': 'P07_heart_iv_stand', 'screen': 'P08_curtain_screen', 'pull-tab': 'P09_pull_tab', 'lantern-string': 'P10_lantern_string', 'heart-sculpt': 'P11_heart_sculpture', 'gift': 'P12_gift_box'}
+DESIGN = os.environ.get('DESIGN', '/workspace/nj-design-v3/levels-design/omg/redesign-v3/C')
+for aid, did in DESIGN_IDS.items():
+    f = os.path.join(DESIGN, 'assets', did, 'spec.json')
+    if aid in spec['assets'] and os.path.exists(f):
+        d = json.load(open(f)); a = spec['assets'][aid]
+        sz = d.get('size_m', {}); a['design'] = did; a['h'] = sz.get('h', a['h']); a['w'] = sz.get('w'); a['d'] = sz.get('d'); a['tris'] = d.get('tris_budget', a['tris'])
+# the five-bunny family is one grouped asset (H07): keep a single set piece
+for z in spec['zones']:
+    seen = False; keep = []
+    for sp in z['setpieces']:
+        if sp['asset'] == 'bunny-family':
+            if seen: continue
+            seen = True; sp['t'] = 153.5
+        keep.append(sp)
+    z['setpieces'] = keep
 out = os.path.join(here, '..', '..', 'levels-src', 'omg', 'scene-c.json')
 json.dump(spec, open(out, 'w'), ensure_ascii=False, indent=1)
 n = sum(l['count'] for z in zones for l in z['layers']); print(out, 'zones', len(zones), 'assets', len(assets), 'modelled', sum(a['model'] for a in assets.values()), 'scatter instances', n, 'set pieces', sum(len(z['setpieces']) for z in zones))

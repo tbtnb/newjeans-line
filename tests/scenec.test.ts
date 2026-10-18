@@ -30,3 +30,15 @@ test('scatter is deterministic, keeps tall props off every road segment, and sur
   assert.ok(a.sets.length >= 20);
   const [i0, i1] = activeRange(a.chunks, 50, 3, 8); assert.ok(i1 > i0 && a.chunks[i0].t1 >= 47 && a.chunks[i1].t0 <= 58);
 });
+
+test('paper pages never sit above any road they overlap (falls / ramps terrace downward)', () => {
+  const route = buildRoute(L.chart, L.layout.elevation ?? [], L.duration);
+  const widthAt = (t: number) => { let w = 2.2; for (const x of L.layout.road.width) if (x.t <= t) w = x.w; return w; };
+  const p = place(L.layout.scenec, route, { duration: L.duration, widthAt, roadH: 0.6, hits: () => false });
+  const pad = 28;
+  for (let t = 0; t < L.duration; t += 0.1) {
+    const q = anchor(route, t).pos;
+    for (const c of p.chunks) if (q.x >= c.minX - pad && q.x <= c.maxX + pad && q.z >= c.minZ - pad && q.z <= c.maxZ + pad)
+      assert.ok(c.y <= q.y - 0.6 + 1e-6, `page of chunk ${c.i} (y ${c.y.toFixed(2)}) above road at t=${t.toFixed(1)} (y ${q.y.toFixed(2)})`);
+  }
+});

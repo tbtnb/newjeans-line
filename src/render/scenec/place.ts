@@ -37,6 +37,11 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
     for (let k = 0; k <= 8; k++) { const p = anchor(route, t0 + (t1 - t0) * k / 8).pos; minX = Math.min(minX, p.x); maxX = Math.max(maxX, p.x); minZ = Math.min(minZ, p.z); maxZ = Math.max(maxZ, p.z); y = Math.min(y, p.y); }
     return { i, t0, t1, zone: zoneIndexAt(spec, (t0 + t1) / 2), minX, maxX, minZ, maxZ, y: y - o.roadH, items: [] };
   });
+  // a chunk's paper page reaches PAGE m past its route bbox: it must sit below every road it overlaps (falls / ramps), so the
+  // page height is the lowest road among all chunks whose bbox touches the page rect (pages still terrace, never cover the road)
+  const PAGE = spec.pagePad ?? 28; const own = chunks.map(c => c.y);
+  for (const c of chunks) for (let j = 0; j < chunks.length; j++) { const o = chunks[j];
+    if (o.maxX >= c.minX - PAGE && o.minX <= c.maxX + PAGE && o.maxZ >= c.minZ - PAGE && o.minZ <= c.maxZ + PAGE && own[j] < c.y) c.y = own[j]; }
   const chunkAt = (t: number) => { let lo = 0, hi = chunks.length - 1; while (lo < hi) { const m = (lo + hi + 1) >> 1; if (chunks[m].t0 <= t) lo = m; else hi = m - 1; } return lo; };
   let placed = 0, rejected = 0;
   const clearNear = spec.clear?.near ?? 1.0, groundMaxH = spec.clear?.groundMaxH ?? 0.3;

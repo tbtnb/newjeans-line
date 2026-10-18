@@ -28,7 +28,12 @@ model = [(f'model {v}', Image.open(f'{rdir}/{aid}-{v}.png')) for v in ('front', 
 W = pad + 4 * (C + pad); H1 = C if len(design) > 1 else int(C * 1.15)
 img = Image.new('RGB', (W, 70 + H1 + 40 + C + 40), 'white'); d = ImageDraw.Draw(img)
 ok = 'OK' if rep.get('ok') else 'OVER BUDGET'
-d.text((pad, 10), f"{aid} - {spec.get('name', '')}", fill='black', font=F(26, True))
+title = ' '.join(x for x in (spec.get('id', ''), spec.get('en', spec.get('name', ''))) if x)
+d.text((pad, 10), f"{aid} - {title}", fill='black', font=F(22, True))
+sz = spec.get('size_m')
+if sz:
+    dm = [rep['size'][0] / sz['w'] - 1, rep['size'][1] / sz['d'] - 1, rep['size'][2] / sz['h'] - 1]
+    d.text((W - 470, 14), f"design {sz['w']} x {sz['d']} x {sz['h']} m  -> model {' '.join(f'{x:+.0%}' for x in dm)}", fill='#a33' if max(map(abs, dm)) > 0.15 else '#363', font=F(17))
 d.text((pad, 42), f"{rep['tris']} tris / budget {rep.get('budget')} ({ok}) - size {rep['size'][0]} x {rep['size'][1]} x {rep['size'][2]} m (x,y,z) - pivots: {', '.join(p[6:] for p in rep['pivots']) or '-'}", fill='#444', font=F(17))
 y = 70
 if len(design) == 1:

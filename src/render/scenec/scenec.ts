@@ -167,6 +167,7 @@ export class SceneC {
       else if (p.kind === 'ears' || p.kind === 'ear') rx = -0.22 * beatK;
       else if (p.kind === 'gate') ry = -1.3 * Math.min(1, Math.max(0, (t - d.popAt - 0.6) / 0.8));
       else if (p.kind === 'flag') ry = 0.35 * Math.sin(time * 5 + p.i * 1.3);
+      else if (p.kind === 'tower') { const k = spring(t - d.popAt - 0.15 - p.i * 0.07); p.node.scaling.set(p.baseS.x, p.baseS.y * Math.max(0.02, k), p.baseS.z); continue; }   // towers pop 1/8 beat apart
       else if (p.kind === 'bob') { p.node.position.y = p.baseP.y + 0.15 * beatK; continue; }
       p.node.scaling.copyFrom(p.baseS).scaleInPlace(sc);
       const q = Quaternion.RotationYawPitchRoll(ry, rx, rz); p.node.rotationQuaternion = p.base ? p.base.multiply(q) : q;

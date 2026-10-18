@@ -12,15 +12,18 @@ import { placeholder } from './geo';
 
 export interface Template { id: string; pos: Float32Array; col: Float32Array; idx: Uint32Array; tris: number; model: boolean; container?: AssetContainer; scale: number }
 
-export function fromGeo(id: string, g: { pos: number[]; col: number[]; idx: number[] }, h: number): Template {
-  let ymax = 0; for (let i = 1; i < g.pos.length; i += 3) ymax = Math.max(ymax, g.pos[i]);
-  const s = h / (ymax || 1); const pos = new Float32Array(g.pos.length); for (let i = 0; i < pos.length; i++) pos[i] = g.pos[i] * s;
+export function fromGeo(id: string, g: { pos: number[]; col: number[]; idx: number[] }, h: number, w?: number, d?: number): Template {
+  let ymax = 0, x0 = 1e9, x1 = -1e9, z0 = 1e9, z1 = -1e9;
+  for (let i = 0; i < g.pos.length; i += 3) { ymax = Math.max(ymax, g.pos[i + 1]); x0 = Math.min(x0, g.pos[i]); x1 = Math.max(x1, g.pos[i]); z0 = Math.min(z0, g.pos[i + 2]); z1 = Math.max(z1, g.pos[i + 2]); }
+  // uniform by height, or fitted to the design footprint when the sheet gives one (flat pieces like the book cover)
+  const s = h / (ymax || 1); const sx = w ? w / Math.max(1e-3, x1 - x0) : s, sz = d ? d / Math.max(1e-3, z1 - z0) : s;
+  const pos = new Float32Array(g.pos.length); for (let i = 0; i < pos.length; i += 3) { pos[i] = g.pos[i] * sx; pos[i + 1] = g.pos[i + 1] * s; pos[i + 2] = g.pos[i + 2] * sz; }
   return { id, pos, col: Float32Array.from(g.col), idx: Uint32Array.from(g.idx), tris: g.idx.length / 3, model: false, scale: s };
 }
 
 export function placeholders(spec: SceneCSpec) {
   const out = new Map<string, Template>();
-  for (const [id, a] of Object.entries(spec.assets)) out.set(id, fromGeo(id, placeholder(a.shape), a.h));
+  for (const [id, a] of Object.entries(spec.assets)) out.set(id, fromGeo(id, placeholder(a.shape), a.h, a.w, a.d));
   return out;
 }
 

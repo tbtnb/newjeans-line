@@ -8,7 +8,9 @@ BLENDER=${BLENDER:-/workspace/tools/blender/blender}
 DESIGN=${DESIGN:-/workspace/nj-design-v3/levels-design/omg/redesign-v3/C}
 TMP=${TMP_DIR:-/tmp/omgc-build}; mkdir -p "$TMP" public/models/omg-c deliverables/omg-c-models
 for id in "$@"; do
-  ddir="$DESIGN/assets/$id"; spec=""; [ -f "$ddir/spec.json" ] && spec="$ddir/spec.json"
+  # design dir: assets/<id>/ or the design id named in tools/models/specs/<id>.json ("design": "H01_popup_castle")
+  did=$id; [ -f "tools/models/specs/$id.json" ] && did=$(python3 -c "import json;print(json.load(open('tools/models/specs/$id.json')).get('design','$id'))")
+  ddir="$DESIGN/assets/$did"; spec=""; [ -f "$ddir/spec.json" ] && spec="$ddir/spec.json"
   [ -z "$spec" ] && [ -f "tools/models/specs/$id.json" ] && spec="tools/models/specs/$id.json"
   "$BLENDER" -b --factory-startup -P tools/models/run.py -- "$id" "$TMP" $spec 2>&1 | grep -E '^REPORT|Error|Traceback' || true
   [ -f "$TMP/$id.raw.glb" ] || { echo "FAILED $id"; continue; }

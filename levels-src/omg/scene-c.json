@@ -59,12 +59,15 @@
   "bunny-statue": {
    "layer": "mid",
    "shape": "bunny",
-   "h": 2.2,
-   "tris": 600,
+   "h": 2.4,
+   "tris": 1200,
    "model": false,
    "names": [
     "兔子雕像"
-   ]
+   ],
+   "design": "P06_sitting_bunny",
+   "w": 1.4,
+   "d": 1.4
   },
   "paper-hill": {
    "layer": "mid",
@@ -79,12 +82,15 @@
   "book-cover": {
    "layer": "land",
    "shape": "book",
-   "h": 6.0,
-   "tris": 4000,
+   "h": 1.5,
+   "tris": 3000,
    "model": false,
    "names": [
     "巨书封面"
-   ]
+   ],
+   "design": "H09_book_cover",
+   "w": 5.8,
+   "d": 4.7
   },
   "hanging-star": {
    "layer": "sky",
@@ -151,23 +157,29 @@
   "bunny-house": {
    "layer": "mid",
    "shape": "house",
-   "h": 4.5,
-   "tris": 900,
+   "h": 4,
+   "tris": 1500,
    "model": false,
    "names": [
     "兔耳小屋",
     "各章回归道具(实例复用)"
-   ]
+   ],
+   "design": "P01_bunny_cottage",
+   "w": 3.0,
+   "d": 3.0
   },
   "mushroom-house": {
    "layer": "mid",
    "shape": "mushroom",
-   "h": 4.0,
-   "tris": 700,
+   "h": 3,
+   "tris": 1000,
    "model": false,
    "names": [
     "纸蘑菇屋"
-   ]
+   ],
+   "design": "P02_mushroom_house",
+   "w": 2.5,
+   "d": 2.5
   },
   "fence": {
    "layer": "mid",
@@ -183,32 +195,41 @@
    "layer": "mid",
    "shape": "bed",
    "h": 0.8,
-   "tris": 300,
+   "tris": 800,
    "model": false,
    "names": [
     "郁金香花圃"
-   ]
+   ],
+   "design": "P03_tulip_bed",
+   "w": 2.6,
+   "d": 1.0
   },
   "tree": {
    "layer": "mid",
    "shape": "tree",
-   "h": 4.0,
-   "tris": 320,
-   "model": false,
+   "h": 3.5,
+   "tris": 600,
+   "model": true,
    "names": [
     "纸树",
     "纸树(夜)"
-   ]
+   ],
+   "design": "P04_paper_tree_round",
+   "w": 2.3,
+   "d": 2.3
   },
   "windmill": {
    "layer": "land",
    "shape": "tower",
-   "h": 12.0,
+   "h": 9,
    "tris": 3000,
    "model": false,
    "names": [
     "村口风车/钟塔"
-   ]
+   ],
+   "design": "H17_bunny_windmill",
+   "w": 5.1,
+   "d": 3.7
   },
   "cloud": {
    "layer": "sky",
@@ -263,53 +284,68 @@
   "ward-bed": {
    "layer": "mid",
    "shape": "box",
-   "h": 1.4,
-   "tris": 700,
+   "h": 2.4,
+   "tris": 2000,
    "model": false,
    "names": [
     "立体纸病床"
-   ]
+   ],
+   "design": "H10_ward_bed_set",
+   "w": 3.4,
+   "d": 2.1
   },
   "screen": {
    "layer": "mid",
    "shape": "card",
-   "h": 2.2,
-   "tris": 200,
+   "h": 2,
+   "tris": 400,
    "model": false,
    "names": [
     "纸帘屏风"
-   ]
+   ],
+   "design": "P08_curtain_screen",
+   "w": 2.1,
+   "d": 0.6
   },
   "iv-heart": {
    "layer": "mid",
    "shape": "pole",
-   "h": 2.4,
-   "tris": 260,
+   "h": 2.2,
+   "tris": 500,
    "model": false,
    "names": [
     "心形点滴架"
-   ]
+   ],
+   "design": "P07_heart_iv_stand",
+   "w": 1.0,
+   "d": 1.0
   },
   "pull-tab": {
    "layer": "mid",
    "shape": "card",
-   "h": 1.0,
-   "tris": 80,
+   "h": 1.2,
+   "tris": 300,
    "model": false,
    "names": [
     "拉片机关",
     "拉片翘起"
-   ]
+   ],
+   "design": "P09_pull_tab",
+   "w": 1.9,
+   "d": 0.3
   },
   "clock-tower": {
    "layer": "land",
    "shape": "tower",
-   "h": 12.0,
+   "h": 9,
    "tris": 2500,
    "model": false,
    "names": [
     "纸时钟塔"
-   ]
+   ],
+   "design": "H11_clock_tower",
+   "w": 3.5,
+   "d": 3.4
   },
   "moon": {
    "layer": "sky",
@@ -345,63 +381,81 @@
   "gift": {
    "layer": "ground",
    "shape": "box",
-   "h": 0.5,
-   "tris": 60,
+   "h": 0.8,
+   "tris": 300,
    "model": false,
    "names": [
     "纸礼盒",
     "纸礼盒/糖果"
-   ]
+   ],
+   "design": "P12_gift_box",
+   "w": 0.7,
+   "d": 0.6
   },
   "lantern-string": {
    "layer": "mid",
    "shape": "pole",
-   "h": 3.5,
-   "tris": 200,
+   "h": 2,
+   "tris": 900,
    "model": false,
    "names": [
     "纸灯笼串段"
-   ]
+   ],
+   "design": "P10_lantern_string",
+   "w": 4.2,
+   "d": 0.4
   },
   "heart-sculpt": {
    "layer": "mid",
    "shape": "card",
-   "h": 2.2,
-   "tris": 240,
+   "h": 1.6,
+   "tris": 500,
    "model": false,
    "names": [
     "音符/爱心纸雕"
-   ]
+   ],
+   "design": "P11_heart_sculpture",
+   "w": 1.2,
+   "d": 0.5
   },
   "cannon": {
    "layer": "mid",
    "shape": "cyl",
-   "h": 1.6,
-   "tris": 300,
+   "h": 2.5,
+   "tris": 1800,
    "model": false,
    "names": [
     "礼炮"
-   ]
+   ],
+   "design": "H08_confetti_cannon",
+   "w": 2.1,
+   "d": 2.7
   },
   "castle": {
    "layer": "land",
    "shape": "castle",
-   "h": 16.0,
-   "tris": 8000,
+   "h": 18,
+   "tris": 6000,
    "model": true,
    "names": [
     "巨型立体城堡"
-   ]
+   ],
+   "design": "H01_popup_castle",
+   "w": 14.8,
+   "d": 12.0
   },
   "bunny-heart": {
    "layer": "land",
    "shape": "bunny",
-   "h": 12.0,
-   "tris": 6000,
+   "h": 10,
+   "tris": 4000,
    "model": true,
    "names": [
     "弹出巨兔+爱心"
-   ]
+   ],
+   "design": "H02_giant_bunny_heart",
+   "w": 6.5,
+   "d": 6.0
   },
   "star": {
    "layer": "sky",
@@ -476,12 +530,15 @@
   "paper-boat": {
    "layer": "mid",
    "shape": "boat",
-   "h": 2.4,
-   "tris": 400,
+   "h": 3,
+   "tris": 1500,
    "model": false,
    "names": [
     "兔子帆纸船"
-   ]
+   ],
+   "design": "H15_bunny_sail_boat",
+   "w": 3.0,
+   "d": 1.1
   },
   "lily-lamp": {
    "layer": "mid",
@@ -506,12 +563,15 @@
   "pavilion": {
    "layer": "land",
    "shape": "house",
-   "h": 8.0,
+   "h": 6,
    "tris": 3000,
    "model": false,
    "names": [
     "湖心纸亭"
-   ]
+   ],
+   "design": "H16_lake_pavilion",
+   "w": 4.8,
+   "d": 5.1
   },
   "far-shore": {
    "layer": "sky",
@@ -558,12 +618,15 @@
   "flip-phone": {
    "layer": "mid",
    "shape": "box",
-   "h": 2.6,
-   "tris": 900,
+   "h": 5,
+   "tris": 2000,
    "model": false,
    "names": [
     "纸艺翻盖手机"
-   ]
+   ],
+   "design": "H12_flip_phone_sculpture",
+   "w": 2.6,
+   "d": 3.0
   },
   "cord-arch": {
    "layer": "mid",
@@ -588,33 +651,42 @@
   "phone-tower": {
    "layer": "land",
    "shape": "tower",
-   "h": 14.0,
+   "h": 12,
    "tris": 4000,
    "model": false,
    "names": [
     "巨型翻盖手机塔"
-   ]
+   ],
+   "design": "H13_phone_tower",
+   "w": 5.5,
+   "d": 4.5
   },
   "sun": {
    "layer": "sky",
    "shape": "moon",
-   "h": 8.0,
-   "tris": 1000,
+   "h": 8,
+   "tris": 2000,
    "model": false,
    "names": [
     "夕阳纸片",
     "纸太阳"
-   ]
+   ],
+   "design": "H19_paper_sun",
+   "w": 7.8,
+   "d": 1.4
   },
   "spiral-tower": {
    "layer": "mid",
    "shape": "tower",
-   "h": 9.0,
-   "tris": 1200,
+   "h": 14,
+   "tris": 3500,
    "model": false,
    "names": [
     "螺旋纸塔(中)"
-   ]
+   ],
+   "design": "H14_spiral_paper_tower",
+   "w": 4.3,
+   "d": 4.2
   },
   "star-chime": {
    "layer": "mid",
@@ -669,12 +741,15 @@
   "lantern-tower": {
    "layer": "mid",
    "shape": "tower",
-   "h": 6.0,
-   "tris": 600,
+   "h": 9,
+   "tris": 2500,
    "model": false,
    "names": [
     "纸灯笼塔"
-   ]
+   ],
+   "design": "H05_lantern_tower",
+   "w": 3.3,
+   "d": 3.2
   },
   "stall": {
    "layer": "mid",
@@ -709,22 +784,28 @@
   "carousel": {
    "layer": "land",
    "shape": "carousel",
-   "h": 10.0,
-   "tris": 8000,
+   "h": 9,
+   "tris": 6000,
    "model": false,
    "names": [
     "兔子旋转木马"
-   ]
+   ],
+   "design": "H03_bunny_carousel",
+   "w": 7.5,
+   "d": 7.4
   },
   "ferris-wheel": {
    "layer": "land",
    "shape": "wheel",
-   "h": 18.0,
-   "tris": 8000,
+   "h": 13,
+   "tris": 6000,
    "model": false,
    "names": [
     "爱心摩天轮"
-   ]
+   ],
+   "design": "H04_heart_ferris_wheel",
+   "w": 11.0,
+   "d": 5.7
   },
   "balloon": {
    "layer": "anim",
@@ -739,12 +820,15 @@
   "pine": {
    "layer": "mid",
    "shape": "tree",
-   "h": 5.0,
-   "tris": 260,
+   "h": 4,
+   "tris": 400,
    "model": false,
    "names": [
     "折纸松树"
-   ]
+   ],
+   "design": "P05_paper_pine",
+   "w": 2.1,
+   "d": 2.1
   },
   "firefly-lamp": {
    "layer": "mid",
@@ -769,12 +853,15 @@
   "reading-bunny": {
    "layer": "land",
    "shape": "bunny",
-   "h": 6.0,
-   "tris": 3000,
+   "h": 3.5,
+   "tris": 2500,
    "model": false,
    "names": [
     "蘑菇下读书兔"
-   ]
+   ],
+   "design": "H18_reading_bunny",
+   "w": 2.8,
+   "d": 2.9
   },
   "page-wall": {
    "layer": "land",
@@ -819,22 +906,28 @@
   "heart-gate": {
    "layer": "land",
    "shape": "arch",
-   "h": 12.0,
+   "h": 11,
    "tris": 5000,
    "model": false,
    "names": [
     "书页爱心终点门"
-   ]
+   ],
+   "design": "H06_heart_finish_gate",
+   "w": 12.0,
+   "d": 3.0
   },
   "bunny-family": {
    "layer": "land",
    "shape": "bunny",
-   "h": 3.0,
-   "tris": 1200,
+   "h": 3,
+   "tris": 4000,
    "model": false,
    "names": [
     "五只兔子一家"
-   ]
+   ],
+   "design": "H07_bunny_family",
+   "w": 4.5,
+   "d": 1.8
   }
  },
  "zones": [
@@ -4129,35 +4222,8 @@
    ],
    "setpieces": [
     {
-     "t": 152.48,
-     "side": 1,
-     "asset": "bunny-family",
-     "dist": 14.0,
-     "scale": 1.0,
-     "pop": "spring",
-     "label": "landmark"
-    },
-    {
      "t": 153.5,
      "side": 1,
-     "asset": "bunny-family",
-     "dist": 12.0,
-     "scale": 1.0,
-     "pop": "spring",
-     "label": "五只兔子一家"
-    },
-    {
-     "t": 154.63,
-     "side": 1,
-     "asset": "bunny-family",
-     "dist": 14.0,
-     "scale": 1.0,
-     "pop": "spring",
-     "label": "landmark"
-    },
-    {
-     "t": 156.77,
-     "side": -1,
      "asset": "bunny-family",
      "dist": 14.0,
      "scale": 1.0,
@@ -4172,15 +4238,6 @@
      "scale": 1.0,
      "pop": "spring",
      "label": "纸太阳+光芒"
-    },
-    {
-     "t": 158.92,
-     "side": -1,
-     "asset": "bunny-family",
-     "dist": 14.0,
-     "scale": 1.0,
-     "pop": "spring",
-     "label": "landmark"
     },
     {
      "t": 160.4,
