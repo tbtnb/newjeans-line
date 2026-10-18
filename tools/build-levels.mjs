@@ -10,6 +10,8 @@ for (const id of SONGS) {
   if (!existsSync(`${dir}/chart.json`) || !existsSync(`${dir}/layout.json`)) { console.log(`skip ${id} (no source)`); continue; }
   const chart = JSON.parse(readFileSync(`${dir}/chart.json`, 'utf8'));
   const layout = JSON.parse(readFileSync(`${dir}/layout.json`, 'utf8'));
+  // concept C scene spec (src/render/scenec): levels-src/<id>/scene-c.json -> layout.scenec
+  if (existsSync(`${dir}/scene-c.json`)) layout.scenec = JSON.parse(readFileSync(`${dir}/scene-c.json`, 'utf8'));
   const an = JSON.parse(readFileSync(`analysis/${id}.json`, 'utf8'));
   const grid = existsSync(`analysis/${id}.grid.json`) ? JSON.parse(readFileSync(`analysis/${id}.grid.json`, 'utf8')) : null;
   const audioDuration = an.duration;

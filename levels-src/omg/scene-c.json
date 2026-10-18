@@ -1,0 +1,4207 @@
+{
+ "version": 1,
+ "source": "levels-design/omg/redesign-v3/C/zones_c.py (omg-design-v3)",
+ "chunk": 20,
+ "window": {
+  "behind": 3,
+  "ahead": 8
+ },
+ "clear": {
+  "ground": 0.3,
+  "groundMaxH": 0.3,
+  "near": 1.0
+ },
+ "assets": {
+  "grass": {
+   "layer": "ground",
+   "shape": "tuft",
+   "h": 0.45,
+   "tris": 24,
+   "model": true,
+   "names": [
+    "纸草丛",
+    "纸草丛(夜)"
+   ]
+  },
+  "flower": {
+   "layer": "ground",
+   "shape": "flower",
+   "h": 0.2,
+   "tris": 30,
+   "model": true,
+   "names": [
+    "小纸花",
+    "小纸花(夜光)",
+    "小纸花(夜)"
+   ]
+  },
+  "pebble": {
+   "layer": "ground",
+   "shape": "ico",
+   "h": 0.17,
+   "tris": 30,
+   "model": true,
+   "names": [
+    "卵石",
+    "苔石"
+   ]
+  },
+  "tree-bush": {
+   "layer": "mid",
+   "shape": "tree",
+   "h": 3.2,
+   "tris": 320,
+   "model": false,
+   "names": [
+    "纸树丛"
+   ]
+  },
+  "bunny-statue": {
+   "layer": "mid",
+   "shape": "bunny",
+   "h": 2.2,
+   "tris": 600,
+   "model": false,
+   "names": [
+    "兔子雕像"
+   ]
+  },
+  "paper-hill": {
+   "layer": "mid",
+   "shape": "card",
+   "h": 4.0,
+   "tris": 120,
+   "model": false,
+   "names": [
+    "纸山片"
+   ]
+  },
+  "book-cover": {
+   "layer": "land",
+   "shape": "book",
+   "h": 6.0,
+   "tris": 4000,
+   "model": false,
+   "names": [
+    "巨书封面"
+   ]
+  },
+  "hanging-star": {
+   "layer": "sky",
+   "shape": "star",
+   "h": 1.0,
+   "tris": 24,
+   "model": false,
+   "names": [
+    "吊线星星"
+   ]
+  },
+  "far-hills": {
+   "layer": "sky",
+   "shape": "far",
+   "h": 12.0,
+   "tris": 2,
+   "model": false,
+   "names": [
+    "远山剪影(billboard)"
+   ]
+  },
+  "petal": {
+   "layer": "anim",
+   "shape": "card",
+   "h": 0.1,
+   "tris": 2,
+   "model": false,
+   "names": [
+    "飘落花瓣",
+    "花瓣"
+   ]
+  },
+  "bird": {
+   "layer": "anim",
+   "shape": "bird",
+   "h": 0.5,
+   "tris": 60,
+   "model": false,
+   "names": [
+    "小鸟"
+   ]
+  },
+  "mushroom": {
+   "layer": "ground",
+   "shape": "mushroom",
+   "h": 0.3,
+   "tris": 60,
+   "model": true,
+   "names": [
+    "纸蘑菇(小)",
+    "小纸蘑菇"
+   ]
+  },
+  "slab": {
+   "layer": "ground",
+   "shape": "box",
+   "h": 0.08,
+   "tris": 20,
+   "model": false,
+   "names": [
+    "石板"
+   ]
+  },
+  "bunny-house": {
+   "layer": "mid",
+   "shape": "house",
+   "h": 4.5,
+   "tris": 900,
+   "model": false,
+   "names": [
+    "兔耳小屋",
+    "各章回归道具(实例复用)"
+   ]
+  },
+  "mushroom-house": {
+   "layer": "mid",
+   "shape": "mushroom",
+   "h": 4.0,
+   "tris": 700,
+   "model": false,
+   "names": [
+    "纸蘑菇屋"
+   ]
+  },
+  "fence": {
+   "layer": "mid",
+   "shape": "box",
+   "h": 0.8,
+   "tris": 60,
+   "model": false,
+   "names": [
+    "栅栏段"
+   ]
+  },
+  "tulip-bed": {
+   "layer": "mid",
+   "shape": "bed",
+   "h": 0.8,
+   "tris": 300,
+   "model": false,
+   "names": [
+    "郁金香花圃"
+   ]
+  },
+  "tree": {
+   "layer": "mid",
+   "shape": "tree",
+   "h": 4.0,
+   "tris": 320,
+   "model": false,
+   "names": [
+    "纸树",
+    "纸树(夜)"
+   ]
+  },
+  "windmill": {
+   "layer": "land",
+   "shape": "tower",
+   "h": 12.0,
+   "tris": 3000,
+   "model": false,
+   "names": [
+    "村口风车/钟塔"
+   ]
+  },
+  "cloud": {
+   "layer": "sky",
+   "shape": "cloud",
+   "h": 3.0,
+   "tris": 60,
+   "model": false,
+   "names": [
+    "纸云"
+   ]
+  },
+  "puff": {
+   "layer": "anim",
+   "shape": "cloud",
+   "h": 0.8,
+   "tris": 40,
+   "model": false,
+   "names": [
+    "烟囱纸云"
+   ]
+  },
+  "butterfly": {
+   "layer": "anim",
+   "shape": "bird",
+   "h": 0.3,
+   "tris": 8,
+   "model": false,
+   "names": [
+    "蝴蝶"
+   ]
+  },
+  "tile-decal": {
+   "layer": "ground",
+   "shape": "card",
+   "h": 0.02,
+   "tris": 8,
+   "model": false,
+   "names": [
+    "纸格地砖贴片"
+   ]
+  },
+  "confetti-decal": {
+   "layer": "ground",
+   "shape": "card",
+   "h": 0.02,
+   "tris": 4,
+   "model": false,
+   "names": [
+    "纸屑"
+   ]
+  },
+  "ward-bed": {
+   "layer": "mid",
+   "shape": "box",
+   "h": 1.4,
+   "tris": 700,
+   "model": false,
+   "names": [
+    "立体纸病床"
+   ]
+  },
+  "screen": {
+   "layer": "mid",
+   "shape": "card",
+   "h": 2.2,
+   "tris": 200,
+   "model": false,
+   "names": [
+    "纸帘屏风"
+   ]
+  },
+  "iv-heart": {
+   "layer": "mid",
+   "shape": "pole",
+   "h": 2.4,
+   "tris": 260,
+   "model": false,
+   "names": [
+    "心形点滴架"
+   ]
+  },
+  "pull-tab": {
+   "layer": "mid",
+   "shape": "card",
+   "h": 1.0,
+   "tris": 80,
+   "model": false,
+   "names": [
+    "拉片机关",
+    "拉片翘起"
+   ]
+  },
+  "clock-tower": {
+   "layer": "land",
+   "shape": "tower",
+   "h": 12.0,
+   "tris": 2500,
+   "model": false,
+   "names": [
+    "纸时钟塔"
+   ]
+  },
+  "moon": {
+   "layer": "sky",
+   "shape": "moon",
+   "h": 4.0,
+   "tris": 1200,
+   "model": false,
+   "names": [
+    "纸月亮",
+    "吊线弯月"
+   ]
+  },
+  "float-heart": {
+   "layer": "anim",
+   "shape": "card",
+   "h": 0.5,
+   "tris": 12,
+   "model": false,
+   "names": [
+    "漂浮纸心"
+   ]
+  },
+  "star-decal": {
+   "layer": "ground",
+   "shape": "card",
+   "h": 0.02,
+   "tris": 8,
+   "model": false,
+   "names": [
+    "星点纸地贴"
+   ]
+  },
+  "gift": {
+   "layer": "ground",
+   "shape": "box",
+   "h": 0.5,
+   "tris": 60,
+   "model": false,
+   "names": [
+    "纸礼盒",
+    "纸礼盒/糖果"
+   ]
+  },
+  "lantern-string": {
+   "layer": "mid",
+   "shape": "pole",
+   "h": 3.5,
+   "tris": 200,
+   "model": false,
+   "names": [
+    "纸灯笼串段"
+   ]
+  },
+  "heart-sculpt": {
+   "layer": "mid",
+   "shape": "card",
+   "h": 2.2,
+   "tris": 240,
+   "model": false,
+   "names": [
+    "音符/爱心纸雕"
+   ]
+  },
+  "cannon": {
+   "layer": "mid",
+   "shape": "cyl",
+   "h": 1.6,
+   "tris": 300,
+   "model": false,
+   "names": [
+    "礼炮"
+   ]
+  },
+  "castle": {
+   "layer": "land",
+   "shape": "castle",
+   "h": 16.0,
+   "tris": 8000,
+   "model": true,
+   "names": [
+    "巨型立体城堡"
+   ]
+  },
+  "bunny-heart": {
+   "layer": "land",
+   "shape": "bunny",
+   "h": 12.0,
+   "tris": 6000,
+   "model": true,
+   "names": [
+    "弹出巨兔+爱心"
+   ]
+  },
+  "star": {
+   "layer": "sky",
+   "shape": "star",
+   "h": 1.2,
+   "tris": 24,
+   "model": false,
+   "names": [
+    "纸星星"
+   ]
+  },
+  "firework": {
+   "layer": "sky",
+   "shape": "star",
+   "h": 4.0,
+   "tris": 400,
+   "model": false,
+   "names": [
+    "纸烟花爆点"
+   ]
+  },
+  "streamer": {
+   "layer": "anim",
+   "shape": "card",
+   "h": 0.3,
+   "tris": 2,
+   "model": false,
+   "names": [
+    "纸彩带"
+   ]
+  },
+  "lantern": {
+   "layer": "anim",
+   "shape": "cyl",
+   "h": 0.6,
+   "tris": 40,
+   "model": false,
+   "names": [
+    "飘浮灯笼"
+   ]
+  },
+  "ripple-decal": {
+   "layer": "ground",
+   "shape": "card",
+   "h": 0.02,
+   "tris": 8,
+   "model": false,
+   "names": [
+    "纸波纹片"
+   ]
+  },
+  "lily-pad": {
+   "layer": "ground",
+   "shape": "card",
+   "h": 0.03,
+   "tris": 24,
+   "model": false,
+   "names": [
+    "纸睡莲叶"
+   ]
+  },
+  "reed": {
+   "layer": "ground",
+   "shape": "tuft",
+   "h": 0.9,
+   "tris": 40,
+   "model": false,
+   "names": [
+    "芦苇纸丛"
+   ]
+  },
+  "paper-boat": {
+   "layer": "mid",
+   "shape": "boat",
+   "h": 2.4,
+   "tris": 400,
+   "model": false,
+   "names": [
+    "兔子帆纸船"
+   ]
+  },
+  "lily-lamp": {
+   "layer": "mid",
+   "shape": "flower",
+   "h": 0.6,
+   "tris": 120,
+   "model": false,
+   "names": [
+    "睡莲灯"
+   ]
+  },
+  "rock": {
+   "layer": "mid",
+   "shape": "ico",
+   "h": 0.6,
+   "tris": 60,
+   "model": false,
+   "names": [
+    "岸边纸石"
+   ]
+  },
+  "pavilion": {
+   "layer": "land",
+   "shape": "house",
+   "h": 8.0,
+   "tris": 3000,
+   "model": false,
+   "names": [
+    "湖心纸亭"
+   ]
+  },
+  "far-shore": {
+   "layer": "sky",
+   "shape": "far",
+   "h": 8.0,
+   "tris": 2,
+   "model": false,
+   "names": [
+    "远岸剪影(billboard)"
+   ]
+  },
+  "glow-dot": {
+   "layer": "anim",
+   "shape": "card",
+   "h": 0.08,
+   "tris": 2,
+   "model": false,
+   "names": [
+    "萤光点",
+    "萤火虫",
+    "金色光斑"
+   ]
+  },
+  "fish": {
+   "layer": "anim",
+   "shape": "bird",
+   "h": 0.5,
+   "tris": 40,
+   "model": false,
+   "names": [
+    "纸鱼跳跃"
+   ]
+  },
+  "flower-heart": {
+   "layer": "ground",
+   "shape": "flower",
+   "h": 0.22,
+   "tris": 30,
+   "model": false,
+   "names": [
+    "爱心小花"
+   ]
+  },
+  "flip-phone": {
+   "layer": "mid",
+   "shape": "box",
+   "h": 2.6,
+   "tris": 900,
+   "model": false,
+   "names": [
+    "纸艺翻盖手机"
+   ]
+  },
+  "cord-arch": {
+   "layer": "mid",
+   "shape": "arch",
+   "h": 4.0,
+   "tris": 500,
+   "model": false,
+   "names": [
+    "电话线藤蔓拱"
+   ]
+  },
+  "heart-bed": {
+   "layer": "mid",
+   "shape": "bed",
+   "h": 0.8,
+   "tris": 300,
+   "model": false,
+   "names": [
+    "爱心花圃"
+   ]
+  },
+  "phone-tower": {
+   "layer": "land",
+   "shape": "tower",
+   "h": 14.0,
+   "tris": 4000,
+   "model": false,
+   "names": [
+    "巨型翻盖手机塔"
+   ]
+  },
+  "sun": {
+   "layer": "sky",
+   "shape": "moon",
+   "h": 8.0,
+   "tris": 1000,
+   "model": false,
+   "names": [
+    "夕阳纸片",
+    "纸太阳"
+   ]
+  },
+  "spiral-tower": {
+   "layer": "mid",
+   "shape": "tower",
+   "h": 9.0,
+   "tris": 1200,
+   "model": false,
+   "names": [
+    "螺旋纸塔(中)"
+   ]
+  },
+  "star-chime": {
+   "layer": "mid",
+   "shape": "pole",
+   "h": 3.0,
+   "tris": 200,
+   "model": false,
+   "names": [
+    "星星风铃"
+   ]
+  },
+  "stairs": {
+   "layer": "mid",
+   "shape": "box",
+   "h": 1.5,
+   "tris": 160,
+   "model": false,
+   "names": [
+    "纸楼梯段"
+   ]
+  },
+  "tall-tower": {
+   "layer": "land",
+   "shape": "tower",
+   "h": 18.0,
+   "tris": 4000,
+   "model": false,
+   "names": [
+    "最高纸塔"
+   ]
+  },
+  "page-bird": {
+   "layer": "anim",
+   "shape": "bird",
+   "h": 0.6,
+   "tris": 16,
+   "model": false,
+   "names": [
+    "书页飞鸟"
+   ]
+  },
+  "meteor": {
+   "layer": "anim",
+   "shape": "card",
+   "h": 1.0,
+   "tris": 20,
+   "model": false,
+   "names": [
+    "流星"
+   ]
+  },
+  "lantern-tower": {
+   "layer": "mid",
+   "shape": "tower",
+   "h": 6.0,
+   "tris": 600,
+   "model": false,
+   "names": [
+    "纸灯笼塔"
+   ]
+  },
+  "stall": {
+   "layer": "mid",
+   "shape": "house",
+   "h": 3.2,
+   "tris": 800,
+   "model": false,
+   "names": [
+    "小摊位"
+   ]
+  },
+  "balloons": {
+   "layer": "mid",
+   "shape": "balloons",
+   "h": 4.0,
+   "tris": 200,
+   "model": false,
+   "names": [
+    "气球束"
+   ]
+  },
+  "bunting": {
+   "layer": "mid",
+   "shape": "pole",
+   "h": 3.0,
+   "tris": 60,
+   "model": false,
+   "names": [
+    "旗串段"
+   ]
+  },
+  "carousel": {
+   "layer": "land",
+   "shape": "carousel",
+   "h": 10.0,
+   "tris": 8000,
+   "model": false,
+   "names": [
+    "兔子旋转木马"
+   ]
+  },
+  "ferris-wheel": {
+   "layer": "land",
+   "shape": "wheel",
+   "h": 18.0,
+   "tris": 8000,
+   "model": false,
+   "names": [
+    "爱心摩天轮"
+   ]
+  },
+  "balloon": {
+   "layer": "anim",
+   "shape": "ico",
+   "h": 0.8,
+   "tris": 40,
+   "model": false,
+   "names": [
+    "上升气球"
+   ]
+  },
+  "pine": {
+   "layer": "mid",
+   "shape": "tree",
+   "h": 5.0,
+   "tris": 260,
+   "model": false,
+   "names": [
+    "折纸松树"
+   ]
+  },
+  "firefly-lamp": {
+   "layer": "mid",
+   "shape": "pole",
+   "h": 1.6,
+   "tris": 60,
+   "model": false,
+   "names": [
+    "萤火纸灯"
+   ]
+  },
+  "book-stack": {
+   "layer": "mid",
+   "shape": "box",
+   "h": 1.2,
+   "tris": 200,
+   "model": false,
+   "names": [
+    "树桩/书堆"
+   ]
+  },
+  "reading-bunny": {
+   "layer": "land",
+   "shape": "bunny",
+   "h": 6.0,
+   "tris": 3000,
+   "model": false,
+   "names": [
+    "蘑菇下读书兔"
+   ]
+  },
+  "page-wall": {
+   "layer": "land",
+   "shape": "card",
+   "h": 10.0,
+   "tris": 2000,
+   "model": false,
+   "names": [
+    "合拢书页墙"
+   ]
+  },
+  "far-forest": {
+   "layer": "sky",
+   "shape": "far",
+   "h": 12.0,
+   "tris": 2,
+   "model": false,
+   "names": [
+    "远林剪影(billboard)"
+   ]
+  },
+  "leaf": {
+   "layer": "anim",
+   "shape": "card",
+   "h": 0.12,
+   "tris": 2,
+   "model": false,
+   "names": [
+    "飘落叶片"
+   ]
+  },
+  "gold-decal": {
+   "layer": "ground",
+   "shape": "card",
+   "h": 0.02,
+   "tris": 4,
+   "model": false,
+   "names": [
+    "金箔碎片"
+   ]
+  },
+  "heart-gate": {
+   "layer": "land",
+   "shape": "arch",
+   "h": 12.0,
+   "tris": 5000,
+   "model": false,
+   "names": [
+    "书页爱心终点门"
+   ]
+  },
+  "bunny-family": {
+   "layer": "land",
+   "shape": "bunny",
+   "h": 3.0,
+   "tris": 1200,
+   "model": false,
+   "names": [
+    "五只兔子一家"
+   ]
+  }
+ },
+ "zones": [
+  {
+   "id": "z01",
+   "key": "intro",
+   "t0": 0.0,
+   "t1": 15.13,
+   "name": "封面·晨光翻开",
+   "colors": [
+    "#BDEBD8",
+    "#F3F1EA",
+    "#F6DFA0",
+    "#FFD3B0",
+    "#CFE3E6"
+   ],
+   "palette": {
+    "skyTop": "#CFE3E6",
+    "skyBottom": "#FFE2C8",
+    "fog": "#F3F1EA",
+    "ground": "#EEF3E6",
+    "light": "#FFF4E0",
+    "ambient": "#DDEFE6",
+    "fogStart": 45,
+    "fogEnd": 150
+   },
+   "layers": [
+    {
+     "asset": "grass",
+     "layer": "ground",
+     "count": 260,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "flower",
+     "layer": "ground",
+     "count": 220,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "pebble",
+     "layer": "ground",
+     "count": 80,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "tree-bush",
+     "layer": "mid",
+     "count": 36,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "bunny-statue",
+     "layer": "mid",
+     "count": 6,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "paper-hill",
+     "layer": "mid",
+     "count": 18,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "hanging-star",
+     "layer": "sky",
+     "count": 40,
+     "near": [
+      12.0,
+      45.0
+     ],
+     "y": [
+      7,
+      22
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "far-hills",
+     "layer": "sky",
+     "count": 12,
+     "near": [
+      55.0,
+      90.0
+     ],
+     "y": [
+      7,
+      22
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "petal",
+     "layer": "anim",
+     "count": 120,
+     "near": [
+      1.5,
+      14.0
+     ],
+     "y": [
+      1.0,
+      6.0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "bird",
+     "layer": "anim",
+     "count": 8,
+     "near": [
+      1.5,
+      14.0
+     ],
+     "y": [
+      1.0,
+      6.0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    }
+   ],
+   "setpieces": [
+    {
+     "t": 0.5,
+     "side": 1,
+     "asset": "book-cover",
+     "dist": 12.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "巨书封面翻开(开场)"
+    },
+    {
+     "t": 3.5,
+     "side": 1,
+     "asset": "bunny-statue",
+     "dist": 5.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "坐着的兔子雕像"
+    },
+    {
+     "t": 7.5,
+     "side": -1,
+     "asset": "tree-bush",
+     "dist": 5.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "纸树丛"
+    },
+    {
+     "t": 12.0,
+     "side": 1,
+     "asset": "paper-hill",
+     "dist": 5.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "纸山+星星挂饰"
+    }
+   ],
+   "moments": [
+    {
+     "t": 0.5,
+     "label": "巨书封面翻开(开场)"
+    }
+   ]
+  },
+  {
+   "id": "z02",
+   "key": "verse1",
+   "t0": 15.13,
+   "t1": 30.25,
+   "name": "第一章·兔子村",
+   "colors": [
+    "#5FB8F0",
+    "#FFD23F",
+    "#6CCB5F",
+    "#FFF8EC",
+    "#FF7A6B"
+   ],
+   "palette": {
+    "skyTop": "#5FB8F0",
+    "skyBottom": "#CDEBFF",
+    "fog": "#E2F2FF",
+    "ground": "#B7E3A2",
+    "light": "#FFF8E6",
+    "ambient": "#E6F3FF",
+    "fogStart": 60,
+    "fogEnd": 180
+   },
+   "layers": [
+    {
+     "asset": "grass",
+     "layer": "ground",
+     "count": 300,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "flower",
+     "layer": "ground",
+     "count": 260,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "mushroom",
+     "layer": "ground",
+     "count": 90,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "slab",
+     "layer": "ground",
+     "count": 60,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "bunny-house",
+     "layer": "mid",
+     "count": 10,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "mushroom-house",
+     "layer": "mid",
+     "count": 8,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "fence",
+     "layer": "mid",
+     "count": 48,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "tulip-bed",
+     "layer": "mid",
+     "count": 16,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "tree",
+     "layer": "mid",
+     "count": 30,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "cloud",
+     "layer": "sky",
+     "count": 24,
+     "near": [
+      12.0,
+      45.0
+     ],
+     "y": [
+      7,
+      22
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "far-hills",
+     "layer": "sky",
+     "count": 12,
+     "near": [
+      55.0,
+      90.0
+     ],
+     "y": [
+      7,
+      22
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "puff",
+     "layer": "anim",
+     "count": 20,
+     "near": [
+      1.5,
+      14.0
+     ],
+     "y": [
+      1.0,
+      6.0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "butterfly",
+     "layer": "anim",
+     "count": 30,
+     "near": [
+      1.5,
+      14.0
+     ],
+     "y": [
+      1.0,
+      6.0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    }
+   ],
+   "setpieces": [
+    {
+     "t": 17.0,
+     "side": -1,
+     "asset": "bunny-house",
+     "dist": 5.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "兔耳屋顶小屋"
+    },
+    {
+     "t": 18.91,
+     "side": -1,
+     "asset": "windmill",
+     "dist": 14.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "landmark"
+    },
+    {
+     "t": 21.0,
+     "side": 1,
+     "asset": "mushroom-house",
+     "dist": 5.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "纸蘑菇屋"
+    },
+    {
+     "t": 25.0,
+     "side": -1,
+     "asset": "tulip-bed",
+     "dist": 5.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "郁金香花圃+栅栏"
+    },
+    {
+     "t": 25.21,
+     "side": 1,
+     "asset": "windmill",
+     "dist": 14.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "landmark"
+    },
+    {
+     "t": 29.0,
+     "side": 1,
+     "asset": "bunny-house",
+     "dist": 5.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "兔耳小屋②"
+    }
+   ],
+   "moments": []
+  },
+  {
+   "id": "z03",
+   "key": "pre1",
+   "t0": 30.25,
+   "t1": 45.36,
+   "name": "第二章·纸页病房",
+   "colors": [
+    "#FF8A65",
+    "#FFB056",
+    "#3A2F6B",
+    "#FFC968",
+    "#B9CFC8"
+   ],
+   "palette": {
+    "skyTop": "#3A2F6B",
+    "skyBottom": "#FF8A65",
+    "fog": "#F2A27A",
+    "ground": "#F3D6BC",
+    "light": "#FFC968",
+    "ambient": "#E8C2B0",
+    "fogStart": 45,
+    "fogEnd": 150
+   },
+   "layers": [
+    {
+     "asset": "tile-decal",
+     "layer": "ground",
+     "count": 200,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "flower",
+     "layer": "ground",
+     "count": 160,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "confetti-decal",
+     "layer": "ground",
+     "count": 120,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "ward-bed",
+     "layer": "mid",
+     "count": 12,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "screen",
+     "layer": "mid",
+     "count": 16,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "iv-heart",
+     "layer": "mid",
+     "count": 12,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "pull-tab",
+     "layer": "mid",
+     "count": 20,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "tree",
+     "layer": "mid",
+     "count": 20,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "hanging-star",
+     "layer": "sky",
+     "count": 50,
+     "near": [
+      12.0,
+      45.0
+     ],
+     "y": [
+      7,
+      22
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "moon",
+     "layer": "sky",
+     "count": 1,
+     "near": [
+      12.0,
+      45.0
+     ],
+     "y": [
+      7,
+      22
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "pull-tab",
+     "layer": "anim",
+     "count": 20,
+     "near": [
+      1.5,
+      14.0
+     ],
+     "y": [
+      1.0,
+      6.0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "float-heart",
+     "layer": "anim",
+     "count": 40,
+     "near": [
+      1.5,
+      14.0
+     ],
+     "y": [
+      1.0,
+      6.0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    }
+   ],
+   "setpieces": [
+    {
+     "t": 31.5,
+     "side": -1,
+     "asset": "ward-bed",
+     "dist": 5.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "立体纸病床+纸帘"
+    },
+    {
+     "t": 35.5,
+     "side": 1,
+     "asset": "iv-heart",
+     "dist": 5.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "心形点滴纸艺"
+    },
+    {
+     "t": 36.73,
+     "side": 1,
+     "asset": "clock-tower",
+     "dist": 14.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "landmark"
+    },
+    {
+     "t": 39.5,
+     "side": -1,
+     "asset": "clock-tower",
+     "dist": 12.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "无数字纸时钟"
+    }
+   ],
+   "moments": [
+    {
+     "t": 43.0,
+     "label": "拉片蓄力·书页抬起"
+    }
+   ]
+  },
+  {
+   "id": "z04",
+   "key": "chorus1",
+   "t0": 45.36,
+   "t1": 60.48,
+   "name": "高潮①·弹出城堡之夜",
+   "colors": [
+    "#1F2350",
+    "#FF6FAE",
+    "#F7D98B",
+    "#B9A6F0",
+    "#FFF3DE"
+   ],
+   "palette": {
+    "skyTop": "#141A40",
+    "skyBottom": "#3B2F6E",
+    "fog": "#2A2A5A",
+    "ground": "#2D2F66",
+    "light": "#F7D98B",
+    "ambient": "#8E86C8",
+    "fogStart": 40,
+    "fogEnd": 140
+   },
+   "layers": [
+    {
+     "asset": "star-decal",
+     "layer": "ground",
+     "count": 300,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "flower",
+     "layer": "ground",
+     "count": 200,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "gift",
+     "layer": "ground",
+     "count": 40,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "lantern-string",
+     "layer": "mid",
+     "count": 30,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "heart-sculpt",
+     "layer": "mid",
+     "count": 24,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "tree",
+     "layer": "mid",
+     "count": 24,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "cannon",
+     "layer": "mid",
+     "count": 8,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "star",
+     "layer": "sky",
+     "count": 80,
+     "near": [
+      12.0,
+      45.0
+     ],
+     "y": [
+      7,
+      22
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "firework",
+     "layer": "sky",
+     "count": 12,
+     "near": [
+      12.0,
+      45.0
+     ],
+     "y": [
+      7,
+      22
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "streamer",
+     "layer": "anim",
+     "count": 400,
+     "near": [
+      1.5,
+      14.0
+     ],
+     "y": [
+      1.0,
+      6.0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "lantern",
+     "layer": "anim",
+     "count": 30,
+     "near": [
+      1.5,
+      14.0
+     ],
+     "y": [
+      1.0,
+      6.0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    }
+   ],
+   "setpieces": [
+    {
+     "t": 45.4,
+     "side": -1,
+     "asset": "castle",
+     "dist": 12.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "DROP 巨页翻开·城堡弹起"
+    },
+    {
+     "t": 47.0,
+     "side": 1,
+     "asset": "castle",
+     "dist": 12.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "巨型立体城堡"
+    },
+    {
+     "t": 50.5,
+     "side": -1,
+     "asset": "bunny-heart",
+     "dist": 12.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "巨型弹出兔子+爱心"
+    },
+    {
+     "t": 58.0,
+     "side": 1,
+     "asset": "cannon",
+     "dist": 5.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "纸彩带礼炮"
+    }
+   ],
+   "moments": [
+    {
+     "t": 45.4,
+     "label": "DROP 巨页翻开·城堡弹起"
+    },
+    {
+     "t": 54.0,
+     "label": "纸灯笼串拱"
+    }
+   ]
+  },
+  {
+   "id": "z05",
+   "key": "post1",
+   "t0": 60.48,
+   "t1": 75.6,
+   "name": "第三章·月光湖纸船",
+   "colors": [
+    "#BFD4F5",
+    "#D8CCF5",
+    "#F4F1FA",
+    "#9FB3D9",
+    "#FFE9B0"
+   ],
+   "palette": {
+    "skyTop": "#7F93C4",
+    "skyBottom": "#D8CCF5",
+    "fog": "#CFC6EE",
+    "ground": "#BFD4F5",
+    "light": "#F4F1FA",
+    "ambient": "#C9D3F0",
+    "fogStart": 45,
+    "fogEnd": 150
+   },
+   "layers": [
+    {
+     "asset": "ripple-decal",
+     "layer": "ground",
+     "count": 240,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "lily-pad",
+     "layer": "ground",
+     "count": 120,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "reed",
+     "layer": "ground",
+     "count": 100,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "paper-boat",
+     "layer": "mid",
+     "count": 12,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "lily-lamp",
+     "layer": "mid",
+     "count": 30,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "rock",
+     "layer": "mid",
+     "count": 40,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "star",
+     "layer": "sky",
+     "count": 60,
+     "near": [
+      12.0,
+      45.0
+     ],
+     "y": [
+      7,
+      22
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "far-shore",
+     "layer": "sky",
+     "count": 10,
+     "near": [
+      55.0,
+      90.0
+     ],
+     "y": [
+      7,
+      22
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "glow-dot",
+     "layer": "anim",
+     "count": 80,
+     "near": [
+      1.5,
+      14.0
+     ],
+     "y": [
+      1.0,
+      6.0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "fish",
+     "layer": "anim",
+     "count": 10,
+     "near": [
+      1.5,
+      14.0
+     ],
+     "y": [
+      1.0,
+      6.0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    }
+   ],
+   "setpieces": [
+    {
+     "t": 62.0,
+     "side": 1,
+     "asset": "paper-boat",
+     "dist": 5.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "兔子帆纸船"
+    },
+    {
+     "t": 66.96,
+     "side": 1,
+     "asset": "pavilion",
+     "dist": 14.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "landmark"
+    },
+    {
+     "t": 68.0,
+     "side": -1,
+     "asset": "lily-lamp",
+     "dist": 5.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "纸睡莲灯"
+    },
+    {
+     "t": 72.0,
+     "side": 1,
+     "asset": "moon",
+     "dist": 12.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "吊线弯月"
+    }
+   ],
+   "moments": [
+    {
+     "t": 66.0,
+     "label": "纸面湖·浮桥路段"
+    }
+   ]
+  },
+  {
+   "id": "z06",
+   "key": "verse2",
+   "t0": 75.6,
+   "t1": 90.72,
+   "name": "第四章·电话花田",
+   "colors": [
+    "#FFC2A8",
+    "#FF9AA8",
+    "#C7B4EE",
+    "#FFF1DC",
+    "#A8E0C8"
+   ],
+   "palette": {
+    "skyTop": "#C7B4EE",
+    "skyBottom": "#FFC2A8",
+    "fog": "#FFD3C0",
+    "ground": "#F6D4C2",
+    "light": "#FFE2C8",
+    "ambient": "#E9CDE4",
+    "fogStart": 50,
+    "fogEnd": 160
+   },
+   "layers": [
+    {
+     "asset": "grass",
+     "layer": "ground",
+     "count": 320,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "flower-heart",
+     "layer": "ground",
+     "count": 300,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "mushroom",
+     "layer": "ground",
+     "count": 60,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "flip-phone",
+     "layer": "mid",
+     "count": 8,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "cord-arch",
+     "layer": "mid",
+     "count": 10,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "heart-bed",
+     "layer": "mid",
+     "count": 20,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "tree",
+     "layer": "mid",
+     "count": 24,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "cloud",
+     "layer": "sky",
+     "count": 24,
+     "near": [
+      12.0,
+      45.0
+     ],
+     "y": [
+      7,
+      22
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "sun",
+     "layer": "sky",
+     "count": 1,
+     "near": [
+      12.0,
+      45.0
+     ],
+     "y": [
+      7,
+      22
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "butterfly",
+     "layer": "anim",
+     "count": 40,
+     "near": [
+      1.5,
+      14.0
+     ],
+     "y": [
+      1.0,
+      6.0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "petal",
+     "layer": "anim",
+     "count": 120,
+     "near": [
+      1.5,
+      14.0
+     ],
+     "y": [
+      1.0,
+      6.0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    }
+   ],
+   "setpieces": [
+    {
+     "t": 77.0,
+     "side": -1,
+     "asset": "flip-phone",
+     "dist": 5.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "纸艺翻盖手机雕塑"
+    },
+    {
+     "t": 81.0,
+     "side": -1,
+     "asset": "cord-arch",
+     "dist": 5.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "电话线藤蔓拱门"
+    },
+    {
+     "t": 82.08,
+     "side": 1,
+     "asset": "phone-tower",
+     "dist": 14.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "landmark"
+    },
+    {
+     "t": 85.0,
+     "side": -1,
+     "asset": "heart-bed",
+     "dist": 5.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "爱心花圃"
+    },
+    {
+     "t": 89.0,
+     "side": 1,
+     "asset": "flip-phone",
+     "dist": 5.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "翻盖手机②"
+    }
+   ],
+   "moments": []
+  },
+  {
+   "id": "z07",
+   "key": "pre2",
+   "t0": 90.72,
+   "t1": 105.83,
+   "name": "第五章·星空纸塔",
+   "colors": [
+    "#2E2A63",
+    "#7B6CC8",
+    "#C9B8F5",
+    "#FFE08A",
+    "#FFFFFF"
+   ],
+   "palette": {
+    "skyTop": "#1E1A4A",
+    "skyBottom": "#7B6CC8",
+    "fog": "#4A3F8C",
+    "ground": "#3A3478",
+    "light": "#FFE08A",
+    "ambient": "#9C90E0",
+    "fogStart": 40,
+    "fogEnd": 140
+   },
+   "layers": [
+    {
+     "asset": "star-decal",
+     "layer": "ground",
+     "count": 240,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "confetti-decal",
+     "layer": "ground",
+     "count": 160,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "flower",
+     "layer": "ground",
+     "count": 120,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "spiral-tower",
+     "layer": "mid",
+     "count": 12,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "star-chime",
+     "layer": "mid",
+     "count": 16,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "stairs",
+     "layer": "mid",
+     "count": 20,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "star",
+     "layer": "sky",
+     "count": 100,
+     "near": [
+      12.0,
+      45.0
+     ],
+     "y": [
+      7,
+      22
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "moon",
+     "layer": "sky",
+     "count": 1,
+     "near": [
+      12.0,
+      45.0
+     ],
+     "y": [
+      7,
+      22
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "page-bird",
+     "layer": "anim",
+     "count": 60,
+     "near": [
+      1.5,
+      14.0
+     ],
+     "y": [
+      1.0,
+      6.0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "meteor",
+     "layer": "anim",
+     "count": 10,
+     "near": [
+      1.5,
+      14.0
+     ],
+     "y": [
+      1.0,
+      6.0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    }
+   ],
+   "setpieces": [
+    {
+     "t": 92.0,
+     "side": -1,
+     "asset": "spiral-tower",
+     "dist": 5.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "螺旋纸塔"
+    },
+    {
+     "t": 94.5,
+     "side": 1,
+     "asset": "tall-tower",
+     "dist": 14.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "landmark"
+    },
+    {
+     "t": 96.0,
+     "side": -1,
+     "asset": "star-chime",
+     "dist": 5.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "吊线星星风铃"
+    },
+    {
+     "t": 100.79,
+     "side": 1,
+     "asset": "tall-tower",
+     "dist": 14.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "landmark"
+    }
+   ],
+   "moments": [
+    {
+     "t": 100.0,
+     "label": "书页飞鸟群"
+    },
+    {
+     "t": 104.0,
+     "label": "拉片蓄力·纸塔倾倒"
+    }
+   ]
+  },
+  {
+   "id": "z08",
+   "key": "chorus2",
+   "t0": 105.83,
+   "t1": 120.95,
+   "name": "高潮②·爱心嘉年华",
+   "colors": [
+    "#2A1640",
+    "#FF4FA0",
+    "#FFD27A",
+    "#7FE0E8",
+    "#FFF3DE"
+   ],
+   "palette": {
+    "skyTop": "#1C0E30",
+    "skyBottom": "#5A2A6A",
+    "fog": "#3A1E55",
+    "ground": "#3A1F52",
+    "light": "#FFD27A",
+    "ambient": "#C08AD8",
+    "fogStart": 40,
+    "fogEnd": 140
+   },
+   "layers": [
+    {
+     "asset": "star-decal",
+     "layer": "ground",
+     "count": 300,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "gift",
+     "layer": "ground",
+     "count": 80,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "flower",
+     "layer": "ground",
+     "count": 200,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "lantern-tower",
+     "layer": "mid",
+     "count": 12,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "stall",
+     "layer": "mid",
+     "count": 10,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "balloons",
+     "layer": "mid",
+     "count": 20,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "bunting",
+     "layer": "mid",
+     "count": 30,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "firework",
+     "layer": "sky",
+     "count": 20,
+     "near": [
+      12.0,
+      45.0
+     ],
+     "y": [
+      7,
+      22
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "star",
+     "layer": "sky",
+     "count": 80,
+     "near": [
+      12.0,
+      45.0
+     ],
+     "y": [
+      7,
+      22
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "streamer",
+     "layer": "anim",
+     "count": 500,
+     "near": [
+      1.5,
+      14.0
+     ],
+     "y": [
+      1.0,
+      6.0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "balloon",
+     "layer": "anim",
+     "count": 30,
+     "near": [
+      1.5,
+      14.0
+     ],
+     "y": [
+      1.0,
+      6.0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    }
+   ],
+   "setpieces": [
+    {
+     "t": 108.0,
+     "side": 1,
+     "asset": "carousel",
+     "dist": 12.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "兔子旋转木马"
+    },
+    {
+     "t": 112.0,
+     "side": -1,
+     "asset": "ferris-wheel",
+     "dist": 12.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "爱心摩天轮"
+    },
+    {
+     "t": 119.0,
+     "side": 1,
+     "asset": "lantern-tower",
+     "dist": 5.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "纸灯笼塔"
+    }
+   ],
+   "moments": [
+    {
+     "t": 105.9,
+     "label": "DROP 双页展开·游乐园弹起"
+    },
+    {
+     "t": 116.0,
+     "label": "纸烟花齐放"
+    }
+   ]
+  },
+  {
+   "id": "z09",
+   "key": "post2",
+   "t0": 120.95,
+   "t1": 151.19,
+   "name": "第六章·静夜森林",
+   "colors": [
+    "#173A4A",
+    "#2C3E6B",
+    "#FFF3DE",
+    "#F7D98B",
+    "#9ED8C8"
+   ],
+   "palette": {
+    "skyTop": "#0F2834",
+    "skyBottom": "#2C3E6B",
+    "fog": "#1F3A50",
+    "ground": "#24495A",
+    "light": "#F7D98B",
+    "ambient": "#7FA8B8",
+    "fogStart": 35,
+    "fogEnd": 120
+   },
+   "layers": [
+    {
+     "asset": "grass",
+     "layer": "ground",
+     "count": 320,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "mushroom",
+     "layer": "ground",
+     "count": 120,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "pebble",
+     "layer": "ground",
+     "count": 80,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "pine",
+     "layer": "mid",
+     "count": 70,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "firefly-lamp",
+     "layer": "mid",
+     "count": 40,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "book-stack",
+     "layer": "mid",
+     "count": 20,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "star",
+     "layer": "sky",
+     "count": 60,
+     "near": [
+      12.0,
+      45.0
+     ],
+     "y": [
+      7,
+      22
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "far-forest",
+     "layer": "sky",
+     "count": 16,
+     "near": [
+      55.0,
+      90.0
+     ],
+     "y": [
+      7,
+      22
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "glow-dot",
+     "layer": "anim",
+     "count": 160,
+     "near": [
+      1.5,
+      14.0
+     ],
+     "y": [
+      1.0,
+      6.0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "leaf",
+     "layer": "anim",
+     "count": 60,
+     "near": [
+      1.5,
+      14.0
+     ],
+     "y": [
+      1.0,
+      6.0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    }
+   ],
+   "setpieces": [
+    {
+     "t": 123.5,
+     "side": -1,
+     "asset": "pine",
+     "dist": 5.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "折纸松林"
+    },
+    {
+     "t": 128.5,
+     "side": -1,
+     "asset": "firefly-lamp",
+     "dist": 5.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "萤火纸灯"
+    },
+    {
+     "t": 128.51,
+     "side": 1,
+     "asset": "page-wall",
+     "dist": 14.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "landmark"
+    },
+    {
+     "t": 139.0,
+     "side": -1,
+     "asset": "reading-bunny",
+     "dist": 12.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "蘑菇下读书的兔子"
+    },
+    {
+     "t": 141.11,
+     "side": 1,
+     "asset": "page-wall",
+     "dist": 14.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "landmark"
+    },
+    {
+     "t": 145.0,
+     "side": 1,
+     "asset": "pine",
+     "dist": 5.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "折纸松林②"
+    }
+   ],
+   "moments": [
+    {
+     "t": 134.2,
+     "label": "BRIDGE 路面变窄·书页落下"
+    },
+    {
+     "t": 149.3,
+     "label": "书页合拢→黑场"
+    }
+   ]
+  },
+  {
+   "id": "z10",
+   "key": "finale",
+   "t0": 151.19,
+   "t1": 160.64,
+   "name": "终章·日出大团圆",
+   "colors": [
+    "#FFD27A",
+    "#FF9CC4",
+    "#A9DCFF",
+    "#FFF3DE",
+    "#C9F0DE"
+   ],
+   "palette": {
+    "skyTop": "#A9DCFF",
+    "skyBottom": "#FFD27A",
+    "fog": "#FFE6C0",
+    "ground": "#FFF3DE",
+    "light": "#FFF1D6",
+    "ambient": "#FFE8F0",
+    "fogStart": 60,
+    "fogEnd": 180
+   },
+   "layers": [
+    {
+     "asset": "grass",
+     "layer": "ground",
+     "count": 300,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "flower",
+     "layer": "ground",
+     "count": 300,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "gold-decal",
+     "layer": "ground",
+     "count": 160,
+     "near": [
+      0.4,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "bunny-house",
+     "layer": "mid",
+     "count": 40,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "lantern-string",
+     "layer": "mid",
+     "count": 20,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "tree",
+     "layer": "mid",
+     "count": 24,
+     "near": [
+      3.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "cloud",
+     "layer": "sky",
+     "count": 20,
+     "near": [
+      12.0,
+      45.0
+     ],
+     "y": [
+      7,
+      22
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "firework",
+     "layer": "sky",
+     "count": 16,
+     "near": [
+      12.0,
+      45.0
+     ],
+     "y": [
+      7,
+      22
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "streamer",
+     "layer": "anim",
+     "count": 500,
+     "near": [
+      1.5,
+      14.0
+     ],
+     "y": [
+      1.0,
+      6.0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    },
+    {
+     "asset": "glow-dot",
+     "layer": "anim",
+     "count": 80,
+     "near": [
+      1.5,
+      14.0
+     ],
+     "y": [
+      1.0,
+      6.0
+     ],
+     "scale": [
+      0.8,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ]
+    }
+   ],
+   "setpieces": [
+    {
+     "t": 152.48,
+     "side": 1,
+     "asset": "bunny-family",
+     "dist": 14.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "landmark"
+    },
+    {
+     "t": 153.5,
+     "side": 1,
+     "asset": "bunny-family",
+     "dist": 12.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "五只兔子一家"
+    },
+    {
+     "t": 154.63,
+     "side": 1,
+     "asset": "bunny-family",
+     "dist": 14.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "landmark"
+    },
+    {
+     "t": 156.77,
+     "side": -1,
+     "asset": "bunny-family",
+     "dist": 14.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "landmark"
+    },
+    {
+     "t": 157.0,
+     "side": 1,
+     "asset": "sun",
+     "dist": 12.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "纸太阳+光芒"
+    },
+    {
+     "t": 158.92,
+     "side": -1,
+     "asset": "bunny-family",
+     "dist": 14.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "landmark"
+    },
+    {
+     "t": 160.4,
+     "side": 1,
+     "asset": "heart-gate",
+     "dist": 12.0,
+     "scale": 1.0,
+     "pop": "spring",
+     "label": "书页爱心终点门"
+    }
+   ],
+   "moments": [
+    {
+     "t": 151.3,
+     "label": "DROP 全书展开·各章回归"
+    },
+    {
+     "t": 160.4,
+     "label": "书页爱心终点门"
+    }
+   ]
+  }
+ ]
+}
