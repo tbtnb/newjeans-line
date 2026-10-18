@@ -291,6 +291,34 @@ RICH = {'z01': [('tulip-bed', 12), ('heart-bed', 8), ('bunny-statue', 8), ('ball
 for z in zones:
     for aid, n in RICH.get(z['id'], []):
         if aid in assets: z['layers'].append(dict(asset=aid, layer='mid', count=n, near=[3.0, 13.0], y=[0, 0], scale=[1.25, 1.7], colors=(z['layers'][0]['colors'] if z['layers'] else [0, 1, 2, 3, 4]), hi=True))   # richness is high tier only (low stays ~50k)
+# ---- v6 night villages (z04 / z07 / z08 / z09): rows of small lit houses + towers along the road, lamp lines, glowing flowers
+# (halos in the merged glow mesh), lit-window impostors in the distance; dark near-road trees thinned to pay for it
+NIGHTZ = ('z04', 'z07', 'z08', 'z09')
+for z in zones:
+    if z['id'] not in NIGHTZ: continue
+    zk = (z['t1'] - z['t0']) / 15.12; cols = z['layers'][0]['colors'] if z['layers'] else [0, 1, 2, 3, 4]
+    for ly in z['layers']:
+        if ly.get('layer') == 'mid' and ly['asset'] in TREEY + ('forest-clump', 'paper-hill-lo') and ly['near'][0] < 40: ly['count'] = max(1, round(ly['count'] * 0.4))
+        if ly['asset'] in ('lantern-string', 'heart-sculpt', 'cannon') and ly.get('layer') == 'mid': ly['count'] = max(1, round(ly['count'] * 0.5))
+    V = [('mushroom-house', 'mid', round(3 * zk), [5.0, 12.0], [0.9, 1.2], dict(n=[3, 4], r=3.8, row=True), True),
+         ('bunny-house', 'mid', round(2 * zk), [6.0, 13.0], [0.85, 1.1], dict(n=[2, 3], r=4.2, row=True), True),
+         ('mushroom-house', 'mid', round(1.5 * zk), [5.0, 12.0], [0.9, 1.2], dict(n=[2, 3], r=3.8, row=True), False),
+         ('lantern-tower', 'mid', round(2.5 * zk), [9.0, 20.0], [0.8, 1.1], None, True),
+         ('firefly-lamp', 'mid', round(14 * zk), [1.5, 4.0], [1.1, 1.4], None, False),
+         ('firefly-lamp', 'mid', round(14 * zk), [1.5, 5.0], [1.1, 1.4], None, True),
+         ('flower-heart', 'ground', round(70 * zk), [0.3, 9.0], [2.0, 3.0], None, True),
+         ('flower-heart', 'ground', round(30 * zk), [0.3, 7.0], [2.0, 3.0], None, False)]
+    for aid, layer, n, near, sc, cl, hi in V:
+        if aid not in assets or n < 1: continue
+        d = dict(asset=aid, layer=layer, count=n, near=near, y=[0, 0], scale=sc, colors=cols, hi=hi)
+        if cl: d['cluster'] = cl
+        z['layers'].append(d)
+    IM = z['impostors']['sprites']; W = {k: w for k, w in IM}
+    for k in ('pine', 'tree', 'tree-lo', 'forest-clump'):
+        if k in W: W[k] = round(W[k] * 0.5, 2)
+    for k, w in (('mushroom-house', 1.6), ('bunny-house', 1.2), ('lantern-tower', 0.6), ('firefly-lamp', 1.4), ('lily-lamp', 0.8)): W[k] = max(W.get(k, 0), w)
+    z['impostors']['sprites'] = [[k, w] for k, w in W.items()]
+    z['nightLevel'] = 1.45   # night carpet texture brightened
 out = os.path.join(here, '..', '..', 'levels-src', 'omg', 'scene-c.json')
 json.dump(spec, open(out, 'w'), ensure_ascii=False, indent=1)
 n = sum(l['count'] for z in zones for l in z['layers']); print(out, 'zones', len(zones), 'assets', len(assets), 'modelled', sum(bool(a['model']) for a in assets.values()), 'scatter instances', n, 'set pieces', sum(len(z['setpieces']) for z in zones))

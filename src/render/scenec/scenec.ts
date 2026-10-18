@@ -9,6 +9,7 @@
 import type { Scene } from '@babylonjs/core/scene';
 import { Mesh } from '@babylonjs/core/Meshes/mesh';
 import { VertexData } from '@babylonjs/core/Meshes/mesh.vertexData';
+import { VertexBuffer } from '@babylonjs/core/Buffers/buffer';
 import { TransformNode } from '@babylonjs/core/Meshes/transformNode';
 import { StandardMaterial } from '@babylonjs/core/Materials/standardMaterial';
 import { Color3 } from '@babylonjs/core/Maths/math.color';
@@ -35,11 +36,21 @@ const hash = (x: number, z: number) => { const s = Math.sin(x * 12.9898 + z * 78
 /** lamp-like decor: glow head height (fraction of the piece's height) and halo radius (m per unit scale) -- night zones only */
 const LAMP: Record<string, [number, number]> = { 'firefly-lamp': [0.85, 0.7], 'lily-lamp': [0.55, 0.9], 'lantern-string': [0.75, 0.8], 'lantern-tower': [0.75, 2.2],
   'star-chime': [0.8, 0.7], 'iv-heart': [0.8, 0.5], 'spiral-tower': [0.85, 2.0], 'stall': [0.6, 1.4], 'mushroom-house': [0.4, 1.2], 'bunny-house': [0.4, 1.2], 'book-stack': [0.9, 0.5], 'heart-sculpt': [0.6, 0.8],
-  'pine': [0.55, 0.9], 'pine-lo': [0.55, 0.9], 'tree': [0.6, 0.9], 'tree-lo': [0.6, 0.9], 'tree-bush-lo': [0.6, 0.8], 'mushroom-group': [0.6, 0.5] };   // night trees: fairy-light glow
+  'pine': [0.55, 0.9], 'pine-lo': [0.55, 0.9], 'tree': [0.6, 0.9], 'tree-lo': [0.6, 0.9], 'tree-bush-lo': [0.6, 0.8], 'mushroom-group': [0.6, 0.5], 'flower-heart': [1.2, 0.55] };   // night trees: fairy-light glow
 /** hero window glow: lit windows on the road-facing (+z) side, count per set piece; castle / wheel / carousel glow in every zone, the rest at night */
 const WIN: Record<string, number> = { castle: 9, 'ferris-wheel': 8, carousel: 6, 'clock-tower': 4, windmill: 3, 'lantern-tower': 4, 'phone-tower': 5, 'spiral-tower': 5, 'tall-tower': 5,
   pavilion: 4, stall: 2, 'bunny-house': 3, 'mushroom-house': 2, 'heart-gate': 4, 'page-wall': 3, 'reading-bunny': 2, 'book-cover': 3 };
+/** v6: palette fixes on loaded models: greenish (mint) vertex colours remapped by a channel ratio (keeps the shading) */
+const RECOL: Record<string, [number, number, number]> = { 'book-cover': [0xF6 / 0xBD, 0xB8 / 0xEB, 0xCB / 0xD8] };   // mint #BDEBD8 -> sheet pink #F6B8CB
+function recolor(id: string, t: { col?: ArrayLike<number> & { [i: number]: number }; container?: { meshes: any[] } | null }) {
+  const k = RECOL[id]; if (!k) return;
+  const fix = (c: { [i: number]: number; length: number }) => { for (let i = 0; i + 2 < c.length; i += 4) { const r = c[i], g = c[i + 1], b = c[i + 2]; if (g > r + 0.04 && g >= b) { c[i] = Math.min(1, r * k[0]); c[i + 1] = g * k[1]; c[i + 2] = Math.min(1, b * k[2]); } } };
+  if (t.col) fix(t.col as any);
+  for (const m of t.container?.meshes ?? []) { const d = m.getVerticesData?.(VertexBuffer.ColorKind); if (d) { fix(d); m.setVerticesData(VertexBuffer.ColorKind, d, false, 4); } }
+}
 const WIN_ALWAYS = new Set(['castle', 'ferris-wheel', 'carousel']);
+/** v6: impostor sprites that get a lit window / lamp glow at night (glow height as a fraction of the card height) */
+const IMPLIT: Record<string, number> = { 'mushroom-house': 0.38, 'bunny-house': 0.4, 'lantern-tower': 0.72, 'firefly-lamp': 0.85, 'lily-lamp': 0.6, 'spiral-tower': 0.6, castle: 0.45, 'star-chime': 0.8, stall: 0.5, carousel: 0.45, 'ferris-wheel': 0.5, 'clock-tower': 0.6 };
 type ChunkM = { g: Mesh; m: Mesh | null; glow: Mesh | null; t0: number; tris: number; y: number; L: { pos: number[]; col: number[]; uv: number[]; idx: number[] } | null };
 const spring = (x: number) => x <= 0 ? 0 : 1 - Math.exp(-x * 7) * Math.cos(x * 13);
 const hexRGB = (h: string) => { const n = parseInt(h.replace('#', ''), 16); return [(n >> 16 & 255) / 255, (n >> 8 & 255) / 255, (n & 255) / 255]; };
@@ -85,14 +96,14 @@ export class SceneC {
     for (const mm of [this.mat, this.matSet, this.matNight, this.matGlow]) new Cutaway(mm);   // after the page clones: pages / road are never cut
     for (const s of this.plc.sets) this.sets.push(this.makeSet(s));
     // swap in built models as they load (placeholders until then; a missing model simply keeps its placeholder)
-    for (const [id, a] of Object.entries(spec.assets)) if (a.model) loadModel(scene, o.base, id, a.h, typeof a.model === 'string' ? a.model : id).then(t => { if (this.disposed) { t.container?.dispose(); return; } this.tm.set(id, t); this.models++; this.refreshAsset(id); }).catch(e => console.warn('omg-c model', id, e));
+    for (const [id, a] of Object.entries(spec.assets)) if (a.model) loadModel(scene, o.base, id, a.h, typeof a.model === 'string' ? a.model : id).then(t => { if (this.disposed) { t.container?.dispose(); return; } recolor(id, t); this.tm.set(id, t); this.models++; this.refreshAsset(id); }).catch(e => console.warn('omg-c model', id, e));
   }
 
   private dropChunk(c: ChunkM) { c.g.dispose(); c.m?.dispose(); c.glow?.dispose(); }
   private rebuildGlow(t: number) {
     const on = [...this.chunkMesh.entries()].filter(([, c]) => c.L && t > c.t0 - 4.8).map(([i]) => i);
     const sOn = this.sets.filter(e => e.on && t > e.def.popAt + 0.5 && WIN[e.def.a] && (this.night[e.def.zone] || WIN_ALWAYS.has(e.def.a)));
-    const sig = on.join(',') + '|' + sOn.map(e => this.sets.indexOf(e)).join(',');
+    const sig = on.join(',') + '|' + sOn.map(e => this.sets.indexOf(e)).join(',') + '|' + this.range.join(':') + this.tier;
     if (sig === this.glowSig) return; this.glowSig = sig; this.glowAll?.dispose(); this.glowAll = null; if (!on.length && !sOn.length) return;
     const pos: number[] = [], col: number[] = [], uv: number[] = [], idx: number[] = [];
     for (const i of on) { const c = this.chunkMesh.get(i)!, L = c.L!, i0 = pos.length / 3;
@@ -108,6 +119,17 @@ export class SceneC {
       for (let k = 0; k < n; k++) { const cx = cols > 1 ? (-0.3 + 0.6 * (k % cols) / (cols - 1)) * W : 0, cy = (0.28 + 0.45 * (rows > 1 ? Math.floor(k / cols) / (rows - 1) : 0.5)) * H;
         q(cx, cy, z, Math.max(0.35, H * 0.05), 0.75); }
       q(0, H * 0.5, z + 0.2, H * 0.42, this.night[d.zone] ? 0.22 : 0.12);
+    }
+    if (this.tier === 'high' && this.range[0] >= 0) {   // v6: lit windows on night impostor cards (houses / towers / lamps) in the distance
+      const N = this.plc.chunks.length;
+      for (let i = this.range[0]; i <= Math.min(N - 1, this.range[1] + 3); i++) for (const im of this.plc.chunks[i].imp ?? []) {
+        if (!this.night[im.zone]) continue; const lk = IMPLIT[im.k]; if (!lk) continue;
+        const H = Math.min(11, (this.spec.assets[im.k]?.h ?? 3) * im.s), ux = Math.cos(im.yaw), uz = -Math.sin(im.yaw), fx = Math.sin(im.yaw) * 0.4, fz = Math.cos(im.yaw) * 0.4;
+        const q = (cy: number, r: number, k: number) => { const i0 = pos.length / 3;
+          for (const [dx, dy] of [[-r, -r], [r, -r], [r, r], [-r, r]]) pos.push(im.x + ux * dx + fx, im.y + cy + dy, im.z + uz * dx + fz);
+          uv.push(0, 0, 1, 0, 1, 1, 0, 1); for (let m = 0; m < 4; m++) col.push(k, k * 0.88, k * 0.62, 1); idx.push(i0, i0 + 1, i0 + 2, i0, i0 + 2, i0 + 3); };
+        q(H * lk, Math.max(0.3, H * 0.09), 0.7); q(H * lk, H * 0.32, 0.14);
+      }
     }
     if (this.tier === 'high') {   // cheap bloom: every halo quad gets a 2.3x larger, faint copy (same mesh, no post pass)
       const nq = idx.length / 6;
@@ -147,7 +169,7 @@ export class SceneC {
   /** painted ground tile of a zone (shared by its page and the base ground under everything) */
   groundTexOf(zi: number) {
     let t = this.groundTex.get(zi); const f = this.spec.zones[zi]?.ground; if (t || !f) return t ?? null;
-    t = new Texture(this.base + f, this.scene, false, true, Texture.TRILINEAR_SAMPLINGMODE); t.anisotropicFilteringLevel = 4; this.groundTex.set(zi, t); return t;
+    t = new Texture(this.base + f, this.scene, false, true, Texture.TRILINEAR_SAMPLINGMODE); t.anisotropicFilteringLevel = 4; t.level = this.spec.zones[zi]?.nightLevel ?? 1;   /* v6: night carpets brightened */ this.groundTex.set(zi, t); return t;
   }
   tileOf(zi: number) { return this.spec.zones[zi]?.tile ?? 25; }
   private buildPages() {
@@ -193,6 +215,9 @@ export class SceneC {
     const N = this.plc.chunks.length; for (let i = 0; i < N; i++) this.stackGeo.push({ p: [], c: [], i: [] });
     const CREAM = [1.0, 0.965, 0.89], CREAM2 = [0.97, 0.93, 0.84], GOLD = [0.89, 0.68, 0.27], GOLD2 = [0.96, 0.8, 0.42], TAN = [0.93, 0.85, 0.69], TAN2 = [0.86, 0.75, 0.56];
     const covered = (r: typeof R[0], x: number, z: number) => { let lo = -1e9; for (const q of R) { if (q === r || x <= q.x0 || x >= q.x1 || z <= q.z0 || z >= q.z1) continue; if (q.y >= r.y - 0.05) return null; lo = Math.max(lo, q.y); } return lo; };
+    const DAYC = [CREAM, CREAM2, GOLD, GOLD2, TAN, TAN2];   // night zones: paper in moonlight (dimmer, slightly blue) so the cliffs don't glare on the navy carpet
+    const NIGHTC = DAYC.map(c => [c[0] * 0.62, c[1] * 0.62, c[2] * 0.72]);
+    const NT = this.spec.zones.map(z => { const g = hexRGB(z.palette.ground ?? '#eeeeee'); return 0.299 * g[0] + 0.587 * g[1] + 0.114 * g[2] < 0.45; });
     const ST = 3;
     for (const r of R) {
       const G = this.stackGeo[r.ci];
@@ -203,7 +228,7 @@ export class SceneC {
         let run0 = -1, runLo = 0;
         const flush = (k1: number) => {
           if (run0 < 0) return; const e0 = run0 === 0 ? -1.8 : run0 * L / n, e1 = k1 === n ? L + 1.8 : k1 * L / n;
-          this.emitStack(G, ax + dx * e0, az + dz * e0, ax + dx * e1, az + dz * e1, nx, nz, r.y, Math.max(runLo, r.y - 14), [CREAM, CREAM2, GOLD, GOLD2, TAN, TAN2]); run0 = -1; };
+          this.emitStack(G, ax + dx * e0, az + dz * e0, ax + dx * e1, az + dz * e1, nx, nz, r.y, Math.max(runLo, r.y - 14), NT[r.zi] ? NIGHTC : DAYC); run0 = -1; };
         for (let k = 0; k < n; k++) {
           const s = (k + 0.5) * L / n, x = ax + dx * s, z = az + dz * s, lo = covered(r, x + nx * 0.6, z + nz * 0.6);
           const ok = lo !== null && ownZ(r.zi, x - nx * 1.5, z - nz * 1.5) > 0.45 && r.y - lo > 0.3;
@@ -225,9 +250,11 @@ export class SceneC {
     const [CR, CR2, GO, GO2, TA, TA2] = C; let o = 0, h = y;
     // three page layers: a thin gold top edge then cream faces, each stepping out onto a gold ledge
     for (let k = 0; k < 3; k++) { const d = 0.3; quad(o, h, o, h - d, k ? (k & 1 ? CR2 : CR) : GO2, k ? (k & 1 ? CR2 : CR) : GO); h -= d; quad(o, h, o + 0.3, h, GO, GO2); o += 0.3; }
-    // paper strata (cliff layers) down to the page below / ground
-    const rest = Math.max(0.5, h - lo), sd = rest / 3;
-    for (let k = 0; k < 3; k++) { const c0 = k & 1 ? TA : CR2, c1 = k & 1 ? TA2 : TA; quad(o, h, o, h - sd, c0, c1); h -= sd; if (k < 2) { quad(o, h, o + 0.45, h, CR, CR2); o += 0.45; } }
+    // v6 paper cliff: a staircase of page strata (~0.9 m each, stepping out 0.5 m onto cream / gold ledges) down to the page below,
+    // instead of one tall plain face (the z07 'cream wall')
+    const rest = Math.max(0.5, h - lo), ns = Math.max(2, Math.min(9, Math.round(rest / 0.9))), sd = rest / ns;
+    for (let k = 0; k < ns; k++) { const c0 = k & 1 ? TA : CR2, c1 = k & 1 ? TA2 : TA; quad(o, h, o, h - sd, c0, c1); h -= sd;
+      if (k < ns - 1) { const g = k % 3 === 1; quad(o, h, o + 0.5, h, g ? GO : CR, g ? GO2 : CR2); o += 0.5; } }
   }
   private refreshStacks(a: number, b: number) {
     const on = this.tier === 'high', sig = on ? `${a}:${b}` : 'off'; if (sig === this.stackSig) return; this.stackSig = sig;
@@ -260,7 +287,7 @@ export class SceneC {
       const lp = night ? LAMP[it.a] : undefined;
       if (lp) {   // halo: a pool of light on the page + two crossed quads at the lamp head
         const h = (this.spec.assets[it.a]?.h ?? 1) * s, r = lp[1] * s * 1.4, hy = it.y - c.y + h * lp[0], gy = it.y - c.y + 0.03;   // relative to the chunk pivot (c.y)
-        const tree = /pine|tree|mushroom-group/.test(it.a), R = r * 2.0;
+        const tree = /pine|tree|mushroom-group|flower-heart/.test(it.a), R = r * 2.0;
         if (!tree) quad([[it.x - R, gy, it.z - R], [it.x + R, gy, it.z - R], [it.x + R, gy, it.z + R], [it.x - R, gy, it.z + R]], 0.16);
         quad([[it.x - r, hy - r, it.z], [it.x + r, hy - r, it.z], [it.x + r, hy + r, it.z], [it.x - r, hy + r, it.z]], tree ? 0.24 : 0.42);
         quad([[it.x, hy - r, it.z - r], [it.x, hy - r, it.z + r], [it.x, hy + r, it.z + r], [it.x, hy + r, it.z - r]], tree ? 0.24 : 0.42);

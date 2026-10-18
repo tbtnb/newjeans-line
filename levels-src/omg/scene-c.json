@@ -3843,7 +3843,7 @@
     {
      "asset": "lantern-string",
      "layer": "mid",
-     "count": 22,
+     "count": 11,
      "near": [
       1.5,
       7.0
@@ -3866,7 +3866,7 @@
     {
      "asset": "heart-sculpt",
      "layer": "mid",
-     "count": 24,
+     "count": 12,
      "near": [
       1.5,
       7.0
@@ -3889,7 +3889,7 @@
     {
      "asset": "tree",
      "layer": "mid",
-     "count": 9,
+     "count": 4,
      "near": [
       5.0,
       12.0
@@ -3912,7 +3912,7 @@
     {
      "asset": "cannon",
      "layer": "mid",
-     "count": 6,
+     "count": 3,
      "near": [
       1.5,
       7.0
@@ -4195,7 +4195,7 @@
     {
      "asset": "heart-sculpt",
      "layer": "mid",
-     "count": 12,
+     "count": 6,
      "near": [
       1.5,
       7.0
@@ -4219,7 +4219,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 7,
+     "count": 3,
      "near": [
       5.0,
       12.0
@@ -4292,7 +4292,7 @@
     {
      "asset": "tree-lo",
      "layer": "mid",
-     "count": 16,
+     "count": 6,
      "near": [
       5.0,
       12.0
@@ -4364,7 +4364,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 3,
+     "count": 1,
      "near": [
       5.0,
       16.0
@@ -4427,7 +4427,7 @@
     {
      "asset": "paper-hill-lo",
      "layer": "mid",
-     "count": 3,
+     "count": 1,
      "near": [
       16.0,
       34.0
@@ -4458,7 +4458,7 @@
     {
      "asset": "forest-clump",
      "layer": "mid",
-     "count": 3,
+     "count": 1,
      "near": [
       16.0,
       34.0
@@ -4485,6 +4485,222 @@
       ],
       "r": 6.0
      }
+    },
+    {
+     "asset": "mushroom-house",
+     "layer": "mid",
+     "count": 3,
+     "near": [
+      5.0,
+      12.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.9,
+      1.2
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       3,
+       4
+      ],
+      "r": 3.8,
+      "row": true
+     }
+    },
+    {
+     "asset": "bunny-house",
+     "layer": "mid",
+     "count": 2,
+     "near": [
+      6.0,
+      13.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.85,
+      1.1
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       2,
+       3
+      ],
+      "r": 4.2,
+      "row": true
+     }
+    },
+    {
+     "asset": "mushroom-house",
+     "layer": "mid",
+     "count": 1,
+     "near": [
+      5.0,
+      12.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.9,
+      1.2
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": false,
+     "cluster": {
+      "n": [
+       2,
+       3
+      ],
+      "r": 3.8,
+      "row": true
+     }
+    },
+    {
+     "asset": "lantern-tower",
+     "layer": "mid",
+     "count": 2,
+     "near": [
+      9.0,
+      20.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.1
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "firefly-lamp",
+     "layer": "mid",
+     "count": 14,
+     "near": [
+      1.5,
+      4.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.4
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": false
+    },
+    {
+     "asset": "firefly-lamp",
+     "layer": "mid",
+     "count": 14,
+     "near": [
+      1.5,
+      5.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.4
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "flower-heart",
+     "layer": "ground",
+     "count": 70,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      2.0,
+      3.0
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "flower-heart",
+     "layer": "ground",
+     "count": 30,
+     "near": [
+      0.3,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      2.0,
+      3.0
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": false
     }
    ],
    "setpieces": [
@@ -4569,15 +4785,15 @@
     "sprites": [
      [
       "pine",
-      3
+      1.5
      ],
      [
       "lantern-tower",
-      0.25
+      0.6
      ],
      [
       "mushroom-house",
-      0.6
+      1.6
      ],
      [
       "lily-lamp",
@@ -4585,7 +4801,7 @@
      ],
      [
       "firefly-lamp",
-      1.2
+      1.4
      ],
      [
       "heart-bed",
@@ -4594,12 +4810,17 @@
      [
       "castle",
       0.03
+     ],
+     [
+      "bunny-house",
+      1.2
      ]
     ]
    },
    "ground": "models/omg-c/paint/z04-ground.webp",
    "backdrop": "models/omg-c/paint/z04-backdrop.webp",
-   "tile": 25
+   "tile": 25,
+   "nightLevel": 1.45
   },
   {
    "id": "z05",
@@ -6712,7 +6933,7 @@
     {
      "asset": "pine",
      "layer": "mid",
-     "count": 7,
+     "count": 3,
      "near": [
       5.0,
       12.0
@@ -6736,7 +6957,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 8,
+     "count": 3,
      "near": [
       5.0,
       12.0
@@ -6833,7 +7054,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 11,
+     "count": 4,
      "near": [
       5.0,
       12.0
@@ -6929,7 +7150,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 8,
+     "count": 3,
      "near": [
       5.0,
       16.0
@@ -6960,7 +7181,7 @@
     {
      "asset": "forest-clump",
      "layer": "mid",
-     "count": 6,
+     "count": 2,
      "near": [
       16.0,
       34.0
@@ -6991,7 +7212,7 @@
     {
      "asset": "paper-hill-lo",
      "layer": "mid",
-     "count": 5,
+     "count": 2,
      "near": [
       16.0,
       34.0
@@ -7082,6 +7303,222 @@
       "r": 6.2,
       "row": true
      }
+    },
+    {
+     "asset": "mushroom-house",
+     "layer": "mid",
+     "count": 3,
+     "near": [
+      5.0,
+      12.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.9,
+      1.2
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       3,
+       4
+      ],
+      "r": 3.8,
+      "row": true
+     }
+    },
+    {
+     "asset": "bunny-house",
+     "layer": "mid",
+     "count": 2,
+     "near": [
+      6.0,
+      13.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.85,
+      1.1
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       2,
+       3
+      ],
+      "r": 4.2,
+      "row": true
+     }
+    },
+    {
+     "asset": "mushroom-house",
+     "layer": "mid",
+     "count": 1,
+     "near": [
+      5.0,
+      12.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.9,
+      1.2
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": false,
+     "cluster": {
+      "n": [
+       2,
+       3
+      ],
+      "r": 3.8,
+      "row": true
+     }
+    },
+    {
+     "asset": "lantern-tower",
+     "layer": "mid",
+     "count": 2,
+     "near": [
+      9.0,
+      20.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.1
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "firefly-lamp",
+     "layer": "mid",
+     "count": 14,
+     "near": [
+      1.5,
+      4.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.4
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": false
+    },
+    {
+     "asset": "firefly-lamp",
+     "layer": "mid",
+     "count": 14,
+     "near": [
+      1.5,
+      5.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.4
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "flower-heart",
+     "layer": "ground",
+     "count": 70,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      2.0,
+      3.0
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "flower-heart",
+     "layer": "ground",
+     "count": 30,
+     "near": [
+      0.3,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      2.0,
+      3.0
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": false
     }
    ],
    "setpieces": [
@@ -7155,7 +7592,7 @@
     "sprites": [
      [
       "pine",
-      3
+      1.5
      ],
      [
       "spiral-tower",
@@ -7167,25 +7604,34 @@
      ],
      [
       "mushroom-house",
-      0.8
+      1.6
      ],
      [
       "firefly-lamp",
-      1.2
+      1.4
      ],
      [
       "lantern-tower",
-      0.2
+      0.6
      ],
      [
       "book-stack",
       0.4
+     ],
+     [
+      "bunny-house",
+      1.2
+     ],
+     [
+      "lily-lamp",
+      0.8
      ]
     ]
    },
    "ground": "models/omg-c/paint/z07-ground.webp",
    "backdrop": "models/omg-c/paint/z07-backdrop.webp",
-   "tile": 25
+   "tile": 25,
+   "nightLevel": 1.45
   },
   {
    "id": "z08",
@@ -7659,7 +8105,7 @@
     {
      "asset": "tree-bush-lo",
      "layer": "mid",
-     "count": 5,
+     "count": 2,
      "near": [
       5.0,
       12.0
@@ -7780,7 +8226,7 @@
     {
      "asset": "forest-clump",
      "layer": "mid",
-     "count": 5,
+     "count": 2,
      "near": [
       16.0,
       34.0
@@ -7843,7 +8289,7 @@
     {
      "asset": "paper-hill-lo",
      "layer": "mid",
-     "count": 3,
+     "count": 1,
      "near": [
       16.0,
       34.0
@@ -7902,6 +8348,222 @@
       "r": 3.8,
       "row": true
      }
+    },
+    {
+     "asset": "mushroom-house",
+     "layer": "mid",
+     "count": 3,
+     "near": [
+      5.0,
+      12.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.9,
+      1.2
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       3,
+       4
+      ],
+      "r": 3.8,
+      "row": true
+     }
+    },
+    {
+     "asset": "bunny-house",
+     "layer": "mid",
+     "count": 2,
+     "near": [
+      6.0,
+      13.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.85,
+      1.1
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       2,
+       3
+      ],
+      "r": 4.2,
+      "row": true
+     }
+    },
+    {
+     "asset": "mushroom-house",
+     "layer": "mid",
+     "count": 2,
+     "near": [
+      5.0,
+      12.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.9,
+      1.2
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": false,
+     "cluster": {
+      "n": [
+       2,
+       3
+      ],
+      "r": 3.8,
+      "row": true
+     }
+    },
+    {
+     "asset": "lantern-tower",
+     "layer": "mid",
+     "count": 3,
+     "near": [
+      9.0,
+      20.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.1
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "firefly-lamp",
+     "layer": "mid",
+     "count": 14,
+     "near": [
+      1.5,
+      4.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.4
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": false
+    },
+    {
+     "asset": "firefly-lamp",
+     "layer": "mid",
+     "count": 14,
+     "near": [
+      1.5,
+      5.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.4
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "flower-heart",
+     "layer": "ground",
+     "count": 70,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      2.0,
+      3.0
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "flower-heart",
+     "layer": "ground",
+     "count": 30,
+     "near": [
+      0.3,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      2.0,
+      3.0
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": false
     }
    ],
    "setpieces": [
@@ -7994,11 +8656,11 @@
     "sprites": [
      [
       "tree",
-      1.5
+      0.75
      ],
      [
       "forest-clump",
-      1
+      0.5
      ],
      [
       "balloons",
@@ -8027,12 +8689,33 @@
      [
       "lantern-string",
       0.4
+     ],
+     [
+      "mushroom-house",
+      1.6
+     ],
+     [
+      "bunny-house",
+      1.2
+     ],
+     [
+      "lantern-tower",
+      0.6
+     ],
+     [
+      "firefly-lamp",
+      1.4
+     ],
+     [
+      "lily-lamp",
+      0.8
      ]
     ]
    },
    "ground": "models/omg-c/paint/z08-ground.webp",
    "backdrop": "models/omg-c/paint/z08-backdrop.webp",
-   "tile": 25
+   "tile": 25,
+   "nightLevel": 1.45
   },
   {
    "id": "z09",
@@ -8127,7 +8810,7 @@
     {
      "asset": "pine",
      "layer": "mid",
-     "count": 34,
+     "count": 14,
      "near": [
       5.0,
       12.0
@@ -8396,7 +9079,7 @@
     {
      "asset": "tree",
      "layer": "mid",
-     "count": 24,
+     "count": 10,
      "near": [
       5.0,
       12.0
@@ -8465,7 +9148,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 33,
+     "count": 13,
      "near": [
       5.0,
       12.0
@@ -8558,7 +9241,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 58,
+     "count": 23,
      "near": [
       5.0,
       12.0
@@ -8581,7 +9264,7 @@
     {
      "asset": "tree-lo",
      "layer": "mid",
-     "count": 40,
+     "count": 16,
      "near": [
       5.0,
       12.0
@@ -8650,7 +9333,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 13,
+     "count": 5,
      "near": [
       5.0,
       16.0
@@ -8680,7 +9363,7 @@
     {
      "asset": "forest-clump",
      "layer": "mid",
-     "count": 12,
+     "count": 5,
      "near": [
       16.0,
       34.0
@@ -8710,7 +9393,7 @@
     {
      "asset": "paper-hill-lo",
      "layer": "mid",
-     "count": 10,
+     "count": 4,
      "near": [
       16.0,
       34.0
@@ -8767,6 +9450,214 @@
       "r": 3.8,
       "row": true
      }
+    },
+    {
+     "asset": "mushroom-house",
+     "layer": "mid",
+     "count": 6,
+     "near": [
+      5.0,
+      12.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.9,
+      1.2
+     ],
+     "colors": [
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       3,
+       4
+      ],
+      "r": 3.8,
+      "row": true
+     }
+    },
+    {
+     "asset": "bunny-house",
+     "layer": "mid",
+     "count": 4,
+     "near": [
+      6.0,
+      13.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.85,
+      1.1
+     ],
+     "colors": [
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       2,
+       3
+      ],
+      "r": 4.2,
+      "row": true
+     }
+    },
+    {
+     "asset": "mushroom-house",
+     "layer": "mid",
+     "count": 3,
+     "near": [
+      5.0,
+      12.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.9,
+      1.2
+     ],
+     "colors": [
+      2,
+      3,
+      4
+     ],
+     "hi": false,
+     "cluster": {
+      "n": [
+       2,
+       3
+      ],
+      "r": 3.8,
+      "row": true
+     }
+    },
+    {
+     "asset": "lantern-tower",
+     "layer": "mid",
+     "count": 5,
+     "near": [
+      9.0,
+      20.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.1
+     ],
+     "colors": [
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "firefly-lamp",
+     "layer": "mid",
+     "count": 28,
+     "near": [
+      1.5,
+      4.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.4
+     ],
+     "colors": [
+      2,
+      3,
+      4
+     ],
+     "hi": false
+    },
+    {
+     "asset": "firefly-lamp",
+     "layer": "mid",
+     "count": 28,
+     "near": [
+      1.5,
+      5.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.1,
+      1.4
+     ],
+     "colors": [
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "flower-heart",
+     "layer": "ground",
+     "count": 140,
+     "near": [
+      0.3,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      2.0,
+      3.0
+     ],
+     "colors": [
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "flower-heart",
+     "layer": "ground",
+     "count": 60,
+     "near": [
+      0.3,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      2.0,
+      3.0
+     ],
+     "colors": [
+      2,
+      3,
+      4
+     ],
+     "hi": false
     }
    ],
    "setpieces": [
@@ -8908,15 +9799,15 @@
     "sprites": [
      [
       "pine",
-      4
+      2.0
      ],
      [
       "forest-clump",
-      1
+      0.5
      ],
      [
       "mushroom-house",
-      0.8
+      1.6
      ],
      [
       "mushroom-group",
@@ -8924,17 +9815,26 @@
      ],
      [
       "firefly-lamp",
-      1.2
+      1.4
      ],
      [
       "lily-lamp",
-      0.5
+      0.8
+     ],
+     [
+      "bunny-house",
+      1.2
+     ],
+     [
+      "lantern-tower",
+      0.6
      ]
     ]
    },
    "ground": "models/omg-c/paint/z09-ground.webp",
    "backdrop": "models/omg-c/paint/z09-backdrop.webp",
-   "tile": 25
+   "tile": 25,
+   "nightLevel": 1.45
   },
   {
    "id": "z10",
