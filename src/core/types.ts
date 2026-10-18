@@ -68,6 +68,10 @@ export interface Layout {
   diamonds: { t: number; side?: number }[];
   crowns: { t: number }[];
   finish?: { kind: string; parts?: Part[]; color?: string };
+  /** Level end before the song ends (s): the route, finish gate, progress and completion use it; the music fades out over
+   *  endFade seconds (default 1.5) and stops exactly there. Absent = the level lasts the whole audio file. */
+  endTime?: number;
+  endFade?: number;
   collectibleColors?: { diamond?: string; crown?: string };
   /** Roadside set-dressing (engine-placed props along both sides of every road segment). false disables it. */
   dressing?: Dressing | false;
@@ -106,6 +110,8 @@ export interface Dressing {
 export interface LevelData {
   id: string; title: string; album: string; duration: number; bpm: number; audio: string; cover: string;
   difficulty: number; accent: string; chart: Chart; layout: Layout;
+  /** full audio length when the level ends early (layout.endTime); duration is then the level length */
+  audioDuration?: number; endFade?: number;
 }
 
 /** v2.9 corridor scenery: far-band set pieces, floor light strips, emblems, fireworks (src/render/corridor.ts). Times in s. */

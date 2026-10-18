@@ -9,205 +9,114 @@
  ],
  "taps": [
   {
-   "t": 2.609,
-   "tag": "vocals",
-   "lyric": "이",
-   "syl": "이",
+   "t": 1.901,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 3.2,
-   "tag": "vocals",
-   "lyric": "노래는",
-   "syl": "노",
+   "t": 2.373,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 3.436,
-   "tag": "vocals",
-   "lyric": "노래는",
-   "syl": "래",
+   "t": 2.846,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 3.833,
-   "tag": "vocals",
-   "lyric": "it's",
-   "syl": "it's",
+   "t": 3.318,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 4.617,
-   "tag": "vocals",
-   "lyric": "about",
-   "syl": "a",
+   "t": 3.79,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 4.814,
-   "tag": "vocals",
-   "lyric": "you",
-   "syl": "you",
+   "t": 4.735,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 5.09,
-   "tag": "vocals",
-   "lyric": "baby",
-   "syl": "ba",
+   "t": 5.68,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 5.286,
-   "tag": "vocals",
-   "lyric": "baby",
-   "syl": "by",
+   "t": 6.625,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 7.62,
-   "tag": "vocals",
-   "lyric": "Only",
-   "syl": "on",
+   "t": 7.57,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 7.924,
-   "tag": "vocals",
-   "lyric": "Only",
-   "syl": "ly",
+   "t": 8.515,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 8.279,
-   "tag": "vocals",
-   "lyric": "you",
-   "syl": "you",
+   "t": 9.46,
+   "tag": "tap",
+   "dir": "R"
+  },
+  {
+   "t": 10.404,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 11.231,
-   "tag": "vocals",
-   "lyric": "You",
-   "syl": "you",
-   "dir": "R"
-  },
-  {
-   "t": 12.058,
-   "tag": "vocals",
-   "lyric": "you",
-   "syl": "you",
-   "dir": "R"
-  },
-  {
-   "t": 12.53,
-   "tag": "vocals",
-   "lyric": "you",
-   "syl": "you",
+   "t": 11.349,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 13.051,
-   "tag": "vocals",
-   "lyric": "You",
-   "syl": "you",
+   "t": 12.294,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 13.762,
-   "tag": "vocals",
-   "lyric": "you",
-   "syl": "you",
+   "t": 13.239,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 13.948,
-   "tag": "vocals",
-   "lyric": "you",
-   "syl": "you",
+   "t": 13.711,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 14.302,
-   "tag": "vocals",
-   "lyric": "you",
-   "syl": "you",
+   "t": 14.184,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 14.971,
-   "tag": "vocals",
-   "lyric": "내가",
-   "syl": "내",
+   "t": 14.656,
+   "tag": "tap",
+   "dir": "R"
+  },
+  {
+   "t": 15.129,
+   "tag": "tap",
+   "dir": "R"
+  },
+  {
+   "t": 16.074,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 15.601,
-   "tag": "vocals",
-   "lyric": "힘들",
-   "syl": "힘",
-   "dir": "R"
-  },
-  {
-   "t": 15.837,
-   "tag": "vocals",
-   "lyric": "힘들",
-   "syl": "들",
-   "dir": "R"
-  },
-  {
-   "t": 16.31,
-   "tag": "vocals",
-   "lyric": "때",
-   "syl": "때",
-   "dir": "L"
-  },
-  {
-   "t": 16.782,
-   "tag": "vocals",
-   "lyric": "울",
-   "syl": "울",
-   "dir": "R"
-  },
-  {
-   "t": 17.019,
+   "t": 17.018,
    "tag": "snare",
-   "dir": "L"
-  },
-  {
-   "t": 17.255,
-   "tag": "vocals",
-   "lyric": "같을",
-   "syl": "같",
    "dir": "R"
   },
   {
-   "t": 17.491,
-   "tag": "vocals",
-   "lyric": "같을",
-   "syl": "을",
+   "t": 17.963,
+   "tag": "tap",
    "dir": "L"
-  },
-  {
-   "t": 17.727,
-   "tag": "vocals",
-   "lyric": "때",
-   "syl": "때",
-   "dir": "R"
-  },
-  {
-   "t": 18.318,
-   "tag": "vocals",
-   "lyric": "Mm-hm",
-   "syl": "mm",
-   "dir": "L"
-  },
-  {
-   "t": 18.672,
-   "tag": "vocals",
-   "lyric": "Mm-hm",
-   "syl": "hm",
-   "dir": "R"
   },
   {
    "t": 18.908,
@@ -215,31 +124,8 @@
    "dir": "L"
   },
   {
-   "t": 19.263,
-   "tag": "vocals",
-   "lyric": "기운도",
-   "syl": "기",
-   "dir": "L"
-  },
-  {
-   "t": 19.904,
-   "tag": "vocals",
-   "lyric": "이젠",
-   "syl": "이",
-   "dir": "R"
-  },
-  {
-   "t": 20.089,
-   "tag": "vocals",
-   "lyric": "이젠",
-   "syl": "젠",
-   "dir": "L"
-  },
-  {
-   "t": 20.326,
-   "tag": "vocals",
-   "lyric": "나지",
-   "syl": "나",
+   "t": 19.853,
+   "tag": "tap",
    "dir": "R"
   },
   {
@@ -248,66 +134,18 @@
    "dir": "L"
   },
   {
-   "t": 21.034,
-   "tag": "vocals",
-   "lyric": "않을",
-   "syl": "않",
+   "t": 21.743,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 21.625,
-   "tag": "vocals",
-   "lyric": "때",
-   "syl": "때",
-   "dir": "L"
-  },
-  {
-   "t": 21.861,
-   "tag": "vocals",
-   "lyric": "Mm-hm",
-   "syl": "mm",
+   "t": 22.688,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 22.215,
-   "tag": "vocals",
-   "lyric": "Mm-hm",
-   "syl": "hm",
-   "dir": "L"
-  },
-  {
-   "t": 22.609,
-   "tag": "vocals",
-   "lyric": "It's",
-   "syl": "it's",
-   "dir": "R"
-  },
-  {
-   "t": 23.278,
-   "tag": "vocals",
-   "lyric": "you",
-   "syl": "you",
-   "dir": "R"
-  },
-  {
-   "t": 23.79,
-   "tag": "vocals",
-   "lyric": "날",
-   "syl": "날",
-   "dir": "L"
-  },
-  {
-   "t": 24.105,
-   "tag": "vocals",
-   "lyric": "걱정하네",
-   "syl": "정",
-   "dir": "R"
-  },
-  {
-   "t": 24.341,
-   "tag": "vocals",
-   "lyric": "걱정하네",
-   "syl": "하",
+   "t": 23.633,
+   "tag": "tap",
    "dir": "L"
   },
   {
@@ -316,24 +154,8 @@
    "dir": "R"
   },
   {
-   "t": 24.892,
-   "tag": "vocals",
-   "lyric": "it's",
-   "syl": "it's",
-   "dir": "L"
-  },
-  {
-   "t": 25.168,
-   "tag": "vocals",
-   "lyric": "you",
-   "syl": "you",
-   "dir": "R"
-  },
-  {
-   "t": 25.601,
-   "tag": "vocals",
-   "lyric": "날",
-   "syl": "날",
+   "t": 25.522,
+   "tag": "tap",
    "dir": "L"
   },
   {
@@ -341,166 +163,94 @@
    "tag": "vocals",
    "lyric": "웃게하네",
    "syl": "게",
-   "dir": "R"
+   "dir": "L"
   },
   {
-   "t": 26.472,
+   "t": 26.467,
    "tag": "snare",
-   "dir": "L"
-  },
-  {
-   "t": 26.748,
-   "tag": "vocals",
-   "lyric": "말",
-   "syl": "말",
-   "dir": "L"
-  },
-  {
-   "t": 26.94,
-   "tag": "vocals",
-   "lyric": "안",
-   "syl": "안",
    "dir": "R"
-  },
-  {
-   "t": 27.176,
-   "tag": "vocals",
-   "lyric": "해도",
-   "syl": "해",
-   "dir": "L"
   },
   {
    "t": 27.412,
    "tag": "vocals",
    "lyric": "해도",
    "syl": "도",
-   "dir": "R"
-  },
-  {
-   "t": 28.121,
-   "tag": "vocals",
-   "lyric": "boy",
-   "syl": "boy",
    "dir": "L"
   },
   {
-   "t": 28.356,
+   "t": 28.357,
    "tag": "snare",
    "dir": "R"
   },
   {
-   "t": 28.672,
-   "tag": "vocals",
-   "lyric": "do",
-   "syl": "do",
+   "t": 29.302,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 28.908,
-   "tag": "vocals",
-   "lyric": "you",
-   "syl": "you",
-   "dir": "R"
-  },
-  {
-   "t": 29.065,
-   "tag": "vocals",
-   "lyric": "say",
-   "syl": "say",
-   "dir": "L"
-  },
-  {
-   "t": 29.42,
-   "tag": "vocals",
-   "lyric": "They",
-   "syl": "they",
-   "dir": "R"
-  },
-  {
-   "t": 29.787,
+   "t": 29.774,
    "tag": "snare",
+   "dir": "R"
+  },
+  {
+   "t": 30.247,
+   "tag": "tap",
+   "dir": "R"
+  },
+  {
+   "t": 30.955,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 30.01,
-   "tag": "vocals",
-   "lyric": "who",
-   "syl": "who",
+   "t": 31.191,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 30.365,
-   "tag": "vocals",
-   "lyric": "멀리든",
-   "syl": "멀",
-   "dir": "R"
-  },
-  {
-   "t": 30.562,
-   "tag": "vocals",
-   "lyric": "멀리든",
-   "syl": "리",
+   "t": 31.664,
+   "tag": "tap",
    "dir": "L"
-  },
-  {
-   "t": 31.073,
-   "tag": "vocals",
-   "lyric": "멀리든",
-   "syl": "든",
-   "dir": "R"
-  },
-  {
-   "t": 31.546,
-   "tag": "vocals",
-   "lyric": "언제든지",
-   "syl": "언",
-   "dir": "L"
-  },
-  {
-   "t": 31.9,
-   "tag": "vocals",
-   "lyric": "언제든지",
-   "syl": "제",
-   "dir": "R"
   },
   {
    "t": 32.136,
    "tag": "vocals",
    "lyric": "언제든지",
    "syl": "든",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 32.609,
    "tag": "vocals",
    "lyric": "달려와",
    "syl": "달",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 32.845,
    "tag": "vocals",
    "lyric": "달려와",
    "syl": "려",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 33.081,
    "tag": "kick",
-   "dir": "R"
-  },
-  {
-   "t": 33.396,
-   "tag": "vocals",
-   "lyric": "They",
-   "syl": "they",
    "dir": "L"
   },
   {
-   "t": 33.908,
-   "tag": "vocals",
-   "lyric": "who",
-   "syl": "who",
+   "t": 33.317,
+   "tag": "tap",
+   "dir": "R"
+  },
+  {
+   "t": 33.554,
+   "tag": "tap",
+   "dir": "L"
+  },
+  {
+   "t": 34.026,
+   "tag": "tap",
    "dir": "L"
   },
   {
@@ -518,31 +268,35 @@
    "dir": "L"
   },
   {
-   "t": 35.325,
-   "tag": "vocals",
-   "lyric": "척도",
-   "syl": "척",
+   "t": 35.207,
+   "tag": "tap",
    "dir": "R"
+  },
+  {
+   "t": 35.443,
+   "tag": "tap",
+   "dir": "L"
   },
   {
    "t": 35.68,
    "tag": "vocals",
    "lyric": "없이",
    "syl": "없",
-   "dir": "L"
-  },
-  {
-   "t": 36.034,
-   "tag": "vocals",
-   "lyric": "넌",
-   "syl": "넌",
    "dir": "R"
   },
   {
-   "t": 36.433,
-   "tag": "vocals",
-   "lyric": "나타나",
-   "syl": "나",
+   "t": 35.916,
+   "tag": "tap",
+   "dir": "L"
+  },
+  {
+   "t": 36.152,
+   "tag": "tap",
+   "dir": "R"
+  },
+  {
+   "t": 36.388,
+   "tag": "tap",
    "dir": "L"
   },
   {
@@ -567,41 +321,23 @@
    "dir": "R"
   },
   {
-   "t": 37.33,
+   "t": 37.333,
    "tag": "kick",
    "dir": "L"
   },
   {
-   "t": 37.569,
-   "tag": "vocals",
-   "lyric": "who",
-   "syl": "who",
-   "dir": "R"
-  },
-  {
-   "t": 37.806,
+   "t": 37.805,
    "tag": "kick",
    "dir": "R"
   },
   {
-   "t": 38.233,
-   "tag": "vocals",
-   "lyric": "이게",
-   "syl": "이",
-   "dir": "L"
-  },
-  {
-   "t": 38.632,
-   "tag": "vocals",
-   "lyric": "이게",
-   "syl": "게",
+   "t": 38.75,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 39.341,
-   "tag": "vocals",
-   "lyric": "되니",
-   "syl": "되",
+   "t": 39.223,
+   "tag": "tap",
    "dir": "L"
   },
   {
@@ -612,64 +348,42 @@
    "dir": "R"
   },
   {
-   "t": 39.931,
-   "tag": "vocals",
-   "lyric": "난",
-   "syl": "난",
-   "dir": "L"
-  },
-  {
    "t": 40.168,
    "tag": "vocals",
    "lyric": "물어봐",
    "syl": "물",
-   "dir": "R"
-  },
-  {
-   "t": 40.719,
-   "tag": "vocals",
-   "lyric": "물어봐",
-   "syl": "봐",
    "dir": "L"
   },
   {
-   "t": 40.994,
-   "tag": "vocals",
-   "lyric": "They",
-   "syl": "they",
+   "t": 40.64,
+   "tag": "tap",
    "dir": "R"
+  },
+  {
+   "t": 41.112,
+   "tag": "tap",
+   "dir": "L"
   },
   {
    "t": 41.349,
    "tag": "vocals",
    "lyric": "who",
    "syl": "who",
-   "dir": "L"
+   "dir": "R"
   },
   {
-   "t": 41.582,
+   "t": 41.585,
    "tag": "kick",
    "dir": "L"
   },
   {
-   "t": 42.009,
-   "tag": "vocals",
-   "lyric": "너는",
-   "syl": "너",
-   "dir": "R"
-  },
-  {
-   "t": 42.451,
-   "tag": "vocals",
-   "lyric": "너는",
-   "syl": "는",
+   "t": 42.057,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 42.687,
-   "tag": "vocals",
-   "lyric": "말야",
-   "syl": "말",
+   "t": 42.53,
+   "tag": "tap",
    "dir": "R"
   },
   {
@@ -680,78 +394,56 @@
    "dir": "L"
   },
   {
-   "t": 43.238,
-   "tag": "vocals",
-   "lyric": "he's",
-   "syl": "he's",
+   "t": 43.475,
+   "tag": "tap",
    "dir": "R"
-  },
-  {
-   "t": 43.593,
-   "tag": "vocals",
-   "lyric": "the",
-   "syl": "the",
-   "dir": "L"
   },
   {
    "t": 43.711,
    "tag": "vocals",
    "lyric": "that's",
    "syl": "that's",
-   "dir": "R"
+   "dir": "L"
   },
   {
-   "t": 43.948,
+   "t": 43.947,
    "tag": "snare",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 44.183,
    "tag": "vocals",
    "lyric": "my",
    "syl": "my",
-   "dir": "R"
+   "dir": "L"
   },
   {
-   "t": 44.341,
-   "tag": "vocals",
-   "lyric": "system",
-   "syl": "sys",
-   "dir": "L"
+   "t": 44.419,
+   "tag": "tap",
+   "dir": "R"
   },
   {
    "t": 44.656,
    "tag": "vocals",
    "lyric": "baby",
    "syl": "ba",
-   "dir": "R"
-  },
-  {
-   "t": 44.774,
-   "tag": "vocals",
-   "lyric": "baby",
-   "syl": "by",
    "dir": "L"
   },
   {
-   "t": 45.049,
-   "tag": "vocals",
-   "lyric": "Oh",
-   "syl": "oh",
+   "t": 44.892,
+   "tag": "tap",
    "dir": "R"
+  },
+  {
+   "t": 45.128,
+   "tag": "tap",
+   "dir": "L"
   },
   {
    "t": 45.364,
    "tag": "vocals",
    "lyric": "my",
    "syl": "my",
-   "dir": "L"
-  },
-  {
-   "t": 45.719,
-   "tag": "vocals",
-   "lyric": "oh",
-   "syl": "oh",
    "dir": "R"
   },
   {
@@ -762,22 +454,18 @@
    "dir": "R"
   },
   {
-   "t": 46.073,
-   "tag": "vocals",
-   "lyric": "God",
-   "syl": "god",
+   "t": 46.309,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 46.427,
-   "tag": "vocals",
-   "lyric": "예상했어",
-   "syl": "예",
+   "t": 46.782,
+   "tag": "kick",
    "dir": "R"
   },
   {
-   "t": 46.781,
-   "tag": "kick",
+   "t": 47.018,
+   "tag": "tap",
    "dir": "L"
   },
   {
@@ -788,17 +476,13 @@
    "dir": "R"
   },
   {
-   "t": 47.608,
-   "tag": "vocals",
-   "lyric": "나",
-   "syl": "나",
+   "t": 47.49,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 47.845,
-   "tag": "vocals",
-   "lyric": "I",
-   "syl": "i",
+   "t": 47.726,
+   "tag": "tap",
    "dir": "R"
   },
   {
@@ -809,10 +493,18 @@
    "dir": "L"
   },
   {
-   "t": 48.789,
-   "tag": "vocals",
-   "lyric": "hoping",
-   "syl": "hop",
+   "t": 48.435,
+   "tag": "tap",
+   "dir": "R"
+  },
+  {
+   "t": 48.671,
+   "tag": "tap",
+   "dir": "L"
+  },
+  {
+   "t": 48.908,
+   "tag": "tap",
    "dir": "R"
   },
   {
@@ -830,37 +522,44 @@
    "dir": "L"
   },
   {
-   "t": 49.628,
+   "t": 49.616,
    "tag": "snare",
    "dir": "R"
   },
   {
-   "t": 49.931,
-   "tag": "vocals",
-   "lyric": "will",
-   "syl": "will",
+   "t": 49.852,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 50.207,
-   "tag": "vocals",
-   "lyric": "come",
-   "syl": "come",
+   "t": 50.089,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 50.719,
-   "tag": "vocals",
-   "lyric": "through",
-   "syl": "through",
+   "t": 50.561,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 52.333,
-   "tag": "vocals",
-   "lyric": "Oh",
-   "syl": "oh",
+   "t": 51.033,
+   "tag": "tap",
    "dir": "R"
+  },
+  {
+   "t": 51.506,
+   "tag": "tap",
+   "dir": "L"
+  },
+  {
+   "t": 51.978,
+   "tag": "tap",
+   "dir": "R"
+  },
+  {
+   "t": 52.451,
+   "tag": "tap",
+   "dir": "L"
   },
   {
    "t": 52.923,
@@ -874,32 +573,37 @@
    "tag": "vocals",
    "lyric": "oh",
    "syl": "oh",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 53.396,
    "tag": "vocals",
    "lyric": "my",
    "syl": "my",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 53.632,
    "tag": "vocals",
    "lyric": "God",
    "syl": "god",
-   "dir": "L"
+   "dir": "R"
   },
   {
-   "t": 53.875,
+   "t": 53.868,
    "tag": "kick",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 54.341,
    "tag": "vocals",
    "lyric": "너뿐이야",
    "syl": "너",
+   "dir": "R"
+  },
+  {
+   "t": 54.577,
+   "tag": "tap",
    "dir": "L"
   },
   {
@@ -910,62 +614,64 @@
    "dir": "R"
   },
   {
-   "t": 55.245,
-   "tag": "vocals",
-   "lyric": "Asking",
-   "syl": "ask",
+   "t": 55.049,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 55.764,
-   "tag": "kick",
+   "t": 55.285,
+   "tag": "tap",
    "dir": "R"
+  },
+  {
+   "t": 55.758,
+   "tag": "kick",
+   "dir": "L"
   },
   {
    "t": 55.994,
    "tag": "vocals",
    "lyric": "all",
    "syl": "all",
-   "dir": "L"
+   "dir": "R"
   },
   {
-   "t": 56.309,
-   "tag": "vocals",
-   "lyric": "the",
-   "syl": "the",
-   "dir": "R"
+   "t": 56.23,
+   "tag": "tap",
+   "dir": "L"
   },
   {
    "t": 56.466,
    "tag": "vocals",
    "lyric": "time",
    "syl": "time",
+   "dir": "R"
+  },
+  {
+   "t": 56.703,
+   "tag": "kick",
    "dir": "L"
   },
   {
-   "t": 56.702,
-   "tag": "kick",
-   "dir": "R"
+   "t": 56.939,
+   "tag": "tap",
+   "dir": "L"
   },
   {
    "t": 57.175,
    "tag": "vocals",
    "lyric": "what",
    "syl": "what",
+   "dir": "R"
+  },
+  {
+   "t": 57.411,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 57.462,
-   "tag": "vocals",
-   "lyric": "I",
-   "syl": "i",
-   "dir": "L"
-  },
-  {
-   "t": 57.766,
-   "tag": "vocals",
-   "lyric": "should",
-   "syl": "should",
+   "t": 57.648,
+   "tag": "tap",
    "dir": "R"
   },
   {
@@ -976,10 +682,18 @@
    "dir": "L"
   },
   {
-   "t": 59.459,
-   "tag": "vocals",
-   "lyric": "No",
-   "syl": "no",
+   "t": 58.592,
+   "tag": "tap",
+   "dir": "R"
+  },
+  {
+   "t": 59.065,
+   "tag": "tap",
+   "dir": "L"
+  },
+  {
+   "t": 59.537,
+   "tag": "tap",
    "dir": "R"
   },
   {
@@ -997,36 +711,44 @@
    "dir": "R"
   },
   {
-   "t": 60.199,
-   "tag": "vocals",
-   "lyric": "never",
-   "syl": "nev",
+   "t": 60.246,
+   "tag": "tap",
+   "dir": "L"
+  },
+  {
+   "t": 60.482,
+   "tag": "kick",
    "dir": "R"
   },
   {
-   "t": 60.484,
-   "tag": "kick",
-   "dir": "L"
+   "t": 60.718,
+   "tag": "tap",
+   "dir": "R"
   },
   {
    "t": 60.955,
    "tag": "vocals",
    "lyric": "him",
    "syl": "him",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 61.191,
    "tag": "vocals",
    "lyric": "go",
    "syl": "go",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 61.427,
    "tag": "vocals",
    "lyric": "너만",
    "syl": "너",
+   "dir": "L"
+  },
+  {
+   "t": 61.663,
+   "tag": "tap",
    "dir": "R"
   },
   {
@@ -1044,55 +766,65 @@
    "dir": "R"
   },
   {
-   "t": 62.37,
+   "t": 62.372,
    "tag": "snare",
    "dir": "L"
+  },
+  {
+   "t": 62.608,
+   "tag": "tap",
+   "dir": "R"
   },
   {
    "t": 62.844,
    "tag": "vocals",
    "lyric": "twenty-four",
    "syl": "ty",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 63.08,
    "tag": "vocals",
    "lyric": "난",
    "syl": "난",
-   "dir": "L"
+   "dir": "R"
   },
   {
-   "t": 63.316,
+   "t": 63.317,
    "tag": "snare",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 63.553,
    "tag": "vocals",
    "lyric": "행운아야",
    "syl": "행",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 63.789,
    "tag": "vocals",
    "lyric": "행운아야",
    "syl": "운",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 64.025,
    "tag": "vocals",
    "lyric": "행운아야",
    "syl": "아",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 64.262,
    "tag": "vocals",
    "lyric": "행운아야",
    "syl": "야",
+   "dir": "L"
+  },
+  {
+   "t": 64.498,
+   "tag": "tap",
    "dir": "L"
   },
   {
@@ -1103,111 +835,99 @@
    "dir": "R"
   },
   {
+   "t": 64.97,
+   "tag": "tap",
+   "dir": "L"
+  },
+  {
    "t": 65.206,
    "tag": "vocals",
    "lyric": "I",
    "syl": "i",
-   "dir": "L"
-  },
-  {
-   "t": 65.392,
-   "tag": "vocals",
-   "lyric": "know",
-   "syl": "know",
    "dir": "R"
   },
   {
-   "t": 65.797,
-   "tag": "vocals",
-   "lyric": "I",
-   "syl": "i",
+   "t": 65.443,
+   "tag": "tap",
    "dir": "L"
+  },
+  {
+   "t": 65.679,
+   "tag": "tap",
+   "dir": "R"
   },
   {
    "t": 65.915,
    "tag": "vocals",
    "lyric": "know",
    "syl": "know",
-   "dir": "R"
-  },
-  {
-   "t": 66.269,
-   "tag": "vocals",
-   "lyric": "널",
-   "syl": "널",
    "dir": "L"
   },
   {
-   "t": 66.622,
+   "t": 66.151,
+   "tag": "tap",
+   "dir": "R"
+  },
+  {
+   "t": 66.624,
    "tag": "snare",
-   "dir": "R"
+   "dir": "L"
   },
   {
-   "t": 67.45,
-   "tag": "vocals",
-   "lyric": "알기",
-   "syl": "알",
-   "dir": "L"
+   "t": 67.332,
+   "tag": "tap",
+   "dir": "R"
   },
   {
    "t": 67.569,
    "tag": "vocals",
    "lyric": "알기",
    "syl": "기",
-   "dir": "R"
-  },
-  {
-   "t": 67.687,
-   "tag": "vocals",
-   "lyric": "전까지는",
-   "syl": "전",
    "dir": "L"
   },
   {
-   "t": 68.039,
+   "t": 67.805,
+   "tag": "tap",
+   "dir": "R"
+  },
+  {
+   "t": 68.041,
    "tag": "kick",
    "dir": "R"
   },
   {
-   "t": 68.632,
-   "tag": "vocals",
-   "lyric": "나",
-   "syl": "나",
-   "dir": "R"
-  },
-  {
-   "t": 68.828,
-   "tag": "vocals",
-   "lyric": "의미",
-   "syl": "의",
+   "t": 68.277,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 69.143,
-   "tag": "vocals",
-   "lyric": "의미",
-   "syl": "미",
+   "t": 68.513,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 69.34,
-   "tag": "vocals",
-   "lyric": "없었어",
-   "syl": "없",
+   "t": 68.75,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 69.576,
-   "tag": "vocals",
-   "lyric": "없었어",
-   "syl": "었",
+   "t": 68.986,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 70.049,
-   "tag": "vocals",
-   "lyric": "전부",
-   "syl": "전",
+   "t": 69.458,
+   "tag": "tap",
+   "dir": "L"
+  },
+  {
+   "t": 69.931,
+   "tag": "tap",
+   "dir": "R"
+  },
+  {
+   "t": 70.167,
+   "tag": "tap",
    "dir": "L"
   },
   {
@@ -1232,35 +952,19 @@
    "dir": "R"
   },
   {
-   "t": 71.112,
-   "tag": "vocals",
-   "lyric": "맘이",
-   "syl": "맘",
-   "dir": "L"
-  },
-  {
    "t": 71.348,
    "tag": "snare",
-   "dir": "R"
-  },
-  {
-   "t": 71.584,
-   "tag": "vocals",
-   "lyric": "끝이",
-   "syl": "끝",
    "dir": "L"
   },
   {
-   "t": 71.821,
+   "t": 71.82,
    "tag": "kick",
-   "dir": "L"
+   "dir": "R"
   },
   {
-   "t": 72.102,
-   "tag": "vocals",
-   "lyric": "없는",
-   "syl": "없",
-   "dir": "R"
+   "t": 72.057,
+   "tag": "tap",
+   "dir": "L"
   },
   {
    "t": 72.293,
@@ -1270,10 +974,20 @@
    "dir": "L"
   },
   {
+   "t": 72.529,
+   "tag": "tap",
+   "dir": "R"
+  },
+  {
    "t": 72.765,
    "tag": "vocals",
    "lyric": "I",
    "syl": "i",
+   "dir": "L"
+  },
+  {
+   "t": 73.002,
+   "tag": "tap",
    "dir": "R"
   },
   {
@@ -1284,24 +998,20 @@
    "dir": "L"
   },
   {
-   "t": 73.592,
-   "tag": "vocals",
-   "lyric": "know",
-   "syl": "know",
+   "t": 73.474,
+   "tag": "tap",
    "dir": "R"
+  },
+  {
+   "t": 73.71,
+   "tag": "tap",
+   "dir": "L"
   },
   {
    "t": 74.183,
    "tag": "vocals",
    "lyric": "going",
    "syl": "go",
-   "dir": "L"
-  },
-  {
-   "t": 74.419,
-   "tag": "vocals",
-   "lyric": "crazy",
-   "syl": "cra",
    "dir": "R"
   },
   {
@@ -1312,18 +1022,9 @@
    "dir": "L"
   },
   {
-   "t": 74.812,
-   "tag": "vocals",
-   "lyric": "right",
-   "syl": "right",
+   "t": 75.127,
+   "tag": "tap",
    "dir": "R"
-  },
-  {
-   "t": 75.246,
-   "tag": "vocals",
-   "lyric": "어디서든",
-   "syl": "어",
-   "dir": "L"
   },
   {
    "t": 75.6,
@@ -1331,59 +1032,40 @@
    "dir": "R"
   },
   {
-   "t": 75.954,
-   "tag": "vocals",
-   "lyric": "어디서든",
-   "syl": "든",
-   "dir": "R"
-  },
-  {
-   "t": 76.19,
-   "tag": "vocals",
-   "lyric": "몇",
-   "syl": "몇",
+   "t": 76.072,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 76.545,
-   "tag": "vocals",
-   "lyric": "번이든",
-   "syl": "번",
+   "t": 76.663,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 76.899,
-   "tag": "vocals",
-   "lyric": "번이든",
-   "syl": "든",
+   "t": 77.017,
+   "tag": "tap",
    "dir": "L"
-  },
-  {
-   "t": 77.096,
-   "tag": "vocals",
-   "lyric": "There",
-   "syl": "there",
-   "dir": "R"
   },
   {
    "t": 77.49,
    "tag": "vocals",
    "lyric": "ain't",
    "syl": "ain't",
-   "dir": "L"
-  },
-  {
-   "t": 77.844,
-   "tag": "vocals",
-   "lyric": "else",
-   "syl": "else",
    "dir": "R"
   },
   {
-   "t": 78.08,
-   "tag": "vocals",
-   "lyric": "I",
-   "syl": "i",
+   "t": 77.726,
+   "tag": "tap",
+   "dir": "L"
+  },
+  {
+   "t": 77.962,
+   "tag": "tap",
+   "dir": "R"
+  },
+  {
+   "t": 78.198,
+   "tag": "tap",
    "dir": "L"
   },
   {
@@ -1394,22 +1076,18 @@
    "dir": "R"
   },
   {
-   "t": 79.025,
-   "tag": "vocals",
-   "lyric": "I",
-   "syl": "i",
+   "t": 78.671,
+   "tag": "tap",
+   "dir": "L"
+  },
+  {
+   "t": 78.907,
+   "tag": "tap",
    "dir": "L"
   },
   {
    "t": 79.379,
    "tag": "kick",
-   "dir": "L"
-  },
-  {
-   "t": 80.009,
-   "tag": "vocals",
-   "lyric": "through",
-   "syl": "through",
    "dir": "R"
   },
   {
@@ -1420,43 +1098,20 @@
    "dir": "L"
   },
   {
-   "t": 80.56,
-   "tag": "vocals",
-   "lyric": "the",
-   "syl": "the",
-   "dir": "R"
-  },
-  {
-   "t": 80.718,
-   "tag": "vocals",
-   "lyric": "noise",
-   "syl": "noise",
-   "dir": "L"
-  },
-  {
-   "t": 80.915,
-   "tag": "vocals",
-   "lyric": "잠시라도",
-   "syl": "잠",
-   "dir": "R"
-  },
-  {
-   "t": 81.268,
+   "t": 81.269,
    "tag": "snare",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 81.741,
    "tag": "vocals",
    "lyric": "손",
    "syl": "손",
-   "dir": "R"
+   "dir": "L"
   },
   {
-   "t": 82.096,
-   "tag": "vocals",
-   "lyric": "놓지",
-   "syl": "지",
+   "t": 82.214,
+   "tag": "tap",
    "dir": "R"
   },
   {
@@ -1464,7 +1119,7 @@
    "tag": "vocals",
    "lyric": "no",
    "syl": "no",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 82.686,
@@ -1481,27 +1136,8 @@
    "dir": "R"
   },
   {
-   "t": 83.631,
-   "tag": "snare",
-   "dir": "R"
-  },
-  {
-   "t": 84.025,
-   "tag": "vocals",
-   "lyric": "'Cause",
-   "syl": "cause",
-   "dir": "L"
-  },
-  {
-   "t": 84.577,
-   "tag": "kick",
-   "dir": "R"
-  },
-  {
-   "t": 84.812,
-   "tag": "vocals",
-   "lyric": "got",
-   "syl": "got",
+   "t": 84.104,
+   "tag": "tap",
    "dir": "L"
   },
   {
@@ -1512,20 +1148,18 @@
    "dir": "R"
   },
   {
-   "t": 85.285,
-   "tag": "vocals",
-   "lyric": "someone",
-   "syl": "one",
+   "t": 85.521,
+   "tag": "snare",
    "dir": "L"
   },
   {
-   "t": 85.52,
-   "tag": "snare",
+   "t": 85.757,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 85.994,
-   "tag": "snare",
+   "t": 86.23,
+   "tag": "tap",
    "dir": "L"
   },
   {
@@ -1533,6 +1167,11 @@
    "tag": "vocals",
    "lyric": "혼자라도",
    "syl": "혼",
+   "dir": "L"
+  },
+  {
+   "t": 86.702,
+   "tag": "tap",
    "dir": "R"
   },
   {
@@ -1543,38 +1182,13 @@
    "dir": "L"
   },
   {
-   "t": 87.411,
-   "tag": "vocals",
-   "lyric": "괜찮아",
-   "syl": "아",
-   "dir": "L"
-  },
-  {
-   "t": 87.568,
-   "tag": "vocals",
-   "lyric": "'Cause",
-   "syl": "cause",
+   "t": 87.883,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 88.356,
-   "tag": "vocals",
-   "lyric": "I",
-   "syl": "i",
-   "dir": "L"
-  },
-  {
-   "t": 88.592,
-   "tag": "vocals",
-   "lyric": "love",
-   "syl": "love",
-   "dir": "R"
-  },
-  {
-   "t": 88.946,
-   "tag": "vocals",
-   "lyric": "someone",
-   "syl": "some",
+   "t": 88.828,
+   "tag": "tap",
    "dir": "L"
   },
   {
@@ -1585,59 +1199,57 @@
    "dir": "R"
   },
   {
-   "t": 89.537,
-   "tag": "vocals",
-   "lyric": "They",
-   "syl": "they",
+   "t": 89.773,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 90.56,
-   "tag": "vocals",
-   "lyric": "who",
-   "syl": "who",
+   "t": 90.245,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 91.072,
-   "tag": "vocals",
-   "lyric": "멀리든",
-   "syl": "멀",
+   "t": 90.718,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 91.544,
-   "tag": "vocals",
-   "lyric": "멀리든",
-   "syl": "리",
+   "t": 91.19,
+   "tag": "tap",
    "dir": "L"
+  },
+  {
+   "t": 91.663,
+   "tag": "tap",
+   "dir": "R"
   },
   {
    "t": 91.899,
    "tag": "vocals",
    "lyric": "멀리든",
    "syl": "든",
-   "dir": "R"
-  },
-  {
-   "t": 92.214,
-   "tag": "vocals",
-   "lyric": "언제든지",
-   "syl": "언",
    "dir": "L"
   },
   {
-   "t": 92.42,
-   "tag": "vocals",
-   "lyric": "언제든지",
-   "syl": "제",
+   "t": 92.135,
+   "tag": "tap",
    "dir": "R"
+  },
+  {
+   "t": 92.371,
+   "tag": "tap",
+   "dir": "L"
   },
   {
    "t": 92.607,
    "tag": "vocals",
    "lyric": "언제든지",
    "syl": "든",
+   "dir": "R"
+  },
+  {
+   "t": 92.844,
+   "tag": "tap",
    "dir": "L"
   },
   {
@@ -1655,30 +1267,24 @@
    "dir": "L"
   },
   {
-   "t": 93.67,
-   "tag": "vocals",
-   "lyric": "They",
-   "syl": "they",
+   "t": 93.552,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 94.261,
-   "tag": "vocals",
-   "lyric": "who",
-   "syl": "who",
+   "t": 93.788,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 94.509,
+   "t": 94.025,
+   "tag": "tap",
+   "dir": "R"
+  },
+  {
+   "t": 94.497,
    "tag": "kick",
    "dir": "L"
-  },
-  {
-   "t": 95.048,
-   "tag": "vocals",
-   "lyric": "바쁜",
-   "syl": "바",
-   "dir": "R"
   },
   {
    "t": 95.442,
@@ -1688,59 +1294,35 @@
    "dir": "L"
   },
   {
-   "t": 95.796,
-   "tag": "vocals",
-   "lyric": "척도",
-   "syl": "척",
+   "t": 95.914,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 96.151,
-   "tag": "vocals",
-   "lyric": "없이",
-   "syl": "없",
+   "t": 96.387,
+   "tag": "tap",
    "dir": "L"
-  },
-  {
-   "t": 96.505,
-   "tag": "vocals",
-   "lyric": "넌",
-   "syl": "넌",
-   "dir": "R"
   },
   {
    "t": 96.859,
    "tag": "vocals",
    "lyric": "나타나",
    "syl": "나",
-   "dir": "L"
-  },
-  {
-   "t": 97.095,
-   "tag": "vocals",
-   "lyric": "나타나",
-   "syl": "타",
    "dir": "R"
   },
   {
-   "t": 97.45,
-   "tag": "vocals",
-   "lyric": "나타나",
-   "syl": "나",
+   "t": 97.332,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 97.686,
-   "tag": "vocals",
-   "lyric": "They",
-   "syl": "they",
+   "t": 97.804,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 98.158,
-   "tag": "vocals",
-   "lyric": "who",
-   "syl": "who",
+   "t": 98.277,
+   "tag": "tap",
    "dir": "R"
   },
   {
@@ -1758,31 +1340,13 @@
    "dir": "R"
   },
   {
-   "t": 99.34,
-   "tag": "vocals",
-   "lyric": "말이",
-   "syl": "말",
+   "t": 99.694,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 99.773,
-   "tag": "vocals",
-   "lyric": "되니",
-   "syl": "되",
-   "dir": "R"
-  },
-  {
-   "t": 100.048,
-   "tag": "vocals",
-   "lyric": "되니",
-   "syl": "니",
-   "dir": "L"
-  },
-  {
-   "t": 100.324,
-   "tag": "vocals",
-   "lyric": "난",
-   "syl": "난",
+   "t": 100.166,
+   "tag": "tap",
    "dir": "R"
   },
   {
@@ -1797,14 +1361,12 @@
    "tag": "vocals",
    "lyric": "물어봐",
    "syl": "봐",
-   "dir": "R"
+   "dir": "L"
   },
   {
-   "t": 101.347,
-   "tag": "vocals",
-   "lyric": "They",
-   "syl": "they",
-   "dir": "L"
+   "t": 101.584,
+   "tag": "tap",
+   "dir": "R"
   },
   {
    "t": 101.82,
@@ -1833,10 +1395,8 @@
    "dir": "R"
   },
   {
-   "t": 103.355,
-   "tag": "vocals",
-   "lyric": "말야",
-   "syl": "말",
+   "t": 103.237,
+   "tag": "tap",
    "dir": "L"
   },
   {
@@ -1861,14 +1421,12 @@
    "dir": "R"
   },
   {
-   "t": 104.064,
-   "tag": "vocals",
-   "lyric": "one",
-   "syl": "one",
+   "t": 104.182,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 104.401,
+   "t": 104.418,
    "tag": "kick",
    "dir": "R"
   },
@@ -1880,10 +1438,8 @@
    "dir": "L"
   },
   {
-   "t": 104.772,
-   "tag": "vocals",
-   "lyric": "system",
-   "syl": "sys",
+   "t": 104.891,
+   "tag": "tap",
    "dir": "R"
   },
   {
@@ -1901,13 +1457,6 @@
    "dir": "R"
   },
   {
-   "t": 105.52,
-   "tag": "vocals",
-   "lyric": "Oh",
-   "syl": "oh",
-   "dir": "L"
-  },
-  {
    "t": 105.835,
    "tag": "vocals",
    "lyric": "my",
@@ -1915,71 +1464,22 @@
    "dir": "R"
   },
   {
-   "t": 106.19,
-   "tag": "vocals",
-   "lyric": "oh",
-   "syl": "oh",
-   "dir": "R"
-  },
-  {
-   "t": 106.308,
-   "tag": "vocals",
-   "lyric": "my",
-   "syl": "my",
+   "t": 106.78,
+   "tag": "tap",
    "dir": "L"
-  },
-  {
-   "t": 106.544,
-   "tag": "vocals",
-   "lyric": "God",
-   "syl": "god",
-   "dir": "R"
-  },
-  {
-   "t": 106.898,
-   "tag": "vocals",
-   "lyric": "예상했어",
-   "syl": "예",
-   "dir": "L"
-  },
-  {
-   "t": 107.254,
-   "tag": "kick",
-   "dir": "R"
   },
   {
    "t": 107.725,
    "tag": "vocals",
    "lyric": "예상했어",
    "syl": "했",
-   "dir": "L"
-  },
-  {
-   "t": 108.079,
-   "tag": "vocals",
-   "lyric": "나",
-   "syl": "나",
    "dir": "R"
-  },
-  {
-   "t": 108.316,
-   "tag": "vocals",
-   "lyric": "I",
-   "syl": "i",
-   "dir": "L"
   },
   {
    "t": 108.67,
    "tag": "vocals",
    "lyric": "was",
    "syl": "was",
-   "dir": "R"
-  },
-  {
-   "t": 109.261,
-   "tag": "vocals",
-   "lyric": "hoping",
-   "syl": "hop",
    "dir": "L"
   },
   {
@@ -1990,44 +1490,39 @@
    "dir": "L"
   },
   {
-   "t": 109.851,
-   "tag": "vocals",
-   "lyric": "that",
-   "syl": "that",
-   "dir": "R"
-  },
-  {
-   "t": 110.102,
+   "t": 110.087,
    "tag": "kick",
-   "dir": "L"
-  },
-  {
-   "t": 110.402,
-   "tag": "vocals",
-   "lyric": "will",
-   "syl": "will",
    "dir": "R"
   },
   {
-   "t": 110.678,
-   "tag": "vocals",
-   "lyric": "come",
-   "syl": "come",
+   "t": 110.56,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 111.19,
-   "tag": "vocals",
-   "lyric": "through",
-   "syl": "through",
+   "t": 111.032,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 112.804,
-   "tag": "vocals",
-   "lyric": "Oh",
-   "syl": "oh",
+   "t": 111.505,
+   "tag": "tap",
    "dir": "L"
+  },
+  {
+   "t": 111.977,
+   "tag": "tap",
+   "dir": "R"
+  },
+  {
+   "t": 112.449,
+   "tag": "tap",
+   "dir": "L"
+  },
+  {
+   "t": 112.922,
+   "tag": "tap",
+   "dir": "R"
   },
   {
    "t": 113.394,
@@ -2037,50 +1532,15 @@
    "dir": "R"
   },
   {
-   "t": 113.631,
-   "tag": "vocals",
-   "lyric": "oh",
-   "syl": "oh",
-   "dir": "R"
-  },
-  {
-   "t": 113.867,
-   "tag": "vocals",
-   "lyric": "my",
-   "syl": "my",
-   "dir": "L"
-  },
-  {
-   "t": 114.103,
-   "tag": "vocals",
-   "lyric": "God",
-   "syl": "god",
-   "dir": "R"
-  },
-  {
-   "t": 114.331,
+   "t": 114.339,
    "tag": "snare",
    "dir": "L"
-  },
-  {
-   "t": 114.812,
-   "tag": "vocals",
-   "lyric": "너뿐이야",
-   "syl": "너",
-   "dir": "R"
   },
   {
    "t": 115.284,
    "tag": "vocals",
    "lyric": "너뿐이야",
    "syl": "이",
-   "dir": "L"
-  },
-  {
-   "t": 115.756,
-   "tag": "vocals",
-   "lyric": "Asking",
-   "syl": "ask",
    "dir": "R"
   },
   {
@@ -2089,30 +1549,14 @@
    "dir": "L"
   },
   {
-   "t": 116.465,
-   "tag": "vocals",
-   "lyric": "all",
-   "syl": "all",
-   "dir": "R"
-  },
-  {
-   "t": 116.78,
-   "tag": "vocals",
-   "lyric": "the",
-   "syl": "the",
+   "t": 116.701,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 116.938,
-   "tag": "vocals",
-   "lyric": "time",
-   "syl": "time",
-   "dir": "R"
-  },
-  {
-   "t": 117.175,
+   "t": 117.174,
    "tag": "kick",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 117.646,
@@ -2122,38 +1566,30 @@
    "dir": "L"
   },
   {
-   "t": 117.935,
-   "tag": "vocals",
-   "lyric": "I",
-   "syl": "i",
+   "t": 118.119,
+   "tag": "tap",
    "dir": "R"
-  },
-  {
-   "t": 118.237,
-   "tag": "vocals",
-   "lyric": "should",
-   "syl": "should",
-   "dir": "L"
   },
   {
    "t": 118.591,
    "tag": "vocals",
    "lyric": "do",
    "syl": "do",
-   "dir": "R"
-  },
-  {
-   "t": 119.93,
-   "tag": "vocals",
-   "lyric": "No",
-   "syl": "no",
    "dir": "L"
   },
   {
-   "t": 120.245,
-   "tag": "vocals",
-   "lyric": "I",
-   "syl": "i",
+   "t": 119.063,
+   "tag": "tap",
+   "dir": "R"
+  },
+  {
+   "t": 119.772,
+   "tag": "tap",
+   "dir": "L"
+  },
+  {
+   "t": 120.008,
+   "tag": "tap",
    "dir": "R"
   },
   {
@@ -2164,29 +1600,15 @@
    "dir": "L"
   },
   {
-   "t": 120.672,
-   "tag": "vocals",
-   "lyric": "never",
-   "syl": "nev",
-   "dir": "R"
-  },
-  {
-   "t": 120.951,
+   "t": 120.953,
    "tag": "kick",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 121.426,
    "tag": "vocals",
    "lyric": "him",
    "syl": "him",
-   "dir": "R"
-  },
-  {
-   "t": 121.662,
-   "tag": "vocals",
-   "lyric": "go",
-   "syl": "go",
    "dir": "R"
   },
   {
@@ -2211,7 +1633,7 @@
    "dir": "L"
   },
   {
-   "t": 122.844,
+   "t": 122.843,
    "tag": "snare",
    "dir": "R"
   },
@@ -2223,22 +1645,8 @@
    "dir": "L"
   },
   {
-   "t": 123.552,
-   "tag": "vocals",
-   "lyric": "난",
-   "syl": "난",
-   "dir": "R"
-  },
-  {
-   "t": 123.79,
+   "t": 123.788,
    "tag": "snare",
-   "dir": "L"
-  },
-  {
-   "t": 124.024,
-   "tag": "vocals",
-   "lyric": "행운아야",
-   "syl": "행",
    "dir": "R"
   },
   {
@@ -2253,14 +1661,14 @@
    "tag": "vocals",
    "lyric": "행운아야",
    "syl": "아",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 124.733,
    "tag": "vocals",
    "lyric": "행운아야",
    "syl": "야",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 125.205,
@@ -2277,43 +1685,18 @@
    "dir": "R"
   },
   {
-   "t": 125.864,
-   "tag": "vocals",
-   "lyric": "know",
-   "syl": "know",
+   "t": 126.15,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 126.268,
-   "tag": "vocals",
-   "lyric": "I",
-   "syl": "i",
+   "t": 126.622,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 126.386,
-   "tag": "vocals",
-   "lyric": "know",
-   "syl": "know",
-   "dir": "L"
-  },
-  {
-   "t": 127.096,
+   "t": 127.095,
    "tag": "snare",
-   "dir": "R"
-  },
-  {
-   "t": 127.52,
-   "tag": "vocals",
-   "lyric": "널",
-   "syl": "널",
-   "dir": "R"
-  },
-  {
-   "t": 127.882,
-   "tag": "vocals",
-   "lyric": "알기",
-   "syl": "알",
    "dir": "L"
   },
   {
@@ -2321,13 +1704,11 @@
    "tag": "vocals",
    "lyric": "알기",
    "syl": "기",
-   "dir": "L"
+   "dir": "R"
   },
   {
-   "t": 128.158,
-   "tag": "vocals",
-   "lyric": "전까지는",
-   "syl": "전",
+   "t": 128.276,
+   "tag": "tap",
    "dir": "R"
   },
   {
@@ -2336,45 +1717,28 @@
    "dir": "L"
   },
   {
-   "t": 128.866,
-   "tag": "vocals",
-   "lyric": "나",
-   "syl": "나",
+   "t": 128.985,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 129.299,
-   "tag": "vocals",
-   "lyric": "의미",
-   "syl": "의",
-   "dir": "R"
-  },
-  {
-   "t": 129.614,
-   "tag": "vocals",
-   "lyric": "의미",
-   "syl": "미",
+   "t": 129.457,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 129.811,
-   "tag": "vocals",
-   "lyric": "없었어",
-   "syl": "없",
+   "t": 129.929,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 130.047,
-   "tag": "vocals",
-   "lyric": "없었어",
-   "syl": "었",
+   "t": 130.402,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 130.52,
-   "tag": "vocals",
-   "lyric": "전부",
-   "syl": "전",
+   "t": 130.638,
+   "tag": "tap",
    "dir": "R"
   },
   {
@@ -2399,34 +1763,18 @@
    "dir": "L"
   },
   {
-   "t": 131.583,
-   "tag": "vocals",
-   "lyric": "맘이",
-   "syl": "맘",
-   "dir": "R"
-  },
-  {
-   "t": 131.821,
+   "t": 131.819,
    "tag": "snare",
-   "dir": "L"
-  },
-  {
-   "t": 132.055,
-   "tag": "vocals",
-   "lyric": "끝이",
-   "syl": "끝",
    "dir": "R"
   },
   {
-   "t": 132.291,
+   "t": 132.292,
    "tag": "kick",
    "dir": "L"
   },
   {
-   "t": 132.575,
-   "tag": "vocals",
-   "lyric": "없는",
-   "syl": "없",
+   "t": 132.528,
+   "tag": "tap",
    "dir": "L"
   },
   {
@@ -2437,184 +1785,152 @@
    "dir": "R"
   },
   {
+   "t": 133.0,
+   "tag": "tap",
+   "dir": "L"
+  },
+  {
    "t": 133.236,
    "tag": "vocals",
    "lyric": "I",
    "syl": "i",
-   "dir": "L"
-  },
-  {
-   "t": 133.591,
-   "tag": "vocals",
-   "lyric": "know",
-   "syl": "know",
    "dir": "R"
   },
   {
-   "t": 133.827,
-   "tag": "vocals",
-   "lyric": "I",
-   "syl": "i",
+   "t": 133.473,
+   "tag": "tap",
    "dir": "L"
+  },
+  {
+   "t": 133.709,
+   "tag": "tap",
+   "dir": "R"
   },
   {
    "t": 133.945,
    "tag": "vocals",
    "lyric": "know",
    "syl": "know",
-   "dir": "R"
+   "dir": "L"
   },
   {
-   "t": 134.299,
-   "tag": "vocals",
-   "lyric": "He's",
-   "syl": "he's",
-   "dir": "L"
+   "t": 134.181,
+   "tag": "tap",
+   "dir": "R"
   },
   {
    "t": 134.654,
    "tag": "vocals",
    "lyric": "that's",
    "syl": "that's",
-   "dir": "R"
-  },
-  {
-   "t": 135.244,
-   "tag": "vocals",
-   "lyric": "Baby",
-   "syl": "ba",
    "dir": "L"
   },
   {
-   "t": 135.717,
-   "tag": "vocals",
-   "lyric": "Baby",
-   "syl": "by",
+   "t": 135.126,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 135.953,
-   "tag": "vocals",
-   "lyric": "babe",
-   "syl": "babe",
-   "dir": "R"
-  },
-  {
-   "t": 136.425,
-   "tag": "vocals",
-   "lyric": "baby",
-   "syl": "ba",
+   "t": 135.599,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 137.014,
+   "t": 136.071,
+   "tag": "tap",
+   "dir": "R"
+  },
+  {
+   "t": 136.543,
+   "tag": "tap",
+   "dir": "R"
+  },
+  {
+   "t": 137.016,
    "tag": "kick",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 137.488,
    "tag": "vocals",
    "lyric": "baby",
    "syl": "by",
-   "dir": "L"
-  },
-  {
-   "t": 137.96,
-   "tag": "snare",
    "dir": "R"
   },
   {
-   "t": 138.315,
-   "tag": "vocals",
-   "lyric": "baby",
-   "syl": "ba",
-   "dir": "L"
-  },
-  {
-   "t": 139.024,
-   "tag": "vocals",
-   "lyric": "baby",
-   "syl": "by",
-   "dir": "R"
-  },
-  {
-   "t": 139.376,
+   "t": 137.961,
    "tag": "snare",
    "dir": "L"
   },
   {
-   "t": 139.849,
+   "t": 138.433,
+   "tag": "tap",
+   "dir": "R"
+  },
+  {
+   "t": 138.906,
+   "tag": "tap",
+   "dir": "L"
+  },
+  {
+   "t": 139.142,
+   "tag": "tap",
+   "dir": "R"
+  },
+  {
+   "t": 139.378,
    "tag": "snare",
    "dir": "L"
   },
   {
-   "t": 140.325,
+   "t": 139.614,
+   "tag": "tap",
+   "dir": "R"
+  },
+  {
+   "t": 139.85,
+   "tag": "snare",
+   "dir": "L"
+  },
+  {
+   "t": 140.323,
+   "tag": "snare",
+   "dir": "L"
+  },
+  {
+   "t": 140.795,
    "tag": "snare",
    "dir": "R"
   },
   {
-   "t": 140.793,
+   "t": 141.268,
    "tag": "snare",
    "dir": "L"
   },
   {
-   "t": 141.269,
+   "t": 141.74,
    "tag": "snare",
    "dir": "R"
   },
   {
-   "t": 141.504,
-   "tag": "vocals",
-   "lyric": "I'm",
-   "syl": "i'm",
+   "t": 142.449,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 141.742,
-   "tag": "snare",
+   "t": 142.685,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 142.168,
-   "tag": "vocals",
-   "lyric": "going",
-   "syl": "go",
+   "t": 143.157,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 142.567,
-   "tag": "vocals",
-   "lyric": "crazy",
-   "syl": "cra",
+   "t": 143.63,
+   "tag": "tap",
    "dir": "R"
-  },
-  {
-   "t": 142.764,
-   "tag": "vocals",
-   "lyric": "crazy",
-   "syl": "zy",
-   "dir": "R"
-  },
-  {
-   "t": 143.276,
-   "tag": "vocals",
-   "lyric": "Baby",
-   "syl": "ba",
-   "dir": "L"
-  },
-  {
-   "t": 143.709,
-   "tag": "vocals",
-   "lyric": "Baby",
-   "syl": "by",
-   "dir": "R"
-  },
-  {
-   "t": 143.984,
-   "tag": "vocals",
-   "lyric": "baby",
-   "syl": "ba",
-   "dir": "L"
   },
   {
    "t": 144.575,
@@ -2622,48 +1938,19 @@
    "dir": "R"
   },
   {
-   "t": 144.811,
-   "tag": "vocals",
-   "lyric": "baby",
-   "syl": "by",
-   "dir": "L"
-  },
-  {
-   "t": 145.048,
+   "t": 145.52,
    "tag": "snare",
-   "dir": "R"
-  },
-  {
-   "t": 145.521,
-   "tag": "snare",
-   "dir": "L"
-  },
-  {
-   "t": 145.992,
-   "tag": "vocals",
-   "lyric": "baby",
-   "syl": "ba",
    "dir": "L"
   },
   {
    "t": 146.464,
    "tag": "snare",
-   "dir": "R"
-  },
-  {
-   "t": 146.937,
-   "tag": "snare",
-   "dir": "R"
-  },
-  {
-   "t": 147.41,
-   "tag": "snare",
    "dir": "L"
   },
   {
-   "t": 147.883,
+   "t": 147.409,
    "tag": "snare",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 148.354,
@@ -2671,119 +1958,55 @@
    "dir": "R"
   },
   {
-   "t": 148.827,
-   "tag": "snare",
+   "t": 149.299,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 149.417,
-   "tag": "vocals",
-   "lyric": "너와",
-   "syl": "너",
-   "dir": "R"
-  },
-  {
-   "t": 149.771,
-   "tag": "vocals",
-   "lyric": "너와",
-   "syl": "와",
+   "t": 150.244,
+   "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 150.126,
-   "tag": "vocals",
-   "lyric": "나",
-   "syl": "나",
-   "dir": "R"
-  },
-  {
-   "t": 150.716,
-   "tag": "vocals",
-   "lyric": "My",
-   "syl": "my",
-   "dir": "L"
-  },
-  {
-   "t": 150.953,
-   "tag": "vocals",
-   "lyric": "heart",
-   "syl": "heart",
-   "dir": "R"
-  },
-  {
-   "t": 151.192,
+   "t": 151.189,
    "tag": "kick",
    "dir": "R"
   },
   {
-   "t": 151.543,
-   "tag": "vocals",
-   "lyric": "glowing",
-   "syl": "glow",
-   "dir": "L"
+   "t": 151.661,
+   "tag": "tap",
+   "dir": "R"
   },
   {
    "t": 152.134,
    "tag": "vocals",
    "lyric": "glowing",
    "syl": "glow",
-   "dir": "R"
-  },
-  {
-   "t": 152.724,
-   "tag": "vocals",
-   "lyric": "up",
-   "syl": "up",
    "dir": "L"
   },
   {
-   "t": 153.079,
-   "tag": "kick",
+   "t": 152.606,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 153.433,
-   "tag": "vocals",
-   "lyric": "Glow",
-   "syl": "glow",
-   "dir": "L"
-  },
-  {
-   "t": 153.787,
-   "tag": "vocals",
-   "lyric": "glow",
-   "syl": "glow",
-   "dir": "R"
-  },
-  {
-   "t": 154.022,
+   "t": 153.078,
    "tag": "kick",
    "dir": "L"
   },
   {
-   "t": 154.378,
-   "tag": "vocals",
-   "lyric": "너랑만",
-   "syl": "너",
+   "t": 154.023,
+   "tag": "kick",
    "dir": "R"
   },
   {
-   "t": 154.732,
-   "tag": "vocals",
-   "lyric": "너랑만",
-   "syl": "랑",
+   "t": 154.496,
+   "tag": "tap",
    "dir": "L"
   },
   {
    "t": 154.968,
    "tag": "snare",
-   "dir": "R"
-  },
-  {
-   "t": 155.204,
-   "tag": "vocals",
-   "lyric": "있으면",
-   "syl": "있",
    "dir": "L"
   },
   {
@@ -2791,875 +2014,48 @@
    "tag": "vocals",
    "lyric": "있으면",
    "syl": "으",
-   "dir": "L"
-  },
-  {
-   "t": 155.677,
-   "tag": "vocals",
-   "lyric": "무서울",
-   "syl": "무",
    "dir": "R"
   },
   {
-   "t": 155.915,
+   "t": 155.913,
    "tag": "kick",
    "dir": "L"
+  },
+  {
+   "t": 156.149,
+   "tag": "tap",
+   "dir": "R"
   },
   {
    "t": 156.385,
    "tag": "vocals",
    "lyric": "무서울",
    "syl": "울",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 156.622,
    "tag": "vocals",
    "lyric": "게",
    "syl": "게",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 156.858,
    "tag": "vocals",
    "lyric": "없어",
    "syl": "없",
-   "dir": "R"
-  },
-  {
-   "t": 157.331,
-   "tag": "snare",
    "dir": "L"
   },
   {
-   "t": 157.613,
-   "tag": "vocals",
-   "lyric": "No",
-   "syl": "no",
-   "dir": "R"
-  },
-  {
-   "t": 158.196,
-   "tag": "vocals",
-   "lyric": "가득",
-   "syl": "가",
-   "dir": "L"
-  },
-  {
-   "t": 158.511,
-   "tag": "vocals",
-   "lyric": "가득",
-   "syl": "득",
-   "dir": "R"
-  },
-  {
-   "t": 158.747,
-   "tag": "snare",
-   "dir": "L"
-  },
-  {
-   "t": 159.22,
-   "tag": "vocals",
-   "lyric": "메워진",
-   "syl": "워",
-   "dir": "R"
-  },
-  {
-   "t": 159.456,
-   "tag": "vocals",
-   "lyric": "메워진",
-   "syl": "진",
-   "dir": "R"
-  },
-  {
-   "t": 159.693,
-   "tag": "vocals",
-   "lyric": "다",
-   "syl": "다",
-   "dir": "L"
-  },
-  {
-   "t": 160.164,
+   "t": 157.33,
    "tag": "snare",
    "dir": "R"
   },
   {
-   "t": 160.451,
-   "tag": "vocals",
-   "lyric": "메워진",
-   "syl": "진",
-   "dir": "L"
-  },
-  {
-   "t": 160.716,
-   "tag": "vocals",
-   "lyric": "My",
-   "syl": "my",
+   "t": 157.803,
+   "tag": "tap",
    "dir": "R"
-  },
-  {
-   "t": 161.113,
-   "tag": "kick",
-   "dir": "L"
-  },
-  {
-   "t": 161.7,
-   "tag": "vocals",
-   "lyric": "heart",
-   "syl": "heart",
-   "dir": "R"
-  },
-  {
-   "t": 162.059,
-   "tag": "kick",
-   "dir": "L"
-  },
-  {
-   "t": 162.645,
-   "tag": "vocals",
-   "lyric": "is",
-   "syl": "is",
-   "dir": "L"
-  },
-  {
-   "t": 162.842,
-   "tag": "vocals",
-   "lyric": "glowing",
-   "syl": "glow",
-   "dir": "R"
-  },
-  {
-   "t": 163.472,
-   "tag": "vocals",
-   "lyric": "be",
-   "syl": "be",
-   "dir": "L"
-  },
-  {
-   "t": 163.708,
-   "tag": "vocals",
-   "lyric": "glowing",
-   "syl": "glow",
-   "dir": "R"
-  },
-  {
-   "t": 163.943,
-   "tag": "snare",
-   "dir": "L"
-  },
-  {
-   "t": 164.416,
-   "tag": "snare",
-   "dir": "R"
-  },
-  {
-   "t": 164.968,
-   "tag": "vocals",
-   "lyric": "he",
-   "syl": "he",
-   "dir": "R"
-  },
-  {
-   "t": 165.992,
-   "tag": "vocals",
-   "lyric": "Oh",
-   "syl": "oh",
-   "dir": "L"
-  },
-  {
-   "t": 166.307,
-   "tag": "vocals",
-   "lyric": "my",
-   "syl": "my",
-   "dir": "R"
-  },
-  {
-   "t": 166.661,
-   "tag": "vocals",
-   "lyric": "oh",
-   "syl": "oh",
-   "dir": "L"
-  },
-  {
-   "t": 166.779,
-   "tag": "vocals",
-   "lyric": "my",
-   "syl": "my",
-   "dir": "R"
-  },
-  {
-   "t": 167.015,
-   "tag": "vocals",
-   "lyric": "God",
-   "syl": "god",
-   "dir": "L"
-  },
-  {
-   "t": 167.369,
-   "tag": "vocals",
-   "lyric": "예상했어",
-   "syl": "예",
-   "dir": "L"
-  },
-  {
-   "t": 167.728,
-   "tag": "kick",
-   "dir": "R"
-  },
-  {
-   "t": 168.196,
-   "tag": "vocals",
-   "lyric": "예상했어",
-   "syl": "했",
-   "dir": "R"
-  },
-  {
-   "t": 168.551,
-   "tag": "vocals",
-   "lyric": "나",
-   "syl": "나",
-   "dir": "L"
-  },
-  {
-   "t": 168.787,
-   "tag": "vocals",
-   "lyric": "I",
-   "syl": "i",
-   "dir": "L"
-  },
-  {
-   "t": 169.141,
-   "tag": "vocals",
-   "lyric": "was",
-   "syl": "was",
-   "dir": "R"
-  },
-  {
-   "t": 169.732,
-   "tag": "vocals",
-   "lyric": "hoping",
-   "syl": "hop",
-   "dir": "R"
-  },
-  {
-   "t": 170.086,
-   "tag": "vocals",
-   "lyric": "hoping",
-   "syl": "ing",
-   "dir": "L"
-  },
-  {
-   "t": 170.322,
-   "tag": "vocals",
-   "lyric": "that",
-   "syl": "that",
-   "dir": "L"
-  },
-  {
-   "t": 170.572,
-   "tag": "snare",
-   "dir": "R"
-  },
-  {
-   "t": 170.873,
-   "tag": "vocals",
-   "lyric": "will",
-   "syl": "will",
-   "dir": "L"
-  },
-  {
-   "t": 171.149,
-   "tag": "vocals",
-   "lyric": "come",
-   "syl": "come",
-   "dir": "R"
-  },
-  {
-   "t": 171.661,
-   "tag": "vocals",
-   "lyric": "through",
-   "syl": "through",
-   "dir": "L"
-  },
-  {
-   "t": 173.275,
-   "tag": "vocals",
-   "lyric": "Oh",
-   "syl": "oh",
-   "dir": "R"
-  },
-  {
-   "t": 173.865,
-   "tag": "vocals",
-   "lyric": "my",
-   "syl": "my",
-   "dir": "R"
-  },
-  {
-   "t": 174.102,
-   "tag": "vocals",
-   "lyric": "oh",
-   "syl": "oh",
-   "dir": "L"
-  },
-  {
-   "t": 174.338,
-   "tag": "vocals",
-   "lyric": "my",
-   "syl": "my",
-   "dir": "R"
-  },
-  {
-   "t": 174.574,
-   "tag": "vocals",
-   "lyric": "God",
-   "syl": "god",
-   "dir": "L"
-  },
-  {
-   "t": 174.801,
-   "tag": "snare",
-   "dir": "R"
-  },
-  {
-   "t": 175.283,
-   "tag": "vocals",
-   "lyric": "너뿐이야",
-   "syl": "너",
-   "dir": "L"
-  },
-  {
-   "t": 175.755,
-   "tag": "vocals",
-   "lyric": "너뿐이야",
-   "syl": "이",
-   "dir": "R"
-  },
-  {
-   "t": 176.228,
-   "tag": "vocals",
-   "lyric": "Asking",
-   "syl": "ask",
-   "dir": "L"
-  },
-  {
-   "t": 176.699,
-   "tag": "kick",
-   "dir": "R"
-  },
-  {
-   "t": 176.936,
-   "tag": "vocals",
-   "lyric": "all",
-   "syl": "all",
-   "dir": "L"
-  },
-  {
-   "t": 177.251,
-   "tag": "vocals",
-   "lyric": "the",
-   "syl": "the",
-   "dir": "R"
-  },
-  {
-   "t": 177.409,
-   "tag": "vocals",
-   "lyric": "time",
-   "syl": "time",
-   "dir": "L"
-  },
-  {
-   "t": 177.646,
-   "tag": "kick",
-   "dir": "L"
-  },
-  {
-   "t": 178.117,
-   "tag": "vocals",
-   "lyric": "what",
-   "syl": "what",
-   "dir": "R"
-  },
-  {
-   "t": 178.407,
-   "tag": "vocals",
-   "lyric": "I",
-   "syl": "i",
-   "dir": "L"
-  },
-  {
-   "t": 178.708,
-   "tag": "vocals",
-   "lyric": "should",
-   "syl": "should",
-   "dir": "R"
-  },
-  {
-   "t": 179.062,
-   "tag": "vocals",
-   "lyric": "do",
-   "syl": "do",
-   "dir": "L"
-  },
-  {
-   "t": 179.692,
-   "tag": "vocals",
-   "lyric": "No",
-   "syl": "no",
-   "dir": "R"
-  },
-  {
-   "t": 180.432,
-   "tag": "vocals",
-   "lyric": "I",
-   "syl": "i",
-   "dir": "L"
-  },
-  {
-   "t": 180.834,
-   "tag": "vocals",
-   "lyric": "can",
-   "syl": "can",
-   "dir": "R"
-  },
-  {
-   "t": 181.306,
-   "tag": "vocals",
-   "lyric": "never",
-   "syl": "nev",
-   "dir": "R"
-  },
-  {
-   "t": 181.897,
-   "tag": "vocals",
-   "lyric": "him",
-   "syl": "him",
-   "dir": "L"
-  },
-  {
-   "t": 182.133,
-   "tag": "vocals",
-   "lyric": "go",
-   "syl": "go",
-   "dir": "R"
-  },
-  {
-   "t": 182.487,
-   "tag": "vocals",
-   "lyric": "He's",
-   "syl": "he's",
-   "dir": "L"
-  },
-  {
-   "t": 182.844,
-   "tag": "kick",
-   "dir": "R"
-  },
-  {
-   "t": 183.078,
-   "tag": "vocals",
-   "lyric": "for",
-   "syl": "for",
-   "dir": "L"
-  },
-  {
-   "t": 183.314,
-   "tag": "vocals",
-   "lyric": "me",
-   "syl": "me",
-   "dir": "R"
-  },
-  {
-   "t": 183.55,
-   "tag": "vocals",
-   "lyric": "twenty-four",
-   "syl": "twen",
-   "dir": "L"
-  },
-  {
-   "t": 183.744,
-   "tag": "vocals",
-   "lyric": "난",
-   "syl": "난",
-   "dir": "R"
-  },
-  {
-   "t": 184.023,
-   "tag": "vocals",
-   "lyric": "행운아야",
-   "syl": "행",
-   "dir": "L"
-  },
-  {
-   "t": 184.536,
-   "tag": "vocals",
-   "lyric": "행운아야",
-   "syl": "운",
-   "dir": "R"
-  },
-  {
-   "t": 184.849,
-   "tag": "vocals",
-   "lyric": "행운아야",
-   "syl": "아",
-   "dir": "L"
-  },
-  {
-   "t": 185.204,
-   "tag": "vocals",
-   "lyric": "행운아야",
-   "syl": "야",
-   "dir": "L"
-  },
-  {
-   "t": 185.676,
-   "tag": "vocals",
-   "lyric": "정말로",
-   "syl": "말",
-   "dir": "R"
-  },
-  {
-   "t": 186.227,
-   "tag": "vocals",
-   "lyric": "I",
-   "syl": "i",
-   "dir": "L"
-  },
-  {
-   "t": 186.385,
-   "tag": "vocals",
-   "lyric": "know",
-   "syl": "know",
-   "dir": "R"
-  },
-  {
-   "t": 186.621,
-   "tag": "vocals",
-   "lyric": "I",
-   "syl": "i",
-   "dir": "L"
-  },
-  {
-   "t": 186.936,
-   "tag": "vocals",
-   "lyric": "know",
-   "syl": "know",
-   "dir": "R"
-  },
-  {
-   "t": 187.212,
-   "tag": "vocals",
-   "lyric": "널",
-   "syl": "널",
-   "dir": "L"
-  },
-  {
-   "t": 187.755,
-   "tag": "vocals",
-   "lyric": "알기",
-   "syl": "알",
-   "dir": "R"
-  },
-  {
-   "t": 188.156,
-   "tag": "vocals",
-   "lyric": "알기",
-   "syl": "기",
-   "dir": "L"
-  },
-  {
-   "t": 188.511,
-   "tag": "vocals",
-   "lyric": "전까지는",
-   "syl": "전",
-   "dir": "R"
-  },
-  {
-   "t": 188.983,
-   "tag": "kick",
-   "dir": "L"
-  },
-  {
-   "t": 189.338,
-   "tag": "vocals",
-   "lyric": "나",
-   "syl": "나",
-   "dir": "R"
-  },
-  {
-   "t": 189.692,
-   "tag": "vocals",
-   "lyric": "의미",
-   "syl": "의",
-   "dir": "R"
-  },
-  {
-   "t": 189.928,
-   "tag": "vocals",
-   "lyric": "의미",
-   "syl": "미",
-   "dir": "L"
-  },
-  {
-   "t": 190.164,
-   "tag": "vocals",
-   "lyric": "없었어",
-   "syl": "없",
-   "dir": "R"
-  },
-  {
-   "t": 190.4,
-   "tag": "vocals",
-   "lyric": "없었어",
-   "syl": "었",
-   "dir": "L"
-  },
-  {
-   "t": 190.873,
-   "tag": "vocals",
-   "lyric": "전부",
-   "syl": "전",
-   "dir": "R"
-  },
-  {
-   "t": 191.267,
-   "tag": "vocals",
-   "lyric": "전부",
-   "syl": "부",
-   "dir": "L"
-  },
-  {
-   "t": 191.582,
-   "tag": "vocals",
-   "lyric": "다",
-   "syl": "다",
-   "dir": "R"
-  },
-  {
-   "t": 191.818,
-   "tag": "vocals",
-   "lyric": "어떡해",
-   "syl": "어",
-   "dir": "L"
-  },
-  {
-   "t": 192.29,
-   "tag": "vocals",
-   "lyric": "어떡해",
-   "syl": "해",
-   "dir": "R"
-  },
-  {
-   "t": 192.526,
-   "tag": "vocals",
-   "lyric": "My",
-   "syl": "my",
-   "dir": "L"
-  },
-  {
-   "t": 192.881,
-   "tag": "vocals",
-   "lyric": "is",
-   "syl": "is",
-   "dir": "L"
-  },
-  {
-   "t": 193.235,
-   "tag": "vocals",
-   "lyric": "glowing",
-   "syl": "ing",
-   "dir": "R"
-  },
-  {
-   "t": 193.826,
-   "tag": "vocals",
-   "lyric": "glowing",
-   "syl": "glow",
-   "dir": "L"
-  },
-  {
-   "t": 193.944,
-   "tag": "vocals",
-   "lyric": "glowing",
-   "syl": "ing",
-   "dir": "R"
-  },
-  {
-   "t": 194.225,
-   "tag": "vocals",
-   "lyric": "My",
-   "syl": "my",
-   "dir": "L"
-  },
-  {
-   "t": 194.652,
-   "tag": "kick",
-   "dir": "R"
-  },
-  {
-   "t": 195.204,
-   "tag": "vocals",
-   "lyric": "up",
-   "syl": "up",
-   "dir": "L"
-  },
-  {
-   "t": 195.597,
-   "tag": "vocals",
-   "lyric": "so",
-   "syl": "so",
-   "dir": "R"
-  },
-  {
-   "t": 195.833,
-   "tag": "vocals",
-   "lyric": "I",
-   "syl": "i",
-   "dir": "R"
-  },
-  {
-   "t": 196.424,
-   "tag": "vocals",
-   "lyric": "sleep",
-   "syl": "sleep",
-   "dir": "L"
-  },
-  {
-   "t": 197.015,
-   "tag": "vocals",
-   "lyric": "night",
-   "syl": "night",
-   "dir": "R"
-  },
-  {
-   "t": 199.144,
-   "tag": "other",
-   "dir": "L"
-  },
-  {
-   "t": 199.617,
-   "tag": "other",
-   "dir": "L"
-  },
-  {
-   "t": 200.088,
-   "tag": "other",
-   "dir": "R"
-  },
-  {
-   "t": 200.329,
-   "tag": "other",
-   "dir": "L"
-  },
-  {
-   "t": 201.269,
-   "tag": "other",
-   "dir": "R"
-  },
-  {
-   "t": 201.507,
-   "tag": "other",
-   "dir": "L"
-  },
-  {
-   "t": 201.748,
-   "tag": "other",
-   "dir": "R"
-  },
-  {
-   "t": 201.98,
-   "tag": "other",
-   "dir": "L"
-  },
-  {
-   "t": 202.45,
-   "tag": "other",
-   "dir": "R"
-  },
-  {
-   "t": 202.923,
-   "tag": "other",
-   "dir": "L"
-  },
-  {
-   "t": 203.397,
-   "tag": "other",
-   "dir": "R"
-  },
-  {
-   "t": 203.87,
-   "tag": "other",
-   "dir": "R"
-  },
-  {
-   "t": 204.578,
-   "tag": "other",
-   "dir": "L"
-  },
-  {
-   "t": 205.048,
-   "tag": "other",
-   "dir": "R"
-  },
-  {
-   "t": 205.286,
-   "tag": "other",
-   "dir": "L"
-  },
-  {
-   "t": 205.527,
-   "tag": "other",
-   "dir": "R"
-  },
-  {
-   "t": 205.759,
-   "tag": "other",
-   "dir": "L"
-  },
-  {
-   "t": 206.702,
-   "tag": "other",
-   "dir": "R"
-  },
-  {
-   "t": 207.178,
-   "tag": "other",
-   "dir": "L"
-  },
-  {
-   "t": 207.646,
-   "tag": "other",
-   "dir": "R"
-  },
-  {
-   "t": 207.887,
-   "tag": "other",
-   "dir": "L"
-  },
-  {
-   "t": 208.827,
-   "tag": "other",
-   "dir": "L"
-  },
-  {
-   "t": 209.068,
-   "tag": "other",
-   "dir": "R"
-  },
-  {
-   "t": 209.538,
-   "tag": "other",
-   "dir": "L"
-  },
-  {
-   "t": 210.008,
-   "tag": "other",
-   "dir": "R"
-  },
-  {
-   "t": 210.484,
-   "tag": "other",
-   "dir": "L"
   }
  ],
  "sections": [
@@ -3758,30 +2154,6 @@
    "follows": "vocal",
    "follows_layers": "vocals+kick+snare",
    "follows_note": "one rule for the whole song (omg_v3_chart.py): vocal syllables + every kick/snare beat with no vocal tap within 0.2 s and not inside a held note; lead instrument only in bars with no vocal and no drums"
-  },
-  {
-   "t": 166.307,
-   "label": "Final chorus · 兔耳发夹",
-   "kind": "chorus",
-   "follows": "vocal",
-   "follows_layers": "vocals+kick+snare",
-   "follows_note": "one rule for the whole song (omg_v3_chart.py): vocal syllables + every kick/snare beat with no vocal tap within 0.2 s and not inside a held note; lead instrument only in bars with no vocal and no drums"
-  },
-  {
-   "t": 181.424,
-   "label": "Final chorus b · 天桥",
-   "kind": "chorus",
-   "follows": "vocal",
-   "follows_layers": "vocals+kick+snare",
-   "follows_note": "one rule for the whole song (omg_v3_chart.py): vocal syllables + every kick/snare beat with no vocal tap within 0.2 s and not inside a held note; lead instrument only in bars with no vocal and no drums"
-  },
-  {
-   "t": 196.542,
-   "label": "Outro · 尾奏琴键",
-   "kind": "outro",
-   "follows": "mid",
-   "follows_layers": "vocals+kick+snare",
-   "follows_note": "one rule for the whole song (omg_v3_chart.py): vocal syllables + every kick/snare beat with no vocal tap within 0.2 s and not inside a held note; lead instrument only in bars with no vocal and no drums"
   }
  ],
  "notes": "Hand-built on a 127.0 BPM grid fitted to the drum stem (residual 8 ms). Each bar pattern was chosen from per-bar 16-step onset maps of the demucs stems (kick/clap/bass/vocal/synth) and every tap is snapped to the nearest real onset of its tagged stem within 45 ms. Chorus = halftime kick/snare groove only (one layer, same 2-bar pattern in every chorus); bridge = syncopated trap kick; dance break = four-on-the-floor 8th runs (8-tap and 10-tap runs).",
@@ -3811,7 +2183,49 @@
    "tool": "tools/research/route_forward.py",
    "rule": "forward-only: headings N/E/W, lateral staircase per 2-bar phrase alternating sides, corridor +-12 m"
   },
-  "lyrics_chart": {
+  "taps_import": {
+   "tool": "tools/charts/import_taps.py",
+   "export_tool": "https://tbtnb.github.io/newjeans-line/tapper/",
+   "exported": "2026-10-18T12:11:24.738Z",
+   "calibration_ms": 0.0,
+   "residual_offset_ms": 0.0,
+   "offset_fitted": false,
+   "grid": {
+    "bpm": 127.0028,
+    "beat0": 0.011,
+    "source": "export (chart)"
+   },
+   "raw": 362,
+   "final": 361,
+   "questionable": 1,
+   "removed": 1
+  },
+  "user_taps": {
+   "source": "nj-input/omg-user-taps-v1.json (user, /tapper/, 362 taps, calibration 0)",
+   "snap": "tools/charts/omg_user_snap.py (local offset + Viterbi on 1/16 slots, 1/16 penalty, onset tie-break)",
+   "global_offset_ms": -55.5,
+   "local_offset_ms": {
+    "min": -74.0,
+    "median": -56.9,
+    "max": 4.4
+   },
+   "copy_consistency_fixes": [
+    {
+     "a_raw": 72.376,
+     "a_from": 72.411,
+     "b_raw": 132.883,
+     "b_from": 133.0,
+     "a_to": 72.529,
+     "b_to": 133.0
+    }
+   ],
+   "removed": [
+    "0.956 s (engine rule: first tap >= 1.0 s)"
+   ],
+   "level_end": "layout.endTime 160.637 s (music fades out 1.5 s)",
+   "report": "deliverables/omg-user-import-report.md"
+  },
+  "lyrics_chart_previous": {
    "tool": "tools/research/omg_v3_chart.py",
    "rule": "docs/research/omg-lyrics-chart.md (top)",
    "X": 0.2,

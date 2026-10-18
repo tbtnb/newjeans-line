@@ -1,0 +1,134 @@
+{
+ "song": "omg",
+ "raw": 362,
+ "grid": {
+  "bpm": 127.0028,
+  "beat0": 0.011,
+  "source": "export (chart)"
+ },
+ "removed": [
+  {
+   "t": 0.956,
+   "why": "before 1.0 s"
+  }
+ ],
+ "questionable": [
+  {
+   "t": 76.663,
+   "snapped": 76.545,
+   "off_ms": 118.1,
+   "type": "tap"
+  }
+ ],
+ "merged": [],
+ "consistency": [
+  {
+   "kind": "verse",
+   "a": "Verse 1 · 治疗桌与五椅",
+   "b": "Verse 1b · 墙板外折",
+   "similarity": 0.4,
+   "only_in_a": [],
+   "only_in_b": [
+    30.956,
+    31.664,
+    32.609,
+    32.845,
+    33.318,
+    33.554,
+    34.499,
+    35.208,
+    35.444,
+    35.68,
+    36.152,
+    36.389
+   ]
+  },
+  {
+   "kind": "verse",
+   "a": "Verse 1b · 墙板外折",
+   "b": "Verse 2 · 玻璃鞋",
+   "similarity": 0.56,
+   "only_in_a": [
+    36.152,
+    36.625,
+    36.861,
+    41.349,
+    43.711,
+    44.184,
+    44.656,
+    45.129
+   ],
+   "only_in_b": [
+    60.482,
+    60.718,
+    60.954,
+    61.663,
+    62.136,
+    62.608,
+    64.025,
+    64.498,
+    64.97,
+    67.805,
+    68.277,
+    68.513
+   ]
+  },
+  {
+   "kind": "chorus",
+   "a": "Chorus 1 · 黑兔舞台",
+   "b": "Chorus 2 · 屏幕块",
+   "similarity": 0.49,
+   "only_in_a": [
+    45.836,
+    46.781,
+    47.018,
+    47.49,
+    47.726,
+    48.435,
+    48.671,
+    48.907,
+    49.38,
+    49.852,
+    53.159,
+    53.395
+   ],
+   "only_in_b": [
+    119.772
+   ]
+  },
+  {
+   "kind": "break",
+   "a": "Pre · 手机桥",
+   "b": "Break · 书页合拢",
+   "similarity": 0.29,
+   "only_in_a": [
+    91.19,
+    91.899,
+    92.135,
+    92.372
+   ],
+   "only_in_b": [
+    149.299
+   ]
+  }
+ ],
+ "calibration_ms": 0.0,
+ "residual_offset_ms": 0.0,
+ "offset_fitted": false,
+ "sixteenth_hint": [
+  {
+   "t": 76.663,
+   "on16": 76.663,
+   "snapped8": 76.545
+  }
+ ],
+ "final": 361,
+ "vs_previous": {
+  "previous": 553,
+  "same": 146,
+  "moved_le_30ms": 37,
+  "added": 178,
+  "removed": 370
+ },
+ "validate_errors": 0
+}

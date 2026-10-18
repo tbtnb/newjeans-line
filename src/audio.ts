@@ -66,7 +66,11 @@ export class AudioTransport {
     return p;
   }
 
-  get duration() { return this.buffer?.duration ?? 0; }
+  /** Song position where playback ends: the buffer end, or an earlier level end set with setEnd(). */
+  private endAt: number | null = null; private endFade = 1.5;
+  get duration() { const d = this.buffer?.duration ?? 0; return this.endAt !== null ? Math.min(d, this.endAt) : d; }
+  /** Level ends before the audio does: fade out over `fade` s ending exactly at song time `end`, then stop (null = play to the end). */
+  setEnd(end: number | null, fade = 1.5) { this.endAt = end; this.endFade = fade; }
   get ready() { return !!this.buffer; }
 
   /** Context time that is currently audible. */
@@ -108,7 +112,7 @@ export class AudioTransport {
     // resume() outside a gesture never settles on iOS: don't hang play() on it
     if (c.state !== 'running') await Promise.race([c.resume().catch(() => {}), new Promise(r => setTimeout(r, 1500))]);
     this.halt();
-    this.offset = Math.max(0, Math.min(from, this.buffer.duration));
+    this.offset = Math.max(0, Math.min(from, this.duration));
     const src = c.createBufferSource();
     src.buffer = this.buffer;
     src.connect(this.gain!);
@@ -119,16 +123,26 @@ export class AudioTransport {
     // heardContextTime() already subtracts output latency when using getOutputTimestamp; when using the fallback it subtracts it too.
     this.startedAt = startAt;
     void outLat;
+    this.restoreGain();   // a previous level end / fail fade may have left the gain ramped down
+    if (this.endAt !== null && this.endAt < this.buffer.duration) {
+      // scheduled on the context clock, so the fade and the stop are sample-exact relative to the song
+      const endCtx = startAt + (this.endAt - this.offset), g = this.gain!.gain;
+      const fadeFrom = Math.max(startAt, endCtx - this.endFade);
+      if (endCtx > startAt) { g.setValueAtTime(this.offset >= this.endAt - this.endFade ? this.volume * Math.max(0.0001, (this.endAt - this.offset) / this.endFade) : this.volume, fadeFrom); g.linearRampToValueAtTime(0.0001, endCtx); }
+      src.stop(Math.max(startAt, endCtx));
+    }
     this.source = src;
     this.playing = true;
     this.lastReported = this.offset; this.smooth = this.offset; this.smoothPerf = performance.now();
-    src.onended = () => { if (this.source === src) { this.playing = false; this.offset = this.buffer?.duration ?? 0; this.source = null; } };
+    src.onended = () => { if (this.source === src) { this.playing = false; this.offset = this.duration; this.source = null; this.restoreGain(); } };
   }
 
   private halt() {
     const s = this.source; this.source = null;
     if (s) { s.onended = null; try { s.stop(); } catch { /* ended */ } s.disconnect(); }
+    if (this.endAt !== null) this.restoreGain();
   }
+  private restoreGain() { if (this.gain && this.ctx) { this.gain.gain.cancelScheduledValues(this.ctx.currentTime); this.gain.gain.setValueAtTime(this.volume, this.ctx.currentTime); } }
 
   pause() { if (this.playing) { this.offset = this.songTime(); } this.playing = false; this.halt(); }
   stop() { this.playing = false; this.halt(); this.offset = 0; }

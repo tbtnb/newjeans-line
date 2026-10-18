@@ -1,0 +1,374 @@
+[
+ {
+  "pair": "Verse 1 vs Verse 2",
+  "taps_a": 17,
+  "taps_b": 31,
+  "same": 15,
+  "jaccard": 0.45,
+  "diff_phrases": [
+   {
+    "phrase_at_a": 14.656,
+    "phrase_at_b": 75.127,
+    "n_a": 5,
+    "n_b": 11,
+    "only_a": [
+     16.074
+    ],
+    "only_b": [
+     76.072,
+     76.663,
+     77.017,
+     77.726,
+     77.962,
+     78.198,
+     78.671
+    ]
+   },
+   {
+    "phrase_at_a": 18.436,
+    "phrase_at_b": 78.907,
+    "n_a": 4,
+    "n_b": 7,
+    "only_a": [],
+    "only_b": [
+     78.907,
+     81.741,
+     82.45
+    ]
+   },
+   {
+    "phrase_at_a": 22.215,
+    "phrase_at_b": 82.686,
+    "n_a": 4,
+    "n_b": 7,
+    "only_a": [
+     25.522
+    ],
+    "only_b": [
+     82.686,
+     85.521,
+     85.757,
+     86.23
+    ]
+   },
+   {
+    "phrase_at_a": 25.995,
+    "phrase_at_b": 86.466,
+    "n_a": 4,
+    "n_b": 6,
+    "only_a": [],
+    "only_b": [
+     86.702,
+     89.3
+    ]
+   }
+  ]
+ },
+ {
+  "pair": "Pre-Chorus 1 vs 2",
+  "taps_a": 43,
+  "taps_b": 43,
+  "same": 36,
+  "jaccard": 0.72,
+  "diff_phrases": [
+   {
+    "phrase_at_a": 29.302,
+    "phrase_at_b": 89.773,
+    "n_a": 9,
+    "n_b": 12,
+    "only_a": [
+     30.955
+    ],
+    "only_b": [
+     91.19,
+     91.899,
+     92.371,
+     92.844
+    ]
+   },
+   {
+    "phrase_at_a": 33.081,
+    "phrase_at_b": 93.552,
+    "n_a": 13,
+    "n_b": 8,
+    "only_a": [
+     34.498,
+     35.207,
+     35.68,
+     36.152,
+     36.624
+    ],
+    "only_b": []
+   },
+   {
+    "phrase_at_a": 36.861,
+    "phrase_at_b": 97.332,
+    "n_a": 8,
+    "n_b": 8,
+    "only_a": [
+     37.097
+    ],
+    "only_b": [
+     98.749
+    ]
+   },
+   {
+    "phrase_at_a": 40.64,
+    "phrase_at_b": 101.111,
+    "n_a": 11,
+    "n_b": 13,
+    "only_a": [],
+    "only_b": [
+     103.237,
+     103.709
+    ]
+   }
+  ]
+ },
+ {
+  "pair": "Chorus 1 vs Chorus 2",
+  "taps_a": 46,
+  "taps_b": 24,
+  "same": 23,
+  "jaccard": 0.49,
+  "diff_phrases": [
+   {
+    "phrase_at_a": 44.892,
+    "phrase_at_b": 105.363,
+    "n_a": 12,
+    "n_b": 5,
+    "only_a": [
+     45.128,
+     45.837,
+     46.782,
+     47.018,
+     47.49,
+     47.726,
+     48.435
+    ],
+    "only_b": []
+   },
+   {
+    "phrase_at_a": 48.671,
+    "phrase_at_b": 109.142,
+    "n_a": 11,
+    "n_b": 7,
+    "only_a": [
+     48.671,
+     48.908,
+     49.38,
+     49.852
+    ],
+    "only_b": []
+   },
+   {
+    "phrase_at_a": 52.451,
+    "phrase_at_b": 112.922,
+    "n_a": 13,
+    "n_b": 5,
+    "only_a": [
+     53.159,
+     53.396,
+     53.632,
+     54.341,
+     54.577,
+     55.049,
+     55.285,
+     55.994
+    ],
+    "only_b": []
+   },
+   {
+    "phrase_at_a": 56.23,
+    "phrase_at_b": 116.701,
+    "n_a": 10,
+    "n_b": 7,
+    "only_a": [
+     56.466,
+     56.939,
+     57.411,
+     59.065
+    ],
+    "only_b": [
+     119.772
+    ]
+   }
+  ]
+ },
+ {
+  "pair": "Post-Chorus 1 vs 2",
+  "taps_a": 56,
+  "taps_b": 41,
+  "same": 41,
+  "jaccard": 0.73,
+  "diff_phrases": [
+   {
+    "phrase_at_a": 59.537,
+    "phrase_at_b": 120.008,
+    "n_a": 16,
+    "n_b": 9,
+    "only_a": [
+     59.773,
+     60.246,
+     60.718,
+     61.191,
+     61.663,
+     62.608,
+     63.08
+    ],
+    "only_b": []
+   },
+   {
+    "phrase_at_a": 63.317,
+    "phrase_at_b": 123.788,
+    "n_a": 14,
+    "n_b": 9,
+    "only_a": [
+     63.553,
+     64.498,
+     64.97,
+     65.443,
+     65.915
+    ],
+    "only_b": []
+   },
+   {
+    "phrase_at_a": 67.096,
+    "phrase_at_b": 127.567,
+    "n_a": 13,
+    "n_b": 10,
+    "only_a": [
+     67.332,
+     68.277,
+     68.75
+    ],
+    "only_b": []
+   }
+  ]
+ },
+ {
+  "pair": "Chorus 1: half A vs half B",
+  "taps_a": 23,
+  "taps_b": 25,
+  "same": 22,
+  "jaccard": 0.85,
+  "diff_phrases": [
+   {
+    "phrase_at_a": 44.892,
+    "phrase_at_b": 52.451,
+    "n_a": 12,
+    "n_b": 13,
+    "only_a": [
+     45.128
+    ],
+    "only_b": [
+     53.159,
+     53.632
+    ]
+   },
+   {
+    "phrase_at_a": 48.671,
+    "phrase_at_b": 56.23,
+    "n_a": 11,
+    "n_b": 12,
+    "only_a": [],
+    "only_b": [
+     59.773
+    ]
+   }
+  ]
+ },
+ {
+  "pair": "Chorus 2: half A vs half B",
+  "taps_a": 12,
+  "taps_b": 13,
+  "same": 11,
+  "jaccard": 0.79,
+  "diff_phrases": [
+   {
+    "phrase_at_a": 109.142,
+    "phrase_at_b": 116.701,
+    "n_a": 7,
+    "n_b": 8,
+    "only_a": [
+     111.977
+    ],
+    "only_b": [
+     116.701,
+     119.772
+    ]
+   }
+  ]
+ },
+ {
+  "pair": "Post 1: half A vs half B",
+  "taps_a": 30,
+  "taps_b": 25,
+  "same": 25,
+  "jaccard": 0.83,
+  "diff_phrases": [
+   {
+    "phrase_at_a": 59.537,
+    "phrase_at_b": 67.096,
+    "n_a": 16,
+    "n_b": 13,
+    "only_a": [
+     59.537,
+     61.663,
+     62.136
+    ],
+    "only_b": []
+   },
+   {
+    "phrase_at_a": 63.317,
+    "phrase_at_b": 70.876,
+    "n_a": 14,
+    "n_b": 12,
+    "only_a": [
+     63.553,
+     64.025
+    ],
+    "only_b": []
+   }
+  ]
+ },
+ {
+  "pair": "Post 2: half A vs half B",
+  "taps_a": 18,
+  "taps_b": 22,
+  "same": 15,
+  "jaccard": 0.6,
+  "diff_phrases": [
+   {
+    "phrase_at_a": 120.008,
+    "phrase_at_b": 127.567,
+    "n_a": 9,
+    "n_b": 10,
+    "only_a": [
+     120.008,
+     122.607
+    ],
+    "only_b": [
+     128.276,
+     130.638,
+     131.11
+    ]
+   },
+   {
+    "phrase_at_a": 123.788,
+    "phrase_at_b": 131.347,
+    "n_a": 9,
+    "n_b": 12,
+    "only_a": [
+     124.496
+    ],
+    "only_b": [
+     132.528,
+     133.0,
+     133.473,
+     133.945
+    ]
+   }
+  ]
+ }
+]

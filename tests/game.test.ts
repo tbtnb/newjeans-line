@@ -108,3 +108,11 @@ test('16th bursts at 0.11 s: per-tap windows never touch; every real tap lands, 
   const h = new Game(mk(burst)); h.prepare(); h.start();
   assert.equal(h.tap(2.0), 'hit'); assert.equal(h.tap(2.165), 'fail', 'a tap between two burst windows is a fail, never a double count'); assert.equal(h.failKind, 'late');
 });
+
+test('level that ends before the audio (layout.endTime): route, progress and completion use the level length', () => {
+  const lv = { ...mk([2, 4]), duration: 12, audioDuration: 30, endFade: 1.5 };
+  const g = new Game(lv); g.prepare(); g.start(); g.tap(2); g.tap(4);
+  g.update(6); assert.ok(Math.abs(g.progress - 0.5) < 1e-9);
+  g.update(12); assert.equal(g.status, 'complete');
+  assert.equal(g.route.duration, 12);
+});
