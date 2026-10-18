@@ -5,13 +5,13 @@
  "failKind": null,
  "failTime": 0,
  "time": 233.3967,
- "cursor": 500,
- "taps": 500,
- "perfect": 499,
- "good": 1,
+ "cursor": 458,
+ "taps": 458,
+ "perfect": 458,
+ "good": 0,
  "diamonds": 10,
  "ignoredDuplicates": 0,
- "fps": 12.442232491989065,
+ "fps": 12.967765839181807,
  "save": {
   "version": 2,
   "selected": "cookie",
@@ -22,8 +22,8 @@
     "crowns": 3,
     "attempts": 1,
     "completed": true,
-    "perfect": 499,
-    "taps": 500
+    "perfect": 458,
+    "taps": 458
    }
   },
   "settings": {
@@ -33,10 +33,10 @@
    "vibration": true
   }
  },
- "judged": 500,
+ "judged": 458,
  "errorMeanMs": 1.4,
- "errorSdMs": 2.8,
- "errorMaxAbsMs": 54,
- "sent": 500,
+ "errorSdMs": 3.3,
+ "errorMaxAbsMs": 33,
+ "sent": 458,
  "logs": []
 }
