@@ -561,7 +561,7 @@ export class World {
     // particles
     { const ov = this.particleOverride(t); const want = ov === undefined ? pal.particles : ov; if (want !== this.particleKind) this.setParticles(want); }
     if (this.particles) (this.particles.emitter as Vector3).copyFrom(this.rig.cam.getTarget().add(new Vector3(0, 10, 0)));
-    if (this.ground && this.groundMat) { if (pal.groundY !== null && pal.groundY !== undefined) this.ground.position.y = pal.groundY + this.minRoadY(lt); this.ground.position.x = this.rig.cam.getTarget().x; this.ground.position.z = this.rig.cam.getTarget().z; }
+    if (this.ground && this.groundMat) { if (pal.groundY !== null && pal.groundY !== undefined) this.ground.position.y = pal.groundY + this.minRoadY(lt) - (this.cmode ? 4 : 0); /* concept C: pages are the ground; legacy plane kept 4 m below (it z-fought the pages after drops) */ this.ground.position.x = this.rig.cam.getTarget().x; this.ground.position.z = this.rig.cam.getTarget().z; }
     this.lastTime = t;
   }
 
