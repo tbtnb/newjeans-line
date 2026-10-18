@@ -1,0 +1,3925 @@
+{
+ "id": "asap",
+ "title": "ASAP",
+ "palette": {
+  "skyTop": "#143D36",
+  "skyBottom": "#3d6b5a",
+  "fog": "#2c5045",
+  "fogStart": 28,
+  "fogEnd": 100,
+  "ground": "#315C4C",
+  "groundY": -6,
+  "road": "#F4F1DF",
+  "roadSide": "#cfd8b8",
+  "line": "#E35D83",
+  "light": "#f6f2dc",
+  "lightIntensity": 0.95,
+  "ambient": "#8fae9a",
+  "particles": null
+ },
+ "road": {
+  "width": [
+   {
+    "t": 0,
+    "w": 2.8
+   },
+   {
+    "t": 11.417,
+    "w": 2.6
+   },
+   {
+    "t": 26.185,
+    "w": 2.0
+   },
+   {
+    "t": 40.953,
+    "w": 2.4
+   },
+   {
+    "t": 57.566,
+    "w": 2.2
+   },
+   {
+    "t": 72.334,
+    "w": 2.0
+   },
+   {
+    "t": 92.64,
+    "w": 2.4
+   },
+   {
+    "t": 120.33,
+    "w": 2.1
+   },
+   {
+    "t": 129.56,
+    "w": 2.8
+   }
+  ],
+  "height": 0.6,
+  "reveal": [
+   {
+    "t": 0,
+    "mode": "fade",
+    "lead": 2.5
+   },
+   {
+    "t": 4.033,
+    "mode": "rise",
+    "lead": 2.0
+   },
+   {
+    "t": 26.185,
+    "mode": "unfold",
+    "lead": 1.6
+   },
+   {
+    "t": 40.953,
+    "mode": "rise",
+    "lead": 1.8
+   },
+   {
+    "t": 57.566,
+    "mode": "rise",
+    "lead": 1.6
+   },
+   {
+    "t": 72.334,
+    "mode": "drop",
+    "lead": 1.4
+   },
+   {
+    "t": 92.64,
+    "mode": "rise",
+    "lead": 1.6
+   },
+   {
+    "t": 120.33,
+    "mode": "rise",
+    "lead": 1.4
+   },
+   {
+    "t": 129.56,
+    "mode": "static",
+    "lead": 3.0
+   }
+  ]
+ },
+ "elevation": [
+  {
+   "t0": 37.261,
+   "t1": 40.953,
+   "type": "ramp",
+   "dy": 3.5
+  },
+  {
+   "t": 56.694,
+   "type": "fall",
+   "dy": -3.5
+  },
+  {
+   "t0": 79.718,
+   "t1": 85.256,
+   "type": "ramp",
+   "dy": 7
+  },
+  {
+   "t0": 92.64,
+   "t1": 96.332,
+   "type": "ramp",
+   "dy": -3.5
+  },
+  {
+   "t": 114.842,
+   "type": "fall",
+   "dy": -3.5
+  },
+  {
+   "t0": 120.33,
+   "t1": 125.868,
+   "type": "ramp",
+   "dy": 7
+  }
+ ],
+ "sections": [
+  {
+   "t": 0,
+   "label": "Intro · snaps in the grass",
+   "camera": "close"
+  },
+  {
+   "t": 4.033,
+   "label": "Verse 1 · moon-green meadow",
+   "camera": "iso",
+   "palette": {
+    "ground": "#4d7a5f"
+   }
+  },
+  {
+   "t": 11.417,
+   "label": "Verse 1b · clock in the sky",
+   "camera": "high"
+  },
+  {
+   "t": 26.185,
+   "label": "Pre · letters behind trees",
+   "camera": "iso",
+   "palette": {
+    "ground": "#3f6b53"
+   }
+  },
+  {
+   "t": 40.953,
+   "label": "Chorus 1 · swing of pendulums",
+   "camera": "wide",
+   "palette": {
+    "ground": "#A8BE94"
+   }
+  },
+  {
+   "t": 55.72,
+   "label": "Stop · held breath",
+   "camera": "top",
+   "palette": {
+    "skyTop": "#3b5d52"
+   }
+  },
+  {
+   "t": 57.566,
+   "label": "Verse 2 · water garden",
+   "camera": "iso",
+   "palette": {
+    "ground": "#5f8f86"
+   }
+  },
+  {
+   "t": 72.334,
+   "label": "Dance break · stars in groups",
+   "camera": "high"
+  },
+  {
+   "t": 87.102,
+   "label": "Turnaround",
+   "camera": "side"
+  },
+  {
+   "t": 92.64,
+   "label": "Chorus 2 · the small house",
+   "camera": "high",
+   "palette": {
+    "ground": "#A8BE94"
+   }
+  },
+  {
+   "t": 114.792,
+   "label": "Hush · lamp flickers",
+   "camera": "close",
+   "palette": {
+    "skyTop": "#2f4f45"
+   }
+  },
+  {
+   "t": 120.33,
+   "label": "Final hook · lamp lights",
+   "camera": "wide",
+   "palette": {
+    "skyTop": "#bcd6c0"
+   }
+  },
+  {
+   "t": 129.56,
+   "label": "Outro · pollen bunny",
+   "camera": "high"
+  }
+ ],
+ "camera": [
+  {
+   "t": 0,
+   "preset": "close",
+   "blend": 0
+  },
+  {
+   "t": 4.033,
+   "preset": "iso",
+   "blend": 1.5
+  },
+  {
+   "t": 11.417,
+   "preset": "high",
+   "blend": 1.5,
+   "note": "winds round the clock"
+  },
+  {
+   "t": 26.185,
+   "preset": "iso",
+   "yaw": 20,
+   "blend": 1.2
+  },
+  {
+   "t": 40.953,
+   "preset": "wide",
+   "blend": 1.5
+  },
+  {
+   "t": 55.72,
+   "preset": "top",
+   "blend": 0.4
+  },
+  {
+   "t": 57.566,
+   "preset": "iso",
+   "blend": 1.0
+  },
+  {
+   "t": 72.334,
+   "preset": "high",
+   "blend": 1.0
+  },
+  {
+   "t": 87.102,
+   "preset": "side",
+   "yaw": -60,
+   "blend": 1.0
+  },
+  {
+   "t": 92.64,
+   "preset": "high",
+   "blend": 1.5,
+   "note": "house wrap"
+  },
+  {
+   "t": 114.792,
+   "preset": "close",
+   "blend": 1.0
+  },
+  {
+   "t": 120.33,
+   "preset": "wide",
+   "blend": 1.5
+  },
+  {
+   "t": 129.56,
+   "preset": "high",
+   "blend": 2.0
+  }
+ ],
+ "events": [
+  {
+   "t": 11.417,
+   "type": "spin",
+   "target": "clock_tower",
+   "until": 26.185,
+   "note": "the clock face turns slowly (time standing still)"
+  },
+  {
+   "t": 72.334,
+   "type": "particles",
+   "particles": "stars",
+   "until": 87.102
+  },
+  {
+   "t": 100.04,
+   "type": "light",
+   "target": "small_house",
+   "level": 0.9,
+   "color": "#ffe1a0",
+   "note": "a window lights at the second phrase"
+  },
+  {
+   "t": 114.792,
+   "type": "light",
+   "target": "hush_lamp",
+   "level": 0.3,
+   "dur": 0.3
+  },
+  {
+   "t": 120.33,
+   "type": "light",
+   "target": "hush_lamp",
+   "level": 1.0,
+   "color": "#ffd79a"
+  },
+  {
+   "t": 4.033,
+   "type": "color",
+   "palette": {
+    "skyTop": "#2c5a4b",
+    "skyBottom": "#6f8f78"
+   },
+   "dur": 2.0
+  },
+  {
+   "t": 40.953,
+   "type": "color",
+   "palette": {
+    "skyTop": "#7fa58c",
+    "skyBottom": "#e6ecd2",
+    "ground": "#A8BE94"
+   },
+   "dur": 2.0
+  },
+  {
+   "t": 55.72,
+   "type": "color",
+   "palette": {
+    "skyTop": "#3b5d52"
+   },
+   "dur": 0.3,
+   "note": "held breath: the meadow dims for the silent bar"
+  },
+  {
+   "t": 57.566,
+   "type": "color",
+   "palette": {
+    "skyTop": "#5f8f86"
+   },
+   "dur": 1.0
+  },
+  {
+   "t": 92.64,
+   "type": "color",
+   "palette": {
+    "skyTop": "#9cc0a5",
+    "skyBottom": "#f4f1df"
+   },
+   "dur": 2.0
+  },
+  {
+   "t": 114.792,
+   "type": "color",
+   "palette": {
+    "skyTop": "#2f4f45"
+   },
+   "dur": 1.0
+  },
+  {
+   "t": 120.33,
+   "type": "color",
+   "palette": {
+    "skyTop": "#bcd6c0",
+    "skyBottom": "#fff6e6",
+    "light": "#fff0d0"
+   },
+   "dur": 2.0
+  },
+  {
+   "t": 120.33,
+   "type": "particles",
+   "particles": "petals",
+   "until": 134.426122
+  }
+ ],
+ "diamonds": [
+  {
+   "t": 6.456,
+   "side": 0
+  },
+  {
+   "t": 18.224,
+   "side": 0
+  },
+  {
+   "t": 30.338,
+   "side": 0
+  },
+  {
+   "t": 45.106,
+   "side": 0
+  },
+  {
+   "t": 61.721,
+   "side": 0
+  },
+  {
+   "t": 70.028,
+   "side": 0
+  },
+  {
+   "t": 81.91,
+   "side": 0
+  },
+  {
+   "t": 100.486,
+   "side": 0
+  },
+  {
+   "t": 109.716,
+   "side": 0
+  },
+  {
+   "t": 123.733,
+   "side": 0
+  }
+ ],
+ "crowns": [
+  {
+   "t": 55.836
+  },
+  {
+   "t": 115.715
+  }
+ ],
+ "finish": {
+  "kind": "gate",
+  "color": "#E2BD65"
+ },
+ "collectibleColors": {
+  "diamond": "#41D7E7",
+  "crown": "#E2BD65"
+ },
+ "objects": [
+  {
+   "id": "bunny_eyes_0",
+   "t": 1.0,
+   "side": -6,
+   "along": 0,
+   "y": 0.8,
+   "kind": "image",
+   "size": [
+    2.4,
+    0,
+    1.6
+   ],
+   "src": "art/bunny-eyes.png",
+   "mode": "billboard",
+   "react": "beat",
+   "name": "bunny eyes in the undergrowth",
+   "debugXZ": [
+    -6.0,
+    8.5
+   ]
+  },
+  {
+   "id": "bunny_eyes_1",
+   "t": 2.4,
+   "side": 12.0,
+   "along": 0,
+   "y": 0.8,
+   "kind": "image",
+   "size": [
+    2.4,
+    0,
+    1.6
+   ],
+   "src": "art/bunny-eyes.png",
+   "mode": "billboard",
+   "react": "beat",
+   "name": "bunny eyes in the undergrowth",
+   "debugXZ": [
+    19.84,
+    12.55
+   ]
+  },
+  {
+   "id": "night_pines",
+   "kind": "row",
+   "t0": 0.3,
+   "t1": 11.417,
+   "side": 5.5,
+   "spacing": 4.0,
+   "bothSides": true,
+   "item": {
+    "kind": "pine",
+    "size": [
+     2.2,
+     5,
+     2.2
+    ],
+    "color": "#315C4C"
+   }
+  },
+  {
+   "id": "picnic_stone",
+   "t": 7.033,
+   "side": -5,
+   "along": 0,
+   "y": 0,
+   "kind": "group",
+   "landmark": true,
+   "name": "Folded picnic stone",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.3,
+      0
+     ],
+     "size": [
+      3,
+      0.6,
+      2
+     ],
+     "rot": [
+      0,
+      10,
+      0
+     ],
+     "color": "#F4F1DF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.6,
+      0.8,
+      0
+     ],
+     "size": [
+      1.6,
+      0.5,
+      1.4
+     ],
+     "rot": [
+      0,
+      -15,
+      0
+     ],
+     "color": "#e9e4cc"
+    }
+   ],
+   "debugXZ": [
+    21.57,
+    11.83
+   ]
+  },
+  {
+   "id": "meadow_flowers",
+   "kind": "row",
+   "t0": 4.033,
+   "t1": 26.185,
+   "side": 3.0,
+   "spacing": 2.5,
+   "bothSides": true,
+   "item": {
+    "kind": "flower",
+    "size": [
+     0.8,
+     0.8,
+     0.8
+    ],
+    "color": "#F1B8CB",
+    "react": "beat"
+   }
+  },
+  {
+   "id": "clock_tower",
+   "kind": "group",
+   "worldPos": [
+    9.81,
+    -2.0,
+    -43.75
+   ],
+   "landmark": true,
+   "name": "Pendulum clock in the sky (Verse 1b winds around it)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5,
+      0
+     ],
+     "size": [
+      2.2,
+      10,
+      2.2
+     ],
+     "color": "#F4F1DF"
+    },
+    {
+     "kind": "plane",
+     "pos": [
+      0,
+      9,
+      1.15
+     ],
+     "size": [
+      3.6,
+      3.6,
+      1
+     ],
+     "color": "#ffffff",
+     "texture": "art/pendulum-sign.jpg"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      6,
+      1.3
+     ],
+     "size": [
+      0.2,
+      3,
+      0.2
+     ],
+     "color": "#E2BD65"
+    }
+   ],
+   "t": 19.675,
+   "side": 5.88,
+   "along": -0.0,
+   "y": -2.0,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    9.81,
+    -43.75
+   ]
+  },
+  {
+   "id": "moon",
+   "kind": "moon",
+   "worldPos": [
+    34.81,
+    30,
+    -8.75
+   ],
+   "size": [
+    7,
+    7,
+    7
+   ],
+   "color": "#f2f0d8",
+   "name": "moon",
+   "t": 7.725,
+   "side": -13.24,
+   "along": 9.69,
+   "y": 30.0,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    34.81,
+    -8.75
+   ]
+  },
+  {
+   "id": "leaf_walls",
+   "kind": "row",
+   "t0": 26.185,
+   "t1": 40.953,
+   "side": 2.2,
+   "spacing": 2.6,
+   "bothSides": true,
+   "item": {
+    "kind": "box",
+    "size": [
+     0.6,
+     2.4,
+     2.2
+    ],
+    "color": "#3f7a5c",
+    "react": "tap"
+   },
+   "appear": {
+    "mode": "unfold",
+    "dur": 0.5
+   }
+  },
+  {
+   "id": "letter_0",
+   "t": 27.685,
+   "side": 4.5,
+   "along": 0,
+   "y": 1.2,
+   "kind": "box",
+   "size": [
+    0.9,
+    0.05,
+    0.6
+   ],
+   "color": "#fffdf3",
+   "react": "beat",
+   "name": "letter hidden behind the trees",
+   "debugXZ": [
+    32.77,
+    -74.56
+   ]
+  },
+  {
+   "id": "letter_1",
+   "t": 30.885,
+   "side": -4.5,
+   "along": 0,
+   "y": 1.5,
+   "kind": "box",
+   "size": [
+    0.9,
+    0.05,
+    0.6
+   ],
+   "color": "#fffdf3",
+   "react": "beat",
+   "name": "letter hidden behind the trees",
+   "debugXZ": [
+    30.81,
+    -66.97
+   ]
+  },
+  {
+   "id": "letter_2",
+   "t": 34.085,
+   "side": 15.0,
+   "along": 0,
+   "y": 1.7999999999999998,
+   "kind": "box",
+   "size": [
+    0.9,
+    0.05,
+    0.6
+   ],
+   "color": "#fffdf3",
+   "react": "beat",
+   "name": "letter hidden behind the trees",
+   "debugXZ": [
+    66.0,
+    -55.46
+   ]
+  },
+  {
+   "id": "letter_3",
+   "t": 37.285,
+   "side": -4.5,
+   "along": 0,
+   "y": 2.0999999999999996,
+   "kind": "box",
+   "size": [
+    0.9,
+    0.05,
+    0.6
+   ],
+   "color": "#fffdf3",
+   "react": "beat",
+   "name": "letter hidden behind the trees",
+   "debugXZ": [
+    38.65,
+    -47.88
+   ]
+  },
+  {
+   "id": "fork_leaf",
+   "t": 32.185,
+   "side": 29.1,
+   "along": 0,
+   "y": -1.2,
+   "kind": "group",
+   "fake": true,
+   "name": "overgrown side path (visual fake-out, lower, ends at a hedge)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      7,
+      0.6,
+      2.0
+     ],
+     "color": "#8fae86"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      3.9,
+      -0.2,
+      0.3
+     ],
+     "size": [
+      0.8,
+      0.5,
+      1.4
+     ],
+     "rot": [
+      0,
+      0,
+      8
+     ],
+     "color": "#8fae86"
+    },
+    {
+     "kind": "rock",
+     "pos": [
+      4.7,
+      -0.4,
+      -0.4
+     ],
+     "size": [
+      0.9,
+      0.7,
+      0.9
+     ],
+     "color": "#9a8f84"
+    }
+   ],
+   "debugXZ": [
+    39.24,
+    -88.95
+   ]
+  },
+  {
+   "id": "white_wing_0",
+   "kind": "group",
+   "worldPos": [
+    33.49,
+    3.5,
+    -49.75
+   ],
+   "name": "white wing slab",
+   "landmark": false,
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      0
+     ],
+     "size": [
+      0.25,
+      5,
+      2.2
+     ],
+     "rot": [
+      0,
+      0,
+      -20
+     ],
+     "color": "#F4F1DF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.0,
+      0.2
+     ],
+     "size": [
+      0.2,
+      3.5,
+      1.6
+     ],
+     "rot": [
+      0,
+      0,
+      -8
+     ],
+     "color": "#C5B5DD"
+    }
+   ],
+   "appear": {
+    "t": 40.953,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "t": 45.568,
+   "side": -0.14,
+   "along": 3.62,
+   "y": 0.0,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    33.49,
+    -49.75
+   ]
+  },
+  {
+   "id": "white_wing_1",
+   "kind": "group",
+   "worldPos": [
+    37.49,
+    3.5,
+    -49.75
+   ],
+   "name": "white wing slab",
+   "landmark": false,
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      0
+     ],
+     "size": [
+      0.25,
+      5,
+      2.2
+     ],
+     "rot": [
+      0,
+      0,
+      -10
+     ],
+     "color": "#F4F1DF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.0,
+      0.2
+     ],
+     "size": [
+      0.2,
+      3.5,
+      1.6
+     ],
+     "rot": [
+      0,
+      0,
+      -8
+     ],
+     "color": "#C5B5DD"
+    }
+   ],
+   "appear": {
+    "t": 41.876000000000005,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "t": 45.568,
+   "side": -4.14,
+   "along": 3.62,
+   "y": 0.0,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    37.49,
+    -49.75
+   ]
+  },
+  {
+   "id": "white_wing_2",
+   "kind": "group",
+   "worldPos": [
+    41.49,
+    3.5,
+    -49.75
+   ],
+   "name": "five white wing slabs",
+   "landmark": true,
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      0
+     ],
+     "size": [
+      0.25,
+      5,
+      2.2
+     ],
+     "rot": [
+      0,
+      0,
+      0
+     ],
+     "color": "#F4F1DF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.0,
+      0.2
+     ],
+     "size": [
+      0.2,
+      3.5,
+      1.6
+     ],
+     "rot": [
+      0,
+      0,
+      -8
+     ],
+     "color": "#C5B5DD"
+    }
+   ],
+   "appear": {
+    "t": 42.79900000000001,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "t": 37.261,
+   "side": -1.67,
+   "along": 1.66,
+   "y": 3.5,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    41.49,
+    -49.75
+   ]
+  },
+  {
+   "id": "white_wing_3",
+   "kind": "group",
+   "worldPos": [
+    45.49,
+    3.5,
+    -49.75
+   ],
+   "name": "white wing slab",
+   "landmark": false,
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      0
+     ],
+     "size": [
+      0.25,
+      5,
+      2.2
+     ],
+     "rot": [
+      0,
+      0,
+      10
+     ],
+     "color": "#F4F1DF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.0,
+      0.2
+     ],
+     "size": [
+      0.2,
+      3.5,
+      1.6
+     ],
+     "rot": [
+      0,
+      0,
+      -8
+     ],
+     "color": "#C5B5DD"
+    }
+   ],
+   "appear": {
+    "t": 43.722,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "t": 36.985,
+   "side": -1.67,
+   "along": -0.0,
+   "y": 3.5,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    45.49,
+    -49.75
+   ]
+  },
+  {
+   "id": "white_wing_4",
+   "kind": "group",
+   "worldPos": [
+    49.49,
+    3.5,
+    -49.75
+   ],
+   "name": "white wing slab",
+   "landmark": false,
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      0
+     ],
+     "size": [
+      0.25,
+      5,
+      2.2
+     ],
+     "rot": [
+      0,
+      0,
+      20
+     ],
+     "color": "#F4F1DF"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.0,
+      0.2
+     ],
+     "size": [
+      0.2,
+      3.5,
+      1.6
+     ],
+     "rot": [
+      0,
+      0,
+      -8
+     ],
+     "color": "#C5B5DD"
+    }
+   ],
+   "appear": {
+    "t": 44.645,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "t": 34.723,
+   "side": -1.51,
+   "along": 0.29,
+   "y": 3.5,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    49.49,
+    -49.75
+   ]
+  },
+  {
+   "id": "pendulum_0",
+   "t": 41.953,
+   "side": 10.5,
+   "along": 0,
+   "y": 0,
+   "kind": "group",
+   "react": "beat",
+   "name": "swinging pendulum",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.5,
+      0
+     ],
+     "size": [
+      0.1,
+      3,
+      0.1
+     ],
+     "color": "#E2BD65"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      1.8,
+      0
+     ],
+     "size": [
+      0.8,
+      0.8,
+      0.8
+     ],
+     "color": "#E2BD65"
+    }
+   ],
+   "debugXZ": [
+    34.61,
+    -27.17
+   ]
+  },
+  {
+   "id": "pendulum_1",
+   "t": 44.953,
+   "side": -39.0,
+   "along": 0,
+   "y": 0,
+   "kind": "group",
+   "react": "beat",
+   "name": "swinging pendulum",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.5,
+      0
+     ],
+     "size": [
+      0.1,
+      3,
+      0.1
+     ],
+     "color": "#E2BD65"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      1.8,
+      0
+     ],
+     "size": [
+      0.8,
+      0.8,
+      0.8
+     ],
+     "color": "#E2BD65"
+    }
+   ],
+   "debugXZ": [
+    72.35,
+    -40.9
+   ]
+  },
+  {
+   "id": "pendulum_2",
+   "t": 47.953,
+   "side": 7.5,
+   "along": 0,
+   "y": 0,
+   "kind": "group",
+   "react": "beat",
+   "name": "swinging pendulum",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.5,
+      0
+     ],
+     "size": [
+      0.1,
+      3,
+      0.1
+     ],
+     "color": "#E2BD65"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      1.8,
+      0
+     ],
+     "size": [
+      0.8,
+      0.8,
+      0.8
+     ],
+     "color": "#E2BD65"
+    }
+   ],
+   "debugXZ": [
+    21.92,
+    -54.64
+   ]
+  },
+  {
+   "id": "pendulum_3",
+   "t": 50.953,
+   "side": -12.0,
+   "along": 0,
+   "y": 0,
+   "kind": "group",
+   "react": "beat",
+   "name": "swinging pendulum",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3.5,
+      0
+     ],
+     "size": [
+      0.1,
+      3,
+      0.1
+     ],
+     "color": "#E2BD65"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      1.8,
+      0
+     ],
+     "size": [
+      0.8,
+      0.8,
+      0.8
+     ],
+     "color": "#E2BD65"
+    }
+   ],
+   "debugXZ": [
+    41.85,
+    -55.7
+   ]
+  },
+  {
+   "id": "pendulum_sign",
+   "t": 46.953,
+   "side": -9.5,
+   "along": 0,
+   "y": 1,
+   "kind": "image",
+   "size": [
+    4,
+    0,
+    4
+   ],
+   "src": "art/pendulum-sign.jpg",
+   "mode": "upright",
+   "name": "pendulum sign-board",
+   "debugXZ": [
+    35.0,
+    -50.06
+   ]
+  },
+  {
+   "id": "moon_pool",
+   "kind": "disc",
+   "worldPos": [
+    69.35,
+    -0.7,
+    -68.41
+   ],
+   "size": [
+    12,
+    0.3,
+    12
+   ],
+   "color": "#76BBB9",
+   "landmark": true,
+   "name": "Moon pool (water garden; the road crosses it on stepping boards)",
+   "t": 64.489,
+   "side": -0.71,
+   "along": 2.67,
+   "y": -0.7,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    69.35,
+    -68.41
+   ]
+  },
+  {
+   "id": "lily_pads",
+   "kind": "row",
+   "t0": 57.566,
+   "t1": 72.334,
+   "side": 2.6,
+   "spacing": 3.0,
+   "bothSides": true,
+   "item": {
+    "kind": "disc",
+    "size": [
+     1.2,
+     0.1,
+     1.2
+    ],
+    "color": "#7fb38a",
+    "react": "tap"
+   }
+  },
+  {
+   "id": "star_0",
+   "t": 73.334,
+   "side": 5,
+   "along": 0,
+   "y": 2.0,
+   "kind": "star",
+   "size": [
+    1.2,
+    1.2,
+    1.2
+   ],
+   "color": "#87D0E3",
+   "react": "kick",
+   "name": "star group",
+   "debugXZ": [
+    91.28,
+    -98.44
+   ]
+  },
+  {
+   "id": "star_1",
+   "t": 75.734,
+   "side": -15.5,
+   "along": 0,
+   "y": 2.6,
+   "kind": "star",
+   "size": [
+    1.2,
+    1.2,
+    1.2
+   ],
+   "color": "#A8D485",
+   "react": "kick",
+   "name": "star group",
+   "debugXZ": [
+    68.83,
+    -87.85
+   ]
+  },
+  {
+   "id": "star_2",
+   "t": 78.134,
+   "side": 5,
+   "along": 0,
+   "y": 3.2,
+   "kind": "star",
+   "size": [
+    1.2,
+    1.2,
+    1.2
+   ],
+   "color": "#F1B8CB",
+   "react": "kick",
+   "name": "star group",
+   "debugXZ": [
+    96.2,
+    -78.23
+   ]
+  },
+  {
+   "id": "star_3",
+   "t": 80.534,
+   "side": -8.0,
+   "along": 0,
+   "y": 3.8,
+   "kind": "star",
+   "size": [
+    1.2,
+    1.2,
+    1.2
+   ],
+   "color": "#EAB88C",
+   "react": "kick",
+   "name": "star group",
+   "debugXZ": [
+    98.13,
+    -62.64
+   ]
+  },
+  {
+   "id": "star_4",
+   "t": 82.934,
+   "side": 20.0,
+   "along": 0,
+   "y": 4.4,
+   "kind": "star",
+   "size": [
+    1.2,
+    1.2,
+    1.2
+   ],
+   "color": "#B5A0D5",
+   "react": "kick",
+   "name": "star group",
+   "debugXZ": [
+    108.72,
+    -80.83
+   ]
+  },
+  {
+   "id": "star_5",
+   "t": 85.334,
+   "side": -8.0,
+   "along": 0,
+   "y": 5.0,
+   "kind": "star",
+   "size": [
+    1.2,
+    1.2,
+    1.2
+   ],
+   "color": "#87D0E3",
+   "react": "kick",
+   "name": "star group",
+   "debugXZ": [
+    120.78,
+    -69.34
+   ]
+  },
+  {
+   "id": "fork_turn",
+   "t": 88.102,
+   "side": -6.1,
+   "along": 0,
+   "y": -1.2,
+   "kind": "group",
+   "fake": true,
+   "name": "garden path that ends at a gate (visual fake-out)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      6,
+      0.6,
+      2.0
+     ],
+     "color": "#b7c9a8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -3.4,
+      -0.2,
+      0.3
+     ],
+     "size": [
+      0.8,
+      0.5,
+      1.4
+     ],
+     "rot": [
+      0,
+      0,
+      -8
+     ],
+     "color": "#b7c9a8"
+    },
+    {
+     "kind": "rock",
+     "pos": [
+      -4.2,
+      -0.4,
+      -0.4
+     ],
+     "size": [
+      0.9,
+      0.7,
+      0.9
+     ],
+     "color": "#9a8f84"
+    }
+   ],
+   "debugXZ": [
+    108.2,
+    -82.62
+   ]
+  },
+  {
+   "id": "small_house",
+   "kind": "group",
+   "worldPos": [
+    48.18,
+    2.72,
+    -94.63
+   ],
+   "landmark": true,
+   "name": "The small house (Chorus 2 wraps around it)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2,
+      0
+     ],
+     "size": [
+      5,
+      4,
+      5
+     ],
+     "color": "#F4F1DF"
+    },
+    {
+     "kind": "pyramid",
+     "pos": [
+      0,
+      5.2,
+      0
+     ],
+     "size": [
+      6,
+      2.4,
+      6
+     ],
+     "color": "#c97a6a"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.2,
+      2.55
+     ],
+     "size": [
+      1.2,
+      2.2,
+      0.1
+     ],
+     "color": "#8a5a44"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.6,
+      2.6,
+      2.55
+     ],
+     "size": [
+      1,
+      1,
+      0.1
+     ],
+     "color": "#ffe7a8"
+    }
+   ],
+   "t": 103.716,
+   "side": -7.99,
+   "along": 12.21,
+   "y": -0.78,
+   "worldPosNote": "t/side/along/y = schema anchor; worldPos (x,y,z absolute) is the same point",
+   "debugXZ": [
+    48.18,
+    -94.63
+   ]
+  },
+  {
+   "id": "garden_fence",
+   "kind": "row",
+   "t0": 92.64,
+   "t1": 114.792,
+   "side": 2.3,
+   "spacing": 2.2,
+   "bothSides": true,
+   "item": {
+    "kind": "box",
+    "size": [
+     0.15,
+     0.8,
+     1.8
+    ],
+    "color": "#f1ead0",
+    "react": "tap"
+   }
+  },
+  {
+   "id": "hush_lamp",
+   "t": 115.715,
+   "side": -4,
+   "along": 0,
+   "y": 0,
+   "kind": "lamp",
+   "size": [
+    0.4,
+    4,
+    0.4
+   ],
+   "landmark": true,
+   "color": "#F4F1DF",
+   "color2": "#ffd79a",
+   "name": "The lamp that flickers",
+   "debugXZ": [
+    61.74,
+    -121.56
+   ]
+  },
+  {
+   "id": "cover_tower_0",
+   "t": 120.93,
+   "side": 25.0,
+   "along": 0,
+   "y": 0,
+   "kind": "group",
+   "name": "stepped tower",
+   "landmark": false,
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1,
+      0
+     ],
+     "size": [
+      3.0,
+      2,
+      3.0
+     ],
+     "color": "#87D0E3"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3,
+      0
+     ],
+     "size": [
+      2.4,
+      2,
+      2.4
+     ],
+     "color": "#87D0E3"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5,
+      0
+     ],
+     "size": [
+      1.8,
+      2,
+      1.8
+     ],
+     "color": "#87D0E3"
+    }
+   ],
+   "appear": {
+    "t": 120.33,
+    "mode": "rise",
+    "dur": 0.8
+   },
+   "debugXZ": [
+    76.25,
+    -128.03
+   ]
+  },
+  {
+   "id": "cover_tower_1",
+   "t": 122.53,
+   "side": -7,
+   "along": 0,
+   "y": 0,
+   "kind": "group",
+   "name": "stepped tower",
+   "landmark": false,
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1,
+      0
+     ],
+     "size": [
+      3.0,
+      2,
+      3.0
+     ],
+     "color": "#A8D485"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3,
+      0
+     ],
+     "size": [
+      2.4,
+      2,
+      2.4
+     ],
+     "color": "#A8D485"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5,
+      0
+     ],
+     "size": [
+      1.8,
+      2,
+      1.8
+     ],
+     "color": "#A8D485"
+    }
+   ],
+   "appear": {
+    "t": 122.176,
+    "mode": "rise",
+    "dur": 0.8
+   },
+   "debugXZ": [
+    62.59,
+    -146.09
+   ]
+  },
+  {
+   "id": "cover_tower_2",
+   "t": 124.13,
+   "side": 7,
+   "along": 0,
+   "y": 0,
+   "kind": "group",
+   "name": "five-colour stepped tower",
+   "landmark": true,
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1,
+      0
+     ],
+     "size": [
+      3.0,
+      2,
+      3.0
+     ],
+     "color": "#F1B8CB"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3,
+      0
+     ],
+     "size": [
+      2.4,
+      2,
+      2.4
+     ],
+     "color": "#F1B8CB"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5,
+      0
+     ],
+     "size": [
+      1.8,
+      2,
+      1.8
+     ],
+     "color": "#F1B8CB"
+    }
+   ],
+   "appear": {
+    "t": 124.02199999999999,
+    "mode": "rise",
+    "dur": 0.8
+   },
+   "debugXZ": [
+    85.42,
+    -141.32
+   ]
+  },
+  {
+   "id": "cover_tower_3",
+   "t": 125.73,
+   "side": -23.5,
+   "along": 0,
+   "y": 0,
+   "kind": "group",
+   "name": "stepped tower",
+   "landmark": false,
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1,
+      0
+     ],
+     "size": [
+      3.0,
+      2,
+      3.0
+     ],
+     "color": "#EAB88C"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3,
+      0
+     ],
+     "size": [
+      2.4,
+      2,
+      2.4
+     ],
+     "color": "#EAB88C"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5,
+      0
+     ],
+     "size": [
+      1.8,
+      2,
+      1.8
+     ],
+     "color": "#EAB88C"
+    }
+   ],
+   "appear": {
+    "t": 125.868,
+    "mode": "rise",
+    "dur": 0.8
+   },
+   "debugXZ": [
+    71.75,
+    -157.89
+   ]
+  },
+  {
+   "id": "cover_tower_4",
+   "t": 127.33,
+   "side": 22.0,
+   "along": 0,
+   "y": 0,
+   "kind": "group",
+   "name": "stepped tower",
+   "landmark": false,
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1,
+      0
+     ],
+     "size": [
+      3.0,
+      2,
+      3.0
+     ],
+     "color": "#B5A0D5"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      3,
+      0
+     ],
+     "size": [
+      2.4,
+      2,
+      2.4
+     ],
+     "color": "#B5A0D5"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      5,
+      0
+     ],
+     "size": [
+      1.8,
+      2,
+      1.8
+     ],
+     "color": "#B5A0D5"
+    }
+   ],
+   "appear": {
+    "t": 127.714,
+    "mode": "rise",
+    "dur": 0.8
+   },
+   "debugXZ": [
+    44.65,
+    -127.2
+   ]
+  },
+  {
+   "id": "egg_pollen_bunny",
+   "t": 130.483,
+   "side": 18.0,
+   "along": 0,
+   "y": 0,
+   "kind": "group",
+   "egg": true,
+   "name": "Easter egg: a bunny made of glowing pollen dots appears for the last bars",
+   "parts": [
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      0.7,
+      0
+     ],
+     "size": [
+      1.2,
+      1.0,
+      1.2
+     ],
+     "color": "#fff4b0"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      1.5,
+      0.3
+     ],
+     "size": [
+      0.7,
+      0.7,
+      0.7
+     ],
+     "color": "#fff4b0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -0.15,
+      2.1,
+      0.3
+     ],
+     "size": [
+      0.15,
+      0.7,
+      0.15
+     ],
+     "color": "#fff4b0"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.15,
+      2.1,
+      0.3
+     ],
+     "size": [
+      0.15,
+      0.7,
+      0.15
+     ],
+     "color": "#fff4b0"
+    }
+   ],
+   "appear": {
+    "t": 129.56,
+    "mode": "fade",
+    "dur": 1.5
+   },
+   "debugXZ": [
+    74.84,
+    -128.5
+   ]
+  }
+ ],
+ "art": {
+  "backdrop": "art/forest.jpg",
+  "ground": {
+   "src": "art/meadow.jpg",
+   "scale": 35
+  },
+  "catalog": [
+   {
+    "file": "art/forest.jpg",
+    "use": "backdrop: emerald night forest with moon and fireflies"
+   },
+   {
+    "file": "art/meadow.jpg",
+    "use": "ground: meadow grass with flowers"
+   },
+   {
+    "file": "art/pendulum-sign.jpg",
+    "use": "clock face texture (part texture) and sign-board image"
+   },
+   {
+    "file": "art/bunny-eyes.png",
+    "use": "bunny-eyes billboards in the intro"
+   }
+  ]
+ },
+ "route": {
+  "note": "Centerline computed from chart taps+dir+speed (Babylon left-handed, y up, N=+z, E=+x). nodes = position at each tap (heading after the tap). y = road height from elevation events.",
+  "nodes": [
+   [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    "N"
+   ],
+   [
+    1.264,
+    0.0,
+    0.0,
+    10.744,
+    "E"
+   ],
+   [
+    2.187,
+    7.845,
+    0.0,
+    10.744,
+    "N"
+   ],
+   [
+    3.11,
+    7.845,
+    0.0,
+    18.59,
+    "E"
+   ],
+   [
+    4.033,
+    15.691,
+    0.0,
+    18.59,
+    "S"
+   ],
+   [
+    4.725,
+    15.691,
+    0.0,
+    12.708,
+    "W"
+   ],
+   [
+    5.187,
+    11.764,
+    0.0,
+    12.708,
+    "S"
+   ],
+   [
+    5.879,
+    11.764,
+    0.0,
+    6.826,
+    "E"
+   ],
+   [
+    7.033,
+    21.573,
+    0.0,
+    6.826,
+    "S"
+   ],
+   [
+    7.725,
+    21.573,
+    0.0,
+    0.944,
+    "W"
+   ],
+   [
+    8.648,
+    13.728,
+    0.0,
+    0.944,
+    "S"
+   ],
+   [
+    9.571,
+    13.728,
+    0.0,
+    -6.902,
+    "W"
+   ],
+   [
+    11.417,
+    -1.963,
+    0.0,
+    -6.902,
+    "S"
+   ],
+   [
+    13.263,
+    -1.963,
+    0.0,
+    -22.593,
+    "W"
+   ],
+   [
+    14.186,
+    -9.809,
+    0.0,
+    -22.593,
+    "S"
+   ],
+   [
+    15.109,
+    -9.809,
+    0.0,
+    -30.438,
+    "E"
+   ],
+   [
+    16.955,
+    5.882,
+    0.0,
+    -30.438,
+    "S"
+   ],
+   [
+    17.647,
+    5.882,
+    0.0,
+    -36.32,
+    "E"
+   ],
+   [
+    18.801,
+    15.691,
+    0.0,
+    -36.32,
+    "S"
+   ],
+   [
+    20.647,
+    15.691,
+    0.0,
+    -52.011,
+    "W"
+   ],
+   [
+    21.57,
+    7.845,
+    0.0,
+    -52.011,
+    "S"
+   ],
+   [
+    22.493,
+    7.845,
+    0.0,
+    -59.857,
+    "E"
+   ],
+   [
+    24.339,
+    23.536,
+    0.0,
+    -59.857,
+    "S"
+   ],
+   [
+    25.031,
+    23.536,
+    0.0,
+    -65.739,
+    "E"
+   ],
+   [
+    25.493,
+    27.463,
+    0.0,
+    -65.739,
+    "S"
+   ],
+   [
+    26.185,
+    27.463,
+    0.0,
+    -71.621,
+    "E"
+   ],
+   [
+    27.339,
+    37.272,
+    0.0,
+    -71.621,
+    "S"
+   ],
+   [
+    28.031,
+    37.272,
+    0.0,
+    -77.503,
+    "E"
+   ],
+   [
+    28.723,
+    43.154,
+    0.0,
+    -77.503,
+    "N"
+   ],
+   [
+    29.877,
+    43.154,
+    0.0,
+    -67.694,
+    "W"
+   ],
+   [
+    30.8,
+    35.309,
+    0.0,
+    -67.694,
+    "N"
+   ],
+   [
+    31.723,
+    35.309,
+    0.0,
+    -59.849,
+    "E"
+   ],
+   [
+    33.569,
+    51.0,
+    0.0,
+    -59.849,
+    "N"
+   ],
+   [
+    34.723,
+    51.0,
+    0.0,
+    -50.04,
+    "E"
+   ],
+   [
+    34.838,
+    51.978,
+    0.0,
+    -50.04,
+    "S"
+   ],
+   [
+    35.3,
+    51.978,
+    0.0,
+    -53.966,
+    "E"
+   ],
+   [
+    35.415,
+    52.955,
+    0.0,
+    -53.966,
+    "N"
+   ],
+   [
+    36.107,
+    52.955,
+    0.0,
+    -48.084,
+    "W"
+   ],
+   [
+    37.261,
+    43.146,
+    0.0,
+    -48.084,
+    "N"
+   ],
+   [
+    38.184,
+    43.146,
+    0.875,
+    -40.239,
+    "E"
+   ],
+   [
+    39.107,
+    50.992,
+    1.75,
+    -40.239,
+    "N"
+   ],
+   [
+    40.953,
+    50.992,
+    3.5,
+    -24.548,
+    "W"
+   ],
+   [
+    41.645,
+    45.11,
+    3.5,
+    -24.548,
+    "S"
+   ],
+   [
+    42.107,
+    45.11,
+    3.5,
+    -28.475,
+    "W"
+   ],
+   [
+    42.799,
+    39.228,
+    3.5,
+    -28.475,
+    "S"
+   ],
+   [
+    43.953,
+    39.228,
+    3.5,
+    -38.284,
+    "W"
+   ],
+   [
+    44.645,
+    33.346,
+    3.5,
+    -38.284,
+    "S"
+   ],
+   [
+    45.568,
+    33.346,
+    3.5,
+    -46.129,
+    "W"
+   ],
+   [
+    46.491,
+    25.5,
+    3.5,
+    -46.129,
+    "S"
+   ],
+   [
+    47.183,
+    25.5,
+    3.5,
+    -52.011,
+    "E"
+   ],
+   [
+    47.414,
+    27.463,
+    3.5,
+    -52.011,
+    "S"
+   ],
+   [
+    47.645,
+    27.463,
+    3.5,
+    -53.975,
+    "E"
+   ],
+   [
+    47.875,
+    29.418,
+    3.5,
+    -53.975,
+    "S"
+   ],
+   [
+    48.106,
+    29.418,
+    3.5,
+    -55.938,
+    "E"
+   ],
+   [
+    48.337,
+    31.382,
+    3.5,
+    -55.938,
+    "S"
+   ],
+   [
+    49.029,
+    31.382,
+    3.5,
+    -61.82,
+    "E"
+   ],
+   [
+    49.491,
+    35.309,
+    3.5,
+    -61.82,
+    "S"
+   ],
+   [
+    50.183,
+    35.309,
+    3.5,
+    -67.702,
+    "E"
+   ],
+   [
+    51.337,
+    45.118,
+    3.5,
+    -67.702,
+    "N"
+   ],
+   [
+    52.029,
+    45.118,
+    3.5,
+    -61.82,
+    "E"
+   ],
+   [
+    52.952,
+    52.963,
+    3.5,
+    -61.82,
+    "N"
+   ],
+   [
+    53.875,
+    52.963,
+    3.5,
+    -53.975,
+    "E"
+   ],
+   [
+    54.567,
+    58.845,
+    3.5,
+    -53.975,
+    "N"
+   ],
+   [
+    54.798,
+    58.845,
+    3.5,
+    -52.011,
+    "E"
+   ],
+   [
+    55.028,
+    60.8,
+    3.5,
+    -52.011,
+    "N"
+   ],
+   [
+    55.259,
+    60.8,
+    3.5,
+    -50.048,
+    "W"
+   ],
+   [
+    55.49,
+    58.837,
+    3.5,
+    -50.048,
+    "N"
+   ],
+   [
+    56.182,
+    58.837,
+    3.5,
+    -44.166,
+    "W"
+   ],
+   [
+    56.644,
+    54.91,
+    3.5,
+    -44.166,
+    "N"
+   ],
+   [
+    57.567,
+    54.91,
+    0.0,
+    -36.32,
+    "E"
+   ],
+   [
+    58.49,
+    62.755,
+    0.0,
+    -36.32,
+    "S"
+   ],
+   [
+    59.413,
+    62.755,
+    0.0,
+    -44.166,
+    "E"
+   ],
+   [
+    60.336,
+    70.601,
+    0.0,
+    -44.166,
+    "S"
+   ],
+   [
+    61.259,
+    70.601,
+    0.0,
+    -52.011,
+    "W"
+   ],
+   [
+    62.182,
+    62.755,
+    0.0,
+    -52.011,
+    "S"
+   ],
+   [
+    63.105,
+    62.755,
+    0.0,
+    -59.857,
+    "E"
+   ],
+   [
+    63.566,
+    66.674,
+    0.0,
+    -59.857,
+    "S"
+   ],
+   [
+    63.797,
+    66.674,
+    0.0,
+    -61.82,
+    "E"
+   ],
+   [
+    64.028,
+    68.638,
+    0.0,
+    -61.82,
+    "S"
+   ],
+   [
+    64.489,
+    68.638,
+    0.0,
+    -65.739,
+    "W"
+   ],
+   [
+    64.951,
+    64.711,
+    0.0,
+    -65.739,
+    "S"
+   ],
+   [
+    65.874,
+    64.711,
+    0.0,
+    -73.584,
+    "E"
+   ],
+   [
+    66.797,
+    72.556,
+    0.0,
+    -73.584,
+    "S"
+   ],
+   [
+    67.72,
+    72.556,
+    0.0,
+    -81.43,
+    "E"
+   ],
+   [
+    68.643,
+    80.402,
+    0.0,
+    -81.43,
+    "S"
+   ],
+   [
+    69.566,
+    80.402,
+    0.0,
+    -89.275,
+    "W"
+   ],
+   [
+    70.489,
+    72.556,
+    0.0,
+    -89.275,
+    "S"
+   ],
+   [
+    70.95,
+    72.556,
+    0.0,
+    -93.194,
+    "E"
+   ],
+   [
+    71.181,
+    74.52,
+    0.0,
+    -93.194,
+    "S"
+   ],
+   [
+    71.412,
+    74.52,
+    0.0,
+    -95.157,
+    "E"
+   ],
+   [
+    71.873,
+    78.438,
+    0.0,
+    -95.157,
+    "S"
+   ],
+   [
+    72.335,
+    78.438,
+    0.0,
+    -99.084,
+    "E"
+   ],
+   [
+    73.258,
+    86.284,
+    0.0,
+    -99.084,
+    "N"
+   ],
+   [
+    73.719,
+    86.284,
+    0.0,
+    -95.166,
+    "E"
+   ],
+   [
+    74.181,
+    90.211,
+    0.0,
+    -95.166,
+    "N"
+   ],
+   [
+    74.873,
+    90.211,
+    0.0,
+    -89.284,
+    "W"
+   ],
+   [
+    75.45,
+    85.306,
+    0.0,
+    -89.284,
+    "N"
+   ],
+   [
+    75.565,
+    85.306,
+    0.0,
+    -88.306,
+    "W"
+   ],
+   [
+    75.68,
+    84.329,
+    0.0,
+    -88.306,
+    "N"
+   ],
+   [
+    76.027,
+    84.329,
+    0.0,
+    -85.357,
+    "E"
+   ],
+   [
+    76.95,
+    92.174,
+    0.0,
+    -85.357,
+    "N"
+   ],
+   [
+    77.296,
+    92.174,
+    0.0,
+    -82.416,
+    "E"
+   ],
+   [
+    77.411,
+    93.152,
+    0.0,
+    -82.416,
+    "N"
+   ],
+   [
+    77.873,
+    93.152,
+    0.0,
+    -78.489,
+    "W"
+   ],
+   [
+    78.103,
+    91.197,
+    0.0,
+    -78.489,
+    "N"
+   ],
+   [
+    78.219,
+    91.197,
+    0.0,
+    -77.503,
+    "W"
+   ],
+   [
+    78.334,
+    90.219,
+    0.0,
+    -77.503,
+    "N"
+   ],
+   [
+    78.565,
+    90.219,
+    0.0,
+    -75.539,
+    "E"
+   ],
+   [
+    78.796,
+    92.183,
+    0.0,
+    -75.539,
+    "N"
+   ],
+   [
+    79.026,
+    92.183,
+    0.0,
+    -73.584,
+    "E"
+   ],
+   [
+    79.142,
+    93.169,
+    0.0,
+    -73.584,
+    "N"
+   ],
+   [
+    79.257,
+    93.169,
+    0.0,
+    -72.607,
+    "W"
+   ],
+   [
+    79.488,
+    91.205,
+    0.0,
+    -72.607,
+    "N"
+   ],
+   [
+    79.719,
+    91.205,
+    0.001,
+    -70.643,
+    "E"
+   ],
+   [
+    80.642,
+    99.051,
+    1.168,
+    -70.643,
+    "N"
+   ],
+   [
+    81.103,
+    99.051,
+    1.751,
+    -66.725,
+    "E"
+   ],
+   [
+    81.564,
+    102.969,
+    2.333,
+    -66.725,
+    "N"
+   ],
+   [
+    82.257,
+    102.969,
+    3.209,
+    -60.834,
+    "E"
+   ],
+   [
+    82.949,
+    108.851,
+    4.084,
+    -60.834,
+    "S"
+   ],
+   [
+    83.41,
+    108.851,
+    4.667,
+    -64.753,
+    "E"
+   ],
+   [
+    84.333,
+    116.697,
+    5.833,
+    -64.753,
+    "S"
+   ],
+   [
+    84.795,
+    116.697,
+    6.417,
+    -68.68,
+    "W"
+   ],
+   [
+    85.256,
+    112.778,
+    7.0,
+    -68.68,
+    "S"
+   ],
+   [
+    85.487,
+    112.778,
+    7.0,
+    -70.643,
+    "W"
+   ],
+   [
+    85.718,
+    110.815,
+    7.0,
+    -70.643,
+    "S"
+   ],
+   [
+    85.949,
+    110.815,
+    7.0,
+    -72.607,
+    "W"
+   ],
+   [
+    86.179,
+    108.86,
+    7.0,
+    -72.607,
+    "N"
+   ],
+   [
+    86.41,
+    108.86,
+    7.0,
+    -70.643,
+    "W"
+   ],
+   [
+    86.641,
+    106.896,
+    7.0,
+    -70.643,
+    "N"
+   ],
+   [
+    86.872,
+    106.896,
+    7.0,
+    -68.68,
+    "E"
+   ],
+   [
+    87.102,
+    108.851,
+    7.0,
+    -68.68,
+    "S"
+   ],
+   [
+    88.025,
+    108.851,
+    7.0,
+    -76.525,
+    "W"
+   ],
+   [
+    88.948,
+    101.006,
+    7.0,
+    -76.525,
+    "S"
+   ],
+   [
+    89.871,
+    101.006,
+    7.0,
+    -84.371,
+    "W"
+   ],
+   [
+    90.218,
+    98.056,
+    7.0,
+    -84.371,
+    "S"
+   ],
+   [
+    90.333,
+    98.056,
+    7.0,
+    -85.348,
+    "W"
+   ],
+   [
+    90.794,
+    94.138,
+    7.0,
+    -85.348,
+    "S"
+   ],
+   [
+    91.256,
+    94.138,
+    7.0,
+    -89.275,
+    "W"
+   ],
+   [
+    91.371,
+    93.16,
+    7.0,
+    -89.275,
+    "S"
+   ],
+   [
+    91.717,
+    93.16,
+    7.0,
+    -92.216,
+    "W"
+   ],
+   [
+    92.179,
+    89.233,
+    7.0,
+    -92.216,
+    "S"
+   ],
+   [
+    92.64,
+    89.233,
+    7.0,
+    -96.135,
+    "W"
+   ],
+   [
+    93.563,
+    81.388,
+    6.125,
+    -96.135,
+    "N"
+   ],
+   [
+    94.486,
+    81.388,
+    5.25,
+    -88.289,
+    "W"
+   ],
+   [
+    95.409,
+    73.542,
+    4.375,
+    -88.289,
+    "N"
+   ],
+   [
+    96.332,
+    73.542,
+    3.5,
+    -80.444,
+    "W"
+   ],
+   [
+    97.255,
+    65.697,
+    3.5,
+    -80.444,
+    "N"
+   ],
+   [
+    98.178,
+    65.697,
+    3.5,
+    -72.598,
+    "W"
+   ],
+   [
+    98.871,
+    59.806,
+    3.5,
+    -72.598,
+    "N"
+   ],
+   [
+    99.101,
+    59.806,
+    3.5,
+    -70.643,
+    "W"
+   ],
+   [
+    99.332,
+    57.843,
+    3.5,
+    -70.643,
+    "N"
+   ],
+   [
+    99.563,
+    57.843,
+    3.5,
+    -68.68,
+    "W"
+   ],
+   [
+    99.794,
+    55.879,
+    3.5,
+    -68.68,
+    "N"
+   ],
+   [
+    100.024,
+    55.879,
+    3.5,
+    -66.725,
+    "W"
+   ],
+   [
+    100.947,
+    48.034,
+    3.5,
+    -66.725,
+    "S"
+   ],
+   [
+    101.87,
+    48.034,
+    3.5,
+    -74.57,
+    "W"
+   ],
+   [
+    102.793,
+    40.188,
+    3.5,
+    -74.57,
+    "S"
+   ],
+   [
+    103.716,
+    40.188,
+    3.5,
+    -82.416,
+    "W"
+   ],
+   [
+    104.639,
+    32.343,
+    3.5,
+    -82.416,
+    "S"
+   ],
+   [
+    105.562,
+    32.343,
+    3.5,
+    -90.261,
+    "W"
+   ],
+   [
+    106.255,
+    26.452,
+    3.5,
+    -90.261,
+    "S"
+   ],
+   [
+    106.485,
+    26.452,
+    3.5,
+    -92.216,
+    "W"
+   ],
+   [
+    106.716,
+    24.489,
+    3.5,
+    -92.216,
+    "S"
+   ],
+   [
+    106.831,
+    24.489,
+    3.5,
+    -93.194,
+    "W"
+   ],
+   [
+    106.947,
+    23.503,
+    3.5,
+    -93.194,
+    "S"
+   ],
+   [
+    107.178,
+    23.503,
+    3.5,
+    -95.157,
+    "E"
+   ],
+   [
+    107.408,
+    25.458,
+    3.5,
+    -95.157,
+    "S"
+   ],
+   [
+    108.331,
+    25.458,
+    3.5,
+    -103.003,
+    "E"
+   ],
+   [
+    109.254,
+    33.303,
+    3.5,
+    -103.003,
+    "S"
+   ],
+   [
+    110.177,
+    33.303,
+    3.5,
+    -110.848,
+    "E"
+   ],
+   [
+    111.1,
+    41.149,
+    3.5,
+    -110.848,
+    "S"
+   ],
+   [
+    112.023,
+    41.149,
+    3.5,
+    -118.694,
+    "E"
+   ],
+   [
+    112.946,
+    48.994,
+    3.5,
+    -118.694,
+    "S"
+   ],
+   [
+    113.638,
+    48.994,
+    3.5,
+    -124.576,
+    "E"
+   ],
+   [
+    113.869,
+    50.958,
+    3.5,
+    -124.576,
+    "S"
+   ],
+   [
+    114.1,
+    50.958,
+    3.5,
+    -126.539,
+    "E"
+   ],
+   [
+    114.215,
+    51.935,
+    3.5,
+    -126.539,
+    "S"
+   ],
+   [
+    114.331,
+    51.935,
+    3.5,
+    -127.525,
+    "E"
+   ],
+   [
+    114.561,
+    53.89,
+    3.5,
+    -127.525,
+    "N"
+   ],
+   [
+    114.792,
+    53.89,
+    3.5,
+    -125.562,
+    "E"
+   ],
+   [
+    116.638,
+    69.581,
+    0.0,
+    -125.562,
+    "S"
+   ],
+   [
+    117.561,
+    69.581,
+    0.0,
+    -133.407,
+    "E"
+   ],
+   [
+    118.484,
+    77.427,
+    0.0,
+    -133.407,
+    "S"
+   ],
+   [
+    120.792,
+    77.427,
+    0.584,
+    -153.025,
+    "W"
+   ],
+   [
+    121.253,
+    73.508,
+    1.167,
+    -153.025,
+    "N"
+   ],
+   [
+    121.715,
+    73.508,
+    1.751,
+    -149.098,
+    "W"
+   ],
+   [
+    122.176,
+    69.59,
+    2.333,
+    -149.098,
+    "N"
+   ],
+   [
+    122.868,
+    69.59,
+    3.208,
+    -143.216,
+    "E"
+   ],
+   [
+    123.33,
+    73.517,
+    3.792,
+    -143.216,
+    "N"
+   ],
+   [
+    123.445,
+    73.517,
+    3.937,
+    -142.239,
+    "E"
+   ],
+   [
+    124.022,
+    78.421,
+    4.667,
+    -142.239,
+    "N"
+   ],
+   [
+    124.945,
+    78.421,
+    5.833,
+    -134.394,
+    "W"
+   ],
+   [
+    125.868,
+    70.576,
+    7.0,
+    -134.394,
+    "N"
+   ],
+   [
+    126.56,
+    70.576,
+    7.0,
+    -128.512,
+    "W"
+   ],
+   [
+    126.791,
+    68.612,
+    7.0,
+    -128.512,
+    "N"
+   ],
+   [
+    127.022,
+    68.612,
+    7.0,
+    -126.548,
+    "W"
+   ],
+   [
+    127.253,
+    66.649,
+    7.0,
+    -126.548,
+    "S"
+   ],
+   [
+    127.483,
+    66.649,
+    7.0,
+    -128.503,
+    "W"
+   ],
+   [
+    127.714,
+    64.685,
+    7.0,
+    -128.503,
+    "S"
+   ],
+   [
+    128.637,
+    64.685,
+    7.0,
+    -136.349,
+    "W"
+   ],
+   [
+    129.56,
+    56.84,
+    7.0,
+    -136.349,
+    "N"
+   ],
+   [
+    131.406,
+    56.84,
+    7.0,
+    -120.658,
+    "E"
+   ],
+   [
+    134.426,
+    82.511,
+    7.0,
+    -120.658,
+    "E"
+   ]
+  ],
+  "node_format": "[t, x, y, z, headingAfter]",
+  "selfCrossingErrors": [],
+  "overUnderPasses": [
+   {
+    "lowerT": 28.03,
+    "upperT": 102.79,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 28.72,
+    "upperT": 50.18,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 28.72,
+    "upperT": 51.34,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 28.72,
+    "upperT": 101.87,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 29.88,
+    "upperT": 49.49,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 29.88,
+    "upperT": 50.18,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 29.88,
+    "upperT": 51.34,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 30.8,
+    "upperT": 49.03,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 30.8,
+    "upperT": 49.49,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 30.8,
+    "upperT": 50.18,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 31.72,
+    "upperT": 49.03,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 31.72,
+    "upperT": 49.49,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 31.72,
+    "upperT": 51.34,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 31.72,
+    "upperT": 52.03,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 31.72,
+    "upperT": 52.95,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 33.57,
+    "upperT": 52.03,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 33.57,
+    "upperT": 52.95,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 33.57,
+    "upperT": 53.88,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 34.84,
+    "upperT": 52.95,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 34.84,
+    "upperT": 53.88,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 35.3,
+    "upperT": 52.95,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 35.3,
+    "upperT": 53.88,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 35.41,
+    "upperT": 52.95,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 35.41,
+    "upperT": 53.88,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 54.8,
+    "upperT": 61.26,
+    "dy": -3.5
+   },
+   {
+    "lowerT": 54.8,
+    "upperT": 62.18,
+    "dy": -3.5
+   },
+   {
+    "lowerT": 55.03,
+    "upperT": 61.26,
+    "dy": -3.5
+   },
+   {
+    "lowerT": 55.03,
+    "upperT": 62.18,
+    "dy": -3.5
+   },
+   {
+    "lowerT": 55.26,
+    "upperT": 61.26,
+    "dy": -3.5
+   },
+   {
+    "lowerT": 55.26,
+    "upperT": 62.18,
+    "dy": -3.5
+   },
+   {
+    "lowerT": 64.95,
+    "upperT": 97.25,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 64.95,
+    "upperT": 98.18,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 65.87,
+    "upperT": 97.25,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 65.87,
+    "upperT": 98.18,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 66.8,
+    "upperT": 95.41,
+    "dy": 4.4
+   },
+   {
+    "lowerT": 66.8,
+    "upperT": 96.33,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 67.72,
+    "upperT": 95.41,
+    "dy": 4.4
+   },
+   {
+    "lowerT": 67.72,
+    "upperT": 96.33,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 68.64,
+    "upperT": 93.56,
+    "dy": 6.1
+   },
+   {
+    "lowerT": 68.64,
+    "upperT": 94.49,
+    "dy": 5.2
+   },
+   {
+    "lowerT": 69.57,
+    "upperT": 93.56,
+    "dy": 6.1
+   },
+   {
+    "lowerT": 69.57,
+    "upperT": 94.49,
+    "dy": 5.2
+   },
+   {
+    "lowerT": 69.57,
+    "upperT": 95.41,
+    "dy": 4.4
+   },
+   {
+    "lowerT": 70.49,
+    "upperT": 94.49,
+    "dy": 5.2
+   },
+   {
+    "lowerT": 70.49,
+    "upperT": 95.41,
+    "dy": 4.4
+   },
+   {
+    "lowerT": 73.26,
+    "upperT": 92.64,
+    "dy": 7.0
+   },
+   {
+    "lowerT": 73.72,
+    "upperT": 92.18,
+    "dy": 7.0
+   },
+   {
+    "lowerT": 73.72,
+    "upperT": 92.64,
+    "dy": 7.0
+   },
+   {
+    "lowerT": 74.18,
+    "upperT": 91.72,
+    "dy": 7.0
+   },
+   {
+    "lowerT": 74.18,
+    "upperT": 92.18,
+    "dy": 7.0
+   },
+   {
+    "lowerT": 74.18,
+    "upperT": 92.64,
+    "dy": 7.0
+   },
+   {
+    "lowerT": 76.03,
+    "upperT": 90.33,
+    "dy": 7.0
+   },
+   {
+    "lowerT": 76.03,
+    "upperT": 90.79,
+    "dy": 7.0
+   },
+   {
+    "lowerT": 76.95,
+    "upperT": 90.33,
+    "dy": 7.0
+   },
+   {
+    "lowerT": 76.95,
+    "upperT": 90.79,
+    "dy": 7.0
+   },
+   {
+    "lowerT": 114.79,
+    "upperT": 126.79,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 114.79,
+    "upperT": 127.02,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 114.79,
+    "upperT": 127.25,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 114.79,
+    "upperT": 129.56,
+    "dy": 3.5
+   },
+   {
+    "lowerT": 116.64,
+    "upperT": 124.94,
+    "dy": 5.8
+   },
+   {
+    "lowerT": 116.64,
+    "upperT": 125.87,
+    "dy": 7.0
+   },
+   {
+    "lowerT": 116.64,
+    "upperT": 126.56,
+    "dy": 7.0
+   },
+   {
+    "lowerT": 116.64,
+    "upperT": 126.79,
+    "dy": 7.0
+   },
+   {
+    "lowerT": 116.64,
+    "upperT": 127.02,
+    "dy": 7.0
+   },
+   {
+    "lowerT": 117.56,
+    "upperT": 124.02,
+    "dy": 4.7
+   },
+   {
+    "lowerT": 117.56,
+    "upperT": 124.94,
+    "dy": 5.8
+   },
+   {
+    "lowerT": 117.56,
+    "upperT": 125.87,
+    "dy": 7.0
+   },
+   {
+    "lowerT": 118.48,
+    "upperT": 123.44,
+    "dy": 3.9
+   },
+   {
+    "lowerT": 118.48,
+    "upperT": 124.02,
+    "dy": 4.7
+   },
+   {
+    "lowerT": 118.48,
+    "upperT": 124.94,
+    "dy": 5.8
+   }
+  ]
+ }
+}

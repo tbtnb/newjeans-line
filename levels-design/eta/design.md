@@ -23,7 +23,7 @@
 | 9 | Chorus 2 · sky bridge (92.3–104.8) | **Long bridge with a dog-leg** (16 + 9 + rest) high over Pre 2 / Pre 3 | +13 (top) | Bridge gate, rails, five scene panels drop in on bar downbeats, confetti | wide → high |
 | 10 | Stop 2 · E-T-A (104.8–106.6) | **fall −6** off the bridge edge (104.61), then a mirrored V kink | +7 | Letters E, T, A | top |
 | 11 | Final A · pixel heart (106.6–120.8) | **Closed lobe** (pair rotates every 12 taps) round a giant flat pixel heart. It closes because of the descent | **ramp −6** | Giant flat heart image (art/heart-poster.png), lamps that react to taps | high |
-| 12 | Final B · arrival sprint (120.8–135.0) | **Tight 2-tap wiggle corridor** (posts at ±1.6), then a long straight stair carrying the 17-tap run | **fall −3** at the end (134.72) | Sprint posts. **Egg 3**: five windows light one per beat (124.3 s). **Fake-out** closed side street | iso (shake 0.08) |
+| 12 | Final B · arrival sprint (120.8–135.0) | **Tight 2-tap wiggle corridor** (posts at ±1.6), then a long straight stair carrying the 19-tap run | **fall −3** at the end (134.72) | Sprint posts. **Egg 3**: five windows light one per beat (124.3 s). **Fake-out** closed side street | iso (shake 0.08) |
 | 13 | Outro · two lamps (135.0–151.4) | **Big sweeping steps** (16 u legs), then a long straight to the gate | −3 | Bench between two lamps; the lamps light on 136.8 / 138.6 | high → wide |
 
 The fake-out forks are scenery only. They sit 1.2 u lower than the road, have a different tint, end in a broken edge, rock or planter, and never react to music. Nothing marks a tap time.
