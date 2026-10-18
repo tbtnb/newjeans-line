@@ -55,7 +55,7 @@ async function loadSong(s: Song, file?: File) {
 }
 function updateInfo() {
   const s = S.song; if (!s) return;
-  $('info').textContent = S.grid.period ? `${(60 / S.grid.period).toFixed(3)} BPM · 第一拍 ${S.grid.beat0.toFixed(3)} s · ${s.gridSource === 'chart' ? '来自关卡谱面' : s.gridSource === 'analysis' ? '来自音频分析' : '手动'}` : '未知 BPM（可在上方「节拍」里填写）';
+  $('info').textContent = S.grid.period ? `${(60 / S.grid.period).toFixed(3)} BPM · 第一拍 ${S.grid.beat0.toFixed(3)} s · ${s.gridSource === 'chart' ? '来自关卡谱面' : s.gridSource === 'analysis' ? '来自音频分析' : '手动'}` : '未知 BPM（可在 ⚙ 里填写）';
   $('tdur').textContent = '/ ' + fmt(player.duration, false);
 }
 const gridInput = () => {
@@ -141,14 +141,21 @@ pad.addEventListener('pointerdown', e => { e.preventDefault(); const r = pad.get
 
 // ---------------- keyboard ----------------
 const LEFT = new Set(['KeyF', 'KeyD', 'KeyS', 'KeyA', 'KeyG', 'KeyV', 'KeyC', 'KeyX', 'KeyZ']);
+// text-like fields keep their keys; buttons / checkboxes / selects never react to Space (it is play or a tap here)
+const isTextField = (el: EventTarget | null) => { const t = el as HTMLElement | null; if (!t || !t.tagName) return false;
+  if (t.tagName === 'TEXTAREA' || t.isContentEditable) return true;
+  return t.tagName === 'INPUT' && !['checkbox', 'radio', 'button', 'submit', 'file', 'range'].includes((t as HTMLInputElement).type); };
+const sheetOpen = () => !!document.querySelector('dialog.sheet[open]');
 window.addEventListener('keydown', e => {
-  const tag = (e.target as HTMLElement).tagName; if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') return;
-  if (calib.active) { if (e.code === 'Escape') return; if (!e.repeat) { e.preventDefault(); calib.tap(e.timeStamp); } return; }
+  if (calib.active) { if (e.code === 'Escape') return; e.preventDefault(); if (!e.repeat) calib.tap(e.timeStamp); return; }
   if (S.rec) {
+    e.preventDefault();
+    if (document.activeElement instanceof HTMLElement && document.activeElement !== document.body) document.activeElement.blur();
     if (e.code === 'Escape' || e.code === 'Enter') { stopAll(); return; }
-    if (e.repeat || e.metaKey || e.ctrlKey) return; e.preventDefault();
+    if (e.repeat || e.metaKey || e.ctrlKey) return;
     recordTap(e.timeStamp, dual() ? (LEFT.has(e.code) ? 'drum' : 'vocal') : 'tap'); return;
   }
+  if (isTextField(e.target) || sheetOpen() || $<HTMLDialogElement>('calibdlg').open) return;
   const mod = e.ctrlKey || e.metaKey;
   if (mod && e.code === 'KeyZ') { e.preventDefault(); e.shiftKey ? redo() : undo(); }
   else if (mod && e.code === 'KeyY') { e.preventDefault(); redo(); }
@@ -339,7 +346,28 @@ async function importObj(d: any) {
   sortTaps(); S.sel.clear(); commit(before); draw(); toast(`导入了 ${S.taps.length} 个点`);
 }
 $('clear').onclick = () => { if (!S.taps.length || !confirm('清空本曲所有点？（可以撤销）')) return; const before = snap(); S.taps = []; S.sel.clear(); commit(before); draw(); };
-$('helpbtn').onclick = () => { const h = $<HTMLDetailsElement>('help'); h.open = true; h.scrollIntoView({ behavior: 'smooth' }); };
+
+// ---------------- touch / focus guards (no page movement, no selection, no zoom) ----------------
+window.addEventListener('keyup', e => { if ((e.code === 'Space' || ((S.rec || calib.active) && e.code === 'Enter')) && !isTextField(e.target)) e.preventDefault(); });
+document.addEventListener('click', e => { const b = (e.target as Element).closest?.('button, label.btn, .chk'); if (b) setTimeout(() => { const a = document.activeElement as HTMLElement | null; if (a && a !== document.body && !isTextField(a) && a.tagName !== 'SELECT') a.blur(); }, 0); });
+document.addEventListener('change', e => { const t = e.target as HTMLInputElement; if (t.type === 'checkbox' || t.tagName === 'SELECT') t.blur(); });
+for (const el of [pad, $('calpad')]) {
+  el.addEventListener('touchstart', e => e.preventDefault(), { passive: false });
+  el.addEventListener('touchend', e => e.preventDefault(), { passive: false });
+  el.addEventListener('contextmenu', e => e.preventDefault());
+}
+document.addEventListener('touchmove', e => { const t = e.target as Element; if (!t.closest?.('.scroll, dialog')) e.preventDefault(); }, { passive: false });
+document.addEventListener('dblclick', e => { if (!isTextField(e.target)) e.preventDefault(); }, { passive: false });
+for (const g of ['gesturestart', 'gesturechange', 'gestureend']) document.addEventListener(g, e => e.preventDefault(), { passive: false } as AddEventListenerOptions);
+document.addEventListener('selectstart', e => { if (!isTextField(e.target)) e.preventDefault(); });
+document.addEventListener('contextmenu', e => { if (!isTextField(e.target) && !(e.target as Element).closest?.('.help')) e.preventDefault(); });
+window.addEventListener('scroll', () => { if (window.scrollY || window.scrollX) window.scrollTo(0, 0); });
+for (const d of document.querySelectorAll<HTMLDialogElement>('dialog.sheet')) {
+  d.querySelector('[data-close]')?.addEventListener('click', () => d.close());
+  d.addEventListener('click', e => { if (e.target === d) d.close(); });   // tap on the backdrop closes
+}
+$('morebtn').onclick = () => $<HTMLDialogElement>('sheet').showModal();
+$('helpbtn').onclick = () => $<HTMLDialogElement>('helpsheet').showModal();
 
 // test / automation hook (read-mostly)
 (window as any).__tapper = { S, player, exportObj, importObj, loadSongById: (id: string) => { songSel.value = id; return loadSong((SONGS as Song[]).find(s => s.id === id)!); }, draw, calib, x2t, t2x };

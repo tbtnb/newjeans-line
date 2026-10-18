@@ -66,7 +66,7 @@ ok('undo / redo', nu === n0 && nr === n1, { afterUndo: nu, afterRedo: nr });
 await p.keyboard.press('Control+z');
 
 // ---- snap preview + review click toggle (visual), A–B from selection
-await p.selectOption('#snap', '2'); await p.check('#clicks');
+await p.click('#morebtn'); await p.selectOption('#snap', '2'); await p.check('#clicks'); await p.click('#sheet [data-close]');
 await p.evaluate(() => { const T = window.__tapper; T.S.sel = new Set(T.S.taps.filter(t => t.t > 16 && t.t < 18).map(t => t.id)); T.draw(); }); await p.click('#selab');
 const ab = await p.evaluate(() => [window.__tapper.S.A, window.__tapper.S.B]);
 ok('A–B from selection', ab[0] > 15.5 && ab[1] < 18.5, { A: ab[0], B: ab[1] });
@@ -74,9 +74,9 @@ await p.evaluate(() => { const T = window.__tapper; T.S.view.t0 = 13; T.S.view.p
 await p.screenshot({ path: `${OUT}/desktop.png` });
 
 // ---- export (download + clipboard)
-const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#export')]);
+await p.click('#morebtn'); const [dl] = await Promise.all([p.waitForEvent('download'), p.click('#export')]);
 const path = `${OUT}/sample-export.json`; await dl.saveAs(path); const ex = JSON.parse(readFileSync(path, 'utf8'));
-await p.click('#copy'); await p.waitForTimeout(300); const clip = await p.evaluate(() => navigator.clipboard.readText());
+await p.click('#copy'); await p.waitForTimeout(300); await p.click('#sheet [data-close]'); const clip = await p.evaluate(() => navigator.clipboard.readText());
 ok('export JSON (download + clipboard)', ex.song === 'omg' && ex.taps.length === n0 && ex.calibration_ms === calRes && ex.bpm > 126.9 && JSON.parse(clip).taps.length === n0 && 't_raw' in ex.taps[0],
   { file: path, taps: ex.taps.length, keys: Object.keys(ex) });
 // autosave survives reload
@@ -84,14 +84,7 @@ await p.reload(); await p.waitForFunction(() => window.__tapper?.S.pk, null, { t
 ok('autosave per song (survives reload)', (await count()) === n0, { taps: await count() });
 ok('no page errors', errs.length === 0, { errs });
 
-// ---- phone screenshots
-for (const [name, vp] of [['phone-portrait', { width: 390, height: 844 }], ['phone-landscape', { width: 844, height: 390 }]]) {
-  const pc = await b.newContext({ viewport: vp, deviceScaleFactor: 3, isMobile: true, hasTouch: true }); const pp = await pc.newPage();
-  await pp.goto(URL_ + '?song=omg'); await pp.evaluate(js => { localStorage.setItem('nj-tapper:v1:song:omg', js); }, JSON.stringify({ taps: ex.taps, A: ab[0], B: ab[1] })); await pp.reload();
-  await pp.waitForFunction(() => window.__tapper?.S.pk, null, { timeout: 30000 });
-  await pp.evaluate(() => { const T = window.__tapper; T.S.view.t0 = 13; T.S.view.pps = 90; document.querySelector('#snap').value = '2'; T.draw(); });
-  await pp.screenshot({ path: `${OUT}/${name}.png` }); await pc.close();
-}
+// phone / tablet layout screenshots + no-scroll checks: tools/qa/tapper-layout.mjs
 R.summary = { pass: R.steps.filter(s => s.pass).length, total: R.steps.length };
 writeFileSync(`${OUT}/e2e-result.json`, JSON.stringify(R, null, 1)); console.log(JSON.stringify(R.summary));
 await b.close();

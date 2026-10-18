@@ -3,53 +3,46 @@
 <head>
 <meta charset="UTF-8" />
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
 <meta name="theme-color" content="#eaf2ff" />
 <meta name="google" content="notranslate" />
+<meta name="format-detection" content="telephone=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
 <title>打点器 · 跳舞的线 NewJeans</title>
 <link rel="icon" href="../icon.svg" />
 </head>
 <body>
 <div id="app">
   <header class="top card">
-    <div class="brand"><span class="logo">✦</span><div><b>打点器</b><small>跳舞的线 · NewJeans</small></div></div>
-    <div class="songpick">
-      <select id="song" aria-label="选择歌曲"></select>
-      <label class="btn ghost small" id="localbtn">本地音频…<input id="localfile" type="file" accept="audio/*" hidden /></label>
-    </div>
-    <div class="info" id="info">—</div>
-    <button class="btn ghost small" id="helpbtn">怎么用</button>
+    <span class="logo" title="打点器 · 跳舞的线 NewJeans">✦</span>
+    <select id="song" aria-label="选择歌曲"></select>
+    <button class="btn small" id="calib" title="延迟校准">延迟 <span id="calibms" class="chip">0 ms</span></button>
+    <button class="btn icon" id="morebtn" title="设置 · 导出 · 导入" aria-label="设置与导出">⚙</button>
+    <button class="btn icon" id="helpbtn" title="怎么用" aria-label="怎么用">?</button>
   </header>
 
   <section class="card transport">
     <button class="btn round" id="play" title="播放 / 暂停（空格）">▶</button>
-    <button class="btn ghost small" id="tostart" title="回到开头">⏮</button>
-    <div class="time"><span id="tnow">0:00.000</span><small id="tdur">/ 0:00</small></div>
-    <label class="field">速度<select id="rate"><option value="1">1.0×</option><option value="0.75">0.75×</option><option value="0.5">0.5×</option></select></label>
-    <label class="chk"><input type="checkbox" id="keeppitch" checked />保持音高</label>
-    <label class="chk"><input type="checkbox" id="follow" checked />跟随</label>
-    <label class="chk"><input type="checkbox" id="clicks" />回放点击音</label>
-    <label class="field">吸附预览<select id="snap"><option value="0">关</option><option value="2">1/8</option><option value="4">1/16</option></select></label>
-    <label class="field">节拍<input id="bpm" type="number" step="0.001" min="30" max="300" title="BPM" /><input id="beat0" type="number" step="0.001" title="第一拍（秒）" /></label>
+    <button class="btn icon" id="tostart" title="回到开头" aria-label="回到开头"><svg viewBox="0 0 16 16" width="15" height="15" aria-hidden="true"><path d="M3 2.5h2.2v11H3zM13.5 2.5v11L6 8z" fill="currentColor"/></svg></button>
+    <div class="time"><div><span id="tnow">0:00.000</span><small id="tdur">/ 0:00</small></div><div class="info" id="info">—</div></div>
+    <select id="rate" title="播放速度" aria-label="播放速度"><option value="1">1.0×</option><option value="0.75">0.75×</option><option value="0.5">0.5×</option></select>
   </section>
 
   <section class="card tl">
     <canvas id="mini" height="22"></canvas>
     <canvas id="timeline"></canvas>
     <div class="tlbar">
-      <button class="btn ghost small" id="zoomout" title="缩小">－</button>
-      <button class="btn ghost small" id="zoomin" title="放大">＋</button>
+      <button class="btn small" id="zoomout" title="缩小">－</button>
+      <button class="btn small" id="zoomin" title="放大">＋</button>
+      <button class="btn small" id="undo" title="撤销 Ctrl+Z">↶</button>
+      <button class="btn small" id="redo" title="重做 Ctrl+Shift+Z">↷</button>
+      <button class="btn small" id="del" title="删除所选（Delete）">删除</button>
+      <label class="btn small tog"><input type="checkbox" id="boxmode" />框选</label>
       <span class="sep"></span>
-      <button class="btn ghost small" id="undo" title="撤销 Ctrl+Z">↶ 撤销</button>
-      <button class="btn ghost small" id="redo" title="重做 Ctrl+Shift+Z">↷ 重做</button>
-      <button class="btn ghost small" id="del" title="删除所选（Delete）">删除</button>
-      <label class="chk"><input type="checkbox" id="boxmode" />框选</label>
-      <label class="field">新点类型<select id="addtype"><option value="tap">单击</option><option value="drum">鼓点</option><option value="vocal">人声</option></select></label>
-      <span class="sep"></span>
-      <button class="btn ghost small" id="seta" title="把播放头设为 A（[）">A</button>
-      <button class="btn ghost small" id="setb" title="把播放头设为 B（]）">B</button>
-      <button class="btn ghost small" id="selab" title="用选区设为 A–B">选区→A–B</button>
-      <button class="btn ghost small" id="clrab">清除 A–B</button>
+      <button class="btn small" id="seta" title="把播放头设为 A（[）">A</button>
+      <button class="btn small" id="setb" title="把播放头设为 B（]）">B</button>
+      <button class="btn small" id="selab" title="用选区设为 A–B">选区→AB</button>
+      <button class="btn small" id="clrab" title="清除 A–B">清AB</button>
       <span class="stat" id="selinfo"></span>
     </div>
   </section>
@@ -57,38 +50,53 @@
   <section class="card rec">
     <div class="recbtns">
       <button class="btn primary" id="rec">● 录制</button>
-      <button class="btn" id="recab" title="循环 A–B，每一遍打完就替换这一段">↻ 重录 A–B</button>
-      <button class="btn ghost" id="stop" title="停止（Esc）">■ 停止</button>
-      <label class="chk"><input type="checkbox" id="dual" />双类型（F/左 = 鼓点，J/右 = 人声）</label>
+      <button class="btn" id="recab" title="循环 A–B，每一遍打完就替换这一段">↻ A–B</button>
+      <button class="btn" id="stop" title="停止（Esc）">■</button>
+      <div class="status" id="status">准备好了</div>
     </div>
-    <div class="status" id="status">准备好了</div>
     <div class="pad" id="pad"><div class="half l" data-type="drum"><b>鼓点</b><small>F · 左半</small></div><div class="half r" data-type="vocal"><b>人声</b><small>J · 右半</small></div><div class="single"><b>轻点这里</b><small>或按 空格 / 任意键</small></div></div>
   </section>
-
-  <section class="card io">
-    <button class="btn" id="calib">校准延迟 <span id="calibms" class="chip">0 ms</span></button>
-    <button class="btn" id="export">导出 JSON</button>
-    <button class="btn" id="copy">复制 JSON</button>
-    <label class="btn">导入 JSON<input id="importfile" type="file" accept="application/json,.json" hidden /></label>
-    <button class="btn ghost" id="clear">清空本曲</button>
-    <span class="stat" id="saveinfo"></span>
-  </section>
-
-  <details class="card help" id="help" open>
-    <summary>怎么用</summary>
-    <ol>
-      <li><b>选歌</b>：上方选择 16 首里的一首（用的是游戏里的完整音频），或用「本地音频…」打开自己的文件。显示已知的 BPM 和第一拍位置，可以手动改，会画出节拍网格（粗线 = 小节，中线 = 拍，细线 = 八分）。</li>
-      <li><b>先校准</b>：点「校准延迟」，跟着节拍器打 16 下。工具取中位数，得到你的输入延迟，之后每个点都会自动减去它（导出时原始时间也保留）。换设备或换耳机后请重新校准。</li>
-      <li><b>录制</b>：把播放头放到想开始的地方（点时间轴顶部的刻度条），点「● 录制」，边听边打：空格 / 任意键 / 鼠标 / 手指点大按钮都可以。按 Esc 或「■ 停止」结束。时间来自音频输出时钟，不受画面卡顿影响。</li>
-      <li><b>双类型</b>（可选）：勾选后 F 键或按钮左半 = 鼓点，J 键或右半 = 人声。</li>
-      <li><b>慢速</b>：0.75× / 0.5× 播放更容易跟准，时间会自动换算回原曲时间。勾选「保持音高」时音调不变（这时计时精度略低，建议最后用 1.0× 复查）。</li>
-      <li><b>编辑</b>：时间轴上点空白处 = 加点，点标记 = 选中（Shift 多选），拖动标记 = 移动，Delete = 删除；勾「框选」或按住 Shift 拖动 = 范围选择；拖空白处 = 平移，滚轮 = 滚动，Ctrl+滚轮 / ＋－ = 缩放；方向键微调所选（±5 ms，按 Alt ±1 ms）。Ctrl+Z / Ctrl+Shift+Z 撤销重做。</li>
-      <li><b>重录一段</b>：设 A、B（或框选后点「选区→A–B」），点「↻ 重录 A–B」：这一段会循环播放，每打完一遍就用这一遍替换 A–B 内原来的点；满意了就停止。</li>
-      <li><b>复查</b>：勾「回放点击音」播放，会在每个点上响一声（鼓点 / 人声音色不同）；「吸附预览」显示每个点会吸到 1/8 或 1/16 网格的哪里，红色 = 离网格超过 60 ms，值得再看一眼。</li>
-      <li><b>导出</b>：每首歌自动保存在本机浏览器。「导出 JSON」下载文件，「复制 JSON」复制到剪贴板，发给制谱的人即可；也可以「导入 JSON」继续编辑。</li>
-    </ol>
-  </details>
 </div>
+
+<dialog id="sheet" class="sheet card">
+  <div class="sheethead"><b>设置 · 导出</b><button class="btn small" data-close>完成</button></div>
+  <div class="sheetbody scroll">
+    <h4>播放</h4>
+    <div class="row"><label class="chk"><input type="checkbox" id="keeppitch" checked />慢速时保持音高</label><label class="chk"><input type="checkbox" id="follow" checked />播放头跟随</label><label class="chk"><input type="checkbox" id="clicks" />回放点击音</label></div>
+    <div class="row"><label class="field">吸附预览<select id="snap"><option value="0">关</option><option value="2">1/8</option><option value="4">1/16</option></select></label></div>
+    <h4>录制</h4>
+    <div class="row"><label class="chk"><input type="checkbox" id="dual" />双类型（F/左 = 鼓点，J/右 = 人声）</label></div>
+    <div class="row"><label class="field">时间轴新加点类型<select id="addtype"><option value="tap">单击</option><option value="drum">鼓点</option><option value="vocal">人声</option></select></label></div>
+    <h4>节拍网格</h4>
+    <div class="row"><label class="field">BPM<input id="bpm" type="number" step="0.001" min="30" max="300" title="BPM" /></label><label class="field">第一拍 s<input id="beat0" type="number" step="0.001" title="第一拍（秒）" /></label></div>
+    <h4>文件</h4>
+    <div class="row">
+      <button class="btn" id="export">导出 JSON</button>
+      <button class="btn" id="copy">复制 JSON</button>
+      <label class="btn">导入 JSON<input id="importfile" type="file" accept="application/json,.json" hidden /></label>
+      <label class="btn" id="localbtn">本地音频…<input id="localfile" type="file" accept="audio/*" hidden /></label>
+      <button class="btn ghost" id="clear">清空本曲</button>
+    </div>
+    <div class="stat" id="saveinfo"></div>
+  </div>
+</dialog>
+
+<dialog id="helpsheet" class="sheet card">
+  <div class="sheethead"><b>怎么用</b><button class="btn small" data-close>关闭</button></div>
+  <div class="sheetbody scroll help">
+    <ol>
+      <li><b>选歌</b>：上方选择 16 首里的一首（用的是游戏里的完整音频），或在 ⚙ 里用「本地音频…」打开自己的文件。播放时间下面显示已知的 BPM 和第一拍位置，可以在 ⚙ 里手动改，会画出节拍网格（粗线 = 小节，中线 = 拍，细线 = 八分）。</li>
+      <li><b>先校准</b>：点顶部的「延迟」，跟着节拍器打 16 下。工具取中位数，得到你的输入延迟，之后每个点都会自动减去它（导出时原始时间也保留）。换设备或换耳机后请重新校准。</li>
+      <li><b>录制</b>：把播放头放到想开始的地方（点时间轴顶部的刻度条），点「● 录制」，边听边打：空格 / 任意键 / 鼠标 / 手指点大按钮都可以。按 Esc 或「■」结束。时间来自音频输出时钟，不受画面卡顿影响。</li>
+      <li><b>双类型</b>（可选）：在 ⚙ 里勾选后 F 键或按钮左半 = 鼓点，J 键或右半 = 人声。</li>
+      <li><b>慢速</b>：0.75× / 0.5× 播放更容易跟准，时间会自动换算回原曲时间。⚙ 里勾选「保持音高」时音调不变（这时计时精度略低，建议最后用 1.0× 复查）。</li>
+      <li><b>编辑</b>：时间轴上点空白处 = 加点，点标记 = 选中（Shift 多选），拖动标记 = 移动，Delete = 删除；勾「框选」或按住 Shift 拖动 = 范围选择；拖空白处 = 平移，滚轮 = 滚动，Ctrl+滚轮 / ＋－ = 缩放；方向键微调所选（±5 ms，按 Alt ±1 ms）。Ctrl+Z / Ctrl+Shift+Z 撤销重做。</li>
+      <li><b>重录一段</b>：设 A、B（或框选后点「选区→AB」），点「↻ A–B」：这一段会循环播放，每打完一遍就用这一遍替换 A–B 内原来的点；满意了就停止。</li>
+      <li><b>复查</b>：在 ⚙ 里勾「回放点击音」再播放，会在每个点上响一声（鼓点 / 人声音色不同）；「吸附预览」（⚙）显示每个点会吸到 1/8 或 1/16 网格的哪里，红色 = 离网格超过 60 ms，值得再看一眼。</li>
+      <li><b>导出</b>：每首歌自动保存在本机浏览器。在 ⚙ 里「导出 JSON」下载文件，「复制 JSON」复制到剪贴板，发给制谱的人即可；也可以「导入 JSON」继续编辑。</li>
+    </ol>
+  </div>
+</dialog>
 
 <dialog id="calibdlg" class="card">
   <h3>延迟校准</h3>
