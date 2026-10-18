@@ -4,7 +4,8 @@ from paths import WORK, OUT
 import matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt
 from matplotlib.patches import Polygon
 def load_taps(slug): return json.load(open(f'{WORK}/{slug}.taps.json'))
-def gap_near(taps,t,min_gap=0.42,pad=0.08):
+def gap_near(taps,t,min_gap=0.45,pad=0.05):
+    min_gap=max(min_gap,0.45)
     """time inside the gap (>=min_gap) closest to t, pad after the earlier tap"""
     best=None
     for a,b in zip(taps,taps[1:]):
@@ -28,7 +29,7 @@ class Level:
     def __init__(s,slug,title,speeds,start='N'):
         s.slug=slug; s.title=title; s.speeds=speeds; s.start=start
         s.raw=load_taps(slug); s.taps=[x['t'] for x in s.raw]; s.dur=duration(slug)
-        s.objects=[]; s.events=[]; s.elev=[]; s.camera=[]; s.secs=[]; s.art=[]
+        s.objects=[]; s.events=[]; s.elev=[]; s.camera=[]; s.secs=[]; s.art={}
         s.layout_diamonds=[]; s.layout_crowns=[]
     def plan(s,sections,elev,W=2.6,forced=None):
         from planner import plan,plan_dfs
@@ -137,3 +138,36 @@ def sw(t,a,b,k,j,n=8):
 def secs_from(slug,B):
     from configs import CONFIGS
     return [dict(t=0 if i==0 else B(s['bars'][0]),label=s['label'],kind=s['kind']) for i,s in enumerate(CONFIGS[slug]['sections'])]
+
+# ---------- decoration helpers ----------
+def centre(L,t0,t1):
+    pts=[n for n in L.nodes if t0<=n['t']<=t1]
+    return sum(n['x'] for n in pts)/len(pts), sum(n['z'] for n in pts)/len(pts), sum(n['y'] for n in pts)/len(pts)
+def long_pieces(L,t0,t1,min_len=0.6):
+    """straight pieces (start time, duration) inside [t0,t1] at least min_len s long"""
+    out=[]
+    for a,b in zip(L.nodes,L.nodes[1:]):
+        if t0<=a['t'] and b['t']<=t1 and b['t']-a['t']>=min_len: out.append((a['t'],b['t']-a['t']))
+    return out
+def fake_fork(L,id,t,side,length=7,color='#d9cbb8',name='visual fake-out fork'):
+    """a decorative stub road that branches off at time t on one side, sits 1.2 lower, is tinted and ends at a broken edge
+       (scenery only: never on the true route, no reaction to music)"""
+    w=L.width_at(t); sgn=1 if side>0 else -1
+    return L.obj(id,t,sgn*(w/2+length/2+0.6),'group',radius=length/2,y=-1.2,fake=True,name=name,
+        parts=[dict(kind='box',pos=[0,0,0],size=[length,0.6,w],color=color),
+               dict(kind='box',pos=[sgn*(length/2+0.4),-0.2,0.3],size=[0.8,0.5,w*0.7],rot=[0,0,8*sgn],color=color),
+               dict(kind='rock',pos=[sgn*(length/2+1.2),-0.4,-0.4],size=[0.9,0.7,0.9],color='#9a8f84')])
+def gate_over(L,id,t,color='#ffffff',color2=None,h=5.0,name='gateway the road runs through'):
+    w=L.width_at(t)
+    o=dict(id=id,t=round(t,3),side=0,along=0,y=0,kind='group',onroad=True,name=name,
+           parts=[dict(kind='box',pos=[-(w/2+0.7),h/2,0],size=[0.8,h,1.2],color=color),dict(kind='box',pos=[w/2+0.7,h/2,0],size=[0.8,h,1.2],color=color),
+                  dict(kind='box',pos=[0,h+0.4,0],size=[w+2.6,0.8,1.4],color=color2 or color)])
+    o['_xy']=tuple(round(v,2) for v in L.P(t)); L.objects.append(o); return o
+def row(L,id,t0,t1,side,spacing,item,bothSides=True,**kw):
+    o=dict(id=id,kind='row',t0=round(t0,3),t1=round(t1,3),side=side,spacing=spacing,bothSides=bothSides,item=item); o.update(kw); L.objects.append(o); return o
+def image(L,id,t,side,src,size,mode='upright',y=0,**kw):
+    return L.obj(id,t,side,'image',radius=max(size[0],size[2])/2,y=y,src=src,size=size,mode=mode,**kw)
+def place_collectibles(L,diamond_targets,crown_targets):
+    T=L.taps
+    L.layout_diamonds=[dict(t=slot_near(T,x,0.42),side=0) for x in diamond_targets]
+    L.layout_crowns=[dict(t=slot_near(T,x,0.6)) for x in crown_targets]
