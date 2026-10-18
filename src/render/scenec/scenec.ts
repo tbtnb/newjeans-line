@@ -102,6 +102,7 @@ export class SceneC {
   }
   private refill(a: number, b: number) {
     for (const ti of this.types.values()) ti.items = [];
+    if (a < 0 || b < 0) return;   // window not placed yet (or invalidated by a ground refresh): the next update refills
     for (let i = a; i <= b; i++) for (const it of this.plc.chunks[i].items) if (it.layer !== 'ground' && this.keep(it)) this.typeOf(it.a).items.push(it);
     for (const ti of this.types.values()) {
       if (ti.items.length > ti.cap) { ti.cap = Math.max(ti.items.length, ti.cap * 2); ti.mats = new Float32Array(16 * ti.cap); ti.cols = new Float32Array(4 * ti.cap); ti.mesh.thinInstanceSetBuffer('matrix', ti.mats, 16, false); ti.mesh.thinInstanceSetBuffer('color', ti.cols, 4, false); }
