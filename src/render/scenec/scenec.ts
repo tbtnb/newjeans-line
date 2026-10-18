@@ -133,7 +133,7 @@ export class SceneC {
     }
     if (this.tier === 'high') {   // cheap bloom: every halo quad gets a 2.3x larger, faint copy (same mesh, no post pass)
       const nq = idx.length / 6;
-      for (let q = 0; q < nq; q++) { const v0 = idx[q * 6]; let cx = 0, cy = 0, cz = 0; for (let k = 0; k < 4; k++) { cx += pos[(v0 + k) * 3] / 4; cy += pos[(v0 + k) * 3 + 1] / 4; cz += pos[(v0 + k) * 3 + 2] / 4; }
+      for (let q = 0; q < nq; q++) { const v0 = idx[q * 6]; if (col[v0 * 4] < 0.15) continue;   /* v6: soft halos (glowing flowers, impostor windows) skip the bloom copy: overdraw */ let cx = 0, cy = 0, cz = 0; for (let k = 0; k < 4; k++) { cx += pos[(v0 + k) * 3] / 4; cy += pos[(v0 + k) * 3 + 1] / 4; cz += pos[(v0 + k) * 3 + 2] / 4; }
         const j0 = pos.length / 3;
         for (let k = 0; k < 4; k++) { const b = (v0 + k) * 3; pos.push(cx + (pos[b] - cx) * 2.3, cy + (pos[b + 1] - cy) * 2.3, cz + (pos[b + 2] - cz) * 2.3); uv.push(uv[(v0 + k) * 2], uv[(v0 + k) * 2 + 1]);
           const c = (v0 + k) * 4; col.push(col[c] * 0.2, col[c + 1] * 0.2, col[c + 2] * 0.2, 1); }
