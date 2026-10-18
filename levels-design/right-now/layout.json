@@ -2680,6 +2680,604 @@
    ]
   },
   {
+   "id": "reply_stone",
+   "t": 20.0,
+   "kind": "group",
+   "landmark": true,
+   "name": "P1 flower-reply stone: a phone-shaped slab whose side screen lights a single flower (no chat text)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.4,
+      0
+     ],
+     "size": [
+      2.6,
+      4.8,
+      0.6
+     ],
+     "color": "#49365f"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      2.5,
+      -0.31
+     ],
+     "size": [
+      2.1,
+      3.8,
+      0.05
+     ],
+     "color": "#fff3db"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      2.6,
+      -0.4
+     ],
+     "size": [
+      1.0,
+      1.0,
+      0.2
+     ],
+     "color": "#ff72b6"
+    },
+    {
+     "kind": "sphere",
+     "pos": [
+      0,
+      2.6,
+      -0.45
+     ],
+     "size": [
+      0.45,
+      0.45,
+      0.1
+     ],
+     "color": "#ffffff"
+    }
+   ],
+   "rot": 9.1,
+   "worldPos": [
+    53.16,
+    0.0,
+    107.14
+   ],
+   "debugXZ": [
+    53.16,
+    107.14
+   ]
+  },
+  {
+   "id": "potion0",
+   "t": 84.0,
+   "kind": "group",
+   "react": "kick",
+   "name": "P3 potion stand (MV love potion): liquid block bobs on the kick",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.6,
+      0
+     ],
+     "size": [
+      2,
+      1.2,
+      2
+     ],
+     "color": "#8b63c7"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      2.2,
+      0
+     ],
+     "size": [
+      1.0,
+      2.0,
+      1.0
+     ],
+     "color": "#e8fbff"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      1.9,
+      0
+     ],
+     "size": [
+      0.85,
+      1.2,
+      0.85
+     ],
+     "color": "#42dcf4"
+    }
+   ],
+   "rot": -39.3,
+   "worldPos": [
+    97.23,
+    10.13,
+    198.31
+   ],
+   "debugXZ": [
+    97.23,
+    198.31
+   ]
+  },
+  {
+   "id": "potion1",
+   "t": 86.78,
+   "kind": "group",
+   "react": "kick",
+   "name": "P3 potion stand (MV love potion): liquid block bobs on the kick",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.6,
+      0
+     ],
+     "size": [
+      2,
+      1.2,
+      2
+     ],
+     "color": "#8b63c7"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      2.2,
+      0
+     ],
+     "size": [
+      1.0,
+      2.0,
+      1.0
+     ],
+     "color": "#e8fbff"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      1.9,
+      0
+     ],
+     "size": [
+      0.85,
+      1.2,
+      0.85
+     ],
+     "color": "#ff72b6"
+    }
+   ],
+   "rot": 16.4,
+   "worldPos": [
+    108.48,
+    10.7,
+    216.75
+   ],
+   "debugXZ": [
+    108.48,
+    216.75
+   ]
+  },
+  {
+   "id": "potion2",
+   "t": 89.6,
+   "kind": "group",
+   "react": "kick",
+   "name": "P3 potion stand (MV love potion): liquid block bobs on the kick",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.6,
+      0
+     ],
+     "size": [
+      2,
+      1.2,
+      2
+     ],
+     "color": "#8b63c7"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      2.2,
+      0
+     ],
+     "size": [
+      1.0,
+      2.0,
+      1.0
+     ],
+     "color": "#e8fbff"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      1.9,
+      0
+     ],
+     "size": [
+      0.85,
+      1.2,
+      0.85
+     ],
+     "color": "#20b978"
+    }
+   ],
+   "rot": 43.6,
+   "worldPos": [
+    104.77,
+    11.28,
+    241.92
+   ],
+   "debugXZ": [
+    104.77,
+    241.92
+   ]
+  },
+  {
+   "id": "potion3",
+   "t": 92.36,
+   "kind": "group",
+   "react": "kick",
+   "name": "P3 potion stand (MV love potion): liquid block bobs on the kick",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.6,
+      0
+     ],
+     "size": [
+      2,
+      1.2,
+      2
+     ],
+     "color": "#8b63c7"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      2.2,
+      0
+     ],
+     "size": [
+      1.0,
+      2.0,
+      1.0
+     ],
+     "color": "#e8fbff"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      1.9,
+      0
+     ],
+     "size": [
+      0.85,
+      1.2,
+      0.85
+     ],
+     "color": "#42dcf4"
+    }
+   ],
+   "rot": 51.4,
+   "worldPos": [
+    129.79,
+    11.84,
+    242.18
+   ],
+   "debugXZ": [
+    129.79,
+    242.18
+   ]
+  },
+  {
+   "id": "potion4",
+   "t": 95.2,
+   "kind": "group",
+   "react": "kick",
+   "name": "P3 potion stand (MV love potion): liquid block bobs on the kick",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.6,
+      0
+     ],
+     "size": [
+      2,
+      1.2,
+      2
+     ],
+     "color": "#8b63c7"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      2.2,
+      0
+     ],
+     "size": [
+      1.0,
+      2.0,
+      1.0
+     ],
+     "color": "#e8fbff"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      1.9,
+      0
+     ],
+     "size": [
+      0.85,
+      1.2,
+      0.85
+     ],
+     "color": "#ff72b6"
+    }
+   ],
+   "rot": 34.4,
+   "worldPos": [
+    130.53,
+    12.42,
+    267.67
+   ],
+   "debugXZ": [
+    130.53,
+    267.67
+   ]
+  },
+  {
+   "id": "potion5",
+   "t": 97.96,
+   "kind": "group",
+   "react": "kick",
+   "name": "P3 potion stand (MV love potion): liquid block bobs on the kick",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.6,
+      0
+     ],
+     "size": [
+      2,
+      1.2,
+      2
+     ],
+     "color": "#8b63c7"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      2.2,
+      0
+     ],
+     "size": [
+      1.0,
+      2.0,
+      1.0
+     ],
+     "color": "#e8fbff"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      1.9,
+      0
+     ],
+     "size": [
+      0.85,
+      1.2,
+      0.85
+     ],
+     "color": "#20b978"
+    }
+   ],
+   "rot": 47.7,
+   "worldPos": [
+    154.54,
+    12.99,
+    271.32
+   ],
+   "debugXZ": [
+    154.54,
+    271.32
+   ]
+  },
+  {
+   "id": "bunny_ears_egg",
+   "t": 92.36,
+   "kind": "group",
+   "egg": true,
+   "name": "EE: two little bunny ears peeking out under a potion stand",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      -0.25,
+      0.4,
+      0
+     ],
+     "size": [
+      0.2,
+      0.8,
+      0.2
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.25,
+      0.4,
+      0
+     ],
+     "size": [
+      0.2,
+      0.8,
+      0.2
+     ],
+     "color": "#ffffff"
+    }
+   ],
+   "rot": 51.4,
+   "worldPos": [
+    119.97,
+    11.84,
+    256.09
+   ],
+   "debugXZ": [
+    119.97,
+    256.09
+   ]
+  },
+  {
+   "id": "crystal_petal0",
+   "t": 130.0,
+   "kind": "pyramid",
+   "size": [
+    1.4,
+    4.5,
+    1.4
+   ],
+   "color": "#ff5630",
+   "name": "P4 five crystal petals stand up one per bar on the final-chorus accents",
+   "rot": 74.5,
+   "worldPos": [
+    216.73,
+    -2.0,
+    404.45
+   ],
+   "debugXZ": [
+    216.73,
+    404.45
+   ]
+  },
+  {
+   "id": "crystal_petal1",
+   "t": 130.0,
+   "kind": "pyramid",
+   "size": [
+    1.4,
+    4.5,
+    1.4
+   ],
+   "color": "#fff000",
+   "name": "P4 five crystal petals stand up one per bar on the final-chorus accents",
+   "rot": 74.5,
+   "worldPos": [
+    221.68,
+    -2.0,
+    395.98
+   ],
+   "debugXZ": [
+    221.68,
+    395.98
+   ]
+  },
+  {
+   "id": "crystal_petal2",
+   "t": 130.0,
+   "kind": "pyramid",
+   "size": [
+    1.4,
+    4.5,
+    1.4
+   ],
+   "color": "#00ae70",
+   "name": "P4 five crystal petals stand up one per bar on the final-chorus accents",
+   "rot": 74.5,
+   "worldPos": [
+    226.35,
+    -2.0,
+    388.49
+   ],
+   "debugXZ": [
+    226.35,
+    388.49
+   ]
+  },
+  {
+   "id": "crystal_petal3",
+   "t": 130.0,
+   "kind": "pyramid",
+   "size": [
+    1.4,
+    4.5,
+    1.4
+   ],
+   "color": "#05afe2",
+   "name": "P4 five crystal petals stand up one per bar on the final-chorus accents",
+   "rot": 74.5,
+   "worldPos": [
+    230.78,
+    -2.0,
+    381.88
+   ],
+   "debugXZ": [
+    230.78,
+    381.88
+   ]
+  },
+  {
+   "id": "crystal_petal4",
+   "t": 130.0,
+   "kind": "pyramid",
+   "size": [
+    1.4,
+    4.5,
+    1.4
+   ],
+   "color": "#ba489e",
+   "name": "P4 five crystal petals stand up one per bar on the final-chorus accents",
+   "rot": 74.5,
+   "worldPos": [
+    233.19,
+    -2.0,
+    382.55
+   ],
+   "debugXZ": [
+    233.19,
+    382.55
+   ]
+  },
+  {
    "id": "fork0",
    "t": 14.637,
    "kind": "box",
@@ -2889,6 +3487,46 @@
    "t": 150.0,
    "type": "light",
    "target": "lamp"
+  },
+  {
+   "t": 123.126,
+   "type": "raise",
+   "target": "crystal_petal0",
+   "dy": 4,
+   "dur": 0.4,
+   "note": "one petal per bar from the final-chorus downbeat (music clock)"
+  },
+  {
+   "t": 124.52136,
+   "type": "raise",
+   "target": "crystal_petal1",
+   "dy": 4,
+   "dur": 0.4,
+   "note": "one petal per bar from the final-chorus downbeat (music clock)"
+  },
+  {
+   "t": 125.91672,
+   "type": "raise",
+   "target": "crystal_petal2",
+   "dy": 4,
+   "dur": 0.4,
+   "note": "one petal per bar from the final-chorus downbeat (music clock)"
+  },
+  {
+   "t": 127.31208000000001,
+   "type": "raise",
+   "target": "crystal_petal3",
+   "dy": 4,
+   "dur": 0.4,
+   "note": "one petal per bar from the final-chorus downbeat (music clock)"
+  },
+  {
+   "t": 128.70744,
+   "type": "raise",
+   "target": "crystal_petal4",
+   "dy": 4,
+   "dur": 0.4,
+   "note": "one petal per bar from the final-chorus downbeat (music clock)"
   }
  ],
  "diamonds": [
@@ -2946,8 +3584,8 @@
   "note": "small wooden doorway with the lamp beside it"
  },
  "collectibleColors": {
-  "diamond": "#a3c4f3",
-  "crown": "#ffd166"
+  "diamond": "#42dcf4",
+  "crown": "#ffd35a"
  },
  "art": {
   "backdrop": "art/sky-dawn.jpg",

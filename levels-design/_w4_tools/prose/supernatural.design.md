@@ -2,7 +2,17 @@
 
 **Concept: "Two signals finding each other over a night city."** The line is a radio signal hopping across rooftops at night. Antennas, water tanks and receivers line the roofs. At the centre of the city a flower-shaped dish antenna (the album flower motif) is closed until Chorus 1, then blooms. The level climbs a helix around it, falls into a floating star layer, climbs back out over a gantry overpass, and lands on the final-chorus deck. Palette: midnight indigo `#1a1d4a`, broadcast pink `#c2449a`, cobalt `#0072bc`, sodium amber `#ffb347`. Diamonds are ice-cyan `#7fe3ff`, crowns gold `#ffd54a`.
 
-Codex reference: none had arrived in `codex-ref/` when this was built, so the design is original. No real people are depicted; every figure is a prop or a motif.
+**Codex alignment** (`codex-ref/design.md` + concept/blueprint, which arrived late in the build), used as a loose reference:
+- Kept from the blueprint: the night city opening up from closed streets to wide rooftops, and its landmarks:
+  - L1 cloud weather tower (intro, far side);
+  - L2 text-free CRT TV whose colour block switches on the snare backbeat (verse 1);
+  - L3 rooftop broadcast stage with three square lamps and **five white square mic plinths standing in for the members, with no figures**, beside the Chorus-1 helix; the lamps switch on at the chorus downbeat;
+  - L4 bunny-face rainbow flower (our billboard + flower antenna);
+  - L6 five coloured flower terraces rising one per bar in the final chorus;
+  - L7 white bunny-ear finish stone;
+  - E1 red-beret boat sliding out of a cloud gap in the bridge.
+- Kept from the palette: gold collectibles `#FFD34E`.
+- Changed: the route is our own and much denser than the blueprint's U and C corridors (helices, overpasses, serpentine corridors). No real people are depicted.
 
 ## Route choreography (each section has its own texture; see route.png and route-sections.png)
 

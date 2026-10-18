@@ -157,3 +157,28 @@ OBJECTS+=[
  {'id':'signal_poster','t':47.0,'off':(-13,6),'kind':'image','src':'art/signal-poster.jpg','size':[12,0,6.75],'mode':'billboard','y':3,'clear':7,'name':'retro broadcast poster on a rooftop hoarding (pre-chorus)'},
  {'id':'signal_poster2','t':156.0,'off':(13,6),'kind':'image','src':'art/signal-poster.jpg','size':[12,0,6.75],'mode':'billboard','y':3,'clear':7,'name':'same poster seen again in the final chorus'},
 ]
+# --- codex-ref alignment (codex-ref/design.md + concept/blueprint, arrived late): L1 cloud weather tower, L2 text-free CRT TV, L3 rooftop broadcast stage
+# (three square lamps, five square mic plinths instead of people), L6 five flower terraces, L7 white bunny-ear finish stone, E1 red-beret boat
+OBJECTS+=[
+ {'id':'cloud_tower','t':6.0,'off':(16,20),'kind':'group','landmark':True,'clear':8,'name':'L1 cloud weather tower: faceted cloud blocks stacked on a mast (rain/wind motif, never over the road)',
+  'parts':[{'kind':'box','pos':[0,6,0],'size':[0.8,12,0.8],'color':'#7772b6'}]+[{'kind':'box','pos':[(k%2)*2-1,12+k*1.6,0],'size':[4-k*0.5,1.4,3],'color':'#dfe2f4'} for k in range(4)],
+  'appear':{'t':0.4,'mode':'rise','dur':3.0}},
+ {'id':'crt_tv','t':30.0,'off':(-8,4),'kind':'group','landmark':True,'clear':4,'name':'L2 retro CRT TV with colour-block screen only (no text)',
+  'parts':[{'kind':'box','pos':[0,1.6,0],'size':[3.4,2.8,2.6],'color':'#34345c'},{'kind':'box','pos':[0,1.7,-1.31],'size':[2.6,2.0,0.05],'color':'#08aee0','id':'crt_screen'},
+           {'kind':'cylinder','pos':[-0.6,3.6,0],'size':[0.06,1.4,0.06],'rot':[0,0,25],'color':'#cccccc'},{'kind':'cylinder','pos':[0.6,3.6,0],'size':[0.06,1.4,0.06],'rot':[0,0,-25],'color':'#cccccc'}]},
+ {'id':'broadcast_stage','t':70.0,'off':(-13,0),'y':-3.6,'kind':'group','landmark':True,'clear':9,'name':'L3 rooftop broadcast stage: metal deck, three square front lamps, five white square mic plinths (stand-ins for the five members, no figures)',
+  'parts':[{'kind':'box','pos':[0,0.3,0],'size':[10,0.6,6],'color':'#9aa0b8'}]+[{'kind':'box','pos':[-3+3*k,1.2,-3.2],'size':[1.0,1.0,0.6],'color':'#fff8f1'} for k in range(3)]+
+          [{'kind':'box','pos':[-3.6+1.8*k,1.4,0.5],'size':[0.7,1.6,0.7],'color':'#ffffff'} for k in range(5)]},
+ {'id':'boat_egg','t':104.0,'off':(-22,10),'y':2,'kind':'group','egg':True,'clear':10,'name':'E1 tiny boat with a red beret slides out of a cloud gap (far scenery, no collision)',
+  'parts':[{'kind':'box','pos':[0,0,0],'size':[3,0.6,1.2],'color':'#fff8f1'},{'kind':'cylinder','pos':[0,0.7,0],'size':[0.5,0.15,0.5],'color':'#e8272b'}],
+  'appear':{'t':101.0,'mode':'fade','dur':1.0},'exit':{'t':108.0,'mode':'fade','dur':1.0}},
+]+[
+ {'id':f'flower_terrace{k}','t':152.0+3.2*k,'off':(9 if k%2 else -9,0),'kind':'cylinder','size':[4.5,0.8,4.5],'y':-1.2,'color':['#fa428e','#ff8935','#f6e829','#93cd42','#08aee0'][k],'clear':4,
+  'appear':{'t':150.06+2.2018*k,'mode':'rise','dur':0.6},'name':'L6 five coloured flower terraces rise one per bar in the final chorus'} for k in range(5)
+]+[
+ {'id':'bunny_stone','t':186.0,'off':(5,6),'kind':'group','landmark':True,'clear':4,'name':'L7 white bunny-ear finish stone',
+  'parts':[{'kind':'box','pos':[0,1.5,0],'size':[2.4,3,1.2],'color':'#fff8f1'},{'kind':'box','pos':[-0.6,4.0,0],'size':[0.5,2.2,0.5],'color':'#fff8f1'},{'kind':'box','pos':[0.6,4.0,0],'size':[0.5,2.2,0.5],'color':'#fff8f1'}]},
+]
+EVENTS+=[{'t':26.754,'type':'color','target':'crt_tv','every':1.10092,'until':44.37,'note':'CRT colour block changes on the snare backbeat (music clock)'},
+         {'t':61.983,'type':'light','target':'broadcast_stage','note':'stage lamps switch on at the chorus downbeat'}]
+COLLECT={'diamond':'#ffd34e','crown':'#ffd34e'}

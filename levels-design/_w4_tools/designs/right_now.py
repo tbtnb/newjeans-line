@@ -108,3 +108,22 @@ OBJECTS+=[
 ]
 ART={'backdrop':'art/sky-dawn.jpg','ground':{'src':'art/flower-ground.jpg','scale':30}}
 COLLECT={'diamond':'#a3c4f3','crown':'#ffd166'}
+# --- codex-ref alignment (codex-ref/design.md, arrived late): P1 flower-reply stone (phone shape, flower on screen, no text), P3 cyan/pink/green potion stands,
+# P4 five crystal petals that stand up one by one in the final chorus, EE bunny ears under the potion stand; palette gems #42DCF4 / crowns #FFD35A
+OBJECTS+=[
+ {'id':'reply_stone','t':20.0,'off':(-8,4),'kind':'group','landmark':True,'clear':4,'name':'P1 flower-reply stone: a phone-shaped slab whose side screen lights a single flower (no chat text)',
+  'parts':[{'kind':'box','pos':[0,2.4,0],'size':[2.6,4.8,0.6],'color':'#49365f'},{'kind':'box','pos':[0,2.5,-0.31],'size':[2.1,3.8,0.05],'color':'#fff3db'},
+           {'kind':'sphere','pos':[0,2.6,-0.4],'size':[1.0,1.0,0.2],'color':'#ff72b6'},{'kind':'sphere','pos':[0,2.6,-0.45],'size':[0.45,0.45,0.1],'color':'#ffffff'}]},
+]+[
+ {'id':f'potion{k}','t':84.0+2.8*k,'off':(7.5 if k%2 else -7.5,0),'kind':'group','clear':3,'react':'kick','name':'P3 potion stand (MV love potion): liquid block bobs on the kick',
+  'parts':[{'kind':'box','pos':[0,0.6,0],'size':[2,1.2,2],'color':'#8b63c7'},{'kind':'cylinder','pos':[0,2.2,0],'size':[1.0,2.0,1.0],'color':'#e8fbff'},{'kind':'cylinder','pos':[0,1.9,0],'size':[0.85,1.2,0.85],'color':['#42dcf4','#ff72b6','#20b978'][k%3]}]}
+ for k in range(6)
+]+[
+ {'id':'bunny_ears_egg','t':92.4,'off':(-9.5,1),'kind':'group','egg':True,'clear':3,'name':'EE: two little bunny ears peeking out under a potion stand',
+  'parts':[{'kind':'box','pos':[-0.25,0.4,0],'size':[0.2,0.8,0.2],'color':'#ffffff'},{'kind':'box','pos':[0.25,0.4,0],'size':[0.2,0.8,0.2],'color':'#ffffff'}]},
+]+[
+ {'id':f'crystal_petal{k}','t':130.0,'off':(-12,-5+2.5*k),'kind':'pyramid','size':[1.4,4.5,1.4],'y':-4,'color':['#ff5630','#fff000','#00ae70','#05afe2','#ba489e'][k],'clear':8,
+  'name':'P4 five crystal petals stand up one per bar on the final-chorus accents'} for k in range(5)
+]
+EVENTS+=[{'t':123.126+1.39536*k,'type':'raise','target':f'crystal_petal{k}','dy':4,'dur':0.4,'note':'one petal per bar from the final-chorus downbeat (music clock)'} for k in range(5)]
+COLLECT={'diamond':'#42dcf4','crown':'#ffd35a'}

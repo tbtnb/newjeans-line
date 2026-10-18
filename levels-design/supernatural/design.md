@@ -2,7 +2,17 @@
 
 **Concept: "Two signals finding each other over a night city."** The line is a radio signal hopping across rooftops at night. Antennas, water tanks and receivers line the roofs. At the centre of the city a flower-shaped dish antenna (the album flower motif) is closed until Chorus 1, then blooms. The level climbs a helix around it, falls into a floating star layer, climbs back out over a gantry overpass, and lands on the final-chorus deck. Palette: midnight indigo `#1a1d4a`, broadcast pink `#c2449a`, cobalt `#0072bc`, sodium amber `#ffb347`. Diamonds are ice-cyan `#7fe3ff`, crowns gold `#ffd54a`.
 
-Codex reference: none had arrived in `codex-ref/` when this was built, so the design is original. No real people are depicted; every figure is a prop or a motif.
+**Codex alignment** (`codex-ref/design.md` + concept/blueprint, which arrived late in the build), used as a loose reference:
+- Kept from the blueprint: the night city opening up from closed streets to wide rooftops, and its landmarks:
+  - L1 cloud weather tower (intro, far side);
+  - L2 text-free CRT TV whose colour block switches on the snare backbeat (verse 1);
+  - L3 rooftop broadcast stage with three square lamps and **five white square mic plinths standing in for the members, with no figures**, beside the Chorus-1 helix; the lamps switch on at the chorus downbeat;
+  - L4 bunny-face rainbow flower (our billboard + flower antenna);
+  - L6 five coloured flower terraces rising one per bar in the final chorus;
+  - L7 white bunny-ear finish stone;
+  - E1 red-beret boat sliding out of a cloud gap in the bridge.
+- Kept from the palette: gold collectibles `#FFD34E`.
+- Changed: the route is our own and much denser than the blueprint's U and C corridors (helices, overpasses, serpentine corridors). No real people are depicted.
 
 ## Route choreography (each section has its own texture; see route.png and route-sections.png)
 
@@ -59,8 +69,8 @@ Nothing is placed at or flashes on an upcoming tap. Events follow the music cloc
 - Elevation: ramp +8 @ 62.279999999999994–79.6 (Chorus 1: square helix of staircases around the flower antenna, +4 per lap); fall -8 @ 97.813 (drums drop out -> long fall off the antenna tower into the floating star layer); ramp +4 @ 106.02–114.83 (climb out of the star layer); ramp +4 @ 117.03–128.04 (Chorus 2 gantry climbs over earlier roads); ramp +5 @ 132.44–141.25 (interlude helix around the gantry pylon); fall -8 @ 150.657 (big drop onto the final-chorus deck)
 - Camera: 0s close; 9.17s iso; 26.78s iso; 44.39s low; 60.0s wide; 62.01s high; 79.62s iso; 97.24s top; 112.65s iso; 123.66s iso; 132.47s high; 141.28s iso; 150.08s iso; 150.6s iso; 167.7s wide; 176.5s 
 - Diamonds (t): 7.488, 20.424, 38.038, 57.305, 85.928, 103.681, 122.809, 142.625, 160.791, 178.68; crowns (checkpoints): 43.13, 132.58
-- Landmarks: `flower_billboard` (Murakami flower billboard (album cover) above the radio booth); `flower_antenna` (Flower dish antenna at the centre of the loop: petals closed until Chorus 1, bloom on the downbeat; reachable only by eye (the loop orbits it)); `bunny_moon` (EGG/landmark: the moon is the bunny face from the cover (only framed when the outro camera swings at 176.5 s)); `gantry_sign` (gantry pylons holding the overpass (two-signals crossing))
-- Easter eggs: `radio_egg` (EGG: old receiver; its dial lights the 5 cover colours in turn and the needle is a tiny bunny); `bunny_moon` (EGG/landmark: the moon is the bunny face from the cover (only framed when the outro camera swings at 176.5 s))
+- Landmarks: `flower_billboard` (Murakami flower billboard (album cover) above the radio booth); `flower_antenna` (Flower dish antenna at the centre of the loop: petals closed until Chorus 1, bloom on the downbeat; reachable only by eye (the loop orbits it)); `bunny_moon` (EGG/landmark: the moon is the bunny face from the cover (only framed when the outro camera swings at 176.5 s)); `gantry_sign` (gantry pylons holding the overpass (two-signals crossing)); `cloud_tower` (L1 cloud weather tower: faceted cloud blocks stacked on a mast (rain/wind motif, never over the road)); `crt_tv` (L2 retro CRT TV with colour-block screen only (no text)); `broadcast_stage` (L3 rooftop broadcast stage: metal deck, three square front lamps, five white square mic plinths (stand-ins for the five members, no figures)); `bunny_stone` (L7 white bunny-ear finish stone)
+- Easter eggs: `radio_egg` (EGG: old receiver; its dial lights the 5 cover colours in turn and the needle is a tiny bunny); `bunny_moon` (EGG/landmark: the moon is the bunny face from the cover (only framed when the outro camera swings at 176.5 s)); `boat_egg` (E1 tiny boat with a red beret slides out of a cloud gap (far scenery, no collision))
 - Fake-out forks (visual only, road-coloured dead-end stubs that rise 2 s early and sink after the corner; they are revealed together with the road (same lead), so they add no timing information and only fake a straight continuation): fork0, fork1, fork2, fork3
-- Objects: 61 total; events: 24
+- Objects: 71 total; events: 26
 - Art wired into layout: backdrop `art/sky-night.jpg`, ground `art/roof-ground.jpg`, images/textures `art/flower-billboard.jpg`, `art/signal-poster.jpg`

@@ -4497,6 +4497,584 @@
    ]
   },
   {
+   "id": "cloud_tower",
+   "t": 6.0,
+   "kind": "group",
+   "landmark": true,
+   "name": "L1 cloud weather tower: faceted cloud blocks stacked on a mast (rain/wind motif, never over the road)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      6,
+      0
+     ],
+     "size": [
+      0.8,
+      12,
+      0.8
+     ],
+     "color": "#7772b6"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1,
+      12.0,
+      0
+     ],
+     "size": [
+      4.0,
+      1.4,
+      3
+     ],
+     "color": "#dfe2f4"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1,
+      13.6,
+      0
+     ],
+     "size": [
+      3.5,
+      1.4,
+      3
+     ],
+     "color": "#dfe2f4"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1,
+      15.2,
+      0
+     ],
+     "size": [
+      3.0,
+      1.4,
+      3
+     ],
+     "color": "#dfe2f4"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1,
+      16.8,
+      0
+     ],
+     "size": [
+      2.5,
+      1.4,
+      3
+     ],
+     "color": "#dfe2f4"
+    }
+   ],
+   "appear": {
+    "t": 0.4,
+    "mode": "rise",
+    "dur": 3.0
+   },
+   "rot": 26.2,
+   "worldPos": [
+    43.47,
+    0.0,
+    49.85
+   ],
+   "debugXZ": [
+    43.47,
+    49.85
+   ]
+  },
+  {
+   "id": "crt_tv",
+   "t": 30.0,
+   "kind": "group",
+   "landmark": true,
+   "name": "L2 retro CRT TV with colour-block screen only (no text)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.6,
+      0
+     ],
+     "size": [
+      3.4,
+      2.8,
+      2.6
+     ],
+     "color": "#34345c"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.7,
+      -1.31
+     ],
+     "size": [
+      2.6,
+      2.0,
+      0.05
+     ],
+     "color": "#08aee0",
+     "id": "crt_screen"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      -0.6,
+      3.6,
+      0
+     ],
+     "size": [
+      0.06,
+      1.4,
+      0.06
+     ],
+     "rot": [
+      0,
+      0,
+      25
+     ],
+     "color": "#cccccc"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0.6,
+      3.6,
+      0
+     ],
+     "size": [
+      0.06,
+      1.4,
+      0.06
+     ],
+     "rot": [
+      0,
+      0,
+      -25
+     ],
+     "color": "#cccccc"
+    }
+   ],
+   "rot": -140.0,
+   "worldPos": [
+    41.23,
+    0.0,
+    2.22
+   ],
+   "debugXZ": [
+    41.23,
+    2.22
+   ]
+  },
+  {
+   "id": "broadcast_stage",
+   "t": 70.0,
+   "kind": "group",
+   "landmark": true,
+   "name": "L3 rooftop broadcast stage: metal deck, three square front lamps, five white square mic plinths (stand-ins for the five members, no figures)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0.3,
+      0
+     ],
+     "size": [
+      10,
+      0.6,
+      6
+     ],
+     "color": "#9aa0b8"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -3,
+      1.2,
+      -3.2
+     ],
+     "size": [
+      1.0,
+      1.0,
+      0.6
+     ],
+     "color": "#fff8f1"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.2,
+      -3.2
+     ],
+     "size": [
+      1.0,
+      1.0,
+      0.6
+     ],
+     "color": "#fff8f1"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      3,
+      1.2,
+      -3.2
+     ],
+     "size": [
+      1.0,
+      1.0,
+      0.6
+     ],
+     "color": "#fff8f1"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -3.6,
+      1.4,
+      0.5
+     ],
+     "size": [
+      0.7,
+      1.6,
+      0.7
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -1.8,
+      1.4,
+      0.5
+     ],
+     "size": [
+      0.7,
+      1.6,
+      0.7
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.0,
+      1.4,
+      0.5
+     ],
+     "size": [
+      0.7,
+      1.6,
+      0.7
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      1.8000000000000003,
+      1.4,
+      0.5
+     ],
+     "size": [
+      0.7,
+      1.6,
+      0.7
+     ],
+     "color": "#ffffff"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      3.6,
+      1.4,
+      0.5
+     ],
+     "size": [
+      0.7,
+      1.6,
+      0.7
+     ],
+     "color": "#ffffff"
+    }
+   ],
+   "rot": 124.9,
+   "worldPos": [
+    33.67,
+    -0.03,
+    -74.35
+   ],
+   "debugXZ": [
+    33.67,
+    -74.35
+   ]
+  },
+  {
+   "id": "boat_egg",
+   "t": 104.0,
+   "kind": "group",
+   "egg": true,
+   "name": "E1 tiny boat with a red beret slides out of a cloud gap (far scenery, no collision)",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      0,
+      0
+     ],
+     "size": [
+      3,
+      0.6,
+      1.2
+     ],
+     "color": "#fff8f1"
+    },
+    {
+     "kind": "cylinder",
+     "pos": [
+      0,
+      0.7,
+      0
+     ],
+     "size": [
+      0.5,
+      0.15,
+      0.5
+     ],
+     "color": "#e8272b"
+    }
+   ],
+   "appear": {
+    "t": 101.0,
+    "mode": "fade",
+    "dur": 1.0
+   },
+   "exit": {
+    "t": 108.0,
+    "mode": "fade",
+    "dur": 1.0
+   },
+   "rot": 42.8,
+   "worldPos": [
+    -67.67,
+    2.0,
+    39.28
+   ],
+   "debugXZ": [
+    -67.67,
+    39.28
+   ]
+  },
+  {
+   "id": "flower_terrace0",
+   "t": 152.04,
+   "kind": "cylinder",
+   "size": [
+    4.5,
+    0.8,
+    4.5
+   ],
+   "color": "#fa428e",
+   "appear": {
+    "t": 150.06,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "name": "L6 five coloured flower terraces rise one per bar in the final chorus",
+   "rot": -136.3,
+   "worldPos": [
+    -179.77,
+    3.8,
+    -107.28
+   ],
+   "debugXZ": [
+    -179.77,
+    -107.28
+   ]
+  },
+  {
+   "id": "flower_terrace1",
+   "t": 155.2,
+   "kind": "cylinder",
+   "size": [
+    4.5,
+    0.8,
+    4.5
+   ],
+   "color": "#ff8935",
+   "appear": {
+    "t": 152.2618,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "name": "L6 five coloured flower terraces rise one per bar in the final chorus",
+   "rot": -141.8,
+   "worldPos": [
+    -205.23,
+    3.8,
+    -112.06
+   ],
+   "debugXZ": [
+    -205.23,
+    -112.06
+   ]
+  },
+  {
+   "id": "flower_terrace2",
+   "t": 158.4,
+   "kind": "cylinder",
+   "size": [
+    4.5,
+    0.8,
+    4.5
+   ],
+   "color": "#f6e829",
+   "appear": {
+    "t": 154.4636,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "name": "L6 five coloured flower terraces rise one per bar in the final chorus",
+   "rot": -101.1,
+   "worldPos": [
+    -211.29,
+    3.8,
+    -140.38
+   ],
+   "debugXZ": [
+    -211.29,
+    -140.38
+   ]
+  },
+  {
+   "id": "flower_terrace3",
+   "t": 161.56,
+   "kind": "cylinder",
+   "size": [
+    4.5,
+    0.8,
+    4.5
+   ],
+   "color": "#93cd42",
+   "appear": {
+    "t": 156.6654,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "name": "L6 five coloured flower terraces rise one per bar in the final chorus",
+   "rot": -13.0,
+   "worldPos": [
+    -219.11,
+    3.8,
+    -119.34
+   ],
+   "debugXZ": [
+    -219.11,
+    -119.34
+   ]
+  },
+  {
+   "id": "flower_terrace4",
+   "t": 164.8,
+   "kind": "cylinder",
+   "size": [
+    4.5,
+    0.8,
+    4.5
+   ],
+   "color": "#08aee0",
+   "appear": {
+    "t": 158.8672,
+    "mode": "rise",
+    "dur": 0.6
+   },
+   "name": "L6 five coloured flower terraces rise one per bar in the final chorus",
+   "rot": 18.1,
+   "worldPos": [
+    -229.11,
+    3.8,
+    -102.71
+   ],
+   "debugXZ": [
+    -229.11,
+    -102.71
+   ]
+  },
+  {
+   "id": "bunny_stone",
+   "t": 186.0,
+   "kind": "group",
+   "landmark": true,
+   "name": "L7 white bunny-ear finish stone",
+   "parts": [
+    {
+     "kind": "box",
+     "pos": [
+      0,
+      1.5,
+      0
+     ],
+     "size": [
+      2.4,
+      3,
+      1.2
+     ],
+     "color": "#fff8f1"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      -0.6,
+      4.0,
+      0
+     ],
+     "size": [
+      0.5,
+      2.2,
+      0.5
+     ],
+     "color": "#fff8f1"
+    },
+    {
+     "kind": "box",
+     "pos": [
+      0.6,
+      4.0,
+      0
+     ],
+     "size": [
+      0.5,
+      2.2,
+      0.5
+     ],
+     "color": "#fff8f1"
+    }
+   ],
+   "rot": -15.8,
+   "worldPos": [
+    -292.96,
+    5.0,
+    -14.63
+   ],
+   "debugXZ": [
+    -292.96,
+    -14.63
+   ]
+  },
+  {
    "id": "fork0",
    "t": 20.699,
    "kind": "box",
@@ -4782,6 +5360,20 @@
    "target": "bunny_moon",
    "dy": 4,
    "dur": 4
+  },
+  {
+   "t": 26.754,
+   "type": "color",
+   "target": "crt_tv",
+   "every": 1.10092,
+   "until": 44.37,
+   "note": "CRT colour block changes on the snare backbeat (music clock)"
+  },
+  {
+   "t": 61.983,
+   "type": "light",
+   "target": "broadcast_stage",
+   "note": "stage lamps switch on at the chorus downbeat"
   }
  ],
  "diamonds": [
@@ -4897,8 +5489,8 @@
   ]
  },
  "collectibleColors": {
-  "diamond": "#7fe3ff",
-  "crown": "#ffd54a"
+  "diamond": "#ffd34e",
+  "crown": "#ffd34e"
  },
  "art": {
   "backdrop": "art/sky-night.jpg",
