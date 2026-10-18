@@ -5,13 +5,13 @@
  "failKind": null,
  "failTime": 0,
  "time": 176.5907,
- "cursor": 327,
- "taps": 327,
- "perfect": 327,
+ "cursor": 317,
+ "taps": 317,
+ "perfect": 317,
  "good": 0,
  "diamonds": 10,
  "ignoredDuplicates": 0,
- "fps": 13.011152416356877,
+ "fps": 11.956954962162941,
  "save": {
   "version": 2,
   "selected": "hype-boy",
@@ -22,8 +22,8 @@
     "crowns": 3,
     "attempts": 1,
     "completed": true,
-    "perfect": 327,
-    "taps": 327
+    "perfect": 317,
+    "taps": 317
    }
   },
   "settings": {
@@ -33,10 +33,10 @@
    "vibration": true
   }
  },
- "judged": 327,
- "errorMeanMs": 1.4,
- "errorSdMs": 1.3,
- "errorMaxAbsMs": 12,
- "sent": 327,
+ "judged": 317,
+ "errorMeanMs": 1.5,
+ "errorSdMs": 1.6,
+ "errorMaxAbsMs": 20,
+ "sent": 317,
  "logs": []
 }
