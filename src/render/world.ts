@@ -267,8 +267,10 @@ export class World {
     L.crowns.forEach(c => {
       const a = anchor(route, c.t, 0, 0, 1.9);
       const n = new TransformNode('crown', this.scene); n.parent = this.root; n.position.set(a.pos.x, a.pos.y, a.pos.z);
-      const band = CreateCylinder('cb', { diameter: 1.1, height: 0.38, tessellation: 20 }, this.scene); band.material = crownMat; band.parent = n;
-      for (let i = 0; i < 5; i++) { const ang = i / 5 * Math.PI * 2; const sp = CreateCylinder('cs', { diameterTop: 0, diameterBottom: 0.3, height: 0.5, tessellation: 4 }, this.scene); sp.material = crownMat; sp.parent = n; sp.position.set(Math.cos(ang) * 0.48, 0.42, Math.sin(ang) * 0.48); }
+      // v6: band + 5 spikes merged into one mesh (7 draws per crown -> 2)
+      const parts = [CreateCylinder('cb', { diameter: 1.1, height: 0.38, tessellation: 20 }, this.scene)];
+      for (let i = 0; i < 5; i++) { const ang = i / 5 * Math.PI * 2; const sp = CreateCylinder('cs', { diameterTop: 0, diameterBottom: 0.3, height: 0.5, tessellation: 4 }, this.scene); sp.position.set(Math.cos(ang) * 0.48, 0.42, Math.sin(ang) * 0.48); parts.push(sp); }
+      const band = Mesh.MergeMeshes(parts, true, true)!; band.name = 'crown'; band.material = crownMat; band.parent = n;
       const gem = CreatePolyhedron('cg', { type: 1, size: 0.12 }, this.scene); gem.material = this.mats!.get('#ff5a6e', { emissive: 0.5 }); gem.parent = n; gem.position.set(0, 0.05, -0.56);
       this.crowns.push({ node: n, t: c.t, taken: false, base: n.position.clone() });
     });
