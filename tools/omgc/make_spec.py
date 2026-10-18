@@ -313,6 +313,7 @@ for z in zones:
          ('firefly-lamp', 'mid', round(14 * zk), [1.5, 5.0], [1.1, 1.4], None, True),
          ('flower-heart', 'ground', round(70 * zk), [0.3, 9.0], [2.0, 3.0], None, True),
          ('flower-heart', 'ground', round(30 * zk), [0.3, 7.0], [2.0, 3.0], None, False)]
+    if z['id'] == 'z09': V = [(v[0], v[1], round(v[2] * (1.8 if 'house' in v[0] else 1.5)), *v[3:]) for v in V]   # z09: no hero, darkest carpet -> densest village
     for aid, layer, n, near, sc, cl, hi in V:
         if aid not in assets or n < 1: continue
         d = dict(asset=aid, layer=layer, count=n, near=near, y=[0, 0], scale=sc, colors=cols, hi=hi)
