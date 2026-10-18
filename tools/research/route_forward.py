@@ -3,15 +3,16 @@ Headings are only N (forward), E or W (lateral): from N a tap turns to E (R) or 
 So progress along N never decreases and nothing ever doubles back (no self-crossings are even possible except side-by-side strips).
 Lateral side policy (deterministic, so the same music gets the same shape): each 2-bar phrase is a staircase to one side and the
 side alternates phrase by phrase (a forward zig-zag of staircases); the side flips early if the line would leave the +-XMAX m
-corridor, and a side is refused if its next forward strip would touch an earlier strip (road overlap). Usage: route_forward.py [--xmax 12]"""
+corridor, and a side is refused if its next forward strip would touch an earlier strip (road overlap). Usage: route_forward.py [--xmax 12] [--song omg] [--dir levels-src]"""
 import json, sys
 from pathlib import Path
-ROOT = Path(__file__).resolve().parents[2]; D = ROOT / 'levels-src/omg'
+ROOT = Path(__file__).resolve().parents[2]
 opt = lambda k, d: type(d)(sys.argv[sys.argv.index(k) + 1]) if k in sys.argv else d
+SONG = opt('--song', 'omg'); D = Path(opt('--dir', str(ROOT / 'levels-src'))) / SONG
 XMAX = opt('--xmax', 12.0)
 ch = json.loads((D / 'chart.json').read_text()); lay = json.loads((D / 'layout.json').read_text())
 V = ch['speed'][0]['v']; P = ch['meta']['beat_period']; B0 = ch['meta']['beat0']; PH = 8 * P
-W = max(w['w'] for w in lay['road']['width']); dur = json.loads((ROOT / 'analysis/omg.json').read_text())['duration']
+W = max(w['w'] for w in lay['road']['width']); dur = json.loads((ROOT / f'analysis/{SONG}.json').read_text())['duration']
 T = [x['t'] for x in ch['taps']] + [dur]
 x, z, t0, head = 0.0, 0.0, 0.0, 'N'; strips = []; dirs = []
 def touches(xn, z0, z1, tnow):

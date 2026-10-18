@@ -1,0 +1,49 @@
+{
+ "label": "scripted simulation (synthetic jittered export), not human taps",
+ "truth_taps": 535,
+ "export_taps": 541,
+ "injected": {
+  "dup": 23,
+  "out": 8,
+  "miss": 17
+ },
+ "jitter_sd_ms": 18.0,
+ "true_lateness_ms": 52.0,
+ "calibration_ms_in_export": 45,
+ "output_taps": 518,
+ "exact_grid_hits": 517,
+ "recovery_of_tapped_truth": 0.9981,
+ "wrong_slot": 1,
+ "wrong_slot_examples": [
+  128.276
+ ],
+ "truth_16th_taps": 6,
+ "outliers_expected_wrong": 8,
+ "validate_exit": 0,
+ "report": {
+  "song": "omg",
+  "raw": 541,
+  "grid": {
+   "bpm": 127.003,
+   "beat0": 0.011,
+   "source": "export (chart)"
+  },
+  "removed": 0,
+  "questionable": 9,
+  "merged": 23,
+  "consistency": 6,
+  "calibration_ms": 45.0,
+  "residual_offset_ms": 8.2,
+  "offset_fitted": true,
+  "sixteenth_hint": 0,
+  "final": 518,
+  "vs_previous": {
+   "previous": 553,
+   "same": 239,
+   "moved_le_30ms": 104,
+   "added": 175,
+   "removed": 210
+  },
+  "validate_errors": 0
+ }
+}
