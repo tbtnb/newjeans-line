@@ -918,7 +918,13 @@
     1.6
    ],
    "mode": "flat",
-   "alpha": true
+   "alpha": true,
+   "worldPos": [
+    28.09,
+    0.0,
+    162.67
+   ],
+   "pinned": "integ-a: t/side anchor would sit on the repaired route; pinned with worldPos at the designed clearance"
   },
   {
    "id": "sticker-4",
@@ -932,7 +938,13 @@
     1.6
    ],
    "mode": "flat",
-   "alpha": true
+   "alpha": true,
+   "worldPos": [
+    -25.16,
+    16.44,
+    154.26
+   ],
+   "pinned": "integ-a: t/side anchor would sit on the repaired route; pinned with worldPos at the designed clearance"
   },
   {
    "id": "sticker-5",
@@ -1100,7 +1112,13 @@
     1.6
    ],
    "mode": "flat",
-   "alpha": true
+   "alpha": true,
+   "worldPos": [
+    -163.26,
+    46.2,
+    386.22
+   ],
+   "pinned": "integ-a: t/side anchor would sit on the repaired route; pinned with worldPos at the designed clearance"
   },
   {
    "id": "cd-poster-0",
@@ -1114,12 +1132,17 @@
     4
    ],
    "mode": "billboard",
-   "y": 0.5,
    "appear": {
     "t": 49.02,
     "mode": "pop",
     "dur": 0.4
-   }
+   },
+   "worldPos": [
+    -7.17,
+    20.8,
+    140.16
+   ],
+   "pinned": "integ-a: t/side anchor would sit on the repaired route; pinned with worldPos at the designed clearance"
   },
   {
    "id": "cd-poster-1",

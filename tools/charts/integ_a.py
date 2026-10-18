@@ -223,6 +223,42 @@ def run(slug, trim=True):
             else: r = (r + 90 * k) % 360
             o['rot'] = r
         moved += 1
+    # t/side scenery is anchored by the engine to the route's mean corridor (src/core/path.ts flowAnchor). Where the
+    # repaired route now runs closer to such an object than the designer's did, pin it with a worldPos remapped like above.
+    def pos_at(sg, t):
+        x, z, _ = at(sg, t); return x, z
+    def flow_anchor(sg, t, side, along=0.0, win=1.2):
+        n = 9; px = pz = 0.0
+        for i in range(n): q = pos_at(sg, t - win + 2 * win * i / (n - 1)); px += q[0]; pz += q[1]
+        a0, b0 = pos_at(sg, t - win * 1.5), pos_at(sg, t + win * 1.5); fx, fz = b0[0] - a0[0], b0[1] - a0[1]; l = math.hypot(fx, fz)
+        if l < 1: v = hd(at(sg, t)[2]); fx, fz = v
+        else: fx, fz = fx / l, fz / l
+        return px / n + fz * side + fx * along, pz / n - fx * side + fz * along
+    pinned = 0
+    for o in layout.get('objects', []):
+        if o.get('worldPos') or o.get('kind') in ('row', 'text', 'cloud', 'moon', 'sun', 'water', 'plane', 'disc') or 't' not in o or not o.get('side'): continue
+        if (o.get('y') or 0) >= 4: continue
+        y0 = elev_at(elev, o['t'])
+        ox, oz = flow_anchor(old, o['t'], o['side'], o.get('along', 0)); nx_, nz_ = flow_anchor(new, o['t'], o['side'], o.get('along', 0))
+        c_old = clearance(OA, OY, ox, oz, y0); c_new = clearance(NA, NY, nx_, nz_, y0)
+        if c_new >= min(c_old, 3.0) - 0.3: continue
+        best = None
+        for s in old:
+            if s[1] - s[0] < 1e-6: continue
+            dx, dz = hd(s); L = (s[1] - s[0]) * V; u = max(0.0, min(L, (ox - s[2]) * dx + (oz - s[3]) * dz))
+            px, pz = s[2] + dx * u, s[3] + dz * u; ty = s[0] + u / V
+            if abs(elev_at(elev, ty) - y0) > 3: continue
+            k = rot_k(ty); qx0, qz0, _ = at(new, ty); rx, rz = ox - px, oz - pz
+            for _ in range(k): rx, rz = rz, -rx
+            qx, qz = qx0 + rx, qz0 + rz; cn = clearance(NA, NY, qx, qz, y0)
+            sc = abs(cn - c_old) + (5.0 if cn < min(c_old, 2.5) - 0.3 else 0) + 0.05 * math.hypot(ox - px, oz - pz)
+            if best is None or sc < best[0]: best = (sc, qx, qz, k)
+        if best is None: continue
+        _, qx, qz, k = best
+        o['worldPos'] = [round(qx, 2), round(y0 + (o.get('y') or 0), 2), round(qz, 2)]
+        o['pinned'] = 'integ-a: t/side anchor would sit on the repaired route; pinned with worldPos at the designed clearance'
+        o.pop('y', None); pinned += 1
+    print(f'{slug}: {pinned} t/side objects pinned with worldPos')
     for c in layout.get('camera', []):
         if 'worldYaw' in c: c['worldYaw'] = (c['worldYaw'] + 90 * rot_k(c['t'])) % 360
     layout.pop('path', None)

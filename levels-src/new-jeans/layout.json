@@ -961,7 +961,13 @@
     "t": 57.66,
     "mode": "rise",
     "dur": 0.5
-   }
+   },
+   "worldPos": [
+    133.29,
+    0.0,
+    171.97
+   ],
+   "pinned": "integ-a: t/side anchor would sit on the repaired route; pinned with worldPos at the designed clearance"
   },
   {
    "id": "rtower3",
@@ -979,7 +985,13 @@
     "t": 58.41,
     "mode": "rise",
     "dur": 0.5
-   }
+   },
+   "worldPos": [
+    80.99,
+    0.0,
+    120.44
+   ],
+   "pinned": "integ-a: t/side anchor would sit on the repaired route; pinned with worldPos at the designed clearance"
   },
   {
    "id": "rtower4",
@@ -1069,7 +1081,13 @@
     "t": 62.16,
     "mode": "rise",
     "dur": 0.5
-   }
+   },
+   "worldPos": [
+    65.5,
+    0.0,
+    174.2
+   ],
+   "pinned": "integ-a: t/side anchor would sit on the repaired route; pinned with worldPos at the designed clearance"
   },
   {
    "id": "rtower9",

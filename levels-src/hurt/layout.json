@@ -497,7 +497,13 @@
     "t": 14.927,
     "mode": "rise",
     "dur": 1.0
-   }
+   },
+   "worldPos": [
+    69.56,
+    0.0,
+    68.16
+   ],
+   "pinned": "integ-a: t/side anchor would sit on the repaired route; pinned with worldPos at the designed clearance"
   },
   {
    "id": "portrait-frame-2",
@@ -1353,7 +1359,13 @@
     "t": 128.26,
     "mode": "unfold",
     "dur": 1.0
-   }
+   },
+   "worldPos": [
+    -143.24,
+    3.5,
+    -99.82
+   ],
+   "pinned": "integ-a: t/side anchor would sit on the repaired route; pinned with worldPos at the designed clearance"
   },
   {
    "id": "fan-terrace-1",
@@ -1655,7 +1667,13 @@
     1.6
    ],
    "mode": "flat",
-   "alpha": true
+   "alpha": true,
+   "worldPos": [
+    -93.96,
+    3.5,
+    -129.53
+   ],
+   "pinned": "integ-a: t/side anchor would sit on the repaired route; pinned with worldPos at the designed clearance"
   },
   {
    "id": "sticker-8",
@@ -1786,12 +1804,17 @@
     4
    ],
    "mode": "billboard",
-   "y": 0.5,
    "appear": {
     "t": 44.26,
     "mode": "fade",
     "dur": 0.8
-   }
+   },
+   "worldPos": [
+    15.62,
+    4.0,
+    10.67
+   ],
+   "pinned": "integ-a: t/side anchor would sit on the repaired route; pinned with worldPos at the designed clearance"
   },
   {
    "id": "quiet-court",
