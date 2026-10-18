@@ -10,3 +10,7 @@ playwright-report/
 .venv/
 __pycache__/
 *.pyc
+deliverables/*.mp4
+deliverables/raw/
+*.tmp.mjs
+levels-src/*/preview.png

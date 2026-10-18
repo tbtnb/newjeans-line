@@ -1,52 +1,29 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { defaultSettings, emptyRecord, loadSave, persistSave, validateSave } from '../src/storage';
-import type { SaveData } from '../src/types';
+import { parseSave, loadSave, KEY_V1, KEY_V2, mergeRecord } from '../src/storage';
 
-const ids = ['new-jeans', 'get-up'];
-const save: SaveData = {
-  version: 1, selected: 'get-up', settings: { ...defaultSettings, volume: 0.42, quality: 'low' },
-  records: { 'get-up': { best: 1, crowns: 3, diamonds: 10, completed: true, attempts: 4 } },
-};
+const ids = ['attention', 'ditto'];
+const v1 = { version: 1, selected: 'ditto', records: { ditto: { best: 0.5, diamonds: 5, crowns: 1, attempts: 3, completed: false }, contact: { best: 1 } }, settings: { volume: 0.5, offsetMs: 20, quality: 'low', vibration: false, guide: true } };
 
-function withStorage(run: (values: Map<string, string>) => void) {
-  const descriptor = Object.getOwnPropertyDescriptor(globalThis, 'localStorage');
-  const values = new Map<string, string>();
-  Object.defineProperty(globalThis, 'localStorage', { configurable: true, value: {
-    getItem: (key: string) => values.get(key) ?? null,
-    setItem: (key: string, value: string) => values.set(key, value),
-  } });
-  try { run(values); }
-  finally {
-    if (descriptor) Object.defineProperty(globalThis, 'localStorage', descriptor);
-    else Reflect.deleteProperty(globalThis, 'localStorage');
-  }
-}
-
-test('settings, selected song and a completed record survive a storage round trip', () => withStorage(() => {
-  assert.equal(persistSave(save), true);
-  assert.deepEqual(loadSave(ids, ids[0]), save);
-  const validated = validateSave(JSON.parse(JSON.stringify(save)), ids);
-  validated.records['get-up'].attempts = 99;
-  assert.equal(save.records['get-up'].attempts, 4, 'validation returns independent records');
-}));
-
-test('corrupt import is rejected before the existing save can be replaced', () => withStorage(values => {
-  persistSave(save);
-  const previous = values.get('newjeans-line.save.v1');
-  const invalid = { ...save, records: { 'get-up': { ...save.records['get-up'], best: 0.6 } } };
-  assert.throws(() => persistSave(validateSave(invalid, ids)), /不一致/);
-  assert.equal(values.get('newjeans-line.save.v1'), previous);
-  assert.deepEqual(loadSave(ids, ids[0]), save);
-}));
-
-test('unknown songs, nonfinite settings and fractional collectibles are rejected', () => {
-  assert.throws(() => validateSave({ ...save, selected: 'missing' }, ids));
-  assert.throws(() => validateSave({ ...save, settings: { ...save.settings, volume: NaN } }, ids));
-  assert.throws(() => validateSave({ ...save, records: { 'get-up': { ...emptyRecord(), diamonds: 1.5 } } }, ids));
+test('v1 save migrates and keeps records, settings and unknown songs', () => {
+  const s = parseSave(v1, ids, 'attention');
+  assert.equal(s.version, 2); assert.equal(s.migratedFrom, 1); assert.equal(s.selected, 'ditto');
+  assert.equal(s.records.ditto.best, 0.5); assert.equal(s.settings.offsetMs, 20); assert.equal(s.settings.quality, 'low');
+  assert.deepEqual((s.legacy as any).records.contact, { best: 1 });
 });
 
-test('unreadable stored JSON falls back to a fresh save without throwing', () => withStorage(values => {
-  values.set('newjeans-line.save.v1', '{broken');
-  assert.deepEqual(loadSave(ids, ids[0]), { version: 1, selected: ids[0], settings: defaultSettings, records: {} });
-}));
+test('loadSave prefers v2, falls back to v1 without deleting it', () => {
+  const mem: Record<string, string> = { [KEY_V1]: JSON.stringify(v1) };
+  const store = { getItem: (k: string) => mem[k] ?? null };
+  assert.equal(loadSave(ids, 'attention', store).records.ditto.diamonds, 5);
+  mem[KEY_V2] = JSON.stringify({ ...parseSave(v1, ids, 'attention'), selected: 'attention' });
+  assert.equal(loadSave(ids, 'attention', store).selected, 'attention');
+  assert.ok(mem[KEY_V1]);
+});
+
+test('garbage import throws', () => { assert.throws(() => parseSave({ foo: 1 }, ids, 'attention')); assert.throws(() => parseSave(null, ids, 'attention')); });
+
+test('mergeRecord keeps bests', () => {
+  const r = mergeRecord({ best: 0.8, diamonds: 7, crowns: 0, attempts: 2, completed: false }, { progress: 0.4, diamonds: 3, crowns: 0, completed: false });
+  assert.equal(r.best, 0.8); assert.equal(r.attempts, 3); assert.equal(r.diamonds, 7);
+});

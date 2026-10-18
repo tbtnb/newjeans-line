@@ -1,0 +1,59 @@
+export type Heading = 0 | 1 | 2 | 3; // 0=N(+z) 1=E(+x) 2=S(-z) 3=W(-x)
+export type Dir = 'L' | 'R';
+export interface Vec3 { x: number; y: number; z: number; }
+
+export interface ChartTap { t: number; dir?: Dir; tag?: string; }
+export interface Section { t: number; label: string; kind: string; }
+export interface Chart {
+  id: string;
+  startHeading?: 'N' | 'E' | 'S' | 'W';
+  speed?: { t: number; v: number }[];
+  taps: ChartTap[];
+  sections: Section[];
+  notes?: string;
+}
+
+export interface Palette {
+  skyTop: string; skyBottom: string; fog: string; fogStart: number; fogEnd: number;
+  ground: string; groundY: number | null; road: string; roadSide: string; line: string;
+  light: string; lightIntensity: number; ambient: string; particles: string | null;
+}
+
+export interface ObjectAnim { t: number; mode: string; dur?: number; }
+export interface Part { kind: string; pos?: number[]; size?: number[]; rot?: number[]; color?: string; color2?: string; }
+export interface SceneObject {
+  id?: string; t?: number; side?: number; along?: number; y?: number; kind: string;
+  size?: number[]; rot?: number | number[]; color?: string; color2?: string; parts?: Part[];
+  appear?: ObjectAnim; exit?: ObjectAnim; react?: 'none' | 'beat' | 'tap' | 'kick';
+  landmark?: boolean; egg?: boolean; name?: string;
+  /** absolute world position [x,y,z] (overrides t/side anchoring); rot is then an absolute yaw in degrees */
+  worldPos?: number[];
+  /** part of / under the road (bridges, decks): never pushed off the road */
+  onroad?: boolean;
+  radius?: number;
+  // row
+  t0?: number; t1?: number; spacing?: number; bothSides?: boolean; item?: SceneObject;
+}
+export interface CameraCue { t: number; preset?: string; yaw?: number; worldYaw?: number; pitch?: number; dist?: number; fov?: number; blend?: number; shake?: number; roll?: number; lead?: number; }
+export interface SceneEvent { t: number; type: string; target?: string; every?: number; until?: number; palette?: Partial<Palette>; dur?: number; at?: string; particles?: string; amount?: number; [k: string]: unknown; }
+export interface Elevation { type: 'fall' | 'jump' | 'ramp'; t?: number; t0?: number; t1?: number; dy: number; }
+export interface Layout {
+  id: string; title?: string;
+  palette: Palette;
+  road: { width: { t: number; w: number }[]; height?: number; reveal: { t: number; mode: string; lead: number }[] };
+  elevation?: Elevation[];
+  sections?: { t: number; label?: string; palette?: Partial<Palette>; camera?: string; note?: string }[];
+  camera?: CameraCue[];
+  objects?: SceneObject[];
+  events?: SceneEvent[];
+  diamonds: { t: number; side?: number }[];
+  crowns: { t: number }[];
+  finish?: { kind: string; parts?: Part[]; color?: string };
+  collectibleColors?: { diamond?: string; crown?: string };
+  beats?: number[]; // optional beat grid for react:'beat' scenery
+  kicks?: number[];
+}
+export interface LevelData {
+  id: string; title: string; album: string; duration: number; bpm: number; audio: string; cover: string;
+  difficulty: number; accent: string; chart: Chart; layout: Layout;
+}

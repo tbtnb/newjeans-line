@@ -1,145 +1,127 @@
-/** One decoded song at a time; playback and pause positions use the audio clock. */
+/**
+ * Audio transport. The song clock is derived from the AudioContext output timestamp
+ * (what is actually reaching the speakers), never from accumulated frame deltas.
+ */
 export class AudioTransport {
-  private context: AudioContext | null = null;
+  private ctx: AudioContext | null = null;
   private gain: GainNode | null = null;
   private buffer: AudioBuffer | null = null;
   private source: AudioBufferSourceNode | null = null;
-  private loadedUrl: string | null = null;
-  private request: AbortController | null = null;
-  private loadVersion = 0;
-  private sourceVersion = 0;
-  private offset = 0;
-  private startedAt = 0;
-  private volume = 0.75;
-  private disposed = false;
+  private url: string | null = null;
+  private loading: Promise<void> | null = null;
+  private offset = 0;      // song position when the source started / where paused
+  private startedAt = 0;   // context time at which `offset` is scheduled to be heard
+  private lastReported = 0;
+  private volume = 0.8;
+  playing = false;
 
-  private ensureContext(): AudioContext {
-    if (this.disposed) throw new Error('音频播放器已关闭');
-    if (!this.context) {
-      this.context = new AudioContext({ latencyHint: 'interactive' });
-      this.gain = this.context.createGain();
+  context(): AudioContext {
+    if (!this.ctx) {
+      this.ctx = new AudioContext({ latencyHint: 'interactive' });
+      this.gain = this.ctx.createGain();
       this.gain.gain.value = this.volume;
-      this.gain.connect(this.context.destination);
+      this.gain.connect(this.ctx.destination);
     }
-    return this.context;
+    return this.ctx;
   }
 
-  async load(url: string): Promise<void> {
-    const context = this.ensureContext();
-    // load() is called directly by the start gesture, before fetch/decode awaits.
-    // Unlock the silent context now so iOS retains that gesture authorization.
-    if (context.state === 'suspended') void context.resume().catch(() => {});
-    if (this.loadedUrl === url && this.buffer) return;
-    const version = ++this.loadVersion;
-    this.request?.abort();
-    const request = new AbortController();
-    this.request = request;
-    this.stop();
-    this.buffer = null;
-    this.loadedUrl = null;
-    try {
-      const response = await fetch(url, { signal: request.signal });
-      if (!response.ok) throw new Error(`音频下载失败（HTTP ${response.status}）`);
-      const bytes = await response.arrayBuffer();
-      if (version !== this.loadVersion || this.disposed) throw new DOMException('已切换歌曲', 'AbortError');
-      let decoded: AudioBuffer;
-      try { decoded = await context.decodeAudioData(bytes); }
-      catch (error) {
-        if (version !== this.loadVersion || this.disposed) throw new DOMException('已切换歌曲', 'AbortError');
-        throw new Error('无法解码音频，请重试或换一首歌曲', { cause: error });
-      }
-      if (version !== this.loadVersion || this.disposed) throw new DOMException('已切换歌曲', 'AbortError');
-      this.buffer = decoded;
-      this.loadedUrl = url;
-    } catch (error) {
-      if (request.signal.aborted || version !== this.loadVersion || this.disposed) {
-        throw new DOMException('已切换歌曲', 'AbortError');
-      }
-      if (error instanceof Error && error.message.startsWith('音频下载失败')) throw error;
-      if (error instanceof Error && error.message.startsWith('无法解码音频')) throw error;
-      throw new Error('音频加载失败，请检查网络后重试', { cause: error });
-    } finally {
-      if (this.request === request) this.request = null;
-    }
+  /** Call synchronously inside a user gesture. */
+  unlock() { const c = this.context(); if (c.state === 'suspended') void c.resume().catch(() => {}); }
+
+  load(url: string): Promise<void> {
+    if (this.url === url && this.buffer) return Promise.resolve();
+    if (this.url === url && this.loading) return this.loading;
+    this.stop(); this.buffer = null; this.url = url;
+    const ctx = this.context();
+    this.loading = (async () => {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`音频下载失败（HTTP ${res.status}）`);
+      const bytes = await res.arrayBuffer();
+      const buf = await ctx.decodeAudioData(bytes);
+      if (this.url === url) this.buffer = buf;
+    })();
+    const p = this.loading;
+    p.finally(() => { if (this.loading === p) this.loading = null; }).catch(() => {});
+    return p;
   }
 
-  async play(from?: number): Promise<void> {
-    const context = this.ensureContext();
+  get duration() { return this.buffer?.duration ?? 0; }
+  get ready() { return !!this.buffer; }
+
+  /** Context time that is currently audible. */
+  private heardContextTime(perfNow = performance.now()): number {
+    const c = this.ctx!;
+    const ts = typeof c.getOutputTimestamp === 'function' ? c.getOutputTimestamp() : null;
+    if (ts && ts.contextTime && ts.performanceTime && ts.contextTime > 0) {
+      return ts.contextTime + (perfNow - ts.performanceTime) / 1000;
+    }
+    return c.currentTime - (c.outputLatency || 0) - (c.baseLatency || 0);
+  }
+
+  /** Song time currently heard. `perf` lets input events be mapped to the moment they happened. */
+  songTime(perf?: number): number {
+    if (!this.ctx || !this.playing) return this.offset;
+    const t = this.offset + Math.max(0, this.heardContextTime(perf) - this.startedAt);
+    return Math.min(this.duration, t);
+  }
+
+  /** Monotonic clock for rendering (guards against tiny backwards jitter). */
+  renderTime(): number {
+    const t = this.songTime();
+    if (this.playing) { this.lastReported = Math.max(this.lastReported, t); return this.lastReported; }
+    this.lastReported = t; return t;
+  }
+
+  async play(from: number) {
+    const c = this.context();
     if (!this.buffer) throw new Error('歌曲还没有加载完成');
-    // Call resume before yielding: this is the user gesture that unlocks audio
-    // on Safari and mobile browsers. Loading a song itself never starts audio.
-    const unlock = context.state === 'suspended' ? context.resume() : Promise.resolve();
-    const buffer = this.buffer;
-    const loadVersion = this.loadVersion;
-    // Capture the position before stopping an already-playing source.
-    const requested = from === undefined ? this.currentTime : from;
-    this.haltSource();
-    this.offset = Math.max(0, Math.min(buffer.duration, Number.isFinite(requested) ? requested : 0));
-    const version = this.sourceVersion;
-    await unlock;
-    if (this.disposed || loadVersion !== this.loadVersion || version !== this.sourceVersion || this.buffer !== buffer) return;
-    if (context.state !== 'running') throw new Error('浏览器尚未允许播放音频，请再次轻点开始');
-    if (this.offset >= buffer.duration) return;
-    const source = context.createBufferSource();
-    source.buffer = buffer;
-    source.connect(this.gain!);
-    this.startedAt = context.currentTime;
-    this.source = source;
-    source.onended = () => {
-      if (this.source !== source || this.sourceVersion !== version) return;
-      this.offset = buffer.duration;
-      this.source = null;
-      source.disconnect();
-    };
-    source.start(0, this.offset);
+    if (c.state !== 'running') await c.resume();
+    this.halt();
+    this.offset = Math.max(0, Math.min(from, this.buffer.duration));
+    const src = c.createBufferSource();
+    src.buffer = this.buffer;
+    src.connect(this.gain!);
+    // schedule slightly ahead so the start time is exact, then the heard time of `offset` is startAt + outputLatency
+    const startAt = c.currentTime + 0.05;
+    src.start(startAt, this.offset);
+    const outLat = (c.outputLatency || 0) + (c.baseLatency || 0);
+    // heardContextTime() already subtracts output latency when using getOutputTimestamp; when using the fallback it subtracts it too.
+    this.startedAt = startAt;
+    void outLat;
+    this.source = src;
+    this.playing = true;
+    this.lastReported = this.offset;
+    src.onended = () => { if (this.source === src) { this.playing = false; this.offset = this.buffer?.duration ?? 0; this.source = null; } };
   }
 
-  private haltSource(): void {
-    this.sourceVersion++;
-    const source = this.source;
-    this.source = null;
-    if (source) {
-      source.onended = null;
-      try { source.stop(); } catch { /* An ended source needs no further stop. */ }
-      source.disconnect();
-    }
+  private halt() {
+    const s = this.source; this.source = null;
+    if (s) { s.onended = null; try { s.stop(); } catch { /* ended */ } s.disconnect(); }
   }
 
-  pause(): void {
-    this.offset = this.currentTime;
-    this.haltSource();
+  pause() { if (this.playing) { this.offset = this.songTime(); } this.playing = false; this.halt(); }
+  stop() { this.playing = false; this.halt(); this.offset = 0; }
+
+  /** Fade out then stop (fail). */
+  fadeOut(sec = 0.6) {
+    if (!this.ctx || !this.gain || !this.playing) return;
+    const now = this.ctx.currentTime;
+    const at = this.songTime();
+    this.gain.gain.cancelScheduledValues(now);
+    this.gain.gain.setValueAtTime(this.gain.gain.value, now);
+    this.gain.gain.linearRampToValueAtTime(0.0001, now + sec);
+    const src = this.source;
+    setTimeout(() => {
+      if (this.source === src) { this.halt(); this.playing = false; this.offset = at; }
+      if (this.gain && this.ctx) { this.gain.gain.cancelScheduledValues(this.ctx.currentTime); this.gain.gain.setValueAtTime(this.volume, this.ctx.currentTime); }
+    }, sec * 1000 + 30);
   }
 
-  stop(): void {
-    this.haltSource();
-    this.offset = 0;
+  setVolume(v: number) {
+    this.volume = Math.max(0, Math.min(1, v));
+    if (this.gain && this.ctx) this.gain.gain.setTargetAtTime(this.volume, this.ctx.currentTime, 0.02);
   }
 
-  get currentTime(): number {
-    if (!this.source || !this.context) return this.offset;
-    return Math.min(this.duration, this.offset + Math.max(0, this.context.currentTime - this.startedAt));
-  }
-
-  get duration(): number { return this.buffer?.duration ?? 0; }
-
-  setVolume(value: number): void {
-    this.volume = Number.isFinite(value) ? Math.max(0, Math.min(1, value)) : this.volume;
-    if (this.gain && this.context) this.gain.gain.setTargetAtTime(this.volume, this.context.currentTime, 0.02);
-  }
-
-  destroy(): void {
-    if (this.disposed) return;
-    this.disposed = true;
-    this.loadVersion++;
-    this.request?.abort();
-    this.request = null;
-    this.stop();
-    this.buffer = null;
-    this.loadedUrl = null;
-    this.gain?.disconnect();
-    this.gain = null;
-    const context = this.context;
-    this.context = null;
-    if (context && context.state !== 'closed') void context.close().catch(() => {});
-  }
+  /** Short UI click synthesized (not used during gameplay). */
+  latencyInfo() { const c = this.ctx; return c ? { base: c.baseLatency || 0, output: c.outputLatency || 0, sampleRate: c.sampleRate } : null; }
 }
