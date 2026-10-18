@@ -17,17 +17,17 @@
 | Pre-chorus 1 | 38.7–46.4 | **staircase climbing +3** up the teal footbridge, with low railings both sides | 0 → 3 | low | |
 | Chorus 1 | 46.4–61.8 | **three-sided plaza loop** (3 same-side turns, 2–3-bar legs) around the rail plaza | 3 | **high** | white train on the lower track pulses with the beat; six yellow gantries unfold; green rooftop court under the loop |
 | Chorus 1b | 61.8–77.1 | **tight zigzag** (2 + 2 turns) | 3 | iso | barcode digits decal; five B/W panels + orange panel stand in the plaza |
-| Verse 2 | 77.1–92.5 | **switchbacks** along the terrace wall | 3 | iso | fork 84.8 s; floating **"How Sweet" sticker** (art) over the roofs |
-| Pre 2 / Chorus 2 | 92.5–107.9 | **serpentine with every-2nd-tap turns**, climbing +3 to L2 | 3 → 6 | iso | |
-| Chorus 2 | 107.9–123.2 | **plaza loop II** (3-turn orbit) | 6 | side | the six panels rise one per half-bar on the music clock |
-| Chorus 2b | 123.2–138.6 | **lightning bolt** | 6 | iso | panels poster (art) on a courtyard wall; fork 127.8 s |
-| Bridge | 138.6–153.9 | **narrow laundry bridge**: switchbacks gliding down −3 between laundry poles on both sides | 6 → 3 | low | crown 2 at 146.1 |
+| Verse 2 | 77.1–92.5 | **switchbacks** along the terrace wall, then the route **turns back west and climbs over the Verse-1 street** (loop-back over an earlier section) | 3 → 4 | iso | fork 84.8 s; floating **"How Sweet" sticker** (art) over the roofs |
+| Verse 2b | 92.5–107.9 | **serpentine with every-2nd-tap turns**, climbing to L2 (+7) right above the Verse-1 roads | 4 → 7 | iso | |
+| Chorus 2 | 107.9–123.2 | **plaza loop II** (3-turn orbit) high above the old street | 7 | side | the six panels rise one per half-bar on the music clock |
+| Chorus 2b | 123.2–138.6 | **lightning bolt** | 7 | iso | panels poster (art) on a courtyard wall; fork 127.8 s |
+| Bridge | 138.6–153.9 | **narrow laundry bridge**: switchbacks gliding down −4 between laundry poles on both sides, passing over the start street | 7 → 3 | low | crown 2 at 146.1 |
 | Build | 153.9–169.3 | **square helix climbing +6 around the water tower** (4–5 same-side turns, laps pass over each other) | 3 → 9 | iso | water tower anchored in the clear centre of the helix |
 | Final chorus | 169.3–184.7 | **fall −6** at 169.35 s onto the plaza, then an **expanding spiral** | 3 | iso | densest section (Chorus-1 tap pattern) |
 | Final chorus b | 184.7–200.0 | **rooftop-garden loop** climbing +3 and **passing over the spiral** | 3 → 6 | **high** | cat silhouette returns on a far rooftop (EGG E1); fork 189.9 s |
 | Outro | 200.0–219.1 | long **turn-out** glide to the record shop | 6 | wide | the shop sign flips CLOSED→OPEN on the last chord; outfit-rail EGG |
 
-There are no same-level overlaps. The fall lands 0.67 s before the next tap.
+**Multi-level structure:** 73 over/under crossings (validator count: ≥ 3 height difference, ≥ 1.5 s apart). Verse 2 turns back and climbs over Verse 1. Chorus 2 runs at +7 above the old street. The bridge, build helix and final-chorus loops all stack over the intro/verse-1 district at different heights. There are no same-level overlaps, and the fall lands 0.67 s before the next tap.
 
 ## Landmarks and eggs
 - **Landmarks**: rail plaza (train + gantries), the six panels, water tower (inside the build helix), "How Sweet" sticker, record shop (finish).
@@ -55,12 +55,12 @@ All events follow the music clock: beats, half-bars and section downbeats. Nothi
 
 ## Generated facts (from layout.json / chart.json)
 
-- Road width {'width': [{'t': 0, 'w': 2.6}, {'t': 8.02, 'w': 2.2}, {'t': 46.42, 'w': 2.4}, {'t': 77.14, 'w': 2.1}, {'t': 107.86, 'w': 2.2}, {'t': 138.58, 'w': 2.0}, {'t': 169.3, 'w': 1.8}, {'t': 200.0, 'w': 2.6}], 'height': 0.6, 'reveal': [{'t': 0, 'mode': 'static', 'lead': 3.0}, {'t': 8.02, 'mode': 'rise', 'lead': 2.0}, {'t': 46.42, 'mode': 'unfold', 'lead': 1.6}, {'t': 77.14, 'mode': 'rise', 'lead': 1.8}, {'t': 138.58, 'mode': 'drop', 'lead': 1.8}, {'t': 153.94, 'mode': 'rise', 'lead': 1.4}, {'t': 169.3, 'mode': 'rise', 'lead': 1.4}, {'t': 200.0, 'mode': 'static', 'lead': 3.0}]}; start heading N; speed [{'t': 0, 'v': 9.0}]
-- Elevation: ramp +3 @ 38.74–46.120000000000005 (pre-chorus: the teal footbridge staircase climbs from street level L0 to the rail plaza L1); ramp +3 @ 92.5–107.56 (verse 2 / pre 2: rooftop terraces climb to L2); ramp -3 @ 138.58–153.64 (bridge: long narrow bridge glides back down to L1); ramp +6 @ 153.94–169.0 (build: square helix up the water-tower); fall -6 @ 169.345 (final-chorus downbeat: drop off the tower onto the plaza); ramp +3 @ 184.66–192.04 (final chorus 2nd half: rooftop-garden loop climbs and passes over the expanding spiral)
+- Road width {'width': [{'t': 0, 'w': 2.6}, {'t': 8.02, 'w': 2.2}, {'t': 46.42, 'w': 2.4}, {'t': 77.14, 'w': 2.1}, {'t': 107.86, 'w': 2.2}, {'t': 138.58, 'w': 2.0}, {'t': 169.3, 'w': 1.9}, {'t': 200.0, 'w': 2.6}], 'height': 0.6, 'reveal': [{'t': 0, 'mode': 'static', 'lead': 3.0}, {'t': 8.02, 'mode': 'rise', 'lead': 2.0}, {'t': 46.42, 'mode': 'unfold', 'lead': 1.6}, {'t': 77.14, 'mode': 'rise', 'lead': 1.8}, {'t': 138.58, 'mode': 'drop', 'lead': 1.8}, {'t': 153.94, 'mode': 'rise', 'lead': 1.4}, {'t': 169.3, 'mode': 'rise', 'lead': 1.4}, {'t': 200.0, 'mode': 'static', 'lead': 3.0}]}; start heading N; speed [{'t': 0, 'v': 9.0}]
+- Elevation: ramp +3 @ 38.74–46.120000000000005 (pre-chorus: the teal footbridge staircase climbs from street level L0 to the rail plaza L1); ramp +4 @ 84.82–99.88000000000001 (verse 2 second half: rooftop terraces climb to L2 (+7)); ramp -4 @ 138.58–153.64 (bridge: long narrow laundry bridge glides back down to L1); ramp +6 @ 153.94–169.0 (build: climb around the water tower); fall -6 @ 169.345 (final-chorus downbeat: drop off the tower onto the plaza); ramp +3 @ 184.66–192.04 (final chorus 2nd half: rooftop-garden loop climbs and passes over the earlier roads)
 - Camera: 0s close; 8.02s iso; 38.74s low; 46.42s high; 61.78s iso; 77.14s iso; 92.5s iso; 107.86s side; 123.2s iso; 138.58s low; 153.94s iso; 169.3s iso; 169.9s iso; 184.66s high; 200.0s wide
 - Diamonds (t): 4.899, 24.339, 41.978, 58.298, 83.977, 101.497, 119.737, 146.136, 162.936, 195.215; crowns (checkpoints): 106.297, 146.136
 - Landmarks: `court` (green rooftop sports court under the chorus route (big colour field, white lines)); `sticker` (giant cut-corner orange "How Sweet" sticker floating over the rooftops (cover sticker, generated art)); `record_shop` (finish: the record shop; its flip sign turns from CLOSED to OPEN as the line arrives (EGG: new beginning)); `train` (white commuter train on the lower track beside the rail plaza (MV level crossing)); `panel5` (five black/white standing panels + the orange sleeve panel (abstracted group cover); they rise one by one in chorus 2 and line up again in the final chorus); `water_tower` (water tower: the build-section helix winds around it)
 - Easter eggs: `apple_egg` (EGG: an apple with one small bite on a shop shelf); `barcode_digits` (5 220722 221029); `members5` (EGG: five small denim/green/black outfits on a clothes rail outside the shop (cover outfits)); `cat_egg` (EGG E1: orange cat on an apartment balcony; it turns its head with the syncopated claps; the same cat silhouette reappears in the final chorus skyline); `cat_egg2` (EGG E1 return: cat silhouette on a far rooftop)
-- Fake-out forks (visual only, road-coloured dead-end stubs that rise 2 s early and sink after the corner; they are revealed together with the road (same lead), so they add no timing information and only fake a straight continuation): fork0, fork1, fork2, fork3
-- Objects: 81 total; events: 17
+- Fake-out forks (visual only, road-coloured dead-end stubs that rise 2 s early and sink after the corner; they are revealed together with the road (same lead), so they add no timing information and only fake a straight continuation): fork0, fork1, fork3
+- Objects: 80 total; events: 17
 - Art wired into layout: backdrop `art/sky-summer.jpg`, ground `art/plaza-ground.jpg`, images/textures `art/panels-poster.jpg`, `art/sticker.png`

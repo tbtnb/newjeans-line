@@ -7,7 +7,7 @@ CHART_NOTES='Miami-bass tresillo (16th slots 0/6/12) is the backbone in verses a
 CC='#e8735a'; CREAM='#f6e7b8'; DENIM='#4c6a96'; GREEN='#4f9a62'; BLACK='#141414'
 # Route: start INSIDE the black album frame -> shop street NE -> rooftop (ramp) -> sports-court rooftops NW -> drop to street NE past the sticker
 # -> blue-wall plaza SE -> laundry-flag lane NE -> build NW -> floating sky platforms NE -> long open straight to the record shop.
-WIDTH=[{'t':0,'w':2.6},{'t':8.02,'w':2.2},{'t':46.42,'w':2.4},{'t':77.14,'w':2.1},{'t':107.86,'w':2.2},{'t':138.58,'w':2.0},{'t':169.3,'w':1.8},{'t':200.0,'w':2.6}]
+WIDTH=[{'t':0,'w':2.6},{'t':8.02,'w':2.2},{'t':46.42,'w':2.4},{'t':77.14,'w':2.1},{'t':107.86,'w':2.2},{'t':138.58,'w':2.0},{'t':169.3,'w':1.9},{'t':200.0,'w':2.6}]
 REVEAL=[{'t':0,'mode':'static','lead':3.0},{'t':8.02,'mode':'rise','lead':2.0},{'t':46.42,'mode':'unfold','lead':1.6},{'t':77.14,'mode':'rise','lead':1.8},
         {'t':138.58,'mode':'drop','lead':1.8},{'t':153.94,'mode':'rise','lead':1.4},{'t':169.3,'mode':'rise','lead':1.4},{'t':200.0,'mode':'static','lead':3.0}]
 PALETTE={'skyTop':'#9fc6ea','skyBottom':'#fff4dc','fog':'#f6eedc','fogStart':40,'fogEnd':120,'ground':'#e9dcc2','groundY':-0.6,
@@ -90,27 +90,27 @@ DIAMOND_TARGETS=[5,24,42,58,84,102,120,146,163,195]; CROWN_TARGETS=[104.5,146.0]
 B=1.91996; S0=0.339
 def hb(bar): return round(S0+B*bar,2)
 ELEV=[{'t0':hb(20),'t1':hb(24)-0.3,'type':'ramp','dy':3,'note':'pre-chorus: the teal footbridge staircase climbs from street level L0 to the rail plaza L1'},
-      {'t0':hb(48),'t1':hb(56)-0.3,'type':'ramp','dy':3,'note':'verse 2 / pre 2: rooftop terraces climb to L2'},
-      {'t0':hb(72),'t1':hb(80)-0.3,'type':'ramp','dy':-3,'note':'bridge: long narrow bridge glides back down to L1'},
-      {'t0':hb(80),'t1':hb(88)-0.3,'type':'ramp','dy':6,'note':'build: square helix up the water-tower'},
+      {'t0':hb(44),'t1':hb(52)-0.3,'type':'ramp','dy':4,'note':'verse 2 second half: rooftop terraces climb to L2 (+7)'},
+      {'t0':hb(72),'t1':hb(80)-0.3,'type':'ramp','dy':-4,'note':'bridge: long narrow laundry bridge glides back down to L1'},
+      {'t0':hb(80),'t1':hb(88)-0.3,'type':'ramp','dy':6,'note':'build: climb around the water tower'},
       {'t':hb(88),'type':'fall','dy':-6,'snap':True,'note':'final-chorus downbeat: drop off the tower onto the plaza'},
-      {'t0':hb(96),'t1':hb(100)-0.3,'type':'ramp','dy':3,'note':'final chorus 2nd half: rooftop-garden loop climbs and passes over the expanding spiral'}]
+      {'t0':hb(96),'t1':hb(100)-0.3,'type':'ramp','dy':3,'note':'final chorus 2nd half: rooftop-garden loop climbs and passes over the earlier roads'}]
 BLOCKS=[
  {'t0':0,'tex':'stair'},
  {'t0':hb(4),'tex':'serpL','P':[1.4,1.9],'m':[4,6],'phases':[0]},
  {'t0':hb(12),'tex':'bolt','P':[2*B,B],'phases':[0,B]},
  {'t0':hb(20),'tex':'stair'},
- {'t0':hb(24),'tex':'orbit','P':[2*B,2.5*B,3*B],'m':[3],'phases':[0,B/2,B]},
- {'t0':hb(32),'tex':'zig','P':[B,1.5*B,2*B],'phases':[0,B/2,B,1.5*B,2*B,3*B],'sides':['R','L']},
- {'t0':hb(40),'tex':'switch','P':[2*B,3*B],'phases':[0,B]},
- {'t0':hb(48),'tex':'serp','m':[6,8],'phases':[0,2,4]},
- {'t0':hb(56),'tex':'orbit','P':[1.5*B,2*B,2.5*B],'m':[3],'phases':[0,B/2,B]},
- {'t0':hb(64),'tex':'bolt','P':[B],'phases':[0,B/2]},
- {'t0':hb(72),'tex':'switch','P':[B,1.5*B,2*B],'phases':[0,B/2,B]},
- {'t0':hb(80),'tex':'orbit','P':[2*B,1.75*B],'m':[4,5],'phases':[0,B/2,B],'cross':1,'look':6},
- {'t0':hb(88),'tex':'xspiral','P':[B,1.5*B,2*B],'m':[5,6],'phases':[0,B/2,B,1.5*B,2*B,3*B],'sides':['R','L']},
- {'t0':hb(96),'tex':'orbit','P':[2*B,1.5*B,2.5*B],'m':[3,4],'phases':[0,B/2,B],'look':4},
- {'t0':hb(104),'tex':'turn','phases':[0,B]},
+ {'t0':hb(24),'tex':'orbit','P':[2*B,2.5*B,3*B],'m':[3],'phases':[0,B/2,B],'xw':3,'look':4},
+ {'t0':hb(32),'tex':'zig','P':[B,1.5*B,2*B],'phases':[0,B/2,B,1.5*B,2*B,3*B],'sides':['R','L'],'xw':3},
+ {'t0':hb(40),'tex':'switch','P':[2*B,3*B],'phases':[0,B],'xw':3},
+ {'t0':hb(48),'tex':'serp','m':[6,8],'phases':[0,2,4],'xw':3,'look':4},
+ {'t0':hb(56),'tex':'orbit','P':[1.5*B,2*B,2.5*B,3*B],'m':[3,4],'phases':[0,B/2,B],'xw':4,'look':6},
+ {'t0':hb(64),'tex':'bolt','P':[B,2*B],'phases':[0,B/2],'xw':4,'look':4},
+ {'t0':hb(72),'tex':'switch','P':[B,1.5*B,2*B],'phases':[0,B/2,B],'xw':4,'look':4},
+ {'t0':hb(80),'tex':'orbit','P':[2*B,1.75*B,1.5*B],'m':[4,5],'phases':[0,B/2,B],'xw':4,'look':6},
+ {'t0':hb(88),'tex':'xspiral','P':[B,1.5*B,2*B],'m':[5,6],'phases':[0,B/2,B,1.5*B,2*B,3*B],'sides':['R','L'],'xw':4,'look':4},
+ {'t0':hb(96),'tex':'orbit','P':[2*B,1.5*B,2.5*B],'m':[3,4],'phases':[0,B/2,B],'xw':4,'look':4},
+ {'t0':hb(104),'tex':'turn','phases':[0,B],'xw':4},
 ]
 MARGIN=0.3
 FORKS=[20.0,85.0,128.0,190.0]

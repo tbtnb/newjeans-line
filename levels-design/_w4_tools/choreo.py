@@ -80,8 +80,10 @@ def overlap_count(nodes, elev, W, margin, upto=None, mingap=1.5):
                 if segs[j][0][0] - segs[i][1][0] < mingap: continue
                 p, q = B[i], B[j]
                 if p[0] < q[1] and q[0] < p[1] and p[2] < q[3] and q[2] < p[3]:
-                    ti = (segs[i][0][0] + segs[i][1][0]) / 2; tj = (segs[j][0][0] + segs[j][1][0]) / 2
-                    if abs(elev_at(elev, ti) - elev_at(elev, tj)) < 3: hits += 1
+                    # validator-exact height test: min |dh| over 3x3 samples of both segments
+                    ia, ib = segs[i][0][0], segs[i][1][0]; ja, jb = segs[j][0][0], segs[j][1][0]
+                    dyv = min(abs(elev_at(elev, ia + f * (ib - ia)) - elev_at(elev, ja + g * (jb - ja))) for f in (0.02, 0.5, 0.98) for g in (0.02, 0.5, 0.98))
+                    if dyv < 3: hits += 1
                     else: cross += 1
     return hits, cross
 
@@ -103,7 +105,7 @@ def search(taps, speeds, dur, blocks, elev, W, margin=0.6, beam=8, start='N', ve
                 old = [nd for nd in nodes if nd[0] < t1 - 8]
                 clear = min([math.hypot(end[1] - o[1], end[2] - o[2]) for o in old] or [60])
                 want = b.get('cross', 0)
-                bonus = min(clear, 40) * b.get('cw', 0.15) + (25 if want and cross >= want else 0) + b.get('bias', {}).get(side, 0)
+                bonus = min(clear, 40) * b.get('cw', 0.15) + (25 if want and cross >= want else 0) + b.get('xw', 0) * cross + b.get('bias', {}).get(side, 0)
                 cand.append((sc + bonus - 1000 * hits, sc + bonus, e2, hits, cross, side, ph, P, m))
         cand.sort(key=lambda c: -c[0])
         uniq = []; seen = set()

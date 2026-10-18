@@ -17,17 +17,17 @@
 | Pre-chorus 1 | 38.7–46.4 | **staircase climbing +3** up the teal footbridge, with low railings both sides | 0 → 3 | low | |
 | Chorus 1 | 46.4–61.8 | **three-sided plaza loop** (3 same-side turns, 2–3-bar legs) around the rail plaza | 3 | **high** | white train on the lower track pulses with the beat; six yellow gantries unfold; green rooftop court under the loop |
 | Chorus 1b | 61.8–77.1 | **tight zigzag** (2 + 2 turns) | 3 | iso | barcode digits decal; five B/W panels + orange panel stand in the plaza |
-| Verse 2 | 77.1–92.5 | **switchbacks** along the terrace wall | 3 | iso | fork 84.8 s; floating **"How Sweet" sticker** (art) over the roofs |
-| Pre 2 / Chorus 2 | 92.5–107.9 | **serpentine with every-2nd-tap turns**, climbing +3 to L2 | 3 → 6 | iso | |
-| Chorus 2 | 107.9–123.2 | **plaza loop II** (3-turn orbit) | 6 | side | the six panels rise one per half-bar on the music clock |
-| Chorus 2b | 123.2–138.6 | **lightning bolt** | 6 | iso | panels poster (art) on a courtyard wall; fork 127.8 s |
-| Bridge | 138.6–153.9 | **narrow laundry bridge**: switchbacks gliding down −3 between laundry poles on both sides | 6 → 3 | low | crown 2 at 146.1 |
+| Verse 2 | 77.1–92.5 | **switchbacks** along the terrace wall, then the route **turns back west and climbs over the Verse-1 street** (loop-back over an earlier section) | 3 → 4 | iso | fork 84.8 s; floating **"How Sweet" sticker** (art) over the roofs |
+| Verse 2b | 92.5–107.9 | **serpentine with every-2nd-tap turns**, climbing to L2 (+7) right above the Verse-1 roads | 4 → 7 | iso | |
+| Chorus 2 | 107.9–123.2 | **plaza loop II** (3-turn orbit) high above the old street | 7 | side | the six panels rise one per half-bar on the music clock |
+| Chorus 2b | 123.2–138.6 | **lightning bolt** | 7 | iso | panels poster (art) on a courtyard wall; fork 127.8 s |
+| Bridge | 138.6–153.9 | **narrow laundry bridge**: switchbacks gliding down −4 between laundry poles on both sides, passing over the start street | 7 → 3 | low | crown 2 at 146.1 |
 | Build | 153.9–169.3 | **square helix climbing +6 around the water tower** (4–5 same-side turns, laps pass over each other) | 3 → 9 | iso | water tower anchored in the clear centre of the helix |
 | Final chorus | 169.3–184.7 | **fall −6** at 169.35 s onto the plaza, then an **expanding spiral** | 3 | iso | densest section (Chorus-1 tap pattern) |
 | Final chorus b | 184.7–200.0 | **rooftop-garden loop** climbing +3 and **passing over the spiral** | 3 → 6 | **high** | cat silhouette returns on a far rooftop (EGG E1); fork 189.9 s |
 | Outro | 200.0–219.1 | long **turn-out** glide to the record shop | 6 | wide | the shop sign flips CLOSED→OPEN on the last chord; outfit-rail EGG |
 
-There are no same-level overlaps. The fall lands 0.67 s before the next tap.
+**Multi-level structure:** 73 over/under crossings (validator count: ≥ 3 height difference, ≥ 1.5 s apart). Verse 2 turns back and climbs over Verse 1. Chorus 2 runs at +7 above the old street. The bridge, build helix and final-chorus loops all stack over the intro/verse-1 district at different heights. There are no same-level overlaps, and the fall lands 0.67 s before the next tap.
 
 ## Landmarks and eggs
 - **Landmarks**: rail plaza (train + gantries), the six panels, water tower (inside the build helix), "How Sweet" sticker, record shop (finish).
