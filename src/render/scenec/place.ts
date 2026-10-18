@@ -100,6 +100,11 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
     }
   });
   // impostor carpet: sprite cards facing back along the flow (towards the key camera), clear of every road segment
+  // key camera path (behind and above the flow): cards near it would fill the screen
+  const camPath: { t: number; x: number; z: number }[] = [];
+  for (let t = 0; t <= o.duration; t += 0.25) { const p = flowAnchor(route, t, 0, 0, 0).pos, q = flowAnchor(route, t + 1, 0, 0, 0).pos; const dx = q.x - p.x, dz = q.z - p.z, L = Math.hypot(dx, dz) || 1; camPath.push({ t, x: p.x - dx / L * 37, z: p.z - dz / L * 37 }); }
+  const nearCam = (x: number, z: number, t: number) => { const i0 = Math.max(0, Math.floor((t - 10) * 4)), i1 = Math.min(camPath.length - 1, Math.ceil((t + 3) * 4));
+    for (let i = i0; i <= i1; i++) { const c = camPath[i]; if ((c.x - x) ** 2 + (c.z - z) ** 2 < 28 * 28) return true; } return false; };
   spec.zones.forEach((z, zi) => {
     const I = z.impostors; if (!I) return; const t1 = Math.min(z.t1, o.duration); const W = I.sprites.reduce((a, b) => a + b[1], 0);
     const n = Math.round(I.count);
@@ -109,7 +114,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
       const s = I.scale[0] + R() * (I.scale[1] - I.scale[0]);
       const edge = I.near[0] + Math.pow(R(), 0.8) * (I.near[1] - I.near[0]);
       const a = flowAnchor(route, t, side * (w / 2 + edge), 0, 0);
-      if (o.hits(a.pos.x, a.pos.z, 1.5 * s + 2.0, a.pos.y - 30, a.pos.y + 30)) { rejected++; continue; }
+      if (o.hits(a.pos.x, a.pos.z, 1.5 * s + 2.0, a.pos.y - 30, a.pos.y + 30) || nearCam(a.pos.x, a.pos.z, t)) { rejected++; continue; }
       const f0 = flowAnchor(route, t - 1, 0, 0, 0).pos, f1 = flowAnchor(route, t + 1, 0, 0, 0).pos;
       const ci = chunkAt(t); const c = chunks[ci]; (c.imp ??= []).push({ k: id, x: a.pos.x, y: groundY(c, a.pos.x, a.pos.z), z: a.pos.z, yaw: Math.atan2(-(f1.x - f0.x), -(f1.z - f0.z)), s, zone: zi });
     }

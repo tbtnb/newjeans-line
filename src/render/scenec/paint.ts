@@ -53,10 +53,10 @@ export class Impostors {
     const hash = (x: number, z: number) => { const s = Math.sin(x * 12.9898 + z * 78.233) * 43758.5453; return s - Math.floor(s); };
     for (let i = a; i <= b; i++) for (const it of this.chunks[i].imp ?? []) {
       const sp = S[it.k]; if (!sp || hash(it.x, it.z) > this.density) continue;
-      const w = sp.w * it.s, h = sp.h * it.s, c = Math.cos(it.yaw), s = Math.sin(it.yaw), i0 = pos.length / 3, y0 = it.y - 0.08 * h;
+      const k0 = Math.min(it.s, 11 / sp.h), w = sp.w * k0, h = sp.h * k0, c = Math.cos(it.yaw), s = Math.sin(it.yaw), i0 = pos.length / 3, y0 = it.y - 0.08 * h;
       const rx = c * w / 2, rz = -s * w / 2;   // card right vector (local +x rotated by yaw)
       pos.push(it.x - rx, y0, it.z - rz, it.x + rx, y0, it.z + rz, it.x + rx, y0 + h, it.z + rz, it.x - rx, y0 + h, it.z - rz);
-      const [u0, v0, u1, v1] = sp.uv; uv.push(u0, 1 - v1, u1, 1 - v1, u1, 1 - v0, u0, 1 - v0);
+      const [u0, v0, u1, v1] = sp.uv; uv.push(u0, v1, u1, v1, u1, v0, u0, v0);   // texture loaded with invertY=false: v grows downwards like the atlas json
       const k = this.night[it.zone] ? 0.9 : 1.0 - 0.12 * hash(it.z, it.x); for (let n = 0; n < 4; n++) col.push(k, k, k, 1);
       idx.push(i0, i0 + 1, i0 + 2, i0, i0 + 2, i0 + 3);
     }
