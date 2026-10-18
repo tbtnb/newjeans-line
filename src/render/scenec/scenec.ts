@@ -21,8 +21,6 @@ import { activeRange, place, type CChunk, type CInst, type CPlacement, type CSet
 import { loadModel, placeholders, type Template } from './assets';
 import { CUT, Cutaway } from './cutaway';
 import { Backdrop, Impostors, PageFade } from './paint';
-import { GlowLayer } from '@babylonjs/core/Layers/glowLayer';
-import '@babylonjs/core/Layers/effectLayerSceneComponent';
 import { ColorCurves } from '@babylonjs/core/Materials/colorCurves';
 import { Color4 } from '@babylonjs/core/Maths/math.color';
 import { Texture } from '@babylonjs/core/Materials/Textures/texture';
@@ -57,7 +55,7 @@ export class SceneC {
   private tm: Map<string, Template>; private mat: StandardMaterial; private matSet: StandardMaterial; private root: TransformNode;
   private types = new Map<string, TI>(); private chunkMesh = new Map<number, ChunkM>(); private night: boolean[] = []; private matNight!: StandardMaterial; private matGlow!: StandardMaterial; private dirtyAt = -1; private glowAll: Mesh | null = null; private glowSig = ''; private pages: Mesh[] = []; private pageMats: StandardMaterial[] = []; private sets: SetE[] = [];
   private range: [number, number] = [-1, -1]; private tier: Tier; private zoneCols: number[][][];
-  private imp: Impostors | null = null; private back: Backdrop | null = null; private groundTex = new Map<number, Texture>(); private base = './'; curZone = 0; private bloom: GlowLayer | null = null; private route!: Route;
+  private imp: Impostors | null = null; private back: Backdrop | null = null; private groundTex = new Map<number, Texture>(); private base = './'; curZone = 0;  private route!: Route;
   private disposed = false; private time = 0; models = 0; last: CStats | null = null;
 
   constructor(private scene: Scene, parent: TransformNode, route: Route, spec: SceneCSpec, o: { duration: number; widthAt: (t: number) => number; roadH: number; hits: (x: number, z: number, r: number, y0: number, y1: number) => boolean; beats: number[]; base: string; tier: Tier }) {
@@ -95,7 +93,7 @@ export class SceneC {
     const on = [...this.chunkMesh.entries()].filter(([, c]) => c.L && t > c.t0 - 4.8).map(([i]) => i);
     const sOn = this.sets.filter(e => e.on && t > e.def.popAt + 0.5 && WIN[e.def.a] && (this.night[e.def.zone] || WIN_ALWAYS.has(e.def.a)));
     const sig = on.join(',') + '|' + sOn.map(e => this.sets.indexOf(e)).join(',');
-    if (sig === this.glowSig) return; this.glowSig = sig; if (this.glowAll) this.bloom?.removeIncludedOnlyMesh(this.glowAll); this.glowAll?.dispose(); this.glowAll = null; if (!on.length && !sOn.length) return;
+    if (sig === this.glowSig) return; this.glowSig = sig; this.glowAll?.dispose(); this.glowAll = null; if (!on.length && !sOn.length) return;
     const pos: number[] = [], col: number[] = [], uv: number[] = [], idx: number[] = [];
     for (const i of on) { const c = this.chunkMesh.get(i)!, L = c.L!, i0 = pos.length / 3;
       for (let k = 0; k < L.pos.length; k += 3) pos.push(L.pos[k], L.pos[k + 1] + c.y, L.pos[k + 2]);
@@ -111,20 +109,27 @@ export class SceneC {
         q(cx, cy, z, Math.max(0.35, H * 0.05), 0.75); }
       q(0, H * 0.5, z + 0.2, H * 0.42, this.night[d.zone] ? 0.22 : 0.12);
     }
+    if (this.tier === 'high') {   // cheap bloom: every halo quad gets a 2.3x larger, faint copy (same mesh, no post pass)
+      const nq = idx.length / 6;
+      for (let q = 0; q < nq; q++) { const v0 = idx[q * 6]; let cx = 0, cy = 0, cz = 0; for (let k = 0; k < 4; k++) { cx += pos[(v0 + k) * 3] / 4; cy += pos[(v0 + k) * 3 + 1] / 4; cz += pos[(v0 + k) * 3 + 2] / 4; }
+        const j0 = pos.length / 3;
+        for (let k = 0; k < 4; k++) { const b = (v0 + k) * 3; pos.push(cx + (pos[b] - cx) * 2.3, cy + (pos[b + 1] - cy) * 2.3, cz + (pos[b + 2] - cz) * 2.3); uv.push(uv[(v0 + k) * 2], uv[(v0 + k) * 2 + 1]);
+          const c = (v0 + k) * 4; col.push(col[c] * 0.2, col[c + 1] * 0.2, col[c + 2] * 0.2, 1); }
+        idx.push(j0, j0 + 1, j0 + 2, j0, j0 + 2, j0 + 3); }
+    }
     const m = new Mesh('cglow', this.scene); const vd = new VertexData(); vd.positions = pos; vd.colors = col; vd.uvs = uv; vd.indices = idx; vd.applyToMesh(m, false);
-    m.material = this.matGlow; m.isPickable = false; m.parent = this.root; this.glowAll = m; this.bloom?.addIncludedOnlyMesh(m);
+    m.material = this.matGlow; m.isPickable = false; m.parent = this.root; this.glowAll = m;
   }
   private dropChunks() { for (const c of this.chunkMesh.values()) this.dropChunk(c); this.chunkMesh.clear(); this.range = [-1, -1]; }
   setTier(t: Tier) { if (t === this.tier) return; this.tier = t; this.dropChunks(); this.applyLook(); this.glowSig = ''; }
-  /** high tier: warm key tint + soft vignette (in-shader image processing, no pass) and a quarter-res bloom on the glow mesh only */
+  /** high tier: warm key tint + soft vignette (in-shader image processing, no pass); bloom = soft outer halo copies in the glow mesh (rebuildGlow) */
   private applyLook() {
     const ip = this.scene.imageProcessingConfiguration, hi = this.tier === 'high';
     ip.vignetteEnabled = hi; ip.colorCurvesEnabled = hi;
     if (hi) {
       ip.vignetteWeight = 1.25; ip.vignetteStretch = 0.6; ip.vignetteColor = new Color4(0.32, 0.18, 0.3, 0); ip.vignetteCameraFov = 0.7;
       const cc = new ColorCurves(); cc.globalHue = 38; cc.globalDensity = 14; cc.globalSaturation = 12; cc.highlightsHue = 45; cc.highlightsDensity = 18; cc.shadowsHue = 300; cc.shadowsDensity = 10; ip.colorCurves = cc;
-      if (!this.bloom) { this.bloom = new GlowLayer('cbloom', this.scene, { mainTextureRatio: 0.25, blurKernelSize: 40 }); this.bloom.intensity = 0.9; if (this.glowAll) this.bloom.addIncludedOnlyMesh(this.glowAll); }
-    } else { this.bloom?.dispose(); this.bloom = null; }
+    }
   }
 
   private keep(it: CInst) { if (it.hi && this.tier === 'low') return false; return hash(it.x, it.z) < (TIERS[this.tier].density[it.layer] ?? 1); }
@@ -348,6 +353,6 @@ export class SceneC {
   dispose() {
     this.disposed = true;
     for (const [id, t] of this.tm) if (t.container) { t.container.dispose(); this.tm.delete(id); }
-    this.bloom?.dispose(); this.bloom = null; { const ip = this.scene.imageProcessingConfiguration; ip.vignetteEnabled = false; ip.colorCurvesEnabled = false; } this.imp?.dispose(); this.back?.dispose(); for (const t of this.groundTex.values()) t.dispose(); this.root.dispose(false, false); this.glowAll?.dispose(); this.matGlow.diffuseTexture?.dispose(); this.matGlow.dispose(); this.matNight.dispose(); this.mat.dispose(); this.matSet.dispose(); for (const m of this.pageMats) m.dispose();
+    { const ip = this.scene.imageProcessingConfiguration; ip.vignetteEnabled = false; ip.colorCurvesEnabled = false; } this.imp?.dispose(); this.back?.dispose(); for (const t of this.groundTex.values()) t.dispose(); this.root.dispose(false, false); this.glowAll?.dispose(); this.matGlow.diffuseTexture?.dispose(); this.matGlow.dispose(); this.matNight.dispose(); this.mat.dispose(); this.matSet.dispose(); for (const m of this.pageMats) m.dispose();
   }
 }
