@@ -129,6 +129,9 @@ def main(slug):
     layout = json.loads((d / 'layout.json').read_text()) if (d / 'layout.json').exists() else {}
     dur = duration(slug)
     errs, warns = [], []
+    if layout.get('endTime'):   # level ends before the song (music fades out there)
+        if dur is not None and layout['endTime'] > dur + 1e-6: errs.append(f'endTime {layout["endTime"]} > audio duration {dur:.2f}')
+        dur = min(dur, layout['endTime']) if dur is not None else layout['endTime']
     taps = [tp['t'] for tp in chart['taps']]
     if dur is None: dur = (taps[-1] + 5) if taps else 60; warns.append(f'audio not found under {REPO}; duration guessed')
     for a, b in zip(taps, taps[1:]):

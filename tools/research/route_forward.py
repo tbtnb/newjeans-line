@@ -13,6 +13,7 @@ XMAX = opt('--xmax', 12.0)
 ch = json.loads((D / 'chart.json').read_text()); lay = json.loads((D / 'layout.json').read_text())
 V = ch['speed'][0]['v']; P = ch['meta']['beat_period']; B0 = ch['meta']['beat0']; PH = 8 * P
 W = max(w['w'] for w in lay['road']['width']); dur = json.loads((ROOT / f'analysis/{SONG}.json').read_text())['duration']
+if lay.get('endTime'): dur = min(dur, lay['endTime'])   # level ends before the song
 T = [x['t'] for x in ch['taps']] + [dur]
 x, z, t0, head = 0.0, 0.0, 0.0, 'N'; strips = []; dirs = []
 def touches(xn, z0, z1, tnow):

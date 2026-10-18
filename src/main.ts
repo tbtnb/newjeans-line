@@ -119,6 +119,7 @@ function setReady() {
 async function beginRun() {
   if (!game || !level) return;
   clearTimeout(failTimer); clearTimeout(clearTimer);
+  audio.setEnd(level.audioDuration ? level.duration : null, level.endFade ?? 1.5);   // level ends before the song: fade out + stop there
   try { await audio.play(readyFrom); } catch (e) { toast(String((e as Error).message)); return; }
   game.start();
   setState('playing');

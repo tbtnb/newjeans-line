@@ -38,11 +38,6 @@
     "t": 151.206,
     "mode": "rise",
     "lead": 2.8
-   },
-   {
-    "t": 196.56,
-    "mode": "fade",
-    "lead": 2.8
    }
   ],
   "width": [
@@ -56,14 +51,6 @@
    },
    {
     "t": 134.22,
-    "w": 1.8
-   },
-   {
-    "t": 166.35,
-    "w": 2.0
-   },
-   {
-    "t": 181.47,
     "w": 1.8
    }
   ]
@@ -378,83 +365,6 @@
     "src": "art/v2/ground-stage.jpg",
     "scale": 30
    }
-  },
-  {
-   "t": 166.324,
-   "label": "Final chorus · 兔耳发夹",
-   "camera": "wide",
-   "note": "two unequal rectangular hairpins = bunny ears; skybridge B2",
-   "palette": {
-    "skyTop": "#24185e",
-    "skyBottom": "#d06fb8",
-    "fog": "#3b2a78",
-    "fogStart": 34,
-    "fogEnd": 120,
-    "ground": "#8a80c0",
-    "road": "#ffffff",
-    "roadSide": "#ffd27a",
-    "line": "#ff5fa8",
-    "light": "#fff0fb",
-    "lightIntensity": 1.1,
-    "ambient": "#9a7ad8",
-    "particles": "confetti"
-   },
-   "backdrop": "art/v2/sky-stage.jpg",
-   "ground": {
-    "src": "art/v2/ground-stage.jpg",
-    "scale": 30
-   }
-  },
-  {
-   "t": 181.442,
-   "label": "Final chorus b · 天桥",
-   "camera": "iso",
-   "palette": {
-    "skyTop": "#24185e",
-    "skyBottom": "#d06fb8",
-    "fog": "#3b2a78",
-    "fogStart": 34,
-    "fogEnd": 120,
-    "ground": "#8a80c0",
-    "road": "#ffffff",
-    "roadSide": "#ffd27a",
-    "line": "#ff5fa8",
-    "light": "#fff0fb",
-    "lightIntensity": 1.1,
-    "ambient": "#9a7ad8",
-    "particles": "confetti"
-   },
-   "backdrop": "art/v2/sky-stage.jpg",
-   "ground": {
-    "src": "art/v2/ground-stage.jpg",
-    "scale": 30
-   }
-  },
-  {
-   "t": 196.56,
-   "label": "Outro · 尾奏琴键",
-   "palette": {
-    "skyTop": "#9aa4e8",
-    "skyBottom": "#ffe6f2",
-    "fog": "#ddd4ff",
-    "fogStart": 40,
-    "fogEnd": 140,
-    "ground": "#f6f0ff",
-    "road": "#ffffff",
-    "roadSide": "#e2bf7a",
-    "line": "#ff9cc8",
-    "light": "#fff6f6",
-    "lightIntensity": 1.0,
-    "ambient": "#e0d8ff",
-    "particles": "stars"
-   },
-   "camera": "high",
-   "note": "long straight-ish meander to the halftone end plinth; three off-road piano keys; distant layers lower with the piano tail",
-   "backdrop": "art/v2/sky-moon.jpg",
-   "ground": {
-    "src": "art/v2/ground-garden.jpg",
-    "scale": 26
-   }
   }
  ],
  "camera": [
@@ -522,22 +432,6 @@
    "preset": "iso",
    "blend": 0.6,
    "shake": 0.12
-  },
-  {
-   "t": 166.324,
-   "preset": "wide",
-   "blend": 1.2
-  },
-  {
-   "t": 173.883,
-   "preset": "iso",
-   "blend": 2.0
-  },
-  {
-   "t": 196.56,
-   "preset": "high",
-   "dist": 24,
-   "blend": 4.0
   }
  ],
  "objects": [
@@ -560,31 +454,6 @@
    },
    "exit": {
     "t": 125.33,
-    "mode": "fall",
-    "dur": 0.8
-   },
-   "side": -2.5,
-   "reanchored": "worldPos -> t/side (integrate.py)"
-  },
-  {
-   "id": "fakefork4",
-   "t": 202.941,
-   "rot": 180,
-   "kind": "box",
-   "size": [
-    1.8,
-    0.7,
-    6.0
-   ],
-   "color": "#F3F0E8",
-   "name": "fake-out fork (visual only, crumbles away)",
-   "appear": {
-    "t": 200.94,
-    "mode": "rise",
-    "dur": 0.6
-   },
-   "exit": {
-    "t": 203.54,
     "mode": "fall",
     "dur": 0.8
    },
@@ -621,38 +490,6 @@
    "t": 8.771,
    "side": 1,
    "id": "art-2",
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/bunny-giant.png",
-   "size": [
-    6,
-    6,
-    0
-   ],
-   "face": "camera",
-   "landmark": true,
-   "glow": 0.45,
-   "near": 2.5,
-   "id": "art-bunny_intro",
-   "t": 198.226,
-   "side": 1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/ward-bed.png",
-   "size": [
-    5.5,
-    4.1,
-    0
-   ],
-   "face": "camera",
-   "near": 2,
-   "t": 211.317,
-   "side": 1,
-   "id": "art-4",
    "y": -0.6
   },
   {
@@ -901,22 +738,6 @@
    "y": -0.6
   },
   {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    4.2,
-    5.6,
-    0
-   ],
-   "face": "camera",
-   "near": 2.5,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 165.024,
-   "side": -1,
-   "y": -0.6
-  },
-  {
    "kind": "facade",
    "src": "art/v2/stage-facade.jpg",
    "size": [
@@ -1124,146 +945,6 @@
   },
   {
    "kind": "standee",
-   "src": "art/v2/star-arch.png",
-   "size": [
-    7,
-    5.25,
-    0
-   ],
-   "face": "camera",
-   "landmark": true,
-   "glowfx": true,
-   "near": 2,
-   "id": "art-arch",
-   "t": 167.962,
-   "side": 1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/bunny-giant.png",
-   "size": [
-    8,
-    8,
-    0
-   ],
-   "face": "camera",
-   "landmark": true,
-   "near": 3,
-   "id": "art-bunny_rise",
-   "appear": {
-    "t": 167.315,
-    "mode": "rise",
-    "dur": 2.2
-   },
-   "t": 172.199,
-   "side": -1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    4.2,
-    5.6,
-    0
-   ],
-   "face": "camera",
-   "near": 2.5,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 174.881,
-   "side": -1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    4.2,
-    5.6,
-    0
-   ],
-   "face": "camera",
-   "near": 2.5,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 179.814,
-   "side": -1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/star-arch.png",
-   "size": [
-    7,
-    5.25,
-    0
-   ],
-   "face": "camera",
-   "landmark": true,
-   "glowfx": true,
-   "near": 2,
-   "id": "art-arch",
-   "t": 182.546,
-   "side": 1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/bunny-giant.png",
-   "size": [
-    8,
-    8,
-    0
-   ],
-   "face": "camera",
-   "landmark": true,
-   "near": 3,
-   "id": "art-bunny_rise",
-   "appear": {
-    "t": 183.424,
-    "mode": "rise",
-    "dur": 2.2
-   },
-   "t": 186.043,
-   "side": -1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    4.2,
-    5.6,
-    0
-   ],
-   "face": "camera",
-   "near": 2.5,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 190.637,
-   "side": 1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
-   "src": "art/v2/flip-phone.png",
-   "size": [
-    4.2,
-    5.6,
-    0
-   ],
-   "face": "camera",
-   "near": 2.5,
-   "glowfx": true,
-   "id": "art-phone",
-   "t": 193.334,
-   "side": 1,
-   "y": -0.6
-  },
-  {
-   "kind": "standee",
    "src": "art/v2/bunny-giant.png",
    "size": [
     6,
@@ -1369,92 +1050,66 @@
    "color": "#ffb3e0",
    "level": 1.4,
    "until": 116.503
-  },
-  {
-   "t": 167.015,
-   "type": "light",
-   "target": "art-phone",
-   "every": 0.07,
-   "dur": 0.15,
-   "color": "#ffb3e0",
-   "level": 1.4,
-   "until": 169.415
-  },
-  {
-   "t": 167.369,
-   "type": "burst",
-   "at": "player",
-   "color": "#ffe7a8",
-   "amount": 60
-  },
-  {
-   "t": 174.574,
-   "type": "light",
-   "target": "art-phone",
-   "every": 0.07,
-   "dur": 0.15,
-   "color": "#ffb3e0",
-   "level": 1.4,
-   "until": 176.974
   }
  ],
  "diamonds": [
   {
-   "t": 8.529,
+   "t": 15.602,
    "side": 0,
-   "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
+   "moved": "import_taps: largest tap gap in tenth 1"
   },
   {
-   "t": 27.662,
+   "t": 28.829,
    "side": 0,
-   "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
+   "moved": "import_taps: largest tap gap in tenth 2"
   },
   {
-   "t": 52.673,
+   "t": 38.278,
    "side": 0,
-   "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
+   "moved": "import_taps: largest tap gap in tenth 3"
   },
   {
-   "t": 84.275,
+   "t": 55.522,
    "side": 0,
-   "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
+   "moved": "import_taps: largest tap gap in tenth 4"
   },
   {
-   "t": 98.499,
+   "t": 79.852,
    "side": 0,
-   "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
+   "moved": "import_taps: largest tap gap in tenth 5"
   },
   {
-   "t": 117.419,
+   "t": 88.356,
    "side": 0,
-   "moved": "kept off corners after the OMG re-chart (chart-research)"
+   "moved": "import_taps: largest tap gap in tenth 6"
   },
   {
-   "t": 142.986,
-   "side": 0
+   "t": 108.197,
+   "side": 0,
+   "moved": "import_taps: largest tap gap in tenth 7"
   },
   {
-   "t": 150.466,
+   "t": 114.811,
    "side": 0,
-   "moved": "kept off taps after the OMG lyric re-chart (chart-research)"
+   "moved": "import_taps: largest tap gap in tenth 8"
   },
   {
-   "t": 185.447,
+   "t": 127.567,
    "side": 0,
-   "moved": "kept off corners after the OMG re-chart (chart-research)"
+   "moved": "import_taps: largest tap gap in tenth 9"
   },
   {
-   "t": 199.853,
+   "t": 147.882,
    "side": 0,
-   "moved": "kept off corners after the OMG re-chart (chart-research)"
+   "moved": "import_taps: largest tap gap in tenth 10"
   }
  ],
  "crowns": [
   {
-   "t": 95.102
+   "t": 53.968
   },
   {
-   "t": 132.882
+   "t": 106.88
   }
  ],
  "finish": {
@@ -1497,7 +1152,7 @@
  },
  "elevation": [
   {
-   "t": 46.427,
+   "t": 45.364327,
    "type": "fall",
    "dy": -4
   },
@@ -1514,7 +1169,7 @@
    "dy": 6
   },
   {
-   "t": 106.898,
+   "t": 105.835429,
    "type": "fall",
    "dy": -6
   },
@@ -1525,20 +1180,9 @@
    "dy": 4
   },
   {
-   "t": 167.369,
+   "t": 151.189,
    "type": "fall",
    "dy": -8
-  },
-  {
-   "t0": 181.819,
-   "t1": 188.055,
-   "type": "ramp",
-   "dy": 5
-  },
-  {
-   "t": 196.559,
-   "type": "fall",
-   "dy": -5
   }
  ],
  "dressing": {
@@ -3903,5 +3547,7 @@
   "lead": 6.5,
   "tail": 4,
   "maxActive": 40
- }
+ },
+ "endTime": 160.637,
+ "endFade": 1.5
 }

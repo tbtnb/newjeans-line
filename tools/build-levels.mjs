@@ -12,7 +12,10 @@ for (const id of SONGS) {
   const layout = JSON.parse(readFileSync(`${dir}/layout.json`, 'utf8'));
   const an = JSON.parse(readFileSync(`analysis/${id}.json`, 'utf8'));
   const grid = existsSync(`analysis/${id}.grid.json`) ? JSON.parse(readFileSync(`analysis/${id}.grid.json`, 'utf8')) : null;
-  const duration = an.duration;
+  const audioDuration = an.duration;
+  // layout.endTime: the level ends before the song (route/finish/progress use it, the music fades out there)
+  const duration = layout.endTime ? Math.min(layout.endTime, audioDuration) : audioDuration;
+  const early = duration < audioDuration - 0.05;
   let beats = an.beats;
   if (grid) { beats = []; for (let t = grid.beat0; t < duration; t += grid.period) beats.push(Math.round(t * 1000) / 1000); }
   const kicks = an.kick.filter(([, s]) => s >= 0.45).map(([t]) => t);
@@ -21,7 +24,7 @@ for (const id of SONGS) {
   let minRun = Infinity; for (let i = 3; i < taps.length; i++) minRun = Math.min(minRun, (taps[i] - taps[i - 3]) / 3);
   const difficulty = Math.max(1, Math.min(5, Math.round(density * 1.2 + (minRun < 0.24 ? 1 : 0))));
   const m = META[id];
-  const out = { id, title: m.title, album: m.album, duration, bpm: grid ? Math.round(grid.bpm * 100) / 100 : an.tempo, audio: `./audio/${id}.mp3`, cover: m.cover, difficulty, accent: m.accent,
+  const out = { id, title: m.title, album: m.album, duration, bpm: grid ? Math.round(grid.bpm * 100) / 100 : an.tempo, audio: `./audio/${id}.mp3`, cover: m.cover, difficulty, accent: m.accent, ...(early ? { audioDuration, endFade: layout.endFade ?? 1.5 } : {}),
     chart, layout: { ...layout, beats: layout.beats ?? beats, kicks: layout.kicks ?? kicks } };
   writeFileSync(`src/levels/${id}.json`, JSON.stringify(out));
   // level art (schema v2.4): levels-src/<id>/art -> public/levels/<id>/art (served at ./levels/<id>/art/...)
