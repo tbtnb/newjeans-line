@@ -1054,41 +1054,39 @@
    "dir": "R"
   },
   {
-   "t": 77.726,
+   "t": 77.608,
    "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 77.962,
+   "t": 77.844,
    "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 78.198,
+   "t": 78.08,
    "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 78.434,
-   "tag": "vocals",
-   "lyric": "hold",
-   "syl": "hold",
+   "t": 78.316,
+   "tag": "tap",
    "dir": "R"
   },
   {
-   "t": 78.671,
+   "t": 78.553,
    "tag": "tap",
    "dir": "L"
   },
   {
    "t": 78.907,
    "tag": "tap",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 79.379,
    "tag": "kick",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 80.324,
@@ -1119,14 +1117,14 @@
    "tag": "vocals",
    "lyric": "no",
    "syl": "no",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 82.686,
    "tag": "vocals",
    "lyric": "걱정",
    "syl": "걱",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 83.159,
@@ -1155,24 +1153,24 @@
   {
    "t": 85.757,
    "tag": "tap",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 86.23,
    "tag": "tap",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 86.466,
    "tag": "vocals",
    "lyric": "혼자라도",
    "syl": "혼",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 86.702,
    "tag": "tap",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 86.938,
@@ -1945,22 +1943,22 @@
   {
    "t": 146.464,
    "tag": "snare",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 147.409,
    "tag": "snare",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 148.354,
    "tag": "snare",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 149.299,
    "tag": "tap",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 150.244,
@@ -2007,14 +2005,14 @@
   {
    "t": 154.968,
    "tag": "snare",
-   "dir": "L"
+   "dir": "R"
   },
   {
    "t": 155.441,
    "tag": "vocals",
    "lyric": "있으면",
    "syl": "으",
-   "dir": "R"
+   "dir": "L"
   },
   {
    "t": 155.913,
@@ -2055,7 +2053,7 @@
   {
    "t": 157.803,
    "tag": "tap",
-   "dir": "R"
+   "dir": "L"
   }
  ],
  "sections": [
@@ -2197,12 +2195,12 @@
    },
    "raw": 362,
    "final": 361,
-   "questionable": 1,
+   "questionable": 6,
    "removed": 1
   },
   "user_taps": {
    "source": "nj-input/omg-user-taps-v1.json (user, /tapper/, 362 taps, calibration 0)",
-   "snap": "tools/charts/omg_user_snap.py (local offset + Viterbi on 1/16 slots, 1/16 penalty, onset tie-break)",
+   "snap": "tools/charts/omg_user_refine.py (v2: onset-anchored offset + onset-evidence Viterbi on 1/16 slots; v1 omg_user_snap.py)",
    "global_offset_ms": -55.5,
    "local_offset_ms": {
     "min": -74.0,
@@ -2223,7 +2221,46 @@
     "0.956 s (engine rule: first tap >= 1.0 s)"
    ],
    "level_end": "layout.endTime 160.637 s (music fades out 1.5 s)",
-   "report": "deliverables/omg-user-import-report.md"
+   "report": "deliverables/omg-user-import-report.md",
+   "refine": {
+    "tool": "tools/charts/omg_user_refine.py",
+    "version": "v2",
+    "offset": "onset cross-correlation, local (+-10 s, median of 9)",
+    "global_offset_onset_ms": -57,
+    "local_offset_onset_ms": {
+     "min": -80.0,
+     "median": -56.0,
+     "max": -16.0
+    },
+    "changed_vs_faa6927": [
+     {
+      "from": 77.7258,
+      "to": 77.6077,
+      "reason": "vocal run: \"noth-\" (syllable 77.634, raw tap -6 ms) on e"
+     },
+     {
+      "from": 77.962,
+      "to": 77.8439,
+      "reason": "vocal run: \"else\" (77.855) on a"
+     },
+     {
+      "from": 78.1982,
+      "to": 78.0801,
+      "reason": "vocal run: \"I\" (78.093) on e"
+     },
+     {
+      "from": 78.4345,
+      "to": 78.3164,
+      "reason": "vocal run: \"would\" (78.287) + kick on a"
+     },
+     {
+      "from": 78.6707,
+      "to": 78.5526,
+      "reason": "vocal run: \"on\" (78.583) on e"
+     }
+    ],
+    "report": "deliverables/omg-user-refine-report.md"
+   }
   },
   "lyrics_chart_previous": {
    "tool": "tools/research/omg_v3_chart.py",
