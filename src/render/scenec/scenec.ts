@@ -81,7 +81,7 @@ export class SceneC {
     gm.emissiveColor = Color3.White(); gm.specularColor = Color3.Black(); gm.alphaMode = Constants.ALPHA_ADD; gm.disableDepthWrite = true; gm.backFaceCulling = false; gm.fogEnabled = false;
     this.matGlow = gm;
     this.applyLook();
-    this.imp = new Impostors(scene, this.root, this.plc.chunks, spec, o.base, this.night, o.tier === 'low' ? 0.35 : 1); this.back = new Backdrop(scene, this.root, spec, o.base);
+    this.imp = new Impostors(scene, this.root, this.plc.chunks, spec, o.base, this.night, o.tier === 'low' ? 0.18 : 1); this.back = new Backdrop(scene, this.root, spec, o.base);
     for (const mm of [this.mat, this.matSet, this.matNight, this.matGlow]) new Cutaway(mm);   // after the page clones: pages / road are never cut
     for (const s of this.plc.sets) this.sets.push(this.makeSet(s));
     // swap in built models as they load (placeholders until then; a missing model simply keeps its placeholder)
@@ -121,7 +121,7 @@ export class SceneC {
     m.material = this.matGlow; m.isPickable = false; m.parent = this.root; this.glowAll = m;
   }
   private dropChunks() { for (const c of this.chunkMesh.values()) this.dropChunk(c); this.chunkMesh.clear(); this.range = [-1, -1]; }
-  setTier(t: Tier) { if (t === this.tier) return; this.tier = t; this.dropChunks(); this.applyLook(); this.glowSig = ''; }
+  setTier(t: Tier) { if (t === this.tier) return; this.tier = t; this.dropChunks(); this.applyLook(); this.glowSig = ''; this.imp?.setDensity(t === 'low' ? 0.18 : 1); }
   /** high tier: warm key tint + soft vignette (in-shader image processing, no pass); bloom = soft outer halo copies in the glow mesh (rebuildGlow) */
   private applyLook() {
     const ip = this.scene.imageProcessingConfiguration, hi = this.tier === 'high';
@@ -323,7 +323,7 @@ export class SceneC {
     this.time += dt; const T = TIERS[this.tier];
     if (this.dirtyAt >= 0 && this.time - this.dirtyAt > 0.4) { this.dirtyAt = -1; this.dropChunks(); }
     const key = typeof location === 'undefined' || !/[?&]cam=old\b/.test(location.search);   // key camera sees further ahead, nothing behind
-    const [a, b] = activeRange(this.plc.chunks, t, key ? 1.5 : T.behind, key ? T.ahead + 2 : T.ahead);
+    const [a, b] = activeRange(this.plc.chunks, t, key ? 1.5 : T.behind, key ? T.ahead + (this.tier === 'high' ? 2 : 0) : T.ahead);
     if (a !== this.range[0] || b !== this.range[1]) {
       for (const [i, m] of this.chunkMesh) if (i < a || i > b) { this.dropChunk(m); this.chunkMesh.delete(i); }
       for (let i = a; i <= b; i++) if (!this.chunkMesh.has(i)) this.chunkMesh.set(i, this.buildChunk(this.plc.chunks[i]));
@@ -333,7 +333,7 @@ export class SceneC {
     this.writeTypes(t, beatK);
     this.imp?.update(a, Math.min(this.plc.chunks.length - 1, b + 3));   // impostors reach further ahead than the decor window
     if (cam && this.back) { let zi = this.plc.chunks[a].zone, ylo = 1e9; for (let i = a; i <= b; i++) { const c = this.plc.chunks[i]; if (c.t0 <= t) zi = c.zone; ylo = Math.min(ylo, c.y); }
-      this.back.update(zi, cam, ylo - 25, dt || 0.016); this.curZone = zi; }
+      this.back.update(this.tier === 'high' ? zi : -1, cam, ylo - 25, dt || 0.016); this.curZone = zi; }
     this.rebuildGlow(t);
     let tris = 0, inst = 0, sets = 0, tb = 0, win = 0; const A = this.spec.assets;
     for (const e of this.sets) { this.animSet(e, t, beatK, cam); if (e.on) { sets++; win += e.tris; if (!this.scene.frustumPlanes || !e.far || (e.far.computeWorldMatrix(), e.far.isInFrustum(this.scene.frustumPlanes))) tris += e.tris; tb += Math.max(e.tris, A[e.def.a]?.tris ?? 0); } }

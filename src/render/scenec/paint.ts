@@ -64,6 +64,7 @@ export class Impostors {
     const m = new Mesh('cimp', this.scene); const vd = new VertexData(); vd.positions = pos; vd.uvs = uv; vd.colors = col; vd.indices = idx; vd.applyToMesh(m, false);
     m.hasVertexAlpha = false; m.material = this.mat; m.isPickable = false; m.parent = this.root; m.freezeWorldMatrix(); this.mesh = m; this.tris = idx.length / 3;
   }
+  setDensity(d: number) { if (d !== this.density) { this.density = d; this.sig = ''; } }
   visible() { return !!this.mesh; }
   dispose() { this.mesh?.dispose(); this.mat.diffuseTexture?.dispose(); this.mat.dispose(); }
 }
@@ -81,7 +82,7 @@ export class Backdrop {
   }
   /** zi: current zone; cam: camera position; y: band bottom (below the lowest page in view); dt for the cross-fade */
   update(zi: number, cam: Vector3, y: number, dt: number) {
-    const t = this.texOf(zi); if (!t) { this.a.setEnabled(false); this.b.setEnabled(false); return; }
+    const t = zi < 0 ? null : this.texOf(zi);   // zi < 0: off (low tier) if (!t) { this.a.setEnabled(false); this.b.setEnabled(false); return; }
     if (zi !== this.cur) {   // B takes the old texture and fades out over A with the new one
       if (this.cur >= 0 && this.ma.diffuseTexture) { this.mb.diffuseTexture = this.ma.diffuseTexture; this.fadeT = 0; }
       this.ma.diffuseTexture = t; this.cur = zi;

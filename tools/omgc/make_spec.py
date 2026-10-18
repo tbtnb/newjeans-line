@@ -209,7 +209,7 @@ for z in zones:
     bright = z['layers'][0]['colors'] if z['layers'] else [0, 1, 2, 3, 4]
     for kind, n in CLUMPS[zid].items():
         aid, cl, near = CL[kind]
-        z['layers'].append(dict(asset=aid, layer='mid', count=max(1, round(n * zk)), near=near, y=[0, 0], scale=[1.0, 1.35] if aid in ('forest-clump', 'hedge') else [1.3, 1.9] if aid != 'paper-hill-lo' else [1.3, 2.0], colors=bright, hi=True, cluster=cl))
+        z['layers'].append(dict(asset=aid, layer='mid', count=max(1, round(n * zk)), near=near, y=[0, 0], scale=[0.75, 1.0] if aid == 'forest-clump' else [1.0, 1.3] if aid == 'hedge' else [1.1, 1.6] if aid != 'paper-hill-lo' else [1.0, 1.5], colors=bright, hi=True, cluster=cl))
 # ---- v4 painted layer: impostor carpet (sprite cards from tools/impostors), painted ground tiles + horizon backdrops (Codex)
 IMP = {
  'z01': [('tree', 3), ('tree-lo', 2), ('forest-clump', 2), ('hedge', 1), ('tulip-bed', 1), ('bunny-house', 0.4), ('fence', 0.5), ('paper-hill', 0.8), ('fern', 1)],
