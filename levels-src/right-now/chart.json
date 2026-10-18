@@ -70,11 +70,6 @@
    "tag": "melody"
   },
   {
-   "t": 10.8,
-   "dir": "L",
-   "tag": "vocal"
-  },
-  {
    "t": 11.497,
    "dir": "R",
    "tag": "kick"
@@ -2174,6 +2169,16 @@
  "meta": {
   "bpm": 172.0,
   "beat0": 0.335,
-  "grid_note": "W4 chart-report: 172 BPM constant, bar0 0.335 s (analysis grid.json tracks 2/3 tempo)"
+  "grid_note": "W4 chart-report: 172 BPM constant, bar0 0.335 s (analysis grid.json tracks 2/3 tempo)",
+  "integc_removed": [
+   {
+    "t": 10.8,
+    "tag": "vocal",
+    "why": ""
+   }
+  ],
+  "integc_repair": [
+   "group [10.8]: window 9.579-11.497 s (1 re-planned turns), remainder re-attached with rotation 90 deg, translation (7.48, 113.40); crossings 11; objects transformed 42, window-moved 0, new object/road intersections before nudge 0"
+  ]
  }
 }

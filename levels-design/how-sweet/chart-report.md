@@ -141,3 +141,36 @@ Cross-check on separated stems (demucs; times corrected −50 ms): 306/307 taps 
 3. **Slot selection**: every 16th (8th for Right Now) is scored from the stems; for each bar the best tap set is chosen subject to the min-gap floor, the burst limit and a phrase-repetition bonus (bar 3 of a 4-bar group echoes bar 1 → call-and-response). Automatic output = candidates.
 4. **Hand plans / edits**: phrase-end runs and fills (listed in the rationale) are written explicitly; first-tap rule edits.
 5. **Verification**: per-tap transient offsets in the full mix + stem-onset coverage (below). I could not *listen* in this environment; tap placement is grounded in measured onsets, stem levels and the song structure, so a human listening pass is still recommended (see "open issues").
+
+
+## integ-c rhythm-logic edit (2026-10-18): flagged taps removed, route repaired locally
+Rule: rhythm logic comes before density. Each section follows one audible layer, and faint or off-layer taps are not used. Taps: 307 → 300.
+
+| removed tap (s) | tag | why |
+|---|---|---|
+| 38.378 | fill-16th |  |
+| 38.618 | fill-16th |  |
+| 46.178 | fill-16th |  |
+| 46.298 | fill-16th |  |
+| 134.736 | kick |  |
+| 153.576 | fill-16th |  |
+| 161.256 | fill-16th |  |
+
+16th fills, judged from full-mix onsets and the drum stem at each 16th position:
+- 38.26–38.74 s: the 16th roll is uniform at about 0.5 in the full mix (drum stem 0.31–0.39), while the 8ths are at 0.66–1.18. The fill is reduced to 8ths: 38.378 and 38.618 are removed, and 38.498 (full mix 0.51) is kept.
+- 45.94–46.42 s: steps 13–15 are at 0.30–0.36 in the full mix. 46.178 (the 8th, full mix 0.34) and 46.298 are removed. 46.058 is kept: it is a clear kick hit (kick band 0.86; chartlogic leaves it unflagged), and removing it as well would leave an odd number of removals, which forces the rest of the route to rotate.
+- 153.58 s and 161.26 s: only the 16th 'e' is weak (full mix 0.47–0.49). The 'and-a-one' pickup after it (steps 14, 15 and 0) is clearly audible (full mix 0.71–1.0, snare 0.71–0.88), so only the 'e' is removed.
+- 134.736 s is faint and is removed.
+
+**Route repair** (`tools/charts/integc_repair.py`). Every tap is a 90° turn, so removing one flips the heading parity of the rest of the route.
+- Only a short window after each removal is re-planned. The designer's remaining route is then re-attached verbatim as a rigid copy: identical shape, rotated by k·90° and/or translated.
+- Objects placed at absolute world positions that come after the join get the same transform. Objects inside the window move with the route there.
+- The validator's same-level overlap rule and the air-time rule are kept, and the join is chosen to avoid new object/road intersections.
+
+Repair log:
+- group [38.378, 38.618]: window 38.258-38.738 s (2 re-planned turns), remainder re-attached with rotation 0 deg, translation (0.00, -0.00); crossings 73; objects transformed 45, window-moved 0, new object/road intersections before nudge 0
+- group [46.178, 46.298]: window 46.058-46.418 s (1 re-planned turns), remainder re-attached with rotation 0 deg, translation (-1.08, 1.08); crossings 76; objects transformed 45, window-moved 0, new object/road intersections before nudge 0
+- group [134.736]: window 134.256-140.976 s (10 re-planned turns), remainder re-attached with rotation 270 deg, translation (76.50, 31.14); crossings 89; objects transformed 11, window-moved 0, new object/road intersections before nudge 1
+- group [153.576, 161.256]: window 153.456-161.376 s (16 re-planned turns), remainder re-attached with rotation 0 deg, translation (-4.32, -4.32); crossings 90; objects transformed 10, window-moved 1, new object/road intersections before nudge 1
+
+Chartlogic after the edit: see docs/verification/chartlogic/how-sweet.md.

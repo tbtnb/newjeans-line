@@ -138,3 +138,33 @@ Cross-check on separated stems (demucs; times corrected −50 ms): 257/257 taps 
 3. **Slot selection**: every 16th (8th for Right Now) is scored from the stems; for each bar the best tap set is chosen subject to the min-gap floor, the burst limit and a phrase-repetition bonus (bar 3 of a 4-bar group echoes bar 1 → call-and-response). Automatic output = candidates.
 4. **Hand plans / edits**: phrase-end runs and fills (listed in the rationale) are written explicitly; first-tap rule edits.
 5. **Verification**: per-tap transient offsets in the full mix + stem-onset coverage (below). I could not *listen* in this environment; tap placement is grounded in measured onsets, stem levels and the song structure, so a human listening pass is still recommended (see "open issues").
+
+
+## integ-c rhythm-logic edit (2026-10-18): flagged taps removed, route repaired locally
+Rule: rhythm logic comes before density. Each section follows one audible layer, and faint or off-layer taps are not used. Taps: 257 → 253.
+
+| removed tap (s) | tag | why |
+|---|---|---|
+| 2.627 | melody | faint intro pluck (mid 0.33, full 0.24) |
+| 57.194 | kick | faint (drums 0.28, full 0.08) |
+| 87.192 | vocal | faint breakdown syllable (lag-corrected vocal stem 0.33, full 0.19) |
+| 183.186 | kick | faint (drums 0.33, full 0.23) |
+
+Breakdown vocal taps, re-measured on the demucs vocals stem with its lag corrected (23 ms, measured by cross-correlation; the mp3 stems that vocal_env.py uses lag by about 46 ms, so its ±30 ms window misses the onsets):
+- The vocal is clearly the lead: about 3 dB below the full mix while the drums are out, versus −16.7 dBFS for the vocal stem against about −26 dBFS for the other stems.
+- 83.193 s (vocal onset 0.38), 88.907 s (0.49) and 89.478 s (1.00) are kept.
+- 87.192 s (vocal 0.33, full mix 0.19) is faint and is removed. 2.627, 57.194 and 183.186 s are faint and are removed.
+- The remaining flag, 'HOP 80.336', is the chorus's last snare hit (0.86 in the full mix) carried across the section line into the breakdown. It is clearly audible, so it is kept.
+
+**Route repair** (`tools/charts/integc_repair.py`). Every tap is a 90° turn, so removing one flips the heading parity of the rest of the route.
+- Only a short window after each removal is re-planned. The designer's remaining route is then re-attached verbatim as a rigid copy: identical shape, rotated by k·90° and/or translated.
+- Objects placed at absolute world positions that come after the join get the same transform. Objects inside the window move with the route there.
+- The validator's same-level overlap rule and the air-time rule are kept, and the join is chosen to avoid new object/road intersections.
+
+Repair log:
+- group [2.627]: window 0.000-7.198 s (1 re-planned turns), remainder re-attached with rotation 270 deg, translation (22.33, 22.33); crossings 20; objects transformed 66, window-moved 2, new object/road intersections before nudge 1
+- group [57.194]: window 56.909-62.623 s (9 re-planned turns), remainder re-attached with rotation 90 deg, translation (-316.12, 34.49); crossings 40; objects transformed 51, window-moved 3, new object/road intersections before nudge 1
+- group [87.192]: window 86.621-88.907 s (1 re-planned turns), remainder re-attached with rotation 270 deg, translation (12.65, 352.55); crossings 40; objects transformed 36, window-moved 0, new object/road intersections before nudge 1
+- group [183.186]: window 182.900-186.043 s (4 re-planned turns), remainder re-attached with rotation 90 deg, translation (-449.73, 78.30); crossings 39; objects transformed 4, window-moved 1, new object/road intersections before nudge 1
+
+Chartlogic after the edit: see docs/verification/chartlogic/bubble-gum.md.

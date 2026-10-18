@@ -294,13 +294,8 @@
    "tag": "clap"
   },
   {
-   "t": 38.589,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
    "t": 39.415,
-   "dir": "R",
+   "dir": "L",
    "tag": "kick"
   },
   {
@@ -484,11 +479,6 @@
    "tag": "clap"
   },
   {
-   "t": 59.506,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
    "t": 59.782,
    "dir": "R",
    "tag": "clap"
@@ -500,7 +490,7 @@
   },
   {
    "t": 60.332,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
@@ -814,11 +804,6 @@
    "tag": "clap"
   },
   {
-   "t": 91.433,
-   "dir": "R",
-   "tag": "kick"
-  },
-  {
    "t": 92.259,
    "dir": "L",
    "tag": "clap"
@@ -969,13 +954,8 @@
    "tag": "phrase"
   },
   {
-   "t": 114.277,
-   "dir": "R",
-   "tag": "clap"
-  },
-  {
    "t": 115.378,
-   "dir": "L",
+   "dir": "R",
    "tag": "clap"
   },
   {
@@ -1344,13 +1324,8 @@
    "tag": "clap"
   },
   {
-   "t": 153.084,
-   "dir": "L",
-   "tag": "kick"
-  },
-  {
    "t": 153.91,
-   "dir": "R",
+   "dir": "L",
    "tag": "clap"
   },
   {
@@ -1534,11 +1509,6 @@
    "tag": "clap"
   },
   {
-   "t": 172.075,
-   "dir": "R",
-   "tag": "clap"
-  },
-  {
    "t": 172.626,
    "dir": "L",
    "tag": "clap"
@@ -1708,5 +1678,47 @@
   "rule": "schema v2.5 per-tap: min(0.5*g, clamp(0.45*g, 0.045, 0.11)), g = smaller neighbouring gap",
   "note": "min tap gap 0.275 s -> tightest window ±110 ms (always <= half the local gap); sparse taps ±110 ms."
  },
- "notes": "Curated per section (one audible layer each), audited by _w4_tools/audit.py: repeated phrases share patterns, faint/off-layer taps removed, 16th bursts only where prominent in the full mix. See chart-report.md."
+ "notes": "Curated per section (one audible layer each), audited by _w4_tools/audit.py: repeated phrases share patterns, faint/off-layer taps removed, 16th bursts only where prominent in the full mix. See chart-report.md.",
+ "meta": {
+  "integc_removed": [
+   {
+    "t": 38.589,
+    "tag": "kick",
+    "why": ""
+   },
+   {
+    "t": 59.506,
+    "tag": "kick",
+    "why": ""
+   },
+   {
+    "t": 91.433,
+    "tag": "kick",
+    "why": ""
+   },
+   {
+    "t": 114.277,
+    "tag": "clap",
+    "why": ""
+   },
+   {
+    "t": 153.084,
+    "tag": "kick",
+    "why": ""
+   },
+   {
+    "t": 172.075,
+    "tag": "clap",
+    "why": ""
+   }
+  ],
+  "integc_repair": [
+   "group [38.589]: window 38.314-39.415 s (1 re-planned turns), remainder re-attached with rotation 270 deg, translation (-24.27, -58.94); crossings 37; objects transformed 45, window-moved 0, new object/road intersections before nudge 0",
+   "group [59.506]: window 59.231-60.332 s (3 re-planned turns), remainder re-attached with rotation 270 deg, translation (40.14, -177.84); crossings 40; objects transformed 31, window-moved 0, new object/road intersections before nudge 0",
+   "group [91.433]: window 91.158-92.259 s (1 re-planned turns), remainder re-attached with rotation 270 deg, translation (15.40, -286.86); crossings 40; objects transformed 24, window-moved 0, new object/road intersections before nudge 0",
+   "group [114.277]: window 114.002-115.378 s (1 re-planned turns), remainder re-attached with rotation 90 deg, translation (343.85, 111.99); crossings 40; objects transformed 14, window-moved 0, new object/road intersections before nudge 0",
+   "group [153.084]: window 152.809-153.910 s (1 re-planned turns), remainder re-attached with rotation 270 deg, translation (362.14, -346.30); crossings 40; objects transformed 9, window-moved 0, new object/road intersections before nudge 0",
+   "group [172.075]: window 170.974-172.626 s (1 re-planned turns), remainder re-attached with rotation 270 deg, translation (429.06, -333.95); crossings 40; objects transformed 3, window-moved 0, new object/road intersections before nudge 0"
+  ]
+ }
 }
