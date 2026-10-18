@@ -115,8 +115,8 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
       const edge = I.near[0] + Math.pow(R(), 0.8) * (I.near[1] - I.near[0]);
       const a = flowAnchor(route, t, side * (w / 2 + edge), 0, 0);
       if (o.hits(a.pos.x, a.pos.z, 1.5 * s + 2.0, a.pos.y - 30, a.pos.y + 30) || nearCam(a.pos.x, a.pos.z, t)) { rejected++; continue; }
-      const f0 = flowAnchor(route, t - 1, 0, 0, 0).pos, f1 = flowAnchor(route, t + 1, 0, 0, 0).pos;
-      const ci = chunkAt(t); const c = chunks[ci]; (c.imp ??= []).push({ k: id, x: a.pos.x, y: groundY(c, a.pos.x, a.pos.z), z: a.pos.z, yaw: Math.atan2(-(f1.x - f0.x), -(f1.z - f0.z)), s, zone: zi });
+      const cp = camPath[Math.min(camPath.length - 1, Math.round(Math.max(0, t - 1.5) * 4))];   // face where the camera is when this card is in view
+      const ci = chunkAt(t); const c = chunks[ci]; (c.imp ??= []).push({ k: id, x: a.pos.x, y: groundY(c, a.pos.x, a.pos.z), z: a.pos.z, yaw: Math.atan2(cp.x - a.pos.x, cp.z - a.pos.z), s, zone: zi });
     }
   });
   // set pieces: landmark / hero props at (t, side), pushed outward until clear of every road segment, facing the road

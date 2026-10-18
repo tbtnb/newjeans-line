@@ -15,12 +15,16 @@ import { Color3 } from '@babylonjs/core/Maths/math.color';
 import { DynamicTexture } from '@babylonjs/core/Materials/Textures/dynamicTexture';
 import { Constants } from '@babylonjs/core/Engines/constants';
 import { Quaternion, Vector3 } from '@babylonjs/core/Maths/math.vector';
-import type { Route } from '../../core/path';
+import { anchor, type Route } from '../../core/path';
 import type { SceneCSpec } from '../../core/types';
 import { activeRange, place, type CChunk, type CInst, type CPlacement, type CSet } from './place';
 import { loadModel, placeholders, type Template } from './assets';
 import { CUT, Cutaway } from './cutaway';
 import { Backdrop, Impostors, PageFade } from './paint';
+import { GlowLayer } from '@babylonjs/core/Layers/glowLayer';
+import '@babylonjs/core/Layers/effectLayerSceneComponent';
+import { ColorCurves } from '@babylonjs/core/Materials/colorCurves';
+import { Color4 } from '@babylonjs/core/Maths/math.color';
 import { Texture } from '@babylonjs/core/Materials/Textures/texture';
 import { Material } from '@babylonjs/core/Materials/material';
 
@@ -53,11 +57,11 @@ export class SceneC {
   private tm: Map<string, Template>; private mat: StandardMaterial; private matSet: StandardMaterial; private root: TransformNode;
   private types = new Map<string, TI>(); private chunkMesh = new Map<number, ChunkM>(); private night: boolean[] = []; private matNight!: StandardMaterial; private matGlow!: StandardMaterial; private dirtyAt = -1; private glowAll: Mesh | null = null; private glowSig = ''; private pages: Mesh[] = []; private pageMats: StandardMaterial[] = []; private sets: SetE[] = [];
   private range: [number, number] = [-1, -1]; private tier: Tier; private zoneCols: number[][][];
-  private imp: Impostors | null = null; private back: Backdrop | null = null; private groundTex = new Map<number, Texture>(); private base = './'; curZone = 0;
+  private imp: Impostors | null = null; private back: Backdrop | null = null; private groundTex = new Map<number, Texture>(); private base = './'; curZone = 0; private bloom: GlowLayer | null = null; private route!: Route;
   private disposed = false; private time = 0; models = 0; last: CStats | null = null;
 
   constructor(private scene: Scene, parent: TransformNode, route: Route, spec: SceneCSpec, o: { duration: number; widthAt: (t: number) => number; roadH: number; hits: (x: number, z: number, r: number, y0: number, y1: number) => boolean; beats: number[]; base: string; tier: Tier }) {
-    this.spec = spec; this.tier = o.tier; this.base = o.base;
+    this.spec = spec; this.tier = o.tier; this.base = o.base; this.route = route;
     this.root = new TransformNode('scenec', scene); this.root.parent = parent;
     this.plc = place(spec, route, { duration: o.duration, widthAt: o.widthAt, roadH: o.roadH, hits: o.hits, beats: o.beats, density: spec.density });
     this.zoneCols = spec.zones.map(z => z.colors.map(hexRGB));
@@ -78,6 +82,7 @@ export class SceneC {
     const gm = new StandardMaterial('paperCGlow', scene); gm.disableLighting = true; gm.diffuseTexture = tex; gm.useAlphaFromDiffuseTexture = true; gm.diffuseColor = Color3.Black();
     gm.emissiveColor = Color3.White(); gm.specularColor = Color3.Black(); gm.alphaMode = Constants.ALPHA_ADD; gm.disableDepthWrite = true; gm.backFaceCulling = false; gm.fogEnabled = false;
     this.matGlow = gm;
+    this.applyLook();
     this.imp = new Impostors(scene, this.root, this.plc.chunks, spec, o.base, this.night, o.tier === 'low' ? 0.35 : 1); this.back = new Backdrop(scene, this.root, spec, o.base);
     for (const mm of [this.mat, this.matSet, this.matNight, this.matGlow]) new Cutaway(mm);   // after the page clones: pages / road are never cut
     for (const s of this.plc.sets) this.sets.push(this.makeSet(s));
@@ -90,7 +95,7 @@ export class SceneC {
     const on = [...this.chunkMesh.entries()].filter(([, c]) => c.L && t > c.t0 - 4.8).map(([i]) => i);
     const sOn = this.sets.filter(e => e.on && t > e.def.popAt + 0.5 && WIN[e.def.a] && (this.night[e.def.zone] || WIN_ALWAYS.has(e.def.a)));
     const sig = on.join(',') + '|' + sOn.map(e => this.sets.indexOf(e)).join(',');
-    if (sig === this.glowSig) return; this.glowSig = sig; this.glowAll?.dispose(); this.glowAll = null; if (!on.length && !sOn.length) return;
+    if (sig === this.glowSig) return; this.glowSig = sig; if (this.glowAll) this.bloom?.removeIncludedOnlyMesh(this.glowAll); this.glowAll?.dispose(); this.glowAll = null; if (!on.length && !sOn.length) return;
     const pos: number[] = [], col: number[] = [], uv: number[] = [], idx: number[] = [];
     for (const i of on) { const c = this.chunkMesh.get(i)!, L = c.L!, i0 = pos.length / 3;
       for (let k = 0; k < L.pos.length; k += 3) pos.push(L.pos[k], L.pos[k + 1] + c.y, L.pos[k + 2]);
@@ -107,10 +112,20 @@ export class SceneC {
       q(0, H * 0.5, z + 0.2, H * 0.42, this.night[d.zone] ? 0.22 : 0.12);
     }
     const m = new Mesh('cglow', this.scene); const vd = new VertexData(); vd.positions = pos; vd.colors = col; vd.uvs = uv; vd.indices = idx; vd.applyToMesh(m, false);
-    m.material = this.matGlow; m.isPickable = false; m.parent = this.root; this.glowAll = m;
+    m.material = this.matGlow; m.isPickable = false; m.parent = this.root; this.glowAll = m; this.bloom?.addIncludedOnlyMesh(m);
   }
   private dropChunks() { for (const c of this.chunkMesh.values()) this.dropChunk(c); this.chunkMesh.clear(); this.range = [-1, -1]; }
-  setTier(t: Tier) { if (t === this.tier) return; this.tier = t; this.dropChunks(); }
+  setTier(t: Tier) { if (t === this.tier) return; this.tier = t; this.dropChunks(); this.applyLook(); this.glowSig = ''; }
+  /** high tier: warm key tint + soft vignette (in-shader image processing, no pass) and a quarter-res bloom on the glow mesh only */
+  private applyLook() {
+    const ip = this.scene.imageProcessingConfiguration, hi = this.tier === 'high';
+    ip.vignetteEnabled = hi; ip.colorCurvesEnabled = hi;
+    if (hi) {
+      ip.vignetteWeight = 1.25; ip.vignetteStretch = 0.6; ip.vignetteColor = new Color4(0.32, 0.18, 0.3, 0); ip.vignetteCameraFov = 0.7;
+      const cc = new ColorCurves(); cc.globalHue = 38; cc.globalDensity = 14; cc.globalSaturation = 12; cc.highlightsHue = 45; cc.highlightsDensity = 18; cc.shadowsHue = 300; cc.shadowsDensity = 10; ip.colorCurves = cc;
+      if (!this.bloom) { this.bloom = new GlowLayer('cbloom', this.scene, { mainTextureRatio: 0.25, blurKernelSize: 40 }); this.bloom.intensity = 0.9; if (this.glowAll) this.bloom.addIncludedOnlyMesh(this.glowAll); }
+    } else { this.bloom?.dispose(); this.bloom = null; }
+  }
 
   private keep(it: CInst) { if (it.hi && this.tier === 'low') return false; return hash(it.x, it.z) < (TIERS[this.tier].density[it.layer] ?? 1); }
   private colOf(it: CInst, model: boolean) { const c = this.zoneCols[it.zone][it.c] ?? [1, 1, 1]; const k = model ? 0.12 : 0.85; return [1 + (c[0] - 1) * k, 1 + (c[1] - 1) * k, 1 + (c[2] - 1) * k]; }
@@ -132,14 +147,21 @@ export class SceneC {
   tileOf(zi: number) { return this.spec.zones[zi]?.tile ?? 25; }
   private buildPages() {
     const pg = this.spec.pagePad ?? 28, Z = this.spec.zones.length;
+    const RS: number[][] = []; for (const c of this.plc.chunks) for (let k = 0; k < 6; k++) { const p = anchor(this.route, c.t0 + (c.t1 - c.t0) * k / 6).pos; RS.push([p.x, p.z, c.zone]); }   // road samples by zone
     for (let zi = 0; zi < Z; zi++) {
       const Zs = this.spec.zones[zi], tex = this.groundTexOf(zi), tile = Zs.tile ?? 25;
       const pos: number[] = [], col: number[] = [], idx: number[] = [], uv: number[] = []; const gc = tex ? [1, 1, 1] : hexRGB(Zs.palette.ground ?? '#eeeeee');
       // each page rect is a 4x4 grid: the outer ring has alpha 0 (dithered fade over F m), so overlapping zones / terraces blend
+      // each page rect is a 7x7 grid; alpha = rim fade (F m) x zone ownership: a point belongs to the zone whose road is nearest,
+      // blended over ~16 m, so the next zone's page never covers this zone's road area (and vice versa)
+      const own = (x: number, z: number) => { let dO = 1e9, dX = 1e9; for (const r of RS) { const d = (r[0] - x) ** 2 + (r[1] - z) ** 2; if (r[2] === zi) { if (d < dO) dO = d; } else if (d < dX) dX = d; }
+        return Math.min(1, Math.max(0, (Math.sqrt(dX) - Math.sqrt(dO)) / 16 + 0.5)); };
       const rect = (x0: number, z0: number, x1: number, z1: number, y: number) => {
-        const F = Math.min(14, (x1 - x0) / 3, (z1 - z0) / 3), xs = [x0, x0 + F, x1 - F, x1], zs = [z0, z0 + F, z1 - F, z1], i0 = pos.length / 3;
-        for (let j = 0; j < 4; j++) for (let i = 0; i < 4; i++) { pos.push(xs[i], y, zs[j]); uv.push(xs[i] / tile, zs[j] / tile); col.push(gc[0], gc[1], gc[2], i % 3 && j % 3 ? 1 : 0); }
-        for (let j = 0; j < 3; j++) for (let i = 0; i < 3; i++) { const q = i0 + j * 4 + i; idx.push(q, q + 4, q + 5, q, q + 5, q + 1); }
+        const N = 7, F = Math.min(14, (x1 - x0) / 3, (z1 - z0) / 3), i0 = pos.length / 3;
+        for (let j = 0; j < N; j++) for (let i = 0; i < N; i++) { const x = x0 + (x1 - x0) * i / (N - 1), z = z0 + (z1 - z0) * j / (N - 1);
+          const rim = Math.min(1, Math.min(x - x0, x1 - x, z - z0, z1 - z) / F);
+          pos.push(x, y, z); uv.push(x / tile, z / tile); col.push(gc[0], gc[1], gc[2], rim * own(x, z)); }
+        for (let j = 0; j < N - 1; j++) for (let i = 0; i < N - 1; i++) { const q = i0 + j * N + i; idx.push(q, q + N, q + N + 1, q, q + N + 1, q + 1); }
       };
       for (const c of this.plc.chunks) {
         if (c.zone !== zi) continue; const y = c.y - 0.004 * (c.i % 3);
@@ -326,6 +348,6 @@ export class SceneC {
   dispose() {
     this.disposed = true;
     for (const [id, t] of this.tm) if (t.container) { t.container.dispose(); this.tm.delete(id); }
-    this.imp?.dispose(); this.back?.dispose(); for (const t of this.groundTex.values()) t.dispose(); this.root.dispose(false, false); this.glowAll?.dispose(); this.matGlow.diffuseTexture?.dispose(); this.matGlow.dispose(); this.matNight.dispose(); this.mat.dispose(); this.matSet.dispose(); for (const m of this.pageMats) m.dispose();
+    this.bloom?.dispose(); this.bloom = null; { const ip = this.scene.imageProcessingConfiguration; ip.vignetteEnabled = false; ip.colorCurvesEnabled = false; } this.imp?.dispose(); this.back?.dispose(); for (const t of this.groundTex.values()) t.dispose(); this.root.dispose(false, false); this.glowAll?.dispose(); this.matGlow.diffuseTexture?.dispose(); this.matGlow.dispose(); this.matNight.dispose(); this.mat.dispose(); this.matSet.dispose(); for (const m of this.pageMats) m.dispose();
   }
 }
