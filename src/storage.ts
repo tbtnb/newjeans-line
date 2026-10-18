@@ -1,36 +1,69 @@
-import type { LevelRecord, Preferences, SaveData } from './types';
+/** Save data v2. Old v1 saves (key newjeans-line.save.v1) are migrated and the v1 key is kept untouched as a backup. */
+export interface LevelRecord { best: number; diamonds: number; crowns: number; attempts: number; completed: boolean; perfect?: number; taps?: number; }
+export interface Settings { volume: number; offsetMs: number; quality: 'high' | 'low'; vibration: boolean; }
+export interface SaveData { version: 2; selected: string; records: Record<string, LevelRecord>; settings: Settings; migratedFrom?: number; legacy?: unknown; }
 
-const KEY = 'newjeans-line.save.v1';
-export const defaultSettings: Preferences = { volume: 0.75, offsetMs: 0, quality: 'high', vibration: true, guide: true };
+export const KEY_V2 = 'newjeans-line.save.v2';
+export const KEY_V1 = 'newjeans-line.save.v1';
+export const defaultSettings: Settings = { volume: 0.8, offsetMs: 0, quality: 'high', vibration: true };
 export const emptyRecord = (): LevelRecord => ({ best: 0, diamonds: 0, crowns: 0, attempts: 0, completed: false });
-const object = (value: unknown): value is Record<string, unknown> => !!value && typeof value === 'object' && !Array.isArray(value);
-const finite = (value: unknown, min: number, max: number) => typeof value === 'number' && Number.isFinite(value) && value >= min && value <= max;
 
-/** Imports are deliberately strict: a corrupt file must never silently erase progress. */
-export function validateSave(value: unknown, ids: string[]): SaveData {
-  if (!object(value) || value.version !== 1 || typeof value.selected !== 'string' || !ids.includes(value.selected)) throw new Error('这不是有效的 NewJeans Line 存档，或歌曲版本不匹配。');
-  const prefs = value.settings;
-  if (!object(prefs) || !finite(prefs.volume, 0, 1) || !finite(prefs.offsetMs, -500, 500) || !['high', 'low'].includes(prefs.quality as string) || typeof prefs.vibration !== 'boolean' || typeof prefs.guide !== 'boolean') throw new Error('存档中的设置不完整或超出范围。');
-  if (!object(value.records)) throw new Error('存档中的游戏记录无效。');
+const isObj = (v: unknown): v is Record<string, any> => !!v && typeof v === 'object' && !Array.isArray(v);
+const num = (v: unknown, lo: number, hi: number, d: number) => (typeof v === 'number' && Number.isFinite(v) ? Math.max(lo, Math.min(hi, v)) : d);
+
+function normRecord(r: unknown): LevelRecord | null {
+  if (!isObj(r)) return null;
+  const best = num(r.best, 0, 1, 0);
+  return {
+    best, diamonds: Math.round(num(r.diamonds, 0, 10, 0)), crowns: Math.round(num(r.crowns, 0, 3, 0)),
+    attempts: Math.round(num(r.attempts, 0, 1e9, 0)), completed: r.completed === true || best >= 1,
+    ...(typeof r.perfect === 'number' ? { perfect: r.perfect } : {}), ...(typeof r.taps === 'number' ? { taps: r.taps } : {}),
+  };
+}
+
+/** Accepts v2 or v1 objects. Throws on unrecognisable data so an import never silently wipes progress. */
+export function parseSave(value: unknown, ids: string[], fallbackSelected: string): SaveData {
+  if (!isObj(value) || (value.version !== 1 && value.version !== 2)) throw new Error('这不是有效的 NewJeans Line 存档。');
+  if (!isObj(value.records)) throw new Error('存档中的游戏记录无效。');
   const records: Record<string, LevelRecord> = {};
-  for (const [id, entry] of Object.entries(value.records)) {
-    if (!ids.includes(id) || !object(entry) || !finite(entry.best, 0, 1) || !finite(entry.diamonds, 0, 10) || !Number.isInteger(entry.diamonds) || !finite(entry.crowns, 0, 3) || !Number.isInteger(entry.crowns) || !finite(entry.attempts, 0, 1e9) || !Number.isInteger(entry.attempts) || typeof entry.completed !== 'boolean') throw new Error('存档包含无法识别的歌曲或记录。');
-    const best = entry.best as number;
-    const availableCrowns = Number(best + 1e-7 >= 0.3) + Number(best + 1e-7 >= 0.6) + Number(best + 1e-7 >= 1);
-    if (entry.completed !== (best === 1) || (entry.crowns as number) > availableCrowns || (entry.diamonds as number) > Math.floor(best * 10 + 1e-6)) throw new Error('存档中的成绩与收集记录不一致。');
-    records[id] = { best: entry.best as number, diamonds: entry.diamonds as number, crowns: entry.crowns as number, attempts: entry.attempts as number, completed: entry.completed as boolean };
+  const unknown: Record<string, unknown> = {};
+  for (const [id, r] of Object.entries(value.records)) {
+    const n = normRecord(r);
+    if (n && ids.includes(id)) records[id] = n; else unknown[id] = r;
   }
-  return { version: 1, selected: value.selected, records, settings: { volume: prefs.volume as number, offsetMs: prefs.offsetMs as number, quality: prefs.quality as Preferences['quality'], vibration: prefs.vibration, guide: prefs.guide } };
+  const s = isObj(value.settings) ? value.settings : {};
+  const settings: Settings = {
+    volume: num(s.volume, 0, 1, defaultSettings.volume), offsetMs: num(s.offsetMs, -300, 300, 0),
+    quality: s.quality === 'low' ? 'low' : 'high', vibration: s.vibration !== false,
+  };
+  const out: SaveData = { version: 2, selected: ids.includes(value.selected) ? value.selected : fallbackSelected, records, settings };
+  if (value.version === 1) out.migratedFrom = 1;
+  else if (value.migratedFrom) out.migratedFrom = value.migratedFrom;
+  // preserve anything we don't understand (e.g. future songs or legacy fields) instead of dropping it
+  if (Object.keys(unknown).length) out.legacy = { records: unknown };
+  else if (value.legacy) out.legacy = value.legacy;
+  return out;
 }
 
-export function loadSave(ids: string[], initial: string): SaveData {
-  try {
-    const raw = localStorage.getItem(KEY);
-    if (raw) return validateSave(JSON.parse(raw), ids);
-  } catch { /* Private mode and an obsolete or corrupt save use safe defaults. */ }
-  return { version: 1, selected: initial, records: {}, settings: { ...defaultSettings } };
+export function loadSave(ids: string[], initial: string, store: Pick<Storage, 'getItem'> = localStorage): SaveData {
+  for (const key of [KEY_V2, KEY_V1]) {
+    try { const raw = store.getItem(key); if (raw) return parseSave(JSON.parse(raw), ids, initial); } catch { /* try next */ }
+  }
+  return { version: 2, selected: initial, records: {}, settings: { ...defaultSettings } };
 }
 
-export function persistSave(save: SaveData): boolean {
-  try { localStorage.setItem(KEY, JSON.stringify(save)); return true; } catch { return false; }
+export function persistSave(save: SaveData, store: Pick<Storage, 'setItem'> = localStorage): boolean {
+  try { store.setItem(KEY_V2, JSON.stringify(save)); return true; } catch { return false; }
+}
+
+export function mergeRecord(old: LevelRecord | undefined, run: { progress: number; diamonds: number; crowns: number; completed: boolean; perfect?: number; taps?: number }): LevelRecord {
+  const r = old ? { ...old } : emptyRecord();
+  r.attempts += 1;
+  r.best = Math.max(r.best, run.progress);
+  r.diamonds = Math.max(r.diamonds, run.diamonds);
+  r.crowns = Math.max(r.crowns, run.crowns);
+  r.completed = r.completed || run.completed;
+  if (run.completed && run.perfect !== undefined) r.perfect = Math.max(r.perfect ?? 0, run.perfect);
+  if (run.taps !== undefined) r.taps = run.taps;
+  return r;
 }

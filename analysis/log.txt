@@ -1,0 +1,16 @@
+asap 134.4 tempo 129.2 beats 279 onsets 468
+attention 178.0 tempo 105.47 beats 299 onsets 656
+bubble-gum 200.3 tempo 105.47 beats 308 onsets 624
+cookie 233.4 tempo 105.47 beats 401 onsets 918
+cool-with-you 147.9 tempo 136.0 beats 289 onsets 470
+ditto 185.5 tempo 132.51 beats 371 onsets 911
+eta 151.4 tempo 136.0 beats 336 onsets 703
+get-up 36.2 tempo 120.19 beats 68 onsets 124
+how-sweet 219.0 tempo 126.05 beats 440 onsets 986
+hurt 175.0 tempo 90.67 beats 254 onsets 388
+hype-boy 176.6 tempo 99.38 beats 272 onsets 312
+new-jeans 109.0 tempo 132.51 beats 240 onsets 418
+omg 212.3 tempo 126.05 beats 442 onsets 893
+right-now 160.4 tempo 114.84 beats 299 onsets 750
+super-shy 154.7 tempo 147.66 beats 384 onsets 690
+supernatural 191.0 tempo 109.96 beats 335 onsets 749
