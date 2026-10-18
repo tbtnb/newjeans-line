@@ -3,7 +3,7 @@
  *  - ground cover: one merged static mesh per 20 m chunk (props + the chunk's paper page), built when the chunk enters the window
  *  - mid / sky / anim props: one thin-instance mesh per asset type, refilled when the chunk window moves; pop-up spring, bob, beat pulse
  *  - set pieces / landmarks: pop-up-book hinge spring at popAt (the drop for drop pieces), named-pivot beat hooks
- *    (heart pulse, ears wiggle, gate hinge, flags wave), LOD = one merged mesh beyond the LOD distance
+ *    (heart/pulse, ears, gate/lid hinge, flag wave, tower pop, bob, spin, wheel, swing, clock hand), LOD = one merged mesh beyond the LOD distance
  *  - one unlit vertex-colour material for everything (lighting baked into vertex colours), no realtime shadows
  */
 import type { Scene } from '@babylonjs/core/scene';
@@ -163,7 +163,13 @@ export class SceneC {
     const time = this.time;
     for (const p of e.piv) {
       let rx = 0, ry = 0, rz = 0, sc = 1;
-      if (p.kind === 'heart') sc = 1 + 0.12 * beatK;
+      // glTF local axes of a pivot: Blender X = x, Blender Z (up) = y, Blender Y (front-back) = z
+      if (p.kind === 'heart' || p.kind === 'pulse') sc = 1 + 0.12 * beatK;
+      else if (p.kind === 'lid') rx = -1.1 * Math.min(1, Math.max(0, (t - d.popAt - 0.6) / 0.8));      // hinge open about Blender X
+      else if (p.kind === 'spin') ry = time * (0.6 + 0.15 * p.i) * (p.i % 2 ? -1 : 1);                   // about Blender Z
+      else if (p.kind === 'wheel') rz = time * 0.5 * (p.i % 2 ? -1 : 1);                                // about Blender Y (front axis)
+      else if (p.kind === 'swing') rx = 0.18 * Math.sin(time * 2.2 + p.i * 0.9);                        // pendulum about Blender X
+      else if (p.kind === 'hand') { const s = t * 2, k = Math.floor(s), f = Math.min(1, (s - k) * 6); rz = -(k + f) * Math.PI / 30 * (p.i ? 1 : 12); }   // ticks each half second
       else if (p.kind === 'ears' || p.kind === 'ear') rx = -0.22 * beatK;
       else if (p.kind === 'gate') ry = -1.3 * Math.min(1, Math.max(0, (t - d.popAt - 0.6) / 0.8));
       else if (p.kind === 'flag') ry = 0.35 * Math.sin(time * 5 + p.i * 1.3);
