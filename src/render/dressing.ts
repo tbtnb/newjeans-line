@@ -13,7 +13,7 @@ export function defaultProps(p: Palette): DressingProp[] {
     { kind: 'box', size: [1.8, 2.6, 1.8], color: shade(light, -0.03), weight: 3, scale: [0.7, 1.3], scaleY: [0.6, 2.2] },
     { kind: 'group', parts: [{ kind: 'box', pos: [0, 0.8, 0], size: [1.5, 1.6, 1.5], color: shade(mid, 0.05) }, { kind: 'box', pos: [0, 1.95, 0], size: [1.0, 0.7, 1.0], color: shade(light, -0.02) }], weight: 2, scale: [0.8, 1.3], scaleY: [0.8, 1.6] },
     { kind: 'group', parts: [{ kind: 'cylinder', pos: [0, 0.45, 0], size: [0.3, 0.9, 0.3], color: dark }, { kind: 'cone', pos: [0, 1.8, 0], size: [1.5, 2.4, 1.5], color: shade(g, -0.28) }], weight: 2.5, scale: [0.7, 1.25], scaleY: [0.8, 1.4] },
-    { kind: 'box', size: [0.8, 0.8, 0.8], color: acc, weight: 1.5, scale: [0.6, 1.1], scaleY: [0.6, 1.4] },
+    { kind: 'box', size: [0.8, 0.8, 0.8], color: shade(acc, -0.45), weight: 1.5, scale: [0.6, 1.1], scaleY: [0.6, 1.4] },
     { kind: 'box', size: [1.1, 0.9, 1.1], color: dark, weight: 1.2, scale: [0.6, 1.2], scaleY: [0.6, 2.4] },
   ];
 }

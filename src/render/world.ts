@@ -85,7 +85,7 @@ export class World {
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
-    this.engine = new Engine(canvas, true, { preserveDrawingBuffer: false, stencil: false, alpha: true, antialias: true, powerPreference: 'high-performance' }, true);
+    this.engine = new Engine(canvas, true, { preserveDrawingBuffer: false, stencil: true, alpha: true, antialias: true, powerPreference: 'high-performance' }, true);
     this.engine.setHardwareScalingLevel(1 / Math.min(window.devicePixelRatio || 1, 2));
     this.scene = new Scene(this.engine);
     this.scene.clearColor = new Color4(0, 0, 0, 0);
@@ -168,7 +168,7 @@ export class World {
     // player line
     this.headMat = new StandardMaterial('headM', this.scene); this.headMat.specularColor = new Color3(0.1, 0.1, 0.1);
     this.trailMat = new StandardMaterial('trailM', this.scene); this.trailMat.specularColor = new Color3(0.05, 0.05, 0.05);
-    this.head = CreateBox('head', { size: 1 }, this.scene); this.head.scaling.set(LINE_W * 1.06, LINE_H + 0.05, LINE_W * 1.06); // slightly larger than the trail cross-section: no coplanar faces with the run it caps (z-fighting flicker) this.head.material = this.headMat; this.head.parent = this.root;
+    this.head = CreateBox('head', { size: 1 }, this.scene); this.head.scaling.set(LINE_W * 1.06, LINE_H + 0.05, LINE_W * 1.06); /* slightly larger than the trail cross-section: no coplanar faces with the run it caps (z-fighting flicker) */ this.head.material = this.headMat; this.head.parent = this.root; this.head.renderOutline = true; this.head.outlineWidth = 0.22;
     this.trail = CreateBox('trail', { size: 1 }, this.scene); this.trail.material = this.trailMat; this.trail.parent = this.root; this.trail.alwaysSelectAsActiveMesh = true;
     this.trailBuf = new Float32Array(16 * 256); this.trail.thinInstanceSetBuffer('matrix', this.trailBuf, 16, false); this.trail.thinInstanceCount = 0;
     this.skin.attach(this.head, this.headMat, this.trailMat, this.root);
@@ -461,6 +461,9 @@ export class World {
     }
     // line colour
     this.skin.update(lt, pal.line, lineHeading(route, g.turns, lt), true);
+    // readability outline around the head: dark rim on light heads, light rim on dark heads (works with every skin)
+    if (this.head && this.headMat) { const c = this.headMat.diffuseColor; const lum = 0.3 * c.r + 0.59 * c.g + 0.11 * c.b;
+      if (lum > 0.45) this.head.outlineColor.set(c.r * 0.28, c.g * 0.28, c.b * 0.28); else this.head.outlineColor.set(0.97, 0.96, 0.92); }
     // complete: line enters finish, camera rises
     if (g.status === 'complete') { if (this.completeAt < 0) this.completeAt = performance.now() / 1000; const k = smooth((performance.now() / 1000 - this.completeAt) / 2.2); this.rig.extraPitch = 18 * k; this.rig.extraDist = 14 * k; }
     // camera
@@ -552,7 +555,7 @@ export class World {
     const dur = this.level!.duration;
     // protected points: head (bigger radius), road ahead at 0.5/1.0/1.6 s (smaller)
     const pts: [Vector3, number][] = [[this.head.position, 0.2]];
-    for (const dtA of [0.5, 1.0, 1.6]) pts.push([this.v3(posAt(this.route, Math.min(dur, t + dtA))), 0.12]);
+    for (const dtA of [0.5, 1.0, 1.6, 2.4, 3.2]) pts.push([this.v3(posAt(this.route, Math.min(dur, t + dtA))), dtA > 2 ? 0.06 : 0.12]);
     const P = pts.map(([p, r]) => { const v = Vector3.TransformCoordinates(p, view); return { x: v.x / (v.z * th * aspect), y: v.y / (v.z * th), z: v.z, r }; });
     this.occP = P; this.occView = view; this.occTh = th; this.occAspect = aspect;
     if (this.dress) {
@@ -575,7 +578,11 @@ export class World {
       if (v.z > 0.5) {
         const sx = v.x / (v.z * th * aspect), sy = v.y / (v.z * th), sr = o.br! / (v.z * th);
         const lm = !!o.def.landmark;
-        for (const q of lm ? P.slice(0, 1) : P) {                   // landmarks only give way when they cover the head itself
+        // anything big and close to the lens (a large chunk of the screen, in front of the line) gives way too,
+        // landmarks included: they are meant to be seen from a distance, not to wall off the view
+        if (v.z - o.br! * 0.5 < P[0].z && v.z < P[0].z * 0.75 && sr > 0.28) occ = true;
+        for (const q of P) {                                         // landmarks give way only with a tighter footprint (below)
+          if (occ) break;
           if (v.z - o.br! * 0.5 >= q.z) continue;                 // object is behind the protected point
           const dx = (sx - q.x) * aspect, dy = sy - q.y;           // compare in height-normalised units
           if (Math.hypot(dx, dy) < (lm ? sr * 0.6 + 0.04 : sr * 0.85 + q.r)) { occ = true; break; }

@@ -130,7 +130,7 @@ export class LineSkin {
       if (skinned) {
         const c = hex3(col); mat.diffuseColor.copyFrom(c); mat.emissiveColor.copyFrom(c).scaleInPlace(def.emissive);
         mat.specularColor.set(def.specular, def.specular, def.specular); mat.specularPower = def.specPower;
-      } else { mat.specularColor.set(mat === this.headMat ? 0.1 : 0.05, mat === this.headMat ? 0.1 : 0.05, mat === this.headMat ? 0.1 : 0.05); mat.specularPower = 64; }
+      } else { mat.specularColor.set(0.05, 0.05, 0.05); mat.specularPower = 64; }
     }
     this.lastLine = '';
     this.buildDecor();
@@ -243,7 +243,7 @@ export class LineSkin {
     if (def.levelColor && this.headMat && this.trailMat && lineHex !== this.lastLine) {
       this.lastLine = lineHex; const lc = hex3(lineHex);
       this.headMat.diffuseColor.copyFrom(lc); this.trailMat.diffuseColor.copyFrom(lc);
-      this.headMat.emissiveColor.copyFrom(lc).scaleInPlace(0.25); this.trailMat.emissiveColor.copyFrom(lc).scaleInPlace(0.18);
+      this.headMat.emissiveColor.copyFrom(lc).scaleInPlace(0.2); this.trailMat.emissiveColor.copyFrom(lc).scaleInPlace(0.18); // head ~= trail colour (low specular, no washed-out top); readability comes from the outline
     }
     const wall = performance.now() / 1000;
     // particle ageing in real seconds: World renders without engine.runRenderLoop, so the animation ratio is fixed at 1

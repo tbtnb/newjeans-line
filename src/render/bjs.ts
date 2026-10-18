@@ -30,3 +30,4 @@ export { ParticleSystem } from '@babylonjs/core/Particles/particleSystem';
 import '@babylonjs/core/Meshes/thinInstanceMesh';
 import '@babylonjs/core/Particles/particleSystemComponent';
 import '@babylonjs/core/Engines/Extensions/engine.dynamicTexture';
+import '@babylonjs/core/Rendering/outlineRenderer';
