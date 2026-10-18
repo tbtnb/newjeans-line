@@ -10,7 +10,7 @@ const dbg = (...a) => { if (A.verbose) console.error('[play]', ...a); };
 const W = +(A.w ?? 540), H = +(A.h ?? 960), level = +(A.level ?? 5);
 const DISPLAY = process.env.DISPLAY ?? ':99';
 const browser = await chromium.launch({ headless: !A.record && !A.headed, executablePath: '/usr/bin/google-chrome', env: { ...process.env, DISPLAY },
-  args: ['--autoplay-policy=no-user-gesture-required', '--window-position=0,0', `--window-size=${W},${H + 140}`, '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--hide-scrollbars', '--no-first-run', '--no-default-browser-check', '--disable-infobars'] });
+  args: ['--autoplay-policy=no-user-gesture-required', '--window-position=0,0', `--window-size=${W},${H + 140}`, '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--hide-scrollbars', '--no-first-run', '--no-default-browser-check', '--disable-infobars', '--disable-features=Translate,TranslateUI', '--lang=zh-CN'] });
 const ctx = await browser.newContext({ viewport: { width: W, height: H }, deviceScaleFactor: 1, hasTouch: true });
 const page = await ctx.newPage();
 const logs = []; page.on('console', m => { if (m.type() === 'error' || m.type() === 'warning') logs.push(m.type() + ': ' + m.text()); }); page.on('pageerror', e => logs.push('PAGEERROR ' + e.message));
