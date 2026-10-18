@@ -2169,7 +2169,6 @@
  "meta": {
   "bpm": 172.0,
   "beat0": 0.335,
-  "grid_note": "W4 chart-report: 172 BPM constant, bar0 0.335 s (analysis grid.json tracks 2/3 tempo)",
   "integc_removed": [
    {
     "t": 10.8,

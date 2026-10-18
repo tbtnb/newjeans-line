@@ -1,4 +1,4 @@
-## Chart logic: right-now (410 taps; 16th grid from chart meta grid: 172.000 BPM, beat0 0.335 s)
+## Chart logic: right-now (410 taps; 16th grid from analysis grid: 172.000 BPM, beat0 0.335 s)
 
 | section | follows | taps | /s | layer strength (median) | off-layer taps | faint taps | weak bursts | off-grid >25ms | phrase patterns (unique/total) |
 |---|---|---|---|---|---|---|---|---|---|
