@@ -338,6 +338,8 @@ export class SceneC {
         e.piv.push({ node: n, kind: mm[1].toLowerCase(), i: +(mm[2] || 0), base: n.rotationQuaternion?.clone() ?? null, baseS: n.scaling.clone(), baseP: n.position.clone() });
       }
       e.near = r;
+      // v5: a near copy only earns its extra draws when it animates (pivots); static models stay on the merged 1-draw mesh
+      if (!e.piv.length && e.nearMeshes.length > 1) { r.dispose(false, false); e.near = null; e.nearMeshes = []; }
     }
     e.lodFar = !e.near; this.applyLod(e);
   }
