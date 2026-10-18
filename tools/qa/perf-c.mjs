@@ -26,7 +26,7 @@ const zones = await page.evaluate(() => window.__nj.level.layout.scenec.zones.ma
 const probes = []; for (const [id, t0, t1] of zones) { probes.push([id + '-in', Math.max(0.6, t0 + 0.4)]); probes.push([id + '-mid', (t0 + t1) / 2]); }
 // --hero: one probe per zone ~1 s before the line reaches the zone's biggest set piece (popped, in frame like the key renders)
 if (args.includes('--hero')) {
-  const hz = await page.evaluate(() => { const L = window.__nj.level.layout.scenec; return L.zones.map(z => { let b = null; for (const p of z.setpieces) { const tr = L.assets[p.asset]?.tris ?? 0; if (!b || tr > b.tr) b = { t: p.t, tr, a: p.asset }; } return [z.id, b ? Math.max(z.t0 + 0.5, b.t - 1.0) : (z.t0 + z.t1) / 2, b?.a]; }); });
+  const hz = await page.evaluate(() => { const L = window.__nj.level.layout.scenec; return L.zones.map(z => { let b = null; for (const p of z.setpieces) { const tr = L.assets[p.asset]?.tris ?? 0; if (!b || tr > b.tr) b = { t: p.t, tr, a: p.asset }; } return [z.id, b ? Math.max(z.t0 + 1.3, b.t - 1.0) : (z.t0 + z.t1) / 2, b?.a]; }); });
   for (const [id, T, a] of hz) { probes.push([id + '-hero', T]); console.log(JSON.stringify({ hero: id, T, asset: a })); }
 }
 // let the models stream in
