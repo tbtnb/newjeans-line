@@ -52,9 +52,9 @@ Piano taps (rule 4) appear only in the outro, the only bars with neither vocal n
 | held-note straights | 26 notes | 26 notes, 0 taps inside | preserved |
 
 ## Verification
-* `levels-design/validate.py`: 0 errors, 0 warnings; 668 multi-level crossings; min judgment window ±53 ms; 16 gaps under 0.15 s (all fast sung syllables).
+* `levels-design/validate.py`: 0 errors, 0 warnings including the new FORWARD rule (progress along the map axis never decreases; every 16 s window within 34 deg of it); 0 multi-level crossings (a forward-only map cannot cross itself); min judgment window ±53 ms; 16 gaps under 0.15 s (all fast sung syllables).
 * Scripted playthrough (headless Chrome, CDP touch simulation; not a real device): complete, 545/553 perfect, 8 good, diamonds 10/10. Run 1 failed at 190.03 s: a 'late' miss on the tap at 189.928 (its neighbours are 0.236 s away). Every other tap in that run was off by at most 13 ms, so this looks like a stall in the software-rendered simulation (about 11-17 fps while another job shared the machine), not a chart problem. That run's log is analysis/research/omg-v3-play-run1-fail.json. Run 2 is the result shown here.
-* Layout and route: route re-searched (route.py, seed 16 of 24 tried; 4 legal); elevation falls unchanged from v2 (on the '예' taps, >= 0.35 s air); diamonds 26.498 -> 27.662 and 83.775 -> 84.275 moved off new drum taps; no other layout changes.
+* Layout and route: forward-only route (tools/research/route_forward.py): headings only N (forward) / E / W (lateral). Each 2-bar phrase is a staircase to one side, alternating sides, inside a ±12 m corridor (actual extent x -21..16 m over 1077 m forward); plot in analysis/research/omg-forward-route.png. Elevation falls unchanged (on the '예' taps, >= 0.35 s air). Diamonds 26.498 -> 27.662 and 83.775 -> 84.275 moved off new drum taps; no other layout changes.
 * Click track `deliverables/omg-clicks-v3.mp3`: the song plus two click sounds.
   * Vocal taps: a high 2.5 kHz tick.
   * Drum taps: a low 900 Hz knock.
