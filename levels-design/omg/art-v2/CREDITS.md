@@ -14,3 +14,7 @@ All images were generated with Codex (`codex exec -m gpt-6.1-sol -c model_reason
 | ward-facade, stage-facade | facades |
 | mural-stars | floor decals / dressing tiles |
 | sparkle | fx sparkle sprite |
+| light-tower, spot-rig, curtain | corridor set pieces (v2.9) |
+| bunny-balloon, heart-balloon, star-balloon | floating corridor props |
+| moon-flower, lantern, crescent-moon | bridge moon garden |
+| wreath-star / -flower / -ribbon / -moon | floor emblems, heart-wreath variants |

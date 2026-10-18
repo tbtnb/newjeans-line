@@ -152,3 +152,169 @@ Use case: stylized-concept. Create exactly one square 1:1 final in-game sparkle 
 
 transparent_background: true
 
+
+## v3 corridor assets (2026-10-18 18:3x)
+# Final asset prompts
+
+Generated with the built-in `image_gen` tool, one call per asset, using `ref-concept.png` as the style and palette reference. `transparent_background: true` for every call. No regeneration or magenta fallback was needed.
+
+Output preparation: copied from `$CODEX_HOME/generated_images`, downsampled to the target dimensions with Lanczos while retaining RGBA transparency. Negligible alpha values of 1/255 were rounded to zero to keep empty pixels fully transparent. Verified PNG format, RGBA mode and zero-alpha corners with Python 3 + Pillow; also verified the empty center of the curtain opening.
+
+## light-tower.png
+
+Target: 768 × 1152. Reference: `./ref-concept.png`. Tool option: `transparent_background: true`.
+
+Exact prompt:
+
+```text
+Use case: stylized-concept.
+Asset type: final transparent PNG game prop sticker, portrait 2:3 canvas, intended target 768 x 1152.
+Input image: ref-concept.png is a STYLE AND PALETTE REFERENCE ONLY. Generate a single new isolated prop; do not reproduce its scene.
+Primary request: a tall slender concert light tower: one chrome-and-gold lattice truss column standing upright, stacked rows of round glowing bulbs in pastel pink, baby-blue and warm gold running up its height, a glowing faceted pastel pink five-point star on top, a few small sparkles.
+Composition: straight-on front view, full tower visible from its small base to the star tip with generous transparent margins. Tall narrow silhouette, centered. Clean readable shapes and restrained detail.
+Style: lavish polished glossy stylized casual-game illustration in the exact Y2K Starlight Stage art direction of the reference: soft gradients, luminous pastel lighting, crisp chrome reflections, delicate warm gold edging, navy-violet reflected shadows, pink, baby-blue and lilac accents. No photorealism.
+Background: genuinely TRANSPARENT alpha, including all four corners and all holes in the lattice. No colored background, no checkerboard drawing, no stage, no floor, no cast shadow plane. Keep glow small and localized around bulbs.
+Hard constraints: exactly one tower. NO people, human figures, human faces, or likenesses. NO logos, letters, numbers, words, watermarks or UI anywhere. No unrelated objects, no clutter.
+```
+
+## spot-rig.png
+
+Target: 1152 × 768. Reference: `./ref-concept.png`. Tool option: `transparent_background: true`.
+
+Exact prompt:
+
+```text
+Use case: stylized-concept.
+Asset type: final transparent PNG game prop sticker, landscape 3:2 canvas, intended target 1152 x 768.
+Input image: ref-concept.png is a STYLE AND PALETTE REFERENCE ONLY. Generate a single new isolated prop; do not reproduce its scene.
+Primary request: one stage spotlight rig: a horizontal chrome-and-gold lattice truss bar supported on two short legs, carrying exactly four round theatre spotlights tilted upward. The four lenses glow pastel pink, baby-blue, lilac and warm gold respectively, each with a small soft localized light flare.
+Composition: straight-on front view of the whole rig; spotlights may show their upward tilt while their round luminous lenses remain visible. Entire horizontal bar, four fixtures and both feet visible, centered, generous transparent margins. Simple clean silhouette.
+Style: lavish polished glossy stylized casual-game illustration in the exact Y2K Starlight Stage art direction of the reference: clean shapes, soft gradients, luminous pastel lighting, reflective chrome, warm gold trims, navy-violet reflected shadows, pastel pink, baby-blue and lilac. No photorealism.
+Background: genuinely TRANSPARENT alpha, including all four corners and the gaps between truss bars and legs. No colored background, no checkerboard drawing, no stage, floor or shadow plane. No long beams of light; only soft flares close to the four lenses.
+Hard constraints: exactly one rig, exactly four spotlights. NO people, human figures, human faces, or likenesses. NO logos, letters, numbers, words, watermarks or UI anywhere. No unrelated objects, no clutter.
+```
+
+## curtain.png
+
+Target: 1152 × 768. Reference: `./ref-concept.png`. Tool option: `transparent_background: true`.
+
+Exact prompt:
+
+```text
+Use case: stylized-concept.
+Asset type: final transparent PNG game prop sticker, landscape 3:2 canvas, intended target 1152 x 768.
+Input image: ref-concept.png is a STYLE AND PALETTE REFERENCE ONLY. Generate a new isolated proscenium prop; do not reproduce its scene.
+Primary request: a grand stage proscenium FRAME ONLY: tall drawn-back pastel pink velvet curtains with gold fringe and gold tassels on both sides; an arched gold top valance studded with small glowing bulbs, crowned by one small pastel pink faceted five-point star. The side curtains hang in graceful lustrous folds and are tied back to expose a large central opening.
+Composition: exact straight-on front view, symmetrical wide frame, entire star, arched top, both side curtains and bottom hems visible with transparent margins. Curtain sides slender enough for a large broad opening. No lower crossbar.
+CRITICAL ALPHA REQUIREMENT: the large central opening between the curtains must be completely EMPTY and fully TRANSPARENT, alpha zero. This is a cutout arch that the game scene will show through. No backdrop fabric, no sky, no stage, no floor, no wall, no dark fill, no gradient, no haze, no glow, no floating sparkles or decoration across this empty central opening. The exterior surrounding the frame and all four corners must also be genuinely transparent. Confine any bulb glows to the gold frame itself. Do not draw a checkerboard.
+Style: lavish polished glossy stylized casual-game illustration matching the exact Y2K Starlight Stage reference: clean shapes, soft gradients, pastel pink velvet with baby-blue and lilac reflected highlights, lustrous warm gold, small chrome accents, restrained navy-violet shading. No photorealism, no clutter.
+Hard constraints: exactly one curtain frame. NO people, human figures, human faces, or likenesses. NO logos, letters, numbers, words, watermarks or UI anywhere. No unrelated objects.
+```
+
+# Generation prompts
+
+Generated with the built-in image_gen tool, one call per asset. All used transparent_background=true and portrait 2:3 composition. PNGs are copied unchanged at their native 1024 × 1536 resolution. All three passed Python/PIL RGBA and transparent-corner verification; no magenta regeneration was needed.
+
+## bunny-balloon.png
+
+```text
+Use case: stylized-concept. Final in-game illustration asset for a lavish Y2K Starlight Stage rhythm game. Match this exact art direction: polished glossy stylized casual-game 3D illustration, clean rounded shapes, luxurious pearl/chrome materials with soft gradients, luminous soft highlights and restrained glow. Palette exclusively pearl white, pastel pink, baby blue, lilac, navy-violet reflections and warm pale gold accents. No photorealism, no clutter. Portrait 2:3 aspect ratio, intended target 768 x 1152. Front view, single centered isolated sticker, whole balloon and entire curly ribbon visible, comfortable transparent margins on all sides. Genuinely TRANSPARENT background with alpha, including completely transparent corners; no colored background, no checkerboard pattern, no floor, no cast shadow, no scenery, no stage, no frame. No people, no human figures or human faces, no celebrity likenesses. No logos, letters, numbers, words, watermarks or UI anywhere.
+Subject: one giant floating foil balloon shaped like a cute white bunny HEAD with two long ears, glossy pearl-white mylar, pastel pink inner ears, soft lilac and baby-blue reflections, two tiny navy dot eyes as a simple animal expression, a tiny subtle pink nose, a small warm gold bow at the balloon neck. A single thin pale gold curly ribbon string hangs gracefully below. Bunny head only, no body. Subtle foil edge seam and sparse soft fold highlights, clean friendly silhouette. No additional objects.
+```
+
+## heart-balloon.png
+
+```text
+Use case: stylized-concept. Final in-game illustration asset for a lavish Y2K Starlight Stage rhythm game. Match this exact art direction: polished glossy stylized casual-game 3D illustration, clean rounded shapes, luxurious pearl/chrome materials with soft gradients, luminous soft highlights and restrained glow. Palette exclusively pearl white, pastel pink, baby blue, lilac, navy-violet reflections and warm pale gold accents. No photorealism, no clutter. Portrait 2:3 aspect ratio, intended target 768 x 1152. Front view, single centered isolated sticker, whole balloon and entire curly ribbon visible, comfortable transparent margins on all sides. Genuinely TRANSPARENT background with alpha, including completely transparent corners; no colored background, no checkerboard pattern, no floor, no cast shadow, no scenery, no stage, no frame. No people, no human figures or human faces, no celebrity likenesses. No logos, letters, numbers, words, watermarks or UI anywhere.
+Subject: one giant floating glossy chrome heart-shaped foil balloon in pastel pink with baby-blue and lilac reflections, sculpted rounded lobes, a warm gold knot at its tapered lower tip. A single thin pale gold curly ribbon string hangs gracefully below, and a few tiny restrained four-point sparkles hover close to the balloon. Subtle foil edge seam and soft inflated folds, mirror-polished yet simplified stylized material. No face and no additional objects.
+```
+
+## star-balloon.png
+
+```text
+Use case: stylized-concept. Final in-game illustration asset for a lavish Y2K Starlight Stage rhythm game. Match this exact art direction: polished glossy stylized casual-game 3D illustration, clean rounded shapes, luxurious pearl/chrome materials with soft gradients, luminous soft highlights and restrained glow. Palette exclusively pearl white, pastel pink, baby blue, lilac, navy-violet reflections and warm pale gold accents. No photorealism, no clutter. Portrait 2:3 aspect ratio, intended target 768 x 1152. Front view, single centered isolated sticker, whole balloon and entire curly ribbon visible, comfortable transparent margins on all sides. Genuinely TRANSPARENT background with alpha, including completely transparent corners; no colored background, no checkerboard pattern, no floor, no cast shadow, no scenery, no stage, no frame. No people, no human figures or human faces, no celebrity likenesses. No logos, letters, numbers, words, watermarks or UI anywhere.
+Subject: one giant floating glossy FIVE-POINT star-shaped foil balloon in pale warm gold and pearl white with pastel pink and baby-blue reflections, rounded inflated points and a tiny pale gold tied neck. A single thin pale gold curly ribbon string hangs gracefully below, and a few tiny restrained four-point sparkles hover close to the balloon. Subtle foil edge seam and soft inflated folds, polished stylized material. No face and no additional objects.
+```
+
+# Final asset prompts
+
+Generated with the built-in image_gen tool, one call per asset, with `transparent_background: true`.
+
+## moon-flower.png
+
+```text
+Use case: stylized-concept.
+Asset type: final in-game illustration, isolated transparent PNG sticker for a lavish Dancing Line style music level.
+Art direction: Y2K Starlight Stage. Match the supplied ref-concept.png visual language: polished glossy stylized casual-game 3D illustration, clean rounded shapes, soft gradients, pearly translucent materials, chrome and gold accents, delicate star sparkles and gentle luminous bloom. Restrict the palette to pastel pink, baby-blue, lilac, pearly white, pale gold and chrome with subtle navy-violet reflected shading. No photorealism, no clutter.
+Background: genuinely transparent alpha, including all four corners; no painted checkerboard, no solid backdrop, no scenery, no ground plane or cast floor shadow. Preserve soft glow with translucent alpha.
+Subject: one giant magical glowing garden flower: tall gracefully curved stem with exactly two leaves, a big open bloom of translucent lilac and baby-blue petals glowing softly from within, a pearly glowing center with tiny gold sparkles. Stylized lilac-blue stem and leaves, moonlit fairy-tale mood.
+Composition: portrait 2:3 aspect ratio. Front view. Whole plant visible from stem base to highest petal, centered with comfortable transparent margins. Bloom large and legible, elegant single curved stem, two clearly separated leaves; a small restrained handful of tiny gold sparkles near the bloom.
+Hard constraints: NO people, NO human figures or faces, NO likeness of any NewJeans member. NO logos, letters, numbers, words, watermark or UI anywhere. Exactly one complete isolated asset, no extra objects beyond the specified ornamentation, no mockup, no collage.
+```
+
+## lantern.png
+
+```text
+Use case: stylized-concept.
+Asset type: final in-game illustration, isolated transparent PNG sticker for a lavish Dancing Line style music level.
+Art direction: Y2K Starlight Stage. Match the supplied ref-concept.png visual language: polished glossy stylized casual-game 3D illustration, clean rounded shapes, soft gradients, pearly translucent materials, chrome and gold accents, delicate star sparkles and gentle luminous bloom. Restrict the palette to pastel pink, baby-blue, lilac, pearly white, pale gold and chrome with subtle navy-violet reflected shading. No photorealism, no clutter.
+Background: genuinely transparent alpha, including all four corners; no painted checkerboard, no solid backdrop, no scenery, no ground plane or cast floor shadow. Preserve soft glow with translucent alpha.
+Subject: one ornate garden lantern post: slender gently curved gold-and-chrome lamp post with a hanging round lantern of pastel pink glass glowing warmly, delicate tiny star filigree and a few floating sparkles. Rounded glossy decorative foot, slim elegant shaft, curved hook holding the round glass lantern, polished gold trim with cool chrome highlights. Soft pastel pink internal light.
+Composition: portrait 2:3 aspect ratio. Front view. Whole post visible from its base to its highest curved tip, centered with comfortable transparent margins. Clear readable silhouette, restrained ornament, no surrounding environment.
+Hard constraints: NO people, NO human figures or faces, NO likeness of any NewJeans member. NO logos, letters, numbers, words, watermark or UI anywhere. Exactly one complete isolated asset, no extra objects beyond the specified ornamentation, no mockup, no collage.
+```
+
+## crescent-moon.png
+
+```text
+Use case: stylized-concept.
+Asset type: final in-game illustration, isolated transparent PNG sticker for a lavish Dancing Line style music level.
+Art direction: Y2K Starlight Stage. Match the supplied ref-concept.png visual language: polished glossy stylized casual-game 3D illustration, clean rounded shapes, soft gradients, pearly translucent materials, chrome and gold accents, delicate star sparkles and gentle luminous bloom. Restrict the palette to pastel pink, baby-blue, lilac, pearly white, pale gold and chrome with subtle navy-violet reflected shading. No photorealism, no clutter.
+Background: genuinely transparent alpha, including all four corners; no painted checkerboard, no solid backdrop, no scenery, no ground plane or cast floor shadow. Preserve soft glow with translucent alpha.
+Subject: one big glowing crescent moon ornament: smooth thick pearly pale-gold crescent moon with soft luminous halo, exactly two small hanging gold five-pointed stars dangling from two thin delicate gold chains beneath it, a few tiny sparkles. Rounded polished crescent surface, cool lilac and baby-blue reflected highlights, luminous creamy pale-gold inner edge. Simple sumptuous polished ornament.
+Composition: square 1:1 aspect ratio. Front view. Entire crescent, both chains and both hanging stars visible, centered with comfortable transparent margins. Crescent opens toward the right; two small stars hang at different lengths beneath the lower arc. Clean readable silhouette.
+Hard constraints: NO people, NO human figures or faces, NO likeness of any NewJeans member. NO logos, letters, numbers, words, watermark or UI anywhere. Exactly one complete isolated asset, no extra objects beyond the specified ornamentation, no mockup, no collage.
+```
+
+Validation: all final PNGs are RGBA with transparent corners. No flat #FF00FF regeneration was needed. Outputs were copied from $CODEX_HOME/generated_images and resized to the spec.tsv target dimensions with alpha preserved.
+
+# Asset prompts
+
+Generated with the built-in image_gen tool. All four assets use square (1:1) composition and request genuine transparency.
+
+## wreath-star.png
+
+```text
+Use case: stylized-concept. Create exactly ONE finished in-game floor-emblem sticker asset for a lavish music rhythm game in the Y2K Starlight Stage art direction. Square 1:1 canvas, target use 768 x 768. Polished glossy stylized casual-game illustration, crisp clean shapes, soft gradients, pearlescent shine, delicate chrome and pale-gold trim, restrained luminous highlights. Strict shared palette: pastel pink, baby-blue, lilac, pearl-white, pale gold, with only subtle navy-violet reflections. Camera perfectly straight overhead, flat orthographic, no perspective, no tilt, no visible side walls. Centered balanced symmetric circular composition occupying about 82 percent of the canvas; leave clear padding on all sides. Background genuinely transparent with real alpha, including the corners and the open spaces between separate motifs. No opaque background, no ground plane, no disk, no checkerboard pattern. Keep glow tight to each object so the sticker remains clean. NO people, no human figures or human faces, no member likenesses. NO logos, letters, numbers, words, watermark, UI, frame, or mockup. No photorealism, no clutter.
+Subject: a circular wreath of small glowing pastel five-point stars and luminous round pearls in baby-blue and pale gold, evenly arranged with clear gaps. In the center floats one plump glossy pastel-pink heart with a fine pale-gold edge and soft pink glow. The stars alternate in size in a deliberate symmetrical rhythm, with only a few tiny four-point glints. All motifs lie in the same flat top-down plane; the central heart is clearly separated from the surrounding wreath by transparent negative space.
+```
+
+## wreath-flower.png
+
+```text
+Use case: stylized-concept. Create exactly ONE finished in-game floor-emblem sticker asset for a lavish music rhythm game in the Y2K Starlight Stage art direction. Square 1:1 canvas, target use 768 x 768. Polished glossy stylized casual-game illustration, crisp clean shapes, soft gradients, pearlescent shine, delicate chrome and pale-gold trim, restrained luminous highlights. Strict shared palette: pastel pink, baby-blue, lilac, pearl-white, pale gold, with only subtle navy-violet reflections. Camera perfectly straight overhead, flat orthographic, no perspective, no tilt, no visible side walls. Centered balanced symmetric circular composition occupying about 82 percent of the canvas; leave clear padding on all sides. Background genuinely transparent with real alpha, including the corners and the open spaces between separate motifs. No opaque background, no ground plane, no disk, no checkerboard pattern. Keep glow tight to each object so the sticker remains clean. NO people, no human figures or human faces, no member likenesses. NO logos, letters, numbers, words, watermark, UI, frame, or mockup. No photorealism, no clutter.
+Subject: a circular wreath of small lilac and pastel-pink five-petal flowers and delicate stylized leaves in lilac and baby-blue, with a few tiny pale-gold sparkles, arranged evenly and symmetrically. Petals have smooth glossy enamel gradients and small pearl-white or pale-gold centers. In the center floats one glowing plump pastel baby-blue heart with a fine pale-gold edge. All motifs lie in the same flat top-down plane; the central heart is clearly separated from the floral wreath by transparent negative space. Keep the floral forms simple and readable, no dense bouquet.
+```
+
+## wreath-ribbon.png
+
+```text
+Use case: stylized-concept. Create exactly ONE finished in-game floor-emblem sticker asset for a lavish music rhythm game in the Y2K Starlight Stage art direction. Square 1:1 canvas, target use 768 x 768. Polished glossy stylized casual-game illustration, crisp clean shapes, soft gradients, pearlescent shine, delicate chrome and pale-gold trim, restrained luminous highlights. Strict shared palette: pastel pink, baby-blue, lilac, pearl-white, pale gold, with only subtle navy-violet reflections. Camera perfectly straight overhead, flat orthographic, no perspective, no tilt, no visible side walls. Centered balanced symmetric circular composition occupying about 82 percent of the canvas; leave clear padding on all sides. Background genuinely transparent with real alpha, including the corners and the open spaces between separate motifs. No opaque background, no ground plane, no disk, no checkerboard pattern. Keep glow tight to each object so the sticker remains clean. NO people, no human figures or human faces, no member likenesses. NO logos, letters, numbers, words, watermark, UI, frame, or mockup. No photorealism, no clutter.
+Subject: a circular ring made of looping pastel-pink satin ribbon, with smooth repeated scalloped loops arranged symmetrically and four small pale-gold ribbon bows at the top, right, bottom, and left. Ribbon highlights are lilac and pearl-white. In the center floats one glowing pearl-white bunny-head silhouette, a simple round head joined to two long upright ears; a completely featureless silhouette with no eyes, nose, mouth or facial marks. The central silhouette is separated from the ribbon ring by generous transparent negative space. Everything lies in the same flat top-down plane. No other objects.
+```
+
+## wreath-moon.png
+
+```text
+Use case: stylized-concept. Create exactly ONE finished in-game floor-emblem sticker asset for a lavish music rhythm game in the Y2K Starlight Stage art direction. Square 1:1 canvas, target use 768 x 768. Polished glossy stylized casual-game illustration, crisp clean shapes, soft gradients, pearlescent shine, delicate chrome and pale-gold trim, restrained luminous highlights. Strict shared palette: pastel pink, baby-blue, lilac, pearl-white, pale gold, with only subtle navy-violet reflections. Camera perfectly straight overhead, flat orthographic, no perspective, no tilt, no visible side walls. Centered balanced symmetric circular composition occupying about 82 percent of the canvas; leave clear padding on all sides. Background genuinely transparent with real alpha, including the corners and the open spaces between separate motifs. No opaque background, no ground plane, no disk, no checkerboard pattern. Keep glow tight to each object so the sticker remains clean. NO people, no human figures or human faces, no member likenesses. NO logos, letters, numbers, words, watermark, UI, frame, or mockup. No photorealism, no clutter.
+Subject: a circular ring of tiny glowing crescent moons and small pearl-like dots in alternating lilac and pale gold, spaced evenly in a precisely balanced symmetrical arrangement. Crescent tips have graceful clean curves and pearlescent glossy surfaces. In the center floats one large luminous four-point star, pearl-white with baby-blue and lilac gradient highlights and a fine pale-gold edge. The central four-point star is clearly separated from the moon ring by transparent negative space. Everything lies in the same flat top-down plane. Restrained small sparkle accents, no extra planets, no clouds.
+```
+
+## wreath-flower.png — transparency fallback regeneration
+
+The first PNG was RGBA, but its bottom-left corner had alpha 1 rather than 0. Regenerated once using flat #FF00FF background preparation and requesting genuine transparent output. Tool parameter: transparent_background=true.
+
+```text
+Use case: stylized-concept. Create exactly ONE finished in-game floor-emblem sticker asset for a lavish music rhythm game in the Y2K Starlight Stage art direction. Square 1:1 canvas, target use 768 x 768. Polished glossy stylized casual-game illustration, crisp clean shapes, soft gradients, pearlescent shine, delicate chrome and pale-gold trim, restrained luminous highlights. Strict shared palette: pastel pink, baby-blue, lilac, pearl-white, pale gold, with only subtle navy-violet reflections. Camera perfectly straight overhead, flat orthographic, no perspective, no tilt, no visible side walls. Centered balanced symmetric circular composition occupying about 82 percent of the canvas; leave clear padding on all sides. Transparency fallback: render the isolated emblem against a perfectly uniform flat #FF00FF magenta chroma background for clean separation, with no magenta reflections or magenta details on the emblem. Remove that flat magenta background in the delivered image, including all open spaces between the motifs, and deliver genuine RGBA transparency with exactly zero alpha at all four corners. No ground plane, no disk, no checkerboard pattern. Keep glow tight to each object so the sticker remains clean. NO people, no human figures or human faces, no member likenesses. NO logos, letters, numbers, words, watermark, UI, frame, or mockup. No photorealism, no clutter.
+Subject: a circular wreath of small lilac and pastel-pink five-petal flowers and delicate stylized leaves in lilac and baby-blue, with a few tiny pale-gold sparkles, arranged evenly and symmetrically. Petals have smooth glossy enamel gradients and small pearl-white or pale-gold centers. In the center floats one glowing plump pastel baby-blue heart with a fine pale-gold edge. All motifs lie in the same flat top-down plane; the central heart is clearly separated from the floral wreath by transparent negative space. Keep the floral forms simple and readable, no dense bouquet.
+```

@@ -64,3 +64,15 @@ Re-run the last three after a re-chart.
 - Themes are assigned by musical role: intro → dream, verse → ward, the section before a chorus → rise, chorus → stage, the last choruses → finale, bridge → garden, outro → calm.
 - Every prop is placed by time window plus side plus `near` against the current route.
 - `artkit` only replaces `art-*` objects (and keeps `fakefork*`), `dressing`, `fx`, `events`, `palette` and the section theme fields. The route, chart, camera, diamonds and finish are untouched.
+
+## Corridor scenery (schema v2.9, `layout.corridor`, src/render/corridor.ts)
+
+For long forward routes: big set pieces that line both sides of the road and repeat in time with the music, so there is always something lavish in frame.
+
+- **`items`**: `{src, size:[w,h], glow, float, lights:'beat'|'chase'|'none', flat, tilt}`. Upright items are camera-facing quads that lean toward the camera (`tilt`, default 0.5). `flat` items are floor emblems. `chase` splits the instances into two groups lit on alternate beats.
+- **`bands`**: `{t0, t1, every, phase, near:[min,max], items:[...], sides:2|1, mirror, y:[min,max], scale}`. One placement every `every` seconds (the OMG generator uses bar lines). The offset is measured across the corridor from the actual road at t (so pieces stand left/right of the line, never ahead of it), then pushed out until clear of every road segment (RoadGrid; radius ≥ 0.36 × height for tall pieces).
+- **`floor`**: glowing dots in strips beside the road that chase forward with the beat (4 phase groups).
+- **`fireworks`**: bursts high above the band at given times (one particle system).
+- `lead` / `tail`: pieces rise in `lead` s before the line arrives and stay `tail` s after it. Only instances in that window are written each frame (compacted thin-instance buffers, no per-frame allocation); `maxActive` caps each layer; `quality: low` keeps every other placement.
+
+OMG: `tools/art/omg_scene.py` builds the corridor per section theme (towers + phones in verses, towers + spotlight rigs in pre-choruses, towers/arches/rigs/balloons in choruses, curtains, giant bunnies and fireworks in the final choruses, moon flowers/lanterns/crescent moons in the bridge garden). `revealLead` in the spec raises every road reveal lead (2.8 s) so more road ahead is visible.
