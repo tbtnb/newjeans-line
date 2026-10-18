@@ -1515,7 +1515,7 @@
     {
      "asset": "tree-bush-lo",
      "layer": "mid",
-     "count": 9,
+     "count": 4,
      "near": [
       5.0,
       12.0
@@ -1541,7 +1541,7 @@
     {
      "asset": "tree-bush-lo",
      "layer": "mid",
-     "count": 24,
+     "count": 12,
      "near": [
       5.0,
       12.0
@@ -1566,7 +1566,7 @@
     {
      "asset": "paper-hill-lo",
      "layer": "mid",
-     "count": 22,
+     "count": 11,
      "near": [
       16.0,
       34.0
@@ -1591,7 +1591,7 @@
     {
      "asset": "tree-lo",
      "layer": "mid",
-     "count": 16,
+     "count": 8,
      "near": [
       5.0,
       12.0
@@ -1616,7 +1616,7 @@
     {
      "asset": "paper-hill-lo",
      "layer": "mid",
-     "count": 16,
+     "count": 8,
      "near": [
       40.0,
       85.0
@@ -1641,7 +1641,7 @@
     {
      "asset": "tree-lo",
      "layer": "mid",
-     "count": 12,
+     "count": 6,
      "near": [
       40.0,
       85.0
@@ -1666,7 +1666,7 @@
     {
      "asset": "forest-clump",
      "layer": "mid",
-     "count": 8,
+     "count": 4,
      "near": [
       16.0,
       34.0
@@ -1731,7 +1731,7 @@
     {
      "asset": "paper-hill-lo",
      "layer": "mid",
-     "count": 4,
+     "count": 2,
      "near": [
       16.0,
       34.0
@@ -2034,15 +2034,15 @@
     "sprites": [
      [
       "tree",
-      3
+      1.5
      ],
      [
       "tree-lo",
-      2
+      1.0
      ],
      [
       "forest-clump",
-      2
+      1.0
      ],
      [
       "hedge",
@@ -2062,7 +2062,7 @@
      ],
      [
       "paper-hill",
-      0.8
+      0.4
      ],
      [
       "fern",
@@ -2563,7 +2563,7 @@
     {
      "asset": "tree-bush-lo",
      "layer": "mid",
-     "count": 9,
+     "count": 4,
      "near": [
       5.0,
       12.0
@@ -2589,7 +2589,7 @@
     {
      "asset": "tree-lo",
      "layer": "mid",
-     "count": 20,
+     "count": 10,
      "near": [
       5.0,
       12.0
@@ -2614,7 +2614,7 @@
     {
      "asset": "tree-bush-lo",
      "layer": "mid",
-     "count": 16,
+     "count": 8,
      "near": [
       5.0,
       12.0
@@ -2639,7 +2639,7 @@
     {
      "asset": "paper-hill-lo",
      "layer": "mid",
-     "count": 16,
+     "count": 8,
      "near": [
       40.0,
       85.0
@@ -2664,7 +2664,7 @@
     {
      "asset": "tree-lo",
      "layer": "mid",
-     "count": 12,
+     "count": 6,
      "near": [
       40.0,
       85.0
@@ -2689,7 +2689,7 @@
     {
      "asset": "forest-clump",
      "layer": "mid",
-     "count": 8,
+     "count": 4,
      "near": [
       16.0,
       34.0
@@ -2754,7 +2754,7 @@
     {
      "asset": "paper-hill-lo",
      "layer": "mid",
-     "count": 4,
+     "count": 2,
      "near": [
       16.0,
       34.0
@@ -2904,11 +2904,11 @@
     "sprites": [
      [
       "tree",
-      2.5
+      1.25
      ],
      [
       "forest-clump",
-      2
+      1.0
      ],
      [
       "bunny-house",
@@ -3435,7 +3435,7 @@
     {
      "asset": "tree-bush-lo",
      "layer": "mid",
-     "count": 7,
+     "count": 4,
      "near": [
       5.0,
       12.0
@@ -3460,7 +3460,7 @@
     {
      "asset": "tree-lo",
      "layer": "mid",
-     "count": 13,
+     "count": 6,
      "near": [
       5.0,
       12.0
@@ -3484,7 +3484,7 @@
     {
      "asset": "paper-hill-lo",
      "layer": "mid",
-     "count": 16,
+     "count": 8,
      "near": [
       40.0,
       85.0
@@ -3508,7 +3508,7 @@
     {
      "asset": "tree-lo",
      "layer": "mid",
-     "count": 12,
+     "count": 6,
      "near": [
       40.0,
       85.0
@@ -3532,7 +3532,7 @@
     {
      "asset": "forest-clump",
      "layer": "mid",
-     "count": 6,
+     "count": 3,
      "near": [
       16.0,
       34.0
@@ -3595,7 +3595,7 @@
     {
      "asset": "paper-hill-lo",
      "layer": "mid",
-     "count": 3,
+     "count": 2,
      "near": [
       16.0,
       34.0
@@ -3711,11 +3711,11 @@
     "sprites": [
      [
       "tree",
-      2
+      1.0
      ],
      [
       "forest-clump",
-      1.5
+      0.75
      ],
      [
       "heart-bed",
@@ -4521,7 +4521,7 @@
     {
      "asset": "bunny-house",
      "layer": "mid",
-     "count": 2,
+     "count": 1,
      "near": [
       6.0,
       13.0
@@ -4581,30 +4581,6 @@
       "r": 3.8,
       "row": true
      }
-    },
-    {
-     "asset": "lantern-tower",
-     "layer": "mid",
-     "count": 2,
-     "near": [
-      9.0,
-      20.0
-     ],
-     "y": [
-      0,
-      0
-     ],
-     "scale": [
-      0.8,
-      1.1
-     ],
-     "colors": [
-      1,
-      2,
-      3,
-      4
-     ],
-     "hi": true
     },
     {
      "asset": "firefly-lamp",
@@ -7339,7 +7315,7 @@
     {
      "asset": "bunny-house",
      "layer": "mid",
-     "count": 2,
+     "count": 1,
      "near": [
       6.0,
       13.0
@@ -7399,30 +7375,6 @@
       "r": 3.8,
       "row": true
      }
-    },
-    {
-     "asset": "lantern-tower",
-     "layer": "mid",
-     "count": 2,
-     "near": [
-      9.0,
-      20.0
-     ],
-     "y": [
-      0,
-      0
-     ],
-     "scale": [
-      0.8,
-      1.1
-     ],
-     "colors": [
-      1,
-      2,
-      3,
-      4
-     ],
-     "hi": true
     },
     {
      "asset": "firefly-lamp",
@@ -8384,7 +8336,7 @@
     {
      "asset": "bunny-house",
      "layer": "mid",
-     "count": 2,
+     "count": 1,
      "near": [
       6.0,
       13.0
@@ -8444,30 +8396,6 @@
       "r": 3.8,
       "row": true
      }
-    },
-    {
-     "asset": "lantern-tower",
-     "layer": "mid",
-     "count": 3,
-     "near": [
-      9.0,
-      20.0
-     ],
-     "y": [
-      0,
-      0
-     ],
-     "scale": [
-      0.8,
-      1.1
-     ],
-     "colors": [
-      1,
-      2,
-      3,
-      4
-     ],
-     "hi": true
     },
     {
      "asset": "firefly-lamp",
@@ -9485,7 +9413,7 @@
     {
      "asset": "bunny-house",
      "layer": "mid",
-     "count": 4,
+     "count": 2,
      "near": [
       6.0,
       13.0
@@ -9543,29 +9471,6 @@
       "r": 3.8,
       "row": true
      }
-    },
-    {
-     "asset": "lantern-tower",
-     "layer": "mid",
-     "count": 5,
-     "near": [
-      9.0,
-      20.0
-     ],
-     "y": [
-      0,
-      0
-     ],
-     "scale": [
-      0.8,
-      1.1
-     ],
-     "colors": [
-      2,
-      3,
-      4
-     ],
-     "hi": true
     },
     {
      "asset": "firefly-lamp",
@@ -10709,7 +10614,7 @@
     {
      "asset": "balloons",
      "layer": "mid",
-     "count": 14,
+     "count": 10,
      "near": [
       3.0,
       13.0
@@ -10734,7 +10639,7 @@
     {
      "asset": "bunting",
      "layer": "mid",
-     "count": 10,
+     "count": 7,
      "near": [
       3.0,
       13.0
@@ -10759,7 +10664,7 @@
     {
      "asset": "heart-bed",
      "layer": "mid",
-     "count": 10,
+     "count": 7,
      "near": [
       3.0,
       13.0
@@ -10784,7 +10689,7 @@
     {
      "asset": "bunny-statue",
      "layer": "mid",
-     "count": 14,
+     "count": 10,
      "near": [
       3.0,
       13.0
@@ -10809,7 +10714,7 @@
     {
      "asset": "gift",
      "layer": "mid",
-     "count": 10,
+     "count": 7,
      "near": [
       3.0,
       13.0
@@ -10834,7 +10739,7 @@
     {
      "asset": "flower-heart",
      "layer": "mid",
-     "count": 10,
+     "count": 7,
      "near": [
       3.0,
       13.0
@@ -10859,7 +10764,7 @@
     {
      "asset": "tulip-bed",
      "layer": "mid",
-     "count": 8,
+     "count": 6,
      "near": [
       3.0,
       13.0
@@ -10884,7 +10789,7 @@
     {
      "asset": "lantern-string",
      "layer": "mid",
-     "count": 4,
+     "count": 3,
      "near": [
       3.0,
       13.0

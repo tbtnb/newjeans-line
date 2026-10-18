@@ -289,8 +289,9 @@ export class SceneC {
         const h = (this.spec.assets[it.a]?.h ?? 1) * s, r = lp[1] * s * 1.4, hy = it.y - c.y + h * lp[0], gy = it.y - c.y + 0.03;   // relative to the chunk pivot (c.y)
         const tree = /pine|tree|mushroom-group|flower-heart/.test(it.a), R = r * 2.0;
         if (!tree) quad([[it.x - R, gy, it.z - R], [it.x + R, gy, it.z - R], [it.x + R, gy, it.z + R], [it.x - R, gy, it.z + R]], 0.16);
-        quad([[it.x - r, hy - r, it.z], [it.x + r, hy - r, it.z], [it.x + r, hy + r, it.z], [it.x - r, hy + r, it.z]], tree ? 0.24 : 0.42);
-        quad([[it.x, hy - r, it.z - r], [it.x, hy - r, it.z + r], [it.x, hy + r, it.z + r], [it.x, hy + r, it.z - r]], tree ? 0.24 : 0.42);
+        const fl = it.a === 'flower-heart', kq = fl ? 0.13 : tree ? 0.24 : 0.42, rq = fl ? r * 0.7 : r;   // glowing flowers: small, soft
+        quad([[it.x - rq, hy - rq, it.z], [it.x + rq, hy - rq, it.z], [it.x + rq, hy + rq, it.z], [it.x - rq, hy + rq, it.z]], kq);
+        quad([[it.x, hy - rq, it.z - rq], [it.x, hy - rq, it.z + rq], [it.x, hy + rq, it.z + rq], [it.x, hy + rq, it.z - rq]], kq);
       }
     }
     const mk = (name: string, B: { pos: number[]; col: number[]; idx: number[]; uv?: number[] }, mat: StandardMaterial) => {

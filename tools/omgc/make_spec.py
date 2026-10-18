@@ -286,10 +286,16 @@ for z in zones:   # and no tree / hill mass anywhere taller than ~6 m (colourful
         a = ly['asset']
         if ly.get('layer') == 'mid' and (a in TREEY or a in ('paper-hill', 'paper-hill-lo', 'forest-clump')):
             h = assets.get(a, {}).get('h', 4.0); ly['scale'] = [round(min(ly['scale'][0], 4.5 / h), 2), round(min(ly['scale'][1], 6.0 / h), 2)]
+for z in zones:   # v6: day zones z01-z03 read too mint at the hero zoom-out: forest masses / tree sprites halved
+    if z['id'] in ('z01', 'z02', 'z03'):
+        for ly in z['layers']:
+            if ly['asset'] in ('forest-clump', 'paper-hill-lo', 'tree-lo', 'tree-bush-lo') and ly.get('layer') == 'mid': ly['count'] = max(1, round(ly['count'] * 0.5))
+        z['impostors']['sprites'] = [[k, round(w * 0.5, 2) if k in ('tree', 'tree-lo', 'forest-clump', 'paper-hill') else w] for k, w in z['impostors']['sprites']]
 RICH = {'z01': [('tulip-bed', 12), ('heart-bed', 8), ('bunny-statue', 8), ('balloons', 6), ('mushroom-house', 4), ('bunny-house', 4), ('gift', 6), ('flower-heart', 8)],
         'z10': [('balloons', 14), ('bunting', 10), ('heart-bed', 10), ('bunny-statue', 14), ('gift', 10), ('flower-heart', 10), ('tulip-bed', 8), ('lantern-string', 4)]}
 for z in zones:
     for aid, n in RICH.get(z['id'], []):
+        if z['id'] == 'z10': n = max(1, round(n * 0.7))   # v6 budget
         if aid in assets: z['layers'].append(dict(asset=aid, layer='mid', count=n, near=[3.0, 13.0], y=[0, 0], scale=[1.25, 1.7], colors=(z['layers'][0]['colors'] if z['layers'] else [0, 1, 2, 3, 4]), hi=True))   # richness is high tier only (low stays ~50k)
 # ---- v6 night villages (z04 / z07 / z08 / z09): rows of small lit houses + towers along the road, lamp lines, glowing flowers
 # (halos in the merged glow mesh), lit-window impostors in the distance; dark near-road trees thinned to pay for it
@@ -301,9 +307,8 @@ for z in zones:
         if ly.get('layer') == 'mid' and ly['asset'] in TREEY + ('forest-clump', 'paper-hill-lo') and ly['near'][0] < 40: ly['count'] = max(1, round(ly['count'] * 0.4))
         if ly['asset'] in ('lantern-string', 'heart-sculpt', 'cannon') and ly.get('layer') == 'mid': ly['count'] = max(1, round(ly['count'] * 0.5))
     V = [('mushroom-house', 'mid', round(3 * zk), [5.0, 12.0], [0.9, 1.2], dict(n=[3, 4], r=3.8, row=True), True),
-         ('bunny-house', 'mid', round(2 * zk), [6.0, 13.0], [0.85, 1.1], dict(n=[2, 3], r=4.2, row=True), True),
+         ('bunny-house', 'mid', round(1 * zk), [6.0, 13.0], [0.85, 1.1], dict(n=[2, 3], r=4.2, row=True), True),
          ('mushroom-house', 'mid', round(1.5 * zk), [5.0, 12.0], [0.9, 1.2], dict(n=[2, 3], r=3.8, row=True), False),
-         ('lantern-tower', 'mid', round(2.5 * zk), [9.0, 20.0], [0.8, 1.1], None, True),
          ('firefly-lamp', 'mid', round(14 * zk), [1.5, 4.0], [1.1, 1.4], None, False),
          ('firefly-lamp', 'mid', round(14 * zk), [1.5, 5.0], [1.1, 1.4], None, True),
          ('flower-heart', 'ground', round(70 * zk), [0.3, 9.0], [2.0, 3.0], None, True),
