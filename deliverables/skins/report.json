@@ -1,0 +1,280 @@
+{
+ "play": [
+  {
+   "skin": "classic",
+   "saved": "classic",
+   "turnShot": "deliverables/skins/play-classic.png",
+   "deathShot": "deliverables/skins/death-classic.png",
+   "turnClip": {
+    "x": 47,
+    "y": 524,
+    "width": 400,
+    "height": 400
+   },
+   "deathClip": {
+    "x": 0,
+    "y": 297,
+    "width": 400,
+    "height": 400
+   },
+   "plannedTaps": 8,
+   "status": "failed",
+   "kind": "late",
+   "t": 22.806,
+   "turns": 22,
+   "perfect": 0,
+   "good": 8,
+   "stats": {
+    "meshes": 221,
+    "active": 23,
+    "fps": 28.360748723846218,
+    "trail": 24,
+    "tiles": 912,
+    "objects": 133,
+    "drawCalls": 4566
+   }
+  },
+  {
+   "skin": "bunny",
+   "saved": "bunny",
+   "turnShot": "deliverables/skins/play-bunny.png",
+   "deathShot": "deliverables/skins/death-bunny.png",
+   "turnClip": {
+    "x": 44,
+    "y": 530,
+    "width": 400,
+    "height": 400
+   },
+   "deathClip": {
+    "x": 0,
+    "y": 299,
+    "width": 400,
+    "height": 400
+   },
+   "plannedTaps": 8,
+   "status": "failed",
+   "kind": "late",
+   "t": 22.806,
+   "turns": 22,
+   "perfect": 0,
+   "good": 8,
+   "stats": {
+    "meshes": 225,
+    "active": 21,
+    "fps": 24.303608151039352,
+    "trail": 24,
+    "tiles": 912,
+    "objects": 133,
+    "drawCalls": 5166
+   }
+  },
+  {
+   "skin": "denim",
+   "saved": "denim",
+   "turnShot": "deliverables/skins/play-denim.png",
+   "deathShot": "deliverables/skins/death-denim.png",
+   "turnClip": {
+    "x": 37,
+    "y": 541,
+    "width": 400,
+    "height": 400
+   },
+   "deathClip": {
+    "x": 0,
+    "y": 296,
+    "width": 400,
+    "height": 400
+   },
+   "plannedTaps": 8,
+   "status": "failed",
+   "kind": "late",
+   "t": 22.806,
+   "turns": 22,
+   "perfect": 0,
+   "good": 8,
+   "stats": {
+    "meshes": 228,
+    "active": 25,
+    "fps": 23.478771277653586,
+    "trail": 24,
+    "tiles": 912,
+    "objects": 133,
+    "drawCalls": 5295
+   }
+  },
+  {
+   "skin": "bubble-gum",
+   "saved": "bubble-gum",
+   "turnShot": "deliverables/skins/play-bubble-gum.png",
+   "deathShot": "deliverables/skins/death-bubble-gum.png",
+   "turnClip": {
+    "x": 46,
+    "y": 523,
+    "width": 400,
+    "height": 400
+   },
+   "deathClip": {
+    "x": 0,
+    "y": 299,
+    "width": 400,
+    "height": 400
+   },
+   "plannedTaps": 8,
+   "status": "failed",
+   "kind": "late",
+   "t": 22.806,
+   "turns": 22,
+   "perfect": 0,
+   "good": 8,
+   "stats": {
+    "meshes": 219,
+    "active": 19,
+    "fps": 25.91706539076885,
+    "trail": 24,
+    "tiles": 912,
+    "objects": 133,
+    "drawCalls": 4596
+   }
+  },
+  {
+   "skin": "phoning",
+   "saved": "phoning",
+   "turnShot": "deliverables/skins/play-phoning.png",
+   "deathShot": "deliverables/skins/death-phoning.png",
+   "turnClip": {
+    "x": 44,
+    "y": 526,
+    "width": 400,
+    "height": 400
+   },
+   "deathClip": {
+    "x": 0,
+    "y": 298,
+    "width": 400,
+    "height": 400
+   },
+   "plannedTaps": 8,
+   "status": "failed",
+   "kind": "late",
+   "t": 22.806,
+   "turns": 22,
+   "perfect": 0,
+   "good": 8,
+   "stats": {
+    "meshes": 227,
+    "active": 27,
+    "fps": 23.937761819234318,
+    "trail": 24,
+    "tiles": 912,
+    "objects": 133,
+    "drawCalls": 4718
+   }
+  },
+  {
+   "skin": "film",
+   "saved": "film",
+   "turnShot": "deliverables/skins/play-film.png",
+   "deathShot": "deliverables/skins/death-film.png",
+   "turnClip": {
+    "x": 75,
+    "y": 481,
+    "width": 400,
+    "height": 400
+   },
+   "deathClip": {
+    "x": 0,
+    "y": 298,
+    "width": 400,
+    "height": 400
+   },
+   "plannedTaps": 8,
+   "status": "failed",
+   "kind": "late",
+   "t": 22.806,
+   "turns": 22,
+   "perfect": 0,
+   "good": 8,
+   "stats": {
+    "meshes": 224,
+    "active": 21,
+    "fps": 23.790642347413666,
+    "trail": 24,
+    "tiles": 912,
+    "objects": 133,
+    "drawCalls": 4921
+   }
+  },
+  {
+   "skin": "supernatural",
+   "saved": "supernatural",
+   "turnShot": "deliverables/skins/play-supernatural.png",
+   "deathShot": "deliverables/skins/death-supernatural.png",
+   "turnClip": {
+    "x": 39,
+    "y": 536,
+    "width": 400,
+    "height": 400
+   },
+   "deathClip": {
+    "x": 0,
+    "y": 296,
+    "width": 400,
+    "height": 400
+   },
+   "plannedTaps": 8,
+   "status": "failed",
+   "kind": "late",
+   "t": 22.806,
+   "turns": 22,
+   "perfect": 8,
+   "good": 0,
+   "stats": {
+    "meshes": 224,
+    "active": 23,
+    "fps": 25.94033722441972,
+    "trail": 24,
+    "tiles": 912,
+    "objects": 133,
+    "drawCalls": 5017
+   }
+  }
+ ],
+ "picker": [
+  {
+   "name": "portrait",
+   "w": 390,
+   "h": 844,
+   "path": "deliverables/skins/picker-portrait.png",
+   "save": "supernatural",
+   "world": "supernatural",
+   "cards": 7,
+   "overflowX": false,
+   "gridScrolls": false
+  },
+  {
+   "name": "landscape",
+   "w": 844,
+   "h": 390,
+   "path": "deliverables/skins/picker-landscape.png",
+   "save": "supernatural",
+   "world": "supernatural",
+   "cards": 7,
+   "overflowX": false,
+   "gridScrolls": false
+  },
+  {
+   "name": "desktop",
+   "w": 1440,
+   "h": 900,
+   "path": "deliverables/skins/picker-desktop.png",
+   "save": "supernatural",
+   "world": "supernatural",
+   "cards": 7,
+   "overflowX": false,
+   "gridScrolls": false
+  }
+ ],
+ "errors": [
+  "undefined: Failed to load resource: the server responded with a status of 404 (File not found)"
+ ]
+}
