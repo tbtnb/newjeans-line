@@ -3,7 +3,7 @@ import {NullEngine} from '@babylonjs/core/Engines/nullEngine';import {Scene,Mesh
 import {World} from '../src/render/world';import {Game} from '../src/core/game';import {readableRoadWidths} from '../src/core/roadwidth';import {denseWindows,inDenseWindow} from '../src/core/edgeassist';
 const level=JSON.parse(readFileSync('src/levels/omg.json','utf8'));
 test('late-song trail geometry stays within the rear camera window rather than growing for the whole song',()=>{
- const g=new Game(level);g.prepare(150);const e=new NullEngine(),s=new Scene(e),m=new Mesh('trail',s),w:any=Object.create(World.prototype);
+ const g=new Game(level);g.prepare(150);g.startTime=0;const e=new NullEngine(),s=new Scene(e),m=new Mesh('trail',s),w:any=Object.create(World.prototype);
  Object.assign(w,{game:g,route:g.route,cmode:true,runs:[],trailCount:0,failRun:null,trail:m});
  try{w.updateTrail(150,true);assert.ok(w.trailCount<50,`visible trail runs: ${w.trailCount}`);assert.ok(w.runs[0].a.z>g.route.spans[0].z0);assert.ok(m.getTotalVertices()<900);w.updateTrail(150.01);assert.ok(m.getTotalVertices()<900);}finally{s.dispose();e.dispose();}
 });

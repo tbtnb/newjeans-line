@@ -103,3 +103,10 @@ test('centering defaults on, toggles off, and never changes dense road widths',(
  centered.prepare();centered.start();for(const t of centered.taps)assert.equal(centered.tap(t),'hit');centered.update(L.duration);assert.equal(centered.status,'complete');
  centered.setCenterAssist(false);centered.prepare();assert.equal(centered.route.freeTurns,true);
 });
+
+test('checkpoint revival discards previous free-turn offsets without resetting earned score',()=>{
+ const g=new Game(L,{centerAssist:false});g.prepare();g.start();g.tap(g.taps[0]-.08);const score=g.good;g.checkpointsUsed.add(0);
+ g.prepare(53.968,true,true);assert.equal(g.good,score);assert.ok(g.checkpointsUsed.has(0));
+ const p=linePos(g.route,g.turns,g.time,g.cursor),c=posAt(g.route,g.time);assert.ok(Math.hypot(p.x-c.x,p.z-c.z)<1e-6);
+ g.start();g.update(54.05);assert.equal(g.status,'playing');g.prepare(0);g.start();g.update(1);assert.equal(g.status,'playing');assert.equal(g.cursor,0);
+});

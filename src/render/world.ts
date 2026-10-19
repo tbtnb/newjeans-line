@@ -384,20 +384,26 @@ export class World {
     return this.byId.get(id) ?? [];
   }
 
+  /** End an attempt immediately, including during asynchronous loading. */
+  clearAttemptVisuals() {
+    this.failRun = null; this.runs = []; this.trailCount = 0;
+    if(this.trail) updateTrailMesh(this.trail, []);
+    this.trailBuf.fill(0);
+    for(const f of this.fx) if(f.kind==='glow'||f.kind==='ring') {const mat=f.mesh.material;f.mesh.dispose();mat?.dispose(false,false);}
+    this.fx=[];this.failAnim?.pieces.forEach(p=>p.mesh.dispose());this.failAnim=null;
+    this.head?.setEnabled(false);this.skin.reset();this.lastTap=-10;this.completeAt=-1;
+    if(this.rig){this.rig.freezeAt=null;this.rig.extraPitch=0;this.rig.extraDist=0;this.rig.snap();}
+  }
+
   snapCamera() { if(this.rig && this.game){this.rig.menuOrbit = false;this.rig.snap();this.applyTime(this.game.time,0,true);} }
 
   /** Restore every time-dependent visual to time t (restart, checkpoint, rewind). */
   seek(t: number) {
     if (!this.game || !this.route) return;
     this.road?.seek(t); this.dress?.seek(t);
-    this.failRun = null; this.runs = []; this.trailCount = 0;
-    // A zero thin-instance count can render the source mesh; explicitly hide an empty trail.
-    if (this.trail) { this.trail.thinInstanceCount = 0; this.trail.setEnabled(false); }
-    this.trailBuf.fill(0); this.updateTrail(t, true);
+    this.clearAttemptVisuals(); this.updateTrail(t, true);
     for (const d of this.diamonds) { d.taken = this.game.diamondsTaken.has(this.diamonds.indexOf(d)); d.mesh.setEnabled(!d.taken); d.mesh.scaling.set(1, 1.5, 1); d.mesh.position.copyFrom(d.base); }
     for (const c of this.crowns) { c.taken = c.t <= t + 1e-6; c.node.setEnabled(true); c.node.position.copyFrom(c.base); this.ghostCrown(c.node, c.taken); }
-    for (const f of this.fx) {const mat=f.mesh.material;f.mesh.dispose();if(f.kind==='glow'||f.kind==='ring')mat?.dispose(false,false);} this.fx = [];
-    this.failAnim?.pieces.forEach(p => p.mesh.dispose()); this.failAnim = null;
     this.head?.setEnabled(true); if (this.head) this.head.visibility = 1; this.skin.reset();
     if (this.rig) { this.rig.freezeAt = null; this.rig.extraPitch = 0; this.rig.extraDist = 0; this.rig.snap(); }
     this.lastTime = t; this.completeAt = -1;
@@ -419,11 +425,12 @@ export class World {
     const runs: Run[] = [];let arcOffset=0;
     for (const sp of route.freeTurns ? travelledSpans(route, g.turns) : route.spans) {
       if (sp.t0 >= tc) break;
-      if (sp.air) continue;
+      if (sp.air || sp.t1 <= g.startTime) continue;
       // Keep more than the camera/road's rear window, not all 361 turns forever.
       if(this.cmode&&sp.t1<tc-14){arcOffset+=Math.hypot(sp.v*(sp.t1-sp.t0),sp.y1-sp.y0);continue;}
-      const a = this.v3(spanPos(sp, sp.t0)), b = this.v3(spanPos(sp, Math.min(sp.t1, tc)));
-      const len = (Math.min(sp.t1, tc) - sp.t0) * sp.v; const slope = len > 1e-6 ? (b.y - a.y) / len : 0;
+      const start=Math.max(sp.t0,g.startTime);if(Math.min(sp.t1,tc)<=start)continue;
+      const a = this.v3(spanPos(sp, start)), b = this.v3(spanPos(sp, Math.min(sp.t1, tc)));
+      const len = (Math.min(sp.t1, tc) - start) * sp.v; const slope = len > 1e-6 ? (b.y - a.y) / len : 0;
       const last = runs[runs.length - 1];
       if (last && last.h === sp.heading && Math.abs(last.slope - slope) < 1e-6 && Vector3.DistanceSquared(last.b, a) < 1e-6) last.b = b;
       else runs.push({ a, b, h: sp.heading, slope });

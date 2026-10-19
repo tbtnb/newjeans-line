@@ -85,12 +85,12 @@ export class Game {
 
   get progress() { return Math.max(0, Math.min(1, this.time / this.level.duration)); }
 
-  /** Prepare a run that starts at song time t (0 or a checkpoint/rewind point). */
-  prepare(t = 0, keepTurns = false) {
+  /** Prepare a run at t. resetPath revives on the authored checkpoint while retaining earned score. */
+  prepare(t = 0, keepTurns = false, resetPath = false) {
     this.status = 'ready';
     this.time = t; this.startTime = t;
     this.cursor = this.taps.findIndex(x => x > t + 1e-6); if (this.cursor < 0) this.cursor = this.taps.length;
-    if (keepTurns) this.turns = this.turns.filter(r => r.chartT <= t && r.tapT <= t);
+    if (keepTurns) this.turns = (resetPath ? [] : this.turns).filter(r => r.chartT <= t && r.tapT <= t);
     else { this.turns = []; this.perfect = this.good = 0; this.errorSum = 0; }
     // corners before the start point count as taken exactly on the chart (checkpoint / rewind / mid-level start)
     const have = new Set(this.turns.map(r => r.index));

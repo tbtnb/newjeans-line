@@ -28,6 +28,7 @@ let readyFrom = 0;           // song time the next start/resume begins at
 let readyKind: 'start' | 'resume' | 'checkpoint' = 'start';
 let failTimer = 0, clearTimer = 0;
 let loadToken = 0, loadingAttempt = 0;
+let runVersion=0, startPending=false, inputArmedAt=0;
 
 let lastSky='';
 world.onSky = (top, bottom) => {
@@ -46,6 +47,7 @@ world.onBackdrop = url => {
 
 function show(id: string, on: boolean) { $(id).classList.toggle('on', on); }
 function setState(s: State) {
+  if(s!=='playing'){runVersion++;startPending=false;}
   state = s;
   document.body.className = document.body.className.replace(/\b(menu|loading|ready|playing|paused|failed|complete)\b/g, '').trim() + ' ' + s;
   show('menu', s === 'menu'); show('hud', s === 'ready' || s === 'playing' || s === 'paused');
@@ -119,7 +121,8 @@ async function enterLevel() {
   if (!level || !game) return;
   clearTimeout(failTimer); clearTimeout(clearTimer);
   lastInputPerf = -1;
-  audio.unlock();
+  audio.stop();audio.unlock();
+  game.setCenterAssist(save.settings.centerAssist);game.prepare(0);world.clearAttemptVisuals();
   setState('loading');
   const token=loadToken, activeGame=game;
   const progress=startLoading();
@@ -152,12 +155,20 @@ function setReady() {
 }
 
 async function beginRun() {
-  if (!game || !level) return;
+  if (!game || !level || state!=='ready' || startPending) return;
+  const version=runVersion, activeGame=game, from=readyFrom;
+  startPending=true;
   clearTimeout(failTimer); clearTimeout(clearTimer);
-  audio.setEnd(level.audioDuration ? level.duration : null, level.endFade ?? 1.5);   // level ends before the song: fade out + stop there
-  try { await audio.play(readyFrom); } catch (e) { toast(String((e as Error).message)); return; }
-  game.start();
-  setState('playing');
+  audio.setEnd(level.audioDuration ? level.duration : null, level.endFade ?? 1.5);
+  try {
+    const started=await audio.play(from);
+    if(!started || version!==runVersion || game!==activeGame || (state as State)!=='ready')return;
+    lastInputPerf=-1;
+    const safeStartGap=((activeGame.taps[activeGame.cursor]??Infinity)-from-(activeGame.earlyWindows[activeGame.cursor]??0)-.05)*1000;
+    inputArmedAt=performance.now()+Math.max(0,Math.min(120,safeStartGap));
+    activeGame.start();setState('playing');
+  } catch(e) {if(version===runVersion)toast(String((e as Error).message));}
+  finally {if(version===runVersion)startPending=false;}
 }
 
 function pause() {
@@ -209,9 +220,12 @@ async function continueFromCheckpoint() {
   const t = level.layout.crowns[cp].t;
   game.checkpointsUsed.add(cp);
   if(state==='loading')return;
-  setState('loading'); const progress=startLoading();progress.update('audio',1,'歌曲已就绪');
-  try { await world.prepareScenery(t,(stage,f,detail)=>progress.update(stage,f,detail)); } catch(e) {setState('menu');toast('场景准备失败，请重试');return;}
-  game.setCenterAssist(save.settings.centerAssist); game.prepare(t, true); world.mode = 'play'; world.seek(t);
+  clearTimeout(failTimer);clearTimeout(clearTimer);audio.stop();
+  game.setCenterAssist(save.settings.centerAssist);game.prepare(t,true,true);world.clearAttemptVisuals();
+  setState('loading');const version=runVersion,activeGame=game; const progress=startLoading();progress.update('audio',1,'歌曲已就绪');
+  try { await world.prepareScenery(t,(stage,f,detail)=>progress.update(stage,f,detail)); } catch(e) {if(version===runVersion){setState('menu');toast('场景准备失败，请重试');}return;}
+  if(version!==runVersion||game!==activeGame||(state as State)!=='loading')return;
+  game.setCenterAssist(save.settings.centerAssist); game.prepare(t, true, true); world.mode = 'play'; world.seek(t);
   readyFrom = t; readyKind = 'checkpoint'; setReady();
 }
 
@@ -248,6 +262,7 @@ let lastInputPerf = -1;
 function onPlayInput(perfTime: number) {
   if (state === 'ready') { void beginRun(); return; }
   if (state !== 'playing' || !game) return;
+  if(perfTime<inputArmedAt)return; // do not turn the start gesture / double-tap into an immediate early death
   if (perfTime === lastInputPerf) return; // same physical event delivered twice
   lastInputPerf = perfTime;
   const t = audio.songTime(perfTime) - save.settings.offsetMs / 1000;

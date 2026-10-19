@@ -20,6 +20,7 @@ export class AudioTransport {
   private startedAt = 0;   // context time at which `offset` is scheduled to be heard
   private lastReported = 0;
   private volume = 0.8;
+  private playbackVersion = 0;
   playing = false;
 
   context(): AudioContext {
@@ -141,10 +142,12 @@ export class AudioTransport {
   }
 
   async play(from: number) {
+    const version=++this.playbackVersion;
     const c = this.context();
     if (!this.buffer) throw new Error('歌曲还没有加载完成');
     // resume() outside a gesture never settles on iOS: don't hang play() on it
     if (c.state !== 'running') await Promise.race([c.resume().catch(() => {}), new Promise(r => setTimeout(r, 1500))]);
+    if(version!==this.playbackVersion)return false;
     this.halt();
     this.offset = Math.max(0, Math.min(from, this.duration));
     const src = c.createBufferSource();
@@ -169,6 +172,7 @@ export class AudioTransport {
     this.playing = true;
     this.lastReported = this.offset; this.smooth = this.offset; this.smoothPerf = performance.now();
     src.onended = () => { if (this.source === src) { this.playing = false; this.offset = this.duration; this.source = null; this.restoreGain(); } };
+    return true;
   }
 
   private halt() {
@@ -178,8 +182,8 @@ export class AudioTransport {
   }
   private restoreGain() { if (this.gain && this.ctx) { this.gain.gain.cancelScheduledValues(this.ctx.currentTime); this.gain.gain.setValueAtTime(this.volume, this.ctx.currentTime); } }
 
-  pause() { if (this.playing) { this.offset = this.songTime(); } this.playing = false; this.halt(); }
-  stop() { this.playing = false; this.halt(); this.offset = 0; }
+  pause() { this.playbackVersion++; if (this.playing) { this.offset = this.songTime(); } this.playing = false; this.halt(); }
+  stop() { this.playbackVersion++; this.playing = false; this.halt(); this.offset = 0; }
 
   /** Fade out then stop (fail). */
   fadeOut(sec = 0.6) {
@@ -189,8 +193,9 @@ export class AudioTransport {
     this.gain.gain.cancelScheduledValues(now);
     this.gain.gain.setValueAtTime(this.gain.gain.value, now);
     this.gain.gain.linearRampToValueAtTime(0.0001, now + sec);
-    const src = this.source;
+    const src = this.source, version=this.playbackVersion;
     setTimeout(() => {
+      if(version!==this.playbackVersion)return;
       if (this.source === src) { this.halt(); this.playing = false; this.offset = at; }
       if (this.gain && this.ctx) { this.gain.gain.cancelScheduledValues(this.ctx.currentTime); this.gain.gain.setValueAtTime(this.volume, this.ctx.currentTime); }
     }, sec * 1000 + 30);
