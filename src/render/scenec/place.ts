@@ -12,7 +12,7 @@ export interface CImp { k: string; x: number; y: number; z: number; yaw: number;
 export interface CChunk { imp?: CImp[]; i: number; t0: number; t1: number; zone: number; minX: number; maxX: number; minZ: number; maxZ: number; y: number; items: CInst[];
   /** raised page at the chunk's own road level (climbs): pad shrunk so it never covers a lower road; decor inside it sits on it */
   terr?: { y: number; pad: number } }
-export interface CPlacement { chunks: CChunk[]; sets: CSet[]; stats: { placed: number; rejected: number } }
+export interface CPlacement { chunks: CChunk[]; sets: CSet[]; stats: { placed: number; rejected: number; rj?: Record<string, number> } }
 
 export function rng(seed: number) { let a = seed >>> 0; return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
 
@@ -73,7 +73,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
   /** near band: the bottom of the key camera's frame (ground ~4 m behind the flow point, i.e. around the head); big masses there fill the screen */
   const nearBand = (x: number, z: number, t: number, r: number) => { const i0 = Math.max(0, Math.floor((t - 4) * 4)), i1 = Math.min(camPath.length - 1, Math.ceil((t + 2) * 4));
     for (let i = i0; i <= i1; i++) { const c = camPath[i]; if ((c.gx - x) ** 2 + (c.gz - z) ** 2 < r * r) return true; } return false; };
-  let placed = 0, rejected = 0;
+  let placed = 0, rejected = 0; const rj: Record<string, number> = {};
   // v8 audit: models no longer clip into each other - tall mid pieces keep their footprints apart (4 m hash grid), set pieces clear them after
   const occ = new Map<string, number[][]>(), oc = (x: number, z: number) => `${Math.floor(x / 4)},${Math.floor(z / 4)}`;
   const foot = (A: { h: number; w?: number; d?: number }, s: number) => Math.max(A.w ?? A.h * 0.6, A.d ?? 0, 0.5) * s * 0.5;
@@ -89,25 +89,27 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
       const A = spec.assets[L.asset]; if (!A) continue;
       const n = Math.round(L.count * (o.density?.[L.layer] ?? 1));
       for (let k = 0; k < n; k++) for (let att = 0; att < 6; att++) {   // a spot over another road segment retries elsewhere (zig-zag routes)
-        const t = z.t0 + (k + R()) / n * (t1 - z.t0);
+        const T0 = L.tw ? Math.max(z.t0, L.tw[0]) : z.t0, T1 = L.tw ? Math.min(t1, L.tw[1]) : t1;   // v9: optional placement time window
+        const t = T0 + (k + R()) / n * (T1 - T0);
         const side = R() < 0.5 ? -1 : 1, w = o.widthAt(t);
         const s = (L.scale[0] ?? 1) + R() * ((L.scale[1] ?? 1) - (L.scale[0] ?? 1)); const h = A.h * s;
         // tall things keep 1.5 road widths clear of every road segment (ground cover < groundMaxH may hug the edge)
         const view = L.view;   // v8 'view' layers: lateral offset from the FLOW line (the key camera's left / right), pushed out of the zig-zag until clear
-        const minEdge = h < groundMaxH ? Math.max(L.near[0], 0.25) : Math.max(L.near[0], 1.5 * w);
+        const minEdge = h < groundMaxH ? Math.max(L.near[0], 0.25) : h < 1.7 ? Math.max(L.near[0], 0.5) : h < 3.2 ? Math.max(L.near[0], 0.8 * w) : Math.max(L.near[0], 1.5 * w);
         const edge = view ? 99 : minEdge + Math.pow(R(), L.layer === 'ground' ? 1.6 : 1) * Math.max(0, L.near[1] - minEdge);
         let off = view ? side * (view[0] + R() * (view[1] - view[0])) : side * (w / 2 + edge);
         let a = edge < 6 ? anchor(route, t, off, 0, 0) : flowAnchor(route, t, off, 0, 0);
         const y0 = (L.y[0] ?? 0) + R() * ((L.y[1] ?? 0) - (L.y[0] ?? 0));
         const r = Math.max(0.15, Math.max(A.h, A.w ?? 0, A.d ?? 0) * s * (A.shape === 'far' ? 0.2 : 0.35));   // wide pieces (paper hills) need their width
-        const pad = h < groundMaxH ? 0.15 : view ? clearNear + 0.5 * w : clearNear + 1.0 * w;
+        // v9: low pieces (< 1.7 m) may sit close to the road edge like the keys (they cannot hide a tile); mid-height ones keep a smaller margin
+        const pad = h < groundMaxH ? 0.15 : h < 1.7 ? 0.35 + 0.1 * w : h < 3.2 ? clearNear * 0.6 + 0.3 * w : view ? clearNear + 0.5 * w : clearNear + 1.0 * w;
         if (view) for (let k = 0; k < 8 && o.hits(a.pos.x, a.pos.z, r + pad, a.pos.y - 1, a.pos.y + h); k++) { off += side * 1.25; a = flowAnchor(route, t, off, 0, 0); }
-        if (y0 < 4 && o.hits(a.pos.x, a.pos.z, r + pad, a.pos.y - 1, a.pos.y + h)) { rejected++; continue; }
-        if (L.layer === 'mid' && h > 1.2 && blocksHead(a.pos.x, a.pos.z, r, a.pos.y + y0, h, t)) { rejected++; continue; }
+        if (y0 < 4 && o.hits(a.pos.x, a.pos.z, r + pad, a.pos.y - 1, a.pos.y + h)) { rejected++; rj[z.id + ' ' + L.asset + ' hit'] = (rj[z.id + ' ' + L.asset + ' hit'] ?? 0) + 1; continue; }
+        if (L.layer === 'mid' && h > 1.2 && blocksHead(a.pos.x, a.pos.z, r, a.pos.y + y0, h, t)) { rejected++; rj[z.id + ' ' + L.asset + ' sight'] = (rj[z.id + ' ' + L.asset + ' sight'] ?? 0) + 1; continue; }
         const solid = L.layer === 'mid' && h >= 0.8 && !/fence|bunting|lantern-string|cord/.test(L.asset), fr0 = foot(A, s);
         const isTree = A.shape === 'tree' && !/hedge/.test(L.asset);
-        if (solid && occHit(a.pos.x, a.pos.z, fr0, isTree)) { rejected++; continue; }
-        if (!view && L.layer === 'mid' && h > 2.6 && nearBand(a.pos.x, a.pos.z, t, (L.hug ? 3 : 16) + r)) { rejected++; continue; }   // big pieces stay out of the near band; v7 'hug' layers (lit house rows) may line the road
+        if (solid && occHit(a.pos.x, a.pos.z, fr0, isTree)) { rejected++; rj[z.id + ' ' + L.asset + ' occ'] = (rj[z.id + ' ' + L.asset + ' occ'] ?? 0) + 1; continue; }
+        if (!view && L.layer === 'mid' && h > 2.6 && nearBand(a.pos.x, a.pos.z, t, (L.hug ? 3 : 9) + r)) { rejected++; rj[z.id + ' ' + L.asset + ' near'] = (rj[z.id + ' ' + L.asset + ' near'] ?? 0) + 1; continue; }   // big pieces stay out of the near band; v7 'hug' layers (lit house rows) may line the road
         const rp = anchor(route, t).pos;
         const fp = view ? flowAnchor(route, Math.max(0, t - 2.5), 0, 0, 0).pos : rp;   // view pieces face back along the flow (toward the key camera), not sideways
         const yaw = A.shape === 'far' || L.layer === 'mid' ? Math.atan2(fp.x - a.pos.x, fp.z - a.pos.z) + (view ? (R() - 0.5) * 0.5 : 0) : R() * Math.PI * 2;
@@ -128,15 +130,43 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
               if (view) { let o2 = off; for (let k = 0; k < 6 && o.hits(b.pos.x, b.pos.z, r * ms / s + pad, a.pos.y - 1, a.pos.y + A.h * ms); k++) { o2 += side * 1.25; b = flowAnchor(route, ty, o2, 0, 0); } }
               x = b.pos.x; zz = b.pos.z; const bp = anchor(route, ty).pos; my = view ? yaw : Math.atan2(bp.x - x, bp.z - zz); }
             else { const an = R() * Math.PI * 2, rr = Cn.r * s * Math.sqrt(0.15 + 0.85 * R()); x = a.pos.x + Math.cos(an) * rr; zz = a.pos.z + Math.sin(an) * rr; my = L.layer === 'mid' ? yaw + (R() - 0.5) * 0.8 : R() * Math.PI * 2; }
-            if (o.hits(x, zz, r * ms / s + pad, a.pos.y - 1, a.pos.y + A.h * ms) || (!view && A.h * ms > 2.6 && nearBand(x, zz, ty, (L.hug ? 3 : 16) + r * ms / s))) { rejected++; continue; }
-            if (L.layer === 'mid' && A.h * ms > 1.2 && blocksHead(x, zz, r * ms / s, a.pos.y + y0, A.h * ms, ty)) { rejected++; continue; }
+            if (o.hits(x, zz, r * ms / s + pad, a.pos.y - 1, a.pos.y + A.h * ms) || (!view && A.h * ms > 2.6 && nearBand(x, zz, ty, (L.hug ? 3 : 9) + r * ms / s))) { rejected++; rj[z.id + ' ' + L.asset + ' mhit'] = (rj[z.id + ' ' + L.asset + ' mhit'] ?? 0) + 1; continue; }
+            if (L.layer === 'mid' && A.h * ms > 1.2 && blocksHead(x, zz, r * ms / s, a.pos.y + y0, A.h * ms, ty)) { rejected++; rj[z.id + ' ' + L.asset + ' msight'] = (rj[z.id + ' ' + L.asset + ' msight'] ?? 0) + 1; continue; }
             const alts = [L.asset, ...(L.alt ?? [])], ma = alts[j % alts.length], MA = spec.assets[ma] ?? A, mr = foot(MA, ms);
-            const mt = MA.shape === 'tree' && !/hedge/.test(ma); if (solid && occHit(x, zz, mr, mt)) { rejected++; continue; }
+            const mt = MA.shape === 'tree' && !/hedge/.test(ma); if (solid && occHit(x, zz, mr, mt)) { rejected++; rj[z.id + ' ' + L.asset + ' mocc'] = (rj[z.id + ' ' + L.asset + ' mocc'] ?? 0) + 1; continue; }
             const cj = chunkAt(ty); if (solid) occAdd(x, zz, mr, mt);   // v8: rows alternate kinds and step the palette variant, so no piece repeats its neighbour
             chunks[cj].items.push({ a: ma, layer: L.layer, x, y: groundY(chunks[cj], x, zz) + y0, z: zz, yaw: my + (view ? (fr(zz, x) - 0.5) * 0.4 : 0), s: ms, c: col(), zone: zi, t: ty, chunk: cj, v: v0 + j, ...(L.hi ? { hi: true } : {}) }); placed++;
           }
         }
         break;
+      }
+    }
+    // v9 frame fill: the key frames are full edge to edge. Walk a flow-aligned grid over the zone; every cell with no solid piece within `free` m
+    // gets a small blob of mixed fill kinds (cheap trees / piles), each member clear of the road, the sightline and the occupancy grid.
+    const F = z.fill;
+    if (F && F.kinds.length) {
+      const dt = F.cell / 9; let fk = 0;
+      for (let t = z.t0 + dt * 0.5; t < t1; t += dt) for (let off = -F.lat; off <= F.lat + 0.01; off += F.cell) {
+        if (Math.abs(off) < 3) continue;
+        const jx = (fr(t * 7.1, off) - 0.5) * F.cell * 0.7, jt = (fr(off, t * 3.3) - 0.5) * dt * 0.8;
+        const a = flowAnchor(route, Math.min(t1, Math.max(z.t0, t + jt)), off + jx, 0, 0);
+        rj['fill cells ' + z.id] = (rj['fill cells ' + z.id] ?? 0) + 1; if (occHit(a.pos.x, a.pos.z, F.free ?? 3.5)) { rj['fill occ ' + z.id] = (rj['fill occ ' + z.id] ?? 0) + 1; continue; }
+        if (o.hits(a.pos.x, a.pos.z, 2.2, a.pos.y - 1, a.pos.y + 4)) { rj['fill road ' + z.id] = (rj['fill road ' + z.id] ?? 0) + 1; continue; }
+        const m = Math.round(F.n[0] + fr(a.pos.z, a.pos.x) * ((F.n[1] ?? F.n[0]) - F.n[0]));
+        const rp = anchor(route, t).pos, yaw0 = Math.atan2(rp.x - a.pos.x, rp.z - a.pos.z);
+        for (let j = 0; j < m; j++) {
+          const an = fr(j * 1.7 + a.pos.x, a.pos.z) * Math.PI * 2, rr = j === 0 ? 0 : F.r * Math.sqrt(0.2 + 0.8 * fr(a.pos.z + j, a.pos.x));
+          const x = a.pos.x + Math.cos(an) * rr, zz = a.pos.z + Math.sin(an) * rr;
+          const ma = F.kinds[(fk++) % F.kinds.length], MA = spec.assets[ma]; if (!MA) continue;
+          const ms = F.scale[0] + fr(x, zz * 1.3) * ((F.scale[1] ?? F.scale[0]) - F.scale[0]), h = MA.h * ms, mr = foot(MA, ms), tr = MA.shape === 'tree';
+          const rad = Math.max(0.15, Math.max(MA.h, MA.w ?? 0, MA.d ?? 0) * ms * 0.35), pad = h < 1.7 ? 0.35 + 0.1 * o.widthAt(t) : clearNear + 0.5 * o.widthAt(t);
+          if (o.hits(x, zz, rad + pad, a.pos.y - 1, a.pos.y + h)) continue;
+          if (h > 1.2 && blocksHead(x, zz, rad, a.pos.y, h, t)) continue;
+          if (h >= 0.8 && occHit(x, zz, mr, tr)) continue;
+          const ci = chunkAt(t);
+          chunks[ci].items.push({ a: ma, layer: 'mid', x, y: groundY(chunks[ci], x, zz), z: zz, yaw: yaw0 + (fr(zz, x) - 0.5) * 1.2, s: ms, c: 0, zone: zi, t, chunk: ci, v: Math.floor(fr(x * 1.1, zz) * 9973), hi: true });
+          if (h >= 0.8) occAdd(x, zz, mr, tr); placed++; rj['fill placed ' + z.id] = (rj['fill placed ' + z.id] ?? 0) + 1;
+        }
       }
     }
   });
@@ -192,7 +222,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
     for (let ci = Math.max(0, st.chunk - 2); ci <= Math.min(chunks.length - 1, st.chunk + 2); ci++) chunks[ci].items = chunks[ci].items.filter(it => {
       if (it.layer !== 'mid') return true; const B = spec.assets[it.a]; if (!B || B.h * it.s < 0.8) return true;
       const k = (it.x - st.x) ** 2 + (it.z - st.z) ** 2 < ((r + foot(B, it.s) * 0.6) * 0.85) ** 2; if (k) rejected++; return !k; }); }
-  return { chunks, sets, stats: { placed, rejected } };
+  return { chunks, sets, stats: { placed, rejected, rj } };
 }
 
 /** chunk index range [a, b] active at song time t (window behind/ahead in seconds) */

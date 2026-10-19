@@ -30,7 +30,12 @@ def fg_design(im):
     # fill holes (cream paper close to the grey studio): background = what a flood fill from the border reaches
     pm = Image.new('L', (w + 4, h + 4), 0); pm.paste(m, (2, 2)); ImageDraw.floodfill(pm, (0, 0), 128)
     return pm.crop((2, 2, w + 2, h + 2)).point(lambda v: 0 if v == 128 else 255)
-def fg_model(im): return im.convert('RGBA').split()[3].point(lambda v: 255 if v > 20 else 0)
+def fill_holes(m):
+    w, h = m.size; pm = Image.new('L', (w + 4, h + 4), 0); pm.paste(m, (2, 2)); ImageDraw.floodfill(pm, (0, 0), 128)
+    return pm.crop((2, 2, w + 2, h + 2)).point(lambda v: 0 if v == 128 else 255)
+# v9: the design mask has its enclosed holes filled (cream paper ~ grey studio, so holes cannot be told from paper); the model mask now gets
+# the same hole filling, so open bays / wheel spokes / column gaps count the same on both sides (scores were unfairly low for open models)
+def fg_model(im): return fill_holes(im.convert('RGBA').split()[3].point(lambda v: 255 if v > 20 else 0))
 
 design = {}   # view -> RGB image (cropped to the item)
 for v in ('front', 'side', 'top'):

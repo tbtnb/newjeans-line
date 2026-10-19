@@ -303,7 +303,7 @@ def finalize(budget=None, bake=True):
         for p in o.data.polygons: p.use_smooth = False
     fc = fix_closed(meshes)
     zf = [0, 0]
-    for _ in range(5):
+    for _ in range(10):
         a, b = decoplanar(meshes); zf[0] += a; zf[1] += b
         if a == 0: break
     if bake: bake_light(meshes)

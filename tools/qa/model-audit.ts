@@ -56,7 +56,7 @@ function audit(t: { pos: Float32Array; idx: Uint32Array }, h: number) {
   for (const arr of bucket.values()) { if (arr.length < 2 || arr.length > 400) continue;
     for (let x = 0; x < arr.length; x++) for (let y = x + 1; y < arr.length; y++) { const a = arr[x], b = arr[y]; if (isOf[a] === isOf[b] || Math.abs(dOf[a] - dOf[b]) > h * 0.0012) continue;
       const cA = [0, 1, 2].map(d => (P[I[a * 3] * 3 + d] + P[I[a * 3 + 1] * 3 + d] + P[I[a * 3 + 2] * 3 + d]) / 3);
-      if (inTri(cA, b, nrm[a])) { zf++; if (zfAt.length < 3) zfAt.push(cA.map(z => +z.toFixed(2))); } } }
+      if (inTri(cA, b, nrm[a])) { zf++; if (zfAt.length < 12) zfAt.push([...cA, ...nrm[a]].map(z => +z.toFixed(2))); } } }
   return { tris: nT, islands: L.length, degen, dupes, floating: floating.length, floatingAt: floating.slice(0, 4), inverted, openIslands: openIsl, zfight: zf, zfAt };
 }
 (window as any).auditModel = async (id: string) => {

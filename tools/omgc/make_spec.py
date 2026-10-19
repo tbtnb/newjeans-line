@@ -466,6 +466,64 @@ for z in zones:
     zk = (z['t1'] - z['t0']) / 15.12
     addv(z, L[0], max(2, round(5 * zk)), [3.0, 7.5], [1.1, 1.4], True, ROW(3, 5, 2.8)); z['layers'][-1]['alt'] = L[1:]
     addv(z, L[1], max(1, round(1.5 * zk)), [3.0, 7.0], [1.1, 1.3], False, ROW(2, 3, 2.8)); z['layers'][-1]['alt'] = L[2:] + L[:1]   # low tier keeps a little
+# v9 density without clones: big mixed masses along the road like the keys - each blob mixes kinds (alt) and steps the palette per member;
+# groves mix tree kinds, book piles mix with chimes / gifts, house clusters carry lamps. High tier only (low tier keeps v8c).
+MASS = {
+ 'z03': [(['ward-bed', 'screen', 'iv-heart', 'tulip-bed', 'gift'], 6, [3.5, 9.0], [1.05, 1.25], BLOB(4, 6, 2.6)),
+         (['tree-lo', 'forest-clump', 'tree-bush', 'pine-lo'], 5, [8.0, 16.0], [1.0, 1.35], BLOB(5, 8, 3.2)),
+         (['book-stack', 'gift', 'heart-sculpt', 'book-stack'], 4, [3.5, 8.5], [1.4, 1.9], BLOB(3, 5, 2.0)),
+         (['bunny-house', 'mushroom-house'], 2, [8.0, 14.0], [1.0, 1.25], ROW(2, 3, 4.6))],
+ 'z04': [(['mushroom-house', 'bunny-house', 'lily-lamp', 'pine-lo', 'firefly-lamp'], 4, [6.0, 13.0], [1.1, 1.4], BLOB(4, 6, 3.4)),
+         (['pine-lo', 'tree-lo', 'forest-clump', 'pine'], 5, [9.0, 18.0], [0.95, 1.3], BLOB(5, 8, 3.4)),
+         (['book-stack', 'star-chime', 'book-stack', 'gift'], 4, [3.5, 8.0], [1.4, 1.9], BLOB(3, 5, 2.0)),
+         (['tulip-bed', 'heart-bed', 'mushroom-group', 'heart-sculpt'], 5, [3.0, 7.0], [1.1, 1.4], BLOB(3, 5, 2.2))],
+ 'z05': [(['lily-lamp', 'mushroom-group', 'tulip-bed', 'rock'], 5, [3.0, 7.0], [1.2, 1.5], BLOB(3, 5, 2.2)),
+         (['tree-lo', 'pine-lo', 'forest-clump', 'tree'], 5, [9.0, 17.0], [0.95, 1.3], BLOB(5, 8, 3.4)),
+         (['mushroom-house', 'bunny-house', 'firefly-lamp'], 2.5, [7.0, 13.0], [1.05, 1.35], BLOB(3, 4, 3.6)),
+         (['book-stack', 'gift', 'heart-sculpt'], 3, [4.0, 9.0], [1.4, 1.8], BLOB(3, 4, 2.0))],
+ 'z07': [(['book-stack', 'star-chime', 'book-stack', 'lily-lamp'], 5, [3.5, 8.0], [1.4, 2.0], BLOB(4, 6, 2.2)),
+         (['bunny-house', 'mushroom-house', 'pine-lo', 'firefly-lamp'], 3, [6.0, 12.0], [1.05, 1.35], BLOB(4, 5, 3.4)),
+         (['pine-lo', 'tree-lo', 'forest-clump', 'pine'], 5, [10.0, 18.0], [0.95, 1.3], BLOB(5, 8, 3.4))],
+}
+for z in zones:
+    zk = (z['t1'] - z['t0']) / 15.12
+    if z['id'] == 'z05': mul(z, 0.35, ('bunny-statue',), 'mid')   # user: fewer bunny statues in the lake
+    for kinds, n, lat, sc, cl in MASS.get(z['id'], []):
+        kinds = [k for k in kinds if k in assets]
+        if not kinds: continue
+        addv(z, kinds[0], max(1, round(n * zk)), lat, sc, True, cl); z['layers'][-1]['alt'] = kinds[1:] or [kinds[0]]
+    if z['id'] == 'z09':   # v9: the lit village sits where the key camera looks at the shot time (tw = placement time window)
+        for aid, n, lat, sc, cl in (('mushroom-house', 3, [5.5, 10.0], [1.2, 1.5], ROW(3, 4, 4.4)), ('firefly-lamp', 4, [3.5, 6.0], [1.2, 1.5], ROW(2, 3, 3.0)),
+                                    ('pine-lo', 3, [10.0, 16.0], [0.9, 1.1], BLOB(4, 6, 3.2))):
+            addv(z, aid, n, lat, sc, True, cl); z['layers'][-1]['tw'] = [135.4, 141.0]
+            z['layers'][-1]['alt'] = {'mushroom-house': ['bunny-house'], 'firefly-lamp': ['lily-lamp'], 'pine-lo': ['tree-lo', 'forest-clump']}[aid]
+# v9b: the key frames are full edge to edge; cheap mixed groves (150-300 tris a tree) and small piles fill the frame between the hero pieces
+GROVE = {'z03': ['tree-lo', 'forest-clump', 'tree-bush-lo', 'pine-lo'], 'z04': ['pine-lo', 'tree-lo', 'forest-clump', 'pine-lo', 'tree-bush-lo'],
+         'z05': ['tree-lo', 'pine-lo', 'tree-bush-lo', 'forest-clump'], 'z07': ['pine-lo', 'forest-clump', 'tree-lo', 'pine-lo'],
+         'z09': ['pine-lo', 'tree-lo', 'forest-clump', 'pine-lo'], 'z06': ['tree-lo', 'tree-bush-lo', 'pine-lo'], 'z02': ['tree-lo', 'tree-bush-lo', 'pine-lo'],
+         'z10': ['tree-lo', 'tree-bush-lo', 'forest-clump'], 'z01': ['tree-lo', 'tree-bush-lo']}
+PILE = {'z03': ['gift', 'mushroom-group', 'book-stack', 'pull-tab', 'rock'], 'z04': ['mushroom-group', 'gift', 'book-stack', 'firefly-lamp', 'rock'],
+        'z05': ['mushroom-group', 'rock', 'lily-lamp', 'book-stack'], 'z07': ['book-stack', 'mushroom-group', 'firefly-lamp', 'rock', 'gift'],
+        'z09': ['mushroom-group', 'firefly-lamp', 'book-stack', 'rock'], 'z06': ['gift', 'mushroom-group', 'rock']}
+GK = {'z03': 28, 'z04': 28, 'z05': 26, 'z07': 28, 'z09': 14, 'z06': 14, 'z02': 12, 'z10': 10, 'z01': 8}
+for z in zones:
+    zk = (z['t1'] - z['t0']) / 15.12; zid = z['id']
+    g = [k for k in GROVE.get(zid, []) if k in assets]
+    if g:
+        addv(z, g[0], max(1, round(GK[zid] * zk)), [6.0, 26.0], [1.0, 1.5], True, BLOB(6, 9, 4.2)); z['layers'][-1]['alt'] = g[1:]
+    p = [k for k in PILE.get(zid, []) if k in assets]
+    if p:
+        addv(z, p[0], max(1, round(GK[zid] * zk)), [3.0, 14.0], [1.2, 1.6], True, BLOB(4, 6, 2.4)); z['layers'][-1]['alt'] = p[1:]
+# v9c frame fill (place.ts z.fill): empty grid cells get a little mixed blob - keys read full edge to edge
+FILL = {'z01': ['tree-lo', 'tulip-bed', 'tree-bush-lo', 'gift'], 'z02': ['tree-lo', 'mushroom-group', 'tree-bush-lo', 'gift', 'pine-lo'],
+        'z03': ['tree-lo', 'gift', 'pine-lo', 'mushroom-group', 'tree-bush-lo', 'book-stack'], 'z04': ['pine-lo', 'mushroom-group', 'tree-lo', 'firefly-lamp', 'forest-clump', 'gift'],
+        'z05': ['tree-lo', 'rock', 'pine-lo', 'mushroom-group', 'tree-bush-lo', 'lily-lamp'], 'z06': ['tree-lo', 'gift', 'tree-bush-lo', 'mushroom-group'],
+        'z07': ['pine-lo', 'book-stack', 'forest-clump', 'firefly-lamp', 'tree-lo', 'mushroom-group'], 'z08': ['pine-lo', 'gift', 'tree-lo', 'balloons'],
+        'z09': ['pine-lo', 'mushroom-group', 'tree-lo', 'firefly-lamp', 'forest-clump'], 'z10': ['tree-lo', 'gift', 'tree-bush-lo', 'tulip-bed']}
+FCELL = {'z03': 7.5, 'z04': 7.5, 'z05': 7.5, 'z07': 7.5, 'z09': 8.5, 'z02': 9.0, 'z06': 9.0, 'z08': 10.0, 'z01': 10.0, 'z10': 10.0}
+for z in zones:
+    k = [a for a in FILL.get(z['id'], []) if a in assets]
+    if k: z['fill'] = dict(kinds=k, cell=FCELL[z['id']], lat=32.0, n=[2, 4], r=2.6, scale=[1.0, 1.4], free=3.8)
 SKY = {'z01': 'day', 'z02': 'day', 'z03': 'dusk', 'z04': 'night', 'z05': 'twilight', 'z06': 'dusk', 'z07': 'night', 'z08': 'night', 'z09': 'night', 'z10': 'day'}   # v8 sky strip per zone
 for z in zones: z['sky'] = SKY[z['id']]
 out = os.path.join(here, '..', '..', 'levels-src', 'omg', 'scene-c.json')
