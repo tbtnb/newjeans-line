@@ -12306,7 +12306,8 @@
      "dist": 3.0,
      "scale": 1.0,
      "pop": "spring",
-     "label": "纸灯笼塔"
+     "label": "纸灯笼塔",
+     "hi": true
     }
    ],
    "moments": [
@@ -12412,6 +12413,7 @@
     ],
     "free": 3.8
    },
+   "lowMul": 0.35,
    "sky": "night"
   },
   {

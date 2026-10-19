@@ -530,6 +530,11 @@ for z in zones:
     for ly in z['layers']:
         if ly.get('alt'): ly['alt'] = [a for i, a in enumerate(ly['alt']) if a != ly['asset'] and a not in ly['alt'][:i]] or ly['alt'][:1]
     if z.get('fill'): z['fill']['kinds'] = list(dict.fromkeys(z['fill']['kinds']))
+for z in zones:
+    if z['id'] == 'z08':   # v9: low-tier z08 <= 50k tris (road ~25k + carousel + wheel ~11k): thinner scatter, side tower high tier only
+        z['lowMul'] = 0.35
+        for sp in z['setpieces']:
+            if not sp.get('hero'): sp['hi'] = True
 SKY = {'z01': 'day', 'z02': 'day', 'z03': 'dusk', 'z04': 'night', 'z05': 'twilight', 'z06': 'dusk', 'z07': 'night', 'z08': 'night', 'z09': 'night', 'z10': 'day'}   # v8 sky strip per zone
 for z in zones: z['sky'] = SKY[z['id']]
 out = os.path.join(here, '..', '..', 'levels-src', 'omg', 'scene-c.json')

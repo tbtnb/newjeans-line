@@ -191,7 +191,7 @@ export class SceneC {
 
   /** QA (tools/qa/repcount.mjs): the palette variant an item actually renders with */
   variantOf(it: CInst) { const n = nVariants(it.a); return n < 2 ? 0 : (it.v ?? Math.floor(hash(it.x * 3.1, it.z * 1.7) * 9973)) % n; }
-  private keep(it: CInst) { if (it.hi && this.tier === 'low') return false; return hash(it.x, it.z) < (TIERS[this.tier].density[it.layer] ?? 1); }
+  private keep(it: CInst) { if (it.hi && this.tier === 'low') return false; const lm = this.tier === 'low' ? this.spec.zones[it.zone]?.lowMul ?? 1 : 1; return hash(it.x, it.z) < (TIERS[this.tier].density[it.layer] ?? 1) * lm; }   // v9: per-zone low-tier thinning (z08 carnival)
   private colOf(it: CInst, model: boolean) { const c = this.zoneCols[it.zone][it.c] ?? [1, 1, 1]; const k = model ? 0.12 : 0.85; return [1 + (c[0] - 1) * k, 1 + (c[1] - 1) * k, 1 + (c[2] - 1) * k]; }
   private yOf(it: CInst) { return it.y; }   // ground / mid / land: the page or terrace level chosen at placement
 
