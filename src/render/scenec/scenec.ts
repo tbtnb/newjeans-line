@@ -455,7 +455,7 @@ export class SceneC {
     const t = this.tm.get(e.def.a)!; e.tris = t.tris;
     const vi = e.def.v ?? 0; e.far = this.meshFrom(`cfar_${e.def.a}`, vi ? { ...t, col: variantCols(e.def.a, t.col as any, vi) as any } : t); e.far.parent = e.hinge; e.far.material = this.matSet;
     if (t.container) {
-      const inst = t.container.instantiateModelsToScene(n => `${n}_${e.def.t}`, false, { doNotInstantiate: vi > 0 });   // palette variants need own (cloned) geometry
+      const inst = t.container.instantiateModelsToScene(n => `${n}_${e.def.t}`, false, { doNotInstantiate: true });   // always clone (as before v8): palette variants need own geometry, and instances of the container's meshes (not in the scene) would not render
       const r = new TransformNode(`cnear_${e.def.a}`, this.scene); r.parent = e.hinge; r.scaling.setAll(t.scale);
       for (const n of inst.rootNodes) n.parent = r;
       for (const m of r.getChildMeshes()) { m.material = this.matSet; m.isPickable = false; e.nearMeshes.push(m as Mesh);
