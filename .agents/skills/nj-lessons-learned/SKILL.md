@@ -7,6 +7,9 @@ description: newjeans-line 踩过的坑和修法（Babylon 实例化、z-fight�
 
 > 每条：现象 → 原因 → 修法（commit）。改相关代码前先搜一下这里。
 
+## 最新试玩修复
+本轮反馈、原因、实现、测试和仍未实测的内容见 [2026-10-19试玩回归](references/playtest-2026-10-19.md)。旧记录中“每段盒子”“吸附到转角”“密集段下落”“默认并行”已经被后续明确反馈覆盖，不要复用为当前方案。
+
 ## Babylon / 渲染
 - **布景近处拷贝必须 `doNotInstantiate: true`**（`scenec.ts` buildSetVisual 的 `instantiateModelsToScene(..., { doNotInstantiate: true })`）。v8 改成 `vi > 0` 后，没变体的模型变成容器网格（不在场景里）的 InstancedMesh：133 个孤儿实例、134 条 BJS 警告，bunny-house / flip-phone / page-wall 的动画近处部件不显示（109cfe7）。验收：控制台没有 “Setting material on an instanced mesh”。
 - 色板变体的布景近处拷贝要 clone 不能 instance：`makeGeometryUnique` 让凉亭/风车近处拷贝崩溃（97c9d7a）。

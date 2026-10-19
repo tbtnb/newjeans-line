@@ -5,6 +5,14 @@ description: newjeans-line 发布：只发 gh-pages /preview/（和 /tapper/）�
 
 # 发布预览
 
+## 当前修复分支与可靠发布
+- 当前源码 `omg-c-fix-20261019`，不把历史omg-c分工或停止消息误当当前分支操作。用户本轮明确“修好直接发布”，仅覆盖预览修复。
+- 可用正常git发布时沿用脚本；若当前没有git写凭据但已有授权GitHub连接器，可通过Git对象API创建blob/tree/commit并用expected SHA做快进更新。这不允许绕过被拒绝的操作或访问限制。
+- 大包不要塞进一个含内联内容的create_tree：逐文件create_blob并核对Git blob SHA，再创建只含SHA的preview子树；以当前gh-pages根树为base只替换preview目录。
+- 源码tree须与 `git write-tree` 一致；分支变化时读取新head并协调，绝不force。提交后重新build，使内置版本与build.json一致。
+- 保护验证：`git diff OLD NEW -- . ':(exclude)preview/**'` 应为空。等待Pages success，核对线上build.json及主JS字节/哈希，不能只见推送成功就说上线。
+- `?v=<shortsha>` 是缓存区分标记，不是密码或功能开关，也不固定保存历史部署；不带v的固定预览地址可正常访问。问到时用一句话解释。
+
 ## 硬规则
 - 只改 gh-pages 的 `preview/`；**根目录（正式版）和 `/tapper/` 不动**（tapper 用自己的脚本）。
 - 只用普通 commit + 快进推送，**永不 force-push**，随时可 `git revert` 回滚。
@@ -43,7 +51,7 @@ git -C /workspace/nj-ghp show --stat HEAD | head    # 只有 preview/ 下的文�
 
 ## 推送被 Auto-review 拦截
 - 曾经 `git push origin omg-c` 被拦，理由：“The agent is trying to push commits to the remote repository on a branch not covered by the saved allow instructions. This requires approval because it is an outbound external effect.”
-- 做法：**原样**重试同一条命令，带 `request_smart_mode_approval: true` 和 `smart_mode_block_reason`（上面那句原文），让用户在审批卡片上批准。不要改写命令、不要换别的方式绕过。被拒就停下并报告。
+- 做法：按当前环境实际支持的审批机制处理；先核查现有授权，确需批准时说明准确目标与风险。历史字段不是通用API，不凭空传参。不要换工具绕过拒绝；拒绝未解除则停止该动作。
 
 ## 回滚
 ```sh
