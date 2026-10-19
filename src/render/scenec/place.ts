@@ -60,6 +60,14 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
   const camPath: { t: number; x: number; z: number; gx: number; gz: number }[] = [];
   for (let t = 0; t <= o.duration; t += 0.25) { const ta = Math.max(0, Math.min(o.duration - 3, t - 1.5)), p0 = flowAnchor(route, ta, 0, 0, 0).pos, p1 = flowAnchor(route, ta + 3, 0, 0, 0).pos, p = flowAnchor(route, t, 0, 0, 0).pos;
     const dx = p1.x - p0.x, dz = p1.z - p0.z, L = Math.hypot(dx, dz) || 1; camPath.push({ t, x: p.x - dx / L * 37, z: p.z - dz / L * 37, gx: p.x - dx / L * 4, gz: p.z - dz / L * 4 }); }
+  // v8: nothing tall may ever stand between the key camera and the head. Sightline per 0.25 s: from the head (route point) back toward
+  // the camera (flow direction, ~44 m out / ~32 m up in portrait); an object of radius r and height h within r + 1.5 m of that line
+  // whose top reaches the sightline blocks the head. Checked over every route time within 14 s of the object's own time (zig-zags come back).
+  const heads: { x: number; z: number; y: number; ux: number; uz: number }[] = camPath.map(c => { const p = anchor(route, c.t).pos; const dx = c.x - p.x, dz = c.z - p.z, L = Math.hypot(dx, dz) || 1; return { x: p.x, z: p.z, y: p.y, ux: dx / L, uz: dz / L }; });
+  const blocksHead = (x: number, z: number, r: number, y0: number, h: number, t: number) => { const i0 = Math.max(0, Math.floor((t - 14) * 4)), i1 = Math.min(heads.length - 1, Math.ceil((t + 14) * 4));
+    for (let i = i0; i <= i1; i++) { const H = heads[i], ex = x - H.x, ez = z - H.z, sAl = ex * H.ux + ez * H.uz; if (sAl < -r || sAl > 46) continue;
+      const lat = Math.abs(ex * H.uz - ez * H.ux); if (lat > r + 1.5) continue; const rayY = H.y + 0.6 + Math.max(0, sAl - r) * (32 / 44); if (y0 + h > rayY - 0.3) return true; }
+    return false; };
   const nearCam = (x: number, z: number, t: number) => { const i0 = Math.max(0, Math.floor((t - 10) * 4)), i1 = Math.min(camPath.length - 1, Math.ceil((t + 3) * 4));
     for (let i = i0; i <= i1; i++) { const c = camPath[i]; if ((c.x - x) ** 2 + (c.z - z) ** 2 < 28 * 28) return true; } return false; };
   /** near band: the bottom of the key camera's frame (ground ~4 m behind the flow point, i.e. around the head); big masses there fill the screen */
@@ -95,6 +103,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
         const pad = h < groundMaxH ? 0.15 : view ? clearNear + 0.5 * w : clearNear + 1.0 * w;
         if (view) for (let k = 0; k < 8 && o.hits(a.pos.x, a.pos.z, r + pad, a.pos.y - 1, a.pos.y + h); k++) { off += side * 1.25; a = flowAnchor(route, t, off, 0, 0); }
         if (y0 < 4 && o.hits(a.pos.x, a.pos.z, r + pad, a.pos.y - 1, a.pos.y + h)) { rejected++; continue; }
+        if (L.layer === 'mid' && h > 1.2 && blocksHead(a.pos.x, a.pos.z, r, a.pos.y + y0, h, t)) { rejected++; continue; }
         const solid = L.layer === 'mid' && h >= 0.8 && !/fence|bunting|lantern-string|cord/.test(L.asset), fr0 = foot(A, s);
         const isTree = A.shape === 'tree' && !/hedge/.test(L.asset);
         if (solid && occHit(a.pos.x, a.pos.z, fr0, isTree)) { rejected++; continue; }
@@ -120,6 +129,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
               x = b.pos.x; zz = b.pos.z; const bp = anchor(route, ty).pos; my = view ? yaw : Math.atan2(bp.x - x, bp.z - zz); }
             else { const an = R() * Math.PI * 2, rr = Cn.r * s * Math.sqrt(0.15 + 0.85 * R()); x = a.pos.x + Math.cos(an) * rr; zz = a.pos.z + Math.sin(an) * rr; my = L.layer === 'mid' ? yaw + (R() - 0.5) * 0.8 : R() * Math.PI * 2; }
             if (o.hits(x, zz, r * ms / s + pad, a.pos.y - 1, a.pos.y + A.h * ms) || (!view && A.h * ms > 2.6 && nearBand(x, zz, ty, (L.hug ? 3 : 16) + r * ms / s))) { rejected++; continue; }
+            if (L.layer === 'mid' && A.h * ms > 1.2 && blocksHead(x, zz, r * ms / s, a.pos.y + y0, A.h * ms, ty)) { rejected++; continue; }
             const alts = [L.asset, ...(L.alt ?? [])], ma = alts[j % alts.length], MA = spec.assets[ma] ?? A, mr = foot(MA, ms);
             const mt = MA.shape === 'tree' && !/hedge/.test(ma); if (solid && occHit(x, zz, mr, mt)) { rejected++; continue; }
             const cj = chunkAt(ty); if (solid) occAdd(x, zz, mr, mt);   // v8: rows alternate kinds and step the palette variant, so no piece repeats its neighbour
@@ -158,6 +168,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
       const hero = !!sp.hero, sc = sp.scale ?? 1, w = o.widthAt(sp.t), r = hero ? (A.w ?? A.h) * sc * 0.42 : A.h * sc * 0.45; const side = sp.side || 1;
       let off = side * (w / 2 + sp.dist + r); let a = flowAnchor(route, sp.t, off, 0, 0);
       for (let k = 0; k < 24 && o.hits(a.pos.x, a.pos.z, hero ? r * 0.8 + 0.8 : r + 1.5, a.pos.y - 1, a.pos.y + A.h * sc); k++) { off += side * (hero ? 1.0 : 1.5); a = flowAnchor(route, sp.t, off, 0, 0); }
+      for (let k = 0; k < 20 && blocksHead(a.pos.x, a.pos.z, r, a.pos.y, A.h * sc, sp.t); k++) { off += side * 1.5; a = flowAnchor(route, sp.t, off, 0, 0); }   // v8: never between camera and head
       const rp = anchor(route, sp.t).pos;
       const popAt = drop && sp.t - drop.t < 8 && sp.t >= drop.t - 0.5 ? drop.t : snap(sp.t - 4);
       const sc0 = chunks[chunkAt(sp.t)];
@@ -167,6 +178,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
           const ang = Math.atan2(rp.x - a.pos.x, rp.z - a.pos.z) + (R() - 0.5) * Math.PI * (att < 2 ? 1.3 : 2), rr = r * 0.75 + 1.5 + R() * 7;
           const x = a.pos.x + Math.sin(ang) * rr, zz = a.pos.z + Math.cos(ang) * rr, es = 1.3 + R() * 0.5;
           if (o.hits(x, zz, Math.max(EA.h, EA.w ?? 0) * es * 0.35 + 0.8, a.pos.y - 1, a.pos.y + EA.h * es)) { rejected++; continue; }
+          if (EA.h * es > 1.2 && blocksHead(x, zz, Math.max(EA.h, EA.w ?? 0) * es * 0.35, a.pos.y, EA.h * es, sp.t)) { rejected++; continue; }
           const ci = chunkAt(sp.t); const ec = chunks[ci];
           ec.items.push({ a: ea, layer: 'mid', x, y: groundY(ec, x, zz), z: zz, yaw: Math.atan2(rp.x - x, rp.z - zz), s: es, c: (z.layers[0]?.colors ?? [0])[Math.floor(R() * (z.layers[0]?.colors ?? [0]).length)], zone: zi, t: sp.t, chunk: ci }); placed++; break;
         }

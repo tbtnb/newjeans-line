@@ -8,7 +8,7 @@ import type { Material } from '@babylonjs/core/Materials/material';
 import type { UniformBuffer } from '@babylonjs/core/Materials/uniformBuffer';
 import { Vector3 } from '@babylonjs/core/Maths/math.vector';
 
-export const CUT = { cam: new Vector3(0, 50, -50), head: new Vector3(), radius: 4.5, on: true };
+export const CUT = { cam: new Vector3(0, 50, -50), head: new Vector3(), radius: 6.5, on: true };
 
 export class Cutaway extends MaterialPluginBase {
   constructor(m: Material) { super(m, 'Cutaway', 300, { CUTAWAY: false }); this._enable(true); }

@@ -147,7 +147,7 @@ export class SceneC {
   }
   // ---- v7 night sky strip: a camera-parented band over the top ~30% of the screen (moon, stars, silhouette skyline; tools/omgc/sky_strip.py),
   // drawn after the scene (rendering group 1), faded in and out with the night zones. The key camera's pitch shows almost no real sky.
-  private sky: Mesh | null = null; private skyMat: StandardMaterial | null = null; private skyV = 0; private skyKind = ''; private skyTex = new Map<string, Texture>();
+  private sky: Mesh | null = null; private skyMat: StandardMaterial | null = null; private skyV = 0; private skyD = 70; skyT = 0; private skyKind = ''; private skyTex = new Map<string, Texture>();
   /** v8: one band, texture per zone kind (night / day / dusk / twilight); a kind change fades out, swaps, fades back in */
   updateSky(cam: Camera, aspect: number, dt: number) {
     const Z = this.spec.zones[this.curZone], kind = Z?.sky ?? (this.night[this.curZone] ? 'night' : '');
@@ -166,7 +166,13 @@ export class SceneC {
     }
     if (!this.sky) return;
     const on = this.skyV > 0.01; this.sky.setEnabled(on); if (!on) return;
-    const d = 70, hh = d * Math.tan((cam.fov || 0.8) / 2), hw = hh * aspect, bh = hh * 2 * 0.3;   // band = top 30% of the view
+    // v8b: band depth follows the far road - 70 m by default, pushed back past any road point (next 8 s) that would fall inside the band,
+    // so with the head-pinned shallower camera the band never eats the far road at the top of a night frame
+    const th = Math.tan((cam.fov || 0.8) / 2), V = cam.getViewMatrix(); let far = 70;
+    for (let k = 0; k <= 32; k++) { const p = anchor(this.route, this.skyT + k * 0.25).pos; const v = Vector3.TransformCoordinates(new Vector3(p.x, p.y, p.z), V);
+      if (v.z > 1 && Math.abs(v.x) < v.z * th * aspect * 1.05 && v.y > v.z * th * 0.35) far = Math.max(far, v.z + 6); }
+    this.skyD += (Math.min(260, far) - this.skyD) * (this.skyD < far ? 1 : k * 0.5);
+    const d = this.skyD, hh = d * th, hw = hh * aspect, bh = hh * 2 * 0.3;   // band = top 30% of the view
     this.sky.scaling.set(hw * 2, bh, 1); this.sky.position.set(0, hh - bh / 2, d);
     const tx = this.skyMat!.diffuseTexture as Texture, us = Math.min(1, (hw * 2 / bh) / (1024 / 384)); tx.uScale = us; tx.uOffset = 1 - us;   // keep proportions, crop toward the moon / sun side
     this.skyMat!.alpha = this.skyV;
@@ -509,6 +515,7 @@ export class SceneC {
   }
 
   update(t: number, dt: number, beatK: number, cam: Vector3 | null, head?: Vector3 | null) {
+    this.skyT = t;
     if (cam && head) { CUT.cam.copyFrom(cam); CUT.head.copyFrom(head); }
     this.time += dt; const T = TIERS[this.tier];
     if (this.dirtyAt >= 0 && this.time - this.dirtyAt > 0.4) { this.dirtyAt = -1; this.dropChunks(); }
