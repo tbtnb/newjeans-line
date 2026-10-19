@@ -6,7 +6,7 @@ import { travelledSpans } from './travel';
 
 /**
  * Where the player's line is at time t, given the accepted turns so far.
- * OMG freeTurns integrates actual inputs. The legacy centreline mode below is only for other levels.
+ * OMG with centering disabled integrates actual inputs. Centering enabled uses the centreline mode below.
  * The line always follows the authored centreline with perfectly square corners (as in Dancing Line): an accepted
  * early tap turns exactly at the corner; while a tap is still pending past its corner (late tap within the grace,
  * or a miss) the line keeps going straight past the corner, and snaps back to the centreline once the tap is accepted.

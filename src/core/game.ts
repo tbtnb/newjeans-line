@@ -66,10 +66,11 @@ export class Game {
   ignoredDuplicates = 0;
   onEvent: ((e: { type: string; [k: string]: unknown }) => void) | null = null;
 
-  constructor(level: LevelData) {
+  constructor(level: LevelData, options: {centerAssist?: boolean} = {}) {
     this.level = level;
     this.route = buildRoute(level.chart, level.layout.elevation ?? [], level.duration);
-    this.route.freeTurns = level.id === 'omg';
+    this.route.denseAssist = level.id === 'omg';
+    this.setCenterAssist(options.centerAssist !== false);
     this.widths = readableRoadWidths(this.route, t => roadWidthAt(level.layout.road?.width, t));
     this.taps = this.route.tapTimes;this.dense=denseWindows(this.taps);
     const spans = this.route.spans;
@@ -78,6 +79,9 @@ export class Game {
     this.earlyWindows = [...this.windows];
 
   }
+
+  /** Apply at run preparation, never reinterpret turns mid-play. */
+  setCenterAssist(enabled: boolean) { this.route.freeTurns = this.level.id === 'omg' && !enabled; }
 
   get progress() { return Math.max(0, Math.min(1, this.time / this.level.duration)); }
 

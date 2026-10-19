@@ -35,7 +35,7 @@ test('skin setting: old saves default to classic, skin round-trips, bad values f
   const s = parseSave(oldV2, ids, 'attention');
   assert.equal(s.settings.skin, 'classic');
   // everything else in the old save is unchanged
-  assert.deepEqual({ ...s.settings, skin: undefined }, { ...oldV2.settings, skin: undefined, targetFps:60, showFps:false });
+  assert.deepEqual({ ...s.settings, skin: undefined }, { ...oldV2.settings, skin: undefined, targetFps:60, showFps:false, centerAssist:true });
   assert.deepEqual(s.records.ditto, oldV2.records.ditto);
   // a chosen skin survives export -> import and persist -> load
   const withSkin = { ...s, settings: { ...s.settings, skin: 'bubble-gum' } };
@@ -55,4 +55,9 @@ test('frame-rate settings migrate safely and round-trip without changing old pro
  const updated={...old,settings:{...old.settings,targetFps:120,showFps:true}};
  const imported=parseSave(JSON.parse(JSON.stringify(updated)),ids,'attention');assert.equal(imported.settings.targetFps,120);assert.equal(imported.settings.showFps,true);assert.deepEqual(imported.records,old.records);
  assert.equal(parseSave({...updated,settings:{targetFps:999}},ids,'attention').settings.targetFps,60);
+});
+
+test('centering is on for old saves and explicit off survives export/import',()=>{
+ const s=parseSave(v1,ids,'attention');assert.equal(s.settings.centerAssist,true);
+ s.settings.centerAssist=false;assert.equal(parseSave(JSON.parse(JSON.stringify(s)),ids,'attention').settings.centerAssist,false);
 });

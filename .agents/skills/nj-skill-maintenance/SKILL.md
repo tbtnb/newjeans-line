@@ -24,5 +24,5 @@ description: 持续维护 newjeans-line 项目的 .agents/skills 与 AGENTS.md�
 ## 校验
 - 每个目录含有效YAML `name`/`description`，名称与目录一致；入口说明精确，支持引用可找到。
 - 检查AGENTS索引覆盖新增skill；运行可用的skill-validator，再人工检查旧规则冲突与出处。
-- 用现实场景自查：早按不能回中；密集副歌不能加下台阶；首次出现模型要预热；回收不能清前方缓存；重开要恢复；无GPU不能说真机通过。
+- 用现实场景自查：居中默认开启、关闭时早按不能回中；密集副歌不能加下台阶；首次出现模型要预热；回收不能清前方缓存；重开要恢复；无GPU不能说真机通过。
 - `level-design-skills` 是文档汇总分支；同步skills时只改该分支的AGENTS/skills，不把游戏代码强行倒回它的旧基线。当前工作分支亦保留同一规范。

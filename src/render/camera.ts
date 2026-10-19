@@ -19,7 +19,7 @@ export const KEY_PITCH = (() => { const m = typeof location !== 'undefined' ? /[
 const BASE: CamParams = { pitch: 50, dist: 41, fov: 36, yawOff: 0, worldYaw: null, roll: 0, shake: 0, lead: 0.85, orbit: 0, punch: 0.025, zoom: 1, tilt: 0, sway: 0 };
 const MIN_DIST = 30;
 const smooth = (x: number) => (x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x));
-const angLerp = (a: number, b: number, k: number) => { let d = ((b - a + Math.PI * 3) % (Math.PI * 2)) - Math.PI; return a + d * k; };
+export const angLerp = (a: number, b: number, k: number) => a + Math.atan2(Math.sin(b - a), Math.cos(b - a)) * k;
 
 function resolve(prev: CamParams, c: CameraCue): CamParams {
   const p: CamParams = { ...prev, ...(c.preset ? PRESETS[c.preset] ?? {} : {}) };
@@ -93,7 +93,7 @@ export class CameraRig {
     return Math.atan2(dx, dz);
   }
 
-  snap() { this.initialized = false; }
+  snap() { this.initialized = false; this.freezeAt = null; this.shakeBoost = 0; this.orbitAng = 0; this.fw = this.fyaw = this.fsx = this.fsz = 0; this.cam.cameraDirection.setAll(0); this.cam.cameraRotation.setAll(0); }
 
   update(t: number, head: { x: number; y: number; z: number }, dt: number) {
     const p = this.params(t);
@@ -107,7 +107,7 @@ export class CameraRig {
     let desiredYaw = flow + (p.yawOff + p.sway + this.orbitAng) * Math.PI / 180;
     const wy = (p as any).worldYawBlend;
     if (p.worldYaw !== null) desiredYaw = wy !== undefined ? angLerp(desiredYaw, p.worldYaw * Math.PI / 180, wy) : p.worldYaw * Math.PI / 180;
-    if (this.menuOrbit) desiredYaw = flow + performance.now() / 9000;
+    if (this.menuOrbit) desiredYaw = flow + (performance.now() / 9000) % (2 * Math.PI);
     let fx = Math.sin(flow), fz = Math.cos(flow), fzoom = 0;
     if (this.keyMode && !this.menuOrbit && this.focus && !(typeof location !== 'undefined' && /[?&]focus=0\b/.test(location.search))) {   // hero framing: eased (weight + its own slow filter), never more than 40 deg off the flow
       const f = this.focus(t, head); const w = f ? f.w : 0;

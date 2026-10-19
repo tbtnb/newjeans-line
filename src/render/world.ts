@@ -182,7 +182,7 @@ export class World {
     } else this.env = new EnvTimeline(L);
     this.beats = L.beats ?? []; this.kicks = L.kicks ?? [];
     this.events = [...(L.events ?? [])].sort((a, b) => a.t - b.t);
-    const widthAt = (t: number) => game.route.freeTurns?game.roadWidth(t):(stepAt(L.road.width, t)?.w ?? 2.2);
+    const widthAt = (t: number) => game.route.denseAssist?game.roadWidth(t):(stepAt(L.road.width, t)?.w ?? 2.2);
     // road
     this.road = new Road(this.scene, route, L, t => this.env!.settled(t), { paper: this.cmode });
     this.road.body.parent = this.root; this.road.top.parent = this.root;
@@ -383,6 +383,8 @@ export class World {
     if (id.endsWith('*')) { const p = id.slice(0, -1); return this.objects.filter(o => o.id?.startsWith(p)); }
     return this.byId.get(id) ?? [];
   }
+
+  snapCamera() { if(this.rig && this.game){this.rig.menuOrbit = false;this.rig.snap();this.applyTime(this.game.time,0,true);} }
 
   /** Restore every time-dependent visual to time t (restart, checkpoint, rewind). */
   seek(t: number) {

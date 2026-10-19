@@ -4,7 +4,7 @@ import {denseWindows,inDenseWindow} from './edgeassist';
 /** Separate nearby parallel lanes without changing the authored route, speed or rhythm tolerance.
  * The gold ledge adds 0.32 m to the full width; leave another 0.30 m of visible ground between lanes. */
 export function readableRoadWidths(route: Route, widthAt: (t: number) => number): number[] {
-  const spans = route.spans,windows=route.freeTurns?denseWindows(route.tapTimes):[];
+  const spans = route.spans,windows=(route.denseAssist??route.freeTurns)?denseWindows(route.tapTimes):[];
   const dense=spans.map(s=>inDenseWindow(windows,(s.t0+s.t1)/2));
   return spans.map((s, i) => {
     let w = widthAt(s.t0)+(dense[i] ? .2 : 0); const e = spanPos(s, s.t1), axis = s.heading % 2 ? 'x' : 'z', cross = axis === 'x' ? 'z' : 'x';

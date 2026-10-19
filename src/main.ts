@@ -87,7 +87,7 @@ async function selectLevel(i: number, dir = 0) {
 }
 
 function makeGame(data: LevelData) {
-  const g = new Game(data);
+  const g = new Game(data, { centerAssist: save.settings.centerAssist });
   g.onEvent = ev => {
     if (ev.type === 'turn') { world.onTurn(ev.t as number); if (save.settings.vibration && navigator.vibrate) navigator.vibrate(6); }
     else if (ev.type === 'diamond') { world.onDiamond(ev.index as number, ev.t as number); bumpGems(); }
@@ -139,13 +139,14 @@ async function enterLevel() {
   } finally {if(token===loadToken)audio.onProgress=null;}
   if(token!==loadToken||game!==activeGame||(state as State)!=='loading')return;
   game.checkpointsUsed.clear(); game.diamondsTaken.clear(); game.crownsReached.clear();
-  game.prepare(0); world.seek(0);
+  game.setCenterAssist(save.settings.centerAssist); game.prepare(0); world.mode = 'play'; world.seek(0);
   readyFrom = 0; readyKind = 'start';
   setReady();
 }
 
 function setReady() {
   setState('ready');
+  world.snapCamera();
   $('ready-label').textContent = readyKind === 'resume' ? '轻点继续' : readyKind === 'checkpoint' ? '轻点从皇冠处出发' : '轻点开始';
   updateHud();
 }
@@ -171,7 +172,7 @@ function resume() {
   if (!game) return;
   const t = game.time; let r = Math.max(game.startTime, t - 1.6);
   for (let guard = 0; guard < 20; guard++) { const near = game.taps.find(x => Math.abs(x - r) < 0.18); if (near === undefined) break; r = Math.max(game.startTime, near - 0.25); if (r === game.startTime) break; }
-  game.prepare(r, true); world.seek(r);
+  game.setCenterAssist(save.settings.centerAssist); game.prepare(r, true); world.mode = 'play'; world.seek(r);
   readyFrom = r; readyKind = 'resume'; setReady();
 }
 
@@ -210,7 +211,7 @@ async function continueFromCheckpoint() {
   if(state==='loading')return;
   setState('loading'); const progress=startLoading();progress.update('audio',1,'歌曲已就绪');
   try { await world.prepareScenery(t,(stage,f,detail)=>progress.update(stage,f,detail)); } catch(e) {setState('menu');toast('场景准备失败，请重试');return;}
-  game.prepare(t, true); world.seek(t);
+  game.setCenterAssist(save.settings.centerAssist); game.prepare(t, true); world.mode = 'play'; world.seek(t);
   readyFrom = t; readyKind = 'checkpoint'; setReady();
 }
 
@@ -311,6 +312,7 @@ function openSettings() {
   for (const b of $('set-quality').querySelectorAll('button')) b.classList.toggle('on', b.dataset.v === s.quality);
   for(const b of $('set-fps').querySelectorAll('button'))b.classList.toggle('on',Number(b.dataset.v)===s.targetFps);
   $<HTMLInputElement>('set-show-fps').checked=s.showFps;
+  $<HTMLInputElement>('set-center-assist').checked=s.centerAssist;
   show('settings', true);
 }
 $('btn-settings').onclick = () => openSettings();
@@ -321,6 +323,7 @@ $<HTMLInputElement>('set-vibration').onchange = e => { save.settings.vibration =
 $('set-quality').onclick = e => { const b = (e.target as HTMLElement).closest('button'); if (!b) return; try { localStorage.setItem('nj-quality-picked', '1'); } catch { /* */ } save.settings.quality = b.dataset.v as 'high' | 'low'; world.setQuality(save.settings.quality); persist(); openSettings(); };
 $('set-fps').onclick=e=>{const b=(e.target as HTMLElement).closest('button');if(!b)return;save.settings.targetFps=Number(b.dataset.v)===120?120:60;save.settings.showFps=true;world.setTargetFps(save.settings.targetFps);pacer.reset();persist();openSettings();};
 $<HTMLInputElement>('set-show-fps').onchange=e=>{save.settings.showFps=(e.target as HTMLInputElement).checked;persist();};
+$<HTMLInputElement>('set-center-assist').onchange=e=>{save.settings.centerAssist=(e.target as HTMLInputElement).checked;persist();};
 $('btn-export').onclick = () => {
   const blob = new Blob([JSON.stringify(save, null, 2)], { type: 'application/json' });
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `newjeans-line-save-${new Date().toISOString().slice(0, 10)}.json`; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
@@ -380,9 +383,12 @@ function autoTier(nowMs: number) {
 // ---------------- main loop ----------------
 const pacer=new FramePacer();let fpsHudAt=0;
 let lastHudMs=0; let lastLoop = 0; let frameEma = 1 / 60;
-function loop() {
+let callbackCount=0, callbackStart=0, callbackHz=0;
+function loop(nowMs: number) {
   requestAnimationFrame(loop);
-  const nowMs = performance.now(); if (lastLoop) frameEma += (Math.min(0.25, (nowMs - lastLoop) / 1000) - frameEma) * 0.1; lastLoop = nowMs;
+  if(!callbackStart)callbackStart=nowMs;
+  callbackCount++;if(nowMs-callbackStart>=1000){callbackHz=callbackCount*1000/(nowMs-callbackStart);callbackCount=0;callbackStart=nowMs;}
+  if (lastLoop) frameEma += (Math.min(0.25, (nowMs - lastLoop) / 1000) - frameEma) * 0.1; lastLoop = nowMs;
   if (!game) { return; }
   // input events arrive at most ~2 frames late: never declare a miss before a queued, in-time tap could be processed
   game.lateGrace = Math.min(LATE_GRACE_MAX, Math.max(LATE_GRACE, 0.05 + 2.5 * frameEma));
@@ -399,7 +405,7 @@ function loop() {
   // Input/physics keep the audio clock even when a 60-fps cap skips a render.
   if(pacer.due(nowMs,save.settings.targetFps))world.frame(t);
   if(nowMs-fpsHudAt>500){fpsHudAt=nowMs;const el=$('fps-counter');el.hidden=!save.settings.showFps;
-    if(save.settings.showFps)el.textContent=`${Math.round(world.fps)} FPS · 目标 ${save.settings.targetFps}`;
+    if(save.settings.showFps)el.textContent=`${Math.round(world.fps)} FPS · 回调 ${Math.round(callbackHz)} Hz · 目标 ${save.settings.targetFps}`;
   }
   autoTier(nowMs);
   if (PROBE && level) syncProbe(t);

@@ -1,12 +1,12 @@
 /** Save data v2. Old v1 saves (key newjeans-line.save.v1) are migrated and the v1 key is kept untouched as a backup. */
 export interface LevelRecord { best: number; diamonds: number; crowns: number; attempts: number; completed: boolean; perfect?: number; taps?: number; }
 /** skin: line skin id (added after v2 shipped; missing in older saves = 'classic', the original look) */
-export interface Settings { volume: number; offsetMs: number; quality: 'high' | 'low'; vibration: boolean; skin: string; targetFps: 60 | 120; showFps: boolean; }
+export interface Settings { volume: number; offsetMs: number; quality: 'high' | 'low'; vibration: boolean; skin: string; targetFps: 60 | 120; showFps: boolean; centerAssist: boolean; }
 export interface SaveData { version: 2; selected: string; records: Record<string, LevelRecord>; settings: Settings; migratedFrom?: number; legacy?: unknown; }
 
 export const KEY_V2 = 'newjeans-line.save.v2';
 export const KEY_V1 = 'newjeans-line.save.v1';
-export const defaultSettings: Settings = { volume: 0.8, offsetMs: 0, quality: 'high', vibration: true, skin: 'classic', targetFps: 60, showFps: false };
+export const defaultSettings: Settings = { volume: 0.8, offsetMs: 0, quality: 'high', vibration: true, skin: 'classic', targetFps: 60, showFps: false, centerAssist: true };
 export const emptyRecord = (): LevelRecord => ({ best: 0, diamonds: 0, crowns: 0, attempts: 0, completed: false });
 
 const isObj = (v: unknown): v is Record<string, any> => !!v && typeof v === 'object' && !Array.isArray(v);
@@ -36,7 +36,7 @@ export function parseSave(value: unknown, ids: string[], fallbackSelected: strin
   const settings: Settings = {
     volume: num(s.volume, 0, 1, defaultSettings.volume), offsetMs: num(s.offsetMs, -300, 300, 0),
     quality: s.quality === 'low' ? 'low' : 'high', vibration: s.vibration !== false,
-    targetFps: s.targetFps === 120 ? 120 : 60, showFps: s.showFps === true,
+    targetFps: s.targetFps === 120 ? 120 : 60, showFps: s.showFps === true, centerAssist: s.centerAssist !== false,
     skin: typeof s.skin === 'string' && /^[a-z0-9-]{1,32}$/.test(s.skin) ? s.skin : defaultSettings.skin,
   };
   const out: SaveData = { version: 2, selected: ids.includes(value.selected) ? value.selected : fallbackSelected, records, settings };

@@ -16,6 +16,7 @@ export interface Span {
 }
 
 export interface Route {
+  denseAssist?: boolean; // dense road geometry is independent of centering preference
   freeTurns?: boolean; // OMG: turn at the actual input position, without centreline snapping
   spans: Span[];
   duration: number;

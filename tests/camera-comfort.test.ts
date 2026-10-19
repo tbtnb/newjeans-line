@@ -31,3 +31,25 @@ test('key gameplay camera ignores beat punch, zoom cues and event shake at 15/60
     }
   } finally { scene.dispose(); engine.dispose(); }
 });
+
+test('revival snaps out of menu orbit and stays fixed at a checkpoint', () => {
+  const level=JSON.parse(readFileSync('src/levels/omg.json','utf8')),route=new Game(level).route;
+  const engine=new NullEngine(),scene=new Scene(engine);
+  try {
+    const rig=new CameraRig(scene,route,[],[],[],false);rig.keyMode=true;
+    rig.menuOrbit=true;rig.update(0,posAt(route,0),1/60);
+    // Reproduce a menu orbit accumulated over a long session, including > 2π.
+    (rig as any).yaw=1000;rig.shakeBoost=5;rig.freezeAt=rig.cam.position.clone();
+    rig.menuOrbit=false;rig.snap();rig.update(70,posAt(route,70),1/60);
+    const expected=new CameraRig(scene,route,[],[],[],false);expected.keyMode=true;expected.update(70,posAt(route,70),1/60);
+    assert.ok(rig.cam.position.subtract(expected.cam.position).length()<1e-7);
+    const p=rig.cam.position.clone();for(let i=0;i<600;i++)rig.update(70,posAt(route,70),1/120);
+    assert.ok(rig.cam.position.subtract(p).length()<1e-7);
+    assert.equal(rig.shakeBoost,0);assert.equal(rig.freezeAt,null);
+  }finally{scene.dispose();engine.dispose();}
+});
+
+test('angle interpolation uses shortest arc even after many menu rotations',async()=>{
+ const {angLerp}=await import('../src/render/camera');
+ for(const a of [-1000,-20,20,1000]){const b=.3,k=.1;const next=angLerp(a,b,k);assert.ok(Math.abs(next-a)<=Math.PI*k+1e-10);assert.ok(Math.abs(Math.atan2(Math.sin(b-next),Math.cos(b-next)))<Math.abs(Math.atan2(Math.sin(b-a),Math.cos(b-a))));}
+});

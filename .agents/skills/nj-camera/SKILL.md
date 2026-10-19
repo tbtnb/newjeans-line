@@ -5,6 +5,11 @@ description: newjeans-line 镜头：key camera（pitch 33、dist 46、fov 42）�
 
 # 镜头
 
+## 复活直接到位（2026-10-20 00:47）
+- 加载曾使用menuOrbit，seek时仍为菜单状态，导致复活继承累计转角。旧角度插值使用JS负余数，超过多圈后会走错误方向持续旋转。
+- 先切play再seek；setReady强制snapCamera；snap清冻结、震动、焦点平移、orbit及FreeCamera惯性。角度差使用atan2(sinΔ,cosΔ)，菜单转角规范化。
+- NullEngine回归覆盖累计1000弧度后的复活与600帧稳定、第一帧等于新建镜头。真机转圈是否消失仍需试玩确认。
+
 ## 稳定性优先（当前反馈）
 - 用户明确认为镜头持续抖动、点击时抽动难受。保留42%/47%头部锚点，key模式关闭拍点冲击、shake、zoom脉冲和orbit偏移；不要为“有运镜”重新加入这些效果。
 - 区分相机抖动和实际轨迹被拉回：OMG使用当前音频songTime画真实位置，不能预测到未来再被输入改写回去。
