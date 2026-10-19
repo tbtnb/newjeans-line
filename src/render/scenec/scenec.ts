@@ -311,8 +311,8 @@ export class SceneC {
           const dx = it.x - fr.pos.x, dz = it.z - fr.pos.z, lt = (dx * rx + dz * rz) * side, al = dx * fx + dz * fz;
           return !(lt > lat + 0.4 * PW && lt < lat + PW + 2.6 && Math.abs(al) < PL / 2 + 1.2); });
         // page sheet: flat for 60% of its width, then a curl of radius R up and back over (cream, shaded by the curl angle; gold rim)
-        const NU = 12, NA = 6, R = 2.0, flat = 0.62, rise = 0.0;   // page rises from the spine (open-book hump), then rolls up and over at the outer edge
-        const prof = (u: number) => { if (u <= flat) { const k = u / flat; return [lat + u * PW, rise * Math.sin(k * Math.PI / 2) + 0.35 * Math.max(0, k - 0.75) ** 2 * 16, 0]; } const th = (u - flat) / (1 - flat) * 3.2; return [lat + flat * PW + R * Math.sin(th), rise + 0.35 + R * (1 - Math.cos(th)), th]; };
+        const NU = 12, NA = 6, R = 1.1, flat = 0.66, rise = 0.0;   // v8b: lower curl - with the head-pinned camera a 2 m roll stood up like a wall in the lower frame   // page rises from the spine (open-book hump), then rolls up and over at the outer edge
+        const prof = (u: number) => { if (u <= flat) { const k = u / flat; return [lat + u * PW, rise * Math.sin(k * Math.PI / 2) + 0.35 * Math.max(0, k - 0.75) ** 2 * 16, 0]; } const th = (u - flat) / (1 - flat) * 2.7; return [lat + flat * PW + R * Math.sin(th), rise + 0.35 + R * (1 - Math.cos(th)), th]; };
         for (let i = 0; i < NU; i++) for (let j = 0; j < NA; j++) {
           const u0 = i / NU, u1 = (i + 1) / NU, a0 = -PL / 2 + PL * j / NA, a1 = -PL / 2 + PL * (j + 1) / NA;
           const p0 = prof(u0), p1 = prof(u1), sh = (th: number) => 1 - 0.13 * Math.sin(th * 0.9), c0 = dim(CR.map(v => v * sh(p0[2]))), c1 = dim((i === NU - 1 ? GO : CR).map(v => v * sh(p1[2])));
