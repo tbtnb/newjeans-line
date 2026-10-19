@@ -228,9 +228,11 @@ IMP = {
 HERO = {   # zone: [(asset, t, side, scale, entourage [(asset, n)])]
  'z01': [('book-cover', 4.5, 1, 1.6, [('bunny-statue', 5), ('tulip-bed', 4), ('fence', 6), ('hedge', 2)]), ('bunny-statue', 9.5, -1, 2.8, [('tulip-bed', 3), ('heart-bed', 3), ('fence', 4)])],
  'z03': [('clock-tower', 38.5, 1, 1.55, [('tulip-bed', 4), ('firefly-lamp', 6), ('gift', 5), ('heart-bed', 3)])],
- 'z04': [('castle', 52.0, -1, 1.15, [('firefly-lamp', 10), ('lily-lamp', 6), ('star-chime', 4), ('heart-bed', 4)]), ('bunny-heart', 55.5, 1, 1.25, [('firefly-lamp', 6), ('lily-lamp', 4)])],
+ 'z04': [('castle', 52.0, 1, 0.8, [('firefly-lamp', 10), ('lily-lamp', 6), ('star-chime', 4), ('heart-bed', 4)]), ('bunny-heart', 55.5, 1, 1.25, [('firefly-lamp', 6), ('lily-lamp', 4)])],
+ 'z05': [('paper-boat', 65.5, -1, 3.2, [('lily-lamp', 4), ('reed', 8), ('firefly-lamp', 4), ('moss-rock', 4)])],   # v11 bunny-sail boat hero
  'z06': [('phone-tower', 82.0, 1, 1.15, [('firefly-lamp', 6), ('gift', 5), ('heart-bed', 3), ('tulip-bed', 3)])],
- 'z08': [('carousel', 110.0, 1, 1.45, [('balloons', 6), ('firefly-lamp', 8), ('bunting', 6), ('stall', 2)]), ('ferris-wheel', 113.5, 1, 1.45, [('balloons', 5), ('firefly-lamp', 8), ('lantern-string', 3), ('heart-bed', 3)])],
+ 'z07': [('tall-tower', 97.0, -1, 0.75, [('firefly-lamp', 6), ('star-chime', 3), ('mushroom-house', 2)])],   # v11: the tallest paper tower as a framed hero (was off the right edge)
+ 'z08': [('carousel', 110.0, 1, 1.45, [('balloons', 6), ('firefly-lamp', 8), ('bunting', 6), ('stall', 2)]), ('ferris-wheel', 113.5, 1, 1.2, [('balloons', 5), ('firefly-lamp', 8), ('lantern-string', 3), ('heart-bed', 3)])],
  'z10': [('bunny-family', 155.5, -1, 2.3, [('balloons', 6), ('heart-bed', 4), ('bunny-statue', 6), ('tulip-bed', 4)]), ('heart-gate', 160.4, 1, 1.3, [('balloons', 6), ('bunny-statue', 4), ('heart-bed', 3)])],
 }
 for z in zones:   # v5: tree-bush / paper-hill set pieces read as big mint blobs near the camera: dropped (masses come from clusters)
@@ -560,13 +562,15 @@ PLOTS = {
 for z in zones:
     P = PLOTS.get(z['id'])
     # budget: no 500-800-tri beds / sculptures on the plots (flower patches carry the beds), big density x0.6
-    if P: P = dict(P, big=[a for a in P['big'] if a not in ('tulip-bed', 'heart-bed', 'heart-sculpt', 'book-stack', 'lily-lamp')], dBig=round(P['dBig'] * 0.6, 2), dHouse=round(P.get('dHouse', 0) * 0.7, 2))
+    if P: P = dict(P, big=[a for a in P['big'] if a not in ('tulip-bed', 'heart-bed', 'heart-sculpt', 'book-stack', 'lily-lamp')], dBig=round(P['dBig'] * 0.5, 2), dHouse=round(P.get('dHouse', 0) * 0.7, 2))
     if P: z['plots'] = dict(P, small=[a for a in P['small'] if a in assets], big=[a for a in P['big'] if a in assets], house=[a for a in P.get('house', []) if a in assets], scale=[1.0, 1.4])
 # v11 budget: bank snap now keeps pieces that used to be rejected at edges; thin the 300-600-tri scatter kinds in the heavy night / dusk zones
 HEAVY = ('lily-lamp', 'book-stack', 'mushroom-group', 'star-chime', 'heart-sculpt', 'tulip-bed', 'heart-bed')
 for z in zones:
-    k = {'z03': 0.7, 'z04': 0.7, 'z05': 0.55, 'z07': 0.55, 'z08': 0.7, 'z09': 0.7}.get(z['id'])
+    k = {'z03': 0.6, 'z04': 0.55, 'z05': 0.45, 'z06': 0.65, 'z07': 0.55, 'z08': 0.7, 'z09': 0.5}.get(z['id'])   # tuned on tools/qa/trisweep.mjs peaks
     if k: mul(z, k, HEAVY, 'mid')
+    if z['id'] == 'z04': mul(z, 0.5, ('lantern-tower',), 'mid'); mul(z, 0.6, ('heart-sculpt', 'lily-lamp'), 'mid')   # castle moment (6k castle + 4k heart) ran 151k
+    if z['id'] == 'z09': mul(z, 0.7, ('firefly-lamp', 'mushroom-house'), 'mid')
     if z['id'] == 'z03': mul(z, 0.6, ('ward-bed',), 'mid')   # 2000 tris each
     if z['id'] == 'z07': mul(z, 0.6, ('book-stack',), 'mid'); mul(z, 0.7, ('star-chime',), 'mid')
 json.dump(spec, open(out, 'w'), ensure_ascii=False, indent=1)
