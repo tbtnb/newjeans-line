@@ -33,6 +33,12 @@ description: newjeans-line 手机性能：三角形/draw 预算、高低画质�
 - 拖尾保留后14秒、纹理累计距离连续。CPU-only NullEngine样本150秒附近：全历史345段5528顶点，对比窗口18段296顶点；不是手机FPS证据。
 - 验收需要真机从开局、密集段到后半程观察实际FPS和长帧；浏览器锁60时不得宣称120已达成。
 
+## iPhone Safari 的实测排查（2026-10-20 01:06）
+- 用户确认使用Safari，随后仍反馈60帧；因此9c7ac84不能标记为iPhone120验收通过。还未确认机型、iOS版本、显示的回调Hz和系统设置。
+- WebKit维护者说明：ProMotion设备可关闭Safari的“Prefer Page Rendering Updates near 60fps”功能标志以允许120Hz页面更新；来源 https://bugs.webkit.org/show_bug.cgi?id=288402#c19 。这是浏览器设置，不是网页能代改的游戏设置；不要建议批量修改实验标志。
+- Apple说明ProMotion设备低电量模式限制至60Hz；来源 https://support.apple.com/en-euro/101604 。还需区分硬件是否支持120Hz、发热、辅助功能限帧及场景性能。回调只有60本身不能证明硬件只支持60，重负载也可能导致低回调。
+- 先核对最新build、目标120、实际渲染FPS及回调Hz，再比较轻负载与关卡；不得用定时器重复提交冒充120，也不能将Safari历史限制笼统说成永久不支持120。
+
 ## 预算（用户：华丽但手机要流畅）
 | 档 | 三角形 | draws |
 |---|---|---|
