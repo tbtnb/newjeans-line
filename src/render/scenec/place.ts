@@ -5,7 +5,8 @@
 import { anchor, flowAnchor, type Route } from '../../core/path';
 import type { SceneCSpec, SceneCZone } from '../../core/types';
 
-export interface CInst { a: string; layer: string; x: number; y: number; z: number; yaw: number; s: number; c: number; zone: number; t: number; chunk: number; hi?: boolean }
+const fr = (x: number, z: number) => { const q = Math.sin(x * 12.9898 + z * 78.233) * 43758.5453; return q - Math.floor(q); };
+export interface CInst { a: string; layer: string; x: number; y: number; z: number; yaw: number; s: number; c: number; zone: number; t: number; chunk: number; hi?: boolean; /** v8 palette variant index (rows step it so neighbours differ) */ v?: number }
 export interface CSet extends CInst { popAt: number; label?: string; /** v6: zone hero (key camera nudges toward it) */ hero?: boolean }
 export interface CImp { k: string; x: number; y: number; z: number; yaw: number; s: number; zone: number }
 export interface CChunk { imp?: CImp[]; i: number; t0: number; t1: number; zone: number; minX: number; maxX: number; minZ: number; maxZ: number; y: number; items: CInst[];
@@ -65,10 +66,18 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
   const nearBand = (x: number, z: number, t: number, r: number) => { const i0 = Math.max(0, Math.floor((t - 4) * 4)), i1 = Math.min(camPath.length - 1, Math.ceil((t + 2) * 4));
     for (let i = i0; i <= i1; i++) { const c = camPath[i]; if ((c.gx - x) ** 2 + (c.gz - z) ** 2 < r * r) return true; } return false; };
   let placed = 0, rejected = 0;
+  // v8 audit: models no longer clip into each other - tall mid pieces keep their footprints apart (4 m hash grid), set pieces clear them after
+  const occ = new Map<string, number[][]>(), oc = (x: number, z: number) => `${Math.floor(x / 4)},${Math.floor(z / 4)}`;
+  const foot = (A: { h: number; w?: number; d?: number }, s: number) => Math.max(A.w ?? A.h * 0.6, A.d ?? 0, 0.5) * s * 0.5;
+  const occHit = (x: number, z: number, r: number, tree = false) => { const cx = Math.floor(x / 4), cz = Math.floor(z / 4), n = Math.ceil(r / 4) + 2;
+    for (let i = -n; i <= n; i++) for (let j = -n; j <= n; j++) for (const q of occ.get(`${cx + i},${cz + j}`) ?? []) if ((q[0] - x) ** 2 + (q[1] - z) ** 2 < ((q[2] + r) * (q[3] && tree ? 0.55 : 0.9)) ** 2) return true; return false; };
+  const occAdd = (x: number, z: number, r: number, tree = false) => { const k = oc(x, z); (occ.get(k) ?? occ.set(k, []).get(k)!).push([x, z, r, tree ? 1 : 0]); };   // trees may interleave a little (paper groves), nothing else may
   const clearNear = spec.clear?.near ?? 1.0, groundMaxH = spec.clear?.groundMaxH ?? 0.3;
   spec.zones.forEach((z: SceneCZone, zi) => {
     const t1 = Math.min(z.t1, o.duration);
-    for (const L of z.layers) {
+    // v8: big pieces claim their spots first (view rows, then by height), small decor fills around them
+    const big = (L: typeof z.layers[0]) => L.layer !== 'mid' ? -1 : (L.view ? 100 : 0) + (spec.assets[L.asset]?.h ?? 0) * (L.scale[1] ?? 1);
+    for (const L of [...z.layers].sort((p, q) => big(q) - big(p))) {
       const A = spec.assets[L.asset]; if (!A) continue;
       const n = Math.round(L.count * (o.density?.[L.layer] ?? 1));
       for (let k = 0; k < n; k++) for (let att = 0; att < 6; att++) {   // a spot over another road segment retries elsewhere (zig-zag routes)
@@ -86,6 +95,9 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
         const pad = h < groundMaxH ? 0.15 : view ? clearNear + 0.5 * w : clearNear + 1.0 * w;
         if (view) for (let k = 0; k < 8 && o.hits(a.pos.x, a.pos.z, r + pad, a.pos.y - 1, a.pos.y + h); k++) { off += side * 1.25; a = flowAnchor(route, t, off, 0, 0); }
         if (y0 < 4 && o.hits(a.pos.x, a.pos.z, r + pad, a.pos.y - 1, a.pos.y + h)) { rejected++; continue; }
+        const solid = L.layer === 'mid' && h >= 0.8 && !/fence|bunting|lantern-string|cord/.test(L.asset), fr0 = foot(A, s);
+        const isTree = A.shape === 'tree' && !/hedge/.test(L.asset);
+        if (solid && occHit(a.pos.x, a.pos.z, fr0, isTree)) { rejected++; continue; }
         if (!view && L.layer === 'mid' && h > 2.6 && nearBand(a.pos.x, a.pos.z, t, (L.hug ? 3 : 16) + r)) { rejected++; continue; }   // big pieces stay out of the near band; v7 'hug' layers (lit house rows) may line the road
         const rp = anchor(route, t).pos;
         const fp = view ? flowAnchor(route, Math.max(0, t - 2.5), 0, 0, 0).pos : rp;   // view pieces face back along the flow (toward the key camera), not sideways
@@ -93,7 +105,9 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
         const ci = chunkAt(t);
         const gy = L.layer === 'ground' || L.layer === 'mid' ? groundY(chunks[ci], a.pos.x, a.pos.z) + y0 : a.pos.y - o.roadH + y0;
         const col = () => (L.colors ?? [0])[Math.floor(R() * (L.colors ?? [0]).length)];
-        chunks[ci].items.push({ a: L.asset, layer: L.layer, x: a.pos.x, y: gy, z: a.pos.z, yaw, s, c: col(), zone: zi, t, chunk: ci, ...(L.hi ? { hi: true } : {}) });
+        const v0 = Math.floor(fr(a.pos.x, a.pos.z) * 9973);   // not from R(): the layout stays the same
+        chunks[ci].items.push({ a: L.asset, layer: L.layer, x: a.pos.x, y: gy, z: a.pos.z, yaw, s, c: col(), zone: zi, t, chunk: ci, v: v0, ...(L.hi ? { hi: true } : {}) });
+        if (solid) occAdd(a.pos.x, a.pos.z, fr0, isTree);
         placed++;
         if (L.cluster) {   // members around the centre (blob) or continuing along the road at the same offset (row); each one must clear the road too
           const Cn = L.cluster, m = Math.round(Cn.n[0] + R() * ((Cn.n[1] ?? Cn.n[0]) - Cn.n[0]));
@@ -106,8 +120,10 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
               x = b.pos.x; zz = b.pos.z; const bp = anchor(route, ty).pos; my = view ? yaw : Math.atan2(bp.x - x, bp.z - zz); }
             else { const an = R() * Math.PI * 2, rr = Cn.r * s * Math.sqrt(0.15 + 0.85 * R()); x = a.pos.x + Math.cos(an) * rr; zz = a.pos.z + Math.sin(an) * rr; my = L.layer === 'mid' ? yaw + (R() - 0.5) * 0.8 : R() * Math.PI * 2; }
             if (o.hits(x, zz, r * ms / s + pad, a.pos.y - 1, a.pos.y + A.h * ms) || (!view && A.h * ms > 2.6 && nearBand(x, zz, ty, (L.hug ? 3 : 16) + r * ms / s))) { rejected++; continue; }
-            const cj = chunkAt(ty);
-            chunks[cj].items.push({ a: L.asset, layer: L.layer, x, y: groundY(chunks[cj], x, zz) + y0, z: zz, yaw: my, s: ms, c: col(), zone: zi, t: ty, chunk: cj, ...(L.hi ? { hi: true } : {}) }); placed++;
+            const alts = [L.asset, ...(L.alt ?? [])], ma = alts[j % alts.length], MA = spec.assets[ma] ?? A, mr = foot(MA, ms);
+            const mt = MA.shape === 'tree' && !/hedge/.test(ma); if (solid && occHit(x, zz, mr, mt)) { rejected++; continue; }
+            const cj = chunkAt(ty); if (solid) occAdd(x, zz, mr, mt);   // v8: rows alternate kinds and step the palette variant, so no piece repeats its neighbour
+            chunks[cj].items.push({ a: ma, layer: L.layer, x, y: groundY(chunks[cj], x, zz) + y0, z: zz, yaw: my + (view ? (fr(zz, x) - 0.5) * 0.4 : 0), s: ms, c: col(), zone: zi, t: ty, chunk: cj, v: v0 + j, ...(L.hi ? { hi: true } : {}) }); placed++;
           }
         }
         break;
@@ -159,6 +175,11 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
       sets.push({ a: sp.asset, layer: 'land', x: a.pos.x, y: groundY(sc0, a.pos.x, a.pos.z), z: a.pos.z, yaw: Math.atan2(fc.x - a.pos.x, fc.z - a.pos.z), s: sc, c: 0, zone: zi, t: sp.t, chunk: chunkAt(sp.t), popAt, label: sp.label, ...(sp.hi ? { hi: true } : {}), ...(sp.hero ? { hero: true } : {}) });
     }
   });
+  // set pieces win: tall decor inside a set piece's footprint goes (entourage rings start outside it)
+  for (const st of sets) { const A = spec.assets[st.a]; if (!A) continue; const r = foot(A, st.s);
+    for (let ci = Math.max(0, st.chunk - 2); ci <= Math.min(chunks.length - 1, st.chunk + 2); ci++) chunks[ci].items = chunks[ci].items.filter(it => {
+      if (it.layer !== 'mid') return true; const B = spec.assets[it.a]; if (!B || B.h * it.s < 0.8) return true;
+      const k = (it.x - st.x) ** 2 + (it.z - st.z) ** 2 < ((r + foot(B, it.s) * 0.6) * 0.85) ** 2; if (k) rejected++; return !k; }); }
   return { chunks, sets, stats: { placed, rejected } };
 }
 

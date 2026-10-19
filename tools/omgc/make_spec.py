@@ -425,6 +425,36 @@ for z in zones:
         if sp['asset'] == 'ferris-wheel' and sp.get('hero'): sp.update(t=113.0, side=-1, dist=1.0, scale=1.35, face='cam')
         if sp['asset'] == 'carousel' and sp.get('hero'): sp.update(t=110.5)
     z['setpieces'].sort(key=lambda d: d['t'])
+# v8b repetition pass (user: repeated models everywhere): row / blob members alternate kinds (palette variants step per member at runtime),
+# lamp / pine / bed carpets thinned, a few under-used sheet pieces added near the road so each key view holds more distinct things
+ALT = {'mushroom-house': ['bunny-house'], 'bunny-house': ['mushroom-house'], 'pine-lo': ['pine-lo', 'tree-lo'], 'firefly-lamp': ['firefly-lamp', 'lily-lamp'],
+       'stall': ['balloons'], 'tree-lo': ['forest-clump', 'tree-lo'], 'heart-bed': ['tulip-bed']}
+CUT = {'z01': [(0.7, ('tulip-bed',), 'mid')], 'z03': [(0.65, ('firefly-lamp',), 'mid')], 'z04': [(0.65, ('firefly-lamp',), 'mid'), (0.6, ('paper-hill-lo',), 'mid')],
+       'z05': [(0.7, ('lily-lamp',), 'mid')], 'z06': [(0.7, ('heart-bed',), 'mid')], 'z07': [(0.65, ('firefly-lamp',), 'mid')],
+       'z08': [(0.45, ('firefly-lamp',), 'mid'), (0.6, ('pine-lo',), 'mid')], 'z09': [(0.6, ('firefly-lamp', 'heart-bed'), 'mid'), (0.7, ('pine-lo',), 'mid'), (0.5, ('bunting',), 'mid')],
+       'z10': [(0.7, ('heart-bed',), 'mid')]}
+ADD2 = {   # v8b: more distinct pieces where one kind owned the key view (counts from tools/qa/repcount.mjs)
+    'z01': [('bunny-statue', 1, [5.0, 9.0], [1.0, 1.2], None), ('tree-lo', 1.5, [9.0, 16.0], [0.9, 1.2], BLOB(2, 3, 3.0))],
+    'z02': [('mushroom-house', 2, [7.0, 13.0], [1.0, 1.25], ROW(2, 3, 4.6)), ('tree-lo', 2, [10.0, 18.0], [0.9, 1.2], BLOB(2, 3, 3.0)), ('gift', 1.5, [3.5, 7.0], [1.3, 1.6], BLOB(2, 2, 2.0)), ('bunny-statue', 1, [5.0, 9.0], [1.0, 1.2], None)],
+    'z04': [('mushroom-house', 1.5, [7.0, 13.0], [1.0, 1.3], ROW(2, 3, 4.4)), ('heart-sculpt', 1.5, [5.0, 10.0], [1.0, 1.2], None), ('star-chime', 1.5, [6.0, 11.0], [0.8, 1.0], None), ('bunny-statue', 1, [5.0, 9.0], [1.0, 1.3], None)],
+    'z05': [('mushroom-group', 2, [3.5, 7.0], [1.3, 1.7], BLOB(2, 3, 2.0)), ('heart-sculpt', 1, [5.0, 9.0], [1.0, 1.2], None)],
+    'z07': [('heart-sculpt', 1, [5.0, 9.0], [1.0, 1.2], None), ('mushroom-group', 1.5, [3.5, 7.0], [1.3, 1.7], BLOB(2, 3, 2.0))],
+    'z09': [('mushroom-group', 2.5, [3.5, 7.0], [1.3, 1.7], BLOB(2, 3, 2.0)), ('bunny-statue', 1.5, [5.0, 9.0], [1.0, 1.3], ROW(2, 2, 4.0)), ('tree-lo', 2, [9.0, 16.0], [0.9, 1.2], BLOB(2, 3, 3.0)), ('book-stack', 1.5, [3.5, 7.0], [1.2, 1.5], BLOB(2, 3, 1.8))],
+    'z10': [('bunny-statue', 1, [5.0, 9.0], [1.0, 1.3], None), ('tree-lo', 1.5, [9.0, 16.0], [0.9, 1.2], BLOB(2, 3, 3.0)), ('gift', 1.5, [3.5, 7.0], [1.3, 1.6], BLOB(2, 2, 2.0))]}
+CUT2 = {'z01': [(0.6, ('fence',), 'mid')], 'z02': [(0.45, ('fence',), 'mid')], 'z05': [(0.4, ('rock',), 'mid'), (0.4, ('paper-hill-lo',), 'mid'), (0.5, ('bunny-statue',), 'mid')], 'z06': [(0.7, ('fence',), 'mid')], 'z10': [(0.7, ('fence',), 'mid')]}
+for z in zones:
+    zk = (z['t1'] - z['t0']) / 15.12
+    for k, aids, layer in CUT2.get(z['id'], []): mul(z, k, aids, layer)
+    for aid, n, lat, sc, cl in ADD2.get(z['id'], []): addv(z, aid, max(1, round(n * zk)), lat, sc, True, cl)
+ADD = {'z03': [('heart-sculpt', 1.5, [5.0, 10.0], [0.9, 1.1], ROW(2, 2, 4.0))], 'z06': [('gift', 2, [3.5, 7.0], [1.3, 1.6], BLOB(2, 3, 2.0)), ('heart-sculpt', 1, [5.0, 9.0], [0.9, 1.1], None)],
+       'z07': [('star-chime', 1.5, [5.0, 10.0], [0.8, 1.0], ROW(2, 2, 4.5))], 'z10': [('heart-sculpt', 1.5, [5.0, 10.0], [1.0, 1.2], None), ('balloons', 1.5, [6.0, 11.0], [0.9, 1.1], ROW(2, 2, 4.0))],
+       'z01': [('gift', 1.5, [3.5, 7.0], [1.3, 1.6], BLOB(2, 3, 2.0))]}
+for z in zones:
+    zid = z['id']; zk = (z['t1'] - z['t0']) / 15.12
+    for k, aids, layer in CUT.get(zid, []): mul(z, k, aids, layer)
+    for aid, n, lat, sc, cl in ADD.get(zid, []): addv(z, aid, round(n * zk), lat, sc, True, cl)
+    for ly in z['layers']:
+        if ly.get('cluster') and ly['asset'] in ALT and ly['layer'] == 'mid': ly['alt'] = ALT[ly['asset']]
 SKY = {'z01': 'day', 'z02': 'day', 'z03': 'dusk', 'z04': 'night', 'z05': 'twilight', 'z06': 'dusk', 'z07': 'night', 'z08': 'night', 'z09': 'night', 'z10': 'day'}   # v8 sky strip per zone
 for z in zones: z['sky'] = SKY[z['id']]
 out = os.path.join(here, '..', '..', 'levels-src', 'omg', 'scene-c.json')

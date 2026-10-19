@@ -1465,7 +1465,7 @@
     {
      "asset": "fence",
      "layer": "mid",
-     "count": 38,
+     "count": 23,
      "near": [
       1.5,
       7.0
@@ -1490,7 +1490,7 @@
     {
      "asset": "tulip-bed",
      "layer": "mid",
-     "count": 7,
+     "count": 5,
      "near": [
       1.5,
       7.0
@@ -1763,7 +1763,7 @@
     {
      "asset": "tulip-bed",
      "layer": "mid",
-     "count": 12,
+     "count": 8,
      "near": [
       3.0,
       13.0
@@ -1991,6 +1991,114 @@
       ],
       "r": 4.2,
       "row": true
+     },
+     "alt": [
+      "mushroom-house"
+     ]
+    },
+    {
+     "asset": "bunny-statue",
+     "layer": "mid",
+     "count": 1,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      5.0,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.0,
+      1.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tree-lo",
+     "layer": "mid",
+     "count": 2,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      9.0,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.9,
+      1.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       2,
+       3
+      ],
+      "r": 3.0
+     },
+     "alt": [
+      "forest-clump",
+      "tree-lo"
+     ]
+    },
+    {
+     "asset": "gift",
+     "layer": "mid",
+     "count": 2,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      3.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.3,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       2,
+       3
+      ],
+      "r": 2.0
      }
     }
    ],
@@ -2287,7 +2395,7 @@
     {
      "asset": "fence",
      "layer": "mid",
-     "count": 76,
+     "count": 34,
      "near": [
       1.5,
       7.0
@@ -2824,6 +2932,151 @@
       ],
       "r": 5.0
      }
+    },
+    {
+     "asset": "mushroom-house",
+     "layer": "mid",
+     "count": 2,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      7.0,
+      13.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.0,
+      1.25
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       2,
+       3
+      ],
+      "r": 4.6,
+      "row": true
+     },
+     "alt": [
+      "bunny-house"
+     ]
+    },
+    {
+     "asset": "tree-lo",
+     "layer": "mid",
+     "count": 2,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      10.0,
+      18.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.9,
+      1.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       2,
+       3
+      ],
+      "r": 3.0
+     },
+     "alt": [
+      "forest-clump",
+      "tree-lo"
+     ]
+    },
+    {
+     "asset": "gift",
+     "layer": "mid",
+     "count": 2,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      3.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.3,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       2,
+       2
+      ],
+      "r": 2.0
+     }
+    },
+    {
+     "asset": "bunny-statue",
+     "layer": "mid",
+     "count": 1,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      5.0,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.0,
+      1.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
     }
    ],
    "setpieces": [
@@ -3665,6 +3918,42 @@
       ],
       "r": 5.0
      }
+    },
+    {
+     "asset": "heart-sculpt",
+     "layer": "mid",
+     "count": 1,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      5.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.9,
+      1.1
+     ],
+     "colors": [
+      0,
+      1,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       2,
+       2
+      ],
+      "r": 4.0,
+      "row": true
+     }
     }
    ],
    "setpieces": [
@@ -4191,7 +4480,7 @@
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 12,
+     "count": 8,
      "near": [
       1.5,
       7.0
@@ -4288,7 +4577,7 @@
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 15,
+     "count": 10,
      "near": [
       1.5,
       7.0
@@ -4360,7 +4649,7 @@
     {
      "asset": "paper-hill-lo",
      "layer": "mid",
-     "count": 16,
+     "count": 10,
      "near": [
       40.0,
       85.0
@@ -4434,7 +4723,11 @@
        8
       ],
       "r": 3.2
-     }
+     },
+     "alt": [
+      "pine-lo",
+      "tree-lo"
+     ]
     },
     {
      "asset": "hedge",
@@ -4560,7 +4853,10 @@
       ],
       "r": 3.8,
       "row": true
-     }
+     },
+     "alt": [
+      "bunny-house"
+     ]
     },
     {
      "asset": "bunny-house",
@@ -4592,7 +4888,10 @@
       ],
       "r": 4.2,
       "row": true
-     }
+     },
+     "alt": [
+      "mushroom-house"
+     ]
     },
     {
      "asset": "mushroom-house",
@@ -4624,12 +4923,15 @@
       ],
       "r": 3.8,
       "row": true
-     }
+     },
+     "alt": [
+      "bunny-house"
+     ]
     },
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 7,
+     "count": 5,
      "near": [
       1.5,
       4.0
@@ -4653,7 +4955,7 @@
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 7,
+     "count": 5,
      "near": [
       1.5,
       5.0
@@ -4721,6 +5023,129 @@
       4
      ],
      "hi": false
+    },
+    {
+     "asset": "mushroom-house",
+     "layer": "mid",
+     "count": 1,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      7.0,
+      13.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.0,
+      1.3
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       2,
+       3
+      ],
+      "r": 4.4,
+      "row": true
+     },
+     "alt": [
+      "bunny-house"
+     ]
+    },
+    {
+     "asset": "heart-sculpt",
+     "layer": "mid",
+     "count": 1,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      5.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.0,
+      1.2
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "star-chime",
+     "layer": "mid",
+     "count": 1,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      6.0,
+      11.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.0
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "bunny-statue",
+     "layer": "mid",
+     "count": 1,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      5.0,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.0,
+      1.3
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
     }
    ],
    "setpieces": [
@@ -4966,7 +5391,7 @@
     {
      "asset": "lily-lamp",
      "layer": "mid",
-     "count": 8,
+     "count": 6,
      "near": [
       1.5,
       7.0
@@ -4990,7 +5415,7 @@
     {
      "asset": "rock",
      "layer": "mid",
-     "count": 19,
+     "count": 8,
      "near": [
       1.5,
       7.0
@@ -5235,7 +5660,7 @@
     {
      "asset": "rock",
      "layer": "mid",
-     "count": 14,
+     "count": 6,
      "near": [
       1.5,
       7.0
@@ -5360,7 +5785,7 @@
     {
      "asset": "bunny-statue",
      "layer": "mid",
-     "count": 3,
+     "count": 2,
      "near": [
       1.5,
       7.0
@@ -5487,7 +5912,7 @@
     {
      "asset": "paper-hill-lo",
      "layer": "mid",
-     "count": 16,
+     "count": 6,
      "near": [
       40.0,
       85.0
@@ -5564,7 +5989,11 @@
        8
       ],
       "r": 3.2
-     }
+     },
+     "alt": [
+      "pine-lo",
+      "tree-lo"
+     ]
     },
     {
      "asset": "forest-clump",
@@ -5601,7 +6030,7 @@
     {
      "asset": "paper-hill-lo",
      "layer": "mid",
-     "count": 5,
+     "count": 2,
      "near": [
       16.0,
       34.0
@@ -5660,12 +6089,16 @@
        8
       ],
       "r": 3.2
-     }
+     },
+     "alt": [
+      "pine-lo",
+      "tree-lo"
+     ]
     },
     {
      "asset": "lily-lamp",
      "layer": "mid",
-     "count": 5,
+     "count": 4,
      "near": [
       2.5,
       12.0
@@ -5715,7 +6148,7 @@
     {
      "asset": "rock",
      "layer": "mid",
-     "count": 2,
+     "count": 1,
      "near": [
       2.5,
       12.0
@@ -5790,7 +6223,7 @@
     {
      "asset": "bunny-statue",
      "layer": "mid",
-     "count": 3,
+     "count": 2,
      "near": [
       2.5,
       12.0
@@ -5815,7 +6248,7 @@
     {
      "asset": "bunny-statue",
      "layer": "mid",
-     "count": 3,
+     "count": 2,
      "near": [
       0.0,
       0.0
@@ -5889,7 +6322,7 @@
     {
      "asset": "lily-lamp",
      "layer": "mid",
-     "count": 8,
+     "count": 6,
      "near": [
       0.0,
       0.0
@@ -5957,7 +6390,11 @@
        6
       ],
       "r": 3.2
-     }
+     },
+     "alt": [
+      "pine-lo",
+      "tree-lo"
+     ]
     },
     {
      "asset": "mushroom-house",
@@ -5994,7 +6431,10 @@
       ],
       "r": 4.2,
       "row": true
-     }
+     },
+     "alt": [
+      "bunny-house"
+     ]
     },
     {
      "asset": "bunny-statue",
@@ -6032,6 +6472,71 @@
       "r": 4.0,
       "row": true
      }
+    },
+    {
+     "asset": "mushroom-group",
+     "layer": "mid",
+     "count": 2,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      3.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.3,
+      1.7
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       2,
+       3
+      ],
+      "r": 2.0
+     }
+    },
+    {
+     "asset": "heart-sculpt",
+     "layer": "mid",
+     "count": 1,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      5.0,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.0,
+      1.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
     }
    ],
    "setpieces": [
@@ -6311,7 +6816,7 @@
     {
      "asset": "heart-bed",
      "layer": "mid",
-     "count": 11,
+     "count": 8,
      "near": [
       1.5,
       7.0
@@ -6555,7 +7060,7 @@
     {
      "asset": "fence",
      "layer": "mid",
-     "count": 19,
+     "count": 13,
      "near": [
       1.5,
       7.0
@@ -6831,7 +7336,10 @@
       ],
       "r": 4.2,
       "row": true
-     }
+     },
+     "alt": [
+      "mushroom-house"
+     ]
     },
     {
      "asset": "bunny-house",
@@ -6864,7 +7372,10 @@
       ],
       "r": 4.2,
       "row": true
-     }
+     },
+     "alt": [
+      "mushroom-house"
+     ]
     },
     {
      "asset": "mushroom-house",
@@ -6897,7 +7408,10 @@
       ],
       "r": 3.8,
       "row": true
-     }
+     },
+     "alt": [
+      "bunny-house"
+     ]
     },
     {
      "asset": "tulip-bed",
@@ -6927,7 +7441,7 @@
     {
      "asset": "heart-bed",
      "layer": "mid",
-     "count": 3,
+     "count": 2,
      "near": [
       3.0,
       12.0
@@ -6952,7 +7466,7 @@
     {
      "asset": "fence",
      "layer": "mid",
-     "count": 5,
+     "count": 4,
      "near": [
       3.0,
       12.0
@@ -7059,7 +7573,10 @@
       ],
       "r": 4.6,
       "row": true
-     }
+     },
+     "alt": [
+      "mushroom-house"
+     ]
     },
     {
      "asset": "mushroom-house",
@@ -7096,7 +7613,10 @@
       ],
       "r": 4.2,
       "row": true
-     }
+     },
+     "alt": [
+      "bunny-house"
+     ]
     },
     {
      "asset": "bunny-statue",
@@ -7190,7 +7710,11 @@
        5
       ],
       "r": 3.2
-     }
+     },
+     "alt": [
+      "forest-clump",
+      "tree-lo"
+     ]
     },
     {
      "asset": "bunny-house",
@@ -7227,7 +7751,75 @@
       ],
       "r": 4.6,
       "row": true
+     },
+     "alt": [
+      "mushroom-house"
+     ]
+    },
+    {
+     "asset": "gift",
+     "layer": "mid",
+     "count": 2,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      3.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.3,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       2,
+       3
+      ],
+      "r": 2.0
      }
+    },
+    {
+     "asset": "heart-sculpt",
+     "layer": "mid",
+     "count": 1,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      5.0,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.9,
+      1.1
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
     }
    ],
    "setpieces": [
@@ -7808,7 +8400,7 @@
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 31,
+     "count": 20,
      "near": [
       1.5,
       7.0
@@ -8002,7 +8594,11 @@
        8
       ],
       "r": 3.2
-     }
+     },
+     "alt": [
+      "pine-lo",
+      "tree-lo"
+     ]
     },
     {
      "asset": "forest-clump",
@@ -8096,7 +8692,10 @@
       ],
       "r": 3.8,
       "row": true
-     }
+     },
+     "alt": [
+      "bunny-house"
+     ]
     },
     {
      "asset": "hedge",
@@ -8160,7 +8759,10 @@
       ],
       "r": 3.8,
       "row": true
-     }
+     },
+     "alt": [
+      "bunny-house"
+     ]
     },
     {
      "asset": "bunny-house",
@@ -8192,7 +8794,10 @@
       ],
       "r": 4.2,
       "row": true
-     }
+     },
+     "alt": [
+      "mushroom-house"
+     ]
     },
     {
      "asset": "mushroom-house",
@@ -8224,12 +8829,15 @@
       ],
       "r": 3.8,
       "row": true
-     }
+     },
+     "alt": [
+      "bunny-house"
+     ]
     },
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 14,
+     "count": 9,
      "near": [
       1.5,
       4.0
@@ -8253,7 +8861,7 @@
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 14,
+     "count": 9,
      "near": [
       1.5,
       5.0
@@ -8353,7 +8961,10 @@
       "r": 4.6,
       "row": true
      },
-     "hug": true
+     "hug": true,
+     "alt": [
+      "bunny-house"
+     ]
     },
     {
      "asset": "mushroom-house",
@@ -8386,7 +8997,10 @@
       "r": 4.6,
       "row": true
      },
-     "hug": true
+     "hug": true,
+     "alt": [
+      "bunny-house"
+     ]
     },
     {
      "asset": "pine-lo",
@@ -8421,7 +9035,11 @@
        6
       ],
       "r": 3.4
-     }
+     },
+     "alt": [
+      "pine-lo",
+      "tree-lo"
+     ]
     },
     {
      "asset": "bunny-house",
@@ -8456,6 +9074,108 @@
        3
       ],
       "r": 4.6,
+      "row": true
+     },
+     "alt": [
+      "mushroom-house"
+     ]
+    },
+    {
+     "asset": "heart-sculpt",
+     "layer": "mid",
+     "count": 1,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      5.0,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.0,
+      1.2
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "mushroom-group",
+     "layer": "mid",
+     "count": 1,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      3.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.3,
+      1.7
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       2,
+       3
+      ],
+      "r": 2.0
+     }
+    },
+    {
+     "asset": "star-chime",
+     "layer": "mid",
+     "count": 1,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      5.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.8,
+      1.0
+     ],
+     "colors": [
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       2,
+       2
+      ],
+      "r": 4.5,
       "row": true
      }
     }
@@ -9070,7 +9790,7 @@
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 23,
+     "count": 10,
      "near": [
       1.5,
       7.0
@@ -9287,7 +10007,10 @@
       ],
       "r": 3.8,
       "row": true
-     }
+     },
+     "alt": [
+      "bunny-house"
+     ]
     },
     {
      "asset": "mushroom-house",
@@ -9319,7 +10042,10 @@
       ],
       "r": 3.8,
       "row": true
-     }
+     },
+     "alt": [
+      "bunny-house"
+     ]
     },
     {
      "asset": "bunny-house",
@@ -9351,7 +10077,10 @@
       ],
       "r": 4.2,
       "row": true
-     }
+     },
+     "alt": [
+      "mushroom-house"
+     ]
     },
     {
      "asset": "mushroom-house",
@@ -9383,12 +10112,15 @@
       ],
       "r": 3.8,
       "row": true
-     }
+     },
+     "alt": [
+      "bunny-house"
+     ]
     },
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 14,
+     "count": 6,
      "near": [
       1.5,
       4.0
@@ -9412,7 +10144,7 @@
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 14,
+     "count": 6,
      "near": [
       1.5,
       5.0
@@ -9515,7 +10247,10 @@
       ],
       "r": 3.6,
       "row": true
-     }
+     },
+     "alt": [
+      "balloons"
+     ]
     },
     {
      "asset": "mushroom-house",
@@ -9551,7 +10286,10 @@
       ],
       "r": 4.2,
       "row": true
-     }
+     },
+     "alt": [
+      "bunny-house"
+     ]
     },
     {
      "asset": "balloons",
@@ -9584,7 +10322,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 3,
+     "count": 2,
      "near": [
       0.0,
       0.0
@@ -9614,7 +10352,11 @@
        5
       ],
       "r": 3.2
-     }
+     },
+     "alt": [
+      "pine-lo",
+      "tree-lo"
+     ]
     }
    ],
    "setpieces": [
@@ -9885,7 +10627,7 @@
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 28,
+     "count": 17,
      "near": [
       1.5,
       7.0
@@ -10155,7 +10897,7 @@
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 33,
+     "count": 20,
      "near": [
       1.5,
       7.0
@@ -10201,7 +10943,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 9,
+     "count": 6,
      "near": [
       5.0,
       12.0
@@ -10225,7 +10967,7 @@
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 34,
+     "count": 20,
      "near": [
       1.5,
       7.0
@@ -10294,7 +11036,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 16,
+     "count": 11,
      "near": [
       5.0,
       12.0
@@ -10363,7 +11105,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 17,
+     "count": 12,
      "near": [
       40.0,
       85.0
@@ -10386,7 +11128,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 4,
+     "count": 3,
      "near": [
       5.0,
       16.0
@@ -10411,7 +11153,11 @@
        8
       ],
       "r": 3.2
-     }
+     },
+     "alt": [
+      "pine-lo",
+      "tree-lo"
+     ]
     },
     {
      "asset": "forest-clump",
@@ -10502,7 +11248,10 @@
       ],
       "r": 3.8,
       "row": true
-     }
+     },
+     "alt": [
+      "bunny-house"
+     ]
     },
     {
      "asset": "mushroom-house",
@@ -10533,7 +11282,10 @@
       ],
       "r": 3.8,
       "row": true
-     }
+     },
+     "alt": [
+      "bunny-house"
+     ]
     },
     {
      "asset": "bunny-house",
@@ -10564,7 +11316,10 @@
       ],
       "r": 4.2,
       "row": true
-     }
+     },
+     "alt": [
+      "mushroom-house"
+     ]
     },
     {
      "asset": "mushroom-house",
@@ -10595,12 +11350,15 @@
       ],
       "r": 3.8,
       "row": true
-     }
+     },
+     "alt": [
+      "bunny-house"
+     ]
     },
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 23,
+     "count": 14,
      "near": [
       1.5,
       4.0
@@ -10623,7 +11381,7 @@
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 23,
+     "count": 14,
      "near": [
       1.5,
       5.0
@@ -10719,7 +11477,10 @@
       "r": 4.6,
       "row": true
      },
-     "hug": true
+     "hug": true,
+     "alt": [
+      "bunny-house"
+     ]
     },
     {
      "asset": "mushroom-house",
@@ -10751,7 +11512,10 @@
       "r": 4.6,
       "row": true
      },
-     "hug": true
+     "hug": true,
+     "alt": [
+      "bunny-house"
+     ]
     },
     {
      "asset": "mushroom-house",
@@ -10786,7 +11550,10 @@
       ],
       "r": 4.4,
       "row": true
-     }
+     },
+     "alt": [
+      "bunny-house"
+     ]
     },
     {
      "asset": "bunny-house",
@@ -10821,12 +11588,15 @@
       ],
       "r": 4.6,
       "row": true
-     }
+     },
+     "alt": [
+      "mushroom-house"
+     ]
     },
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 10,
+     "count": 7,
      "near": [
       0.0,
       0.0
@@ -10855,12 +11625,16 @@
        6
       ],
       "r": 3.4
-     }
+     },
+     "alt": [
+      "pine-lo",
+      "tree-lo"
+     ]
     },
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 20,
+     "count": 12,
      "near": [
       0.0,
       0.0
@@ -10890,7 +11664,11 @@
       ],
       "r": 3.0,
       "row": true
-     }
+     },
+     "alt": [
+      "firefly-lamp",
+      "lily-lamp"
+     ]
     },
     {
      "asset": "mushroom-house",
@@ -10925,12 +11703,15 @@
       ],
       "r": 4.4,
       "row": true
-     }
+     },
+     "alt": [
+      "bunny-house"
+     ]
     },
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 12,
+     "count": 8,
      "near": [
       0.0,
       0.0
@@ -10959,7 +11740,11 @@
        7
       ],
       "r": 3.6
-     }
+     },
+     "alt": [
+      "pine-lo",
+      "tree-lo"
+     ]
     },
     {
      "asset": "bunny-house",
@@ -10994,6 +11779,150 @@
       ],
       "r": 4.6,
       "row": true
+     },
+     "alt": [
+      "mushroom-house"
+     ]
+    },
+    {
+     "asset": "mushroom-group",
+     "layer": "mid",
+     "count": 5,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      3.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.3,
+      1.7
+     ],
+     "colors": [
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       2,
+       3
+      ],
+      "r": 2.0
+     }
+    },
+    {
+     "asset": "bunny-statue",
+     "layer": "mid",
+     "count": 3,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      5.0,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.0,
+      1.3
+     ],
+     "colors": [
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       2,
+       2
+      ],
+      "r": 4.0,
+      "row": true
+     }
+    },
+    {
+     "asset": "tree-lo",
+     "layer": "mid",
+     "count": 4,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      9.0,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.9,
+      1.2
+     ],
+     "colors": [
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       2,
+       3
+      ],
+      "r": 3.0
+     },
+     "alt": [
+      "forest-clump",
+      "tree-lo"
+     ]
+    },
+    {
+     "asset": "book-stack",
+     "layer": "mid",
+     "count": 3,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      3.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.2,
+      1.5
+     ],
+     "colors": [
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       2,
+       3
+      ],
+      "r": 1.8
      }
     }
    ],
@@ -11566,7 +12495,7 @@
     {
      "asset": "fence",
      "layer": "mid",
-     "count": 16,
+     "count": 11,
      "near": [
       1.5,
       7.0
@@ -11616,7 +12545,7 @@
     {
      "asset": "heart-bed",
      "layer": "mid",
-     "count": 3,
+     "count": 2,
      "near": [
       1.5,
       7.0
@@ -11742,7 +12671,7 @@
     {
      "asset": "heart-bed",
      "layer": "mid",
-     "count": 10,
+     "count": 7,
      "near": [
       1.5,
       7.0
@@ -12042,7 +12971,10 @@
       ],
       "r": 4.2,
       "row": true
-     }
+     },
+     "alt": [
+      "mushroom-house"
+     ]
     },
     {
      "asset": "balloons",
@@ -12097,7 +13029,7 @@
     {
      "asset": "heart-bed",
      "layer": "mid",
-     "count": 7,
+     "count": 5,
      "near": [
       3.0,
       13.0
@@ -12243,6 +13175,177 @@
       4
      ],
      "hi": true
+    },
+    {
+     "asset": "bunny-statue",
+     "layer": "mid",
+     "count": 1,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      5.0,
+      9.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.0,
+      1.3
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "tree-lo",
+     "layer": "mid",
+     "count": 1,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      9.0,
+      16.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.9,
+      1.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       2,
+       3
+      ],
+      "r": 3.0
+     },
+     "alt": [
+      "forest-clump",
+      "tree-lo"
+     ]
+    },
+    {
+     "asset": "gift",
+     "layer": "mid",
+     "count": 1,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      3.5,
+      7.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.3,
+      1.6
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       2,
+       2
+      ],
+      "r": 2.0
+     }
+    },
+    {
+     "asset": "heart-sculpt",
+     "layer": "mid",
+     "count": 1,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      5.0,
+      10.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      1.0,
+      1.2
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true
+    },
+    {
+     "asset": "balloons",
+     "layer": "mid",
+     "count": 1,
+     "near": [
+      0.0,
+      0.0
+     ],
+     "view": [
+      6.0,
+      11.0
+     ],
+     "y": [
+      0,
+      0
+     ],
+     "scale": [
+      0.9,
+      1.1
+     ],
+     "colors": [
+      0,
+      1,
+      2,
+      3,
+      4
+     ],
+     "hi": true,
+     "cluster": {
+      "n": [
+       2,
+       2
+      ],
+      "r": 4.0,
+      "row": true
+     }
     }
    ],
    "setpieces": [

@@ -28,6 +28,7 @@ import { ColorCurves } from '@babylonjs/core/Materials/colorCurves';
 import { Color4 } from '@babylonjs/core/Maths/math.color';
 import { Texture } from '@babylonjs/core/Materials/Textures/texture';
 import { Material } from '@babylonjs/core/Materials/material';
+import { variantCols, STRETCH, nVariants } from './variants';
 
 export type Tier = 'high' | 'low';
 export const TIERS: Record<Tier, { density: Record<string, number>; ahead: number; behind: number; lod: number }> = {
@@ -96,7 +97,7 @@ export class SceneC {
     this.applyLook();
     this.imp = new Impostors(scene, this.root, this.plc.chunks, spec, o.base, this.night, o.tier === 'low' ? 0.18 : 1); this.back = new Backdrop(scene, this.root, spec, o.base);
     for (const mm of [this.mat, this.matSet, this.matNight, this.matGlow]) new Cutaway(mm);   // after the page clones: pages / road are never cut
-    for (const s of this.plc.sets) this.sets.push(this.makeSet(s));
+    { const seen = new Map<string, number>(); for (const s of this.plc.sets) { const k = s.zone + ':' + s.a, n = seen.get(k) ?? 0; seen.set(k, n + 1); if (s.v === undefined) s.v = n; this.sets.push(this.makeSet(s)); } }   // v8: repeated set pieces step through palette variants
     // swap in built models as they load (placeholders until then; a missing model simply keeps its placeholder)
     for (const [id, a] of Object.entries(spec.assets)) if (a.model) loadModel(scene, o.base, id, a.h, typeof a.model === 'string' ? a.model : id).then(t => { if (this.disposed) { t.container?.dispose(); return; } recolor(id, t); this.tm.set(id, t); this.models++; this.refreshAsset(id); }).catch(e => console.warn('omg-c model', id, e));
   }
@@ -182,6 +183,8 @@ export class SceneC {
     }
   }
 
+  /** QA (tools/qa/repcount.mjs): the palette variant an item actually renders with */
+  variantOf(it: CInst) { const n = nVariants(it.a); return n < 2 ? 0 : (it.v ?? Math.floor(hash(it.x * 3.1, it.z * 1.7) * 9973)) % n; }
   private keep(it: CInst) { if (it.hi && this.tier === 'low') return false; return hash(it.x, it.z) < (TIERS[this.tier].density[it.layer] ?? 1); }
   private colOf(it: CInst, model: boolean) { const c = this.zoneCols[it.zone][it.c] ?? [1, 1, 1]; const k = model ? 0.12 : 0.85; return [1 + (c[0] - 1) * k, 1 + (c[1] - 1) * k, 1 + (c[2] - 1) * k]; }
   private yOf(it: CInst) { return it.y; }   // ground / mid / land: the page or terrace level chosen at placement
@@ -241,7 +244,8 @@ export class SceneC {
   // Geometry is precomputed per chunk as long runs (~24 tris each) and merged for the chunk window into one mesh (1 draw, high tier).
   private buildStacks(R: { x0: number; z0: number; x1: number; z1: number; y: number; ci: number; zi: number }[], ownZ: (zi: number, x: number, z: number) => number) {
     const N = this.plc.chunks.length; for (let i = 0; i < N; i++) this.stackGeo.push({ p: [], c: [], i: [] });
-    const CREAM = [1.0, 0.965, 0.89], CREAM2 = [0.97, 0.93, 0.84], GOLD = [0.89, 0.68, 0.27], GOLD2 = [0.96, 0.8, 0.42], TAN = [0.93, 0.85, 0.69], TAN2 = [0.86, 0.75, 0.56];
+    // v8b: page-stack cliffs in lilac / blush paper (cream + gold read as a road branch beside the real road)
+    const CREAM = [0.96, 0.94, 0.99], CREAM2 = [0.9, 0.87, 0.96], GOLD = [0.93, 0.6, 0.74], GOLD2 = [0.98, 0.74, 0.84], TAN = [0.86, 0.8, 0.94], TAN2 = [0.76, 0.69, 0.88];
     const covered = (r: typeof R[0], x: number, z: number) => { let lo = -1e9; for (const q of R) { if (q === r || x <= q.x0 || x >= q.x1 || z <= q.z0 || z >= q.z1) continue; if (q.y >= r.y - 0.05) return null; lo = Math.max(lo, q.y); } return lo; };
     const DAYC = [CREAM, CREAM2, GOLD, GOLD2, TAN, TAN2];   // night zones: paper in moonlight (dimmer, slightly blue) so the cliffs don't glare on the navy carpet
     const NIGHTC = DAYC.map(c => [c[0] * 0.62, c[1] * 0.62, c[2] * 0.72]);
@@ -278,7 +282,8 @@ export class SceneC {
     const chunkAt = (t: number) => { let k = 0; for (let i = 0; i < ch.length; i++) if (ch[i].t0 <= t) k = i; return k; };
     const T: number[] = [];
     Z.forEach(z => { const L = z.t1 - z.t0; T.push(Math.max(1.6, z.t0 + 0.6)); if (L > 20) T.push(z.t0 + L / 2); });
-    const CR = [1.0, 0.965, 0.9], CR2 = [0.96, 0.92, 0.83], GO = [0.92, 0.72, 0.3], UND = [0.88, 0.8, 0.66];
+    // v8b: page paper is a cool lilac-white with a blush rim and lilac page block, so it never reads as a (cream / gold) road tile
+    const CR = [0.97, 0.95, 0.99], CR2 = [0.9, 0.86, 0.95], GO = [0.98, 0.66, 0.78], UND = [0.84, 0.78, 0.92];
     const BK = [[0.96, 0.72, 0.8], [0.8, 0.72, 0.94], [0.74, 0.91, 0.85], [0.72, 0.85, 0.96], [1.0, 0.86, 0.62], [0.98, 0.62, 0.7]];
     let seed = 7; const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
     for (const tb of T) {
@@ -294,6 +299,11 @@ export class SceneC {
         let lat = 2.6; const PW = 9, PL = 14;
         const clear = (l: number) => { for (const a of [-PL / 2, 0, PL / 2]) for (const u of [0.1, 0.5, 0.9]) { const q = P(side, l + u * PW, a, 0); if (this.hits(q[0], q[2], 1.2, y0 - 1, y0 + 3)) return false; } return true; };
         let k = 0; while (!clear(lat) && k < 10) { lat += 1.5; k++; } if (k >= 10) continue;
+        // v8 audit: decor standing where the page lifts / curls would poke through it - those pieces go (chunk meshes are built later)
+        for (let q = Math.max(0, ci - 3); q <= Math.min(ch.length - 1, ci + 3); q++) ch[q].items = ch[q].items.filter(it => {
+          if (it.layer !== 'mid' && it.layer !== 'ground') return true; if ((this.spec.assets[it.a]?.h ?? 0) * it.s < 0.35) return true;
+          const dx = it.x - fr.pos.x, dz = it.z - fr.pos.z, lt = (dx * rx + dz * rz) * side, al = dx * fx + dz * fz;
+          return !(lt > lat + 0.4 * PW && lt < lat + PW + 2.6 && Math.abs(al) < PL / 2 + 1.2); });
         // page sheet: flat for 60% of its width, then a curl of radius R up and back over (cream, shaded by the curl angle; gold rim)
         const NU = 12, NA = 6, R = 2.0, flat = 0.62, rise = 0.0;   // page rises from the spine (open-book hump), then rolls up and over at the outer edge
         const prof = (u: number) => { if (u <= flat) { const k = u / flat; return [lat + u * PW, rise * Math.sin(k * Math.PI / 2) + 0.35 * Math.max(0, k - 0.75) ** 2 * 16, 0]; } const th = (u - flat) / (1 - flat) * 3.2; return [lat + flat * PW + R * Math.sin(th), rise + 0.35 + R * (1 - Math.cos(th)), th]; };
@@ -356,10 +366,12 @@ export class SceneC {
       const t = this.tm.get(it.a); if (!t) continue; const ic = this.colOf(it, t.model);
       const B = it.layer === 'ground' ? G : M, y0 = it.layer === 'ground' ? it.y + 0.002 : it.y - c.y;   // mid: relative to the chunk pivot
       const cs = Math.cos(it.yaw), sn = Math.sin(it.yaw), s = it.s, i0 = B.pos.length / 3;
+      // v8 repetition pass: palette variant (rows step through them, so neighbours differ) + per-instance height stretch
+      const tc = variantCols(it.a, t.col as any, it.v ?? Math.floor(hash(it.x * 3.1, it.z * 1.7) * 9973)), sy = STRETCH.has(it.a) ? 0.88 + 0.3 * hash(it.z, it.x) : 1;
       for (let i = 0; i < t.pos.length; i += 3) {
-        const lx = t.pos[i] * s, ly = t.pos[i + 1] * s, lz = t.pos[i + 2] * s;
+        const lx = t.pos[i] * s, ly = t.pos[i + 1] * s * sy, lz = t.pos[i + 2] * s;
         B.pos.push(it.x + lx * cs + lz * sn, y0 + ly, it.z - lx * sn + lz * cs);
-        const j = i / 3 * 4; let r = t.col[j] * ic[0], g = t.col[j + 1] * ic[1], b = t.col[j + 2] * ic[2];
+        const j = i / 3 * 4; let r = tc[j] * ic[0], g = tc[j + 1] * ic[1], b = tc[j + 2] * ic[2];
         if (lift) { r += (lc[0] - r) * lift; g += (lc[1] - g) * lift; b += (lc[2] - b) * lift; }
         B.col.push(r, g, b, 1);
       }
@@ -435,12 +447,13 @@ export class SceneC {
   private buildSetVisual(e: SetE) {
     e.far?.dispose(); e.near?.dispose(false, false); e.far = null; e.near = null; e.nearMeshes = []; e.piv = [];
     const t = this.tm.get(e.def.a)!; e.tris = t.tris;
-    e.far = this.meshFrom(`cfar_${e.def.a}`, t); e.far.parent = e.hinge; e.far.material = this.matSet;
+    const vi = e.def.v ?? 0; e.far = this.meshFrom(`cfar_${e.def.a}`, vi ? { ...t, col: variantCols(e.def.a, t.col as any, vi) as any } : t); e.far.parent = e.hinge; e.far.material = this.matSet;
     if (t.container) {
       const inst = t.container.instantiateModelsToScene(n => `${n}_${e.def.t}`, false);
       const r = new TransformNode(`cnear_${e.def.a}`, this.scene); r.parent = e.hinge; r.scaling.setAll(t.scale);
       for (const n of inst.rootNodes) n.parent = r;
-      for (const m of r.getChildMeshes()) { m.material = this.matSet; m.isPickable = false; e.nearMeshes.push(m as Mesh); }
+      for (const m of r.getChildMeshes()) { m.material = this.matSet; m.isPickable = false; e.nearMeshes.push(m as Mesh);
+        if (vi) { const d = m.getVerticesData('color'); if (d && d.length === m.getTotalVertices() * 4) { (m as Mesh).makeGeometryUnique(); m.setVerticesData('color', Float32Array.from(variantCols(e.def.a, d as any, vi, false)), false, 4); } } }
       for (const n of r.getDescendants(false) as TransformNode[]) {
         const mm = /pivot_([a-z]+)(\d*)/i.exec(n.name); if (!mm || mm[1] === 'root') continue;
         e.piv.push({ node: n, kind: mm[1].toLowerCase(), i: +(mm[2] || 0), base: n.rotationQuaternion?.clone() ?? null, baseS: n.scaling.clone(), baseP: n.position.clone() });
