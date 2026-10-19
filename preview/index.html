@@ -11,8 +11,8 @@
 <meta name="description" content="让音乐带路。16 首 NewJeans 歌曲的一触转向节奏旅程。"/>
 <title>跳舞的线 · NewJeans</title>
 <link rel="icon" type="image/svg+xml" href="./icon.svg"/>
-  <script type="module" crossorigin src="./assets/index-DhHSoQel.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-DxRXSPvh.css">
+  <script type="module" crossorigin src="./assets/index-CmxXh57O.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CfNK593m.css">
 </head>
 <body>
 <div id="sky"></div>
@@ -115,6 +115,8 @@
       <label class="set-row"><span>音画延迟 <small id="set-offset-val">0 ms</small></span><input type="range" id="set-offset" min="-300" max="300" step="5"/></label>
       <div class="set-row"><span>延迟校准<small>跟着节拍轻点 10 次；耳机/蓝牙延迟大时请先校准</small></span><button class="pill-btn small" id="btn-calibrate">开始</button></div>
       <div class="set-row"><span>画质</span><div class="seg" id="set-quality"><button data-v="high">高</button><button data-v="low">流畅</button></div></div>
+      <div class="set-row"><span>帧率模式<small>120帧需要设备及浏览器支持；优先流畅，动态调整分辨率</small></span><div class="seg" id="set-fps"><button data-v="60">60帧</button><button data-v="120">120帧</button></div></div>
+      <label class="set-row"><span>显示实际帧率</span><input type="checkbox" id="set-show-fps"/></label>
       <div class="set-row"><span>线条皮肤<small id="set-skin-name">经典</small></span><button class="pill-btn small" id="btn-open-skins">更换</button></div>
       <label class="set-row"><span>震动反馈<small>仅支持的设备</small></span><input type="checkbox" id="set-vibration"/></label>
       <div class="set-row"><span>存档</span><div class="row-btns"><button class="pill-btn small" id="btn-export">导出</button><label class="pill-btn small">导入<input type="file" id="file-import" accept="application/json,.json" hidden/></label></div></div>
@@ -136,7 +138,8 @@
     <div class="panel"><div class="panel-kicker">延迟校准</div><div class="calib-dot" id="calib-dot"></div><p id="calib-msg">听到节拍时轻点屏幕</p><button class="pill-btn small" id="btn-calib-cancel">取消</button></div>
   </section>
 
-  <div id="loading" class="screen"><div class="loader"><i></i></div><span id="loading-msg">载入中</span></div>
+  <div id="fps-counter" hidden aria-label="实际渲染帧率"></div>
+  <div id="loading" class="screen"><span class="loading-title">加载歌曲与场景</span><div id="loading-progress" class="loader" role="progressbar" aria-label="歌曲与场景加载进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="loading-fill"></i></div><span id="loading-pct">0%</span><span id="loading-msg" role="status">载入中</span></div>
   <div id="toast" role="status"></div>
 </div>
 </body>
