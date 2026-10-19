@@ -233,8 +233,7 @@ function onComplete() {
   if (!game || !level) return;
   recordRun(true);
   clearTimeout(clearTimer);
-  const fl = $('flash'); fl.style.setProperty('--flash', '0.85'); document.documentElement.style.setProperty('--flash', '0.85');
-  setTimeout(() => document.documentElement.style.setProperty('--flash', '0'), 380);
+  // Crown animation celebrates completion without a full-screen flash layer.
   clearTimer = window.setTimeout(() => {
     setState('complete');
     $('clear-title').textContent = level!.title; $('clear-gems').textContent = String(game!.diamondsTaken.size);

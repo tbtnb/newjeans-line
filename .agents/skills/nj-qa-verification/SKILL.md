@@ -77,3 +77,10 @@ python3 tools/qa/progress-board.py <renders> <shots> out.jpg "<title>" z01 z04 .
 
 ## 2026-10-20 重开回归补充
 只测seek(0)不足：检查点53.968、106.88、暂停回退均要检查拖尾在ready时indices=0/disabled，开始后从新起点增长；两种居中模式都覆盖。还需模拟Safari resume延迟、等待中stop及新play超越旧play，旧异步结果不能替换新音源或时钟。收集动画途中重开不得销毁可复用皇冠/钻石。自动测试不能替代用户Safari实际操作。
+
+## 2026-10-20 01:20 通关界面与按钮回归
+- 通关→返回菜单→重开不得残留白色遮罩；旧代码在flash元素设置局部CSS变量，却只清root同名变量，局部0.85永不退场。已取消全屏闪光，保留皇冠动画。
+- 重试圆箭头是描边图形，不得继承播放三角的fill/currentColor与stroke:none；retry/replay/restart-p均需stroke-only且有“重新开始”可见文字。
+- 按钮背景/图标必须用成对固定高对比色，不从场景dark主题的--ink借主按钮背景，否则白底白图标。文字标签使用深色小底片，夜景/亮景都清晰。
+- 显式[hidden]优先于组件display，没拿皇冠时不显示复活按钮；不能只测试hidden属性存在而忽略CSS覆盖。
+- tests/result-ui.test.ts覆盖结构和样式约束；截图视觉检查与Safari实机仍独立记录，不能把静态断言当浏览器渲染验收。
