@@ -1,163 +1,180 @@
-"""H16 Lake Paper Pavilion; size from spec (4.8 x 5.1 x 6 m); budget 3000.
-Pivots root, swing0..7 lanterns at eaves. SIMPLIFICATIONS: side sheet reverses the stairs relative to front/top; front/hero govern. Open column gaps remain open (design-mask extraction fills them). Sixteen-sided faceted island; eight alternating folded roof gores. Warm light is flat palette; tiny lamp chains are slim rods; dome is faceted paper."""
-BUDGET=3000
-
+"""H16 Lake Paper Pavilion — spec size 4.8 x 5.1 x 6 m; 3000 tris.
+Pivots: root at page origin; swing0..7 at eight eave lantern hooks.
+SIMPLIFICATIONS: side-sheet entrance orientation (+Y) follows the explicit fidelity
+brief; front/top/hero draw the same entrance at -Y. No simulated lamp glow or
+paper texture. Shared exact lavender #B9A6F0 and blush #FFC7DA express the
+purple plinth and pink canopy panels in the approved sheets.
+"""
 import math
-import bpy, bmesh
-from mathutils import Vector, Matrix
+import bpy
+import bmesh
+from mathutils import Vector
+BUDGET = 3000
 
-def mesh(P,name,verts,faces,color):
-    me=bpy.data.meshes.new(name); me.from_pydata(verts,[],faces); me.update()
-    ob=bpy.data.objects.new(name,me); bpy.context.scene.collection.objects.link(ob); P.paint(ob,color); return ob
 
-def bevel(P,name,size,loc,color,amount=.06):
-    ob=P.box(name,size,loc=loc,color=color)
-    m=ob.modifiers.new('paper chamfers','BEVEL');m.width=amount;m.segments=1
-    bpy.context.view_layer.objects.active=ob;ob.select_set(True);bpy.ops.object.modifier_apply(modifier=m.name);P.paint(ob,color);ob.select_set(False);return ob
+def mesh(P, name, v, f, color):
+    me = bpy.data.meshes.new(name)
+    me.from_pydata(v, [], f); me.update()
+    bm = bmesh.new(); bm.from_mesh(me)
+    bmesh.ops.recalc_face_normals(bm, faces=list(bm.faces))
+    bm.normal_update()
+    if 'canopy panel' in name and sum(f.normal.z*f.calc_area() for f in bm.faces)<0:
+        bmesh.ops.reverse_faces(bm,faces=list(bm.faces))
+    if 'valance' in name:
+        score=sum((f.calc_center_median().x*f.normal.x+(f.calc_center_median().y+.34)*f.normal.y)*f.calc_area() for f in bm.faces)
+        if score<0: bmesh.ops.reverse_faces(bm,faces=list(bm.faces))
+    bm.to_mesh(me); bm.free(); me.update()
+    ob = bpy.data.objects.new(name, me); bpy.context.collection.objects.link(ob)
+    P.paint(ob, color)
+    return ob
 
-def rod(P,name,a,b,r,color,n=8):
-    d=Vector(b)-Vector(a);o=P.cyl(name,r,d.length,n,loc=a,color=color);o.rotation_euler=d.to_track_quat('Z','Y').to_euler();return o
 
-def ear(P,name,x,y,z,w,h,color,inner,lean=0):
-    outline=[(-.30*w,0),(-.58*w,.48*h),(-.43*w,.88*h),(0,h),(.43*w,.82*h),(.50*w,.48*h),(.28*w,0)]
-    def point(u,v,k=1):return (x+u+lean*v/h,y+.28*v/h-.18*w,z+v)
-    outer=[point(u,v) for u,v in outline]
-    inset=[(a+.0,b-.055*w,c) for a,b,c in [point(u*.62,.13*h+v*.72) for u,v in outline]]
-    center=(x+lean*.49,y+.28*.49-.42*w,z+.49*h)
-    back=[(a,b+.7*w,c) for a,b,c in outer]
-    vs=outer+inset+[center]+back;fs=[]
-    for i in range(7):fs.append((i,(i+1)%7,(i+1)%7+7,i+7))
-    for i in range(7):fs.append((14,7+i,7+(i+1)%7))
-    for i in range(7):fs.append((i,15+i,15+(i+1)%7,(i+1)%7))
-    fs.append(tuple(range(15,22)))
-    ob=mesh(P,name,vs,fs,color);P.paint(ob,inner,faces=set(range(7,14)));return [ob]
-
-def arch(P,name,x,y,z,w,h,depth,color,rot=0):
-    out=[(-w/2,0),(w/2,0),(w/2,h*.72),(w*.31,h*.88),(0,h),(-w*.31,h*.88),(-w/2,h*.72)]
-    return P.prism(name,out,depth,loc=(x,y,z),color=color,rot=(0,0,rot))
-
-def finish(P,spec,roots):
-    bpy.context.view_layer.update(); obs=list(bpy.context.scene.objects); ms=[o for o in obs if o.type=='MESH']
-    worlds={o:o.matrix_world.copy() for o in obs}; parents={o:o.parent for o in obs}
-    pts=[worlds[o]@v.co for o in ms for v in o.data.vertices]
-    lo=Vector(tuple(min(p[i] for p in pts) for i in range(3))); hi=Vector(tuple(max(p[i] for p in pts) for i in range(3)))
-    sz=spec['size_m'];sc=Vector((sz['w']/(hi.x-lo.x),sz['d']/(hi.y-lo.y),sz['h']/(hi.z-lo.z)))
-    S=Matrix.Diagonal((sc.x,sc.y,sc.z,1));T=Matrix.Translation((-(hi.x+lo.x)/2,-(hi.y+lo.y)/2,-lo.z));M=S@T
-    for o in obs:o.parent=None;o.matrix_world=Matrix.Identity(4)
-    for o in obs:
-        if o.type=='MESH':
-            o.data.transform(M@worlds[o]);o.data.update()
-            bm=bmesh.new();bm.from_mesh(o.data);bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces))
-            # Open paper surfaces need an explicit visible side; closed shells use outward normals.
-            if bm.faces and not all(e.is_manifold for e in bm.edges):
-                avg=sum((f.normal*f.calc_area() for f in bm.faces),Vector((0,0,0)))
-                cen=sum((v.co for v in bm.verts),Vector((0,0,0)))/len(bm.verts)
-                name=o.name.lower();flip=False
-                if any(k in name for k in ('canopy folded','floor paper')):flip=avg.z<0
-                elif any(k in name for k in ('faceted heart','creased cream sail','folded peach flower')):flip=avg.y>0
-                elif any(k in name for k in ('folded hull facet','scalloped gold trim','scalloped lilac valance')):flip=avg.x*cen.x+avg.y*cen.y<0
-                elif 'hull interior' in name:flip=avg.z<0
-                if flip:bmesh.ops.reverse_faces(bm,faces=list(bm.faces))
-            bm.to_mesh(o.data);bm.free();o.data.update()
-        else:o.location=M@worlds[o].translation
+def build(P, spec):
+    c = spec['colors']
+    pearl, blue, lilac, gold, lamp = [c[k] for k in ('pearl','moon','lilac','gold','lamp')]
+    lavender, blush = '#B9A6F0', '#FFC7DA'
+    static = []; animated = []
+    cy = -.34
+    def ring(r, z, n=16):
+        return [(r*math.cos(math.tau*i/n), cy+r*math.sin(math.tau*i/n), z) for i in range(n)]
+    def stone(name, levels, color, facets=False):
+        n = 16; vv = []; ff = []
+        for r,z in levels:
+            vv.extend([(r*math.cos(math.tau*(i+.5)/n),cy+r*math.sin(math.tau*(i+.5)/n),z) for i in range(n)] if 'bottom paper rim' in name else ring(r,z))
+        if 'bottom paper rim' in name: ff.append(tuple(reversed(range(n))))
+        for j in range(len(levels)-1):
+            for i in range(n):
+                a=j*n+i; b=j*n+(i+1)%n; d=a+n; e=b+n
+                if facets:
+                    ff.extend([(a,b,d),(b,e,d)] if i%2 else [(a,b,e),(a,e,d)])
+                else: ff.append((a,b,e,d))
+        if 'pearl pavilion floor' in name: ff.append(tuple(range((len(levels)-1)*n,len(levels)*n)))
+        ob = mesh(P,name,vv,ff,color)
+        if facets:
+            P.paint(ob,lilac,faces={k for k in range(1,len(ff)-1) if k%4 in (1,2)})
+        static.append(ob); return ob
+    # Tall folded island. The staggered middle ring is the source of the broad
+    # alternating triangular planes, rather than painted flat zigzag decoration.
+    n=16
+    # Offset the bottom vertices half a facet: adjacent triangle planes really
+    # fold in 3D rather than drawing a zigzag across a flat cylinder wall.
+    bottom=[(2.38*math.cos(math.tau*(i+.5)/n),cy+2.38*math.sin(math.tau*(i+.5)/n),.06) for i in range(n)]
+    vv=bottom+ring(2.40,.78)+ring(2.20,.98)
+    ff=[tuple(reversed(range(n)))]
+    for i in range(n):
+        j=(i+1)%n
+        ff.extend([(i,n+i,n+j),(i,n+j,j),(n+i,n+j,2*n+j,2*n+i)])
+    ff.append(tuple(range(2*n,3*n)))
+    ob=mesh(P,'lavender island triangular folds',vv,ff,lavender)
+    P.paint(ob,lilac,faces={1+3*i for i in range(n)})
+    static.append(ob)
+    stone('island bottom paper rim',[(2.36,0),(2.38,.06)],lilac)
+    stone('thin gold plinth seam',[(2.40,.78),(2.38,.825)],gold)
+    stone('upper lilac floor bevel',[(2.22,.94),(2.22,1.035),(2.14,1.10)],lilac)
+    stone('pearl pavilion floor',[(2.14,1.10),(2.14,1.125)],pearl)
+    stone('gold floor edge',[(2.155,1.075),(2.155,1.10)],gold)
+    # Flat star inlay, visible between the open columns.
+    for i in range(16):
+        t=math.tau*i/16; u=t+math.tau/16
+        r=.94 if i%2==0 else .44; rr=.94 if (i+1)%2==0 else .44
+        static.append(mesh(P,'floor star paper inlay',[(0,cy,1.128),(r*math.cos(t),cy+r*math.sin(t),1.128),(rr*math.cos(u),cy+rr*math.sin(u),1.128)],[(0,1,2)],lilac if i%2 else lavender))
+    # The explicit side-view request puts the single entrance on the +Y side.
+    # One continuous five-step shell avoids buried block bottoms.
+    stair_profile=[(2.68,0),(2.68,.223),(2.45,.223),(2.45,.446),(2.22,.446),(2.22,.669),(1.99,.669),(1.99,.892),(1.76,.892),(1.76,1.115),(1.44,1.115),(1.44,0)]
+    static.append(P.prism('five folded pearl treads',stair_profile,1.50,rot=(0,0,90),color=pearl))
+    outline=[(2.68,0),(2.68,.29),(2.40,.29),(2.40,.60),(2.16,.60),(2.16,.89),(1.90,1.14),(1.48,1.14),(1.48,0)]
+    for sign in (-1,1):
+        # prism uses local XZ; rotate 90 degrees to make a YZ stair cheek.
+        static.append(P.prism('folded pearl stair cheek',outline,.19,loc=(sign*.83,0,0),rot=(0,0,90),color=pearl))
+        static.append(P.prism('gold stair cheek edge',outline,.045,loc=(sign*.735,0,0),rot=(0,0,90),color=gold))
+    # Eight cream columns: broad faceted foot, slim shaft, gilt collars,
+    # and a flared cream-and-gold capital under each canopy lobe.
+    for i in range(8):
+        t=math.tau*i/8+math.pi/8
+        x=1.79*math.cos(t); y=cy+1.79*math.sin(t)*1.05
+        profile=[(.29,1.125),(.29,1.30),(.23,1.40),(.185,1.43),(.185,3.18),(.22,3.23),(.29,3.38),(.29,3.46)]
+        column=P.lathe('pearl faceted column',profile,8,loc=(x,y,0),color=pearl)
+        P.paint(column,gold,faces={f.index for f in column.data.polygons if 1.39 < f.center.z < 1.44 or 3.18 < f.center.z < 3.24 or 3.38 < f.center.z < 3.46})
+        # These caps are buried in the floor/eave; keep the budget on visible
+        # octagonal shafts and capital folds.
+        bm=bmesh.new();bm.from_mesh(column.data);bm.normal_update()
+        bmesh.ops.delete(bm,geom=[f for f in bm.faces if abs(f.normal.z)>.999],context='FACES_ONLY')
+        bm.to_mesh(column.data);bm.free();column.data.update()
+        static.append(column)
+    # Sixteen strips alternate blue and pink/lilac. Each strip has large
+    # triangular folds; the wavy hem is sampled 4 times per scallop.
+    N=32; rings=[]
+    for band,(r,z) in enumerate([(.14,4.96),(.72,4.72),(1.37,4.33),(1.85,3.81),(2.15,3.48)]):
+        pts=[]
+        for i in range(N):
+            t=math.tau*i/N
+            wave=.34*(.5+.5*math.cos(8*t))*(r/2.15)**3
+            # Stagger the main folds at successive rings, keeping a shared
+            # watertight boundary between all neighbouring triangles.
+            fold=(.045 if band in (1,2,3) else 0)*math.sin(math.pi*r/2.15)*math.cos(8*t+band*math.pi/2)
+            radial=r+(.025 if i%2 and band in (1,2,3) else 0)
+            crease=.025 if i%2 and band in (1,2,3) else 0
+            pts.append((radial*math.cos(t),cy+radial*math.sin(t)*1.05,z+wave+fold+crease))
+        rings.append(pts)
+    # Continuous shared rings prevent cracks at the radial fold boundaries.
+    # Every triangular facet contributes to the dome and scallop silhouette.
+    for band in range(4):
+        for i in range(N):
+            j=(i+1)%N
+            v=[rings[band][i],rings[band][j],rings[band+1][j],rings[band+1][i]]
+            col=blue if (i//2)%2==0 else (blush if (i//4)%2 else lilac)
+            fs=[(0,1,2),(0,2,3)]
+            ob=mesh(P,'folded canopy panel',v,fs,col)
+            static.append(ob)
+    for i in range(N):
+        j=(i+1)%N;p=rings[-1][i];q=rings[-1][j]
+        # Gold hem follows the scalloped roof. The purple fabric-paper valance
+        # dips farther at each lobe midpoint, giving it a rounded cut-paper edge.
+        t=math.tau*i/N; u=math.tau*j/N
+        dp=.13+.10*(.5-.5*math.cos(8*t));dq=.13+.10*(.5-.5*math.cos(8*u))
+        static.append(mesh(P,'gold scalloped valance binding',[p,q,(q[0],q[1],q[2]-.09),(p[0],p[1],p[2]-.09)],[(0,3,2,1)],gold))
+        static.append(mesh(P,'purple scalloped valance',[(p[0],p[1],p[2]-.09),(q[0],q[1],q[2]-.09),(q[0]*.99,cy+(q[1]-cy)*.99,q[2]-.09-dq),(p[0]*.99,cy+(p[1]-cy)*.99,p[2]-.09-dp)],[(0,3,2,1)],lavender))
+    for i in range(8):
+        t=math.tau*i/8;x=1.85*math.cos(t);y=cy+1.85*math.sin(t)*1.05;z=3.70
+        parts=[P.cyl('gold lantern suspension',.025,.24,6,loc=(x,y,3.46),color=gold,cap=False)]
+        parts.append(P.lathe('gold lantern hook',[(0,3.46),(.058,3.40),(0,3.32)],6,loc=(x,y,0),color=gold))
+        parts.append(P.lathe('six facet warm lantern',[(0,2.65),(.115,2.71),(.21,2.94),(.21,3.01),(.115,3.21),(0,3.29)],6,loc=(x,y,0),color=lamp))
+        P.paint(parts[-1],gold,faces={f.index for f in parts[-1].data.polygons if f.center.z<2.74 or f.center.z>3.14})
+        parts.append(P.lathe('gold lantern tassel',[(0,2.49),(.06,2.56),(0,2.64)],6,loc=(x,y,0),color=gold))
+        animated.append(P.pivot('swing'+str(i),(x,y,z),parts))
+    # Pedestal and separate finial stem; crescent is a thick bevelled concave
+    # shell with a continuous curved inset, not a flat cut-out moon.
+    static.append(P.lathe('gold finial socket',[(.29,4.92),(.29,5.005),(.13,5.045),(.08,5.06)],8,loc=(0,cy,0),color=gold))
+    static.append(P.cyl('gold crescent stem',.045,.09,8,loc=(0,cy,5.055),color=gold))
+    # Two faceted crescent shells meet at sharp tips. The medial ridge is
+    # real depth, so its triangular paper planes remain visible in iso/side.
+    outer=[(.34,5.99),(.12,6.0),(-.10,5.91),(-.23,5.76),(-.28,5.54),(-.23,5.34),(-.09,5.20),(.13,5.16),(.37,5.23),(.51,5.39)]
+    inner=[(.34,5.99),(.24,5.96),(.10,5.90),(-.01,5.77),(-.07,5.58),(-.03,5.42),(.08,5.31),(.25,5.29),(.42,5.34),(.51,5.39)]
+    outer=[(.115+(x-.115)*1.12,6-(6-z)*1.06) for x,z in outer]
+    inner=[(.115+(x-.115)*1.12,6-(6-z)*1.06) for x,z in inner]
+    n=len(outer);v=[];f=[]
+    for face_sign in (-1,1):
+        for path,depth in ((outer,.025),(inner,.025),([(0.5*(a[0]+b[0]),0.5*(a[1]+b[1])) for a,b in zip(outer,inner)],.11)):
+            v.extend([(x,cy+face_sign*(.008+depth*math.sqrt(max(0,1-((z-5.555)/.445)**2))),z) for x,z in path])
+    for i in range(n-1):
+        j=i+1
+        for side in (0,3*n):
+            f.extend([(side+i,side+j,side+2*n+j),(side+i,side+2*n+j,side+2*n+i),
+                      (side+n+i,side+2*n+i,side+2*n+j),(side+n+i,side+2*n+j,side+n+j)])
+        f.extend([(i,3*n+i,3*n+j,j),(n+j,4*n+j,4*n+i,n+i)])
+    moon=mesh(P,'gold crescent folded silhouette',v,f,gold)
+    bm=bmesh.new();bm.from_mesh(moon.data)
+    bmesh.ops.remove_doubles(bm,verts=list(bm.verts),dist=1e-5)
+    bmesh.ops.dissolve_degenerate(bm,edges=list(bm.edges),dist=1e-6)
+    bmesh.ops.recalc_face_normals(bm,faces=list(bm.faces))
+    bm.to_mesh(moon.data);bm.free();moon.data.update();P.paint(moon,gold)
+    static.append(moon)
     bpy.context.view_layer.update()
-    for o in obs:
-        if parents[o]:
-            mw=o.matrix_world.copy();o.parent=parents[o];o.matrix_parent_inverse=parents[o].matrix_world.inverted();o.matrix_world=mw
-    P.pivot('root',(0,0,0),roots)
-
-def build(P,spec):
- c=spec['colors'];W,M,L,G,A=[c[k] for k in ('pearl','moon','lilac','gold','lamp')];a=[]
- def island(name,r,r2,z,h,col,fold=False):
-  def ring(rr,zz):
-   pts=[]
-   for i in range(16):
-    if i==12:
-     yy=-math.sqrt(rr*rr-.85*.85)
-     pts += [(-.85,yy,zz),(-.85,-1.35,zz),(.85,-1.35,zz),(.85,yy,zz)]
-    else:pts.append((rr*math.cos(math.tau*i/16),rr*math.sin(math.tau*i/16),zz))
-   return pts
-  lo=ring(r,z);hi=ring(r2,z+h);n=len(lo);vv=lo+hi;ff=[tuple(range(n-1,-1,-1)),tuple(range(n,2*n))]
-  for i in range(n):
-   j=(i+1)%n
-   if fold:
-    q=[lo[i],lo[j],hi[j],hi[i]];cen=tuple(sum(x[k] for x in q)/4 for k in range(3));idx=len(vv);vv.append((cen[0]*1.02,cen[1]*1.02,cen[2]));ff += [(i,j,idx),(j,n+j,idx),(n+j,n+i,idx),(n+i,i,idx)]
-   else:ff.append((i,j,n+j,n+i))
-  ob=mesh(P,name,vv,ff,col)
-  if fold:P.paint(ob,M,faces={i for i in range(2,len(ff)) if i%4==0})
-  return ob
- for r,h,z,col,r2 in [(2.40,.09,0,L,2.40),(2.40,.50,.09,L,2.38),(2.38,.055,.59,G,2.38),(2.38,.15,.645,L,2.25),(2.25,.10,.85,W,2.19)]:
-  a.append(island('notched island foundation',r,r2,z,h,col,col==L and h>.3))
- # Upper pearl floor is integrated into the final foundation ring.
- # Starburst floor inlays remain visible in the open pavilion.
- for i in range(8):
-  t=math.tau*i/8;u=t+math.pi/8;v=t+math.pi/4
-  a.append(mesh(P,'floor paper star',[(0,0,1.012),(.96*math.cos(t),.96*math.sin(t),1.012),(.45*math.cos(u),.45*math.sin(u),1.012),(.96*math.cos(v),.96*math.sin(v),1.012)],[(0,1,2),(0,2,3)],L))
- for i in range(5):
-  z=i*.175;y=-2.68+i*.23
-  a.append(P.box('pearl stair',(1.35,.55,z+.18),loc=(0,y,0),color=W));a.append(P.box('stair paper fold line',(1.32,.022,.012),loc=(0,y-.273,z+.165),color=L))
- for sgn in (-1,1):
-  for i in range(5):
-   a.append(P.box('gold stair cheek',(.15,.3,.19+i*.17),loc=(sgn*.76,-2.7+i*.24,0),color=G))
- # Eight columns and independent hanging lantern groups.
- lamps=[]
- for i in range(8):
-  t=math.tau*i/8+math.pi/8;x=1.80*math.cos(t);y=1.80*math.sin(t)
-  a.append(P.lathe('fluted pearl column',[(.29,.92),(.29,1.10),(.22,1.20),(.185,1.22),(.185,3.51),(.26,3.61),(.26,3.77)],6,loc=(x,y,0),color=W))
-  for z in (1.17,3.59):a.append(P.cyl('column gilded collar',.22,.065,6,loc=(x,y,z),color=G,cap=False))
-  t+=math.pi/8;x=1.98*math.cos(t);y=1.98*math.sin(t);hang=3.74
-  lamp=[rod(P,'lantern short chain',(x,y,hang),(x,y,3.43),.018,G,6)]
-  lamp.append(P.lathe('warm faceted eave lantern',[(0,2.60),(.065,2.70),(.24,2.91),(.21,3.12),(.065,3.30),(0,3.43)],6,loc=(x,y,0),color=A))
-  lamp.append(P.ico('gold lamp tassel',.055,loc=(x,y,2.61),color=G,subdiv=1,scale=(1,1,1.6)))
-  lamps.append(P.pivot('swing'+str(i),(x,y,hang),lamp))
- # Scalloped canopy: eight lobes, two facets across each lobe, three radial bands.
- N=32;rings=[]
- for r,z in [(.10,5.12),(.78,4.99),(1.45,4.68),(1.95,4.12),(2.28,3.72)]:
-  ring=[]
-  for i in range(N):
-   t=math.tau*i/N;wave=.33*(.5+.5*math.cos(8*t))*(r/2.28)**3
-   ring.append((r*math.cos(t),r*math.sin(t),z+wave+(.07*(i%2) if r==1.45 else 0)))
-  rings.append(ring)
- for k in range(4):
-  for i in range(N):
-   j=(i+1)%N;v=[rings[k][i],rings[k][j],rings[k+1][j],rings[k+1][i]]
-   col=M if i%4<2 else L
-   ob=mesh(P,'canopy folded facet',v,[(0,1,2),(0,2,3)],col)
-   # Broad unbroken alternating paper gores, with actual planar folds.
-   a.append(ob)
- for i in range(N):
-  j=(i+1)%N;p=rings[-1][i];q=rings[-1][j]
-  a.append(mesh(P,'scalloped gold trim',[p,q,(q[0],q[1],q[2]-.085),(p[0],p[1],p[2]-.085)],[(0,1,2,3)],G))
-  a.append(mesh(P,'scalloped lilac valance',[(p[0],p[1],p[2]-.085),(q[0],q[1],q[2]-.085),(q[0]*.98,q[1]*.98,q[2]-.23),(p[0]*.98,p[1]*.98,p[2]-.23)],[(0,1,2,3)],L))
- for ob in a:
-  if ob.name.startswith('fluted pearl column'):
-   bm=bmesh.new();bm.from_mesh(ob.data);bm.normal_update()
-   bmesh.ops.delete(bm,geom=[f for f in bm.faces if abs(f.normal.z)>.99],context='FACES_ONLY');bm.to_mesh(ob.data);bm.free()
- a.append(P.cyl('crescent gold pedestal',.28,.14,8,loc=(0,0,5.1),color=G,r2=.13))
- # Crescent silhouette is a real concave extruded mesh.
- out=[]
- for i in range(11):
-  t=math.radians(65)+(math.radians(300)-math.radians(65))*i/10;out.append((.43*math.cos(t),.43*math.sin(t)))
- for i in range(8):
-  t=math.radians(290)-(math.radians(290)-math.radians(78))*i/7;out.append((.13+.28*math.cos(t),.06+.31*math.sin(t)))
- n=len(out);vs=[(x+.16,-.09,z+5.67) for x,z in out]+[(x*.88+.16,-.22,z*.88+5.67) for x,z in out]+[(x+.16,.09,z+5.67) for x,z in out]
- fs=[tuple(range(n,2*n)),tuple(range(3*n-1,2*n-1,-1))]
- for i in range(n):
-  j=(i+1)%n;fs += [(i,j,n+j,n+i),(i,2*n+i,2*n+j,j)]
- a.append(mesh(P,'creased crescent moon',vs,fs,G))
- bpy.context.view_layer.update()
- for ob in bpy.context.scene.objects:
-  if ob.type=='MESH':
-   mw=ob.matrix_world.copy();iv=mw.inverted()
-   for v in ob.data.vertices:
-    p=mw@v.co;z=p.z
-    p.z=z*1.16 if z<=1.01 else (1.1716+(z-1.01)*.78 if z<3.8 else 3.3478+(z-3.8)*1.06)
-    v.co=iv@p
- # Move each swing origin onto the warped hook without moving its children.
- for empty in lamps:
-  worlds={child:child.matrix_world.copy() for child in empty.children}
-  z=empty.location.z
-  empty.location.z=z*1.16 if z<=1.01 else (1.1716+(z-1.01)*.78 if z<3.8 else 3.3478+(z-3.8)*1.06)
-  bpy.context.view_layer.update()
-  for child,mw in worlds.items():child.matrix_world=mw
- finish(P,spec,a+lamps)
+    pts=[o.matrix_world@v.co for o in bpy.context.scene.objects if o.type=='MESH' for v in o.data.vertices]
+    lo=[min(v[k] for v in pts) for k in range(3)];hi=[max(v[k] for v in pts) for k in range(3)]
+    size=spec['size_m'];sc=[size[k]/(hi[i]-lo[i]) for i,k in enumerate(('w','d','h'))]
+    offset=Vector((.5*(hi[0]+lo[0]),.5*(hi[1]+lo[1]),lo[2]))
+    for ob in static+animated: ob.location-=offset
+    root=P.pivot('root',(0,0,0),static+animated)
+    root.scale=sc
+    bpy.context.view_layer.update()
