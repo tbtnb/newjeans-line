@@ -1,0 +1,1 @@
+import{L as r}from"./index-B2NaKU1b.js";const t=new Map,a=t;function x(e,s,n){i(e)&&r.Warn(`Extension with the name '${e}' already exists`),t.set(e,{isGLTFExtension:s,factory:n})}function i(e){return t.delete(e)}export{a,x as r,i as u};
