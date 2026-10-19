@@ -1,0 +1,20 @@
+{
+ "id": "pine-lo",
+ "name": "Folded Paper Pine (low filler)",
+ "size_m": {
+  "w": 2.1,
+  "d": 2.1,
+  "h": 4
+ },
+ "colors": {
+  "teal": "#173A4A",
+  "mint": "#BDEBD8",
+  "wood": "#C99A6B"
+ },
+ "tris_budget": 150,
+ "pivots": [
+  {
+   "name": "root"
+  }
+ ]
+}

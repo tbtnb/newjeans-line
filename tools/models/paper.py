@@ -193,6 +193,107 @@ def _join_by_parent():
         name = (par[len('pivot_'):] if par.startswith('pivot_') else 'static') + '_mesh'
         j = join(objs, name)
 
+def fix_closed(meshes):
+    """v8 audit fix: closed parts whose faces point inward (negative signed volume) are flipped; zero-area faces are dissolved."""
+    import bmesh
+    flipped = degen = 0
+    for o in meshes:
+        bm = bmesh.new(); bm.from_mesh(o.data)
+        dg = [f for f in bm.faces if f.calc_area() < 1e-9]
+        if dg:
+            n0 = len(bm.faces); bmesh.ops.dissolve_degenerate(bm, dist=1e-5, edges=list(bm.edges)); degen += n0 - len(bm.faces)
+        bm.faces.ensure_lookup_table(); seen = set()
+        for f in bm.faces:
+            if f.index in seen: continue
+            isl = []; st = [f]; seen.add(f.index)
+            while st:
+                g = st.pop(); isl.append(g)
+                for e in g.edges:
+                    for h in e.link_faces:
+                        if h.index not in seen: seen.add(h.index); st.append(h)
+            es = {e for g in isl for e in g.edges}
+            if len(isl) < 4 or any(len(e.link_faces) != 2 for e in es): continue
+            vol = 0.0
+            for g in isl:
+                vs = [v.co for v in g.verts]
+                for k in range(1, len(vs) - 1): vol += vs[0].dot(vs[k].cross(vs[k + 1])) / 6
+            if o.matrix_world.to_3x3().determinant() < 0: vol = -vol
+            if vol < 0: bmesh.ops.reverse_faces(bm, faces=isl); flipped += 1
+        bm.to_mesh(o.data); o.data.update(); bm.free()
+    return flipped, degen
+
+def decoplanar(meshes, eps_rel=0.0025):
+    """v8 audit fix: z-fighting. Faces of DIFFERENT parts (islands) lying in the same plane, facing the same way and overlapping
+    flicker in the game. The smaller part's conflicting faces are nudged out along their normal by ~0.25% of the model height
+    (min 2 mm); exact duplicate faces inside one part are deleted. Returns (nudged faces, removed duplicates)."""
+    import bmesh
+    from mathutils import Vector
+    pts = [o.matrix_world @ v.co for o in meshes for v in o.data.vertices]
+    if not pts: return 0, 0
+    H = max(p.z for p in pts) - min(p.z for p in pts); eps = max(0.002, H * eps_rel); tol = max(0.0008, H * 0.0013)
+    F = []   # (obj index, face index, island id, normal, d, area, centroid, verts world)
+    bms = []; removed = 0
+    for oi, o in enumerate(meshes):
+        bm = bmesh.new(); bm.from_mesh(o.data); bm.faces.ensure_lookup_table()
+        seen = {}; dup = []
+        for f in bm.faces:
+            k = tuple(sorted((round(v.co.x, 4), round(v.co.y, 4), round(v.co.z, 4)) for v in f.verts))
+            if k in seen: dup.append(f)
+            else: seen[k] = f
+        if dup: bmesh.ops.delete(bm, geom=dup, context='FACES_ONLY'); removed += len(dup)
+        bm.faces.ensure_lookup_table(); bm.verts.ensure_lookup_table()
+        isl = {}; nid = 0   # islands by linked faces
+        for f in bm.faces:
+            if f.index in isl: continue
+            st = [f]; isl[f.index] = nid
+            while st:
+                g = st.pop()
+                for e in g.edges:
+                    for h in e.link_faces:
+                        if h.index not in isl: isl[h.index] = nid; st.append(h)
+            nid += 1
+        M = o.matrix_world; N3 = M.to_3x3().inverted().transposed()
+        for f in bm.faces:
+            if f.calc_area() < 1e-8: continue
+            n = (N3 @ f.normal).normalized(); W = [M @ v.co for v in f.verts]; c = sum(W, Vector()) / len(W)
+            F.append((oi, f.index, (oi, isl[f.index]), n, n.dot(c), f.calc_area() * (M.to_3x3().determinant() ** (2 / 3)), c, W))
+        bms.append(bm)
+    isz = {}
+    for x in F: isz[x[2]] = isz.get(x[2], 0) + x[5]
+    B = {}
+    for i, x in enumerate(F):
+        n = x[3]; B.setdefault((round(n.x * 40), round(n.y * 40), round(n.z * 40), round(x[4] / (tol * 4))), []).append(i)
+    def inside(p, W, n):
+        ax = max(range(3), key=lambda k: abs(n[k])); i, j = [k for k in range(3) if k != ax]; sgn = 0
+        for a in range(len(W)):
+            A, Bv = W[a], W[(a + 1) % len(W)]; cr = (Bv[i] - A[i]) * (p[j] - A[j]) - (Bv[j] - A[j]) * (p[i] - A[i])
+            if abs(cr) < 1e-12: continue
+            s = 1 if cr > 0 else -1
+            if sgn == 0: sgn = s
+            elif s != sgn: return False
+        return True
+    move = {}   # (obj, vert index) -> world offset
+    nud = 0
+    for arr in B.values():
+        if len(arr) < 2: continue
+        for a in range(len(arr)):
+            for b in range(a + 1, len(arr)):
+                x, y = F[arr[a]], F[arr[b]]
+                if x[2] == y[2] or x[3].dot(y[3]) < 0.999 or abs(x[4] - y[4]) > tol: continue
+                px = [x[6]] + [(x[7][0] + x[7][k] + x[7][k + 1]) / 3 for k in range(1, len(x[7]) - 1)]
+                py = [y[6]] + [(y[7][0] + y[7][k] + y[7][k + 1]) / 3 for k in range(1, len(y[7]) - 1)]
+                if not (any(inside(p, y[7], y[3]) for p in px) or any(inside(p, x[7], x[3]) for p in py)): continue
+                sm = x if isz[x[2]] <= isz[y[2]] else y; nud += 1
+                for v in bms[sm[0]].faces[sm[1]].verts:
+                    k = (sm[0], v.index); off = move.get(k, Vector()); add = sm[3] * eps
+                    move[k] = Vector(tuple(max(off[q], add[q]) if add[q] > 0 else min(off[q], add[q]) for q in range(3)))
+    for oi, o in enumerate(meshes):
+        bm = bms[oi]; bm.verts.ensure_lookup_table(); Mi = o.matrix_world.to_3x3().inverted()
+        for (o2, vi), off in move.items():
+            if o2 == oi: bm.verts[vi].co += Mi @ off
+        bm.to_mesh(o.data); o.data.update(); bm.free()
+    return nud, removed
+
 def finalize(budget=None, bake=True):
     _join_by_parent()
     meshes = [o for o in bpy.context.scene.objects if o.type == 'MESH']
@@ -200,13 +301,18 @@ def finalize(budget=None, bake=True):
         bpy.ops.object.select_all(action='DESELECT'); o.select_set(True); bpy.context.view_layer.objects.active = o
         if o.parent is None: bpy.ops.object.transform_apply(location=False, rotation=True, scale=True)
         for p in o.data.polygons: p.use_smooth = False
+    fc = fix_closed(meshes)
+    zf = [0, 0]
+    for _ in range(5):
+        a, b = decoplanar(meshes); zf[0] += a; zf[1] += b
+        if a == 0: break
     if bake: bake_light(meshes)
     mat = bpy.data.materials.get('paper') or bpy.data.materials.new('paper'); mat.use_nodes = True
     nt = mat.node_tree; bsdf = nt.nodes.get('Principled BSDF'); ca = nt.nodes.new('ShaderNodeVertexColor'); ca.layer_name = 'Col'
     nt.links.new(ca.outputs['Color'], bsdf.inputs['Base Color']); bsdf.inputs['Roughness'].default_value = 0.9
     for o in meshes: o.data.materials.clear(); o.data.materials.append(mat)
     n = tris(meshes)
-    return dict(tris=n, budget=budget, ok=(budget is None or n <= budget), meshes=[o.name for o in meshes],
+    return dict(tris=n, budget=budget, ok=(budget is None or n <= budget), decoplanar=list(zf), fixclosed=list(fc), meshes=[o.name for o in meshes],
                 pivots=[o.name for o in bpy.context.scene.objects if o.type == 'EMPTY' and o.name.startswith('pivot_')])
 
 def export_glb(path):

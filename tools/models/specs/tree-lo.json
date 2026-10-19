@@ -1,0 +1,21 @@
+{
+ "id": "tree-lo",
+ "name": "Round Paper Tree (low filler)",
+ "size_m": {
+  "w": 2.3,
+  "d": 2.3,
+  "h": 3.5
+ },
+ "colors": {
+  "mint": "#BDEBD8",
+  "green": "#6CCB5F",
+  "blush": "#FFC7DA",
+  "wood": "#C99A6B"
+ },
+ "tris_budget": 150,
+ "pivots": [
+  {
+   "name": "root"
+  }
+ ]
+}
