@@ -562,7 +562,7 @@ PLOTS = {
 for z in zones:
     P = PLOTS.get(z['id'])
     # budget: no 500-800-tri beds / sculptures on the plots (flower patches carry the beds), big density x0.6
-    if P: P = dict(P, big=[a for a in P['big'] if a not in ('tulip-bed', 'heart-bed', 'heart-sculpt', 'book-stack', 'lily-lamp')], dBig=round(P['dBig'] * 0.5, 2), dHouse=round(P.get('dHouse', 0) * 0.7, 2))
+    if P: P = dict(P, big=[a for a in P['big'] if a not in ('tulip-bed', 'heart-bed', 'heart-sculpt', 'book-stack', 'lily-lamp')], dBig=round(P['dBig'] * 0.5, 2), dSmall=round(P['dSmall'] * 0.6, 2), dHouse=round(P.get('dHouse', 0) * 0.7, 2))
     if P: z['plots'] = dict(P, small=[a for a in P['small'] if a in assets], big=[a for a in P['big'] if a in assets], house=[a for a in P.get('house', []) if a in assets], scale=[1.0, 1.4])
 # v11 step 4: lusher z01 / z03 / z10 - cheap meadow blobs (24-60 tri flowers / grass / mushrooms) over the low ground, denser bush fill
 MEADOW = {'z01': [('flower', 35), ('grass', 30), ('flower-heart', 20)],   # x2 ground density; flower GLBs ~100 tris
@@ -581,9 +581,10 @@ for z in zones:
 # v11 budget: bank snap now keeps pieces that used to be rejected at edges; thin the 300-600-tri scatter kinds in the heavy night / dusk zones
 HEAVY = ('lily-lamp', 'book-stack', 'mushroom-group', 'star-chime', 'heart-sculpt', 'tulip-bed', 'heart-bed')
 for z in zones:
-    k = {'z03': 0.6, 'z04': 0.55, 'z05': 0.45, 'z06': 0.65, 'z07': 0.55, 'z08': 0.7, 'z09': 0.5}.get(z['id'])   # tuned on tools/qa/trisweep.mjs peaks
+    k = {'z03': 0.6, 'z04': 0.55, 'z05': 0.45, 'z06': 0.65, 'z07': 0.55, 'z08': 0.7, 'z09': 0.4}.get(z['id'])   # tuned on tools/qa/trisweep.mjs peaks
     if k: mul(z, k, HEAVY, 'mid')
     if z['id'] == 'z04': mul(z, 0.5, ('lantern-tower',), 'mid'); mul(z, 0.6, ('heart-sculpt', 'lily-lamp'), 'mid')   # castle moment (6k castle + 4k heart) ran 151k
+    if z['id'] == 'z10': mul(z, 0.35, ('bunny-statue',), 'mid'); mul(z, 0.5, ('clover', 'fern'), 'ground'); mul(z, 0.6, ('heart-bed', 'lantern-string', 'tulip-bed'), 'mid'); mul(z, 0.75, ('balloons',), 'mid')   # z09->z10 boundary ran 159k on the Mac
     if z['id'] == 'z09': mul(z, 0.7, ('firefly-lamp', 'mushroom-house'), 'mid')
     if z['id'] == 'z03': mul(z, 0.6, ('ward-bed',), 'mid'); mul(z, 0.6, ('screen', 'iv-heart'), 'mid'); mul(z, 0.7, ('pull-tab',), 'mid')   # room for the meadow / bush fill   # 2000 tris each
     if z['id'] == 'z07': mul(z, 0.6, ('book-stack',), 'mid'); mul(z, 0.7, ('star-chime',), 'mid')

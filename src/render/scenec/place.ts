@@ -252,7 +252,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
           placed++; rj['plot ' + z.id] = (rj['plot ' + z.id] ?? 0) + 1; return true; };
         const S = PL.scale ?? [1.0, 1.4], SS = PL.sScale ?? [1.6, 3.0];
         // flower patches (ground layer, cheap): centre + 4-7 members within ~1.3 m
-        for (let n = Math.round(area * PL.dSmall / 100 + rr()), i = 0; i < n; i++) { const [cx, cz] = at(0.05 + 0.9 * rr(), rr()), m = 4 + Math.floor(rr() * 4);
+        for (let n = Math.round(area * PL.dSmall / 100 + rr()), i = 0; i < n; i++) { const [cx, cz] = at(0.05 + 0.9 * rr(), rr()), m = 3 + Math.floor(rr() * 3);   // GLB flowers are ~75 tris: 3-5 per patch
           for (let j = 0; j < m; j++) { const an = rr() * 6.283, d = j ? 0.4 + rr() * 0.9 : 0; put(PL.small[Math.floor(rr() * PL.small.length)], 'ground', cx + Math.cos(an) * d * SS[0] / 1.6, cz + Math.sin(an) * d * SS[0] / 1.6, SS[0] + rr() * (SS[1] - SS[0]), i + j); } }
         for (let n = Math.round(area * PL.dBig / 100 + rr() * 0.8), i = 0; i < n; i++) { const [x, zz] = at(0.25 + 0.7 * rr(), rr());
           put(PL.big[Math.floor(rr() * PL.big.length)], 'mid', x, zz, S[0] + rr() * (S[1] - S[0]), i); }

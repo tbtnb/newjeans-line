@@ -2530,7 +2530,7 @@
      "bunny-house",
      "mushroom-house"
     ],
-    "dSmall": 3.6,
+    "dSmall": 2.16,
     "dBig": 1.7,
     "dHouse": 0.24,
     "scale": [
@@ -3709,7 +3709,7 @@
      "mushroom-house",
      "bunny-house"
     ],
-    "dSmall": 2.6,
+    "dSmall": 1.56,
     "dBig": 1.2,
     "dHouse": 0.17,
     "scale": [
@@ -5065,7 +5065,7 @@
      "bunny-house",
      "mushroom-house"
     ],
-    "dSmall": 4.0,
+    "dSmall": 2.4,
     "dBig": 1.8,
     "dHouse": 0.24,
     "scale": [
@@ -6618,7 +6618,7 @@
     "house": [
      "mushroom-house"
     ],
-    "dSmall": 2.4,
+    "dSmall": 1.44,
     "dBig": 1.1,
     "dHouse": 0.14,
     "scale": [
@@ -8399,7 +8399,7 @@
     "house": [
      "mushroom-house"
     ],
-    "dSmall": 2.6,
+    "dSmall": 1.56,
     "dBig": 1.2,
     "dHouse": 0.14,
     "scale": [
@@ -9905,7 +9905,7 @@
     "house": [
      "bunny-house"
     ],
-    "dSmall": 2.6,
+    "dSmall": 1.56,
     "dBig": 1.2,
     "dHouse": 0.17,
     "scale": [
@@ -11573,7 +11573,7 @@
     "house": [
      "mushroom-house"
     ],
-    "dSmall": 2.2,
+    "dSmall": 1.32,
     "dBig": 1.1,
     "dHouse": 0.14,
     "scale": [
@@ -12914,7 +12914,7 @@
      "firefly-lamp",
      "tree-bush-lo"
     ],
-    "dSmall": 1.8,
+    "dSmall": 1.08,
     "dBig": 0.8,
     "dHouse": 0.0,
     "house": [],
@@ -13061,7 +13061,7 @@
     {
      "asset": "book-stack",
      "layer": "mid",
-     "count": 7,
+     "count": 6,
      "near": [
       1.5,
       7.0
@@ -13402,7 +13402,7 @@
     {
      "asset": "lily-lamp",
      "layer": "mid",
-     "count": 5,
+     "count": 4,
      "near": [
       1.5,
       7.0
@@ -14301,7 +14301,7 @@
     {
      "asset": "book-stack",
      "layer": "mid",
-     "count": 2,
+     "count": 1,
      "near": [
       0.0,
       0.0
@@ -14335,7 +14335,7 @@
     {
      "asset": "book-stack",
      "layer": "mid",
-     "count": 5,
+     "count": 4,
      "near": [
       0.0,
       0.0
@@ -14375,7 +14375,7 @@
     {
      "asset": "mushroom-group",
      "layer": "mid",
-     "count": 2,
+     "count": 1,
      "near": [
       0.0,
       0.0
@@ -14829,7 +14829,7 @@
      "mushroom-house",
      "bunny-house"
     ],
-    "dSmall": 2.2,
+    "dSmall": 1.32,
     "dBig": 1.1,
     "dHouse": 0.21,
     "scale": [
@@ -14961,7 +14961,7 @@
     {
      "asset": "lantern-string",
      "layer": "mid",
-     "count": 9,
+     "count": 5,
      "near": [
       1.5,
       7.0
@@ -15180,7 +15180,7 @@
     {
      "asset": "clover",
      "layer": "ground",
-     "count": 9,
+     "count": 4,
      "near": [
       0.3,
       9.0
@@ -15205,7 +15205,7 @@
     {
      "asset": "tulip-bed",
      "layer": "mid",
-     "count": 3,
+     "count": 2,
      "near": [
       1.5,
       7.0
@@ -15255,7 +15255,7 @@
     {
      "asset": "bunny-statue",
      "layer": "mid",
-     "count": 2,
+     "count": 1,
      "near": [
       1.5,
       7.0
@@ -15280,7 +15280,7 @@
     {
      "asset": "heart-bed",
      "layer": "mid",
-     "count": 2,
+     "count": 1,
      "near": [
       1.5,
       7.0
@@ -15331,7 +15331,7 @@
     {
      "asset": "bunny-statue",
      "layer": "mid",
-     "count": 6,
+     "count": 2,
      "near": [
       1.5,
       7.0
@@ -15356,7 +15356,7 @@
     {
      "asset": "balloons",
      "layer": "mid",
-     "count": 16,
+     "count": 12,
      "near": [
       1.5,
       7.0
@@ -15406,7 +15406,7 @@
     {
      "asset": "heart-bed",
      "layer": "mid",
-     "count": 7,
+     "count": 4,
      "near": [
       1.5,
       7.0
@@ -15431,7 +15431,7 @@
     {
      "asset": "tulip-bed",
      "layer": "mid",
-     "count": 5,
+     "count": 3,
      "near": [
       1.5,
       7.0
@@ -15714,7 +15714,7 @@
     {
      "asset": "balloons",
      "layer": "mid",
-     "count": 10,
+     "count": 8,
      "near": [
       3.0,
       13.0
@@ -15764,7 +15764,7 @@
     {
      "asset": "heart-bed",
      "layer": "mid",
-     "count": 5,
+     "count": 3,
      "near": [
       3.0,
       13.0
@@ -15789,7 +15789,7 @@
     {
      "asset": "bunny-statue",
      "layer": "mid",
-     "count": 10,
+     "count": 4,
      "near": [
       3.0,
       13.0
@@ -15864,7 +15864,7 @@
     {
      "asset": "tulip-bed",
      "layer": "mid",
-     "count": 6,
+     "count": 4,
      "near": [
       3.0,
       13.0
@@ -15889,7 +15889,7 @@
     {
      "asset": "lantern-string",
      "layer": "mid",
-     "count": 3,
+     "count": 2,
      "near": [
       3.0,
       13.0
@@ -16084,7 +16084,7 @@
     {
      "asset": "heart-bed",
      "layer": "mid",
-     "count": 3,
+     "count": 2,
      "near": [
       0.0,
       0.0
@@ -16520,7 +16520,7 @@
      "bunny-house",
      "mushroom-house"
     ],
-    "dSmall": 3.6,
+    "dSmall": 2.16,
     "dBig": 1.7,
     "dHouse": 0.24,
     "scale": [
