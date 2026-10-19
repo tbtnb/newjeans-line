@@ -76,17 +76,20 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
         const side = R() < 0.5 ? -1 : 1, w = o.widthAt(t);
         const s = (L.scale[0] ?? 1) + R() * ((L.scale[1] ?? 1) - (L.scale[0] ?? 1)); const h = A.h * s;
         // tall things keep 1.5 road widths clear of every road segment (ground cover < groundMaxH may hug the edge)
+        const view = L.view;   // v8 'view' layers: lateral offset from the FLOW line (the key camera's left / right), pushed out of the zig-zag until clear
         const minEdge = h < groundMaxH ? Math.max(L.near[0], 0.25) : Math.max(L.near[0], 1.5 * w);
-        const edge = minEdge + Math.pow(R(), L.layer === 'ground' ? 1.6 : 1) * Math.max(0, L.near[1] - minEdge);
-        const off = side * (w / 2 + edge);
-        const a = edge < 6 ? anchor(route, t, off, 0, 0) : flowAnchor(route, t, off, 0, 0);
+        const edge = view ? 99 : minEdge + Math.pow(R(), L.layer === 'ground' ? 1.6 : 1) * Math.max(0, L.near[1] - minEdge);
+        let off = view ? side * (view[0] + R() * (view[1] - view[0])) : side * (w / 2 + edge);
+        let a = edge < 6 ? anchor(route, t, off, 0, 0) : flowAnchor(route, t, off, 0, 0);
         const y0 = (L.y[0] ?? 0) + R() * ((L.y[1] ?? 0) - (L.y[0] ?? 0));
         const r = Math.max(0.15, Math.max(A.h, A.w ?? 0, A.d ?? 0) * s * (A.shape === 'far' ? 0.2 : 0.35));   // wide pieces (paper hills) need their width
-        const pad = h < groundMaxH ? 0.15 : clearNear + 1.0 * w;
+        const pad = h < groundMaxH ? 0.15 : view ? clearNear + 0.5 * w : clearNear + 1.0 * w;
+        if (view) for (let k = 0; k < 8 && o.hits(a.pos.x, a.pos.z, r + pad, a.pos.y - 1, a.pos.y + h); k++) { off += side * 1.25; a = flowAnchor(route, t, off, 0, 0); }
         if (y0 < 4 && o.hits(a.pos.x, a.pos.z, r + pad, a.pos.y - 1, a.pos.y + h)) { rejected++; continue; }
-        if (L.layer === 'mid' && h > 2.6 && nearBand(a.pos.x, a.pos.z, t, ((L as any).hug ? 3 : 16) + r)) { rejected++; continue; }   // big pieces stay out of the near band; v7 'hug' layers (lit house rows) may line the road
+        if (!view && L.layer === 'mid' && h > 2.6 && nearBand(a.pos.x, a.pos.z, t, (L.hug ? 3 : 16) + r)) { rejected++; continue; }   // big pieces stay out of the near band; v7 'hug' layers (lit house rows) may line the road
         const rp = anchor(route, t).pos;
-        const yaw = A.shape === 'far' || L.layer === 'mid' ? Math.atan2(rp.x - a.pos.x, rp.z - a.pos.z) : R() * Math.PI * 2;
+        const fp = view ? flowAnchor(route, Math.max(0, t - 2.5), 0, 0, 0).pos : rp;   // view pieces face back along the flow (toward the key camera), not sideways
+        const yaw = A.shape === 'far' || L.layer === 'mid' ? Math.atan2(fp.x - a.pos.x, fp.z - a.pos.z) + (view ? (R() - 0.5) * 0.5 : 0) : R() * Math.PI * 2;
         const ci = chunkAt(t);
         const gy = L.layer === 'ground' || L.layer === 'mid' ? groundY(chunks[ci], a.pos.x, a.pos.z) + y0 : a.pos.y - o.roadH + y0;
         const col = () => (L.colors ?? [0])[Math.floor(R() * (L.colors ?? [0]).length)];
@@ -98,9 +101,11 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
           for (let j = 1; j < m; j++) {
             let x: number, zz: number, ty = t, my = yaw; const ms = s * (0.8 + 0.4 * R());
             if (Cn.row) { ty = t + Math.ceil(j / 2) * (j % 2 ? 1 : -1) * Cn.r * s / v; if (ty < z.t0 || ty > t1) continue;
-              const b = edge < 6 ? anchor(route, ty, off, 0, 0) : flowAnchor(route, ty, off, 0, 0); x = b.pos.x; zz = b.pos.z; const bp = anchor(route, ty).pos; my = Math.atan2(bp.x - x, bp.z - zz); }
+              let b = edge < 6 ? anchor(route, ty, off, 0, 0) : flowAnchor(route, ty, off, 0, 0);
+              if (view) { let o2 = off; for (let k = 0; k < 6 && o.hits(b.pos.x, b.pos.z, r * ms / s + pad, a.pos.y - 1, a.pos.y + A.h * ms); k++) { o2 += side * 1.25; b = flowAnchor(route, ty, o2, 0, 0); } }
+              x = b.pos.x; zz = b.pos.z; const bp = anchor(route, ty).pos; my = view ? yaw : Math.atan2(bp.x - x, bp.z - zz); }
             else { const an = R() * Math.PI * 2, rr = Cn.r * s * Math.sqrt(0.15 + 0.85 * R()); x = a.pos.x + Math.cos(an) * rr; zz = a.pos.z + Math.sin(an) * rr; my = L.layer === 'mid' ? yaw + (R() - 0.5) * 0.8 : R() * Math.PI * 2; }
-            if (o.hits(x, zz, r * ms / s + pad, a.pos.y - 1, a.pos.y + A.h * ms) || (A.h * ms > 2.6 && nearBand(x, zz, ty, ((L as any).hug ? 3 : 16) + r * ms / s))) { rejected++; continue; }
+            if (o.hits(x, zz, r * ms / s + pad, a.pos.y - 1, a.pos.y + A.h * ms) || (!view && A.h * ms > 2.6 && nearBand(x, zz, ty, (L.hug ? 3 : 16) + r * ms / s))) { rejected++; continue; }
             const cj = chunkAt(ty);
             chunks[cj].items.push({ a: L.asset, layer: L.layer, x, y: groundY(chunks[cj], x, zz) + y0, z: zz, yaw: my, s: ms, c: col(), zone: zi, t: ty, chunk: cj, ...(L.hi ? { hi: true } : {}) }); placed++;
           }
@@ -150,7 +155,8 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
           ec.items.push({ a: ea, layer: 'mid', x, y: groundY(ec, x, zz), z: zz, yaw: Math.atan2(rp.x - x, rp.z - zz), s: es, c: (z.layers[0]?.colors ?? [0])[Math.floor(R() * (z.layers[0]?.colors ?? [0]).length)], zone: zi, t: sp.t, chunk: ci }); placed++; break;
         }
       }
-      sets.push({ a: sp.asset, layer: 'land', x: a.pos.x, y: groundY(sc0, a.pos.x, a.pos.z), z: a.pos.z, yaw: Math.atan2(rp.x - a.pos.x, rp.z - a.pos.z), s: sc, c: 0, zone: zi, t: sp.t, chunk: chunkAt(sp.t), popAt, label: sp.label, ...(sp.hi ? { hi: true } : {}), ...(sp.hero ? { hero: true } : {}) });
+      const fc = sp.face === 'cam' ? flowAnchor(route, Math.max(0, sp.t - 5), 0, 0, 0).pos : rp;   // v8: 'cam' pieces face back along the flow (the key camera), e.g. the ferris wheel's disc
+      sets.push({ a: sp.asset, layer: 'land', x: a.pos.x, y: groundY(sc0, a.pos.x, a.pos.z), z: a.pos.z, yaw: Math.atan2(fc.x - a.pos.x, fc.z - a.pos.z), s: sc, c: 0, zone: zi, t: sp.t, chunk: chunkAt(sp.t), popAt, label: sp.label, ...(sp.hi ? { hi: true } : {}), ...(sp.hero ? { hero: true } : {}) });
     }
   });
   return { chunks, sets, stats: { placed, rejected } };

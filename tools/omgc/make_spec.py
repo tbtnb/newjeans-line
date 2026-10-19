@@ -366,6 +366,67 @@ for z in zones:
             if ly.get('layer') == 'mid' and ly['asset'] in TREEY + ('forest-clump', 'paper-hill-lo', 'paper-hill', 'hedge'): ly['count'] = max(1, round(ly['count'] * 0.3))
         z['impostors']['sprites'] = [[k, round(w * 0.3, 2) if k in ('tree', 'tree-lo', 'forest-clump', 'paper-hill', 'hedge') else w] for k, w in z['impostors']['sprites']] + [['bunny-house', 1.0], ['tulip-bed', 1.0]]
         addl(z, 'bunny-house', 'mid', round(1.5 * zk), [8.0, 16.0], [0.9, 1.2], True, dict(n=[2, 3], r=4.2, row=True))
+# ---- v8: 'view' layers -- rows / masses at a lateral offset from the FLOW line (what the key camera's frame actually covers:
+# ~8 m each side at the head, ~18 m at mid-frame), pushed out of the zig-zag until clear (place.ts). Paid for by thinning ground
+# glow / scattered props that sit outside the frame or read as specks.
+def addv(z, aid, n, lat, sc, hi=True, cl=None):
+    if aid not in assets or n < 1: return
+    d = dict(asset=aid, layer='mid', count=n, near=[0.0, 0.0], view=lat, y=[0, 0], scale=sc, colors=(z['layers'][0]['colors'] if z['layers'] else [0, 1, 2, 3, 4]), hi=hi)
+    if cl: d['cluster'] = cl
+    z['layers'].append(d)
+def mul(z, k, aids, layer=None, cond=None):
+    for ly in z['layers']:
+        if ly['asset'] in aids and (layer is None or ly.get('layer') == layer) and (cond is None or cond(ly)): ly['count'] = max(1, round(ly['count'] * k))
+ROW = lambda n0, n1, r: dict(n=[n0, n1], r=r, row=True)
+BLOB = lambda n0, n1, r: dict(n=[n0, n1], r=r)
+for z in zones:
+    zid = z['id']; zk = (z['t1'] - z['t0']) / 15.12
+    if zid == 'z09':   # lit village where the key camera looks (the lower carpet was bare): house rows both sides, pine masses behind, lamp lines
+        mul(z, 0.5, ('flower-heart', 'fern', 'mushroom-group'), 'ground'); mul(z, 0.35, ('book-stack',)); mul(z, 0.55, ('firefly-lamp', 'lily-lamp'), 'mid')
+        mul(z, 0.5, ('paper-hill-lo', 'forest-clump'), 'mid'); mul(z, 0.4, ('mushroom-house',), 'mid', lambda l: 'view' not in l)
+        addv(z, 'mushroom-house', round(4 * zk), [6.0, 12.0], [1.25, 1.6], True, ROW(3, 4, 4.4))
+        addv(z, 'bunny-house', round(2 * zk), [7.0, 13.0], [1.0, 1.25], True, ROW(2, 3, 4.6))
+        addv(z, 'pine-lo', round(5 * zk), [11.0, 19.0], [0.8, 1.05], True, BLOB(4, 6, 3.4))
+        addv(z, 'firefly-lamp', round(10 * zk), [4.0, 7.5], [1.2, 1.5], True, ROW(2, 3, 3.0))
+        addv(z, 'mushroom-house', round(1.5 * zk), [6.0, 12.0], [1.25, 1.6], False, ROW(2, 3, 4.4))   # low tier: a lighter row
+        mul(z, 0.4, ('paper-hill-lo',), 'mid')   # pale green slabs at this camera -> pine masses / far house rows instead
+        addv(z, 'pine-lo', round(6 * zk), [14.0, 26.0], [0.85, 1.1], True, BLOB(5, 7, 3.6))
+        addv(z, 'bunny-house', round(1.5 * zk), [12.0, 18.0], [1.0, 1.2], True, ROW(2, 3, 4.6))
+    if zid == 'z08':   # carnival rows framing the carousel / wheel
+        mul(z, 0.55, ('flower-heart',), 'ground'); mul(z, 0.5, ('bunting', 'lantern-tower'), 'mid'); mul(z, 0.6, ('gift',), 'ground')
+        addv(z, 'stall', round(2 * zk), [6.0, 12.0], [1.1, 1.35], True, ROW(2, 3, 3.6))
+        addv(z, 'mushroom-house', round(2 * zk), [7.0, 13.0], [1.1, 1.4], True, ROW(2, 3, 4.2))
+        addv(z, 'balloons', round(5 * zk), [4.5, 9.0], [1.2, 1.5], True)
+        addv(z, 'pine-lo', round(3 * zk), [12.0, 19.0], [0.8, 1.0], True, BLOB(3, 5, 3.2))
+    if zid == 'z07':   # same lag fill as z09: pine masses / house rows where the camera looks across the bends
+        mul(z, 0.5, ('paper-hill-lo',), 'mid'); addv(z, 'pine-lo', round(4 * zk), [13.0, 24.0], [0.85, 1.1], True, BLOB(4, 6, 3.4))
+        addv(z, 'bunny-house', round(1.5 * zk), [9.0, 16.0], [1.0, 1.2], True, ROW(2, 3, 4.6))
+    if zid == 'z05':   # lake: bunny statues, paper boats and lotus lamps lining the water (key), rocks / reeds thinned (specks)
+        mul(z, 0.3, ('rock',)); mul(z, 0.5, ('reed',), 'ground'); mul(z, 0.5, ('lily-lamp', 'tulip-bed'), 'mid', lambda l: 'view' not in l)
+        addv(z, 'bunny-statue', round(3 * zk), [5.0, 11.0], [1.2, 1.6], True, ROW(2, 3, 4.0))
+        addv(z, 'paper-boat', round(2 * zk), [6.0, 12.0], [0.9, 1.15], True, ROW(2, 2, 5.0))
+        addv(z, 'lily-lamp', round(8 * zk), [3.5, 8.0], [1.3, 1.7], True, ROW(2, 3, 3.0))
+        addv(z, 'pine-lo', round(3 * zk), [11.0, 19.0], [0.8, 1.0], True, BLOB(4, 6, 3.2))
+        addv(z, 'mushroom-house', round(1.5 * zk), [8.0, 14.0], [1.0, 1.3], True, ROW(2, 3, 4.2))
+        addv(z, 'bunny-statue', round(1 * zk), [5.0, 11.0], [1.2, 1.6], False, ROW(2, 2, 4.0))
+    if zid == 'z06':   # flip phones, bunnies, heart beds, house rows hugging the road (key); bed carpets thinned (they were 50k tris)
+        mul(z, 0.35, ('heart-bed',)); mul(z, 0.5, ('tulip-bed', 'fence'), 'mid', lambda l: 'view' not in l)
+        mul(z, 0.3, ('bunny-house', 'mushroom-house'), 'mid', lambda l: 'view' not in l)
+        addv(z, 'bunny-house', round(2.5 * zk), [6.5, 12.0], [1.0, 1.25], True, ROW(2, 3, 4.6))
+        addv(z, 'mushroom-house', round(2.5 * zk), [6.0, 12.0], [1.15, 1.45], True, ROW(2, 3, 4.2))
+        addv(z, 'bunny-statue', round(3 * zk), [4.5, 9.0], [1.2, 1.5], True)
+        addv(z, 'flip-phone', round(1.2 * zk), [6.0, 11.0], [0.9, 1.1], True)
+        addv(z, 'tree-lo', round(3 * zk), [11.0, 19.0], [0.7, 0.9], True, BLOB(3, 5, 3.2))
+        addv(z, 'bunny-house', round(1 * zk), [6.5, 12.0], [1.0, 1.25], False, ROW(2, 2, 4.6))
+# v8 z08: the wheel faces the key camera on the far side of the road from the carousel, so it reads as a wheel next to it
+for z in zones:
+    if z['id'] != 'z08': continue
+    for sp in z['setpieces']:
+        if sp['asset'] == 'ferris-wheel' and sp.get('hero'): sp.update(t=113.0, side=-1, dist=1.0, scale=1.35, face='cam')
+        if sp['asset'] == 'carousel' and sp.get('hero'): sp.update(t=110.5)
+    z['setpieces'].sort(key=lambda d: d['t'])
+SKY = {'z01': 'day', 'z02': 'day', 'z03': 'dusk', 'z04': 'night', 'z05': 'twilight', 'z06': 'dusk', 'z07': 'night', 'z08': 'night', 'z09': 'night', 'z10': 'day'}   # v8 sky strip per zone
+for z in zones: z['sky'] = SKY[z['id']]
 out = os.path.join(here, '..', '..', 'levels-src', 'omg', 'scene-c.json')
 json.dump(spec, open(out, 'w'), ensure_ascii=False, indent=1)
 n = sum(l['count'] for z in zones for l in z['layers']); print(out, 'zones', len(zones), 'assets', len(assets), 'modelled', sum(bool(a['model']) for a in assets.values()), 'scatter instances', n, 'set pieces', sum(len(z['setpieces']) for z in zones))

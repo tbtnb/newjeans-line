@@ -69,7 +69,7 @@ export class SceneC {
   private types = new Map<string, TI>(); private chunkMesh = new Map<number, ChunkM>(); private night: boolean[] = []; private matNight!: StandardMaterial; private matGlow!: StandardMaterial; private dirtyAt = -1; private glowAll: Mesh | null = null; private glowSig = ''; private pages: Mesh[] = []; private stackGeo: { p: number[]; c: number[]; i: number[] }[] = []; private stacks: Mesh | null = null; private stackSig = ''; private pageMats: StandardMaterial[] = []; private sets: SetE[] = [];
   private range: [number, number] = [-1, -1]; private tier: Tier; private zoneCols: number[][][];
   private imp: Impostors | null = null; private back: Backdrop | null = null; private groundTex = new Map<number, Texture>(); private base = './'; curZone = 0;  private route!: Route;
-  private disposed = false; private time = 0; models = 0; last: CStats | null = null;
+  private pop = 5; private disposed = false; private time = 0; models = 0; last: CStats | null = null;
 
   constructor(private scene: Scene, parent: TransformNode, route: Route, spec: SceneCSpec, o: { duration: number; widthAt: (t: number) => number; roadH: number; hits: (x: number, z: number, r: number, y0: number, y1: number) => boolean; beats: number[]; base: string; tier: Tier }) {
     this.spec = spec; this.tier = o.tier; this.base = o.base; this.route = route;
@@ -103,7 +103,7 @@ export class SceneC {
 
   private dropChunk(c: ChunkM) { c.g.dispose(); c.m?.dispose(); c.glow?.dispose(); }
   private rebuildGlow(t: number) {
-    const on = [...this.chunkMesh.entries()].filter(([, c]) => c.L && t > c.t0 - 4.8).map(([i]) => i);
+    const on = [...this.chunkMesh.entries()].filter(([, c]) => c.L && t > c.t0 - this.pop + 0.2).map(([i]) => i);
     const sOn = this.sets.filter(e => e.on && t > e.def.popAt + 0.5 && WIN[e.def.a] && (this.night[e.def.zone] || WIN_ALWAYS.has(e.def.a)));
     const sig = on.join(',') + '|' + sOn.map(e => this.sets.indexOf(e)).join(',') + '|' + this.range.join(':') + this.tier;
     if (sig === this.glowSig) return; this.glowSig = sig; this.glowAll?.dispose(); this.glowAll = null; if (!on.length && !sOn.length) return;
@@ -146,20 +146,28 @@ export class SceneC {
   }
   // ---- v7 night sky strip: a camera-parented band over the top ~30% of the screen (moon, stars, silhouette skyline; tools/omgc/sky_strip.py),
   // drawn after the scene (rendering group 1), faded in and out with the night zones. The key camera's pitch shows almost no real sky.
-  private sky: Mesh | null = null; private skyMat: StandardMaterial | null = null; private skyV = 0;
+  private sky: Mesh | null = null; private skyMat: StandardMaterial | null = null; private skyV = 0; private skyKind = ''; private skyTex = new Map<string, Texture>();
+  /** v8: one band, texture per zone kind (night / day / dusk / twilight); a kind change fades out, swaps, fades back in */
   updateSky(cam: Camera, aspect: number, dt: number) {
-    const want = this.night[this.curZone] ? 1 : 0; this.skyV += (want - this.skyV) * (dt > 0 ? 1 - Math.exp(-dt * 1.6) : 1);
-    if (!this.sky) {
-      if (this.skyV < 0.01) return;
-      const m = CreatePlane('csky', { size: 1 }, this.scene); const mat = new StandardMaterial('cskyMat', this.scene); const tx = new Texture(this.base + 'models/omg-c/paint/sky-night.webp', this.scene, true, true);
-      tx.hasAlpha = true; mat.diffuseTexture = tx; mat.useAlphaFromDiffuseTexture = true; mat.disableLighting = true; mat.emissiveColor = new Color3(1, 1, 1); mat.diffuseColor = new Color3(0, 0, 0);
-      mat.backFaceCulling = false; mat.fogEnabled = false; mat.disableDepthWrite = true; mat.transparencyMode = Material.MATERIAL_ALPHABLEND;
-      m.material = mat; m.isPickable = false; m.renderingGroupId = 1; m.parent = cam; this.sky = m; this.skyMat = mat;
+    const Z = this.spec.zones[this.curZone], kind = Z?.sky ?? (this.night[this.curZone] ? 'night' : '');
+    const want = kind && kind === this.skyKind ? 1 : 0, k = dt > 0 ? 1 - Math.exp(-dt * 1.6) : 1;
+    this.skyV += (want - this.skyV) * k;
+    if (kind && kind !== this.skyKind && this.skyV < 0.03) {   // swap the texture while invisible
+      this.skyKind = kind; let tx = this.skyTex.get(kind);
+      if (!tx) { tx = new Texture(this.base + `models/omg-c/paint/sky-${kind}.webp`, this.scene, true, true); tx.hasAlpha = true; this.skyTex.set(kind, tx); }
+      if (!this.sky) {
+        const m = CreatePlane('csky', { size: 1 }, this.scene); const mat = new StandardMaterial('cskyMat', this.scene);
+        mat.useAlphaFromDiffuseTexture = true; mat.disableLighting = true; mat.emissiveColor = new Color3(1, 1, 1); mat.diffuseColor = new Color3(0, 0, 0);
+        mat.backFaceCulling = false; mat.fogEnabled = false; mat.disableDepthWrite = true; mat.transparencyMode = Material.MATERIAL_ALPHABLEND;
+        m.material = mat; m.isPickable = false; m.alphaIndex = -10; m.parent = cam; this.sky = m; this.skyMat = mat;   // in the main group, depth-tested 70 m out: the far carpet hides behind it, tall heroes / houses nearer than that stand in front of the sky
+      }
+      this.skyMat!.diffuseTexture = tx;
     }
+    if (!this.sky) return;
     const on = this.skyV > 0.01; this.sky.setEnabled(on); if (!on) return;
-    const d = 2, hh = d * Math.tan((cam.fov || 0.8) / 2), hw = hh * aspect, bh = hh * 2 * 0.3;   // band = top 30% of the view
+    const d = 70, hh = d * Math.tan((cam.fov || 0.8) / 2), hw = hh * aspect, bh = hh * 2 * 0.3;   // band = top 30% of the view
     this.sky.scaling.set(hw * 2, bh, 1); this.sky.position.set(0, hh - bh / 2, d);
-    const tx = this.skyMat!.diffuseTexture as Texture, us = Math.min(1, (hw * 2 / bh) / (1024 / 384)); tx.uScale = us; tx.uOffset = 1 - us;   // keep proportions, crop toward the moon side
+    const tx = this.skyMat!.diffuseTexture as Texture, us = Math.min(1, (hw * 2 / bh) / (1024 / 384)); tx.uScale = us; tx.uOffset = 1 - us;   // keep proportions, crop toward the moon / sun side
     this.skyMat!.alpha = this.skyV;
   }
   private dropChunks() { for (const c of this.chunkMesh.values()) this.dropChunk(c); this.chunkMesh.clear(); this.range = [-1, -1]; }
@@ -352,7 +360,7 @@ export class SceneC {
       if (!ti.items.length) continue; const M = ti.mats;
       for (let k = 0; k < ti.items.length; k++) {
         const it = ti.items[k]; let s = it.s, sy = 1, x = it.x, y = this.yOf(it), z = it.z; const ph = (it.x * 0.37 + it.z * 0.61) % 6.283;
-        if (it.layer === 'mid') sy = Math.max(0.02, spring(t - (it.t - 5)));               // pops up 5 s before the line passes
+        if (it.layer === 'mid') sy = Math.max(0.02, spring(t - (it.t - this.pop)));               // pops up before the line passes
         else if (it.layer === 'sky') { y += Math.sin(time * 1.1 + ph) * 0.25; s *= 1 + 0.06 * beatK; }
         else if (it.layer === 'anim') { x += Math.sin(time * 0.5 + ph) * 1.2; y += it.a === 'petal' ? -((time * 0.4 + ph) % 3) : Math.sin(time * 2 + ph) * 0.3; }
         const c = Math.cos(it.yaw), sn = Math.sin(it.yaw), o = k * 16;
@@ -440,6 +448,7 @@ export class SceneC {
     this.time += dt; const T = TIERS[this.tier];
     if (this.dirtyAt >= 0 && this.time - this.dirtyAt > 0.4) { this.dirtyAt = -1; this.dropChunks(); }
     const key = typeof location === 'undefined' || !/[?&]cam=old\b/.test(location.search);   // key camera sees further ahead, nothing behind
+    this.pop = key ? 8.5 : 5;
     const [a, b] = activeRange(this.plc.chunks, t, key ? 1.5 : T.behind, key ? T.ahead + (this.tier === 'high' ? 2 : 0) : T.ahead);
     if (a !== this.range[0] || b !== this.range[1]) {
       for (const [i, m] of this.chunkMesh) if (i < a || i > b) { this.dropChunk(m); this.chunkMesh.delete(i); }
@@ -462,7 +471,7 @@ export class SceneC {
     const vis = (x: Mesh | null) => !!x && x.isEnabled() && (!fp || x.isInFrustum(fp));
     const triOf = (x: Mesh | null) => x ? x.getTotalIndices() / 3 : 0;
     for (const [i, m] of this.chunkMesh) {
-      win += m.tris; tris += (vis(m.g) ? triOf(m.g) : 0) + (vis(m.m) ? triOf(m.m) : 0) + (m.glow && vis(m.m ?? m.glow) ? triOf(m.glow) : 0); if (m.m) m.m.scaling.y = Math.max(0.02, spring(t - (m.t0 - 5)));   // merged mid layer pops up per chunk, 5 s ahead
+      win += m.tris; tris += (vis(m.g) ? triOf(m.g) : 0) + (vis(m.m) ? triOf(m.m) : 0) + (m.glow && vis(m.m ?? m.glow) ? triOf(m.glow) : 0); if (m.m) m.m.scaling.y = Math.max(0.02, spring(t - (m.t0 - this.pop)));   // merged mid layer pops up per chunk (5 s ahead; v8 key camera 8.5 s: its upper half looks ~60-90 m ahead)
       for (const it of this.plc.chunks[i].items) if ((it.layer === 'ground' || it.layer === 'mid') && this.keep(it)) tb += Math.max(this.tm.get(it.a)?.tris ?? 0, A[it.a]?.tris ?? 0); }
     let types = 0; for (const ti of this.types.values()) if (ti.items.length) { types++; inst += ti.items.length; tris += ti.items.length * ti.tris; win += ti.items.length * ti.tris; tb += ti.items.length * Math.max(ti.tris, A[ti.id]?.tris ?? 0); }
     let zone = 0; for (let i = 0; i < this.spec.zones.length; i++) if (this.spec.zones[i].t0 <= t) zone = i;
@@ -472,6 +481,6 @@ export class SceneC {
   dispose() {
     this.disposed = true;
     for (const [id, t] of this.tm) if (t.container) { t.container.dispose(); this.tm.delete(id); }
-    { const ip = this.scene.imageProcessingConfiguration; ip.vignetteEnabled = false; ip.colorCurvesEnabled = false; } this.imp?.dispose(); this.back?.dispose(); for (const t of this.groundTex.values()) t.dispose(); this.root.dispose(false, false); this.glowAll?.dispose(); this.matGlow.diffuseTexture?.dispose(); this.matGlow.dispose(); this.matNight.dispose(); this.mat.dispose(); this.matSet.dispose(); for (const m of this.pageMats) m.dispose();
+    { const ip = this.scene.imageProcessingConfiguration; ip.vignetteEnabled = false; ip.colorCurvesEnabled = false; } this.imp?.dispose(); this.back?.dispose(); for (const t of this.groundTex.values()) t.dispose(); this.root.dispose(false, false); this.glowAll?.dispose(); this.matGlow.diffuseTexture?.dispose(); this.matGlow.dispose(); this.matNight.dispose(); this.mat.dispose(); this.matSet.dispose(); for (const m of this.pageMats) m.dispose(); this.sky?.dispose(); this.skyMat?.dispose(); for (const t of this.skyTex.values()) t.dispose();
   }
 }
