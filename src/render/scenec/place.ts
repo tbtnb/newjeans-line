@@ -109,7 +109,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
         const solid = L.layer === 'mid' && h >= 0.8 && !/fence|bunting|lantern-string|cord/.test(L.asset), fr0 = foot(A, s);
         const isTree = A.shape === 'tree' && !/hedge/.test(L.asset);
         if (solid && occHit(a.pos.x, a.pos.z, fr0, isTree)) { rejected++; rj[z.id + ' ' + L.asset + ' occ'] = (rj[z.id + ' ' + L.asset + ' occ'] ?? 0) + 1; continue; }
-        if (L.layer === 'mid' && h > (view ? 5 : 2.6) && nearBand(a.pos.x, a.pos.z, t, (L.hug ? 3 : view ? 4 : 7) + r)) { rejected++; rj[z.id + ' ' + L.asset + ' near'] = (rj[z.id + ' ' + L.asset + ' near'] ?? 0) + 1; continue; }   // big pieces stay out of the near band; v7 'hug' layers (lit house rows) may line the road
+        if (L.layer === 'mid' && h > (view ? 3.5 : 2.6) && nearBand(a.pos.x, a.pos.z, t, (L.hug ? 3 : view ? 8 : 9) + r)) { rejected++; rj[z.id + ' ' + L.asset + ' near'] = (rj[z.id + ' ' + L.asset + ' near'] ?? 0) + 1; continue; }   // big pieces stay out of the near band; v7 'hug' layers (lit house rows) may line the road
         const rp = anchor(route, t).pos;
         const fp = view ? flowAnchor(route, Math.max(0, t - 2.5), 0, 0, 0).pos : rp;   // view pieces face back along the flow (toward the key camera), not sideways
         const yaw = A.shape === 'far' || L.layer === 'mid' ? Math.atan2(fp.x - a.pos.x, fp.z - a.pos.z) + (view ? (R() - 0.5) * 0.5 : 0) : R() * Math.PI * 2;
@@ -130,7 +130,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
               if (view) { let o2 = off; for (let k = 0; k < 6 && o.hits(b.pos.x, b.pos.z, r * ms / s + pad, a.pos.y - 1, a.pos.y + A.h * ms); k++) { o2 += side * 1.25; b = flowAnchor(route, ty, o2, 0, 0); } }
               x = b.pos.x; zz = b.pos.z; const bp = anchor(route, ty).pos; my = view ? yaw : Math.atan2(bp.x - x, bp.z - zz); }
             else { const an = R() * Math.PI * 2, rr = Cn.r * s * Math.sqrt(0.15 + 0.85 * R()); x = a.pos.x + Math.cos(an) * rr; zz = a.pos.z + Math.sin(an) * rr; my = L.layer === 'mid' ? yaw + (R() - 0.5) * 0.8 : R() * Math.PI * 2; }
-            if (o.hits(x, zz, r * ms / s + pad, a.pos.y - 1, a.pos.y + A.h * ms) || (A.h * ms > (view ? 5 : 2.6) && nearBand(x, zz, ty, (L.hug ? 3 : view ? 4 : 7) + r * ms / s))) { rejected++; rj[z.id + ' ' + L.asset + ' mhit'] = (rj[z.id + ' ' + L.asset + ' mhit'] ?? 0) + 1; continue; }
+            if (o.hits(x, zz, r * ms / s + pad, a.pos.y - 1, a.pos.y + A.h * ms) || (A.h * ms > (view ? 3.5 : 2.6) && nearBand(x, zz, ty, (L.hug ? 3 : view ? 8 : 9) + r * ms / s))) { rejected++; rj[z.id + ' ' + L.asset + ' mhit'] = (rj[z.id + ' ' + L.asset + ' mhit'] ?? 0) + 1; continue; }
             if (L.layer === 'mid' && A.h * ms > 1.2 && blocksHead(x, zz, r * ms / s, a.pos.y + y0, A.h * ms, ty)) { rejected++; rj[z.id + ' ' + L.asset + ' msight'] = (rj[z.id + ' ' + L.asset + ' msight'] ?? 0) + 1; continue; }
             const alts = [L.asset, ...(L.alt ?? [])], ma = alts[j % alts.length], MA = spec.assets[ma] ?? A, mr = foot(MA, ms);
             const mt = MA.shape === 'tree' && !/hedge/.test(ma); if (solid && occHit(x, zz, mr, mt)) { rejected++; rj[z.id + ' ' + L.asset + ' mocc'] = (rj[z.id + ' ' + L.asset + ' mocc'] ?? 0) + 1; continue; }
@@ -162,7 +162,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
           const rad = Math.max(0.15, Math.max(MA.h, MA.w ?? 0, MA.d ?? 0) * ms * 0.35), pad = h < 1.7 ? 0.35 + 0.1 * o.widthAt(t) : clearNear + 0.5 * o.widthAt(t);
           if (o.hits(x, zz, rad + pad, a.pos.y - 1, a.pos.y + h)) continue;
           if (h > 1.2 && blocksHead(x, zz, rad, a.pos.y, h, t)) continue;
-          if (h > 4 && nearBand(x, zz, t, 4 + rad)) continue;   // frame bottom keeps low piles only (no giant near trees)
+          if (h > 2.5 && nearBand(x, zz, t, 10 + rad)) continue;   // frame bottom keeps low piles only (no giant near trees)
           if (h >= 0.8 && occHit(x, zz, mr, tr)) continue;
           const ci = chunkAt(t);
           chunks[ci].items.push({ a: ma, layer: 'mid', x, y: groundY(chunks[ci], x, zz), z: zz, yaw: yaw0 + (fr(zz, x) - 0.5) * 1.2, s: ms, c: 0, zone: zi, t, chunk: ci, v: Math.floor(fr(a.pos.x * 1.1, a.pos.z) * 9973) + j, hi: true });   // members step the palette like layer blobs
@@ -210,6 +210,8 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
           const x = a.pos.x + Math.sin(ang) * rr, zz = a.pos.z + Math.cos(ang) * rr, es = 1.3 + R() * 0.5;
           if (o.hits(x, zz, Math.max(EA.h, EA.w ?? 0) * es * 0.35 + 0.8, a.pos.y - 1, a.pos.y + EA.h * es)) { rejected++; continue; }
           if (EA.h * es > 1.2 && blocksHead(x, zz, Math.max(EA.h, EA.w ?? 0) * es * 0.35, a.pos.y, EA.h * es, sp.t)) { rejected++; continue; }
+          const ef = foot(EA, es); if (EA.h * es >= 0.8 && occHit(x, zz, ef, EA.shape === 'tree')) { rejected++; continue; }   // v9: entourage no longer clips decor (Mac sweep: bunny statue inside a grove)
+          if (EA.h * es >= 0.8) occAdd(x, zz, ef, EA.shape === 'tree');
           const ci = chunkAt(sp.t); const ec = chunks[ci];
           ec.items.push({ a: ea, layer: 'mid', x, y: groundY(ec, x, zz), z: zz, yaw: Math.atan2(rp.x - x, rp.z - zz), s: es, c: (z.layers[0]?.colors ?? [0])[Math.floor(R() * (z.layers[0]?.colors ?? [0]).length)], zone: zi, t: sp.t, chunk: ci }); placed++; break;
         }
