@@ -564,6 +564,20 @@ for z in zones:
     # budget: no 500-800-tri beds / sculptures on the plots (flower patches carry the beds), big density x0.6
     if P: P = dict(P, big=[a for a in P['big'] if a not in ('tulip-bed', 'heart-bed', 'heart-sculpt', 'book-stack', 'lily-lamp')], dBig=round(P['dBig'] * 0.5, 2), dHouse=round(P.get('dHouse', 0) * 0.7, 2))
     if P: z['plots'] = dict(P, small=[a for a in P['small'] if a in assets], big=[a for a in P['big'] if a in assets], house=[a for a in P.get('house', []) if a in assets], scale=[1.0, 1.4])
+# v11 step 4: lusher z01 / z03 / z10 - cheap meadow blobs (24-60 tri flowers / grass / mushrooms) over the low ground, denser bush fill
+MEADOW = {'z01': [('flower', 35), ('grass', 30), ('flower-heart', 20)],   # x2 ground density; flower GLBs ~100 tris
+          'z03': [('flower-heart', 25), ('flower', 20), ('grass', 20)],
+          'z10': [('flower', 35), ('flower-heart', 25), ('grass', 25)]}
+for z in zones:
+    for aid, n in MEADOW.get(z['id'], []): addl(z, aid, 'ground', n, [1.5, 26.0], [1.8, 3.0], False)
+    # green bush / hedge / tree blobs on the low ground (z03 was a bare salmon carpet): 150-300 tri kinds, mixed so neighbours differ
+    nb = {'z01': 14, 'z03': 26, 'z10': 14}.get(z['id'], 0)
+    if nb:
+        addl(z, 'tree-bush-lo', 'mid', nb, [3.0, 14.0], [0.68, 0.8], True, BLOB(3, 4, 2.0)); z['layers'][-1]['alt'] = ['hedge']   # under the 2.6 m near-band cap
+        addl(z, 'forest-clump', 'mid', nb // 2, [13.0, 26.0], [0.8, 1.0], True, BLOB(2, 3, 3.0)); z['layers'][-1]['alt'] = ['tree-lo', 'tree-bush-lo']
+    if z['id'] in MEADOW and z.get('fill'):
+        z['fill']['kinds'] = [a for a in z['fill']['kinds'] if a not in ('tulip-bed',)] + [a for a in ('hedge', 'forest-clump') if a not in z['fill']['kinds']]
+        z['fill']['cell'] = {'z03': 7.5}.get(z['id'], 11.0)
 # v11 budget: bank snap now keeps pieces that used to be rejected at edges; thin the 300-600-tri scatter kinds in the heavy night / dusk zones
 HEAVY = ('lily-lamp', 'book-stack', 'mushroom-group', 'star-chime', 'heart-sculpt', 'tulip-bed', 'heart-bed')
 for z in zones:
@@ -571,7 +585,7 @@ for z in zones:
     if k: mul(z, k, HEAVY, 'mid')
     if z['id'] == 'z04': mul(z, 0.5, ('lantern-tower',), 'mid'); mul(z, 0.6, ('heart-sculpt', 'lily-lamp'), 'mid')   # castle moment (6k castle + 4k heart) ran 151k
     if z['id'] == 'z09': mul(z, 0.7, ('firefly-lamp', 'mushroom-house'), 'mid')
-    if z['id'] == 'z03': mul(z, 0.6, ('ward-bed',), 'mid')   # 2000 tris each
+    if z['id'] == 'z03': mul(z, 0.6, ('ward-bed',), 'mid'); mul(z, 0.6, ('screen', 'iv-heart'), 'mid'); mul(z, 0.7, ('pull-tab',), 'mid')   # room for the meadow / bush fill   # 2000 tris each
     if z['id'] == 'z07': mul(z, 0.6, ('book-stack',), 'mid'); mul(z, 0.7, ('star-chime',), 'mid')
 json.dump(spec, open(out, 'w'), ensure_ascii=False, indent=1)
 n = sum(l['count'] for z in zones for l in z['layers']); print(out, 'zones', len(zones), 'assets', len(assets), 'modelled', sum(bool(a['model']) for a in assets.values()), 'scatter instances', n, 'set pieces', sum(len(z['setpieces']) for z in zones))
