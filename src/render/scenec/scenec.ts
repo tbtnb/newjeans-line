@@ -67,7 +67,7 @@ export interface CStats { chunks: [number, number]; chunkMeshes: number; types: 
 export class SceneC {
   readonly plc: CPlacement; readonly spec: SceneCSpec;
   private tm: Map<string, Template>; private mat: StandardMaterial; private matSet: StandardMaterial; private root: TransformNode;
-  private types = new Map<string, TI>(); private chunkMesh = new Map<number, ChunkM>(); private night: boolean[] = []; private matNight!: StandardMaterial; private matGlow!: StandardMaterial; private dirtyAt = -1; private glowAll: Mesh | null = null; private glowSig = ''; private pages: Mesh[] = []; private stackGeo: { p: number[]; c: number[]; i: number[] }[] = []; private stacks: Mesh | null = null; private stackSig = ''; private pageMats: StandardMaterial[] = []; private sets: SetE[] = [];
+  private types = new Map<string, TI>(); private chunkMesh = new Map<number, ChunkM>(); private night: boolean[] = []; private matNight!: StandardMaterial; private matGlow!: StandardMaterial; private dirtyAt = -1; private glowAll: Mesh | null = null; private glowSig = ''; private pages: Mesh[] = []; private stackGeo: { p: number[]; c: number[]; i: number[] }[] = []; private bankGeo: { p: number[]; c: number[]; i: number[] }[] = []; private stacks: Mesh | null = null; private stackSig = ''; private pageMats: StandardMaterial[] = []; private sets: SetE[] = [];
   private range: [number, number] = [-1, -1]; private tier: Tier; private zoneCols: number[][][];
   private imp: Impostors | null = null; private back: Backdrop | null = null; private groundTex = new Map<number, Texture>(); private base = './'; curZone = 0;  private route!: Route;
   private hits: (x: number, z: number, r: number, y0: number, y1: number) => boolean; private pop = 5; private disposed = false; private time = 0; models = 0; last: CStats | null = null;
@@ -235,6 +235,10 @@ export class SceneC {
         rect(c.minX - pg, c.minZ - pg, c.maxX + pg, c.maxZ + pg, y);
         if (c.terr) { const p = c.terr.pad; rect(c.minX - p, c.minZ - p, c.maxX + p, c.maxZ + p, c.terr.y - 0.004 * (c.i % 3)); }   // raised page (climb)
       }
+      for (const B of this.plc.banks) { if (B.zone !== zi) continue;   // v10 raised page banks: their tops are this zone's page (same texture / draw)
+        for (let k = 0; k < B.P.length - 1; k++) { const p = B.P[k], q = B.P[k + 1], i0 = pos.length / 3;
+          for (const v of [[p[0], p[1]], [q[0], q[1]], [q[2], q[3]], [p[2], p[3]]]) { pos.push(v[0], B.y, v[1]); uv.push(v[0] / tile, v[1] / tile); col.push(gc[0], gc[1], gc[2], 1); }
+          idx.push(i0, i0 + 1, i0 + 2, i0, i0 + 2, i0 + 3); } }
       const m = new Mesh(`cpage_z${zi}`, this.scene);
       if (pos.length) { const vd = new VertexData(); vd.positions = pos; vd.colors = col; vd.uvs = uv; vd.indices = idx; vd.applyToMesh(m, false); m.hasVertexAlpha = true; }   /* vColor.a only reaches the shader with VERTEXALPHA; the material is pinned opaque */
       const mat = this.mat.clone(`paperCPage${zi}`); mat.zOffset = 2 * (Z - 1 - zi); this.pageMats.push(mat);   // positive = pushed back; the latest zone has 0
@@ -276,6 +280,19 @@ export class SceneC {
         }
         flush(n);
       }
+    }
+    // v10 page banks: every edge gets the page-layer + strata cliff (inner edges face the road); both tiers (bankGeo)
+    for (let i = 0; i < N; i++) this.bankGeo.push({ p: [], c: [], i: [] });
+    const sat = (h: string) => { const c = hexRGB(h); return Math.max(...c) - Math.min(...c); };
+    const COV = this.spec.zones.map(z => { const k = [...z.colors].sort((a, b) => sat(b) - sat(a))[0] ?? '#F29BB8'; return hexRGB(k); });
+    for (const B of this.plc.banks) {
+      const night = NT[B.zone], n = B.P.length, lo = Math.max(B.base, B.y - 14) - 0.05, cov = COV[B.zone].map(v => v * (night ? 0.8 : 0.92));
+      for (let k = 0; k < n - 1; k++) { const p = B.P[k], q = B.P[k + 1], G = this.bankGeo[B.ci[k]];
+        let ox = p[2] - p[0], oz = p[3] - p[1]; const ol = Math.hypot(ox, oz) || 1; ox /= ol; oz /= ol;
+        this.emitBank(G, p[0], p[1], q[0], q[1], -ox, -oz, B.y, lo, cov, night, true);   // inner edge (toward the road): full page block
+        this.emitBank(G, p[2], p[3], q[2], q[3], ox, oz, B.y, lo, cov, night, false); }   // outer edge
+      for (const [k, k2] of [[0, 1], [n - 1, n - 2]]) { const p = B.P[k], q = B.P[k2]; let fx = (p[0] + p[2] - q[0] - q[2]) / 2, fz = (p[1] + p[3] - q[1] - q[3]) / 2; const fl = Math.hypot(fx, fz) || 1;
+        this.emitBank(this.bankGeo[B.ci[k]], p[0], p[1], p[2], p[3], fx / fl, fz / fl, B.y, lo, cov, night, true); }   // run ends
     }
     this.buildBookFg(NT);
     const m = this.mat.clone('paperCStack'); m.backFaceCulling = false; m.diffuseTexture = null; this.matStack = m;
@@ -352,11 +369,28 @@ export class SceneC {
     for (let k = 0; k < ns; k++) { const c0 = k & 1 ? TA : CR2, c1 = k & 1 ? TA2 : TA; quad(o, h, o, h - sd, c0, c1); h -= sd;
       if (k < ns - 1) { const g = k % 3 === 1; quad(o, h, o + 0.5, h, g ? GO : CR, g ? GO2 : CR2); o += 0.5; } }
   }
+  /** v10 bank edge as a closed book seen from its fore-edge: a coloured cover lip (overhangs 0.14 m), then the page block as thin
+   * alternating paper-white / lilac-grey leaves (0.16 m) down to the bottom cover. Vertical (no stepped ledges: from the key camera
+   * ledges read as extra road-like stripes). `full` = leaf lines; outer edges get a plain block. */
+  private emitBank(G: { p: number[]; c: number[]; i: number[] }, ax: number, az: number, bx: number, bz: number, nx: number, nz: number, y: number, lo: number, cov: number[], night: boolean, full: boolean) {
+    const q = (o0: number, y0: number, o1: number, y1: number, c0: number[], c1: number[]) => { const b = G.p.length / 3;
+      G.p.push(ax + nx * o0, y0, az + nz * o0, bx + nx * o0, y0, bz + nz * o0, bx + nx * o1, y1, bz + nz * o1, ax + nx * o1, y1, az + nz * o1);
+      G.c.push(...c0, 1, ...c0, 1, ...c1, 1, ...c1, 1); G.i.push(b, b + 1, b + 2, b, b + 2, b + 3); };
+    const d = (c: number[]) => night ? [c[0] * 0.62, c[1] * 0.62, c[2] * 0.72] : c;
+    const W1 = d([0.98, 0.96, 0.95]), W2 = d([0.86, 0.83, 0.9]), cv2 = cov.map(v => v * 0.8), L = 0.14;
+    q(0, y + 0.02, L, y + 0.02, cov, cov); q(L, y + 0.02, L, y - 0.14, cov, cv2); q(L, y - 0.14, 0, y - 0.14, cv2, cv2);   // top cover lip
+    const h = y - 0.14 - lo - 0.16; if (h <= 0.05) return;
+    if (!full) { q(0, y - 0.14, 0, lo + 0.16, W2, W2); } else {
+      const n = Math.max(2, Math.round(h / 0.16)), s = h / n; let yy = y - 0.14;
+      for (let k = 0; k < n; k++) { const c = k & 1 ? W2 : W1; q(-0.02 * (k & 1), yy, -0.02 * (k & 1), yy - s, c, c); yy -= s; } }
+    q(0, lo + 0.16, L, lo + 0.16, cv2, cv2); q(L, lo + 0.16, L, lo, cv2, cv2);   // bottom cover
+  }
   private refreshStacks(a: number, b: number) {
-    const on = this.tier === 'high', sig = on ? `${a}:${b}` : 'off'; if (sig === this.stackSig) return; this.stackSig = sig;
-    this.stacks?.dispose(); this.stacks = null; if (!on) return;
+    const on = this.tier === 'high', sig = `${a}:${b}`; if (sig === this.stackSig) return; this.stackSig = sig;
+    this.stacks?.dispose(); this.stacks = null;
     const p: number[] = [], c: number[] = [], idx: number[] = [];
-    for (let i = a; i <= b; i++) { const G = this.stackGeo[i]; if (!G) continue; const o = p.length / 3; for (const v of G.p) p.push(v); for (const v of G.c) c.push(v); for (const v of G.i) idx.push(v + o); }
+    for (const GG of on ? [this.stackGeo, this.bankGeo] : [this.bankGeo])   // v10: bank cliffs on both tiers, page-stack edges / book spreads high only
+      for (let i = a; i <= b; i++) { const G = GG[i]; if (!G) continue; const o = p.length / 3; for (const v of G.p) p.push(v); for (const v of G.c) c.push(v); for (const v of G.i) idx.push(v + o); }
     if (!idx.length) return; const m = new Mesh('cstacks', this.scene); const vd = new VertexData(); vd.positions = p; vd.colors = c; vd.indices = idx; vd.applyToMesh(m, false);
     m.material = this.matStack; m.isPickable = false; m.parent = this.root; m.freezeWorldMatrix(); (m as any).__tris = idx.length / 3; this.stacks = m;
   }
