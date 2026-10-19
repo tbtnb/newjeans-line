@@ -2,13 +2,13 @@ import {Mesh,Vector3,VertexData} from './bjs';
 export interface TrailRun { a:Vector3; b:Vector3; }
 /** One extruded ribbon. Corners share a mitred cross-section and continuous UVs;
  * there are no end faces inside a bend and no stacked/coplanar boxes. */
-export function trailGeometry(runs:TrailRun[],width=1,height=.9) {
+export function trailGeometry(runs:TrailRun[],width=1,height=.9,arcOffset=0) {
   const positions:number[]=[],normals:number[]=[],uvs:number[]=[],indices:number[]=[];
   const quad=(p:Vector3[],uv:number[],normal?:Vector3)=>{
     const n=normal??Vector3.Cross(p[1].subtract(p[0]),p[2].subtract(p[0])).normalize();
     const k=positions.length/3;for(const v of p){positions.push(v.x,v.y,v.z);normals.push(n.x,n.y,n.z);}uvs.push(...uv);indices.push(k,k+2,k+1,k,k+3,k+2);
   };
-  let arc=0;
+  let arc=arcOffset;
   for(let start=0;start<runs.length;){
     let end=start;while(end+1<runs.length&&Vector3.DistanceSquared(runs[end].b,runs[end+1].a)<1e-8)end++;
     const pts=[runs[start].a.clone(),...runs.slice(start,end+1).map(r=>r.b.clone())];
@@ -37,13 +37,13 @@ export function trailGeometry(runs:TrailRun[],width=1,height=.9) {
   }
   return {positions,normals,uvs,indices};
 }
-const state=new WeakMap<Mesh,{count:number;first:Vector3;start:Vector3;end:Vector3;positions:Float32Array;uvs:Float32Array}>();
-export function updateTrailMesh(mesh:Mesh,runs:TrailRun[]){
+const state=new WeakMap<Mesh,{count:number;arcOffset:number;first:Vector3;start:Vector3;end:Vector3;positions:Float32Array;uvs:Float32Array}>();
+export function updateTrailMesh(mesh:Mesh,runs:TrailRun[],arcOffset=0){
   mesh.setEnabled(runs.length>0);if(!runs.length){mesh.setIndices([]);state.delete(mesh);return;}
   const last=runs[runs.length-1],old=state.get(mesh);
   // Between taps only the terminal cross-section moves. Keep GPU allocations and
   // all completed corners intact instead of rebuilding hundreds of boxes per frame.
-  if(old&&old.count===runs.length&&old.first.equals(runs[0].a)&&old.start.equals(last.a)){
+  if(old&&old.arcOffset===arcOffset&&old.count===runs.length&&old.first.equals(runs[0].a)&&old.start.equals(last.a)){
     const delta=last.b.subtract(old.end),ds=Vector3.Distance(last.a,last.b)-Vector3.Distance(last.a,old.end);
     const base=old.positions.length/3-24;
     const move=(i:number)=>{old.positions[i*3]+=delta.x;old.positions[i*3+1]+=delta.y;old.positions[i*3+2]+=delta.z;old.uvs[i*2+1]+=ds;};
@@ -51,8 +51,8 @@ export function updateTrailMesh(mesh:Mesh,runs:TrailRun[]){
     for(let i=base+20;i<base+24;i++){old.positions[i*3]+=delta.x;old.positions[i*3+1]+=delta.y;old.positions[i*3+2]+=delta.z;}
     mesh.updateVerticesData('position',old.positions,true,false);mesh.updateVerticesData('trailUV',old.uvs);old.end.copyFrom(last.b);return;
   }
-  const data=trailGeometry(runs),v=new VertexData();Object.assign(v,data);v.applyToMesh(mesh,true);
+  const data=trailGeometry(runs,1,.9,arcOffset),v=new VertexData();Object.assign(v,data);v.applyToMesh(mesh,true);
   const positions=Float32Array.from(data.positions),uvs=Float32Array.from(data.uvs);
   mesh.setVerticesData('trailUV',uvs,true,2);
-  state.set(mesh,{count:runs.length,first:runs[0].a.clone(),start:last.a.clone(),end:last.b.clone(),positions,uvs});
+  state.set(mesh,{count:runs.length,arcOffset,first:runs[0].a.clone(),start:last.a.clone(),end:last.b.clone(),positions,uvs});
 }

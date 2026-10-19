@@ -1,11 +1,13 @@
 import { spanPos, type Route } from './path';
+import {denseWindows,inDenseWindow} from './edgeassist';
 
 /** Separate nearby parallel lanes without changing the authored route, speed or rhythm tolerance.
  * The gold ledge adds 0.32 m to the full width; leave another 0.30 m of visible ground between lanes. */
 export function readableRoadWidths(route: Route, widthAt: (t: number) => number): number[] {
-  const spans = route.spans;
+  const spans = route.spans,windows=route.freeTurns?denseWindows(route.tapTimes):[];
+  const dense=spans.map(s=>inDenseWindow(windows,(s.t0+s.t1)/2));
   return spans.map((s, i) => {
-    let w = widthAt(s.t0); const e = spanPos(s, s.t1), axis = s.heading % 2 ? 'x' : 'z', cross = axis === 'x' ? 'z' : 'x';
+    let w = widthAt(s.t0)+(dense[i] ? .2 : 0); const e = spanPos(s, s.t1), axis = s.heading % 2 ? 'x' : 'z', cross = axis === 'x' ? 'z' : 'x';
     const a = {x:s.x0, z:s.z0};
     for (let j = 0; j < spans.length; j++) {
       const o = spans[j];
@@ -14,7 +16,7 @@ export function readableRoadWidths(route: Route, widthAt: (t: number) => number)
       const b={x:o.x0,z:o.z0}, f=spanPos(o,o.t1);
       if (Math.max(a[axis],e[axis])+w/2 < Math.min(b[axis],f[axis]) || Math.max(b[axis],f[axis])+w/2 < Math.min(a[axis],e[axis])) continue;
       const separation=Math.abs(a[cross]-b[cross]);
-      if (separation > 0.1) w=Math.min(w, Math.max(1.2, separation-0.62));
+      if (separation > 0.1) w=Math.min(w, Math.max(1.2, separation-(dense[i] && dense[j] ? .50 : .62)));
     }
     return w;
   });

@@ -85,6 +85,7 @@ export class World {
   private lastTime = 0; private lastFrame = performance.now();
   private failAnim: { t0: number; pos: Vector3; dir: Vector3; pieces: Fx[] } | null = null;
   private quality: 'high' | 'low' = 'high';
+  private targetFps:60|120=60;private resolutionScale=1;private renderCost=0;private resizePressure=0;
   mode: 'menu' | 'play' = 'menu';
   fps = 60; private fpsAcc = 0; private fpsN = 0;
   onSky: ((top: string, bottom: string) => void) | null = null;
@@ -116,9 +117,17 @@ export class World {
 
   setQuality(q: 'high' | 'low') {
     this.quality = q;
-    this.engine.setHardwareScalingLevel(1 / Math.min(window.devicePixelRatio || 1, q === 'high' ? 2 : 1));
+    this.resolutionScale=1;this.updateResolution();
     this.sc?.setTier(q);
     if (this.level && this.game) this.setupShadows();
+  }
+
+  setTargetFps(fps:60|120){this.targetFps=fps;this.resolutionScale=1;this.resizePressure=0;this.updateResolution();}
+  private updateResolution(){
+    const touch=typeof matchMedia==='function'&&matchMedia('(pointer: coarse)').matches;
+    const cap=this.quality==='low'?1:this.targetFps===120?1.25:touch?1.5:2;
+    const dpr=Math.min(window.devicePixelRatio||1,cap)*this.resolutionScale;
+    this.engine.setHardwareScalingLevel(1/Math.max(.75,dpr));
   }
 
   private setupShadows() {
@@ -141,7 +150,7 @@ export class World {
     for (const g of this.groundTex) g.tex.dispose(); this.faceCam = []; this.groundTex = []; this.groundShown = null; this.groundTint = null;
     this.particles?.dispose(); this.particles = null; this.particleKind = null;
     this.shadows?.dispose(); this.shadows = null;
-    for (const f of this.fx) f.mesh.dispose(); this.fx = [];
+    for (const f of this.fx) {const mat=f.mesh.material;f.mesh.dispose();if(f.kind==='glow'||f.kind==='ring')mat?.dispose(false,false);} this.fx = [];
     this.failAnim?.pieces.forEach(p => p.mesh.dispose()); this.failAnim = null;
     this.road?.dispose(); this.road = null; for (const t of this.cgTex.values()) t.dispose(); this.cgTex.clear();
     this.root?.dispose(false, true); this.root = null;
@@ -173,7 +182,7 @@ export class World {
     } else this.env = new EnvTimeline(L);
     this.beats = L.beats ?? []; this.kicks = L.kicks ?? [];
     this.events = [...(L.events ?? [])].sort((a, b) => a.t - b.t);
-    const widthAt = (t: number) => stepAt(L.road.width, t)?.w ?? 2.2;
+    const widthAt = (t: number) => game.route.freeTurns?game.roadWidth(t):(stepAt(L.road.width, t)?.w ?? 2.2);
     // road
     this.road = new Road(this.scene, route, L, t => this.env!.settled(t), { paper: this.cmode });
     this.road.body.parent = this.root; this.road.top.parent = this.root;
@@ -195,7 +204,7 @@ export class World {
     // player line
     this.headMat = new StandardMaterial('headM', this.scene); this.headMat.specularColor = new Color3(0.1, 0.1, 0.1);
     this.trailMat = new StandardMaterial('trailM', this.scene); this.trailMat.specularColor = new Color3(0.05, 0.05, 0.05);
-    if (this.cmode) new RoadSightline(this.trailMat);
+    if (this.cmode && route.spans.some(s=>s.air&&s.y1<s.y0)) new RoadSightline(this.trailMat);
     this.head = CreateBox('head', { size: 1 }, this.scene); this.head.scaling.set(LINE_W, LINE_H, LINE_W); this.head.material = this.headMat; this.head.parent = this.root;
     this.trail = new Mesh('trail', this.scene); this.trail.material = this.trailMat; this.trail.parent = this.root; this.trail.alwaysSelectAsActiveMesh = true;
     this.trail.setEnabled(false);
@@ -385,7 +394,7 @@ export class World {
     this.trailBuf.fill(0); this.updateTrail(t, true);
     for (const d of this.diamonds) { d.taken = this.game.diamondsTaken.has(this.diamonds.indexOf(d)); d.mesh.setEnabled(!d.taken); d.mesh.scaling.set(1, 1.5, 1); d.mesh.position.copyFrom(d.base); }
     for (const c of this.crowns) { c.taken = c.t <= t + 1e-6; c.node.setEnabled(true); c.node.position.copyFrom(c.base); this.ghostCrown(c.node, c.taken); }
-    for (const f of this.fx) f.mesh.dispose(); this.fx = [];
+    for (const f of this.fx) {const mat=f.mesh.material;f.mesh.dispose();if(f.kind==='glow'||f.kind==='ring')mat?.dispose(false,false);} this.fx = [];
     this.failAnim?.pieces.forEach(p => p.mesh.dispose()); this.failAnim = null;
     this.head?.setEnabled(true); if (this.head) this.head.visibility = 1; this.skin.reset();
     if (this.rig) { this.rig.freezeAt = null; this.rig.extraPitch = 0; this.rig.extraDist = 0; this.rig.snap(); }
@@ -405,10 +414,12 @@ export class World {
   private updateTrail(t: number, full = false) {
     const g = this.game!, route = this.route!;
     const tc = route.freeTurns ? t : Math.min(t, pendingCorner(route, g.turns, t, g.cursor));
-    const runs: Run[] = [];
+    const runs: Run[] = [];let arcOffset=0;
     for (const sp of route.freeTurns ? travelledSpans(route, g.turns) : route.spans) {
       if (sp.t0 >= tc) break;
       if (sp.air) continue;
+      // Keep more than the camera/road's rear window, not all 361 turns forever.
+      if(this.cmode&&sp.t1<tc-14){arcOffset+=Math.hypot(sp.v*(sp.t1-sp.t0),sp.y1-sp.y0);continue;}
       const a = this.v3(spanPos(sp, sp.t0)), b = this.v3(spanPos(sp, Math.min(sp.t1, tc)));
       const len = (Math.min(sp.t1, tc) - sp.t0) * sp.v; const slope = len > 1e-6 ? (b.y - a.y) / len : 0;
       const last = runs[runs.length - 1];
@@ -426,7 +437,7 @@ export class World {
     }
     const changed = full || first < runs.length || runs.length !== this.trailCount;
     this.runs = runs; this.trailCount = runs.length;
-    if (changed && this.trail) updateTrailMesh(this.trail, runs);
+    if (changed && this.trail) updateTrailMesh(this.trail, runs,arcOffset);
   }
 
   // ---- events from the game ----
@@ -487,14 +498,21 @@ export class World {
 
   // ---- per frame ----
   frame(t: number) {
-    const now = performance.now(); const dt = Math.min(0.1, (now - this.lastFrame) / 1000); this.lastFrame = now;
-    this.fpsAcc += dt; this.fpsN++; if (this.fpsAcc > 0.5) { this.fps = this.fpsN / this.fpsAcc; this.fpsAcc = 0; this.fpsN = 0; }
+    const now = performance.now(); const rawDt=Math.max(1e-6,(now-this.lastFrame)/1000),dt=Math.min(.1,rawDt);this.lastFrame=now;
+    this.fpsAcc += rawDt; this.fpsN++; if (this.fpsAcc > 0.5) { this.fps = this.fpsN / this.fpsAcc; this.fpsAcc = 0; this.fpsN = 0; }
     // Babylon ages particles by updateSpeed per frame; tie it to real frame time so lifetimes are in seconds
     // on any frame rate (the line skin does the same for its own systems)
     const us = Math.min(0.1, Math.max(0.001, dt));
     for (const ps of this.scene.particleSystems) if (ps.name === 'burst' || ps.name === 'amb') (ps as ParticleSystem).updateSpeed = us;
     this.applyTime(t, dt, false);
     this.scene.render();
+    const cost=performance.now()-now;this.renderCost+=(cost-this.renderCost)*.08;
+    // Adapt to measured CPU submit/render time, not a 60-Hz browser's rAF interval.
+    // A lower resolution can reduce fill cost; it cannot unlock a device's refresh rate.
+    if(this.mode==='play'){
+      this.resizePressure=this.renderCost>(this.targetFps===120?6.5:12.5)?this.resizePressure+dt:0;
+      if(this.resizePressure>2&&this.resolutionScale>.65){this.resolutionScale=Math.max(.65,this.resolutionScale-.1);this.resizePressure=0;this.updateResolution();}
+    }
   }
 
   private applyTime(t: number, dt: number, seeking: boolean) {
@@ -563,7 +581,7 @@ export class World {
     // fx
     for (let i = this.fx.length - 1; i >= 0; i--) {
       const f = this.fx[i]; const k = (t - f.t0) / f.dur;
-      if (k >= 1 || k < -0.05) { if (f.kind === 'crown') { (f.mesh as unknown as TransformNode).position.copyFrom(f.from!); this.ghostCrown(f.mesh as unknown as TransformNode, true); (f.mesh as unknown as TransformNode).scaling.setAll(1); } else if (f.kind === 'collect') f.mesh.setEnabled(false); else f.mesh.dispose(); this.fx.splice(i, 1); continue; }
+      if (k >= 1 || k < -0.05) { if (f.kind === 'crown') { (f.mesh as unknown as TransformNode).position.copyFrom(f.from!); this.ghostCrown(f.mesh as unknown as TransformNode, true); (f.mesh as unknown as TransformNode).scaling.setAll(1); } else if (f.kind === 'collect') f.mesh.setEnabled(false); else {const mat=f.mesh.material;f.mesh.dispose();if(f.kind==='glow'||f.kind==='ring')mat?.dispose(false,false);} this.fx.splice(i, 1); continue; }
       if (f.kind === 'glow') { f.mesh.scaling.setAll(1.2 + k * 2.6); (f.mesh.material as StandardMaterial).alpha = 0.55 * (1 - k); }
       if (f.kind === 'collect') { f.mesh.position.y = f.from!.y + k * 1.6; f.mesh.scaling.setAll((1 - k) * 1.4); }
       if (f.kind === 'ring') { f.mesh.scaling.set(1 + k * 9, 1, 1 + k * 9); (f.mesh.material as StandardMaterial).alpha = 0.6 * (1 - k); }
@@ -801,8 +819,11 @@ export class World {
   }
 
   resize() { this.engine.resize(); }
-  async prepareScenery(t=0) { await this.sc?.warmup(); await this.sc?.prepareAt(t); }
+  async prepareScenery(t=0,onProgress?:import('./scenec/scenec').PrepareProgress) {
+    if(this.sc)await this.sc.warmup(t,onProgress);
+    else {onProgress?.('models',1,'模型就绪');onProgress?.('road',1,'道路就绪');onProgress?.('render',1,'渲染就绪');}
+  }
 
   dispose() { this.unload(); this.skin.dispose(); this.scene.dispose(); this.engine.dispose(); }
-  stats() { return { meshes: this.scene.meshes.length, active: this.scene.getActiveMeshes().length, fps: this.fps, trail: this.trailCount, tiles: this.road?.tiles.length ?? 0, objects: this.objects.length, drawCalls: (this.engine as any)._drawCalls?.current ?? null, scenec: this.sc?.last ?? null }; }
+  stats() { return { meshes: this.scene.meshes.length, active: this.scene.getActiveMeshes().length, fps: this.fps, targetFps:this.targetFps, renderCpuMs:this.renderCost, resolutionScale:this.resolutionScale, trail: this.trailCount, tiles: this.road?.tiles.length ?? 0, objects: this.objects.length, drawCalls: (this.engine as any)._drawCalls?.current ?? null, scenec: this.sc?.last ?? null }; }
 }

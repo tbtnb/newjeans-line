@@ -4,10 +4,13 @@ import type { UniformBuffer } from '@babylonjs/core/Materials/uniformBuffer';
 import { Vector3 } from '@babylonjs/core/Maths/math.vector';
 import { posAt, type Route } from '../../core/path';
 
+const downward=new WeakMap<Route,Route['spans']>();
 const SIGHT={cam:new Vector3(), points:Array.from({length:7},()=>new Vector3()), on:0};
 /** Only the short approach/landing interval of a downward jump needs terrain cutaway. */
 export function updateRoadSightline(route:Route,t:number,cam:Vector3) {
-  SIGHT.on=route.spans.some(s=>s.air && s.y1<s.y0 && s.t0<t+2.4 && s.t1>t-1.2)?1:0;
+  let spans=downward.get(route);if(!spans){spans=route.spans.filter(s=>s.air&&s.y1<s.y0);downward.set(route,spans);}
+  SIGHT.on=spans.some(s=>s.air && s.y1<s.y0 && s.t0<t+2.4 && s.t1>t-1.2)?1:0;
+  if(!SIGHT.on)return;
   SIGHT.cam.copyFrom(cam);
   SIGHT.points.forEach((v,i)=>{const p=posAt(route,Math.min(route.duration,t+i*0.4));v.set(p.x,p.y+0.12,p.z);});
 }

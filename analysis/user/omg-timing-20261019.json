@@ -1,0 +1,3261 @@
+{
+  "audio_sha256": "3d73a574f95dcca46bc7510c794644cd43cb5213e8ba5952e118a37b38c33b19",
+  "fresh_audio_samples": 9360372,
+  "saved_full_mix_correlation": 0.9999999999955699,
+  "saved_full_lag_samples": 0,
+  "detector_calibration_ms": -7.1466364323505465,
+  "rule": "Preserve all 361 intended beat/subbeat slots and directions. Only move 8–25ms to a strong kick/snare attack confirmed within 9ms by fresh full-mix analysis; retain 47% regular phrase and ambiguous vocal runs. No added or removed taps.",
+  "changed": 20,
+  "changes": [
+    {
+      "index": 35,
+      "raw": 29.7377,
+      "before": 29.774,
+      "after": 29.787,
+      "prior_layer": "snare",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.854,
+      "mix_onset": 29.7867,
+      "mix_strength": 0.463,
+      "delta_ms": 13
+    },
+    {
+      "index": 51,
+      "raw": 35.5973,
+      "before": 35.68,
+      "after": 35.667,
+      "prior_layer": "syllable",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.853,
+      "mix_onset": 35.6672,
+      "mix_strength": 1.028,
+      "delta_ms": -13
+    },
+    {
+      "index": 83,
+      "raw": 46.99,
+      "before": 47.018,
+      "after": 47.03,
+      "prior_layer": "other",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.797,
+      "mix_onset": 47.0305,
+      "mix_strength": 0.72,
+      "delta_ms": 12
+    },
+    {
+      "index": 86,
+      "raw": 47.7067,
+      "before": 47.726,
+      "after": 47.739,
+      "prior_layer": "snare",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 1.04,
+      "mix_onset": 47.7387,
+      "mix_strength": 0.972,
+      "delta_ms": 13
+    },
+    {
+      "index": 93,
+      "raw": 49.5563,
+      "before": 49.616,
+      "after": 49.628,
+      "prior_layer": "vocals",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.668,
+      "mix_onset": 49.6311,
+      "mix_strength": 0.718,
+      "delta_ms": 12
+    },
+    {
+      "index": 94,
+      "raw": 49.7563,
+      "before": 49.852,
+      "after": 49.863,
+      "prior_layer": "snare",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 1.172,
+      "mix_onset": 49.8662,
+      "mix_strength": 0.799,
+      "delta_ms": 11
+    },
+    {
+      "index": 98,
+      "raw": 51.432,
+      "before": 51.506,
+      "after": 51.518,
+      "prior_layer": "kick",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 1.019,
+      "mix_onset": 51.5177,
+      "mix_strength": 0.711,
+      "delta_ms": 12
+    },
+    {
+      "index": 105,
+      "raw": 53.833,
+      "before": 53.868,
+      "after": 53.857,
+      "prior_layer": "kick",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 1.17,
+      "mix_onset": 53.86,
+      "mix_strength": 0.974,
+      "delta_ms": -11
+    },
+    {
+      "index": 116,
+      "raw": 56.8667,
+      "before": 56.939,
+      "after": 56.951,
+      "prior_layer": "snare",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.729,
+      "mix_onset": 56.9541,
+      "mix_strength": 0.547,
+      "delta_ms": 12
+    },
+    {
+      "index": 117,
+      "raw": 57.1333,
+      "before": 57.175,
+      "after": 57.189,
+      "prior_layer": "vocals",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.761,
+      "mix_onset": 57.1921,
+      "mix_strength": 1.146,
+      "delta_ms": 14
+    },
+    {
+      "index": 118,
+      "raw": 57.3333,
+      "before": 57.411,
+      "after": 57.424,
+      "prior_layer": "snare",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.885,
+      "mix_onset": 57.4243,
+      "mix_strength": 0.584,
+      "delta_ms": 13
+    },
+    {
+      "index": 122,
+      "raw": 59.025,
+      "before": 59.065,
+      "after": 59.076,
+      "prior_layer": "snare",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.72,
+      "mix_onset": 59.0787,
+      "mix_strength": 0.452,
+      "delta_ms": 11
+    },
+    {
+      "index": 150,
+      "raw": 65.8507,
+      "before": 65.915,
+      "after": 65.897,
+      "prior_layer": "syllable",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.668,
+      "mix_onset": 65.8996,
+      "mix_strength": 0.838,
+      "delta_ms": -18
+    },
+    {
+      "index": 206,
+      "raw": 86.895,
+      "before": 86.938,
+      "after": 86.928,
+      "prior_layer": "kick",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.943,
+      "mix_onset": 86.9281,
+      "mix_strength": 0.831,
+      "delta_ms": -10
+    },
+    {
+      "index": 233,
+      "raw": 98.687,
+      "before": 98.749,
+      "after": 98.773,
+      "prior_layer": "kick",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "kick",
+      "stem_strength": 0.832,
+      "mix_onset": 98.7674,
+      "mix_strength": 0.391,
+      "delta_ms": 24
+    },
+    {
+      "index": 259,
+      "raw": 110.0133,
+      "before": 110.087,
+      "after": 110.102,
+      "prior_layer": "kick",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "kick",
+      "stem_strength": 0.695,
+      "mix_onset": 110.1017,
+      "mix_strength": 0.767,
+      "delta_ms": 15
+    },
+    {
+      "index": 263,
+      "raw": 111.9227,
+      "before": 111.977,
+      "after": 111.988,
+      "prior_layer": "snare",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.982,
+      "mix_onset": 111.9912,
+      "mix_strength": 0.657,
+      "delta_ms": 11
+    },
+    {
+      "index": 268,
+      "raw": 115.247,
+      "before": 115.284,
+      "after": 115.3,
+      "prior_layer": "vocals",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.692,
+      "mix_onset": 115.3,
+      "mix_strength": 0.796,
+      "delta_ms": 16
+    },
+    {
+      "index": 272,
+      "raw": 117.6063,
+      "before": 117.646,
+      "after": 117.663,
+      "prior_layer": "vocals",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.912,
+      "mix_onset": 117.6656,
+      "mix_strength": 1.046,
+      "delta_ms": 17
+    },
+    {
+      "index": 310,
+      "raw": 132.8827,
+      "before": 133.0,
+      "after": 132.985,
+      "prior_layer": "kick",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "kick",
+      "stem_strength": 0.663,
+      "mix_onset": 132.9907,
+      "mix_strength": 0.406,
+      "delta_ms": -15
+    }
+  ],
+  "taps": [
+    {
+      "index": 0,
+      "raw": 1.918,
+      "before": 1.901,
+      "after": 1.901,
+      "prior_layer": "other",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 1,
+      "raw": 2.4357,
+      "before": 2.373,
+      "after": 2.373,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 2,
+      "raw": 2.8693,
+      "before": 2.846,
+      "after": 2.846,
+      "prior_layer": "-",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 3,
+      "raw": 3.3183,
+      "before": 3.318,
+      "after": 3.318,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 4,
+      "raw": 3.8277,
+      "before": 3.79,
+      "after": 3.79,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 5,
+      "raw": 4.76,
+      "before": 4.735,
+      "after": 4.735,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 6,
+      "raw": 5.752,
+      "before": 5.68,
+      "after": 5.68,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 7,
+      "raw": 6.6443,
+      "before": 6.625,
+      "after": 6.625,
+      "prior_layer": "other",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 8,
+      "raw": 7.56,
+      "before": 7.57,
+      "after": 7.57,
+      "prior_layer": "other",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 9,
+      "raw": 8.5103,
+      "before": 8.515,
+      "after": 8.515,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 10,
+      "raw": 9.4117,
+      "before": 9.46,
+      "after": 9.46,
+      "prior_layer": "other",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 11,
+      "raw": 10.377,
+      "before": 10.404,
+      "after": 10.404,
+      "prior_layer": "-",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 12,
+      "raw": 11.3273,
+      "before": 11.349,
+      "after": 11.349,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 13,
+      "raw": 12.2533,
+      "before": 12.294,
+      "after": 12.294,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 14,
+      "raw": 13.2447,
+      "before": 13.239,
+      "after": 13.239,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 15,
+      "raw": 13.702,
+      "before": 13.711,
+      "after": 13.711,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 16,
+      "raw": 14.1877,
+      "before": 14.184,
+      "after": 14.184,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 17,
+      "raw": 14.6367,
+      "before": 14.656,
+      "after": 14.656,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 18,
+      "raw": 15.111,
+      "before": 15.129,
+      "after": 15.129,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 19,
+      "raw": 16.0703,
+      "before": 16.074,
+      "after": 16.074,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 20,
+      "raw": 17.0203,
+      "before": 17.018,
+      "after": 17.018,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 21,
+      "raw": 17.903,
+      "before": 17.963,
+      "after": 17.963,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 22,
+      "raw": 18.887,
+      "before": 18.908,
+      "after": 18.908,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 23,
+      "raw": 19.8533,
+      "before": 19.853,
+      "after": 19.853,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 24,
+      "raw": 20.7707,
+      "before": 20.798,
+      "after": 20.798,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 25,
+      "raw": 21.729,
+      "before": 21.743,
+      "after": 21.743,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 26,
+      "raw": 22.67,
+      "before": 22.688,
+      "after": 22.688,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 27,
+      "raw": 23.5877,
+      "before": 23.633,
+      "after": 23.633,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 28,
+      "raw": 24.5627,
+      "before": 24.577,
+      "after": 24.577,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 29,
+      "raw": 25.4623,
+      "before": 25.522,
+      "after": 25.522,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 30,
+      "raw": 25.922,
+      "before": 25.995,
+      "after": 25.995,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 31,
+      "raw": 26.3717,
+      "before": 26.467,
+      "after": 26.467,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 32,
+      "raw": 27.3713,
+      "before": 27.412,
+      "after": 27.412,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 33,
+      "raw": 28.3307,
+      "before": 28.357,
+      "after": 28.357,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 34,
+      "raw": 29.2137,
+      "before": 29.302,
+      "after": 29.302,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 35,
+      "raw": 29.7377,
+      "before": 29.774,
+      "after": 29.787,
+      "prior_layer": "snare",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.854,
+      "mix_onset": 29.7867,
+      "mix_strength": 0.463,
+      "delta_ms": 13
+    },
+    {
+      "index": 36,
+      "raw": 30.2133,
+      "before": 30.247,
+      "after": 30.247,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 37,
+      "raw": 30.863,
+      "before": 30.955,
+      "after": 30.955,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 38,
+      "raw": 31.1557,
+      "before": 31.191,
+      "after": 31.191,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 39,
+      "raw": 31.6303,
+      "before": 31.664,
+      "after": 31.664,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 40,
+      "raw": 32.1227,
+      "before": 32.136,
+      "after": 32.136,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 41,
+      "raw": 32.5713,
+      "before": 32.609,
+      "after": 32.609,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 42,
+      "raw": 32.7807,
+      "before": 32.845,
+      "after": 32.845,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 43,
+      "raw": 33.0133,
+      "before": 33.081,
+      "after": 33.081,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 44,
+      "raw": 33.222,
+      "before": 33.317,
+      "after": 33.317,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 45,
+      "raw": 33.497,
+      "before": 33.554,
+      "after": 33.554,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 46,
+      "raw": 33.9963,
+      "before": 34.026,
+      "after": 34.026,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 47,
+      "raw": 34.5137,
+      "before": 34.498,
+      "after": 34.498,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 48,
+      "raw": 34.9643,
+      "before": 34.971,
+      "after": 34.971,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 49,
+      "raw": 35.1717,
+      "before": 35.207,
+      "after": 35.207,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 50,
+      "raw": 35.3963,
+      "before": 35.443,
+      "after": 35.443,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 51,
+      "raw": 35.5973,
+      "before": 35.68,
+      "after": 35.667,
+      "prior_layer": "syllable",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.853,
+      "mix_onset": 35.6672,
+      "mix_strength": 1.028,
+      "delta_ms": -13
+    },
+    {
+      "index": 52,
+      "raw": 35.8463,
+      "before": 35.916,
+      "after": 35.916,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 53,
+      "raw": 36.081,
+      "before": 36.152,
+      "after": 36.152,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 54,
+      "raw": 36.3227,
+      "before": 36.388,
+      "after": 36.388,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 55,
+      "raw": 36.5387,
+      "before": 36.624,
+      "after": 36.624,
+      "prior_layer": "bass",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 56,
+      "raw": 36.823,
+      "before": 36.861,
+      "after": 36.861,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 57,
+      "raw": 37.0303,
+      "before": 37.097,
+      "after": 37.097,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 58,
+      "raw": 37.2727,
+      "before": 37.333,
+      "after": 37.333,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 59,
+      "raw": 37.7477,
+      "before": 37.805,
+      "after": 37.805,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 60,
+      "raw": 38.6897,
+      "before": 38.75,
+      "after": 38.75,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 61,
+      "raw": 39.1633,
+      "before": 39.223,
+      "after": 39.223,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 62,
+      "raw": 39.648,
+      "before": 39.695,
+      "after": 39.695,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 63,
+      "raw": 40.1057,
+      "before": 40.168,
+      "after": 40.168,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 64,
+      "raw": 40.5817,
+      "before": 40.64,
+      "after": 40.64,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 65,
+      "raw": 41.056,
+      "before": 41.112,
+      "after": 41.112,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 66,
+      "raw": 41.282,
+      "before": 41.349,
+      "after": 41.349,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 67,
+      "raw": 41.5477,
+      "before": 41.585,
+      "after": 41.585,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 68,
+      "raw": 42.0313,
+      "before": 42.057,
+      "after": 42.057,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 69,
+      "raw": 42.5057,
+      "before": 42.53,
+      "after": 42.53,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 70,
+      "raw": 42.9723,
+      "before": 43.002,
+      "after": 43.002,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 71,
+      "raw": 43.432,
+      "before": 43.475,
+      "after": 43.475,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 72,
+      "raw": 43.641,
+      "before": 43.711,
+      "after": 43.711,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 73,
+      "raw": 43.866,
+      "before": 43.947,
+      "after": 43.947,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 74,
+      "raw": 44.0907,
+      "before": 44.183,
+      "after": 44.183,
+      "prior_layer": "bass",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 75,
+      "raw": 44.3487,
+      "before": 44.419,
+      "after": 44.419,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 76,
+      "raw": 44.5643,
+      "before": 44.656,
+      "after": 44.656,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 77,
+      "raw": 44.8313,
+      "before": 44.892,
+      "after": 44.892,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 78,
+      "raw": 45.05,
+      "before": 45.128,
+      "after": 45.128,
+      "prior_layer": "bass",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 79,
+      "raw": 45.3067,
+      "before": 45.364,
+      "after": 45.364,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 80,
+      "raw": 45.7893,
+      "before": 45.837,
+      "after": 45.837,
+      "prior_layer": "other",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 81,
+      "raw": 46.2737,
+      "before": 46.309,
+      "after": 46.309,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 82,
+      "raw": 46.7563,
+      "before": 46.782,
+      "after": 46.782,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 83,
+      "raw": 46.99,
+      "before": 47.018,
+      "after": 47.03,
+      "prior_layer": "other",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.797,
+      "mix_onset": 47.0305,
+      "mix_strength": 0.72,
+      "delta_ms": 12
+    },
+    {
+      "index": 84,
+      "raw": 47.2323,
+      "before": 47.254,
+      "after": 47.254,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 85,
+      "raw": 47.458,
+      "before": 47.49,
+      "after": 47.49,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 86,
+      "raw": 47.7067,
+      "before": 47.726,
+      "after": 47.739,
+      "prior_layer": "snare",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 1.04,
+      "mix_onset": 47.7387,
+      "mix_strength": 0.972,
+      "delta_ms": 13
+    },
+    {
+      "index": 87,
+      "raw": 48.191,
+      "before": 48.199,
+      "after": 48.199,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 88,
+      "raw": 48.3903,
+      "before": 48.435,
+      "after": 48.435,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 89,
+      "raw": 48.607,
+      "before": 48.671,
+      "after": 48.671,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 90,
+      "raw": 48.833,
+      "before": 48.908,
+      "after": 48.908,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 91,
+      "raw": 49.066,
+      "before": 49.144,
+      "after": 49.144,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 92,
+      "raw": 49.3077,
+      "before": 49.38,
+      "after": 49.38,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 93,
+      "raw": 49.5563,
+      "before": 49.616,
+      "after": 49.628,
+      "prior_layer": "vocals",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.668,
+      "mix_onset": 49.6311,
+      "mix_strength": 0.718,
+      "delta_ms": 12
+    },
+    {
+      "index": 94,
+      "raw": 49.7563,
+      "before": 49.852,
+      "after": 49.863,
+      "prior_layer": "snare",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 1.172,
+      "mix_onset": 49.8662,
+      "mix_strength": 0.799,
+      "delta_ms": 11
+    },
+    {
+      "index": 95,
+      "raw": 50.0647,
+      "before": 50.089,
+      "after": 50.089,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 96,
+      "raw": 50.5157,
+      "before": 50.561,
+      "after": 50.561,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 97,
+      "raw": 50.9573,
+      "before": 51.033,
+      "after": 51.033,
+      "prior_layer": "other",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 98,
+      "raw": 51.432,
+      "before": 51.506,
+      "after": 51.518,
+      "prior_layer": "kick",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 1.019,
+      "mix_onset": 51.5177,
+      "mix_strength": 0.711,
+      "delta_ms": 12
+    },
+    {
+      "index": 99,
+      "raw": 51.8917,
+      "before": 51.978,
+      "after": 51.978,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 100,
+      "raw": 52.3813,
+      "before": 52.451,
+      "after": 52.451,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 101,
+      "raw": 52.866,
+      "before": 52.923,
+      "after": 52.923,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 102,
+      "raw": 53.0907,
+      "before": 53.159,
+      "after": 53.159,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 103,
+      "raw": 53.3323,
+      "before": 53.396,
+      "after": 53.396,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 104,
+      "raw": 53.5493,
+      "before": 53.632,
+      "after": 53.632,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 105,
+      "raw": 53.833,
+      "before": 53.868,
+      "after": 53.857,
+      "prior_layer": "kick",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 1.17,
+      "mix_onset": 53.86,
+      "mix_strength": 0.974,
+      "delta_ms": -11
+    },
+    {
+      "index": 106,
+      "raw": 54.3073,
+      "before": 54.341,
+      "after": 54.341,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 107,
+      "raw": 54.5077,
+      "before": 54.577,
+      "after": 54.577,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 108,
+      "raw": 54.7413,
+      "before": 54.813,
+      "after": 54.813,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 109,
+      "raw": 54.9493,
+      "before": 55.049,
+      "after": 55.049,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 110,
+      "raw": 55.241,
+      "before": 55.285,
+      "after": 55.285,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 111,
+      "raw": 55.7163,
+      "before": 55.758,
+      "after": 55.758,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 112,
+      "raw": 55.9233,
+      "before": 55.994,
+      "after": 55.994,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 113,
+      "raw": 56.1833,
+      "before": 56.23,
+      "after": 56.23,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 114,
+      "raw": 56.417,
+      "before": 56.466,
+      "after": 56.466,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 115,
+      "raw": 56.65,
+      "before": 56.703,
+      "after": 56.703,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 116,
+      "raw": 56.8667,
+      "before": 56.939,
+      "after": 56.951,
+      "prior_layer": "snare",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.729,
+      "mix_onset": 56.9541,
+      "mix_strength": 0.547,
+      "delta_ms": 12
+    },
+    {
+      "index": 117,
+      "raw": 57.1333,
+      "before": 57.175,
+      "after": 57.189,
+      "prior_layer": "vocals",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.761,
+      "mix_onset": 57.1921,
+      "mix_strength": 1.146,
+      "delta_ms": 14
+    },
+    {
+      "index": 118,
+      "raw": 57.3333,
+      "before": 57.411,
+      "after": 57.424,
+      "prior_layer": "snare",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.885,
+      "mix_onset": 57.4243,
+      "mix_strength": 0.584,
+      "delta_ms": 13
+    },
+    {
+      "index": 119,
+      "raw": 57.608,
+      "before": 57.648,
+      "after": 57.648,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 120,
+      "raw": 58.0747,
+      "before": 58.12,
+      "after": 58.12,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 121,
+      "raw": 58.5243,
+      "before": 58.592,
+      "after": 58.592,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 122,
+      "raw": 59.025,
+      "before": 59.065,
+      "after": 59.076,
+      "prior_layer": "snare",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.72,
+      "mix_onset": 59.0787,
+      "mix_strength": 0.452,
+      "delta_ms": 11
+    },
+    {
+      "index": 123,
+      "raw": 59.526,
+      "before": 59.537,
+      "after": 59.537,
+      "prior_layer": "other",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 124,
+      "raw": 59.7493,
+      "before": 59.773,
+      "after": 59.773,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 125,
+      "raw": 59.975,
+      "before": 60.01,
+      "after": 60.01,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 126,
+      "raw": 60.2507,
+      "before": 60.246,
+      "after": 60.246,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 127,
+      "raw": 60.4757,
+      "before": 60.482,
+      "after": 60.482,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 128,
+      "raw": 60.7083,
+      "before": 60.718,
+      "after": 60.718,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 129,
+      "raw": 60.9413,
+      "before": 60.955,
+      "after": 60.955,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 130,
+      "raw": 61.1823,
+      "before": 61.191,
+      "after": 61.191,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 131,
+      "raw": 61.4587,
+      "before": 61.427,
+      "after": 61.427,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 132,
+      "raw": 61.6747,
+      "before": 61.663,
+      "after": 61.663,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 133,
+      "raw": 61.9087,
+      "before": 61.899,
+      "after": 61.899,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 134,
+      "raw": 62.1167,
+      "before": 62.136,
+      "after": 62.136,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 135,
+      "raw": 62.3323,
+      "before": 62.372,
+      "after": 62.372,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 136,
+      "raw": 62.5663,
+      "before": 62.608,
+      "after": 62.608,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 137,
+      "raw": 62.8087,
+      "before": 62.844,
+      "after": 62.844,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 138,
+      "raw": 63.018,
+      "before": 63.08,
+      "after": 63.08,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 139,
+      "raw": 63.2757,
+      "before": 63.317,
+      "after": 63.317,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 140,
+      "raw": 63.4913,
+      "before": 63.553,
+      "after": 63.553,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 141,
+      "raw": 63.7253,
+      "before": 63.789,
+      "after": 63.789,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 142,
+      "raw": 63.975,
+      "before": 64.025,
+      "after": 64.025,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 143,
+      "raw": 64.209,
+      "before": 64.262,
+      "after": 64.262,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 144,
+      "raw": 64.4667,
+      "before": 64.498,
+      "after": 64.498,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 145,
+      "raw": 64.7007,
+      "before": 64.734,
+      "after": 64.734,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 146,
+      "raw": 64.9243,
+      "before": 64.97,
+      "after": 64.97,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 147,
+      "raw": 65.1663,
+      "before": 65.206,
+      "after": 65.206,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 148,
+      "raw": 65.393,
+      "before": 65.443,
+      "after": 65.443,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 149,
+      "raw": 65.6337,
+      "before": 65.679,
+      "after": 65.679,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 150,
+      "raw": 65.8507,
+      "before": 65.915,
+      "after": 65.897,
+      "prior_layer": "syllable",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.668,
+      "mix_onset": 65.8996,
+      "mix_strength": 0.838,
+      "delta_ms": -18
+    },
+    {
+      "index": 151,
+      "raw": 66.1093,
+      "before": 66.151,
+      "after": 66.151,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 152,
+      "raw": 66.576,
+      "before": 66.624,
+      "after": 66.624,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 153,
+      "raw": 67.2743,
+      "before": 67.332,
+      "after": 67.332,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 154,
+      "raw": 67.5343,
+      "before": 67.569,
+      "after": 67.569,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 155,
+      "raw": 67.743,
+      "before": 67.805,
+      "after": 67.805,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 156,
+      "raw": 67.984,
+      "before": 68.041,
+      "after": 68.041,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 157,
+      "raw": 68.201,
+      "before": 68.277,
+      "after": 68.277,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 158,
+      "raw": 68.4417,
+      "before": 68.513,
+      "after": 68.513,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 159,
+      "raw": 68.6507,
+      "before": 68.75,
+      "after": 68.75,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 160,
+      "raw": 68.9333,
+      "before": 68.986,
+      "after": 68.986,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 161,
+      "raw": 69.376,
+      "before": 69.458,
+      "after": 69.458,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 162,
+      "raw": 69.8677,
+      "before": 69.931,
+      "after": 69.931,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 163,
+      "raw": 70.0753,
+      "before": 70.167,
+      "after": 70.167,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 164,
+      "raw": 70.3013,
+      "before": 70.403,
+      "after": 70.403,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 165,
+      "raw": 70.5183,
+      "before": 70.639,
+      "after": 70.639,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 166,
+      "raw": 70.801,
+      "before": 70.876,
+      "after": 70.876,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 167,
+      "raw": 71.2847,
+      "before": 71.348,
+      "after": 71.348,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 168,
+      "raw": 71.76,
+      "before": 71.82,
+      "after": 71.82,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 169,
+      "raw": 71.9503,
+      "before": 72.057,
+      "after": 72.057,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 170,
+      "raw": 72.168,
+      "before": 72.293,
+      "after": 72.293,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 171,
+      "raw": 72.376,
+      "before": 72.529,
+      "after": 72.529,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 172,
+      "raw": 72.6677,
+      "before": 72.765,
+      "after": 72.765,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 173,
+      "raw": 72.8853,
+      "before": 73.002,
+      "after": 73.002,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 174,
+      "raw": 73.1263,
+      "before": 73.238,
+      "after": 73.238,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 175,
+      "raw": 73.36,
+      "before": 73.474,
+      "after": 73.474,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 176,
+      "raw": 73.6507,
+      "before": 73.71,
+      "after": 73.71,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 177,
+      "raw": 74.094,
+      "before": 74.183,
+      "after": 74.183,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 178,
+      "raw": 74.577,
+      "before": 74.655,
+      "after": 74.655,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 179,
+      "raw": 75.0517,
+      "before": 75.127,
+      "after": 75.127,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 180,
+      "raw": 75.5193,
+      "before": 75.6,
+      "after": 75.6,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 181,
+      "raw": 76.0347,
+      "before": 76.072,
+      "after": 76.072,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 182,
+      "raw": 76.6097,
+      "before": 76.545,
+      "after": 76.545,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 183,
+      "raw": 76.9363,
+      "before": 77.017,
+      "after": 77.017,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 184,
+      "raw": 77.4187,
+      "before": 77.49,
+      "after": 77.49,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 185,
+      "raw": 77.6277,
+      "before": 77.726,
+      "after": 77.726,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 186,
+      "raw": 77.8347,
+      "before": 77.962,
+      "after": 77.962,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 187,
+      "raw": 78.0517,
+      "before": 78.198,
+      "after": 78.198,
+      "prior_layer": "bass",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 188,
+      "raw": 78.3193,
+      "before": 78.434,
+      "after": 78.434,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 189,
+      "raw": 78.551,
+      "before": 78.671,
+      "after": 78.671,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 190,
+      "raw": 78.8773,
+      "before": 78.907,
+      "after": 78.907,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 191,
+      "raw": 79.3023,
+      "before": 79.379,
+      "after": 79.379,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 192,
+      "raw": 80.2597,
+      "before": 80.324,
+      "after": 80.324,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 193,
+      "raw": 81.2347,
+      "before": 81.269,
+      "after": 81.269,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 194,
+      "raw": 81.6613,
+      "before": 81.741,
+      "after": 81.741,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 195,
+      "raw": 82.169,
+      "before": 82.214,
+      "after": 82.214,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 196,
+      "raw": 82.402,
+      "before": 82.45,
+      "after": 82.45,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 197,
+      "raw": 82.6687,
+      "before": 82.686,
+      "after": 82.686,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 198,
+      "raw": 83.136,
+      "before": 83.159,
+      "after": 83.159,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 199,
+      "raw": 84.0613,
+      "before": 84.104,
+      "after": 84.104,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 200,
+      "raw": 84.9937,
+      "before": 85.048,
+      "after": 85.048,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 201,
+      "raw": 85.4863,
+      "before": 85.521,
+      "after": 85.521,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 202,
+      "raw": 85.711,
+      "before": 85.757,
+      "after": 85.757,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 203,
+      "raw": 86.1857,
+      "before": 86.23,
+      "after": 86.23,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 204,
+      "raw": 86.4187,
+      "before": 86.466,
+      "after": 86.466,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 205,
+      "raw": 86.6277,
+      "before": 86.702,
+      "after": 86.702,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 206,
+      "raw": 86.895,
+      "before": 86.938,
+      "after": 86.928,
+      "prior_layer": "kick",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.943,
+      "mix_onset": 86.9281,
+      "mix_strength": 0.831,
+      "delta_ms": -10
+    },
+    {
+      "index": 207,
+      "raw": 87.8113,
+      "before": 87.883,
+      "after": 87.883,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 208,
+      "raw": 88.7777,
+      "before": 88.828,
+      "after": 88.828,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 209,
+      "raw": 89.2453,
+      "before": 89.3,
+      "after": 89.3,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 210,
+      "raw": 89.72,
+      "before": 89.773,
+      "after": 89.773,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 211,
+      "raw": 90.1787,
+      "before": 90.245,
+      "after": 90.245,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 212,
+      "raw": 90.6453,
+      "before": 90.718,
+      "after": 90.718,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 213,
+      "raw": 91.111,
+      "before": 91.19,
+      "after": 91.19,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 214,
+      "raw": 91.5867,
+      "before": 91.663,
+      "after": 91.663,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 215,
+      "raw": 91.8293,
+      "before": 91.899,
+      "after": 91.899,
+      "prior_layer": "bass",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 216,
+      "raw": 92.0533,
+      "before": 92.135,
+      "after": 92.135,
+      "prior_layer": "bass",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 217,
+      "raw": 92.2873,
+      "before": 92.371,
+      "after": 92.371,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 218,
+      "raw": 92.545,
+      "before": 92.607,
+      "after": 92.607,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 219,
+      "raw": 92.7697,
+      "before": 92.844,
+      "after": 92.844,
+      "prior_layer": "bass",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 220,
+      "raw": 93.0197,
+      "before": 93.08,
+      "after": 93.08,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 221,
+      "raw": 93.2453,
+      "before": 93.316,
+      "after": 93.316,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 222,
+      "raw": 93.4783,
+      "before": 93.552,
+      "after": 93.552,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 223,
+      "raw": 93.719,
+      "before": 93.788,
+      "after": 93.788,
+      "prior_layer": "bass",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 224,
+      "raw": 93.9867,
+      "before": 94.025,
+      "after": 94.025,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 225,
+      "raw": 94.4207,
+      "before": 94.497,
+      "after": 94.497,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 226,
+      "raw": 95.3617,
+      "before": 95.442,
+      "after": 95.442,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 227,
+      "raw": 95.878,
+      "before": 95.914,
+      "after": 95.914,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 228,
+      "raw": 96.338,
+      "before": 96.387,
+      "after": 96.387,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 229,
+      "raw": 96.7797,
+      "before": 96.859,
+      "after": 96.859,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 230,
+      "raw": 97.2533,
+      "before": 97.332,
+      "after": 97.332,
+      "prior_layer": "bass",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 231,
+      "raw": 97.704,
+      "before": 97.804,
+      "after": 97.804,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 232,
+      "raw": 98.2047,
+      "before": 98.277,
+      "after": 98.277,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 233,
+      "raw": 98.687,
+      "before": 98.749,
+      "after": 98.773,
+      "prior_layer": "kick",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "kick",
+      "stem_strength": 0.832,
+      "mix_onset": 98.7674,
+      "mix_strength": 0.391,
+      "delta_ms": 24
+    },
+    {
+      "index": 234,
+      "raw": 99.1617,
+      "before": 99.221,
+      "after": 99.221,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 235,
+      "raw": 99.6043,
+      "before": 99.694,
+      "after": 99.694,
+      "prior_layer": "bass",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 236,
+      "raw": 100.104,
+      "before": 100.166,
+      "after": 100.166,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 237,
+      "raw": 100.5707,
+      "before": 100.639,
+      "after": 100.639,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 238,
+      "raw": 101.0543,
+      "before": 101.111,
+      "after": 101.111,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 239,
+      "raw": 101.513,
+      "before": 101.584,
+      "after": 101.584,
+      "prior_layer": "other",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 240,
+      "raw": 101.729,
+      "before": 101.82,
+      "after": 101.82,
+      "prior_layer": "bass",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 241,
+      "raw": 101.9717,
+      "before": 102.056,
+      "after": 102.056,
+      "prior_layer": "bass",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 242,
+      "raw": 102.4463,
+      "before": 102.528,
+      "after": 102.528,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 243,
+      "raw": 102.938,
+      "before": 103.001,
+      "after": 103.001,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 244,
+      "raw": 103.1387,
+      "before": 103.237,
+      "after": 103.237,
+      "prior_layer": "bass",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 245,
+      "raw": 103.3973,
+      "before": 103.473,
+      "after": 103.473,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 246,
+      "raw": 103.6213,
+      "before": 103.709,
+      "after": 103.709,
+      "prior_layer": "other",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 247,
+      "raw": 103.8553,
+      "before": 103.946,
+      "after": 103.946,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 248,
+      "raw": 104.105,
+      "before": 104.182,
+      "after": 104.182,
+      "prior_layer": "bass",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 249,
+      "raw": 104.3477,
+      "before": 104.418,
+      "after": 104.418,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 250,
+      "raw": 104.5797,
+      "before": 104.654,
+      "after": 104.654,
+      "prior_layer": "bass",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 251,
+      "raw": 104.8303,
+      "before": 104.891,
+      "after": 104.891,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 252,
+      "raw": 105.0633,
+      "before": 105.127,
+      "after": 105.127,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 253,
+      "raw": 105.321,
+      "before": 105.363,
+      "after": 105.363,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 254,
+      "raw": 105.7803,
+      "before": 105.835,
+      "after": 105.835,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 255,
+      "raw": 106.721,
+      "before": 106.78,
+      "after": 106.78,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 256,
+      "raw": 107.705,
+      "before": 107.725,
+      "after": 107.725,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 257,
+      "raw": 108.646,
+      "before": 108.67,
+      "after": 108.67,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 258,
+      "raw": 109.5557,
+      "before": 109.615,
+      "after": 109.615,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 259,
+      "raw": 110.0133,
+      "before": 110.087,
+      "after": 110.102,
+      "prior_layer": "kick",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "kick",
+      "stem_strength": 0.695,
+      "mix_onset": 110.1017,
+      "mix_strength": 0.767,
+      "delta_ms": 15
+    },
+    {
+      "index": 260,
+      "raw": 110.5397,
+      "before": 110.56,
+      "after": 110.56,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 261,
+      "raw": 110.9813,
+      "before": 111.032,
+      "after": 111.032,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 262,
+      "raw": 111.455,
+      "before": 111.505,
+      "after": 111.505,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 263,
+      "raw": 111.9227,
+      "before": 111.977,
+      "after": 111.988,
+      "prior_layer": "snare",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.982,
+      "mix_onset": 111.9912,
+      "mix_strength": 0.657,
+      "delta_ms": 11
+    },
+    {
+      "index": 264,
+      "raw": 112.3893,
+      "before": 112.449,
+      "after": 112.449,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 265,
+      "raw": 112.863,
+      "before": 112.922,
+      "after": 112.922,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 266,
+      "raw": 113.3317,
+      "before": 113.394,
+      "after": 113.394,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 267,
+      "raw": 114.272,
+      "before": 114.339,
+      "after": 114.339,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 268,
+      "raw": 115.247,
+      "before": 115.284,
+      "after": 115.3,
+      "prior_layer": "vocals",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.692,
+      "mix_onset": 115.3,
+      "mix_strength": 0.796,
+      "delta_ms": 16
+    },
+    {
+      "index": 269,
+      "raw": 116.1727,
+      "before": 116.229,
+      "after": 116.229,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 270,
+      "raw": 116.6393,
+      "before": 116.701,
+      "after": 116.701,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 271,
+      "raw": 117.1317,
+      "before": 117.174,
+      "after": 117.174,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 272,
+      "raw": 117.6063,
+      "before": 117.646,
+      "after": 117.663,
+      "prior_layer": "vocals",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "snare",
+      "stem_strength": 0.912,
+      "mix_onset": 117.6656,
+      "mix_strength": 1.046,
+      "delta_ms": 17
+    },
+    {
+      "index": 273,
+      "raw": 118.056,
+      "before": 118.119,
+      "after": 118.119,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 274,
+      "raw": 118.5317,
+      "before": 118.591,
+      "after": 118.591,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 275,
+      "raw": 119.031,
+      "before": 119.063,
+      "after": 119.063,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 276,
+      "raw": 119.7323,
+      "before": 119.772,
+      "after": 119.772,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 277,
+      "raw": 120.0063,
+      "before": 120.008,
+      "after": 120.008,
+      "prior_layer": "other",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 278,
+      "raw": 120.457,
+      "before": 120.481,
+      "after": 120.481,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 279,
+      "raw": 120.8987,
+      "before": 120.953,
+      "after": 120.953,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 280,
+      "raw": 121.3563,
+      "before": 121.426,
+      "after": 121.426,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 281,
+      "raw": 121.8497,
+      "before": 121.898,
+      "after": 121.898,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 282,
+      "raw": 122.3237,
+      "before": 122.37,
+      "after": 122.37,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 283,
+      "raw": 122.5653,
+      "before": 122.607,
+      "after": 122.607,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 284,
+      "raw": 122.8073,
+      "before": 122.843,
+      "after": 122.843,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 285,
+      "raw": 123.256,
+      "before": 123.315,
+      "after": 123.315,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 286,
+      "raw": 123.7317,
+      "before": 123.788,
+      "after": 123.788,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 287,
+      "raw": 124.24,
+      "before": 124.26,
+      "after": 124.26,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 288,
+      "raw": 124.449,
+      "before": 124.496,
+      "after": 124.496,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 289,
+      "raw": 124.6827,
+      "before": 124.733,
+      "after": 124.733,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 290,
+      "raw": 125.1407,
+      "before": 125.205,
+      "after": 125.205,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 291,
+      "raw": 125.641,
+      "before": 125.678,
+      "after": 125.678,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 292,
+      "raw": 126.1153,
+      "before": 126.15,
+      "after": 126.15,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 293,
+      "raw": 126.5733,
+      "before": 126.622,
+      "after": 126.622,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 294,
+      "raw": 127.024,
+      "before": 127.095,
+      "after": 127.095,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 295,
+      "raw": 127.9653,
+      "before": 128.04,
+      "after": 128.04,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 296,
+      "raw": 128.1993,
+      "before": 128.276,
+      "after": 128.276,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 297,
+      "raw": 128.4497,
+      "before": 128.512,
+      "after": 128.512,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 298,
+      "raw": 128.9237,
+      "before": 128.985,
+      "after": 128.985,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 299,
+      "raw": 129.4073,
+      "before": 129.457,
+      "after": 129.457,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 300,
+      "raw": 129.8827,
+      "before": 129.929,
+      "after": 129.929,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 301,
+      "raw": 130.3493,
+      "before": 130.402,
+      "after": 130.402,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 302,
+      "raw": 130.5653,
+      "before": 130.638,
+      "after": 130.638,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 303,
+      "raw": 130.8073,
+      "before": 130.874,
+      "after": 130.874,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 304,
+      "raw": 131.0,
+      "before": 131.11,
+      "after": 131.11,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 305,
+      "raw": 131.2657,
+      "before": 131.347,
+      "after": 131.347,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 306,
+      "raw": 131.7323,
+      "before": 131.819,
+      "after": 131.819,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 307,
+      "raw": 132.2073,
+      "before": 132.292,
+      "after": 132.292,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 308,
+      "raw": 132.442,
+      "before": 132.528,
+      "after": 132.528,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 309,
+      "raw": 132.6757,
+      "before": 132.764,
+      "after": 132.764,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 310,
+      "raw": 132.8827,
+      "before": 133.0,
+      "after": 132.985,
+      "prior_layer": "kick",
+      "decision": "strong drum attack confirmed by freshly decoded full mix",
+      "layer": "kick",
+      "stem_strength": 0.663,
+      "mix_onset": 132.9907,
+      "mix_strength": 0.406,
+      "delta_ms": -15
+    },
+    {
+      "index": 311,
+      "raw": 133.1823,
+      "before": 133.236,
+      "after": 133.236,
+      "prior_layer": "vocals",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 312,
+      "raw": 133.408,
+      "before": 133.473,
+      "after": 133.473,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 313,
+      "raw": 133.6827,
+      "before": 133.709,
+      "after": 133.709,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 314,
+      "raw": 133.8997,
+      "before": 133.945,
+      "after": 133.945,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 315,
+      "raw": 134.15,
+      "before": 134.181,
+      "after": 134.181,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 316,
+      "raw": 134.592,
+      "before": 134.654,
+      "after": 134.654,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 317,
+      "raw": 135.042,
+      "before": 135.126,
+      "after": 135.126,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 318,
+      "raw": 135.4907,
+      "before": 135.599,
+      "after": 135.599,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 319,
+      "raw": 135.959,
+      "before": 136.071,
+      "after": 136.071,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 320,
+      "raw": 136.425,
+      "before": 136.543,
+      "after": 136.543,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 321,
+      "raw": 136.9753,
+      "before": 137.016,
+      "after": 137.016,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 322,
+      "raw": 137.443,
+      "before": 137.488,
+      "after": 137.488,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 323,
+      "raw": 137.9253,
+      "before": 137.961,
+      "after": 137.961,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 324,
+      "raw": 138.3743,
+      "before": 138.433,
+      "after": 138.433,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 325,
+      "raw": 138.8667,
+      "before": 138.906,
+      "after": 138.906,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 326,
+      "raw": 139.0917,
+      "before": 139.142,
+      "after": 139.142,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 327,
+      "raw": 139.3583,
+      "before": 139.378,
+      "after": 139.378,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 328,
+      "raw": 139.584,
+      "before": 139.614,
+      "after": 139.614,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 329,
+      "raw": 139.842,
+      "before": 139.85,
+      "after": 139.85,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 330,
+      "raw": 140.3007,
+      "before": 140.323,
+      "after": 140.323,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 331,
+      "raw": 140.7333,
+      "before": 140.795,
+      "after": 140.795,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 332,
+      "raw": 141.217,
+      "before": 141.268,
+      "after": 141.268,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 333,
+      "raw": 141.6757,
+      "before": 141.74,
+      "after": 141.74,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 334,
+      "raw": 142.41,
+      "before": 142.449,
+      "after": 142.449,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 335,
+      "raw": 142.6517,
+      "before": 142.685,
+      "after": 142.685,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 336,
+      "raw": 143.0767,
+      "before": 143.157,
+      "after": 143.157,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 337,
+      "raw": 143.5593,
+      "before": 143.63,
+      "after": 143.63,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 338,
+      "raw": 144.4833,
+      "before": 144.575,
+      "after": 144.575,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 339,
+      "raw": 145.4837,
+      "before": 145.52,
+      "after": 145.52,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 340,
+      "raw": 146.41,
+      "before": 146.464,
+      "after": 146.464,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 341,
+      "raw": 147.3503,
+      "before": 147.409,
+      "after": 147.409,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 342,
+      "raw": 148.2933,
+      "before": 148.354,
+      "after": 148.354,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 343,
+      "raw": 149.2597,
+      "before": 149.299,
+      "after": 149.299,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 344,
+      "raw": 150.193,
+      "before": 150.244,
+      "after": 150.244,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 345,
+      "raw": 151.185,
+      "before": 151.189,
+      "after": 151.189,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 346,
+      "raw": 151.6353,
+      "before": 151.661,
+      "after": 151.661,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 347,
+      "raw": 152.0597,
+      "before": 152.134,
+      "after": 152.134,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 348,
+      "raw": 152.5173,
+      "before": 152.606,
+      "after": 152.606,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 349,
+      "raw": 152.969,
+      "before": 153.078,
+      "after": 153.078,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 350,
+      "raw": 153.9857,
+      "before": 154.023,
+      "after": 154.023,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 351,
+      "raw": 154.4693,
+      "before": 154.496,
+      "after": 154.496,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 352,
+      "raw": 154.8943,
+      "before": 154.968,
+      "after": 154.968,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 353,
+      "raw": 155.378,
+      "before": 155.441,
+      "after": 155.441,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 354,
+      "raw": 155.8187,
+      "before": 155.913,
+      "after": 155.913,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 355,
+      "raw": 156.0517,
+      "before": 156.149,
+      "after": 156.149,
+      "prior_layer": "snare",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 356,
+      "raw": 156.3113,
+      "before": 156.385,
+      "after": 156.385,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 357,
+      "raw": 156.536,
+      "before": 156.622,
+      "after": 156.622,
+      "prior_layer": "syllable",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 358,
+      "raw": 156.786,
+      "before": 156.858,
+      "after": 156.858,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 359,
+      "raw": 157.2523,
+      "before": 157.33,
+      "after": 157.33,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    },
+    {
+      "index": 360,
+      "raw": 157.6943,
+      "before": 157.803,
+      "after": 157.803,
+      "prior_layer": "kick",
+      "decision": "keep intended grid slot"
+    }
+  ]
+}

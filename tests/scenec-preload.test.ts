@@ -38,3 +38,27 @@ test('landmark still intersecting the camera is not destroyed',()=>{
  Object.assign(c,{baked:new Map(),bakedBytes:0,sets:[e],scene:{frustumPlanes:[]},dropSetVisual(){throw Error('visible landmark must survive');}});
  c.retireBehind(10,40,{});assert.ok(e.far);
 });
+
+test('startup prepares only the active window plus three chunks and approaching landmarks',async()=>{
+ const c:any=Object.create(SceneC.prototype),chunks:number[]=[],sets:number[]=[],progress:any[]=[];
+ Object.assign(c,{disposed:false,preparing:true,tier:'high',plc:{chunks:Array.from({length:100})},sets:[{def:{t:8,popAt:4},far:null,nearMeshes:[]},{def:{t:90,popAt:80},far:null,nearMeshes:[]}],windowAt:()=>[0,5],chunkMesh:new Map(),prepared:new Map(),prepareChunk:(i:number)=>chunks.push(i),buildSetVisual:(e:any)=>sets.push(e.def.t),update(){assert.equal(c.preparing,false);}});
+ await c.prepareAt(0,(...p:any[])=>progress.push(p));
+ assert.deepEqual(chunks,[0,1,2,3,4,5,6,7,8]);assert.deepEqual(sets,[8]);assert.equal(progress.at(-1)[0],'render');assert.equal(progress.at(-1)[1],1);
+});
+test('checkpoint preparation targets the checkpoint and skips distant or low-tier-only sets',async()=>{
+ const c:any=Object.create(SceneC.prototype),chunks:number[]=[],sets:number[]=[];
+ Object.assign(c,{disposed:false,tier:'low',plc:{chunks:Array.from({length:100})},sets:[{def:{t:5,popAt:0},far:null,nearMeshes:[]},{def:{t:55,popAt:48},far:null,nearMeshes:[]},{def:{t:58,popAt:50,hi:true},far:null,nearMeshes:[]}],windowAt:()=>[20,24],chunkMesh:new Map(),prepared:new Map(),prepareChunk:(i:number)=>chunks.push(i),buildSetVisual:(e:any)=>sets.push(e.def.t),update(){}});
+ await c.prepareAt(50);assert.deepEqual(chunks,[20,21,22,23,24,25,26,27]);assert.deepEqual(sets,[55]);
+});
+test('warmup waits for models, reports existing progress and releases the render gate on failure/retry',async()=>{
+ const c:any=Object.create(SceneC.prototype);let resolve!:()=>void,prepare=0;const stages:string[]=[];
+ Object.assign(c,{disposed:false,warming:null,prefetchTimer:null,initialized:false,modelDone:2,modelTotal:4,ready:new Promise<void>(r=>resolve=r),dropChunks(){},async prepareAt(t:number){assert.equal(t,50);prepare++;if(prepare===1)throw Error('compile failure');}});
+ const p=c.warmup(50,(stage:string)=>stages.push(stage));assert.equal(c.preparing,true);assert.equal(prepare,0);assert.deepEqual(stages,['models']);resolve();
+ await assert.rejects(p,/compile failure/);assert.equal(c.preparing,false);assert.equal(c.warming,null);
+ await c.warmup(50);assert.equal(prepare,2);assert.equal(c.preparing,false);
+});
+test('model arrival does not instantiate distant landmark copies',()=>{
+ const c:any=Object.create(SceneC.prototype);let built=0;
+ Object.assign(c,{types:new Map(),dirtyAt:-1,time:0,sets:[{def:{a:'rabbit'},far:null}],buildSetVisual(){built++;}});
+ c.refreshAsset('rabbit');assert.equal(built,0);
+});

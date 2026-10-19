@@ -188,7 +188,7 @@
    "dir": "L"
   },
   {
-   "t": 29.774,
+   "t": 29.787,
    "tag": "snare",
    "dir": "R"
   },
@@ -278,7 +278,7 @@
    "dir": "L"
   },
   {
-   "t": 35.68,
+   "t": 35.667,
    "tag": "vocals",
    "lyric": "없이",
    "syl": "없",
@@ -464,7 +464,7 @@
    "dir": "R"
   },
   {
-   "t": 47.018,
+   "t": 47.03,
    "tag": "tap",
    "dir": "L"
   },
@@ -481,7 +481,7 @@
    "dir": "L"
   },
   {
-   "t": 47.726,
+   "t": 47.739,
    "tag": "tap",
    "dir": "R"
   },
@@ -522,12 +522,12 @@
    "dir": "L"
   },
   {
-   "t": 49.616,
+   "t": 49.628,
    "tag": "snare",
    "dir": "R"
   },
   {
-   "t": 49.852,
+   "t": 49.863,
    "tag": "tap",
    "dir": "L"
   },
@@ -547,7 +547,7 @@
    "dir": "R"
   },
   {
-   "t": 51.506,
+   "t": 51.518,
    "tag": "tap",
    "dir": "L"
   },
@@ -590,7 +590,7 @@
    "dir": "R"
   },
   {
-   "t": 53.868,
+   "t": 53.857,
    "tag": "kick",
    "dir": "L"
   },
@@ -653,19 +653,19 @@
    "dir": "L"
   },
   {
-   "t": 56.939,
+   "t": 56.951,
    "tag": "tap",
    "dir": "L"
   },
   {
-   "t": 57.175,
+   "t": 57.189,
    "tag": "vocals",
    "lyric": "what",
    "syl": "what",
    "dir": "R"
   },
   {
-   "t": 57.411,
+   "t": 57.424,
    "tag": "tap",
    "dir": "L"
   },
@@ -687,7 +687,7 @@
    "dir": "R"
   },
   {
-   "t": 59.065,
+   "t": 59.076,
    "tag": "tap",
    "dir": "L"
   },
@@ -857,7 +857,7 @@
    "dir": "R"
   },
   {
-   "t": 65.915,
+   "t": 65.897,
    "tag": "vocals",
    "lyric": "know",
    "syl": "know",
@@ -1173,7 +1173,7 @@
    "dir": "R"
   },
   {
-   "t": 86.938,
+   "t": 86.928,
    "tag": "vocals",
    "lyric": "혼자라도",
    "syl": "도",
@@ -1324,7 +1324,7 @@
    "dir": "R"
   },
   {
-   "t": 98.749,
+   "t": 98.773,
    "tag": "vocals",
    "lyric": "이게",
    "syl": "이",
@@ -1488,7 +1488,7 @@
    "dir": "L"
   },
   {
-   "t": 110.087,
+   "t": 110.102,
    "tag": "kick",
    "dir": "R"
   },
@@ -1508,7 +1508,7 @@
    "dir": "L"
   },
   {
-   "t": 111.977,
+   "t": 111.988,
    "tag": "tap",
    "dir": "R"
   },
@@ -1535,7 +1535,7 @@
    "dir": "L"
   },
   {
-   "t": 115.284,
+   "t": 115.3,
    "tag": "vocals",
    "lyric": "너뿐이야",
    "syl": "이",
@@ -1557,7 +1557,7 @@
    "dir": "R"
   },
   {
-   "t": 117.646,
+   "t": 117.663,
    "tag": "vocals",
    "lyric": "what",
    "syl": "what",
@@ -1783,7 +1783,7 @@
    "dir": "R"
   },
   {
-   "t": 133.0,
+   "t": 132.985,
    "tag": "tap",
    "dir": "L"
   },
@@ -2286,6 +2286,13 @@
    "old": 76.663,
    "new": 76.545,
    "reason": "User requested regularization; restore quarter-note pulse between 76.072 and 77.017, rather than the single delayed sixteenth."
+  },
+  "playtest_microalign_20261019": {
+   "scope": "user-authorized whole-chart audit; retain count, beat slots and turn directions",
+   "changes": 20,
+   "max_shift_ms": 24,
+   "evidence": "analysis/user/omg-timing-20261019.json",
+   "audio_sha256": "3d73a574f95dcca46bc7510c794644cd43cb5213e8ba5952e118a37b38c33b19"
   }
  }
 }

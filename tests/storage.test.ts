@@ -35,7 +35,7 @@ test('skin setting: old saves default to classic, skin round-trips, bad values f
   const s = parseSave(oldV2, ids, 'attention');
   assert.equal(s.settings.skin, 'classic');
   // everything else in the old save is unchanged
-  assert.deepEqual({ ...s.settings, skin: undefined }, { ...oldV2.settings, skin: undefined });
+  assert.deepEqual({ ...s.settings, skin: undefined }, { ...oldV2.settings, skin: undefined, targetFps:60, showFps:false });
   assert.deepEqual(s.records.ditto, oldV2.records.ditto);
   // a chosen skin survives export -> import and persist -> load
   const withSkin = { ...s, settings: { ...s.settings, skin: 'bubble-gum' } };
@@ -47,4 +47,12 @@ test('skin setting: old saves default to classic, skin round-trips, bad values f
   for (const bad of [42, null, '', '<script>', 'x'.repeat(40), { id: 'denim' }]) assert.equal(parseSave({ ...oldV2, settings: { ...oldV2.settings, skin: bad } }, ids, 'a').settings.skin, 'classic');
   // a fresh profile defaults to classic
   assert.equal(loadSave(ids, 'attention', { getItem: () => null }).settings.skin, 'classic');
+});
+
+
+test('frame-rate settings migrate safely and round-trip without changing old progress',()=>{
+ const old=parseSave(v1,ids,'attention');assert.equal(old.settings.targetFps,60);assert.equal(old.settings.showFps,false);
+ const updated={...old,settings:{...old.settings,targetFps:120,showFps:true}};
+ const imported=parseSave(JSON.parse(JSON.stringify(updated)),ids,'attention');assert.equal(imported.settings.targetFps,120);assert.equal(imported.settings.showFps,true);assert.deepEqual(imported.records,old.records);
+ assert.equal(parseSave({...updated,settings:{targetFps:999}},ids,'attention').settings.targetFps,60);
 });

@@ -76,7 +76,7 @@ export class Road {
       mat.emissiveColor = new Color3(0, 0, 0);
       if (this.paper) { mat.disableLighting = true; mat.emissiveColor = new Color3(1, 1, 1); mat.diffuseColor = new Color3(0, 0, 0); }
       m.material = mat; m.isPickable = false; m.alwaysSelectAsActiveMesh = true;
-      if (this.paper) new RoadSightline(mat);
+      if (this.paper && route.spans.some(s=>s.air&&s.y1<s.y0)) new RoadSightline(mat);
     }
     const N = this.tiles.length;
     const NB = this.paper ? 2 * N : N;   // paper: instances [N, 2N) of the body are the gold step

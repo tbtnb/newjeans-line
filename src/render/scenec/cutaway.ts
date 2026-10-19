@@ -24,11 +24,16 @@ export class Cutaway extends MaterialPluginBase {
     // v10: fragments below ~head height (ground cover, low decor) can't hide the line from the high camera - never dithered (the near-camera fade patches)
     return { CUSTOM_FRAGMENT_MAIN_BEGIN: `
 #ifdef CUTAWAY
-{ vec3 ab = cutHead - cutCam; float k = clamp(dot(vPositionW - cutCam, ab) / max(dot(ab, ab), 1e-3), 0., 1.);
-  if (k < 0.985 && vPositionW.y > cutHead.y - 0.25) { float d = length(vPositionW - (cutCam + ab * k)); float r = cutR * (0.25 + 0.75 * k);
-    float f = 1. - smoothstep(r * 0.55, r, d);
-    float n = fract(sin(dot(floor(gl_FragCoord.xy), vec2(12.9898, 78.233))) * 43758.5453);
-    if (n < f) discard; } }
+if (vPositionW.y > cutHead.y - 0.25) {
+  vec3 ab = cutHead - cutCam; float k = clamp(dot(vPositionW - cutCam, ab) / max(dot(ab, ab), 1e-3), 0., 1.);
+  if (k < 0.985) { vec3 dv = vPositionW - (cutCam + ab * k); float d2 = dot(dv,dv); float r = cutR * (0.25 + 0.75 * k);
+    if (d2 < r*r) {
+      float f = 1. - smoothstep(r * 0.55, r, sqrt(d2));
+      float n = fract(sin(dot(floor(gl_FragCoord.xy), vec2(12.9898, 78.233))) * 43758.5453);
+      if (n < f) discard;
+    }
+  }
+}
 #endif
 ` };
   }

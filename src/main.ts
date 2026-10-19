@@ -1,4 +1,6 @@
 import './style.css';
+import { LoadingProgress } from './loading';
+import { FramePacer } from './framepacing';
 import { SONGS, loadLevel, hasLevel } from './catalog';
 import { AudioTransport } from './audio';
 import { Game, LATE_GRACE, LATE_GRACE_MAX } from './core/game';
@@ -25,9 +27,11 @@ let game: Game | null = null;
 let readyFrom = 0;           // song time the next start/resume begins at
 let readyKind: 'start' | 'resume' | 'checkpoint' = 'start';
 let failTimer = 0, clearTimer = 0;
-let loadToken = 0;
+let loadToken = 0, loadingAttempt = 0;
 
+let lastSky='';
 world.onSky = (top, bottom) => {
+  const key=top+'|'+bottom;if(key===lastSky)return;lastSky=key;
   const r = document.documentElement.style;
   r.setProperty('--sky-top', top); r.setProperty('--sky-bottom', bottom);
   const c = hex(top), d = hex(bottom); const lum = (c.r + c.g + c.b + d.r * 2 + d.g * 2 + d.b * 2) / 9;
@@ -95,20 +99,45 @@ function makeGame(data: LevelData) {
   return g;
 }
 
+function startLoading(){
+  const token=loadToken, attempt=++loadingAttempt;
+  const progress=new LoadingProgress((percent,detail)=>{
+    if(state!=='loading'||token!==loadToken||attempt!==loadingAttempt)return;
+    $('loading-fill').style.width=`${percent}%`;
+    $('loading-progress').setAttribute('aria-valuenow',String(percent));
+    $('loading-pct').textContent=`${percent}%`;
+    $('loading-msg').textContent=detail;
+  });
+  progress.update('audio',audio.ready?1:0,'正在加载歌曲与场景');
+  return progress;
+}
+
 // ---------------- game flow ----------------
 async function enterLevel() {
+  if(state==='loading')return;
   if (!hasLevel(SONGS[index].id)) { toast(`${SONGS[index].title} 即将上线`); return; }
   if (!level || !game) return;
   clearTimeout(failTimer); clearTimeout(clearTimer);
   lastInputPerf = -1;
   audio.unlock();
-  if (!audio.ready) {
-    setState('loading'); $('loading-msg').textContent = '载入音乐';
-    audio.onProgress = (f, n) => { if (state === 'loading') $('loading-msg').textContent = f >= 0 ? `载入音乐 ${Math.round(f * 100)}%` : `载入音乐 ${(n / 1048576).toFixed(1)} MB`; };
-    try { await audio.load(level.audio); } catch (e) { setState('menu'); toast(String((e as Error).message)); return; }
-  }
-  setState('loading'); $('loading-msg').textContent = '预备场景模型与道路';
-  try { await world.prepareScenery(); } catch(e) { setState('menu');toast('场景准备失败，请重试');console.warn(e);return; }
+  setState('loading');
+  const token=loadToken, activeGame=game;
+  const progress=startLoading();
+  audio.onProgress=(f,n)=>{
+    if(token!==loadToken||state!=='loading')return;
+    progress.update('audio',f>=0?f*0.9:-1,f>=1?'歌曲解码中':`歌曲下载 ${f>=0?Math.round(f*100)+'%':(n/1048576).toFixed(1)+' MB'}`);
+  };
+  try {
+    // Audio decoding and scene preparation overlap; 100% means both are ready.
+    await Promise.all([
+      audio.load(level.audio).then(()=>progress.update('audio',1,'歌曲就绪')),
+      world.prepareScenery(0,(stage,f,detail)=>progress.update(stage,f,detail))
+    ]);
+  } catch(e) {
+    if(token===loadToken){setState('menu');toast(`加载失败：${(e as Error).message || '请重试'}`);}
+    return;
+  } finally {if(token===loadToken)audio.onProgress=null;}
+  if(token!==loadToken||game!==activeGame||(state as State)!=='loading')return;
   game.checkpointsUsed.clear(); game.diamondsTaken.clear(); game.crownsReached.clear();
   game.prepare(0); world.seek(0);
   readyFrom = 0; readyKind = 'start';
@@ -178,8 +207,9 @@ async function continueFromCheckpoint() {
   const cp = game.latestCheckpoint(); if (cp < 0) return;
   const t = level.layout.crowns[cp].t;
   game.checkpointsUsed.add(cp);
-  setState('loading'); $('loading-msg').textContent = '准备检查点前方场景';
-  try { await world.prepareScenery(t); } catch(e) {setState('menu');toast('场景准备失败，请重试');return;}
+  if(state==='loading')return;
+  setState('loading'); const progress=startLoading();progress.update('audio',1,'歌曲已就绪');
+  try { await world.prepareScenery(t,(stage,f,detail)=>progress.update(stage,f,detail)); } catch(e) {setState('menu');toast('场景准备失败，请重试');return;}
   game.prepare(t, true); world.seek(t);
   readyFrom = t; readyKind = 'checkpoint'; setReady();
 }
@@ -279,6 +309,8 @@ function openSettings() {
   $<HTMLInputElement>('set-offset').value = String(s.offsetMs); $('set-offset-val').textContent = `${s.offsetMs} ms`;
   $<HTMLInputElement>('set-vibration').checked = s.vibration;
   for (const b of $('set-quality').querySelectorAll('button')) b.classList.toggle('on', b.dataset.v === s.quality);
+  for(const b of $('set-fps').querySelectorAll('button'))b.classList.toggle('on',Number(b.dataset.v)===s.targetFps);
+  $<HTMLInputElement>('set-show-fps').checked=s.showFps;
   show('settings', true);
 }
 $('btn-settings').onclick = () => openSettings();
@@ -287,6 +319,8 @@ $<HTMLInputElement>('set-volume').oninput = e => { save.settings.volume = Number
 $<HTMLInputElement>('set-offset').oninput = e => { save.settings.offsetMs = Number((e.target as HTMLInputElement).value); $('set-offset-val').textContent = `${save.settings.offsetMs} ms`; persist(); };
 $<HTMLInputElement>('set-vibration').onchange = e => { save.settings.vibration = (e.target as HTMLInputElement).checked; persist(); };
 $('set-quality').onclick = e => { const b = (e.target as HTMLElement).closest('button'); if (!b) return; try { localStorage.setItem('nj-quality-picked', '1'); } catch { /* */ } save.settings.quality = b.dataset.v as 'high' | 'low'; world.setQuality(save.settings.quality); persist(); openSettings(); };
+$('set-fps').onclick=e=>{const b=(e.target as HTMLElement).closest('button');if(!b)return;save.settings.targetFps=Number(b.dataset.v)===120?120:60;save.settings.showFps=true;world.setTargetFps(save.settings.targetFps);pacer.reset();persist();openSettings();};
+$<HTMLInputElement>('set-show-fps').onchange=e=>{save.settings.showFps=(e.target as HTMLInputElement).checked;persist();};
 $('btn-export').onclick = () => {
   const blob = new Blob([JSON.stringify(save, null, 2)], { type: 'application/json' });
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `newjeans-line-save-${new Date().toISOString().slice(0, 10)}.json`; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
@@ -294,7 +328,7 @@ $('btn-export').onclick = () => {
 };
 $<HTMLInputElement>('file-import').onchange = async e => {
   const f = (e.target as HTMLInputElement).files?.[0]; if (!f) return;
-  try { const data = parseSave(JSON.parse(await f.text()), ids, SONGS[index].id); Object.assign(save, data); persist(); audio.setVolume(save.settings.volume); world.setSkin(save.settings.skin); skinUI.refresh(); openSettings(); renderCard(); toast('存档已导入'); }
+  try { const data = parseSave(JSON.parse(await f.text()), ids, SONGS[index].id); Object.assign(save, data); persist(); audio.setVolume(save.settings.volume); world.setSkin(save.settings.skin); world.setQuality(save.settings.quality);world.setTargetFps(save.settings.targetFps);pacer.reset();skinUI.refresh(); openSettings(); renderCard(); toast('存档已导入'); }
   catch (err) { toast((err as Error).message || '无法读取存档'); }
   (e.target as HTMLInputElement).value = '';
 };
@@ -344,7 +378,8 @@ function autoTier(nowMs: number) {
 }
 
 // ---------------- main loop ----------------
-let hudTick = 0; let lastLoop = 0; let frameEma = 1 / 60;
+const pacer=new FramePacer();let fpsHudAt=0;
+let lastHudMs=0; let lastLoop = 0; let frameEma = 1 / 60;
 function loop() {
   requestAnimationFrame(loop);
   const nowMs = performance.now(); if (lastLoop) frameEma += (Math.min(0.25, (nowMs - lastLoop) / 1000) - frameEma) * 0.1; lastLoop = nowMs;
@@ -361,15 +396,20 @@ function loop() {
     if (game.status === 'playing' && !audio.playing && audio.songTime() >= level!.duration - 0.05) game.update(level!.duration);
     t = game.status === 'failed' ? game.failTime : game.time;
   } else if (state === 'complete' || (state === 'failed')) t = game.time;
-  world.frame(t);
+  // Input/physics keep the audio clock even when a 60-fps cap skips a render.
+  if(pacer.due(nowMs,save.settings.targetFps))world.frame(t);
+  if(nowMs-fpsHudAt>500){fpsHudAt=nowMs;const el=$('fps-counter');el.hidden=!save.settings.showFps;
+    if(save.settings.showFps)el.textContent=`${Math.round(world.fps)} FPS · 目标 ${save.settings.targetFps}`;
+  }
   autoTier(nowMs);
   if (PROBE && level) syncProbe(t);
-  if (++hudTick % 3 === 0 && (state === 'playing' || state === 'ready')) updateHud();
+  if(nowMs-lastHudMs>=100&&(state==='playing'||state==='ready')){lastHudMs=nowMs;updateHud();}
 }
 
 window.addEventListener('resize', () => world.resize());
 audio.setVolume(save.settings.volume);
 world.setQuality(save.settings.quality);
+world.setTargetFps(save.settings.targetFps);
 world.setSkin(save.settings.skin);
 const skinUI = initSkinUI({ getSkin: () => save.settings.skin, setSkin: id => { save.settings.skin = id; world.setSkin(id); persist(); }, lineColor: () => level?.layout.palette.line ?? '#6f8fb0' });
 setState('menu');

@@ -4,6 +4,7 @@ import {readFileSync} from 'node:fs';
 import {Game} from '../src/core/game';
 import {linePos,lineHeading} from '../src/core/linepath';
 import {posAt,headingAt} from '../src/core/path';
+import {denseWindows,inDenseWindow} from '../src/core/edgeassist';
 import {readableRoadWidths} from '../src/core/roadwidth';
 import type {LevelData} from '../src/core/types';
 import {AudioTransport} from '../src/audio';
@@ -48,7 +49,7 @@ test('dense OMG parallel road strips have a ground gap including their gold ledg
   for(let i=0;i<s.length-2;i++){
     const a=s[i],b=s[i+2];if(a.air||b.air||a.heading%2!==b.heading%2||Math.abs(a.y0-b.y0)>.001||Math.abs(a.y0-a.y1)>.001||Math.abs(b.y0-b.y1)>.001)continue;
     const d=a.heading%2?Math.abs(a.z0-b.z0):Math.abs(a.x0-b.x0);
-    if(d>2 && d<2.9){assert.ok(d-(w[i]+w[i+2])/2-.32>=.299,`${i} gap`);checked++;}
+    if(d>2 && d<2.9){assert.ok(d-(w[i]+w[i+2])/2-.32>=.179,`${i} gap`);checked++;}
   }
   assert.ok(checked>50);assert.ok(Math.min(...w)>=1.2);
 });
@@ -70,4 +71,23 @@ test('jumps only occur in long straight input-free windows, never dense phrases'
 });
 test('OMG opening road is connected and flat with no opening jump',()=>{
  const g=new Game(L);assert.equal(g.route.spans.some(s=>s.t0<2&&s.air),false);
+});
+
+test('audio correction preserves every intended tap and direction, and runtime geometry uses corrected times',()=>{
+ const old=JSON.parse(readFileSync('analysis/user/omg-timing-20261019-baseline.json','utf8'));
+ const audit=JSON.parse(readFileSync('analysis/user/omg-timing-20261019.json','utf8'));
+ assert.equal(L.chart.taps.length,361);assert.equal(audit.changed,20);assert.ok(audit.saved_full_mix_correlation>.999);assert.equal(audit.saved_full_lag_samples,0);
+ const g=new Game(L);let changed=0;
+ for(let i=0;i<361;i++){assert.equal(L.chart.taps[i].dir,old.taps[i].dir);const d=Math.abs(L.chart.taps[i].t-old.taps[i].t);assert.ok(d<=.025001);if(d>.001)changed++;assert.equal(g.route.tapTimes[i],L.chart.taps[i].t);}
+ assert.equal(changed,20);assert.equal(L.duration,160.637);
+});
+
+test('dense edge grace rescues a brief 100ms-early skim without teleporting the line',()=>{
+ const run=(assist:boolean)=>{const g=new Game(L),idx=127;g.prepare(g.taps[idx-1]+.001);
+  if(!assist)(g as any).edgeGrace={reset(){},survives(_t:number,d:number){return d<=1e-6;}};
+  g.start();const t=g.taps[idx]-.1,before=linePos(g.route,g.turns,t,g.cursor);g.tap(t);
+  const after=linePos(g.route,g.turns,t,g.cursor);assert.ok(Math.hypot(after.x-before.x,after.z-before.z)<1e-8);
+  for(let j=idx+1;j<idx+10&&g.status==='playing';j++)g.tap(g.taps[j]);return g.status;
+ };
+ assert.equal(run(true),'playing');assert.equal(run(false),'failed');
 });

@@ -2,6 +2,7 @@ import type { LevelData } from './types';
 import { buildRoute, spanIndexAt, spanPos, type Route } from './path';
 import { linePos } from './linepath';
 import { readableRoadWidths } from './roadwidth';
+import {denseWindows,inDenseWindow,EdgeGrace} from './edgeassist';
 
 export const WINDOW_MAX = 0.15;     // ± seconds, hard cap (sparse taps on a wide road)
 export const WINDOW_MIN = 0.045;    // ± seconds, absolute floor
@@ -47,6 +48,7 @@ export class Game {
   readonly earlyWindows: number[];
   private widths: number[] = [];
   private checkedUntil = 0;
+  private dense:[number,number][]=[];private edgeGrace=new EdgeGrace();
   status: Status = 'ready';
   time = 0;
   cursor = 0;
@@ -69,7 +71,7 @@ export class Game {
     this.route = buildRoute(level.chart, level.layout.elevation ?? [], level.duration);
     this.route.freeTurns = level.id === 'omg';
     this.widths = readableRoadWidths(this.route, t => roadWidthAt(level.layout.road?.width, t));
-    this.taps = this.route.tapTimes;
+    this.taps = this.route.tapTimes;this.dense=denseWindows(this.taps);
     const spans = this.route.spans;
     const speedAt = (t: number) => { const s = spans.find(x => t >= x.t0 - 1e-9 && t < x.t1) ?? spans[spans.length - 1]; return s?.v ?? 9; };
     this.windows = judgmentWindows(this.taps, i => geometricWindow(roadWidthAt(level.layout.road?.width, this.taps[i]), speedAt(this.taps[i] - 1e-4)));
@@ -91,7 +93,7 @@ export class Game {
     for (let i = 0; i < this.cursor; i++) if (!have.has(i)) this.turns.push({ index: i, chartT: this.taps[i], tapT: this.taps[i] });
     this.turns.sort((a, b) => a.index - b.index);
     this.failKind = null; this.failTime = 0; this.ignoredDuplicates = 0; this.checkedUntil = t;
-    this.lastAccepted = -Infinity;
+    this.lastAccepted = -Infinity;this.edgeGrace.reset();
     for (const i of [...this.diamondsTaken]) if (this.level.layout.diamonds[i].t > t) this.diamondsTaken.delete(i);
     for (const i of [...this.crownsReached]) if (this.level.layout.crowns[i].t > t + 1e-6) this.crownsReached.delete(i);
   }
@@ -113,7 +115,7 @@ export class Game {
       const end = Math.max(this.startTime, t - this.lateGrace);
       for (let q=this.checkedUntil; q<end-1e-9;) {
         q=Math.min(end,q+1/120);
-        if (!this.onRoad(q)) { this.fail('wall',q); return; }
+        if (!this.edgeGrace.survives(q,this.roadDistance(q),inDenseWindow(this.dense,q))) { this.fail('wall',q); return; }
       }
       this.checkedUntil=end;
     } else if (this.cursor < this.taps.length) {
@@ -128,11 +130,14 @@ export class Game {
     }
   }
 
-  private onRoad(t: number): boolean {
+  roadWidth(t:number){return this.widths[spanIndexAt(this.route,t)];}
+
+  private roadDistance(t: number): number {
     const p = linePos(this.route, this.turns, t, this.cursor), idx = spanIndexAt(this.route,t);
     const current = this.route.spans[idx];
     // Falling is authored vertical motion; no invisible wall is introduced during flight.
-    if (current.air) return true;
+    if (current.air) return 0;
+    let distance=Infinity;
     for (let i=Math.max(0,idx-2); i<=Math.min(this.route.spans.length-1,idx+2); i++) {
       const s=this.route.spans[i]; if(s.air) continue;
       if(Math.abs(p.y-spanPos(s,Math.max(s.t0,Math.min(t,s.t1))).y)>0.8) continue;
@@ -142,9 +147,9 @@ export class Game {
       const prev=this.route.spans[i-1], next=this.route.spans[i+1];
       const padStart=prev && prev.turnIndex>=0 && !prev.air ? -this.widths[i-1]/2 : i===0?1.5:0;
       const padEnd=s.turnIndex>=0 && next ? this.widths[i+1]/2 : i===this.route.spans.length-1?6:0;
-      if(Math.abs(cross)<=this.widths[i]/2+1e-6 && along>=-padStart-1e-6 && along<=len+padEnd+1e-6) return true;
+      distance=Math.min(distance,Math.hypot(Math.max(0,Math.abs(cross)-this.widths[i]/2),Math.max(0,-padStart-along,along-len-padEnd)));
     }
-    return false;
+    return distance;
   }
 
   private collect(t: number) {

@@ -32,6 +32,7 @@ import { Texture } from '@babylonjs/core/Materials/Textures/texture';
 import { Material } from '@babylonjs/core/Materials/material';
 import { variantCols, STRETCH, nVariants } from './variants';
 
+export type PrepareProgress = (stage: 'models' | 'road' | 'render', fraction: number, detail: string) => void;
 export type Tier = 'high' | 'low';
 export const TIERS: Record<Tier, { density: Record<string, number>; ahead: number; behind: number; lod: number }> = {
   high: { density: { ground: 1, mid: 1, sky: 1, anim: 1 }, ahead: 8, behind: 3, lod: 35 },
@@ -84,6 +85,12 @@ export class SceneC {
   private prefetchTimer: ReturnType<typeof setTimeout> | null = null;
   private assetsReady = false;
   private warming: Promise<void> | null = null;
+  private preparing = false;
+  private initialized = false;
+  private statsAt=-Infinity;private statsRange="";
+  private modelDone = 0;
+  private modelTotal = 0;
+  private prepareProgress?: PrepareProgress;
   constructor(private scene: Scene, parent: TransformNode, route: Route, spec: SceneCSpec, o: { duration: number; widthAt: (t: number) => number; roadH: number; hits: (x: number, z: number, r: number, y0: number, y1: number) => boolean; beats: number[]; base: string; tier: Tier }) {
     this.spec = spec; this.tier = o.tier; this.base = o.base; this.route = route; this.hits = o.hits;
     this.root = new TransformNode('scenec', scene); this.root.parent = parent;
@@ -116,10 +123,11 @@ export class SceneC {
     this.applyLook();
     this.imp = new Impostors(scene, this.root, this.plc.chunks, spec, o.base, this.night, o.tier === 'low' ? 0.18 : 1); this.back = new Backdrop(scene, this.root, spec, o.base);
     for (const mm of [this.mat, this.matSet, this.matNight, this.matGlow]) new Cutaway(mm);   // after the page clones: pages / road are never cut
-    for (const mm of [this.mat, this.matSet, this.matNight, this.matStack, ...this.pageMats]) new RoadSightline(mm);
+    if(route.spans.some(s=>s.air&&s.y1<s.y0))for (const mm of [this.mat, this.matSet, this.matNight, this.matStack, ...this.pageMats]) new RoadSightline(mm);
     { const seen = new Map<string, number>(); for (const s of this.plc.sets) { const k = s.zone + ':' + s.a, n = seen.get(k) ?? 0; seen.set(k, n + 1); if (s.v === undefined) s.v = n; this.sets.push(this.makeSet(s)); } }   // v8: repeated set pieces step through palette variants
-    // Finish downloads/decoding and landmark cloning before the run can start.
+    // Fetch/decode shared templates once; landmark instances are prepared by window.
     const entries=Object.entries(spec.assets).filter(([,a])=>a.model);
+    this.modelTotal=entries.length;
     let next=0;
     const worker=async()=>{while(next<entries.length&&!this.disposed){
       const [id,a]=entries[next++];
@@ -127,31 +135,33 @@ export class SceneC {
         if(this.disposed){t.container?.dispose();return;}
         recolor(id,t);this.tm.set(id,t);this.models++;this.refreshAsset(id);
       }catch(e){console.warn('omg-c model',id,e);}
+      this.modelDone++;this.reportModels();
       await new Promise(r=>setTimeout(r,0));
     }};
     this.ready=Promise.all([worker(),worker()]).then(()=>{this.assetsReady=true;});
   }
 
-  async warmup(){
-    if(this.warming)return this.warming;
-    return this.warming=(async()=>{
+  private reportModels(){
+    this.prepareProgress?.('models',this.modelTotal?this.modelDone/this.modelTotal:1,`模型 ${this.modelDone}/${this.modelTotal}`);
+  }
+  async warmup(t=0,onProgress?:PrepareProgress){
+    if(this.warming){try{await this.warming;}catch{/* allow a failed preparation to retry */}}
+    if(this.disposed)return;
+    if(this.prefetchTimer!==null){clearTimeout(this.prefetchTimer);this.prefetchTimer=null;}
+    this.preparing=true;this.prepareProgress=onProgress;this.reportModels();
+    const work=(async()=>{
       await this.ready;if(this.disposed)return;
-      this.dirtyAt=-1;this.dropChunks();
-      // Cache merged CPU buffers before music starts, with a yield between chunks.
-      // GPU meshes remain bounded to the visible window plus three ahead.
-      for(const c of this.plc.chunks){if(this.disposed)return;
-        const data=this.bakeChunk(c),bytes=data.G.pos.byteLength+data.G.col.byteLength+data.G.idx.byteLength+data.M.pos.byteLength+data.M.col.byteLength+data.M.idx.byteLength;
-        if(this.bakedBytes+bytes<=64*1024*1024){this.baked.set(c.i,data);this.bakedBytes+=bytes;}
-        await new Promise(r=>setTimeout(r,0));
-      }
-      this.update(0,0,0,null);
-      for(let i=this.range[1]+1;i<=Math.min(this.range[1]+3,this.plc.chunks.length-1);i++){
-        this.prepareChunk(i);await new Promise(r=>setTimeout(r,0));
-      }
-      const meshes=[...this.chunkMesh.values()].flatMap(c=>[c.g,...(c.m?[c.m]:[])]);
-      for(const mesh of meshes){if(this.disposed)return;await (mesh.material as StandardMaterial)?.forceCompilationAsync(mesh);}
-      for(const e of this.sets){if(this.disposed)return;if(e.far)await this.matSet.forceCompilationAsync(e.far);}
+      if(!this.initialized){this.dirtyAt=-1;this.dropChunks();this.initialized=true;}
+      // Prepare only the start/checkpoint window, not the entire song. Future chunks
+      // still build hidden, three chunks ahead, one task at a time.
+      await this.prepareAt(t,onProgress);
     })();
+    this.warming=work;
+    try{await work;}finally{this.preparing=false;this.prepareProgress=undefined;this.warming=null;}
+  }
+  private windowAt(t:number):[number,number]{
+    const key=typeof location==='undefined'||!/[?&]cam=old\b/.test(location.search),T=TIERS[this.tier];
+    return activeRange(this.plc.chunks,t,key?(this.tier==='high'?4.5:4):T.behind,key?T.ahead+(this.tier==='high'?2:0):T.ahead);
   }
   private prepareChunk(i:number){
     if(this.disposed||this.prepared.has(i)||this.chunkMesh.has(i))return;
@@ -191,21 +201,35 @@ export class SceneC {
     }
   }
   /** Restore a restart/checkpoint window before audio resumes, reusing retained templates. */
-  async prepareAt(t:number){
+  async prepareAt(t:number,onProgress?:PrepareProgress){
     if(this.disposed)return;
-    this.update(t,0,0,null);
-    for(const e of this.sets){
-      if(this.disposed)return;
-      if(!e.far&&e.def.popAt<=t+16&&e.def.t+12>=t&&!(e.def.hi&&this.tier==='low')){
-        this.buildSetVisual(e);
-        if(e.far)await this.matSet.forceCompilationAsync(e.far);
-        for(const m of e.nearMeshes)await this.matSet.forceCompilationAsync(m);
-        await new Promise(r=>setTimeout(r,0));
-      }
+    const wasPreparing=this.preparing;
+    const [a,b]=this.windowAt(t),end=Math.min(b+3,this.plc.chunks.length-1);
+    const needed=this.sets.filter(e=>e.def.popAt<=t+16&&e.def.t+12>=t&&!(e.def.hi&&this.tier==='low'));
+    const total=end-a+1+needed.length;let done=0;
+    const report=()=>onProgress?.('road',total?done/total:1,`场景与道路 ${done}/${total}`);
+    report();
+    for(let i=a;i<=end;i++){
+      if(this.disposed)return;this.prepareChunk(i);done++;report();
+      await new Promise(r=>setTimeout(r,0));
     }
-    for(let i=this.range[1]+1;i<=Math.min(this.range[1]+3,this.plc.chunks.length-1);i++){
-      this.prepareChunk(i);await new Promise(r=>setTimeout(r,0));
+    for(const e of needed){
+      if(this.disposed)return;if(!e.far)this.buildSetVisual(e);done++;report();
+      await new Promise(r=>setTimeout(r,0));
     }
+    // All geometry needed by update now exists; do not let the render loop build
+    // placeholder chunks or fight checkpoint preparation between these yields.
+    this.preparing=false;this.update(t,0,0,null);this.preparing=wasPreparing;
+    const meshes=[...this.chunkMesh.values(),...this.prepared.values()].flatMap(c=>[c.g,...(c.m?[c.m]:[])]);
+    for(const e of needed){if(e.far)meshes.push(e.far);meshes.push(...e.nearMeshes);}
+    let compiled=0;
+    onProgress?.('render',0,`渲染准备 0/${meshes.length}`);
+    for(const mesh of meshes){
+      if(this.disposed)return;await (mesh.material as StandardMaterial)?.forceCompilationAsync(mesh);
+      onProgress?.('render',++compiled/meshes.length,`渲染准备 ${compiled}/${meshes.length}`);
+      await new Promise(r=>setTimeout(r,0));
+    }
+    onProgress?.('render',1,'场景就绪');
   }
 
   private dropChunk(c: ChunkM) { c.g.dispose(); c.m?.dispose(); c.glow?.dispose(); }
@@ -293,7 +317,7 @@ export class SceneC {
     this.skyMat!.alpha = this.skyV;
   }
   private dropChunks() { if(this.prefetchTimer!==null){clearTimeout(this.prefetchTimer);this.prefetchTimer=null;} for (const c of this.chunkMesh.values()) this.dropChunk(c); this.chunkMesh.clear(); for(const c of this.prepared.values())this.dropChunk(c);this.prepared.clear(); this.range = [-1, -1]; }
-  setTier(t: Tier) { if (t === this.tier) return; this.tier = t; this.baked.clear();this.bakedBytes=0;this.warming=null; this.dropChunks(); this.applyLook(); this.glowSig = ''; this.imp?.setDensity(t === 'low' ? 0.18 : 1); }
+  setTier(t: Tier) { if (t === this.tier) return; this.tier = t; this.baked.clear();this.bakedBytes=0;this.initialized=false; this.dropChunks(); this.applyLook(); this.glowSig = ''; this.imp?.setDensity(t === 'low' ? 0.18 : 1); }
   /** high tier: warm key tint + soft vignette (in-shader image processing, no pass); bloom = soft outer halo copies in the glow mesh (rebuildGlow) */
   private applyLook() {
     const ip = this.scene.imageProcessingConfiguration, hi = this.tier === 'high';
@@ -594,7 +618,9 @@ export class SceneC {
     return {G:pack(G),M:pack(M),L};
   }
   private buildChunk(c:CChunk):ChunkM {
-    const {G,M,L}=this.baked.get(c.i)??this.bakeChunk(c),night=this.night[c.zone];
+    let data=this.baked.get(c.i);
+    if(!data){data=this.bakeChunk(c);const bytes=this.bakedSize(data);if(this.bakedBytes+bytes<=64*1024*1024){this.baked.set(c.i,data);this.bakedBytes+=bytes;}}
+    const {G,M,L}=data,night=this.night[c.zone];
     const mk = (name: string, B: { pos: Float32Array; col: Float32Array; idx: Uint32Array; uv?: Float32Array }, mat: StandardMaterial) => {
       if (!B.pos.length) return null; const m = new Mesh(name, this.scene); const vd = new VertexData(); vd.positions = B.pos; vd.colors = B.col; vd.indices = B.idx; if (B.uv) vd.uvs = B.uv;
       vd.applyToMesh(m, false); m.material = mat; m.isPickable = false; m.parent = this.root; return m; };
@@ -650,7 +676,7 @@ export class SceneC {
     node.position.set(s.x, s.y, s.z); node.rotation.y = s.yaw; node.scaling.setAll(s.s);
     const hinge = new TransformNode('hinge', this.scene); hinge.parent = node;
     const e: SetE = { def: s, node, hinge, far: null, near: null, nearMeshes: [], piv: [], tris: 0, on: true, lodFar: false };
-    this.buildSetVisual(e); this.setOn(e, false);
+    this.setOn(e, false); // Instantiate only the approaching window, never every landmark at startup.
     return e;
   }
   private buildSetVisual(e: SetE) {
@@ -714,17 +740,18 @@ export class SceneC {
   private refreshAsset(id: string) {
     const ti = this.types.get(id); if (ti) { const t = this.tm.get(id)!; const vd = new VertexData(); vd.positions = t.pos; vd.colors = t.col; vd.indices = t.idx; vd.applyToMesh(ti.mesh, true); ti.tris = t.tris; this.refill(this.range[0], this.range[1]); }
     if (this.dirtyAt < 0) this.dirtyAt = this.time;   // ground + mid are merged per chunk: rebuild (throttled) once models land
-    for (const e of this.sets) if (e.def.a === id) { this.buildSetVisual(e); const on = e.on; e.on = !on; this.setOn(e, on); }
+    for (const e of this.sets) if (e.def.a === id && e.far) { this.buildSetVisual(e); const on = e.on; e.on = !on; this.setOn(e, on); }
   }
 
   update(t: number, dt: number, beatK: number, cam: Vector3 | null, head?: Vector3 | null) {
+    if(this.preparing||!this.assetsReady)return;
     this.skyT = t;
     if (cam && head) { CUT.cam.copyFrom(cam); CUT.head.copyFrom(head); }
     this.time += dt; const T = TIERS[this.tier];
     if (this.dirtyAt >= 0 && this.time - this.dirtyAt > 0.4) { this.dirtyAt = -1; this.dropChunks(); }
     const key = typeof location === 'undefined' || !/[?&]cam=old\b/.test(location.search);   // key camera sees further ahead; v9: the head-pinned frame shows ~6 s of road behind the head (its lower third was unbuilt)
     this.pop = key ? 8.5 : 5;
-    const [a, b] = activeRange(this.plc.chunks, t, key ? (this.tier === 'high' ? 4.5 : 4) : T.behind, key ? T.ahead + (this.tier === 'high' ? 2 : 0) : T.ahead);
+    const [a, b] = this.windowAt(t);
     if (a !== this.range[0] || b !== this.range[1]) {
       for (const [i, m] of this.chunkMesh) if (i < a || i > b) { this.dropChunk(m); this.chunkMesh.delete(i); }
       for (const [i,m] of this.prepared) if(i<a||i>b+3){this.dropChunk(m);this.prepared.delete(i);}
@@ -742,8 +769,13 @@ export class SceneC {
     if (cam && this.back) { let zi = this.plc.chunks[a].zone, ylo = 1e9; for (let i = a; i <= b; i++) { const c = this.plc.chunks[i]; if (c.t0 <= t) zi = c.zone; ylo = Math.min(ylo, c.y); }
       this.back.update(this.tier === 'high' ? zi : -1, cam, ylo - 25, dt || 0.016); this.curZone = zi; }
     this.rebuildGlow(t);
+    for(const e of this.sets)this.animSet(e,t,beatK,cam);
+    for(const m of this.chunkMesh.values())if(m.m)m.m.scaling.y=Math.max(.02,spring(t-(m.t0-this.pop)));
+    const statsRange=`${a}:${b}:${this.tier}`,now=performance.now();
+    if(this.last&&statsRange===this.statsRange&&now-this.statsAt<250)return;
+    this.statsAt=now;this.statsRange=statsRange;
     let tris = 0, inst = 0, sets = 0, tb = 0, win = 0; const A = this.spec.assets;
-    for (const e of this.sets) { this.animSet(e, t, beatK, cam); if (e.on) { sets++; win += e.tris; if (!this.scene.frustumPlanes || !e.far || (e.far.computeWorldMatrix(), e.far.isInFrustum(this.scene.frustumPlanes))) tris += e.tris; tb += Math.max(e.tris, A[e.def.a]?.tris ?? 0); } }
+    for (const e of this.sets) { if (e.on) { sets++; win += e.tris; if (!this.scene.frustumPlanes || !e.far || (e.far.computeWorldMatrix(), e.far.isInFrustum(this.scene.frustumPlanes))) tris += e.tris; tb += Math.max(e.tris, A[e.def.a]?.tris ?? 0); } }
     if (this.stacks) { const st = (this.stacks as any).__tris; tris += st; tb += st; win += st; }
     for (const p of this.pages) if (p.isEnabled()) { tris += (p as any).__tris; tb += (p as any).__tris; }
     if (this.imp) { tris += this.imp.tris; tb += this.imp.tris; win += this.imp.tris; }
@@ -751,7 +783,7 @@ export class SceneC {
     const vis = (x: Mesh | null) => !!x && x.isEnabled() && (!fp || x.isInFrustum(fp));
     const triOf = (x: Mesh | null) => x ? x.getTotalIndices() / 3 : 0;
     for (const [i, m] of this.chunkMesh) {
-      win += m.tris; tris += (vis(m.g) ? triOf(m.g) : 0) + (vis(m.m) ? triOf(m.m) : 0) + (m.glow && vis(m.m ?? m.glow) ? triOf(m.glow) : 0); if (m.m) m.m.scaling.y = Math.max(0.02, spring(t - (m.t0 - this.pop)));   // merged mid layer pops up per chunk (5 s ahead; v8 key camera 8.5 s: its upper half looks ~60-90 m ahead)
+      win += m.tris; tris += (vis(m.g) ? triOf(m.g) : 0) + (vis(m.m) ? triOf(m.m) : 0) + (m.glow && vis(m.m ?? m.glow) ? triOf(m.glow) : 0);   // merged mid layer pops up per chunk (5 s ahead; v8 key camera 8.5 s: its upper half looks ~60-90 m ahead)
       for (const it of this.plc.chunks[i].items) if ((it.layer === 'ground' || it.layer === 'mid') && this.keep(it)) tb += Math.max(this.tm.get(it.a)?.tris ?? 0, A[it.a]?.tris ?? 0); }
     let types = 0; for (const ti of this.types.values()) if (ti.items.length) { types++; inst += ti.items.length; tris += ti.items.length * ti.tris; win += ti.items.length * ti.tris; tb += ti.items.length * Math.max(ti.tris, A[ti.id]?.tris ?? 0); }
     let zone = 0; for (let i = 0; i < this.spec.zones.length; i++) if (this.spec.zones[i].t0 <= t) zone = i;

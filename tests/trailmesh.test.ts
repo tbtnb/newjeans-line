@@ -27,3 +27,9 @@ test('ribbon incremental growth matches full geometry without reallocating buffe
 test('a gap remains a gap rather than linking across an airborne span',()=>{
  const g=trailGeometry([{a:v(0,0),b:v(0,3)},{a:v(0,7),b:v(0,10)}]);assert.equal(g.indices.length/3,24);
 });
+
+test('retiring an offscreen ribbon prefix keeps the visible texture distance stable',()=>{
+ const whole=trailGeometry([{a:v(0,0),b:v(0,4)},{a:v(0,4),b:v(4,4)},{a:v(4,4),b:v(4,8)}]);
+ const tail=trailGeometry([{a:v(0,4),b:v(4,4)},{a:v(4,4),b:v(4,8)}],1,.9,4);
+ assert.deepEqual(tail.uvs.slice(0,8),whole.uvs.slice(16*2,16*2+8));
+});
