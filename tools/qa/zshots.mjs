@@ -13,7 +13,7 @@ await page.goto(url); await page.waitForFunction(() => window.__nj, null, { time
 await page.evaluate(async () => { for (let i = 0; i < 8; i++) { await window.__nj.selectLevel(i); if (window.__nj.level?.id === 'omg') return; } });
 await page.waitForFunction(() => window.__nj.level && window.__nj.audio.ready, null, { timeout: 120000 });
 await page.evaluate(q => window.__nj.world.setQuality(q), q);
-const hz = await page.evaluate(() => { const L = window.__nj.level.layout.scenec; return L.zones.map(z => { let b = null; for (const p of z.setpieces) { const tr = (L.assets[p.asset]?.tris ?? 0) + (p.hero ? 1e6 : 0); if (!b || tr > b.tr) b = { t: p.t, tr }; } return [z.id, b ? Math.max(z.t0 + 1.3, b.t - 2.2) : (z.t0 + z.t1) / 2]; }); });
+const at = opt('--at'); const hz = at === 'in' ? await page.evaluate(() => window.__nj.level.layout.scenec.zones.map(z => { const L = z.t1 - z.t0; return [z.id, Math.max(0.3, z.t0 - 0.8)]; })) : await page.evaluate(() => { const L = window.__nj.level.layout.scenec; return L.zones.map(z => { let b = null; for (const p of z.setpieces) { const tr = (L.assets[p.asset]?.tris ?? 0) + (p.hero ? 1e6 : 0); if (!b || tr > b.tr) b = { t: p.t, tr }; } return [z.id, b ? Math.max(z.t0 + 1.3, b.t - 2.2) : (z.t0 + z.t1) / 2]; }); });
 await page.evaluate(() => window.__nj.preview(1)); await page.waitForTimeout(gpu ? 4000 : 15000);
 mkdirSync(out, { recursive: true });
 for (const [id, T0] of hz) {

@@ -18,7 +18,7 @@ import { Color3 } from '@babylonjs/core/Maths/math.color';
 import { DynamicTexture } from '@babylonjs/core/Materials/Textures/dynamicTexture';
 import { Constants } from '@babylonjs/core/Engines/constants';
 import { Quaternion, Vector3 } from '@babylonjs/core/Maths/math.vector';
-import { anchor, type Route } from '../../core/path';
+import { anchor, flowAnchor, type Route } from '../../core/path';
 import type { SceneCSpec } from '../../core/types';
 import { activeRange, place, type CChunk, type CInst, type CPlacement, type CSet } from './place';
 import { loadModel, placeholders, type Template } from './assets';
@@ -69,10 +69,10 @@ export class SceneC {
   private types = new Map<string, TI>(); private chunkMesh = new Map<number, ChunkM>(); private night: boolean[] = []; private matNight!: StandardMaterial; private matGlow!: StandardMaterial; private dirtyAt = -1; private glowAll: Mesh | null = null; private glowSig = ''; private pages: Mesh[] = []; private stackGeo: { p: number[]; c: number[]; i: number[] }[] = []; private stacks: Mesh | null = null; private stackSig = ''; private pageMats: StandardMaterial[] = []; private sets: SetE[] = [];
   private range: [number, number] = [-1, -1]; private tier: Tier; private zoneCols: number[][][];
   private imp: Impostors | null = null; private back: Backdrop | null = null; private groundTex = new Map<number, Texture>(); private base = './'; curZone = 0;  private route!: Route;
-  private pop = 5; private disposed = false; private time = 0; models = 0; last: CStats | null = null;
+  private hits: (x: number, z: number, r: number, y0: number, y1: number) => boolean; private pop = 5; private disposed = false; private time = 0; models = 0; last: CStats | null = null;
 
   constructor(private scene: Scene, parent: TransformNode, route: Route, spec: SceneCSpec, o: { duration: number; widthAt: (t: number) => number; roadH: number; hits: (x: number, z: number, r: number, y0: number, y1: number) => boolean; beats: number[]; base: string; tier: Tier }) {
-    this.spec = spec; this.tier = o.tier; this.base = o.base; this.route = route;
+    this.spec = spec; this.tier = o.tier; this.base = o.base; this.route = route; this.hits = o.hits;
     this.root = new TransformNode('scenec', scene); this.root.parent = parent;
     this.plc = place(spec, route, { duration: o.duration, widthAt: o.widthAt, roadH: o.roadH, hits: o.hits, beats: o.beats, density: spec.density });
     this.zoneCols = spec.zones.map(z => z.colors.map(hexRGB));
@@ -259,7 +259,7 @@ export class SceneC {
           this.emitStack(G, ax + dx * e0, az + dz * e0, ax + dx * e1, az + dz * e1, nx, nz, r.y, Math.max(runLo, r.y - 14), NT[r.zi] ? NIGHTC : DAYC); run0 = -1; };
         for (let k = 0; k < n; k++) {
           const s = (k + 0.5) * L / n, x = ax + dx * s, z = az + dz * s, lo = covered(r, x + nx * 0.6, z + nz * 0.6);
-          const ok = lo !== null && ownZ(r.zi, x - nx * 1.5, z - nz * 1.5) > 0.45 && r.y - lo > 0.3;
+          const ok = lo !== null && ownZ(r.zi, x - nx * 1.5, z - nz * 1.5) > 0.45 && r.y - lo > 0.3 && !this.hits(x + nx * 1.2, z + nz * 1.2, 1.6, lo - 1, r.y + 2);   // v8: no page edge across a road
           const loQ = lo === null ? 0 : Math.round(Math.max(lo, r.y - 14));
           if (ok && run0 >= 0 && loQ !== runLo) flush(k);
           if (ok && run0 < 0) { run0 = k; runLo = loQ; } else if (!ok) flush(k);
@@ -267,7 +267,59 @@ export class SceneC {
         flush(n);
       }
     }
+    this.buildBookFg(NT);
     const m = this.mat.clone('paperCStack'); m.backFaceCulling = false; m.diffuseTexture = null; this.matStack = m;
+  }
+  // ---- v8 open-book foreground: at every zone border (and mid-zone in the long ones) the road crosses a giant open book: both
+  // pages lie beside the road with their outer edges curling up and over, a page block under them, and stacks of closed books
+  // at the outer corners. Merged into the page-stack mesh of the chunk (no extra draw call; high tier).
+  private buildBookFg(NT: boolean[]) {
+    const ch = this.plc.chunks, Z = this.spec.zones; if (!ch.length) return;
+    const chunkAt = (t: number) => { let k = 0; for (let i = 0; i < ch.length; i++) if (ch[i].t0 <= t) k = i; return k; };
+    const T: number[] = [];
+    Z.forEach(z => { const L = z.t1 - z.t0; T.push(Math.max(1.6, z.t0 + 0.6)); if (L > 20) T.push(z.t0 + L / 2); });
+    const CR = [1.0, 0.965, 0.9], CR2 = [0.96, 0.92, 0.83], GO = [0.92, 0.72, 0.3], UND = [0.88, 0.8, 0.66];
+    const BK = [[0.96, 0.72, 0.8], [0.8, 0.72, 0.94], [0.74, 0.91, 0.85], [0.72, 0.85, 0.96], [1.0, 0.86, 0.62], [0.98, 0.62, 0.7]];
+    let seed = 7; const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+    for (const tb of T) {
+      const ci = chunkAt(tb), c = ch[ci], G = this.stackGeo[ci], zi = c.zone, night = NT[zi];
+      const dim = (k: number[]) => night ? [k[0] * 0.66, k[1] * 0.66, k[2] * 0.76] : k;
+      const y0 = (c.terr ? c.terr.y : c.y) + 0.04;
+      const fr = flowAnchor(this.route, tb, 0, 0, 0); const fx = Math.sin(fr.yaw), fz = Math.cos(fr.yaw), rx = fz, rz = -fx;
+      const P = (side: number, lat: number, along: number, y: number) => [fr.pos.x + rx * lat * side + fx * along, y, fr.pos.z + rz * lat * side + fz * along];
+      const tri = (a: number[], b: number[], cc: number[], ca: number[], cb: number[], cc2: number[]) => { const i0 = G.p.length / 3; G.p.push(...a, ...b, ...cc); G.c.push(...ca, 1, ...cb, 1, ...cc2, 1); G.i.push(i0, i0 + 1, i0 + 2); };
+      const quad = (a: number[], b: number[], cc: number[], d: number[], ca: number[], cb = ca) => { tri(a, b, cc, ca, ca, cb); tri(a, cc, d, ca, cb, cb); };
+      for (const side of [-1, 1]) {
+        // inner edge: pushed out of the zig-zag until the page footprint is clear of every road
+        let lat = 2.6; const PW = 9, PL = 14;
+        const clear = (l: number) => { for (const a of [-PL / 2, 0, PL / 2]) for (const u of [0.1, 0.5, 0.9]) { const q = P(side, l + u * PW, a, 0); if (this.hits(q[0], q[2], 1.2, y0 - 1, y0 + 3)) return false; } return true; };
+        let k = 0; while (!clear(lat) && k < 10) { lat += 1.5; k++; } if (k >= 10) continue;
+        // page sheet: flat for 60% of its width, then a curl of radius R up and back over (cream, shaded by the curl angle; gold rim)
+        const NU = 12, NA = 6, R = 2.0, flat = 0.62, rise = 0.0;   // page rises from the spine (open-book hump), then rolls up and over at the outer edge
+        const prof = (u: number) => { if (u <= flat) { const k = u / flat; return [lat + u * PW, rise * Math.sin(k * Math.PI / 2) + 0.35 * Math.max(0, k - 0.75) ** 2 * 16, 0]; } const th = (u - flat) / (1 - flat) * 3.2; return [lat + flat * PW + R * Math.sin(th), rise + 0.35 + R * (1 - Math.cos(th)), th]; };
+        for (let i = 0; i < NU; i++) for (let j = 0; j < NA; j++) {
+          const u0 = i / NU, u1 = (i + 1) / NU, a0 = -PL / 2 + PL * j / NA, a1 = -PL / 2 + PL * (j + 1) / NA;
+          const p0 = prof(u0), p1 = prof(u1), sh = (th: number) => 1 - 0.13 * Math.sin(th * 0.9), c0 = dim(CR.map(v => v * sh(p0[2]))), c1 = dim((i === NU - 1 ? GO : CR).map(v => v * sh(p1[2])));
+          quad(P(side, p0[0], a0, y0 + p0[1]), P(side, p0[0], a1, y0 + p0[1]), P(side, p1[0], a1, y0 + p1[1]), P(side, p1[0], a0, y0 + p1[1]), c0, c1);
+        }
+        // page block under the flat part: three stepped page layers along the near / far ends (the book's thickness)
+        for (const a of [-PL / 2, PL / 2]) for (let L = 0; L < 3; L++) { const yy = y0 - 0.22 * L, o = 0.25 * L * Math.sign(a);
+          quad(P(side, lat, a + o, yy), P(side, lat + flat * PW + R, a + o, yy), P(side, lat + flat * PW + R, a + o, yy - 0.22), P(side, lat, a + o, yy - 0.22), dim(L ? CR2 : GO), dim(UND)); }
+        // stacks of closed books at the outer corners
+        for (const a of [-PL / 2 - 1.2, PL / 2 + 1.0]) {
+          const bl = lat + flat * PW + R * 1.6 + 1.2 + rnd() * 1.5; let yy = y0; const n = 2 + Math.floor(rnd() * 3);
+          for (let b = 0; b < n; b++) {
+            const bw = 2.6 - b * 0.25 + rnd() * 0.3, bd = 1.8 - b * 0.15, bh = 0.42 + rnd() * 0.2, ang = (rnd() - 0.5) * 0.6, col = dim(BK[Math.floor(rnd() * BK.length)]);
+            const cs = Math.cos(ang), sn = Math.sin(ang), C = (dx: number, dz: number, y: number) => P(side, bl + dx * cs - dz * sn, a + dx * sn + dz * cs, y);
+            const v = [[-bw / 2, -bd / 2], [bw / 2, -bd / 2], [bw / 2, bd / 2], [-bw / 2, bd / 2]];
+            quad(C(v[0][0], v[0][1], yy + bh), C(v[1][0], v[1][1], yy + bh), C(v[2][0], v[2][1], yy + bh), C(v[3][0], v[3][1], yy + bh), col);   // cover
+            for (let e = 0; e < 4; e++) { const A = v[e], B = v[(e + 1) % 4], pages = e === 1 || e === 3 ? dim(CR) : col.map(x => x * 0.85);
+              quad(C(A[0], A[1], yy + bh), C(B[0], B[1], yy + bh), C(B[0], B[1], yy), C(A[0], A[1], yy), e === 0 ? dim(GO) : pages); }
+            yy += bh;
+          }
+        }
+      }
+    }
   }
   private matStack!: StandardMaterial;
   private emitStack(G: { p: number[]; c: number[]; i: number[] }, ax: number, az: number, bx: number, bz: number, nx: number, nz: number, y: number, lo: number, C: number[][]) {
