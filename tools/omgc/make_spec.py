@@ -534,6 +534,7 @@ for z in zones:
         if ly.get('alt'): ly['alt'] = [a for i, a in enumerate(ly['alt']) if a != ly['asset'] and a not in ly['alt'][:i]] or ly['alt'][:1]
     if z.get('fill'): z['fill']['kinds'] = list(dict.fromkeys(z['fill']['kinds']))
 for z in zones:
+    if z['id'] == 'z10': z['lowMul'] = 0.7   # v9: low-tier z10 was 54k on the Mac
     if z['id'] == 'z08':   # v9: low-tier z08 <= 50k tris (road ~25k + carousel + wheel ~11k): thinner scatter, side tower high tier only
         z['lowMul'] = 0.35
         for sp in z['setpieces']:
