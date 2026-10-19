@@ -14,6 +14,8 @@ const PRESETS: Record<string, Partial<CamParams>> = {
   wide: { pitch: 48, dist: 52, fov: 40, yawOff: 0 },
   close: { pitch: 46, dist: 30, fov: 40, yawOff: 0 },
 };
+/** key camera elevation (deg). v10: 33 (was 36) so the skyline band shows a horizon in the top ~quarter; ?kp=NN overrides */
+export const KEY_PITCH = (() => { const m = typeof location !== 'undefined' ? /[?&]kp=(\d+(?:\.\d+)?)/.exec(location.search) : null; return m ? +m[1] : 33; })();
 const BASE: CamParams = { pitch: 50, dist: 41, fov: 36, yawOff: 0, worldYaw: null, roll: 0, shake: 0, lead: 0.85, orbit: 0, punch: 0.025, zoom: 1, tilt: 0, sway: 0 };
 const MIN_DIST = 30;
 const smooth = (x: number) => (x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x));
@@ -95,7 +97,7 @@ export class CameraRig {
 
   update(t: number, head: { x: number; y: number; z: number }, dt: number) {
     const p = this.params(t);
-    if (this.keyMode && !this.menuOrbit) { p.pitch = 36; p.dist = 46; p.fov = 42; p.yawOff = 0; p.sway = 0; p.orbit = 0; p.worldYaw = null; p.roll = 0; p.tilt = 0; p.lead = 2.4; delete (p as any).worldYawBlend; }
+    if (this.keyMode && !this.menuOrbit) { p.pitch = KEY_PITCH; p.dist = 46; p.fov = 42; p.yawOff = 0; p.sway = 0; p.orbit = 0; p.worldYaw = null; p.roll = 0; p.tilt = 0; p.lead = 2.4; delete (p as any).worldYawBlend; }
     const flow = this.flowYaw(t);
     // slow orbit (breakdowns): drifts while active, eases back when the cue ends; never more than ±35°
     if (p.orbit) this.orbitAng = Math.max(-35, Math.min(35, this.orbitAng + p.orbit * dt)); else this.orbitAng *= Math.exp(-dt * 0.6);

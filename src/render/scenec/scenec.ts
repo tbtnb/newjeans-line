@@ -21,6 +21,7 @@ import { Quaternion, Vector3 } from '@babylonjs/core/Maths/math.vector';
 import { anchor, flowAnchor, type Route } from '../../core/path';
 import type { SceneCSpec } from '../../core/types';
 import { activeRange, place, type CChunk, type CInst, type CPlacement, type CSet } from './place';
+import { KEY_PITCH } from '../camera';
 import { loadModel, placeholders, type Template } from './assets';
 import { CUT, Cutaway } from './cutaway';
 import { Backdrop, Impostors, PageFade } from './paint';
@@ -62,6 +63,9 @@ interface TI { id: string; mesh: Mesh; mats: Float32Array; cols: Float32Array; c
 interface Piv { node: TransformNode; kind: string; i: number; base: Quaternion | null; baseS: Vector3; baseP: Vector3 }
 interface SetE { def: CSet; node: TransformNode; hinge: TransformNode; far: Mesh | null; near: TransformNode | null; nearMeshes: Mesh[]; piv: Piv[]; tris: number; on: boolean; lodFar: boolean }
 
+/** v10 horizon: the skyline band stands on the ground line of the top SKY_H of the view (default); ?sky=old = v8 band, ?skyh=0.3 */
+const SKY_Q = typeof location !== 'undefined' ? new URLSearchParams(location.search) : null;
+const SKY_MODE = SKY_Q?.get('sky') === 'old' ? '' : 'ground', SKY_H = +(SKY_Q?.get('skyh') ?? 0.26);
 export interface CStats { chunks: [number, number]; chunkMeshes: number; types: number; instances: number; sets: number; tris: number; zone: number; models: number; /** visible tris if every asset were modelled at its full spec budget */ trisAtBudget: number; /** tris of everything in the chunk window (incl. off-screen chunks); `tris` counts only frustum-visible chunks / sets */ trisWindow?: number }
 
 export class SceneC {
@@ -75,7 +79,7 @@ export class SceneC {
   constructor(private scene: Scene, parent: TransformNode, route: Route, spec: SceneCSpec, o: { duration: number; widthAt: (t: number) => number; roadH: number; hits: (x: number, z: number, r: number, y0: number, y1: number) => boolean; beats: number[]; base: string; tier: Tier }) {
     this.spec = spec; this.tier = o.tier; this.base = o.base; this.route = route; this.hits = o.hits;
     this.root = new TransformNode('scenec', scene); this.root.parent = parent;
-    this.plc = place(spec, route, { duration: o.duration, widthAt: o.widthAt, roadH: o.roadH, hits: o.hits, beats: o.beats, density: spec.density });
+    this.plc = place(spec, route, { duration: o.duration, widthAt: o.widthAt, roadH: o.roadH, hits: o.hits, beats: o.beats, density: spec.density, camPitch: KEY_PITCH });
     this.zoneCols = spec.zones.map(z => z.colors.map(hexRGB));
     this.tm = placeholders(spec);
     const m = new StandardMaterial('paperC', scene);
@@ -169,10 +173,19 @@ export class SceneC {
     // v8b: band depth follows the far road - 70 m by default, pushed back past any road point (next 8 s) that would fall inside the band,
     // so with the head-pinned shallower camera the band never eats the far road at the top of a night frame
     const th = Math.tan((cam.fov || 0.8) / 2), V = cam.getViewMatrix(); let far = 70;
+    if (SKY_MODE === 'ground') {   // v10 horizon study (?sky=ground): the band stands where the top ~SKY_H of the view meets the ground (so the far
+      // carpet hides behind it and the skyline reads as the horizon), pulled back only past road points of the next 4 s
+      const ivw = V.clone().invert(), o = Vector3.TransformCoordinates(Vector3.Zero(), ivw), dir = Vector3.TransformNormal(new Vector3(0, th * (1 - 2 * SKY_H * 0.85), 1), ivw);
+      const gy = anchor(this.route, this.skyT).pos.y; far = dir.y < -0.01 ? Math.min(400, (gy - o.y) / dir.y) * 0.96 : 260;
+      for (let k = 0; k <= 16; k++) { const p = anchor(this.route, this.skyT + k * 0.25).pos; const v = Vector3.TransformCoordinates(new Vector3(p.x, p.y, p.z), V);
+        if (v.z > 1 && Math.abs(v.x) < v.z * th * aspect * 1.05 && v.y > v.z * th * (1 - 2 * SKY_H)) far = Math.max(far, v.z + 6); }
+      this.skyD = far;
+    } else {
     for (let k = 0; k <= 32; k++) { const p = anchor(this.route, this.skyT + k * 0.25).pos; const v = Vector3.TransformCoordinates(new Vector3(p.x, p.y, p.z), V);
       if (v.z > 1 && Math.abs(v.x) < v.z * th * aspect * 1.05 && v.y > v.z * th * 0.35) far = Math.max(far, v.z + 6); }
     this.skyD += (Math.min(260, far) - this.skyD) * (this.skyD < far ? 1 : k * 0.5);
-    const d = this.skyD, hh = d * th, hw = hh * aspect, bh = hh * 2 * 0.3;   // band = top 30% of the view
+    }
+    const d = this.skyD, hh = d * th, hw = hh * aspect, bh = hh * 2 * (SKY_MODE === 'ground' ? SKY_H : 0.3);   // band = top 30% of the view (v10 study: SKY_H)
     this.sky.scaling.set(hw * 2, bh, 1); this.sky.position.set(0, hh - bh / 2, d);
     const tx = this.skyMat!.diffuseTexture as Texture, us = Math.min(1, (hw * 2 / bh) / (1024 / 384)); tx.uScale = us; tx.uOffset = 1 - us;   // keep proportions, crop toward the moon / sun side
     this.skyMat!.alpha = this.skyV;

@@ -33,7 +33,7 @@ export function chunkTimes(route: Route, duration: number, len: number): number[
 
 export function zoneIndexAt(spec: SceneCSpec, t: number) { let k = 0; for (let i = 0; i < spec.zones.length; i++) if (spec.zones[i].t0 <= t + 1e-6) k = i; return k; }
 
-export interface PlaceOpts { duration: number; widthAt: (t: number) => number; roadH: number; hits: (x: number, z: number, r: number, y0: number, y1: number) => boolean; density?: Partial<Record<string, number>>; seed?: number; beats?: number[] }
+export interface PlaceOpts { duration: number; widthAt: (t: number) => number; roadH: number; hits: (x: number, z: number, r: number, y0: number, y1: number) => boolean; density?: Partial<Record<string, number>>; seed?: number; beats?: number[]; /** v10 key camera elevation (deg) for the head sightline slope */ camPitch?: number }
 
 export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement {
   const R = rng(o.seed ?? 20261018);
@@ -66,9 +66,10 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
   // the camera (flow direction, ~44 m out / ~32 m up in portrait); an object of radius r and height h within r + 1.5 m of that line
   // whose top reaches the sightline blocks the head. Checked over every route time within 14 s of the object's own time (zig-zags come back).
   const heads: { x: number; z: number; y: number; ux: number; uz: number }[] = camPath.map(c => { const p = anchor(route, c.t).pos; const dx = c.x - p.x, dz = c.z - p.z, L = Math.hypot(dx, dz) || 1; return { x: p.x, z: p.z, y: p.y, ux: dx / L, uz: dz / L }; });
+  const slope = Math.tan((o.camPitch ?? 36) * Math.PI / 180);
   const blocksHead = (x: number, z: number, r: number, y0: number, h: number, t: number) => { const i0 = Math.max(0, Math.floor((t - 14) * 4)), i1 = Math.min(heads.length - 1, Math.ceil((t + 14) * 4));
     for (let i = i0; i <= i1; i++) { const H = heads[i], ex = x - H.x, ez = z - H.z, sAl = ex * H.ux + ez * H.uz; if (sAl < -r || sAl > 46) continue;
-      const lat = Math.abs(ex * H.uz - ez * H.ux); if (lat > r + 1.5) continue; const rayY = H.y + 0.6 + Math.max(0, sAl - r) * (32 / 44); if (y0 + h > rayY - 0.3) return true; }
+      const lat = Math.abs(ex * H.uz - ez * H.ux); if (lat > r + 1.5) continue; const rayY = H.y + 0.6 + Math.max(0, sAl - r) * slope; if (y0 + h > rayY - 0.3) return true; }
     return false; };
   const nearCam = (x: number, z: number, t: number) => { const i0 = Math.max(0, Math.floor((t - 10) * 4)), i1 = Math.min(camPath.length - 1, Math.ceil((t + 3) * 4));
     for (let i = i0; i <= i1; i++) { const c = camPath[i]; if ((c.x - x) ** 2 + (c.z - z) ** 2 < 28 * 28) return true; } return false; };
