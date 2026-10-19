@@ -91,6 +91,13 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
   /** footprint of radius r at (x,z) lies wholly on one level (not straddling a bank edge; off-bank pieces also keep clear of the 1.5 m cliff strata) */
   const bankOk = (x: number, z: number, r: number) => { if (!banks.length) return true; const c0 = bankAt(x, z), rr = c0 === null ? r + 1.5 : r * 0.85;
     for (let k = 0; k < 8; k++) { const an = k * Math.PI / 4; if (bankAt(x + Math.cos(an) * rr, z + Math.sin(an) * rr) !== c0) return false; } return true; };
+  /** v11: a piece straddling a bank edge snaps fully onto the bank (nearest spot within ~2r+2 m), else fully off it; null = no clear spot.
+   *  rr = road clearance radius, (y0, h) its vertical span, occ radius for solids */
+  const snapBank = (x: number, z: number, r: number, rr: number, y0: number, h: number, occR = 0, tree = false): [number, number] | null => {
+    const ok = (px: number, pz: number) => bankOk(px, pz, r) && !o.hits(px, pz, rr, y0 - 1, y0 + h + 3) && !(occR && occHit(px, pz, occR, tree));
+    for (const onBank of [true, false]) for (let d = 0.4; d <= 2 * r + 2.2; d += 0.4) for (let k = 0; k < 12; k++) { const an = k * Math.PI / 6 + d, px = x + Math.cos(an) * d, pz = z + Math.sin(an) * d;
+      if ((bankAt(px, pz) !== null) === onBank && ok(px, pz)) return [px, pz]; }
+    return null; };
   const setPos = (sp: SceneCZone['setpieces'][0]) => { const A = spec.assets[sp.asset]; if (!A) return null;
     const hero = !!sp.hero, sc = sp.scale ?? 1, w = o.widthAt(sp.t), r = hero ? (A.w ?? A.h) * sc * 0.42 : A.h * sc * 0.45; const side = sp.side || 1;
     const H = A.h * sc, cr = hero ? r * 0.8 + 0.8 : r + 1.5;
@@ -189,7 +196,9 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
         const isTree = A.shape === 'tree' && !/hedge/.test(L.asset);
         if (solid && occHit(a.pos.x, a.pos.z, fr0, isTree)) { rejected++; rj[z.id + ' ' + L.asset + ' occ'] = (rj[z.id + ' ' + L.asset + ' occ'] ?? 0) + 1; continue; }
         if (L.layer === 'mid' && h > (view ? 3.5 : 2.6) && nearBand(a.pos.x, a.pos.z, t, (L.hug ? 3 : view ? 8 : 9) + r)) { rejected++; rj[z.id + ' ' + L.asset + ' near'] = (rj[z.id + ' ' + L.asset + ' near'] ?? 0) + 1; continue; }   // big pieces stay out of the near band; v7 'hug' layers (lit house rows) may line the road
-        if (!bankOk(a.pos.x, a.pos.z, L.layer === 'ground' ? Math.min(r, 0.6) : fr0)) { rejected++; rj[z.id + ' bank'] = (rj[z.id + ' bank'] ?? 0) + 1; continue; }
+        { const br = L.layer === 'ground' ? Math.min(r, 0.6) : fr0; if (!bankOk(a.pos.x, a.pos.z, br)) {   // v11: snap onto the bank instead of rejecting
+          const q = snapBank(a.pos.x, a.pos.z, br, r + pad, a.pos.y, h, solid ? fr0 : 0, isTree); if (!q) { rejected++; rj[z.id + ' bank'] = (rj[z.id + ' bank'] ?? 0) + 1; continue; }
+          a = { ...a, pos: { x: q[0], y: a.pos.y, z: q[1] } } as typeof a; rj[z.id + ' snap'] = (rj[z.id + ' snap'] ?? 0) + 1; } }
         const rp = anchor(route, t).pos;
         const fp = view ? flowAnchor(route, Math.max(0, t - 2.5), 0, 0, 0).pos : rp;   // view pieces face back along the flow (toward the key camera), not sideways
         const yaw = A.shape === 'far' || L.layer === 'mid' ? Math.atan2(fp.x - a.pos.x, fp.z - a.pos.z) + (view ? (R() - 0.5) * 0.5 : 0) : R() * Math.PI * 2;
@@ -214,7 +223,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
             if (L.layer === 'mid' && A.h * ms > 1.2 && blocksHead(x, zz, r * ms / s, a.pos.y + y0, A.h * ms, ty)) { rejected++; rj[z.id + ' ' + L.asset + ' msight'] = (rj[z.id + ' ' + L.asset + ' msight'] ?? 0) + 1; continue; }
             const alts = [L.asset, ...(L.alt ?? [])], ma = alts[j % alts.length], MA = spec.assets[ma] ?? A, mr = foot(MA, ms);
             const mt = MA.shape === 'tree' && !/hedge/.test(ma); if (solid && occHit(x, zz, mr, mt)) { rejected++; rj[z.id + ' ' + L.asset + ' mocc'] = (rj[z.id + ' ' + L.asset + ' mocc'] ?? 0) + 1; continue; }
-            if (!bankOk(x, zz, L.layer === 'ground' ? Math.min(r * ms / s, 0.6) : mr)) { rejected++; continue; }
+            { const br = L.layer === 'ground' ? Math.min(r * ms / s, 0.6) : mr; if (!bankOk(x, zz, br)) { const q = snapBank(x, zz, br, r * ms / s + pad, a.pos.y, A.h * ms, solid ? mr : 0, mt); if (!q) { rejected++; continue; } x = q[0]; zz = q[1]; } }
             const cj = chunkAt(ty); if (solid) occAdd(x, zz, mr, mt);   // v8: rows alternate kinds and step the palette variant, so no piece repeats its neighbour
             chunks[cj].items.push({ a: ma, layer: L.layer, x, y: groundY(chunks[cj], x, zz) + y0, z: zz, yaw: my + (view ? (fr(zz, x) - 0.5) * 0.4 : 0), s: ms, c: col(), zone: zi, t: ty, chunk: cj, v: v0 + j, ...(L.hi ? { hi: true } : {}) }); placed++;
           }
@@ -222,6 +231,34 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
         break;
       }
     }
+    // v11 bank plots: every raised page bank of the zone is a garden plot like the keys - dense flower patches over the whole top,
+    // bushes / beds / trees in the middle and outer part, an occasional small house; all fully on the bank, clear of the sightline
+    const PL = z.plots;
+    if (PL) for (const B of banks) { if (B.zone !== zi) continue;
+      for (let k = 0; k < B.P.length - 1; k++) {
+        const p = B.P[k], q = B.P[k + 1], t = B.T[k], ci = B.ci[k], c = chunks[ci];
+        const W = Math.hypot(p[2] - p[0], p[3] - p[1]), Lg = Math.hypot(q[0] - p[0], q[1] - p[1]), area = W * Lg;
+        const at = (u: number, v: number) => { const ix = p[0] + (q[0] - p[0]) * v, iz = p[1] + (q[1] - p[1]) * v, ox = p[2] + (q[2] - p[2]) * v, oz = p[3] + (q[3] - p[3]) * v; return [ix + (ox - ix) * u, iz + (oz - iz) * u]; };
+        const inner = at(0, 0.5); let seed = Math.floor(fr(p[0] * 1.3, p[1] * 0.7) * 1e6); const rr = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+        const put = (a: string, layer: string, x: number, zz: number, sc: number, j: number) => { const A = spec.assets[a]; if (!A) return false;
+          const h = A.h * sc, f = foot(A, sc), solid = layer === 'mid' && h >= 0.8, tree = A.shape === 'tree' && !/hedge/.test(a);
+          if (!bankOk(x, zz, layer === 'mid' ? f : 0.3) || bankAt(x, zz) === null) return false;
+          if (o.hits(x, zz, Math.max(0.3, f) + 0.6, B.y - 1, B.y + h)) return false;
+          if (layer === 'mid' && h > 1.2 && blocksHead(x, zz, f, B.y, h, t)) return false;
+          if (layer === 'mid' && h > 2.6 && nearBand(x, zz, t, 9 + f)) return false;
+          if (solid && occHit(x, zz, f, tree)) return false;
+          if (solid) occAdd(x, zz, f, tree);
+          c.items.push({ a, layer, x, y: B.y, z: zz, yaw: Math.atan2(inner[0] - x, inner[1] - zz) + (rr() - 0.5) * 1.4, s: sc, c: 0, zone: zi, t, chunk: ci, v: Math.floor(fr(x * 2.3, zz * 1.9) * 9973), ...(j % 2 ? { hi: true } : {}) });
+          placed++; rj['plot ' + z.id] = (rj['plot ' + z.id] ?? 0) + 1; return true; };
+        const S = PL.scale ?? [1.0, 1.4], SS = PL.sScale ?? [1.6, 3.0];
+        // flower patches (ground layer, cheap): centre + 4-7 members within ~1.3 m
+        for (let n = Math.round(area * PL.dSmall / 100 + rr()), i = 0; i < n; i++) { const [cx, cz] = at(0.05 + 0.9 * rr(), rr()), m = 4 + Math.floor(rr() * 4);
+          for (let j = 0; j < m; j++) { const an = rr() * 6.283, d = j ? 0.4 + rr() * 0.9 : 0; put(PL.small[Math.floor(rr() * PL.small.length)], 'ground', cx + Math.cos(an) * d * SS[0] / 1.6, cz + Math.sin(an) * d * SS[0] / 1.6, SS[0] + rr() * (SS[1] - SS[0]), i + j); } }
+        for (let n = Math.round(area * PL.dBig / 100 + rr() * 0.8), i = 0; i < n; i++) { const [x, zz] = at(0.25 + 0.7 * rr(), rr());
+          put(PL.big[Math.floor(rr() * PL.big.length)], 'mid', x, zz, S[0] + rr() * (S[1] - S[0]), i); }
+        if (PL.house?.length) for (let n = Math.floor(area * (PL.dHouse ?? 0) / 100 + rr()), i = 0; i < n; i++) { const [x, zz] = at(0.5 + 0.4 * rr(), rr());
+          put(PL.house[Math.floor(rr() * PL.house.length)], 'mid', x, zz, 0.75 + rr() * 0.25, i + 1); }
+      } }
     // v9 frame fill: the key frames are full edge to edge. Walk a flow-aligned grid over the zone; every cell with no solid piece within `free` m
     // gets a small blob of mixed fill kinds (cheap trees / piles), each member clear of the road, the sightline and the occupancy grid.
     const F = z.fill;
@@ -237,7 +274,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
         const rp = anchor(route, t).pos, yaw0 = Math.atan2(rp.x - a.pos.x, rp.z - a.pos.z);
         for (let j = 0; j < m; j++) {
           const an = fr(j * 1.7 + a.pos.x, a.pos.z) * Math.PI * 2, rr = j === 0 ? 0 : F.r * Math.sqrt(0.2 + 0.8 * fr(a.pos.z + j, a.pos.x));
-          const x = a.pos.x + Math.cos(an) * rr, zz = a.pos.z + Math.sin(an) * rr;
+          let x = a.pos.x + Math.cos(an) * rr, zz = a.pos.z + Math.sin(an) * rr;
           const ma = F.kinds[(fk++) % F.kinds.length], MA = spec.assets[ma]; if (!MA) continue;
           const ms = F.scale[0] + fr(x, zz * 1.3) * ((F.scale[1] ?? F.scale[0]) - F.scale[0]), h = MA.h * ms, mr = foot(MA, ms), tr = MA.shape === 'tree';
           const rad = Math.max(0.15, Math.max(MA.h, MA.w ?? 0, MA.d ?? 0) * ms * 0.35), pad = h < 1.7 ? 0.35 + 0.1 * o.widthAt(t) : clearNear + 0.5 * o.widthAt(t);
@@ -245,7 +282,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
           if (h > 1.2 && blocksHead(x, zz, rad, a.pos.y, h, t)) continue;
           if (h > 2.5 && nearBand(x, zz, t, 10 + rad)) continue;   // frame bottom keeps low piles only (no giant near trees)
           if (h >= 0.8 && occHit(x, zz, mr, tr)) continue;
-          if (!bankOk(x, zz, mr)) continue;
+          if (!bankOk(x, zz, mr)) { const q = snapBank(x, zz, mr, rad + pad, a.pos.y, h, h >= 0.8 ? mr : 0, tr); if (!q) continue; x = q[0]; zz = q[1]; }
           const ci = chunkAt(t);
           chunks[ci].items.push({ a: ma, layer: 'mid', x, y: groundY(chunks[ci], x, zz), z: zz, yaw: yaw0 + (fr(zz, x) - 0.5) * 1.2, s: ms, c: 0, zone: zi, t, chunk: ci, v: Math.floor(fr(a.pos.x * 1.1, a.pos.z) * 9973) + j, hi: true });   // members step the palette like layer blobs
           if (h >= 0.8) occAdd(x, zz, mr, tr); placed++; rj['fill placed ' + z.id] = (rj['fill placed ' + z.id] ?? 0) + 1;
@@ -286,11 +323,11 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
         const EA = spec.assets[ea]; if (!EA) continue;
         for (let k = 0; k < en; k++) for (let att = 0; att < 4; att++) {
           const ang = Math.atan2(rp.x - a.pos.x, rp.z - a.pos.z) + (R() - 0.5) * Math.PI * (att < 2 ? 1.3 : 2), rr = r * 0.75 + 1.5 + R() * 7;
-          const x = a.pos.x + Math.sin(ang) * rr, zz = a.pos.z + Math.cos(ang) * rr, es = 1.3 + R() * 0.5;
+          let x = a.pos.x + Math.sin(ang) * rr, zz = a.pos.z + Math.cos(ang) * rr; const es = 1.3 + R() * 0.5;
           if (o.hits(x, zz, Math.max(EA.h, EA.w ?? 0) * es * 0.35 + 0.8, a.pos.y - 1, a.pos.y + EA.h * es)) { rejected++; continue; }
           if (EA.h * es > 1.2 && blocksHead(x, zz, Math.max(EA.h, EA.w ?? 0) * es * 0.35, a.pos.y, EA.h * es, sp.t)) { rejected++; continue; }
           const ef = foot(EA, es); if (EA.h * es >= 0.8 && occHit(x, zz, ef, EA.shape === 'tree')) { rejected++; continue; }   // v9: entourage no longer clips decor (Mac sweep: bunny statue inside a grove)
-          if (!bankOk(x, zz, ef)) { rejected++; continue; }
+          if (!bankOk(x, zz, ef)) { const q = snapBank(x, zz, ef, Math.max(EA.h, EA.w ?? 0) * es * 0.35 + 0.8, a.pos.y, EA.h * es, EA.h * es >= 0.8 ? ef : 0, EA.shape === 'tree'); if (!q) { rejected++; continue; } x = q[0]; zz = q[1]; }
           if (EA.h * es >= 0.8) occAdd(x, zz, ef, EA.shape === 'tree');
           const ci = chunkAt(sp.t); const ec = chunks[ci];
           ec.items.push({ a: ea, layer: 'mid', x, y: groundY(ec, x, zz), z: zz, yaw: Math.atan2(rp.x - x, rp.z - zz), s: es, c: (z.layers[0]?.colors ?? [0])[Math.floor(R() * (z.layers[0]?.colors ?? [0]).length)], zone: zi, t: sp.t, chunk: ci }); placed++; break;

@@ -543,5 +543,31 @@ for z in zones:
 SKY = {'z01': 'day', 'z02': 'day', 'z03': 'dusk', 'z04': 'night', 'z05': 'twilight', 'z06': 'dusk', 'z07': 'night', 'z08': 'night', 'z09': 'night', 'z10': 'day'}   # v8 sky strip per zone
 for z in zones: z['sky'] = SKY[z['id']]
 out = os.path.join(here, '..', '..', 'levels-src', 'omg', 'scene-c.json')
+# ---- v11 bank garden plots (place.ts): flower patches over every bank top, bushes / beds / trees in the middle and outer part, a few houses
+DAYS = ['flower', 'flower-heart', 'grass']
+PLOTS = {
+ 'z01': dict(small=DAYS + ['mushroom'], big=['tree-lo', 'tree-bush-lo', 'hedge', 'tulip-bed', 'gift', 'forest-clump', 'heart-bed'], house=['bunny-house', 'mushroom-house'], dSmall=3.6, dBig=3.4, dHouse=0.35),
+ 'z02': dict(small=DAYS, big=['tree-lo', 'tree-bush-lo', 'hedge', 'heart-bed', 'tulip-bed'], house=['mushroom-house', 'bunny-house'], dSmall=2.6, dBig=2.4, dHouse=0.25),
+ 'z03': dict(small=['flower-heart', 'flower', 'mushroom', 'grass'], big=['tree-lo', 'pine-lo', 'tree-bush-lo', 'mushroom-group', 'heart-sculpt', 'gift', 'tulip-bed', 'hedge'], house=['bunny-house', 'mushroom-house'], dSmall=4.0, dBig=3.6, dHouse=0.35),
+ 'z04': dict(small=['flower-heart', 'mushroom', 'flower'], big=['firefly-lamp', 'tree-lo', 'pine-lo', 'mushroom-group', 'heart-bed'], house=['mushroom-house'], dSmall=2.4, dBig=2.2, dHouse=0.2),
+ 'z05': dict(small=['reed', 'mushroom', 'moss-rock', 'flower'], big=['pine-lo', 'tree-lo', 'rock', 'mushroom-group', 'lily-lamp'], house=['mushroom-house'], dSmall=2.6, dBig=2.4, dHouse=0.2),
+ 'z06': dict(small=DAYS, big=['tree-lo', 'tree-bush-lo', 'gift', 'hedge', 'tulip-bed'], house=['bunny-house'], dSmall=2.6, dBig=2.4, dHouse=0.25),
+ 'z07': dict(small=['flower-heart', 'mushroom'], big=['pine-lo', 'book-stack', 'firefly-lamp', 'mushroom-group', 'tree-lo'], house=['mushroom-house'], dSmall=2.2, dBig=2.2, dHouse=0.2),
+ 'z08': dict(small=['flower-heart', 'flower'], big=['tree-lo', 'gift', 'firefly-lamp', 'tree-bush-lo'], dSmall=1.8, dBig=1.6),
+ 'z09': dict(small=['mushroom', 'flower', 'moss-rock'], big=['pine-lo', 'tree-lo', 'firefly-lamp', 'mushroom-group'], house=['mushroom-house', 'bunny-house'], dSmall=2.2, dBig=2.2, dHouse=0.3),
+ 'z10': dict(small=DAYS + ['mushroom'], big=['tree-lo', 'tree-bush-lo', 'heart-bed', 'gift', 'hedge', 'tulip-bed', 'forest-clump'], house=['bunny-house', 'mushroom-house'], dSmall=3.6, dBig=3.4, dHouse=0.35),
+}
+for z in zones:
+    P = PLOTS.get(z['id'])
+    # budget: no 500-800-tri beds / sculptures on the plots (flower patches carry the beds), big density x0.6
+    if P: P = dict(P, big=[a for a in P['big'] if a not in ('tulip-bed', 'heart-bed', 'heart-sculpt', 'book-stack', 'lily-lamp')], dBig=round(P['dBig'] * 0.6, 2), dHouse=round(P.get('dHouse', 0) * 0.7, 2))
+    if P: z['plots'] = dict(P, small=[a for a in P['small'] if a in assets], big=[a for a in P['big'] if a in assets], house=[a for a in P.get('house', []) if a in assets], scale=[1.0, 1.4])
+# v11 budget: bank snap now keeps pieces that used to be rejected at edges; thin the 300-600-tri scatter kinds in the heavy night / dusk zones
+HEAVY = ('lily-lamp', 'book-stack', 'mushroom-group', 'star-chime', 'heart-sculpt', 'tulip-bed', 'heart-bed')
+for z in zones:
+    k = {'z03': 0.7, 'z04': 0.7, 'z05': 0.55, 'z07': 0.55, 'z08': 0.7, 'z09': 0.7}.get(z['id'])
+    if k: mul(z, k, HEAVY, 'mid')
+    if z['id'] == 'z03': mul(z, 0.6, ('ward-bed',), 'mid')   # 2000 tris each
+    if z['id'] == 'z07': mul(z, 0.6, ('book-stack',), 'mid'); mul(z, 0.7, ('star-chime',), 'mid')
 json.dump(spec, open(out, 'w'), ensure_ascii=False, indent=1)
 n = sum(l['count'] for z in zones for l in z['layers']); print(out, 'zones', len(zones), 'assets', len(assets), 'modelled', sum(bool(a['model']) for a in assets.values()), 'scatter instances', n, 'set pieces', sum(len(z['setpieces']) for z in zones))

@@ -71,7 +71,7 @@ export interface CStats { chunks: [number, number]; chunkMeshes: number; types: 
 export class SceneC {
   readonly plc: CPlacement; readonly spec: SceneCSpec;
   private tm: Map<string, Template>; private mat: StandardMaterial; private matSet: StandardMaterial; private root: TransformNode;
-  private types = new Map<string, TI>(); private chunkMesh = new Map<number, ChunkM>(); private night: boolean[] = []; private matNight!: StandardMaterial; private matGlow!: StandardMaterial; private dirtyAt = -1; private glowAll: Mesh | null = null; private glowSig = ''; private pages: Mesh[] = []; private stackGeo: { p: number[]; c: number[]; i: number[] }[] = []; private bankGeo: { p: number[]; c: number[]; i: number[] }[] = []; private stacks: Mesh | null = null; private stackSig = ''; private pageMats: StandardMaterial[] = []; private sets: SetE[] = [];
+  private types = new Map<string, TI>(); private chunkMesh = new Map<number, ChunkM>(); private night: boolean[] = []; private matNight!: StandardMaterial; private matGlow!: StandardMaterial; private dirtyAt = -1; private glowAll: Mesh | null = null; private glowSig = ''; private pages: Mesh[] = []; private stackGeo: { p: number[]; c: number[]; i: number[] }[] = []; private bankGeo: { p: number[]; c: number[]; i: number[] }[] = []; private aoGeo: { p: number[]; c: number[]; i: number[] }[] = []; private ao: Mesh | null = null; private matAO: StandardMaterial | null = null; private stacks: Mesh | null = null; private stackSig = ''; private pageMats: StandardMaterial[] = []; private sets: SetE[] = [];
   private range: [number, number] = [-1, -1]; private tier: Tier; private zoneCols: number[][][];
   private imp: Impostors | null = null; private back: Backdrop | null = null; private groundTex = new Map<number, Texture>(); private base = './'; curZone = 0;  private route!: Route;
   private hits: (x: number, z: number, r: number, y0: number, y1: number) => boolean; private pop = 5; private disposed = false; private time = 0; models = 0; last: CStats | null = null;
@@ -255,9 +255,12 @@ export class SceneC {
         rect(c.minX - pg, c.minZ - pg, c.maxX + pg, c.maxZ + pg, y);
         if (c.terr) { const p = c.terr.pad; rect(c.minX - p, c.minZ - p, c.maxX + p, c.maxZ + p, c.terr.y - 0.004 * (c.i % 3)); }   // raised page (climb)
       }
+      // v11: bank tops get their own look - the carpet at 0.72x scale (denser pattern), offset, tinted toward the zone light and lifted
+      const lt = hexRGB(Zs.palette.light ?? '#FFF4E0'), nightZ = (0.299 * gc[0] + 0.587 * gc[1] + 0.114 * gc[2]) < 0.45 || Zs.sky === 'night', lift = nightZ ? 1.22 : 1.07;
+      const tc = [0, 1, 2].map(i => gc[i] * (0.62 + 0.38 * lt[i]) * lift);
       for (const B of this.plc.banks) { if (B.zone !== zi) continue;   // v10 raised page banks: their tops are this zone's page (same texture / draw)
         for (let k = 0; k < B.P.length - 1; k++) { const p = B.P[k], q = B.P[k + 1], i0 = pos.length / 3;
-          for (const v of [[p[0], p[1]], [q[0], q[1]], [q[2], q[3]], [p[2], p[3]]]) { pos.push(v[0], B.y, v[1]); uv.push(v[0] / tile, v[1] / tile); col.push(gc[0], gc[1], gc[2], 1); }
+          for (const v of [[p[0], p[1]], [q[0], q[1]], [q[2], q[3]], [p[2], p[3]]]) { pos.push(v[0], B.y, v[1]); uv.push(v[0] / (tile * 0.72) + 0.37, v[1] / (tile * 0.72) + 0.61); col.push(tc[0], tc[1], tc[2], 1); }
           idx.push(i0, i0 + 1, i0 + 2, i0, i0 + 2, i0 + 3); } }
       const m = new Mesh(`cpage_z${zi}`, this.scene);
       if (pos.length) { const vd = new VertexData(); vd.positions = pos; vd.colors = col; vd.uvs = uv; vd.indices = idx; vd.applyToMesh(m, false); m.hasVertexAlpha = true; }   /* vColor.a only reaches the shader with VERTEXALPHA; the material is pinned opaque */
@@ -302,17 +305,26 @@ export class SceneC {
       }
     }
     // v10 page banks: every edge gets the page-layer + strata cliff (inner edges face the road); both tiers (bankGeo)
-    for (let i = 0; i < N; i++) this.bankGeo.push({ p: [], c: [], i: [] });
+    for (let i = 0; i < N; i++) { this.bankGeo.push({ p: [], c: [], i: [] }); this.aoGeo.push({ p: [], c: [], i: [] }); }
     const sat = (h: string) => { const c = hexRGB(h); return Math.max(...c) - Math.min(...c); };
     const COV = this.spec.zones.map(z => { const k = [...z.colors].sort((a, b) => sat(b) - sat(a))[0] ?? '#F29BB8'; return hexRGB(k); });
     for (const B of this.plc.banks) {
       const night = NT[B.zone], n = B.P.length, lo = Math.max(B.base, B.y - 14) - 0.05, cov = COV[B.zone].map(v => v * (night ? 0.8 : 0.92));
-      for (let k = 0; k < n - 1; k++) { const p = B.P[k], q = B.P[k + 1], G = this.bankGeo[B.ci[k]];
+      for (let k = 0; k < n - 1; k++) { const p = B.P[k], q = B.P[k + 1], G = this.bankGeo[B.ci[k]], A = this.aoGeo[B.ci[k]];
         let ox = p[2] - p[0], oz = p[3] - p[1]; const ol = Math.hypot(ox, oz) || 1; ox /= ol; oz /= ol;
-        this.emitBank(G, p[0], p[1], q[0], q[1], -ox, -oz, B.y, lo, cov, night, true);   // inner edge (toward the road): full page block
-        this.emitBank(G, p[2], p[3], q[2], q[3], ox, oz, B.y, lo, cov, night, false); }   // outer edge
+        this.emitBank(G, p[0], p[1], q[0], q[1], -ox, -oz, B.y - 0.5, lo, cov, night, true, 0.5);   // inner edge (toward the road): full page block (set 0.5 m out under the gutter lip)
+        this.emitBank(G, p[2], p[3], q[2], q[3], ox, oz, B.y, lo, cov, night, false);   // outer edge
+        // v11 soft contact shadow on the low page at the bank foot (inner = the road's gutter, wider and darker; outer lighter)
+        this.emitAO(A, p[0] - ox * 0.5, p[1] - oz * 0.5, q[0] - ox * 0.5, q[1] - oz * 0.5, -ox, -oz, lo + 0.03, 2.4, 0.42);
+        this.emitAO(A, p[2], p[3], q[2], q[3], ox, oz, lo + 0.03, 1.6, 0.3);
+        // v11 gutter: the bank's top page bends down over its inner edge toward the road like a page into a book's spine
+        this.emitGutter(G, p[0], p[1], q[0], q[1], -ox, -oz, B.y, night);
+        // v11 curled page edge along the outer edge: the top sheet runs 0.25 m past the block and rolls up and back over (keys' page curls)
+        this.emitCurl(G, p[2], p[3], q[2], q[3], ox, oz, B.y, night, 0.55 + 0.35 * Math.sin(k * 0.7 + B.y));
+      }
       for (const [k, k2] of [[0, 1], [n - 1, n - 2]]) { const p = B.P[k], q = B.P[k2]; let fx = (p[0] + p[2] - q[0] - q[2]) / 2, fz = (p[1] + p[3] - q[1] - q[3]) / 2; const fl = Math.hypot(fx, fz) || 1;
-        this.emitBank(this.bankGeo[B.ci[k]], p[0], p[1], p[2], p[3], fx / fl, fz / fl, B.y, lo, cov, night, true); }   // run ends
+        this.emitBank(this.bankGeo[B.ci[k]], p[0], p[1], p[2], p[3], fx / fl, fz / fl, B.y, lo, cov, night, true);   // run ends
+        this.emitAO(this.aoGeo[B.ci[k]], p[0], p[1], p[2], p[3], fx / fl, fz / fl, lo + 0.03, 1.8, 0.34); }
     }
     this.buildBookFg(NT);
     const m = this.mat.clone('paperCStack'); m.backFaceCulling = false; m.diffuseTexture = null; this.matStack = m;
@@ -414,9 +426,33 @@ export class SceneC {
     const C = this.covs[zi], H = y - lo; if (H < 0.2) return; const n = Math.max(1, Math.round(H / 1.8)), bh = H / n, sd = Math.floor(Math.abs(ax * 0.37 + az * 0.61)) % 7;
     for (let k = 0; k < n; k++) { const cv = C[(k + sd) % C.length].map(v => Math.min(1, v * (night ? 1.0 : 0.92) + (night ? 0.08 : 0))); this.emitBank(G, ax, az, bx, bz, nx, nz, y - k * bh, y - (k + 1) * bh, cv, night, true, 0.3 * k); }
   }
+  /** v11 contact shadow strip: from the edge (alpha a) out to w m (alpha 0) on the low page; drawn in the alpha-blended AO mesh */
+  private emitAO(G: { p: number[]; c: number[]; i: number[] }, ax: number, az: number, bx: number, bz: number, nx: number, nz: number, y: number, w: number, a: number) {
+    const b = G.p.length / 3; G.p.push(ax, y, az, bx, y, bz, bx + nx * w, y, bz + nz * w, ax + nx * w, y, az + nz * w);
+    G.c.push(0, 0, 0, a, 0, 0, 0, a, 0, 0, 0, 0, 0, 0, 0, 0); G.i.push(b, b + 1, b + 2, b, b + 2, b + 3); }
+  private paperCol(night: boolean, k = 1) { const c = [0.98 * k, 0.96 * k, 0.94 * k]; return night ? [c[0] * 0.8, c[1] * 0.78, c[2] * 0.86] : c; }
+  /** v11 gutter lip: quarter-round of the top page over the inner edge (0 -> 0.5 m out, 0 -> -0.5 m down), cream paper shading darker as it turns */
+  private emitGutter(G: { p: number[]; c: number[]; i: number[] }, ax: number, az: number, bx: number, bz: number, nx: number, nz: number, y: number, night: boolean) {
+    const N = 3, R = 0.5; for (let i = 0; i < N; i++) { const t0 = i / N * Math.PI / 2, t1 = (i + 1) / N * Math.PI / 2;
+      const o0 = R * Math.sin(t0), y0 = y - R * (1 - Math.cos(t0)), o1 = R * Math.sin(t1), y1 = y - R * (1 - Math.cos(t1)), c0 = this.paperCol(night, 1 - 0.1 * i), c1 = this.paperCol(night, 0.9 - 0.1 * i), b = G.p.length / 3;
+      G.p.push(ax + nx * o0, y0, az + nz * o0, bx + nx * o0, y0, bz + nz * o0, bx + nx * o1, y1, bz + nz * o1, ax + nx * o1, y1, az + nz * o1);
+      G.c.push(...c0, 1, ...c0, 1, ...c1, 1, ...c1, 1); G.i.push(b, b + 1, b + 2, b, b + 2, b + 3); } }
+  /** v11 curled page edge: sheet out 0.25 m then a roll of radius R up and back over (~0.8 turn), paper outside / blush inside */
+  private emitCurl(G: { p: number[]; c: number[]; i: number[] }, ax: number, az: number, bx: number, bz: number, nx: number, nz: number, y: number, night: boolean, R: number) {
+    const N = 6, pts: number[][] = [[0, y + 0.02], [0.25, y + 0.02]];
+    for (let i = 1; i <= N; i++) { const th = i / N * 4.4; pts.push([0.25 + R * Math.sin(th), y + 0.02 + R * (1 - Math.cos(th))]); }
+    for (let i = 0; i < pts.length - 1; i++) { const [o0, y0] = pts[i], [o1, y1] = pts[i + 1], sh = 1 - 0.12 * Math.sin(i / pts.length * 3), c0 = this.paperCol(night, sh), c1 = this.paperCol(night, sh * (i === pts.length - 2 ? 0.86 : 1)), b = G.p.length / 3;
+      G.p.push(ax + nx * o0, y0, az + nz * o0, bx + nx * o0, y0, bz + nz * o0, bx + nx * o1, y1, bz + nz * o1, ax + nx * o1, y1, az + nz * o1);
+      G.c.push(...c0, 1, ...c0, 1, ...c1, 1, ...c1, 1); G.i.push(b, b + 1, b + 2, b, b + 2, b + 3); } }
   private refreshStacks(a: number, b: number) {
     const on = this.tier === 'high', sig = `${a}:${b}`; if (sig === this.stackSig) return; this.stackSig = sig;
-    this.stacks?.dispose(); this.stacks = null;
+    this.stacks?.dispose(); this.stacks = null; this.ao?.dispose(); this.ao = null;
+    { const p: number[] = [], c: number[] = [], idx: number[] = [];   // v11 bank contact shadows (both tiers, one alpha-blended draw)
+      for (let i = a; i <= b; i++) { const G = this.aoGeo[i]; if (!G) continue; const o = p.length / 3; for (const v of G.p) p.push(v); for (const v of G.c) c.push(v); for (const v of G.i) idx.push(v + o); }
+      if (idx.length) { if (!this.matAO) { const m = new StandardMaterial('paperCAO', this.scene); m.disableLighting = true; m.diffuseColor = new Color3(0, 0, 0); m.emissiveColor = new Color3(0.1, 0.06, 0.16); m.specularColor = new Color3(0, 0, 0);
+          m.transparencyMode = Material.MATERIAL_ALPHABLEND; m.alpha = 0.999; m.disableDepthWrite = true; m.backFaceCulling = false; m.zOffset = -2; this.matAO = m; }
+        const m = new Mesh('cbankao', this.scene), vd = new VertexData(); vd.positions = p; vd.colors = c; vd.indices = idx; vd.applyToMesh(m, false); m.hasVertexAlpha = true;
+        m.material = this.matAO; m.isPickable = false; m.parent = this.root; m.freezeWorldMatrix(); (m as any).__tris = idx.length / 3; this.ao = m; } }
     const p: number[] = [], c: number[] = [], idx: number[] = [];
     for (const GG of on ? [this.stackGeo, this.bankGeo] : [this.bankGeo])   // v10: bank cliffs on both tiers, page-stack edges / book spreads high only
       for (let i = a; i <= b; i++) { const G = GG[i]; if (!G) continue; const o = p.length / 3; for (const v of G.p) p.push(v); for (const v of G.c) c.push(v); for (const v of G.i) idx.push(v + o); }

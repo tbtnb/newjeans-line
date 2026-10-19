@@ -2364,7 +2364,33 @@
     ],
     "free": 3.8
    },
-   "sky": "day"
+   "sky": "day",
+   "plots": {
+    "small": [
+     "flower",
+     "flower-heart",
+     "grass",
+     "mushroom"
+    ],
+    "big": [
+     "tree-lo",
+     "tree-bush-lo",
+     "hedge",
+     "gift",
+     "forest-clump"
+    ],
+    "house": [
+     "bunny-house",
+     "mushroom-house"
+    ],
+    "dSmall": 3.6,
+    "dBig": 2.04,
+    "dHouse": 0.24,
+    "scale": [
+     1.0,
+     1.4
+    ]
+   }
   },
   {
    "id": "z02",
@@ -3520,7 +3546,30 @@
     ],
     "free": 3.8
    },
-   "sky": "day"
+   "sky": "day",
+   "plots": {
+    "small": [
+     "flower",
+     "flower-heart",
+     "grass"
+    ],
+    "big": [
+     "tree-lo",
+     "tree-bush-lo",
+     "hedge"
+    ],
+    "house": [
+     "mushroom-house",
+     "bunny-house"
+    ],
+    "dSmall": 2.6,
+    "dBig": 1.44,
+    "dHouse": 0.17,
+    "scale": [
+     1.0,
+     1.4
+    ]
+   }
   },
   {
    "id": "z03",
@@ -3618,7 +3667,7 @@
     {
      "asset": "ward-bed",
      "layer": "mid",
-     "count": 9,
+     "count": 5,
      "near": [
       1.5,
       7.0
@@ -3945,7 +3994,7 @@
     {
      "asset": "tulip-bed",
      "layer": "mid",
-     "count": 10,
+     "count": 7,
      "near": [
       1.5,
       7.0
@@ -4326,7 +4375,7 @@
     {
      "asset": "ward-bed",
      "layer": "mid",
-     "count": 6,
+     "count": 4,
      "near": [
       0.0,
       0.0
@@ -4407,7 +4456,7 @@
     {
      "asset": "book-stack",
      "layer": "mid",
-     "count": 4,
+     "count": 3,
      "near": [
       0.0,
       0.0
@@ -4525,7 +4574,7 @@
     {
      "asset": "book-stack",
      "layer": "mid",
-     "count": 8,
+     "count": 6,
      "near": [
       0.0,
       0.0
@@ -4707,7 +4756,34 @@
     ],
     "free": 3.8
    },
-   "sky": "dusk"
+   "sky": "dusk",
+   "plots": {
+    "small": [
+     "flower-heart",
+     "flower",
+     "mushroom",
+     "grass"
+    ],
+    "big": [
+     "tree-lo",
+     "pine-lo",
+     "tree-bush-lo",
+     "mushroom-group",
+     "gift",
+     "hedge"
+    ],
+    "house": [
+     "bunny-house",
+     "mushroom-house"
+    ],
+    "dSmall": 4.0,
+    "dBig": 2.16,
+    "dHouse": 0.24,
+    "scale": [
+     1.0,
+     1.4
+    ]
+   }
   },
   {
    "id": "z04",
@@ -4828,7 +4904,7 @@
     {
      "asset": "heart-sculpt",
      "layer": "mid",
-     "count": 12,
+     "count": 8,
      "near": [
       1.5,
       7.0
@@ -5085,7 +5161,7 @@
     {
      "asset": "star-chime",
      "layer": "mid",
-     "count": 16,
+     "count": 11,
      "near": [
       1.5,
       7.0
@@ -5157,7 +5233,7 @@
     {
      "asset": "heart-sculpt",
      "layer": "mid",
-     "count": 6,
+     "count": 4,
      "near": [
       1.5,
       7.0
@@ -5230,7 +5306,7 @@
     {
      "asset": "lily-lamp",
      "layer": "mid",
-     "count": 10,
+     "count": 7,
      "near": [
       1.5,
       7.0
@@ -5778,7 +5854,7 @@
     {
      "asset": "lily-lamp",
      "layer": "mid",
-     "count": 5,
+     "count": 4,
      "near": [
       0.0,
       0.0
@@ -5941,7 +6017,7 @@
     {
      "asset": "book-stack",
      "layer": "mid",
-     "count": 4,
+     "count": 3,
      "near": [
       0.0,
       0.0
@@ -5980,7 +6056,7 @@
     {
      "asset": "tulip-bed",
      "layer": "mid",
-     "count": 5,
+     "count": 4,
      "near": [
       0.0,
       0.0
@@ -6060,7 +6136,7 @@
     {
      "asset": "book-stack",
      "layer": "mid",
-     "count": 8,
+     "count": 6,
      "near": [
       0.0,
       0.0
@@ -6237,7 +6313,30 @@
     ],
     "free": 3.8
    },
-   "sky": "night"
+   "sky": "night",
+   "plots": {
+    "small": [
+     "flower-heart",
+     "mushroom",
+     "flower"
+    ],
+    "big": [
+     "firefly-lamp",
+     "tree-lo",
+     "pine-lo",
+     "mushroom-group"
+    ],
+    "house": [
+     "mushroom-house"
+    ],
+    "dSmall": 2.4,
+    "dBig": 1.32,
+    "dHouse": 0.14,
+    "scale": [
+     1.0,
+     1.4
+    ]
+   }
   },
   {
    "id": "z05",
@@ -6362,7 +6461,7 @@
     {
      "asset": "lily-lamp",
      "layer": "mid",
-     "count": 3,
+     "count": 2,
      "near": [
       1.5,
       7.0
@@ -6656,7 +6755,7 @@
     {
      "asset": "tulip-bed",
      "layer": "mid",
-     "count": 3,
+     "count": 2,
      "near": [
       1.5,
       7.0
@@ -7067,7 +7166,7 @@
     {
      "asset": "lily-lamp",
      "layer": "mid",
-     "count": 2,
+     "count": 1,
      "near": [
       2.5,
       12.0
@@ -7142,7 +7241,7 @@
     {
      "asset": "tulip-bed",
      "layer": "mid",
-     "count": 3,
+     "count": 2,
      "near": [
       2.5,
       12.0
@@ -7167,7 +7266,7 @@
     {
      "asset": "mushroom-group",
      "layer": "mid",
-     "count": 6,
+     "count": 3,
      "near": [
       2.5,
       12.0
@@ -7291,7 +7390,7 @@
     {
      "asset": "lily-lamp",
      "layer": "mid",
-     "count": 3,
+     "count": 2,
      "near": [
       0.0,
       0.0
@@ -7509,7 +7608,7 @@
     {
      "asset": "lily-lamp",
      "layer": "mid",
-     "count": 3,
+     "count": 2,
      "near": [
       0.0,
       0.0
@@ -7593,7 +7692,7 @@
     {
      "asset": "lily-lamp",
      "layer": "mid",
-     "count": 5,
+     "count": 3,
      "near": [
       0.0,
       0.0
@@ -7715,7 +7814,7 @@
     {
      "asset": "book-stack",
      "layer": "mid",
-     "count": 3,
+     "count": 2,
      "near": [
       0.0,
       0.0
@@ -7796,7 +7895,7 @@
     {
      "asset": "mushroom-group",
      "layer": "mid",
-     "count": 7,
+     "count": 4,
      "near": [
       0.0,
       0.0
@@ -7985,7 +8084,31 @@
     ],
     "free": 3.8
    },
-   "sky": "twilight"
+   "sky": "twilight",
+   "plots": {
+    "small": [
+     "reed",
+     "mushroom",
+     "moss-rock",
+     "flower"
+    ],
+    "big": [
+     "pine-lo",
+     "tree-lo",
+     "rock",
+     "mushroom-group"
+    ],
+    "house": [
+     "mushroom-house"
+    ],
+    "dSmall": 2.6,
+    "dBig": 1.44,
+    "dHouse": 0.14,
+    "scale": [
+     1.0,
+     1.4
+    ]
+   }
   },
   {
    "id": "z06",
@@ -9468,7 +9591,30 @@
     ],
     "free": 3.8
    },
-   "sky": "dusk"
+   "sky": "dusk",
+   "plots": {
+    "small": [
+     "flower",
+     "flower-heart",
+     "grass"
+    ],
+    "big": [
+     "tree-lo",
+     "tree-bush-lo",
+     "gift",
+     "hedge"
+    ],
+    "house": [
+     "bunny-house"
+    ],
+    "dSmall": 2.6,
+    "dBig": 1.44,
+    "dHouse": 0.17,
+    "scale": [
+     1.0,
+     1.4
+    ]
+   }
   },
   {
    "id": "z07",
@@ -9589,7 +9735,7 @@
     {
      "asset": "star-chime",
      "layer": "mid",
-     "count": 14,
+     "count": 6,
      "near": [
       1.5,
       7.0
@@ -9823,7 +9969,7 @@
     {
      "asset": "star-chime",
      "layer": "mid",
-     "count": 14,
+     "count": 6,
      "near": [
       1.5,
       7.0
@@ -9847,7 +9993,7 @@
     {
      "asset": "book-stack",
      "layer": "mid",
-     "count": 19,
+     "count": 6,
      "near": [
       1.5,
       7.0
@@ -9944,7 +10090,7 @@
     {
      "asset": "lily-lamp",
      "layer": "mid",
-     "count": 8,
+     "count": 4,
      "near": [
       1.5,
       7.0
@@ -9968,7 +10114,7 @@
     {
      "asset": "star-chime",
      "layer": "mid",
-     "count": 10,
+     "count": 4,
      "near": [
       1.5,
       7.0
@@ -10700,7 +10846,7 @@
     {
      "asset": "book-stack",
      "layer": "mid",
-     "count": 5,
+     "count": 2,
      "near": [
       0.0,
       0.0
@@ -10782,7 +10928,7 @@
     {
      "asset": "book-stack",
      "layer": "mid",
-     "count": 4,
+     "count": 1,
      "near": [
       0.0,
       0.0
@@ -10940,7 +11086,7 @@
     {
      "asset": "mushroom-group",
      "layer": "mid",
-     "count": 8,
+     "count": 4,
      "near": [
       0.0,
       0.0
@@ -11108,7 +11254,29 @@
     ],
     "free": 3.8
    },
-   "sky": "night"
+   "sky": "night",
+   "plots": {
+    "small": [
+     "flower-heart",
+     "mushroom"
+    ],
+    "big": [
+     "pine-lo",
+     "firefly-lamp",
+     "mushroom-group",
+     "tree-lo"
+    ],
+    "house": [
+     "mushroom-house"
+    ],
+    "dSmall": 2.2,
+    "dBig": 1.32,
+    "dHouse": 0.14,
+    "scale": [
+     1.0,
+     1.4
+    ]
+   }
   },
   {
    "id": "z08",
@@ -11558,7 +11726,7 @@
     {
      "asset": "tulip-bed",
      "layer": "mid",
-     "count": 5,
+     "count": 4,
      "near": [
       1.5,
       7.0
@@ -11631,7 +11799,7 @@
     {
      "asset": "lily-lamp",
      "layer": "mid",
-     "count": 6,
+     "count": 4,
      "near": [
       1.5,
       7.0
@@ -12430,7 +12598,27 @@
     "free": 3.8
    },
    "lowMul": 0.35,
-   "sky": "night"
+   "sky": "night",
+   "plots": {
+    "small": [
+     "flower-heart",
+     "flower"
+    ],
+    "big": [
+     "tree-lo",
+     "gift",
+     "firefly-lamp",
+     "tree-bush-lo"
+    ],
+    "dSmall": 1.8,
+    "dBig": 0.96,
+    "dHouse": 0.0,
+    "house": [],
+    "scale": [
+     1.0,
+     1.4
+    ]
+   }
   },
   {
    "id": "z09",
@@ -12569,7 +12757,7 @@
     {
      "asset": "book-stack",
      "layer": "mid",
-     "count": 14,
+     "count": 10,
      "near": [
       1.5,
       7.0
@@ -12910,7 +13098,7 @@
     {
      "asset": "lily-lamp",
      "layer": "mid",
-     "count": 10,
+     "count": 7,
      "near": [
       1.5,
       7.0
@@ -13703,7 +13891,7 @@
     {
      "asset": "mushroom-group",
      "layer": "mid",
-     "count": 5,
+     "count": 4,
      "near": [
       0.0,
       0.0
@@ -13809,7 +13997,7 @@
     {
      "asset": "book-stack",
      "layer": "mid",
-     "count": 3,
+     "count": 2,
      "near": [
       0.0,
       0.0
@@ -13843,7 +14031,7 @@
     {
      "asset": "book-stack",
      "layer": "mid",
-     "count": 10,
+     "count": 7,
      "near": [
       0.0,
       0.0
@@ -13883,7 +14071,7 @@
     {
      "asset": "mushroom-group",
      "layer": "mid",
-     "count": 3,
+     "count": 2,
      "near": [
       0.0,
       0.0
@@ -14087,7 +14275,7 @@
     {
      "asset": "mushroom-group",
      "layer": "mid",
-     "count": 9,
+     "count": 6,
      "near": [
       0.0,
       0.0
@@ -14320,7 +14508,31 @@
     ],
     "free": 3.8
    },
-   "sky": "night"
+   "sky": "night",
+   "plots": {
+    "small": [
+     "mushroom",
+     "flower",
+     "moss-rock"
+    ],
+    "big": [
+     "pine-lo",
+     "tree-lo",
+     "firefly-lamp",
+     "mushroom-group"
+    ],
+    "house": [
+     "mushroom-house",
+     "bunny-house"
+    ],
+    "dSmall": 2.2,
+    "dBig": 1.32,
+    "dHouse": 0.21,
+    "scale": [
+     1.0,
+     1.4
+    ]
+   }
   },
   {
    "id": "z10",
@@ -15838,7 +16050,33 @@
     "free": 3.8
    },
    "lowMul": 0.7,
-   "sky": "day"
+   "sky": "day",
+   "plots": {
+    "small": [
+     "flower",
+     "flower-heart",
+     "grass",
+     "mushroom"
+    ],
+    "big": [
+     "tree-lo",
+     "tree-bush-lo",
+     "gift",
+     "hedge",
+     "forest-clump"
+    ],
+    "house": [
+     "bunny-house",
+     "mushroom-house"
+    ],
+    "dSmall": 3.6,
+    "dBig": 2.04,
+    "dHouse": 0.24,
+    "scale": [
+     1.0,
+     1.4
+    ]
+   }
   }
  ]
 }
