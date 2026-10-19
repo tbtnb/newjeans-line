@@ -80,6 +80,13 @@ export class SceneC {
     this.spec = spec; this.tier = o.tier; this.base = o.base; this.route = route; this.hits = o.hits;
     this.root = new TransformNode('scenec', scene); this.root.parent = parent;
     this.plc = place(spec, route, { duration: o.duration, widthAt: o.widthAt, roadH: o.roadH, hits: o.hits, beats: o.beats, density: spec.density, camPitch: KEY_PITCH });
+    { // v10 clone pass: a mid piece (>= 0.8 m) never shares its palette variant with a same-kind neighbour within 7 m
+      const G = new Map<string, CInst[]>(), key = (x: number, z: number) => `${Math.floor(x / 7)},${Math.floor(z / 7)}`;
+      for (const c of this.plc.chunks) for (const it of c.items) { const n = nVariants(it.a); if (n < 2 || it.layer !== 'mid' || (spec.assets[it.a]?.h ?? 0) * it.s < 0.8) continue;
+        const cx = Math.floor(it.x / 7), cz = Math.floor(it.z / 7), used = new Set<number>();
+        for (let i = -1; i <= 1; i++) for (let j = -1; j <= 1; j++) for (const q of G.get(`${cx + i},${cz + j}`) ?? []) if (q.a === it.a && (q.x - it.x) ** 2 + (q.z - it.z) ** 2 < 49) used.add(this.variantOf(q));
+        const v0 = this.variantOf(it); if (used.has(v0)) { for (let d = 1; d < n; d++) if (!used.has((v0 + d) % n)) { it.v = (it.v ?? v0) + d; break; } }
+        const k = key(it.x, it.z); (G.get(k) ?? G.set(k, []).get(k)!).push(it); } }
     this.zoneCols = spec.zones.map(z => z.colors.map(hexRGB));
     this.tm = placeholders(spec);
     const m = new StandardMaterial('paperC', scene);
