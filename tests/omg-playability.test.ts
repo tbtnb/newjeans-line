@@ -9,25 +9,34 @@ import type {LevelData} from '../src/core/types';
 import {AudioTransport} from '../src/audio';
 const L=JSON.parse(readFileSync('src/levels/omg.json','utf8')) as LevelData;
 
-test('OMG keeps all 361 times and accepts sustained -180 through +150 ms, with no drift off route',()=>{
-  assert.equal(L.chart.taps.length,361);assert.equal(L.duration,160.637);
-  for(const ms of [-180,-150,-100,-50,-20,0,20,50,100,150]){
-    const g=new Game(L);g.prepare();g.start();
-    for(const T of g.taps){assert.equal(g.tap(T+ms/1000),'hit',`${T} ${ms}ms`);
-      const t=Math.max(T,T+ms/1000),a=linePos(g.route,g.turns,t,g.cursor),b=posAt(g.route,t);assert.ok(Math.hypot(a.x-b.x,a.z-b.z)<1e-5);}
-    g.update(L.duration);assert.equal(g.status,'complete');assert.equal(g.cursor,361);
+test('OMG perfect route remains playable without changing its 361 timestamps',()=>{
+  const g=new Game(L);g.prepare();g.start();
+  for(const T of g.taps) { assert.equal(g.tap(T),'hit'); }
+  g.update(L.duration);assert.equal(g.status,'complete');assert.equal(g.cursor,361);
+});
+test('early and late taps turn immediately at the current position without a centreline snap',()=>{
+  for(const offset of [-.1,.1]) {
+    const g=new Game(L);g.prepare();g.start();const t=g.taps[0]+offset;
+    const before=linePos(g.route,g.turns,t,g.cursor);
+    assert.equal(g.tap(t),'hit');
+    const after=linePos(g.route,g.turns,t,g.cursor);
+    assert.ok(Math.hypot(after.x-before.x,after.z-before.z)<1e-8);
+    assert.equal(lineHeading(g.route,g.turns,t+.001),g.route.headingAfter[0]);
+    const future=linePos(g.route,g.turns,g.taps[0]+.2,g.cursor),centre=posAt(g.route,g.taps[0]+.2);
+    assert.ok(Math.hypot(future.x-centre.x,future.z-centre.z)>.5,'input offset must remain, not pull to centre');
   }
 });
-test('early buffered turn keeps position AND heading until the chart corner',()=>{
-  const g=new Game(L);g.prepare();g.start();const T=g.taps[0];g.tap(T-.15);
-  assert.equal(lineHeading(g.route,g.turns,T-.05),headingAt(g.route,T-.05));
-  assert.equal(lineHeading(g.route,g.turns,T+.01),headingAt(g.route,T+.01));
+test('OMG fails when its actual line leaves the visible road, and restart clears all attempt state',()=>{
+  const g=new Game(L);g.prepare();g.start();
+  assert.equal(g.tap(g.taps[0]-.7),'hit');
+  g.update(g.taps[0]+.3);assert.equal(g.failKind,'wall');
+  g.prepare(0);assert.equal(g.turns.length,0);assert.equal(g.cursor,0);assert.equal(g.failTime,0);assert.equal(g.failKind,null);
+  assert.deepEqual(linePos(g.route,g.turns,0,0),posAt(g.route,0));
+  g.start();assert.equal(g.tap(g.taps[0]),'hit');assert.equal(g.status,'playing');
 });
-test('OMG rejects out of window and misses, but ignores bounce and accepts queued in-time input',()=>{
-  for(const ms of [-181,151]){const g=new Game(L);g.prepare();g.start();assert.equal(g.tap(g.taps[0]+ms/1000),'fail');}
+test('bounce input does not consume the next corner',()=>{
   const g=new Game(L);g.prepare();g.start();const T=g.taps[0];
-  g.lateGrace=.4;g.update(T+.3);assert.equal(g.tap(T-.1),'hit');assert.equal(g.tap(T-.088),'ignored');assert.equal(g.cursor,1);
-  const m=new Game(L);m.prepare();m.start();m.update(T+.31);assert.equal(m.failKind,'late');
+  assert.equal(g.tap(T),'hit');assert.equal(g.tap(T+.012),'ignored');assert.equal(g.cursor,1);
 });
 test('Safari timestamp fallback subtracts queued event age',()=>{
   const a=new AudioTransport();(a as any).ctx={currentTime:10,baseLatency:.01,outputLatency:.02};

@@ -99,6 +99,8 @@ function makeGame(data: LevelData) {
 async function enterLevel() {
   if (!hasLevel(SONGS[index].id)) { toast(`${SONGS[index].title} 即将上线`); return; }
   if (!level || !game) return;
+  clearTimeout(failTimer); clearTimeout(clearTimer);
+  lastInputPerf = -1;
   audio.unlock();
   if (!audio.ready) {
     setState('loading'); $('loading-msg').textContent = '载入音乐';
@@ -142,7 +144,7 @@ function resume() {
   readyFrom = r; readyKind = 'resume'; setReady();
 }
 
-function restart() { audio.stop(); void enterLevel(); }
+function restart() { clearTimeout(failTimer); clearTimeout(clearTimer); audio.stop(); void enterLevel(); }
 function toMenu() { audio.stop(); clearTimeout(failTimer); clearTimeout(clearTimer); if (game) { game.prepare(0); world.seek(0); } renderCard(); setState('menu'); }
 
 function recordRun(completed: boolean) {
@@ -348,7 +350,9 @@ function loop() {
   let t = game.time;
   if (state === 'playing') {
     // predict ~1.5 frames ahead: a frame drawn now reaches the screen 1-2 vsyncs later (capped so pending corners never visibly overshoot)
-    t = audio.renderTime(Math.min(0.07, 1.5 * frameEma)) - save.settings.offsetMs / 1000;
+    // A free-turn head must not be rendered ahead of input: changing an already-predicted
+    // future segment at the next tap looks like a snap even without centreline projection.
+    t = (game.route.freeTurns ? audio.songTime() : audio.renderTime(Math.min(0.07, 1.5 * frameEma))) - save.settings.offsetMs / 1000;
     game.update(t);
     if (game.status === 'playing' && !audio.playing && audio.songTime() >= level!.duration - 0.05) game.update(level!.duration);
     t = game.status === 'failed' ? game.failTime : game.time;

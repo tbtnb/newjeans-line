@@ -1,16 +1,19 @@
-import { HEAD_VEC, posAt, spanIndexAt, type Route } from './path';
+import { HEAD_VEC, posAt, spanPos, spanIndexAt, type Route } from './path';
 import type { Heading, Vec3 } from './types';
 import type { TurnRecord } from './game';
+import { travelledSpans } from './travel';
 
 
 /**
  * Where the player's line is at time t, given the accepted turns so far.
+ * OMG freeTurns integrates actual inputs. The legacy centreline mode below is only for other levels.
  * The line always follows the authored centreline with perfectly square corners (as in Dancing Line): an accepted
  * early tap turns exactly at the corner; while a tap is still pending past its corner (late tap within the grace,
  * or a miss) the line keeps going straight past the corner, and snaps back to the centreline once the tap is accepted.
  * No easing / diagonal glide, so the trail is made only of axis-aligned straight runs.
  */
 export function linePos(route: Route, turns: TurnRecord[], t: number, cursor: number): Vec3 {
+  if (route.freeTurns) { const actual = { ...route, spans: travelledSpans(route, turns) }; return spanPos(actual.spans[spanIndexAt(actual, t)], t); }
   const nextT = pendingCorner(route, turns, t, cursor);
   if (t > nextT) {
     const c = posAt(route, nextT - 1e-6); const s = route.spans[spanIndexAt(route, nextT - 1e-6)]; const [dx, dz] = HEAD_VEC[s.heading];
@@ -31,6 +34,6 @@ export function pendingCorner(route: Route, turns: TurnRecord[], t: number, curs
 /** Heading the line is visually travelling at time t. */
 export function lineHeading(route: Route, turns: TurnRecord[], t: number): Heading {
   let k = turns.length - 1;
-  while (k >= 0 && Math.max(turns[k].tapT, turns[k].chartT) > t) k--;
+  while (k >= 0 && (route.freeTurns ? turns[k].tapT : Math.max(turns[k].tapT, turns[k].chartT)) > t) k--;
   return k >= 0 ? route.headingAfter[turns[k].index] : route.spans[0].heading;
 }

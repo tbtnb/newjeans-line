@@ -82,7 +82,8 @@ export class Backdrop {
   }
   /** zi: current zone; cam: camera position; y: band bottom (below the lowest page in view); dt for the cross-fade */
   update(zi: number, cam: Vector3, y: number, dt: number) {
-    const t = zi < 0 ? null : this.texOf(zi);   // zi < 0: off (low tier) if (!t) { this.a.setEnabled(false); this.b.setEnabled(false); return; }
+    const t = zi < 0 ? null : this.texOf(zi);
+    if (!t || !t.isReady()) { this.a.setEnabled(false); this.b.setEnabled(false); return; }
     if (zi !== this.cur) {   // B takes the old texture and fades out over A with the new one
       if (this.cur >= 0 && this.ma.diffuseTexture) { this.mb.diffuseTexture = this.ma.diffuseTexture; this.fadeT = 0; }
       this.ma.diffuseTexture = t; this.cur = zi;

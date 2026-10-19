@@ -4,6 +4,7 @@ import {
 } from './bjs';
 import { anchor, flowAnchor, HEAD_VEC, posAt, spanIndexAt, spanPos, type Route } from '../core/path';
 import { lineHeading, linePos, pendingCorner } from '../core/linepath';
+import { travelledSpans } from '../core/travel';
 import type { Game } from '../core/game';
 import type { LevelData, Palette, SceneObject, SceneEvent, Heading } from '../core/types';
 import { buildKind, hex, Materials, textPlane } from './prefabs';
@@ -194,7 +195,7 @@ export class World {
     this.headMat = new StandardMaterial('headM', this.scene); this.headMat.specularColor = new Color3(0.1, 0.1, 0.1);
     this.trailMat = new StandardMaterial('trailM', this.scene); this.trailMat.specularColor = new Color3(0.05, 0.05, 0.05);
     if (this.cmode) new RoadSightline(this.trailMat);
-    this.head = CreateBox('head', { size: 1 }, this.scene); this.head.scaling.set(LINE_W * 1.06, LINE_H + 0.05, LINE_W * 1.06); /* slightly larger than the trail cross-section: no coplanar faces with the run it caps (z-fighting flicker) */ this.head.material = this.headMat; this.head.parent = this.root;
+    this.head = CreateBox('head', { size: 1 }, this.scene); this.head.scaling.set(LINE_W, LINE_H, LINE_W); this.head.material = this.headMat; this.head.parent = this.root;
     this.trail = CreateBox('trail', { size: 1 }, this.scene); this.trail.material = this.trailMat; this.trail.parent = this.root; this.trail.alwaysSelectAsActiveMesh = true;
     this.trailBuf = new Float32Array(16 * 256); this.trail.thinInstanceSetBuffer('matrix', this.trailBuf, 16, false); this.trail.thinInstanceCount = 0;
     this.skin.attach(this.head, this.headMat, this.trailMat, this.root);
@@ -377,12 +378,15 @@ export class World {
   seek(t: number) {
     if (!this.game || !this.route) return;
     this.road?.seek(t); this.dress?.seek(t);
-    this.failRun = null; this.runs = []; this.trailCount = 0; this.updateTrail(t, true);
+    this.failRun = null; this.runs = []; this.trailCount = 0;
+    // A zero thin-instance count can render the source mesh; explicitly hide an empty trail.
+    if (this.trail) { this.trail.thinInstanceCount = 0; this.trail.setEnabled(false); }
+    this.trailBuf.fill(0); this.updateTrail(t, true);
     for (const d of this.diamonds) { d.taken = this.game.diamondsTaken.has(this.diamonds.indexOf(d)); d.mesh.setEnabled(!d.taken); d.mesh.scaling.set(1, 1.5, 1); d.mesh.position.copyFrom(d.base); }
     for (const c of this.crowns) { c.taken = c.t <= t + 1e-6; c.node.setEnabled(true); c.node.position.copyFrom(c.base); this.ghostCrown(c.node, c.taken); }
     for (const f of this.fx) f.mesh.dispose(); this.fx = [];
     this.failAnim?.pieces.forEach(p => p.mesh.dispose()); this.failAnim = null;
-    this.head?.setEnabled(true); this.skin.reset();
+    this.head?.setEnabled(true); if (this.head) this.head.visibility = 1; this.skin.reset();
     if (this.rig) { this.rig.freezeAt = null; this.rig.extraPitch = 0; this.rig.extraDist = 0; this.rig.snap(); }
     this.lastTime = t; this.completeAt = -1;
     this.applyTime(t, 0, true);
@@ -399,9 +403,9 @@ export class World {
    *  head. Airborne spans draw nothing, so a jump/fall starts a new run on landing. */
   private updateTrail(t: number, full = false) {
     const g = this.game!, route = this.route!;
-    const tc = Math.min(t, pendingCorner(route, g.turns, t, g.cursor));
+    const tc = route.freeTurns ? t : Math.min(t, pendingCorner(route, g.turns, t, g.cursor));
     const runs: Run[] = [];
-    for (const sp of route.spans) {
+    for (const sp of route.freeTurns ? travelledSpans(route, g.turns) : route.spans) {
       if (sp.t0 >= tc) break;
       if (sp.air) continue;
       const a = this.v3(spanPos(sp, sp.t0)), b = this.v3(spanPos(sp, Math.min(sp.t1, tc)));
@@ -423,17 +427,21 @@ export class World {
       let n = this.trailBuf.length; while (runs.length * 16 > n) n *= 2;
       const nb = new Float32Array(n); nb.set(this.trailBuf); this.trailBuf = nb; this.trail!.thinInstanceSetBuffer('matrix', this.trailBuf, 16, false);
     }
-    for (let i = first; i < runs.length; i++) this.writeRun(i, runs[i]);
-    const changed = first < runs.length || runs.length !== this.trailCount;
+    for (let i = first; i < runs.length; i++) this.writeRun(i, runs[i], i > 0 && Vector3.DistanceSquared(runs[i - 1].b, runs[i].a) < 1e-8);
+    const changed = full || first < runs.length || runs.length !== this.trailCount;
     this.runs = runs; this.trailCount = runs.length;
+    this.trail?.setEnabled(runs.length > 0);
     if (changed && this.trail) { this.trail.thinInstanceCount = this.trailCount; this.trail.thinInstanceBufferUpdated('matrix'); this.trail.thinInstanceRefreshBoundingInfo(false); }
   }
 
-  private writeRun(i: number, r: Run) {
+  private writeRun(i: number, r: Run, joined = false) {
     const d = r.b.subtract(r.a); const len = d.length();
     const yaw = [0, Math.PI / 2, Math.PI, -Math.PI / 2][r.h];          // exact multiples of 90 degrees
     const pitch = len > 1e-6 ? -Math.asin(Math.max(-1, Math.min(1, d.y / len))) : 0;
-    const m = Matrix.Compose(new Vector3(LINE_W, LINE_H, len + LINE_W), Quaternion.RotationYawPitchRoll(yaw, pitch, 0), r.a.add(r.b).scale(0.5));
+    // The preceding run owns the corner square. Avoid overlapping coplanar top faces.
+    const start = joined ? r.a.add(d.scale((LINE_W / 2) / len)) : r.a.subtract(len > 1e-6 ? d.scale((LINE_W / 2) / len) : Vector3.Zero());
+    const end = r.b.add(len > 1e-6 ? d.scale((LINE_W / 2) / len) : Vector3.Zero());
+    const m = Matrix.Compose(new Vector3(LINE_W, LINE_H, Vector3.Distance(start, end)), Quaternion.RotationYawPitchRoll(yaw, pitch, 0), start.add(end).scale(0.5));
     m.copyToArray(this.trailBuf, i * 16);
   }
 
@@ -527,6 +535,10 @@ export class World {
       if (!seeking && (g.status === 'playing' || g.status === 'complete')) {
         this.updateTrail(t);
       }
+      // The last run already contains the leading cube. Keep the logical head for its decoration,
+      // but do not draw a second enlarged box over the same surface (visible seam / z-fighting).
+      const tail = this.runs[this.runs.length - 1];
+      this.head.visibility = tail && Vector3.DistanceSquared(tail.b, lp) < 1e-6 ? 0 : 1;
     } else if (this.failAnim) {
       const k = performance.now() / 1000 - this.failAnim.t0;
       const slide = Math.min(k, 0.22);

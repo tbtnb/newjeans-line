@@ -1,5 +1,7 @@
 import type { LevelData } from './types';
-import { buildRoute, type Route } from './path';
+import { buildRoute, spanIndexAt, spanPos, type Route } from './path';
+import { linePos } from './linepath';
+import { readableRoadWidths } from './roadwidth';
 
 export const WINDOW_MAX = 0.15;     // ± seconds, hard cap (sparse taps on a wide road)
 export const WINDOW_MIN = 0.045;    // ± seconds, absolute floor
@@ -18,7 +20,7 @@ export const LATE_GRACE = 0.15;
 export const LATE_GRACE_MAX = 0.4;
 
 export type Status = 'ready' | 'playing' | 'paused' | 'failed' | 'complete';
-export type FailKind = 'late' | 'early' | 'extra';
+export type FailKind = 'late' | 'early' | 'extra' | 'wall';
 export interface TurnRecord { index: number; chartT: number; tapT: number; }
 export interface Checkpoint { index: number; t: number; cursor: number; diamonds: number[]; }
 
@@ -43,6 +45,8 @@ export class Game {
   readonly taps: number[];
   readonly windows: number[];
   readonly earlyWindows: number[];
+  private widths: number[] = [];
+  private checkedUntil = 0;
   status: Status = 'ready';
   time = 0;
   cursor = 0;
@@ -63,20 +67,14 @@ export class Game {
   constructor(level: LevelData) {
     this.level = level;
     this.route = buildRoute(level.chart, level.layout.elevation ?? [], level.duration);
+    this.route.freeTurns = level.id === 'omg';
+    this.widths = readableRoadWidths(this.route, t => roadWidthAt(level.layout.road?.width, t));
     this.taps = this.route.tapTimes;
     const spans = this.route.spans;
     const speedAt = (t: number) => { const s = spans.find(x => t >= x.t0 - 1e-9 && t < x.t1) ?? spans[spans.length - 1]; return s?.v ?? 9; };
     this.windows = judgmentWindows(this.taps, i => geometricWindow(roadWidthAt(level.layout.road?.width, this.taps[i]), speedAt(this.taps[i] - 1e-4)));
     this.earlyWindows = [...this.windows];
-    // OMG's authored rhythm is unchanged. Queue an early turn until its corner instead of treating
-    // a slightly early musical input as a wall collision. Each event consumes only the pending tap.
-    // Keep a debounce-sized gap so the same gesture cannot take two dense corners.
-    if (level.id === 'omg') for (let i = 0; i < this.taps.length; i++) {
-      const gap = Math.min(i ? this.taps[i] - this.taps[i - 1] : Infinity,
-        i + 1 < this.taps.length ? this.taps[i + 1] - this.taps[i] : Infinity);
-      this.earlyWindows[i] = Math.min(0.18, gap - DEBOUNCE);
-      this.windows[i] = Math.min(0.15, gap - DEBOUNCE);
-    }
+
   }
 
   get progress() { return Math.max(0, Math.min(1, this.time / this.level.duration)); }
@@ -92,7 +90,7 @@ export class Game {
     const have = new Set(this.turns.map(r => r.index));
     for (let i = 0; i < this.cursor; i++) if (!have.has(i)) this.turns.push({ index: i, chartT: this.taps[i], tapT: this.taps[i] });
     this.turns.sort((a, b) => a.index - b.index);
-    this.failKind = null;
+    this.failKind = null; this.failTime = 0; this.ignoredDuplicates = 0; this.checkedUntil = t;
     this.lastAccepted = -Infinity;
     for (const i of [...this.diamondsTaken]) if (this.level.layout.diamonds[i].t > t) this.diamondsTaken.delete(i);
     for (const i of [...this.crownsReached]) if (this.level.layout.crowns[i].t > t + 1e-6) this.crownsReached.delete(i);
@@ -110,7 +108,15 @@ export class Game {
   update(t: number) {
     if (this.status !== 'playing') return;
     t = Math.max(this.time, t);
-    if (this.cursor < this.taps.length) {
+    if (this.route.freeTurns) {
+      // Give timestamped input its delivery grace, then sweep the real trajectory against the road.
+      const end = Math.max(this.startTime, t - this.lateGrace);
+      for (let q=this.checkedUntil; q<end-1e-9;) {
+        q=Math.min(end,q+1/120);
+        if (!this.onRoad(q)) { this.fail('wall',q); return; }
+      }
+      this.checkedUntil=end;
+    } else if (this.cursor < this.taps.length) {
       const deadline = this.taps[this.cursor] + this.windows[this.cursor];
       if (t > deadline + this.lateGrace) { this.collect(deadline); this.fail('late', deadline); return; }
     }
@@ -120,6 +126,25 @@ export class Game {
       this.status = 'complete'; this.time = this.level.duration;
       this.onEvent?.({ type: 'complete' });
     }
+  }
+
+  private onRoad(t: number): boolean {
+    const p = linePos(this.route, this.turns, t, this.cursor), idx = spanIndexAt(this.route,t);
+    const current = this.route.spans[idx];
+    // Falling is authored vertical motion; no invisible wall is introduced during flight.
+    if (current.air) return true;
+    for (let i=Math.max(0,idx-2); i<=Math.min(this.route.spans.length-1,idx+2); i++) {
+      const s=this.route.spans[i]; if(s.air) continue;
+      if(Math.abs(p.y-spanPos(s,Math.max(s.t0,Math.min(t,s.t1))).y)>0.8) continue;
+      const [dx,dz]=s.heading===0?[0,1]:s.heading===1?[1,0]:s.heading===2?[0,-1]:[-1,0];
+      const along=(p.x-s.x0)*dx+(p.z-s.z0)*dz,cross=(p.x-s.x0)*dz-(p.z-s.z0)*dx;
+      const len=s.v*(s.t1-s.t0);
+      const prev=this.route.spans[i-1], next=this.route.spans[i+1];
+      const padStart=prev && prev.turnIndex>=0 && !prev.air ? -this.widths[i-1]/2 : i===0?1.5:0;
+      const padEnd=s.turnIndex>=0 && next ? this.widths[i+1]/2 : i===this.route.spans.length-1?6:0;
+      if(Math.abs(cross)<=this.widths[i]/2+1e-6 && along>=-padStart-1e-6 && along<=len+padEnd+1e-6) return true;
+    }
+    return false;
   }
 
   private collect(t: number) {
@@ -138,7 +163,7 @@ export class Game {
     if (this.cursor >= this.taps.length) { this.fail('extra', t); return 'fail'; }
     const T = this.taps[this.cursor];
     const err = t - T;
-    if (err < -this.earlyWindows[this.cursor] - 1e-9 || err > this.windows[this.cursor] + 1e-9) { this.fail(err < 0 ? 'early' : 'late', t); return 'fail'; }
+    if (!this.route.freeTurns && (err < -this.earlyWindows[this.cursor] - 1e-9 || err > this.windows[this.cursor] + 1e-9)) { this.fail(err < 0 ? 'early' : 'late', t); return 'fail'; }
     this.turns.push({ index: this.cursor, chartT: T, tapT: t });
     if (Math.abs(err) <= PERFECT) this.perfect++; else this.good++;
     this.errorSum += err;

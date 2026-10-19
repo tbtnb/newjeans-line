@@ -454,6 +454,7 @@ export class SceneC {
       if (idx.length) { if (!this.matAO) { const m = new StandardMaterial('paperCAO', this.scene); m.disableLighting = true; m.diffuseColor = new Color3(0, 0, 0); m.emissiveColor = new Color3(0.1, 0.06, 0.16); m.specularColor = new Color3(0, 0, 0);
           m.transparencyMode = Material.MATERIAL_ALPHABLEND; m.alpha = 0.999; m.disableDepthWrite = true; m.backFaceCulling = false; m.zOffset = -2; this.matAO = m; }
         const m = new Mesh('cbankao', this.scene), vd = new VertexData(); vd.positions = p; vd.colors = c; vd.indices = idx; vd.applyToMesh(m, false); m.hasVertexAlpha = true;
+        m.alphaIndex = -20; // Contact shadows must draw before the transparent horizon, not float over the sky.
         m.material = this.matAO; m.isPickable = false; m.parent = this.root; m.freezeWorldMatrix(); (m as any).__tris = idx.length / 3; this.ao = m; } }
     const p: number[] = [], c: number[] = [], idx: number[] = [];
     for (const GG of on ? [this.stackGeo, this.bankGeo] : [this.bankGeo])   // v10: bank cliffs on both tiers, page-stack edges / book spreads high only

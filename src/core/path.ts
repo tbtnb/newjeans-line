@@ -16,6 +16,7 @@ export interface Span {
 }
 
 export interface Route {
+  freeTurns?: boolean; // OMG: turn at the actual input position, without centreline snapping
   spans: Span[];
   duration: number;
   dirs: Dir[];
