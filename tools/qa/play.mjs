@@ -47,6 +47,7 @@ await page.waitForTimeout(900);
 const taps = await page.evaluate(() => window.__nj.game.taps);
 const to = Math.min(+(A.to ?? 1e9), await page.evaluate(() => window.__nj.level.duration));
 await page.evaluate(() => { window.__runlog = { fails: [], turns: null }; setInterval(() => { const g = window.__nj.game; if (!g) return; if (g.status === 'failed' && !window.__runlog.fails.some(f => f.t === g.failTime)) window.__runlog.fails.push({ t: g.failTime, kind: g.failKind, cursor: g.cursor, next: g.taps[g.cursor] }); if (g.turns.length) window.__runlog.turns = g.turns.map(r => [r.chartT, r.tapT]); }, 20); });
+if (A.headlog) await page.evaluate(() => { window.__njHeadLog = []; });
 dbg('start tap'); touch();
 // Same machine => both processes share the wall clock; map via timeOrigin (no round-trip bias).
 const sync = async () => { const r = await page.evaluate(() => ({ s: window.__nj.audio.songTime(), e: performance.timeOrigin + performance.now(), st: window.__nj.game.status })); return { song: r.s, node: r.e - performance.timeOrigin, status: r.st }; };
@@ -92,7 +93,10 @@ await Promise.allSettled(pending);
 if (ff) { ff.stdin.write('q'); await new Promise(r => ff.on('close', r)); }
 const errs = result.turns.map(([c, t]) => Math.round((t - c) * 1000));
 const mean = errs.reduce((a, b) => a + b, 0) / Math.max(1, errs.length); const sd = Math.sqrt(errs.reduce((a, b) => a + (b - mean) ** 2, 0) / Math.max(1, errs.length));
-const summary = { ...result, turns: undefined, judged: errs.length, errorMeanMs: +mean.toFixed(1), errorSdMs: +sd.toFixed(1), errorMaxAbsMs: Math.max(0, ...errs.map(Math.abs)), sent: sent.length, logs };
+let head = null;
+if (A.headlog) { const hl = await page.evaluate(() => window.__njHeadLog || []); const st = k => { const a = hl.map(r => r[k]).sort((x, y) => x - y); const q = p => +a[Math.min(a.length - 1, Math.floor(p * a.length))].toFixed(3); return a.length ? { min: q(0), p05: q(0.05), median: q(0.5), p95: q(0.95), max: q(1) } : null; };
+  head = { frames: hl.length, y: st(1), x: st(2), quality: await page.evaluate(() => window.__nj.save?.settings?.quality ?? null) }; writeFileSync(A.headlog, JSON.stringify(hl)); }
+const summary = { ...result, head, turns: undefined, judged: errs.length, errorMeanMs: +mean.toFixed(1), errorSdMs: +sd.toFixed(1), errorMaxAbsMs: Math.max(0, ...errs.map(Math.abs)), sent: sent.length, logs };
 console.log(JSON.stringify(summary, null, 1));
 if (A.log) writeFileSync(A.log, JSON.stringify({ summary, errors: errs, sent }, null, 1));
 await browser.close();

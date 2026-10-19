@@ -57,6 +57,11 @@ export class CameraRig {
   focus: ((t: number, head: { x: number; z: number }) => { x: number; z: number; w: number } | null) | null = null;
   private fw = 0; private fyaw = 0; private fsx = 0; private fsz = 0;
   private hits: number[] = []; private orbitAng = 0;
+  /** last projected head position (fraction of the screen from the left / top), for QA (__njHeadLog) */
+  lastFx = 0.5; lastFy = 0.5;
+  /** key camera screen-space framing: the head is pinned at this fraction from the top (portrait ~0.42, landscape ~0.47);
+   *  ?headpin=0 restores the old look-at-the-lead-point framing (QA baseline) */
+  headPin = !(typeof location !== 'undefined' && /[?&]headpin=0\b/.test(location.search));
 
   constructor(scene: Scene, private route: Route, authored: CameraCue[], sections: { t: number; label?: string }[] = [], hits: number[] = [], auto = true) {
     this.cam = new FreeCamera('cam', new Vector3(0, 20, -20), scene);
@@ -112,7 +117,7 @@ export class CameraRig {
       } else { const k = 1 - Math.exp(-dt * 1.2); this.fsx -= this.fsx * k; this.fsz -= this.fsz * k; }
       const off = this.fyaw; desiredYaw += off; fx = Math.sin(flow + off); fz = Math.cos(flow + off); fzoom = 12 * this.fw;
     }
-    const leadDist = this.keyMode ? Math.max(MIN_DIST, p.dist) * 0.42 : Math.min(p.lead * 9, Math.max(MIN_DIST, p.dist) * 0.2);   // key: look well ahead, head sits low
+    const leadDist = this.keyMode ? Math.max(MIN_DIST, p.dist) * (this.headPin ? 0.12 : 0.42) : Math.min(p.lead * 9, Math.max(MIN_DIST, p.dist) * 0.2);   // key: look well ahead, head sits low
     const want = this.freezeAt ?? new Vector3(head.x + fx * leadDist + this.fsx, head.y, head.z + fz * leadDist + this.fsz);
     if (!this.initialized) { this.target.copyFrom(want); this.yaw = desiredYaw; this.ty = want.y; this.initialized = true; }
     const kPos = 1 - Math.exp(-dt * 4.5), kYaw = 1 - Math.exp(-dt * 1.6), kY = 1 - Math.exp(-dt * 2.5);
@@ -134,11 +139,37 @@ export class CameraRig {
     this.cam.fov = p.fov * Math.PI / 180;
     const roll = p.roll * Math.PI / 180;
     this.cam.upVector = new Vector3(Math.sin(roll) * Math.cos(this.yaw), Math.cos(roll), -Math.sin(roll) * Math.sin(this.yaw));
-    this.cam.setTarget(this.target.add(jitter.scale(0.5)));
+    let look = this.target.add(jitter.scale(0.5));
+    if (this.keyMode && this.headPin && !this.menuOrbit) look = this.pinHead(head, p.fov * Math.PI / 180, look);
+    this.cam.setTarget(look);
+    this.measure(head, look);
     this.shakeBoost *= Math.exp(-dt * 6);
+  }
+
+  measure(head: { x: number; y: number; z: number }, look: Vector3) {
+    const { f, r, u } = basis(this.cam.position, look), v = new Vector3(head.x, head.y, head.z).subtract(this.cam.position), d = Math.max(1e-3, Vector3.Dot(v, f)), th = Math.tan(this.cam.fov / 2);
+    this.lastFy = (1 - Vector3.Dot(v, u) / d / th) / 2; this.lastFx = (1 + Vector3.Dot(v, r) / d / (th * this.aspect)) / 2;
+  }
+  /** Screen-space framing: turn the view about its right axis so the head projects at a fixed height (independent of pitch,
+   *  distance, aspect, choreography, hero nudge and zone blends), then keep it inside the middle half horizontally.
+   *  Returns the new look point (on the head's ground plane, so shadows / ground paint that follow getTarget() stay put). */
+  pinHead(head: { x: number; y: number; z: number }, fov: number, look: Vector3): Vector3 {
+    const a = this.aspect, fy = a <= 0.8 ? 0.42 : a >= 1.3 ? 0.47 : 0.42 + (a - 0.8) / 0.5 * 0.05;   // portrait 42 %, landscape 47 % from the top
+    const th = Math.tan(fov / 2), pos = this.cam.position, dist = Math.max(1, Vector3.Distance(look, pos));
+    let { f, u } = basis(pos, look); const v = new Vector3(head.x, head.y, head.z).subtract(pos);
+    const dv = Math.atan2(Vector3.Dot(v, u), Vector3.Dot(v, f)) - Math.atan((1 - 2 * fy) * th);
+    f = f.scale(Math.cos(dv)).add(u.scale(Math.sin(dv)));
+    // horizontal: hero yaw / slide may push the head sideways; keep it within 25-75 % of the width
+    const r2 = Vector3.Cross(Vector3.Up(), f).normalize(), lim = Math.atan(0.5 * th * a), hx = Math.atan2(Vector3.Dot(v, r2), Vector3.Dot(v, f));
+    const dh = hx > lim ? hx - lim : hx < -lim ? hx + lim : 0;
+    if (dh) { const c = Math.cos(dh), s = Math.sin(dh); f = new Vector3(f.x * c + f.z * s, f.y, -f.x * s + f.z * c); }
+    const k = f.y < -0.05 ? (head.y - pos.y) / f.y : dist;   // ray -> head's ground plane
+    return pos.add(f.scale(Math.min(Math.max(k, 5), 400)));
   }
 }
 
+/** camera basis (left-handed: x right, y up, z forward) */
+function basis(pos: Vector3, look: Vector3) { const f = look.subtract(pos).normalize(); const r = Vector3.Cross(Vector3.Up(), f).normalize(); return { f, r, u: Vector3.Cross(f, r) }; }
 function lastLE(a: number[], t: number) { let lo = 0, hi = a.length - 1, r = -1e9; while (lo <= hi) { const m = (lo + hi) >> 1; if (a[m] <= t) { r = a[m]; lo = m + 1; } else hi = m - 1; } return r; }
 
 /** Default choreography from section labels. An authored cue at a section start that sets no modifiers gets the
