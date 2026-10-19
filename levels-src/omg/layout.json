@@ -1956,7 +1956,7 @@
    "gloss": 0.2,
    "trim": "#ffe08a",
    "trimGlow": 1.2,
-   "trimWidth": 0.11,
+   "trimWidth": 0.06,
    "topGlow": 0.05
   },
   "maxBeams": 28,
