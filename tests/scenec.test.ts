@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { buildRoute, anchor } from '../src/core/path';
+import { buildRoute, anchor, flowAnchor } from '../src/core/path';
 import { chunkTimes, place, activeRange } from '../src/render/scenec/place';
 
 const L = JSON.parse(readFileSync('src/levels/omg.json', 'utf8'));
@@ -40,5 +40,19 @@ test('paper pages never sit above any road they overlap (falls / ramps terrace d
     const q = anchor(route, t).pos;
     for (const c of p.chunks) if (q.x >= c.minX - pad && q.x <= c.maxX + pad && q.z >= c.minZ - pad && q.z <= c.maxZ + pad)
       assert.ok(c.y <= q.y - 0.6 + 1e-6, `page of chunk ${c.i} (y ${c.y.toFixed(2)}) above road at t=${t.toFixed(1)} (y ${q.y.toFixed(2)})`);
+  }
+});
+
+ test('pop-up bunny fronts face the approach camera, including surrounding bunny props', () => {
+  const p=place(L.layout.scenec,route,{duration:L.duration,widthAt,roadH:.6,hits:()=>false});
+  const all=[...p.sets,...p.chunks.flatMap(c=>c.items)].filter(it=>/^(bunny-statue|bunny-heart|reading-bunny|bunny-family)$/.test(it.a));
+  assert.ok(all.length>=4);
+  for(const it of all){
+    const at='popAt' in it ? it.popAt+.6 : it.t-2;
+    const t=Math.min(Math.floor(L.duration*4)/4,Math.round(Math.max(0,at)*4)/4),ta=Math.max(0,Math.min(L.duration-3,t-1.5));
+    const p0=flowAnchor(route,ta).pos,p1=flowAnchor(route,ta+3).pos,pp=flowAnchor(route,t).pos;
+    const dx=p1.x-p0.x,dz=p1.z-p0.z,len=Math.hypot(dx,dz)||1;
+    const cx=pp.x-dx/len*37-it.x,cz=pp.z-dz/len*37-it.z;
+    assert.ok((Math.sin(it.yaw)*cx+Math.cos(it.yaw)*cz)/(Math.hypot(cx,cz)||1)>.999, it.a+' shows its back');
   }
 });

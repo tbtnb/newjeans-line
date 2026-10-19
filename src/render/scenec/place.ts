@@ -342,6 +342,15 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
     for (let ci = Math.max(0, st.chunk - 2); ci <= Math.min(chunks.length - 1, st.chunk + 2); ci++) chunks[ci].items = chunks[ci].items.filter(it => {
       if (it.layer !== 'mid') return true; const B = spec.assets[it.a]; if (!B || B.h * it.s < 0.8) return true;
       const k = (it.x - st.x) ** 2 + (it.z - st.z) ** 2 < ((r + foot(B, it.s) * 0.6) * 0.85) ** 2; if (k) rejected++; return !k; }); }
+  // Character fronts are +Z. Aim them at the approach camera, not the road point beside them:
+  // the latter can show a springing card's back while the player approaches.
+  const facePlayer = (it: CInst, at: number) => {
+    if (!/^(bunny-statue|bunny-heart|reading-bunny|bunny-family)$/.test(it.a)) return;
+    const cp = camPath[Math.min(camPath.length - 1, Math.round(Math.max(0, at) * 4))];
+    it.yaw = Math.atan2(cp.x - it.x, cp.z - it.z);
+  };
+  for (const c of chunks) for (const it of c.items) facePlayer(it, it.t - 2);
+  for (const it of sets) facePlayer(it, it.popAt + 0.6);
   return { banks, chunks, sets, stats: { placed, rejected, rj } };
 }
 

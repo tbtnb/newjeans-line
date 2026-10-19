@@ -1037,8 +1037,8 @@
    "dir": "L"
   },
   {
-   "t": 76.663,
-   "tag": "tap",
+   "t": 76.545,
+   "tag": "snare",
    "dir": "R"
   },
   {
@@ -2279,6 +2279,13 @@
    "drum_taps": 83,
    "inst_taps": 26,
    "tap_fields": "lyric = word, syl = syllable (debug only; engine ignores them)"
+  },
+  "playtest_adjustment_20261019": {
+   "scope": "47 percent local rhythm",
+   "tap_index": 182,
+   "old": 76.663,
+   "new": 76.545,
+   "reason": "User requested regularization; restore quarter-note pulse between 76.072 and 77.017, rather than the single delayed sixteenth."
   }
  }
 }

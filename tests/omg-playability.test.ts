@@ -9,7 +9,7 @@ import type {LevelData} from '../src/core/types';
 import {AudioTransport} from '../src/audio';
 const L=JSON.parse(readFileSync('src/levels/omg.json','utf8')) as LevelData;
 
-test('OMG perfect route remains playable without changing its 361 timestamps',()=>{
+test('OMG perfect route remains playable with all 361 inputs',()=>{
   const g=new Game(L);g.prepare();g.start();
   for(const T of g.taps) { assert.equal(g.tap(T),'hit'); }
   g.update(L.duration);assert.equal(g.status,'complete');assert.equal(g.cursor,361);
@@ -51,4 +51,20 @@ test('dense OMG parallel road strips have a ground gap including their gold ledg
     if(d>2 && d<2.9){assert.ok(d-(w[i]+w[i+2])/2-.32>=.299,`${i} gap`);checked++;}
   }
   assert.ok(checked>50);assert.ok(Math.min(...w)>=1.2);
+});
+
+test('47 percent phrase keeps a steady quarter-note pulse',()=>{
+  const taps=L.chart.taps.map(x=>x.t).filter(t=>t>=75.1 && t<=77.1);
+  assert.equal(taps.length,5);
+  for(let i=1;i<taps.length;i++)assert.ok(Math.abs(taps[i]-taps[i-1]-.47243)<.002);
+});
+test('jumps only occur in long straight input-free windows, never dense phrases',()=>{
+  const g=new Game(L);
+  for(const s of g.route.spans.filter(s=>s.air)){
+    const before=g.taps.filter(t=>t<s.t0).at(-1)??0;
+    const after=g.taps.find(t=>t>s.t1)??L.duration;
+    assert.ok(after-before>=1.8);
+    assert.ok(!g.taps.some(t=>t>=s.t0-.3&&t<=s.t1+.3));
+  }
+  assert.equal(g.route.spans.some(s=>s.air&&s.t0>2&&s.t0<157.8),false);
 });
