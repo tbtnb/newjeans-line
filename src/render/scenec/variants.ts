@@ -7,7 +7,7 @@ const C = { coral: '#FF7A6B', pink: '#FF6FAE', magenta: '#FF4FA0', lavender: '#B
 const house: Swap[][] = [[], [[C.coral, C.pink]], [[C.coral, C.lavender], [C.sun, C.gold]], [[C.coral, C.cyan], [C.cream, C.pearl]], [[C.coral, C.magenta], [C.cream, C.blush]], [[C.coral, '#8FD3A6']]];
 export const VARIANTS: Record<string, Swap[][]> = {
   'mushroom-house': house, 'bunny-house': house,
-  'mushroom-group': [[], [[C.coral, C.pink]], [[C.coral, C.lavender]], [[C.coral, C.sun]]],
+  'mushroom-group': [[], [[C.coral, C.pink]], [[C.coral, C.lavender]], [[C.coral, C.sun]], [[C.coral, C.cyan]], [[C.coral, C.magenta], [C.cream, C.blush]], [[C.coral, C.mint]]],   // v9: 7 looks (clone pairs in mixed piles)
   'tulip-bed': [[], [[C.coral, C.pink]], [[C.coral, C.lavender], [C.sun, C.blush]], [[C.sun, '#FFFFFF']], [[C.coral, C.magenta]]],
   'heart-bed': [[], [[C.coral, C.lavender], [C.lavender, C.coral]], [[C.pink, C.sun], [C.coral, C.blush]], [[C.coral, C.cyan], [C.pink, C.lavender]]],
   balloons: [[], [[C.magenta, C.lavender], [C.cyan, C.mint]], [[C.magenta, C.sun], [C.pink, C.coral]], [[C.cyan, C.pink], [C.magenta, C.cyan]]],
@@ -16,11 +16,12 @@ export const VARIANTS: Record<string, Swap[][]> = {
   bunting: [[], [[C.magenta, C.cyan], [C.cyan, C.magenta]], [[C.magenta, C.lavender], [C.cyan, C.mint]], [[C.cyan, C.sun]]],
   'pine-lo': [[], [[C.teal, '#21535A']], [[C.teal, '#2A4466']], [[C.mint, C.green]]],
   'tree-lo': [[], [[C.mint, C.green]], [[C.mint, C.blush], [C.green, C.pink]], [[C.mint, '#9FDCC2']], [[C.mint, C.sun]]],
-  'firefly-lamp': [[], [[C.teal, '#2A4466']], [[C.teal, C.lavender], [C.gold, C.blush]], [[C.gold, C.mint]]],
-  'lily-lamp': [[], [[C.blush, C.lilac]], [[C.blush, C.mint], [C.mint, C.blush]], [[C.blush, C.moon]]],
+  'firefly-lamp': [[], [[C.teal, '#2A4466']], [[C.teal, C.lavender], [C.gold, C.blush]], [[C.gold, C.mint]], [[C.gold, C.cyan]], [[C.teal, '#5A3E7A'], [C.gold, C.sun]], [[C.gold, C.lilac]]],
+  'lily-lamp': [[], [[C.blush, C.lilac]], [[C.blush, C.mint], [C.mint, C.blush]], [[C.blush, C.moon]], [[C.blush, C.gold]], [[C.blush, C.cyan]]],
   'heart-sculpt': [[], [[C.pink, C.lavender]], [[C.pink, C.coral]], [[C.pink, C.cyan]]],
   'bunny-statue': [[], [[C.blush, C.lilac]], [[C.blush, C.mint], [C.mint, C.blush]], [[C.pearl, C.cream], [C.blush, C.sun]]],
-  'pull-tab': [[], [[C.coral, C.pink]], [[C.coral, C.lavender]], [[C.coral, C.cyan]]],
+  'pull-tab': [[], [[C.coral, C.pink]], [[C.coral, C.lavender]], [[C.coral, C.cyan]], [[C.coral, C.sun]], [[C.coral, C.mint]]],
+  rock: [[], [[C.moon, C.lilac]], [[C.moon, C.blush]], [[C.moon, C.mint], [C.mint, C.moon]], [[C.moon, C.gold]], [[C.moon, C.lavender]]],   // v9
   'flower-heart': [[], [[C.pink, C.lavender]], [[C.pink, C.sun]], [[C.pink, C.coral]]],
   'paper-boat': [[], [[C.lilac, C.blush]], [[C.lilac, C.mint], [C.moon, C.lilac]]],
   'forest-clump': [[], [[C.mint, C.blush]], [[C.green, '#8FD3A6']]],

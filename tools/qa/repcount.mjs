@@ -24,11 +24,11 @@ for (const [id, T] of hz) {
     for (const c of P.chunks) for (const im of c.imp ?? []) if (vis(im.x, im.y + im.s * 0.5, im.z)) V.push({ a: 'card:' + im.k, g: 'card', x: im.x, z: im.z, h: im.s, v: 0 });
     const cnt = g => { const o = {}; for (const e of V) if (g.includes(e.g)) o[e.a] = (o[e.a] ?? 0) + 1; return Object.entries(o).sort((p, q) => q[1] - p[1]); };
     const mid = cnt(['mid', 'set']), gr = cnt(['ground']), cards = cnt(['card']);
-    const tall = V.filter(e => (e.g === 'mid' || e.g === 'set') && e.h >= 0.8 && !/fence|hedge|bunting|lantern-string|cord/.test(e.a)); let clones = 0;
-    for (const e of tall) { let b = null, bd = 49; for (const f of tall) { if (f === e) continue; const d = (f.x - e.x) ** 2 + (f.z - e.z) ** 2; if (d < bd) { bd = d; b = f; } } if (b && b.a === e.a && b.v === e.v) clones++; }
+    const tall = V.filter(e => (e.g === 'mid' || e.g === 'set') && e.h >= 0.8 && !/fence|hedge|bunting|lantern-string|cord/.test(e.a)); let clones = 0; const cl = {};
+    for (const e of tall) { let b = null, bd = 49; for (const f of tall) { if (f === e) continue; const d = (f.x - e.x) ** 2 + (f.z - e.z) ** 2; if (d < bd) { bd = d; b = f; } } if (b && b.a === e.a && b.v === e.v) { clones++; (cl[e.a] = (cl[e.a] || 0) + 1); } }
     const looks = new Set(V.filter(e => e.g === 'mid' || e.g === 'set').map(e => e.a + '#' + e.v)).size;
     const nMid = mid.reduce((s, x) => s + x[1], 0);
-    return { T: +T.toFixed(2), visible: V.length, distinctMid: mid.length, distinctLooks: looks, distinctGround: gr.length, distinctCards: cards.length, midItems: nMid, topShare: nMid ? +(mid[0][1] / nMid).toFixed(2) : 0, clonePairs: clones, tall: tall.length, mid: mid.slice(0, 12), ground: gr.slice(0, 6), cards: cards.slice(0, 6) };
+    return { T: +T.toFixed(2), visible: V.length, distinctMid: mid.length, distinctLooks: looks, distinctGround: gr.length, distinctCards: cards.length, midItems: nMid, topShare: nMid ? +(mid[0][1] / nMid).toFixed(2) : 0, clonePairs: clones, cloneAssets: cl, tall: tall.length, mid: mid.slice(0, 12), ground: gr.slice(0, 6), cards: cards.slice(0, 6) };
   }, [T, id]);
   const r = res[id]; console.log(id, 'T', r.T, 'distinct mid/sets', r.distinctMid, 'looks', r.distinctLooks, 'ground', r.distinctGround, 'cards', r.distinctCards, '| mid items', r.midItems, 'top', r.mid[0]?.join(':'), r.topShare, '| clone pairs', r.clonePairs, '/', r.tall);
 }
