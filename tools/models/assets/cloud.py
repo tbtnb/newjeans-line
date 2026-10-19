@@ -1,7 +1,8 @@
 """P24 Paper Cloud — spec size 3.5 x 1.2 x 2 m; budget 300 tris.
 Pivots: root at page origin, bob at the whole cloud centre.
-SIMPLIFICATIONS: paper grain omitted; three frequency-two icosahedral domes and four smaller folded domes share a solid
-scalloped pearl/fog backing. Top drawing is flatter than front/side, advisory.
+SIMPLIFICATIONS: paper grain omitted; three broad-shouldered geodesic puff caps
+and four smaller folded domes share a solid scalloped pearl/fog backing.
+Top drawing is flatter than front/side and remains advisory per the P24 spec.
 """
 import math
 import bpy
@@ -52,13 +53,17 @@ def build(P, spec):
     c = spec['colors']; size = spec['size_m']
     # Coordinates traced in the approved front drawing, normalised below.
     def point(u, v, y):
-        return ((u-319)/638, y-.40*(abs((u-319)/319)**1.5), (378-v)/362)
+        z = (378-v)/362
+        swept = .54991 * abs((u-319)/319)**1.5
+        bend = .20018*math.sin(math.pi*z) - .09847*z
+        bend += .12591*max(0, (v-270)/108)**2
+        return ((u-319)/638, y-swept+bend, z)
     outline = [(0,274),(23,214),(65,161),(97,161),(116,126),(173,100),
        (195,106),(228,51),(284,20),(349,16),(405,46),(445,121),
        (490,117),(525,135),(552,207),(576,206),(614,260),(638,300),
        (628,339),(267,378),
        (102,333),(18,322)]
-    # Rear sheet is vertically straight, swept across X only as in the hero.
+    # The rear sheet follows the front scallops with a shallow swept fold.
     n = len(outline)
     verts = [point(u,v,.60) for u,v in outline]
     verts += [point(319+(u-319)*.94, 210+(v-210)*.94,.38) for u,v in outline]
@@ -72,13 +77,13 @@ def build(P, spec):
     pieces = [plate]
     # Back outline -> staggered shoulder -> blunt forward crown: large paper
     # triangles form genuinely convex puffs with a tapered side silhouette.
-    puffs = [(67,251,54,57,.48,.38,'white'),
-             (163,203,61,72,.68,.38,'white'),
-             (143,311,51,34,.47,.38,'pearl'),
-             (310,143,107,96,.80,.38,'white'),
-             (445,239,88,87,.80,.38,'white'),
-             (555,292,53,55,.52,.38,'white'),
-             (272,288,103,88,.98,.30,'white')]
+    puffs = [(67, 251, 54, 57, 0.74018, 0.38, 'white'),
+             (163, 203, 61, 72, 1.17913, 0.38, 'white'),
+             (143, 311, 51, 34, 0.5799, 0.38, 'pearl'),
+             (310, 143, 107, 96, 1.11831, 0.38, 'white'),
+             (445, 239, 88, 87, 1.04733, 0.38, 'white'),
+             (555, 292, 53, 55, 0.61596, 0.38, 'white'),
+             (272, 288, 103, 88, 0.98557, 0.3, 'white')]
     for k,(u,v,rx,rz,depth,back,col) in enumerate(puffs):
         # The measured outlines include the shallow paper shoulders that must
         # overlap their neighbours; the lower forward layer sits above the rim.
@@ -87,12 +92,11 @@ def build(P, spec):
         big = k in (3,4,6)
         n = 8
         m = n//2
-        if k == 3: depth = .94
         if big:
             vertices,faces=paper_hemisphere()
             used=sorted({i for face in faces for i in face})
             remap={old:new for new,old in enumerate(used)}
-            vertices=[point(u+rx*vertices[i][0],v-rz*vertices[i][2],back+depth*vertices[i][1]) for i in used]
+            vertices=[point(u+rx*vertices[i][0]*(1+.60*vertices[i][1]**2),v-rz*vertices[i][2],back+depth*vertices[i][1]) for i in used]
             faces=[tuple(remap[i] for i in face) for face in faces]
             pieces.append(mesh(P,'geodesic folded puff %d'%k,vertices,faces,
                 lambda p,n: c['pearl'] if n.x>.5 and n.z<.3 else c[col]))
@@ -124,6 +128,23 @@ def build(P, spec):
     for ob in pieces:
         for v in ob.data.vertices:
             v.co=Vector(tuple((v.co[i]-ctr[i])*target[i]/(hi[i]-lo[i]) for i in range(3)))
+        ob.data.update()
+    # Gently taper the measured paper depths by height. The short lower
+    # shoulder is rounded back into the scalloped band rather than a wedge.
+    depth_scale = (0.98249521, 1.16962469, 0.93637485, 1.00450987, 0.97909744, 0.9351453, 1.00677752)
+    depth_offset = (0.00484683, -0.00216577, -0.03103584, 0.00314536, -0.00834194, 0.02247092, -0.00231372)
+    def profile(values, z):
+        t = max(0., min(1., z / size['h'])) * (len(values)-1)
+        i = min(len(values)-2, int(t)); a = t-i
+        return values[i]*(1-a)+values[i+1]*a
+    for ob in pieces:
+        for v in ob.data.vertices:
+            v.co.y = v.co.y*profile(depth_scale,v.co.z)+profile(depth_offset,v.co.z)
+    ys = [v.co.y for ob in pieces for v in ob.data.vertices]
+    low,high = min(ys),max(ys)
+    for ob in pieces:
+        for v in ob.data.vertices:
+            v.co.y = (v.co.y-(low+high)/2)*size['d']/(high-low)
         ob.data.update()
     bob=P.pivot('bob',(0,0,size['h']/2),pieces)
     P.pivot('root',(0,0,0),[bob])
