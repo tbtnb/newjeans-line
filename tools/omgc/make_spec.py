@@ -488,6 +488,9 @@ MASS = {
 for z in zones:
     zk = (z['t1'] - z['t0']) / 15.12
     if z['id'] in ('z03', 'z04', 'z07'): mul(z, 0.5, ('firefly-lamp', 'gift'), None)   # v9: confetti carpets -> masses
+    if z['id'] == 'z07': mul(z, 0.5, ('spiral-tower',), 'mid')   # v9 budget: 3.5k-tri towers as scatter were 24k tris of the z07 view
+    for ly in z['layers']:
+        if ly['layer'] == 'ground': ly['count'] = max(1, round(ly['count'] * 0.75))   # v9 budget: masses replace part of the flower carpet
     if z['id'] == 'z05': mul(z, 0.35, ('bunny-statue',), 'mid'); mul(z, 0.55, ('lily-lamp', 'rock', 'mushroom-group'), 'mid')   # lamp / rock carpets were the clone pairs   # user: fewer bunny statues in the lake
     for kinds, n, lat, sc, cl in MASS.get(z['id'], []):
         kinds = [k for k in kinds if k in assets]
@@ -514,7 +517,7 @@ for z in zones:
         addv(z, g[0], max(1, round(GK[zid] * zk)), [6.0, 26.0], [1.0, 1.5], True, BLOB(6, 9, 4.2)); z['layers'][-1]['alt'] = g[1:]
     p = [k for k in PILE.get(zid, []) if k in assets]
     if p:
-        addv(z, p[0], max(1, round(GK[zid] * zk * 0.6)), [3.0, 14.0], [1.2, 1.6], True, BLOB(3, 5, 2.4)); z['layers'][-1]['alt'] = p[1:]   # v9: piles trimmed for the tri budget
+        addv(z, p[0], max(1, round(GK[zid] * zk * 0.45)), [3.0, 14.0], [1.2, 1.6], True, BLOB(3, 5, 2.4)); z['layers'][-1]['alt'] = p[1:]   # v9: piles trimmed for the tri budget
 # v9c frame fill (place.ts z.fill): empty grid cells get a little mixed blob - keys read full edge to edge
 FILL = {'z01': ['tree-lo', 'tulip-bed', 'tree-bush-lo', 'gift'], 'z02': ['tree-lo', 'mushroom-group', 'tree-bush-lo', 'gift', 'pine-lo'],
         'z03': ['tree-lo', 'pine-lo', 'mushroom-group', 'tree-bush-lo', 'forest-clump'], 'z04': ['pine-lo', 'tree-lo', 'mushroom-group', 'forest-clump', 'pine-lo', 'tree-bush-lo'],
@@ -524,7 +527,7 @@ FILL = {'z01': ['tree-lo', 'tulip-bed', 'tree-bush-lo', 'gift'], 'z02': ['tree-l
 FCELL = {'z03': 8.5, 'z04': 8.5, 'z05': 8.5, 'z07': 8.5, 'z09': 9.5, 'z02': 10.5, 'z06': 10.5, 'z08': 12.0, 'z01': 12.0, 'z10': 12.0}
 for z in zones:
     k = [a for a in FILL.get(z['id'], []) if a in assets]
-    if k: z['fill'] = dict(kinds=k, cell=FCELL[z['id']], lat=32.0, n=[2, 4], r=2.6, scale=[1.0, 1.4], free=3.8)
+    if k: z['fill'] = dict(kinds=k, cell=FCELL[z['id']], lat=30.0, n=[2, 3], r=2.6, scale=[1.0, 1.4], free=3.8)
 # v9: a kind listed twice in a mixed blob lands on the same palette variant (variants step per member mod n) -> clone pairs; dedupe
 for z in zones:
     for ly in z['layers']:
