@@ -455,11 +455,11 @@ export class SceneC {
     const t = this.tm.get(e.def.a)!; e.tris = t.tris;
     const vi = e.def.v ?? 0; e.far = this.meshFrom(`cfar_${e.def.a}`, vi ? { ...t, col: variantCols(e.def.a, t.col as any, vi) as any } : t); e.far.parent = e.hinge; e.far.material = this.matSet;
     if (t.container) {
-      const inst = t.container.instantiateModelsToScene(n => `${n}_${e.def.t}`, false);
+      const inst = t.container.instantiateModelsToScene(n => `${n}_${e.def.t}`, false, { doNotInstantiate: vi > 0 });   // palette variants need own (cloned) geometry
       const r = new TransformNode(`cnear_${e.def.a}`, this.scene); r.parent = e.hinge; r.scaling.setAll(t.scale);
       for (const n of inst.rootNodes) n.parent = r;
       for (const m of r.getChildMeshes()) { m.material = this.matSet; m.isPickable = false; e.nearMeshes.push(m as Mesh);
-        if (vi) { const d = m.getVerticesData('color'); if (d && d.length === m.getTotalVertices() * 4) { (m as Mesh).makeGeometryUnique(); m.setVerticesData('color', Float32Array.from(variantCols(e.def.a, d as any, vi, false)), false, 4); } } }
+        if (vi) { const d = m.getVerticesData('color'); if (d && d.length === m.getTotalVertices() * 4 && typeof (m as Mesh).makeGeometryUnique === 'function') { (m as Mesh).makeGeometryUnique(); m.setVerticesData('color', Float32Array.from(variantCols(e.def.a, d as any, vi, false)), false, 4); } } }
       for (const n of r.getDescendants(false) as TransformNode[]) {
         const mm = /pivot_([a-z]+)(\d*)/i.exec(n.name); if (!mm || mm[1] === 'root') continue;
         e.piv.push({ node: n, kind: mm[1].toLowerCase(), i: +(mm[2] || 0), base: n.rotationQuaternion?.clone() ?? null, baseS: n.scaling.clone(), baseP: n.position.clone() });
