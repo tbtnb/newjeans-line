@@ -2187,7 +2187,7 @@
     {
      "asset": "tree-lo",
      "layer": "mid",
-     "count": 8,
+     "count": 6,
      "near": [
       0.0,
       0.0
@@ -2351,7 +2351,7 @@
      "tree-bush-lo",
      "gift"
     ],
-    "cell": 10.0,
+    "cell": 12.0,
     "lat": 32.0,
     "n": [
      2,
@@ -3306,7 +3306,7 @@
     {
      "asset": "tree-lo",
      "layer": "mid",
-     "count": 12,
+     "count": 8,
      "near": [
       0.0,
       0.0
@@ -3507,7 +3507,7 @@
      "gift",
      "pine-lo"
     ],
-    "cell": 9.0,
+    "cell": 10.5,
     "lat": 32.0,
     "n": [
      2,
@@ -4485,7 +4485,7 @@
     {
      "asset": "tree-lo",
      "layer": "mid",
-     "count": 22,
+     "count": 18,
      "near": [
       0.0,
       0.0
@@ -4525,7 +4525,7 @@
     {
      "asset": "book-stack",
      "layer": "mid",
-     "count": 13,
+     "count": 11,
      "near": [
       0.0,
       0.0
@@ -4692,10 +4692,9 @@
      "pine-lo",
      "mushroom-group",
      "tree-bush-lo",
-     "forest-clump",
-     "book-stack"
+     "forest-clump"
     ],
-    "cell": 7.5,
+    "cell": 8.5,
     "lat": 32.0,
     "n": [
      2,
@@ -6021,7 +6020,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 22,
+     "count": 18,
      "near": [
       0.0,
       0.0
@@ -6061,7 +6060,7 @@
     {
      "asset": "book-stack",
      "layer": "mid",
-     "count": 13,
+     "count": 11,
      "near": [
       0.0,
       0.0
@@ -6225,7 +6224,7 @@
      "forest-clump",
      "tree-bush-lo"
     ],
-    "cell": 7.5,
+    "cell": 8.5,
     "lat": 32.0,
     "n": [
      2,
@@ -7756,7 +7755,7 @@
     {
      "asset": "tree-lo",
      "layer": "mid",
-     "count": 20,
+     "count": 16,
      "near": [
       0.0,
       0.0
@@ -7797,7 +7796,7 @@
     {
      "asset": "mushroom-group",
      "layer": "mid",
-     "count": 12,
+     "count": 10,
      "near": [
       0.0,
       0.0
@@ -7973,7 +7972,7 @@
      "tree-bush-lo",
      "lily-lamp"
     ],
-    "cell": 7.5,
+    "cell": 8.5,
     "lat": 32.0,
     "n": [
      2,
@@ -9226,7 +9225,7 @@
     {
      "asset": "tree-lo",
      "layer": "mid",
-     "count": 14,
+     "count": 10,
      "near": [
       0.0,
       0.0
@@ -9266,7 +9265,7 @@
     {
      "asset": "gift",
      "layer": "mid",
-     "count": 8,
+     "count": 6,
      "near": [
       0.0,
       0.0
@@ -9437,7 +9436,7 @@
      "tree-bush-lo",
      "mushroom-group"
     ],
-    "cell": 9.0,
+    "cell": 10.5,
     "lat": 32.0,
     "n": [
      2,
@@ -10764,7 +10763,7 @@
     {
      "asset": "book-stack",
      "layer": "mid",
-     "count": 5,
+     "count": 4,
      "near": [
       0.0,
       0.0
@@ -10790,8 +10789,8 @@
      "hi": true,
      "cluster": {
       "n": [
-       4,
-       6
+       3,
+       4
       ],
       "r": 2.2
      },
@@ -10883,7 +10882,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 22,
+     "count": 18,
      "near": [
       0.0,
       0.0
@@ -10920,9 +10919,9 @@
      ]
     },
     {
-     "asset": "book-stack",
+     "asset": "mushroom-group",
      "layer": "mid",
-     "count": 13,
+     "count": 11,
      "near": [
       0.0,
       0.0
@@ -10954,9 +10953,8 @@
       "r": 2.4
      },
      "alt": [
-      "mushroom-group",
       "rock",
-      "star-chime"
+      "book-stack"
      ]
     }
    ],
@@ -11074,12 +11072,11 @@
    "fill": {
     "kinds": [
      "pine-lo",
-     "book-stack",
      "forest-clump",
      "tree-lo",
      "mushroom-group"
     ],
-    "cell": 7.5,
+    "cell": 8.5,
     "lat": 32.0,
     "n": [
      2,
@@ -12400,7 +12397,7 @@
      "tree-lo",
      "balloons"
     ],
-    "cell": 10.0,
+    "cell": 12.0,
     "lat": 32.0,
     "n": [
      2,
@@ -14033,7 +14030,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 28,
+     "count": 20,
      "near": [
       0.0,
       0.0
@@ -14071,7 +14068,7 @@
     {
      "asset": "mushroom-group",
      "layer": "mid",
-     "count": 17,
+     "count": 12,
      "near": [
       0.0,
       0.0
@@ -14291,7 +14288,7 @@
      "firefly-lamp",
      "forest-clump"
     ],
-    "cell": 8.5,
+    "cell": 9.5,
     "lat": 32.0,
     "n": [
      2,
@@ -15636,7 +15633,7 @@
     {
      "asset": "tree-lo",
      "layer": "mid",
-     "count": 6,
+     "count": 4,
      "near": [
       0.0,
       0.0
@@ -15808,7 +15805,7 @@
      "tree-bush-lo",
      "tulip-bed"
     ],
-    "cell": 10.0,
+    "cell": 12.0,
     "lat": 32.0,
     "n": [
      2,

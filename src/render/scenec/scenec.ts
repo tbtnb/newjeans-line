@@ -521,7 +521,7 @@ export class SceneC {
     if (this.dirtyAt >= 0 && this.time - this.dirtyAt > 0.4) { this.dirtyAt = -1; this.dropChunks(); }
     const key = typeof location === 'undefined' || !/[?&]cam=old\b/.test(location.search);   // key camera sees further ahead; v9: the head-pinned frame shows ~6 s of road behind the head (its lower third was unbuilt)
     this.pop = key ? 8.5 : 5;
-    const [a, b] = activeRange(this.plc.chunks, t, key ? (this.tier === 'high' ? 6 : 5) : T.behind, key ? T.ahead + (this.tier === 'high' ? 2 : 0) : T.ahead);
+    const [a, b] = activeRange(this.plc.chunks, t, key ? (this.tier === 'high' ? 4.5 : 4) : T.behind, key ? T.ahead + (this.tier === 'high' ? 2 : 0) : T.ahead);
     if (a !== this.range[0] || b !== this.range[1]) {
       for (const [i, m] of this.chunkMesh) if (i < a || i > b) { this.dropChunk(m); this.chunkMesh.delete(i); }
       for (let i = a; i <= b; i++) if (!this.chunkMesh.has(i)) this.chunkMesh.set(i, this.buildChunk(this.plc.chunks[i]));

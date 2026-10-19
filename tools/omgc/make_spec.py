@@ -481,7 +481,7 @@ MASS = {
          (['tree-lo', 'pine-lo', 'forest-clump', 'tree'], 5, [9.0, 17.0], [0.95, 1.3], BLOB(5, 8, 3.4)),
          (['mushroom-house', 'bunny-house', 'firefly-lamp'], 2.5, [7.0, 13.0], [1.05, 1.35], BLOB(3, 4, 3.6)),
          (['book-stack', 'gift', 'heart-sculpt'], 3, [4.0, 9.0], [1.4, 1.8], BLOB(3, 4, 2.0))],
- 'z07': [(['book-stack', 'star-chime', 'book-stack', 'lily-lamp'], 5, [3.5, 8.0], [1.4, 2.0], BLOB(4, 6, 2.2)),
+ 'z07': [(['book-stack', 'star-chime', 'lily-lamp'], 4, [3.5, 8.0], [1.4, 2.0], BLOB(3, 4, 2.2)),
          (['bunny-house', 'mushroom-house', 'pine-lo', 'firefly-lamp'], 3, [6.0, 12.0], [1.05, 1.35], BLOB(4, 5, 3.4)),
          (['pine-lo', 'tree-lo', 'forest-clump', 'pine'], 5, [10.0, 18.0], [0.95, 1.3], BLOB(5, 8, 3.4))],
 }
@@ -504,9 +504,9 @@ GROVE = {'z03': ['tree-lo', 'forest-clump', 'tree-bush-lo', 'pine-lo'], 'z04': [
          'z09': ['pine-lo', 'tree-lo', 'forest-clump', 'pine-lo'], 'z06': ['tree-lo', 'tree-bush-lo', 'pine-lo'], 'z02': ['tree-lo', 'tree-bush-lo', 'pine-lo'],
          'z10': ['tree-lo', 'tree-bush-lo', 'forest-clump'], 'z01': ['tree-lo', 'tree-bush-lo']}
 PILE = {'z03': ['book-stack', 'mushroom-group', 'gift', 'pull-tab', 'rock'], 'z04': ['book-stack', 'mushroom-group', 'heart-sculpt', 'rock'],
-        'z05': ['mushroom-group', 'rock', 'lily-lamp', 'book-stack'], 'z07': ['book-stack', 'mushroom-group', 'rock', 'star-chime'],
+        'z05': ['mushroom-group', 'rock', 'lily-lamp', 'book-stack'], 'z07': ['mushroom-group', 'rock', 'book-stack'],
         'z09': ['mushroom-group', 'firefly-lamp', 'book-stack', 'rock'], 'z06': ['gift', 'mushroom-group', 'rock']}
-GK = {'z03': 22, 'z04': 22, 'z05': 20, 'z07': 22, 'z09': 14, 'z06': 14, 'z02': 12, 'z10': 10, 'z01': 8}
+GK = {'z03': 18, 'z04': 18, 'z05': 16, 'z07': 18, 'z09': 10, 'z06': 10, 'z02': 8, 'z10': 6, 'z01': 6}
 for z in zones:
     zk = (z['t1'] - z['t0']) / 15.12; zid = z['id']
     g = [k for k in GROVE.get(zid, []) if k in assets]
@@ -517,11 +517,11 @@ for z in zones:
         addv(z, p[0], max(1, round(GK[zid] * zk * 0.6)), [3.0, 14.0], [1.2, 1.6], True, BLOB(3, 5, 2.4)); z['layers'][-1]['alt'] = p[1:]   # v9: piles trimmed for the tri budget
 # v9c frame fill (place.ts z.fill): empty grid cells get a little mixed blob - keys read full edge to edge
 FILL = {'z01': ['tree-lo', 'tulip-bed', 'tree-bush-lo', 'gift'], 'z02': ['tree-lo', 'mushroom-group', 'tree-bush-lo', 'gift', 'pine-lo'],
-        'z03': ['tree-lo', 'pine-lo', 'mushroom-group', 'tree-bush-lo', 'forest-clump', 'book-stack'], 'z04': ['pine-lo', 'tree-lo', 'mushroom-group', 'forest-clump', 'pine-lo', 'tree-bush-lo'],
+        'z03': ['tree-lo', 'pine-lo', 'mushroom-group', 'tree-bush-lo', 'forest-clump'], 'z04': ['pine-lo', 'tree-lo', 'mushroom-group', 'forest-clump', 'pine-lo', 'tree-bush-lo'],
         'z05': ['tree-lo', 'rock', 'pine-lo', 'mushroom-group', 'tree-bush-lo', 'lily-lamp'], 'z06': ['tree-lo', 'gift', 'tree-bush-lo', 'mushroom-group'],
-        'z07': ['pine-lo', 'book-stack', 'forest-clump', 'tree-lo', 'pine-lo', 'mushroom-group'], 'z08': ['pine-lo', 'gift', 'tree-lo', 'balloons'],
+        'z07': ['pine-lo', 'forest-clump', 'tree-lo', 'mushroom-group'], 'z08': ['pine-lo', 'gift', 'tree-lo', 'balloons'],
         'z09': ['pine-lo', 'mushroom-group', 'tree-lo', 'firefly-lamp', 'forest-clump'], 'z10': ['tree-lo', 'gift', 'tree-bush-lo', 'tulip-bed']}
-FCELL = {'z03': 7.5, 'z04': 7.5, 'z05': 7.5, 'z07': 7.5, 'z09': 8.5, 'z02': 9.0, 'z06': 9.0, 'z08': 10.0, 'z01': 10.0, 'z10': 10.0}
+FCELL = {'z03': 8.5, 'z04': 8.5, 'z05': 8.5, 'z07': 8.5, 'z09': 9.5, 'z02': 10.5, 'z06': 10.5, 'z08': 12.0, 'z01': 12.0, 'z10': 12.0}
 for z in zones:
     k = [a for a in FILL.get(z['id'], []) if a in assets]
     if k: z['fill'] = dict(kinds=k, cell=FCELL[z['id']], lat=32.0, n=[2, 4], r=2.6, scale=[1.0, 1.4], free=3.8)
