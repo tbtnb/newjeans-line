@@ -455,6 +455,17 @@ for z in zones:
     for aid, n, lat, sc, cl in ADD.get(zid, []): addv(z, aid, round(n * zk), lat, sc, True, cl)
     for ly in z['layers']:
         if ly.get('cluster') and ly['asset'] in ALT and ly['layer'] == 'mid': ly['alt'] = ALT[ly['asset']]
+# v8c: the keys mass varied set dressing right along the road on both sides; mixed 'hug' rows (each member a different kind, palette stepped)
+HUG = {'z01': ['tulip-bed', 'gift', 'heart-bed', 'tree-lo'], 'z02': ['tulip-bed', 'mushroom-group', 'gift', 'tree-lo'], 'z03': ['pull-tab', 'heart-sculpt', 'tulip-bed', 'gift'],
+       'z04': ['lily-lamp', 'heart-sculpt', 'mushroom-group', 'star-chime'], 'z05': ['lily-lamp', 'mushroom-group', 'heart-sculpt', 'tree-lo'], 'z06': ['heart-bed', 'gift', 'tulip-bed', 'heart-sculpt'],
+       'z07': ['book-stack', 'lily-lamp', 'mushroom-group', 'star-chime'], 'z08': ['balloons', 'gift', 'lily-lamp', 'tulip-bed'], 'z09': ['book-stack', 'mushroom-group', 'lily-lamp', 'tree-lo'],
+       'z10': ['heart-bed', 'balloons', 'gift', 'tulip-bed']}
+for z in zones:
+    L = [a for a in HUG.get(z['id'], []) if a in assets]
+    if len(L) < 2: continue
+    zk = (z['t1'] - z['t0']) / 15.12
+    addv(z, L[0], max(2, round(5 * zk)), [3.0, 7.5], [1.1, 1.4], True, ROW(3, 5, 2.8)); z['layers'][-1]['alt'] = L[1:]
+    addv(z, L[1], max(1, round(1.5 * zk)), [3.0, 7.0], [1.1, 1.3], False, ROW(2, 3, 2.8)); z['layers'][-1]['alt'] = L[2:] + L[:1]   # low tier keeps a little
 SKY = {'z01': 'day', 'z02': 'day', 'z03': 'dusk', 'z04': 'night', 'z05': 'twilight', 'z06': 'dusk', 'z07': 'night', 'z08': 'night', 'z09': 'night', 'z10': 'day'}   # v8 sky strip per zone
 for z in zones: z['sky'] = SKY[z['id']]
 out = os.path.join(here, '..', '..', 'levels-src', 'omg', 'scene-c.json')
