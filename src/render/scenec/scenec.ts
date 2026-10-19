@@ -283,7 +283,7 @@ export class SceneC {
         let run0 = -1, runLo = 0;
         const flush = (k1: number) => {
           if (run0 < 0) return; const e0 = run0 === 0 ? -1.8 : run0 * L / n, e1 = k1 === n ? L + 1.8 : k1 * L / n;
-          this.emitStack(G, ax + dx * e0, az + dz * e0, ax + dx * e1, az + dz * e1, nx, nz, r.y, Math.max(runLo, r.y - 14), NT[r.zi] ? NIGHTC : DAYC); run0 = -1; };
+          this.emitBookCliff(G, ax + dx * e0, az + dz * e0, ax + dx * e1, az + dz * e1, nx, nz, r.y, Math.max(runLo, r.y - 14), NT[r.zi], r.zi); run0 = -1; };
         for (let k = 0; k < n; k++) {
           const s = (k + 0.5) * L / n, x = ax + dx * s, z = az + dz * s, lo = covered(r, x + nx * 0.6, z + nz * 0.6);
           const ok = lo !== null && ownZ(r.zi, x - nx * 1.5, z - nz * 1.5) > 0.45 && r.y - lo > 0.3 && !this.hits(x + nx * 1.2, z + nz * 1.2, 1.6, lo - 1, r.y + 2);   // v8: no page edge across a road
@@ -385,11 +385,11 @@ export class SceneC {
   /** v10 bank edge as a closed book seen from its fore-edge: a coloured cover lip (overhangs 0.14 m), then the page block as thin
    * alternating paper-white / lilac-grey leaves (0.16 m) down to the bottom cover. Vertical (no stepped ledges: from the key camera
    * ledges read as extra road-like stripes). `full` = leaf lines; outer edges get a plain block. */
-  private emitBank(G: { p: number[]; c: number[]; i: number[] }, ax: number, az: number, bx: number, bz: number, nx: number, nz: number, y: number, lo: number, cov: number[], night: boolean, full: boolean) {
-    const q = (o0: number, y0: number, o1: number, y1: number, c0: number[], c1: number[]) => { const b = G.p.length / 3;
+  private emitBank(G: { p: number[]; c: number[]; i: number[] }, ax: number, az: number, bx: number, bz: number, nx: number, nz: number, y: number, lo: number, cov: number[], night: boolean, full: boolean, oo = 0) {
+    const q = (o0: number, y0: number, o1: number, y1: number, c0: number[], c1: number[]) => { const b = G.p.length / 3; o0 += oo; o1 += oo;
       G.p.push(ax + nx * o0, y0, az + nz * o0, bx + nx * o0, y0, bz + nz * o0, bx + nx * o1, y1, bz + nz * o1, ax + nx * o1, y1, az + nz * o1);
       G.c.push(...c0, 1, ...c0, 1, ...c1, 1, ...c1, 1); G.i.push(b, b + 1, b + 2, b, b + 2, b + 3); };
-    const d = (c: number[]) => night ? [c[0] * 0.62, c[1] * 0.62, c[2] * 0.72] : c;
+    const d = (c: number[]) => night ? [c[0] * 0.8, c[1] * 0.78, c[2] * 0.86] : c;   // v10: night leaves brighter (0.62 read as grey slabs)
     const W1 = d([0.98, 0.96, 0.95]), W2 = d([0.86, 0.83, 0.9]), cv2 = cov.map(v => v * 0.8), L = 0.14;
     q(0, y + 0.02, L, y + 0.02, cov, cov); q(L, y + 0.02, L, y - 0.14, cov, cv2); q(L, y - 0.14, 0, y - 0.14, cv2, cv2);   // top cover lip
     const h = y - 0.14 - lo - 0.16; if (h <= 0.05) return;
@@ -397,6 +397,15 @@ export class SceneC {
       const n = Math.max(2, Math.round(h / 0.16)), s = h / n; let yy = y - 0.14;
       for (let k = 0; k < n; k++) { const c = k & 1 ? W2 : W1; q(-0.02 * (k & 1), yy, -0.02 * (k & 1), yy - s, c, c); yy -= s; } }
     q(0, lo + 0.16, L, lo + 0.16, cv2, cv2); q(L, lo + 0.16, L, lo, cv2, cv2);   // bottom cover
+  }
+  /** v10 page / terrace edge as a stack of closed books (each 1.4-2.2 m, cover colours cycling through the zone's palette, every
+   * lower book stepping 0.3 m out) instead of the v6 lilac strata, which read as flat striped slabs (~99 s, ~146 s) */
+  private covs: number[][][] = [];
+  private emitBookCliff(G: { p: number[]; c: number[]; i: number[] }, ax: number, az: number, bx: number, bz: number, nx: number, nz: number, y: number, lo: number, night: boolean, zi: number) {
+    if (!this.covs.length) { const sat = (h: string) => { const c = hexRGB(h); return Math.max(...c) - Math.min(...c); };
+      this.covs = this.spec.zones.map(z => { const k = [...z.colors].sort((a, b) => sat(b) - sat(a)).slice(0, 3).map(hexRGB); return k.length ? k : [[0.95, 0.6, 0.72]]; }); }
+    const C = this.covs[zi], H = y - lo; if (H < 0.2) return; const n = Math.max(1, Math.round(H / 1.8)), bh = H / n, sd = Math.floor(Math.abs(ax * 0.37 + az * 0.61)) % 7;
+    for (let k = 0; k < n; k++) { const cv = C[(k + sd) % C.length].map(v => Math.min(1, v * (night ? 1.0 : 0.92) + (night ? 0.08 : 0))); this.emitBank(G, ax, az, bx, bz, nx, nz, y - k * bh, y - (k + 1) * bh, cv, night, true, 0.3 * k); }
   }
   private refreshStacks(a: number, b: number) {
     const on = this.tier === 'high', sig = `${a}:${b}`; if (sig === this.stackSig) return; this.stackSig = sig;
