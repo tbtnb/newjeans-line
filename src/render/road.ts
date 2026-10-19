@@ -3,7 +3,7 @@ import { HEAD_VEC, spanPos, type Route } from '../core/path';
 import type { Layout, Palette } from '../core/types';
 import { hex } from './prefabs';
 
-interface Tile { reveal: number; mode: string; cx: number; cy: number; cz: number; len: number; w: number; yaw: number; pitch: number; seed: number; }
+interface Tile { t: number; reveal: number; mode: string; cx: number; cy: number; cz: number; len: number; w: number; yaw: number; pitch: number; seed: number; }
 const TILE = 2.6;
 const ANIM = 0.42;
 const PAPER = { top: hex('#FFF5E1'), edge: hex('#E3AE45'), body: hex('#EED9B0') };
@@ -58,7 +58,7 @@ export class Road {
         const rv = revealAt(tAt);
         const tw = widthAt(tAt);
         const cy = p0.y + slope * Math.max(0, Math.min(len, mid));
-        this.tiles.push({ reveal: rv.mode === 'static' ? -1e9 : tAt - rv.lead, mode: rv.mode, cx: p0.x + hx * mid, cy, cz: p0.z + hz * mid, len: b - a, w: tw, yaw, pitch: -Math.atan(slope), seed: (this.tiles.length * 0.618) % 1 });
+        this.tiles.push({ t: tAt, reveal: rv.mode === 'static' ? -1e9 : tAt - rv.lead, mode: rv.mode, cx: p0.x + hx * mid, cy, cz: p0.z + hz * mid, len: b - a, w: tw, yaw, pitch: -Math.atan(slope), seed: (this.tiles.length * 0.618) % 1 });
         const pal = paletteAt(tAt);
         const cb = this.paper ? PAPER.body : hex(pal.roadSide), ct = this.paper ? PAPER.top : hex(pal.road);
         colorsBody.push(cb.r, cb.g, cb.b, 1); colorsTop.push(ct.r, ct.g, ct.b, 1);
@@ -78,10 +78,17 @@ export class Road {
     const NB = this.paper ? 2 * N : N;   // paper: instances [N, 2N) of the body are the gold step
     if (this.paper) for (let i = 0; i < N; i++) colorsBody.push(PAPER.edge.r, PAPER.edge.g, PAPER.edge.b, 1);
     this.mBody = new Float32Array(NB * 16); this.mTop = new Float32Array(N * 16);
+    if (this.paper) {   // v10 (concept C): only the tiles near the head are drawn - compact render copies of the full buffers (showfx keeps reading mTop)
+      this.rBody = new Float32Array(NB * 16); this.rTop = new Float32Array(N * 16); this.cBody = new Float32Array(colorsBody); this.cTop = new Float32Array(colorsTop);
+      this.rcBody = new Float32Array(NB * 4); this.rcTop = new Float32Array(N * 4);
+      this.body.thinInstanceSetBuffer('matrix', this.rBody, 16, false); this.top.thinInstanceSetBuffer('matrix', this.rTop, 16, false);
+      this.body.thinInstanceSetBuffer('color', this.rcBody, 4, false); this.top.thinInstanceSetBuffer('color', this.rcTop, 4, false);
+    } else {
     this.body.thinInstanceSetBuffer('matrix', this.mBody, 16, false);
     this.top.thinInstanceSetBuffer('matrix', this.mTop, 16, false);
     this.body.thinInstanceSetBuffer('color', new Float32Array(colorsBody), 4, true);
     this.top.thinInstanceSetBuffer('color', new Float32Array(colorsTop), 4, true);
+    }
     this.body.freezeWorldMatrix(); this.top.freezeWorldMatrix(); this.body.doNotSyncBoundingInfo = true; this.top.doNotSyncBoundingInfo = true;
     this.order = this.tiles.map((_, i) => i).sort((a, b) => this.tiles[a].reveal - this.tiles[b].reveal);
     this.seek(0);
@@ -122,6 +129,7 @@ export class Road {
 
   /** Reset all tiles to their state at time t (restart / checkpoint). */
   seek(t: number) {
+    this.now = t; this.win = [-1, -1];
     this.animating.clear();
     for (let i = 0; i < this.tiles.length; i++) {
       const k = (t - this.tiles[i].reveal) / ANIM;
@@ -134,7 +142,7 @@ export class Road {
   }
 
   update(t: number) {
-    let dirty = false;
+    this.now = t; const W = this.paper ? this.winOf(t) : null; let dirty = !!W && (W[0] !== this.win[0] || W[1] !== this.win[1]);
     while (this.revealedUpTo + 1 < this.order.length && this.tiles[this.order[this.revealedUpTo + 1]].reveal <= t) {
       this.revealedUpTo++; this.animating.add(this.order[this.revealedUpTo]);
     }
@@ -147,8 +155,20 @@ export class Road {
   }
 
   private flush() {
+    if (this.paper && this.rBody && this.rTop && this.cBody && this.cTop && this.rcBody && this.rcTop) {
+      const [i0, i1] = this.winOf(this.now), k = Math.max(0, i1 - i0), N = this.tiles.length;
+      this.rTop.set(this.mTop.subarray(i0 * 16, i1 * 16)); this.rBody.set(this.mBody.subarray(i0 * 16, i1 * 16)); this.rBody.set(this.mBody.subarray((N + i0) * 16, (N + i1) * 16), k * 16);
+      this.rcTop.set(this.cTop.subarray(i0 * 4, i1 * 4)); this.rcBody.set(this.cBody.subarray(i0 * 4, i1 * 4)); this.rcBody.set(this.cBody.subarray((N + i0) * 4, (N + i1) * 4), k * 4);
+      this.top.thinInstanceCount = k; this.body.thinInstanceCount = 2 * k;
+      if (this.win[0] !== i0 || this.win[1] !== i1) { this.body.thinInstanceBufferUpdated('color'); this.top.thinInstanceBufferUpdated('color'); this.win = [i0, i1]; }
+    }
     this.body.thinInstanceBufferUpdated('matrix'); this.top.thinInstanceBufferUpdated('matrix'); this.onFlush?.();
   }
+  private rBody: Float32Array | null = null; private rTop: Float32Array | null = null; private cBody: Float32Array | null = null; private cTop: Float32Array | null = null;
+  private rcBody: Float32Array | null = null; private rcTop: Float32Array | null = null; private now = 0; private win: [number, number] = [-1, -1];
+  /** v10: tile index range drawn at song time t (tiles are in route order): 9 s behind the head to 24 s ahead */
+  private winOf(t: number): [number, number] { const T = this.tiles, lo = (x: number) => { let a = 0, b = T.length; while (a < b) { const m = (a + b) >> 1; if (T[m].t < x) a = m + 1; else b = m; } return a; };
+    return [lo(t - 9), lo(t + 24)]; }
 
   dispose() { this.body.material?.dispose(); this.top.material?.dispose(); this.body.dispose(); this.top.dispose(); }
 }
