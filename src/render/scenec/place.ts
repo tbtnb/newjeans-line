@@ -59,7 +59,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
   // key camera path (behind and above the flow); direction from a clamped +-1.5 s window so it never degenerates at the song ends
   const camPath: { t: number; x: number; z: number; gx: number; gz: number }[] = [];
   for (let t = 0; t <= o.duration; t += 0.25) { const ta = Math.max(0, Math.min(o.duration - 3, t - 1.5)), p0 = flowAnchor(route, ta, 0, 0, 0).pos, p1 = flowAnchor(route, ta + 3, 0, 0, 0).pos, p = flowAnchor(route, t, 0, 0, 0).pos;
-    const dx = p1.x - p0.x, dz = p1.z - p0.z, L = Math.hypot(dx, dz) || 1; camPath.push({ t, x: p.x - dx / L * 37, z: p.z - dz / L * 37, gx: p.x - dx / L * 4, gz: p.z - dz / L * 4 }); }
+    const dx = p1.x - p0.x, dz = p1.z - p0.z, L = Math.hypot(dx, dz) || 1; camPath.push({ t, x: p.x - dx / L * 37, z: p.z - dz / L * 37, gx: p.x - dx / L * 20, gz: p.z - dz / L * 20 }); }   // v9: head-pinned frame bottom ~20 m behind the flow point
   // v8: nothing tall may ever stand between the key camera and the head. Sightline per 0.25 s: from the head (route point) back toward
   // the camera (flow direction, ~44 m out / ~32 m up in portrait); an object of radius r and height h within r + 1.5 m of that line
   // whose top reaches the sightline blocks the head. Checked over every route time within 14 s of the object's own time (zig-zags come back).
@@ -71,7 +71,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
   const nearCam = (x: number, z: number, t: number) => { const i0 = Math.max(0, Math.floor((t - 10) * 4)), i1 = Math.min(camPath.length - 1, Math.ceil((t + 3) * 4));
     for (let i = i0; i <= i1; i++) { const c = camPath[i]; if ((c.x - x) ** 2 + (c.z - z) ** 2 < 28 * 28) return true; } return false; };
   /** near band: the bottom of the key camera's frame (ground ~4 m behind the flow point, i.e. around the head); big masses there fill the screen */
-  const nearBand = (x: number, z: number, t: number, r: number) => { const i0 = Math.max(0, Math.floor((t - 4) * 4)), i1 = Math.min(camPath.length - 1, Math.ceil((t + 2) * 4));
+  const nearBand = (x: number, z: number, t: number, r: number) => { const i0 = Math.max(0, Math.floor((t - 3) * 4)), i1 = Math.min(camPath.length - 1, Math.ceil((t + 9) * 4));
     for (let i = i0; i <= i1; i++) { const c = camPath[i]; if ((c.gx - x) ** 2 + (c.gz - z) ** 2 < r * r) return true; } return false; };
   let placed = 0, rejected = 0; const rj: Record<string, number> = {};
   // v8 audit: models no longer clip into each other - tall mid pieces keep their footprints apart (4 m hash grid), set pieces clear them after
@@ -109,7 +109,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
         const solid = L.layer === 'mid' && h >= 0.8 && !/fence|bunting|lantern-string|cord/.test(L.asset), fr0 = foot(A, s);
         const isTree = A.shape === 'tree' && !/hedge/.test(L.asset);
         if (solid && occHit(a.pos.x, a.pos.z, fr0, isTree)) { rejected++; rj[z.id + ' ' + L.asset + ' occ'] = (rj[z.id + ' ' + L.asset + ' occ'] ?? 0) + 1; continue; }
-        if (!view && L.layer === 'mid' && h > 2.6 && nearBand(a.pos.x, a.pos.z, t, (L.hug ? 3 : 9) + r)) { rejected++; rj[z.id + ' ' + L.asset + ' near'] = (rj[z.id + ' ' + L.asset + ' near'] ?? 0) + 1; continue; }   // big pieces stay out of the near band; v7 'hug' layers (lit house rows) may line the road
+        if (L.layer === 'mid' && h > (view ? 5 : 2.6) && nearBand(a.pos.x, a.pos.z, t, (L.hug ? 3 : view ? 4 : 7) + r)) { rejected++; rj[z.id + ' ' + L.asset + ' near'] = (rj[z.id + ' ' + L.asset + ' near'] ?? 0) + 1; continue; }   // big pieces stay out of the near band; v7 'hug' layers (lit house rows) may line the road
         const rp = anchor(route, t).pos;
         const fp = view ? flowAnchor(route, Math.max(0, t - 2.5), 0, 0, 0).pos : rp;   // view pieces face back along the flow (toward the key camera), not sideways
         const yaw = A.shape === 'far' || L.layer === 'mid' ? Math.atan2(fp.x - a.pos.x, fp.z - a.pos.z) + (view ? (R() - 0.5) * 0.5 : 0) : R() * Math.PI * 2;
@@ -130,7 +130,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
               if (view) { let o2 = off; for (let k = 0; k < 6 && o.hits(b.pos.x, b.pos.z, r * ms / s + pad, a.pos.y - 1, a.pos.y + A.h * ms); k++) { o2 += side * 1.25; b = flowAnchor(route, ty, o2, 0, 0); } }
               x = b.pos.x; zz = b.pos.z; const bp = anchor(route, ty).pos; my = view ? yaw : Math.atan2(bp.x - x, bp.z - zz); }
             else { const an = R() * Math.PI * 2, rr = Cn.r * s * Math.sqrt(0.15 + 0.85 * R()); x = a.pos.x + Math.cos(an) * rr; zz = a.pos.z + Math.sin(an) * rr; my = L.layer === 'mid' ? yaw + (R() - 0.5) * 0.8 : R() * Math.PI * 2; }
-            if (o.hits(x, zz, r * ms / s + pad, a.pos.y - 1, a.pos.y + A.h * ms) || (!view && A.h * ms > 2.6 && nearBand(x, zz, ty, (L.hug ? 3 : 9) + r * ms / s))) { rejected++; rj[z.id + ' ' + L.asset + ' mhit'] = (rj[z.id + ' ' + L.asset + ' mhit'] ?? 0) + 1; continue; }
+            if (o.hits(x, zz, r * ms / s + pad, a.pos.y - 1, a.pos.y + A.h * ms) || (A.h * ms > (view ? 5 : 2.6) && nearBand(x, zz, ty, (L.hug ? 3 : view ? 4 : 7) + r * ms / s))) { rejected++; rj[z.id + ' ' + L.asset + ' mhit'] = (rj[z.id + ' ' + L.asset + ' mhit'] ?? 0) + 1; continue; }
             if (L.layer === 'mid' && A.h * ms > 1.2 && blocksHead(x, zz, r * ms / s, a.pos.y + y0, A.h * ms, ty)) { rejected++; rj[z.id + ' ' + L.asset + ' msight'] = (rj[z.id + ' ' + L.asset + ' msight'] ?? 0) + 1; continue; }
             const alts = [L.asset, ...(L.alt ?? [])], ma = alts[j % alts.length], MA = spec.assets[ma] ?? A, mr = foot(MA, ms);
             const mt = MA.shape === 'tree' && !/hedge/.test(ma); if (solid && occHit(x, zz, mr, mt)) { rejected++; rj[z.id + ' ' + L.asset + ' mocc'] = (rj[z.id + ' ' + L.asset + ' mocc'] ?? 0) + 1; continue; }
@@ -162,9 +162,10 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
           const rad = Math.max(0.15, Math.max(MA.h, MA.w ?? 0, MA.d ?? 0) * ms * 0.35), pad = h < 1.7 ? 0.35 + 0.1 * o.widthAt(t) : clearNear + 0.5 * o.widthAt(t);
           if (o.hits(x, zz, rad + pad, a.pos.y - 1, a.pos.y + h)) continue;
           if (h > 1.2 && blocksHead(x, zz, rad, a.pos.y, h, t)) continue;
+          if (h > 4 && nearBand(x, zz, t, 4 + rad)) continue;   // frame bottom keeps low piles only (no giant near trees)
           if (h >= 0.8 && occHit(x, zz, mr, tr)) continue;
           const ci = chunkAt(t);
-          chunks[ci].items.push({ a: ma, layer: 'mid', x, y: groundY(chunks[ci], x, zz), z: zz, yaw: yaw0 + (fr(zz, x) - 0.5) * 1.2, s: ms, c: 0, zone: zi, t, chunk: ci, v: Math.floor(fr(x * 1.1, zz) * 9973), hi: true });
+          chunks[ci].items.push({ a: ma, layer: 'mid', x, y: groundY(chunks[ci], x, zz), z: zz, yaw: yaw0 + (fr(zz, x) - 0.5) * 1.2, s: ms, c: 0, zone: zi, t, chunk: ci, v: Math.floor(fr(a.pos.x * 1.1, a.pos.z) * 9973) + j, hi: true });   // members step the palette like layer blobs
           if (h >= 0.8) occAdd(x, zz, mr, tr); placed++; rj['fill placed ' + z.id] = (rj['fill placed ' + z.id] ?? 0) + 1;
         }
       }
@@ -181,7 +182,7 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
       const edge = I.near[0] + Math.pow(R(), 0.8) * (I.near[1] - I.near[0]);
       const s = s0 * (0.5 + 0.5 * Math.min(1, Math.max(0, (edge - 13) / 42)));   // v5: near cards mid-sized (x0.5 at 13 m -> full at 55 m), no mint blobs at the frame edges
       const a = flowAnchor(route, t, side * (w / 2 + edge), 0, 0);
-      if (o.hits(a.pos.x, a.pos.z, 1.5 * s + 2.0, a.pos.y - 30, a.pos.y + 30) || nearCam(a.pos.x, a.pos.z, t)) { rejected++; continue; }
+      if (o.hits(a.pos.x, a.pos.z, 1.5 * s + 2.0, a.pos.y - 30, a.pos.y + 30) || nearCam(a.pos.x, a.pos.z, t) || nearBand(a.pos.x, a.pos.z, t, 18 + 1.5 * s)) { rejected++; continue; }   // v9: no flat cards in the (now built) frame bottom either
       const cp = camPath[Math.min(camPath.length - 1, Math.round(Math.max(0, t - 1.0) * 4))];   // face where the camera is when this card is in view
       const ci = chunkAt(t); const c = chunks[ci]; (c.imp ??= []).push({ k: id, x: a.pos.x, y: groundY(c, a.pos.x, a.pos.z), z: a.pos.z, yaw: Math.atan2(cp.x - a.pos.x, cp.z - a.pos.z), s, zone: zi });
     }

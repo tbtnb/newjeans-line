@@ -2061,8 +2061,7 @@
       "r": 3.0
      },
      "alt": [
-      "forest-clump",
-      "tree-lo"
+      "forest-clump"
      ]
     },
     {
@@ -3152,8 +3151,7 @@
       "r": 3.0
      },
      "alt": [
-      "forest-clump",
-      "tree-lo"
+      "forest-clump"
      ]
     },
     {
@@ -3875,7 +3873,7 @@
     {
      "asset": "gift",
      "layer": "ground",
-     "count": 4,
+     "count": 2,
      "near": [
       0.3,
       9.0
@@ -4442,8 +4440,7 @@
      },
      "alt": [
       "gift",
-      "heart-sculpt",
-      "book-stack"
+      "heart-sculpt"
      ]
     },
     {
@@ -4488,7 +4485,7 @@
     {
      "asset": "tree-lo",
      "layer": "mid",
-     "count": 28,
+     "count": 22,
      "near": [
       0.0,
       0.0
@@ -4526,9 +4523,9 @@
      ]
     },
     {
-     "asset": "gift",
+     "asset": "book-stack",
      "layer": "mid",
-     "count": 28,
+     "count": 13,
      "near": [
       0.0,
       0.0
@@ -4554,14 +4551,14 @@
      "hi": true,
      "cluster": {
       "n": [
-       4,
-       6
+       3,
+       5
       ],
       "r": 2.4
      },
      "alt": [
       "mushroom-group",
-      "book-stack",
+      "gift",
       "pull-tab",
       "rock"
      ]
@@ -4692,10 +4689,10 @@
    "fill": {
     "kinds": [
      "tree-lo",
-     "gift",
      "pine-lo",
      "mushroom-group",
      "tree-bush-lo",
+     "forest-clump",
      "book-stack"
     ],
     "cell": 7.5,
@@ -4786,7 +4783,7 @@
     {
      "asset": "gift",
      "layer": "ground",
-     "count": 5,
+     "count": 2,
      "near": [
       0.3,
       9.0
@@ -5017,7 +5014,7 @@
     {
      "asset": "gift",
      "layer": "ground",
-     "count": 5,
+     "count": 2,
      "near": [
       0.3,
       9.0
@@ -5113,7 +5110,7 @@
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 8,
+     "count": 4,
      "near": [
       1.5,
       7.0
@@ -5210,7 +5207,7 @@
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 10,
+     "count": 5,
      "near": [
       1.5,
       7.0
@@ -5358,7 +5355,6 @@
       "r": 3.2
      },
      "alt": [
-      "pine-lo",
       "tree-lo"
      ]
     },
@@ -5564,7 +5560,7 @@
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 5,
+     "count": 2,
      "near": [
       1.5,
       4.0
@@ -5588,7 +5584,7 @@
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 5,
+     "count": 2,
      "near": [
       1.5,
       5.0
@@ -5979,7 +5975,6 @@
      },
      "alt": [
       "star-chime",
-      "book-stack",
       "gift"
      ]
     },
@@ -6026,7 +6021,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 28,
+     "count": 22,
      "near": [
       0.0,
       0.0
@@ -6060,14 +6055,13 @@
      "alt": [
       "tree-lo",
       "forest-clump",
-      "pine-lo",
       "tree-bush-lo"
      ]
     },
     {
-     "asset": "mushroom-group",
+     "asset": "book-stack",
      "layer": "mid",
-     "count": 28,
+     "count": 13,
      "near": [
       0.0,
       0.0
@@ -6093,15 +6087,14 @@
      "hi": true,
      "cluster": {
       "n": [
-       4,
-       6
+       3,
+       5
       ],
       "r": 2.4
      },
      "alt": [
-      "gift",
-      "book-stack",
-      "firefly-lamp",
+      "mushroom-group",
+      "heart-sculpt",
       "rock"
      ]
     }
@@ -6227,11 +6220,10 @@
    "fill": {
     "kinds": [
      "pine-lo",
-     "mushroom-group",
      "tree-lo",
-     "firefly-lamp",
+     "mushroom-group",
      "forest-clump",
-     "gift"
+     "tree-bush-lo"
     ],
     "cell": 7.5,
     "lat": 32.0,
@@ -6371,7 +6363,7 @@
     {
      "asset": "lily-lamp",
      "layer": "mid",
-     "count": 6,
+     "count": 3,
      "near": [
       1.5,
       7.0
@@ -6395,7 +6387,7 @@
     {
      "asset": "rock",
      "layer": "mid",
-     "count": 8,
+     "count": 4,
      "near": [
       1.5,
       7.0
@@ -6640,7 +6632,7 @@
     {
      "asset": "rock",
      "layer": "mid",
-     "count": 6,
+     "count": 3,
      "near": [
       1.5,
       7.0
@@ -6971,7 +6963,6 @@
       "r": 3.2
      },
      "alt": [
-      "pine-lo",
       "tree-lo"
      ]
     },
@@ -7071,14 +7062,13 @@
       "r": 3.2
      },
      "alt": [
-      "pine-lo",
       "tree-lo"
      ]
     },
     {
      "asset": "lily-lamp",
      "layer": "mid",
-     "count": 4,
+     "count": 2,
      "near": [
       2.5,
       12.0
@@ -7178,7 +7168,7 @@
     {
      "asset": "mushroom-group",
      "layer": "mid",
-     "count": 10,
+     "count": 6,
      "near": [
       2.5,
       12.0
@@ -7302,7 +7292,7 @@
     {
      "asset": "lily-lamp",
      "layer": "mid",
-     "count": 6,
+     "count": 3,
      "near": [
       0.0,
       0.0
@@ -7372,7 +7362,6 @@
       "r": 3.2
      },
      "alt": [
-      "pine-lo",
       "tree-lo"
      ]
     },
@@ -7456,7 +7445,7 @@
     {
      "asset": "mushroom-group",
      "layer": "mid",
-     "count": 2,
+     "count": 1,
      "near": [
       0.0,
       0.0
@@ -7521,7 +7510,7 @@
     {
      "asset": "lily-lamp",
      "layer": "mid",
-     "count": 5,
+     "count": 3,
      "near": [
       0.0,
       0.0
@@ -7767,7 +7756,7 @@
     {
      "asset": "tree-lo",
      "layer": "mid",
-     "count": 26,
+     "count": 20,
      "near": [
       0.0,
       0.0
@@ -7808,7 +7797,7 @@
     {
      "asset": "mushroom-group",
      "layer": "mid",
-     "count": 26,
+     "count": 12,
      "near": [
       0.0,
       0.0
@@ -7835,8 +7824,8 @@
      "hi": true,
      "cluster": {
       "n": [
-       4,
-       6
+       3,
+       5
       ],
       "r": 2.4
      },
@@ -9042,8 +9031,7 @@
       "r": 3.2
      },
      "alt": [
-      "forest-clump",
-      "tree-lo"
+      "forest-clump"
      ]
     },
     {
@@ -9278,7 +9266,7 @@
     {
      "asset": "gift",
      "layer": "mid",
-     "count": 14,
+     "count": 8,
      "near": [
       0.0,
       0.0
@@ -9305,8 +9293,8 @@
      "hi": true,
      "cluster": {
       "n": [
-       4,
-       6
+       3,
+       5
       ],
       "r": 2.4
      },
@@ -9745,7 +9733,7 @@
     {
      "asset": "gift",
      "layer": "ground",
-     "count": 4,
+     "count": 2,
      "near": [
       0.3,
       9.0
@@ -9914,7 +9902,7 @@
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 20,
+     "count": 10,
      "near": [
       1.5,
       7.0
@@ -10110,7 +10098,6 @@
       "r": 3.2
      },
      "alt": [
-      "pine-lo",
       "tree-lo"
      ]
     },
@@ -10351,7 +10338,7 @@
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 9,
+     "count": 4,
      "near": [
       1.5,
       4.0
@@ -10375,7 +10362,7 @@
     {
      "asset": "firefly-lamp",
      "layer": "mid",
-     "count": 9,
+     "count": 4,
      "near": [
       1.5,
       5.0
@@ -10551,7 +10538,6 @@
       "r": 3.4
      },
      "alt": [
-      "pine-lo",
       "tree-lo"
      ]
     },
@@ -10811,7 +10797,6 @@
      },
      "alt": [
       "star-chime",
-      "book-stack",
       "lily-lamp"
      ]
     },
@@ -10898,7 +10883,7 @@
     {
      "asset": "pine-lo",
      "layer": "mid",
-     "count": 28,
+     "count": 22,
      "near": [
       0.0,
       0.0
@@ -10931,14 +10916,13 @@
      },
      "alt": [
       "forest-clump",
-      "tree-lo",
-      "pine-lo"
+      "tree-lo"
      ]
     },
     {
      "asset": "book-stack",
      "layer": "mid",
-     "count": 28,
+     "count": 13,
      "near": [
       0.0,
       0.0
@@ -10964,16 +10948,15 @@
      "hi": true,
      "cluster": {
       "n": [
-       4,
-       6
+       3,
+       5
       ],
       "r": 2.4
      },
      "alt": [
       "mushroom-group",
-      "firefly-lamp",
       "rock",
-      "gift"
+      "star-chime"
      ]
     }
    ],
@@ -11093,7 +11076,6 @@
      "pine-lo",
      "book-stack",
      "forest-clump",
-     "firefly-lamp",
      "tree-lo",
      "mushroom-group"
     ],
@@ -12173,7 +12155,6 @@
       "r": 3.2
      },
      "alt": [
-      "pine-lo",
       "tree-lo"
      ]
     },
@@ -13076,7 +13057,6 @@
       "r": 3.2
      },
      "alt": [
-      "pine-lo",
       "tree-lo"
      ]
     },
@@ -13548,7 +13528,6 @@
       "r": 3.4
      },
      "alt": [
-      "pine-lo",
       "tree-lo"
      ]
     },
@@ -13587,7 +13566,6 @@
       "row": true
      },
      "alt": [
-      "firefly-lamp",
       "lily-lamp"
      ]
     },
@@ -13663,7 +13641,6 @@
       "r": 3.6
      },
      "alt": [
-      "pine-lo",
       "tree-lo"
      ]
     },
@@ -13808,8 +13785,7 @@
       "r": 3.0
      },
      "alt": [
-      "forest-clump",
-      "tree-lo"
+      "forest-clump"
      ]
     },
     {
@@ -14087,14 +14063,13 @@
      },
      "alt": [
       "tree-lo",
-      "forest-clump",
-      "pine-lo"
+      "forest-clump"
      ]
     },
     {
      "asset": "mushroom-group",
      "layer": "mid",
-     "count": 28,
+     "count": 17,
      "near": [
       0.0,
       0.0
@@ -14119,8 +14094,8 @@
      "hi": true,
      "cluster": {
       "n": [
-       4,
-       6
+       3,
+       5
       ],
       "r": 2.4
      },
@@ -15467,8 +15442,7 @@
       "r": 3.0
      },
      "alt": [
-      "forest-clump",
-      "tree-lo"
+      "forest-clump"
      ]
     },
     {
