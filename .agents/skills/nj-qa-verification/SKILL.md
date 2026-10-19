@@ -74,3 +74,6 @@ python3 tools/qa/progress-board.py <renders> <shots> out.jpg "<title>" z01 z04 .
 4. iOS/WebKit：测了什么、结果；没测到的直说原因。
 5. 和设计稿的差距（实话）+ 下一轮计划。
 6. 附对比图（左设计稿、右游戏）。
+
+## 2026-10-20 重开回归补充
+只测seek(0)不足：检查点53.968、106.88、暂停回退均要检查拖尾在ready时indices=0/disabled，开始后从新起点增长；两种居中模式都覆盖。还需模拟Safari resume延迟、等待中stop及新play超越旧play，旧异步结果不能替换新音源或时钟。收集动画途中重开不得销毁可复用皇冠/钻石。自动测试不能替代用户Safari实际操作。
