@@ -16,6 +16,7 @@ import { CameraRig } from './camera';
 import { LineSkin } from './lineskin';
 import { SceneC } from './scenec/scenec';
 import { PageTurn } from './scenec/pageturn';
+import { RoadSightline, updateRoadSightline } from './scenec/roadsightline';
 
 const LINE_W = 1.0, LINE_H = 0.9;
 /** one straight trail run: axis-aligned box from a to b (heading h), extended by LINE_W/2 at both ends */
@@ -192,6 +193,7 @@ export class World {
     // player line
     this.headMat = new StandardMaterial('headM', this.scene); this.headMat.specularColor = new Color3(0.1, 0.1, 0.1);
     this.trailMat = new StandardMaterial('trailM', this.scene); this.trailMat.specularColor = new Color3(0.05, 0.05, 0.05);
+    if (this.cmode) new RoadSightline(this.trailMat);
     this.head = CreateBox('head', { size: 1 }, this.scene); this.head.scaling.set(LINE_W * 1.06, LINE_H + 0.05, LINE_W * 1.06); /* slightly larger than the trail cross-section: no coplanar faces with the run it caps (z-fighting flicker) */ this.head.material = this.headMat; this.head.parent = this.root;
     this.trail = CreateBox('trail', { size: 1 }, this.scene); this.trail.material = this.trailMat; this.trail.parent = this.root; this.trail.alwaysSelectAsActiveMesh = true;
     this.trailBuf = new Float32Array(16 * 256); this.trail.thinInstanceSetBuffer('matrix', this.trailBuf, 16, false); this.trail.thinInstanceCount = 0;
@@ -547,6 +549,7 @@ export class World {
     // camera
     this.rig.menuOrbit = this.mode === 'menu'; this.rig.distScale = (this as any).__camScale ?? 1;
     this.rig.update(this.mode === 'menu' ? 0 : lt, failed ? this.head.position : lp, dt || 1 / 60);
+    if (this.cmode) updateRoadSightline(route, lt, this.rig.cam.position);
     { const hl = (window as any).__njHeadLog; if (hl && this.mode !== 'menu' && g.status === 'playing') hl.push([+lt.toFixed(3), +this.rig.lastFy.toFixed(4), +this.rig.lastFx.toFixed(4)]); }   // QA: projected head position (play.mjs --headlog)
     if (this.sc && this.mode !== 'menu') this.sc.updateSky(this.rig.cam, this.engine.getRenderWidth() / Math.max(1, this.engine.getRenderHeight()), dt);   // v7 night sky strip
     // shadow frustum follows the camera, snapped to whole shadow-map texels in light space (no shimmering edges)

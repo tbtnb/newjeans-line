@@ -10,9 +10,11 @@ const A = Object.fromEntries(process.argv.slice(2).reduce((acc, v, i, arr) => (v
 const dbg = (...a) => { if (A.verbose) console.error('[play]', ...a); };
 const W = +(A.w ?? 540), H = +(A.h ?? 960), level = +(A.level ?? 5);
 const DISPLAY = process.env.DISPLAY ?? ':99';
-const browser = await chromium.launch({ headless: !A.record && !A.headed, executablePath: '/usr/bin/google-chrome', env: { ...process.env, DISPLAY },
-  args: ['--autoplay-policy=no-user-gesture-required', '--window-position=0,0', `--window-size=${W},${H + 140}`, '--use-angle=swiftshader', '--enable-unsafe-swiftshader', '--hide-scrollbars', '--no-first-run', '--no-default-browser-check', '--disable-infobars', '--disable-features=Translate,TranslateUI', '--lang=zh-CN'] });
-const ctx = await browser.newContext({ viewport: { width: W, height: H }, deviceScaleFactor: 1, hasTouch: true });
+const mac = process.platform === 'darwin';
+const browser = await chromium.launch({ headless: !A.record && !A.headed, executablePath: process.env.CHROME_PATH ?? (mac ? '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' : '/usr/bin/google-chrome'), env: { ...process.env, DISPLAY },
+  args: ['--window-position=0,0', `--window-size=${W},${H + 140}`, ...(mac ? ['--use-angle=metal', '--enable-gpu'] : ['--use-angle=swiftshader', '--enable-unsafe-swiftshader']), '--hide-scrollbars', '--no-first-run', '--no-default-browser-check', '--disable-infobars', '--disable-features=Translate,TranslateUI', '--lang=zh-CN'] });
+if (A.video) mkdirSync(A.video, { recursive: true });
+const ctx = await browser.newContext({ viewport: { width: W, height: H }, deviceScaleFactor: 1, hasTouch: true, ...(A.video ? {recordVideo:{dir:A.video,size:{width:W,height:H}}} : {}) });
 const page = await ctx.newPage();
 const logs = []; page.on('console', m => { if (m.type() === 'error' || m.type() === 'warning') logs.push(m.type() + ': ' + m.text()); }); page.on('pageerror', e => logs.push('PAGEERROR ' + e.message));
 await page.goto(A.url ?? 'http://127.0.0.1:4180/?debug');
@@ -51,14 +53,14 @@ if (A.headlog) await page.evaluate(() => { window.__njHeadLog = []; });
 dbg('start tap'); touch();
 // Same machine => both processes share the wall clock; map via timeOrigin (no round-trip bias).
 const sync = async () => { const r = await page.evaluate(() => ({ s: window.__nj.audio.songTime(), e: performance.timeOrigin + performance.now(), st: window.__nj.game.status })); return { song: r.s, node: r.e - performance.timeOrigin, status: r.st }; };
-await page.waitForFunction(() => window.__nj.audio.playing && window.__nj.audio.songTime() > 0.15, null, { timeout: 10000, polling: 5 });
+await page.waitForFunction(from => window.__nj.audio.playing && window.__nj.audio.songTime() > from + 0.15, from, { timeout: 10000, polling: 5 });
 let ref = await sync(); dbg('synced', ref);
 const songNow = () => ref.song + (performance.now() - ref.node) / 1000;
 const jitter = +(A.jitter ?? 0);
 const gauss = () => { let u = 0, v = 0; while (!u) u = Math.random(); while (!v) v = Math.random(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v); };
 const missAt = A.miss ? +A.miss : null, dblAt = A.double ? +A.double : null, extraAt = A.extra ? +A.extra : null, pauseAt = A.pauseAt ? +A.pauseAt : null;
 const plan = [];
-for (const t of taps) { if (t <= from + 0.01 || t > to) continue; if (missAt !== null && Math.abs(t - missAt) < 0.12) continue; plan.push({ t: t + jitter * gauss(), kind: 'tap' }); if (dblAt !== null && Math.abs(t - dblAt) < 0.12) plan.push({ t: t + 0.012, kind: 'double' }); }
+for (const t of taps) { if (t <= from + 0.01 || t > to) continue; if (missAt !== null && Math.abs(t - missAt) < 0.12) continue; plan.push({ t: t + jitter * gauss() + +(A.offset ?? 0)/1000, kind: 'tap' }); if (dblAt !== null && Math.abs(t - dblAt) < 0.12) plan.push({ t: t + 0.012 + +(A.offset ?? 0)/1000, kind: 'double' }); }
 if (extraAt !== null) plan.push({ t: extraAt, kind: 'extra' });
 // --shots 20,45,90 --shotdir dir : screenshots taken during real (scripted) play, so they show the trail, live scenery
 // and the real HUD (unlike snap.mjs, whose static debug preview shows the ready prompt and no trail)
@@ -99,4 +101,4 @@ if (A.headlog) { const hl = await page.evaluate(() => window.__njHeadLog || []);
 const summary = { ...result, head, turns: undefined, judged: errs.length, errorMeanMs: +mean.toFixed(1), errorSdMs: +sd.toFixed(1), errorMaxAbsMs: Math.max(0, ...errs.map(Math.abs)), sent: sent.length, logs };
 console.log(JSON.stringify(summary, null, 1));
 if (A.log) writeFileSync(A.log, JSON.stringify({ summary, errors: errs, sent }, null, 1));
-await browser.close();
+await ctx.close(); await browser.close();

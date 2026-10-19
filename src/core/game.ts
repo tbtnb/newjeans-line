@@ -42,6 +42,7 @@ export class Game {
   readonly route: Route;
   readonly taps: number[];
   readonly windows: number[];
+  readonly earlyWindows: number[];
   status: Status = 'ready';
   time = 0;
   cursor = 0;
@@ -66,6 +67,16 @@ export class Game {
     const spans = this.route.spans;
     const speedAt = (t: number) => { const s = spans.find(x => t >= x.t0 - 1e-9 && t < x.t1) ?? spans[spans.length - 1]; return s?.v ?? 9; };
     this.windows = judgmentWindows(this.taps, i => geometricWindow(roadWidthAt(level.layout.road?.width, this.taps[i]), speedAt(this.taps[i] - 1e-4)));
+    this.earlyWindows = [...this.windows];
+    // OMG's authored rhythm is unchanged. Queue an early turn until its corner instead of treating
+    // a slightly early musical input as a wall collision. Each event consumes only the pending tap.
+    // Keep a debounce-sized gap so the same gesture cannot take two dense corners.
+    if (level.id === 'omg') for (let i = 0; i < this.taps.length; i++) {
+      const gap = Math.min(i ? this.taps[i] - this.taps[i - 1] : Infinity,
+        i + 1 < this.taps.length ? this.taps[i + 1] - this.taps[i] : Infinity);
+      this.earlyWindows[i] = Math.min(0.18, gap - DEBOUNCE);
+      this.windows[i] = Math.min(0.15, gap - DEBOUNCE);
+    }
   }
 
   get progress() { return Math.max(0, Math.min(1, this.time / this.level.duration)); }
@@ -127,7 +138,7 @@ export class Game {
     if (this.cursor >= this.taps.length) { this.fail('extra', t); return 'fail'; }
     const T = this.taps[this.cursor];
     const err = t - T;
-    if (Math.abs(err) > this.windows[this.cursor]) { this.fail(err < 0 ? 'early' : 'late', t); return 'fail'; }
+    if (err < -this.earlyWindows[this.cursor] - 1e-9 || err > this.windows[this.cursor] + 1e-9) { this.fail(err < 0 ? 'early' : 'late', t); return 'fail'; }
     this.turns.push({ index: this.cursor, chartT: T, tapT: t });
     if (Math.abs(err) <= PERFECT) this.perfect++; else this.good++;
     this.errorSum += err;

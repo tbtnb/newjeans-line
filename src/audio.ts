@@ -112,7 +112,9 @@ export class AudioTransport {
     if (ts && ts.contextTime && ts.performanceTime && ts.contextTime > 0) {
       return ts.contextTime + (perfNow - ts.performanceTime) / 1000;
     }
-    return c.currentTime - (c.outputLatency || 0) - (c.baseLatency || 0);
+    // Safari may not expose a usable output timestamp. Preserve the original event time here too:
+    // queued touch events must not be judged at their later JS delivery time.
+    return c.currentTime - (c.outputLatency || 0) - (c.baseLatency || 0) - (performance.now() - perfNow) / 1000;
   }
 
   /** Song time currently heard. `perf` lets input events be mapped to the moment they happened. */

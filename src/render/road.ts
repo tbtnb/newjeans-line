@@ -2,6 +2,8 @@ import { CreateBox, Matrix, Mesh, Quaternion, Scene, StandardMaterial, Vector3, 
 import { HEAD_VEC, spanPos, type Route } from '../core/path';
 import type { Layout, Palette } from '../core/types';
 import { hex } from './prefabs';
+import { readableRoadWidths } from '../core/roadwidth';
+import { RoadSightline } from './scenec/roadsightline';
 
 interface Tile { t: number; reveal: number; mode: string; cx: number; cy: number; cz: number; len: number; w: number; yaw: number; pitch: number; seed: number; }
 const TILE = 2.6;
@@ -31,6 +33,7 @@ export class Road {
     const widthAt = (t: number) => stepAt(layout.road.width, t)?.w ?? 2.2;
     const revealAt = (t: number) => stepAt(layout.road.reveal, t) ?? { t: 0, mode: 'static', lead: 2 };
     const spans = route.spans;
+    const widths = this.paper ? readableRoadWidths(route, widthAt) : spans.map(s => widthAt(s.t0));
     const colorsBody: number[] = []; const colorsTop: number[] = [];
     for (let i = 0; i < spans.length; i++) {
       const s = spans[i];
@@ -42,8 +45,8 @@ export class Road {
       const prevS = i > 0 ? spans[i - 1] : null, nextS = i + 1 < spans.length ? spans[i + 1] : null;
       const startsAfterTurn = !!prevS && prevS.turnIndex >= 0 && !prevS.air;
       const endsWithTurn = s.turnIndex >= 0 && !!nextS;
-      const padStart = startsAfterTurn ? -widthAt(s.t0 - 1e-3) / 2 : (i === 0 ? 1.5 : 0);
-      const padEnd = endsWithTurn ? widthAt(s.t1 + 1e-3) / 2 : (i === spans.length - 1 ? 6 : 0);
+      const padStart = startsAfterTurn ? -widths[i - 1] / 2 : (i === 0 ? 1.5 : 0);
+      const padEnd = endsWithTurn ? widths[i + 1] / 2 : (i === spans.length - 1 ? 6 : 0);
       const total = len + padStart + padEnd;
       if (total <= 1e-4) continue;
       const n = Math.max(1, Math.ceil(total / TILE));
@@ -56,7 +59,7 @@ export class Road {
         const mid = (a + b) / 2;
         const tAt = s.t0 + Math.max(0, Math.min(len - 1e-6, a)) / s.v;
         const rv = revealAt(tAt);
-        const tw = widthAt(tAt);
+        const tw = widths[i];
         const cy = p0.y + slope * Math.max(0, Math.min(len, mid));
         this.tiles.push({ t: tAt, reveal: rv.mode === 'static' ? -1e9 : tAt - rv.lead, mode: rv.mode, cx: p0.x + hx * mid, cy, cz: p0.z + hz * mid, len: b - a, w: tw, yaw, pitch: -Math.atan(slope), seed: (this.tiles.length * 0.618) % 1 });
         const pal = paletteAt(tAt);
@@ -73,6 +76,7 @@ export class Road {
       mat.emissiveColor = new Color3(0, 0, 0);
       if (this.paper) { mat.disableLighting = true; mat.emissiveColor = new Color3(1, 1, 1); mat.diffuseColor = new Color3(0, 0, 0); }
       m.material = mat; m.isPickable = false; m.alwaysSelectAsActiveMesh = true;
+      if (this.paper) new RoadSightline(mat);
     }
     const N = this.tiles.length;
     const NB = this.paper ? 2 * N : N;   // paper: instances [N, 2N) of the body are the gold step

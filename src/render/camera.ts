@@ -97,7 +97,10 @@ export class CameraRig {
 
   update(t: number, head: { x: number; y: number; z: number }, dt: number) {
     const p = this.params(t);
-    if (this.keyMode && !this.menuOrbit) { p.pitch = KEY_PITCH; p.dist = 46; p.fov = 42; p.yawOff = 0; p.sway = 0; p.orbit = 0; p.worldYaw = null; p.roll = 0; p.tilt = 0; p.lead = 2.4; delete (p as any).worldYawBlend; }
+    // Gameplay framing must not pulse with each beat or inherit authored shake/zoom cues.
+    // The road and head provide the rhythm; moving the whole view makes dense turns uncomfortable.
+    const steady = this.keyMode && !this.menuOrbit;
+    if (steady) { p.pitch = KEY_PITCH; p.dist = 46; p.fov = 42; p.yawOff = 0; p.sway = 0; p.orbit = 0; p.worldYaw = null; p.roll = 0; p.tilt = 0; p.lead = 2.4; p.punch = 0; p.shake = 0; p.zoom = 1; this.orbitAng = 0; delete (p as any).worldYawBlend; }
     const flow = this.flowYaw(t);
     // slow orbit (breakdowns): drifts while active, eases back when the cue ends; never more than ±35°
     if (p.orbit) this.orbitAng = Math.max(-35, Math.min(35, this.orbitAng + p.orbit * dt)); else this.orbitAng *= Math.exp(-dt * 0.6);
@@ -134,7 +137,7 @@ export class CameraRig {
     // beat punch: a quick push-in on strong hits (kicks), decaying in ~120 ms
     if (p.punch > 0 && this.hits.length && !this.menuOrbit) { const h = lastLE(this.hits, t); if (h > -1e8) dist *= 1 - p.punch * Math.exp(-(t - h) * 9); }
     const pitch = Math.min(84, p.pitch + p.tilt + this.extraPitch) * Math.PI / 180;
-    const sh = p.shake + this.shakeBoost;
+    const sh = steady ? 0 : p.shake + this.shakeBoost;
     const jitter = sh > 0 ? new Vector3((Math.random() - 0.5) * sh * 0.6, (Math.random() - 0.5) * sh * 0.6, (Math.random() - 0.5) * sh * 0.6) : Vector3.Zero();
     const pos = new Vector3(this.target.x - Math.sin(this.yaw) * Math.cos(pitch) * dist, this.target.y + Math.sin(pitch) * dist, this.target.z - Math.cos(this.yaw) * Math.cos(pitch) * dist);
     this.cam.position.copyFrom(pos.add(jitter));

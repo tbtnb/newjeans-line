@@ -31,6 +31,6 @@ export function pendingCorner(route: Route, turns: TurnRecord[], t: number, curs
 /** Heading the line is visually travelling at time t. */
 export function lineHeading(route: Route, turns: TurnRecord[], t: number): Heading {
   let k = turns.length - 1;
-  while (k >= 0 && turns[k].tapT > t) k--;
+  while (k >= 0 && Math.max(turns[k].tapT, turns[k].chartT) > t) k--;
   return k >= 0 ? route.headingAfter[turns[k].index] : route.spans[0].heading;
 }

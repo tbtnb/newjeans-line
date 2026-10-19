@@ -10,6 +10,8 @@ export class PageTurn {
     if (!host || typeof document === 'undefined') return;
     const el = document.createElement('div'); el.className = 'nj-pageturn';
     Object.assign(el.style, { position: 'absolute', inset: '0', pointerEvents: 'none', overflow: 'hidden', display: 'none', zIndex: '2' });
+    // Keep the playable band (head at 42/47% and the road ahead) fully clear during transitions.
+    el.style.clipPath = 'polygon(0 0,100% 0,100% 16%,0 16%,0 78%,100% 78%,100% 100%,0 100%)';
     el.innerHTML = '<div class="pt-sheet" style="position:absolute;top:-10%;bottom:-10%;width:60%;transform-origin:left center;"></div>';
     host.appendChild(el); this.el = el;
   }

@@ -24,6 +24,7 @@ import { activeRange, place, type CChunk, type CInst, type CPlacement, type CSet
 import { KEY_PITCH } from '../camera';
 import { loadModel, placeholders, type Template } from './assets';
 import { CUT, Cutaway } from './cutaway';
+import { RoadSightline } from './roadsightline';
 import { Backdrop, Impostors, PageFade } from './paint';
 import { ColorCurves } from '@babylonjs/core/Materials/colorCurves';
 import { Color4 } from '@babylonjs/core/Maths/math.color';
@@ -108,6 +109,7 @@ export class SceneC {
     this.applyLook();
     this.imp = new Impostors(scene, this.root, this.plc.chunks, spec, o.base, this.night, o.tier === 'low' ? 0.18 : 1); this.back = new Backdrop(scene, this.root, spec, o.base);
     for (const mm of [this.mat, this.matSet, this.matNight, this.matGlow]) new Cutaway(mm);   // after the page clones: pages / road are never cut
+    for (const mm of [this.mat, this.matSet, this.matNight, this.matStack, ...this.pageMats]) new RoadSightline(mm);
     { const seen = new Map<string, number>(); for (const s of this.plc.sets) { const k = s.zone + ':' + s.a, n = seen.get(k) ?? 0; seen.set(k, n + 1); if (s.v === undefined) s.v = n; this.sets.push(this.makeSet(s)); } }   // v8: repeated set pieces step through palette variants
     // swap in built models as they load (placeholders until then; a missing model simply keeps its placeholder)
     for (const [id, a] of Object.entries(spec.assets)) if (a.model) loadModel(scene, o.base, id, a.h, typeof a.model === 'string' ? a.model : id).then(t => { if (this.disposed) { t.container?.dispose(); return; } recolor(id, t); this.tm.set(id, t); this.models++; this.refreshAsset(id); }).catch(e => console.warn('omg-c model', id, e));
@@ -469,7 +471,10 @@ export class SceneC {
     for (const it of c.items) {
       if ((it.layer !== 'ground' && it.layer !== 'mid') || !this.keep(it)) continue;
       const t = this.tm.get(it.a); if (!t) continue; const ic = this.colOf(it, t.model);
-      const B = it.layer === 'ground' ? G : M, y0 = it.layer === 'ground' ? it.y + 0.002 : it.y - c.y;   // mid: relative to the chunk pivot
+      // Low tier uses the same settled placement/palette in one static batch per chunk. Giving
+      // every mid-layer chunk its own pop animation costs a second draw (v10 peaked at 32 > 30).
+      const B = it.layer === 'ground' || this.tier === 'low' ? G : M;
+      const y0 = it.layer === 'ground' ? it.y + 0.002 : this.tier === 'low' ? it.y : it.y - c.y;
       const cs = Math.cos(it.yaw), sn = Math.sin(it.yaw), s = it.s, i0 = B.pos.length / 3;
       // v8 repetition pass: palette variant (rows step through them, so neighbours differ) + per-instance height stretch
       const tc = variantCols(it.a, t.col as any, it.v ?? Math.floor(hash(it.x * 3.1, it.z * 1.7) * 9973)), sy = STRETCH.has(it.a) ? 0.88 + 0.3 * hash(it.z, it.x) : 1;
