@@ -280,7 +280,7 @@ $('btn-close-set').onclick = () => show('settings', false);
 $<HTMLInputElement>('set-volume').oninput = e => { save.settings.volume = Number((e.target as HTMLInputElement).value); audio.setVolume(save.settings.volume); persist(); };
 $<HTMLInputElement>('set-offset').oninput = e => { save.settings.offsetMs = Number((e.target as HTMLInputElement).value); $('set-offset-val').textContent = `${save.settings.offsetMs} ms`; persist(); };
 $<HTMLInputElement>('set-vibration').onchange = e => { save.settings.vibration = (e.target as HTMLInputElement).checked; persist(); };
-$('set-quality').onclick = e => { const b = (e.target as HTMLElement).closest('button'); if (!b) return; save.settings.quality = b.dataset.v as 'high' | 'low'; world.setQuality(save.settings.quality); persist(); openSettings(); };
+$('set-quality').onclick = e => { const b = (e.target as HTMLElement).closest('button'); if (!b) return; try { localStorage.setItem('nj-quality-picked', '1'); } catch { /* */ } save.settings.quality = b.dataset.v as 'high' | 'low'; world.setQuality(save.settings.quality); persist(); openSettings(); };
 $('btn-export').onclick = () => {
   const blob = new Blob([JSON.stringify(save, null, 2)], { type: 'application/json' });
   const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `newjeans-line-save-${new Date().toISOString().slice(0, 10)}.json`; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
@@ -328,6 +328,15 @@ function syncProbe(t: number) {
   probeEl.style.background = probeOn > 0 ? '#fff' : '#000'; if (probeOn > 0) probeOn--;
 }
 
+// Adaptive quality: phones start on the saved quality (high by default); if high cannot hold ~40 fps while playing (frame EMA over
+// 24 ms for 4 s) it drops to low for this session, once. A quality the player picked in settings is never overridden.
+let slowSince = 0, autoDropped = false;
+function autoTier(nowMs: number) {
+  if (autoDropped || state !== 'playing' || save.settings.quality !== 'high' || localStorage.getItem('nj-quality-picked')) { slowSince = 0; return; }
+  if (frameEma > 0.024) { if (!slowSince) slowSince = nowMs; else if (nowMs - slowSince > 4000) { autoDropped = true; world.setQuality('low'); console.info('[nj] auto quality: high -> low (frame', (frameEma * 1000).toFixed(1), 'ms)'); (window as any).__njAutoLow = true; } }
+  else slowSince = 0;
+}
+
 // ---------------- main loop ----------------
 let hudTick = 0; let lastLoop = 0; let frameEma = 1 / 60;
 function loop() {
@@ -345,6 +354,7 @@ function loop() {
     t = game.status === 'failed' ? game.failTime : game.time;
   } else if (state === 'complete' || (state === 'failed')) t = game.time;
   world.frame(t);
+  autoTier(nowMs);
   if (PROBE && level) syncProbe(t);
   if (++hudTick % 3 === 0 && (state === 'playing' || state === 'ready')) updateHud();
 }
