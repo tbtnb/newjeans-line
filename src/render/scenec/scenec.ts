@@ -77,6 +77,13 @@ export class SceneC {
   private imp: Impostors | null = null; private back: Backdrop | null = null; private groundTex = new Map<number, Texture>(); private base = './'; curZone = 0;  private route!: Route;
   private hits: (x: number, z: number, r: number, y0: number, y1: number) => boolean; private pop = 5; private disposed = false; private time = 0; models = 0; last: CStats | null = null;
 
+  readonly ready: Promise<void>;
+  private baked = new Map<number, ReturnType<SceneC['bakeChunk']>>();
+  private bakedBytes = 0;
+  private prepared = new Map<number, ChunkM>();
+  private prefetchTimer: ReturnType<typeof setTimeout> | null = null;
+  private assetsReady = false;
+  private warming: Promise<void> | null = null;
   constructor(private scene: Scene, parent: TransformNode, route: Route, spec: SceneCSpec, o: { duration: number; widthAt: (t: number) => number; roadH: number; hits: (x: number, z: number, r: number, y0: number, y1: number) => boolean; beats: number[]; base: string; tier: Tier }) {
     this.spec = spec; this.tier = o.tier; this.base = o.base; this.route = route; this.hits = o.hits;
     this.root = new TransformNode('scenec', scene); this.root.parent = parent;
@@ -111,8 +118,50 @@ export class SceneC {
     for (const mm of [this.mat, this.matSet, this.matNight, this.matGlow]) new Cutaway(mm);   // after the page clones: pages / road are never cut
     for (const mm of [this.mat, this.matSet, this.matNight, this.matStack, ...this.pageMats]) new RoadSightline(mm);
     { const seen = new Map<string, number>(); for (const s of this.plc.sets) { const k = s.zone + ':' + s.a, n = seen.get(k) ?? 0; seen.set(k, n + 1); if (s.v === undefined) s.v = n; this.sets.push(this.makeSet(s)); } }   // v8: repeated set pieces step through palette variants
-    // swap in built models as they load (placeholders until then; a missing model simply keeps its placeholder)
-    for (const [id, a] of Object.entries(spec.assets)) if (a.model) loadModel(scene, o.base, id, a.h, typeof a.model === 'string' ? a.model : id).then(t => { if (this.disposed) { t.container?.dispose(); return; } recolor(id, t); this.tm.set(id, t); this.models++; this.refreshAsset(id); }).catch(e => console.warn('omg-c model', id, e));
+    // Finish downloads/decoding and landmark cloning before the run can start.
+    const entries=Object.entries(spec.assets).filter(([,a])=>a.model);
+    let next=0;
+    const worker=async()=>{while(next<entries.length&&!this.disposed){
+      const [id,a]=entries[next++];
+      try {const t=await loadModel(scene,o.base,id,a.h,typeof a.model==='string'?a.model:id);
+        if(this.disposed){t.container?.dispose();return;}
+        recolor(id,t);this.tm.set(id,t);this.models++;this.refreshAsset(id);
+      }catch(e){console.warn('omg-c model',id,e);}
+      await new Promise(r=>setTimeout(r,0));
+    }};
+    this.ready=Promise.all([worker(),worker()]).then(()=>{this.assetsReady=true;});
+  }
+
+  async warmup(){
+    if(this.warming)return this.warming;
+    return this.warming=(async()=>{
+      await this.ready;if(this.disposed)return;
+      this.dirtyAt=-1;this.dropChunks();
+      // Cache merged CPU buffers before music starts, with a yield between chunks.
+      // GPU meshes remain bounded to the visible window plus three ahead.
+      for(const c of this.plc.chunks){if(this.disposed)return;
+        const data=this.bakeChunk(c),bytes=data.G.pos.byteLength+data.G.col.byteLength+data.G.idx.byteLength+data.M.pos.byteLength+data.M.col.byteLength+data.M.idx.byteLength;
+        if(this.bakedBytes+bytes<=64*1024*1024){this.baked.set(c.i,data);this.bakedBytes+=bytes;}
+        await new Promise(r=>setTimeout(r,0));
+      }
+      this.update(0,0,0,null);
+      for(let i=this.range[1]+1;i<=Math.min(this.range[1]+3,this.plc.chunks.length-1);i++){
+        this.prepareChunk(i);await new Promise(r=>setTimeout(r,0));
+      }
+      const meshes=[...this.chunkMesh.values()].flatMap(c=>[c.g,...(c.m?[c.m]:[])]);
+      for(const mesh of meshes){if(this.disposed)return;await (mesh.material as StandardMaterial)?.forceCompilationAsync(mesh);}
+      for(const e of this.sets){if(this.disposed)return;if(e.far)await this.matSet.forceCompilationAsync(e.far);}
+    })();
+  }
+  private prepareChunk(i:number){
+    if(this.disposed||this.prepared.has(i)||this.chunkMesh.has(i))return;
+    const c=this.buildChunk(this.plc.chunks[i]);c.g.setEnabled(false);c.m?.setEnabled(false);this.prepared.set(i,c);
+  }
+  private scheduleAhead(b:number){
+    if(!this.assetsReady||this.prefetchTimer!==null)return;
+    const i=[b+1,b+2,b+3].find(i=>i<this.plc.chunks.length&&!this.prepared.has(i)&&!this.chunkMesh.has(i));
+    if(i===undefined)return;
+    this.prefetchTimer=setTimeout(()=>{this.prefetchTimer=null;if(!this.disposed)this.prepareChunk(i);},0);
   }
 
   private dropChunk(c: ChunkM) { c.g.dispose(); c.m?.dispose(); c.glow?.dispose(); }
@@ -199,8 +248,8 @@ export class SceneC {
     const tx = this.skyMat!.diffuseTexture as Texture, us = Math.min(1, (hw * 2 / bh) / (1024 / 384)); tx.uScale = us; tx.uOffset = 1 - us;   // keep proportions, crop toward the moon / sun side
     this.skyMat!.alpha = this.skyV;
   }
-  private dropChunks() { for (const c of this.chunkMesh.values()) this.dropChunk(c); this.chunkMesh.clear(); this.range = [-1, -1]; }
-  setTier(t: Tier) { if (t === this.tier) return; this.tier = t; this.dropChunks(); this.applyLook(); this.glowSig = ''; this.imp?.setDensity(t === 'low' ? 0.18 : 1); }
+  private dropChunks() { for (const c of this.chunkMesh.values()) this.dropChunk(c); this.chunkMesh.clear(); for(const c of this.prepared.values())this.dropChunk(c);this.prepared.clear(); this.range = [-1, -1]; }
+  setTier(t: Tier) { if (t === this.tier) return; this.tier = t; this.baked.clear();this.bakedBytes=0;this.warming=null; this.dropChunks(); this.applyLook(); this.glowSig = ''; this.imp?.setDensity(t === 'low' ? 0.18 : 1); }
   /** high tier: warm key tint + soft vignette (in-shader image processing, no pass); bloom = soft outer halo copies in the glow mesh (rebuildGlow) */
   private applyLook() {
     const ip = this.scene.imageProcessingConfiguration, hi = this.tier === 'high';
@@ -464,7 +513,7 @@ export class SceneC {
   }
 
   // ---- chunks: ground cover (static) + mid layer (merged, pops per chunk) + lamp halos (night zones), all vertex-colour merged ----
-  private buildChunk(c: CChunk): ChunkM {
+  private bakeChunk(c: CChunk) {
     const night = this.night[c.zone], lift = night ? 0.32 : 0, lc = hexRGB(this.spec.zones[c.zone].palette.light ?? '#FFE8B0');   // lift toward the zone's warm light
     const G = { pos: [] as number[], col: [] as number[], idx: [] as number[] }, M = { pos: [] as number[], col: [] as number[], idx: [] as number[] };
     const L = { pos: [] as number[], col: [] as number[], uv: [] as number[], idx: [] as number[] };
@@ -497,7 +546,12 @@ export class SceneC {
         quad([[it.x, hy - rq, it.z - rq], [it.x, hy - rq, it.z + rq], [it.x, hy + rq, it.z + rq], [it.x, hy + rq, it.z - rq]], kq);
       }
     }
-    const mk = (name: string, B: { pos: number[]; col: number[]; idx: number[]; uv?: number[] }, mat: StandardMaterial) => {
+    const pack=(b:{pos:number[];col:number[];idx:number[];uv?:number[]})=>({pos:Float32Array.from(b.pos),col:Float32Array.from(b.col),idx:Uint32Array.from(b.idx),uv:b.uv?Float32Array.from(b.uv):undefined});
+    return {G:pack(G),M:pack(M),L};
+  }
+  private buildChunk(c:CChunk):ChunkM {
+    const {G,M,L}=this.baked.get(c.i)??this.bakeChunk(c),night=this.night[c.zone];
+    const mk = (name: string, B: { pos: Float32Array; col: Float32Array; idx: Uint32Array; uv?: Float32Array }, mat: StandardMaterial) => {
       if (!B.pos.length) return null; const m = new Mesh(name, this.scene); const vd = new VertexData(); vd.positions = B.pos; vd.colors = B.col; vd.indices = B.idx; if (B.uv) vd.uvs = B.uv;
       vd.applyToMesh(m, false); m.material = mat; m.isPickable = false; m.parent = this.root; return m; };
     const mat = night ? this.matNight : this.mat;
@@ -629,10 +683,14 @@ export class SceneC {
     const [a, b] = activeRange(this.plc.chunks, t, key ? (this.tier === 'high' ? 4.5 : 4) : T.behind, key ? T.ahead + (this.tier === 'high' ? 2 : 0) : T.ahead);
     if (a !== this.range[0] || b !== this.range[1]) {
       for (const [i, m] of this.chunkMesh) if (i < a || i > b) { this.dropChunk(m); this.chunkMesh.delete(i); }
-      for (let i = a; i <= b; i++) if (!this.chunkMesh.has(i)) this.chunkMesh.set(i, this.buildChunk(this.plc.chunks[i]));
+      for (const [i,m] of this.prepared) if(i<a||i>b+3){this.dropChunk(m);this.prepared.delete(i);}
+      for (let i = a; i <= b; i++) if (!this.chunkMesh.has(i)) {
+        const c=this.prepared.get(i)??this.buildChunk(this.plc.chunks[i]);this.prepared.delete(i);c.g.setEnabled(true);c.m?.setEnabled(true);this.chunkMesh.set(i,c);
+      }
       this.range = [a, b]; this.refill(a, b);
       const on = new Set<number>(); for (let i = a; i <= b; i++) on.add(this.plc.chunks[i].zone); this.pages.forEach((p, zi) => p.setEnabled(on.has(zi)));
     }
+    this.scheduleAhead(b);
     this.writeTypes(t, beatK);
     this.imp?.update(a, Math.min(this.plc.chunks.length - 1, b + 3));
     this.refreshStacks(a, Math.min(this.plc.chunks.length - 1, b + 2));   // impostors reach further ahead than the decor window
@@ -656,7 +714,7 @@ export class SceneC {
   }
 
   dispose() {
-    this.disposed = true;
+    this.disposed = true;if(this.prefetchTimer!==null)clearTimeout(this.prefetchTimer);this.baked.clear();this.prepared.clear();
     for (const [id, t] of this.tm) if (t.container) { t.container.dispose(); this.tm.delete(id); }
     { const ip = this.scene.imageProcessingConfiguration; ip.vignetteEnabled = false; ip.colorCurvesEnabled = false; } this.imp?.dispose(); this.back?.dispose(); for (const t of this.groundTex.values()) t.dispose(); this.root.dispose(false, false); this.glowAll?.dispose(); this.matGlow.diffuseTexture?.dispose(); this.matGlow.dispose(); this.matNight.dispose(); this.mat.dispose(); this.matSet.dispose(); for (const m of this.pageMats) m.dispose(); this.sky?.dispose(); this.skyMat?.dispose(); for (const t of this.skyTex.values()) t.dispose();
   }

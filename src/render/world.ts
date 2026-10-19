@@ -15,6 +15,7 @@ import { Dressings } from './dressing';
 import { EnvTimeline } from './env';
 import { CameraRig } from './camera';
 import { LineSkin } from './lineskin';
+import { updateTrailMesh } from './trailmesh';
 import { SceneC } from './scenec/scenec';
 import { PageTurn } from './scenec/pageturn';
 import { RoadSightline, updateRoadSightline } from './scenec/roadsightline';
@@ -196,12 +197,12 @@ export class World {
     this.trailMat = new StandardMaterial('trailM', this.scene); this.trailMat.specularColor = new Color3(0.05, 0.05, 0.05);
     if (this.cmode) new RoadSightline(this.trailMat);
     this.head = CreateBox('head', { size: 1 }, this.scene); this.head.scaling.set(LINE_W, LINE_H, LINE_W); this.head.material = this.headMat; this.head.parent = this.root;
-    this.trail = CreateBox('trail', { size: 1 }, this.scene); this.trail.material = this.trailMat; this.trail.parent = this.root; this.trail.alwaysSelectAsActiveMesh = true;
-    this.trailBuf = new Float32Array(16 * 256); this.trail.thinInstanceSetBuffer('matrix', this.trailBuf, 16, false); this.trail.thinInstanceCount = 0;
+    this.trail = new Mesh('trail', this.scene); this.trail.material = this.trailMat; this.trail.parent = this.root; this.trail.alwaysSelectAsActiveMesh = true;
+    this.trail.setEnabled(false);
     this.skin.attach(this.head, this.headMat, this.trailMat, this.root);
     // the head is just the leading cube of the line: the trail's own material (same skin colour/texture, level colour on
     // classic, never default white), no outline, no halo / contact disc
-    this.head.material = this.trailMat;
+    this.head.material = this.headMat;
     // scenery
     const grid = new RoadGrid(route, widthAt);
     const expanded: SceneObject[] = [];
@@ -423,26 +424,9 @@ export class World {
       if (o.h === n.h && Vector3.DistanceSquared(o.a, n.a) < 1e-10 && Vector3.DistanceSquared(o.b, n.b) < 1e-10) break;
       first = i;
     }
-    if (runs.length * 16 > this.trailBuf.length) {
-      let n = this.trailBuf.length; while (runs.length * 16 > n) n *= 2;
-      const nb = new Float32Array(n); nb.set(this.trailBuf); this.trailBuf = nb; this.trail!.thinInstanceSetBuffer('matrix', this.trailBuf, 16, false);
-    }
-    for (let i = first; i < runs.length; i++) this.writeRun(i, runs[i], i > 0 && Vector3.DistanceSquared(runs[i - 1].b, runs[i].a) < 1e-8);
     const changed = full || first < runs.length || runs.length !== this.trailCount;
     this.runs = runs; this.trailCount = runs.length;
-    this.trail?.setEnabled(runs.length > 0);
-    if (changed && this.trail) { this.trail.thinInstanceCount = this.trailCount; this.trail.thinInstanceBufferUpdated('matrix'); this.trail.thinInstanceRefreshBoundingInfo(false); }
-  }
-
-  private writeRun(i: number, r: Run, joined = false) {
-    const d = r.b.subtract(r.a); const len = d.length();
-    const yaw = [0, Math.PI / 2, Math.PI, -Math.PI / 2][r.h];          // exact multiples of 90 degrees
-    const pitch = len > 1e-6 ? -Math.asin(Math.max(-1, Math.min(1, d.y / len))) : 0;
-    // The preceding run owns the corner square. Avoid overlapping coplanar top faces.
-    const start = joined ? r.a.add(d.scale((LINE_W / 2) / len)) : r.a.subtract(len > 1e-6 ? d.scale((LINE_W / 2) / len) : Vector3.Zero());
-    const end = r.b.add(len > 1e-6 ? d.scale((LINE_W / 2) / len) : Vector3.Zero());
-    const m = Matrix.Compose(new Vector3(LINE_W, LINE_H, Vector3.Distance(start, end)), Quaternion.RotationYawPitchRoll(yaw, pitch, 0), start.add(end).scale(0.5));
-    m.copyToArray(this.trailBuf, i * 16);
+    if (changed && this.trail) updateTrailMesh(this.trail, runs);
   }
 
   // ---- events from the game ----
@@ -496,7 +480,7 @@ export class World {
     const now = performance.now() / 1000;
     this.skin.onShatter(at);
     for (let i = 0, n = this.skin.shardCount; i < n; i++) {
-      const m = CreateBox('shard', { size: 0.32 + Math.random() * 0.2 }, this.scene); m.material = this.trailMat; m.parent = this.root; m.position.copyFrom(at);
+      const m = CreateBox('shard', { size: 0.32 + Math.random() * 0.2 }, this.scene); m.material = this.headMat; m.parent = this.root; m.position.copyFrom(at);
       this.failAnim.pieces.push({ mesh: m, t0: now, dur: 1.6, kind: 'shard', vel: new Vector3((Math.random() - 0.5) * 7, 3 + Math.random() * 5, (Math.random() - 0.5) * 7), spin: new Vector3(Math.random() * 8, Math.random() * 8, Math.random() * 8) });
     }
   }
@@ -817,6 +801,8 @@ export class World {
   }
 
   resize() { this.engine.resize(); }
+  async prepareScenery() { await this.sc?.warmup(); }
+
   dispose() { this.unload(); this.skin.dispose(); this.scene.dispose(); this.engine.dispose(); }
   stats() { return { meshes: this.scene.meshes.length, active: this.scene.getActiveMeshes().length, fps: this.fps, trail: this.trailCount, tiles: this.road?.tiles.length ?? 0, objects: this.objects.length, drawCalls: (this.engine as any)._drawCalls?.current ?? null, scenec: this.sc?.last ?? null }; }
 }

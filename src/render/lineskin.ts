@@ -22,8 +22,8 @@ class LineSkinPlugin extends MaterialPluginBase {
   tex: Texture | null = null;
   sheen = 0; grain = 0; texLen = 2; time = 0; gloss = 0;
   private on = false; private hasMap = false;
-  constructor(material: Material) {
-    super(material, 'LineSkin', 200, { SKINTEX: false, SKINMAP: false });
+  constructor(material: Material, private ribbon = false) {
+    super(material, 'LineSkin', 200, { SKINTEX: false, SKINMAP: false, SKINRIBBON: ribbon });
   }
   set(on: boolean, tex: Texture | null) {
     this.tex = tex;
@@ -31,6 +31,7 @@ class LineSkinPlugin extends MaterialPluginBase {
   }
   getClassName() { return 'LineSkinPlugin'; }
   prepareDefines(defines: MaterialDefines) { (defines as any).SKINTEX = this.on; (defines as any).SKINMAP = this.on && this.hasMap; }
+  getAttributes(attributes: string[]) { if(this.ribbon) attributes.push('trailUV'); }
   getSamplers(samplers: string[]) { samplers.push('skinSampler'); }
   getUniforms() {
     return { ubo: [{ name: 'skinFx', size: 4, type: 'vec4' }, { name: 'skinFx2', size: 4, type: 'vec4' }], fragment: '#ifdef SKINTEX\nuniform vec4 skinFx;\nuniform vec4 skinFx2;\n#endif\n' };
@@ -42,16 +43,19 @@ class LineSkinPlugin extends MaterialPluginBase {
   }
   getCustomCode(shaderType: string): { [pointName: string]: string } | null {
     if (shaderType === 'vertex') return {
-      CUSTOM_VERTEX_DEFINITIONS: '#ifdef SKINTEX\nvarying vec3 vSkinL;\nvarying vec3 vSkinN;\nvarying float vSkinZ;\n#endif\n',
-      CUSTOM_VERTEX_UPDATE_WORLDPOS: '#ifdef SKINTEX\nvSkinL=positionUpdated;\n#ifdef NORMAL\nvSkinN=normalUpdated;\n#else\nvSkinN=vec3(0.,1.,0.);\n#endif\nvSkinZ=(positionUpdated.z+0.5)*length(finalWorld[2].xyz);\n#endif\n',
+      CUSTOM_VERTEX_DEFINITIONS: '#ifdef SKINRIBBON\nattribute vec2 trailUV;\nvarying vec2 vTrailUV;\n#endif\n#ifdef SKINTEX\nvarying vec3 vSkinL;\nvarying vec3 vSkinN;\nvarying float vSkinZ;\n#endif\n',
+      CUSTOM_VERTEX_UPDATE_WORLDPOS: '#ifdef SKINRIBBON\nvTrailUV=trailUV;\n#endif\n#ifdef SKINTEX\nvSkinL=positionUpdated;\n#ifdef NORMAL\nvSkinN=normalUpdated;\n#else\nvSkinN=vec3(0.,1.,0.);\n#endif\nvSkinZ=(positionUpdated.z+0.5)*length(finalWorld[2].xyz);\n#ifdef SKINRIBBON\nvSkinZ=trailUV.y;\n#endif\n#endif\n',
     };
     if (shaderType === 'fragment') return {
-      CUSTOM_FRAGMENT_DEFINITIONS: '#ifdef SKINTEX\nvarying vec3 vSkinL;\nvarying vec3 vSkinN;\nvarying float vSkinZ;\n#ifdef SKINMAP\nuniform sampler2D skinSampler;\n#endif\n#endif\n',
+      CUSTOM_FRAGMENT_DEFINITIONS: '#ifdef SKINRIBBON\nvarying vec2 vTrailUV;\n#endif\n#ifdef SKINTEX\nvarying vec3 vSkinL;\nvarying vec3 vSkinN;\nvarying float vSkinZ;\n#ifdef SKINMAP\nuniform sampler2D skinSampler;\n#endif\n#endif\n',
       CUSTOM_FRAGMENT_UPDATE_DIFFUSE: `#ifdef SKINMAP
 vec3 skAn=abs(vSkinN);vec2 skUV;
 if(skAn.y>0.5){skUV=vec2(vSkinL.x+0.5,vSkinZ/skinFx.w);}
 else if(skAn.x>0.5){skUV=vec2(vSkinL.y+0.5,vSkinZ/skinFx.w);}
 else{skUV=vec2(vSkinL.x+0.5,vSkinL.y+0.5);}
+#ifdef SKINRIBBON
+skUV=vec2(vTrailUV.x,vTrailUV.y/skinFx.w);
+#endif
 baseColor.rgb*=texture2D(skinSampler,skUV).rgb;
 #endif
 `,
@@ -102,7 +106,7 @@ export class LineSkin {
   attach(head: Mesh, headMat: StandardMaterial, trailMat: StandardMaterial, root: TransformNode) {
     this.detach();
     this.head = head; this.headMat = headMat; this.trailMat = trailMat; this.root = root;
-    this.headPlug = new LineSkinPlugin(headMat); this.trailPlug = new LineSkinPlugin(trailMat);
+    this.headPlug = new LineSkinPlugin(headMat); this.trailPlug = new LineSkinPlugin(trailMat, true);
     this.apply(this.def.id, true);
   }
 

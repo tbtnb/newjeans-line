@@ -68,3 +68,6 @@ test('jumps only occur in long straight input-free windows, never dense phrases'
   }
   assert.equal(g.route.spans.some(s=>s.air&&s.t0>2&&s.t0<157.8),false);
 });
+test('OMG opening road is connected and flat with no opening jump',()=>{
+ const g=new Game(L);assert.equal(g.route.spans.some(s=>s.t0<2&&s.air),false);
+});

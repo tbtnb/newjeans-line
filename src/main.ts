@@ -107,6 +107,8 @@ async function enterLevel() {
     audio.onProgress = (f, n) => { if (state === 'loading') $('loading-msg').textContent = f >= 0 ? `载入音乐 ${Math.round(f * 100)}%` : `载入音乐 ${(n / 1048576).toFixed(1)} MB`; };
     try { await audio.load(level.audio); } catch (e) { setState('menu'); toast(String((e as Error).message)); return; }
   }
+  setState('loading'); $('loading-msg').textContent = '预备场景模型与道路';
+  try { await world.prepareScenery(); } catch(e) { setState('menu');toast('场景准备失败，请重试');console.warn(e);return; }
   game.checkpointsUsed.clear(); game.diamondsTaken.clear(); game.crownsReached.clear();
   game.prepare(0); world.seek(0);
   readyFrom = 0; readyKind = 'start';

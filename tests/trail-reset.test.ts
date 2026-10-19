@@ -15,11 +15,11 @@ test('seek to start removes old GPU trail instances and disables an empty source
     const w:any=Object.create(World.prototype);
     Object.assign(w,{game:g,route:g.route,road:null,dress:null,trail:CreateBox('old-trail',{},scene),trailBuf:new Float32Array(16*256),runs:[],trailCount:0,failRun:null,diamonds:[],crowns:[],fx:[],failAnim:null,head:null,skin:{reset(){}},rig:null});
     w.trail.thinInstanceSetBuffer('matrix',w.trailBuf,16,false);
-    w.updateTrail(g.taps[3]+.1,true);assert.ok(w.trail.thinInstanceCount>0);assert.equal(w.trail.isEnabled(),true);
+    w.updateTrail(g.taps[3]+.1,true);assert.ok(w.trail.getTotalIndices()>0);assert.equal(w.trail.isEnabled(),true);
     g.prepare(0);w.seek(0);
-    assert.equal(w.trailCount,0);assert.equal(w.trail.thinInstanceCount,0);assert.equal(w.trail.isEnabled(),false);
+    assert.equal(w.trailCount,0);assert.equal(w.trail.getTotalIndices(),0);assert.equal(w.trail.isEnabled(),false);
     assert.equal(w.trailBuf.some((v:number)=>v!==0),false);
     g.start();g.tap(g.taps[0]);w.updateTrail(g.taps[0]+.1);
-    assert.ok(w.trail.thinInstanceCount>0);assert.equal(w.trail.isEnabled(),true);
+    assert.ok(w.trail.getTotalIndices()>0);assert.equal(w.trail.isEnabled(),true);
   }finally{scene.dispose();engine.dispose();}
 });
