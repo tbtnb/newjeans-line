@@ -1,0 +1,20 @@
+{
+ "id": "paper-hill-lo",
+ "name": "Faceted Paper Hill (low filler)",
+ "size_m": {
+  "w": 5.2,
+  "d": 2.8,
+  "h": 2.5
+ },
+ "colors": {
+  "mint": "#BDEBD8",
+  "green": "#6CCB5F",
+  "pearl": "#F3F1EA"
+ },
+ "tris_budget": 110,
+ "pivots": [
+  {
+   "name": "root"
+  }
+ ]
+}
