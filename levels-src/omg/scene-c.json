@@ -2258,7 +2258,7 @@
      "side": -1,
      "asset": "bunny-statue",
      "dist": 1.5,
-     "scale": 2.2,
+     "scale": 2.8,
      "pop": "spring",
      "label": "坐着的兔子雕像",
      "hero": true,
@@ -6104,7 +6104,7 @@
      "side": -1,
      "asset": "castle",
      "dist": 1.5,
-     "scale": 1.6,
+     "scale": 1.15,
      "pop": "spring",
      "label": "DROP 巨页翻开·城堡弹起",
      "hero": true,
@@ -6132,7 +6132,7 @@
      "side": 1,
      "asset": "bunny-heart",
      "dist": 1.5,
-     "scale": 1.0,
+     "scale": 1.25,
      "pop": "spring",
      "label": "巨型弹出兔子+爱心",
      "hero": true,
@@ -9333,13 +9333,32 @@
      "label": "电话线藤蔓拱门"
     },
     {
-     "t": 82.08,
+     "t": 82.0,
      "side": 1,
      "asset": "phone-tower",
-     "dist": 9.0,
-     "scale": 1.0,
+     "dist": 1.5,
+     "scale": 1.15,
      "pop": "spring",
-     "label": "landmark"
+     "label": "landmark",
+     "hero": true,
+     "entourage": [
+      [
+       "firefly-lamp",
+       6
+      ],
+      [
+       "gift",
+       5
+      ],
+      [
+       "heart-bed",
+       3
+      ],
+      [
+       "tulip-bed",
+       3
+      ]
+     ]
     },
     {
      "t": 83.5,
@@ -15677,7 +15696,7 @@
      "side": -1,
      "asset": "bunny-family",
      "dist": 1.5,
-     "scale": 1.9,
+     "scale": 2.3,
      "pop": "spring",
      "label": "landmark",
      "hero": true,

@@ -92,9 +92,20 @@ export function place(spec: SceneCSpec, route: Route, o: PlaceOpts): CPlacement 
     for (let k = 0; k < 8; k++) { const an = k * Math.PI / 4; if (bankAt(x + Math.cos(an) * rr, z + Math.sin(an) * rr) !== c0) return false; } return true; };
   const setPos = (sp: SceneCZone['setpieces'][0]) => { const A = spec.assets[sp.asset]; if (!A) return null;
     const hero = !!sp.hero, sc = sp.scale ?? 1, w = o.widthAt(sp.t), r = hero ? (A.w ?? A.h) * sc * 0.42 : A.h * sc * 0.45; const side = sp.side || 1;
+    const H = A.h * sc, cr = hero ? r * 0.8 + 0.8 : r + 1.5;
+    if (hero || H >= 8) {   // v10: heroes / landmarks take the clear spot nearest the flow line (the key frame is ~20 m wide): search
+      // +-1.5 s along the flow and both sides (own side preferred), first lateral offset clear of every road and of the head sightline
+      let best: { a: ReturnType<typeof flowAnchor>; c: number } | null = null;
+      for (const dt of [0, 0.5, -0.5, 1, -1, 1.5, -1.5]) for (const sd of [side, -side]) {
+        const tt = Math.max(0, Math.min(o.duration, sp.t + dt));
+        for (let off = w / 2 + Math.max(0.5, Math.min(sp.dist, 3)) + r * 0.8; off < 40; off += 1) { const a = flowAnchor(route, tt, sd * off, 0, 0);
+          if (o.hits(a.pos.x, a.pos.z, cr, a.pos.y - 1, a.pos.y + H) || blocksHead(a.pos.x, a.pos.z, r, a.pos.y, H, sp.t)) continue;
+          const c = off - r * 0.8 + 2.5 * Math.abs(dt) + (sd !== side ? 4 : 0); if (!best || c < best.c) best = { a, c }; break; } }
+      if (best) return { a: best.a, r, hero, sc, A };
+    }
     let off = side * (w / 2 + sp.dist + r); let a = flowAnchor(route, sp.t, off, 0, 0);
-    for (let k = 0; k < 24 && o.hits(a.pos.x, a.pos.z, hero ? r * 0.8 + 0.8 : r + 1.5, a.pos.y - 1, a.pos.y + A.h * sc); k++) { off += side * (hero ? 1.0 : 1.5); a = flowAnchor(route, sp.t, off, 0, 0); }
-    for (let k = 0; k < 20 && blocksHead(a.pos.x, a.pos.z, r, a.pos.y, A.h * sc, sp.t); k++) { off += side * 1.5; a = flowAnchor(route, sp.t, off, 0, 0); }   // v8: never between camera and head
+    for (let k = 0; k < 24 && o.hits(a.pos.x, a.pos.z, cr, a.pos.y - 1, a.pos.y + H); k++) { off += side * (hero ? 1.0 : 1.5); a = flowAnchor(route, sp.t, off, 0, 0); }
+    for (let k = 0; k < 20 && blocksHead(a.pos.x, a.pos.z, r, a.pos.y, H, sp.t); k++) { off += side * 1.5; a = flowAnchor(route, sp.t, off, 0, 0); }   // v8: never between camera and head
     return { a, r, hero, sc, A }; };
   {
     const BR = rng((o.seed ?? 20261018) + 77);
