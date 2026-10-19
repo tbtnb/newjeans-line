@@ -801,7 +801,7 @@ export class World {
   }
 
   resize() { this.engine.resize(); }
-  async prepareScenery() { await this.sc?.warmup(); }
+  async prepareScenery(t=0) { await this.sc?.warmup(); await this.sc?.prepareAt(t); }
 
   dispose() { this.unload(); this.skin.dispose(); this.scene.dispose(); this.engine.dispose(); }
   stats() { return { meshes: this.scene.meshes.length, active: this.scene.getActiveMeshes().length, fps: this.fps, trail: this.trailCount, tiles: this.road?.tiles.length ?? 0, objects: this.objects.length, drawCalls: (this.engine as any)._drawCalls?.current ?? null, scenec: this.sc?.last ?? null }; }

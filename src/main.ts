@@ -173,11 +173,13 @@ function onFail(_kind: string, _t: number) {
   }, 1100);
 }
 
-function continueFromCheckpoint() {
+async function continueFromCheckpoint() {
   if (!game || !level) return;
   const cp = game.latestCheckpoint(); if (cp < 0) return;
   const t = level.layout.crowns[cp].t;
   game.checkpointsUsed.add(cp);
+  setState('loading'); $('loading-msg').textContent = '准备检查点前方场景';
+  try { await world.prepareScenery(t); } catch(e) {setState('menu');toast('场景准备失败，请重试');return;}
   game.prepare(t, true); world.seek(t);
   readyFrom = t; readyKind = 'checkpoint'; setReady();
 }

@@ -67,7 +67,7 @@ interface SetE { def: CSet; node: TransformNode; hinge: TransformNode; far: Mesh
 /** v10 horizon: the skyline band stands on the ground line of the top SKY_H of the view (default); ?sky=old = v8 band, ?skyh=0.3 */
 const SKY_Q = typeof location !== 'undefined' ? new URLSearchParams(location.search) : null;
 const SKY_MODE = SKY_Q?.get('sky') === 'old' ? '' : 'ground', SKY_H = +(SKY_Q?.get('skyh') ?? 0.26);
-export interface CStats { chunks: [number, number]; chunkMeshes: number; types: number; instances: number; sets: number; tris: number; zone: number; models: number; /** visible tris if every asset were modelled at its full spec budget */ trisAtBudget: number; /** tris of everything in the chunk window (incl. off-screen chunks); `tris` counts only frustum-visible chunks / sets */ trisWindow?: number }
+export interface CStats { chunks: [number, number]; chunkMeshes: number; types: number; instances: number; sets: number; tris: number; zone: number; models: number; preparedChunks?:number; bakedBytes?:number; residentSets?:number; /** visible tris if every asset were modelled at its full spec budget */ trisAtBudget: number; /** tris of everything in the chunk window (incl. off-screen chunks); `tris` counts only frustum-visible chunks / sets */ trisWindow?: number }
 
 export class SceneC {
   readonly plc: CPlacement; readonly spec: SceneCSpec;
@@ -160,8 +160,52 @@ export class SceneC {
   private scheduleAhead(b:number){
     if(!this.assetsReady||this.prefetchTimer!==null)return;
     const i=[b+1,b+2,b+3].find(i=>i<this.plc.chunks.length&&!this.prepared.has(i)&&!this.chunkMesh.has(i));
-    if(i===undefined)return;
-    this.prefetchTimer=setTimeout(()=>{this.prefetchTimer=null;if(!this.disposed)this.prepareChunk(i);},0);
+    const e=this.sets.find(e=>!e.far&&e.def.popAt<=this.skyT+16&&e.def.t+12>=this.skyT&&!(e.def.hi&&this.tier==='low'));
+    if(i===undefined&&!e)return;
+    this.prefetchTimer=setTimeout(()=>{
+      this.prefetchTimer=null;if(this.disposed)return;
+      // A rewind/quality switch may invalidate queued work. Never resurrect an old window.
+      if(i!==undefined){if(i>this.range[1]&&i<=this.range[1]+3)this.prepareChunk(i);}
+      else if(e&&!e.far&&e.def.popAt<=this.skyT+16&&e.def.t+12>=this.skyT)this.buildSetVisual(e);
+    },0);
+  }
+  private dropSetVisual(e:SetE){
+    this.setOn(e,false);e.far?.dispose(false,false);e.near?.dispose(false,false);
+    e.far=null;e.near=null;e.nearMeshes=[];e.piv=[];
+  }
+  private bakedSize(d:ReturnType<SceneC['bakeChunk']>){
+    return d.G.pos.byteLength+d.G.col.byteLength+d.G.idx.byteLength+d.M.pos.byteLength+d.M.col.byteLength+d.M.idx.byteLength;
+  }
+  private retireBehind(a:number,t:number,cam:Vector3|null){
+    // Two extra CPU chunks behind the active window avoid churn near a boundary.
+    // All future preloaded chunks remain protected by their index, not frustum visibility.
+    for(const [i,d] of this.baked)if(i<a-2){this.bakedBytes-=this.bakedSize(d);this.baked.delete(i);}
+    this.bakedBytes=Math.max(0,this.bakedBytes);
+    for(const e of this.sets){
+      if(!e.far||e.on||t<=e.def.t+12)continue;
+      // Large landmarks can still extend into the camera after their route point passed.
+      const fp=cam?this.scene.frustumPlanes:null;
+      if(fp){e.far.computeWorldMatrix(true);if(e.far.isInFrustum(fp))continue;
+        if(e.nearMeshes.some(m=>{m.computeWorldMatrix(true);return m.isInFrustum(fp);}))continue;}
+      this.dropSetVisual(e);break; // spread landmark disposal across frames
+    }
+  }
+  /** Restore a restart/checkpoint window before audio resumes, reusing retained templates. */
+  async prepareAt(t:number){
+    if(this.disposed)return;
+    this.update(t,0,0,null);
+    for(const e of this.sets){
+      if(this.disposed)return;
+      if(!e.far&&e.def.popAt<=t+16&&e.def.t+12>=t&&!(e.def.hi&&this.tier==='low')){
+        this.buildSetVisual(e);
+        if(e.far)await this.matSet.forceCompilationAsync(e.far);
+        for(const m of e.nearMeshes)await this.matSet.forceCompilationAsync(m);
+        await new Promise(r=>setTimeout(r,0));
+      }
+    }
+    for(let i=this.range[1]+1;i<=Math.min(this.range[1]+3,this.plc.chunks.length-1);i++){
+      this.prepareChunk(i);await new Promise(r=>setTimeout(r,0));
+    }
   }
 
   private dropChunk(c: ChunkM) { c.g.dispose(); c.m?.dispose(); c.glow?.dispose(); }
@@ -248,7 +292,7 @@ export class SceneC {
     const tx = this.skyMat!.diffuseTexture as Texture, us = Math.min(1, (hw * 2 / bh) / (1024 / 384)); tx.uScale = us; tx.uOffset = 1 - us;   // keep proportions, crop toward the moon / sun side
     this.skyMat!.alpha = this.skyV;
   }
-  private dropChunks() { for (const c of this.chunkMesh.values()) this.dropChunk(c); this.chunkMesh.clear(); for(const c of this.prepared.values())this.dropChunk(c);this.prepared.clear(); this.range = [-1, -1]; }
+  private dropChunks() { if(this.prefetchTimer!==null){clearTimeout(this.prefetchTimer);this.prefetchTimer=null;} for (const c of this.chunkMesh.values()) this.dropChunk(c); this.chunkMesh.clear(); for(const c of this.prepared.values())this.dropChunk(c);this.prepared.clear(); this.range = [-1, -1]; }
   setTier(t: Tier) { if (t === this.tier) return; this.tier = t; this.baked.clear();this.bakedBytes=0;this.warming=null; this.dropChunks(); this.applyLook(); this.glowSig = ''; this.imp?.setDensity(t === 'low' ? 0.18 : 1); }
   /** high tier: warm key tint + soft vignette (in-shader image processing, no pass); bloom = soft outer halo copies in the glow mesh (rebuildGlow) */
   private applyLook() {
@@ -643,7 +687,7 @@ export class SceneC {
   private applyLod(e: SetE) { e.far?.setEnabled(e.on && (e.lodFar || !e.near)); e.near?.setEnabled(e.on && !e.lodFar && !!e.near); }
   private setOn(e: SetE, on: boolean) { if (e.on === on) return; e.on = on; e.node.setEnabled(on); this.applyLod(e); }
   private animSet(e: SetE, t: number, beatK: number, cam: Vector3 | null) {
-    const d = e.def; const on = t >= d.popAt - 1.5 && t <= d.t + 10 && !(d.hi && this.tier === 'low'); this.setOn(e, on); if (!on) return;
+    const d = e.def; const on = t >= d.popAt - 1.5 && t <= d.t + 10 && !(d.hi && this.tier === 'low'); if(on&&!e.far)this.buildSetVisual(e); this.setOn(e, on); if (!on) return;
     e.hinge.rotation.x = -Math.PI / 2 * (1 - spring(t - d.popAt));                     // pop-up book: lies flat, springs upright
     if (cam) { const far = Vector3.Distance(cam, e.node.position) > TIERS[this.tier].lod; if (far !== e.lodFar) { e.lodFar = far; this.applyLod(e); } }
     if (e.lodFar) return;
@@ -690,6 +734,7 @@ export class SceneC {
       this.range = [a, b]; this.refill(a, b);
       const on = new Set<number>(); for (let i = a; i <= b; i++) on.add(this.plc.chunks[i].zone); this.pages.forEach((p, zi) => p.setEnabled(on.has(zi)));
     }
+    this.retireBehind(a,t,cam);
     this.scheduleAhead(b);
     this.writeTypes(t, beatK);
     this.imp?.update(a, Math.min(this.plc.chunks.length - 1, b + 3));
@@ -710,7 +755,7 @@ export class SceneC {
       for (const it of this.plc.chunks[i].items) if ((it.layer === 'ground' || it.layer === 'mid') && this.keep(it)) tb += Math.max(this.tm.get(it.a)?.tris ?? 0, A[it.a]?.tris ?? 0); }
     let types = 0; for (const ti of this.types.values()) if (ti.items.length) { types++; inst += ti.items.length; tris += ti.items.length * ti.tris; win += ti.items.length * ti.tris; tb += ti.items.length * Math.max(ti.tris, A[ti.id]?.tris ?? 0); }
     let zone = 0; for (let i = 0; i < this.spec.zones.length; i++) if (this.spec.zones[i].t0 <= t) zone = i;
-    this.last = { chunks: [a, b], chunkMeshes: this.chunkMesh.size, types, instances: inst, sets, tris, zone, models: this.models, trisAtBudget: tb, trisWindow: win };
+    this.last = { chunks: [a, b], chunkMeshes: this.chunkMesh.size, types, instances: inst, sets, tris, zone, models: this.models, preparedChunks:this.prepared.size,bakedBytes:this.bakedBytes,residentSets:this.sets.filter(e=>!!e.far).length, trisAtBudget: tb, trisWindow: win };
   }
 
   dispose() {
