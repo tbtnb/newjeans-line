@@ -26,6 +26,11 @@ export interface SceneObject {
   size?: number[]; rot?: number | number[]; color?: string; color2?: string; parts?: Part[];
   appear?: ObjectAnim; exit?: ObjectAnim; react?: 'none' | 'beat' | 'tap' | 'kick';
   landmark?: boolean; egg?: boolean; name?: string;
+  /** absolute world position [x,y,z] (overrides t/side anchoring); rot is then an absolute yaw in degrees */
+  worldPos?: number[];
+  /** part of / under the road (bridges, decks): never pushed off the road */
+  onroad?: boolean;
+  radius?: number;
   // row
   t0?: number; t1?: number; spacing?: number; bothSides?: boolean; item?: SceneObject;
 }
@@ -43,7 +48,8 @@ export interface Layout {
   events?: SceneEvent[];
   diamonds: { t: number; side?: number }[];
   crowns: { t: number }[];
-  finish?: { kind: string; parts?: Part[] };
+  finish?: { kind: string; parts?: Part[]; color?: string };
+  collectibleColors?: { diamond?: string; crown?: string };
   beats?: number[]; // optional beat grid for react:'beat' scenery
   kicks?: number[];
 }

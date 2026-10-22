@@ -48,7 +48,10 @@ test('hit within window, fail early, fail late, extra tap fails', () => {
   const g = new Game(mk([2, 4])); g.prepare(); g.start();
   g.update(1.9); assert.equal(g.tap(1.95), 'hit');
   assert.equal(g.tap(3.0), 'fail'); assert.equal(g.failKind, 'early');
-  const h = new Game(mk([2, 4])); h.prepare(); h.start(); h.update(2.2); assert.equal(h.status, 'failed'); assert.equal(h.failKind, 'late');
+  const h = new Game(mk([2, 4])); h.prepare(); h.start(); h.update(2.2); assert.equal(h.status, 'playing', 'grace for queued input');
+  assert.equal(h.tap(2.105), 'hit', 'event stamped inside the window but delivered late still counts');
+  const h2 = new Game(mk([2, 4])); h2.prepare(); h2.start(); h2.update(2.3); assert.equal(h2.status, 'failed'); assert.equal(h2.failKind, 'late'); assert.ok(Math.abs(h2.failTime - (2 + h2.windows[0])) < 1e-9);
+  const h3 = new Game(mk([2, 4])); h3.prepare(); h3.start(); h3.update(2.2); assert.equal(h3.tap(2.18), 'fail'); assert.equal(h3.failKind, 'late');
   const k = new Game(mk([2])); k.prepare(); k.start(); k.tap(2); assert.equal(k.tap(10), 'fail'); assert.equal(k.failKind, 'extra');
 });
 

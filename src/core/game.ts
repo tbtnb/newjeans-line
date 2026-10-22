@@ -5,7 +5,10 @@ export const WINDOW_MAX = 0.11;     // ± seconds, sparse taps
 export const WINDOW_MIN = 0.065;    // ± seconds, floor for the densest runs
 export const WINDOW_GAP_RATIO = 0.45; // window may never exceed 45 % of the neighbouring gap (no ambiguity)
 export const PERFECT = 0.04;
-export const DEBOUNCE = 0.045;      // duplicate hardware events closer than this to an accepted tap are ignored
+export const DEBOUNCE = 0.045;
+/** Input events are delivered to JS after a frame or two; their timestamps are what we judge. The clock-driven
+ * "late" failure therefore waits this long past the deadline so a queued (but in-time) event can still land. */
+export const LATE_GRACE = 0.15;      // duplicate hardware events closer than this to an accepted tap are ignored
 
 export type Status = 'ready' | 'playing' | 'paused' | 'failed' | 'complete';
 export type FailKind = 'late' | 'early' | 'extra';
@@ -83,7 +86,7 @@ export class Game {
     t = Math.max(this.time, t);
     if (this.cursor < this.taps.length) {
       const deadline = this.taps[this.cursor] + this.windows[this.cursor];
-      if (t > deadline) { this.collect(deadline); this.fail('late', deadline); return; }
+      if (t > deadline + LATE_GRACE) { this.collect(deadline); this.fail('late', deadline); return; }
     }
     this.collect(t);
     this.time = t;
@@ -105,7 +108,7 @@ export class Game {
     if (t - this.lastAccepted < DEBOUNCE) { this.ignoredDuplicates++; return 'ignored'; }
     this.update(t);
     if (this.status !== 'playing') return 'fail';
-    t = Math.max(t, this.time);
+    // judge by the event timestamp itself (it may be slightly older than this.time)
     if (this.cursor >= this.taps.length) { this.fail('extra', t); return 'fail'; }
     const T = this.taps[this.cursor];
     const err = t - T;

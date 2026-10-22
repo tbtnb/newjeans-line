@@ -14,7 +14,7 @@ import { CameraRig } from './camera';
 const LINE_W = 1.0, LINE_H = 0.9;
 const smooth = (x: number) => (x <= 0 ? 0 : x >= 1 ? 1 : x * x * (3 - 2 * x));
 
-interface Obj { node: TransformNode; def: SceneObject; t: number; base: Vector3; baseScale: Vector3; baseRotY: number; hidden: boolean; id?: string; }
+interface Obj { node: TransformNode; def: SceneObject; t: number; base: Vector3; baseScale: Vector3; baseRotY: number; hidden: boolean; id?: string; lit?: { mat: StandardMaterial; base: Color3 }[]; glow?: number; glowColor?: Color3; }
 interface Fx { mesh: Mesh; t0: number; dur: number; kind: string; vel?: Vector3; spin?: Vector3; from?: Vector3; }
 
 function radialTexture(scene: Scene, name: string, inner = 'rgba(255,255,255,1)', outer = 'rgba(255,255,255,0)', square = false) {
@@ -168,6 +168,11 @@ export class World {
       } else expanded.push(o);
     }
     for (const o of expanded) this.addObject(o, o.kind === 'row' ? undefined : grid);
+    // objects targeted by 'light' events get their own materials so they can glow independently
+    for (const e of this.events) if (e.type === 'light' && e.target) for (const o of this.targets(e.target)) if (!o.lit) {
+      o.lit = [];
+      for (const m of o.node.getChildMeshes()) { const src = m.material as StandardMaterial | null; if (!src) continue; const c = src.clone(src.name + '_lit') as StandardMaterial; m.material = c; o.lit.push({ mat: c, base: c.emissiveColor.clone() }); }
+    }
     // percentage markers (DL style)
     for (let k = 1; k <= 9; k++) {
       const t = level.duration * k / 10;
@@ -182,17 +187,19 @@ export class World {
     }
     // diamonds
     const gold = this.mats.get('#ffd54a', { emissive: 0.55 });
+    const gemMat = L.collectibleColors?.diamond ? this.mats.get(L.collectibleColors.diamond, { emissive: 0.55 }) : gold;
+    const crownMat = L.collectibleColors?.crown ? this.mats.get(L.collectibleColors.crown, { emissive: 0.55 }) : gold;
     L.diamonds.forEach(d => {
       const a = anchor(route, d.t, d.side ?? 0, 0, 1.15);
-      const m = CreatePolyhedron('dia', { type: 1, size: 0.32 }, this.scene); m.scaling.y = 1.5; m.material = gold; m.parent = this.root; m.position.set(a.pos.x, a.pos.y, a.pos.z);
+      const m = CreatePolyhedron('dia', { type: 1, size: 0.32 }, this.scene); m.scaling.y = 1.5; m.material = gemMat; m.parent = this.root; m.position.set(a.pos.x, a.pos.y, a.pos.z);
       this.diamonds.push({ mesh: m, t: d.t, taken: false, base: m.position.clone() });
     });
     // crowns
     L.crowns.forEach(c => {
       const a = anchor(route, c.t, 0, 0, 1.9);
       const n = new TransformNode('crown', this.scene); n.parent = this.root; n.position.set(a.pos.x, a.pos.y, a.pos.z);
-      const band = CreateCylinder('cb', { diameter: 1.1, height: 0.38, tessellation: 20 }, this.scene); band.material = gold; band.parent = n;
-      for (let i = 0; i < 5; i++) { const ang = i / 5 * Math.PI * 2; const sp = CreateCylinder('cs', { diameterTop: 0, diameterBottom: 0.3, height: 0.5, tessellation: 4 }, this.scene); sp.material = gold; sp.parent = n; sp.position.set(Math.cos(ang) * 0.48, 0.42, Math.sin(ang) * 0.48); }
+      const band = CreateCylinder('cb', { diameter: 1.1, height: 0.38, tessellation: 20 }, this.scene); band.material = crownMat; band.parent = n;
+      for (let i = 0; i < 5; i++) { const ang = i / 5 * Math.PI * 2; const sp = CreateCylinder('cs', { diameterTop: 0, diameterBottom: 0.3, height: 0.5, tessellation: 4 }, this.scene); sp.material = crownMat; sp.parent = n; sp.position.set(Math.cos(ang) * 0.48, 0.42, Math.sin(ang) * 0.48); }
       const gem = CreatePolyhedron('cg', { type: 1, size: 0.12 }, this.scene); gem.material = this.mats!.get('#ff5a6e', { emissive: 0.5 }); gem.parent = n; gem.position.set(0, 0.05, -0.56);
       this.crowns.push({ node: n, t: c.t, taken: false, base: n.position.clone() });
     });
@@ -203,7 +210,13 @@ export class World {
     fin.rotation.y = Math.atan2(ex, ez);
     const fk = L.finish?.kind ?? 'pyramid';
     if (fk === 'custom' && L.finish?.parts) buildKind(this.scene, this.mats, { kind: 'group', parts: L.finish.parts }, fin);
-    else buildKind(this.scene, this.mats, { kind: 'pyramid', size: [6, 5, 6], color: pal.road }, fin);
+    else if (fk === 'gate') {
+      const gc = L.finish?.color ?? pal.road, w = Math.max(3.2, widthAt(level.duration) + 1.6);
+      buildKind(this.scene, this.mats, { kind: 'group', parts: [
+        { kind: 'box', pos: [-w / 2, 0, 1.5], size: [0.7, 5.2, 0.7], color: gc }, { kind: 'box', pos: [w / 2, 0, 1.5], size: [0.7, 5.2, 0.7], color: gc },
+        { kind: 'box', pos: [0, 5.2, 1.5], size: [w + 1.4, 0.7, 0.9], color: gc }, { kind: 'box', pos: [0, -0.3, 3], size: [w + 2.4, 0.3, 5], color: pal.roadSide }] }, fin);
+    }
+    else buildKind(this.scene, this.mats, { kind: 'pyramid', size: [6, 5, 6], color: L.finish?.color ?? pal.road }, fin);
     const beam = CreateCylinder('beam', { diameter: 2.2, height: 120, tessellation: 16 }, this.scene); beam.parent = fin; beam.position.y = 60;
     const bm = new StandardMaterial('beamM', this.scene); bm.emissiveColor = new Color3(1, 1, 1); bm.disableLighting = true; bm.alpha = 0.18; bm.backFaceCulling = false; beam.material = bm;
     // camera
@@ -219,14 +232,15 @@ export class World {
     const t = o.t ?? 0;
     let side = o.side ?? 0;
     const sz = o.size ?? [2, 2, 2];
-    const rad = o.kind === 'group' ? 1.5 : Math.max(sz[0] ?? 1, sz[2] ?? 1) / 2;
-    if (grid && side !== 0 && !['water', 'plane', 'disc', 'text', 'cloud', 'moon', 'sun'].includes(o.kind) && (o.y ?? 0) < 4) {
+    const rad = o.radius ?? (o.kind === 'group' ? 1.5 : Math.max(sz[0] ?? 1, sz[2] ?? 1) / 2);
+    if (grid && side !== 0 && !o.onroad && !o.worldPos && !['water', 'plane', 'disc', 'text', 'cloud', 'moon', 'sun'].includes(o.kind) && (o.y ?? 0) < 4) {
       // keep scenery off the road: push outward until clear (scenery can be authored roughly by time)
       for (let k = 0; k < 12; k++) { const p = flowAnchor(this.route, t, side, o.along ?? 0, o.y ?? 0).pos; if (!grid.hits(p.x, p.z, rad, p.y, p.y + (sz[1] ?? 2))) break; side += Math.sign(side) * 1.5; }
     }
     let pos, baseYaw;
     if (side === 0) { const a = anchor(this.route, t, 0, o.along ?? 0, o.y ?? 0); pos = a.pos; baseYaw = Math.atan2(HEAD_VEC[a.heading][0], HEAD_VEC[a.heading][1]); }
     else { const a = flowAnchor(this.route, t, side, o.along ?? 0, o.y ?? 0); pos = a.pos; baseYaw = a.yaw; }
+    if (o.worldPos) { pos = { x: o.worldPos[0], y: o.worldPos[1] ?? 0, z: o.worldPos[2] ?? 0 }; baseYaw = 0; }
     const holder = new TransformNode(o.id ?? 'obj', this.scene); holder.parent = this.root;
     holder.position.set(pos.x, pos.y, pos.z);
     const rotY = baseYaw + (typeof o.rot === 'number' ? o.rot : Array.isArray(o.rot) ? o.rot[1] ?? 0 : 0) * Math.PI / 180;
@@ -420,7 +434,7 @@ export class World {
       if (f.kind === 'crown') { const n = f.mesh as unknown as TransformNode; n.position.y = f.from!.y + smooth(k) * 3; n.scaling.setAll(1 + k * 0.8); n.rotation.y += dt * 10; }
     }
     // particles
-    if (pal.particles !== this.particleKind) this.setParticles(pal.particles);
+    { const ov = this.particleOverride(t); const want = ov === undefined ? pal.particles : ov; if (want !== this.particleKind) this.setParticles(want); }
     if (this.particles) (this.particles.emitter as Vector3).copyFrom(this.rig.cam.getTarget().add(new Vector3(0, 10, 0)));
     if (this.ground && this.groundMat) { if (pal.groundY !== null && pal.groundY !== undefined) this.ground.position.y = pal.groundY + this.minRoadY(lt); this.ground.position.x = this.rig.cam.getTarget().x; this.ground.position.z = this.rig.cam.getTarget().z; }
     this.lastTime = t;
@@ -512,11 +526,20 @@ export class World {
     }
   }
 
+  /** particle kind forced by a 'particles' event active at t (undefined = use palette) */
+  private particleOverride(t: number): string | null | undefined {
+    let r: string | null | undefined;
+    for (const e of this.events) { if (e.t > t) break; if (e.type !== 'particles') continue; const u = e.until as number | undefined; r = u === undefined || t < u ? ((e.particles as string | null) ?? null) : undefined; }
+    return r;
+  }
+
   private runEvents(t: number) {
+    for (const o of this.objects) if (o.lit) o.glow = 0;
     for (const e of this.events) {
       if (e.t > t) break;
       const until = (e.until as number | undefined) ?? (e.t + (e.dur ?? 0.6));
-      if (t > until + 1.5) continue;
+      const persistent = e.type === 'raise' || e.type === 'lower' || e.type === 'light';
+      if (!persistent && t > until + 1.5) continue;
       const tg = this.targets(e.target);
       switch (e.type) {
         case 'pulse': {
@@ -526,17 +549,28 @@ export class World {
           break;
         }
         case 'raise': case 'lower': {
-          const k = smooth((t - e.t) / (e.dur ?? 1)); const dy = ((e.dy as number) ?? 4) * (e.type === 'lower' ? -1 : 1) * k;
-          for (const o of tg) o.node.position.y = o.node.position.y + dy;
+          // persistent move; optional 'converge' (0..1) drifts the targets toward their common centre
+          const k = smooth((t - e.t) / (e.dur ?? 1)); const dy = ((e.dy as number) ?? 4) * (e.type === 'lower' && ((e.dy as number) ?? 4) > 0 ? -1 : 1) * k;
+          const cv = ((e.converge as number) ?? 0) * k;
+          let cx = 0, cz = 0; if (cv && tg.length) { for (const o of tg) { cx += o.base.x; cz += o.base.z; } cx /= tg.length; cz /= tg.length; }
+          for (const o of tg) { o.node.position.y += dy; if (cv) { o.node.position.x += (cx - o.base.x) * cv; o.node.position.z += (cz - o.base.z) * cv; } }
           break;
         }
         case 'spin': { const k = (t - e.t); if (t <= until) for (const o of tg) o.node.rotation.y = o.baseRotY + k * ((e.speed as number) ?? 1.5); break; }
         case 'shake': if (t <= until && this.rig) this.rig.shakeBoost = Math.max(this.rig.shakeBoost, (e.amount as number) ?? 0.3); break;
         case 'flash': if (t - e.t < 0.05) document.documentElement.style.setProperty('--flash', String((e.amount as number) ?? 0.35)); break;
         case 'burst': if (t - e.t < 1 / 30 && t >= e.t) { const at = e.at === 'player' || !tg.length ? this.head!.position : tg[0].node.position; this.burst(at, (e.color as string) ?? '#ffffff', (e.amount as number) ?? 30); } break;
-        case 'light': { const k = smooth((t - e.t) / (e.dur ?? 1)); this.sun.intensity *= 1 + (((e.amount as number) ?? 1.5) - 1) * k * (t <= until ? 1 : 0); break; }
+        case 'light': {
+          if (!tg.length) { const k = smooth((t - e.t) / (e.dur ?? 1)); if (t <= until) this.sun.intensity *= 1 + (((e.amount as number) ?? 1.5) - 1) * k; break; }
+          // targeted: objects glow (one after another when 'every' is set); stays on unless an explicit 'until' is given
+          const off = e.until !== undefined && t > (e.until as number);
+          const level = (e.level as number) ?? 1; const col = hex((e.color as string) ?? '#fff1c2');
+          tg.forEach((o, i) => { const t0 = e.t + i * (((e.every as number) ?? 0)); const k = off ? 0 : smooth((t - t0) / ((e.dur as number) ?? 0.5)); if (k > 0 && o.lit) { o.glow = level * k; o.glowColor = col; } else if (o.lit && off) o.glow = 0; });
+          break;
+        }
       }
     }
+    for (const o of this.objects) if (o.lit) { const g = o.glow ?? 0; for (const l of o.lit) l.mat.emissiveColor.copyFrom(g > 0 && o.glowColor ? Color3.Lerp(l.base, o.glowColor, Math.min(1, g * 0.85)) : l.base); }
   }
 
   resize() { this.engine.resize(); }
